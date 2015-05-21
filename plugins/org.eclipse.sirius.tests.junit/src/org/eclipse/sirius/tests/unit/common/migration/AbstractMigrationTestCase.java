@@ -223,11 +223,27 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
         if (representation instanceof Diagram) {
             List<Edge> edges = ((Diagram) representation).getEdges();
             for (Edge currentEdge : edges) {
-                for (EdgeRepresentation edgeRepresentation : currentEdge.getEdgeRepresentations()) {
-                    checkBendpoints(edgeRepresentation);
+                // The bendpoints are not checked if the source or the target of
+                // the edge is autoSized.
+                if (isAutoSized(currentEdge.getSource()) || isAutoSized(currentEdge.getTarget())) {
+                    for (EdgeRepresentation edgeRepresentation : currentEdge.getEdgeRepresentations()) {
+                        checkBendpoints(edgeRepresentation);
+                    }
                 }
             }
         }
+    }
+
+    private boolean isAutoSized(GraphicalElement graphicalElement) {
+        if (graphicalElement instanceof Container) {
+            Container container = ((Container) graphicalElement);
+            if (container.getContainerRepresentations().size() == 1) {
+                if (container.getContainerRepresentations().get(0).isAutoSized()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -531,8 +547,8 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
             Container expectedContainer = expectedDiagram.getContainers().get(i);
             Container migratedContainer = migratedDiagram.getContainers().get(i);
             assertEqualsContainer(expectedContainer, migratedContainer);
-            assertEquals("The migrated container " + migratedContainer.getId() + " hasn't the expect contained elements number", expectedContainer.getElements().size(), migratedContainer
-                    .getElements().size());
+            assertEquals("The migrated container " + migratedContainer.getId() + " hasn't the expect contained elements number", expectedContainer.getElements().size(),
+                    migratedContainer.getElements().size());
             for (int j = 0; j < expectedContainer.getElements().size(); j++) {
                 GraphicalElement expectedGraphicalElement = expectedContainer.getElements().get(j);
                 GraphicalElement migratedGraphicalElement = migratedContainer.getElements().get(j);
@@ -560,12 +576,16 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
         for (int i = 0; i < expectedDiagram.getEdges().size(); i++) {
             Edge expectedEdge = expectedDiagram.getEdges().get(i);
             Edge migratedEdge = migratedDiagram.getEdges().get(i);
-            assertEquals("The migrated edge " + migratedEdge.getId() + " hasn't the expect edge representations number", expectedEdge.getEdgeRepresentations().size(), migratedEdge
-                    .getEdgeRepresentations().size());
+            assertEquals("The migrated edge " + migratedEdge.getId() + " hasn't the expect edge representations number", expectedEdge.getEdgeRepresentations().size(),
+                    migratedEdge.getEdgeRepresentations().size());
             for (int j = 0; j < expectedEdge.getEdgeRepresentations().size(); j++) {
                 EdgeRepresentation expectedEdgeRepresentation = expectedEdge.getEdgeRepresentations().get(j);
                 EdgeRepresentation migratedEdgeRepresentation = migratedEdge.getEdgeRepresentations().get(j);
-                assertEqualsBendpoints(expectedEdgeRepresentation.getMappingId(), expectedEdgeRepresentation.getBendpoints(), migratedEdgeRepresentation.getBendpoints());
+                // The bendpoints are not checked if the source or the target of
+                // the edge is autoSized.
+                if (isAutoSized(expectedEdge.getSource()) || isAutoSized(expectedEdge.getTarget())) {
+                    assertEqualsBendpoints(expectedEdgeRepresentation.getMappingId(), expectedEdgeRepresentation.getBendpoints(), migratedEdgeRepresentation.getBendpoints());
+                }
 
                 EdgeStyle expectedEdgeStyle = expectedEdgeRepresentation.getOwnedStyle();
                 EdgeStyle migratedEdgeStyle = migratedEdgeRepresentation.getOwnedStyle();
@@ -580,12 +600,12 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
         boolean bothHasColor = expectedEdgeStyle.getColor() != null && migratedEdgeStyle.getColor() != null;
         assertTrue(anyHasColor || bothHasColor);
         if (bothHasColor) {
-            assertEquals("The migrated edge representation " + representationElementId + " color red part isn't the expected one", expectedEdgeStyle.getColor().getRed(), migratedEdgeStyle.getColor()
-                    .getRed());
-            assertEquals("The migrated edge representation " + representationElementId + " color green part isn't the expected one", expectedEdgeStyle.getColor().getGreen(), migratedEdgeStyle
-                    .getColor().getGreen());
-            assertEquals("The migrated edge representation " + representationElementId + " color blue part isn't the expected one", expectedEdgeStyle.getColor().getBlue(), migratedEdgeStyle
-                    .getColor().getBlue());
+            assertEquals("The migrated edge representation " + representationElementId + " color red part isn't the expected one", expectedEdgeStyle.getColor().getRed(),
+                    migratedEdgeStyle.getColor().getRed());
+            assertEquals("The migrated edge representation " + representationElementId + " color green part isn't the expected one", expectedEdgeStyle.getColor().getGreen(),
+                    migratedEdgeStyle.getColor().getGreen());
+            assertEquals("The migrated edge representation " + representationElementId + " color blue part isn't the expected one", expectedEdgeStyle.getColor().getBlue(),
+                    migratedEdgeStyle.getColor().getBlue());
         }
         boolean anyHasBeginLabelStyle = expectedEdgeStyle.getBeginLabelStyle() == null && migratedEdgeStyle.getBeginLabelStyle() == null;
         boolean bothHasBeginLabelStyle = expectedEdgeStyle.getBeginLabelStyle() != null && migratedEdgeStyle.getBeginLabelStyle() != null;
@@ -608,12 +628,12 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
     }
 
     protected void assertEqualsNode(Node expectedNode, Node migratedNode) {
-        assertEquals("The migrated node " + migratedNode.getId() + " hasn't the expect node representations number", expectedNode.getNodeRepresentations().size(), migratedNode
-                .getNodeRepresentations().size());
+        assertEquals("The migrated node " + migratedNode.getId() + " hasn't the expect node representations number", expectedNode.getNodeRepresentations().size(),
+                migratedNode.getNodeRepresentations().size());
         for (int j = 0; j < expectedNode.getNodeRepresentations().size(); j++) {
             NodeRepresentation expectedNodeRepresentation = expectedNode.getNodeRepresentations().get(j);
             NodeRepresentation migratedNodeRepresentation = migratedNode.getNodeRepresentations().get(j);
-            assertEqualsLayout(expectedNodeRepresentation.getMappingId(), expectedNodeRepresentation.getLayout(), migratedNodeRepresentation.getLayout());
+            assertEqualsLayout(expectedNodeRepresentation.getMappingId(), expectedNodeRepresentation.getLayout(), migratedNodeRepresentation.getLayout(), false);
             NodeStyle expectedNodeStyle = expectedNodeRepresentation.getOwnedStyle();
             NodeStyle migratedNodeStyle = migratedNodeRepresentation.getOwnedStyle();
             assertEqualsNodeStyle(expectedNodeRepresentation.getMappingId(), expectedNodeStyle, migratedNodeStyle);
@@ -624,12 +644,12 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
     }
 
     protected void assertEqualsBordered(Bordered expectedBordered, Bordered migratedBordered) {
-        assertEquals("The migrated bordered " + migratedBordered.getId() + " hasn't the expect bordered representations number", expectedBordered.getBorderedRepresentations().size(), migratedBordered
-                .getBorderedRepresentations().size());
+        assertEquals("The migrated bordered " + migratedBordered.getId() + " hasn't the expect bordered representations number", expectedBordered.getBorderedRepresentations().size(),
+                migratedBordered.getBorderedRepresentations().size());
         for (int j = 0; j < expectedBordered.getBorderedRepresentations().size(); j++) {
             BorderedRepresentation expectedBorderedRepresentation = expectedBordered.getBorderedRepresentations().get(j);
             BorderedRepresentation migratedBorderedRepresentation = migratedBordered.getBorderedRepresentations().get(j);
-            assertEqualsLayout(expectedBorderedRepresentation.getMappingId(), expectedBorderedRepresentation.getLayout(), migratedBorderedRepresentation.getLayout());
+            assertEqualsLayout(expectedBorderedRepresentation.getMappingId(), expectedBorderedRepresentation.getLayout(), migratedBorderedRepresentation.getLayout(), false);
             NodeStyle expectedNodeStyle = expectedBorderedRepresentation.getOwnedStyle();
             NodeStyle migratedNodeStyle = migratedBorderedRepresentation.getOwnedStyle();
             assertEqualsLabelStyle(expectedBorderedRepresentation.getMappingId(), expectedNodeStyle, migratedNodeStyle);
@@ -646,7 +666,8 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
         for (int j = 0; j < expectedContainer.getContainerRepresentations().size(); j++) {
             ContainerRepresentation expectedContainerRepresentation = expectedContainer.getContainerRepresentations().get(j);
             ContainerRepresentation migratedContainerRepresentation = migratedContainer.getContainerRepresentations().get(j);
-            assertEqualsLayout(expectedContainerRepresentation.getMappingId(), expectedContainerRepresentation.getLayout(), migratedContainerRepresentation.getLayout());
+            assertEqualsLayout(expectedContainerRepresentation.getMappingId(), expectedContainerRepresentation.getLayout(), migratedContainerRepresentation.getLayout(),
+                    migratedContainerRepresentation.isAutoSized());
 
             ContainerStyle expectedContainerStyle = expectedContainerRepresentation.getOwnedStyle();
             ContainerStyle migratedContainerStyle = migratedContainerRepresentation.getOwnedStyle();
@@ -668,16 +689,19 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
         }
     }
 
-    protected void assertEqualsLayout(String representationElementId, Layout expectedLayout, Layout migratedLayout) {
+    protected void assertEqualsLayout(String representationElementId, Layout expectedLayout, Layout migratedLayout, boolean isAutoSized) {
         assertEquals("The migrated representation element " + representationElementId + " x coordinate isn't the expected one, expected " + expectedLayout.getX() + " was " + migratedLayout.getX(),
                 expectedLayout.getX(), migratedLayout.getX());
         assertEquals("The migrated representation element " + representationElementId + " y coordinate isn't the expected one, expected " + expectedLayout.getY() + " was " + migratedLayout.getY(),
                 expectedLayout.getY(), migratedLayout.getY());
-        int tolerance = 10;
-        assertTrue("The migrated representation element " + representationElementId + " width isn't the expected one, expected " + expectedLayout.getWidth() + " was " + migratedLayout.getWidth(),
-                expectedLayout.getWidth() - tolerance < migratedLayout.getWidth() && expectedLayout.getWidth() + tolerance > migratedLayout.getWidth());
-        assertTrue("The migrated representation element " + representationElementId + " height isn't the expected one, expected " + expectedLayout.getHeight() + " was " + migratedLayout.getHeight(),
-                expectedLayout.getHeight() - tolerance < migratedLayout.getHeight() && expectedLayout.getHeight() + tolerance > migratedLayout.getHeight());
+        if (!isAutoSized) {
+            int tolerance = 10;
+            assertTrue("The migrated representation element " + representationElementId + " width isn't the expected one, expected " + expectedLayout.getWidth() + " was " + migratedLayout.getWidth(),
+                    expectedLayout.getWidth() - tolerance < migratedLayout.getWidth() && expectedLayout.getWidth() + tolerance > migratedLayout.getWidth());
+            assertTrue(
+                    "The migrated representation element " + representationElementId + " height isn't the expected one, expected " + expectedLayout.getHeight() + " was " + migratedLayout.getHeight(),
+                    expectedLayout.getHeight() - tolerance < migratedLayout.getHeight() && expectedLayout.getHeight() + tolerance > migratedLayout.getHeight());
+        }
     }
 
     protected void assertEqualsNodeStyle(String representationElementId, NodeStyle expectedNodeStyle, NodeStyle migratedNodeStyle) {

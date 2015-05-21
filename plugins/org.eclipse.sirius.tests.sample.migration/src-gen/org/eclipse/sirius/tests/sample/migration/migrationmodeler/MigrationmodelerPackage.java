@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerFactory
  * @model kind="package"
  * @generated
@@ -34,21 +34,21 @@ import org.eclipse.emf.ecore.EReference;
 public interface MigrationmodelerPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "migrationmodeler";
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.eclipse.org/sirius/tests/sample/migrationmodeler";
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "migrationmodeler";
@@ -56,7 +56,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     MigrationmodelerPackage eINSTANCE = org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl.init();
@@ -66,7 +66,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GraphicalElementImpl
      * <em>Graphical Element</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GraphicalElementImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getGraphicalElement()
      * @generated
@@ -78,7 +78,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractNodeImpl
      * <em>Abstract Node</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractNodeImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getAbstractNode()
      * @generated
@@ -89,7 +89,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeImpl
      * <em>Node</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getNode()
      * @generated
@@ -100,7 +100,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedImpl
      * <em>Bordered</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBordered()
      * @generated
@@ -111,7 +111,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerImpl
      * <em>Container</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getContainer()
      * @generated
@@ -122,7 +122,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeImpl
      * <em>Edge</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getEdge()
      * @generated
@@ -134,7 +134,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractRepresentationImpl
      * <em>Abstract Representation</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractRepresentationImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getAbstractRepresentation()
      * @generated
@@ -146,7 +146,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeRepresentationImpl
      * <em>Edge Representation</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeRepresentationImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getEdgeRepresentation()
      * @generated
@@ -158,7 +158,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractNodeRepresentationImpl
      * <em>Abstract Node Representation</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractNodeRepresentationImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getAbstractNodeRepresentation()
      * @generated
@@ -170,7 +170,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeRepresentationImpl
      * <em>Node Representation</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeRepresentationImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getNodeRepresentation()
      * @generated
@@ -182,7 +182,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedRepresentationImpl
      * <em>Bordered Representation</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedRepresentationImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBorderedRepresentation()
      * @generated
@@ -194,7 +194,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerRepresentationImpl
      * <em>Container Representation</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerRepresentationImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getContainerRepresentation()
      * @generated
@@ -206,7 +206,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.RepresentationImpl
      * <em>Representation</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.RepresentationImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getRepresentation()
      * @generated
@@ -216,7 +216,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -225,7 +225,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Representation</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -235,7 +235,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.DiagramImpl
      * <em>Diagram</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.DiagramImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getDiagram()
      * @generated
@@ -245,70 +245,70 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM__NAME = REPRESENTATION__NAME;
+    int DIAGRAM__NAME = MigrationmodelerPackage.REPRESENTATION__NAME;
 
     /**
      * The feature id for the '<em><b>Containers</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM__CONTAINERS = REPRESENTATION_FEATURE_COUNT + 0;
+    int DIAGRAM__CONTAINERS = MigrationmodelerPackage.REPRESENTATION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Nodes</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM__NODES = REPRESENTATION_FEATURE_COUNT + 1;
+    int DIAGRAM__NODES = MigrationmodelerPackage.REPRESENTATION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Edges</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM__EDGES = REPRESENTATION_FEATURE_COUNT + 2;
+    int DIAGRAM__EDGES = MigrationmodelerPackage.REPRESENTATION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM__FILTERS = REPRESENTATION_FEATURE_COUNT + 3;
+    int DIAGRAM__FILTERS = MigrationmodelerPackage.REPRESENTATION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Layers</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM__LAYERS = REPRESENTATION_FEATURE_COUNT + 4;
+    int DIAGRAM__LAYERS = MigrationmodelerPackage.REPRESENTATION_FEATURE_COUNT + 4;
 
     /**
      * The number of structural features of the '<em>Diagram</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DIAGRAM_FEATURE_COUNT = REPRESENTATION_FEATURE_COUNT + 5;
+    int DIAGRAM_FEATURE_COUNT = MigrationmodelerPackage.REPRESENTATION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -317,7 +317,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Graphical Element</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -326,160 +326,160 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE__ID = GRAPHICAL_ELEMENT__ID;
+    int ABSTRACT_NODE__ID = MigrationmodelerPackage.GRAPHICAL_ELEMENT__ID;
 
     /**
      * The number of structural features of the '<em>Abstract Node</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_FEATURE_COUNT = GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
+    int ABSTRACT_NODE_FEATURE_COUNT = MigrationmodelerPackage.GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE__ID = ABSTRACT_NODE__ID;
+    int NODE__ID = MigrationmodelerPackage.ABSTRACT_NODE__ID;
 
     /**
      * The feature id for the '<em><b>Node Representations</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE__NODE_REPRESENTATIONS = ABSTRACT_NODE_FEATURE_COUNT + 0;
+    int NODE__NODE_REPRESENTATIONS = MigrationmodelerPackage.ABSTRACT_NODE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Node</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_FEATURE_COUNT = ABSTRACT_NODE_FEATURE_COUNT + 1;
+    int NODE_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_NODE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED__ID = ABSTRACT_NODE__ID;
+    int BORDERED__ID = MigrationmodelerPackage.ABSTRACT_NODE__ID;
 
     /**
      * The feature id for the '<em><b>Bordered Representations</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED__BORDERED_REPRESENTATIONS = ABSTRACT_NODE_FEATURE_COUNT + 0;
+    int BORDERED__BORDERED_REPRESENTATIONS = MigrationmodelerPackage.ABSTRACT_NODE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Bordered</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_FEATURE_COUNT = ABSTRACT_NODE_FEATURE_COUNT + 1;
+    int BORDERED_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_NODE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER__ID = GRAPHICAL_ELEMENT__ID;
+    int CONTAINER__ID = MigrationmodelerPackage.GRAPHICAL_ELEMENT__ID;
 
     /**
      * The feature id for the '<em><b>Container Representations</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER__CONTAINER_REPRESENTATIONS = GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
+    int CONTAINER__CONTAINER_REPRESENTATIONS = MigrationmodelerPackage.GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Elements</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER__ELEMENTS = GRAPHICAL_ELEMENT_FEATURE_COUNT + 1;
+    int CONTAINER__ELEMENTS = MigrationmodelerPackage.GRAPHICAL_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Container</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_FEATURE_COUNT = GRAPHICAL_ELEMENT_FEATURE_COUNT + 2;
+    int CONTAINER_FEATURE_COUNT = MigrationmodelerPackage.GRAPHICAL_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE__ID = GRAPHICAL_ELEMENT__ID;
+    int EDGE__ID = MigrationmodelerPackage.GRAPHICAL_ELEMENT__ID;
 
     /**
      * The feature id for the '<em><b>Edge Representations</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE__EDGE_REPRESENTATIONS = GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
+    int EDGE__EDGE_REPRESENTATIONS = MigrationmodelerPackage.GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE__SOURCE = GRAPHICAL_ELEMENT_FEATURE_COUNT + 1;
+    int EDGE__SOURCE = MigrationmodelerPackage.GRAPHICAL_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE__TARGET = GRAPHICAL_ELEMENT_FEATURE_COUNT + 2;
+    int EDGE__TARGET = MigrationmodelerPackage.GRAPHICAL_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Edge</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_FEATURE_COUNT = GRAPHICAL_ELEMENT_FEATURE_COUNT + 3;
+    int EDGE_FEATURE_COUNT = MigrationmodelerPackage.GRAPHICAL_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Mapping Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -488,7 +488,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -497,7 +497,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Displayed</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -506,7 +506,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Hidden</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -515,7 +515,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Pinned</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -525,7 +525,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The number of structural features of the '
      * <em>Abstract Representation</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -534,381 +534,390 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mapping Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__MAPPING_ID = ABSTRACT_REPRESENTATION__MAPPING_ID;
+    int EDGE_REPRESENTATION__MAPPING_ID = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__MAPPING_ID;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__LAYOUT = ABSTRACT_REPRESENTATION__LAYOUT;
+    int EDGE_REPRESENTATION__LAYOUT = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__LAYOUT;
 
     /**
      * The feature id for the '<em><b>Displayed</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__DISPLAYED = ABSTRACT_REPRESENTATION__DISPLAYED;
+    int EDGE_REPRESENTATION__DISPLAYED = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__DISPLAYED;
 
     /**
      * The feature id for the '<em><b>Hidden</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__HIDDEN = ABSTRACT_REPRESENTATION__HIDDEN;
+    int EDGE_REPRESENTATION__HIDDEN = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__HIDDEN;
 
     /**
      * The feature id for the '<em><b>Pinned</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__PINNED = ABSTRACT_REPRESENTATION__PINNED;
+    int EDGE_REPRESENTATION__PINNED = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__PINNED;
 
     /**
      * The feature id for the '<em><b>Source</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__SOURCE = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 0;
+    int EDGE_REPRESENTATION__SOURCE = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__TARGET = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 1;
+    int EDGE_REPRESENTATION__TARGET = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Bendpoints</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__BENDPOINTS = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 2;
+    int EDGE_REPRESENTATION__BENDPOINTS = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION__OWNED_STYLE = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 3;
+    int EDGE_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>Edge Representation</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EDGE_REPRESENTATION_FEATURE_COUNT = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 4;
+    int EDGE_REPRESENTATION_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Mapping Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_REPRESENTATION__MAPPING_ID = ABSTRACT_REPRESENTATION__MAPPING_ID;
+    int ABSTRACT_NODE_REPRESENTATION__MAPPING_ID = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__MAPPING_ID;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_REPRESENTATION__LAYOUT = ABSTRACT_REPRESENTATION__LAYOUT;
+    int ABSTRACT_NODE_REPRESENTATION__LAYOUT = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__LAYOUT;
 
     /**
      * The feature id for the '<em><b>Displayed</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_REPRESENTATION__DISPLAYED = ABSTRACT_REPRESENTATION__DISPLAYED;
+    int ABSTRACT_NODE_REPRESENTATION__DISPLAYED = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__DISPLAYED;
 
     /**
      * The feature id for the '<em><b>Hidden</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_REPRESENTATION__HIDDEN = ABSTRACT_REPRESENTATION__HIDDEN;
+    int ABSTRACT_NODE_REPRESENTATION__HIDDEN = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__HIDDEN;
 
     /**
      * The feature id for the '<em><b>Pinned</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_REPRESENTATION__PINNED = ABSTRACT_REPRESENTATION__PINNED;
+    int ABSTRACT_NODE_REPRESENTATION__PINNED = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__PINNED;
 
     /**
      * The feature id for the '<em><b>Bordereds</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_REPRESENTATION__BORDEREDS = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 0;
+    int ABSTRACT_NODE_REPRESENTATION__BORDEREDS = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 1;
+    int ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
      * <em>Abstract Node Representation</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ABSTRACT_NODE_REPRESENTATION_FEATURE_COUNT = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 2;
+    int ABSTRACT_NODE_REPRESENTATION_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Mapping Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_REPRESENTATION__MAPPING_ID = ABSTRACT_NODE_REPRESENTATION__MAPPING_ID;
+    int NODE_REPRESENTATION__MAPPING_ID = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__MAPPING_ID;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_REPRESENTATION__LAYOUT = ABSTRACT_NODE_REPRESENTATION__LAYOUT;
+    int NODE_REPRESENTATION__LAYOUT = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__LAYOUT;
 
     /**
      * The feature id for the '<em><b>Displayed</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_REPRESENTATION__DISPLAYED = ABSTRACT_NODE_REPRESENTATION__DISPLAYED;
+    int NODE_REPRESENTATION__DISPLAYED = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__DISPLAYED;
 
     /**
      * The feature id for the '<em><b>Hidden</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_REPRESENTATION__HIDDEN = ABSTRACT_NODE_REPRESENTATION__HIDDEN;
+    int NODE_REPRESENTATION__HIDDEN = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__HIDDEN;
 
     /**
      * The feature id for the '<em><b>Pinned</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_REPRESENTATION__PINNED = ABSTRACT_NODE_REPRESENTATION__PINNED;
+    int NODE_REPRESENTATION__PINNED = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__PINNED;
 
     /**
      * The feature id for the '<em><b>Bordereds</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_REPRESENTATION__BORDEREDS = ABSTRACT_NODE_REPRESENTATION__BORDEREDS;
+    int NODE_REPRESENTATION__BORDEREDS = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__BORDEREDS;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_REPRESENTATION__OWNED_STYLE = ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE;
+    int NODE_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE;
 
     /**
      * The number of structural features of the '<em>Node Representation</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_REPRESENTATION_FEATURE_COUNT = ABSTRACT_NODE_REPRESENTATION_FEATURE_COUNT + 0;
+    int NODE_REPRESENTATION_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Mapping Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_REPRESENTATION__MAPPING_ID = ABSTRACT_NODE_REPRESENTATION__MAPPING_ID;
+    int BORDERED_REPRESENTATION__MAPPING_ID = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__MAPPING_ID;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_REPRESENTATION__LAYOUT = ABSTRACT_NODE_REPRESENTATION__LAYOUT;
+    int BORDERED_REPRESENTATION__LAYOUT = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__LAYOUT;
 
     /**
      * The feature id for the '<em><b>Displayed</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_REPRESENTATION__DISPLAYED = ABSTRACT_NODE_REPRESENTATION__DISPLAYED;
+    int BORDERED_REPRESENTATION__DISPLAYED = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__DISPLAYED;
 
     /**
      * The feature id for the '<em><b>Hidden</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_REPRESENTATION__HIDDEN = ABSTRACT_NODE_REPRESENTATION__HIDDEN;
+    int BORDERED_REPRESENTATION__HIDDEN = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__HIDDEN;
 
     /**
      * The feature id for the '<em><b>Pinned</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_REPRESENTATION__PINNED = ABSTRACT_NODE_REPRESENTATION__PINNED;
+    int BORDERED_REPRESENTATION__PINNED = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__PINNED;
 
     /**
      * The feature id for the '<em><b>Bordereds</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_REPRESENTATION__BORDEREDS = ABSTRACT_NODE_REPRESENTATION__BORDEREDS;
+    int BORDERED_REPRESENTATION__BORDEREDS = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__BORDEREDS;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_REPRESENTATION__OWNED_STYLE = ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE;
+    int BORDERED_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE;
 
     /**
      * The number of structural features of the '
      * <em>Bordered Representation</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BORDERED_REPRESENTATION_FEATURE_COUNT = ABSTRACT_NODE_REPRESENTATION_FEATURE_COUNT + 0;
+    int BORDERED_REPRESENTATION_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_NODE_REPRESENTATION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Mapping Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_REPRESENTATION__MAPPING_ID = ABSTRACT_REPRESENTATION__MAPPING_ID;
+    int CONTAINER_REPRESENTATION__MAPPING_ID = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__MAPPING_ID;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_REPRESENTATION__LAYOUT = ABSTRACT_REPRESENTATION__LAYOUT;
+    int CONTAINER_REPRESENTATION__LAYOUT = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__LAYOUT;
 
     /**
      * The feature id for the '<em><b>Displayed</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_REPRESENTATION__DISPLAYED = ABSTRACT_REPRESENTATION__DISPLAYED;
+    int CONTAINER_REPRESENTATION__DISPLAYED = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__DISPLAYED;
 
     /**
      * The feature id for the '<em><b>Hidden</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_REPRESENTATION__HIDDEN = ABSTRACT_REPRESENTATION__HIDDEN;
+    int CONTAINER_REPRESENTATION__HIDDEN = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__HIDDEN;
 
     /**
      * The feature id for the '<em><b>Pinned</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_REPRESENTATION__PINNED = ABSTRACT_REPRESENTATION__PINNED;
+    int CONTAINER_REPRESENTATION__PINNED = MigrationmodelerPackage.ABSTRACT_REPRESENTATION__PINNED;
 
     /**
      * The feature id for the '<em><b>Owned Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_REPRESENTATION__OWNED_STYLE = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 0;
+    int CONTAINER_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Auto Sized</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_REPRESENTATION__AUTO_SIZED = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
      * <em>Container Representation</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_REPRESENTATION_FEATURE_COUNT = ABSTRACT_REPRESENTATION_FEATURE_COUNT + 1;
+    int CONTAINER_REPRESENTATION_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeStyleImpl
      * <em>Edge Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getEdgeStyle()
      * @generated
@@ -918,7 +927,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Routing Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -927,7 +936,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Color</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -936,7 +945,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Begin Label Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -945,7 +954,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Center Label Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -954,7 +963,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>End Label Style</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -963,7 +972,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Edge Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -973,7 +982,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LayoutImpl
      * <em>Layout</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LayoutImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLayout()
      * @generated
@@ -983,7 +992,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>X</b></em>' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -992,7 +1001,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Y</b></em>' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1001,7 +1010,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1010,7 +1019,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1019,7 +1028,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Layout</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1030,7 +1039,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle
      * <em>Routing Style</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getRoutingStyle()
      * @generated
@@ -1042,7 +1051,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelPosition
      * <em>Label Position</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelPosition
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLabelPosition()
      * @generated
@@ -1054,7 +1063,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat
      * <em>Font Format</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getFontFormat()
      * @generated
@@ -1066,7 +1075,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment
      * <em>Label Alignment</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLabelAlignment()
      * @generated
@@ -1078,7 +1087,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerShape
      * <em>Container Shape</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerShape
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getContainerShape()
      * @generated
@@ -1090,7 +1099,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BackgroundStyle
      * <em>Background Style</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BackgroundStyle
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBackgroundStyle()
      * @generated
@@ -1102,7 +1111,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AlignmentKind
      * <em>Alignment Kind</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AlignmentKind
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getAlignmentKind()
      * @generated
@@ -1114,7 +1123,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImageShape
      * <em>Bundled Image Shape</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImageShape
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBundledImageShape()
      * @generated
@@ -1125,7 +1134,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ColorImpl
      * <em>Color</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ColorImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getColor()
      * @generated
@@ -1135,7 +1144,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Red</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1144,7 +1153,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Green</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1153,7 +1162,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Blue</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1162,7 +1171,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Color</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1172,7 +1181,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.PointImpl
      * <em>Point</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.PointImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getPoint()
      * @generated
@@ -1182,7 +1191,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>X</b></em>' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1191,7 +1200,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Y</b></em>' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1200,7 +1209,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Point</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1211,7 +1220,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeStyleImpl
      * <em>Node Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getNodeStyle()
      * @generated
@@ -1223,7 +1232,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerStyleImpl
      * <em>Container Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getContainerStyle()
      * @generated
@@ -1234,7 +1243,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.DotImpl
      * <em>Dot</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.DotImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getDot()
      * @generated
@@ -1246,7 +1255,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GaugeSectionImpl
      * <em>Gauge Section</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GaugeSectionImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getGaugeSection()
      * @generated
@@ -1258,7 +1267,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.FlatContainerStyleImpl
      * <em>Flat Container Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.FlatContainerStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getFlatContainerStyle()
      * @generated
@@ -1270,7 +1279,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ShapeContainerStyleImpl
      * <em>Shape Container Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ShapeContainerStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getShapeContainerStyle()
      * @generated
@@ -1281,7 +1290,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.SquareImpl
      * <em>Square</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.SquareImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getSquare()
      * @generated
@@ -1292,7 +1301,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EllipseImpl
      * <em>Ellipse</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EllipseImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getEllipse()
      * @generated
@@ -1303,7 +1312,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LozengeImpl
      * <em>Lozenge</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LozengeImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLozenge()
      * @generated
@@ -1315,7 +1324,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BundledImageImpl
      * <em>Bundled Image</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BundledImageImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBundledImage()
      * @generated
@@ -1327,7 +1336,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.WorkspaceImageImpl
      * <em>Workspace Image</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.WorkspaceImageImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getWorkspaceImage()
      * @generated
@@ -1339,7 +1348,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GaugeCompositeStyleImpl
      * <em>Gauge Composite Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GaugeCompositeStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getGaugeCompositeStyle()
      * @generated
@@ -1350,7 +1359,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NoteImpl
      * <em>Note</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NoteImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getNote()
      * @generated
@@ -1361,7 +1370,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.TestCaseImpl
      * <em>Test Case</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.TestCaseImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getTestCase()
      * @generated
@@ -1371,7 +1380,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Representations</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1380,7 +1389,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Test Case</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1391,7 +1400,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedStyleImpl
      * <em>Bordered Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBorderedStyle()
      * @generated
@@ -1401,7 +1410,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1410,7 +1419,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1419,7 +1428,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Bordered Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1429,7 +1438,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.FilterImpl
      * <em>Filter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.FilterImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getFilter()
      * @generated
@@ -1439,7 +1448,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1448,7 +1457,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Activated</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1457,7 +1466,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Filter</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1467,7 +1476,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LayerImpl
      * <em>Layer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LayerImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLayer()
      * @generated
@@ -1477,7 +1486,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1486,7 +1495,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Activated</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1495,7 +1504,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Layer</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1506,7 +1515,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BasicLabelStyleImpl
      * <em>Basic Label Style</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BasicLabelStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBasicLabelStyle()
      * @generated
@@ -1516,7 +1525,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1525,7 +1534,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1534,7 +1543,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1543,7 +1552,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1552,7 +1561,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1561,7 +1570,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Basic Label Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1572,7 +1581,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LabelStyleImpl
      * <em>Label Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LabelStyleImpl
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLabelStyle()
      * @generated
@@ -1582,358 +1591,358 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_STYLE__LABEL_SIZE = BASIC_LABEL_STYLE__LABEL_SIZE;
+    int LABEL_STYLE__LABEL_SIZE = MigrationmodelerPackage.BASIC_LABEL_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_STYLE__LABEL_FORMAT = BASIC_LABEL_STYLE__LABEL_FORMAT;
+    int LABEL_STYLE__LABEL_FORMAT = MigrationmodelerPackage.BASIC_LABEL_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_STYLE__SHOW_ICON = BASIC_LABEL_STYLE__SHOW_ICON;
+    int LABEL_STYLE__SHOW_ICON = MigrationmodelerPackage.BASIC_LABEL_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_STYLE__LABEL_COLOR = BASIC_LABEL_STYLE__LABEL_COLOR;
+    int LABEL_STYLE__LABEL_COLOR = MigrationmodelerPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_STYLE__ICON_PATH = BASIC_LABEL_STYLE__ICON_PATH;
+    int LABEL_STYLE__ICON_PATH = MigrationmodelerPackage.BASIC_LABEL_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_STYLE__LABEL_ALIGNMENT = BASIC_LABEL_STYLE_FEATURE_COUNT + 0;
+    int LABEL_STYLE__LABEL_ALIGNMENT = MigrationmodelerPackage.BASIC_LABEL_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Label Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LABEL_STYLE_FEATURE_COUNT = BASIC_LABEL_STYLE_FEATURE_COUNT + 1;
+    int LABEL_STYLE_FEATURE_COUNT = MigrationmodelerPackage.BASIC_LABEL_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__LABEL_SIZE = LABEL_STYLE__LABEL_SIZE;
+    int NODE_STYLE__LABEL_SIZE = MigrationmodelerPackage.LABEL_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__LABEL_FORMAT = LABEL_STYLE__LABEL_FORMAT;
+    int NODE_STYLE__LABEL_FORMAT = MigrationmodelerPackage.LABEL_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__SHOW_ICON = LABEL_STYLE__SHOW_ICON;
+    int NODE_STYLE__SHOW_ICON = MigrationmodelerPackage.LABEL_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__LABEL_COLOR = LABEL_STYLE__LABEL_COLOR;
+    int NODE_STYLE__LABEL_COLOR = MigrationmodelerPackage.LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__ICON_PATH = LABEL_STYLE__ICON_PATH;
+    int NODE_STYLE__ICON_PATH = MigrationmodelerPackage.LABEL_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__LABEL_ALIGNMENT = LABEL_STYLE__LABEL_ALIGNMENT;
+    int NODE_STYLE__LABEL_ALIGNMENT = MigrationmodelerPackage.LABEL_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__BORDER_SIZE = LABEL_STYLE_FEATURE_COUNT + 0;
+    int NODE_STYLE__BORDER_SIZE = MigrationmodelerPackage.LABEL_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__BORDER_COLOR = LABEL_STYLE_FEATURE_COUNT + 1;
+    int NODE_STYLE__BORDER_COLOR = MigrationmodelerPackage.LABEL_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__LABEL_POSITION = LABEL_STYLE_FEATURE_COUNT + 2;
+    int NODE_STYLE__LABEL_POSITION = MigrationmodelerPackage.LABEL_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE__HIDE_LABEL_BY_DEFAULT = LABEL_STYLE_FEATURE_COUNT + 3;
+    int NODE_STYLE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.LABEL_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>Node Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NODE_STYLE_FEATURE_COUNT = LABEL_STYLE_FEATURE_COUNT + 4;
+    int NODE_STYLE_FEATURE_COUNT = MigrationmodelerPackage.LABEL_STYLE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__LABEL_SIZE = LABEL_STYLE__LABEL_SIZE;
+    int CONTAINER_STYLE__LABEL_SIZE = MigrationmodelerPackage.LABEL_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__LABEL_FORMAT = LABEL_STYLE__LABEL_FORMAT;
+    int CONTAINER_STYLE__LABEL_FORMAT = MigrationmodelerPackage.LABEL_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__SHOW_ICON = LABEL_STYLE__SHOW_ICON;
+    int CONTAINER_STYLE__SHOW_ICON = MigrationmodelerPackage.LABEL_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__LABEL_COLOR = LABEL_STYLE__LABEL_COLOR;
+    int CONTAINER_STYLE__LABEL_COLOR = MigrationmodelerPackage.LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__ICON_PATH = LABEL_STYLE__ICON_PATH;
+    int CONTAINER_STYLE__ICON_PATH = MigrationmodelerPackage.LABEL_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__LABEL_ALIGNMENT = LABEL_STYLE__LABEL_ALIGNMENT;
+    int CONTAINER_STYLE__LABEL_ALIGNMENT = MigrationmodelerPackage.LABEL_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__BORDER_SIZE = LABEL_STYLE_FEATURE_COUNT + 0;
+    int CONTAINER_STYLE__BORDER_SIZE = MigrationmodelerPackage.LABEL_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__BORDER_COLOR = LABEL_STYLE_FEATURE_COUNT + 1;
+    int CONTAINER_STYLE__BORDER_COLOR = MigrationmodelerPackage.LABEL_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Container Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_FEATURE_COUNT = LABEL_STYLE_FEATURE_COUNT + 2;
+    int CONTAINER_STYLE_FEATURE_COUNT = MigrationmodelerPackage.LABEL_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int DOT__LABEL_SIZE = MigrationmodelerPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int DOT__LABEL_FORMAT = MigrationmodelerPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int DOT__SHOW_ICON = MigrationmodelerPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int DOT__LABEL_COLOR = MigrationmodelerPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int DOT__ICON_PATH = MigrationmodelerPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int DOT__LABEL_ALIGNMENT = MigrationmodelerPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int DOT__BORDER_SIZE = MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int DOT__BORDER_COLOR = MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int DOT__LABEL_POSITION = MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int DOT__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT__BACKGROUND_COLOR = NODE_STYLE_FEATURE_COUNT + 0;
+    int DOT__BACKGROUND_COLOR = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Dot</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DOT_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 1;
+    int DOT_FEATURE_COUNT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Min</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1942,7 +1951,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Max</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1951,7 +1960,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Value</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1960,7 +1969,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1969,7 +1978,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1978,7 +1987,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1987,7 +1996,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Gauge Section</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1996,1043 +2005,1043 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__LABEL_SIZE = CONTAINER_STYLE__LABEL_SIZE;
+    int FLAT_CONTAINER_STYLE__LABEL_SIZE = MigrationmodelerPackage.CONTAINER_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__LABEL_FORMAT = CONTAINER_STYLE__LABEL_FORMAT;
+    int FLAT_CONTAINER_STYLE__LABEL_FORMAT = MigrationmodelerPackage.CONTAINER_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__SHOW_ICON = CONTAINER_STYLE__SHOW_ICON;
+    int FLAT_CONTAINER_STYLE__SHOW_ICON = MigrationmodelerPackage.CONTAINER_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__LABEL_COLOR = CONTAINER_STYLE__LABEL_COLOR;
+    int FLAT_CONTAINER_STYLE__LABEL_COLOR = MigrationmodelerPackage.CONTAINER_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__ICON_PATH = CONTAINER_STYLE__ICON_PATH;
+    int FLAT_CONTAINER_STYLE__ICON_PATH = MigrationmodelerPackage.CONTAINER_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__LABEL_ALIGNMENT = CONTAINER_STYLE__LABEL_ALIGNMENT;
+    int FLAT_CONTAINER_STYLE__LABEL_ALIGNMENT = MigrationmodelerPackage.CONTAINER_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BORDER_SIZE = CONTAINER_STYLE__BORDER_SIZE;
+    int FLAT_CONTAINER_STYLE__BORDER_SIZE = MigrationmodelerPackage.CONTAINER_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BORDER_COLOR = CONTAINER_STYLE__BORDER_COLOR;
+    int FLAT_CONTAINER_STYLE__BORDER_COLOR = MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Background Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = CONTAINER_STYLE_FEATURE_COUNT + 0;
+    int FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = MigrationmodelerPackage.CONTAINER_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = CONTAINER_STYLE_FEATURE_COUNT + 1;
+    int FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = MigrationmodelerPackage.CONTAINER_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = CONTAINER_STYLE_FEATURE_COUNT + 2;
+    int FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = MigrationmodelerPackage.CONTAINER_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Flat Container Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_FEATURE_COUNT = CONTAINER_STYLE_FEATURE_COUNT + 3;
+    int FLAT_CONTAINER_STYLE_FEATURE_COUNT = MigrationmodelerPackage.CONTAINER_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__LABEL_SIZE = CONTAINER_STYLE__LABEL_SIZE;
+    int SHAPE_CONTAINER_STYLE__LABEL_SIZE = MigrationmodelerPackage.CONTAINER_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__LABEL_FORMAT = CONTAINER_STYLE__LABEL_FORMAT;
+    int SHAPE_CONTAINER_STYLE__LABEL_FORMAT = MigrationmodelerPackage.CONTAINER_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__SHOW_ICON = CONTAINER_STYLE__SHOW_ICON;
+    int SHAPE_CONTAINER_STYLE__SHOW_ICON = MigrationmodelerPackage.CONTAINER_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__LABEL_COLOR = CONTAINER_STYLE__LABEL_COLOR;
+    int SHAPE_CONTAINER_STYLE__LABEL_COLOR = MigrationmodelerPackage.CONTAINER_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__ICON_PATH = CONTAINER_STYLE__ICON_PATH;
+    int SHAPE_CONTAINER_STYLE__ICON_PATH = MigrationmodelerPackage.CONTAINER_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__LABEL_ALIGNMENT = CONTAINER_STYLE__LABEL_ALIGNMENT;
+    int SHAPE_CONTAINER_STYLE__LABEL_ALIGNMENT = MigrationmodelerPackage.CONTAINER_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__BORDER_SIZE = CONTAINER_STYLE__BORDER_SIZE;
+    int SHAPE_CONTAINER_STYLE__BORDER_SIZE = MigrationmodelerPackage.CONTAINER_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__BORDER_COLOR = CONTAINER_STYLE__BORDER_COLOR;
+    int SHAPE_CONTAINER_STYLE__BORDER_COLOR = MigrationmodelerPackage.CONTAINER_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__SHAPE = CONTAINER_STYLE_FEATURE_COUNT + 0;
+    int SHAPE_CONTAINER_STYLE__SHAPE = MigrationmodelerPackage.CONTAINER_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = CONTAINER_STYLE_FEATURE_COUNT + 1;
+    int SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = MigrationmodelerPackage.CONTAINER_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Shape Container Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_FEATURE_COUNT = CONTAINER_STYLE_FEATURE_COUNT + 2;
+    int SHAPE_CONTAINER_STYLE_FEATURE_COUNT = MigrationmodelerPackage.CONTAINER_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int SQUARE__LABEL_SIZE = MigrationmodelerPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int SQUARE__LABEL_FORMAT = MigrationmodelerPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int SQUARE__SHOW_ICON = MigrationmodelerPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int SQUARE__LABEL_COLOR = MigrationmodelerPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int SQUARE__ICON_PATH = MigrationmodelerPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int SQUARE__LABEL_ALIGNMENT = MigrationmodelerPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int SQUARE__BORDER_SIZE = MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int SQUARE__BORDER_COLOR = MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int SQUARE__LABEL_POSITION = MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int SQUARE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__WIDTH = NODE_STYLE_FEATURE_COUNT + 0;
+    int SQUARE__WIDTH = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__HEIGHT = NODE_STYLE_FEATURE_COUNT + 1;
+    int SQUARE__HEIGHT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE__COLOR = NODE_STYLE_FEATURE_COUNT + 2;
+    int SQUARE__COLOR = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Square</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int SQUARE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 3;
+    int SQUARE_FEATURE_COUNT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int ELLIPSE__LABEL_SIZE = MigrationmodelerPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int ELLIPSE__LABEL_FORMAT = MigrationmodelerPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int ELLIPSE__SHOW_ICON = MigrationmodelerPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int ELLIPSE__LABEL_COLOR = MigrationmodelerPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int ELLIPSE__ICON_PATH = MigrationmodelerPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int ELLIPSE__LABEL_ALIGNMENT = MigrationmodelerPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int ELLIPSE__BORDER_SIZE = MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int ELLIPSE__BORDER_COLOR = MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int ELLIPSE__LABEL_POSITION = MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int ELLIPSE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Horizontal Diameter</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__HORIZONTAL_DIAMETER = NODE_STYLE_FEATURE_COUNT + 0;
+    int ELLIPSE__HORIZONTAL_DIAMETER = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Vertical Diameter</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__VERTICAL_DIAMETER = NODE_STYLE_FEATURE_COUNT + 1;
+    int ELLIPSE__VERTICAL_DIAMETER = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE__COLOR = NODE_STYLE_FEATURE_COUNT + 2;
+    int ELLIPSE__COLOR = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Ellipse</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int ELLIPSE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 3;
+    int ELLIPSE_FEATURE_COUNT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int LOZENGE__LABEL_SIZE = MigrationmodelerPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int LOZENGE__LABEL_FORMAT = MigrationmodelerPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int LOZENGE__SHOW_ICON = MigrationmodelerPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int LOZENGE__LABEL_COLOR = MigrationmodelerPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int LOZENGE__ICON_PATH = MigrationmodelerPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int LOZENGE__LABEL_ALIGNMENT = MigrationmodelerPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int LOZENGE__BORDER_SIZE = MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int LOZENGE__BORDER_COLOR = MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int LOZENGE__LABEL_POSITION = MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int LOZENGE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__WIDTH = NODE_STYLE_FEATURE_COUNT + 0;
+    int LOZENGE__WIDTH = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__HEIGHT = NODE_STYLE_FEATURE_COUNT + 1;
+    int LOZENGE__HEIGHT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE__COLOR = NODE_STYLE_FEATURE_COUNT + 2;
+    int LOZENGE__COLOR = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>Lozenge</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int LOZENGE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 3;
+    int LOZENGE_FEATURE_COUNT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int BUNDLED_IMAGE__LABEL_SIZE = MigrationmodelerPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int BUNDLED_IMAGE__LABEL_FORMAT = MigrationmodelerPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int BUNDLED_IMAGE__SHOW_ICON = MigrationmodelerPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int BUNDLED_IMAGE__LABEL_COLOR = MigrationmodelerPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int BUNDLED_IMAGE__ICON_PATH = MigrationmodelerPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int BUNDLED_IMAGE__LABEL_ALIGNMENT = MigrationmodelerPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int BUNDLED_IMAGE__BORDER_SIZE = MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int BUNDLED_IMAGE__BORDER_COLOR = MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int BUNDLED_IMAGE__LABEL_POSITION = MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int BUNDLED_IMAGE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__SHAPE = NODE_STYLE_FEATURE_COUNT + 0;
+    int BUNDLED_IMAGE__SHAPE = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE__COLOR = NODE_STYLE_FEATURE_COUNT + 1;
+    int BUNDLED_IMAGE__COLOR = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Bundled Image</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 2;
+    int BUNDLED_IMAGE_FEATURE_COUNT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int WORKSPACE_IMAGE__LABEL_SIZE = MigrationmodelerPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int WORKSPACE_IMAGE__LABEL_FORMAT = MigrationmodelerPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int WORKSPACE_IMAGE__SHOW_ICON = MigrationmodelerPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int WORKSPACE_IMAGE__LABEL_COLOR = MigrationmodelerPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int WORKSPACE_IMAGE__ICON_PATH = MigrationmodelerPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int WORKSPACE_IMAGE__LABEL_ALIGNMENT = MigrationmodelerPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int WORKSPACE_IMAGE__BORDER_SIZE = MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int WORKSPACE_IMAGE__BORDER_COLOR = MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int WORKSPACE_IMAGE__LABEL_POSITION = MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int WORKSPACE_IMAGE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Workspace Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE__WORKSPACE_PATH = NODE_STYLE_FEATURE_COUNT + 0;
+    int WORKSPACE_IMAGE__WORKSPACE_PATH = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Workspace Image</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int WORKSPACE_IMAGE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 1;
+    int WORKSPACE_IMAGE_FEATURE_COUNT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int GAUGE_COMPOSITE_STYLE__LABEL_SIZE = MigrationmodelerPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int GAUGE_COMPOSITE_STYLE__LABEL_FORMAT = MigrationmodelerPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int GAUGE_COMPOSITE_STYLE__SHOW_ICON = MigrationmodelerPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int GAUGE_COMPOSITE_STYLE__LABEL_COLOR = MigrationmodelerPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int GAUGE_COMPOSITE_STYLE__ICON_PATH = MigrationmodelerPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int GAUGE_COMPOSITE_STYLE__LABEL_ALIGNMENT = MigrationmodelerPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int GAUGE_COMPOSITE_STYLE__BORDER_SIZE = MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int GAUGE_COMPOSITE_STYLE__BORDER_COLOR = MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int GAUGE_COMPOSITE_STYLE__LABEL_POSITION = MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int GAUGE_COMPOSITE_STYLE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__ALIGNMENT = NODE_STYLE_FEATURE_COUNT + 0;
+    int GAUGE_COMPOSITE_STYLE__ALIGNMENT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Sections</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE__SECTIONS = NODE_STYLE_FEATURE_COUNT + 1;
+    int GAUGE_COMPOSITE_STYLE__SECTIONS = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Gauge Composite Style</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int GAUGE_COMPOSITE_STYLE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 2;
+    int GAUGE_COMPOSITE_STYLE_FEATURE_COUNT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_SIZE = NODE_STYLE__LABEL_SIZE;
+    int NOTE__LABEL_SIZE = MigrationmodelerPackage.NODE_STYLE__LABEL_SIZE;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_FORMAT = NODE_STYLE__LABEL_FORMAT;
+    int NOTE__LABEL_FORMAT = MigrationmodelerPackage.NODE_STYLE__LABEL_FORMAT;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
+    int NOTE__SHOW_ICON = MigrationmodelerPackage.NODE_STYLE__SHOW_ICON;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
+    int NOTE__LABEL_COLOR = MigrationmodelerPackage.NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__ICON_PATH = NODE_STYLE__ICON_PATH;
+    int NOTE__ICON_PATH = MigrationmodelerPackage.NODE_STYLE__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_ALIGNMENT = NODE_STYLE__LABEL_ALIGNMENT;
+    int NOTE__LABEL_ALIGNMENT = MigrationmodelerPackage.NODE_STYLE__LABEL_ALIGNMENT;
 
     /**
      * The feature id for the '<em><b>Border Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__BORDER_SIZE = NODE_STYLE__BORDER_SIZE;
+    int NOTE__BORDER_SIZE = MigrationmodelerPackage.NODE_STYLE__BORDER_SIZE;
 
     /**
      * The feature id for the '<em><b>Border Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__BORDER_COLOR = NODE_STYLE__BORDER_COLOR;
+    int NOTE__BORDER_COLOR = MigrationmodelerPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__LABEL_POSITION = NODE_STYLE__LABEL_POSITION;
+    int NOTE__LABEL_POSITION = MigrationmodelerPackage.NODE_STYLE__LABEL_POSITION;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
+    int NOTE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
      * The feature id for the '<em><b>Color</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE__COLOR = NODE_STYLE_FEATURE_COUNT + 0;
+    int NOTE__COLOR = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Note</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int NOTE_FEATURE_COUNT = NODE_STYLE_FEATURE_COUNT + 1;
+    int NOTE_FEATURE_COUNT = MigrationmodelerPackage.NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node
      * <em>Node</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Node</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node
      * @generated
@@ -3044,7 +3053,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node#getNodeRepresentations
      * <em>Node Representations</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Node Representations</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node#getNodeRepresentations()
@@ -3057,7 +3066,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Bordered
      * <em>Bordered</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Bordered</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Bordered
      * @generated
@@ -3069,7 +3078,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Bordered#getBorderedRepresentations
      * <em>Bordered Representations</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Bordered Representations</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Bordered#getBorderedRepresentations()
@@ -3082,7 +3091,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container
      * <em>Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Container</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container
      * @generated
@@ -3094,7 +3103,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container#getContainerRepresentations
      * <em>Container Representations</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Container Representations</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container#getContainerRepresentations()
@@ -3107,7 +3116,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container#getElements
      * <em>Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Elements</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Container#getElements()
@@ -3121,7 +3130,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GraphicalElement
      * <em>Graphical Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Graphical Element</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GraphicalElement
      * @generated
@@ -3132,7 +3141,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GraphicalElement#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GraphicalElement#getId()
      * @see #getGraphicalElement()
@@ -3144,7 +3153,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge
      * <em>Edge</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Edge</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge
      * @generated
@@ -3156,7 +3165,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge#getEdgeRepresentations
      * <em>Edge Representations</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Edge Representations</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge#getEdgeRepresentations()
@@ -3169,7 +3178,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge#getSource
      * <em>Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Source</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge#getSource()
      * @see #getEdge()
@@ -3181,7 +3190,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge#getTarget
      * <em>Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Target</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Edge#getTarget()
      * @see #getEdge()
@@ -3194,7 +3203,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation
      * <em>Abstract Representation</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Abstract Representation</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation
      * @generated
@@ -3205,7 +3214,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#getMappingId
      * <em>Mapping Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Mapping Id</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#getMappingId()
      * @see #getAbstractRepresentation()
@@ -3217,7 +3226,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#getLayout
      * <em>Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Layout</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#getLayout()
      * @see #getAbstractRepresentation()
@@ -3229,7 +3238,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isDisplayed
      * <em>Displayed</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Displayed</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isDisplayed()
      * @see #getAbstractRepresentation()
@@ -3241,7 +3250,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isHidden
      * <em>Hidden</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Hidden</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isHidden()
      * @see #getAbstractRepresentation()
@@ -3253,7 +3262,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isPinned
      * <em>Pinned</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Pinned</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation#isPinned()
      * @see #getAbstractRepresentation()
@@ -3266,7 +3275,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation
      * <em>Edge Representation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Edge Representation</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation
      * @generated
@@ -3277,7 +3286,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getSource
      * <em>Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Source</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getSource()
      * @see #getEdgeRepresentation()
@@ -3289,7 +3298,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getTarget
      * <em>Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Target</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getTarget()
      * @see #getEdgeRepresentation()
@@ -3301,7 +3310,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getBendpoints
      * <em>Bendpoints</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Bendpoints</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getBendpoints()
@@ -3314,7 +3323,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getOwnedStyle
      * <em>Owned Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Owned Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeRepresentation#getOwnedStyle()
@@ -3328,7 +3337,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation
      * <em>Abstract Node Representation</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Abstract Node Representation</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation
@@ -3340,7 +3349,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation#getBordereds
      * <em>Bordereds</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Bordereds</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation#getBordereds()
@@ -3353,7 +3362,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation#getOwnedStyle
      * <em>Owned Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Owned Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation#getOwnedStyle()
@@ -3367,7 +3376,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeRepresentation
      * <em>Node Representation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Node Representation</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeRepresentation
      * @generated
@@ -3379,7 +3388,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedRepresentation
      * <em>Bordered Representation</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Bordered Representation</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedRepresentation
      * @generated
@@ -3391,7 +3400,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation
      * <em>Container Representation</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Container Representation</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation
      * @generated
@@ -3402,7 +3411,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#getOwnedStyle
      * <em>Owned Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Owned Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#getOwnedStyle()
@@ -3412,10 +3421,22 @@ public interface MigrationmodelerPackage extends EPackage {
     EReference getContainerRepresentation_OwnedStyle();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#isAutoSized
+     * <em>Auto Sized</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Auto Sized</em>'.
+     * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#isAutoSized()
+     * @see #getContainerRepresentation()
+     * @generated
+     */
+    EAttribute getContainerRepresentation_AutoSized();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram
      * <em>Diagram</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Diagram</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram
      * @generated
@@ -3426,7 +3447,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getContainers
      * <em>Containers</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Containers</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getContainers()
@@ -3439,7 +3460,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getNodes
      * <em>Nodes</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Nodes</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getNodes()
@@ -3452,7 +3473,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getEdges
      * <em>Edges</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Edges</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getEdges()
@@ -3465,7 +3486,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getFilters
      * <em>Filters</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Filters</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getFilters()
@@ -3478,7 +3499,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getLayers
      * <em>Layers</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Layers</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram#getLayers()
@@ -3491,7 +3512,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle
      * <em>Edge Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Edge Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle
      * @generated
@@ -3502,7 +3523,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getRoutingStyle
      * <em>Routing Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Routing Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getRoutingStyle()
      * @see #getEdgeStyle()
@@ -3514,7 +3535,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getColor()
      * @see #getEdgeStyle()
@@ -3527,7 +3548,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getBeginLabelStyle
      * <em>Begin Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Begin Label Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getBeginLabelStyle()
@@ -3541,7 +3562,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getCenterLabelStyle
      * <em>Center Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Center Label Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getCenterLabelStyle()
@@ -3554,7 +3575,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getEndLabelStyle
      * <em>End Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>End Label Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.EdgeStyle#getEndLabelStyle()
@@ -3567,7 +3588,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout
      * <em>Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Layout</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout
      * @generated
@@ -3578,7 +3599,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getX
      * <em>X</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>X</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getX()
      * @see #getLayout()
@@ -3590,7 +3611,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getY
      * <em>Y</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Y</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getY()
      * @see #getLayout()
@@ -3602,7 +3623,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getWidth
      * <em>Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getWidth()
      * @see #getLayout()
@@ -3614,7 +3635,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getHeight
      * <em>Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Height</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layout#getHeight()
      * @see #getLayout()
@@ -3626,7 +3647,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle
      * <em>Routing Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Routing Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle
      * @generated
@@ -3637,7 +3658,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelPosition
      * <em>Label Position</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Label Position</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelPosition
      * @generated
@@ -3648,7 +3669,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat
      * <em>Font Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Font Format</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat
      * @generated
@@ -3659,7 +3680,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment
      * <em>Label Alignment</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Label Alignment</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment
      * @generated
@@ -3670,7 +3691,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerShape
      * <em>Container Shape</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Container Shape</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerShape
      * @generated
@@ -3682,7 +3703,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BackgroundStyle
      * <em>Background Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Background Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BackgroundStyle
      * @generated
@@ -3693,7 +3714,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AlignmentKind
      * <em>Alignment Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Alignment Kind</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AlignmentKind
      * @generated
@@ -3705,7 +3726,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImageShape
      * <em>Bundled Image Shape</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Bundled Image Shape</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImageShape
      * @generated
@@ -3716,7 +3737,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color
      * @generated
@@ -3727,7 +3748,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getRed
      * <em>Red</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Red</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getRed()
      * @see #getColor()
@@ -3739,7 +3760,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getGreen
      * <em>Green</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Green</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getGreen()
      * @see #getColor()
@@ -3751,7 +3772,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getBlue
      * <em>Blue</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Blue</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Color#getBlue()
      * @see #getColor()
@@ -3763,7 +3784,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point
      * <em>Point</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Point</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point
      * @generated
@@ -3774,7 +3795,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point#getX
      * <em>X</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>X</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point#getX()
      * @see #getPoint()
@@ -3786,7 +3807,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point#getY
      * <em>Y</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Y</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point#getY()
      * @see #getPoint()
@@ -3798,7 +3819,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle
      * <em>Node Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Node Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle
      * @generated
@@ -3809,7 +3830,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle#getLabelPosition
      * <em>Label Position</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Position</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle#getLabelPosition()
      * @see #getNodeStyle()
@@ -3822,7 +3843,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle#isHideLabelByDefault
      * <em>Hide Label By Default</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Hide Label By Default</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle#isHideLabelByDefault()
@@ -3836,7 +3857,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle
      * <em>Basic Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Basic Label Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle
      * @generated
@@ -3847,7 +3868,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelSize
      * <em>Label Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Size</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelSize()
      * @see #getBasicLabelStyle()
@@ -3859,7 +3880,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelFormat
      * <em>Label Format</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Format</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelFormat()
      * @see #getBasicLabelStyle()
@@ -3871,7 +3892,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#isShowIcon
      * <em>Show Icon</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Show Icon</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#isShowIcon()
      * @see #getBasicLabelStyle()
@@ -3883,7 +3904,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelColor
      * <em>Label Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Label Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getLabelColor()
@@ -3896,7 +3917,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getIconPath
      * <em>Icon Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Icon Path</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle#getIconPath()
      * @see #getBasicLabelStyle()
@@ -3908,7 +3929,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerStyle
      * <em>Container Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Container Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerStyle
      * @generated
@@ -3919,7 +3940,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelStyle
      * <em>Label Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Label Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelStyle
      * @generated
@@ -3930,7 +3951,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelStyle#getLabelAlignment
      * <em>Label Alignment</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label Alignment</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelStyle#getLabelAlignment()
      * @see #getLabelStyle()
@@ -3942,7 +3963,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Dot
      * <em>Dot</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Dot</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Dot
      * @generated
@@ -3954,7 +3975,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Dot#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Dot#getBackgroundColor()
@@ -3967,7 +3988,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection
      * <em>Gauge Section</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Gauge Section</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection
      * @generated
@@ -3978,7 +3999,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getMin
      * <em>Min</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Min</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getMin()
      * @see #getGaugeSection()
@@ -3990,7 +4011,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getMax
      * <em>Max</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Max</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getMax()
      * @see #getGaugeSection()
@@ -4002,7 +4023,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getValue
      * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Value</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getValue()
      * @see #getGaugeSection()
@@ -4014,7 +4035,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getLabel
      * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getLabel()
      * @see #getGaugeSection()
@@ -4027,7 +4048,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getBackgroundColor()
@@ -4041,7 +4062,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Foreground Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeSection#getForegroundColor()
@@ -4055,7 +4076,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle
      * <em>Flat Container Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Flat Container Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle
      * @generated
@@ -4067,7 +4088,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle#getBackgroundStyle
      * <em>Background Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Background Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle#getBackgroundStyle()
      * @see #getFlatContainerStyle()
@@ -4080,7 +4101,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle#getBackgroundColor()
@@ -4094,7 +4115,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Foreground Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FlatContainerStyle#getForegroundColor()
@@ -4108,7 +4129,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle
      * <em>Shape Container Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Shape Container Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle
      * @generated
@@ -4119,7 +4140,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle#getShape
      * <em>Shape</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Shape</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle#getShape()
      * @see #getShapeContainerStyle()
@@ -4132,7 +4153,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Background Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ShapeContainerStyle#getBackgroundColor()
@@ -4145,7 +4166,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square
      * <em>Square</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Square</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square
      * @generated
@@ -4156,7 +4177,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getWidth
      * <em>Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getWidth()
      * @see #getSquare()
@@ -4168,7 +4189,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getHeight
      * <em>Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Height</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getHeight()
      * @see #getSquare()
@@ -4180,7 +4201,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Square#getColor()
      * @see #getSquare()
@@ -4192,7 +4213,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse
      * <em>Ellipse</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Ellipse</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse
      * @generated
@@ -4204,7 +4225,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getHorizontalDiameter
      * <em>Horizontal Diameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Horizontal Diameter</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getHorizontalDiameter()
      * @see #getEllipse()
@@ -4217,7 +4238,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getVerticalDiameter
      * <em>Vertical Diameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Vertical Diameter</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getVerticalDiameter()
      * @see #getEllipse()
@@ -4229,7 +4250,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Ellipse#getColor()
      * @see #getEllipse()
@@ -4241,7 +4262,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge
      * <em>Lozenge</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Lozenge</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge
      * @generated
@@ -4252,7 +4273,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getWidth
      * <em>Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Width</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getWidth()
      * @see #getLozenge()
@@ -4264,7 +4285,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getHeight
      * <em>Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Height</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getHeight()
      * @see #getLozenge()
@@ -4276,7 +4297,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Lozenge#getColor()
      * @see #getLozenge()
@@ -4288,7 +4309,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImage
      * <em>Bundled Image</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Bundled Image</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImage
      * @generated
@@ -4299,7 +4320,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImage#getShape
      * <em>Shape</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Shape</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImage#getShape()
      * @see #getBundledImage()
@@ -4311,7 +4332,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImage#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImage#getColor()
      * @see #getBundledImage()
@@ -4323,7 +4344,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage
      * <em>Workspace Image</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Workspace Image</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage
      * @generated
@@ -4334,7 +4355,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage#getWorkspacePath
      * <em>Workspace Path</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Workspace Path</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.WorkspaceImage#getWorkspacePath()
      * @see #getWorkspaceImage()
@@ -4347,7 +4368,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeCompositeStyle
      * <em>Gauge Composite Style</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Gauge Composite Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeCompositeStyle
      * @generated
@@ -4358,7 +4379,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeCompositeStyle#getAlignment
      * <em>Alignment</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Alignment</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeCompositeStyle#getAlignment()
      * @see #getGaugeCompositeStyle()
@@ -4370,7 +4391,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeCompositeStyle#getSections
      * <em>Sections</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Sections</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.GaugeCompositeStyle#getSections()
@@ -4383,7 +4404,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Note
      * <em>Note</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Note</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Note
      * @generated
@@ -4394,7 +4415,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Note#getColor
      * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Note#getColor()
      * @see #getNote()
@@ -4406,7 +4427,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNode
      * <em>Abstract Node</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Abstract Node</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNode
      * @generated
@@ -4417,7 +4438,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase
      * <em>Test Case</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Test Case</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase
      * @generated
@@ -4428,7 +4449,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase#getRepresentations
      * <em>Representations</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Representations</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase#getRepresentations()
@@ -4441,7 +4462,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation
      * <em>Representation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Representation</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation
      * @generated
@@ -4452,7 +4473,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation#getName()
      * @see #getRepresentation()
@@ -4464,7 +4485,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle
      * <em>Bordered Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Bordered Style</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle
      * @generated
@@ -4475,7 +4496,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle#getBorderSize
      * <em>Border Size</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Border Size</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle#getBorderSize()
      * @see #getBorderedStyle()
@@ -4487,7 +4508,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle#getBorderColor
      * <em>Border Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Border Color</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BorderedStyle#getBorderColor()
@@ -4500,7 +4521,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Filter
      * <em>Filter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Filter</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Filter
      * @generated
@@ -4511,7 +4532,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Filter#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Filter#getId()
      * @see #getFilter()
@@ -4523,7 +4544,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Filter#isActivated
      * <em>Activated</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Activated</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Filter#isActivated()
      * @see #getFilter()
@@ -4535,7 +4556,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer
      * <em>Layer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Layer</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer
      * @generated
@@ -4546,7 +4567,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer#getId()
      * @see #getLayer()
@@ -4558,7 +4579,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer#isActivated
      * <em>Activated</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Activated</em>'.
      * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.Layer#isActivated()
      * @see #getLayer()
@@ -4569,7 +4590,7 @@ public interface MigrationmodelerPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -4585,7 +4606,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -4593,1215 +4614,1223 @@ public interface MigrationmodelerPackage extends EPackage {
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeImpl
          * <em>Node</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getNode()
          * @generated
          */
-        EClass NODE = eINSTANCE.getNode();
+        EClass NODE = MigrationmodelerPackage.eINSTANCE.getNode();
 
         /**
          * The meta object literal for the '<em><b>Node Representations</b></em>
          * ' containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference NODE__NODE_REPRESENTATIONS = eINSTANCE.getNode_NodeRepresentations();
+        EReference NODE__NODE_REPRESENTATIONS = MigrationmodelerPackage.eINSTANCE.getNode_NodeRepresentations();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedImpl
          * <em>Bordered</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBordered()
          * @generated
          */
-        EClass BORDERED = eINSTANCE.getBordered();
+        EClass BORDERED = MigrationmodelerPackage.eINSTANCE.getBordered();
 
         /**
          * The meta object literal for the '
          * <em><b>Bordered Representations</b></em>' containment reference list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference BORDERED__BORDERED_REPRESENTATIONS = eINSTANCE.getBordered_BorderedRepresentations();
+        EReference BORDERED__BORDERED_REPRESENTATIONS = MigrationmodelerPackage.eINSTANCE.getBordered_BorderedRepresentations();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerImpl
          * <em>Container</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getContainer()
          * @generated
          */
-        EClass CONTAINER = eINSTANCE.getContainer();
+        EClass CONTAINER = MigrationmodelerPackage.eINSTANCE.getContainer();
 
         /**
          * The meta object literal for the '
          * <em><b>Container Representations</b></em>' containment reference list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference CONTAINER__CONTAINER_REPRESENTATIONS = eINSTANCE.getContainer_ContainerRepresentations();
+        EReference CONTAINER__CONTAINER_REPRESENTATIONS = MigrationmodelerPackage.eINSTANCE.getContainer_ContainerRepresentations();
 
         /**
          * The meta object literal for the '<em><b>Elements</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference CONTAINER__ELEMENTS = eINSTANCE.getContainer_Elements();
+        EReference CONTAINER__ELEMENTS = MigrationmodelerPackage.eINSTANCE.getContainer_Elements();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GraphicalElementImpl
          * <em>Graphical Element</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GraphicalElementImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getGraphicalElement()
          * @generated
          */
-        EClass GRAPHICAL_ELEMENT = eINSTANCE.getGraphicalElement();
+        EClass GRAPHICAL_ELEMENT = MigrationmodelerPackage.eINSTANCE.getGraphicalElement();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute GRAPHICAL_ELEMENT__ID = eINSTANCE.getGraphicalElement_Id();
+        EAttribute GRAPHICAL_ELEMENT__ID = MigrationmodelerPackage.eINSTANCE.getGraphicalElement_Id();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeImpl
          * <em>Edge</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getEdge()
          * @generated
          */
-        EClass EDGE = eINSTANCE.getEdge();
+        EClass EDGE = MigrationmodelerPackage.eINSTANCE.getEdge();
 
         /**
          * The meta object literal for the '<em><b>Edge Representations</b></em>
          * ' containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE__EDGE_REPRESENTATIONS = eINSTANCE.getEdge_EdgeRepresentations();
+        EReference EDGE__EDGE_REPRESENTATIONS = MigrationmodelerPackage.eINSTANCE.getEdge_EdgeRepresentations();
 
         /**
          * The meta object literal for the '<em><b>Source</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE__SOURCE = eINSTANCE.getEdge_Source();
+        EReference EDGE__SOURCE = MigrationmodelerPackage.eINSTANCE.getEdge_Source();
 
         /**
          * The meta object literal for the '<em><b>Target</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE__TARGET = eINSTANCE.getEdge_Target();
+        EReference EDGE__TARGET = MigrationmodelerPackage.eINSTANCE.getEdge_Target();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractRepresentationImpl
          * <em>Abstract Representation</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractRepresentationImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getAbstractRepresentation()
          * @generated
          */
-        EClass ABSTRACT_REPRESENTATION = eINSTANCE.getAbstractRepresentation();
+        EClass ABSTRACT_REPRESENTATION = MigrationmodelerPackage.eINSTANCE.getAbstractRepresentation();
 
         /**
          * The meta object literal for the '<em><b>Mapping Id</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute ABSTRACT_REPRESENTATION__MAPPING_ID = eINSTANCE.getAbstractRepresentation_MappingId();
+        EAttribute ABSTRACT_REPRESENTATION__MAPPING_ID = MigrationmodelerPackage.eINSTANCE.getAbstractRepresentation_MappingId();
 
         /**
          * The meta object literal for the '<em><b>Layout</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference ABSTRACT_REPRESENTATION__LAYOUT = eINSTANCE.getAbstractRepresentation_Layout();
+        EReference ABSTRACT_REPRESENTATION__LAYOUT = MigrationmodelerPackage.eINSTANCE.getAbstractRepresentation_Layout();
 
         /**
          * The meta object literal for the '<em><b>Displayed</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute ABSTRACT_REPRESENTATION__DISPLAYED = eINSTANCE.getAbstractRepresentation_Displayed();
+        EAttribute ABSTRACT_REPRESENTATION__DISPLAYED = MigrationmodelerPackage.eINSTANCE.getAbstractRepresentation_Displayed();
 
         /**
          * The meta object literal for the '<em><b>Hidden</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute ABSTRACT_REPRESENTATION__HIDDEN = eINSTANCE.getAbstractRepresentation_Hidden();
+        EAttribute ABSTRACT_REPRESENTATION__HIDDEN = MigrationmodelerPackage.eINSTANCE.getAbstractRepresentation_Hidden();
 
         /**
          * The meta object literal for the '<em><b>Pinned</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute ABSTRACT_REPRESENTATION__PINNED = eINSTANCE.getAbstractRepresentation_Pinned();
+        EAttribute ABSTRACT_REPRESENTATION__PINNED = MigrationmodelerPackage.eINSTANCE.getAbstractRepresentation_Pinned();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeRepresentationImpl
          * <em>Edge Representation</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeRepresentationImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getEdgeRepresentation()
          * @generated
          */
-        EClass EDGE_REPRESENTATION = eINSTANCE.getEdgeRepresentation();
+        EClass EDGE_REPRESENTATION = MigrationmodelerPackage.eINSTANCE.getEdgeRepresentation();
 
         /**
          * The meta object literal for the '<em><b>Source</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_REPRESENTATION__SOURCE = eINSTANCE.getEdgeRepresentation_Source();
+        EReference EDGE_REPRESENTATION__SOURCE = MigrationmodelerPackage.eINSTANCE.getEdgeRepresentation_Source();
 
         /**
          * The meta object literal for the '<em><b>Target</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_REPRESENTATION__TARGET = eINSTANCE.getEdgeRepresentation_Target();
+        EReference EDGE_REPRESENTATION__TARGET = MigrationmodelerPackage.eINSTANCE.getEdgeRepresentation_Target();
 
         /**
          * The meta object literal for the '<em><b>Bendpoints</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_REPRESENTATION__BENDPOINTS = eINSTANCE.getEdgeRepresentation_Bendpoints();
+        EReference EDGE_REPRESENTATION__BENDPOINTS = MigrationmodelerPackage.eINSTANCE.getEdgeRepresentation_Bendpoints();
 
         /**
          * The meta object literal for the '<em><b>Owned Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_REPRESENTATION__OWNED_STYLE = eINSTANCE.getEdgeRepresentation_OwnedStyle();
+        EReference EDGE_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.eINSTANCE.getEdgeRepresentation_OwnedStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractNodeRepresentationImpl
          * <em>Abstract Node Representation</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractNodeRepresentationImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getAbstractNodeRepresentation()
          * @generated
          */
-        EClass ABSTRACT_NODE_REPRESENTATION = eINSTANCE.getAbstractNodeRepresentation();
+        EClass ABSTRACT_NODE_REPRESENTATION = MigrationmodelerPackage.eINSTANCE.getAbstractNodeRepresentation();
 
         /**
          * The meta object literal for the '<em><b>Bordereds</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference ABSTRACT_NODE_REPRESENTATION__BORDEREDS = eINSTANCE.getAbstractNodeRepresentation_Bordereds();
+        EReference ABSTRACT_NODE_REPRESENTATION__BORDEREDS = MigrationmodelerPackage.eINSTANCE.getAbstractNodeRepresentation_Bordereds();
 
         /**
          * The meta object literal for the '<em><b>Owned Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE = eINSTANCE.getAbstractNodeRepresentation_OwnedStyle();
+        EReference ABSTRACT_NODE_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.eINSTANCE.getAbstractNodeRepresentation_OwnedStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeRepresentationImpl
          * <em>Node Representation</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeRepresentationImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getNodeRepresentation()
          * @generated
          */
-        EClass NODE_REPRESENTATION = eINSTANCE.getNodeRepresentation();
+        EClass NODE_REPRESENTATION = MigrationmodelerPackage.eINSTANCE.getNodeRepresentation();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedRepresentationImpl
          * <em>Bordered Representation</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedRepresentationImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBorderedRepresentation()
          * @generated
          */
-        EClass BORDERED_REPRESENTATION = eINSTANCE.getBorderedRepresentation();
+        EClass BORDERED_REPRESENTATION = MigrationmodelerPackage.eINSTANCE.getBorderedRepresentation();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerRepresentationImpl
          * <em>Container Representation</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerRepresentationImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getContainerRepresentation()
          * @generated
          */
-        EClass CONTAINER_REPRESENTATION = eINSTANCE.getContainerRepresentation();
+        EClass CONTAINER_REPRESENTATION = MigrationmodelerPackage.eINSTANCE.getContainerRepresentation();
 
         /**
          * The meta object literal for the '<em><b>Owned Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference CONTAINER_REPRESENTATION__OWNED_STYLE = eINSTANCE.getContainerRepresentation_OwnedStyle();
+        EReference CONTAINER_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.eINSTANCE.getContainerRepresentation_OwnedStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Auto Sized</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute CONTAINER_REPRESENTATION__AUTO_SIZED = MigrationmodelerPackage.eINSTANCE.getContainerRepresentation_AutoSized();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.DiagramImpl
          * <em>Diagram</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.DiagramImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getDiagram()
          * @generated
          */
-        EClass DIAGRAM = eINSTANCE.getDiagram();
+        EClass DIAGRAM = MigrationmodelerPackage.eINSTANCE.getDiagram();
 
         /**
          * The meta object literal for the '<em><b>Containers</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DIAGRAM__CONTAINERS = eINSTANCE.getDiagram_Containers();
+        EReference DIAGRAM__CONTAINERS = MigrationmodelerPackage.eINSTANCE.getDiagram_Containers();
 
         /**
          * The meta object literal for the '<em><b>Nodes</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DIAGRAM__NODES = eINSTANCE.getDiagram_Nodes();
+        EReference DIAGRAM__NODES = MigrationmodelerPackage.eINSTANCE.getDiagram_Nodes();
 
         /**
          * The meta object literal for the '<em><b>Edges</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DIAGRAM__EDGES = eINSTANCE.getDiagram_Edges();
+        EReference DIAGRAM__EDGES = MigrationmodelerPackage.eINSTANCE.getDiagram_Edges();
 
         /**
          * The meta object literal for the '<em><b>Filters</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DIAGRAM__FILTERS = eINSTANCE.getDiagram_Filters();
+        EReference DIAGRAM__FILTERS = MigrationmodelerPackage.eINSTANCE.getDiagram_Filters();
 
         /**
          * The meta object literal for the '<em><b>Layers</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DIAGRAM__LAYERS = eINSTANCE.getDiagram_Layers();
+        EReference DIAGRAM__LAYERS = MigrationmodelerPackage.eINSTANCE.getDiagram_Layers();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeStyleImpl
          * <em>Edge Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EdgeStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getEdgeStyle()
          * @generated
          */
-        EClass EDGE_STYLE = eINSTANCE.getEdgeStyle();
+        EClass EDGE_STYLE = MigrationmodelerPackage.eINSTANCE.getEdgeStyle();
 
         /**
          * The meta object literal for the '<em><b>Routing Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EDGE_STYLE__ROUTING_STYLE = eINSTANCE.getEdgeStyle_RoutingStyle();
+        EAttribute EDGE_STYLE__ROUTING_STYLE = MigrationmodelerPackage.eINSTANCE.getEdgeStyle_RoutingStyle();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_STYLE__COLOR = eINSTANCE.getEdgeStyle_Color();
+        EReference EDGE_STYLE__COLOR = MigrationmodelerPackage.eINSTANCE.getEdgeStyle_Color();
 
         /**
          * The meta object literal for the '<em><b>Begin Label Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_STYLE__BEGIN_LABEL_STYLE = eINSTANCE.getEdgeStyle_BeginLabelStyle();
+        EReference EDGE_STYLE__BEGIN_LABEL_STYLE = MigrationmodelerPackage.eINSTANCE.getEdgeStyle_BeginLabelStyle();
 
         /**
          * The meta object literal for the '<em><b>Center Label Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_STYLE__CENTER_LABEL_STYLE = eINSTANCE.getEdgeStyle_CenterLabelStyle();
+        EReference EDGE_STYLE__CENTER_LABEL_STYLE = MigrationmodelerPackage.eINSTANCE.getEdgeStyle_CenterLabelStyle();
 
         /**
          * The meta object literal for the '<em><b>End Label Style</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EDGE_STYLE__END_LABEL_STYLE = eINSTANCE.getEdgeStyle_EndLabelStyle();
+        EReference EDGE_STYLE__END_LABEL_STYLE = MigrationmodelerPackage.eINSTANCE.getEdgeStyle_EndLabelStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LayoutImpl
          * <em>Layout</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LayoutImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLayout()
          * @generated
          */
-        EClass LAYOUT = eINSTANCE.getLayout();
+        EClass LAYOUT = MigrationmodelerPackage.eINSTANCE.getLayout();
 
         /**
          * The meta object literal for the '<em><b>X</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LAYOUT__X = eINSTANCE.getLayout_X();
+        EAttribute LAYOUT__X = MigrationmodelerPackage.eINSTANCE.getLayout_X();
 
         /**
          * The meta object literal for the '<em><b>Y</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LAYOUT__Y = eINSTANCE.getLayout_Y();
+        EAttribute LAYOUT__Y = MigrationmodelerPackage.eINSTANCE.getLayout_Y();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LAYOUT__WIDTH = eINSTANCE.getLayout_Width();
+        EAttribute LAYOUT__WIDTH = MigrationmodelerPackage.eINSTANCE.getLayout_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LAYOUT__HEIGHT = eINSTANCE.getLayout_Height();
+        EAttribute LAYOUT__HEIGHT = MigrationmodelerPackage.eINSTANCE.getLayout_Height();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle
          * <em>Routing Style</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getRoutingStyle()
          * @generated
          */
-        EEnum ROUTING_STYLE = eINSTANCE.getRoutingStyle();
+        EEnum ROUTING_STYLE = MigrationmodelerPackage.eINSTANCE.getRoutingStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelPosition
          * <em>Label Position</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelPosition
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLabelPosition()
          * @generated
          */
-        EEnum LABEL_POSITION = eINSTANCE.getLabelPosition();
+        EEnum LABEL_POSITION = MigrationmodelerPackage.eINSTANCE.getLabelPosition();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat
          * <em>Font Format</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.FontFormat
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getFontFormat()
          * @generated
          */
-        EEnum FONT_FORMAT = eINSTANCE.getFontFormat();
+        EEnum FONT_FORMAT = MigrationmodelerPackage.eINSTANCE.getFontFormat();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment
          * <em>Label Alignment</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.LabelAlignment
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLabelAlignment()
          * @generated
          */
-        EEnum LABEL_ALIGNMENT = eINSTANCE.getLabelAlignment();
+        EEnum LABEL_ALIGNMENT = MigrationmodelerPackage.eINSTANCE.getLabelAlignment();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerShape
          * <em>Container Shape</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerShape
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getContainerShape()
          * @generated
          */
-        EEnum CONTAINER_SHAPE = eINSTANCE.getContainerShape();
+        EEnum CONTAINER_SHAPE = MigrationmodelerPackage.eINSTANCE.getContainerShape();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BackgroundStyle
          * <em>Background Style</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BackgroundStyle
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBackgroundStyle()
          * @generated
          */
-        EEnum BACKGROUND_STYLE = eINSTANCE.getBackgroundStyle();
+        EEnum BACKGROUND_STYLE = MigrationmodelerPackage.eINSTANCE.getBackgroundStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.AlignmentKind
          * <em>Alignment Kind</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.AlignmentKind
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getAlignmentKind()
          * @generated
          */
-        EEnum ALIGNMENT_KIND = eINSTANCE.getAlignmentKind();
+        EEnum ALIGNMENT_KIND = MigrationmodelerPackage.eINSTANCE.getAlignmentKind();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImageShape
          * <em>Bundled Image Shape</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.BundledImageShape
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBundledImageShape()
          * @generated
          */
-        EEnum BUNDLED_IMAGE_SHAPE = eINSTANCE.getBundledImageShape();
+        EEnum BUNDLED_IMAGE_SHAPE = MigrationmodelerPackage.eINSTANCE.getBundledImageShape();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ColorImpl
          * <em>Color</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ColorImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getColor()
          * @generated
          */
-        EClass COLOR = eINSTANCE.getColor();
+        EClass COLOR = MigrationmodelerPackage.eINSTANCE.getColor();
 
         /**
          * The meta object literal for the '<em><b>Red</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute COLOR__RED = eINSTANCE.getColor_Red();
+        EAttribute COLOR__RED = MigrationmodelerPackage.eINSTANCE.getColor_Red();
 
         /**
          * The meta object literal for the '<em><b>Green</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute COLOR__GREEN = eINSTANCE.getColor_Green();
+        EAttribute COLOR__GREEN = MigrationmodelerPackage.eINSTANCE.getColor_Green();
 
         /**
          * The meta object literal for the '<em><b>Blue</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute COLOR__BLUE = eINSTANCE.getColor_Blue();
+        EAttribute COLOR__BLUE = MigrationmodelerPackage.eINSTANCE.getColor_Blue();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.PointImpl
          * <em>Point</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.PointImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getPoint()
          * @generated
          */
-        EClass POINT = eINSTANCE.getPoint();
+        EClass POINT = MigrationmodelerPackage.eINSTANCE.getPoint();
 
         /**
          * The meta object literal for the '<em><b>X</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute POINT__X = eINSTANCE.getPoint_X();
+        EAttribute POINT__X = MigrationmodelerPackage.eINSTANCE.getPoint_X();
 
         /**
          * The meta object literal for the '<em><b>Y</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute POINT__Y = eINSTANCE.getPoint_Y();
+        EAttribute POINT__Y = MigrationmodelerPackage.eINSTANCE.getPoint_Y();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeStyleImpl
          * <em>Node Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NodeStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getNodeStyle()
          * @generated
          */
-        EClass NODE_STYLE = eINSTANCE.getNodeStyle();
+        EClass NODE_STYLE = MigrationmodelerPackage.eINSTANCE.getNodeStyle();
 
         /**
          * The meta object literal for the '<em><b>Label Position</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute NODE_STYLE__LABEL_POSITION = eINSTANCE.getNodeStyle_LabelPosition();
+        EAttribute NODE_STYLE__LABEL_POSITION = MigrationmodelerPackage.eINSTANCE.getNodeStyle_LabelPosition();
 
         /**
          * The meta object literal for the '
          * <em><b>Hide Label By Default</b></em>' attribute feature. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute NODE_STYLE__HIDE_LABEL_BY_DEFAULT = eINSTANCE.getNodeStyle_HideLabelByDefault();
+        EAttribute NODE_STYLE__HIDE_LABEL_BY_DEFAULT = MigrationmodelerPackage.eINSTANCE.getNodeStyle_HideLabelByDefault();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BasicLabelStyleImpl
          * <em>Basic Label Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BasicLabelStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBasicLabelStyle()
          * @generated
          */
-        EClass BASIC_LABEL_STYLE = eINSTANCE.getBasicLabelStyle();
+        EClass BASIC_LABEL_STYLE = MigrationmodelerPackage.eINSTANCE.getBasicLabelStyle();
 
         /**
          * The meta object literal for the '<em><b>Label Size</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute BASIC_LABEL_STYLE__LABEL_SIZE = eINSTANCE.getBasicLabelStyle_LabelSize();
+        EAttribute BASIC_LABEL_STYLE__LABEL_SIZE = MigrationmodelerPackage.eINSTANCE.getBasicLabelStyle_LabelSize();
 
         /**
          * The meta object literal for the '<em><b>Label Format</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute BASIC_LABEL_STYLE__LABEL_FORMAT = eINSTANCE.getBasicLabelStyle_LabelFormat();
+        EAttribute BASIC_LABEL_STYLE__LABEL_FORMAT = MigrationmodelerPackage.eINSTANCE.getBasicLabelStyle_LabelFormat();
 
         /**
          * The meta object literal for the '<em><b>Show Icon</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute BASIC_LABEL_STYLE__SHOW_ICON = eINSTANCE.getBasicLabelStyle_ShowIcon();
+        EAttribute BASIC_LABEL_STYLE__SHOW_ICON = MigrationmodelerPackage.eINSTANCE.getBasicLabelStyle_ShowIcon();
 
         /**
          * The meta object literal for the '<em><b>Label Color</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference BASIC_LABEL_STYLE__LABEL_COLOR = eINSTANCE.getBasicLabelStyle_LabelColor();
+        EReference BASIC_LABEL_STYLE__LABEL_COLOR = MigrationmodelerPackage.eINSTANCE.getBasicLabelStyle_LabelColor();
 
         /**
          * The meta object literal for the '<em><b>Icon Path</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute BASIC_LABEL_STYLE__ICON_PATH = eINSTANCE.getBasicLabelStyle_IconPath();
+        EAttribute BASIC_LABEL_STYLE__ICON_PATH = MigrationmodelerPackage.eINSTANCE.getBasicLabelStyle_IconPath();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerStyleImpl
          * <em>Container Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getContainerStyle()
          * @generated
          */
-        EClass CONTAINER_STYLE = eINSTANCE.getContainerStyle();
+        EClass CONTAINER_STYLE = MigrationmodelerPackage.eINSTANCE.getContainerStyle();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LabelStyleImpl
          * <em>Label Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LabelStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLabelStyle()
          * @generated
          */
-        EClass LABEL_STYLE = eINSTANCE.getLabelStyle();
+        EClass LABEL_STYLE = MigrationmodelerPackage.eINSTANCE.getLabelStyle();
 
         /**
          * The meta object literal for the '<em><b>Label Alignment</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LABEL_STYLE__LABEL_ALIGNMENT = eINSTANCE.getLabelStyle_LabelAlignment();
+        EAttribute LABEL_STYLE__LABEL_ALIGNMENT = MigrationmodelerPackage.eINSTANCE.getLabelStyle_LabelAlignment();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.DotImpl
          * <em>Dot</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.DotImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getDot()
          * @generated
          */
-        EClass DOT = eINSTANCE.getDot();
+        EClass DOT = MigrationmodelerPackage.eINSTANCE.getDot();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOT__BACKGROUND_COLOR = eINSTANCE.getDot_BackgroundColor();
+        EReference DOT__BACKGROUND_COLOR = MigrationmodelerPackage.eINSTANCE.getDot_BackgroundColor();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GaugeSectionImpl
          * <em>Gauge Section</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GaugeSectionImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getGaugeSection()
          * @generated
          */
-        EClass GAUGE_SECTION = eINSTANCE.getGaugeSection();
+        EClass GAUGE_SECTION = MigrationmodelerPackage.eINSTANCE.getGaugeSection();
 
         /**
          * The meta object literal for the '<em><b>Min</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute GAUGE_SECTION__MIN = eINSTANCE.getGaugeSection_Min();
+        EAttribute GAUGE_SECTION__MIN = MigrationmodelerPackage.eINSTANCE.getGaugeSection_Min();
 
         /**
          * The meta object literal for the '<em><b>Max</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute GAUGE_SECTION__MAX = eINSTANCE.getGaugeSection_Max();
+        EAttribute GAUGE_SECTION__MAX = MigrationmodelerPackage.eINSTANCE.getGaugeSection_Max();
 
         /**
          * The meta object literal for the '<em><b>Value</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute GAUGE_SECTION__VALUE = eINSTANCE.getGaugeSection_Value();
+        EAttribute GAUGE_SECTION__VALUE = MigrationmodelerPackage.eINSTANCE.getGaugeSection_Value();
 
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute GAUGE_SECTION__LABEL = eINSTANCE.getGaugeSection_Label();
+        EAttribute GAUGE_SECTION__LABEL = MigrationmodelerPackage.eINSTANCE.getGaugeSection_Label();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference GAUGE_SECTION__BACKGROUND_COLOR = eINSTANCE.getGaugeSection_BackgroundColor();
+        EReference GAUGE_SECTION__BACKGROUND_COLOR = MigrationmodelerPackage.eINSTANCE.getGaugeSection_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference GAUGE_SECTION__FOREGROUND_COLOR = eINSTANCE.getGaugeSection_ForegroundColor();
+        EReference GAUGE_SECTION__FOREGROUND_COLOR = MigrationmodelerPackage.eINSTANCE.getGaugeSection_ForegroundColor();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.FlatContainerStyleImpl
          * <em>Flat Container Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.FlatContainerStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getFlatContainerStyle()
          * @generated
          */
-        EClass FLAT_CONTAINER_STYLE = eINSTANCE.getFlatContainerStyle();
+        EClass FLAT_CONTAINER_STYLE = MigrationmodelerPackage.eINSTANCE.getFlatContainerStyle();
 
         /**
          * The meta object literal for the '<em><b>Background Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = eINSTANCE.getFlatContainerStyle_BackgroundStyle();
+        EAttribute FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = MigrationmodelerPackage.eINSTANCE.getFlatContainerStyle_BackgroundStyle();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = eINSTANCE.getFlatContainerStyle_BackgroundColor();
+        EReference FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = MigrationmodelerPackage.eINSTANCE.getFlatContainerStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = eINSTANCE.getFlatContainerStyle_ForegroundColor();
+        EReference FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = MigrationmodelerPackage.eINSTANCE.getFlatContainerStyle_ForegroundColor();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ShapeContainerStyleImpl
          * <em>Shape Container Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ShapeContainerStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getShapeContainerStyle()
          * @generated
          */
-        EClass SHAPE_CONTAINER_STYLE = eINSTANCE.getShapeContainerStyle();
+        EClass SHAPE_CONTAINER_STYLE = MigrationmodelerPackage.eINSTANCE.getShapeContainerStyle();
 
         /**
          * The meta object literal for the '<em><b>Shape</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SHAPE_CONTAINER_STYLE__SHAPE = eINSTANCE.getShapeContainerStyle_Shape();
+        EAttribute SHAPE_CONTAINER_STYLE__SHAPE = MigrationmodelerPackage.eINSTANCE.getShapeContainerStyle_Shape();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = eINSTANCE.getShapeContainerStyle_BackgroundColor();
+        EReference SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = MigrationmodelerPackage.eINSTANCE.getShapeContainerStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.SquareImpl
          * <em>Square</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.SquareImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getSquare()
          * @generated
          */
-        EClass SQUARE = eINSTANCE.getSquare();
+        EClass SQUARE = MigrationmodelerPackage.eINSTANCE.getSquare();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SQUARE__WIDTH = eINSTANCE.getSquare_Width();
+        EAttribute SQUARE__WIDTH = MigrationmodelerPackage.eINSTANCE.getSquare_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SQUARE__HEIGHT = eINSTANCE.getSquare_Height();
+        EAttribute SQUARE__HEIGHT = MigrationmodelerPackage.eINSTANCE.getSquare_Height();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SQUARE__COLOR = eINSTANCE.getSquare_Color();
+        EReference SQUARE__COLOR = MigrationmodelerPackage.eINSTANCE.getSquare_Color();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EllipseImpl
          * <em>Ellipse</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.EllipseImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getEllipse()
          * @generated
          */
-        EClass ELLIPSE = eINSTANCE.getEllipse();
+        EClass ELLIPSE = MigrationmodelerPackage.eINSTANCE.getEllipse();
 
         /**
          * The meta object literal for the '<em><b>Horizontal Diameter</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute ELLIPSE__HORIZONTAL_DIAMETER = eINSTANCE.getEllipse_HorizontalDiameter();
+        EAttribute ELLIPSE__HORIZONTAL_DIAMETER = MigrationmodelerPackage.eINSTANCE.getEllipse_HorizontalDiameter();
 
         /**
          * The meta object literal for the '<em><b>Vertical Diameter</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute ELLIPSE__VERTICAL_DIAMETER = eINSTANCE.getEllipse_VerticalDiameter();
+        EAttribute ELLIPSE__VERTICAL_DIAMETER = MigrationmodelerPackage.eINSTANCE.getEllipse_VerticalDiameter();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference ELLIPSE__COLOR = eINSTANCE.getEllipse_Color();
+        EReference ELLIPSE__COLOR = MigrationmodelerPackage.eINSTANCE.getEllipse_Color();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LozengeImpl
          * <em>Lozenge</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LozengeImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLozenge()
          * @generated
          */
-        EClass LOZENGE = eINSTANCE.getLozenge();
+        EClass LOZENGE = MigrationmodelerPackage.eINSTANCE.getLozenge();
 
         /**
          * The meta object literal for the '<em><b>Width</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LOZENGE__WIDTH = eINSTANCE.getLozenge_Width();
+        EAttribute LOZENGE__WIDTH = MigrationmodelerPackage.eINSTANCE.getLozenge_Width();
 
         /**
          * The meta object literal for the '<em><b>Height</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LOZENGE__HEIGHT = eINSTANCE.getLozenge_Height();
+        EAttribute LOZENGE__HEIGHT = MigrationmodelerPackage.eINSTANCE.getLozenge_Height();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference LOZENGE__COLOR = eINSTANCE.getLozenge_Color();
+        EReference LOZENGE__COLOR = MigrationmodelerPackage.eINSTANCE.getLozenge_Color();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BundledImageImpl
          * <em>Bundled Image</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BundledImageImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBundledImage()
          * @generated
          */
-        EClass BUNDLED_IMAGE = eINSTANCE.getBundledImage();
+        EClass BUNDLED_IMAGE = MigrationmodelerPackage.eINSTANCE.getBundledImage();
 
         /**
          * The meta object literal for the '<em><b>Shape</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute BUNDLED_IMAGE__SHAPE = eINSTANCE.getBundledImage_Shape();
+        EAttribute BUNDLED_IMAGE__SHAPE = MigrationmodelerPackage.eINSTANCE.getBundledImage_Shape();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference BUNDLED_IMAGE__COLOR = eINSTANCE.getBundledImage_Color();
+        EReference BUNDLED_IMAGE__COLOR = MigrationmodelerPackage.eINSTANCE.getBundledImage_Color();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.WorkspaceImageImpl
          * <em>Workspace Image</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.WorkspaceImageImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getWorkspaceImage()
          * @generated
          */
-        EClass WORKSPACE_IMAGE = eINSTANCE.getWorkspaceImage();
+        EClass WORKSPACE_IMAGE = MigrationmodelerPackage.eINSTANCE.getWorkspaceImage();
 
         /**
          * The meta object literal for the '<em><b>Workspace Path</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute WORKSPACE_IMAGE__WORKSPACE_PATH = eINSTANCE.getWorkspaceImage_WorkspacePath();
+        EAttribute WORKSPACE_IMAGE__WORKSPACE_PATH = MigrationmodelerPackage.eINSTANCE.getWorkspaceImage_WorkspacePath();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GaugeCompositeStyleImpl
          * <em>Gauge Composite Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.GaugeCompositeStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getGaugeCompositeStyle()
          * @generated
          */
-        EClass GAUGE_COMPOSITE_STYLE = eINSTANCE.getGaugeCompositeStyle();
+        EClass GAUGE_COMPOSITE_STYLE = MigrationmodelerPackage.eINSTANCE.getGaugeCompositeStyle();
 
         /**
          * The meta object literal for the '<em><b>Alignment</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute GAUGE_COMPOSITE_STYLE__ALIGNMENT = eINSTANCE.getGaugeCompositeStyle_Alignment();
+        EAttribute GAUGE_COMPOSITE_STYLE__ALIGNMENT = MigrationmodelerPackage.eINSTANCE.getGaugeCompositeStyle_Alignment();
 
         /**
          * The meta object literal for the '<em><b>Sections</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference GAUGE_COMPOSITE_STYLE__SECTIONS = eINSTANCE.getGaugeCompositeStyle_Sections();
+        EReference GAUGE_COMPOSITE_STYLE__SECTIONS = MigrationmodelerPackage.eINSTANCE.getGaugeCompositeStyle_Sections();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NoteImpl
          * <em>Note</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.NoteImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getNote()
          * @generated
          */
-        EClass NOTE = eINSTANCE.getNote();
+        EClass NOTE = MigrationmodelerPackage.eINSTANCE.getNote();
 
         /**
          * The meta object literal for the '<em><b>Color</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference NOTE__COLOR = eINSTANCE.getNote_Color();
+        EReference NOTE__COLOR = MigrationmodelerPackage.eINSTANCE.getNote_Color();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractNodeImpl
          * <em>Abstract Node</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.AbstractNodeImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getAbstractNode()
          * @generated
          */
-        EClass ABSTRACT_NODE = eINSTANCE.getAbstractNode();
+        EClass ABSTRACT_NODE = MigrationmodelerPackage.eINSTANCE.getAbstractNode();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.TestCaseImpl
          * <em>Test Case</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.TestCaseImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getTestCase()
          * @generated
          */
-        EClass TEST_CASE = eINSTANCE.getTestCase();
+        EClass TEST_CASE = MigrationmodelerPackage.eINSTANCE.getTestCase();
 
         /**
          * The meta object literal for the '<em><b>Representations</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference TEST_CASE__REPRESENTATIONS = eINSTANCE.getTestCase_Representations();
+        EReference TEST_CASE__REPRESENTATIONS = MigrationmodelerPackage.eINSTANCE.getTestCase_Representations();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.RepresentationImpl
          * <em>Representation</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.RepresentationImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getRepresentation()
          * @generated
          */
-        EClass REPRESENTATION = eINSTANCE.getRepresentation();
+        EClass REPRESENTATION = MigrationmodelerPackage.eINSTANCE.getRepresentation();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute REPRESENTATION__NAME = eINSTANCE.getRepresentation_Name();
+        EAttribute REPRESENTATION__NAME = MigrationmodelerPackage.eINSTANCE.getRepresentation_Name();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedStyleImpl
          * <em>Bordered Style</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.BorderedStyleImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getBorderedStyle()
          * @generated
          */
-        EClass BORDERED_STYLE = eINSTANCE.getBorderedStyle();
+        EClass BORDERED_STYLE = MigrationmodelerPackage.eINSTANCE.getBorderedStyle();
 
         /**
          * The meta object literal for the '<em><b>Border Size</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute BORDERED_STYLE__BORDER_SIZE = eINSTANCE.getBorderedStyle_BorderSize();
+        EAttribute BORDERED_STYLE__BORDER_SIZE = MigrationmodelerPackage.eINSTANCE.getBorderedStyle_BorderSize();
 
         /**
          * The meta object literal for the '<em><b>Border Color</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference BORDERED_STYLE__BORDER_COLOR = eINSTANCE.getBorderedStyle_BorderColor();
+        EReference BORDERED_STYLE__BORDER_COLOR = MigrationmodelerPackage.eINSTANCE.getBorderedStyle_BorderColor();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.FilterImpl
          * <em>Filter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.FilterImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getFilter()
          * @generated
          */
-        EClass FILTER = eINSTANCE.getFilter();
+        EClass FILTER = MigrationmodelerPackage.eINSTANCE.getFilter();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute FILTER__ID = eINSTANCE.getFilter_Id();
+        EAttribute FILTER__ID = MigrationmodelerPackage.eINSTANCE.getFilter_Id();
 
         /**
          * The meta object literal for the '<em><b>Activated</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute FILTER__ACTIVATED = eINSTANCE.getFilter_Activated();
+        EAttribute FILTER__ACTIVATED = MigrationmodelerPackage.eINSTANCE.getFilter_Activated();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LayerImpl
          * <em>Layer</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.LayerImpl
          * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.MigrationmodelerPackageImpl#getLayer()
          * @generated
          */
-        EClass LAYER = eINSTANCE.getLayer();
+        EClass LAYER = MigrationmodelerPackage.eINSTANCE.getLayer();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LAYER__ID = eINSTANCE.getLayer_Id();
+        EAttribute LAYER__ID = MigrationmodelerPackage.eINSTANCE.getLayer_Id();
 
         /**
          * The meta object literal for the '<em><b>Activated</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute LAYER__ACTIVATED = eINSTANCE.getLayer_Activated();
+        EAttribute LAYER__ACTIVATED = MigrationmodelerPackage.eINSTANCE.getLayer_Activated();
 
     }
 

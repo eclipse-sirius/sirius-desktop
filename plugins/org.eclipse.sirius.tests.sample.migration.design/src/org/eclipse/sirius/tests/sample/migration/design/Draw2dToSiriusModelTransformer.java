@@ -29,10 +29,12 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.FanRouter;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter;
+import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -56,16 +58,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.DForestRouter;
-import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.FontData;
-import org.eclipse.swt.graphics.Image;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractRepresentation;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Bordered;
@@ -85,6 +77,15 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Node;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeRepresentation;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.RoutingStyle;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
+import org.eclipse.swt.graphics.Image;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
 
 /**
  * Class to get a view model equivalent the draw2d model to check that migration
@@ -172,6 +173,28 @@ public class Draw2dToSiriusModelTransformer {
                 }
                 EdgeRepresentation migrationEdgeRepresentation = getMigrationEdgeRepresentation(abstractDiagramEdgeEditPart);
                 migrationEdge.getEdgeRepresentations().add(migrationEdgeRepresentation);
+                // Set source
+                EditPart sourceEditPart = abstractDiagramEdgeEditPart.getSource();
+                if (sourceEditPart instanceof IDiagramContainerEditPart || sourceEditPart instanceof IDiagramListEditPart) {
+                    Container semanticContainer = (Container) ((IDiagramElementEditPart) sourceEditPart).resolveTargetSemanticElement();
+                    Container migrationContainer = semanticContainerToMigrationContainerMap.get(semanticContainer);
+                    migrationEdge.setSource(migrationContainer);
+                } else if (sourceEditPart instanceof IDiagramNodeEditPart) {
+                    Node semanticNode = (Node) ((IDiagramElementEditPart) sourceEditPart).resolveTargetSemanticElement();
+                    Node migrationNode = semanticNodeToMigrationNodeMap.get(semanticNode);
+                    migrationEdge.setSource(migrationNode);
+                }
+                // Set target
+                EditPart targetEditPart = abstractDiagramEdgeEditPart.getTarget();
+                if (targetEditPart instanceof IDiagramContainerEditPart || targetEditPart instanceof IDiagramListEditPart) {
+                    Container semanticContainer = (Container) ((IDiagramElementEditPart) targetEditPart).resolveTargetSemanticElement();
+                    Container migrationContainer = semanticContainerToMigrationContainerMap.get(semanticContainer);
+                    migrationEdge.setTarget(migrationContainer);
+                } else if (targetEditPart instanceof IDiagramNodeEditPart) {
+                    Node semanticNode = (Node) ((IDiagramElementEditPart) targetEditPart).resolveTargetSemanticElement();
+                    Node migrationNode = semanticNodeToMigrationNodeMap.get(semanticNode);
+                    migrationEdge.setTarget(migrationNode);
+                }
             }
         }
 
@@ -283,6 +306,16 @@ public class Draw2dToSiriusModelTransformer {
         containerRepresentation.setOwnedStyle(containerStyle);
         updateLabelStyle(containerStyle, diagramListEditPart);
         updateBorderedStyle(containerStyle, diagramListEditPart);
+        Object model = diagramListEditPart.getModel();
+        if (model instanceof org.eclipse.gmf.runtime.notation.Node) {
+            org.eclipse.gmf.runtime.notation.Node node = (org.eclipse.gmf.runtime.notation.Node) model;
+            if (node.getLayoutConstraint() instanceof Size) {
+                Size size = (Size) node.getLayoutConstraint();
+                if (size.getWidth() == -1 || size.getHeight() == -1) {
+                    containerRepresentation.setAutoSized(true);
+                }
+            }
+        }
         updateLayout(containerRepresentation, diagramListEditPart.getFigure());
 
         List<?> children = new ArrayList<Object>(diagramListEditPart.getChildren());
@@ -328,8 +361,17 @@ public class Draw2dToSiriusModelTransformer {
         containerRepresentation.setOwnedStyle(containerStyle);
         updateLabelStyle(containerStyle, diagramContainerEditPart);
         updateBorderedStyle(containerStyle, diagramContainerEditPart);
+        Object model = diagramContainerEditPart.getModel();
+        if (model instanceof org.eclipse.gmf.runtime.notation.Node) {
+            org.eclipse.gmf.runtime.notation.Node node = (org.eclipse.gmf.runtime.notation.Node) model;
+            if (node.getLayoutConstraint() instanceof Size) {
+                Size size = (Size) node.getLayoutConstraint();
+                if (size.getWidth() == -1 || size.getHeight() == -1) {
+                    containerRepresentation.setAutoSized(true);
+                }
+            }
+        }
         updateLayout(containerRepresentation, diagramContainerEditPart.getFigure());
-
         List<?> children = new ArrayList<Object>(diagramContainerEditPart.getChildren());
         Iterator<ResizableCompartmentEditPart> compart = Iterators.filter(diagramContainerEditPart.getChildren().iterator(), ResizableCompartmentEditPart.class);
         if (compart.hasNext()) {
@@ -420,17 +462,20 @@ public class Draw2dToSiriusModelTransformer {
         edgeStyle.setColor(color);
         DEdgeBeginNameEditPart beginDEdgeNameEditPart = getDEdgeBeginNameEditPart(abstractDiagramEdgeEditPart);
         if (beginDEdgeNameEditPart != null && dEdge.getOwnedStyle().getBeginLabelStyle() != null) {
-            org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle migrationBeginLabelStyle = getMigrationBasicLabelStyle(dEdge.getOwnedStyle().getBeginLabelStyle(), beginDEdgeNameEditPart);
+            org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle migrationBeginLabelStyle = getMigrationBasicLabelStyle(dEdge.getOwnedStyle().getBeginLabelStyle(),
+                    beginDEdgeNameEditPart);
             edgeStyle.setBeginLabelStyle(migrationBeginLabelStyle);
         }
         DEdgeNameEditPart centerDEdgeNameEditPart = getDEdgeCenterNameEditPart(abstractDiagramEdgeEditPart);
         if (centerDEdgeNameEditPart != null && dEdge.getOwnedStyle().getCenterLabelStyle() != null) {
-            org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle migrationCenterLabelStyle = getMigrationBasicLabelStyle(dEdge.getOwnedStyle().getCenterLabelStyle(), centerDEdgeNameEditPart);
+            org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle migrationCenterLabelStyle = getMigrationBasicLabelStyle(dEdge.getOwnedStyle().getCenterLabelStyle(),
+                    centerDEdgeNameEditPart);
             edgeStyle.setCenterLabelStyle(migrationCenterLabelStyle);
         }
         DEdgeEndNameEditPart endDEdgeNameEditPart = getDEdgeEndNameEditPart(abstractDiagramEdgeEditPart);
         if (endDEdgeNameEditPart != null && dEdge.getOwnedStyle().getEndLabelStyle() != null) {
-            org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle migrationEndLabelStyle = getMigrationBasicLabelStyle(dEdge.getOwnedStyle().getEndLabelStyle(), endDEdgeNameEditPart);
+            org.eclipse.sirius.tests.sample.migration.migrationmodeler.BasicLabelStyle migrationEndLabelStyle = getMigrationBasicLabelStyle(dEdge.getOwnedStyle().getEndLabelStyle(),
+                    endDEdgeNameEditPart);
             edgeStyle.setEndLabelStyle(migrationEndLabelStyle);
         }
         return edgeRepresentation;

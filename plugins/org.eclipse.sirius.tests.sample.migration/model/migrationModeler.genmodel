@@ -1,461 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;" modelDirectory="/org.eclipse.sirius.tests.sample.migration/src-gen" creationIcons="false" editDirectory="/org.eclipse.sirius.tests.sample.migration.edit/src-gen" editorDirectory="/org.eclipse.sirius.tests.sample.migration.editor/src-gen" modelPluginID="org.eclipse.sirius.tests.sample.migration" modelName="MigrationModeler" editPluginClass="org.eclipse.sirius.tests.sample.migration.migrationmodeler.provider.MigrationModelerEditPlugin" editorPluginClass="org.eclipse.sirius.tests.sample.migration.migrationmodeler.presentation.MigrationModelerEditorPlugin" testsDirectory="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.tests.sample.migration.edit" editorPluginID="org.eclipse.sirius.tests.sample.migration.editor" runtimeVersion="2.3">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;"
+    modelDirectory="/org.eclipse.sirius.tests.sample.migration/src-gen" creationIcons="false"
+    editDirectory="/org.eclipse.sirius.tests.sample.migration.edit/src-gen" editorDirectory="/org.eclipse.sirius.tests.sample.migration.editor/src-gen"
+    modelPluginID="org.eclipse.sirius.tests.sample.migration" modelName="MigrationModeler"
+    editPluginClass="org.eclipse.sirius.tests.sample.migration.migrationmodeler.provider.MigrationModelerEditPlugin"
+    editorPluginClass="org.eclipse.sirius.tests.sample.migration.migrationmodeler.presentation.MigrationModelerEditorPlugin"
+    testsDirectory="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" editPluginID="org.eclipse.sirius.tests.sample.migration.edit"
+    editorPluginID="org.eclipse.sirius.tests.sample.migration.editor" runtimeVersion="2.3"
+    usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>migrationModeler.ecore</foreignModel>
-  <genPackages prefix="Migrationmodeler" basePackage="org.eclipse.sirius.tests.sample.migration" disposableProviderFactory="true">
-    <ecorePackage href="migrationModeler.ecore#/"/>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="migrationModeler.ecore#//RoutingStyle"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//RoutingStyle/Straight"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//RoutingStyle/Manhattan"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//RoutingStyle/Tree"/>
-      </genEnumLiterals>
+  <genPackages prefix="Migrationmodeler" basePackage="org.eclipse.sirius.tests.sample.migration"
+      disposableProviderFactory="true" ecorePackage="migrationModeler.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="migrationModeler.ecore#//RoutingStyle">
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//RoutingStyle/Straight"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//RoutingStyle/Manhattan"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//RoutingStyle/Tree"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="migrationModeler.ecore#//LabelPosition"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//LabelPosition/border"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//LabelPosition/node"/>
-      </genEnumLiterals>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="migrationModeler.ecore#//LabelPosition">
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//LabelPosition/border"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//LabelPosition/node"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="migrationModeler.ecore#//FontFormat"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//FontFormat/normal"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//FontFormat/italic"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//FontFormat/bold"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//FontFormat/bold_italic"/>
-      </genEnumLiterals>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="migrationModeler.ecore#//FontFormat">
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//FontFormat/normal"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//FontFormat/italic"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//FontFormat/bold"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//FontFormat/bold_italic"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="migrationModeler.ecore#//LabelAlignment"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//LabelAlignment/CENTER"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//LabelAlignment/LEFT"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//LabelAlignment/RIGHT"/>
-      </genEnumLiterals>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="migrationModeler.ecore#//LabelAlignment">
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//LabelAlignment/CENTER"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//LabelAlignment/LEFT"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//LabelAlignment/RIGHT"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="migrationModeler.ecore#//ContainerShape"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//ContainerShape/parallelogram"/>
-      </genEnumLiterals>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="migrationModeler.ecore#//ContainerShape">
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//ContainerShape/parallelogram"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="migrationModeler.ecore#//BackgroundStyle"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//BackgroundStyle/GradientLeftToRight"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//BackgroundStyle/Liquid"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//BackgroundStyle/GradientTopToBottom"/>
-      </genEnumLiterals>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="migrationModeler.ecore#//BackgroundStyle">
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//BackgroundStyle/GradientLeftToRight"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//BackgroundStyle/Liquid"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//BackgroundStyle/GradientTopToBottom"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="migrationModeler.ecore#//AlignmentKind"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//AlignmentKind/VERTICAL"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//AlignmentKind/HORIZONTAL"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//AlignmentKind/SQUARE"/>
-      </genEnumLiterals>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="migrationModeler.ecore#//AlignmentKind">
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//AlignmentKind/VERTICAL"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//AlignmentKind/HORIZONTAL"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//AlignmentKind/SQUARE"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false">
-      <ecoreEnum href="migrationModeler.ecore#//BundledImageShape"/>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//BundledImageShape/square"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//BundledImageShape/stroke"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//BundledImageShape/triangle"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//BundledImageShape/dot"/>
-      </genEnumLiterals>
-      <genEnumLiterals>
-        <ecoreEnumLiteral href="migrationModeler.ecore#//BundledImageShape/ring"/>
-      </genEnumLiterals>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="migrationModeler.ecore#//BundledImageShape">
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//BundledImageShape/square"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//BundledImageShape/stroke"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//BundledImageShape/triangle"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//BundledImageShape/dot"/>
+      <genEnumLiterals ecoreEnumLiteral="migrationModeler.ecore#//BundledImageShape/ring"/>
     </genEnums>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Diagram"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Diagram/containers"/>
-      </genFeatures>
-      <genFeatures children="true" createChild="true" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Diagram/nodes"/>
-      </genFeatures>
-      <genFeatures children="true" createChild="true" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Diagram/edges"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Diagram/filters"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Diagram/layers"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Diagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Diagram/containers"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Diagram/nodes"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Diagram/edges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Diagram/filters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Diagram/layers"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//GraphicalElement"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//GraphicalElement/id"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//GraphicalElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//GraphicalElement/id"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="migrationModeler.ecore#//AbstractNode"/>
+    <genClasses image="false" ecoreClass="migrationModeler.ecore#//AbstractNode"/>
+    <genClasses ecoreClass="migrationModeler.ecore#//Node">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Node/nodeRepresentations"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Node"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Node/nodeRepresentations"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Bordered">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Bordered/borderedRepresentations"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Bordered"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Bordered/borderedRepresentations"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Container">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Container/containerRepresentations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Container/elements"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Container"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Container/containerRepresentations"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Container/elements"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Edge">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Edge/edgeRepresentations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Edge/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Edge/target"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Edge"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Edge/edgeRepresentations"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Edge/source"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Edge/target"/>
-      </genFeatures>
+    <genClasses image="false" ecoreClass="migrationModeler.ecore#//AbstractRepresentation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//AbstractRepresentation/mappingId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//AbstractRepresentation/layout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//AbstractRepresentation/displayed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//AbstractRepresentation/hidden"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//AbstractRepresentation/pinned"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="migrationModeler.ecore#//AbstractRepresentation"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//AbstractRepresentation/mappingId"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//AbstractRepresentation/layout"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//AbstractRepresentation/displayed"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//AbstractRepresentation/hidden"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//AbstractRepresentation/pinned"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//EdgeRepresentation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//EdgeRepresentation/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//EdgeRepresentation/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//EdgeRepresentation/bendpoints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//EdgeRepresentation/ownedStyle"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//EdgeRepresentation"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//EdgeRepresentation/source"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//EdgeRepresentation/target"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//EdgeRepresentation/bendpoints"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//EdgeRepresentation/ownedStyle"/>
-      </genFeatures>
+    <genClasses image="false" ecoreClass="migrationModeler.ecore#//AbstractNodeRepresentation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//AbstractNodeRepresentation/bordereds"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//AbstractNodeRepresentation/ownedStyle"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="migrationModeler.ecore#//AbstractNodeRepresentation"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//AbstractNodeRepresentation/bordereds"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//AbstractNodeRepresentation/ownedStyle"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//NodeRepresentation"/>
+    <genClasses ecoreClass="migrationModeler.ecore#//BorderedRepresentation"/>
+    <genClasses ecoreClass="migrationModeler.ecore#//ContainerRepresentation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//ContainerRepresentation/ownedStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//ContainerRepresentation/autoSized"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//NodeRepresentation"/>
+    <genClasses ecoreClass="migrationModeler.ecore#//EdgeStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//EdgeStyle/routingStyle"/>
+      <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//EdgeStyle/color"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//EdgeStyle/beginLabelStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//EdgeStyle/centerLabelStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//EdgeStyle/endLabelStyle"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//BorderedRepresentation"/>
+    <genClasses ecoreClass="migrationModeler.ecore#//Layout">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Layout/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Layout/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Layout/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Layout/height"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//ContainerRepresentation"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//ContainerRepresentation/ownedStyle"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Color">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Color/red"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Color/green"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Color/blue"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//EdgeStyle"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//EdgeStyle/routingStyle"/>
-      </genFeatures>
-      <genFeatures children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//EdgeStyle/color"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//EdgeStyle/beginLabelStyle"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//EdgeStyle/centerLabelStyle"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//EdgeStyle/endLabelStyle"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Point">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Point/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Point/y"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Layout"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Layout/x"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Layout/y"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Layout/width"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Layout/height"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//TestCase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//TestCase/representations"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Color"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Color/red"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Color/green"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Color/blue"/>
-      </genFeatures>
+    <genClasses image="false" ecoreClass="migrationModeler.ecore#//Representation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Representation/name"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Point"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Point/x"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Point/y"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//BorderedStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//BorderedStyle/borderSize"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//BorderedStyle/borderColor"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//TestCase"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//TestCase/representations"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Filter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Filter/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Filter/activated"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="migrationModeler.ecore#//Representation"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Representation/name"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Layer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Layer/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Layer/activated"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//BorderedStyle"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//BorderedStyle/borderSize"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//BorderedStyle/borderColor"/>
-      </genFeatures>
+    <genClasses image="false" ecoreClass="migrationModeler.ecore#//NodeStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//NodeStyle/labelPosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//NodeStyle/hideLabelByDefault"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Filter"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Filter/id"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Filter/activated"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//BasicLabelStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//BasicLabelStyle/labelSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//BasicLabelStyle/labelFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//BasicLabelStyle/showIcon"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//BasicLabelStyle/labelColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//BasicLabelStyle/iconPath"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Layer"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Layer/id"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Layer/activated"/>
-      </genFeatures>
+    <genClasses image="false" ecoreClass="migrationModeler.ecore#//ContainerStyle"/>
+    <genClasses ecoreClass="migrationModeler.ecore#//LabelStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//LabelStyle/labelAlignment"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="migrationModeler.ecore#//NodeStyle"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//NodeStyle/labelPosition"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//NodeStyle/hideLabelByDefault"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Dot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Dot/backgroundColor"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//BasicLabelStyle"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//BasicLabelStyle/labelSize"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//BasicLabelStyle/labelFormat"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//BasicLabelStyle/showIcon"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//BasicLabelStyle/labelColor"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//BasicLabelStyle/iconPath"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//GaugeSection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//GaugeSection/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//GaugeSection/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//GaugeSection/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//GaugeSection/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//GaugeSection/backgroundColor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//GaugeSection/foregroundColor"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="migrationModeler.ecore#//ContainerStyle"/>
+    <genClasses ecoreClass="migrationModeler.ecore#//FlatContainerStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//FlatContainerStyle/backgroundStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//FlatContainerStyle/backgroundColor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//FlatContainerStyle/foregroundColor"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//LabelStyle"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//LabelStyle/labelAlignment"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//ShapeContainerStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//ShapeContainerStyle/shape"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//ShapeContainerStyle/backgroundColor"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Dot"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Dot/backgroundColor"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Square">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Square/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Square/height"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Square/color"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//GaugeSection"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//GaugeSection/min"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//GaugeSection/max"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//GaugeSection/value"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//GaugeSection/label"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//GaugeSection/backgroundColor"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//GaugeSection/foregroundColor"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Ellipse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Ellipse/horizontalDiameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Ellipse/verticalDiameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Ellipse/color"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//FlatContainerStyle"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//FlatContainerStyle/backgroundStyle"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//FlatContainerStyle/backgroundColor"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//FlatContainerStyle/foregroundColor"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Lozenge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Lozenge/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//Lozenge/height"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Lozenge/color"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//ShapeContainerStyle"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//ShapeContainerStyle/shape"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//ShapeContainerStyle/backgroundColor"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//BundledImage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//BundledImage/shape"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//BundledImage/color"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Square"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Square/width"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Square/height"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Square/color"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//WorkspaceImage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//WorkspaceImage/workspacePath"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Ellipse"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Ellipse/horizontalDiameter"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Ellipse/verticalDiameter"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Ellipse/color"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//GaugeCompositeStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute migrationModeler.ecore#//GaugeCompositeStyle/alignment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//GaugeCompositeStyle/sections"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Lozenge"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Lozenge/width"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//Lozenge/height"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Lozenge/color"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//BundledImage"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//BundledImage/shape"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//BundledImage/color"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//WorkspaceImage"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//WorkspaceImage/workspacePath"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//GaugeCompositeStyle"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="migrationModeler.ecore#//GaugeCompositeStyle/alignment"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//GaugeCompositeStyle/sections"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="migrationModeler.ecore#//Note"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="migrationModeler.ecore#//Note/color"/>
-      </genFeatures>
+    <genClasses ecoreClass="migrationModeler.ecore#//Note">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference migrationModeler.ecore#//Note/color"/>
     </genClasses>
   </genPackages>
-  <usedGenPackages href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"/>
 </genmodel:GenModel>
