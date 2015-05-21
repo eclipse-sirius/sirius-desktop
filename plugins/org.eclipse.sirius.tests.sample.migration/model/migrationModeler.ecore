@@ -82,6 +82,7 @@
         <details key="documentation" value="The style of the container."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoSized" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EdgeStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="routingStyle" eType="#//RoutingStyle"/>

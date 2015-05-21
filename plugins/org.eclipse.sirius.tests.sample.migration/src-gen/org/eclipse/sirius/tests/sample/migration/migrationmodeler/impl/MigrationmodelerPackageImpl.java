@@ -772,6 +772,16 @@ public class MigrationmodelerPackageImpl extends EPackageImpl implements Migrati
      * @generated
      */
     @Override
+    public EAttribute getContainerRepresentation_AutoSized() {
+        return (EAttribute) containerRepresentationEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getDiagram() {
         return diagramEClass;
     }
@@ -1807,6 +1817,7 @@ public class MigrationmodelerPackageImpl extends EPackageImpl implements Migrati
 
         containerRepresentationEClass = createEClass(MigrationmodelerPackage.CONTAINER_REPRESENTATION);
         createEReference(containerRepresentationEClass, MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE);
+        createEAttribute(containerRepresentationEClass, MigrationmodelerPackage.CONTAINER_REPRESENTATION__AUTO_SIZED);
 
         edgeStyleEClass = createEClass(MigrationmodelerPackage.EDGE_STYLE);
         createEAttribute(edgeStyleEClass, MigrationmodelerPackage.EDGE_STYLE__ROUTING_STYLE);
@@ -2078,6 +2089,8 @@ public class MigrationmodelerPackageImpl extends EPackageImpl implements Migrati
         initEReference(getContainerRepresentation_OwnedStyle(), this.getContainerStyle(), null, "ownedStyle", null, 0, 1, ContainerRepresentation.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getContainerRepresentation_AutoSized(), ecorePackage.getEBoolean(), "autoSized", null, 0, 1, ContainerRepresentation.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(edgeStyleEClass, EdgeStyle.class, "EdgeStyle", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getEdgeStyle_RoutingStyle(), this.getRoutingStyle(), "routingStyle", null, 0, 1, EdgeStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,

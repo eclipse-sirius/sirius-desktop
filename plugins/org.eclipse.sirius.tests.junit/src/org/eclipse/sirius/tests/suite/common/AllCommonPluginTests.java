@@ -10,12 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.common;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramComponentizationManagerTest;
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramExtensionDescriptionTest;
 import org.eclipse.sirius.tests.unit.api.componentization.MetamodelSpecificationInRepresentationExtensionDescriptionTest;
@@ -130,6 +124,12 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 public class AllCommonPluginTests extends TestCase {
 
     /**
@@ -209,6 +209,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign07.class));
         suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign08.class));
         suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign09.class));
+        suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign10.class));
 
         suite.addTestSuite(InitializationTest.class);
         suite.addTestSuite(CompletionTests.class);
@@ -291,9 +292,6 @@ public class AllCommonPluginTests extends TestCase {
      *            the suite to add the tests into.
      */
     public static void addNonGerritPart(TestSuite suite) {
-        // This one fails systematially on the Eclipse Sirius HIPP and thus is
-        // not part of the Gerrit suite.
-        suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign10.class));
         // This one takes too long (12 minutes) to be part of the Gerrit suite.
         suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
         // The ones below are "blacklisted" for now because they caused at least

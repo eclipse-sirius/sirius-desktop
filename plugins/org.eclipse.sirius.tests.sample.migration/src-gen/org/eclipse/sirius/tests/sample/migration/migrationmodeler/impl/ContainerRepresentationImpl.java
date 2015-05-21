@@ -28,6 +28,9 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Migrationmodel
  * <li>
  * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerRepresentationImpl#getOwnedStyle
  * <em>Owned Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.impl.ContainerRepresentationImpl#isAutoSized
+ * <em>Auto Sized</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,6 +46,26 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
      * @ordered
      */
     protected ContainerStyle ownedStyle;
+
+    /**
+     * The default value of the '{@link #isAutoSized() <em>Auto Sized</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #isAutoSized()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean AUTO_SIZED_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isAutoSized() <em>Auto Sized</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #isAutoSized()
+     * @generated
+     * @ordered
+     */
+    protected boolean autoSized = ContainerRepresentationImpl.AUTO_SIZED_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -122,6 +145,30 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
      * @generated
      */
     @Override
+    public boolean isAutoSized() {
+        return autoSized;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setAutoSized(boolean newAutoSized) {
+        boolean oldAutoSized = autoSized;
+        autoSized = newAutoSized;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, MigrationmodelerPackage.CONTAINER_REPRESENTATION__AUTO_SIZED, oldAutoSized, autoSized));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE:
@@ -140,6 +187,8 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
         switch (featureID) {
         case MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE:
             return getOwnedStyle();
+        case MigrationmodelerPackage.CONTAINER_REPRESENTATION__AUTO_SIZED:
+            return isAutoSized();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -154,6 +203,9 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
         switch (featureID) {
         case MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE:
             setOwnedStyle((ContainerStyle) newValue);
+            return;
+        case MigrationmodelerPackage.CONTAINER_REPRESENTATION__AUTO_SIZED:
+            setAutoSized((Boolean) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -170,6 +222,9 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
         case MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE:
             setOwnedStyle((ContainerStyle) null);
             return;
+        case MigrationmodelerPackage.CONTAINER_REPRESENTATION__AUTO_SIZED:
+            setAutoSized(ContainerRepresentationImpl.AUTO_SIZED_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -184,8 +239,28 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
         switch (featureID) {
         case MigrationmodelerPackage.CONTAINER_REPRESENTATION__OWNED_STYLE:
             return ownedStyle != null;
+        case MigrationmodelerPackage.CONTAINER_REPRESENTATION__AUTO_SIZED:
+            return autoSized != ContainerRepresentationImpl.AUTO_SIZED_EDEFAULT;
         }
         return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy()) {
+            return super.toString();
+        }
+
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (autoSized: ");
+        result.append(autoSized);
+        result.append(')');
+        return result.toString();
     }
 
 } // ContainerRepresentationImpl

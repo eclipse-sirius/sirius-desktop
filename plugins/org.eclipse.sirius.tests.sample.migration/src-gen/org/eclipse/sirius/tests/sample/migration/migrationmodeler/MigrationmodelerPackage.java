@@ -894,6 +894,15 @@ public interface MigrationmodelerPackage extends EPackage {
     int CONTAINER_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Auto Sized</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_REPRESENTATION__AUTO_SIZED = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 1;
+
+    /**
      * The number of structural features of the '
      * <em>Container Representation</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -901,7 +910,7 @@ public interface MigrationmodelerPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_REPRESENTATION_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 1;
+    int CONTAINER_REPRESENTATION_FEATURE_COUNT = MigrationmodelerPackage.ABSTRACT_REPRESENTATION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -3412,6 +3421,18 @@ public interface MigrationmodelerPackage extends EPackage {
     EReference getContainerRepresentation_OwnedStyle();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#isAutoSized
+     * <em>Auto Sized</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Auto Sized</em>'.
+     * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#isAutoSized()
+     * @see #getContainerRepresentation()
+     * @generated
+     */
+    EAttribute getContainerRepresentation_AutoSized();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram
      * <em>Diagram</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -4888,6 +4909,14 @@ public interface MigrationmodelerPackage extends EPackage {
          * @generated
          */
         EReference CONTAINER_REPRESENTATION__OWNED_STYLE = MigrationmodelerPackage.eINSTANCE.getContainerRepresentation_OwnedStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Auto Sized</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute CONTAINER_REPRESENTATION__AUTO_SIZED = MigrationmodelerPackage.eINSTANCE.getContainerRepresentation_AutoSized();
 
         /**
          * The meta object literal for the '

@@ -20,6 +20,9 @@ package org.eclipse.sirius.tests.sample.migration.migrationmodeler;
  * <li>
  * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#getOwnedStyle
  * <em>Owned Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#isAutoSized
+ * <em>Auto Sized</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,5 +57,35 @@ public interface ContainerRepresentation extends AbstractRepresentation {
      * @generated
      */
     void setOwnedStyle(ContainerStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Auto Sized</b></em>' attribute. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Auto Sized</em>' attribute isn't clear, there
+     * really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Auto Sized</em>' attribute.
+     * @see #setAutoSized(boolean)
+     * @see org.eclipse.sirius.tests.sample.migration.migrationmodeler.MigrationmodelerPackage#getContainerRepresentation_AutoSized()
+     * @model
+     * @generated
+     */
+    boolean isAutoSized();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.tests.sample.migration.migrationmodeler.ContainerRepresentation#isAutoSized
+     * <em>Auto Sized</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Auto Sized</em>' attribute.
+     * @see #isAutoSized()
+     * @generated
+     */
+    void setAutoSized(boolean value);
 
 } // ContainerRepresentation
