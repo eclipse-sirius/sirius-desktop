@@ -16,10 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.business.api.migration.AbstractMigrationParticipant;
-import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Lists;
@@ -31,11 +29,12 @@ import com.google.common.collect.Lists;
  * @author mbats
  */
 public class FontFormatMigrationParticipant extends AbstractMigrationParticipant {
+
+    private static final Version MIGRATION_VERSION = new Version("10.0.0.201505222000");
+
     private static final String ITALIC = "italic";
 
     private static final String BOLD = "bold";
-
-    private static final Version MIGRATION_VERSION = new Version("10.0.0.201505181740");
 
     @Override
     public Version getMigrationVersion() {
@@ -45,33 +44,23 @@ public class FontFormatMigrationParticipant extends AbstractMigrationParticipant
     @Override
     public Object getValue(EObject object, EStructuralFeature feature, Object value, String loadedVersion) {
         List<FontFormat> labelFormat = Lists.newArrayList();
-        if (object instanceof BasicLabelStyleDescription) {
-            if (feature.getEType() == ViewpointPackage.Literals.FONT_FORMAT) {
-                if (value instanceof String) {
-                    String oldFontFormat = (String) value;
-                    if (oldFontFormat.contains(ITALIC)) {
-                        FontFormatHelper.setFontFormat(labelFormat, FontFormat.ITALIC_LITERAL);
-                    }
-                    if (oldFontFormat.contains(BOLD)) {
-                        FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
-                    }
-                }
+        // All features typed by FontFormat have been modified: the cardinality
+        // has been changed from [0..1] to [0..n], the value, which was a
+        // FontFormat, now has to be a list of FontFormat.
+        // The previous "normal" value correspond to an empty list.
+        if (feature.getEType() == ViewpointPackage.Literals.FONT_FORMAT && value instanceof String) {
+            String oldFontFormat = (String) value;
+            if (oldFontFormat.contains(ITALIC)) {
+                FontFormatHelper.setFontFormat(labelFormat, FontFormat.ITALIC_LITERAL);
+            }
+            // The previous "bold_italic" value is treated by the two
+            // "if contains" blocks.
+            if (oldFontFormat.contains(BOLD)) {
+                FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
             }
         }
-        if (object instanceof BasicLabelStyle) {
-            if (feature.getEType() == ViewpointPackage.Literals.FONT_FORMAT) {
-                if (value instanceof String) {
-                    String oldFontFormat = (String) value;
-                    if (oldFontFormat.contains(ITALIC)) {
-                        FontFormatHelper.setFontFormat(labelFormat, FontFormat.ITALIC_LITERAL);
-                    }
-                    if (oldFontFormat.contains(BOLD)) {
-                        FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
-                    }
-                }
-            }
-        }
-        if (labelFormat.size() == 0) {
+
+        if (labelFormat.isEmpty()) {
             return null;
         }
         return labelFormat.toString().replaceAll(",", "").replace("[", "").replace("]", "");
