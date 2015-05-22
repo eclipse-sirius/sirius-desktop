@@ -314,7 +314,7 @@ public class WorkspaceAndPluginsResourceDialog extends ElementTreeSelectionDialo
         public String getFilePath() {
             if (containedObject instanceof ZipEntry) {
                 String path = ((ZipEntry) containedObject).getName();
-                return File.separator + pluginPath + File.separator + path;
+                return "/" + pluginPath + "/" + path;
             }
             return null;
         }
