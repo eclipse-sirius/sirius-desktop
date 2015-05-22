@@ -55,12 +55,14 @@ public class ItemSearcher extends RunnableWithResult.Impl<Item> implements Runna
      * {@inheritDoc}
      */
     public void run() {
-        Item result = getTreeItem();
-        if (result == null) {
-            result = getTreeColumn();
-        }
-        if (result != null) {
-            setResult(result);
+        if (!tree.isDisposed()) {
+            Item result = getTreeItem();
+            if (result == null) {
+                result = getTreeColumn();
+            }
+            if (result != null) {
+                setResult(result);
+            }
         }
     }
 
