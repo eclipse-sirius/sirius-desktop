@@ -82,6 +82,10 @@ public final class JavaExtensionsManager {
 
     private List<EPackageLoadingCallback> ePackageCallbacks = Lists.newArrayList();
 
+    private boolean shouldLoadServices = true;
+
+    private boolean shouldLoadEPackages = true;
+
     private ClasspathChangeCallback onWorkspaceChange = new ClasspathChangeCallback() {
 
         public void classpathChanged(Set<String> updatedProjects) {
@@ -215,8 +219,23 @@ public final class JavaExtensionsManager {
      * being done concurrently.
      */
     private synchronized void reload() {
-        reloadEPackages();
-        reloadJavaExtensions();
+        this.shouldLoadEPackages = true;
+        this.shouldLoadServices = true;
+    }
+
+    /***
+     * This will trigger the loading of EPackages or java Classes with the
+     * current configuration (search scope and imports).
+     */
+    public synchronized void reloadIfNeeded() {
+        if (this.shouldLoadEPackages) {
+            reloadEPackages();
+            this.shouldLoadEPackages = false;
+        }
+        if (this.shouldLoadServices) {
+            loadJavaExtensions(this.imports);
+            this.shouldLoadServices = false;
+        }
     }
 
     private void reloadEPackages() {
@@ -426,7 +445,7 @@ public final class JavaExtensionsManager {
     public void addImport(String classQualifiedName) {
         if (classQualifiedName != null && classQualifiedName.contains(".")) {
             this.imports.add(classQualifiedName);
-            loadJavaExtensions(Sets.newHashSet(classQualifiedName));
+            this.shouldLoadServices = true;
         }
     }
 
@@ -463,10 +482,6 @@ public final class JavaExtensionsManager {
         unloadJavaExtensions(this.imports);
         this.imports.clear();
         this.couldNotBeLoaded.clear();
-    }
-
-    private void reloadJavaExtensions() {
-        loadJavaExtensions(this.imports);
     }
 
     private void loadJavaExtensions(Set<String> addedImports) {

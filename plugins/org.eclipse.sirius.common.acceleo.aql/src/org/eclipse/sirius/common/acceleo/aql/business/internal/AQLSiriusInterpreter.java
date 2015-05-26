@@ -177,6 +177,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
     @Override
     public Object evaluate(EObject target, String fullExpression) throws EvaluationException {
+        this.javaExtensions.reloadIfNeeded();
         String expression = new ExpressionTrimmer(fullExpression).getExpression();
         Map<String, Object> variables = getVariables();
         variables.put("self", target);
@@ -221,7 +222,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
     @Override
     public ValidationResult analyzeExpression(IInterpreterContext context, String fullExpression) {
-
+        this.javaExtensions.reloadIfNeeded();
+        
         String trimmedExpression = new ExpressionTrimmer(fullExpression).getExpression();
         ValidationResult result = new ValidationResult();
 
@@ -285,6 +287,14 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
      * @return The query environment currently used by this interpreter.
      */
     public IQueryEnvironment getQueryEnvironment() {
+        /*
+         * The JavaExtensionManager might impact the query environment when
+         * loading classes. We trigger the reload before returning the
+         * IQueryEnvironment so that it is properly configured with EPackages
+         * and imports.
+         */
+        this.javaExtensions.reloadIfNeeded();
+        
         return this.queryEnvironment;
     }
 }

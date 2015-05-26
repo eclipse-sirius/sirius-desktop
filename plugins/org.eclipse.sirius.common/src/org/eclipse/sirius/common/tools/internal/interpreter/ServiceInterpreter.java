@@ -121,6 +121,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
 
     @Override
     public Object evaluate(EObject target, String expression) throws EvaluationException {
+        javaExtensions.reloadIfNeeded();
         Object evaluation = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
             String serviceCall = expression.substring(PREFIX.length()).trim();
@@ -253,6 +254,13 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     }
 
     public Map<String, IService> getServices() {
+        /*
+         * The callback registered to the java extension manager might update
+         * this.services depending on what is loaded. We make sure any pending
+         * reload is done before returning this list.
+         */
+        javaExtensions.reloadIfNeeded();
+        
         return new HashMap<String, IService>(services);
     }
 
