@@ -18,12 +18,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.commands.Command;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -58,10 +54,7 @@ import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationIt
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.ui.progress.UIJob;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -183,18 +176,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
 
             layoutDataManagerRegistryListener = new LayoutDataManagerRegistryListener();
             layoutDataManagerRegistryListener.init();
-
-            UIJob job = new UIJob("InitSynchronizedCommand") {
-                @Override
-                public IStatus runInUIThread(IProgressMonitor monitor) {
-                    ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getService(ICommandService.class);
-                    Command command = commandService.getCommand("org.eclipse.sirius.diagram.ui.command.synchronizedDiagram");
-                    command.isEnabled();
-                    return new Status(IStatus.OK, DiagramUIPlugin.ID, "Init synchronized command performed succesfully");
-                }
-
-            };
-            job.schedule();
         }
 
         /**

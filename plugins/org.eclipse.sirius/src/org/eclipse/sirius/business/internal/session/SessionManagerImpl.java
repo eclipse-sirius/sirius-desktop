@@ -99,7 +99,6 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     @Override
     public void removeSessionsListener(final SessionManagerListener listener) {
         programmaticListeners.remove(listener);
-        getExtensionPointListeners().remove(listener);
     }
 
     @Override
