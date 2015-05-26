@@ -43,26 +43,26 @@ public class FontFormatMigrationParticipant extends AbstractMigrationParticipant
 
     @Override
     public Object getValue(EObject object, EStructuralFeature feature, Object value, String loadedVersion) {
-        List<FontFormat> labelFormat = Lists.newArrayList();
-        // All features typed by FontFormat have been modified: the cardinality
-        // has been changed from [0..1] to [0..n], the value, which was a
-        // FontFormat, now has to be a list of FontFormat.
-        // The previous "normal" value correspond to an empty list.
-        if (feature.getEType() == ViewpointPackage.Literals.FONT_FORMAT && value instanceof String) {
-            String oldFontFormat = (String) value;
-            if (oldFontFormat.contains(ITALIC)) {
-                FontFormatHelper.setFontFormat(labelFormat, FontFormat.ITALIC_LITERAL);
-            }
-            // The previous "bold_italic" value is treated by the two
-            // "if contains" blocks.
-            if (oldFontFormat.contains(BOLD)) {
-                FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
+        if (Version.parseVersion(loadedVersion).compareTo(FontFormatMigrationParticipant.MIGRATION_VERSION) < 0) {
+            // All features typed by FontFormat have been modified: the
+            // cardinality has been changed from [0..1] to [0..n], the value,
+            // which was a FontFormat, now has to be a list of FontFormat.
+            // The previous "normal" value correspond to an empty list, it was
+            // the default value and was not serialized.
+            if (feature.getEType() == ViewpointPackage.Literals.FONT_FORMAT && value instanceof String) {
+                List<FontFormat> labelFormat = Lists.newArrayList();
+                String oldFontFormat = (String) value;
+                if (oldFontFormat.contains(ITALIC)) {
+                    FontFormatHelper.setFontFormat(labelFormat, FontFormat.ITALIC_LITERAL);
+                }
+                // The previous "bold_italic" value is treated by the two
+                // "if contains" blocks.
+                if (oldFontFormat.contains(BOLD)) {
+                    FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
+                }
+                return labelFormat.toString().replaceAll(",", "").replace("[", "").replace("]", "");
             }
         }
-
-        if (labelFormat.isEmpty()) {
-            return null;
-        }
-        return labelFormat.toString().replaceAll(",", "").replace("[", "").replace("]", "");
+        return null;
     }
 }

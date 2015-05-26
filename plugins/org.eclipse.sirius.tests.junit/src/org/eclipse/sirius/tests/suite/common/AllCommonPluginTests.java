@@ -104,6 +104,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.ComputedStyleDescriptionC
 import org.eclipse.sirius.tests.unit.diagram.migration.CorruptedViewsMigrationTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.DDiagramSetRemovalMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DiagramSplitMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.FontFormatMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.FontStyleForDNodeListElementMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.FragmentedFilesMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ListContainerAttributeMigrationTest;
@@ -194,6 +195,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ComputedStyleDescriptionCachePackingFileMigrationParticipantTests.class);
         suite.addTestSuite(RgbValuesEDataTypeMigrationTest.class);
         suite.addTestSuite(ConvertViewpointModelingProjectToSiriusModelingProjectTest.class);
+        suite.addTestSuite(FontFormatMigrationTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));

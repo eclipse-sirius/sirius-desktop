@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="fontFormat" version="10.0.0.201504091800">
+  <ownedViewpoints name="fontFormat">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="fontFormatDiag" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="normal" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelExpression="normal" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="bold" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelFormat="bold" labelExpression="bold" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="italic" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="italic">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="bold_italic" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" labelFormat="bold_italic" labelExpression="bold_italic">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="fontFormatTable" domainClass="EPackage">
+      <ownedLineMappings name="normal" domainClass="EClass" semanticCandidatesExpression="feature:eContents" headerLabelExpression="normal">
+        <defaultForeground>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+      </ownedLineMappings>
+      <ownedLineMappings name="bold" domainClass="EClass" semanticCandidatesExpression="feature:eContents" headerLabelExpression="bold">
+        <defaultForeground labelFormat="bold">
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+      </ownedLineMappings>
+      <ownedLineMappings name="italic" domainClass="EClass" semanticCandidatesExpression="feature:eContents" headerLabelExpression="italic">
+        <defaultForeground labelFormat="italic">
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+      </ownedLineMappings>
+      <ownedLineMappings name="bold_italic" domainClass="EClass" semanticCandidatesExpression="feature:eContents" headerLabelExpression="bold_italic">
+        <defaultForeground labelFormat="bold_italic">
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+      </ownedLineMappings>
+      <ownedColumnMappings name="fontFormatcol" headerLabelExpression="fontFormat" featureName="*" labelExpression="[line.label/]"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

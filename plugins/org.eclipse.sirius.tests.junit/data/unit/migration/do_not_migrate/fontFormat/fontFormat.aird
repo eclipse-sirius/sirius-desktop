@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_sQvy0AN3EeW5NODoYcfJTw" selectedViews="_ZvfMMAN5EeW5NODoYcfJTw" version="10.0.0.201505131200">
+  <semanticResources>platform:/resource/df/fontFormat.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_ZvfMMAN5EeW5NODoYcfJTw">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_cFezMAN5EeW5NODoYcfJTw" name="fontFormatDiag">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_cFezMQN5EeW5NODoYcfJTw" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_cFezMgN5EeW5NODoYcfJTw"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_cFfaQAN5EeW5NODoYcfJTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_cFfaQQN5EeW5NODoYcfJTw" type="Sirius" element="_cFezMAN5EeW5NODoYcfJTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_cFgoYAN5EeW5NODoYcfJTw" type="2001" element="_cFezMwN5EeW5NODoYcfJTw">
+            <children xmi:type="notation:Node" xmi:id="_cFidkAN5EeW5NODoYcfJTw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_cFidkQN5EeW5NODoYcfJTw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_cFqZYAN5EeW5NODoYcfJTw" type="3003" element="_cFezNAN5EeW5NODoYcfJTw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_cFqZYQN5EeW5NODoYcfJTw" fontName=".Helvetica Neue DeskInterface"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cFqZYgN5EeW5NODoYcfJTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cFgoYQN5EeW5NODoYcfJTw" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cFgoYgN5EeW5NODoYcfJTw" x="148" y="96" width="65" height="68"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_cFkSwAN5EeW5NODoYcfJTw" type="2001" element="_cFezNQN5EeW5NODoYcfJTw">
+            <children xmi:type="notation:Node" xmi:id="_cFmH8AN5EeW5NODoYcfJTw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_cFmH8QN5EeW5NODoYcfJTw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_cFrngAN5EeW5NODoYcfJTw" type="3003" element="_cFezNgN5EeW5NODoYcfJTw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_cFrngQN5EeW5NODoYcfJTw" fontName=".Helvetica Neue DeskInterface"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cFrnggN5EeW5NODoYcfJTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cFkSwQN5EeW5NODoYcfJTw" fontName=".Helvetica Neue DeskInterface" fontHeight="8" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cFkSwgN5EeW5NODoYcfJTw" x="232" y="96" width="73" height="68"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_cFnWEAN5EeW5NODoYcfJTw" type="2002" element="_cFezNwN5EeW5NODoYcfJTw">
+            <children xmi:type="notation:Node" xmi:id="_cFn9IAN5EeW5NODoYcfJTw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_cFokMAN5EeW5NODoYcfJTw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_cFokMQN5EeW5NODoYcfJTw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_cFokMgN5EeW5NODoYcfJTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cFnWEQN5EeW5NODoYcfJTw" fontName=".Helvetica Neue DeskInterface" fontHeight="8" italic="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cFnWEgN5EeW5NODoYcfJTw" x="324" y="96" width="150" height="70"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_cFpLQAN5EeW5NODoYcfJTw" type="2002" element="_cFezOQN5EeW5NODoYcfJTw">
+            <children xmi:type="notation:Node" xmi:id="_cFpyUAN5EeW5NODoYcfJTw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_cFpyUQN5EeW5NODoYcfJTw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_cFpyUgN5EeW5NODoYcfJTw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_cFpyUwN5EeW5NODoYcfJTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cFpLQQN5EeW5NODoYcfJTw" fontName=".Helvetica Neue DeskInterface" fontHeight="8" bold="true" italic="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cFpLQgN5EeW5NODoYcfJTw" x="492" y="96"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_cFfaQgN5EeW5NODoYcfJTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_cFezMwN5EeW5NODoYcfJTw" name="normal" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_cFezNAN5EeW5NODoYcfJTw" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer/@nodeMappings[name='normal']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer/@nodeMappings[name='normal']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_cFezNQN5EeW5NODoYcfJTw" name="bold" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_cFezNgN5EeW5NODoYcfJTw" labelFormat="bold" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer/@nodeMappings[name='bold']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer/@nodeMappings[name='bold']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_cFezNwN5EeW5NODoYcfJTw" name="italic">
+        <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_cFezOAN5EeW5NODoYcfJTw" labelFormat="italic">
+          <description xmi:type="style:FlatContainerStyleDescription" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer/@containerMappings[name='italic']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer/@containerMappings[name='italic']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_cFezOQN5EeW5NODoYcfJTw" name="bold_italic">
+        <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_cFezOgN5EeW5NODoYcfJTw" labelFormat="bold_italic">
+          <description xmi:type="style:FlatContainerStyleDescription" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer/@containerMappings[name='bold_italic']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer/@containerMappings[name='bold_italic']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_cFezOwN5EeW5NODoYcfJTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatDiag']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="fontFormat.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_c-BkwAN5EeW5NODoYcfJTw" name="fontFormatTable" headerColumnWidth="102">
+      <target xmi:type="ecore:EPackage" href="fontFormat.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_c-BkwQN5EeW5NODoYcfJTw" label="normal">
+        <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <originMapping xmi:type="description_2:LineMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatTable']/@ownedLineMappings[name='normal']"/>
+        <cells xmi:type="table:DCell" xmi:id="_yBohcAN5EeW5NODoYcfJTw" label="normal" column="_yBn6YAN5EeW5NODoYcfJTw">
+          <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+          <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_c-BkwgN5EeW5NODoYcfJTw" labelSize="12" defaultForegroundStyle="true"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_c-BkwwN5EeW5NODoYcfJTw" label="bold">
+        <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <originMapping xmi:type="description_2:LineMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatTable']/@ownedLineMappings[name='bold']"/>
+        <cells xmi:type="table:DCell" xmi:id="_yBohcQN5EeW5NODoYcfJTw" label="bold" column="_yBn6YAN5EeW5NODoYcfJTw">
+          <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+          <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_c-BkxAN5EeW5NODoYcfJTw" labelSize="12" labelFormat="bold" defaultForegroundStyle="true"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_c-BkxQN5EeW5NODoYcfJTw" label="italic">
+        <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <originMapping xmi:type="description_2:LineMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatTable']/@ownedLineMappings[name='italic']"/>
+        <cells xmi:type="table:DCell" xmi:id="_yBohcgN5EeW5NODoYcfJTw" label="italic" column="_yBn6YAN5EeW5NODoYcfJTw">
+          <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+          <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_c-BkxgN5EeW5NODoYcfJTw" labelSize="12" labelFormat="italic" defaultForegroundStyle="true"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_c-BkxwN5EeW5NODoYcfJTw" label="bold_italic">
+        <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        <originMapping xmi:type="description_2:LineMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatTable']/@ownedLineMappings[name='bold_italic']"/>
+        <cells xmi:type="table:DCell" xmi:id="_yBpIgAN5EeW5NODoYcfJTw" label="bold_italic" column="_yBn6YAN5EeW5NODoYcfJTw">
+          <target xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+          <semanticElements xmi:type="ecore:EClass" href="fontFormat.ecore#//NewEClass1"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_c-BkyAN5EeW5NODoYcfJTw" labelSize="12" labelFormat="bold_italic" defaultForegroundStyle="true"/>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_yBn6YAN5EeW5NODoYcfJTw" label="fontFormat" cells="_yBohcAN5EeW5NODoYcfJTw _yBohcQN5EeW5NODoYcfJTw _yBohcgN5EeW5NODoYcfJTw _yBpIgAN5EeW5NODoYcfJTw" width="95" featureName="*">
+        <originMapping xmi:type="description_2:FeatureColumnMapping" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatTable']/@ownedColumnMappings[name='fontFormatcol']"/>
+      </columns>
+      <description xmi:type="description_2:EditionTableDescription" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']/@ownedRepresentations[name='fontFormatTable']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="fontFormat.odesign#//@ownedViewpoints[name='fontFormat']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
