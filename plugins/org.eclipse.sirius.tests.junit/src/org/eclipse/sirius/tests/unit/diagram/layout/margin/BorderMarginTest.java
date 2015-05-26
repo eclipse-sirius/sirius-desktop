@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout.margin;
 
-import java.awt.GraphicsEnvironment;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -248,6 +247,8 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
                     }
                     int expectedWidth = labelFigureSize.width + 2 + (borderSize * 2);
                     Dimension figureSize = part.getFigure().getBounds().getSize();
+                    // Temporary display the real size according to font.
+                    System.out.println("Debug data-Size of " + dde.getName() + " in auto-size: " + figureSize);
                     if (expectedWidth != figureSize.width) {
                         wrongSizes = true;
                         sb.append(", expected: " + expectedWidth);
@@ -294,17 +295,6 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
 
                 assertNoVisibleScrollBar(dde, part);
             }
-        }
-    }
-
-    /**
-     * Temporary test to display fonts available on OS.
-     */
-    public void testFonts() {
-        String fonts[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-
-        for (int i = 0; i < fonts.length; i++) {
-            System.out.println(fonts[i]);
         }
     }
 
