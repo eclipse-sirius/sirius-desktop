@@ -90,17 +90,17 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
     {
         // Comic Sans MS has been used to create the test data, but there are
         // differences between linux and windows.
-        listAutoSizes.put(Integer.valueOf(0), new Dimension(182, 49));
-        listAutoSizes.put(Integer.valueOf(1), new Dimension(180, 49));
-        listAutoSizes.put(Integer.valueOf(10), new Dimension(205, 67));
+        listAutoSizes.put(Integer.valueOf(0), new Dimension(183, 49));
+        listAutoSizes.put(Integer.valueOf(1), new Dimension(181, 49));
+        listAutoSizes.put(Integer.valueOf(10), new Dimension(206, 67));
 
         listAutoSizesWin.put(Integer.valueOf(0), new Dimension(182, 47));
         listAutoSizesWin.put(Integer.valueOf(1), new Dimension(180, 47));
         listAutoSizesWin.put(Integer.valueOf(10), new Dimension(205, 65));
 
-        containerAutoSizes.put(Integer.valueOf(0), new Dimension(182, 74));
-        containerAutoSizes.put(Integer.valueOf(1), new Dimension(180, 74));
-        containerAutoSizes.put(Integer.valueOf(10), new Dimension(205, 92));
+        containerAutoSizes.put(Integer.valueOf(0), new Dimension(183, 74));
+        containerAutoSizes.put(Integer.valueOf(1), new Dimension(181, 74));
+        containerAutoSizes.put(Integer.valueOf(10), new Dimension(206, 92));
 
         containerAutoSizesWin.put(Integer.valueOf(0), new Dimension(182, 74));
         containerAutoSizesWin.put(Integer.valueOf(1), new Dimension(180, 74));
@@ -247,8 +247,6 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
                     }
                     int expectedWidth = labelFigureSize.width + 2 + (borderSize * 2);
                     Dimension figureSize = part.getFigure().getBounds().getSize();
-                    // Temporary display the real size according to font.
-                    System.out.println("Debug data-Size of " + dde.getName() + " in auto-size: " + figureSize);
                     if (expectedWidth != figureSize.width) {
                         wrongSizes = true;
                         sb.append(", expected: " + expectedWidth);
