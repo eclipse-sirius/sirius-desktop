@@ -231,7 +231,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * @was-generated NOT use THE mighty factory
          */
         protected ComposedAdapterFactory createAdapterFactory() {
-            List<ComposedAdapterFactory> factories = new ArrayList<ComposedAdapterFactory>();
+            List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
             factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
             fillItemProviderFactories(factories);
             return new ComposedAdapterFactory(factories);
@@ -256,7 +256,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         /**
          * @was-generated
          */
-        protected void fillItemProviderFactories(List factories) {
+        protected void fillItemProviderFactories(List<AdapterFactory> factories) {
             factories.add(new ViewpointItemProviderAdapterFactory());
             factories.add(new DiagramItemProviderAdapterFactory());
 
