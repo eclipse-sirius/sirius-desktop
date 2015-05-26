@@ -307,7 +307,9 @@ public class WorkspaceClassLoading extends BundleClassLoading {
         Class result = null;
         IWorkspaceRoot root = EcorePlugin.getWorkspaceRoot();
         if (root != null) {
-            for (String projectName : viewpointProjects) {
+            Iterator<String> it = viewpointProjects.iterator();
+            while (result == null && it.hasNext()) {
+                String projectName = it.next();
                 ClassLoader loader = getOrCreateClassLoader(projectName, root);
                 if (loader != null) {
                     try {
