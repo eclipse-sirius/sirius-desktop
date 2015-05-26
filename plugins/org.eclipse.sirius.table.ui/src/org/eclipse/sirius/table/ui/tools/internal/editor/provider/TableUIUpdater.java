@@ -164,7 +164,7 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
             }
         } else if (notifier instanceof DLine) {
             DLine dLine = (DLine) notifier;
-            if (notification.getFeature() == TablePackage.Literals.DLINE__LABEL || notification.getFeature() == TablePackage.Literals.DLINE__CELLS) {
+            if (notification.getFeature() == TablePackage.Literals.DLINE__LABEL || notification.getFeature() == TablePackage.Literals.DLINE__CELLS || notification.getFeature() == TablePackage.Literals.DLINE__CURRENT_STYLE) {
                 toUpdateInViewer.add(notifier);
             } else if (notification.getFeature() == TablePackage.Literals.DLINE__ORDERED_CELLS) {
                 toRefreshInViewerWithUpdateLabels.add(notifier);
