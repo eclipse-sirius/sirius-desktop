@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -246,40 +246,43 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             final EObject diagramLinkObject = nextDiagramLink.getElement();
             // eContainer can be quite expensive when deep in the model
             final EObject nextDiagramLinkEContainer = nextDiagramLink.eContainer();
-            final EObject diagramLinkEContainer = diagramLinkObject.eContainer();
-            if (nextDiagramLink.getSource() != null && nextDiagramLink.getTarget() != null && nextDiagramLink.getSource().eContainer() != null && nextDiagramLink.getTarget().eContainer() != null) {
-                final EObject diagramLinkSrc = nextDiagramLink.getSource().getElement();
-                final EObject diagramLinkDst = nextDiagramLink.getTarget().getElement();
-                final int diagramLinkVisualID = SiriusVisualIDRegistry.getVisualID(nextDiagramLink);
-                final Iterator<SiriusLinkDescriptor> linkDescriptorsIterator = linkDescriptors.iterator();
-                while (linkDescriptorsIterator.hasNext()) {
-                    final SiriusLinkDescriptor nextLinkDescriptor = linkDescriptorsIterator.next();
-                    boolean exist = nextDiagramLinkEContainer != null && diagramLinkEContainer != null && diagramLinkObject == nextLinkDescriptor.getModelElement();
-                    exist = exist && diagramLinkSrc == nextLinkDescriptor.getSource() && diagramLinkDst == nextLinkDescriptor.getDestination()
-                            && diagramLinkVisualID == nextLinkDescriptor.getVisualID();
-                    if (exist && diagramLinkSrc instanceof DEdge) {
-                        Predicate<SiriusLinkDescriptor> existingEdgeSource = new Predicate<SiriusLinkDescriptor>() {
+            if (diagramLinkObject != null) {
+                final EObject diagramLinkEContainer = diagramLinkObject.eContainer();
+                if (nextDiagramLink.getSource() != null && nextDiagramLink.getTarget() != null && nextDiagramLink.getSource().eContainer() != null
+                        && nextDiagramLink.getTarget().eContainer() != null) {
+                    final EObject diagramLinkSrc = nextDiagramLink.getSource().getElement();
+                    final EObject diagramLinkDst = nextDiagramLink.getTarget().getElement();
+                    final int diagramLinkVisualID = SiriusVisualIDRegistry.getVisualID(nextDiagramLink);
+                    final Iterator<SiriusLinkDescriptor> linkDescriptorsIterator = linkDescriptors.iterator();
+                    while (linkDescriptorsIterator.hasNext()) {
+                        final SiriusLinkDescriptor nextLinkDescriptor = linkDescriptorsIterator.next();
+                        boolean exist = nextDiagramLinkEContainer != null && diagramLinkEContainer != null && diagramLinkObject == nextLinkDescriptor.getModelElement();
+                        exist = exist && diagramLinkSrc == nextLinkDescriptor.getSource() && diagramLinkDst == nextLinkDescriptor.getDestination()
+                                && diagramLinkVisualID == nextLinkDescriptor.getVisualID();
+                        if (exist && diagramLinkSrc instanceof DEdge) {
+                            Predicate<SiriusLinkDescriptor> existingEdgeSource = new Predicate<SiriusLinkDescriptor>() {
 
-                            public boolean apply(SiriusLinkDescriptor input) {
-                                return input.getModelElement().equals(diagramLinkSrc);
-                            }
-                        };
+                                public boolean apply(SiriusLinkDescriptor input) {
+                                    return input.getModelElement().equals(diagramLinkSrc);
+                                }
+                            };
 
-                        exist = exist && Iterables.isEmpty(Iterables.filter(linkDescriptors, existingEdgeSource));
-                    }
-                    if (exist && diagramLinkDst instanceof DEdge) {
-                        Predicate<SiriusLinkDescriptor> existingEdgeTarget = new Predicate<SiriusLinkDescriptor>() {
+                            exist = exist && Iterables.isEmpty(Iterables.filter(linkDescriptors, existingEdgeSource));
+                        }
+                        if (exist && diagramLinkDst instanceof DEdge) {
+                            Predicate<SiriusLinkDescriptor> existingEdgeTarget = new Predicate<SiriusLinkDescriptor>() {
 
-                            public boolean apply(SiriusLinkDescriptor input) {
-                                return input.getModelElement().equals(diagramLinkDst);
-                            }
-                        };
+                                public boolean apply(SiriusLinkDescriptor input) {
+                                    return input.getModelElement().equals(diagramLinkDst);
+                                }
+                            };
 
-                        exist = exist && Iterables.isEmpty(Iterables.filter(linkDescriptors, existingEdgeTarget));
-                    }
-                    if (exist) {
-                        linksIterator.remove();
-                        linkDescriptorsIterator.remove();
+                            exist = exist && Iterables.isEmpty(Iterables.filter(linkDescriptors, existingEdgeTarget));
+                        }
+                        if (exist) {
+                            linksIterator.remove();
+                            linkDescriptorsIterator.remove();
+                        }
                     }
                 }
             }

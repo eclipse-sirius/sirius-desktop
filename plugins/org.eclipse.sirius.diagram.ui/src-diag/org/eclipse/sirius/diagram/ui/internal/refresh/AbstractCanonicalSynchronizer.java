@@ -835,7 +835,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     }
 
     /**
-     * Deletes a list of views. The views will be deleted <tt>iff</tt> their
+     * Deletes a list of views. The views will be deleted <tt>if</tt> their
      * semantic element has also been deleted.
      * 
      * @param views
@@ -845,14 +845,43 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      */
     protected boolean deleteViews(Collection<? extends View> views) {
         for (View view : views) {
+            // Before removing this view, we must identify incoming or outgoing
+            // edges of this view or of one of its children to delete them just
+            // after. Indeed, an Edge without source (or target) must not exist.
+            List<Edge> edgesToDelete = getIncomingOutgoingEdges(view);
+
             // org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.destroy(v) is
             // no more needed, simply remove the view
             // from its container, DanglinRefRemovalTrigger will complete
             // the work. This prevents GMF to install its
             // CrossReferencerAdapter
+
             EcoreUtil.remove(view);
+            // Then remove incoming or outgoing edges
+            for (Edge edge : edgesToDelete) {
+                EcoreUtil.remove(edge);
+            }
         }
         return !views.isEmpty();
+    }
+
+    /**
+     * Get all incoming and outgoing edges of this <code>view</code> or of one
+     * of its children (except NoteAttachment).
+     * 
+     * @param view
+     *            the concern view
+     * @return list of edges
+     */
+    private List<Edge> getIncomingOutgoingEdges(View view) {
+        List<Edge> edgesToDelete = Lists.newArrayList();
+        Iterables.addAll(edgesToDelete, Iterables.filter(view.getSourceEdges(), Edge.class));
+        Iterables.addAll(edgesToDelete, Iterables.filter(view.getTargetEdges(), Edge.class));
+
+        for (View child : getViewChildren(view)) {
+            edgesToDelete.addAll(getIncomingOutgoingEdges(child));
+        }
+        return edgesToDelete;
     }
 
 }
