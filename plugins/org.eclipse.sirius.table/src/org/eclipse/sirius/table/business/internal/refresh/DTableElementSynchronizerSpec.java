@@ -653,7 +653,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor())) {
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
             }
-            if (style.getLabelFormat() != null) {
+            if (style.getLabelFormat() != null && !style.getLabelFormat().isEmpty()) {
                 style.getLabelFormat().clear();
             }
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize())) {
@@ -728,7 +728,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor())) {
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
             }
-            if (style.getLabelFormat() != null) {
+            if (style.getLabelFormat() != null && !style.getLabelFormat().isEmpty()) {
                 style.getLabelFormat().clear();
             }
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize())) {
