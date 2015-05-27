@@ -50,7 +50,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     public static final String RECEIVER_SEPARATOR = ".";
 
     private static final String EOBJECT_CLASS_NAME = EObject.class.getCanonicalName();
-    
+
     private static final Pattern SPLIT_PATTERN = Pattern.compile("[(,)]");
 
     private final Map<Object, Object> properties = Maps.newHashMap();
@@ -253,6 +253,11 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
         }
     }
 
+    /**
+     * Return all the known service implementations by name.
+     * 
+     * @return the service implementations organized by name.
+     */
     public Map<String, IService> getServices() {
         /*
          * The callback registered to the java extension manager might update
@@ -260,7 +265,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
          * reload is done before returning this list.
          */
         javaExtensions.reloadIfNeeded();
-        
+
         return new HashMap<String, IService>(services);
     }
 
