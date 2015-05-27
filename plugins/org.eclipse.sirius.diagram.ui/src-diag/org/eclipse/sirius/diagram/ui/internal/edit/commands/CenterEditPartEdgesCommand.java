@@ -19,7 +19,8 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.geometry.PrecisionDimension;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -90,18 +91,18 @@ public class CenterEditPartEdgesCommand extends AbstractTransactionalCommand {
         return CommandResult.newOKCommandResult();
     }
 
-    private Dimension getNewSize(EditPart edgeEnd) {
+    private PrecisionDimension getNewSize(EditPart edgeEnd) {
         if (edgeEnd instanceof GraphicalEditPart) {
             IFigure figure = ((GraphicalEditPart) edgeEnd).getFigure();
-            Rectangle newBounds = figure.getBounds().getCopy();
+            PrecisionRectangle newBounds = new PrecisionRectangle(figure.getBounds());
             figure.translateToAbsolute(newBounds);
 
             List editPartRequesting = request.getEditParts();
             if (editPartRequesting.contains(edgeEnd)) {
-                newBounds = request.getTransformedRectangle(newBounds);
+                newBounds = new PrecisionRectangle(request.getTransformedRectangle(newBounds));
             }
             figure.translateToRelative(newBounds);
-            return newBounds.getSize();
+            return new PrecisionDimension(newBounds.preciseWidth(), newBounds.preciseHeight());
         }
         return null;
     }

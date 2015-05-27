@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,10 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -453,8 +453,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Test that when resizing the edge source with a source and a target
-     * 'auto-size', the edge is still centered. See <a
-     * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c5">Bug
+     * 'auto-size', the edge is still centered. See
+     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c5">Bug
      * 448739#c5</a>.
      */
     public void testResizingAutoSizeContainer() {
@@ -475,8 +475,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Test that when resizing a border node, the bendpoints of the not centered
-     * edge, with a null anchor, are not moved. See <a
-     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=466384">Bug 466384</a>.
+     * edge, with a null anchor, are not moved. See
+     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=466384">Bug 466384</a>.
      */
     public void testResizingNullAnchorSourceBorderNode() {
         openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
@@ -499,23 +499,47 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Test that when resizing a border node, the bendpoints of the centered
-     * edge are fix and the edge is still centered. See <a
-     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c18">Bug
+     * edge are fix and the edge is still centered. See
+     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c18">Bug
      * 448739#c18</a>.
      */
-    public void testResizingCenteredTargetBorderNodeWithZoom() {
+    public void testResizingCenteredTargetBorderNodeWithZoom200() {
+        resizeCenteredTargetBorderNodeWithZoom(ZoomLevel.ZOOM_200);
+    }
+
+    /**
+     * Test that when resizing a border node, the bendpoints of the centered
+     * edge are fix and the edge is still centered. See
+     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c25">Bug
+     * 448739#c25</a>.
+     */
+    public void testResizingCenteredTargetBorderNodeWithZoom125() {
+        resizeCenteredTargetBorderNodeWithZoom(ZoomLevel.ZOOM_125);
+    }
+
+    /**
+     * Test that when resizing a border node, the bendpoints of the centered
+     * edge are fix and the edge is still centered. See
+     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c18">Bug
+     * 448739#c18</a>.
+     * 
+     * @param zoomLevel
+     *            The zoom to apply on the editor
+     */
+    protected void resizeCenteredTargetBorderNodeWithZoom(ZoomLevel zoomLevel) {
         openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
-        editor.zoom(ZoomLevel.ZOOM_200);
+        editor.zoom(zoomLevel);
         try {
             SWTBotGefEditPart borderNodeBotGefEditPart = editor.getEditPart("border1", AbstractDiagramBorderNodeEditPart.class);
             borderNodeBotGefEditPart.select();
+            editor.reveal(borderNodeBotGefEditPart.part());
 
             SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
             PointList edge2PointListBefore = getEdgePointList(edgeSwtBotGefEditPart);
 
             IFigure figure = ((GraphicalEditPart) borderNodeBotGefEditPart.part()).getFigure();
             Rectangle boundsBefore = figure.getBounds().getCopy();
-            borderNodeBotGefEditPart.resize(PositionConstants.SOUTH, 0, 400);
+            borderNodeBotGefEditPart.resize(PositionConstants.SOUTH, 0, (int) (200 * zoomLevel.getAmount()));
 
             // we make sure the figure has been resized
             bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
@@ -561,8 +585,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Test that when resizing a border node over another border node, the
-     * overlapped border node is not moved. See <a
-     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=466456">Bug 466456</a>.
+     * overlapped border node is not moved. See
+     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=466456">Bug 466456</a>.
      */
     public void testResizingTargetBorderNodeOverAnotherNode() {
         openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
@@ -585,10 +609,10 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Test that when resizing a shape over edge bendpoints, the edge is still
-     * centered. See <a
-     * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug
-     * 448739#c8</a> and <a
-     * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c10">Bug
+     * centered. See
+     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug
+     * 448739#c8</a> and
+     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c10">Bug
      * 448739#c10</a>.
      */
     public void testResizingContainerWithInViewBendpoints() {
@@ -790,7 +814,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         Point lineOrigin = pointList.getPoint(pointList.size() - 2);
         Point realTargetConnection = pointList.getPoint(pointList.size() - 1);
 
-        Point expectedLineTerminus = getProportionalPoint(getAbsoluteBounds((IGraphicalEditPart) targetSwtBotGefEditPart.part()), expectedAnchor);
+        PrecisionPoint expectedLineTerminus = getProportionalPoint(getAbsoluteBounds((IGraphicalEditPart) targetSwtBotGefEditPart.part()), expectedAnchor);
         connection.translateToRelative(expectedLineTerminus);
 
         Option<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) targetSwtBotGefEditPart.part(), false);
@@ -811,7 +835,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         Point lineOrigin = pointList.getPoint(1);
         Point realSourceConnection = pointList.getPoint(0);
 
-        Point expectedLineTerminus = getProportionalPoint(getAbsoluteBounds((IGraphicalEditPart) sourceEditPart), expectedAnchor);
+        PrecisionPoint expectedLineTerminus = getProportionalPoint(getAbsoluteBounds((IGraphicalEditPart) sourceEditPart), expectedAnchor);
 
         Option<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) sourceEditPart, false);
         if (option.some()) {
@@ -835,8 +859,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      * @param actual
      */
     private void assertConnectionEndPointEquals(String msg, Point expected, Point actual) {
-        assertTrue(msg, actual.x() <= (expected.x() + 1) && actual.x() >= expected.x() - 1);
-        assertTrue(msg, actual.y() <= (expected.y() + 1) && actual.y() >= expected.y() - 1);
+        assertTrue(msg + ": expected " + expected + ", but was " + actual, actual.x() <= (expected.x() + 1) && actual.x() >= expected.x() - 1);
+        assertTrue(msg + ": expected " + expected + ", but was " + actual, actual.y() <= (expected.y() + 1) && actual.y() >= expected.y() - 1);
     }
 
     private DEdgeEditPart getSingleDEdgeFrom(NodeEditPart sourcePart) {
@@ -860,16 +884,16 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     private Rectangle getAbsoluteBounds(IGraphicalEditPart part) {
         IFigure figure = part.getFigure();
-        Rectangle r = figure.getBounds().getCopy();
+        PrecisionRectangle r = new PrecisionRectangle(figure.getBounds());
         figure.getParent().translateToAbsolute(r);
         return r;
     }
 
-    private Point getProportionalPoint(Rectangle bounds, PrecisionPoint proportions) {
-        Point result = bounds.getTopLeft().getCopy();
-        long xOffest = Math.round(bounds.width * proportions.preciseX());
-        long yOffset = Math.round(bounds.height * proportions.preciseY());
-        result.translate(new Dimension((int) xOffest, (int) yOffset));
+    private PrecisionPoint getProportionalPoint(Rectangle bounds, PrecisionPoint proportions) {
+        PrecisionPoint result = new PrecisionPoint(bounds.getTopLeft());
+        double xOffest = bounds.width * proportions.preciseX();
+        double yOffset = bounds.height * proportions.preciseY();
+        result.translate(xOffest, yOffset);
         return result;
     }
 
