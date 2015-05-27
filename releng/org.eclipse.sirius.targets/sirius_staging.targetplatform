@@ -6,12 +6,6 @@ include "modules/shared-license.tpd"
 
 with source, requirements
 
-location Acceleo-3.6M7 "http://download.eclipse.org/acceleo/updates/milestones/3.6/S201505131324" {
-        org.eclipse.acceleo.feature.group lazy
-        org.eclipse.acceleo.ide.ui lazy
-        org.eclipse.acceleo.query.feature.group lazy
-}
-
 location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
         com.google.guava lazy
         com.ibm.icu lazy
@@ -37,4 +31,7 @@ location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
         org.eclipse.platform.feature.group lazy
         org.eclipse.sdk.feature.group lazy
         org.eclipse.xtext.sdk.feature.group lazy
+        org.eclipse.acceleo.feature.group lazy
+        org.eclipse.acceleo.ide.ui lazy
+        org.eclipse.acceleo.query.feature.group lazy
 }
