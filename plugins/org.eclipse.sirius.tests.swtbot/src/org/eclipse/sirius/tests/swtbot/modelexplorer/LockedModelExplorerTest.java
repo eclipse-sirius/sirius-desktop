@@ -33,6 +33,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.tools.api.views.RefreshLabelImageJob;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 
 /**
@@ -143,7 +144,12 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
             assertFalse("The job should not be scheduled as one unlock notification has been send and ModelExplorer view is not opened.", refreshJobScheduled);
         } finally {
             // Reopen the model explorer view (for following tests in suite)
-            EclipseUIUtil.showView(IModelExplorerView.ID);
+            Display.getDefault().syncExec(new Runnable() {
+                @Override
+                public void run() {
+                    EclipseUIUtil.showView(IModelExplorerView.ID);
+                }
+            });
         }
     }
 
