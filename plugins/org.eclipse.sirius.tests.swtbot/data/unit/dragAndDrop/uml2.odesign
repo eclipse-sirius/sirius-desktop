@@ -1306,14 +1306,14 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnContainerInContainer" domainClass="Package">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnContainerInContainer" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD']" domainClass="Package">
       <defaultLayer name="Default">
         <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']/@borderedNodeMappings[name='CDRPoCiC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']/@borderedNodeMappings[name='CDRPoCiC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
           <style sizeComputationExpression="2" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
-        <containerMappings name="CDRPoCiC_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']">
+        <containerMappings name="CDRPoCiC_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD']" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']">
           <borderedNodeMappings name="CDRPoCiC_Port" semanticCandidatesExpression="feature:eContents" domainClass="Port">
             <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1327,7 +1327,28 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
+          <conditionnalStyles predicateExpression="[name.equalsIgnoreCase('InnerComponent')/]">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
         </containerMappings>
+        <toolSections name="dndTools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="packagedElement" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnPortOnContainer" domainClass="Package">

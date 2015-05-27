@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 
 /**
@@ -120,6 +121,45 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
         // We made an horizontal translation, y shouldn't have changed (in fact,
         // between "originalCenter.y" and "originalCenter.y + 5"
         assertThat("y coord. of Port is not at expected position after refresh", newCenterAfterRefresh.y, allOf(greaterThanOrEqualTo(originalCenter.y), lessThanOrEqualTo(originalCenter.y + 5)));
+    }
+
+    /**
+     * Drop node having port from a component to the diagram. Also check the
+     * stability of the edge, the last point should be the only one moving.
+     */
+    public void testIndirectDropPortFromComponentToDiagram() {
+        editor = openAndGetEditor(RESIZE_REPRESENTATION_PORT_ON_CONTAINER_IN_CONTAINER_NAME, RESIZE_REPRESENTATION_PORT_ON_CONTAINER_IN_CONTAINER_NAME);
+
+        // Get original bendpoints
+        PointList originalDraw2DPoints = getBendpoints(DROP_PORT_NAME, AbstractDiagramBorderNodeEditPart.class);
+        List<Point> originalGmfPointsFromSource = getGMFBendpointsFromSource(DROP_PORT_NAME, AbstractDiagramBorderNodeEditPart.class);
+
+        String componentNameToSelect = "InnerComponent";
+        // Get the bottom center coordinates of the port
+        final Rectangle originalComponentBounds = getEditPartBounds(componentNameToSelect);
+
+        // if move, click the center of the port, else click between the center
+        // and the bottom.
+        int relativeClickedY = -originalComponentBounds.height / 2;
+
+        // clicked point, drag start
+        final Point pointToDrag = originalComponentBounds.getBottom().getTranslated(0, relativeClickedY);
+
+        // Select the port
+        editor.select(editor.getEditPart(componentNameToSelect, AbstractDiagramContainerEditPart.class));
+        // Compute the drop destination
+        final Point endpoint = pointToDrag.getTranslated(0, 75);
+        // Drag'and'drop with the mouse
+        editor.drag(pointToDrag.x, pointToDrag.y, endpoint.x, endpoint.y);
+        // Get the new bounds and compare with the expected
+        final Rectangle newComponentBounds = getEditPartBounds(componentNameToSelect);
+        assertEquals("Component is not at expected position (probably not moved but resized)", newComponentBounds.getTopRight(), originalComponentBounds.getTopRight().getTranslated(0, 75));
+
+        if (originalDraw2DPoints != null && originalGmfPointsFromSource != null) {
+            // check the stability of the existing edge when moving the
+            // border node
+            checkEdgeStability(DROP_PORT_NAME, AbstractDiagramBorderNodeEditPart.class, originalDraw2DPoints, originalGmfPointsFromSource);
+        }
     }
 
     /**

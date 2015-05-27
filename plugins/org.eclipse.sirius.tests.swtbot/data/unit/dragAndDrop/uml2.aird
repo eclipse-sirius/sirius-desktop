@@ -18266,7 +18266,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_6ZPEtUrhEeSRw9blU02bnQ" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']"/>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_6ZQS0ErhEeSRw9blU02bnQ">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_6ZQS0ErhEeSRw9blU02bnQ" name="InnerComponent">
           <target xmi:type="uml:Component" href="uml2.uml#_ZVPJgNKaEd6qFrkOl_onzg"/>
           <semanticElements xmi:type="uml:Component" href="uml2.uml#_ZVPJgNKaEd6qFrkOl_onzg"/>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_6ZQ54ErhEeSRw9blU02bnQ" name="DropPort" outgoingEdges="_6Ze8UErhEeSRw9blU02bnQ" width="1" height="1" resizeKind="NSEW">
