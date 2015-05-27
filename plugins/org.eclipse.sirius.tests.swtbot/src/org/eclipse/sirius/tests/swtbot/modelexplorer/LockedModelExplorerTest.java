@@ -12,6 +12,8 @@ package org.eclipse.sirius.tests.swtbot.modelexplorer;
 
 import java.util.Collections;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
@@ -136,6 +138,13 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
         assertFalse("The job should not be scheduled as no notification has been send.", refreshJobScheduled);
         lockRepresentation(true);
         assertTrue("The job should be scheduled as one lock notification has been send and ModelExplorer view is opened.", refreshJobScheduled);
+        try {
+            Job.getJobManager().join(RefreshLabelImageJob.FAMILY, new NullProgressMonitor());
+        } catch (OperationCanceledException e) {
+            fail("Problem during waiting of RefreshLabelImageJob: " + e.getMessage());
+        } catch (InterruptedException e) {
+            fail("Problem during waiting of RefreshLabelImageJob: " + e.getMessage());
+        }
         refreshJobScheduled = false;
         modelExplorerView.close();
         try {
