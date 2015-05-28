@@ -664,7 +664,7 @@ public final class ViewpointSelection {
         }
 
         private Image getEnhancedImage(final Image image, final Viewpoint viewpoint) {
-            if (ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
+            if (!ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
                 return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/decorator/folder_close.gif"));
             }
             return image;
