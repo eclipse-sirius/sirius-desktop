@@ -10,7 +10,8 @@
        Obeo - Initial API and implementation
 -->
 <toc label="Sirius" topic="doc/index.html">
-  <topic href="doc/Release Notes.html" label="Release Notes">
+  <topic href="doc/Release_Notes.html" label="Release Notes">
+    <topic href="doc/Release_Notes_Previous.html" label="Release Notes for Older Versions" />
   </topic>
   <topic href="doc/user/Sirius User Manual.html" label="Sirius User Manual">
     <anchor id="userStart"/>
