@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,26 +30,29 @@ import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.gmf.runtime.diagram.ui.requests.EditCommandRequestWrapper;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirDestroyElementRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramHelper;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Tests behaviors when model (semantic or session) is modified outside the
@@ -299,4 +302,94 @@ public class EntitiesDiagramModificationOutsideEditorTests extends SiriusDiagram
         TestsUtil.synchronizationWithUIThread();
     }
 
+    /**
+     * This test check that when a representations file is modify outside the
+     * session, the modified node can always be deleted.
+     */
+    public void testRenameElementInRepresentationFilesAndThenDeleteCorrespondingNode() {
+        // Open the editor (and refresh it)
+        final IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        assertNotNull("The editor did not open ! ", editorPart);
+
+        final EPackage ePackage = (EPackage) semanticModel;
+        assertTrue("The semantic model is not empty before the tool application", ePackage.getEClassifiers().isEmpty());
+        // Create a first class
+        assertTrue(applyNodeCreationTool("Class", diagram, diagram));
+        assertEquals("The class was not created or more elements were created", 1, ePackage.getEClassifiers().size());
+        assertTrue("The class has not the right instance type", ePackage.getEClassifiers().get(0) instanceof EClass);
+        final EClass eClass1 = (EClass) ePackage.getEClassifiers().get(0);
+        assertEquals("The class has not the right name", "NewEClass1", eClass1.getName());
+
+        DDiagramElement firstClassDiagramElement = getFirstDiagramElement(diagram, eClass1);
+        assertNotNull("The first class has no corresponding diagramElement", firstClassDiagramElement);
+        final Node firstClassNode = getGmfNode(firstClassDiagramElement);
+        assertNotNull("The first class has no corresponding GMF node", firstClassNode);
+        // Create a second class
+        assertTrue(applyNodeCreationTool("Class", diagram, diagram));
+        assertEquals("The second class was not created or more elements were created", 2, ePackage.getEClassifiers().size());
+        assertTrue("The second class has not the right instance type", ePackage.getEClassifiers().get(0) instanceof EClass);
+        final EClass eClass2 = (EClass) ePackage.getEClassifiers().get(1);
+        assertEquals("The second class has not the right name", "NewEClass2", eClass2.getName());
+
+        DDiagramElement secondClassDiagramElement = getFirstDiagramElement(diagram, eClass2);
+        assertNotNull("The second class has no corresponding diagramElement", secondClassDiagramElement);
+        IGraphicalEditPart secondClassEditPart = getEditPart(secondClassDiagramElement);
+        assertNotNull("The second class has no corresponding edit part.", secondClassEditPart);
+        assertTrue("The editMode of the second class must be enabled.", secondClassEditPart.isEditModeEnabled());
+        Node secondClassNode = getGmfNode(secondClassDiagramElement);
+        assertNotNull("The second class has no corresponding GMF node", secondClassNode);
+        // Create a reference between the two classes.
+        applyEdgeCreationTool("Reference", diagram, (EdgeTarget) firstClassDiagramElement, (EdgeTarget) secondClassDiagramElement);
+        assertEquals("The operation was not created or more elements were created", 1, Iterables.size(Iterables.filter(eClass1.getEStructuralFeatures(), EReference.class)));
+        final EReference eReference = Iterables.filter(eClass1.getEStructuralFeatures(), EReference.class).iterator().next();
+        assertEquals("The reference has not the right name", "newEReference1", eReference.getName());
+        assertEquals("The reference has not the right type", eClass2, eReference.getEType());
+
+        session.save(new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        // Load the representations file resource in another resource set,
+        // rename the DNodeList name corresponding to the first class and save
+        // the resource.
+        TransactionalEditingDomain domain = new TransactionalEditingDomainImpl(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+        ResourceSet set = domain.getResourceSet();
+        try {
+            final DAnalysis dAnalysis = (DAnalysis) ModelUtils.load(session.getSessionResource().getURI(), set);
+            final DNodeList firstClassDNode = (DNodeList) dAnalysis.getOwnedViews().get(0).getOwnedRepresentations().get(0).getOwnedRepresentationElements().get(0);
+
+            domain.getCommandStack().execute(new RecordingCommand(domain, "Rename first class") {
+
+                @Override
+                protected void doExecute() {
+                    firstClassDNode.setName("AnotherFirstName");
+                }
+            });
+            dAnalysis.eResource().save(Collections.EMPTY_MAP);
+        } catch (IOException e) {
+            fail("Pb when saving the representations file resource in another resourceSet : " + e.getMessage());
+        }
+        TestsUtil.synchronizationWithUIThread();
+
+        editorPart.setFocus();
+        // Get the reloaded diagram
+        DAnalysis reloadedDAnalysis = (DAnalysis) session.getSessionResource().getContents().get(0);
+        DDiagram reloadedDiagram = (DDiagram) reloadedDAnalysis.getOwnedViews().get(0).getOwnedRepresentations().get(0);
+
+        // Checks that the renamed DDiagramElement always exists
+        firstClassDiagramElement = getFirstDiagramElement(reloadedDiagram, eClass1);
+        assertNotNull("After renaming the DNodeList of the first class outside of the session, it should always exist", firstClassDiagramElement);
+        // And also its EditPart
+        IGraphicalEditPart firstClassEditPart = getEditPart(firstClassDiagramElement);
+        // Delete the first class
+        AirDestroyElementRequest destroyElementRequest = new AirDestroyElementRequest(session.getTransactionalEditingDomain(), false, true);
+        EditCommandRequestWrapper editCommandRequestWrapper = new EditCommandRequestWrapper(destroyElementRequest);
+        firstClassEditPart.performRequest(editCommandRequestWrapper);
+        TestsUtil.synchronizationWithUIThread();
+        // Check that the class is deleted
+        final EClass firstEClass = (EClass) ePackage.getEClassifiers().get(0);
+        assertEquals("The NewEClass1 class has not been deleted.", "NewEClass2", firstEClass.getName());
+
+        DialectUIManager.INSTANCE.closeEditor(editorPart, false);
+        TestsUtil.synchronizationWithUIThread();
+    }
 }

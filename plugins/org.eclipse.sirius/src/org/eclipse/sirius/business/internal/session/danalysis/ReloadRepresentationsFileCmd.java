@@ -10,13 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 
@@ -88,6 +91,16 @@ public class ReloadRepresentationsFileCmd extends RecordingCommand {
                 }
                 if (analysisSession != null) {
                     analysisSession.addAdaptersOnAnalysis(analysis);
+                }
+            }
+            // In case of reload, the AirDCrossReferenceAdapter has been removed
+            // during the unload (AirDResourceImpl.doUnload()). It must be added
+            // again here.
+            if (EcoreUtil.getExistingAdapter(resource, AirDCrossReferenceAdapter.class) == null) {
+                Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resource.getResourceSet(), AirDCrossReferenceAdapter.class);
+                if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
+                    resource.eAdapters().add(existingAirDCrossReferenceAdapter);
+                    System.out.println("Add airDCrossReferenceAdapter on resource " + resource.getURI().toString());
                 }
             }
         }
