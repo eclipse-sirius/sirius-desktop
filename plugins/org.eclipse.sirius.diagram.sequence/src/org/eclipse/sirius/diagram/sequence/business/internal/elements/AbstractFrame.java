@@ -68,6 +68,12 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
         return Predicates.or(InteractionUse.notationPredicate(), CombinedFragment.notationPredicate());
     }
 
+    /**
+     * Get proper logical bounds.
+     * 
+     * @return proper logical bounds
+     */
+    @Override
     public Rectangle getProperLogicalBounds() {
         /*
          * Combined Fragments are directly on the diagram itself, so we can use
@@ -155,6 +161,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public Option<Lifeline> getLifeline() {
         return Options.newNone();
     }
@@ -162,6 +169,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public ISequenceEvent getParentEvent() {
         return null;
     }
@@ -169,6 +177,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isLogicallyInstantaneous() {
         return false;
     }
@@ -176,6 +185,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return false;
     }
@@ -183,6 +193,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         return false;
     }
@@ -190,6 +201,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public Range getOccupiedRange() {
         return Range.emptyRange();
     }
@@ -197,6 +209,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public Range getValidSubEventsRange() {
         return Range.emptyRange();
     }
@@ -204,6 +217,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public ISequenceEvent getHierarchicalParentEvent() {
         return null;
     }
@@ -211,6 +225,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public Option<Operand> getParentOperand() {
         return new ParentOperandFinder(this).getParentOperand();
     }
@@ -218,6 +233,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<ISequenceEvent> getEventsToMoveWith() {
         return getSubEvents();
     }
