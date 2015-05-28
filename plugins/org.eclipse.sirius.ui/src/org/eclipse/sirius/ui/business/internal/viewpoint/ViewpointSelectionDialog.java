@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -195,16 +195,25 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         @Override
         public Image getImage(final Object element) {
             Item item = (Item) element;
-
+            
+            Image viewpointImage = null;
+            Viewpoint vp = item.getViewpoint();
+            if (vp.getIcon() != null && vp.getIcon().length() > 0) {
+                final ImageDescriptor desc = SiriusEditPlugin.Implementation.findImageDescriptor(vp.getIcon());
+                if (desc != null) {
+                    viewpointImage = SiriusEditPlugin.getPlugin().getImage(desc);
+                }
+            }
             // Default image
-            Image viewpointImage = SiriusEditPlugin.getPlugin().getBundledImage("icons/full/obj16/Viewpoint.gif");
-
+            if (viewpointImage == null) {
+                viewpointImage = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(vp));
+            }
+            
             // Add decorator if the viewpoint comes from workspace
-            if (!ViewpointRegistry.getInstance().isFromPlugin(item.getViewpoint())) {
+            if (!ViewpointRegistry.getInstance().isFromPlugin(vp)) {
                 final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/folder_close.gif");
                 viewpointImage = SiriusEditPlugin.getPlugin().getImage(new DecorationOverlayIcon(viewpointImage, decoratorDescriptor, IDecoration.BOTTOM_LEFT));
             }
-
             return viewpointImage;
         }
 
