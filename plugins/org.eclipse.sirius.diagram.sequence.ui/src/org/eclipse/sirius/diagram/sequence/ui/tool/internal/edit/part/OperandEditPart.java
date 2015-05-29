@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.Sequence
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.OperandFigure;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 import com.google.common.base.Preconditions;
@@ -166,6 +167,11 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
     protected void refreshVisuals() {
         if (getParent() != null) {
             super.refreshVisuals();
+
+            // Always keep a 0 pixel margin for Operand figure.
+            if (primaryShape.getBorder() instanceof OneLineMarginBorder) {
+                ((OneLineMarginBorder) primaryShape.getBorder()).setMargin(0);
+            }
         }
     }
 
