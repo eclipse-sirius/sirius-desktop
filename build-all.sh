@@ -2,7 +2,7 @@
 
 set -e
 
-readonly PLATFORM=${1:-luna}
+readonly PLATFORM=${1:-mars}
 readonly TESTS_GOAL=${2:-package}
 readonly TESTS_SUITES=${3:-junit,swtbot-sequence,swtbot}
 readonly BASEDIR=$(pwd)
