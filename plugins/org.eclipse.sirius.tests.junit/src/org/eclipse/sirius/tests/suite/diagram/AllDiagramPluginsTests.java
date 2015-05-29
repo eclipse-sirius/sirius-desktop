@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -240,12 +240,12 @@ public class AllDiagramPluginsTests {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * Add the gerrit part of the Junit tests to the specified suite.
      * 
-     * @return The testsuite containing all the tests
+     * @param suite
+     *            the suite into which to add the tests.
      */
-    public static Test suite() {
-        final TestSuite suite = new TestSuite("Diagram Plugins Tests");
+    public static void addGerritPart(TestSuite suite) {
         suite.addTestSuite(InterpolatedColorTest.class);
         suite.addTestSuite(ComputedColorTest.class);
         suite.addTestSuite(LabelColorTest.class);
@@ -384,14 +384,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(LayoutHelperImplEdgeLayoutDataTest.class);
         suite.addTestSuite(LayoutHelperImplNodeLayoutData1Test.class);
         suite.addTestSuite(LayoutHelperImplNodeLayoutData2Test.class);
-        String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
-        if (!platformVersion.startsWith("3.5")) {
-            suite.addTestSuite(SiriusLayoutDataManagerForSemanticElementsTest.class);
-            if (TestsUtil.shouldRunLongTests()) {
-                suite.addTest(new JUnit4TestAdapter(SiriusLayoutDataManagerForSemanticElementsApplyWithPredefinedDataTest.class));
-            }
-            suite.addTest(new JUnit4TestAdapter(SiriusLayoutDataManagerForSemanticElementsStoreWithPredefinedDataTest.class));
-        }
+
         suite.addTestSuite(SiriusLayoutDataManagerForDDiagramElementWithSameSemanticElementsTest.class);
         suite.addTestSuite(LayoutDataManagerSelectionTest.class);
         suite.addTestSuite(LabelPositionOnContainerAndListTest.class);
@@ -409,7 +402,6 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(ModelContentTest.class);
         suite.addTestSuite(BorderSizeAndColorTest.class);
         suite.addTestSuite(BorderMarginTest.class);
-        //
         suite.addTestSuite(MappingsReuseTests.class);
         suite.addTestSuite(MappingImportAndFiltersTests.class);
         suite.addTestSuite(OptionalLayersActivationTests.class);
@@ -501,6 +493,40 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(MMTest.class);
 
         suite.addTest(AllSequenceDiagramsPluginTests.suite());
+
+        String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
+        if (!platformVersion.startsWith("3.5")) {
+            suite.addTestSuite(SiriusLayoutDataManagerForSemanticElementsTest.class);
+            suite.addTest(new JUnit4TestAdapter(SiriusLayoutDataManagerForSemanticElementsStoreWithPredefinedDataTest.class));
+        }
+
+    }
+
+    /**
+     * Add the tests which for one reason or another are not part of the suite
+     * launched on each Gerrit verification.
+     * 
+     * @param suite
+     *            the suite to add the tests into.
+     */
+    public static void addNonGerritPart(TestSuite suite) {
+        String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
+        if (!platformVersion.startsWith("3.5") && TestsUtil.shouldRunLongTests()) {
+            // This one is long (~9 minutes), so it is ignored when running
+            suite.addTest(new JUnit4TestAdapter(SiriusLayoutDataManagerForSemanticElementsApplyWithPredefinedDataTest.class));
+        }
+       
+    }
+
+    /**
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * 
+     * @return The testsuite containing all the tests
+     */
+    public static Test suite() {
+        final TestSuite suite = new TestSuite("Diagram Plugins Tests");
+        addGerritPart(suite);
+        addNonGerritPart(suite);
         return suite;
     }
 }

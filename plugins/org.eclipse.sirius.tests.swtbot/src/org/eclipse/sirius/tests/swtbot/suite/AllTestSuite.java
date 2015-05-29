@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,11 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
@@ -58,6 +53,11 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 /**
  * All SWTBot tests.
  * 
@@ -81,16 +81,109 @@ public class AllTestSuite extends TestCase {
      * @return The testsuite containing all the tests
      */
     public static Test suite() {
-        final TestSuite suite = new TestSuite("Sirius SwtBot tests");
+        TestSuite suite = new TestSuite("Sirius SwtBot tests");
+        addPart1(suite);
+        addPart2(suite);
+        return suite;
+    }
 
-        // TheViepointProjectCreationTest shud be done before the others ones :
-        // to verifiy the behavior when a specifier first launches the product.
-        suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
-
+    /**
+     * Add the first part of the SWTbot Gerrit tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addGerritPart1(TestSuite suite) {
         suite.addTestSuite(ContentAssistTest.class);
         suite.addTestSuite(MetamodelPropertyTabTests.class);
-        suite.addTestSuite(CustomizationPropertySectionsTests.class);
         suite.addTestSuite(ResizeKindEditorTest.class);
+        suite.addTestSuite(CascadingSiriusURITest.class);
+        suite.addTestSuite(AssociatedElementsOnPropertyViewTest.class);
+        suite.addTestSuite(NavigationFromDNodeListElementTest.class);
+        suite.addTestSuite(NavigationOnSiriusActivationTest.class);
+        suite.addTestSuite(DiagramDocumentationTest.class);
+        suite.addTestSuite(DiagramPrintTest.class);
+        suite.addTestSuite(DirectEditLabelTest.class);
+        suite.addTestSuite(SetStyleToWorkspaceImageTests.class);
+        suite.addTestSuite(SelectAllAndDeselectionTest.class);
+        suite.addTestSuite(SessionCreationTest.class);
+        suite.addTestSuite(LabelAlignmentRefreshTest.class);
+        suite.addTestSuite(LabelProviderProviderTests.class);
+        suite.addTestSuite(PinnedElementsOnTreeDiagramTest.class);
+        suite.addTestSuite(PinnedElementsTest.class);
+        suite.addTestSuite(PinnedNotesTest.class);
+        suite.addTestSuite(RemoveEdgeBendpointsTest.class);
+        suite.addTestSuite(RemoveNoteTextTest.class);
+        suite.addTestSuite(RequestInterpreterTest.class);
+        suite.addTestSuite(ResetStylePropertiesToDefaultValuesActionTests.class);
+        suite.addTestSuite(MoveBorderNodeTest.class);
+        suite.addTestSuite(LayoutingModeTest.class);
+        suite.addTestSuite(LabelSelectionTest.class);
+        suite.addTestSuite(KeyboardDeleteFromDiagramTests.class);
+        suite.addTestSuite(CustomClipboardSupportTest.class);
+        suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
+        suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
+
+    }
+
+    /**
+     * Add the second part of the SWTbot Gerrit tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addGerritPart2(TestSuite suite) {
+
+        suite.addTestSuite(NoteCreationTest.class);
+        suite.addTestSuite(MigrationOnVsmEditorReloadTest.class);
+        suite.addTestSuite(VSMFieldTest.class);
+        suite.addTestSuite(VSMAndDiagramEditorSynchronisationTest.class);
+        suite.addTestSuite(SVGImageBundleTest.class);
+        suite.addTestSuite(RoutingStyleTest.class);
+        suite.addTestSuite(RepresentationGroupWithoutRepresentationInstanceTest.class);
+        suite.addTestSuite(RenameProjectWithSessionTest.class);
+        suite.addTestSuite(ReconnectEdgeWithChangedRoutingStyleTest.class);
+        suite.addTestSuite(ReconnectEdgeBendpointStabilityTest.class);
+        suite.addTestSuite(QuickStartScenario.class);
+        suite.addTestSuite(NonVisibleLabelSelectionTest.class);
+        suite.addTestSuite(NavigateToNewRepresentationTest.class);
+        suite.addTestSuite(LockedAppearanceTabTest.class);
+        suite.addTestSuite(GroupElementsInOneOtherTests.class);
+        suite.addTestSuite(GroupElementsInOneOtherTestsWith200PercentOfZoomTests.class);
+        suite.addTestSuite(GroupElementsInOneOtherTestsWith50PercentOfZoomTests.class);
+        suite.addTestSuite(ExtraMappingEdgeCreationTest.class);
+        suite.addTestSuite(ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest.class);
+        suite.addTestSuite(EdgeCreationTest.class);
+        suite.addTestSuite(DragAndDropFromTableAndTreeToDiagramTest.class);
+        suite.addTestSuite(DeleteSemanticElementToCheckDecorator.class);
+        suite.addTestSuite(DeleteFromDiagramTest.class);
+        suite.addTestSuite(DeleteDiagramWithListeningPaletteToolTest.class);
+        suite.addTestSuite(BoldItalicFontSynchronizationTest.class);
+        suite.addTestSuite(RepresentationRenamingTest.class);
+        suite.addTestSuite(PopupMenuTest.class);
+        suite.addTestSuite(NodeCreationTest.class);
+        suite.addTestSuite(NodeCreationWithSnapToGridTest.class);
+        suite.addTestSuite(GenericClipboardSupportTest.class);
+        suite.addTestSuite(MultiSessionCopyPasteTest.class);
+    }
+
+    /**
+     * Add the first part of the SWTbot tests to the specified suite. This
+     * corresponds roughly to the first half of the execution time of the
+     * complete suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addPart1(TestSuite suite) {
+
+        addGerritPart1(suite);
+
+        suite.addTestSuite(CustomizationPropertySectionsTests.class);
+        // TheViepointProjectCreationTest should be done before the others ones:
+        // to verify the behavior when a specifier first launches the product.
+        suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
+
         // suite.addTest(PseudoClearcaseSwtbotTestSuite.suite());
         suite.addTest(STDSwtbotTestSuite.suite());
         suite.addTest(UMLSwtbotTestSuite.suite());
@@ -114,34 +207,21 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeLabelStabilityTest.class);
         suite.addTestSuite(EdgeStabilityOnLayerManagementTest.class);
         suite.addTestSuite(CenteredEdgesTest.class);
-        suite.addTestSuite(RemoveEdgeBendpointsTest.class);
         suite.addTestSuite(EditorSavingTest.class);
         suite.addTestSuite(EmptyPropertyViewAfterDeletionTest.class);
         suite.addTestSuite(RepresentationVisibilityAfterSessionReloadTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTestWithOldUI.class);
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
-        suite.addTestSuite(KeyboardDeleteFromDiagramTests.class);
-        suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
         suite.addTestSuite(LabelFontModificationsTest.class);
-        suite.addTestSuite(LabelProviderProviderTests.class);
-        suite.addTestSuite(LabelSelectionTest.class);
         suite.addTestSuite(MultiLineLabelDiagramTest.class);
-        suite.addTestSuite(NavigationFromDNodeListElementTest.class);
-        suite.addTestSuite(NavigationOnSiriusActivationTest.class);
-        suite.addTestSuite(RemoveNoteTextTest.class);
         suite.addTestSuite(NodeCreationPositionTest.class);
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);
-        suite.addTestSuite(PinnedElementsOnTreeDiagramTest.class);
-        suite.addTestSuite(PinnedElementsTest.class);
-        suite.addTestSuite(PinnedNotesTest.class);
-        suite.addTestSuite(LayoutingModeTest.class);
         suite.addTestSuite(ChildrenPositionStabilityAfterParentResizeTest.class);
         suite.addTestSuite(ShapeResizingEdgePositionStabilityTests.class);
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
         suite.addTestSuite(PortLocationAfterDragAndDropTest.class);
         suite.addTestSuite(PortLocationAfterDragAndDropOnDiagramTest.class);
-        suite.addTestSuite(MoveBorderNodeTest.class);
         suite.addTestSuite(CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest.class);
         suite.addTestSuite(CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest.class);
         suite.addTestSuite(CopyPasteLayoutOfLabelOfBorderedNodeTest.class);
@@ -152,31 +232,30 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PortNotVisibleSelectionTest.class);
         suite.addTestSuite(RefreshAfterUndoDeletionFromGenericToolTest.class);
         suite.addTestSuite(RefreshAfterViewCreationTest.class);
-        suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
         suite.addTestSuite(RefreshWithCustomizedStyleFromAppearanceTabTests.class);
         suite.addTestSuite(RefreshWithCustomizedStyleFromTabbarTests.class);
         suite.addTestSuite(ResizeKindRefreshTests.class);
-        suite.addTestSuite(LabelAlignmentRefreshTest.class);
-        suite.addTestSuite(RequestInterpreterTest.class);
-        suite.addTestSuite(SessionCreationTest.class);
-        suite.addTestSuite(SetStyleToWorkspaceImageTests.class);
-        suite.addTestSuite(ResetStylePropertiesToDefaultValuesActionTests.class);
         suite.addTestSuite(SpecificLayoutBendpointsOnReopeningTest.class);
-        suite.addTestSuite(WorkspaceImageTest.class);
         suite.addTestSuite(TreeFoldingTest.class);
         suite.addTestSuite(DoubleClickToolNavigationOperationTest.class);
-        suite.addTestSuite(CascadingSiriusURITest.class);
         suite.addTestSuite(BackgroundColorFigureUpdateTests.class);
         suite.addTestSuite(EdgeMappingTestCase.class);
-        suite.addTestSuite(DiagramDocumentationTest.class);
-        suite.addTestSuite(DiagramPrintTest.class);
-        suite.addTestSuite(DirectEditLabelTest.class);
-        suite.addTestSuite(SelectAllAndDeselectionTest.class);
-        suite.addTestSuite(NoteCreationTest.class);
+        suite.addTestSuite(ExtensionActivationOrderTest.class);
+    }
+
+    /**
+     * Add the second part of the SWTbot tests to the specified suite. This
+     * corresponds roughly to the second half of the execution time of the
+     * complete suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addPart2(TestSuite suite) {
+
+        addGerritPart2(suite);
+        suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
-        suite.addTestSuite(AssociatedElementsOnPropertyViewTest.class);
-        suite.addTestSuite(NodeCreationTest.class);
-        suite.addTestSuite(NodeCreationWithSnapToGridTest.class);
         suite.addTestSuite(ContainerCreationTest.class);
         suite.addTestSuite(ContainerCreationWithSnapToGridTest.class);
         suite.addTestSuite(DNodeListCreationTest.class);
@@ -194,36 +273,19 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
 
         suite.addTestSuite(DeleteHookTests.class);
-        suite.addTestSuite(DeleteFromDiagramTest.class);
-        suite.addTestSuite(DeleteDiagramWithListeningPaletteToolTest.class);
 
         // TODO DLE : reenable theses tests as soon as getEditPart method will
         // be based on matcher.
         // suite.addTestSuite(ToolWizardTest.class);
         suite.addTestSuite(ExportDiagramsAsImagesTest.class);
         suite.addTestSuite(ExportDiagramsAsImagesAndHtmlTest.class);
-        suite.addTestSuite(ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest.class);
         suite.addTestSuite(TabBarTest.class);
         suite.addTestSuite(NotInvisibleTabBarTest.class);
-        suite.addTestSuite(LockedAppearanceTabTest.class);
         suite.addTestSuite(LockedTabBarTest.class);
         suite.addTestSuite(ArrangeSelectionOnBreakdownDiagramTest.class);
-        suite.addTestSuite(EdgeCreationTest.class);
-        suite.addTestSuite(RoutingStyleTest.class);
-        suite.addTestSuite(PopupMenuTest.class);
-        suite.addTestSuite(RepresentationRenamingTest.class);
-        suite.addTestSuite(NodeLabelPositionTest.class);
-        suite.addTestSuite(NonVisibleLabelSelectionTest.class);
-        suite.addTestSuite(RenameProjectWithSessionTest.class);
-        suite.addTestSuite(VSMAndDiagramEditorSynchronisationTest.class);
-        suite.addTestSuite(VSMFieldTest.class);
         suite.addTestSuite(RemovedDefaultColorMenuTest.class);
-        suite.addTestSuite(NavigateToNewRepresentationTest.class);
         suite.addTestSuite(DuplicationCausedBySelectionTest.class);
         suite.addTestSuite(EdgeWithMultipleLabelsTest.class);
-        suite.addTestSuite(GenericClipboardSupportTest.class);
-        suite.addTestSuite(CustomClipboardSupportTest.class);
-        suite.addTestSuite(MultiSessionCopyPasteTest.class);
         // This test is KO if the cdonative plugins are active (VP-4101), so
         // launch it only when cdonative plugins are not active.
         try {
@@ -235,18 +297,10 @@ public class AllTestSuite extends TestCase {
             // Nothing to do, as viewpoint.cdonative is not accessible the
             // CDONative tests will not be launched
         }
-        suite.addTestSuite(RepresentationGroupWithoutRepresentationInstanceTest.class);
-        suite.addTestSuite(SVGImageBundleTest.class);
         suite.addTestSuite(SetPropertyOfTableTreeByPropertiesViewTest.class);
-        suite.addTestSuite(ToolCreationPositionTest.class);
         suite.addTestSuite(ElementCreationWithPopupMenuTests.class);
         suite.addTestSuite(ElementCreationWithPopupMenuWith200PercentOfZoomTests.class);
         suite.addTestSuite(ElementCreationWithPopupMenuWith50PercentOfZoomTests.class);
-        suite.addTestSuite(GroupElementsInOneOtherTests.class);
-        suite.addTestSuite(GroupElementsInOneOtherTestsWith200PercentOfZoomTests.class);
-        suite.addTestSuite(GroupElementsInOneOtherTestsWith50PercentOfZoomTests.class);
-        suite.addTestSuite(BoldItalicFontSynchronizationTest.class);
-        suite.addTestSuite(ExtensionActivationOrderTest.class);
         suite.addTestSuite(PackageLayoutStabilityOnManyViewsCreationToolTest.class);
         suite.addTestSuite(ResetOriginTest.class);
         suite.addTestSuite(LayoutStabilityOnManualRefreshTest.class);
@@ -258,8 +312,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ProjectDependenciesTest.class);
         suite.addTestSuite(ProjectsConcurrentCloseTest.class);
         suite.addTestSuite(ContextualMenuTest.class);
-        suite.addTestSuite(ReconnectEdgeWithChangedRoutingStyleTest.class);
-        suite.addTestSuite(ExtraMappingEdgeCreationTest.class);
         suite.addTestSuite(BracketEdgeTests.class);
         suite.addTestSuite(EdgeCopyPasteLayoutTest.class);
         suite.addTestSuite(BendpointsStabilityOnMovesTest.class);
@@ -267,28 +319,24 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ContainerDefaultSizeLayoutTest.class);
         suite.addTestSuite(ModifyEdgeLayoutAfterRefreshTest.class);
         suite.addTest(TreeSwtbotTestSuite.suite());
-        suite.addTestSuite(DragAndDropFromTableAndTreeToDiagramTest.class);
         suite.addTestSuite(CompletionProposalInVSMTest.class);
-        suite.addTestSuite(MigrationOnVsmEditorReloadTest.class);
         suite.addTestSuite(DirectEditWithInputLabelTest.class);
         suite.addTestSuite(AdditionalLayerTest.class);
         suite.addTestSuite(GroupingContentProviderTest.class);
         suite.addTestSuite(GroupingContentProviderByContainingTest.class);
         suite.addTestSuite(PaletteViewManagementTest.class);
+        suite.addTestSuite(ToolCreationPositionTest.class);
+        suite.addTestSuite(LocalSessionViewTest.class);
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
         suite.addTestSuite(ValidationTest.class);
-        suite.addTestSuite(LocalSessionViewTest.class);
-        suite.addTestSuite(QuickStartScenario.class);
-        suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(InitializeEmptySessionTest.class);
         suite.addTestSuite(InitializeSessionTest.class);
-        suite.addTestSuite(DeleteSemanticElementToCheckDecorator.class);
         suite.addTestSuite(RepairTest.class);
         suite.addTestSuite(ControlUncontrolWithOpenedRepresentationTest.class);
-
-        return suite;
+        suite.addTestSuite(WorkspaceImageTest.class);
+        suite.addTestSuite(NodeLabelPositionTest.class);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -131,13 +131,12 @@ public class AllCommonPluginTests extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * Add the gerrit part of the Junit tests to the specified suite.
      * 
-     * @return The testsuite containing all the tests
+     * @param suite
+     *            the suite into which to add the tests.
      */
-    public static Test suite() {
-        final TestSuite suite = new TestSuite("Common Plugin Tests");
-
+    public static void addGerritPart(TestSuite suite) {
         suite.addTestSuite(RefreshEditorsPrecommitListenerTests.class);
         suite.addTestSuite(EqualityHelperTestCase.class);
         suite.addTestSuite(WorkspaceResourceSyncTestCase.class);
@@ -160,7 +159,6 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(RepairMigrateLostDiagramElementsTC1Test.class);
         suite.addTestSuite(RepairMigrateLostDiagramElementsTC2Test.class);
         suite.addTestSuite(RepairMigratePinStatusTest.class);
-        suite.addTestSuite(RepairWithActivatedFiltersTest.class);
         // suite.addTestSuite(EdgeStyleDescriptionAndEdgeStyleMigrationTests.class);
         suite.addTestSuite(FragmentedFilesMigrationTest.class);
         suite.addTestSuite(MigrationOfCollapsedBorderedNodeTest.class);
@@ -213,7 +211,6 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(SampleSessionTest.class);
         suite.addTestSuite(SiriusRegistryTests.class);
         suite.addTestSuite(SiriusRegistryListener2Tests.class);
-        suite.addTestSuite(SessionManagerListener2Tests.class);
         suite.addTestSuite(SessionSemanticResourceTests.class);
         suite.addTestSuite(SessionServiceTest.class);
 
@@ -239,7 +236,6 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(CreateCellToolInterpreterTest.class);
         suite.addTestSuite(AcceleoMTLInterpreterTests.class);
-        suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
         suite.addTestSuite(AcceleoMTLCompletionTests.class);
         suite.addTestSuite(AcceleoCrossReferencerTest.class);
         suite.addTestSuite(AcceleoPackageRegistryTest.class);
@@ -261,7 +257,33 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(TransientSessionTests.class);
         suite.addTestSuite(RestoreSessionFromEditorInputTests.class);
         suite.addTestSuite(SiriusCrossReferenceAdapterTests.class);
-        return suite;
     }
 
+    /**
+     * Add the tests which for one reason or another are not part of the suite
+     * launched on each Gerrit verification.
+     * 
+     * @param suite
+     *            the suite to add the tests into.
+     */
+    public static void addNonGerritPart(TestSuite suite) {
+        // This one takes too long (12 minutes) to be part of the Gerrit suite.
+        suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
+        // The ones below are "blacklisted" for now because they caused at least
+        // one false-negative Gerrit Verification job
+        suite.addTestSuite(SessionManagerListener2Tests.class);
+        suite.addTestSuite(RepairWithActivatedFiltersTest.class);
+    }
+
+    /**
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * 
+     * @return The testsuite containing all the tests
+     */
+    public static Test suite() {
+        final TestSuite suite = new TestSuite("Common Plugin Tests");
+        addGerritPart(suite);
+        addNonGerritPart(suite);
+        return suite;
+    }
 }

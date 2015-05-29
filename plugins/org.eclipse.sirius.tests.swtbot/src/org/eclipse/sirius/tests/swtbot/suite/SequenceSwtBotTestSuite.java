@@ -100,12 +100,12 @@ public class SequenceSwtBotTestSuite extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * Add the gerrit part of the Sequence tests to the specified suite.
      * 
-     * @return The test suite containing all the tests
+     * @param suite
+     *            the suite into which to add the tests.
      */
-    public static Test suite() {
-        final TestSuite suite = new TestSuite("SwtBot tests on sequence diagram");
+    public static void addGerritPart(TestSuite suite) {
         suite.addTestSuite(InstanceRoleResizableEditPolicyTests.class);
         suite.addTestSuite(SequenceReorderTest.class);
         suite.addTestSuite(SequenceDiagramDirtyTests.class);
@@ -114,12 +114,10 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(FrameMoveWithExpansionTest.class);
         suite.addTestSuite(SequenceLifelineTest.class);
         suite.addTestSuite(SequenceBasicMessageTest.class);
-        suite.addTestSuite(SequenceReturnMessageTest.class);
         suite.addTestSuite(MessageExtensionTest.class);
         suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
         suite.addTestSuite(SequenceMessageToSelfTest.class);
         suite.addTestSuite(CreateMessageTests.class);
-        suite.addTestSuite(SequenceDestroyMessageTest.class);
         suite.addTestSuite(ExecutionTests.class);
         suite.addTestSuite(ExecutionMoveTests.class);
         suite.addTestSuite(ExecutionMove2Tests.class);
@@ -131,6 +129,18 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(ExecutionMessageReconnectionTests.class);
         suite.addTestSuite(ExecutionLinkedMessageReconnectionTests.class);
         suite.addTestSuite(ExternalModificationsTests.class);
+    }
+
+    /**
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * 
+     * @return The test suite containing all the tests
+     */
+    public static Test suite() {
+        final TestSuite suite = new TestSuite("SwtBot tests on sequence diagram");
+
+        addGerritPart(suite);
+        suite.addTestSuite(SequenceReturnMessageTest.class);
         suite.addTestSuite(SyncCallTest.class);
         suite.addTestSuite(SyncCallMoveTest.class);
         suite.addTestSuite(SyncCall2Test.class);
@@ -138,6 +148,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SyncCallInOperandReorderTest.class);
         suite.addTestSuite(CreateMessageOnCollapsedExecutionTest.class);
         suite.addTestSuite(SequenceExecutionMessageToSelfTest.class);
+        suite.addTestSuite(SequenceDestroyMessageTest.class);
         suite.addTestSuite(NoteAttachmentTest.class);
         suite.addTestSuite(SequenceArrangeLinkedBorderedNodesTest.class);
         suite.addTestSuite(InteractionUseSingleClickCreationTests.class);
