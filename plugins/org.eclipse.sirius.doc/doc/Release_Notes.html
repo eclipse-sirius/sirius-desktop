@@ -46,6 +46,18 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
+		<ul>
+			<li><span class="label label-info">Modified</span> The 
+				<em>Snap to Grid</em> and 
+				<em>Snap to Shapes</em> are now automatically disabled on Sequence diagrams. As indicated in the user documentation, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. see 
+				<a href="./user/sequences/Sequence%20Diagrams.html#introduction">documentation</a> for details. Previously, the user has to explicitely disable the snap features.
+			</li>
+			<li><span class="label label-success">Added</span> The methods 
+				<code>isSnapToShape</code> and 
+				<code>isSnapToGrid()</code> have been added in class 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor</code>. They allow to know the state of the corresponding properties.
+			</li>
+		</ul>
 		<h2 id="sirius3.0.0">Changes in Sirius 3.0.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
