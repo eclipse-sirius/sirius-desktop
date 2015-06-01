@@ -15,8 +15,13 @@ import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
@@ -45,6 +50,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -79,6 +85,8 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             refreshConnectionsBendpoints();
         }
     };
+
+    private IPropertyChangeListener snapDisabler;
 
     /**
      * Constructor.
@@ -131,6 +139,45 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
     @Override
     public void activate() {
         super.activate();
+
+        final EditPartViewer viewer = getViewer();
+        if (viewer instanceof DiagramGraphicalViewer) {
+            final IPreferenceStore workspaceViewerPreferenceStore = ((DiagramGraphicalViewer) viewer).getWorkspaceViewerPreferenceStore();
+            if (workspaceViewerPreferenceStore != null) {
+                workspaceViewerPreferenceStore.setDefault(WorkspaceViewerProperties.SNAPTOGRID, false);
+                workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGRID, false);
+
+                workspaceViewerPreferenceStore.setDefault(WorkspaceViewerProperties.SNAPTOGEOMETRY, false);
+                workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, false);
+
+                snapDisabler = new IPropertyChangeListener() {
+
+                    @Override
+                    public void propertyChange(org.eclipse.jface.util.PropertyChangeEvent event) {
+                        if (event.getNewValue() instanceof Boolean && ((Boolean) event.getNewValue()).booleanValue()) {
+                            if (WorkspaceViewerProperties.SNAPTOGEOMETRY.equals(event.getProperty())) {
+                                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, Boolean.FALSE);
+                                    }
+                                });
+                            } else if (WorkspaceViewerProperties.SNAPTOGRID.equals(event.getProperty())) {
+                                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGRID, Boolean.FALSE);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                };
+
+                workspaceViewerPreferenceStore.addPropertyChangeListener(snapDisabler);
+
+            }
+        }
         /*
          * Once the diagram (and all its children) is active, refresh the
          * various ordering. This is especially needed when creating/opening a
@@ -192,6 +239,12 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
      */
     @Override
     public void deactivate() {
+        EditPartViewer viewer = getViewer();
+        if (snapDisabler != null && viewer instanceof DiagramGraphicalViewer && ((DiagramGraphicalViewer) viewer).getWorkspaceViewerPreferenceStore() != null) {
+            ((DiagramGraphicalViewer) viewer).getWorkspaceViewerPreferenceStore().removePropertyChangeListener(snapDisabler);
+            snapDisabler = null;
+        }
+
         getEditingDomain().removeResourceSetListener(refreshZorder);
         getEditingDomain().removeResourceSetListener(semanticOrderingSynchronizer);
         Option<SessionEventBroker> broker = getSessionBroker();

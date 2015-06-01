@@ -370,8 +370,6 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
 
     protected void initEditor() {
         if (editor != null) {
-            editor.setSnapToGrid(false);
-
             editor.setFocus();
         }
     }

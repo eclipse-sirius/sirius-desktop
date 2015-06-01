@@ -63,6 +63,11 @@
 			<li><span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to brother shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of edge, see 
 				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">documentation</a> for details.
 			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<em>Snap to Grid</em> and 
+				<em>Snap to Shapes</em> are now automatically disabled on Sequence diagrams. As indicated in the user documentation, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. see 
+				<a href="./user/sequences/Sequence%20Diagrams.html#introduction">documentation</a> for details. Previously, the user has to explicitely disable the snap features.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gef">Changes in 
@@ -85,6 +90,11 @@
 			</li>
 			<li><span class="label label-success">Added</span> The 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.condition.PerspectiveActivatedCondition</code> new offers the capability to inverse the test. This condition becomes a DeactivatedCondition instead of an ActivatedCondition by using the new constructor with inverse parameter.
+			</li>
+			<li><span class="label label-success">Added</span> The methods 
+				<code>isSnapToShape</code> and 
+				<code>isSnapToGrid()</code> have been added in class 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor</code>. They allow to know the state of the corresponding properties.
 			</li>
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int)</code>, and so 

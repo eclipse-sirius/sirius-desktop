@@ -65,6 +65,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.SequenceBasicMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDestroyMessageMoveTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDestroyMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDiagramDirtyTests;
+import org.eclipse.sirius.tests.swtbot.sequence.SequenceDiagramNoSnapTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionBasicAndReturnMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionMessageToSelfReparentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionMessageToSelfTest;
@@ -110,7 +111,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceReorderTest.class);
         suite.addTestSuite(SequenceDiagramDirtyTests.class);
         suite.addTestSuite(SequenceOpeningFilteredEventEndsTests.class);
-
+        suite.addTestSuite(SequenceDiagramNoSnapTest.class);
         suite.addTestSuite(FrameMoveWithExpansionTest.class);
         suite.addTestSuite(SequenceLifelineTest.class);
         suite.addTestSuite(SequenceBasicMessageTest.class);

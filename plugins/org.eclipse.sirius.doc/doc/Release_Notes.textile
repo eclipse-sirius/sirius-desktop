@@ -9,6 +9,7 @@ h2(#sirius3.1.0). Changes in Sirius 3.1.0
 h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to brother shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of edge, see "documentation":./user/diagrams/Diagrams.html#snap_to_shapes for details.
+* <span class="label label-info">Modified</span> The _Snap to Grid_ and _Snap to Shapes_ are now automatically disabled on Sequence diagrams. As indicated in the user documentation, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. see "documentation":./user/sequences/Sequence%20Diagrams.html#introduction for details. Previously, the user has to explicitely disable the snap features.
 
 h3. Developer-Visible Changes
 
@@ -20,6 +21,7 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The methods @closePerspective(String)@, @closeSiriusPerspective()@ and @closeModelingPerspective()@ have been added in class @org.eclipse.sirius.tests.swtbot.support.api.perspective.DesignerPerspectives@ to allow the closing of perspectives.
 * <span class="label label-success">Added</span> The @org.eclipse.sirius.tests.swtbot.support.api.condition.PerspectiveActivatedCondition@ new offers the capability to inverse the test. This condition becomes a DeactivatedCondition instead of an ActivatedCondition by using the new constructor with inverse parameter.
+* <span class="label label-success">Added</span> The methods @isSnapToShape@ and @isSnapToGrid()@ have been added in class @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@. They allow to know the state of the corresponding properties.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int)@, and so @SWTBotSiriusGefViewer.dragWithKey@ and @SWTBotSiriusFigureCanvas.mouseDragWithKey@), has an additional parameter, compared to @drag(int, int, int, int)@ method, to precise the key code to press during the drag'n'drop. It is possible to call this method with SWT.None to retrieve the standard behavior of @drag@ method. This method also has a correct behavior for the move of bendpoints of edges.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.TopCondition@: New condition to wait that top of the edit part is on the expected location.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.BendpointLocationCondition@: New condition to wait that a bendpoint is on the expected x or y location.

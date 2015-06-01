@@ -87,6 +87,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
+import org.eclipse.swtbot.swt.finder.results.BoolResult;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
@@ -1474,6 +1475,22 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
             }
         });
     }
+    
+    /**
+     * Return the "Snap to grid" option value for this editor.
+     * 
+     * @return the "Snap to grid" option value for this editor.
+     */
+    public boolean isSnapToShape() {
+        BoolResult snapToShape = new BoolResult() {
+
+            @Override
+            public Boolean run() {
+                return ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().getBoolean(WorkspaceViewerProperties.SNAPTOGEOMETRY);
+            }
+        };
+        return UIThreadRunnable.syncExec(snapToShape).booleanValue();
+    }
 
     /**
      * Disable or enable the snapToGrid option for this editor.
@@ -1495,6 +1512,22 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
                 ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.RULERUNIT, rulerUnits);
             }
         });
+    }
+
+    /**
+     * Return the "Snap to grid" option value for this editor.
+     * 
+     * @return the "Snap to grid" option value for this editor.
+     */
+    public boolean isSnapToGrid() {
+        BoolResult snapToGrid = new BoolResult() {
+
+            @Override
+            public Boolean run() {
+                return ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().getBoolean(WorkspaceViewerProperties.SNAPTOGRID);
+            }
+        };
+        return UIThreadRunnable.syncExec(snapToGrid).booleanValue();
     }
 
     /**
