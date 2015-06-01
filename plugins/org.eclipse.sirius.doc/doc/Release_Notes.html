@@ -185,8 +185,8 @@
 				<code>DAnalysis.getModels()</code> should be avoided and may be removed in a future release.
 			</li>
 			<li><span class="label label-info">Moved</span> Extensions in 
-				<code>plugin.xml</code> that provide UI functionalities have been moved to 
-				<code>org.eclipse.sirius.table.ui.ext</code> to make the contributions to the UI optional. If your product consumed directly the Sirius plug-ins instead of the high-level features, you may need to add the new plug-ins if you want the Sirius UI contributions to stay available.
+				<code>plugin.xml</code> that provide UI functionalities have been moved to new 
+				<code>org.eclipse.sirius.*.ext</code> plug-ins, to make the contributions to the UI optional. If your product consumed directly the Sirius plug-ins instead of the high-level features, you may need to add the new plug-ins if you want the Sirius UI contributions to stay available.
 			</li>
 			<li><span class="label label-danger">Removed</span> Many unused types defined in the metamodels have been removed. This should not impact normal client code. Existing models will be automatically migrated on loading if needed.</li>
 			<li><span class="label label-danger">Removed</span> Sirius no longer installs the 
@@ -938,6 +938,9 @@
 			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.getDRepresentation()</code> has been added to return the 
 				<code>org.eclipse.sirius.viewpoint.DRepresentation</code> instance available in the diagram editor.
+			</li>
+			<li><span class="label label-success">Added</span> A new condition is available to wait that a view is closed: 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.condition.ViewIsClosedCondition</code>.
 			</li>
 			<li><span class="label label-info">Modified</span> The method 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.getSectionButton()</code>  now only takes the button&#8217;s tooltip instead of a numerical position index and the tooltip.
