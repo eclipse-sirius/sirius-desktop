@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" name="fixture" version="8.1.0">
+  <ownedViewpoints name="Bug_468006">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Bug_468006_Table" domainClass="ecore.EPackage">
+      <ownedLineMappings name="Class" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eClassifiers" headerLabelExpression="feature:name">
+        <foregroundConditionalStyle predicateExpression="feature:abstract">
+          <style labelSize="8" labelFormat="italic">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </foregroundConditionalStyle>
+      </ownedLineMappings>
+      <ownedColumnMappings name="ClassName" label="Name" headerLabelExpression="Class Name" featureName="name" labelExpression="feature:name"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

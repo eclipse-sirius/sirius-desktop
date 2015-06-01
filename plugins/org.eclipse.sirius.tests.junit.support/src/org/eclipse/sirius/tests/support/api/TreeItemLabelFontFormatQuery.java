@@ -8,7 +8,7 @@
  * Contributors:
  *      Obeo - Initial API and implementation
  */
-package org.eclipse.sirius.tests.swtbot.support.api.widget;
+package org.eclipse.sirius.tests.support.api;
 
 import java.util.ArrayList;
 import java.util.List;

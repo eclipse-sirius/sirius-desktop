@@ -33,6 +33,7 @@ import org.eclipse.sirius.tests.unit.table.unit.refresh.DTableSynchronizerWithEd
 import org.eclipse.sirius.tests.unit.table.unit.refresh.InvalidParentExpressionTest;
 import org.eclipse.sirius.tests.unit.table.unit.refresh.TableManuelRefreshTests;
 import org.eclipse.sirius.tests.unit.table.unit.refresh.TableNotDirtyOnOpeningTest;
+import org.eclipse.sirius.tests.unit.table.unit.refresh.TableStyleRefreshTest;
 import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByColumnTest;
 import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByColumnTestWithEditor;
 import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByLineTest;
@@ -101,6 +102,7 @@ public class AllTablePluginTests extends TestCase {
         suite.addTestSuite(CrossReferencedDLineDeleteTest.class);
         suite.addTestSuite(TableContentTest.class);
         suite.addTestSuite(VariableOnTableCreationToolsTest.class);
+        suite.addTestSuite(TableStyleRefreshTest.class);
         return suite;
     }
 

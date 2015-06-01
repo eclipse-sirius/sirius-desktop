@@ -381,7 +381,9 @@
 			<li><span class="label label-success">Added</span> A new method has been added in 
 				<code>org.eclipse.sirius.viewpoint.DAnalysis</code> named 
 				<code>getSemanticResources()</code>. This method returns a list of 
-				<code>org.eclipse.sirius.business.api.resource.ResourceDescriptor</code> which is a descriptor of the semantic resource.* <span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.business.api.resource.ResourceDescriptor</code> which is a descriptor of the semantic resource.
+			</li>
+			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.viewpoint.RGBValues</code> has been changed from an 
 				<code>EClass</code> to an 
 				<code>EDataType</code>, it is not an 
@@ -916,6 +918,11 @@
 			<li><span class="label label-info">Modified</span> The 
 				<code>SiriusTestCase.genericSetUp(List&lt;URI&gt;, List&lt;URI&gt;, boolean, URI)</code> method has been set to protected so that it can be called from concrete test cases. This method allows initializing session.
 			</li>
+			<li><span class="label label-info">Moved</span> The class 
+				<code>TreeItemLabelFontFormatQuery</code> was moved into 
+				<code>org.eclipse.sirius.tests.support.api</code> (from 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.widget</code>), as it can be used in non-SWTBot tests..
+			</li>
 			<li><span class="label label-warning">Deprecated</span> The method 
 				<code>org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase.setReadOnly(IFile)</code> has been deprecated, 
 				<code>org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)</code> can be used instead.
@@ -948,6 +955,11 @@
 			<li><span class="label label-info">Modified</span> The methods 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.selectPropertyTabItem(String)</code> now returns a 
 				<code>boolean</code> that is true when the property tab item is found, false otherwise.
+			</li>
+			<li><span class="label label-info">Moved</span> The class 
+				<code>TreeItemLabelFontFormatQuery</code> was moved into 
+				<code>org.eclipse.sirius.tests.support.api</code> (from 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.widget</code>), as it can be used in non-SWTBot tests..
 			</li>
 			<li><span class="label label-warning">Deprecated</span> The methods 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(UIProject)</code> and 

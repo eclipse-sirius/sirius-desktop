@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_ZwD6UAOBEeWu-Lx5UaoHIw" selectedViews="_aR-7oAOBEeWu-Lx5UaoHIw" version="8.1.1">
+  <models xmi:type="ecore:EPackage" href="data.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_aR-7oAOBEeWu-Lx5UaoHIw" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_bUjL4AOBEeWu-Lx5UaoHIw" name="new Bug_468006_Table" headerColumnWidth="152">
+      <target xmi:type="ecore:EPackage" href="data.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_fV6vkAOBEeWu-Lx5UaoHIw" label="Aaaaaa">
+        <target xmi:type="ecore:EClass" href="data.ecore#//Aaaaaa"/>
+        <semanticElements xmi:type="ecore:EClass" href="data.ecore#//Aaaaaa"/>
+        <originMapping xmi:type="description:LineMapping" href="fixture.odesign#//@ownedViewpoints[name='Bug_468006']/@ownedRepresentations[name='Bug_468006_Table']/@ownedLineMappings[name='Class']"/>
+        <cells xmi:type="table:DCell" xmi:id="_fV79sAOBEeWu-Lx5UaoHIw" label="Aaaaaa" column="_bUjL6QOBEeWu-Lx5UaoHIw">
+          <target xmi:type="ecore:EClass" href="data.ecore#//Aaaaaa"/>
+          <semanticElements xmi:type="ecore:EClass" href="data.ecore#//Aaaaaa"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_fV8kwAOBEeWu-Lx5UaoHIw">
+            <foregroundStyleOrigin xmi:type="description:FeatureColumnMapping" href="fixture.odesign#//@ownedViewpoints[name='Bug_468006']/@ownedRepresentations[name='Bug_468006_Table']/@ownedColumnMappings[name='ClassName']"/>
+          </currentStyle>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_kM0-sAOCEeWu-Lx5UaoHIw" labelFormat="italic">
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_lg5OoAOCEeWu-Lx5UaoHIw"/>
+        </currentStyle>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_fV7WoAOBEeWu-Lx5UaoHIw" label="Bbbbbb">
+        <target xmi:type="ecore:EClass" href="data.ecore#//Bbbbbb"/>
+        <semanticElements xmi:type="ecore:EClass" href="data.ecore#//Bbbbbb"/>
+        <originMapping xmi:type="description:LineMapping" href="fixture.odesign#//@ownedViewpoints[name='Bug_468006']/@ownedRepresentations[name='Bug_468006_Table']/@ownedLineMappings[name='Class']"/>
+        <cells xmi:type="table:DCell" xmi:id="_fV9L0AOBEeWu-Lx5UaoHIw" label="Bbbbbb" column="_bUjL6QOBEeWu-Lx5UaoHIw">
+          <target xmi:type="ecore:EClass" href="data.ecore#//Bbbbbb"/>
+          <semanticElements xmi:type="ecore:EClass" href="data.ecore#//Bbbbbb"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_fV7WoQOBEeWu-Lx5UaoHIw" label="Cccccc">
+        <target xmi:type="ecore:EClass" href="data.ecore#//Cccccc"/>
+        <semanticElements xmi:type="ecore:EClass" href="data.ecore#//Cccccc"/>
+        <originMapping xmi:type="description:LineMapping" href="fixture.odesign#//@ownedViewpoints[name='Bug_468006']/@ownedRepresentations[name='Bug_468006_Table']/@ownedLineMappings[name='Class']"/>
+        <cells xmi:type="table:DCell" xmi:id="_fV_BAAOBEeWu-Lx5UaoHIw" label="Cccccc" column="_bUjL6QOBEeWu-Lx5UaoHIw">
+          <target xmi:type="ecore:EClass" href="data.ecore#//Cccccc"/>
+          <semanticElements xmi:type="ecore:EClass" href="data.ecore#//Cccccc"/>
+        </cells>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_bUjL6QOBEeWu-Lx5UaoHIw" label="Class Name" cells="_fV79sAOBEeWu-Lx5UaoHIw _fV9L0AOBEeWu-Lx5UaoHIw _fV_BAAOBEeWu-Lx5UaoHIw" featureName="name">
+        <originMapping xmi:type="description:FeatureColumnMapping" href="fixture.odesign#//@ownedViewpoints[name='Bug_468006']/@ownedRepresentations[name='Bug_468006_Table']/@ownedColumnMappings[name='ClassName']"/>
+      </columns>
+      <description xmi:type="description:EditionTableDescription" href="fixture.odesign#//@ownedViewpoints[name='Bug_468006']/@ownedRepresentations[name='Bug_468006_Table']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="fixture.odesign#//@ownedViewpoints[name='Bug_468006']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
