@@ -314,7 +314,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ContextualMenuTest.class);
         suite.addTestSuite(BracketEdgeTests.class);
         suite.addTestSuite(EdgeCopyPasteLayoutTest.class);
-        suite.addTestSuite(BendpointsStabilityOnMovesTest.class);
         suite.addTestSuite(BorderedNodeCopyPastLayoutTest.class);
         suite.addTestSuite(ContainerDefaultSizeLayoutTest.class);
         suite.addTestSuite(ModifyEdgeLayoutAfterRefreshTest.class);
