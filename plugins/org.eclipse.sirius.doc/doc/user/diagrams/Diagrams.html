@@ -287,7 +287,7 @@
 			<img border="0" src="images/reset_origin_masked_edge.png"/>
 		</p>
 		<h3 id="Hidingelements">Hiding elements</h3>
-		<p>Every graphical element on a diagram can be hidden explicitly. To do that, simply right click on the graphical element (or elements if you want to hide several elements at once) you want to hide. Then, choose 
+		<p>Every graphical element on a diagram except compartments can be hidden explicitly. To do that, simply right click on the graphical element (or elements if you want to hide several elements at once) you want to hide. Then, choose 
 			<i>Show/Hide</i> / 
 			<i>Hide Element</i>. The graphical element is now hidden from view.
 		</p>
@@ -298,12 +298,18 @@
 		<p>	
 			<img border="0" src="images/diagram_editor12.png"/>
 		</p>
+		<p>The element can also be hidden from the tool-bar using the 
+			<i>Hide element</i> button.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor11_tabbar.png"/>
+		</p>
 		<p>It is also possible to hide an element from the outline view. Choose outline mode to see the semantic model in a tree viewer. You can now right click on an element and choose 
 			<em>Hide element</em>.
 		</p>
 		<p>There are two ways to reveal hidden elements:</p>
 		<ul>
-			<li>on the outline view, in outline mode, you can see every model element. The elements that are hidden have their names displayed in italic style. To reveal one of this element, simply right click on it and choose 
+			<li>on the outline view, in outline mode, you can see every model element. The elements that are hidden have their names displayed in italic style and their icon is decorated with a yellow dot in the top left corner. To reveal one of this element, simply right click on it and choose 
 				<i>Show element</i>.
 			</li>
 		</ul>
@@ -323,18 +329,49 @@
 		<p>	
 			<img border="0" src="images/diagram_editor_show_hide_dialog2.png"/>
 		</p>
+		<p>Some elements might be grayed in this tree (compartments, Sequence diagram elements, ..), their selection will have no effect. Their grayed status indicates that they can not be hidden from the wizard but their children might support it.</p>
 		<p>You can also use 
-			<a href="#UsingRegularExpressionstoFindDiagramElements">regular expressions</a> to easily retrieve the elements you want to hide/reveal.
+			<a href="#UsingRegularExpressionstoFindDiagramElements">regular expressions</a> to easily retrieve the elements you want to hide/reveal. 
 		</p>
 		<h4 id="Hidinglabels">Hiding labels</h4>
-		<h5 id="Nodeslabels">Nodes labels</h5>
-		<p>It is also possible to hide the node label if it is on the border of its node.</p>
-		<p>The approach is the same as for other elements, except that there are a specific menus named &#171;Hide/Show Label&#187;. It is possible to call this menu directly on the label or on its node.</p>
+		<p>It is also possible to hide the label of graphical elements (see the node labels section for nodes supported case).</p>
+		<p>The approach is the same as for other elements, except that there are a specific menus named &#171;Hide/Show Label&#187;. It is possible to call this menu directly on the label or on its element.</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_hide_label_1.png"/>
 		</p>
+		<p>The tool-bar button 
+			<em>Hide label</em> can also be used.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_hide_label_tabbar.png"/>
+		</p>
+		<p>It is also possible to hide or reveal a label from the outline view, in outline mode. The elements whose label is hidden have their names displayed in italic style and their icon is decorated with a 
+			<i>L</i> in the bottom right corner. To reveal a label, simply right click on it and choose 
+			<i>Show label</i>.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_hide_label_outline.png"/>
+		</p>
+		<p>When there is no selected element on the diagram, 
+			<em>Show/Hide</em> tab bar button allows to manage the labels too.
+		</p>
+		<h5 id="ContainersListsandcompartmentslabels">Containers, Lists and compartments labels</h5>
+		<p><div style="display:none">
+			<br/>   TODO Correct displayed name for compartments: DNodeContainer name and not smeantic elemnt label ?
+			<br/>	
+			<img border="0" src="images/diagram_editor_hide_container_list_region_label_1.png"/>
+			<br/></div>
+		</p>
+		<p>Labels of containers, lists and compartment might be hidden by default. You can choose to display them using the outline, contextual menu or 
+			<em>Show/Hide</em> tree view.
+		</p>
+		<h5 id="Nodeslabels">Nodes labels</h5>
+		<p>It is possible to hide the node label only if it is on the border of its node. Those nodes can have their label hidden by default. You can choose to display them using the outline, contextual menu or 
+			<em>Show/Hide</em> tree view.
+		</p>
 		<h5 id="Edgeslabels">Edges labels</h5>
-		<p>It is also possible to hide the edge label. The approach is the same than the nodes labels with the specific menus &#171;Hide/Show Label&#187; called from the edge or its label.</p>
+		<p>It is also possible to hide the edge labels. </p>
+		<p>The approach is the same than the nodes labels with the specific menus &#171;Hide/Show Label&#187; called from the edge or its label.</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_hide_edge_label_1.png"/>
 		</p>
@@ -523,7 +560,7 @@
 			<li>Pin/unpin information are persistent and saved in 
 				<i>.aird</i> session file.
 			</li>
-			<li>it is not possible to pin/unpin edges.</li>
+			<li>it is not possible to pin/unpin edges or compartiments.</li>
 		</ul>
 		<h4 id="Configuration">Configuration</h4>
 		<p>Every diagram elements that you move will be pinned by default and will need an unpin operation to be &#171;moveable&#187; again.</p>
@@ -549,6 +586,7 @@
 		<p>	
 			<img border="0" src="images/diagram_editor_pin_dialog2.png"/>
 		</p>
+		<p>Some elements might be grayed in this tree (compartments, Sequence diagram elements, ..), their selection will have no effect. Their grayed status indicates that they do not support the Pin/Unpin but their displayed children might support it. Edges will not be shown as they will never have children in this tree.</p>
 		<p>You can also use 
 			<a href="#UsingRegularExpressionstoFindDiagramElements">RegularExpressions</a> to easily retrieve the elements you want to pin/unpin.
 		</p>
@@ -948,7 +986,7 @@
 			<img border="0" src="images/tabbar_show_hide.png"/> 
 			<em>Show/Hide</em>. You can chose to hide (or reveal) specific diagram elements (or just their labels) independently of the conditions in pre-defined filters. This can be useful if you want to concentrate on specific parts of your model, or if you want hide parts which are not relevant to simplify communication with other people. You can hide elements from their context menu (using the 
 			<em>Show/Hide</em> sub-menu) or more globally by using the 
-			<em>Show/Hide</em> button in the tab-bar. This button opens a dialog box which presents all the elements visible on the diagram, organised in a hierarchical way which corresponds to their graphical organization. Note that because a single semantic element may have multiple representations on the diagram, they may appear multiple times in the dialog box. Making one representation hidden will not hide the other graphical representations of the same element. You can chose which elements should be visible (resp. hidden) on the diagram by checking (resp. unchecking) them in the dialog. The top area of the dialog box contains various buttons to help you find the elements you want, by show only the checked (i.e. visible) or unchecked (i.e. hidden) elements, by expanding or collapsing the tree viewer, or by checking or un-checking all elements at once. You can also search for elements by their name using the search box. For some elements (e.g. edges), you can hide the label (or labels) while keeping the element itself visible. When this is possible, the label is presented as a sub-item of the element in the dialog box, with its own check-box.
+			<em>Show/Hide</em> button in the tab-bar. This button opens a dialog box which presents all the elements visible on the diagram, organised in a hierarchical way which corresponds to their graphical organization. Note that because a single semantic element may have multiple representations on the diagram, they may appear multiple times in the dialog box. Making one representation hidden will not hide the other graphical representations of the same element. You can chose which elements should be visible (resp. hidden) on the diagram by checking (resp. unchecking) them in the dialog. For some elements (e.g. compartments), the hide is not supported and is disabled, these elements will be grayed in the dialog box and checking them will have no effect. The top area of the dialog box contains various buttons to help you find the elements you want, by show only the checked (i.e. visible) or unchecked (i.e. hidden) elements, by expanding or collapsing the tree viewer, or by checking or un-checking all elements at once. You can also search for elements by their name using the search box. For some elements (e.g. edges), you can hide the label (or labels) while keeping the element itself visible. When this is possible, the label is presented as a sub-item of the element in the dialog box, with its own check-box.
 		</p>
 		<p>
 			<img border="0" src="images/diagram_editor_show_hide_dialog2.png"/>
@@ -1038,6 +1076,13 @@
 			<em>Show/Hide</em> button, which opens a dialog box to control the elements' visibility.
 		</p>
 		<p>
+			<img border="0" src="images/tabbar_hide_label.png"/> 
+			<em>Hide</em>. This button hides the label of the selected elements. It can also be invoked with the 
+			<em>Ctrl+L</em> keyboard shortcut. To reveal hidden labels, you can for example deselect all element, and in the diagram&#8217;s tab-bar, choose the 
+			<em>Show/Hide</em> button, which opens a dialog box to control the elements' visibility. You can also select an element without label and use the 
+			<em>Show/Hide / Show label</em> menu.
+		</p>
+		<p>
 			<img border="0" src="images/tabbar_delete_from_diagram.png"/> 
 			<em>Delete from Diagram</em>. This action removes the selected graphical element from the diagram, but does not delete the corresponding semantic elements. It is only available on un-synchronized diagrams or element types.
 		</p>
@@ -1072,8 +1117,8 @@
 			<img border="0" src="images/tabbar_auto_size.png"/> 
 			<em>Auto-Size</em>. This button marks the selected elements as auto-sized. Auto-sized elements will adjust their width an height dynamically according to their contents.
 		</p>
-		<h4 id="ref_tabbar_4x">Tab-bar in Eclipse 4.x</h4>
-		<p>Due to a current limitation, on Eclipse 4.x the tab-bar content does not depend on the current selection and extensibility is not available:
+		<h4 id="ref_tabbar_4x">Tab-bar in Eclipse 4.2 and 4.3</h4>
+		<p>Due to a current limitation, on Eclipse 4.2 and 4.3, the tab-bar content does not depend on the current selection and extensibility is not available:
 			<br/>
 			<img border="0" src="images/tabbar4x01.png"/>
 		</p>
@@ -1119,6 +1164,16 @@
 		</ul>
 		<p>	
 			<img border="0" src="images/diagram_editor5.png"/>
+		</p>
+		<p>To hide/reveal an element or its label in the editor, simply right click an elment in the tree and choose one of the 
+			<i>Hide element</i>, 
+			<i>Hide label</i>, 
+			<i>Show element</i>, 
+			<i>Show label</i> menus. The availability of the menus depends on the state of each element and its support of the &#171;Show/Hide&#187; feature.
+		</p>
+		<p>The hidden elements have their label displayed in italic style and their icon is decorated with a yellow dot in the top left corner.
+			<br/>The elements whose label is hidden have their label displayed in italic style and their icon is decorated with a 
+			<i>L</i> in the bottom right corner.
 		</p>
 		<ul>
 			<li>In 

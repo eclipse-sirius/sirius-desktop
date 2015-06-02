@@ -268,7 +268,16 @@
 				<em>Lists</em>), which are a special kind of containers. They present their direct sub-elements as a vertical list of text items (with an optional icon). List containers are not recursive.
 			</li>
 			<li>
-				<em>Bordered nodes</em> are like normal nodes, but instead of appearing directly on the diagram or inside a container, they are placed on the border of another element (node or container). This is useful to represent things like communication ports.
+				<em>Region Container</em>, which are a special kind of containers. They present their direct sub-container as a vertical or horizontal stack of compartments also called 
+				<em>Regions</em> in Sirius. Region containers are not recursive and can not contain nodes as direct children.
+			</li>
+			<li>
+				<em>Region</em>, which are a special kind of container. They are compartments of a container, organized vertically or horizontally regarding the configuration of their parent Region container. They are 
+				<em>Containers</em> or 
+				<em>List Containers</em> but can not be themselves a Region container.
+			</li>
+			<li>
+				<em>Bordered nodes</em> are like normal nodes, but instead of appearing directly on the diagram or inside a container, they are placed on the border of another element (node, container, list, region container but not region). This is useful to represent things like communication ports.
 			</li>
 			<li>Finally, 
 				<em>Edges</em> are connections between a source and target element. The source and target element can be any of the other kind of graphical element mentioned above. It is also possible for the source or the target of an edge (but not both) to be another edge.
@@ -624,11 +633,31 @@
 		<p id="list_containers">
 			<strong>List Containers</strong> You can enable a special &#171;list mode&#187; for containers by setting the 
 			<em>Children Presentation</em> attribute to 
-			<em>List</em> in the mapping configuration. List containers are represented in a special way, in which only the labels of their direct sub-elements (nodes or containers) are taken into account and presented in a vertical list. When represented as a list, only some of the style attributes (label text, tool-tip, colors) of the container are taken into account. For the list items themselves, only the label text is used.
+			<em>List</em> in the mapping configuration. List containers are represented in a special way, in which only the labels of their direct sub-elements (nodes only) are taken into account and presented in a vertical list. When represented as a list, only some of the style attributes (label text, tool-tip, colors) of the container are taken into account. For the list items themselves, only the label text is used.
 		</p>
 		<p>
 			<img border="0" src="images/styles/List_container_with_items.png"/>
 		</p>
+		<p id="compartments">
+			<strong>Compartments</strong> You can enable a special &#171;compartment mode&#187; for containers by setting the 
+			<em>Children Presentation</em> attribute to 
+			<em>Horizontal Stack</em> or 
+			<em>Vertical Stack</em> in the mapping configuration. Region containers presents their children containers and lists as compartments, vertically or horizontally organized. They are sorted following the mapping order and the semantic candidates expression evaluation result of each mapping. The border style attributes of the Region&#8217;s styles are used to specify the compartments separators. The other style properties of Region container or Region mapping are used as usual.
+		</p>
+		<p>
+			<img border="0" src="images/styles/Containers_with_compartments.png"/>
+		</p>
+		<p>
+			<em>Warning:</em> The compartment feature is new but experimental in Sirius 3.0.0. While working reliably, it has some limitations but you can rely on the improved VSM validation to ensure you are using it in supported modes. Known limitations:
+		</p>
+		<ul>
+			<li>Some formatting or layout-related actions might produce unexpected result (Make same size, width or height, Set style to workspace image). The limitations only concerns the visual aspects, there is no risk of corrupting the underlying models.</li>
+			<li>Only the gradient style is supported for Region container and Region mappings.</li>
+			<li>The Show/Hide, Hide filter features are disabled on regions (hide filter can be created to the compartment content but not the compartment). The Show/Hide label feature is supported.</li>
+			<li>The figure default and minimum size might change in future versions.</li>
+			<li>The move and drag and drop of regions are disabled. Reordering regions can be done by reordering their semantic elements.</li>
+			<li>The resize of compartments might evolve in future versions. The current behavior is to redistribute space between adjacent regions and to resize the first/last region when the region container is resized from top/bottom for a vertical stack and left/right for an horizontal one.</li>
+		</ul>
 		<h4 id="container_styles">Container Styles</h4>
 		<p>See the 
 			<a href="#styling">styles</a> section for a general presentation of how styles are defined, including conditional styles. This section only presents the aspects which are specific to containers.
@@ -1127,7 +1156,7 @@
 			</li>
 			<li>
 				<em>Label border style</em> (only available for a 
-				<em>Flat Container Style</em>): the specifier can choose a label border style among a list. As a result a border will be drawn around the container label.
+				<em>Gradient container style</em>): the specifier can choose a label border style among a list. As a result a border will be drawn or not around the label.
 			</li>
 			<li>
 				<em>Show icon</em> indicates whether or not the element&#8217;s icon should be made visible. If set, the icon used is the one associated with the type of the target element, and is rendered on the left of the label. Note that end-user will always be able to hide such icons by using the 
@@ -1137,6 +1166,9 @@
 				<em>Sirius</em>/ 
 				<em>Sirius Diagram</em>/ 
 				<em>Appearance</em>).
+			</li>
+			<li>
+				<em>Hide label by default</em> (not available for edges) is used to configure the label visibility when an element is created.
 			</li>
 		</ul>
 		<p>While not strictly part of the label properties, a 

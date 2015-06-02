@@ -68,7 +68,9 @@ This section describes the different kinds of graphical elements supported on Si
 * _Nodes_ for elements which can not contain other elements;
 * _Containers_ for elements which can contain other elements, including other containers;
 * _List containers_ (or just _Lists_), which are a special kind of containers. They present their direct sub-elements as a vertical list of text items (with an optional icon). List containers are not recursive.
-* _Bordered nodes_ are like normal nodes, but instead of appearing directly on the diagram or inside a container, they are placed on the border of another element (node or container). This is useful to represent things like communication ports.
+* _Region Container_, which are a special kind of containers. They present their direct sub-container as a vertical or horizontal stack of compartments also called _Regions_ in Sirius. Region containers are not recursive and can not contain nodes as direct children.
+* _Region_, which are a special kind of container. They are compartments of a container, organized vertically or horizontally regarding the configuration of their parent Region container. They are _Containers_ or _List Containers_ but can not be themselves a Region container.
+* _Bordered nodes_ are like normal nodes, but instead of appearing directly on the diagram or inside a container, they are placed on the border of another element (node, container, list, region container but not region). This is useful to represent things like communication ports.
 * Finally, _Edges_ are connections between a source and target element. The source and target element can be any of the other kind of graphical element mentioned above. It is also possible for the source or the target of an edge (but not both) to be another edge.
 
 table(table table-striped table-condensed).
@@ -180,9 +182,21 @@ A container can contain _sub-containers_, _sub-nodes_, and _bordered nodes_, all
 *TODO* Bordered Node Import, Sub-node import and container import.
 </div>
 
-p(#list_containers). *List Containers* You can enable a special "list mode" for containers by setting the _Children Presentation_ attribute to _List_ in the mapping configuration. List containers are represented in a special way, in which only the labels of their direct sub-elements (nodes or containers) are taken into account and presented in a vertical list. When represented as a list, only some of the style attributes (label text, tool-tip, colors) of the container are taken into account. For the list items themselves, only the label text is used.
+p(#list_containers). *List Containers* You can enable a special "list mode" for containers by setting the _Children Presentation_ attribute to _List_ in the mapping configuration. List containers are represented in a special way, in which only the labels of their direct sub-elements (nodes only) are taken into account and presented in a vertical list. When represented as a list, only some of the style attributes (label text, tool-tip, colors) of the container are taken into account. For the list items themselves, only the label text is used.
 
 !images/styles/List_container_with_items.png!
+
+p(#compartments). *Compartments* You can enable a special "compartment mode" for containers by setting the _Children Presentation_ attribute to _Horizontal Stack_ or _Vertical Stack_ in the mapping configuration. Region containers presents their children containers and lists as compartments, vertically or horizontally organized. They are sorted following the mapping order and the semantic candidates expression evaluation result of each mapping. The border style attributes of the Region's styles are used to specify the compartments separators. The other style properties of Region container or Region mapping are used as usual.
+
+!images/styles/Containers_with_compartments.png!
+
+_Warning:_ The compartment feature is new but experimental in Sirius 3.0.0. While working reliably, it has some limitations but you can rely on the improved VSM validation to ensure you are using it in supported modes. Known limitations:
+* Some formatting or layout-related actions might produce unexpected result (Make same size, width or height, Set style to workspace image). The limitations only concerns the visual aspects, there is no risk of corrupting the underlying models.
+* Only the gradient style is supported for Region container and Region mappings.
+* The Show/Hide, Hide filter features are disabled on regions (hide filter can be created to the compartment content but not the compartment). The Show/Hide label feature is supported.
+* The figure default and minimum size might change in future versions.
+* The move and drag and drop of regions are disabled. Reordering regions can be done by reordering their semantic elements.
+* The resize of compartments might evolve in future versions. The current behavior is to redistribute space between adjacent regions and to resize the first/last region when the region container is resized from top/bottom for a vertical stack and left/right for an horizontal one.
 
 h4(#container_styles). Container Styles
 
@@ -387,8 +401,9 @@ One of the responsibility of styles is to describe labels which will be displaye
 * _Label Size_ indicates the font size to use in points.
 * _Label Format_ is used to specify the font style attributes (_Bold_ and/or _Italic_ and/or _Underline_ and/or _Strike through_).
 * _Label Alignment_ is used for labels positioned inside node to specify their alignment (note that not all alignment values are supported for all styles). For nodes, this attribute only applies when *Label position* is set to *node* (otherwise, the label is freely movable by the user). For containers, it only applies to the container's label itself, not its content. This attribute does not apply to edges (again, their label is freely movable by users) and list items.
-* _Label border style_ (only available for a _Flat Container Style_): the specifier can choose a label border style among a list. As a result a border will be drawn around the container label.
+* _Label border style_ (only available for a _Gradient container style_): the specifier can choose a label border style among a list. As a result a border will be drawn or not around the label.
 * _Show icon_ indicates whether or not the element's icon should be made visible. If set, the icon used is the one associated with the type of the target element, and is rendered on the left of the label. Note that end-user will always be able to hide such icons by using the _Label icons_  preferences (_Window_/ _Preferences_/ _Sirius_/ _Sirius Diagram_/ _Appearance_).
+* _Hide label by default_ (not available for edges) is used to configure the label visibility when an element is created.
 
 While not strictly part of the label properties, a _Tooltip Expression_ can be set for most style, and is used to compute the text of the optional tool-tip shown when the user leaves the mouse on an element. It can be seen as an alternate _Label Expression_ which is not visible by default, and can be used to show additional details on an element only when the user requests them, to avoid visual clutter on the diagram.
 
