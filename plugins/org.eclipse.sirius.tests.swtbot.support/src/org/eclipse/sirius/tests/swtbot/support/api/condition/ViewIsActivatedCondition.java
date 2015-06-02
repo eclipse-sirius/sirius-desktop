@@ -14,13 +14,15 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
- * A Condition to test if a view is closed.
+ * A Condition to test if a view is activated.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class ViewIsClosedCondition extends DefaultCondition {
+public class ViewIsActivatedCondition extends DefaultCondition {
 
     private final SWTBotView view;
+
+    private final boolean negate;
 
     /**
      * Default Constructor.
@@ -28,17 +30,35 @@ public class ViewIsClosedCondition extends DefaultCondition {
      * @param view
      *            the view to test
      */
-    public ViewIsClosedCondition(SWTBotView view) {
+    public ViewIsActivatedCondition(SWTBotView view) {
+        this(view, false);
+    }
+
+    /**
+     * Default Constructor.
+     * 
+     * @param view
+     *            the view to test
+     * @param negate
+     *            allow to reverse the test (ie check if the view is not
+     *            activated).
+     */
+    public ViewIsActivatedCondition(SWTBotView view, boolean negate) {
         this.view = view;
+        this.negate = negate;
     }
 
     @Override
     public boolean test() throws Exception {
-        return null == view.getViewReference().getPart(false);
+        return negate != view.isActive();
     }
 
     @Override
     public String getFailureMessage() {
-        return "The view " + view.getTitle() + " is not closed.";
+        if (negate) {
+            return "The view " + view.getTitle() + " is activated, it should not.";
+        } else {
+            return "The view " + view.getTitle() + " is not activated, it should.";
+        }
     }
 }
