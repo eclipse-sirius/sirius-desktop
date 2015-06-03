@@ -45,7 +45,6 @@ import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsC
 import org.eclipse.sirius.tests.swtbot.layout.ResetOriginTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ContextualMenuTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.LinkWithEditorFeatureWithModelExplorerViewTest;
-import org.eclipse.sirius.tests.swtbot.modelexplorer.LockedModelExplorerTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ModelExplorerFilterTests;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectDependenciesTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectsConcurrentCloseTest;
@@ -179,6 +178,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(MultiSessionCopyPasteTest.class);
         suite.addTestSuite(CloseWithoutSavingTest.class);
         suite.addTestSuite(CreateMandatoryElementsTest.class);
+        // suite.addTestSuite(LockedModelExplorerTest.class);
     }
 
     /**
@@ -307,7 +307,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(NotInvisibleTabBarTest.class);
         suite.addTestSuite(LockedTabBarTest.class);
         suite.addTestSuite(LockedRepresentationContainerTest.class);
-        suite.addTestSuite(LockedModelExplorerTest.class);
         suite.addTestSuite(ArrangeSelectionOnBreakdownDiagramTest.class);
         suite.addTestSuite(RemovedDefaultColorMenuTest.class);
         suite.addTestSuite(DuplicationCausedBySelectionTest.class);

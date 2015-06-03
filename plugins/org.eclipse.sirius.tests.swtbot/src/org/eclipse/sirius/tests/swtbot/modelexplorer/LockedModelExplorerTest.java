@@ -29,7 +29,6 @@ import org.eclipse.sirius.ecore.extender.business.internal.permission.descriptor
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-import org.eclipse.sirius.tests.swtbot.support.api.condition.ViewIsActivatedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -149,11 +148,12 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
         refreshJobScheduled = false;
         modelExplorerView.setFocus();
         SWTBotUtils.waitAllUiEvents();
-        bot.waitUntil(new ViewIsActivatedCondition(modelExplorerView));
+        // bot.waitUntil(new ViewIsActivatedCondition(modelExplorerView));
         modelExplorerView.close();
         try {
             SWTBotUtils.waitAllUiEvents();
-            bot.waitUntil(new ViewIsActivatedCondition(modelExplorerView, true));
+            // bot.waitUntil(new ViewIsActivatedCondition(modelExplorerView,
+            // true));
             lockRepresentation(false);
             assertFalse("The job should not be scheduled as one unlock notification has been send and ModelExplorer view is not opened.", refreshJobScheduled);
         } finally {
