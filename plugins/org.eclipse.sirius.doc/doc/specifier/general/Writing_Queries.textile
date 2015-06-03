@@ -82,6 +82,18 @@ Sirius also supports raw OCL expressions, but this support is deprecated and wil
 
 It is highly recommended that you use Acceleo, which implemented the MTL standard and is a super-set of the OCL language, instead of raw OCL.
 
+h2(#aql). Using AQL
+
+Sirius 3.0 introduces experimental (and optional) support for _AQL_ (Acceleo Query Language) to write queries/interpreted expressions. AQL is similar to Acceleo 3/MTL, but simpler and provides much better performance in the Sirius context. AQL expressions start with the @aql:@ prefix and have a syntax similar to Acceleo (without the enclosing @[../]@ brackets). The main differences between the two languages are:
+* Feature access must *always* explicitly specify the target object, even if the target is @self@. This means an Acceleo expression like <code>[name/]</code> which accesses the @name@ attribute of the current element translates in AQL as @aql:self.name@. The expression @aql:name@ with no explicit reciever will always be interpreted as an access to the @name@ variable, and may result in an error if the variable in question is not defined. 
+* "Lamba" expressions must always declare their parameters and use them explicitly. Again, there is no implicit @self@ in such a context. For example: ==<code>[self.eContents()->select(name.startsWith('A'))/]</code>== becomes ==<code>aql:self.eContents()->select(i | i.name.startsWith('A')]</code>== with an explicit declaration and usage of @i@ in AQL.
+* AQL is more persmissive in terms of missing/empty intermediate results in complex expressions: @aql:self.anEmptyReference.somethingElse@ will not result in an error as the equivalent Acceleo (or OCL) expression would, but simply return an empty result.
+* AQL provides different services/methods by default compared to Acceleo. In general the set of default services in AQL is better suited to the typicaly use cases encountered in Sirius.
+
+See "the AQL documentation":https://www.eclipse.org/acceleo/documentation/aql.html for more details about the language itself.
+
+_Note:_ AQL support is provided by the @org.eclipse.sirius.common.acceleo.aql@ (required for evaluating the expressions) and @org.eclipse.sirius.common.acceleo.aql.ide@  (optional, only needed to provide specification-time features like expression completion) plug-ins. In Sirius 3.0, AQL support is new and experimental and is thus optional. Depending on the context in which you are using Sirius, you may need to explicitly install some additional features to get these plug-ins.
+
 h2(#custom). Providing a Custom Language
 
 Sirius allows you to provide your own language implementations, if you have very specific needs or want to reuse an existing custom language. Note that Sirius must be able to syntactically and unambiguously determine from an expression which language it is written in (to send it to the appropriate interpreter). The simplest way to achieve this is to define a prefix (like @ocl:@ for OCL) so that expressions written in your language can be distinguished from expressions written in any of the others.
