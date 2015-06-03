@@ -67,9 +67,9 @@
 			<li><span class="label label-success">Added</span> In table editors, hitting the <kdb>Del</kdb> key is now equivalent to selecting 
 				<em>Delete Line</em> in the context menu.
 			</li>
-			<li><span class="label label-success">Added</span> On diagram, it is now possible to set a custom background image on list containers.</li>
+			<li><span class="label label-success">Added</span> On diagrams, it is now possible to set a custom background image on list containers.</li>
 			<li><span class="label label-info">Modified</span> In the 
-				<em>Viewpoint Selection</em> dialog and wizard page, the &#171;plug-in&#187; decorator for viewpoints loaded from plug-ins is removed, and a &#171;Folder&#187; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the 99% of cases where viewpoints come from installed plug-ins.
+				<em>Viewpoint Selection</em> dialog and wizard page, the &#171;plug-in&#187; decorator for viewpoints loaded from plug-ins is removed, and a &#171;Folder&#187; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the most common where viewpoints come from installed plug-ins.
 			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
@@ -77,14 +77,14 @@
 			<li><span class="label label-success">Added</span> <span class="label label-info">Experimental</span> Optional support for the experimental 
 				<em>Acceleo Query Language</em> (AQL) has been added to write interpreted expressions.  It is provided by the 
 				<code>org.eclipse.sirius.common.acceleo.aql</code> (required for evaluating the expressions) and 
-				<code>org.eclipse.sirius.common.acceleo.aql.ide</code>  (optional, only needed to provide specification-time features like expression completion). AQL is similar to Acceleo 3/MTL, but simpler and provides much better performance in the Sirius context.
+				<code>org.eclipse.sirius.common.acceleo.aql.ide</code>  (optional, only needed to provide specification-time features like expression completion). AQL is similar to Acceleo 3/MTL, but simpler and provides much better performance in the Sirius context.  If you make use of this feature, be aware that some details may still change in future releases, including 3.0.x maintenance releases.
 			</li>
 			<li><span class="label label-success">Added</span> <span class="label label-info">Experimental</span> New, experimental support for containers with vertical or horizontal 
 				<em>compartments</em> on diagrams: the 
 				<em>children presentation</em> property of a 
 				<em>Container Mapping</em> has two new values: 
 				<em>Vertical Stack</em> and 
-				<em>Horizontal Stack</em>. They indicate that a container will present its children containers as a vertical/horizontal stack of compartments.
+				<em>Horizontal Stack</em>. They indicate that a container will present its children containers as a vertical/horizontal stack of compartments. While working reliably, this support is marked experimental in Sirius 3.0.0 as there are still some combinations of mappings, styles and behaviors which do not behave as expected. If you make use of this feature, be aware that some details may still change in future releases, including 3.0.x maintenance releases.
 			</li>
 			<li><span class="label label-success">Added</span> Everywhere an image path can be configured in the VSM, a new button is present on the right of the text field. It opens a dialog to select an image, either from the workspace or from an installed plug-in.</li>
 			<li><span class="label label-success">Added</span> Everywhere an interpreted expression can be configured in the VSM, a new button is present on the right of the text field. It opens a multi-line dialog to edit long expression more easily. Auto-completion is supported inside the multi-line dialog.</li>
@@ -160,7 +160,7 @@
 				<code>org.eclipse.sirius.eef.adapters</code> is now 1.5.0 (from 1.2 before). EEF 1.5 is source and binary-compatible with EEF 1.2 to 1.4, and no re-generation of the EEF views should be needed to switch to 1.5.
 			</li>
 			<li><span class="label label-info">Modified</span> The 
-				<code>org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy</code> saving policy, introduced in Sirius 2.0.0 but not enabled there is now the default. The previous implementation, 
+				<code>org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy</code> saving policy, introduced in Sirius 2.0.0 but not enabled at that time is now the default. The previous implementation, 
 				<code>org.eclipse.sirius.business.api.session.SavingPolicyImpl</code> is still available if needed.
 			</li>
 			<li><span class="label label-info">Modified</span> All metamodels defined by Sirius have been modified to use EMF&#8217;s 
