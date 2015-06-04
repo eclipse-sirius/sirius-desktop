@@ -67,7 +67,7 @@ pre..
    <visibleWhen checkEnabled="false">
       <and>
          <with variable="activeEditorId">
-            <equals value="org.eclipse.sirius.diagram.part.SiriusDiagramEditorID"/>
+            <equals value="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID"/>
          </with>
          <with variable="activeEditor">
              <test property="org.eclipse.sirius.sample.tabbar.isConcernedEditor"/>
@@ -97,12 +97,12 @@ pre..
 <extension point="org.eclipse.core.expressions.propertyTesters">
    <propertyTester
          class="org.eclipse.sirius.sample.tabbar.SampleTestTabbarExtensionActivationPropertyTester"
-         shouldActivateTabbarExtensionid="org.eclipse.sirius.sample.tabbar.ActiveExtensionTester"
+         id="org.eclipse.sirius.sample.tabbar.ActiveExtensionTester"
          namespace="org.eclipse.sirius.sample.tabbar"
          properties="shouldActivateTabbarExtension"
          type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
    </propertyTester>
-         <propertyTester
+   <propertyTester
          class="org.eclipse.sirius.sample.tabbar.SampleTestTabbarExtensionActivationPropertyTester"
          id="org.eclipse.sirius.sample.tabbar.ConcernEditorTester"
          namespace="org.eclipse.sirius.sample.tabbar"
@@ -133,7 +133,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
  */
 public class SampleTestTabbarExtensionActivationPropertyTester extends PropertyTester {
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
-        if ("isConcerned".equals(property)) {
+        if ("isConcernedEditor".equals(property)) {
             // called in a with activeEditor element
             if (receiver instanceof DialectEditor) {
                 DRepresentation activeRepresentation = ((DialectEditor) receiver).getRepresentation();
