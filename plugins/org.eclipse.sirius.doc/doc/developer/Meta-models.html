@@ -66,7 +66,7 @@
 		<p>The meta-models described above correspond to the elements which are found inside the 
 			<code>*.odesign</code> files. The 
 			<em>representation files</em> (
-			<code>*.aird</code>) are also stored as models. A representation can be though of as a serialized version of a session. It includes references to the semantic models represented in the session, and the model for each actual representation (diagram, table or tree). These representation models are organized into groups corresponding to which viewpoint defines them, and the representation file also stores the set of currently enabled viewpoints in the session.
+			<code>*.aird</code>) are also stored as models. A representation can be thought of as a serialized version of a session. It includes references to the semantic models represented in the session, and the model for each actual representation (diagram, table or tree). These representation models are organized into groups corresponding to which viewpoint defines them, and the representation file also stores the set of currently enabled viewpoints in the session.
 		</p>
 		<p>This means the representation file 
 			<em>contains</em> the representation and session data, 
@@ -99,8 +99,8 @@
 		<p>The concrete structure of an 
 			<code>aird</code> file is the following: An 
 			<code>aird</code> resource contains a single 
-			<code>DAnalysis</code>. The analysis references the top-level elements of all the semantic resources in the session, via its 
-			<code>models</code> reference, and may reference other &#171;sub-aird&#187; through its 
+			<code>DAnalysis</code>. The analysis references the semantic resources in the session, via its 
+			<code>semanticResources</code> reference, and may reference other &#171;sub-aird&#187; through its 
 			<code>referencedAnalysis</code> reference. It also contains through 
 			<code>ownedViews</code> a 
 			<code>DRepresentationContainer</code> for every Viewpoint which was ever enabled in the session. The sub-set of 

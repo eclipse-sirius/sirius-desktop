@@ -174,7 +174,7 @@
 				<em>Precondition</em> expression if necessary), and select which kind of tree should be created using the 
 				<em>Tree Description</em> property. Normally, the new tree representation will be created on the semantic element represented by the tree item on which the user invoked the tool. Sometimes you want the tool to appear on one element, but create a representation on another one. In this case, use the 
 				<em>Browse expression</em> (in the 
-				<em>Advanced</em> category) to navigate from the element selected to the one one which the new tree should actually be created. Finally, any operation you specify in the body of the tool will be executed when the tool is invoked; you can use it to initialize the content of the model represented.
+				<em>Advanced</em> category) to navigate from the element selected to the one in which the new tree should actually be created. Finally, any operation you specify in the body of the tool will be executed when the tool is invoked; you can use it to initialize the content of the model represented.
 			</li>
 			<li>
 				<em>Tree Navigation</em>: This tool is very similar to the previous one. The only differences is that it allows users to navigate to existing trees instead of creating new ones. If such a tool exists, the 
@@ -213,7 +213,7 @@
 		<p>A 
 			<em>Tree Item</em> mapping may 
 			<em>Reuse</em> (see the 
-			<em>Imports</em> category) existing mappings, including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children if the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create trees of infinite depth (or at least not bounded a priori).
+			<em>Imports</em> category) existing mappings, including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children of the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create trees of infinite depth (or at least not bounded a priori).
 		</p>
 		<p>Tree items are created lazily, only when the user expands a parent item. This means that if you define sub-mappings which use costly operations to create, the cost will only be paid when the user actually &#171;digs into&#187; the tree to the corresponding level of details. This also means that through reuse you can create trees of potentially infinite depth (as deep as the user chooses to expand them) without risking an infinite loop. Note however that once created tree items do not disappear if their parent is collapsed. They are only removed if the user explicitly deletes them.</p>
 		<p>The actual appearance of a tree item is defined by its 

@@ -247,6 +247,7 @@
 		</ul>
 		<h3 id="common_attributes">Common attributes</h3>
 		<p>Many of the elements used to specify viewpoint share some common configuration attributes. They are described in general terms in this section, and referenced from the specific element&#8217;s sections which used them (sometimes with additional details only relevant for this element).</p>
+		<p><img src="images/common_attributes.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/></p>
 		<ul>
 			<li>
 				<em>Id</em>: The mandatory identifier of the element. This identifier is mostly visible to the specifier in the description editor. It must be unique in the context of the viewpoint it is part of. The 
@@ -257,6 +258,9 @@
 				<em>Label</em>: The label of the element. It&#8217;s used to display this element to the end-user. By default, if this label is blank, the 
 				<em>Id</em> is used to display this element to the end user. It can be changed with no impact on existing representation files.
 			</li>
+		</ul>
+		<p><img src="images/documentation_attributes.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/></p>
+		<ul>
 			<li>
 				<em>Documentation</em>: All the elements in a description file contain a 
 				<strong>Documentation</strong> attribute available in the 
@@ -267,6 +271,9 @@
 				<strong>Documentation</strong> category. This attribute can be used by the specifier to add comments and documentation to these elements bounds for the end-user.
 			</li>
 		</ul>
+		<p><img src="images/tricks.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> 
+			<em>use the <img src="images/questionMarque.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> icon to access the available fields tooltips.</em>
+		</p>
 		<h3 id="type_names">Type Names</h3>
 		<p>Some 
 			<em>VSM</em> elements will need you to specify one or more 
@@ -277,26 +284,7 @@
 		</p>
 		<p>
 			<img border="0" src="images/domain_class.png"/>
-			<br/><em>
-			<br/><ul>
-			<br/><img src="images/tricks.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> 
-			<em>use the <img src="images/questionMarque.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> icon to access the available fields tooltips:</em>
-			<br/><ul>
-			<br/>	<li> 
-			<b>Id</b> field: The identifier of this element. Must be unique. Changing this identifier will break existing user models which reference the old identifier.</li>
-			<br/>	<li> 
-			<b>Label</b> field: The label used to display this to the end-user.</li>
-			<br/>	<li> 
-			<b>Domain Class</b> field: Type of the element represented by the Node.</li>
-			<br/>	<li> 
-			<b>Semantic Candidates Expression</b> field: Restrict the list of elements to consider before creating the graphical elements. If it is not set, then all semantic models in session will be browsed and any element of the given type validating the precondition expression will cause the creation of a graphical element. If you set this attribute then only the elements returned by the expression evaluation will be considered.</li>
-			<br/>	<li> 
-			<b>Children Presentation</b> field: Tell whether the container will display its children as list elements, as shapes, or as a vertical/horizontal stack of compartments. The two stack values are experimental.</li>
-			<br/></ul>
-			<br/></ul>
-			<br/></em>
-		</p>
-		<p>The syntax for type names can be the basic name, like 
+			<br/>The syntax for type names can be the basic name, like 
 			<code>Class</code>, a qualified name using name of the EMF EPackage which defines the type, like 
 			<code>uml.Class</code>, or a fully qualified URI like 
 			<code>http://www.eclipse.org/uml2/3.0.0/UML#//Class</code>.

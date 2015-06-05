@@ -75,29 +75,22 @@ h3(#common_attributes). Common attributes
 
 Many of the elements used to specify viewpoint share some common configuration attributes. They are described in general terms in this section, and referenced from the specific element's sections which used them (sometimes with additional details only relevant for this element).
 
+<img src="images/common_attributes.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/>
+
 * _Id_: The mandatory identifier of the element. This identifier is mostly visible to the specifier in the description editor. It must be unique in the context of the viewpoint it is part of. The _Id_ is used internally to identify the element, and must be kept stable across different versions of the VSM (or it will make representations created with the old _Id_ unusable).
 * _Label_: The label of the element. It's used to display this element to the end-user. By default, if this label is blank, the _Id_ is used to display this element to the end user. It can be changed with no impact on existing representation files.
+
+<img src="images/documentation_attributes.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/>
 * _Documentation_: All the elements in a description file contain a *Documentation* attribute available in the *Documentation* category. This attribute can be used by the specifier to add comments and documentation to these elements. The content of this attribute is not visible to the end users of the viewpoints.
 * _End-user documentation_: This attribute describes this element for the end-user. It's available in the *Documentation* category. This attribute can be used by the specifier to add comments and documentation to these elements bounds for the end-user.
+
+<img src="images/tricks.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> _use the <img src="images/questionMarque.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> icon to access the available fields tooltips._
 
 h3(#type_names). Type Names
 
 Some _VSM_ elements will need you to specify one or more _Type Names_ to configure them, usually types from the semantic domain model being represented (for example the _Domain Class_ for mapping definitions). You can easily identify _Type Name_ fields by their green background in the _Properties_ sheet of an element.
 
 !images/domain_class.png!
-<em>
-<ul>
-<img src="images/tricks.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> _use the <img src="images/questionMarque.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/> icon to access the available fields tooltips:_
-<ul>
-	<li> **Id** field: The identifier of this element. Must be unique. Changing this identifier will break existing user models which reference the old identifier.</li>
-	<li> **Label** field: The label used to display this to the end-user.</li>
-	<li> **Domain Class** field: Type of the element represented by the Node.</li>
-	<li> **Semantic Candidates Expression** field: Restrict the list of elements to consider before creating the graphical elements. If it is not set, then all semantic models in session will be browsed and any element of the given type validating the precondition expression will cause the creation of a graphical element. If you set this attribute then only the elements returned by the expression evaluation will be considered.</li>
-	<li> **Children Presentation** field: Tell whether the container will display its children as list elements, as shapes, or as a vertical/horizontal stack of compartments. The two stack values are experimental.</li>
-</ul>
-</ul>
-</em>
-
 The syntax for type names can be the basic name, like @Class@, a qualified name using name of the EMF EPackage which defines the type, like @uml.Class@, or a fully qualified URI like @http://www.eclipse.org/uml2/3.0.0/UML#//Class@.
 
 Auto-completion is available in these fields using the _Ctrl+Space_ shortcut. It is recommended to explicitly associate a meta-model (or more) to your representations definitions to allow for smarter completion. Otherwise by default it will include all types from any EMF meta-model available.

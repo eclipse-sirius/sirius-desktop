@@ -181,7 +181,8 @@
 			<em>Reused Mappings</em> and 
 			<em>Reused Tools</em> properties in the 
 			<em>Imports</em> category are depreciated. They should not be used for new diagram descriptions. If you have existing diagram descriptions which use these features (or which contained mappings directly inside the 
-			<em>Diagram Description), these should be moved inside the _Default Layer</em> of the diagram instead.
+			<em>Diagram Description</em>), these should be moved inside the 
+			<em>Default Layer</em> of the diagram instead.
 		</p>
 		<p>The content of the 
 			<em>Diagram Description</em> is mostly made of 
@@ -214,11 +215,11 @@
 		<p>All the graphical elements and tools on a Sirius diagram are part of a 
 			<em>Layer</em>. Every diagram 
 			<em>must</em> have a default layer, which is always enabled, and zero or more 
-			<em>additional layers</em> that the end-user can enable or disable following the optional flag value. When a layer is enabled, all the graphical elements and tools it defines are also enabled.
+			<em>additional layers</em> that the end-user can enable or disable following the optional flag value. Note that the default layer is created at diagram creation. When a layer is enabled, all the graphical elements and tools it defines are also enabled.
 		</p>
 		<p>The elements which are defined in different layers can interact and reference themselves. For example, it is possible to define a type of edge (connection) between elements which are defined in different layers; the edges will only be visible if all the concerned layers are enabled: the ones which define the source graphical element, the one for the target graphical element, and the one for the edge itself.</p>
 		<p>Layers are defined directly inside the 
-			<em>Diagram Description</em> element. You must create exactly one 
+			<em>Diagram Description</em> element. You must have exactly one 
 			<em>Default Layer</em> (whose name does not matter), and as many 
 			<em>Additional Layers</em> as you need. 
 		</p>
@@ -574,7 +575,8 @@
 		<p>Gauge composites need one or more 
 			<strong>Gauge Section</strong>, which represent an individual gauge. Each 
 			<em>Gauge Section</em> has a 
-			<em>Label, a _Min</em> and a 
+			<em>Label</em>, a 
+			<em>Min</em> and a 
 			<em>Max Value Expression</em>, and a 
 			<em>Value Expression</em>. The size of the gauge section depends on where the 
 			<em>Value Expression</em> sits between the 
@@ -786,7 +788,7 @@
 				<em>Relation-Based Edges</em> are used to represent a relation between model elements such as containment or reference (including computed references). An example in UML would be the inheritance relationship, which is represented by references between a class and its super-classes. Those would be modeled using a relation-based edge.
 			</li>
 			<li>
-				<em>Domain-Based Edges</em> are used when a semantic model element (instead of simply a reference) exists to represent the relation itself. An example in UML would be an association between two classes 
+				<em>Element-Based Edges</em> are used when a semantic model element (instead of simply a reference) exists to represent the relation itself. An example in UML would be an association between two classes 
 				<em>A</em> and 
 				<em>B</em>: it is not represented by a reference between 
 				<em>A</em> to 

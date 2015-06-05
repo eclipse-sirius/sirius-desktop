@@ -28,7 +28,7 @@ The _Initialization_ and _Show on startup_ flags control whether diagram instanc
 
 If _Enable Popup Bars_ flag is set, then when the end-user leaves the mouse pointer still on a diagram (or diagram element) for a small time, a _popup bar_ will appear with shortcut buttons to all the tools which can be applied in this context. It can be useful to create elements without going to the palette to select tools, but it can also become visually distracting if too many tools are available in the popup bar.
 
-The _Reused Mappings_ and _Reused Tools_ properties in the _Imports_ category are depreciated. They should not be used for new diagram descriptions. If you have existing diagram descriptions which use these features (or which contained mappings directly inside the _Diagram Description), these should be moved inside the _Default Layer_ of the diagram instead.
+The _Reused Mappings_ and _Reused Tools_ properties in the _Imports_ category are depreciated. They should not be used for new diagram descriptions. If you have existing diagram descriptions which use these features (or which contained mappings directly inside the _Diagram Description_), these should be moved inside the _Default Layer_ of the diagram instead.
 
 The content of the _Diagram Description_ is mostly made of "graphical elements mappings":#graphical_elements, organized in "layers":#layers, and their associated "tools":#tools. In addition, it can also contain "validation rules":#validation, "filters":#filters and "layout configuration":#layout information.
 
@@ -50,11 +50,11 @@ This section describes how to specify the graphical elements which should appear
 
 h3(#layers). Layers
 
-All the graphical elements and tools on a Sirius diagram are part of a _Layer_. Every diagram _must_ have a default layer, which is always enabled, and zero or more _additional layers_ that the end-user can enable or disable following the optional flag value. When a layer is enabled, all the graphical elements and tools it defines are also enabled.
+All the graphical elements and tools on a Sirius diagram are part of a _Layer_. Every diagram _must_ have a default layer, which is always enabled, and zero or more _additional layers_ that the end-user can enable or disable following the optional flag value. Note that the default layer is created at diagram creation. When a layer is enabled, all the graphical elements and tools it defines are also enabled.
 
 The elements which are defined in different layers can interact and reference themselves. For example, it is possible to define a type of edge (connection) between elements which are defined in different layers; the edges will only be visible if all the concerned layers are enabled: the ones which define the source graphical element, the one for the target graphical element, and the one for the edge itself.
 
-Layers are defined directly inside the _Diagram Description_ element. You must create exactly one _Default Layer_ (whose name does not matter), and as many _Additional Layers_ as you need. 
+Layers are defined directly inside the _Diagram Description_ element. You must have exactly one _Default Layer_ (whose name does not matter), and as many _Additional Layers_ as you need. 
 * Additional layers have an _Optional_ flag (unset by default) that specify whether the additional layer can be disabled (if true) or not by the end-user.
 * The _Active by default_ flag, if it set (unset by default), the layer will be automatically enabled when the user creates a new diagram of this type. This flag has no effect in the case where the optional flag is unset, the layer become mandatory and cannot be disabled by the end-user.
 
@@ -158,7 +158,7 @@ In addition to the standard style properties for the label, size and colors, gau
 You can specify the gauge composite's border color using a color sub-element,
 which can be any of:
 
-Gauge composites need one or more *Gauge Section*, which represent an individual gauge. Each _Gauge Section_ has a _Label, a _Min_ and a _Max Value Expression_, and a _Value Expression_. The size of the gauge section depends on where the _Value Expression_ sits between the _Min_ (the section is invisible) and the _Max_ (the section occupies all the available space). You can specify each gauge section's foreground and background colors using color sub-elements. "Interpolated colors":../general/Colors.html#interpolated_colors are particularly suited for gauge sections.
+Gauge composites need one or more *Gauge Section*, which represent an individual gauge. Each _Gauge Section_ has a _Label_, a _Min_ and a _Max Value Expression_, and a _Value Expression_. The size of the gauge section depends on where the _Value Expression_ sits between the _Min_ (the section is invisible) and the _Max_ (the section occupies all the available space). You can specify each gauge section's foreground and background colors using color sub-elements. "Interpolated colors":../general/Colors.html#interpolated_colors are particularly suited for gauge sections.
 
 h4(#node_tools). Node Tools
 
@@ -246,7 +246,7 @@ h3(#edges). Edges
 
 Edges are used to define connections between diagram elements. There are two kinds of edges, which are defined using different mappings:
 * _Relation-Based Edges_ are used to represent a relation between model elements such as containment or reference (including computed references). An example in UML would be the inheritance relationship, which is represented by references between a class and its super-classes. Those would be modeled using a relation-based edge.
-* _Domain-Based Edges_ are used when a semantic model element (instead of simply a reference) exists to represent the relation itself. An example in UML would be an association between two classes _A_ and _B_: it is not represented by a reference between _A_ to _B_, but by an explicit _Association_ model element which itself references _A_ and _B_. Such an association would be modeled using a domain-based edge on the _Association_ element.
+* _Element-Based Edges_ are used when a semantic model element (instead of simply a reference) exists to represent the relation itself. An example in UML would be an association between two classes _A_ and _B_: it is not represented by a reference between _A_ to _B_, but by an explicit _Association_ model element which itself references _A_ and _B_. Such an association would be modeled using a domain-based edge on the _Association_ element.
 
 h4(#relation_based_edges). Relation-Based Edges
 

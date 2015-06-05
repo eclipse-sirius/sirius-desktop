@@ -6,11 +6,11 @@ h2(#introduction). Introduction
 
 This document presents an overview of the internal architecture of Sirius, and the main concepts and APIs.
 
-Sirius relies heavily on the Eclipse platform, and reuses (and extends) many of the standard Eclipse frameworks, in particular the Eclipse Modeling Platform. This documents assumes that you are already familiar with these frameworks and libraries, in particular EMF and EMF Transaction, GEF and GMF for diagrams. Refer to these frameworks' own documentation for more details about them.
+Sirius relies heavily on the Eclipse platform, and reuses (and extends) many of the standard Eclipse frameworks, in particular the Eclipse Modeling Platform. This document assumes that you are already familiar with these frameworks and libraries, in particular EMF and EMF Transaction, GEF and GMF for diagrams. Refer to these frameworks' own documentation for more details about them.
 
 h2(#session). Sessions
 
-The central concept of Sirius's API is the @Session@. In Sirius, all data is stored in EMF models: the semantic models themselves obviously, but also the representations (diagrams, tables) and the viewpoint configuration (the _Viewpoint Specification Models_). A session is a wrapper around a _Transactional Editing Domain_ and its _Resource Set_. It ensure the consistency of the models inside the editing domain, from the platform's point of view; for example it makes sure the representation files correctly reference all the semantic models they need to in order to handle the representations in the session. The session also provides high-level, Sirius-specific services through its own APIs and support classes and interfaces.
+The central concept of Sirius's API is the @Session@. In Sirius, all data is stored in EMF models: the semantic models themselves obviously, but also the representations (diagrams, tables) and the viewpoint configuration (the _Viewpoint Specification Models_). A session is a wrapper around a _Transactional Editing Domain_ and its _Resource Set_. It ensures the consistency of the models inside the editing domain, from the platform's point of view; for example it makes sure the representation files correctly reference all the semantic models they need to in order to handle the representations in the session. The session also provides high-level, Sirius-specific services through its own APIs and support classes and interfaces.
 
 In the standard UI, each _Modeling Project_  corresponds to exactly one @Session@, and each session contains its own _Editing Domain_ and _Resource Set_. This means that sessions (and thus modeling projects) are isolated from each other.
 
@@ -64,7 +64,7 @@ userSession.selectViewpoint("Design");
 
 h2(#uisession). Editing Sessions
 
-An _editing sesssion_, represented by an instance of @org.eclipse.sirius.ui.business.api.session.IEditingSession@,  manages the graphical editors associated to a session. A session can exist without an associated editing session, but some operations require that an editing session is explicitly opened. At most one editing session can exist for a given session.
+An _editing session_, represented by an instance of @org.eclipse.sirius.ui.business.api.session.IEditingSession@,  manages the graphical editors associated to a session. A session can exist without an associated editing session, but some operations require that an editing session is explicitly opened. At most one editing session can exist for a given session.
 
 To retrieve the editing session associated to a session or create a new one, use the @org.eclipse.sirius.ui.business.api.session.SessionUIManager@  API. The manager serves both as a factory for editing sessions and as a registry of all the ones which are opened at a given time and which session they correspond to.
 
@@ -80,7 +80,7 @@ The semantic models inside a session are never manipulated directly by Sirius. A
 * It enables seamless extension (or restriction) of how the session views the semantic model. For example a model accessor could give access to virtual elements or properties, which do not exist "physically" inside the semantic model; it could also decide to hide some parts of the semantic model to viewpoint.
 * It allows the verification of any access or modification using the associated @IPermissionAuthorithy@. The permission authority is used to lock model elements (both diagram and semantic elements), and to check if you have read and/or write access to each element and feature before access or modification.
 
-You can obtain the model accessor associated to a session using the @Session.getModelAccessor()@ method, and the permission authority using @ModelAccessor.getPermissionAuthority()@.  If you extend Sirius, you should make sure to uses the model accessor API to read and write the semantic model, and to use the permission authority to check any change you want to perform beforehand.
+You can obtain the model accessor associated to a session using the @Session.getModelAccessor()@ method, and the permission authority using @ModelAccessor.getPermissionAuthority()@.  If you extend Sirius, you should make sure to use the model accessor API to read and write the semantic model, and to use the permission authority to check any change you want to perform beforehand.
 
 h2(#dialects). Dialects
 
