@@ -23,15 +23,12 @@ import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import junit.framework.TestCase;
-
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -133,6 +130,8 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
+
+import junit.framework.TestCase;
 
 /**
  * Wrapper for several UI* classes to handle ui management in tests. If needed,
@@ -398,14 +397,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             public void run() {
                 for (final Session sess : Sets.newLinkedHashSet(SessionManager.INSTANCE.getSessions())) {
                     if (sess.isOpen()) {
-                        sess.save(new NullProgressMonitor());
-                        try {
-                            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
-                        } catch (OperationCanceledException e) {
-                            TestCase.fail(e.getLocalizedMessage());
-                        } catch (InterruptedException e) {
-                            TestCase.fail(e.getLocalizedMessage());
-                        }
                         sess.close(new NullProgressMonitor());
                     }
                 }
