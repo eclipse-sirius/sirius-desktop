@@ -34,6 +34,7 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
@@ -76,6 +77,10 @@ public class TransientSessionTests extends SiriusDiagramTestCase {
         super.setUp();
         closeWelcomePage();
 
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+        changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
+
         transientSessionResourceURI = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME);
         semanticResourceURI = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME, true);
 
@@ -98,15 +103,13 @@ public class TransientSessionTests extends SiriusDiagramTestCase {
 
         designSirius = ViewpointRegistry.getInstance().getViewpoint(designSiriusURI);
 
-        Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(), Collections.singleton(designSirius),
-                Collections.<Viewpoint> emptySet(), new NullProgressMonitor());
+        Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(), Collections.singleton(designSirius), Collections.<Viewpoint> emptySet(),
+                new NullProgressMonitor());
         session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelectionCmd);
 
         designSirius = session.getSelectedViewpoints(false).iterator().next();
         entitiesRepresentationDescription = designSirius.getOwnedRepresentations().get(0);
         classesRepresentationDescription = designSirius.getOwnedRepresentations().get(1);
-
-        changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
     }
 
     /**
@@ -126,7 +129,7 @@ public class TransientSessionTests extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
 
         assertTrue(diagramEditor instanceof ISaveablePart);
-        ISaveablePart saveablePart = (ISaveablePart) diagramEditor;
+        ISaveablePart saveablePart = diagramEditor;
         assertEquals("With a transient session adding a EClass should, the session become dirty ", SessionStatus.DIRTY, session.getStatus());
         assertTrue("With a transient session adding a EClass should, the editor become dirty ", saveablePart.isDirty());
 
@@ -161,7 +164,7 @@ public class TransientSessionTests extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
 
         assertTrue(tableEditor instanceof ISaveablePart);
-        ISaveablePart saveablePart = (ISaveablePart) tableEditor;
+        ISaveablePart saveablePart = tableEditor;
         assertEquals("With a transient session adding a EClass should, the session become dirty ", SessionStatus.DIRTY, session.getStatus());
         assertTrue("With a transient session adding a EClass should, the editor become dirty ", saveablePart.isDirty());
 
@@ -201,9 +204,9 @@ public class TransientSessionTests extends SiriusDiagramTestCase {
         TestsUtil.synchronizationWithUIThread();
 
         assertTrue(tableEditor instanceof ISaveablePart);
-        ISaveablePart tableEditorSaveable = (ISaveablePart) tableEditor;
+        ISaveablePart tableEditorSaveable = tableEditor;
         assertTrue(diagramEditor instanceof ISaveablePart);
-        ISaveablePart diagramEditorSaveable = (ISaveablePart) diagramEditor;
+        ISaveablePart diagramEditorSaveable = diagramEditor;
         assertEquals("With a transient session adding a EClass should, the session become dirty ", SessionStatus.DIRTY, session.getStatus());
         assertTrue("With a transient session adding a EClass should, the table editor become dirty ", tableEditorSaveable.isDirty());
         assertTrue("With a transient session adding a EClass should, the diagram editor become dirty ", diagramEditorSaveable.isDirty());
