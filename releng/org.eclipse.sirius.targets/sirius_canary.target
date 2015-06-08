@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_canary" sequenceNumber="1432719168">
+<target name="sirius_canary" sequenceNumber="1433769498">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
       <repository id="Eclipse-Shared-License" location="http://download.eclipse.org/cbi/updates/license"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform.ide" version="4.5.0.I20150526-2010"/>
-      <unit id="org.eclipse.platform.sdk" version="4.5.0.I20150526-2010"/>
-      <unit id="org.eclipse.sdk.ide" version="4.5.0.I20150526-2010"/>
+      <unit id="org.eclipse.platform.ide" version="4.5.0.I20150603-2000"/>
+      <unit id="org.eclipse.platform.sdk" version="4.5.0.I20150603-2000"/>
+      <unit id="org.eclipse.sdk.ide" version="4.5.0.I20150603-2000"/>
       <repository id="Eclipse-Mars-Integration" location="http://download.eclipse.org/eclipse/updates/4.5-I-builds"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">

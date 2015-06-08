@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_headless_mars" sequenceNumber="1430752823">
+<target name="sirius_headless_mars" sequenceNumber="1433769386">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -12,29 +12,26 @@
       <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
-      <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
-      <repository id="Acceleo-3.6" location="http://download.eclipse.org/acceleo/updates/milestones/3.6/S201505040910"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
       <repository id="Eclipse-Shared-License" location="http://download.eclipse.org/cbi/updates/license"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="15.0.0.v201403281430"/>
-      <unit id="org.eclipse.emf" version="2.6.0.v20150323-0420"/>
-      <unit id="org.eclipse.emf.common" version="2.11.0.v20150318-0449"/>
-      <unit id="org.eclipse.emf.ecore" version="2.11.0.v20150318-0449"/>
-      <unit id="org.eclipse.emf.ecore.xmi" version="2.11.0.v20150318-0449"/>
-      <unit id="org.eclipse.emf.databinding" version="1.3.0.v20150323-0420"/>
-      <unit id="org.eclipse.emf.edit" version="2.11.0.v20150323-0420"/>
-      <unit id="org.eclipse.emf.workspace" version="1.5.1.201503250534"/>
-      <unit id="org.eclipse.acceleo.engine" version="3.6.0.201503131323"/>
-      <unit id="org.eclipse.acceleo.parser" version="3.6.0.201503131323"/>
-      <unit id="org.eclipse.ocl.ecore" version="3.3.200.v20150110-2335"/>
-      <unit id="org.eclipse.gmf.runtime.emf.core" version="1.7.0.201503251708"/>
-      <unit id="org.eclipse.gmf.runtime.diagram.core" version="1.7.0.201503251708"/>
+      <unit id="org.eclipse.emf" version="2.6.0.v20150601-0402"/>
+      <unit id="org.eclipse.emf.common" version="2.11.0.v20150512-0501"/>
+      <unit id="org.eclipse.emf.ecore" version="2.11.0.v20150512-0501"/>
+      <unit id="org.eclipse.emf.ecore.xmi" version="2.11.0.v20150512-0501"/>
+      <unit id="org.eclipse.emf.databinding" version="1.3.0.v20150601-0402"/>
+      <unit id="org.eclipse.emf.edit" version="2.11.0.v20150601-0402"/>
+      <unit id="org.eclipse.emf.workspace" version="1.5.1.201506010221"/>
+      <unit id="org.eclipse.acceleo.engine" version="3.6.0.201506021344"/>
+      <unit id="org.eclipse.acceleo.parser" version="3.6.0.201506021344"/>
+      <unit id="org.eclipse.ocl.ecore" version="3.5.0.v20150525-1635"/>
+      <unit id="org.eclipse.gmf.runtime.emf.core" version="1.7.0.201506010456"/>
+      <unit id="org.eclipse.gmf.runtime.diagram.core" version="1.7.0.201506010456"/>
       <unit id="org.eclipse.team.core" version="3.7.100.v20150203-1452"/>
+      <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
+      <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
       <repository id="Eclipse-Mars" location="http://download.eclipse.org/releases/mars"/>
     </location>
   </locations>

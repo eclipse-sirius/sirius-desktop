@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_tests_luna" sequenceNumber="1432719142">
+<target name="sirius_tests_luna" sequenceNumber="1433770180">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.0.201412231052"/>
-      <repository id="EEF-1_5" location="http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201412231052"/>
+      <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.0.201505291308"/>
+      <repository id="EEF-1.5rc3" location="http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201505291308/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -31,7 +31,7 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
       <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
-      <repository id="Acceleo-3.6" location="http://download.eclipse.org/acceleo/updates/milestones/3.6/S201505261509"/>
+      <repository id="Acceleo-3.6" location="http://download.eclipse.org/acceleo/updates/milestones/3.6"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.query.legacy.feature.feature.group" version="0.0.0"/>
