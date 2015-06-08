@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.IJobChangeListener;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants;
@@ -60,12 +61,16 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
 
     IJobChangeListener jobChangeListener;
 
-    volatile boolean refreshJobScheduled;
+    boolean refreshJobScheduled;
 
     StandalonePermissionProviderDescriptor permissionProviderDescriptor;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
+        // We close the Sirius perspective. If it was opened by another test
+        // before, the ModelExplorer view is open in 2 perspectives and the
+        // close view made in test has not the expected result.
+        designerPerspectives.closeSiriusPerspective();
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, SEMANTIC_RESOURCE_NAME, SESSION_RESOURCE_NAME);
     }
 
@@ -90,30 +95,10 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
 
         // Add a IJobChangeListener only to detect if a refresh job is scheduled
         // (and so launched)
-        jobChangeListener = new IJobChangeListener() {
-            @Override
-            public void sleeping(IJobChangeEvent event) {
-            }
-
+        jobChangeListener = new JobChangeAdapter() {
             @Override
             public void scheduled(IJobChangeEvent event) {
                 refreshJobScheduled = event.getJob().belongsTo(RefreshLabelImageJob.FAMILY);
-            }
-
-            @Override
-            public void running(IJobChangeEvent event) {
-            }
-
-            @Override
-            public void done(IJobChangeEvent event) {
-            }
-
-            @Override
-            public void awake(IJobChangeEvent event) {
-            }
-
-            @Override
-            public void aboutToRun(IJobChangeEvent event) {
             }
         };
         Job.getJobManager().addJobChangeListener(jobChangeListener);
@@ -125,6 +110,10 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
         Job.getJobManager().removeJobChangeListener(jobChangeListener);
         // Remove the permission provider
         PermissionService.removeExtension(permissionProviderDescriptor);
+        permissionProviderDescriptor = null;
+        jobChangeListener = null;
+        sessionAirdResource = null;
+        modelExplorerView = null;
         super.tearDown();
     }
 
@@ -135,6 +124,7 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
      * notification is launched and the ModelExplorer view is closed.
      */
     public void testRefreshJobForModelExplorerView() {
+
         assertFalse("The job should not be scheduled as no notification has been send.", refreshJobScheduled);
         lockRepresentation(true);
         assertTrue("The job should be scheduled as one lock notification has been send and ModelExplorer view is opened.", refreshJobScheduled);
@@ -148,12 +138,9 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
         refreshJobScheduled = false;
         modelExplorerView.setFocus();
         SWTBotUtils.waitAllUiEvents();
-        // bot.waitUntil(new ViewIsActivatedCondition(modelExplorerView));
         modelExplorerView.close();
         try {
             SWTBotUtils.waitAllUiEvents();
-            // bot.waitUntil(new ViewIsActivatedCondition(modelExplorerView,
-            // true));
             lockRepresentation(false);
             assertFalse("The job should not be scheduled as one unlock notification has been send and ModelExplorer view is not opened.", refreshJobScheduled);
         } finally {
