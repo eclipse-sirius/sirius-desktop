@@ -531,6 +531,22 @@
         <input type="org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription"/>        
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.tool.abstracttooldescription.AbstractToolDescriptionElementsToSelectPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.tool.abstracttool.AbstractToolDescriptionElementsToSelectFilterSpec"
+               id="tool.section.abstractToolDescription.ElementsToSelect"
+               afterSection="tool.section.abstractToolDescription.ForceRefresh"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.tool.abstracttooldescription.AbstractToolDescriptionInverseSelectionOrderPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.tool.abstracttool.AbstractToolDescriptionInverseSelectionOrderFilterSpec"
+               id="tool.section.abstractToolDescription.InverseSelectionOrder "
+               afterSection="tool.section.abstractToolDescription.ElementsToSelect"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription"/>        
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.style.tooltipstyledescription.TooltipStyleDescriptionTooltipExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.style.tooltipstyledescription.TooltipStyleDescriptionTooltipExpressionFilter"
                id="style.section.tooltipStyleDescription.TooltipExpression"

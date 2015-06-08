@@ -49,6 +49,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getFilters
  * <em>Filters</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#getElementsToSelect
+ * <em>Elements To Select</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl#isInverseSelectionOrder
+ * <em>Inverse Selection Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -146,6 +152,50 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
      * @ordered
      */
     protected EList<ToolFilterDescription> filters;
+
+    /**
+     * The default value of the '{@link #getElementsToSelect()
+     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getElementsToSelect()
+     * @generated
+     * @ordered
+     */
+    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getElementsToSelect()
+     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getElementsToSelect()
+     * @generated
+     * @ordered
+     */
+    protected String elementsToSelect = AbstractToolDescriptionImpl.ELEMENTS_TO_SELECT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isInverseSelectionOrder()
+     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #isInverseSelectionOrder()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean INVERSE_SELECTION_ORDER_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isInverseSelectionOrder()
+     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #isInverseSelectionOrder()
+     * @generated
+     * @ordered
+     */
+    protected boolean inverseSelectionOrder = AbstractToolDescriptionImpl.INVERSE_SELECTION_ORDER_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -281,6 +331,54 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
      * @generated
      */
     @Override
+    public String getElementsToSelect() {
+        return elementsToSelect;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setElementsToSelect(String newElementsToSelect) {
+        String oldElementsToSelect = elementsToSelect;
+        elementsToSelect = newElementsToSelect;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT, oldElementsToSelect, elementsToSelect));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean isInverseSelectionOrder() {
+        return inverseSelectionOrder;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setInverseSelectionOrder(boolean newInverseSelectionOrder) {
+        boolean oldInverseSelectionOrder = inverseSelectionOrder;
+        inverseSelectionOrder = newInverseSelectionOrder;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER, oldInverseSelectionOrder, inverseSelectionOrder));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
@@ -307,6 +405,10 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
             return isForceRefresh();
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
             return getFilters();
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
+            return getElementsToSelect();
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER:
+            return isInverseSelectionOrder();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -336,6 +438,12 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
             getFilters().clear();
             getFilters().addAll((Collection<? extends ToolFilterDescription>) newValue);
             return;
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
+            setElementsToSelect((String) newValue);
+            return;
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER:
+            setInverseSelectionOrder((Boolean) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -363,6 +471,12 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
             getFilters().clear();
             return;
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
+            setElementsToSelect(AbstractToolDescriptionImpl.ELEMENTS_TO_SELECT_EDEFAULT);
+            return;
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER:
+            setInverseSelectionOrder(AbstractToolDescriptionImpl.INVERSE_SELECTION_ORDER_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -385,6 +499,10 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
             return forceRefresh != AbstractToolDescriptionImpl.FORCE_REFRESH_EDEFAULT;
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
             return filters != null && !filters.isEmpty();
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
+            return AbstractToolDescriptionImpl.ELEMENTS_TO_SELECT_EDEFAULT == null ? elementsToSelect != null : !AbstractToolDescriptionImpl.ELEMENTS_TO_SELECT_EDEFAULT.equals(elementsToSelect);
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER:
+            return inverseSelectionOrder != AbstractToolDescriptionImpl.INVERSE_SELECTION_ORDER_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -449,6 +567,10 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
         result.append(precondition);
         result.append(", forceRefresh: ");
         result.append(forceRefresh);
+        result.append(", elementsToSelect: ");
+        result.append(elementsToSelect);
+        result.append(", inverseSelectionOrder: ");
+        result.append(inverseSelectionOrder);
         result.append(')');
         return result.toString();
     }

@@ -9,33 +9,30 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.editor.properties.sections.description.foregroundstyledescription;
 
-// Start of user code imports
-
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-// End of user code imports
-
 /**
  * A section for the labelFormat property of a ForegroundStyleDescription
  * object.
  */
-public class ForegroundStyleDescriptionLabelFormatPropertySection extends AbstractComboPropertySection {
+public class ForegroundStyleDescriptionLabelFormatPropertySection extends AbstractEditorDialogPropertySection {
     /**
-     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "LabelFormat"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractComboPropertySection#getLabelText()
+     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractEditorDialogPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -47,28 +44,39 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
     }
 
     /**
-     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractComboPropertySection#getFeature()
+     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractEditorDialogPropertySection#getFeature()
      */
     protected EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getForegroundStyleDescription_LabelFormat();
     }
 
     /**
-     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractEditorDialogPropertySection#getFeatureAsText()
      */
-    protected Object getFeatureValue(int index) {
-        return getChoiceOfValues().get(index);
+    protected String getFeatureAsText() {
+        String string = new String();
+
+        if (eObject.eGet(getFeature()) != null) {
+            List<?> values = (List<?>) eObject.eGet(getFeature());
+            for (Iterator<?> iterator = values.iterator(); iterator.hasNext();) {
+                string += getAdapterFactoryLabelProvider().getText(iterator.next());
+                if (iterator.hasNext())
+                    string += ", ";
+            }
+        }
+
+        return string;
     }
 
     /**
-     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractEditorDialogPropertySection#isEqual(List)
      */
-    protected boolean isEqual(int index) {
-        return getChoiceOfValues().get(index).equals(eObject.eGet(getFeature()));
+    protected boolean isEqual(List<?> newList) {
+        return newList.equals(eObject.eGet(getFeature()));
     }
 
     /**
-     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractComboPropertySection#getEnumerationFeatureValues()
+     * @see org.eclipse.sirius.table.editor.properties.sections.AbstractEditorDialogPropertySection#getEnumerationFeatureValues()
      */
     protected List<?> getChoiceOfValues() {
         return FontFormat.VALUES;
@@ -79,6 +87,5 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-
     }
 }

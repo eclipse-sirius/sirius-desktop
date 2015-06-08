@@ -2175,7 +2175,7 @@ public interface DescriptionPackage extends EPackage {
     /**
      * The meta object id for the '<em>Image Path</em>' data type. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.lang.String
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getImagePath()
      * @generated
@@ -5251,7 +5251,7 @@ public interface DescriptionPackage extends EPackage {
         /**
          * The meta object literal for the '<em>Image Path</em>' data type. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.lang.String
          * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getImagePath()
          * @generated

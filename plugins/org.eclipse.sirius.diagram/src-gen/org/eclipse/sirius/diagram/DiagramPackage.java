@@ -129,6 +129,15 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES;
 
     /**
+     * The feature id for the '<em><b>Ui State</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DDIAGRAM__UI_STATE = ViewpointPackage.DREPRESENTATION__UI_STATE;
+
+    /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -364,6 +373,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DSEMANTIC_DIAGRAM__OWNED_ANNOTATION_ENTRIES = DiagramPackage.DDIAGRAM__OWNED_ANNOTATION_ENTRIES;
+
+    /**
+     * The feature id for the '<em><b>Ui State</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DSEMANTIC_DIAGRAM__UI_STATE = DiagramPackage.DDIAGRAM__UI_STATE;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>'

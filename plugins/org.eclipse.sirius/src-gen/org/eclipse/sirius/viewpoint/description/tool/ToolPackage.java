@@ -177,6 +177,24 @@ public interface ToolPackage extends EPackage {
     int ABSTRACT_TOOL_DESCRIPTION__FILTERS = ToolPackage.TOOL_ENTRY_FEATURE_COUNT + 2;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.TOOL_ENTRY_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.TOOL_ENTRY_FEATURE_COUNT + 4;
+
+    /**
      * The number of structural features of the '
      * <em>Abstract Tool Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -184,7 +202,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT = ToolPackage.TOOL_ENTRY_FEATURE_COUNT + 3;
+    int ABSTRACT_TOOL_DESCRIPTION_FEATURE_COUNT = ToolPackage.TOOL_ENTRY_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
@@ -251,6 +269,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int MAPPING_BASED_TOOL_DESCRIPTION__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The number of structural features of the '
@@ -327,6 +363,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int TOOL_DESCRIPTION__FILTERS = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TOOL_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -438,6 +492,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int PASTE_DESCRIPTION__FILTERS = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int PASTE_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int PASTE_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Container</b></em>' containment reference.
@@ -558,6 +630,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int SELECTION_WIZARD_DESCRIPTION__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SELECTION_WIZARD_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SELECTION_WIZARD_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Candidates Expression</b></em>' attribute.
@@ -751,6 +841,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int PANE_BASED_SELECTION_WIZARD_DESCRIPTION__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int PANE_BASED_SELECTION_WIZARD_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Element</b></em>' containment reference.
@@ -965,6 +1073,24 @@ public interface ToolPackage extends EPackage {
     int REPRESENTATION_CREATION_DESCRIPTION__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int REPRESENTATION_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int REPRESENTATION_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1093,6 +1219,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int REPRESENTATION_NAVIGATION_DESCRIPTION__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int REPRESENTATION_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int REPRESENTATION_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Browse Expression</b></em>' attribute.
@@ -1246,6 +1390,24 @@ public interface ToolPackage extends EPackage {
     int MENU_ITEM_DESCRIPTION__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1361,6 +1523,24 @@ public interface ToolPackage extends EPackage {
     int OPERATION_ACTION__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int OPERATION_ACTION__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int OPERATION_ACTION__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1461,6 +1641,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int EXTERNAL_JAVA_ACTION__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EXTERNAL_JAVA_ACTION__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EXTERNAL_JAVA_ACTION__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
@@ -1574,6 +1772,24 @@ public interface ToolPackage extends EPackage {
     int EXTERNAL_JAVA_ACTION_CALL__FILTERS = ToolPackage.MENU_ITEM_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EXTERNAL_JAVA_ACTION_CALL__ELEMENTS_TO_SELECT = ToolPackage.MENU_ITEM_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EXTERNAL_JAVA_ACTION_CALL__INVERSE_SELECTION_ORDER = ToolPackage.MENU_ITEM_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1675,6 +1891,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int POPUP_MENU__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int POPUP_MENU__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int POPUP_MENU__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Menu Item Description</b></em>'
@@ -3264,6 +3498,33 @@ public interface ToolPackage extends EPackage {
      * @generated
      */
     EReference getAbstractToolDescription_Filters();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect
+     * <em>Elements To Select</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Elements To Select</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect()
+     * @see #getAbstractToolDescription()
+     * @generated
+     */
+    EAttribute getAbstractToolDescription_ElementsToSelect();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder
+     * <em>Inverse Selection Order</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Inverse Selection Order</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder()
+     * @see #getAbstractToolDescription()
+     * @generated
+     */
+    EAttribute getAbstractToolDescription_InverseSelectionOrder();
 
     /**
      * Returns the meta object for class '
@@ -5097,6 +5358,23 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EReference ABSTRACT_TOOL_DESCRIPTION__FILTERS = ToolPackage.eINSTANCE.getAbstractToolDescription_Filters();
+
+        /**
+         * The meta object literal for the '<em><b>Elements To Select</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.eINSTANCE.getAbstractToolDescription_ElementsToSelect();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Inverse Selection Order</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.eINSTANCE.getAbstractToolDescription_InverseSelectionOrder();
 
         /**
          * The meta object literal for the '

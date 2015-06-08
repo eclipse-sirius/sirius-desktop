@@ -11,17 +11,6 @@
    
       </description>
    </context>
-   <context id="DTreeElementUpdater">
-     <description>
-       
-       
-         
-   <!-- Start of user code DTreeElementUpdater description -->
-   
-   <!-- End of user code DTreeElementUpdater description -->
-   
-      </description>
-   </context>
    <context id="DTreeElement">
      <description>
        
@@ -82,9 +71,9 @@
        
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-
+       
           - preconditionExpression: boolean
-
+       
 
          
    <!-- Start of user code TreeDescription description -->
@@ -101,17 +90,17 @@
                 . view: current DTreeElement.
                 . containerView: container of the current DTreeElement (variable is available if container is not null).
                 . container: semantic target of $containerView (if it is a DSemanticDecorator).
-
+       
           - preconditionExpression: a Collection&lt;EObject> or an EObject.
-                . view: current DTreeElement.
+                . tree: current DTree.
                 . containerView: container of the current DTreeElement (variable is available if container is not null).
                 . container: semantic target of $containerView (if it is a DSemanticDecorator).
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
-                . view: current DTreeElement.
+                . tree: current DTree.
                 . containerView: container of the current DTreeElement (variable is available if container is not null).
                 . container: semantic target of $containerView (if it is a DSemanticDecorator).
-
+       
 
          
    <!-- Start of user code TreeItemMapping description -->
@@ -127,7 +116,7 @@
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
 
          
    <!-- Start of user code TreeItemStyleDescription description -->
@@ -143,7 +132,7 @@
           - predicateExpression: a boolean.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code ConditionalTreeItemStyleDescription description -->
@@ -158,7 +147,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - variables: 
@@ -176,7 +167,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - oldContainer: 
@@ -198,7 +191,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - oldContainer: 
@@ -219,7 +214,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - variables: 
@@ -236,7 +233,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - element: 
@@ -255,7 +254,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - variables: 
@@ -272,11 +273,13 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
           - titleExpression: a string.
-
+       
           - browseExpression: an EObject.
-
+       
 
        List of the available variables for tool operations:
             - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
@@ -294,12 +297,14 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
           - browseExpression: an EObject.
-
+       
           - navigationNameExpression: a string.
                 . name: name of the targeted Representation.
-
+       
 
        List of the available variables for tool operations:
             - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
@@ -320,7 +325,7 @@
                 . view: current DTreeElement.
                 . containerView: container of the current DTreeElement (variable is available if container is not null).
                 . container: semantic target of $containerView (if it is a DSemanticDecorator).
-
+       
 
          
    <!-- Start of user code TreeMapping description -->
@@ -390,7 +395,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
          
    <!-- Start of user code TreePopupMenu description -->

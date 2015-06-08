@@ -165,6 +165,15 @@ public interface ViewpointFactory extends EFactory {
     BasicLabelStyle createBasicLabelStyle();
 
     /**
+     * Returns a new object of class '<em>UI State</em>'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>UI State</em>'.
+     * @generated
+     */
+    UIState createUIState();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 

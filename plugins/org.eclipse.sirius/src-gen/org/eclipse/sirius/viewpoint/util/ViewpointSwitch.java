@@ -40,6 +40,7 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
@@ -381,6 +382,14 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.CUSTOMIZABLE: {
             Customizable customizable = (Customizable) theEObject;
             T result = caseCustomizable(customizable);
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case ViewpointPackage.UI_STATE: {
+            UIState uiState = (UIState) theEObject;
+            T result = caseUIState(uiState);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -813,6 +822,23 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseCustomizable(Customizable object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>UI State</em>'. <!-- begin-user-doc --> This implementation returns
+     * null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>UI State</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseUIState(UIState object) {
         return null;
     }
 

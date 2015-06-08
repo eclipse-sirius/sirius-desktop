@@ -41,6 +41,7 @@ import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.SyncStatus;
+import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -119,6 +120,8 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createDModel();
         case ViewpointPackage.BASIC_LABEL_STYLE:
             return createBasicLabelStyle();
+        case ViewpointPackage.UI_STATE:
+            return createUIState();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -333,6 +336,17 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public BasicLabelStyle createBasicLabelStyle() {
         BasicLabelStyleImpl basicLabelStyle = new BasicLabelStyleImpl();
         return basicLabelStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public UIState createUIState() {
+        UIStateImpl uiState = new UIStateImpl();
+        return uiState;
     }
 
     /**

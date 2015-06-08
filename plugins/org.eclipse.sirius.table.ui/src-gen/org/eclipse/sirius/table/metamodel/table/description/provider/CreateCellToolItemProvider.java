@@ -61,6 +61,8 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
             addLabelPropertyDescriptor(object);
             addPreconditionPropertyDescriptor(object);
             addForceRefreshPropertyDescriptor(object);
+            addElementsToSelectPropertyDescriptor(object);
+            addInverseSelectionOrderPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -125,6 +127,32 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
                 getString("_UI_AbstractToolDescription_forceRefresh_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_AbstractToolDescription_forceRefresh_feature", "_UI_AbstractToolDescription_type"),
                 ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Elements To Select feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addElementsToSelectPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractToolDescription_elementsToSelect_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractToolDescription_elementsToSelect_feature", "_UI_AbstractToolDescription_type"),
+                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Inverse Selection Order feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addInverseSelectionOrderPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_AbstractToolDescription_inverseSelectionOrder_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractToolDescription_inverseSelectionOrder_feature", "_UI_AbstractToolDescription_type"),
+                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -202,6 +230,8 @@ public class CreateCellToolItemProvider extends TableToolItemProvider {
         case org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.CREATE_CELL_TOOL__LABEL:
         case org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.CREATE_CELL_TOOL__PRECONDITION:
         case org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.CREATE_CELL_TOOL__FORCE_REFRESH:
+        case org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.CREATE_CELL_TOOL__ELEMENTS_TO_SELECT:
+        case org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.CREATE_CELL_TOOL__FILTERS:

@@ -219,6 +219,24 @@ public interface ToolPackage extends EPackage {
     int INSTANCE_ROLE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int INSTANCE_ROLE_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int INSTANCE_ROLE_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -358,6 +376,24 @@ public interface ToolPackage extends EPackage {
     int LIFELINE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int LIFELINE_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int LIFELINE_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -487,13 +523,31 @@ public interface ToolPackage extends EPackage {
     int MESSAGE_CREATION_TOOL__FILTERS = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int MESSAGE_CREATION_TOOL__INVERSE_SELECTION_ORDER = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 7;
+
+    /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__EDGE_MAPPINGS = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
+    int MESSAGE_CREATION_TOOL__EDGE_MAPPINGS = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Source Variable</b></em>' containment
@@ -502,7 +556,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__SOURCE_VARIABLE = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 7;
+    int MESSAGE_CREATION_TOOL__SOURCE_VARIABLE = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Target Variable</b></em>' containment
@@ -511,7 +565,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__TARGET_VARIABLE = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 8;
+    int MESSAGE_CREATION_TOOL__TARGET_VARIABLE = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Source View Variable</b></em>' containment
@@ -520,7 +574,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 9;
+    int MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Target View Variable</b></em>' containment
@@ -529,7 +583,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 10;
+    int MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -538,7 +592,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__INITIAL_OPERATION = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 11;
+    int MESSAGE_CREATION_TOOL__INITIAL_OPERATION = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -547,7 +601,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__ICON_PATH = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 12;
+    int MESSAGE_CREATION_TOOL__ICON_PATH = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>Extra Source Mappings</b></em>' reference
@@ -556,7 +610,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 13;
+    int MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 15;
 
     /**
      * The feature id for the '<em><b>Extra Target Mappings</b></em>' reference
@@ -565,7 +619,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 14;
+    int MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 16;
 
     /**
      * The feature id for the '<em><b>Connection Start Precondition</b></em>'
@@ -574,7 +628,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 15;
+    int MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 17;
 
     /**
      * The feature id for the '<em><b>Starting End Predecessor</b></em>'
@@ -583,7 +637,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 16;
+    int MESSAGE_CREATION_TOOL__STARTING_END_PREDECESSOR = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 18;
 
     /**
      * The feature id for the '<em><b>Finishing End Predecessor</b></em>'
@@ -592,7 +646,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 17;
+    int MESSAGE_CREATION_TOOL__FINISHING_END_PREDECESSOR = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 19;
 
     /**
      * The number of structural features of the '<em>Message Creation Tool</em>'
@@ -601,7 +655,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_CREATION_TOOL_FEATURE_COUNT = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 18;
+    int MESSAGE_CREATION_TOOL_FEATURE_COUNT = ToolPackage.SEQUENCE_DIAGRAM_TOOL_DESCRIPTION_FEATURE_COUNT + 20;
 
     /**
      * The meta object id for the '
@@ -668,6 +722,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int EXECUTION_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EXECUTION_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EXECUTION_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
@@ -816,6 +888,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int STATE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int STATE_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int STATE_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
@@ -977,6 +1067,24 @@ public interface ToolPackage extends EPackage {
     int INTERACTION_USE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_USE_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int INTERACTION_USE_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1132,6 +1240,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int COMBINED_FRAGMENT_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int COMBINED_FRAGMENT_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int COMBINED_FRAGMENT_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
@@ -1291,6 +1417,24 @@ public interface ToolPackage extends EPackage {
     int OPERAND_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int OPERAND_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int OPERAND_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1438,6 +1582,24 @@ public interface ToolPackage extends EPackage {
     int OBSERVATION_POINT_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int OBSERVATION_POINT_CREATION_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int OBSERVATION_POINT_CREATION_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1574,6 +1736,24 @@ public interface ToolPackage extends EPackage {
     int REORDER_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int REORDER_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int REORDER_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1701,6 +1881,24 @@ public interface ToolPackage extends EPackage {
      * @ordered
      */
     int INSTANCE_ROLE_REORDER_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int INSTANCE_ROLE_REORDER_TOOL__ELEMENTS_TO_SELECT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int INSTANCE_ROLE_REORDER_TOOL__INVERSE_SELECTION_ORDER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--

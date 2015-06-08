@@ -31,6 +31,12 @@ import org.eclipse.emf.common.util.EList;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getFilters
  * <em>Filters</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect
+ * <em>Elements To Select</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder
+ * <em>Inverse Selection Order</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,5 +124,74 @@ public interface AbstractToolDescription extends ToolEntry {
      * @generated
      */
     EList<ToolFilterDescription> getFilters();
+
+    /**
+     * Returns the value of the '<em><b>Elements To Select</b></em>' attribute.
+     * The default value is <code>""</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The precondition of the tool.
+     * <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Elements To Select</em>' attribute.
+     * @see #setElementsToSelect(String)
+     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_ElementsToSelect()
+     * @model default="" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation
+     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the container.'"
+     * @generated
+     */
+    String getElementsToSelect();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#getElementsToSelect
+     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Elements To Select</em>' attribute.
+     * @see #getElementsToSelect()
+     * @generated
+     */
+    void setElementsToSelect(String value);
+
+    /**
+     * Returns the value of the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. The default value is <code>"false"</code>. <!-- begin-user-doc
+     * -->
+     * <p>
+     * If the meaning of the '<em>Inverse Selection Order</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc --> <!-- begin-model-doc --> By default the elements to
+     * select are listed in the creation order. If true, the order is inverted.
+     * <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Inverse Selection Order</em>' attribute.
+     * @see #setInverseSelectionOrder(boolean)
+     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_InverseSelectionOrder()
+     * @model default="false" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     * @generated
+     */
+    boolean isInverseSelectionOrder();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription#isInverseSelectionOrder
+     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Inverse Selection Order</em>'
+     *            attribute.
+     * @see #isInverseSelectionOrder()
+     * @generated
+     */
+    void setInverseSelectionOrder(boolean value);
 
 } // AbstractToolDescription

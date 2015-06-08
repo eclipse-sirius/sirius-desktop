@@ -1960,6 +1960,24 @@ public interface DescriptionPackage extends EPackage {
     int CREATE_TOOL__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_TOOL__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_TOOL__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2051,6 +2069,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int CREATE_COLUMN_TOOL__FILTERS = DescriptionPackage.CREATE_TOOL__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_COLUMN_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.CREATE_TOOL__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_COLUMN_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.CREATE_TOOL__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2155,6 +2191,24 @@ public interface DescriptionPackage extends EPackage {
     int CREATE_CROSS_COLUMN_TOOL__FILTERS = DescriptionPackage.CREATE_TOOL__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_CROSS_COLUMN_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.CREATE_TOOL__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_CROSS_COLUMN_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.CREATE_TOOL__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2256,6 +2310,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int CREATE_LINE_TOOL__FILTERS = DescriptionPackage.CREATE_TOOL__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_LINE_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.CREATE_TOOL__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_LINE_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.CREATE_TOOL__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2378,13 +2450,31 @@ public interface DescriptionPackage extends EPackage {
     int CREATE_CELL_TOOL__FILTERS = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 5;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_CELL_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 6;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CREATE_CELL_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 7;
+
+    /**
      * The feature id for the '<em><b>Mask</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__MASK = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 6;
+    int CREATE_CELL_TOOL__MASK = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Mapping</b></em>' container reference.
@@ -2393,7 +2483,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL__MAPPING = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 7;
+    int CREATE_CELL_TOOL__MAPPING = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 9;
 
     /**
      * The number of structural features of the '<em>Create Cell Tool</em>'
@@ -2402,7 +2492,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CREATE_CELL_TOOL_FEATURE_COUNT = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 8;
+    int CREATE_CELL_TOOL_FEATURE_COUNT = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 10;
 
     /**
      * The meta object id for the '
@@ -2469,6 +2559,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int DELETE_TOOL__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DELETE_TOOL__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DELETE_TOOL__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2562,6 +2670,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int DELETE_COLUMN_TOOL__FILTERS = DescriptionPackage.DELETE_TOOL__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DELETE_COLUMN_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.DELETE_TOOL__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DELETE_COLUMN_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.DELETE_TOOL__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2664,6 +2790,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int DELETE_LINE_TOOL__FILTERS = DescriptionPackage.DELETE_TOOL__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DELETE_LINE_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.DELETE_TOOL__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DELETE_LINE_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.DELETE_TOOL__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2976,6 +3120,24 @@ public interface DescriptionPackage extends EPackage {
     int TABLE_CREATION_DESCRIPTION__FILTERS = ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TABLE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TABLE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3113,6 +3275,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int TABLE_NAVIGATION_DESCRIPTION__FILTERS = ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TABLE_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TABLE_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Browse Expression</b></em>' attribute.

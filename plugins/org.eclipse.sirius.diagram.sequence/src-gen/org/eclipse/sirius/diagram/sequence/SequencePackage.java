@@ -126,6 +126,15 @@ public interface SequencePackage extends EPackage {
     int SEQUENCE_DDIAGRAM__OWNED_ANNOTATION_ENTRIES = DiagramPackage.DSEMANTIC_DIAGRAM__OWNED_ANNOTATION_ENTRIES;
 
     /**
+     * The feature id for the '<em><b>Ui State</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SEQUENCE_DDIAGRAM__UI_STATE = DiagramPackage.DSEMANTIC_DIAGRAM__UI_STATE;
+
+    /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

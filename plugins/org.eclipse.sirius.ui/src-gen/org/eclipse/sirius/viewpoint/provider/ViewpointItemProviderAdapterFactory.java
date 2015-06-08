@@ -454,6 +454,31 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.viewpoint.UIState} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected UIStateItemProvider uiStateItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.viewpoint.UIState}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createUIStateAdapter() {
+        if (uiStateItemProvider == null) {
+            uiStateItemProvider = new UIStateItemProvider(this);
+        }
+
+        return uiStateItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -601,6 +626,9 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
         }
         if (basicLabelStyleItemProvider != null) {
             basicLabelStyleItemProvider.dispose();
+        }
+        if (uiStateItemProvider != null) {
+            uiStateItemProvider.dispose();
         }
     }
 

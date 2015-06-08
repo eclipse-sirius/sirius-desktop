@@ -16,18 +16,18 @@
        
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-
+       
           - preconditionExpression: a boolean.
-
+       
           - rootExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
-
+       
           - endsOrdering: a Collection&lt;EObject> or an EObject.
                 . eventEnds: a List&lt;EObject> containing the semantic event ends.
-
+       
           - instanceRolesOrdering: a Collection&lt;EObject> or an EObject.
-
+       
 
          
    <!-- Start of user code SequenceDiagramDescription description -->
@@ -41,7 +41,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -49,18 +49,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code InstanceRoleMapping description -->
@@ -85,9 +85,9 @@
        
        Interpreted expressions, requested return type and available variables:
           - startingEndFinderExpression: an EObject.
-
+       
           - finishingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code DelimitedEventMapping description -->
@@ -105,7 +105,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -113,22 +113,22 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - startingEndFinderExpression: an EObject.
-
+       
           - finishingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code ExecutionMapping description -->
@@ -142,7 +142,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -150,22 +150,22 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - startingEndFinderExpression: an EObject.
-
+       
           - finishingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code StateMapping description -->
@@ -181,7 +181,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -189,18 +189,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code EndOfLifeMapping description -->
@@ -214,7 +214,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -222,44 +222,44 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - pathExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . element: the semantic element  of the current edge.
                 . source: the semantic target of the current source node.
                 . target: the semantic element of the current target node.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code MessageMapping description -->
@@ -273,7 +273,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -281,44 +281,44 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - pathExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . element: the semantic element  of the current edge.
                 . source: the semantic target of the current source node.
                 . target: the semantic element of the current target node.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code BasicMessageMapping description -->
@@ -332,7 +332,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -340,46 +340,46 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - pathExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . element: the semantic element  of the current edge.
                 . source: the semantic target of the current source node.
                 . target: the semantic element of the current target node.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
           - invocationMessageFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code ReturnMessageMapping description -->
@@ -393,7 +393,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -401,44 +401,44 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - pathExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . element: the semantic element  of the current edge.
                 . source: the semantic target of the current source node.
                 . target: the semantic element of the current target node.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code CreationMessageMapping description -->
@@ -452,7 +452,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -460,44 +460,44 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetExpression: an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - pathExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . element: the semantic element  of the current edge.
                 . source: the semantic target of the current source node.
                 . target: the semantic element of the current target node.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code DestructionMessageMapping description -->
@@ -533,7 +533,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -541,26 +541,26 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - startingEndFinderExpression: an EObject.
-
+       
           - finishingEndFinderExpression: an EObject.
-
+       
           - coveredLifelinesExpression: the list of semantic EObjects representing the lifelines which are semantically covered by the frame.
-
+       
           - centerLabelExpression: the text to show in the center of the IU
-
+       
 
          
    <!-- Start of user code FrameMapping description -->
@@ -574,7 +574,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -582,26 +582,26 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - startingEndFinderExpression: an EObject.
-
+       
           - finishingEndFinderExpression: an EObject.
-
+       
           - coveredLifelinesExpression: the list of semantic EObjects representing the lifelines which are semantically covered by the frame.
-
+       
           - centerLabelExpression: the text to show in the center of the IU
-
+       
 
          
    <!-- Start of user code InteractionUseMapping description -->
@@ -615,7 +615,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -623,26 +623,26 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - startingEndFinderExpression: an EObject.
-
+       
           - finishingEndFinderExpression: an EObject.
-
+       
           - coveredLifelinesExpression: the list of semantic EObjects representing the lifelines which are semantically covered by the frame.
-
+       
           - centerLabelExpression: the text to show in the center of the IU
-
+       
 
          
    <!-- Start of user code CombinedFragmentMapping description -->
@@ -656,7 +656,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -664,22 +664,22 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
           - startingEndFinderExpression: an EObject.
-
+       
           - finishingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code OperandMapping description -->
@@ -693,7 +693,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
-                . containerView: the view that sould contain the potential views of the checked elements.
+                . containerView: the view that should contain the potential views of the checked elements.
                 . container: the semantic element of containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
@@ -701,18 +701,18 @@
                 . source: (edge only) the semantic element of sourceView.
                 . targetView: (edge only) the target view of the current potential edge.
                 . target: (edge only) the semantic element of targetView.
-
+       
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . containerView: the parent view of potential candidates.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - semanticElements: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view created from the current mapping.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code ObservationPointMapping description -->
@@ -760,7 +760,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - predecessor: 
@@ -779,7 +781,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
@@ -797,13 +801,15 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
           - connectionStartPrecondition: a boolean.
                 . container: the semantic element of diagram.
                 . preSourceView: (edge only) the source view of the current potential edge.
                 . preSource: (edge only) the semantic element of $preSourceView.
                 . diagram: the diagram of the current potential edge
-
+       
 
        List of the available variables for tool operations:
             - source: The semantic element of the source view.
@@ -825,7 +831,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - container: The variable container that represents the semantic element of the clicked view.
@@ -845,7 +853,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - container: The variable container that represents the semantic element of the clicked view.
@@ -865,7 +875,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
@@ -886,7 +898,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
@@ -907,7 +921,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
@@ -927,7 +943,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - container: The variable container that represents the semantic element of the clicked view.
@@ -947,7 +965,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - startingEndPredecessorBefore: 
@@ -967,7 +987,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
+          - elementsToSelect: a Collection&lt;EObject>
+       
 
        List of the available variables for tool operations:
             - predecessorBefore: 
@@ -1054,7 +1076,7 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
 
          
    <!-- Start of user code TAbstractMapping description -->
@@ -1069,7 +1091,7 @@
        Interpreted expressions, requested return type and available variables:
           - endsOrdering: a Collection&lt;EObject> or an EObject.
                 . eventEnds: a List&lt;EObject> containing the semantic event ends.
-
+       
 
          
    <!-- Start of user code TSequenceDiagram description -->
@@ -1098,13 +1120,13 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - eolVisibleExpression: a boolean.
                 . containerView: the view that sould contain the potential views of the checked elements.
                 . container: the semantic element of $containerView.
                 . viewpoint: (deprecated) the current DSemanticDiagram.
                 . diagram: the current DSemanticDiagram.
-
+       
 
          
    <!-- Start of user code TLifelineMapping description -->
@@ -1118,7 +1140,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - lifelineWidthComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code TLifelineStyle description -->
@@ -1134,7 +1156,7 @@
           - predicateExpression: a boolean.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code TConditionalLifelineStyle description -->
@@ -1152,11 +1174,11 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - startingEndFinderExpression: an EObject.
-
+       
           - finishingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code TExecutionMapping description -->
@@ -1170,7 +1192,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code TExecutionStyle description -->
@@ -1186,7 +1208,7 @@
           - predicateExpression: a boolean.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code TConditionalExecutionStyle description -->
@@ -1204,11 +1226,11 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code TMessageMapping description -->
@@ -1224,7 +1246,7 @@
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
 
          
    <!-- Start of user code TMessageStyle description -->
@@ -1240,7 +1262,7 @@
           - predicateExpression: a boolean.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code TConditionalMessageStyle description -->
@@ -1258,21 +1280,21 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
 
          
    <!-- Start of user code TBasicMessageMapping description -->
@@ -1290,21 +1312,21 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
 
          
    <!-- Start of user code TSourceTargetMessageMapping description -->
@@ -1322,13 +1344,13 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
           - invocationMessageFinderExpression: an EObject.
-
+       
 
          
    <!-- Start of user code TReturnMessageMapping description -->
@@ -1346,21 +1368,21 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
 
          
    <!-- Start of user code TCreationMessageMapping description -->
@@ -1378,21 +1400,21 @@
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - sendingEndFinderExpression: an EObject.
-
+       
           - receivingEndFinderExpression: an EObject.
-
+       
           - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
           - targetFinderExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . viewpoint: (deprecated) the current DDiagram.
                 . viewPoint: (deprecated) the current DDiagram.
-
+       
 
          
    <!-- Start of user code TDestructionMessageMapping description -->

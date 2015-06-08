@@ -450,13 +450,22 @@ public interface ViewpointPackage extends EPackage {
     int DREPRESENTATION__OWNED_ANNOTATION_ENTRIES = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 4;
 
     /**
+     * The feature id for the '<em><b>Ui State</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION__UI_STATE = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 5;
+
+    /**
      * The number of structural features of the '<em>DRepresentation</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_FEATURE_COUNT = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 5;
+    int DREPRESENTATION_FEATURE_COUNT = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '
@@ -843,7 +852,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getRGBValues()
      * @generated
      */
-    int RGB_VALUES = 28;
+    int RGB_VALUES = 29;
 
     /**
      * The meta object id for the '<em>Resource Descriptor</em>' data type. <!--
@@ -853,7 +862,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getResourceDescriptor()
      * @generated
      */
-    int RESOURCE_DESCRIPTOR = 29;
+    int RESOURCE_DESCRIPTOR = 30;
 
     /**
      * The meta object id for the '
@@ -1220,6 +1229,44 @@ public interface ViewpointPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.impl.UIStateImpl <em>UI State</em>}'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.impl.UIStateImpl
+     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getUIState()
+     * @generated
+     */
+    int UI_STATE = 25;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int UI_STATE__INVERSE_SELECTION_ORDER = 0;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int UI_STATE__ELEMENTS_TO_SELECT = 1;
+
+    /**
+     * The number of structural features of the '<em>UI State</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int UI_STATE_FEATURE_COUNT = 2;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.FontFormat <em>Font Format</em>}'
      * enum. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1227,7 +1274,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getFontFormat()
      * @generated
      */
-    int FONT_FORMAT = 25;
+    int FONT_FORMAT = 26;
 
     /**
      * The meta object id for the '
@@ -1239,7 +1286,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getLabelAlignment()
      * @generated
      */
-    int LABEL_ALIGNMENT = 26;
+    int LABEL_ALIGNMENT = 27;
 
     /**
      * The meta object id for the '
@@ -1250,7 +1297,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSyncStatus()
      * @generated
      */
-    int SYNC_STATUS = 27;
+    int SYNC_STATUS = 28;
 
     /**
      * Returns the meta object for class '
@@ -1536,6 +1583,19 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      */
     EReference getDRepresentation_OwnedAnnotationEntries();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.viewpoint.DRepresentation#getUiState
+     * <em>Ui State</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Ui State</em>
+     *         '.
+     * @see org.eclipse.sirius.viewpoint.DRepresentation#getUiState()
+     * @see #getDRepresentation()
+     * @generated
+     */
+    EReference getDRepresentation_UiState();
 
     /**
      * Returns the meta object for class '
@@ -2096,6 +2156,45 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getCustomizable_CustomFeatures();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.viewpoint.UIState <em>UI State</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>UI State</em>'.
+     * @see org.eclipse.sirius.viewpoint.UIState
+     * @generated
+     */
+    EClass getUIState();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder
+     * <em>Inverse Selection Order</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Inverse Selection Order</em>'.
+     * @see org.eclipse.sirius.viewpoint.UIState#isInverseSelectionOrder()
+     * @see #getUIState()
+     * @generated
+     */
+    EAttribute getUIState_InverseSelectionOrder();
+
+    /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect
+     * <em>Elements To Select</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the reference list '
+     *         <em>Elements To Select</em>'.
+     * @see org.eclipse.sirius.viewpoint.UIState#getElementsToSelect()
+     * @see #getUIState()
+     * @generated
+     */
+    EReference getUIState_ElementsToSelect();
+
+    /**
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.viewpoint.FontFormat <em>Font Format</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2371,6 +2470,15 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference DREPRESENTATION__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.eINSTANCE.getDRepresentation_OwnedAnnotationEntries();
+
+        /**
+         * The meta object literal for the '<em><b>Ui State</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DREPRESENTATION__UI_STATE = ViewpointPackage.eINSTANCE.getDRepresentation_UiState();
 
         /**
          * The meta object literal for the '
@@ -2812,6 +2920,35 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EAttribute CUSTOMIZABLE__CUSTOM_FEATURES = ViewpointPackage.eINSTANCE.getCustomizable_CustomFeatures();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.impl.UIStateImpl
+         * <em>UI State</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+         * -->
+         *
+         * @see org.eclipse.sirius.viewpoint.impl.UIStateImpl
+         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getUIState()
+         * @generated
+         */
+        EClass UI_STATE = ViewpointPackage.eINSTANCE.getUIState();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Inverse Selection Order</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute UI_STATE__INVERSE_SELECTION_ORDER = ViewpointPackage.eINSTANCE.getUIState_InverseSelectionOrder();
+
+        /**
+         * The meta object literal for the '<em><b>Elements To Select</b></em>'
+         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference UI_STATE__ELEMENTS_TO_SELECT = ViewpointPackage.eINSTANCE.getUIState_ElementsToSelect();
 
         /**
          * The meta object literal for the '

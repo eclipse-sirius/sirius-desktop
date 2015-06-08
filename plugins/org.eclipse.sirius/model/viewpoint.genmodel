@@ -62,6 +62,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/representationElements"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/ownedAnnotationEntries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/uiState"/>
     </genClasses>
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DRepresentationElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentationElement/name"/>
@@ -119,6 +120,10 @@
     </genClasses>
     <genClasses image="false" ecoreClass="viewpoint.ecore#//Customizable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Customizable/customFeatures"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//UIState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//UIState/inverseSelectionOrder"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//UIState/elementsToSelect"/>
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.viewpoint"
         resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
@@ -431,6 +436,10 @@
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AbstractToolDescription/forceRefresh"/>
           <genFeatures property="None" children="true" createChild="true" propertyCategory=""
               propertyDescription="" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/AbstractToolDescription/filters"/>
+          <genFeatures createChild="false" propertyDescription="An expression used to define the selected elements after the tool execution."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AbstractToolDescription/elementsToSelect"/>
+          <genFeatures createChild="false" propertyDescription="By default the elements to select are listed in the creation order. If true, the order is inverted."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AbstractToolDescription/inverseSelectionOrder"/>
         </genClasses>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MappingBasedToolDescription"/>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/ToolDescription">

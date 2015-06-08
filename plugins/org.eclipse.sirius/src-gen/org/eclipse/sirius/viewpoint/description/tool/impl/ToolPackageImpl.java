@@ -633,6 +633,26 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * @generated
      */
     @Override
+    public EAttribute getAbstractToolDescription_ElementsToSelect() {
+        return (EAttribute) abstractToolDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getAbstractToolDescription_InverseSelectionOrder() {
+        return (EAttribute) abstractToolDescriptionEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EClass getMappingBasedToolDescription() {
         return mappingBasedToolDescriptionEClass;
     }
@@ -2074,6 +2094,8 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         createEAttribute(abstractToolDescriptionEClass, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
         createEAttribute(abstractToolDescriptionEClass, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH);
         createEReference(abstractToolDescriptionEClass, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS);
+        createEAttribute(abstractToolDescriptionEClass, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT);
+        createEAttribute(abstractToolDescriptionEClass, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER);
 
         mappingBasedToolDescriptionEClass = createEClass(ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION);
 
@@ -2376,6 +2398,12 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEReference(getAbstractToolDescription_Filters(), this.getToolFilterDescription(), null, "filters", null, 0, -1, AbstractToolDescription.class, !EPackageImpl.IS_TRANSIENT,
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getAbstractToolDescription_ElementsToSelect(), theDescriptionPackage.getInterpretedExpression(), "elementsToSelect", "", 0, 1, AbstractToolDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
+        initEAttribute(getAbstractToolDescription_InverseSelectionOrder(), theEcorePackage.getEBoolean(), "inverseSelectionOrder", "false", 0, 1, AbstractToolDescription.class,
+                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
+                EPackageImpl.IS_ORDERED);
 
         initEClass(mappingBasedToolDescriptionEClass, MappingBasedToolDescription.class, "MappingBasedToolDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
@@ -2757,6 +2785,8 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
     protected void createReturnTypeAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/returnType";
         addAnnotation(getAbstractToolDescription_Precondition(), source, new String[] { "returnType", "a boolean." });
+        addAnnotation(getAbstractToolDescription_ElementsToSelect(), source, new String[] { "returnType", "a Collection<EObject>" });
+        addAnnotation(getAbstractToolDescription_InverseSelectionOrder(), source, new String[] { "returnType", "a boolean." });
         addAnnotation(getPaneBasedSelectionWizardDescription_CandidatesExpression(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." });
         addAnnotation(getPaneBasedSelectionWizardDescription_RootExpression(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." });
         addAnnotation(getPaneBasedSelectionWizardDescription_ChildrenExpression(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." });

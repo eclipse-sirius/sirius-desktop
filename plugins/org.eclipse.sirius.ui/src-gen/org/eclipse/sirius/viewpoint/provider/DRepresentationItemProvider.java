@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -118,6 +119,7 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
             super.getChildrenFeatures(object);
             childrenFeatures.add(DescriptionPackage.Literals.DMODEL_ELEMENT__EANNOTATIONS);
             childrenFeatures.add(ViewpointPackage.Literals.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
+            childrenFeatures.add(ViewpointPackage.Literals.DREPRESENTATION__UI_STATE);
         }
         return childrenFeatures;
     }
@@ -166,6 +168,7 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
             return;
         case ViewpointPackage.DREPRESENTATION__EANNOTATIONS:
         case ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES:
+        case ViewpointPackage.DREPRESENTATION__UI_STATE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -186,6 +189,8 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DMODEL_ELEMENT__EANNOTATIONS, DescriptionFactory.eINSTANCE.createDAnnotation()));
 
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES, DescriptionFactory.eINSTANCE.createAnnotationEntry()));
+
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DREPRESENTATION__UI_STATE, ViewpointFactory.eINSTANCE.createUIState()));
     }
 
     /**

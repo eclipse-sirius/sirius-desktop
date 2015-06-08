@@ -68,6 +68,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getFilters
  * <em>Filters</em>}</li>
  * <li>
+ * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getElementsToSelect
+ * <em>Elements To Select</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#isInverseSelectionOrder
+ * <em>Inverse Selection Order</em>}</li>
+ * <li>
  * {@link org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl#getEdgeMappings
  * <em>Edge Mappings</em>}</li>
  * <li>
@@ -222,6 +228,50 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @ordered
      */
     protected EList<ToolFilterDescription> filters;
+
+    /**
+     * The default value of the '{@link #getElementsToSelect()
+     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getElementsToSelect()
+     * @generated
+     * @ordered
+     */
+    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getElementsToSelect()
+     * <em>Elements To Select</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getElementsToSelect()
+     * @generated
+     * @ordered
+     */
+    protected String elementsToSelect = MessageCreationToolImpl.ELEMENTS_TO_SELECT_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isInverseSelectionOrder()
+     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #isInverseSelectionOrder()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean INVERSE_SELECTION_ORDER_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isInverseSelectionOrder()
+     * <em>Inverse Selection Order</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #isInverseSelectionOrder()
+     * @generated
+     * @ordered
+     */
+    protected boolean inverseSelectionOrder = MessageCreationToolImpl.INVERSE_SELECTION_ORDER_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getEdgeMappings()
@@ -525,6 +575,54 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             filters = new EObjectContainmentEList.Resolving<ToolFilterDescription>(ToolFilterDescription.class, this, ToolPackage.MESSAGE_CREATION_TOOL__FILTERS);
         }
         return filters;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public String getElementsToSelect() {
+        return elementsToSelect;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setElementsToSelect(String newElementsToSelect) {
+        String oldElementsToSelect = elementsToSelect;
+        elementsToSelect = newElementsToSelect;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT, oldElementsToSelect, elementsToSelect));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean isInverseSelectionOrder() {
+        return inverseSelectionOrder;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setInverseSelectionOrder(boolean newInverseSelectionOrder) {
+        boolean oldInverseSelectionOrder = inverseSelectionOrder;
+        inverseSelectionOrder = newInverseSelectionOrder;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__INVERSE_SELECTION_ORDER, oldInverseSelectionOrder, inverseSelectionOrder));
+        }
     }
 
     /**
@@ -1181,6 +1279,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             return isForceRefresh();
         case ToolPackage.MESSAGE_CREATION_TOOL__FILTERS:
             return getFilters();
+        case ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT:
+            return getElementsToSelect();
+        case ToolPackage.MESSAGE_CREATION_TOOL__INVERSE_SELECTION_ORDER:
+            return isInverseSelectionOrder();
         case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
             return getEdgeMappings();
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE:
@@ -1252,6 +1354,12 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             getFilters().clear();
             getFilters().addAll((Collection<? extends ToolFilterDescription>) newValue);
             return;
+        case ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT:
+            setElementsToSelect((String) newValue);
+            return;
+        case ToolPackage.MESSAGE_CREATION_TOOL__INVERSE_SELECTION_ORDER:
+            setInverseSelectionOrder((Boolean) newValue);
+            return;
         case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
             getEdgeMappings().clear();
             getEdgeMappings().addAll((Collection<? extends EdgeMapping>) newValue);
@@ -1321,6 +1429,12 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         case ToolPackage.MESSAGE_CREATION_TOOL__FILTERS:
             getFilters().clear();
             return;
+        case ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT:
+            setElementsToSelect(MessageCreationToolImpl.ELEMENTS_TO_SELECT_EDEFAULT);
+            return;
+        case ToolPackage.MESSAGE_CREATION_TOOL__INVERSE_SELECTION_ORDER:
+            setInverseSelectionOrder(MessageCreationToolImpl.INVERSE_SELECTION_ORDER_EDEFAULT);
+            return;
         case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
             getEdgeMappings().clear();
             return;
@@ -1381,6 +1495,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             return forceRefresh != MessageCreationToolImpl.FORCE_REFRESH_EDEFAULT;
         case ToolPackage.MESSAGE_CREATION_TOOL__FILTERS:
             return filters != null && !filters.isEmpty();
+        case ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT:
+            return MessageCreationToolImpl.ELEMENTS_TO_SELECT_EDEFAULT == null ? elementsToSelect != null : !MessageCreationToolImpl.ELEMENTS_TO_SELECT_EDEFAULT.equals(elementsToSelect);
+        case ToolPackage.MESSAGE_CREATION_TOOL__INVERSE_SELECTION_ORDER:
+            return inverseSelectionOrder != MessageCreationToolImpl.INVERSE_SELECTION_ORDER_EDEFAULT;
         case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
             return edgeMappings != null && !edgeMappings.isEmpty();
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE:
@@ -1449,6 +1567,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
                 return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
             case ToolPackage.MESSAGE_CREATION_TOOL__FILTERS:
                 return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+            case ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT:
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+            case ToolPackage.MESSAGE_CREATION_TOOL__INVERSE_SELECTION_ORDER:
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
             default:
                 return -1;
             }
@@ -1537,6 +1659,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
                 return ToolPackage.MESSAGE_CREATION_TOOL__FORCE_REFRESH;
             case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
                 return ToolPackage.MESSAGE_CREATION_TOOL__FILTERS;
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
+                return ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT;
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER:
+                return ToolPackage.MESSAGE_CREATION_TOOL__INVERSE_SELECTION_ORDER;
             default:
                 return -1;
             }
@@ -1608,6 +1734,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         result.append(precondition);
         result.append(", forceRefresh: ");
         result.append(forceRefresh);
+        result.append(", elementsToSelect: ");
+        result.append(elementsToSelect);
+        result.append(", inverseSelectionOrder: ");
+        result.append(inverseSelectionOrder);
         result.append(", iconPath: ");
         result.append(iconPath);
         result.append(", connectionStartPrecondition: ");

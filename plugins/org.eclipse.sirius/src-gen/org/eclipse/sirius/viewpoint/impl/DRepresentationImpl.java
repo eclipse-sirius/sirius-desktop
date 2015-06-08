@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -51,6 +52,8 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedAnnotationEntries
  * <em>Owned Annotation Entries</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getUiState
+ * <em>Ui State</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,6 +101,16 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
      * @ordered
      */
     protected EList<AnnotationEntry> ownedAnnotationEntries;
+
+    /**
+     * The cached value of the '{@link #getUiState() <em>Ui State</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getUiState()
+     * @generated
+     * @ordered
+     */
+    protected UIState uiState;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -210,6 +223,59 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
      * @generated
      */
     @Override
+    public UIState getUiState() {
+        return uiState;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetUiState(UIState newUiState, NotificationChain msgs) {
+        UIState oldUiState = uiState;
+        uiState = newUiState;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION__UI_STATE, oldUiState, newUiState);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setUiState(UIState newUiState) {
+        if (newUiState != uiState) {
+            NotificationChain msgs = null;
+            if (uiState != null) {
+                msgs = ((InternalEObject) uiState).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DREPRESENTATION__UI_STATE, null, msgs);
+            }
+            if (newUiState != null) {
+                msgs = ((InternalEObject) newUiState).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ViewpointPackage.DREPRESENTATION__UI_STATE, null, msgs);
+            }
+            msgs = basicSetUiState(newUiState, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION__UI_STATE, newUiState, newUiState));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public DAnnotation getDAnnotation(String source) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -240,6 +306,8 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             return ((InternalEList<?>) getEAnnotations()).basicRemove(otherEnd, msgs);
         case ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES:
             return ((InternalEList<?>) getOwnedAnnotationEntries()).basicRemove(otherEnd, msgs);
+        case ViewpointPackage.DREPRESENTATION__UI_STATE:
+            return basicSetUiState(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -262,6 +330,8 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             return getName();
         case ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES:
             return getOwnedAnnotationEntries();
+        case ViewpointPackage.DREPRESENTATION__UI_STATE:
+            return getUiState();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -286,6 +356,9 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             getOwnedAnnotationEntries().clear();
             getOwnedAnnotationEntries().addAll((Collection<? extends AnnotationEntry>) newValue);
             return;
+        case ViewpointPackage.DREPRESENTATION__UI_STATE:
+            setUiState((UIState) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -306,6 +379,9 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             return;
         case ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES:
             getOwnedAnnotationEntries().clear();
+            return;
+        case ViewpointPackage.DREPRESENTATION__UI_STATE:
+            setUiState((UIState) null);
             return;
         }
         super.eUnset(featureID);
@@ -329,6 +405,8 @@ public abstract class DRepresentationImpl extends DocumentedElementImpl implemen
             return DRepresentationImpl.NAME_EDEFAULT == null ? name != null : !DRepresentationImpl.NAME_EDEFAULT.equals(name);
         case ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES:
             return ownedAnnotationEntries != null && !ownedAnnotationEntries.isEmpty();
+        case ViewpointPackage.DREPRESENTATION__UI_STATE:
+            return uiState != null;
         }
         return super.eIsSet(featureID);
     }

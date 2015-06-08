@@ -689,6 +689,24 @@ public interface DescriptionPackage extends EPackage {
     int TREE_ITEM_TOOL__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_TOOL__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_TOOL__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -780,6 +798,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int TREE_ITEM_DRAG_TOOL__FILTERS = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_DRAG_TOOL__ELEMENTS_TO_SELECT = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_DRAG_TOOL__INVERSE_SELECTION_ORDER = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -938,6 +974,24 @@ public interface DescriptionPackage extends EPackage {
     int TREE_ITEM_CONTAINER_DROP_TOOL__FILTERS = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_CONTAINER_DROP_TOOL__ELEMENTS_TO_SELECT = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_CONTAINER_DROP_TOOL__INVERSE_SELECTION_ORDER = ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1086,6 +1140,24 @@ public interface DescriptionPackage extends EPackage {
     int TREE_ITEM_CREATION_TOOL__FILTERS = DescriptionPackage.TREE_ITEM_TOOL__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_CREATION_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.TREE_ITEM_TOOL__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_CREATION_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.TREE_ITEM_TOOL__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1187,6 +1259,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int TREE_ITEM_EDITION_TOOL__FILTERS = DescriptionPackage.TREE_ITEM_TOOL__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_EDITION_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.TREE_ITEM_TOOL__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_EDITION_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.TREE_ITEM_TOOL__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
@@ -1318,6 +1408,24 @@ public interface DescriptionPackage extends EPackage {
     int TREE_ITEM_DELETION_TOOL__FILTERS = DescriptionPackage.TREE_ITEM_TOOL__FILTERS;
 
     /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_DELETION_TOOL__ELEMENTS_TO_SELECT = DescriptionPackage.TREE_ITEM_TOOL__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_DELETION_TOOL__INVERSE_SELECTION_ORDER = DescriptionPackage.TREE_ITEM_TOOL__INVERSE_SELECTION_ORDER;
+
+    /**
      * The feature id for the '<em><b>First Model Operation</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1419,6 +1527,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int TREE_CREATION_DESCRIPTION__FILTERS = ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
@@ -1558,6 +1684,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int TREE_NAVIGATION_DESCRIPTION__FILTERS = ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT = ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER = ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Browse Expression</b></em>' attribute.
@@ -1903,6 +2047,24 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int TREE_POPUP_MENU__FILTERS = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Elements To Select</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_POPUP_MENU__ELEMENTS_TO_SELECT = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT;
+
+    /**
+     * The feature id for the '<em><b>Inverse Selection Order</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_POPUP_MENU__INVERSE_SELECTION_ORDER = ToolPackage.ABSTRACT_TOOL_DESCRIPTION__INVERSE_SELECTION_ORDER;
 
     /**
      * The feature id for the '<em><b>Menu Item Descriptions</b></em>'
