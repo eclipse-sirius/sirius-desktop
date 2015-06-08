@@ -11,7 +11,7 @@ include "modules/aql-3.6.tpd"
 
 with source, requirements
 
-location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
+location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository" {
         com.google.guava [11.0.2,16.0)
 }
 
