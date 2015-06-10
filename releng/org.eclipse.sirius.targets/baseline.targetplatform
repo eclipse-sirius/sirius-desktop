@@ -1,6 +1,6 @@
 target "baseline" 
 
-location Sirius-Latest-Release "http://download.eclipse.org/sirius/updates/releases/2.0.4/luna" {
+location Sirius-Latest-Release "http://download.eclipse.org/sirius/updates/releases/3.0.0/mars" {
 	org.eclipse.sirius.runtime.acceleo.feature.group
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.ide.ui.feature.group
