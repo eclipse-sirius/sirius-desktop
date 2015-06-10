@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="10.0.0.201505222000">
   <ownedViewpoints name="edgeToEdgeTest">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="edgeToEdge" domainClass="migrationmodeler.Diagram">
       <filters xsi:type="filter:CompositeFilterDescription" name="nodeFilter">
@@ -10,20 +10,20 @@
       </filters>
       <defaultLayer name="Default">
         <nodeMappings name="node1" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node">
-          <borderedNodeMappings name="bordered" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="migrationmodeler.Bordered">
-            <style xsi:type="style:LozengeNodeDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+          <borderedNodeMappings name="bordered" semanticCandidatesExpression="aql:self.eAllContents()" domainClass="migrationmodeler.Bordered">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="aql:self.id" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="edge" sourceMapping="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@containerMappings[name='container1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered']" targetMapping="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@containerMappings[name='container1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="migrationmodeler.Edge" useDomainElement="true">
+        <edgeMappings name="edge" sourceMapping="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@containerMappings[name='container1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered']" targetMapping="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@containerMappings[name='container1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="migrationmodeler.Edge" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -32,7 +32,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="container1" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Container">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:self.id">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -58,14 +58,14 @@
       </defaultLayer>
       <additionalLayers name="layerA">
         <nodeMappings name="nodeLayerA" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node">
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           </style>
         </nodeMappings>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="containerLayerA" domainClass="migrationmodeler.Container" importedMapping="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@containerMappings[name='container1']">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:self.id">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="10.0.0.201505222000">
   <ownedViewpoints name="UML2" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Node Class Diagram" domainClass="Package">
       <nodeMappings name="CD_Class" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
@@ -38,7 +38,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Container Class Diagram with Semantic Candidates" domainClass="Package">
       <containerMappings name="CDSemantic_Class" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Class&quot;)%>" domainClass="Class">
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -48,7 +48,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Container Class Diagram" domainClass="Package">
       <containerMappings name="CD_Class" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -66,7 +66,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </borderedNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -76,7 +76,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Container Package Diagram" domainClass="Model">
       <containerMappings name="Package" semanticCandidatesExpression="feature:eAllContents" domainClass="Package">
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -86,7 +86,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Container Package Diagram with Precondition" domainClass="Model">
       <containerMappings name="Package" preconditionExpression="&lt;%name.endsWith(&quot;1&quot;)%>" semanticCandidatesExpression="feature:eAllContents" domainClass="Package">
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -95,8 +95,8 @@
       </containerMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Container Package Diagram with Semantic Candidate" domainClass="Model" rootExpression="">
-      <containerMappings name="Package" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Package&quot;)%>" domainClass="Package">
-        <style xsi:type="style:FlatContainerStyleDescription">
+      <containerMappings name="Package" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="Package">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -104,9 +104,9 @@
         </style>
       </containerMappings>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Container Package Diagram with Recursive Package" domainClass="Model" rootExpression="&lt;%eContents.filter(&quot;Package&quot;)%>">
-      <containerMappings name="Package Recur" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Package&quot;)%>" domainClass="Package" reusedContainerMappings="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Container%20Package%20Diagram%20with%20Recursive%20Package']/@containerMappings[name='Package%20Recur']">
-        <style xsi:type="style:FlatContainerStyleDescription">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Container Package Diagram with Recursive Package" domainClass="Model" rootExpression="aql:self.eContents()->filter(ecore::EPackage)">
+      <containerMappings name="Package Recur" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="Package" reusedContainerMappings="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Container%20Package%20Diagram%20with%20Recursive%20Package']/@containerMappings[name='Package%20Recur']">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -122,8 +122,8 @@
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetFinderExpression="&lt;%attribute.type%>">
-        <style>
+      <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetFinderExpression="aql:self.attribute.type">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -139,8 +139,8 @@
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Domain']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Domain']/@nodeMappings[name='ECD_Class']" targetFinderExpression="&lt;%type%>" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
-        <style>
+      <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Domain']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Domain']/@nodeMappings[name='ECD_Class']" targetFinderExpression="aql:self.type" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -156,8 +156,8 @@
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Model%20Scaling%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Model%20Scaling%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetFinderExpression="&lt;%type%>" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
-        <style>
+      <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Model%20Scaling%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Model%20Scaling%20Class%20Diagram']/@nodeMappings[name='ECD_Class']" targetFinderExpression="aql:self.type" sourceFinderExpression="feature:eContainer" domainClass="Property" useDomainElement="true">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -166,8 +166,8 @@
       </edgeMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Edges Class Diagram with Container" domainClass="Package">
-      <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container']/@containerMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container']/@containerMappings[name='ECD_Class']" targetFinderExpression="&lt;%attribute.type%>">
-        <style>
+      <edgeMappings name="ECD_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container']/@containerMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container']/@containerMappings[name='ECD_Class']" targetFinderExpression="aql:self.attribute.type">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -175,7 +175,7 @@
         </style>
       </edgeMappings>
       <containerMappings name="ECD_Class" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -184,8 +184,8 @@
       </containerMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Edges Class Diagram with Container with Edge Mapping precondition" domainClass="Package">
-      <edgeMappings name="ECD_PropertyEdge" preconditionExpression="&lt;%$source.eClass().name ==&quot;Class&quot; &amp;&amp; $target.eClass().name ==&quot;Class&quot;%>" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20with%20Edge%20Mapping%20precondition']/@containerMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20with%20Edge%20Mapping%20precondition']/@containerMappings[name='ECD_Class']" targetFinderExpression="&lt;%attribute.type%>">
-        <style>
+      <edgeMappings name="ECD_PropertyEdge" preconditionExpression="&lt;%$source.eClass().name ==&quot;Class&quot; &amp;&amp; $target.eClass().name ==&quot;Class&quot;%>" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20with%20Edge%20Mapping%20precondition']/@containerMappings[name='ECD_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20with%20Edge%20Mapping%20precondition']/@containerMappings[name='ECD_Class']" targetFinderExpression="aql:self.attribute.type">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -193,7 +193,7 @@
         </style>
       </edgeMappings>
       <containerMappings name="ECD_Class" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -209,8 +209,8 @@
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="ECDCN_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20and%20Node']/@containerMappings[name='ECDCN_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20and%20Node']/@nodeMappings[name='ECDCN_Class']" targetFinderExpression="&lt;%attribute.type%>">
-        <style>
+      <edgeMappings name="ECDCN_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20and%20Node']/@containerMappings[name='ECDCN_Class']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Container%20and%20Node']/@nodeMappings[name='ECDCN_Class']" targetFinderExpression="aql:self.attribute.type">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -218,7 +218,7 @@
         </style>
       </edgeMappings>
       <containerMappings name="ECDCN_Class" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -241,8 +241,8 @@
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="ECDB_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Border%20to%20Node']/@nodeMappings[name='ECDB_Class']/@borderedNodeMappings[name='ECDB_BorderClass']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Border%20to%20Node']/@nodeMappings[name='ECDB_Class']/@borderedNodeMappings[name='ECDB_BorderClass']" targetFinderExpression="&lt;%attribute.type%>">
-        <style>
+      <edgeMappings name="ECDB_PropertyEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Border%20to%20Node']/@nodeMappings[name='ECDB_Class']/@borderedNodeMappings[name='ECDB_BorderClass']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Edges%20Class%20Diagram%20with%20Border%20to%20Node']/@nodeMappings[name='ECDB_Class']/@borderedNodeMappings[name='ECDB_BorderClass']" targetFinderExpression="aql:self.attribute.type">
+        <style sizeComputationExpression="[eContents()->size()/]">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -274,7 +274,7 @@
         </style>
       </edgeMappings>
       <edgeMappings name="Browsing Path" semanticCandidatesExpression="var:self" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Package%20Diagram%20With%20paths']/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Package%20Diagram%20With%20paths']/@nodeMappings[name='Package']" targetFinderExpression="&lt;%eAllContents(&quot;Package&quot;).nLast%>" sourceFinderExpression="&lt;%eAllContents(&quot;Package&quot;).nFirst%>" domainClass="Model" useDomainElement="true" pathExpression="&lt;%eAllContents(&quot;Package&quot;)%>" pathNodeMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Package%20Diagram%20With%20paths']/@nodeMappings[name='Package']">
-        <style lineStyle="dash" sizeComputationExpression="1">
+        <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -306,7 +306,7 @@
         </style>
       </edgeMappings>
       <edgeMappings name="Browsing Path" semanticCandidatesExpression="var:self" sourceMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Package%20Diagram%20With%20paths%20and%20duplicate%20elements%20inside%20them']/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Package%20Diagram%20With%20paths%20and%20duplicate%20elements%20inside%20them']/@nodeMappings[name='Package']" targetFinderExpression="&lt;%eAllContents(&quot;Package&quot;).nLast%>" sourceFinderExpression="&lt;%eAllContents(&quot;Package&quot;).nFirst%>" domainClass="Model" useDomainElement="true" pathExpression="&lt;%eAllContents(&quot;Package&quot;) + eAllContents(&quot;Package&quot;).nLast%>" pathNodeMapping="//@ownedViewpoints[name='UML2']/@ownedRepresentations[name='Package%20Diagram%20With%20paths%20and%20duplicate%20elements%20inside%20them']/@nodeMappings[name='Package']">
-        <style lineStyle="dash" sizeComputationExpression="1">
+        <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           <centerLabelStyleDescription>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -374,19 +374,19 @@
         </borderedNodeMappings>
         <subNodeMappings name="CCDP NodeProperty" semanticCandidatesExpression="feature:eAllContents" domainClass="Property">
           <borderedNodeMappings name="CCDP NodeProperty BN" semanticCandidatesExpression="var:self" domainClass="Property">
-            <style xsi:type="style:BundledImageDescription" labelExpression="2-&lt;%name%>" sizeComputationExpression="1" resizeKind="NSEW">
+            <style xsi:type="style:BundledImageDescription" labelExpression="aql:'2-' + self.name" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelExpression="1-&lt;%name%>" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:'1-' + self.name" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </subNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -402,36 +402,36 @@
       </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="LabelHiddenByDefault" domainClass="Package">
-      <nodeMappings name="PackageNode" semanticCandidatesExpression="&lt;%packagedElement%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Package">
-        <borderedNodeMappings name="BorderedOnNodeClass" semanticCandidatesExpression="&lt;%ownedType%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
+      <nodeMappings name="PackageNode" semanticCandidatesExpression="aql:self.packagedElement" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Package">
+        <borderedNodeMappings name="BorderedOnNodeClass" semanticCandidatesExpression="aql:self.ownedType" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
           <style xsi:type="style:BundledImageDescription" hideLabelByDefault="true" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </borderedNodeMappings>
-        <style xsi:type="style:SquareDescription" sizeComputationExpression="10" hideLabelByDefault="true" resizeKind="NSEW">
+        <style xsi:type="style:SquareDescription" hideLabelByDefault="true" sizeComputationExpression="10" resizeKind="NSEW">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
         </style>
       </nodeMappings>
-      <containerMappings name="PackageContainer" semanticCandidatesExpression="&lt;%packagedElement%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Package">
-        <borderedNodeMappings name="BorderedOnContainerClass" semanticCandidatesExpression="&lt;%ownedType%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
+      <containerMappings name="PackageContainer" semanticCandidatesExpression="aql:self.packagedElement" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Package">
+        <borderedNodeMappings name="BorderedOnContainerClass" semanticCandidatesExpression="aql:self.ownedType" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
           <style xsi:type="style:BundledImageDescription" hideLabelByDefault="true" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </borderedNodeMappings>
-        <subNodeMappings name="ClassNodeInContainer" semanticCandidatesExpression="&lt;%ownedType%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
+        <subNodeMappings name="ClassNodeInContainer" semanticCandidatesExpression="aql:self.ownedType" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
           <style xsi:type="style:LozengeNodeDescription" hideLabelByDefault="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           </style>
         </subNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
@@ -460,8 +460,8 @@
       </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="LabelVisibleByDefault" domainClass="Package">
-      <nodeMappings name="PackageNode" semanticCandidatesExpression="&lt;%packagedElement%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Package">
-        <borderedNodeMappings name="BorderedOnNodeClass" semanticCandidatesExpression="&lt;%ownedType%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
+      <nodeMappings name="PackageNode" semanticCandidatesExpression="aql:self.packagedElement" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Package">
+        <borderedNodeMappings name="BorderedOnNodeClass" semanticCandidatesExpression="aql:self.ownedType" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
           <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -474,22 +474,22 @@
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
         </style>
       </nodeMappings>
-      <containerMappings name="PackageContainer" semanticCandidatesExpression="&lt;%packagedElement%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Package">
-        <borderedNodeMappings name="BorderedOnContainerClass" semanticCandidatesExpression="&lt;%ownedType%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
+      <containerMappings name="PackageContainer" semanticCandidatesExpression="aql:self.packagedElement" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Package">
+        <borderedNodeMappings name="BorderedOnContainerClass" semanticCandidatesExpression="aql:self.ownedType" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
           <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </borderedNodeMappings>
-        <subNodeMappings name="ClassNodeInContainer" semanticCandidatesExpression="&lt;%ownedType%>" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
+        <subNodeMappings name="ClassNodeInContainer" semanticCandidatesExpression="aql:self.ownedType" domainClass="http://www.eclipse.org/uml2/2.0.0/UML#//Class">
           <style xsi:type="style:LozengeNodeDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           </style>
         </subNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>

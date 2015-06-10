@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="uml2 modeler" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="uml2 modeler" version="10.0.0.201505222000">
   <ownedViewpoints documentation="Initialize an UML Analysis" name="UML Analysis workspace" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="Model">
       <toolSection documentation="reused tools" name="reused tools">
@@ -40,8 +40,8 @@
       </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@toolSection/@subSections[name='drag%20%26%20drop']/@ownedTools[name='PD_D%26D_Package']" documentation="Diagram for Packages" name="Package Diagram" domainClass="Model" preconditionExpression="">
-      <containerMappings name="PD_Package" detailDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Object%20Diagram']/@toolSection/@ownedTools[name='Object%20Diagram'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Component%20Diagram'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Class%20Diagram'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Use%20Case%20Diagram']" preconditionExpression="&lt;%$container == eContainer()%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Package&quot;)%>" documentation="Mapping to create packages." domainClass="Package" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@toolSection/@subSections[name='drag%20%26%20drop']/@ownedTools[name='PD_D%26D_Package']" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@containerMappings[name='PD_Package']">
-        <style xsi:type="style:FlatContainerStyleDescription" labelSize="10">
+      <containerMappings name="PD_Package" detailDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Object%20Diagram']/@toolSection/@ownedTools[name='Object%20Diagram'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Component%20Diagram'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Class%20Diagram'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Use%20Case%20Diagram']" preconditionExpression="&lt;%$container == eContainer()%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" documentation="Mapping to create packages." domainClass="Package" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@toolSection/@subSections[name='drag%20%26%20drop']/@ownedTools[name='PD_D%26D_Package']" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@containerMappings[name='PD_Package']">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -63,7 +63,7 @@
           </ownedTools>
         </subSections>
         <subSections name="drag &amp; drop">
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" documentation="Tool to Drag &amp; Drop a Package" name="PD_D&amp;D_Package" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@containerMappings[name='PD_Package']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" documentation="Tool to Drag &amp; Drop a Package" name="PD_D&amp;D_Package" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@containerMappings[name='PD_Package']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -101,14 +101,15 @@
         </conditionnalStyles>
       </nodeMappings>
       <edgeMappings name="PH_Containment" deletionDescription="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']/@toolSection/@ownedTools[name='Delete%20a%20contained%20in%20edge']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']/@nodeMappings[name='PH_Package']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']/@nodeMappings[name='PH_Package']" targetFinderExpression="feature:eContainer">
-        <style lineStyle="dash" sizeComputationExpression="1" routingStyle="tree" foldingStyle="TARGET">
+        <style lineStyle="dash" routingStyle="tree" foldingStyle="TARGET">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="PH_Import" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']/@nodeMappings[name='PH_Package']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']/@nodeMappings[name='PH_Package']" targetFinderExpression="&lt;%importedPackage%>" sourceFinderExpression="feature:eContainer" domainClass="PackageImport" useDomainElement="true">
-        <style lineStyle="dot" sizeComputationExpression="1">
+        <style lineStyle="dot">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
-          <centerLabelStyleDescription labelFormat="bold" showIcon="false">
+          <centerLabelStyleDescription showIcon="false">
+            <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
@@ -157,7 +158,7 @@
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool:DiagramCreationDescription" name="InitHierarchy" precondition="&lt;%eContainer == null%>" diagramDescription="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']">
+        <ownedTools xsi:type="tool:DiagramCreationDescription" name="InitHierarchy" precondition="aql:self.eContainer() == null" diagramDescription="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Hierarchy']">
           <initialOperation/>
           <containerViewVariable name="containerView"/>
           <representationNameVariable name="diagramName"/>
@@ -166,46 +167,46 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@toolSection/@subSections[name='drag%20%26%20drop']/@ownedTools[name='UC_D%26D_Actor']" documentation="Diagram for Use Cases" name="Use Case Diagram" domainClass="Package">
       <nodeMappings name="UCD_Actor" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" createElements="false" documentation="Mapping to create actors" domainClass="Actor">
-        <style xsi:type="style:WorkspaceImageDescription" labelSize="10" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.junit/images/Actor.png">
+        <style xsi:type="style:WorkspaceImageDescription" labelSize="10" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/Actor.png">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </nodeMappings>
       <edgeMappings name="UCD_Association" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Association&quot;)%>" semanticElements="&lt;%memberEnd + current%>" documentation="Mapping to create associations between actors and use cases" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetFinderExpression="&lt;%memberEnd.type%>" sourceFinderExpression="&lt;%memberEnd.type%>" targetExpression="var:self" domainClass="Association" useDomainElement="true">
-        <style targetArrow="NoDecoration" sizeComputationExpression="&lt;%2%>">
+        <style targetArrow="NoDecoration" sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%&quot;&quot;%>">
+          <centerLabelStyleDescription showIcon="false" labelExpression="aql:''">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
       <edgeMappings name="UCD_Extend" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Extend&quot;)%>" semanticElements="&lt;%current + extension + extendedCase%>" documentation="Mapping to create Extends" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetFinderExpression="&lt;%extendedCase%>" sourceFinderExpression="&lt;%extension%>" targetExpression="var:self" domainClass="Extend" useDomainElement="true" pathExpression="">
-        <style lineStyle="dash" sizeComputationExpression="&lt;%1%>">
+        <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="&lt;%&quot;&#xab; extend &#xbb;&quot;%>">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
-      <edgeMappings name="UCD_Include" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Include&quot;)%>" semanticElements="&lt;%current + includingCase + addition%>" documentation="Mapping to create includes" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetFinderExpression="&lt;%addition%>" sourceFinderExpression="&lt;%includingCase%>" targetExpression="var:self" domainClass="Include" useDomainElement="true">
-        <style lineStyle="dash" sizeComputationExpression="&lt;%1%>">
+      <edgeMappings name="UCD_Include" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Include&quot;)%>" semanticElements="&lt;%current + includingCase + addition%>" documentation="Mapping to create includes" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetFinderExpression="aql:self.addition" sourceFinderExpression="aql:self.includingCase" targetExpression="var:self" domainClass="Include" useDomainElement="true">
+        <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="&lt;%&quot;&#xab; include &#xbb;&quot;%>">
+          <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="&#xab; include &#xbb;">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
-      <edgeMappings name="UCD_Generalization" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Actor&quot;).generalization%>" semanticElements="" documentation="Mapping to create generalizations" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%specific%>" targetExpression="var:self" domainClass="Generalization" useDomainElement="true">
-        <style sizeComputationExpression="&lt;%2%>">
+      <edgeMappings name="UCD_Generalization" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Actor&quot;).generalization%>" semanticElements="" documentation="Mapping to create generalizations" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']" targetFinderExpression="aql:self.general" sourceFinderExpression="aql:self.specific" targetExpression="var:self" domainClass="Generalization" useDomainElement="true">
+        <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-          <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%&quot;&quot;%>">
+          <centerLabelStyleDescription showIcon="false" labelExpression="aql:''">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
       <containerMappings name="UCD_Subject" preconditionExpression="&lt;%$container == eContainer()%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" documentation="Display subjects of this diagram." domainClass="Component" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@toolSection/@subSections[name='drag%20%26%20drop']/@ownedTools[name='UC_D%26D_UseCase']">
         <subNodeMappings name="UCD_UseCase" preconditionExpression="&lt;%subject.nContains($container)%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%nPut(&quot;e&quot;).nGet(&quot;e&quot;).getRootContainer().eAllContents(&quot;UseCase&quot;)[subject.nContains(current(1))]%>" documentation="Mapping to create Use Cases" domainClass="UseCase">
-          <style xsi:type="style:WorkspaceImageDescription" labelSize="10" sizeComputationExpression="14" labelPosition="node" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="10" sizeComputationExpression="14" labelPosition="node" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -213,7 +214,7 @@
       </containerMappings>
       <toolSection name="use case tools">
         <subSections name="drag &amp; drop">
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" documentation="A Drag &amp; Drop tool to add actors" name="UC_D&amp;D_Actor" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" documentation="A Drag &amp; Drop tool to add actors" name="UC_D&amp;D_Actor" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -222,7 +223,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" documentation="Tool to drag &amp; drop a use case" name="UC_D&amp;D_UseCase" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" documentation="Tool to drag &amp; drop a use case" name="UC_D&amp;D_UseCase" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -277,7 +278,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(ecore::EPackage)">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Association" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:source"/>
@@ -335,15 +336,15 @@
       </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Description to edit class diagrams" name="Class Diagram" domainClass="Package" preconditionExpression="&lt;%filter(&quot;Model&quot;).nSize() > 0%>">
-      <edgeMappings name="CD_Association_Class_To_Class" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Classifier&quot;).getAssociationP()%>" semanticElements="&lt;%current + memberEnd%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="&lt;%memberEnd.nGet(0).type%>" sourceFinderExpression="&lt;%memberEnd.nGet(1).type%>" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
-        <style sizeComputationExpression="1">
+      <edgeMappings name="CD_Association_Class_To_Class" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Classifier&quot;).getAssociationP()%>" semanticElements="aql:Sequence{self} + self.memberEnd" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.memberEnd->first().type" sourceFinderExpression="aql:self.memberEnd->at(2).type" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
+        <style>
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <centerLabelStyleDescription labelSize="10" labelExpression="&lt;%if (memberEnd.nGet(0).isNavigableP) {%>&lt;%memberEnd.nGet(0).name%>&lt;%}%>&lt;%if (memberEnd.nGet(0).isNavigableP &amp;&amp; memberEnd.nGet(1).isNavigableP) {%> - &lt;%}%>&lt;%if (memberEnd.nGet(1).isNavigableP) {%>&lt;%memberEnd.nGet(1).name%>&lt;%}%>">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; $view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style sourceArrow="InputArrow">
+          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -351,7 +352,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(1).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(0).isNavigableP%>">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -359,7 +360,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%!$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style targetArrow="NoDecoration">
+          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -367,15 +368,15 @@
           </style>
         </conditionnalStyles>
       </edgeMappings>
-      <edgeMappings name="CD_Association_Class_To_Interface" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Classifier&quot;).getAssociationP()%>" semanticElements="&lt;%current + memberEnd%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%memberEnd.nGet(0).type%>" sourceFinderExpression="&lt;%memberEnd.nGet(1).type%>" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
-        <style sizeComputationExpression="1">
+      <edgeMappings name="CD_Association_Class_To_Interface" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Classifier&quot;).getAssociationP()%>" semanticElements="aql:Sequence{self} + self.memberEnd" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.memberEnd->first().type" sourceFinderExpression="aql:self.memberEnd->at(2).type" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
+        <style>
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <centerLabelStyleDescription labelSize="10" labelExpression="&lt;%if (memberEnd.nGet(0).isNavigableP) {%>&lt;%memberEnd.nGet(0).name%>&lt;%}%>&lt;%if (memberEnd.nGet(0).isNavigableP &amp;&amp; memberEnd.nGet(1).isNavigableP) {%> - &lt;%}%>&lt;%if (memberEnd.nGet(1).isNavigableP) {%>&lt;%memberEnd.nGet(1).name%>&lt;%}%>">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; $view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style sourceArrow="InputArrow">
+          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -383,7 +384,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(1).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(0).isNavigableP%>">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -391,7 +392,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%!$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style targetArrow="NoDecoration">
+          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -399,15 +400,15 @@
           </style>
         </conditionnalStyles>
       </edgeMappings>
-      <edgeMappings name="CD_Association_Interface_To_Interface" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;Classifier&quot;).getAssociationP()%>" semanticElements="&lt;%current + memberEnd%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%memberEnd.nGet(0).type%>" sourceFinderExpression="&lt;%memberEnd.nGet(1).type%>" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
-        <style sizeComputationExpression="1">
+      <edgeMappings name="CD_Association_Interface_To_Interface" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;Classifier&quot;).getAssociationP()%>" semanticElements="aql:Sequence{self} + self.memberEnd" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.memberEnd->first().type" sourceFinderExpression="aql:self.memberEnd->at(2).type" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
+        <style>
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <centerLabelStyleDescription labelSize="10" labelExpression="&lt;%if (memberEnd.nGet(0).isNavigableP) {%>&lt;%memberEnd.nGet(0).name%>&lt;%}%>&lt;%if (memberEnd.nGet(0).isNavigableP &amp;&amp; memberEnd.nGet(1).isNavigableP) {%> - &lt;%}%>&lt;%if (memberEnd.nGet(1).isNavigableP) {%>&lt;%memberEnd.nGet(1).name%>&lt;%}%>">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; $view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style sourceArrow="InputArrow">
+          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -415,7 +416,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(1).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(0).isNavigableP%>">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -423,7 +424,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%!$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style targetArrow="NoDecoration">
+          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -431,15 +432,15 @@
           </style>
         </conditionnalStyles>
       </edgeMappings>
-      <edgeMappings name="CD_Association_Interface_To_Class" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Classifier&quot;).getAssociationP()%>" semanticElements="&lt;%current + memberEnd%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="&lt;%memberEnd.nGet(0).type%>" sourceFinderExpression="&lt;%memberEnd.nGet(1).type%>" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
-        <style sizeComputationExpression="1">
+      <edgeMappings name="CD_Association_Interface_To_Class" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Classifier&quot;).getAssociationP()%>" semanticElements="aql:Sequence{self} + self.memberEnd" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.memberEnd->first().type" sourceFinderExpression="aql:self.memberEnd->at(2).type" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
+        <style>
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <centerLabelStyleDescription labelSize="10" labelExpression="&lt;%if (memberEnd.nGet(0).isNavigableP) {%>&lt;%memberEnd.nGet(0).name%>&lt;%}%>&lt;%if (memberEnd.nGet(0).isNavigableP &amp;&amp; memberEnd.nGet(1).isNavigableP) {%> - &lt;%}%>&lt;%if (memberEnd.nGet(1).isNavigableP) {%>&lt;%memberEnd.nGet(1).name%>&lt;%}%>">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; $view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style sourceArrow="InputArrow">
+          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -447,7 +448,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(1).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(0).isNavigableP%>">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -455,7 +456,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%!$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style targetArrow="NoDecoration">
+          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -463,15 +464,15 @@
           </style>
         </conditionnalStyles>
       </edgeMappings>
-      <edgeMappings name="CD_Association_Interface_To_Enumeration" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Type&quot;).getAssociationP()%>" semanticElements="&lt;%current + memberEnd%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Enumeration']" targetFinderExpression="&lt;%memberEnd.nGet(0).type%>" sourceFinderExpression="&lt;%memberEnd.nGet(1).type%>" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
-        <style sizeComputationExpression="1">
+      <edgeMappings name="CD_Association_Interface_To_Enumeration" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Type&quot;).getAssociationP()%>" semanticElements="aql:Sequence{self} + self.memberEnd" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Enumeration']" targetFinderExpression="aql:self.memberEnd->first().type" sourceFinderExpression="aql:self.memberEnd->at(2).type" targetExpression="var:self" domainClass="Association" useDomainElement="true" pathExpression="">
+        <style>
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           <centerLabelStyleDescription labelSize="10" labelExpression="&lt;%if (memberEnd.nGet(0).isNavigableP) {%>&lt;%memberEnd.nGet(0).name%>&lt;%}%>&lt;%if (memberEnd.nGet(0).isNavigableP &amp;&amp; memberEnd.nGet(1).isNavigableP) {%> - &lt;%}%>&lt;%if (memberEnd.nGet(1).isNavigableP) {%>&lt;%memberEnd.nGet(1).name%>&lt;%}%>">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; $view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style sourceArrow="InputArrow">
+          <style sourceArrow="InputArrow" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -479,7 +480,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%$view.target.memberEnd.nGet(1).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(0).isNavigableP%>">
-          <style sourceArrow="InputArrow" targetArrow="NoDecoration">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -487,7 +488,7 @@
           </style>
         </conditionnalStyles>
         <conditionnalStyles predicateExpression="&lt;%!$view.target.memberEnd.nGet(0).isNavigableP &amp;&amp; !$view.target.memberEnd.nGet(1).isNavigableP%>">
-          <style targetArrow="NoDecoration">
+          <style targetArrow="NoDecoration" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelSize="10">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -495,52 +496,52 @@
           </style>
         </conditionnalStyles>
       </edgeMappings>
-      <edgeMappings name="CD_Generalization_Class_To_Class" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Classifier&quot;).generalization%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%specific%>" targetExpression="" domainClass="Generalization" useDomainElement="true" pathExpression="">
+      <edgeMappings name="CD_Generalization_Class_To_Class" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Classifier&quot;).generalization%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.general" sourceFinderExpression="aql:self.specific" targetExpression="" domainClass="Generalization" useDomainElement="true" pathExpression="">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Generalization_Interface_To_Interface" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;Interface&quot;).generalization%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%specific%>" targetExpression="" domainClass="Generalization" useDomainElement="true" pathExpression="">
+      <edgeMappings name="CD_Generalization_Interface_To_Interface" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DSemanticDecorator&quot;).target.filter(&quot;Interface&quot;).generalization%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.general" sourceFinderExpression="aql:self.specific" targetExpression="" domainClass="Generalization" useDomainElement="true" pathExpression="">
         <style sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_InterfaceRealization" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Class&quot;).interfaceRealization%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%contract%>" sourceFinderExpression="&lt;%implementingClassifier%>" targetExpression="" domainClass="InterfaceRealization" useDomainElement="true">
+      <edgeMappings name="CD_InterfaceRealization" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Class&quot;).interfaceRealization%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.contract" sourceFinderExpression="&lt;%implementingClassifier%>" targetExpression="" domainClass="InterfaceRealization" useDomainElement="true">
         <style lineStyle="dash" sizeComputationExpression="2">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Dependency_Class_To_Class" preconditionExpression="&lt;%filter(&quot;InterfaceRealization&quot;).nSize == 0%>" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Class&quot;).clientDependency%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
-        <style lineStyle="dash" sizeComputationExpression="&lt;%1%>">
+      <edgeMappings name="CD_Dependency_Class_To_Class" preconditionExpression="&lt;%filter(&quot;InterfaceRealization&quot;).nSize == 0%>" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Class&quot;).clientDependency%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
+        <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Dependency_Class_To_Interface" preconditionExpression="&lt;%filter(&quot;InterfaceRealization&quot;).nSize == 0%>" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Class&quot;).clientDependency%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
-        <style lineStyle="dash" sizeComputationExpression="&lt;%1%>">
+      <edgeMappings name="CD_Dependency_Class_To_Interface" preconditionExpression="&lt;%filter(&quot;InterfaceRealization&quot;).nSize == 0%>" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Class&quot;).clientDependency%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
+        <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Dependency_Interface_To_Class" preconditionExpression="&lt;%filter(&quot;InterfaceRealization&quot;).nSize == 0%>" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Interface&quot;).clientDependency%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
-        <style lineStyle="dash" sizeComputationExpression="&lt;%1%>">
+      <edgeMappings name="CD_Dependency_Interface_To_Class" preconditionExpression="&lt;%filter(&quot;InterfaceRealization&quot;).nSize == 0%>" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Interface&quot;).clientDependency%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
+        <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CD_Dependency_Interface_To_Interface" preconditionExpression="&lt;%filter(&quot;InterfaceRealization&quot;).nSize == 0%>" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Interface&quot;).clientDependency%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
-        <style lineStyle="dash" sizeComputationExpression="&lt;%1%>">
+      <edgeMappings name="CD_Dependency_Interface_To_Interface" preconditionExpression="&lt;%filter(&quot;InterfaceRealization&quot;).nSize == 0%>" semanticCandidatesExpression="&lt;%$viewpoint.eAllContents(&quot;DecorateSemanticElement&quot;).target.filter(&quot;Interface&quot;).clientDependency%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="aql:self.client" targetExpression="var:self" domainClass="Dependency" useDomainElement="true">
+        <style lineStyle="dash">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
       <containerMappings name="CD_Package" detailDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Object%20Diagram']/@toolSection/@ownedTools[name='Object%20Diagram'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Class%20Diagram']" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%(eContents.filter(&quot;Package&quot;) + packageImport.importedPackage).nMinimize%>" documentation="Mapping to create packages" domainClass="Package" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Package']">
-        <style xsi:type="style:FlatContainerStyleDescription">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </containerMappings>
-      <containerMappings name="CD_Class" detailDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Sequence%20Diagram']" preconditionExpression="&lt;%(filter(&quot;Class&quot;) + filter(&quot;DataType&quot;)).nSize() > 0%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%ownedType%>" documentation="Mapping to create classes" domainClass="Class" childrenPresentation="List">
+      <containerMappings name="CD_Class" detailDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Sequence%20Diagram']" preconditionExpression="&lt;%(filter(&quot;Class&quot;) + filter(&quot;DataType&quot;)).nSize() > 0%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="aql:self.ownedType" documentation="Mapping to create classes" domainClass="Class" childrenPresentation="List">
         <subNodeMappings name="CD_Property" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%attribute%>" documentation="Mapping to create attributes" domainClass="Property">
-          <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%visibility.visibilityToString%> &lt;%name%> : &lt;%type.name%>" labelAlignment="LEFT" sizeComputationExpression="&lt;%2%>">
+          <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%visibility.visibilityToString%> &lt;%name%> : &lt;%type.name%>" labelAlignment="LEFT" sizeComputationExpression="2">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -553,31 +554,33 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </subNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
         </style>
-        <conditionnalStyles predicateExpression="&lt;%isAbstract%>">
-          <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+        <conditionnalStyles predicateExpression="aql:self.isAbstract">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>italic</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
         </conditionnalStyles>
       </containerMappings>
-      <containerMappings name="CD_Interface" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%ownedType%>" documentation="Mapping to create interfaces" domainClass="Interface" reusedNodeMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Operation']" childrenPresentation="List">
-        <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+      <containerMappings name="CD_Interface" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="aql:self.ownedType" documentation="Mapping to create interfaces" domainClass="Interface" reusedNodeMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Operation']" childrenPresentation="List">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
         </style>
-        <conditionnalStyles predicateExpression="&lt;%isAbstract%>">
-          <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+        <conditionnalStyles predicateExpression="aql:self.isAbstract">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>italic</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -585,22 +588,23 @@
         </conditionnalStyles>
       </containerMappings>
       <containerMappings name="CD_Enumeration" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%ownedType.filter(&quot;Enumeration&quot;)%>" semanticElements="" domainClass="Enumeration" childrenPresentation="List">
-        <subNodeMappings name="CD_EnumerationLiteral" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%ownedLiteral%>" domainClass="EnumerationLiteral">
-          <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" sizeComputationExpression="&lt;%2%>">
+        <subNodeMappings name="CD_EnumerationLiteral" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="aql:self.ownedLiteral" domainClass="EnumerationLiteral">
+          <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" sizeComputationExpression="2">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </subNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
         </style>
-        <conditionnalStyles predicateExpression="&lt;%isAbstract%>">
-          <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+        <conditionnalStyles predicateExpression="aql:self.isAbstract">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>italic</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -692,7 +696,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(ecore::EPackage)">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Association" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedEnd">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>"/>
@@ -702,7 +706,7 @@
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:source"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0)%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="navigableOwnedEnd" valueExpression="aql:self.memberEnd->first()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Association"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -740,7 +744,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(ecore::EPackage)">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Dependency" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="client" valueExpression="var:source"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="supplier" valueExpression="var:target"/>
@@ -771,24 +775,25 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@toolSection/@ownedTools[name='Drop%20Interface%20on%20canvas']" name="Component Diagram" domainClass="Package">
       <nodeMappings name="CO_Interface" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%eContainer(&quot;Model&quot;).eAllContents(&quot;Interface&quot;)%>" createElements="false" domainClass="Interface">
-        <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" shape="dot">
+        <style xsi:type="style:BundledImageDescription" showIcon="false" shape="dot">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelFormat>italic</labelFormat>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
         </style>
       </nodeMappings>
-      <edgeMappings name="CO_Usage" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Usage" useDomainElement="true">
+      <edgeMappings name="CO_Usage" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@nodeMappings[name='CO_Interface']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="feature:eContainer" domainClass="Usage" useDomainElement="true">
         <style lineStyle="dot" sizeComputationExpression="2" routingStyle="manhattan">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
         </style>
       </edgeMappings>
-      <edgeMappings name="CO_Realization" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="InterfaceRealization" useDomainElement="true">
+      <edgeMappings name="CO_Realization" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@nodeMappings[name='CO_Interface']" targetFinderExpression="aql:self.supplier" sourceFinderExpression="feature:eContainer" domainClass="InterfaceRealization" useDomainElement="true">
         <style sizeComputationExpression="2" routingStyle="manhattan">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
         </style>
       </edgeMappings>
       <edgeMappings name="CO_Redefined" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetFinderExpression="&lt;%redefinedPort%>" sourceFinderExpression="var:self" domainClass="Port">
-        <style lineStyle="dot" sizeComputationExpression="1">
+        <style lineStyle="dot">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
           <centerLabelStyleDescription showIcon="false">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -796,7 +801,7 @@
         </style>
       </edgeMappings>
       <edgeMappings name="CO_RedefinedImport" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_ImportedComponent']/@borderedNodeMappings[name='CO_PortImport']" targetFinderExpression="&lt;%redefinedPort%>" sourceFinderExpression="var:self" domainClass="Port">
-        <style lineStyle="dot" sizeComputationExpression="1">
+        <style lineStyle="dot">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
           <centerLabelStyleDescription showIcon="false">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -804,7 +809,7 @@
         </style>
       </edgeMappings>
       <containerMappings name="CO_Component" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']">
-        <borderedNodeMappings name="CO_Port" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%ownedAttribute%>" domainClass="Port">
+        <borderedNodeMappings name="CO_Port" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="aql:self.ownedAttribute" domainClass="Port">
           <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -818,7 +823,7 @@
             </style>
           </conditionnalStyles>
         </borderedNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" backgroundStyle="GradientTopToBottom">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -826,7 +831,7 @@
         </style>
       </containerMappings>
       <containerMappings name="CO_ImportedComponent" semanticCandidatesExpression="&lt;%eContainer(&quot;Model&quot;).eAllContents(&quot;Component&quot;) - eAllContents(&quot;Component&quot;)%>" createElements="false" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_ImportedComponent']">
-        <borderedNodeMappings name="CO_PortImport" semanticCandidatesExpression="&lt;%ownedAttribute%>" domainClass="Port">
+        <borderedNodeMappings name="CO_PortImport" semanticCandidatesExpression="aql:self.ownedAttribute" domainClass="Port">
           <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -840,7 +845,7 @@
             </style>
           </conditionnalStyles>
         </borderedNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" backgroundStyle="GradientTopToBottom">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -875,7 +880,7 @@
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop Interface on canvas" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@nodeMappings[name='CO_Interface'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_ImportedComponent']" dragSource="PROJECT_EXPLORER">
+        <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Interface on canvas" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@nodeMappings[name='CO_Interface'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_ImportedComponent']" dragSource="PROJECT_EXPLORER">
           <oldContainer name="oldSemanticContainer"/>
           <newContainer name="newSemanticContainer"/>
           <element name="element"/>
@@ -924,24 +929,26 @@
       </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="State Machine Diagram" domainClass="StateMachine">
-      <edgeMappings name="SM_Transition" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='State%20Machine%20Diagram']/@containerMappings[name='SM_Region']/@subNodeMappings[name='SM_State']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='State%20Machine%20Diagram']/@containerMappings[name='SM_Region']/@subNodeMappings[name='SM_State']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="Transition" useDomainElement="true">
+      <edgeMappings name="SM_Transition" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='State%20Machine%20Diagram']/@containerMappings[name='SM_Region']/@subNodeMappings[name='SM_State']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='State%20Machine%20Diagram']/@containerMappings[name='SM_Region']/@subNodeMappings[name='SM_State']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="Transition" useDomainElement="true">
         <style sizeComputationExpression="2" routingStyle="manhattan">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-          <centerLabelStyleDescription labelSize="10" labelFormat="italic">
+          <centerLabelStyleDescription labelSize="10">
+            <labelFormat>italic</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
-        <conditionnalStyles predicateExpression="&lt;%eContents().nSize > 0%>">
-          <style>
+        <conditionnalStyles predicateExpression="aql:self.eContents()->size() > 0">
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-            <centerLabelStyleDescription labelSize="10" labelFormat="italic">
+            <centerLabelStyleDescription labelSize="10">
+              <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </conditionnalStyles>
       </edgeMappings>
       <containerMappings name="SM_Region" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="Region">
-        <subNodeMappings name="SM_State" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%subvertex%>" domainClass="Vertex">
+        <subNodeMappings name="SM_State" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="aql:self.subvertex" domainClass="Vertex">
           <style xsi:type="style:BundledImageDescription" labelSize="10" showIcon="false" sizeComputationExpression="4">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -962,8 +969,9 @@
             </style>
           </conditionnalStyles>
         </subNodeMappings>
-        <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" backgroundStyle="GradientTopToBottom">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelSize="10" backgroundStyle="GradientTopToBottom">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelFormat>bold</labelFormat>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -1037,7 +1045,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Sequence Diagram" domainClass="Interaction">
       <nodeMappings name="SD_Lifeline" semanticCandidatesExpression="&lt;%lifeline%>" domainClass="Lifeline">
         <borderedNodeMappings name="SD_ExecutionSpecification" semanticCandidatesExpression="&lt;%coveredBy%>" domainClass="BehaviorExecutionSpecification" reusedBorderedNodeMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Sequence%20Diagram']/@nodeMappings[name='SD_Lifeline']/@borderedNodeMappings[name='SD_ExecutionSpecification']">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%&quot;&quot;%>" sizeComputationExpression="1" labelPosition="node" resizeKind="NORTH_SOUTH" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="aql:''" sizeComputationExpression="1" labelPosition="node" resizeKind="NORTH_SOUTH" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -1048,7 +1056,7 @@
         </style>
       </nodeMappings>
       <edgeMappings name="SD_Message_Lifeline_To_Lifeline" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%message%>" semanticElements="&lt;%current + sendEvent + receiveEvent%>" documentation="Show all messages between two lifelines." sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Sequence%20Diagram']/@nodeMappings[name='SD_Lifeline']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Sequence%20Diagram']/@nodeMappings[name='SD_Lifeline']" targetFinderExpression="&lt;%receiveEvent.covered%>" sourceFinderExpression="&lt;%sendEvent.covered%>" targetExpression="var:self" domainClass="Message" useDomainElement="true" pathExpression="">
-        <style sizeComputationExpression="1" routingStyle="manhattan">
+        <style routingStyle="manhattan">
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
       </edgeMappings>
@@ -1071,7 +1079,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Message" referenceName="message">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Message"/>
                 </subModelOperations>
@@ -1098,7 +1106,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;Interaction&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="BehaviorExecutionSpecification" referenceName="fragment"/>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%($containerView + $containerView.ancestor)[target.filter(&quot;Lifeline&quot;).nSize() > 0].target%>">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredBy" valueExpression="&lt;%eContainer(&quot;Interaction&quot;).fragment.nLast%>"/>
@@ -1111,16 +1119,16 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Diagrams to show instances and relation between them." name="Object Diagram" domainClass="Package">
       <edgeMappings name="OD_Slot" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;InstanceSpecification&quot;).slot[value.filter(&quot;InstanceValue&quot;)]%>" semanticElements="&lt;%current + definingFeature%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Object%20Diagram']/@containerMappings[name='OD_InstanceSpecification']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Object%20Diagram']/@containerMappings[name='OD_InstanceSpecification']" targetFinderExpression="&lt;%value.filter(&quot;InstanceValue&quot;).instance%>" sourceFinderExpression="&lt;%owningInstance%>" domainClass="Slot" useDomainElement="true">
-        <style sizeComputationExpression="&lt;%1%>">
+        <style>
           <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           <centerLabelStyleDescription labelExpression="&lt;%definingFeature.name%>">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </centerLabelStyleDescription>
         </style>
       </edgeMappings>
-      <containerMappings name="OD_InstanceSpecification" semanticCandidatesExpression="&lt;%packagedElement%>" semanticElements="" domainClass="InstanceSpecification" childrenPresentation="List">
+      <containerMappings name="OD_InstanceSpecification" semanticCandidatesExpression="aql:self.packagedElement" semanticElements="" domainClass="InstanceSpecification" childrenPresentation="List">
         <subNodeMappings name="OD_SimpleSlot" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%slot[!values.filter(&quot;InstanceValue&quot;)]%>" domainClass="Slot"/>
-        <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="&lt;%name%> : &lt;%classifier.nGet(0).name%>">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="&lt;%name%> : &lt;%classifier.nGet(0).name%>">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>

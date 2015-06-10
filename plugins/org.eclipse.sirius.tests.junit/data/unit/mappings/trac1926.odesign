@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="10.0.0.201505222000">
   <ownedViewpoints name="trac1926" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="D1" domainClass="EPackage">
       <filters xsi:type="filter:CompositeFilterDescription" name="F1">
@@ -20,12 +20,12 @@
           </style>
         </nodeMappings>
         <edgeMappings name="M2" sourceMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']" targetMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']" targetFinderExpression="&lt;%eStructuralFeatures.eType.nMinimize%>">
-          <style>
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </edgeMappings>
         <containerMappings name="M3" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;)]%>" domainClass="EClass">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -42,14 +42,14 @@
           </style>
         </nodeMappings>
         <edgeMappingImports name="MI2" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@edgeMappings[name='M2']">
-          <conditionnalStyles predicateExpression="&lt;%true%>">
-            <style>
+          <conditionnalStyles predicateExpression="aql:true">
+            <style sizeComputationExpression="[eContents()->size()/]">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="MI3" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;)]%>" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@containerMappings[name='M3']">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
@@ -68,14 +68,14 @@
           </style>
         </nodeMappings>
         <edgeMappingImports name="MIE2" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@edgeMappings[name='M2']">
-          <conditionnalStyles predicateExpression="&lt;%true%>">
-            <style>
+          <conditionnalStyles predicateExpression="aql:true">
+            <style sizeComputationExpression="[eContents()->size()/]">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="MIE3" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;)]%>" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@containerMappings[name='M3']">
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>

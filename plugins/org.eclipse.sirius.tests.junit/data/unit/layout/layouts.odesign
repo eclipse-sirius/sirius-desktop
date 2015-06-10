@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Layout" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Layout" version="10.0.0.201505222000">
   <ownedViewpoints name="ArrangeAll" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Top/Bottom Container Ports And Edges" domainClass="EPackage">
       <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="Default">
         <edgeMappings name="EReference to EType" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Top%2FBottom%20Container%20Ports%20And%20Edges']/@defaultLayer/@containerMappings[name='EClass%20Container']/@borderedNodeMappings[name='EStructuralFeature%20Port']" targetMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Top%2FBottom%20Container%20Ports%20And%20Edges']/@defaultLayer/@containerMappings[name='EClass%20Container']/@borderedNodeMappings[name='EStructuralFeature%20Port']" targetFinderExpression="&lt;%eType.eStructuralFeatures%>">
-          <style>
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EClass Container" semanticCandidatesExpression="&lt;%eClassifiers%>" domainClass="EClass">
-          <borderedNodeMappings name="EStructuralFeature Port" semanticCandidatesExpression="&lt;%eStructuralFeatures%>" domainClass="EStructuralFeature">
+        <containerMappings name="EClass Container" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
+          <borderedNodeMappings name="EStructuralFeature Port" semanticCandidatesExpression="aql:self.eStructuralFeatures" domainClass="EStructuralFeature">
             <style xsi:type="style:BundledImageDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -21,14 +21,14 @@
             </style>
           </borderedNodeMappings>
           <subContainerMappings name="EClass Child" semanticCandidatesExpression="&lt;%~eSuperTypes%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Top%2FBottom%20Container%20Ports%20And%20Edges']/@defaultLayer/@containerMappings[name='EClass%20Container']/@borderedNodeMappings[name='EStructuralFeature%20Port']" reusedContainerMappings="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Top%2FBottom%20Container%20Ports%20And%20Edges']/@defaultLayer/@containerMappings[name='EClass%20Container']/@subContainerMappings[name='EClass%20Child']">
-            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -41,7 +41,7 @@
       <layout xsi:type="description_1:CompositeLayout"/>
       <defaultLayer name="Default">
         <edgeMappings name="OrderEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Top%2FBottom%20MainLikeDiagram']/@defaultLayer/@containerMappings[name='Main%20Container']" targetMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Top%2FBottom%20MainLikeDiagram']/@defaultLayer/@containerMappings[name='Main%20Container']" targetFinderExpression="&lt;%preceding.filter(&quot;EClass&quot;).nLast%>">
-          <style>
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -49,7 +49,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="Main Container" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -93,8 +93,8 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TreeOrdering" domainClass="EPackage">
       <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="&lt;%~eSuperTypes.nSort%>" nodeMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='TreeOrdering']/@defaultLayer/@containerMappings[name='Tree%20EClass']"/>
       <defaultLayer name="Default">
-        <edgeMappings name="Tree SuperType Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='TreeOrdering']/@defaultLayer/@containerMappings[name='Tree%20EClass']" targetMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='TreeOrdering']/@defaultLayer/@containerMappings[name='Tree%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
-          <style routingStyle="tree">
+        <edgeMappings name="Tree SuperType Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='TreeOrdering']/@defaultLayer/@containerMappings[name='Tree%20EClass']" targetMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='TreeOrdering']/@defaultLayer/@containerMappings[name='Tree%20EClass']" targetFinderExpression="aql:self.eSuperTypes">
+          <style sizeComputationExpression="[eContents()->size()/]" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -102,7 +102,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="Tree EClass" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -115,15 +115,15 @@
       <layout xsi:type="description_1:CompositeLayout" direction="bottomToTop"/>
       <defaultLayer name="Default">
         <edgeMappings name="EReference to EType" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Bottom%2FTop%20Container%20Ports%20And%20Edges']/@defaultLayer/@containerMappings[name='EClass%20Container']/@borderedNodeMappings[name='EStructuralFeature%20Port']" targetMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Bottom%2FTop%20Container%20Ports%20And%20Edges']/@defaultLayer/@containerMappings[name='EClass%20Container']/@borderedNodeMappings[name='EStructuralFeature%20Port']" targetFinderExpression="&lt;%eType.eStructuralFeatures%>">
-          <style>
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EClass Container" semanticCandidatesExpression="&lt;%eClassifiers%>" domainClass="EClass">
-          <borderedNodeMappings name="EStructuralFeature Port" semanticCandidatesExpression="&lt;%eStructuralFeatures%>" domainClass="EStructuralFeature">
+        <containerMappings name="EClass Container" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="EClass">
+          <borderedNodeMappings name="EStructuralFeature Port" semanticCandidatesExpression="aql:self.eStructuralFeatures" domainClass="EStructuralFeature">
             <style xsi:type="style:BundledImageDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -131,14 +131,14 @@
             </style>
           </borderedNodeMappings>
           <subContainerMappings name="EClass Child" semanticCandidatesExpression="&lt;%~eSuperTypes%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Bottom%2FTop%20Container%20Ports%20And%20Edges']/@defaultLayer/@containerMappings[name='EClass%20Container']/@borderedNodeMappings[name='EStructuralFeature%20Port']" reusedContainerMappings="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Bottom%2FTop%20Container%20Ports%20And%20Edges']/@defaultLayer/@containerMappings[name='EClass%20Container']/@subContainerMappings[name='EClass%20Child']">
-            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -150,7 +150,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Bottom/Top MainLikeDiagram" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="OrderEdge" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Bottom%2FTop%20MainLikeDiagram']/@defaultLayer/@containerMappings[name='Main%20Container']" targetMapping="//@ownedViewpoints[name='ArrangeAll']/@ownedRepresentations[name='Bottom%2FTop%20MainLikeDiagram']/@defaultLayer/@containerMappings[name='Main%20Container']" targetFinderExpression="&lt;%preceding.filter(&quot;EClass&quot;).nLast%>">
-          <style>
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -158,7 +158,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="Main Container" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

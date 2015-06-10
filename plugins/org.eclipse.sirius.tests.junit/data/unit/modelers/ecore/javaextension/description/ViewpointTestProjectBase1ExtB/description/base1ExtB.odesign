@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Base1ExtB" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Base1ExtB" version="10.0.0.201505222000">
   <ownedViewpoints name="Base1ExtB_withAcceleoTemplate" modelFileExtension="ecore">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/ViewpointTestProjectBase1/Base1WithTemplate" representationName="Entities1">
       <layers name="Extension with acceleo template B">
@@ -7,8 +7,9 @@
           <reusedNodeMappings href="../../ViewpointTestProjectBase1/description/base1.odesign#//@ownedViewpoints[name='Base1WithTemplate']/@ownedRepresentations[name='Entities1']/@defaultLayer/@containerMappings[name='TEC%20EClass%20Base1']/@subNodeMappings[name='TEC%20EAttribute']"/>
           <reusedNodeMappings href="../../ViewpointTestProjectBase1/description/base1.odesign#//@ownedViewpoints[name='Base1WithTemplate']/@ownedRepresentations[name='Entities1']/@defaultLayer/@containerMappings[name='TEC%20EClass%20Base1']/@subNodeMappings[name='TEC%20Operation']"/>
           <conditionnalStyles predicateExpression="&lt;%!isDocumentedTemplate &amp;&amp; isBTemplate%>">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

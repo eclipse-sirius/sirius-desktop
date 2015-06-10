@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="test_1176" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="test_1176" version="10.0.0.201505222000">
   <ownedViewpoints name="test_1176" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="test_1176_A" domainClass="EPackage">
-      <nodeMappings name="EPackage" semanticCandidatesExpression="feature:eContents" semanticElements="&lt;%self()%>" domainClass="EPackage">
+      <nodeMappings name="EPackage" semanticCandidatesExpression="feature:eContents" semanticElements="aql:self" domainClass="EPackage">
         <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="5" height="5" color="//@userColorsPalettes[name=null]/@entries[name='Interpolated%20Color%201']">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -10,7 +10,7 @@
       </nodeMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="test_1176_B" domainClass="EPackage">
-      <nodeMappings name="EPackage" semanticCandidatesExpression="feature:eContents" semanticElements="&lt;%self()%>" domainClass="EPackage">
+      <nodeMappings name="EPackage" semanticCandidatesExpression="feature:eContents" semanticElements="aql:self" domainClass="EPackage">
         <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="5" height="5" color="//@userColorsPalettes[name=null]/@entries[name='Interpolated%20Color%202']">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -18,7 +18,7 @@
       </nodeMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="test_1176_C" domainClass="EPackage">
-      <nodeMappings name="EPackage" semanticCandidatesExpression="feature:eContents" semanticElements="&lt;%self()%>" domainClass="EPackage">
+      <nodeMappings name="EPackage" semanticCandidatesExpression="feature:eContents" semanticElements="aql:self" domainClass="EPackage">
         <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="5" height="5" color="//@userColorsPalettes[name=null]/@entries[name='Interpolated%20Color%203']">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -26,7 +26,7 @@
       </nodeMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="test_1176_D" domainClass="EPackage">
-      <nodeMappings name="EPackage" semanticCandidatesExpression="feature:eContents" semanticElements="&lt;%self()%>" domainClass="EPackage">
+      <nodeMappings name="EPackage" semanticCandidatesExpression="feature:eContents" semanticElements="aql:self" domainClass="EPackage">
         <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="5" height="5" color="//@userColorsPalettes[name=null]/@entries[name='Interpolated%20Color%204']">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -35,7 +35,7 @@
     </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes>
-    <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 1" colorValueComputationExpression="&lt;%eContents().nSize()%>">
+    <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 1" colorValueComputationExpression="aql:self.eContents()->size()">
       <colorSteps>
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
@@ -52,10 +52,10 @@
       <colorSteps>
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
-      <colorSteps associatedValue="&lt;%1%>" associatedColor="//@userColorsPalettes[name=null]/@entries[name='bleu']"/>
+      <colorSteps associatedValue="1" associatedColor="//@userColorsPalettes[name=null]/@entries[name='bleu']"/>
       <colorSteps associatedValue="&lt;%10%>" associatedColor="//@userColorsPalettes[name=null]/@entries[name='rose']"/>
     </entries>
-    <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 2" colorValueComputationExpression="&lt;%eContents().nSize()%>">
+    <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 2" colorValueComputationExpression="aql:self.eContents()->size()">
       <colorSteps>
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
@@ -79,7 +79,7 @@
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
     </entries>
-    <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 3" colorValueComputationExpression="&lt;%eContents().nSize()%>">
+    <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 3" colorValueComputationExpression="aql:self.eContents()->size()">
       <colorSteps>
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
@@ -93,7 +93,7 @@
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
     </entries>
-    <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 4" colorValueComputationExpression="&lt;%eContents().nSize()%>"/>
+    <entries xsi:type="description:InterpolatedColor" name="Interpolated Color 4" colorValueComputationExpression="aql:self.eContents()->size()"/>
     <entries xsi:type="description:UserFixedColor" red="0" green="128" blue="255" name="bleu"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="255" blue="0" name="jaune"/>
     <entries xsi:type="description:UserFixedColor" red="255" green="128" blue="255" name="rose"/>

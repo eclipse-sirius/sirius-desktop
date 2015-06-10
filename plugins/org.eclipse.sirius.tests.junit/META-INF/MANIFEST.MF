@@ -59,7 +59,7 @@ Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
  org.eclipse.sirius.tree.ui,
  org.eclipse.sirius.tree.ui.ext,
  org.eclipse.core.expressions;bundle-version="3.4.101",
- org.eclipse.sirius.common.acceleo.mtl, 
+ org.eclipse.sirius.common.acceleo.mtl,
  org.eclipse.sirius.common.acceleo.mtl.ide,
  org.eclipse.sirius.query.legacy,
  org.eclipse.sirius.tests.sample.migration,
@@ -71,7 +71,8 @@ Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
  org.eclipse.platform,
  org.eclipse.sirius.tests.sample.component,
  org.eclipse.sirius.tests.sample.scxml,
- org.eclipse.sirius.tests.sample.component.design
+ org.eclipse.sirius.tests.sample.component.design,
+ org.eclipse.sirius.common.acceleo.aql;bundle-version="3.0.0"
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTestsPlugin
 Eclipse-LazyStart: true
 Bundle-Localization: plugin

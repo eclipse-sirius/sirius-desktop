@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="My" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="My" version="10.0.0.201505222000">
   <ownedViewpoints name="testD2782">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="test" domainClass="Diagram">
       <defaultLayer name="Default">
         <nodeMappings name="classNodeMapping" semanticCandidatesExpression="feature:eContents" domainClass="Node">
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.id" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="edgeMapping" sourceMapping="//@ownedViewpoints[name='testD2782']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='classNodeMapping'] //@ownedViewpoints[name='testD2782']/@ownedRepresentations[name='test']/@defaultLayer/@containerMappings[name='classContainerMapping']" targetMapping="//@ownedViewpoints[name='testD2782']/@ownedRepresentations[name='test']/@defaultLayer/@containerMappings[name='classContainerMapping'] //@ownedViewpoints[name='testD2782']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='classNodeMapping']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="Edge" useDomainElement="true">
+        <edgeMappings name="edgeMapping" sourceMapping="//@ownedViewpoints[name='testD2782']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='classNodeMapping'] //@ownedViewpoints[name='testD2782']/@ownedRepresentations[name='test']/@defaultLayer/@containerMappings[name='classContainerMapping']" targetMapping="//@ownedViewpoints[name='testD2782']/@ownedRepresentations[name='test']/@defaultLayer/@containerMappings[name='classContainerMapping'] //@ownedViewpoints[name='testD2782']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='classNodeMapping']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="Edge" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-            <centerLabelStyleDescription labelExpression="&lt;%id%>">
+            <centerLabelStyleDescription labelExpression="aql:self.id">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <containerMappings name="classContainerMapping" semanticCandidatesExpression="feature:eContents" domainClass="Container" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:self.id">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>

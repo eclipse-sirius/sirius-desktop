@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/diagram/description/validation/1.1.0" name="ticket1666" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="ticket1666" version="10.0.0.201505222000">
   <ownedViewpoints name="Ticket 1666" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Validation" initialisation="true" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -11,7 +11,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:ShapeContainerStyleDescription">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -28,7 +28,7 @@
           <audits auditExpression="&lt;%target.name.startsWith(&quot;p&quot;)%>"/>
         </ownedRules>
       </validationSet>
-      <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="&lt;%eSubpackages %>" nodeMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']"/>
+      <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="aql:self.eSubpackages" nodeMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']"/>
       <defaultLayer name="Default">
         <nodeMappings name="Package" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
           <style xsi:type="style:SquareDescription" labelExpression="container_&lt;%name%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
@@ -38,7 +38,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Containers" sourceMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="feature:eContainer">
-          <style sizeComputationExpression="1" routingStyle="tree" foldingStyle="TARGET">
+          <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription labelExpression="relation_edge_&lt;%name%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>

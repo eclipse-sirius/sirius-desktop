@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="std" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="std" version="10.0.0.201505222000">
   <ownedViewpoints name="Test Case" label="TC " modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram for Breakdown TC" label="Diagram for Breakdown TC" domainClass="EPackage">
-      <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="&lt;%eSubpackages%>" nodeMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']"/>
+      <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="aql:self.eSubpackages" nodeMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']"/>
       <defaultLayer name="Default">
         <nodeMappings name="Class for STD012" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
           <style xsi:type="style:SquareDescription">
@@ -11,7 +11,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Contain for STD012" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[!eOpposite]%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetFinderExpression="&lt;%~eSubpackages%>" sourceFinderExpression="feature:eContainer" domainClass="EReference">
+        <edgeMappings name="Contain for STD012" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)->select(e| e.eOpposite = null)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetFinderExpression="&lt;%~eSubpackages%>" sourceFinderExpression="feature:eContainer" domainClass="EReference">
           <style sizeComputationExpression="2" routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -19,7 +19,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="SuperType for STD012" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[!eOpposite]%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@nodeMappings[name='Class%20for%20STD012']" targetMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@nodeMappings[name='Class%20for%20STD012']" targetFinderExpression="&lt;%eSuperTypes%>" sourceFinderExpression="feature:eContainer" domainClass="EReference">
+        <edgeMappings name="SuperType for STD012" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)->select(e| e.eOpposite = null)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@nodeMappings[name='Class%20for%20STD012']" targetMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@nodeMappings[name='Class%20for%20STD012']" targetFinderExpression="aql:self.eSuperTypes" sourceFinderExpression="feature:eContainer" domainClass="EReference">
           <style sizeComputationExpression="2" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -28,7 +28,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="Package for STD012" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP912" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP912" version="10.0.0.201505222000">
   <ownedViewpoints name="V912" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="TreeWithDirectEdit" label="Tree" domainClass="EPackage">
-      <subItemMappings name="Package" domainClass="EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" reusedTreeItemMappings="//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class'] //@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Package']">
+      <subItemMappings name="Package" domainClass="EPackage" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" reusedTreeItemMappings="//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class'] //@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Package']">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -13,13 +13,14 @@
           <root name="root"/>
         </directEdit>
       </subItemMappings>
-      <subItemMappings name="Class" label="Class" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
-        <defaultStyle labelFormat="bold" showIcon="false">
+      <subItemMappings name="Class" label="Class" domainClass="EClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)">
+        <defaultStyle showIcon="false">
+          <labelFormat>bold</labelFormat>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
         </defaultStyle>
-        <directEdit name="ClassEdit" precondition="&lt;%self.name==&quot;C1&quot;%>" mapping="//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']">
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element_WITH-CUSTOM-NAME%>">
+        <directEdit name="ClassEdit" precondition="aql:self.name = 'C1'" mapping="//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="aql:element_WITH-CUSTOM-NAME">
             <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
           </firstModelOperation>
           <mask mask="{0}"/>
@@ -27,7 +28,7 @@
           <root name="root"/>
         </directEdit>
         <subItemMappings name="Categorie" domainClass="EClass" semanticCandidatesExpression="var:self">
-          <defaultStyle labelExpression="&lt;%name%> Categorie">
+          <defaultStyle labelExpression="aql:self.name + ' Categorie'">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
@@ -49,14 +50,15 @@
           </subItemMappings>
         </subItemMappings>
       </subItemMappings>
-      <subItemMappings name="Enum" label="Enum" semanticElements="" domainClass="EEnum" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EEnum&quot;)%>">
-        <defaultStyle labelFormat="italic">
+      <subItemMappings name="Enum" label="Enum" semanticElements="" domainClass="EEnum" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EEnum)">
+        <defaultStyle>
+          <labelFormat>italic</labelFormat>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
         </defaultStyle>
         <directEdit name="Enum renamming" mapping="//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Enum']">
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
-            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="enum&lt;%$0%>"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'enum' + arg0"/>
           </firstModelOperation>
           <mask mask="{0}"/>
           <element name="element"/>
@@ -66,7 +68,7 @@
     </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Ecore Palette">
-    <entries xsi:type="description:InterpolatedColor" name="Size Based Color"/>
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color" colorValueComputationExpression="[eContents()->size()/]"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
     <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
     <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>

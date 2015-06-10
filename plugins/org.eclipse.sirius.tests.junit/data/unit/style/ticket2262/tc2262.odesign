@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="description" version="10.0.0.201411061000">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="description" version="10.0.0.201505222000">
   <ownedViewpoints name="bug.test" label="TC2262" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc2262" label="tc2262" domainClass="EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <defaultLayer name="Default" label="default">
-        <nodeMappings name="EAttributeMapping" label="EAttributeMapping" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EAttribute&quot;)%>" domainClass="EAttribute">
-          <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+        <nodeMappings name="EAttributeMapping" label="EAttributeMapping" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EAttribute)" domainClass="EAttribute">
+          <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="EOperationMapping" label="EOperationMapping" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EOperation&quot;)%>" domainClass="EOperation">
-          <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+        <nodeMappings name="EOperationMapping" label="EOperationMapping" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EOperation)" domainClass="EOperation">
+          <style xsi:type="style:WorkspaceImageDescription" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="EReferenceMapping" label="EReferenceMapping" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EReference&quot;)%>" domainClass="EReference">
-          <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="&lt;%-1%>" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+        <nodeMappings name="EReferenceMapping" label="EReferenceMapping" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EReference)" domainClass="EReference">
+          <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="EClassNodeMapping" label="EClassMapping" semanticCandidatesExpression="&lt;%eClassifiers.filter(&quot;EClass&quot;)%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EAttributeMapping'] //@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EOperationMapping'] //@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EReferenceMapping']">
+        <nodeMappings name="EClassNodeMapping" label="EClassMapping" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EAttributeMapping'] //@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EOperationMapping'] //@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EReferenceMapping']">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="6">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -30,75 +30,75 @@
           </style>
         </nodeMappings>
         <nodeMappings name="EPackageMapping" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
-          <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" resizeKind="NSEW">
+          <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <containerMappings name="EClassContainerMapping" label="EClassMapping" semanticCandidatesExpression="&lt;%eClassifiers.filter(&quot;EClass&quot;)%>" domainClass="EClass">
-          <borderedNodeMappings name="EAttributeMapping2" label="EAttributeMapping" semanticCandidatesExpression="&lt;%eAttributes%>" domainClass="EAttribute">
-            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+        <containerMappings name="EClassContainerMapping" label="EClassMapping" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass">
+          <borderedNodeMappings name="EAttributeMapping2" label="EAttributeMapping" semanticCandidatesExpression="aql:self.eAttributes" domainClass="EAttribute">
+            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="EOperationMapping2" label="EOperationMapping" semanticCandidatesExpression="&lt;%eOperations%>" domainClass="EOperation">
-            <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+          <borderedNodeMappings name="EOperationMapping2" label="EOperationMapping" semanticCandidatesExpression="aql:self.eOperations" domainClass="EOperation">
+            <style xsi:type="style:WorkspaceImageDescription" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="EReferenceMapping2" label="EReferenceMapping" semanticCandidatesExpression="&lt;%eReferences%>" domainClass="EReference">
-            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="&lt;%-1%>" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+          <borderedNodeMappings name="EReferenceMapping2" label="EReferenceMapping" semanticCandidatesExpression="aql:self.eReferences" domainClass="EReference">
+            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="EAttributeMapping3" label="EAttributeMapping" semanticCandidatesExpression="&lt;%eAttributes%>" domainClass="EAttribute">
-            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+          <subNodeMappings name="EAttributeMapping3" label="EAttributeMapping" semanticCandidatesExpression="aql:self.eAttributes" domainClass="EAttribute">
+            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="EOperationMapping3" label="EOperationMapping" semanticCandidatesExpression="&lt;%eOperations%>" domainClass="EOperation">
-            <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+          <subNodeMappings name="EOperationMapping3" label="EOperationMapping" semanticCandidatesExpression="aql:self.eOperations" domainClass="EOperation">
+            <style xsi:type="style:WorkspaceImageDescription" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="EReferenceMapping3" label="EReferenceMapping" semanticCandidatesExpression="&lt;%eReferences%>" domainClass="EReference">
-            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="&lt;%-1%>" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
+          <subNodeMappings name="EReferenceMapping3" label="EReferenceMapping" semanticCandidatesExpression="aql:self.eReferences" domainClass="EReference">
+            <style xsi:type="style:WorkspaceImageDescription" sizeComputationExpression="-1" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EClassContainerMapping_img" semanticCandidatesExpression="&lt;%eClassifiers.filter(&quot;EClass&quot;)%>" domainClass="EClass">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="container_image" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
+        <containerMappings name="EClassContainerMapping_img" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="container_image" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EClassContainerMapping_list_img" semanticCandidatesExpression="&lt;%eClassifiers.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="list_image" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
+        <containerMappings name="EClassContainerMapping_list_img" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass" childrenPresentation="List">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="list_image" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EClassContainerMapping_img_not_found" semanticCandidatesExpression="&lt;%eClassifiers.filter(&quot;EClass&quot;)%>" domainClass="EClass">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="container_image_not_found" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.junit/images/nonexistingimage.png">
+        <containerMappings name="EClassContainerMapping_img_not_found" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="container_image_not_found" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/nonexistingimage.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EClassContainerMapping_list_img_not_found" semanticCandidatesExpression="&lt;%eClassifiers.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="list_image_not_found" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.junit/nonexistingimage.png">
+        <containerMappings name="EClassContainerMapping_list_img_not_found" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass" childrenPresentation="List">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="list_image_not_found" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/nonexistingimage.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
