@@ -23,7 +23,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
 
@@ -51,12 +50,6 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
         this.newValue = newValue;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
-     */
     @Override
     public Command buildCommand() {
         if (this.permissionAuthority.canEditInstance(repElement) && canDirectEdit()) {
@@ -72,9 +65,8 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
             result.getTasks().add(new InitInterpreterFromParsedVariableTask(interpreter, messageFormat, newValue));
 
             Option<DDiagram> parentDiagram = getDDiagram();
-            if (parentDiagram.some() && repElement instanceof DSemanticDecorator && ((DSemanticDecorator) repElement).getTarget() != null && directEditTool.getInitialOperation() != null) {
-                final ICommandTask operations = taskHelper.buildTaskFromModelOperation(parentDiagram.get(), ((DSemanticDecorator) repElement).getTarget(), directEditTool.getInitialOperation()
-                        .getFirstModelOperations());
+            if (parentDiagram.some() && repElement.getTarget() != null && directEditTool.getInitialOperation() != null) {
+                final ICommandTask operations = taskHelper.buildTaskFromModelOperation(parentDiagram.get(), repElement.getTarget(), directEditTool.getInitialOperation().getFirstModelOperations());
                 result.getTasks().add(operations);
             }
             addPostOperationTasks(result, interpreter);
@@ -110,17 +102,11 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getEnclosingCommandLabel() {
         return EDIT_LABEL;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Option<DDiagram> getDDiagram() {
         return new EObjectQuery(repElement).getParentDiagram();

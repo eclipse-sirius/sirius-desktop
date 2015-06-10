@@ -107,20 +107,12 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
     protected void refreshFontColor() {
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getLabelIcon()
-     */
+    @Override
     public Image getLabelIcon() {
         return DiagramNameEditPartOperation.getLabelIcon(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getStyleEditPart()
-     */
+    @Override
     public IStyleEditPart getStyleEditPart() {
         if (this.getParent() instanceof IDiagramElementEditPart) {
             return DiagramElementEditPartOperation.getStyleEditPart((IDiagramElementEditPart) this.getParent());
@@ -128,54 +120,32 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterDiagramElement()
-     */
+    @Override
     public NotificationListener getEAdapterDiagramElement() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public NotificationListener getEditModeListener() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveDiagramElement()
-     */
+    @Override
     public DDiagramElement resolveDiagramElement() {
         return DiagramElementEditPartOperation.resolveDiagramElement(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveAllSemanticElements()
-     */
+    @Override
     public List<EObject> resolveAllSemanticElements() {
         return DiagramElementEditPartOperation.resolveAllSemanticElements(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveTargetSemanticElement()
-     */
+    @Override
     public EObject resolveTargetSemanticElement() {
         return DiagramElementEditPartOperation.resolveTargetSemanticElement(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getMetamodelType()
-     */
+    @Override
     public Class<?> getMetamodelType() {
         Class<?> clazz = null;
         if (this.getParent() instanceof IDiagramNodeEditPart) {
@@ -192,20 +162,11 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
         return clazz;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEditPartAuthorityListener()
-     */
+    @Override
     public EditPartAuthorityListener getEditPartAuthorityListener() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#createDefaultEditPolicies()
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
@@ -244,23 +205,6 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
             }
         }
         return directEditEnabled;
-    }
-
-    /**
-     * Indicates if the given {@link DDiagramElement}'s parent
-     * {@link org.eclipse.sirius.diagram.DDiagram} is in Layouting Mode.
-     * 
-     * @param element
-     *            the element to test
-     * @return true if the given {@link DDiagramElement}'s parent
-     *         {@link org.eclipse.sirius.diagram.DDiagram} is in Layouting Mode,
-     *         false otherwise
-     */
-    private boolean isInLayoutingModeDiagram(DDiagramElement element) {
-        if (element.getParentDiagram() != null) {
-            return element.getParentDiagram().isIsInLayoutingMode();
-        }
-        return false;
     }
 
     /**
@@ -314,6 +258,7 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
      *            the tool-tip's text.
      * @since 0.9.0
      */
+    @Override
     public void setTooltipText(final String text) {
         if (!StringUtil.isEmpty(text)) {
             final IFigure tt = getFigure().getToolTip();
