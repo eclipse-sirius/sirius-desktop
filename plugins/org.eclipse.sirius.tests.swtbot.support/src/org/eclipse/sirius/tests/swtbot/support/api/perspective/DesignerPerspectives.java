@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.swtbot.support.api.perspective;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.PerspectiveActivatedCondition;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.ui.IWorkbenchPage;
@@ -81,12 +80,8 @@ public class DesignerPerspectives {
         UIThreadRunnable.syncExec(new VoidResult() {
             @Override
             public void run() {
-                try {
-                    IWorkbenchPage activePage = EclipseUIUtil.getActivePage();
-                    activePage.closePerspective(activePage.getPerspective(), false, false);
-                } catch (Exception e) {
-                    throw new WidgetNotFoundException(e.getMessage(), e);
-                }
+                IWorkbenchPage activePage = EclipseUIUtil.getActivePage();
+                activePage.closePerspective(activePage.getPerspective(), false, false);
             }
         });
         bot.waitUntil(new PerspectiveActivatedCondition(bot, perspectiveName, true));
