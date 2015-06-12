@@ -145,11 +145,13 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+        changeSiriusPreference(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
+
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME_P3);
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME, MODELER_PATH, TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
-
-        changeSiriusPreference(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
 
         Resource semanticResource = session.getSemanticResources().iterator().next();
         rootEPackage = (EPackage) semanticResource.getContents().get(0);
@@ -177,8 +179,6 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
         p1FragmentedSessionResourceURI = URI.createURI(mainSessionResourceURI.trimFileExtension() + "_p1.aird");
         p2FragmentedSessionResourceURI = URI.createURI(mainSessionResourceURI.trimFileExtension() + "_p2.aird");
         p22FragmentedSessionResourceURI = URI.createURI(mainSessionResourceURI.trimFileExtension() + "_p2_p22.aird");
-
-        changeSiriusPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
     }
 
     @Override
@@ -488,6 +488,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
 
     /**
      * Do a fragmentation.
+     * 
      * @throws InterruptedException
      * @throws OperationCanceledException
      */
@@ -547,10 +548,10 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
 
         assertTrue("The session must be open", session.isOpen());
 
+        session.save(new NullProgressMonitor());
         URI mainAnalysisURI = session.getSessionResource().getURI();
         if (closeSession) {
             // Close session
-            session.save(new NullProgressMonitor());
             session.close(new NullProgressMonitor());
             assertFalse("The session must be closed", session.isOpen());
         }
