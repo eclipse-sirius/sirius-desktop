@@ -684,8 +684,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         ControlledResourcesDetector.refreshControlledResources(this);
     }
 
-    void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
-        SessionResourcesTracker.addAutomaticallyLoadedResourcesToSemanticResources(this, allResources);
+    void discoverAutomaticallyLoadedResources(List<Resource> allResources) {
+        SessionResourcesTracker.manageAutomaticallyLoadedResources(this, allResources);
     }
 
     // *******************

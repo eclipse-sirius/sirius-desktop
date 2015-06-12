@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -99,7 +99,9 @@ public class RepresentationsChangeAdapter extends AdapterImpl {
      *            the analysis
      */
     public void registerAnalysis(final DAnalysis analysis) {
-        analysis.eAdapters().add(this);
+        if (!analysis.eAdapters().contains(this)) {
+            analysis.eAdapters().add(this);
+        }
         for (final DView view : analysis.getOwnedViews()) {
             registerView(view);
         }
@@ -127,7 +129,9 @@ public class RepresentationsChangeAdapter extends AdapterImpl {
      *            the editor
      */
     private void registerView(final DView view) {
-        view.eAdapters().add(this);
+        if (!view.eAdapters().contains(this)) {
+            view.eAdapters().add(this);
+        }
     }
 
     /**

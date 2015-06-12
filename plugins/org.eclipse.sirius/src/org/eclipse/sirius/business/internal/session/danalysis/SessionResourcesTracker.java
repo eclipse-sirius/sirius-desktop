@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -38,6 +39,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -94,7 +96,7 @@ class SessionResourcesTracker {
 
         // Add the unknown resources to the semantic resources of this
         // session.
-        addAutomaticallyLoadedResourcesToSemanticResources(session, resourcesBeforeLoadOfSession);
+        manageAutomaticallyLoadedResources(session, resourcesBeforeLoadOfSession);
         monitor.worked(1);
 
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.RESOLVE_ALL_KEY);
@@ -217,8 +219,10 @@ class SessionResourcesTracker {
     }
 
     /**
-     * Check the resources in the resourceSet and add all new resources as
-     * semantic resources of this session. New resources are :
+     * Check the resources in the resourceSet. Detect new resources and add them
+     * to the session as new semantic resources or referenced session resources.<BR>
+     * <BR>
+     * New semantic resources are :
      * <UL>
      * <LI>Resources that are not in the <code>knownResources</code> list</LI>
      * <LI>Resources that are not in the semantic resources of this session</LI>
@@ -226,23 +230,45 @@ class SessionResourcesTracker {
      * resources of this session</LI>
      * <LI>Resources that are not the Sirius environment resource</LI>
      * </UL>
+     * <BR>
+     * New referenced session resources are :
+     * <UL>
+     * <LI>Resources that are not in the <code>knownResources</code> list</LI>
+     * <LI>Resources that are in the referenced representations files resources
+     * of this session (the list is computed from the allAnalyses() result)</LI>
+     * </UL>
      * 
      * @param knownResources
      *            List of resources that is already loaded before the resolveAll
      *            of the representations file load.
      */
-    static void addAutomaticallyLoadedResourcesToSemanticResources(final DAnalysisSessionImpl session, List<Resource> knownResources) {
+    static void manageAutomaticallyLoadedResources(final DAnalysisSessionImpl session, List<Resource> knownResources) {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         List<Resource> resourcesAfterLoadOfSession = Lists.newArrayList(domain.getResourceSet().getResources());
         // Remove the known resources
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), knownResources);
+
+        if (resourcesAfterLoadOfSession.isEmpty()) {
+            return;
+        }
+
+        Set<Resource> referencedSessionResources = session.getReferencedSessionResources();
+        Collection<Resource> newReferencedSessionResources = Lists.newArrayList(Iterables.filter(resourcesAfterLoadOfSession, Predicates.in(referencedSessionResources)));
+        if (!newReferencedSessionResources.isEmpty()) {
+            for (Resource newReferencedSessionResource : newReferencedSessionResources) {
+                session.registerResourceInCrossReferencer(newReferencedSessionResource);
+                for (DAnalysis refAnalysis : Iterables.filter(newReferencedSessionResource.getContents(), DAnalysis.class)) {
+                    session.addAdaptersOnAnalysis(refAnalysis);
+                }
+            }
+        }
+
         // Remove the known semantic resources
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getSemanticResources());
         // Remove the known referenced representations file resources
-        Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getReferencedSessionResources());
+        Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), referencedSessionResources);
 
         final Iterable<Resource> newSemanticResourcesIterator = Iterables.filter(resourcesAfterLoadOfSession, new Predicate<Resource>() {
-            @Override
             public boolean apply(Resource resource) {
                 // Remove empty resource and the Sirius environment
                 return !resource.getContents().isEmpty() && !(new URIQuery(resource.getURI()).isEnvironmentURI());
