@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
 
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -90,6 +95,7 @@ import org.eclipse.sirius.tests.unit.diagram.command.DeleteViewCommandTest;
 import org.eclipse.sirius.tests.unit.diagram.compute.variable.ComputeAvailableVariableLabelTest;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlDetectorTest;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlTest;
+import org.eclipse.sirius.tests.unit.diagram.control.ExternalControlTests;
 import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlTest;
 import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlWithRootElementReadOnlyTest;
 import org.eclipse.sirius.tests.unit.diagram.copier.RepresentationCopierTest;
@@ -225,11 +231,6 @@ import org.eclipse.sirius.tests.unit.diagram.vsm.VSMVariableTypesValidationTest;
 import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationTests;
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 public class AllDiagramPluginsTests {
 
     /**
@@ -329,6 +330,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(DeleteFromDiagramActionTests.class);
         suite.addTestSuite(ControlTest.class);
         suite.addTestSuite(ControlDetectorTest.class);
+        suite.addTestSuite(ExternalControlTests.class);
         suite.addTestSuite(EntitiesDiagramHideRevealTests.class);
         suite.addTestSuite(LabelHideRevealTests.class);
         suite.addTestSuite(DiagramElementSelectionDialogTest.class);
