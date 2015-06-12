@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -35,6 +36,7 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -43,6 +45,7 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -120,8 +123,9 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
     }
 
     /**
-     * Check the resources in the resourceSet and add all new resources as
-     * semantic resources of this session. New resources are :
+     * Check the resources in the resourceSet. Detect new resources and add them
+     * to the session as new semantic resources or referenced session resources.<BR><BR>
+     * New semantic resources are :
      * <UL>
      * <LI>Resources that are not in the <code>knownResources</code> list</LI>
      * <LI>Resources that are not in the semantic resources of this session</LI>
@@ -129,20 +133,45 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
      * resources of this session</LI>
      * <LI>Resources that are not the Sirius environment resource</LI>
      * </UL>
+     * <BR>
+     * New referenced session resources are :
+     * <UL>
+     * <LI>Resources that are not in the <code>knownResources</code> list</LI>
+     * <LI>Resources that are in the referenced representations files resources
+     * of this session (the list is computed from the allAnalyses() result)</LI>
+     * </UL>
      * 
      * @param knownResources
      *            List of resources that is already loaded before the resolveAll
      *            of the representations file load.
      */
-    public void addAutomaticallyLoadedResourcesToSemanticResources(List<Resource> knownResources) {
+    public void manageAutomaticallyLoadedResources(List<Resource> knownResources) {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         List<Resource> resourcesAfterLoadOfSession = Lists.newArrayList(domain.getResourceSet().getResources());
         // Remove the known resources
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), knownResources);
+
+        if (resourcesAfterLoadOfSession.isEmpty()) {
+            return;
+        }
+
+        Set<Resource> referencedSessionResources = session.getReferencedSessionResources();
+        Collection<Resource> newReferencedSessionResources = Lists.newArrayList(Iterables.filter(resourcesAfterLoadOfSession, Predicates.in(referencedSessionResources)));
+        if (!newReferencedSessionResources.isEmpty() && session instanceof DAnalysisSession) {
+            for (Resource newReferencedSessionResource : newReferencedSessionResources) {
+                // session.registerResourceInCrossReferencer(newReferencedSessionResource);
+                // private method in DAnalysisSessionImpl
+                registerResourceInCrossReferencer(newReferencedSessionResource);
+                for (DAnalysis refAnalysis : Iterables.filter(newReferencedSessionResource.getContents(), DAnalysis.class)) {
+                    ((DAnalysisSession) session).addAdaptersOnAnalysis(refAnalysis);
+                }
+            }
+        }
+
         // Remove the known semantic resources
         Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getSemanticResources());
         // Remove the known referenced representations file resources
-        Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), session.getReferencedSessionResources());
+        Iterators.removeAll(resourcesAfterLoadOfSession.iterator(), referencedSessionResources);
         // Remove the Sirius Environment resource
         final Iterable<Resource> newSemanticResourcesIterator = Iterables.filter(resourcesAfterLoadOfSession, new Predicate<Resource>() {
             public boolean apply(Resource resource) {
@@ -252,6 +281,15 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
     public void dispose() {
         session.getTransactionalEditingDomain().removeResourceSetListener(this);
         session = null;
+    }
+
+    private void registerResourceInCrossReferencer(final Resource newResource) {
+        ECrossReferenceAdapter crossReferencer = session.getSemanticCrossReferencer();
+        if (crossReferencer != null) {
+            if (!newResource.eAdapters().contains(crossReferencer)) {
+                newResource.eAdapters().add(crossReferencer);
+            }
+        }
     }
 
 }

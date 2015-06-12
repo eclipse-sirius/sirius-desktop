@@ -544,9 +544,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             dAnalysisRefresher.forceLoadingOfEveryLinkedResource();
             monitor.worked(10);
 
-            // Add the unknown resources to the semantic resources of this
-            // session.
-            dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeLoadOfSession);
+            // Manage the unknown resources.
+            dAnalysisRefresher.manageAutomaticallyLoadedResources(resourcesBeforeLoadOfSession);
             monitor.worked(1);
             setSynchronizeStatusofEveryResource();
             monitor.worked(1);
@@ -1732,12 +1731,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private Multimap<ResourceStatus, Resource> getImpactingNewStatuses(Collection<ResourceStatusChange> changes) {
         Multimap<ResourceStatus, Resource> impactingNewStatuses = LinkedHashMultimap.create();
-        Iterable<Resource> resources = Iterables.concat(getSemanticResources(), getAllSessionResources(), getControlledResources());
+        Multimap<ResourceStatus, Resource> sessionResourcesNewStatuses = LinkedHashMultimap.create();
+        Iterable<Resource> semanticOrControlledresources = Iterables.concat(getSemanticResources(), getControlledResources());
+        Set<Resource> allSessionResources = getAllSessionResources();
         for (ResourceStatusChange change : changes) {
-            if (isResourceOfSession(change.getResource(), resources)) {
+            if (isResourceOfSession(change.getResource(), semanticOrControlledresources)) {
                 impactingNewStatuses.put(change.getNewStatus(), change.getResource());
+            } else if (isResourceOfSession(change.getResource(), allSessionResources)) {
+                sessionResourcesNewStatuses.put(change.getNewStatus(), change.getResource());
             }
         }
+        // Add session resource impacting status after semantic ones.
+        impactingNewStatuses.putAll(sessionResourcesNewStatuses);
         return impactingNewStatuses;
     }
 
@@ -1854,10 +1859,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                         mainDAnalysis = (DAnalysis) sessionResource.getContents().get(0);
                     }
                 }
-                // Add the unknown resources to the semantic resources of this
-                // session.
+                // Manage the unknown resources.
                 if (dAnalysisRefresher != null) {
-                    dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeReload);
+                    dAnalysisRefresher.manageAutomaticallyLoadedResources(resourcesBeforeReload);
                 }
                 notifyListeners(SessionListener.REPLACED);
             }
