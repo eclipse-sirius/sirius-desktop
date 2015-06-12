@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -215,9 +216,9 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
                         session.sessionResourceReloaded(resource);
                     }
                 }
-                // Add the unknown resources to the semantic resources of this
-                // session.
-                session.discoverAutomaticallyLoadedSemanticResources(resourcesBeforeReload);
+                // Analyze the unknown resources to detect new semantic or
+                // session resources.
+                session.discoverAutomaticallyLoadedResources(resourcesBeforeReload);
                 session.notifyListeners(SessionListener.REPLACED);
             }
         } catch (InterruptedException e) {
@@ -288,17 +289,27 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
 
     private Multimap<ResourceStatus, Resource> getImpactingNewStatuses(Collection<ResourceStatusChange> changes) {
         Multimap<ResourceStatus, Resource> impactingNewStatuses = LinkedHashMultimap.create();
-        Iterable<Resource> resources = getAllSessionResources();
+        Multimap<ResourceStatus, Resource> representationResourcesNewStatuses = LinkedHashMultimap.create();
+        Iterable<Resource> semanticOrControlledresources = getAllSemanticResources();
+        Set<Resource> representationResources = session.getAllSessionResources();
         for (ResourceStatusChange change : changes) {
-            if (session.isResourceOfSession(change.getResource(), resources)) {
+            if (session.isResourceOfSession(change.getResource(), semanticOrControlledresources)) {
                 impactingNewStatuses.put(change.getNewStatus(), change.getResource());
+            } else if (session.isResourceOfSession(change.getResource(), representationResources)) {
+                representationResourcesNewStatuses.put(change.getNewStatus(), change.getResource());
             }
         }
+        // Add session resource impacting status after semantic ones.
+        impactingNewStatuses.putAll(representationResourcesNewStatuses);
         return impactingNewStatuses;
     }
 
     private Iterable<Resource> getAllSessionResources() {
         return Iterables.concat(session.getSemanticResources(), session.getAllSessionResources(), session.getControlledResources());
+    }
+
+    private Iterable<Resource> getAllSemanticResources() {
+        return Iterables.concat(session.getSemanticResources(), session.getControlledResources());
     }
 
 }
