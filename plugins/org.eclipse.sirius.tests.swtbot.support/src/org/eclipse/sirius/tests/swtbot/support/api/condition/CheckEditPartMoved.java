@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,29 +23,19 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
  */
 public class CheckEditPartMoved extends DefaultCondition {
 
-    /**
-     * the edit part to wait for its move.
-     */
+    /** The edit part to wait for its move. */
     private IGraphicalEditPart graphicalEditPart;
 
-    /**
-     * Initial position of the edit part
-     */
+    /** Initial position of the edit part. */
     private final Point initialLocation;
 
-    /**
-     * Current editor.
-     */
+    /** Current editor. */
     private final SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * name of the edit part to wait for its selection.
-     */
+    /** Name of the edit part to wait for its selection. */
     private String labelOfEditPart;
 
-    /**
-     * the class of the edit part to wait for its selection.
-     */
+    /** the class of the edit part to wait for its selection. */
     private Class<? extends IGraphicalEditPart> editPartClass;
 
     /**
@@ -81,9 +71,6 @@ public class CheckEditPartMoved extends DefaultCondition {
         this.editor = editor;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean test() throws Exception {
         Point location;
@@ -95,12 +82,9 @@ public class CheckEditPartMoved extends DefaultCondition {
         return !initialLocation.equals(location);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getFailureMessage() {
-        return "Failed to find " + graphicalEditPart.resolveSemanticElement() + " moved";
+        return "Failed to find " + (graphicalEditPart != null ? graphicalEditPart.resolveSemanticElement() : labelOfEditPart) + " moved";
     }
 
 }
