@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -90,9 +91,6 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         this.semanticOrderingSynchronizer = new VisibilityEventHandler();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
@@ -102,9 +100,6 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void addNotify() {
         SequenceEditPartsOperations.registerDiagramElement(this, resolveSemanticElement());
@@ -116,9 +111,6 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void removeNotify() {
         super.removeNotify();
@@ -168,7 +160,10 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
     private Option<SessionEventBroker> getSessionBroker() {
         DDiagramEditor diagramEditor = (DDiagramEditor) this.getViewer().getProperty(DDiagramEditor.EDITOR_ID);
         if (diagramEditor != null) {
-            return Options.newSome(diagramEditor.getSession().getEventBroker());
+            Session session = diagramEditor.getSession();
+            if (session != null && session.isOpen()) {
+                return Options.newSome(diagramEditor.getSession().getEventBroker());
+            }
         }
         return Options.newNone();
     }
@@ -180,11 +175,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             /** the EMF command factory */
             private IDiagramCommandFactory commandFactory;
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider#getCommandFactory(org.eclipse.emf.transaction.TransactionalEditingDomain)
-             */
+            @Override
             public IDiagramCommandFactory getCommandFactory(final TransactionalEditingDomain editingDomain) {
                 if (commandFactory == null) {
                     commandFactory = new SequenceEMFCommandFactory(SequenceDiagramEditPart.this);
@@ -222,9 +213,6 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         super.reorderChild(child, index);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void refreshChildren() {
         super.refreshChildren();
