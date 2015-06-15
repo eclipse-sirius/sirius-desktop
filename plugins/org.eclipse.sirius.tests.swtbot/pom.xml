@@ -78,7 +78,7 @@
           </systemProperties>
           <skipTests>${tests.swtbot.skip}</skipTests>
           <includes>
-            <include>%regex[(${tests.swtbot.include})?(${tests.swtbot-sequence.include})?]</include>
+            <include>${tests.swtbot.include}, ${tests.swtbot-sequence.include}</include>
           </includes>
           <useUIHarness>true</useUIHarness>
           <useUIThread>false</useUIThread>
