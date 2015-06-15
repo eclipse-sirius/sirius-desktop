@@ -461,15 +461,12 @@ public final class DiagramElementEditPartOperation {
      * @return the icon of the specified diagram element.
      */
     public static Image getLabelIcon(final IDiagramElementEditPart self) {
-        if (self.getMetamodelType().isInstance(self.resolveSemanticElement())) {
-            final DDiagramElement element = self.resolveDiagramElement();
-            final DiagramElementMapping mapping = element.getDiagramElementMapping();
-            final Style style = element.getStyle();
-            final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(mapping, style);
-            final Image image = new StyleConfigurationQuery(styleConfiguration).getLabelIcon(element, self);
-            return image;
-        }
-        return null;
+        final DDiagramElement element = self.resolveDiagramElement();
+        final DiagramElementMapping mapping = element.getDiagramElementMapping();
+        final Style style = element.getStyle();
+        final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(mapping, style);
+        final Image image = new StyleConfigurationQuery(styleConfiguration).getLabelIcon(element, self);
+        return image;
     }
 
     /**

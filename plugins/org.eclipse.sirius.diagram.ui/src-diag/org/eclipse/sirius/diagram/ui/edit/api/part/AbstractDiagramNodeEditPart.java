@@ -137,15 +137,12 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
      */
     @Override
     public void refresh() {
-        final EObject element = resolveSemanticElement();
-        if (element != null && this.getMetamodelType().isInstance(element)) {
-            super.refresh();
-            this.refreshVisuals();
+        super.refresh();
+        this.refreshVisuals();
 
-            Iterable<EditPart> children = Iterables.filter(getChildren(), EditPart.class);
-            for (EditPart childEditPart : children) {
-                childEditPart.refresh();
-            }
+        Iterable<EditPart> children = Iterables.filter(getChildren(), EditPart.class);
+        for (EditPart childEditPart : children) {
+            childEditPart.refresh();
         }
     }
 
@@ -215,11 +212,10 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
 
         Command cmd = UnexecutableCommand.INSTANCE;
         boolean valid = true;
-        EObject semanticElement = resolveSemanticElement();
         ResizeValidator resizeValidator = new ResizeValidator(request);
         valid = resizeValidator.validate();
 
-        if (valid && getMetamodelType().isInstance(semanticElement)) {
+        if (valid) {
             final Iterator<?> iterEditParts = request.getEditParts().iterator();
             while (iterEditParts.hasNext()) {
                 final Object next = iterEditParts.next();

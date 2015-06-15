@@ -149,7 +149,7 @@ public final class AbstractDiagramNodeEditPartOperation {
      */
     public static IBorderItemLocator createBorderItemLocator(final IAbstractDiagramNodeEditPart self, final IFigure figure, final DDiagramElement vpElementBorderItem) {
         final EObject semantic = self.resolveSemanticElement();
-        if (semantic != null && self.getMetamodelType().isInstance(semantic)) {
+        if (semantic != null) {
             if (semantic instanceof DDiagramElement) {
                 final DDiagramElement element = (DDiagramElement) semantic;
                 final DiagramElementMapping mapping = element.getDiagramElementMapping();

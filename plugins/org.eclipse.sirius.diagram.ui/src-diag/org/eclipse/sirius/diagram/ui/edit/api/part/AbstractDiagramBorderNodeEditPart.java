@@ -273,15 +273,11 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
      */
     @Override
     public void refresh() {
-        final EObject element = resolveSemanticElement();
-        if (element != null && element.eResource() != null && this.getMetamodelType().isInstance(element)) {
-            super.refresh();
-
-            List<?> children = getChildren();
-            for (int i = 0; i < children.size(); i++) {
-                EditPart editPart = (EditPart) children.get(i);
-                editPart.refresh();
-            }
+        super.refresh();
+        List<?> children = getChildren();
+        for (int i = 0; i < children.size(); i++) {
+            EditPart editPart = (EditPart) children.get(i);
+            editPart.refresh();
         }
     }
 
@@ -407,22 +403,19 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         valid = resizeValidator.validate();
 
         if (valid) {
-            if (this.getMetamodelType().isInstance(element)) {
-                for (Object next : request.getEditParts()) {
-                    if (!(next instanceof IGraphicalEditPart)) {
-                        // break the loop and return null
-                        break;
-                    }
-                    IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) next;
-                    Command result = DiagramBorderNodeEditPartOperation.getResizeBorderItemCommand(graphicalEditPart, request);
-                    /*
-                     * Return immediately the first command created
-                     * successfully.
-                     */
-                    if (result != null) {
-                        cmd = result;
-                        break;
-                    }
+            for (Object next : request.getEditParts()) {
+                if (!(next instanceof IGraphicalEditPart)) {
+                    // break the loop and return null
+                    break;
+                }
+                IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) next;
+                Command result = DiagramBorderNodeEditPartOperation.getResizeBorderItemCommand(graphicalEditPart, request);
+                /*
+                 * Return immediately the first command created successfully.
+                 */
+                if (result != null) {
+                    cmd = result;
+                    break;
                 }
             }
         }

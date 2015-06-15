@@ -240,18 +240,6 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void refreshChildren() {
-        if (!getMetamodelType().isInstance(resolveSemanticElement())) {
-            deactivate();
-            return;
-        }
-        super.refreshChildren();
-    }
-
-    /**
      * Sets the tooltip of this {@link org.eclipse.gef.EditPart} to the
      * specified text.
      * 

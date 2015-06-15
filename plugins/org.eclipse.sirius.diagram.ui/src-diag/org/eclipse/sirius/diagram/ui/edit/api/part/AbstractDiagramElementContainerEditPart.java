@@ -214,14 +214,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
     @Override
     public void refresh() {
-        final EObject element = resolveSemanticElement();
-        if (element != null && this.getMetamodelType().isInstance(element)) {
-            super.refresh();
-
-            Iterable<EditPart> children = Iterables.filter(getChildren(), EditPart.class);
-            for (EditPart childEditPart : children) {
-                childEditPart.refresh();
-            }
+        super.refresh();
+        List<?> children = getChildren();
+        for (int i = 0; i < children.size(); i++) {
+            EditPart editPart = (EditPart) children.get(i);
+            editPart.refresh();
         }
     }
 
@@ -770,7 +767,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         ResizeValidator resizeValidator = new ResizeValidator(request);
         valid = resizeValidator.validate();
 
-        if (valid && getMetamodelType().isInstance(this.resolveSemanticElement())) {
+        if (valid) {
             final Iterator<?> iterEditParts = request.getEditParts().iterator();
             while (iterEditParts.hasNext()) {
                 final Object next = iterEditParts.next();
@@ -819,8 +816,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                                 break;
                             }
                         }
-                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()), new Rectangle(position,
-                                dimension));
+                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()),
+                                new Rectangle(position, dimension));
                         cmd = new ICommandProxy(setBoundsCommand);
                     }
                 }
