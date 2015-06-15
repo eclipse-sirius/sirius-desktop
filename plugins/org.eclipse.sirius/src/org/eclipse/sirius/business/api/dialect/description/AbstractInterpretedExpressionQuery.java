@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -161,6 +162,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * 
      * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery#getTargetDomainClasses()
      */
+    @Override
     public Option<Collection<String>> getTargetDomainClasses() {
         if (targetDomainClass == null) {
             /*
@@ -191,6 +193,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * 
      * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery#getPackagesToImport()
      */
+    @Override
     public Collection<EPackage> getPackagesToImport() {
         if (packagesToImport == null) {
             packagesToImport = Sets.newLinkedHashSet();
@@ -237,6 +240,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * 
      * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery#getDependencies()
      */
+    @Override
     public Collection<String> getDependencies() {
         if (dependencies == null) {
             dependencies = Sets.newLinkedHashSet();
@@ -265,6 +269,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * 
      * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery#getAvailableVariables()
      */
+    @Override
     public Map<String, VariableType> getAvailableVariables() {
         if (availableVariables == null) {
             availableVariables = Maps.newLinkedHashMap();
@@ -272,7 +277,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         Option<EObject> toolContext = getToolContext();
         if (toolContext.some()) {
             EObject operationContext = toolContext.get();
-            collectContextualVariableDefinitions(availableVariables, operationContext, target);
+            collectContextualVariableDefinitions(operationContext, target);
             if (operationContext instanceof ToolDescription) {
                 /*
                  * the containerView variable is accessible in any Model
@@ -280,6 +285,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                  */
                 availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator"));
             }
+            addVariablesFromToolContext(operationContext);
         }
         collectLocalVariablesDefinitions();
         if (this.target instanceof ToolDescription && feature == ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION) {
@@ -289,7 +295,51 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
              */
             availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator"));
         }
+
+        if (ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT.equals(feature)) {
+            collectContextualVariableDefinitions(target, target);
+            addVariablesFromToolContext(target);
+            addVariablesFromCreateOperation(target);
+        }
+
         return availableVariables;
+    }
+
+    /**
+     * Add variables specific to each dialect and each tool.
+     * 
+     * @param toolContext
+     *            the tool from which to get the variables
+     */
+    protected void addVariablesFromToolContext(EObject toolContext) {
+    }
+
+    /**
+     * Add variables from create operations under the tool.
+     * 
+     * @param toolContext
+     *            the tool from which to get the create operation variables
+     */
+    private void addVariablesFromCreateOperation(EObject toolContext) {
+        TreeIterator<EObject> eAllContents = toolContext.eAllContents();
+        while (eAllContents.hasNext()) {
+            EObject eObject = eAllContents.next();
+            if (eObject instanceof ModelOperation) {
+                addVariableFromCreateOperation((ModelOperation) eObject);
+            }
+        }
+    }
+
+    /**
+     * Add variables for create operation.
+     * 
+     * @param modelOperation
+     *            the potential create operation from which to get the variable
+     */
+    protected void addVariableFromCreateOperation(ModelOperation modelOperation) {
+        if (modelOperation instanceof CreateInstance) {
+            availableVariables.put(((CreateInstance) modelOperation).getVariableName(), VariableType.fromString(((CreateInstance) modelOperation).getTypeName()));
+        }
     }
 
     /**
@@ -371,7 +421,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * shadowing, priority is given to the the value defined closest to
      * <code>bottom</code> (lexical scoping).
      */
-    private void collectContextualVariableDefinitions(Map<String, VariableType> vars, EObject top, EObject bottom) {
+    private void collectContextualVariableDefinitions(EObject top, EObject bottom) {
         // A map with multiple values is not strictly required as we only use
         // one value, but it is useful when debugging to have all the
         // information.
@@ -401,7 +451,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         // Merge all the definitions, by taking the one closest to
         // <code>bottom</code> when there are multiple ones.
         for (String var : definitions.keySet()) {
-            vars.put(var, ((List<VariableType>) definitions.get(var)).get(0));
+            availableVariables.put(var, ((List<VariableType>) definitions.get(var)).get(0));
         }
     }
 

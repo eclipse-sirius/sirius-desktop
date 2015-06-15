@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -191,6 +191,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getMappingBasedToolDescription())) {
         case ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION:
+        case ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             // Default case for MappingBasedToolDescription, if subclasses or
             // dialects did not return a specific result.
@@ -207,6 +208,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getAbstractToolDescription())) {
         case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION:
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             // Default case for AbstractToolDescription, if subclasses or
             // dialects did not return a specific result.
@@ -223,6 +225,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getToolDescription())) {
         case ToolPackage.TOOL_DESCRIPTION__PRECONDITION:
+        case ToolPackage.TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -237,6 +240,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getOperationAction())) {
         case ToolPackage.OPERATION_ACTION__PRECONDITION:
+        case ToolPackage.OPERATION_ACTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -251,6 +255,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getPasteDescription())) {
         case ToolPackage.PASTE_DESCRIPTION__PRECONDITION:
+        case ToolPackage.PASTE_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             Collection<String> targets = Sets.newLinkedHashSet();
             for (PasteTargetDescription container : object.getContainers()) {
@@ -306,6 +311,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION:
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__PRE_SELECTED_CANDIDATES_EXPRESSION:
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__PRECONDITION:
+        case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -323,6 +329,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION:
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION:
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__PRECONDITION:
+        case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -337,6 +344,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getPopupMenu())) {
         case ToolPackage.POPUP_MENU__PRECONDITION:
+        case ToolPackage.POPUP_MENU__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -351,6 +359,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getExternalJavaAction())) {
         case ToolPackage.EXTERNAL_JAVA_ACTION__PRECONDITION:
+        case ToolPackage.EXTERNAL_JAVA_ACTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -365,6 +374,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getExternalJavaActionCall())) {
         case ToolPackage.EXTERNAL_JAVA_ACTION_CALL__PRECONDITION:
+        case ToolPackage.EXTERNAL_JAVA_ACTION_CALL__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -396,6 +406,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__TITLE_EXPRESSION:
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION:
         case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__PRECONDITION:
+        case ToolPackage.REPRESENTATION_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             for (RepresentationElementMapping mapping : toolDescription.getMappings()) {
                 IInterpretedExpressionQuery interpretedExpressionQuery = DialectManager.INSTANCE.createInterpretedExpressionQuery(mapping, null);
@@ -420,6 +431,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION:
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION:
         case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__PRECONDITION:
+        case ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             for (RepresentationElementMapping mapping : toolDescription.getMappings()) {
                 IInterpretedExpressionQuery interpretedExpressionQuery = DialectManager.INSTANCE.createInterpretedExpressionQuery(mapping, null);
@@ -473,7 +485,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         }
         return result;
     }
-    
+
     @Override
     public Option<Collection<String>> caseFor(For object) {
         Option<Collection<String>> result = null;

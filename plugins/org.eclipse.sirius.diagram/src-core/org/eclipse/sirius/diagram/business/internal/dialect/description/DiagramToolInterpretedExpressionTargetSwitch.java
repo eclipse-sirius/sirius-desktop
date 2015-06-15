@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -157,6 +157,7 @@ public class DiagramToolInterpretedExpressionTargetSwitch extends ToolSwitch<Opt
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getRequestDescription())) {
         case ToolPackage.REQUEST_DESCRIPTION__PRECONDITION:
+        case ToolPackage.REQUEST_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -174,6 +175,7 @@ public class DiagramToolInterpretedExpressionTargetSwitch extends ToolSwitch<Opt
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getBehaviorTool())) {
         case ToolPackage.BEHAVIOR_TOOL__PRECONDITION:
+        case ToolPackage.BEHAVIOR_TOOL__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             result = Options.newNone();
             break;
@@ -230,6 +232,7 @@ public class DiagramToolInterpretedExpressionTargetSwitch extends ToolSwitch<Opt
         Option<Collection<String>> result = null;
         switch (getFeatureId(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getMappingBasedToolDescription())) {
         case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION:
+        case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             Collection<String> targets = Sets.newLinkedHashSet();
             for (RepresentationElementMapping correspondingMapping : new MappingBasedToolDescriptionQuery(tool).getMappings()) {

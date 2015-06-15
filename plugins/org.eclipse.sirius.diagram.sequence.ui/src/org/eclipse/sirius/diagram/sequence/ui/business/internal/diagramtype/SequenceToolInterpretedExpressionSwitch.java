@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -151,6 +151,7 @@ public class SequenceToolInterpretedExpressionSwitch extends ToolSwitch<Option<C
         switch (getFeatureId(ToolPackage.eINSTANCE.getMessageCreationTool())) {
         case ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION:
         case ToolPackage.MESSAGE_CREATION_TOOL__PRECONDITION:
+        case ToolPackage.MESSAGE_CREATION_TOOL__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             Collection<String> targets = Sets.newLinkedHashSet();
             for (RepresentationElementMapping correspondingMapping : Iterables.concat(object.getEdgeMappings(), object.getExtraSourceMappings())) {
@@ -175,6 +176,7 @@ public class SequenceToolInterpretedExpressionSwitch extends ToolSwitch<Option<C
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getReorderTool())) {
         case ToolPackage.REORDER_TOOL__PRECONDITION:
+        case ToolPackage.REORDER_TOOL__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             Collection<String> targets = Sets.newLinkedHashSet();
             for (EventMapping correspondingMapping : object.getMappings()) {
@@ -199,6 +201,7 @@ public class SequenceToolInterpretedExpressionSwitch extends ToolSwitch<Option<C
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getInstanceRoleReorderTool())) {
         case ToolPackage.INSTANCE_ROLE_REORDER_TOOL__PRECONDITION:
+        case ToolPackage.INSTANCE_ROLE_REORDER_TOOL__ELEMENTS_TO_SELECT:
         case DO_NOT_CONSIDER_FEATURE:
             Collection<String> targets = Sets.newLinkedHashSet();
             for (InstanceRoleMapping correspondingMapping : object.getMappings()) {

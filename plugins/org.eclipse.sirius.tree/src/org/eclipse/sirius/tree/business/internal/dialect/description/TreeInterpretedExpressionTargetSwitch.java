@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -169,6 +169,7 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
         case DescriptionPackage.TREE_CREATION_DESCRIPTION__TITLE_EXPRESSION:
         case DescriptionPackage.TREE_CREATION_DESCRIPTION__BROWSE_EXPRESSION:
         case DescriptionPackage.TREE_CREATION_DESCRIPTION__PRECONDITION:
+        case DescriptionPackage.TREE_CREATION_DESCRIPTION__ELEMENTS_TO_SELECT:
             for (RepresentationElementMapping mapping : toolDescription.getMappings()) {
                 Option<Collection<String>> mappingTypes = globalSwitch.doSwitch(mapping, false);
                 if (mappingTypes.some()) {
@@ -194,6 +195,7 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
         case DescriptionPackage.TREE_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION:
         case DescriptionPackage.TREE_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION:
         case DescriptionPackage.TREE_NAVIGATION_DESCRIPTION__PRECONDITION:
+        case DescriptionPackage.TREE_NAVIGATION_DESCRIPTION__ELEMENTS_TO_SELECT:
             for (RepresentationElementMapping mapping : toolDescription.getMappings()) {
                 Option<Collection<String>> mappingTypes = globalSwitch.doSwitch(mapping, false);
                 if (mappingTypes.some()) {

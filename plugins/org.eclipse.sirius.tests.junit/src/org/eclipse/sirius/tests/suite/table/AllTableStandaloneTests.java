@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,8 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
+import org.eclipse.sirius.tests.unit.api.vsm.interpreted.expression.variables.TableVariablesTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.color.TableColorTest;
-import org.eclipse.sirius.tests.unit.table.unit.vsm.interpreted.expression.variables.TableVariablesTest;
 
 public class AllTableStandaloneTests {
 

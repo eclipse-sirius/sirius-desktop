@@ -13,8 +13,9 @@ package org.eclipse.sirius.tests.suite.tree;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
+import org.eclipse.sirius.tests.unit.api.vsm.interpreted.expression.variables.TreeVariablesTest;
 import org.eclipse.sirius.tests.unit.tree.vsm.color.TreeColorTest;
-import org.eclipse.sirius.tests.unit.tree.vsm.interpreted.expression.TreeVariablesTest;
 
 /**
  * The designer main test standalone suite for the tree component.

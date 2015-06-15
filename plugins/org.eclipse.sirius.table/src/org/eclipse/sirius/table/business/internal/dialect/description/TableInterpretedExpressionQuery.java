@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -104,59 +104,57 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
 
     @Override
     public Map<String, VariableType> getAvailableVariables() {
-        Map<String, VariableType> availableVariables = super.getAvailableVariables();
+        return super.getAvailableVariables();
+    }
 
-        if (getToolContext().some()) {
-            EObject operationContext = getToolContext().get();
-            if (operationContext instanceof CreateCellTool) {
-                CreateCellTool tool = (CreateCellTool) operationContext;
-                IntersectionMapping interMapping = tool.getMapping();
-                if (interMapping != null) {
-                    declareLineAndColumnSemantic(availableVariables, interMapping);
-                }
-            } else if (operationContext instanceof LabelEditTool) {
-                LabelEditTool tool = (LabelEditTool) operationContext;
-                if (tool.eContainer() instanceof IntersectionMapping) {
-                    IntersectionMapping interMapping = (IntersectionMapping) tool.eContainer();
-                    declareLineAndColumnSemantic(availableVariables, interMapping);
-                }
-            } else if (operationContext instanceof CreateLineTool) {
-                CreateLineTool tool = (CreateLineTool) operationContext;
-
-                Set<String> possibleTypes = collectTypes(tool.eContainer());
-
-                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
-                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.CONTAINER, possibleTypes);
-
-                declareRootTableType(availableVariables, operationContext);
-
-            } else if (operationContext instanceof CreateColumnTool) {
-
-                CreateColumnTool tool = (CreateColumnTool) operationContext;
-                Set<String> possibleTypes = collectTypes(tool.eContainer());
-                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
-                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.CONTAINER, possibleTypes);
-                declareRootTableType(availableVariables, operationContext);
-
-            } else if (operationContext instanceof DeleteLineTool) {
-                DeleteLineTool tool = (DeleteLineTool) operationContext;
-                LineMapping mapping = tool.getMapping();
-                String domainClass = mapping.getDomainClass();
-                if (!StringUtil.isEmpty(domainClass)) {
-                    availableVariables.put(IInterpreterSiriusTableVariables.ELEMENT, VariableType.fromString(domainClass));
-                }
-                declareRootTableType(availableVariables, operationContext);
-
-            } else if (operationContext instanceof DeleteColumnTool) {
-                DeleteColumnTool tool = (DeleteColumnTool) operationContext;
-                ColumnMapping mapping = tool.getMapping();
-                Set<String> possibleTypes = collectTypes(mapping);
-                refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
-                declareRootTableType(availableVariables, operationContext);
+    @Override
+    protected void addVariablesFromToolContext(EObject toolContext) {
+        if (toolContext instanceof CreateCellTool) {
+            CreateCellTool tool = (CreateCellTool) toolContext;
+            IntersectionMapping interMapping = tool.getMapping();
+            if (interMapping != null) {
+                declareLineAndColumnSemantic(availableVariables, interMapping);
             }
+        } else if (toolContext instanceof LabelEditTool) {
+            LabelEditTool tool = (LabelEditTool) toolContext;
+            if (tool.eContainer() instanceof IntersectionMapping) {
+                IntersectionMapping interMapping = (IntersectionMapping) tool.eContainer();
+                declareLineAndColumnSemantic(availableVariables, interMapping);
+            }
+        } else if (toolContext instanceof CreateLineTool) {
+            CreateLineTool tool = (CreateLineTool) toolContext;
 
+            Set<String> possibleTypes = collectTypes(tool.eContainer());
+
+            refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
+            refineVariableType(availableVariables, IInterpreterSiriusTableVariables.CONTAINER, possibleTypes);
+
+            declareRootTableType(availableVariables, toolContext);
+
+        } else if (toolContext instanceof CreateColumnTool) {
+
+            CreateColumnTool tool = (CreateColumnTool) toolContext;
+            Set<String> possibleTypes = collectTypes(tool.eContainer());
+            refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
+            refineVariableType(availableVariables, IInterpreterSiriusTableVariables.CONTAINER, possibleTypes);
+            declareRootTableType(availableVariables, toolContext);
+
+        } else if (toolContext instanceof DeleteLineTool) {
+            DeleteLineTool tool = (DeleteLineTool) toolContext;
+            LineMapping mapping = tool.getMapping();
+            String domainClass = mapping.getDomainClass();
+            if (!StringUtil.isEmpty(domainClass)) {
+                availableVariables.put(IInterpreterSiriusTableVariables.ELEMENT, VariableType.fromString(domainClass));
+            }
+            declareRootTableType(availableVariables, toolContext);
+
+        } else if (toolContext instanceof DeleteColumnTool) {
+            DeleteColumnTool tool = (DeleteColumnTool) toolContext;
+            ColumnMapping mapping = tool.getMapping();
+            Set<String> possibleTypes = collectTypes(mapping);
+            refineVariableType(availableVariables, IInterpreterSiriusTableVariables.ELEMENT, possibleTypes);
+            declareRootTableType(availableVariables, toolContext);
         }
-        return availableVariables;
     }
 
     private void refineVariableType(Map<String, VariableType> availableVariables, String variableName, Collection<String> foundTypes) {

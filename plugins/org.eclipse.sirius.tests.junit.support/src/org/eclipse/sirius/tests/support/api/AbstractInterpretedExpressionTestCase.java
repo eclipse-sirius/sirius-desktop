@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,8 @@ package org.eclipse.sirius.tests.support.api;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import junit.framework.TestCase;
 
@@ -21,8 +23,11 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.junit.Assert;
 
 import com.google.common.base.Predicate;
@@ -197,6 +202,10 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
         };
 
         Iterables.addAll(nonDocumented, Iterables.filter(interpretedExpressions, needsDocumentation));
+
+        // Exceptions
+        nonDocumented.remove(ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT);
+
         Assert.assertTrue(getMessage(nonDocumented, AbstractInterpretedExpressionTestCase.VARIABLES), nonDocumented.isEmpty());
     }
 
@@ -235,5 +244,39 @@ public abstract class AbstractInterpretedExpressionTestCase extends TestCase {
     protected void tearDown() throws Exception {
         super.tearDown();
         interpretedExpressions.clear();
+    }
+
+    /**
+     * Assert variable existence.
+     * 
+     * @param tool
+     *            the tool owning the variable
+     * @param expectedVariable
+     *            the expected variable
+     * @param variables
+     *            the variables
+     */
+    protected void assertVariableExistence(AbstractToolDescription tool, String expectedVariable, Set<String> variables) {
+        assertTrue("The interpreter context for " + tool.getName() + " should contains the variable " + expectedVariable, variables.contains(expectedVariable));
+    }
+
+    /**
+     * Assert variable existence and test type.
+     * 
+     * @param tool
+     *            the tool owning the variable
+     * @param expectedVariable
+     *            the expected variable
+     * @param expectedType
+     *            the expected type
+     * @param variables
+     *            the variables
+     * @param variablesToType
+     *            the variable types
+     */
+    protected void assertVariableExistenceAndType(AbstractToolDescription tool, String expectedVariable, String expectedType, Set<String> variables, Map<String, VariableType> variablesToType) {
+        assertVariableExistence(tool, expectedVariable, variables);
+        assertEquals("The interpreter context for " + tool.eClass().getName() + " has a bad variable type for variable " + expectedVariable, VariableType.fromString(expectedType).toString(),
+                variablesToType.get(expectedVariable).toString());
     }
 }
