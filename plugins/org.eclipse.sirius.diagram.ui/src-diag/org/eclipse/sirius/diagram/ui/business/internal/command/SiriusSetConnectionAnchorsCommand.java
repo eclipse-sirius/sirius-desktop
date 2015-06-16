@@ -88,21 +88,24 @@ public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsComma
             if (edge != null) {
 
                 // If there is tree brothers on the new source, we must use the
-                // existing
-                // sourceAnchor instead of the <code>newSourceTerminal</code>
-                // parameter
-                Option<IdentityAnchor> optionalSourceBortherAnchor = new EdgeQuery(edge).getSourceAnchorOfFirstBrotherWithSameSource();
-                if (optionalSourceBortherAnchor.some()) {
-                    setNewSourceTerminal(optionalSourceBortherAnchor.get().getId());
+                // existing sourceAnchor instead of the
+                // <code>newSourceTerminal</code> parameter
+                EdgeQuery edgeQuery = new EdgeQuery(edge);
+                if (edgeQuery.isEdgeOnTreeOnSourceSide()) {
+                    Option<IdentityAnchor> optionalSourceBortherAnchor = edgeQuery.getSourceAnchorOfFirstBrotherWithSameSource();
+                    if (optionalSourceBortherAnchor.some()) {
+                        setNewSourceTerminal(optionalSourceBortherAnchor.get().getId());
+                    }
                 }
                 updateSourceAnchor(edge);
                 // If there is tree brothers on the new target, we must use the
-                // existing
-                // targetAnchor instead of the <code>newTargetTerminal</code>
-                // parameter
-                Option<IdentityAnchor> optionalTargetBortherAnchor = new EdgeQuery(edge).getTargetAnchorOfFirstBrotherWithSameTarget();
-                if (optionalTargetBortherAnchor.some()) {
-                    setNewTargetTerminal(optionalTargetBortherAnchor.get().getId());
+                // existing targetAnchor instead of the
+                // <code>newTargetTerminal</code> parameter
+                if (edgeQuery.isEdgeOnTreeOnTargetSide()) {
+                    Option<IdentityAnchor> optionalTargetBortherAnchor = edgeQuery.getTargetAnchorOfFirstBrotherWithSameTarget();
+                    if (optionalTargetBortherAnchor.some()) {
+                        setNewTargetTerminal(optionalTargetBortherAnchor.get().getId());
+                    }
                 }
                 updateTargetAnchor(edge);
 

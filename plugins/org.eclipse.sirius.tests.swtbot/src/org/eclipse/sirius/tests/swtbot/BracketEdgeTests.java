@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
-import org.eclipse.gmf.runtime.emf.type.core.internal.l10n.EMFTypeCoreMessages;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription;
@@ -62,7 +61,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  * 
  * @author jdupont
  */
-@SuppressWarnings("restriction")
 public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String PATH = "data/unit/bracketEdge/";
@@ -147,7 +145,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
     }
 
     /**
@@ -211,7 +209,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference1BracketEdgeEditPartBot = editor.getEditPart(NEW_EREFERENCE_1, BracketEdgeEditPart.class);
@@ -287,7 +285,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference1BracketEdgeEditPartBot = editor.getEditPart(NEW_EREFERENCE_1, BracketEdgeEditPart.class);
@@ -364,7 +362,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference111BracketEdgeEditPartBot = editor.getEditPart(NEW_EREFERENCE_111, BracketEdgeEditPart.class);
@@ -440,7 +438,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class, true);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference111BracketEdgeEditPartBot = editor.getEditPart(NEW_EREFERENCE_111, BracketEdgeEditPart.class);
@@ -514,7 +512,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference1BracketEdgeEditPartBot = editor.getEditPart(NEW_EREFERENCE_1, BracketEdgeEditPart.class);
@@ -588,7 +586,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference111BracketEdgeEditPartBot = editor.getEditPart(NEW_EREFERENCE_111, BracketEdgeEditPart.class);
@@ -740,7 +738,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference111BracketEdgeEditPartBot = editor.getEditPart(NEW_EREFERENCE_111, BracketEdgeEditPart.class);
@@ -798,7 +796,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
             editor.saveAndClose();
             SWTBotUtils.waitAllUiEvents();
             // Open editor
-            editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
             SWTBotUtils.waitAllUiEvents();
             // Retrieve edge point location
             checkPositionEdge(editor, NEW_ECLASS_1, NEW_ECLASS_2, point0.x, point0.y, point1.x + deltaX, point1.y, point2.x + deltaX, point2.y, point3.x + deltaX, point3.y, point4.x + deltaX,
@@ -860,7 +858,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         }
         changeDecorators(EdgeArrows.INPUT_FILL_CLOSED_ARROW_LITERAL);
         // Open representation
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         // In SWTBOt must do refresh
         editor.refresh();
         // Check that Source and Target Arrow are set correctly
@@ -881,7 +879,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // expand the tree : EReference Mapping
         SWTBotTree tree = odesignEditor.bot().tree();
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(DIAGRAM_DESCRIPTION_NAME).expandNode("Default").expandNode("EReferenceMapping")
-        .expandNode("Bracket Edge Style solid").select();
+                .expandNode("Bracket Edge Style solid").select();
         // accesses to property view
         bot.viewByTitle(PROPERTIES).setFocus();
         // accesses to tab Decorators
@@ -905,7 +903,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // expand the tree : EReference Mapping
         SWTBotTree tree = odesignEditor.bot().tree();
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(DIAGRAM_DESCRIPTION_NAME).expandNode("Default").expandNode("EReferenceMapping")
-        .expandNode("Bracket Edge Style solid").select();
+                .expandNode("Bracket Edge Style solid").select();
         // accesses to property view
         bot.viewByTitle(PROPERTIES).setFocus();
         // accesses to tab Decorators
@@ -978,7 +976,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
         // Open editor
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         // Check that sourceDecorator is over vertical line and targetDecorator
@@ -1000,7 +998,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // expand the tree : EReference Mapping
         SWTBotTree tree = odesignEditor.bot().tree();
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(DIAGRAM_DESCRIPTION_NAME).expandNode("Default").expandNode("EReferenceMapping")
-        .expandNode("Bracket Edge Style solid").select();
+                .expandNode("Bracket Edge Style solid").select();
         // accesses to property view
         bot.viewByTitle(PROPERTIES).setFocus();
         // accesses to tab Decorators
@@ -1010,7 +1008,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         lineStyle.setSelection(2);
         assertEquals("Line style should be dot", "dot", lineStyle.getText());
         odesignEditor.save();
-        openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         // In SWTBOt must do refresh
         editor.refresh();
         // Check that line style are set correctly
@@ -1090,7 +1088,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(targetEditPartBounds.getRight(), bracketEdgePointListAfterReconnect.getPoint(5));
 
         // Undo
-        undo(EMFTypeCoreMessages.Request_Label_ReorientSource);
+        undo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
         // Check
@@ -1105,7 +1103,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(bracketEdgePointList.getPoint(5), bracketEdgePointListAfterUndo.getPoint(5));
 
         // Redo
-        redo(EMFTypeCoreMessages.Request_Label_ReorientSource);
+        redo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
         // Check
@@ -1122,7 +1120,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         bracketEdgeEditPartBot = editor.getEditPart(connection, BracketEdgeEditPart.class);
@@ -1202,7 +1200,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopeningt
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         bracketEdgeOnBracketEdgeEditPartBot = editor.getEditPart("eAnnotationToBracket", BracketEdgeEditPart.class);
@@ -1278,7 +1276,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference1BracketEdgeEditPartBot = editor.getEditPart(connection, BracketEdgeEditPart.class);
@@ -1354,7 +1352,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference1BracketEdgeEditPartBot = editor.getEditPart(connection, BracketEdgeEditPart.class);
@@ -1429,7 +1427,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference1BracketEdgeEditPartBot = editor.getEditPart(connection, BracketEdgeEditPart.class);
@@ -1504,7 +1502,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Check after reopening
         editor.saveAndClose();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         newEReference1BracketEdgeEditPartBot = editor.getEditPart(connection, BracketEdgeEditPart.class);

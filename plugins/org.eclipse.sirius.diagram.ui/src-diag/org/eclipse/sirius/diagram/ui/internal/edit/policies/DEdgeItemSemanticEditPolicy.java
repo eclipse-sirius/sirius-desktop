@@ -15,10 +15,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
-import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
-import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.commands.DEdgeReorientCommand;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 
 /**
  * @was-generated
@@ -28,23 +24,9 @@ public class DEdgeItemSemanticEditPolicy extends SiriusBaseItemSemanticEditPolic
     /**
      * @was-generated
      */
+    @Override
     protected Command getDestroyElementCommand(DestroyElementRequest req) {
         return getGEFWrapper(new DestroyElementCommand(req));
-    }
-
-    /**
-     * Returns command to reorient EClass based link. New link target or source
-     * should be the domain model element associated with this node.
-     * 
-     * @was-generated NOT
-     */
-    protected Command getReorientRelationshipCommand(ReorientRelationshipRequest req) {
-        switch (getVisualID(req)) {
-        case DEdgeEditPart.VISUAL_ID:
-        case BracketEdgeEditPart.VISUAL_ID:
-            return getGEFWrapper(new DEdgeReorientCommand(req));
-        }
-        return super.getReorientRelationshipCommand(req);
     }
 
     /**

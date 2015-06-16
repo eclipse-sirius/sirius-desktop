@@ -16,18 +16,14 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
-import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.CreateSiriusElementCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.DEdgeCreateCommand;
-import org.eclipse.sirius.diagram.ui.internal.edit.commands.DEdgeReorientCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.WorkspaceImageCreateCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.CustomStyleEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DotEditPart;
@@ -53,6 +49,7 @@ public abstract class AbstractDNodeItemSemanticEditPolicy extends SiriusBaseItem
     /**
      * @was-generated
      */
+    @Override
     protected Command getCreateCommand(CreateElementRequest req) {
         if (SiriusElementTypes.BundledImage_3004 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
@@ -114,6 +111,7 @@ public abstract class AbstractDNodeItemSemanticEditPolicy extends SiriusBaseItem
     /**
      * @was-generated NOT
      */
+    @Override
     protected abstract Command getDestroyElementCommand(DestroyElementRequest req);
 
     /**
@@ -149,6 +147,7 @@ public abstract class AbstractDNodeItemSemanticEditPolicy extends SiriusBaseItem
     /**
      * @was-generated
      */
+    @Override
     protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
         Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req) : getCompleteCreateRelationshipCommand(req);
         return command != null ? command : super.getCreateRelationshipCommand(req);
@@ -174,18 +173,4 @@ public abstract class AbstractDNodeItemSemanticEditPolicy extends SiriusBaseItem
         return null;
     }
 
-    /**
-     * Returns command to reorient EClass based link. New link target or source
-     * should be the domain model element associated with this node.
-     * 
-     * @was-generated
-     */
-    protected Command getReorientRelationshipCommand(ReorientRelationshipRequest req) {
-        switch (getVisualID(req)) {
-        case DEdgeEditPart.VISUAL_ID:
-        case BracketEdgeEditPart.VISUAL_ID:
-            return getGEFWrapper(new DEdgeReorientCommand(req));
-        }
-        return super.getReorientRelationshipCommand(req);
-    }
 }

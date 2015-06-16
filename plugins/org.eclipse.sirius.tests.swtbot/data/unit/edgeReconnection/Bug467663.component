@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component:Component xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:component="http://www.eclipse.org/sirius/sample/component">
+  <children name="c1">
+    <children name="c11">
+      <children name="c111" payload="true" references="//@children.1/@children.0/@children.0"/>
+    </children>
+    <children name="c12" payload="true"/>
+    <children name="c13">
+      <children name="c131" payload="true" references="//@children.1/@children.2/@children.0"/>
+    </children>
+  </children>
+  <children name="c2">
+    <children name="c21">
+      <children name="c211" payload="true" opposites="//@children.0/@children.0/@children.0"/>
+    </children>
+    <children name="c22" payload="true"/>
+    <children name="c23">
+      <children name="c231" payload="true" opposites="//@children.0/@children.2/@children.0"/>
+    </children>
+  </children>
+</component:Component>
