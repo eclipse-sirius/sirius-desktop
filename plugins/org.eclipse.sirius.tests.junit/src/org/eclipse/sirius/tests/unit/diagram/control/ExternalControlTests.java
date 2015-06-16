@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.ICondition;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -67,7 +68,26 @@ public class ExternalControlTests extends SiriusDiagramTestCase {
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH + BASE, MAIN_SEMANTIC_MODEL_FILENAME, MAIN_SESSION_MODEL_FILENAME, MAIN_SESSION_MODEL_FILENAME_2);
         copyFiles(SiriusTestsPlugin.PLUGIN_ID, PATH + CONTROLLED, TEMPORARY_PROJECT_NAME + File.separator + CONTROLLED, FRAGMENT_SEMANTIC_MODEL_FILENAME, FRAGMENT_SESSION_MODEL_FILENAME,
                 MAIN_SEMANTIC_MODEL_FILENAME, MAIN_SESSION_MODEL_FILENAME, MAIN_SESSION_MODEL_FILENAME_2);
+    }
 
+    /**
+     * Copies the files located at the given paths into the targetPath.
+     * 
+     * @param pluginID
+     *            the plugin id
+     * @param pluginCommonPath
+     *            the relative path in plugin
+     * @param targetPath
+     *            the target path in junit workspace
+     * @param filePaths
+     *            the paths of the files to copy
+     */
+    protected void copyFiles(String pluginID, String pluginCommonPath, String targetPath, String... filePaths) {
+        for (final String path : filePaths) {
+            final String pluginFilePath = pluginCommonPath + path;
+            final String wksPath = targetPath + File.separator + path;
+            EclipseTestsSupportHelper.INSTANCE.copyFile(pluginID, pluginFilePath, wksPath);
+        }
     }
 
     @Override
