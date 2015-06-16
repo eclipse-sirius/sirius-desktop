@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.sample.ecore.design;singleton:=true
-Bundle-Version: 2.0.6.qualifier
+Bundle-Version: 2.0.7.qualifier
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui;bundle-version="3.8.2",
  org.eclipse.sirius.common;bundle-version="2.0.0",
@@ -27,9 +27,9 @@ Bundle-ManifestVersion: 2
 Bundle-Vendor: %providerName
 Eclipse-LazyStart: true
 Bundle-Activator: org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin
-Export-Package: org.eclipse.sirius.ecore.design.service;version="2.0.6",
- org.eclipse.sirius.sample.ecore.design.action;version="2.0.6",
- org.eclipse.sirius.sample.ecore.design.editor;version="2.0.6"
+Export-Package: org.eclipse.sirius.ecore.design.service;version="2.0.7",
+ org.eclipse.sirius.sample.ecore.design.action;version="2.0.7",
+ org.eclipse.sirius.sample.ecore.design.editor;version="2.0.7"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
