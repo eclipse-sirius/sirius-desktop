@@ -44,7 +44,6 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.GetEditContextRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.IEditCommandRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.MoveRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelationshipRequest;
-import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -235,8 +234,6 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
             return getMoveCommand((MoveRequest) req);
         } else if (req instanceof ReorientReferenceRelationshipRequest) {
             return getReorientReferenceRelationshipCommand((ReorientReferenceRelationshipRequest) req);
-        } else if (req instanceof ReorientRelationshipRequest) {
-            return getReorientRelationshipCommand((ReorientRelationshipRequest) req);
         } else if (req instanceof SetRequest) {
             return getSetCommand((SetRequest) req);
         }
@@ -310,13 +307,6 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
      * @was-generated
      */
     protected Command getReorientReferenceRelationshipCommand(ReorientReferenceRelationshipRequest req) {
-        return UnexecutableCommand.INSTANCE;
-    }
-
-    /**
-     * @was-generated
-     */
-    protected Command getReorientRelationshipCommand(ReorientRelationshipRequest req) {
         return UnexecutableCommand.INSTANCE;
     }
 
