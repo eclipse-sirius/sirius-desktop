@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Bug467663" version="10.0.0.201505222000">
+  <ownedViewpoints name="ComponentViewpointForBug467663" modelFileExtension="component">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramForBug467663" domainClass="ecore.EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="ETypeMapping" sourceMapping="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']/@defaultLayer/@containerMappings[name='EClassMapping']/@subContainerMappings[name='EReferenceMapping']" targetMapping="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']/@defaultLayer/@containerMappings[name='EClassMapping']" targetFinderExpression="feature:eType" reconnections="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']/@defaultLayer/@toolSections.0/@ownedTools[name='ChangeTypeTool'] //@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663']/@defaultLayer/@toolSections.0/@ownedTools[name='ChangeTypeToolBis']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClassMapping" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EClass">
+          <subContainerMappings name="EReferenceMapping" semanticCandidatesExpression="feature:eStructuralFeatures" domainClass="ecore.EReference">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="DefaultSection">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ChangeTypeTool">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ChangeTypeToolBis" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="eType"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="[otherEnd.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramForBug467663Bis" domainClass="component.Component" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/sirius/sample/component#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="ComponentReferencesMapping" sourceMapping="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663Bis']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='BorderComponentMapping']" targetMapping="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663Bis']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='BorderComponentMapping']" targetFinderExpression="feature:references" reconnections="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663Bis']/@defaultLayer/@toolSections.0/@ownedTools[name='ReconnectTool']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ComponentMapping" semanticCandidatesExpression="feature:children" domainClass="component.Component" dropDescriptions="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663Bis']/@defaultLayer/@toolSections.0/@ownedTools[name='DnDTool']">
+          <borderedNodeMappings name="BorderComponentMapping" preconditionExpression="feature:payload" semanticCandidatesExpression="feature:children" domainClass="component.Component">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="SubComponentMapping" preconditionExpression="[not payload/]" semanticCandidatesExpression="feature:children" domainClass="component.Component" reusedBorderedNodeMappings="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663Bis']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='BorderComponentMapping']" dropDescriptions="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663Bis']/@defaultLayer/@toolSections.0/@ownedTools[name='DnDTool']">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="DefaultSection">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectTool">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="var:target">
+                  <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="var:source"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnDTool" mappings="//@ownedViewpoints[name='ComponentViewpointForBug467663']/@ownedRepresentations[name='DiagramForBug467663Bis']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='BorderComponentMapping']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="children" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

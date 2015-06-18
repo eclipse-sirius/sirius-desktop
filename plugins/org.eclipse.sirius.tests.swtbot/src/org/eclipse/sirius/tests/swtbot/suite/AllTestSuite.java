@@ -133,6 +133,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
         suite.addTestSuite(CellEditorExtensionTest.class);
         suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
+        suite.addTestSuite(EdgeReconnectionTests.class);
 
     }
 
