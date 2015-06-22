@@ -10,7 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.util;
 
+import java.util.Collection;
+
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.sirius.common.tools.internal.ecore.IndexedSettingsEList;
 
 /**
  * Specific {@link ECrossReferenceAdapter} which resolve proxy ability can be
@@ -48,5 +52,15 @@ public class SiriusCrossReferenceAdapterImpl extends ECrossReferenceAdapter impl
             return super.resolve();
         }
         return false;
+    }
+    
+    @Override
+    protected InverseCrossReferencer createInverseCrossReferencer() {
+        return new InverseCrossReferencer() {
+            @Override
+            protected Collection<Setting> newCollection() {
+                return new IndexedSettingsEList();
+            }
+        };
     }
 }
