@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.util;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -17,9 +18,11 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.tools.internal.ecore.IndexedSettingsEList;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -87,6 +90,11 @@ public class ECrossReferenceAdapterWithUnproxyCapability extends SiriusCrossRefe
                 }
             }
             return result;
+        }
+
+        @Override
+        protected Collection<Setting> newCollection() {
+            return new IndexedSettingsEList();
         }
     }
 

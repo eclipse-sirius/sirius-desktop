@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
+import org.eclipse.sirius.common.tools.internal.ecore.IndexedSettingsEList;
 
 /**
  * A {@link IResourceCollector} for local {@link Resource}.
@@ -223,6 +224,11 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl impl
                     }
                 }
             }
+        }
+
+        @Override
+        protected Collection<EStructuralFeature.Setting> newCollection() {
+            return new IndexedSettingsEList();
         }
 
     }
