@@ -10,10 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
+import java.util.Collection;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
@@ -26,6 +29,7 @@ import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
@@ -51,6 +55,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Common operations for container and list edit parts.
@@ -147,20 +152,71 @@ public final class DiagramContainerEditPartOperation {
             ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
 
             refreshBorder(self, primaryShape, style);
-
-            if (style instanceof FlatContainerStyle) {
-                // The gradient style
-                final RGBValues rgb = ((FlatContainerStyle) style).getForegroundColor();
-                if (rgb != null && primaryShape instanceof GradientRoundedRectangle) {
-                    ((GradientRoundedRectangle) primaryShape).setGradientColor(VisualBindingManager.getDefault().getColorFromRGBValues(rgb));
-                    ((GradientRoundedRectangle) primaryShape).setCornerDimensions(DiagramContainerEditPartOperation.getCornerDimension(self));
-                }
+            if (primaryShape instanceof GradientRoundedRectangle) {
+                refreshGradient(style, (GradientRoundedRectangle) primaryShape);
+            }
+            if (primaryShape instanceof RoundedRectangle) {
+                refreshCorners(self, diagElement, (RoundedRectangle) primaryShape);
             }
         }
 
         if (diagElement != null) {
             self.setTooltipText(diagElement.getTooltipText());
-            DiagramContainerEditPartOperation.refreshLabelAlignment(self, diagElement);
+            refreshLabelAlignment(self, diagElement);
+        }
+    }
+
+    private static void refreshGradient(final ContainerStyle style, GradientRoundedRectangle gradientRoundedShape) {
+        // The gradient style
+        if (style instanceof FlatContainerStyle) {
+            final RGBValues rgb = ((FlatContainerStyle) style).getForegroundColor();
+            if (rgb != null) {
+                gradientRoundedShape.setGradientColor(VisualBindingManager.getDefault().getColorFromRGBValues(rgb));
+            }
+        }
+    }
+
+    private static void refreshCorners(final AbstractDiagramElementContainerEditPart self, DDiagramElement diagElement, RoundedRectangle gradientRoundedShape) {
+        Dimension cornerDimension = getCornerDimension(self);
+        if (self.isRegion()) {
+            // If the current stack is a Region, reuse the parent corner
+            // dimension as max, to avoid to overlap its border.
+            DNodeContainer regionContainer = (DNodeContainer) diagElement.eContainer();
+            Dimension regionContainerCornerDimension = getCornerDimension(regionContainer);
+            if (regionContainerCornerDimension.contains(cornerDimension)) {
+                int parentStackDirection = self.getParentStackDirection();
+                if (parentStackDirection == PositionConstants.NORTH_SOUTH && isLastRegionPart(self)) {
+                    cornerDimension = Dimension.max(cornerDimension, regionContainerCornerDimension);
+                    // TODO: Vertical stack and last region, we should have
+                    // bottom rounded corners only;
+                    updatePrecedingSiblingCorner(self);
+                } else if (parentStackDirection == PositionConstants.EAST_WEST) {
+                    boolean firstRegionPart = isFirstRegionPart(self);
+                    boolean lastRegionPart = isLastRegionPart(self);
+                    cornerDimension = (firstRegionPart || lastRegionPart) ? Dimension.max(cornerDimension, regionContainerCornerDimension) : cornerDimension;
+                    // TODO: Horizontal stack and first/last region, we should
+                    // have bottom
+                    // left/right rounded corner only
+                    if (lastRegionPart) {
+                        updatePrecedingSiblingCorner(self);
+                    }
+                }
+            }
+        }
+
+        // Update the corner dimension.
+        gradientRoundedShape.setCornerDimensions(cornerDimension);
+    }
+
+    private static void updatePrecedingSiblingCorner(final AbstractDiagramElementContainerEditPart self) {
+        // Update previous siblings: needed for the diagram
+        // opening and the region container creation cases in
+        // which each child will be the last element once.
+        Collection<AbstractDiagramElementContainerEditPart> siblings = Lists.newArrayList(Iterables.filter(self.getParent().getChildren(), AbstractDiagramElementContainerEditPart.class));
+        siblings.remove(self);
+        AbstractDiagramElementContainerEditPart previous = siblings.isEmpty() ? null : Iterables.getLast(siblings);
+        if (previous != null && previous.getPrimaryShape() instanceof GradientRoundedRectangle) {
+            ((GradientRoundedRectangle) previous.getPrimaryShape()).setCornerDimensions(getCornerDimension(previous));
         }
     }
 
@@ -221,6 +277,15 @@ public final class DiagramContainerEditPartOperation {
         if (parent instanceof AbstractDNodeContainerCompartmentEditPart) {
             Iterable<AbstractDiagramElementContainerEditPart> regionParts = Iterables.filter(parent.getChildren(), AbstractDiagramElementContainerEditPart.class);
             return !Iterables.isEmpty(regionParts) && regionParts.iterator().next() == self;
+        }
+        return false;
+    }
+
+    private static boolean isLastRegionPart(AbstractDiagramElementContainerEditPart self) {
+        EditPart parent = self.getParent();
+        if (parent instanceof AbstractDNodeContainerCompartmentEditPart) {
+            Iterable<AbstractDiagramElementContainerEditPart> regionParts = Iterables.filter(parent.getChildren(), AbstractDiagramElementContainerEditPart.class);
+            return !Iterables.isEmpty(regionParts) && Iterables.getLast(regionParts) == self;
         }
         return false;
     }
@@ -304,8 +369,12 @@ public final class DiagramContainerEditPartOperation {
      * @return the corner dimensions.
      */
     public static Dimension getCornerDimension(final IGraphicalEditPart self) {
-        final Dimension corner = new Dimension(0, 0);
         final EObject eObj = self.resolveSemanticElement();
+        return getCornerDimension(eObj);
+    }
+
+    private static Dimension getCornerDimension(EObject eObj) {
+        final Dimension corner = new Dimension(0, 0);
         if (eObj instanceof DStylizable) {
             final Style style = ((DStylizable) eObj).getStyle();
             if (style != null && style.getDescription() instanceof ContainerStyleDescription) {
