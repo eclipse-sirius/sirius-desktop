@@ -63,13 +63,13 @@ public class OneLineMarginBorder extends OneLineBorder {
 
         switch (getPosition()) {
         case PositionConstants.MIDDLE:
-            //See PositionConstants.TOP_MIDDLE_BOTTOM = TOP | MIDDLE | BOTTOM;
+            // See PositionConstants.TOP_MIDDLE_BOTTOM = TOP | MIDDLE | BOTTOM;
             tempRect.y += halfWidthInLP;
             tempRect.height -= getWidth();
             graphics.drawLine(tempRect.getLeft(), tempRect.getRight());
             break;
         case PositionConstants.CENTER:
-            //See PositionConstants.LEFT_CENTER_RIGHT = LEFT | CENTER | RIGHT;
+            // See PositionConstants.LEFT_CENTER_RIGHT = LEFT | CENTER | RIGHT;
             tempRect.x += halfWidthInLP;
             tempRect.width -= getWidth();
             graphics.drawLine(tempRect.getTop(), tempRect.getBottom());

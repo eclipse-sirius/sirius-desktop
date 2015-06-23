@@ -83,7 +83,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
@@ -91,6 +90,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangle
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DStylizable;
@@ -335,10 +335,10 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             if (isFirstRegionPart()) {
                 shapeFigure.setBorder(new MarginBorder(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0));
             } else {
-                OneLineMarginBorder oneLineBorder = new OneLineMarginBorder(PositionConstants.TOP);
+                RoundedCornerMarginBorder oneLineBorder = new RoundedCornerMarginBorder(PositionConstants.TOP);
                 shapeFigure.setBorder(oneLineBorder);
+                oneLineBorder.setCornerDimensions(DiagramContainerEditPartOperation.getCornerDimension(this));
                 oneLineBorder.setMargin(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0);
-
                 if (getParentStackDirection() == PositionConstants.EAST_WEST) {
                     oneLineBorder.setPosition(PositionConstants.LEFT);
                 }

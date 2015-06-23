@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelo
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
@@ -246,7 +247,11 @@ public final class DiagramContainerEditPartOperation {
         if (primaryShape != null && primaryShape.getBorder() instanceof LineBorder) {
             ((LineBorder) primaryShape.getBorder()).setWidth(borderSize);
             if (primaryShape.getBorder() instanceof OneLineMarginBorder) {
-                ((OneLineMarginBorder) primaryShape.getBorder()).setMargin(labelOffset, 0, 0, 0);
+                OneLineMarginBorder border = (OneLineMarginBorder) primaryShape.getBorder();
+                border.setMargin(labelOffset, 0, 0, 0);
+                if (self.isRegion() && border instanceof RoundedCornerMarginBorder) {
+                    ((RoundedCornerMarginBorder) border).setCornerDimensions(getCornerDimension(self));
+                }
             }
         } else if (primaryShape != null && primaryShape.getBorder() instanceof MarginBorder) {
             MarginBorder margin = null;
