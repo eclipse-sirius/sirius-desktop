@@ -10,20 +10,26 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.BendpointLocationCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TopCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
@@ -176,6 +182,70 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
      */
     public void testResizeNodeInContainerWithZoom125() {
         resizeTopOfElementNearBottomOfAnother("NC_C1", AbstractDiagramNodeEditPart.class, "Node_p1", AbstractDiagramNodeEditPart.class, ZoomLevel.ZOOM_125);
+    }
+
+    /**
+     * Move a bendpoint of an edge a first time without F4 and check the
+     * location is the expected one.<BR>
+     * Move a bendpoint of an edge a second time with F4 and check the location
+     * is the expected one (snap to another figure).<BR>
+     * This test also handles the case of scroll bar in diagram.
+     */
+    public void testMoveBendpoint() {
+        moveBendpoint(ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * Move a bendpoint of an edge a first time without F4 and check the
+     * location is the expected one.<BR>
+     * Move a bendpoint of an edge a second time with F4 and check the location
+     * is the expected one (snap to another figure).<BR>
+     * This test also handles the case of scroll bar in diagram and zoom
+     * different from 100%.
+     */
+    public void testMoveBendpointWithZoom50() {
+        moveBendpoint(ZoomLevel.ZOOM_50);
+    }
+
+    private void moveBendpoint(ZoomLevel zoomLevel) {
+        editor.zoom(zoomLevel);
+        editor.scrollTo(0, 0);
+        SWTBotGefEditPart elementToMove = editor.getEditPart("toC2", AbstractDiagramEdgeEditPart.class);
+
+        // Select the element to move
+        editor.select(elementToMove);
+
+        // Get the bendpoint to move
+        assertTrue(elementToMove.part() instanceof ConnectionEditPart);
+        ConnectionEditPart connectionEditPart = (ConnectionEditPart) elementToMove.part();
+        assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
+        PointList pointList = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+        Point pointToMove = pointList.getPoint(1);
+
+        // Compute the drop destination (at 2 pixels of the bottom of another
+        // figure)
+        final Rectangle targetNodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editor.getEditPart("BNBNC_att1", AbstractDiagramBorderNodeEditPart.class).part());
+        final Point endpoint = new Point(pointToMove.x, targetNodeBounds.getBottom().y - 4);
+
+        pointToMove.scale(zoomLevel.getAmount());
+        endpoint.scale(zoomLevel.getAmount());
+        // First move without F4 key pressed
+        editor.dragWithKey(pointToMove.x, pointToMove.y, endpoint.x, endpoint.y, SWT.None);
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new BendpointLocationCondition((PolylineConnection) connectionEditPart.getFigure(), 1, false, targetNodeBounds.getBottom().y - 4,
+                "Second bendpoint of edge is not at expected y location after resize without F4 key pressed", !ZoomLevel.ZOOM_100.equals(zoomLevel)));
+
+        // Move to initial location
+        undo(localSession.getOpenedSession());
+        // Scroll to 0, 0 is needed because the first move can cause a scroll of
+        // the diagram not reverted by the Undo.
+        editor.scrollTo(0, 0);
+
+        // Second move with F4 key pressed
+        editor.dragWithKey(pointToMove.x, pointToMove.y, endpoint.x, endpoint.y, SWT.F4);
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new BendpointLocationCondition((PolylineConnection) connectionEditPart.getFigure(), 1, false, targetNodeBounds.getBottom().y - 1,
+                "Second bendpoint of edge is not at expected y location after resize with F4 key pressed", false));
     }
 
     private void moveTopOfElementNearBottomOfAnother(String elementNameToMove, Class<? extends EditPart> expectedEditPartTypeOfMovedElement, String referenceElementName,

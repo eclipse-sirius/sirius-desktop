@@ -24,6 +24,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToGeometryEx;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractBorderedDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SnapChangeBoundsRequest;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.SnapBendpointRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.gef.query.EditPartQuery;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -67,8 +68,12 @@ public class SiriusSnapToGeometry extends SnapToGeometryEx {
         Object snapToAllExtendedData = request.getExtendedData().get(NoCopyDragEditPartsTrackerEx.SNAP_TO_ALL_SHAPE_KEY);
         boolean oldSnapToAll = snapToAll;
         snapToAll = (snapToAllExtendedData == null && NoCopyDragEditPartsTrackerEx.DEFAULT_SNAP_TO_SHAPE_MODE) || (snapToAllExtendedData != null && ((Boolean) snapToAllExtendedData).booleanValue());
-        if (!snapToAll && request instanceof SnapChangeBoundsRequest) {
-            snapToAll = ((SnapChangeBoundsRequest) request).isSnapToAllShape();
+        if (!snapToAll) {
+            if (request instanceof SnapChangeBoundsRequest) {
+                snapToAll = ((SnapChangeBoundsRequest) request).isSnapToAllShape();
+            } else if (request instanceof SnapBendpointRequest) {
+                snapToAll = ((SnapBendpointRequest) request).isSnapToAllShape();
+            }
         }
 
         if (oldSnapToAll != snapToAll) {

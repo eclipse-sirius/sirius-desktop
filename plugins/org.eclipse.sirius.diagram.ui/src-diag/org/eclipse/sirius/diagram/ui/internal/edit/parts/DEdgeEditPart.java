@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.RootEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConnectionBendpointEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionLineSegEditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.HideSiriusElementEd
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.TreeLayoutConnectionLineSegEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DEdgeItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionBendpointEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 
 /**
@@ -45,6 +47,7 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         removeEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE);
@@ -79,6 +82,7 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
     /**
      * @was-generated
      */
+    @Override
     protected void addChildVisual(EditPart childEditPart, int index) {
         if (addFixedChild(childEditPart)) {
             return;
@@ -94,6 +98,7 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
      * 
      * @was-generated
      */
+    @Override
     protected Connection createConnectionFigure() {
         return super.createConnectionFigure();
     }
@@ -135,8 +140,14 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
      */
     @Override
     public void installEditPolicy(Object key, EditPolicy editPolicy) {
-        if (EditPolicy.CONNECTION_BENDPOINTS_ROLE.equals(key) && editPolicy instanceof ConnectionLineSegEditPolicy) {
-            super.installEditPolicy(key, new TreeLayoutConnectionLineSegEditPolicy());
+        if (EditPolicy.CONNECTION_BENDPOINTS_ROLE.equals(key)) {
+            if (editPolicy instanceof ConnectionLineSegEditPolicy) {
+                super.installEditPolicy(key, new TreeLayoutConnectionLineSegEditPolicy());
+            } else if (editPolicy.getClass().equals(ConnectionBendpointEditPolicy.class)) {
+                super.installEditPolicy(key, new SiriusConnectionBendpointEditPolicy());
+            } else {
+                super.installEditPolicy(key, editPolicy);
+            }
         } else {
             super.installEditPolicy(key, editPolicy);
         }
