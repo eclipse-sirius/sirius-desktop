@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -298,4 +298,30 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
         return getEditpart(label, allEditParts);
     }
 
+    /**
+     * Drag and drop from the specified to the specified location with a key
+     * pressed during the drag'n'drop. This method also correctly handles the
+     * move of a bendpoint of an edge.
+     * 
+     * @param fromXPosition
+     *            the relative x position to drag from
+     * @param fromYPosition
+     *            the relative y position to drag from
+     * @param toXPosition
+     *            the relative x position to drag to
+     * @param toYPosition
+     *            the relative y position to drag to
+     * @param keyCode
+     *            the key code of the key that was typed, as defined by the key
+     *            code constants in class <code>SWT</code>, or
+     *            {@link org.eclipse.swt.SWT#None} if no key. @see
+     *            org.eclipse.swt.SWT
+     */
+    public void dragWithKey(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final int keyCode) {
+        if (canvas instanceof SWTBotSiriusFigureCanvas) {
+            ((SWTBotSiriusFigureCanvas) canvas).mouseDragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode);
+        } else {
+            canvas.mouseDrag(fromXPosition, fromYPosition, toXPosition, toYPosition);
+        }
+    }
 }

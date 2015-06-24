@@ -12,6 +12,7 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The methods @closePerspective(String)@, @closeSiriusPerspective()@ and @closeModelingPerspective()@ have been added in class @org.eclipse.sirius.tests.swtbot.support.api.perspective.DesignerPerspectives@ to allow the closing of perspectives.
 * <span class="label label-success">Added</span> The @org.eclipse.sirius.tests.swtbot.support.api.condition.PerspectiveActivatedCondition@ new offers the capability to inverse the test. This condition becomes a DeactivatedCondition instead of an ActivatedCondition by using the new constructor with inverse parameter.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int)@, and so @SWTBotSiriusGefViewer.dragWithKey@ and @SWTBotSiriusFigureCanvas.mouseDragWithKey@), has an additional parameter, compared to @drag(int, int, int, int)@ method, to precise the key code to press during the drag'n'drop. It is possible to call this method with SWT.None to retrieve the standard behavior of @drag@ method. This method also has a correct behavior for the move of bendpoints of edges.
 
 h2(#sirius3.0.0). Changes in Sirius 3.0.0
 

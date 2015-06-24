@@ -903,6 +903,29 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
+     * Drag and drop from the specified to the specified location with a key
+     * pressed during the drag'n'drop. This method also correctly handles the
+     * move of a bendpoint of an edge.
+     * 
+     * @param fromXPosition
+     *            the relative x position to drag from
+     * @param fromYPosition
+     *            the relative y position to drag from
+     * @param toXPosition
+     *            the relative x position to drag to
+     * @param toYPosition
+     *            the relative y position to drag to
+     * @param keyCode
+     *            the key code of the key that was typed, as defined by the key
+     *            code constants in class <code>SWT</code>, or
+     *            {@link org.eclipse.swt.SWT#None} if no key. @see
+     *            org.eclipse.swt.SWT
+     */
+    public void dragWithKey(int fromXPosition, int fromYPosition, int toXPosition, int toYPosition, int keyCode) {
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).dragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode);
+    }
+
+    /**
      * Drag and drop the specified edit part to the specified location.
      * 
      * @param editPartBot
@@ -1100,7 +1123,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * type.<BR>
      * Examples :
      * <UL>
-     * <LI>If the zoom is set to 50% a dimension of (80, 80) return (40, 40)</LI>
+     * <LI>If the zoom is set to 50% a dimension of (80, 80) return (40, 40)
+     * </LI>
      * </UL>
      * 
      * @param editPartName

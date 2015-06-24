@@ -69,6 +69,13 @@
 			<li><span class="label label-success">Added</span> The 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.condition.PerspectiveActivatedCondition</code> new offers the capability to inverse the test. This condition becomes a DeactivatedCondition instead of an ActivatedCondition by using the new constructor with inverse parameter.
 			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int)</code>, and so 
+				<code>SWTBotSiriusGefViewer.dragWithKey</code> and 
+				<code>SWTBotSiriusFigureCanvas.mouseDragWithKey</code>), has an additional parameter, compared to 
+				<code>drag(int, int, int, int)</code> method, to precise the key code to press during the drag&#8217;n&#8217;drop. It is possible to call this method with SWT.None to retrieve the standard behavior of 
+				<code>drag</code> method. This method also has a correct behavior for the move of bendpoints of edges.
+			</li>
 		</ul>
 		<h2 id="sirius3.0.0">Changes in Sirius 3.0.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
