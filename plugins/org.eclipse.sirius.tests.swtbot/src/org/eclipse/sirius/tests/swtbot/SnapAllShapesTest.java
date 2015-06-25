@@ -19,6 +19,8 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
@@ -92,7 +94,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Move a container a first time without F4 and check the location is the
-     * expected one.<BR>
+     * expected one (ie the mouse location).<BR>
      * Move a container a second time with F4 and check the location is the
      * expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram.
@@ -103,7 +105,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Move a node a first time without F4 and check the location is the
-     * expected one.<BR>
+     * expected one (ie the mouse location).<BR>
      * Move a node a second time with F4 and check the location is the expected
      * one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram.
@@ -114,7 +116,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Move a node in container a first time without F4 and check the location
-     * is the expected one.<BR>
+     * is the expected one (ie the mouse location).<BR>
      * Move a node in container a second time with F4 and check the location is
      * the expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram and in
@@ -127,7 +129,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Move a node in container a first time without F4 and check the location
-     * is the expected one.<BR>
+     * is the expected one (ie the mouse location).<BR>
      * Move a node in container a second time with F4 and check the location is
      * the expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram and in container
@@ -138,8 +140,19 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Move a Note a first time without F4 and check the location is the
+     * expected one (ie the mouse location).<BR>
+     * Move a Note a second time with F4 and check the location is the expected
+     * one (snap to another figure).<BR>
+     * This test also handles the case of scroll bar in diagram.
+     */
+    public void testMoveNote() {
+        moveTopOfElementNearBottomOfAnother("Note", NoteEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+    }
+
+    /**
      * Resize a container a first time without F4 and check the location is the
-     * expected one.<BR>
+     * expected one (ie the mouse location).<BR>
      * Resize a container a second time with F4 and check the location is the
      * expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram.
@@ -150,7 +163,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Resize a node a first time without F4 and check the location is the
-     * expected one.<BR>
+     * expected one (ie the mouse location).<BR>
      * Resize a node a second time with F4 and check the location is the
      * expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram.
@@ -161,7 +174,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Resize a node in container a first time without F4 and check the location
-     * is the expected one.<BR>
+     * is the expected one (ie the mouse location).<BR>
      * Resize a node in container a second time with F4 and check the location
      * is the expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram and in
@@ -174,7 +187,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Resize a node in container a first time without F4 and check the location
-     * is the expected one.<BR>
+     * is the expected one (ie the mouse location).<BR>
      * Resize a node in container a second time with F4 and check the location
      * is the expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram and in container
@@ -185,8 +198,30 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Resize a Note a first time without F4 and check the location is the
+     * expected one (ie the mouse location).<BR>
+     * Resize a Note a second time with F4 and check the location is the
+     * expected one (snap to another figure).<BR>
+     * This test also handles the case of scroll bar in diagram.
+     */
+    public void testResizeNote() {
+        resizeTopOfElementNearBottomOfAnother("Note", NoteEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+    }
+
+    /**
+     * Resize a Text a first time without F4 and check the location is the
+     * expected one (ie the mouse location).<BR>
+     * Resize a Text a second time with F4 and check the location is the
+     * expected one (snap to another figure).<BR>
+     * This test also handles the case of scroll bar in diagram.
+     */
+    public void testResizeText() {
+        resizeTopOfElementNearBottomOfAnother("Text", TextEditPart.class, "BNNC_att1", AbstractDiagramBorderNodeEditPart.class);
+    }
+
+    /**
      * Move a bendpoint of an edge a first time without F4 and check the
-     * location is the expected one.<BR>
+     * location is the expected one (ie the mouse location).<BR>
      * Move a bendpoint of an edge a second time with F4 and check the location
      * is the expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram.
@@ -197,7 +232,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Move a bendpoint of an edge a first time without F4 and check the
-     * location is the expected one.<BR>
+     * location is the expected one (ie the mouse location).<BR>
      * Move a bendpoint of an edge a second time with F4 and check the location
      * is the expected one (snap to another figure).<BR>
      * This test also handles the case of scroll bar in diagram and zoom
@@ -255,7 +290,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Move element a first time without F4 and check the location is the
-     * expected one.<BR>
+     * expected one (ie the mouse location).<BR>
      * Move element a second time with F4 and check the location is the expected
      * one (snap to another figure).<BR>
      */
@@ -271,7 +306,11 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
         // Get the top center coordinates, just a little below, of the element
         // to move
         final Rectangle originalBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) elementToMove.part());
-        final Point pointToDrag = originalBounds.getTop().getTranslated(0, 3);
+        Point pointToDrag = originalBounds.getTop().getTranslated(0, 3);
+        if (TextEditPart.class.equals(expectedEditPartTypeOfMovedElement)) {
+            pointToDrag = originalBounds.getTop().getTranslated(0, 5);
+        }
+
         Point scaledPointToDrag = new PrecisionPoint(pointToDrag);
         GraphicalHelper.logical2screen(scaledPointToDrag, (IGraphicalEditPart) elementToMove.part());
         // Compute the drop destination (at 4 pixels of the bottom of another
@@ -313,7 +352,7 @@ public class SnapAllShapesTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Resize element a first time without F4 and check the location is the
-     * expected one.<BR>
+     * expected one (ie the mouse location).<BR>
      * Resize element a second time with F4 and check the location is the
      * expected one (snap to another figure).<BR>
      */

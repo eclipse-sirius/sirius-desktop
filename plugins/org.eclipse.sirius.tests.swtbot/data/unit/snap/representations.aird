@@ -211,6 +211,28 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_OrQNsRaIEeWQ3O79R6E3Ug" fontName="Ubuntu" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OrQNshaIEeWQ3O79R6E3Ug" x="1024" y="112" width="458" height="578"/>
           </children>
+          <children xmi:type="notation:Shape" xmi:id="_GxWhgBvTEeWBdP4r18ZtPw" type="Note" fontName="Ubuntu" description="Note" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_GxcBEBvTEeWBdP4r18ZtPw" type="DiagramName">
+              <element xsi:nil="true"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_GxdPMBvTEeWBdP4r18ZtPw" type="Description">
+              <element xsi:nil="true"/>
+            </children>
+            <styles xmi:type="notation:TextStyle" xmi:id="_GxWhgRvTEeWBdP4r18ZtPw"/>
+            <styles xmi:type="notation:LineTypeStyle" xmi:id="_GxWhghvTEeWBdP4r18ZtPw"/>
+            <element xsi:nil="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GxWhgxvTEeWBdP4r18ZtPw" x="842" y="100" width="67" height="43"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_LMXUQBvTEeWBdP4r18ZtPw" type="Text" fontName="Ubuntu" description="Text">
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_LMX7UBvTEeWBdP4r18ZtPw" type="DiagramName">
+              <element xsi:nil="true"/>
+            </children>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_LMX7URvTEeWBdP4r18ZtPw" type="Description">
+              <element xsi:nil="true"/>
+            </children>
+            <element xsi:nil="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LMXUQRvTEeWBdP4r18ZtPw" x="925" y="100" width="76" height="43"/>
+          </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_M0bgwRWdEeW7GcqVYwuCiQ"/>
           <edges xmi:type="notation:Edge" xmi:id="_UTFY4BaIEeWQ3O79R6E3Ug" type="4001" element="_US1hQBaIEeWQ3O79R6E3Ug" source="_OroBIBaIEeWQ3O79R6E3Ug" target="_Or4f0BaIEeWQ3O79R6E3Ug">
             <children xmi:type="notation:Node" xmi:id="_UTF_8BaIEeWQ3O79R6E3Ug" type="6001">

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.tools.CellEditorLocator;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.tools.TextDirectEditManager;
 import org.eclipse.gmf.runtime.gef.ui.internal.parts.WrapTextCellEditor;
@@ -37,6 +38,7 @@ public class SiriusEditPartFactory implements EditPartFactory {
     /**
      * @was-generated NOT
      */
+    @Override
     public EditPart createEditPart(EditPart context, Object model) {
         if (model instanceof View) {
             final View view = (View) model;
@@ -143,6 +145,13 @@ public class SiriusEditPartFactory implements EditPartFactory {
 
             case BracketEdgeEditPart.VISUAL_ID:
                 return new BracketEdgeEditPart(view);
+
+            case -1:
+                if (ViewType.NOTE.equals(view.getType())) {
+                    return new SiriusNoteEditPart(view);
+                } else if (ViewType.TEXT.equals(view.getType())) {
+                    return new SiriusTextEditPart(view);
+                }
             }
         }
         return createUnrecognizedEditPart(context, model);
@@ -206,6 +215,7 @@ public class SiriusEditPartFactory implements EditPartFactory {
          * @not-generated add 1 in the width so that the text is not getting
          *                truncated.
          */
+        @Override
         public void relocate(CellEditor celleditor) {
             final Text text = (Text) celleditor.getControl();
             final Rectangle rect = new Rectangle(getWrapLabel().getTextBounds());
@@ -249,6 +259,7 @@ public class SiriusEditPartFactory implements EditPartFactory {
         /**
          * @was-generated
          */
+        @Override
         public void relocate(CellEditor celleditor) {
             final Text text = (Text) celleditor.getControl();
             final Rectangle rect = new Rectangle(getLabel().getTextBounds());
