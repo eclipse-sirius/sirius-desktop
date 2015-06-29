@@ -278,7 +278,9 @@ public interface DialectUIServices {
      *            the current label provider. If the current label is null, the
      *            result can be null
      * @return a LabelProvider
+     * @deprecated use directly a {@link HierarchyLabelProvider}.
      */
+    @Deprecated
     ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider);
 
     /**

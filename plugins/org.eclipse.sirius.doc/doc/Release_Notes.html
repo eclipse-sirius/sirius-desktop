@@ -239,9 +239,17 @@
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-info">Added</span> The class 
+				<code>org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider</code> has been added to provide a generic label provider for VSM model element giving hierarchical label. This label provider replaces the one returned by deprecated method 
+				<code>DialectUIServices.getHierarchyLabelProvider()</code>. 
+			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>AbstractSWTCallback</code> provides a default implementation of 
 				<code>UICallBack.askSessionReopeningWithResourceVersionMismatch()</code> method to give feedback about version mismatch and give the choice to reopen session despite a potential corruption.
+			</li>
+			<li><span class="label label-warning">Deprecated</span> The method 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.getHierarchyLabelProvider()</code> has been deprecated in favor of generic label provider 
+				<code>HierarchyLabelProvider</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
@@ -332,6 +340,13 @@
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory</code> is deprecated, use 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerForSemanticElementsFactory</code> instead.
+			</li>
+			<li><span class="label label-info">Moved</span> The translation key 
+				<code>HierarchyLabelProvider_elementWihtoutNameLabel</code> has been removed from the 
+				<code>org.eclipse.sirius.diagram.ui</code> plug-in&#8217;s 
+				<code>Messages</code> class, and moved into the 
+				<code>org.eclipse.sirius.ui</code>'s 
+				<code>Messages</code> class.  
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
@@ -644,7 +659,7 @@
 				<code>Messages_createRepresentationInputDialog_RepresentationDescriptionLabel</code> has been replaced by &#8220;Representation description: {0}&#8221; (previous value was &#8220;Representation description: &#8221;). 
 			</li>
 			<li><span class="label label-info">Modified</span> The internationalizable label 
-				<code>Messages_createRepresentationInputDialog_Title</code> has been replaced by &#8220;New {0}&#8221; (previous value was &#8220;New Representation&#8221;). 
+				<code>Messages_createRepresentationInputDialog_Title</code> has been replaced by &#8220;New {0}&#8221; (previous value was &#8220;New Representation&#8221;).
 			</li>
 			<li><span class="label label-danger">Removed</span> The internationalizable label 
 				<code>org.eclipse.sirius.viewpoint.provider.Messages.OpenRepresentationsFileJob_initModelingProjectsTask</code> has been removed as this message is no more used.

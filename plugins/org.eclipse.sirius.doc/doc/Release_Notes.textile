@@ -50,7 +50,9 @@ h4. Changes in @org.eclipse.sirius@
 
 h4. Changes in @org.eclipse.sirius.ui@
 
+* <span class="label label-info">Added</span> The class @org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider@ has been added to provide a generic label provider for VSM model element giving hierarchical label. This label provider replaces the one returned by deprecated method @DialectUIServices.getHierarchyLabelProvider()@. 
 * <span class="label label-info">Modified</span> @AbstractSWTCallback@ provides a default implementation of @UICallBack.askSessionReopeningWithResourceVersionMismatch()@ method to give feedback about version mismatch and give the choice to reopen session despite a potential corruption.
+* <span class="label label-warning">Deprecated</span> The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.getHierarchyLabelProvider()@ has been deprecated in favor of generic label provider @HierarchyLabelProvider@.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
@@ -77,7 +79,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey@ instead.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager@ instead.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory@ is deprecated, use @org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerForSemanticElementsFactory@ instead.
-
+* <span class="label label-info">Moved</span> The translation key @HierarchyLabelProvider_elementWihtoutNameLabel@ has been removed from the @org.eclipse.sirius.diagram.ui@ plug-in's @Messages@ class, and moved into the @org.eclipse.sirius.ui@'s @Messages@ class.  
 
 
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
@@ -177,7 +179,7 @@ h4. Changes in @org.eclipse.sirius.ui@
 * <span class="label label-success">Added</span> The new internationalizable label @Messages_createRepresentationInputDialog_DefaultRepresentationDescName@ has been added (available through @org.eclipse.sirius.ui.tools.api.Messages.createRepresentationInputDialog_DefaultRepresentationDescName@. Its value is "Representation".
 * <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_NewRepresentationNameLabel@ has been replaced by "Name:" (previous value was "Representation name:"). 
 * <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_RepresentationDescriptionLabel@ has been replaced by "Representation description: {0}" (previous value was "Representation description: "). 
-* <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_Title@ has been replaced by "New {0}" (previous value was "New Representation"). 
+* <span class="label label-info">Modified</span> The internationalizable label @Messages_createRepresentationInputDialog_Title@ has been replaced by "New {0}" (previous value was "New Representation").
 * <span class="label label-danger">Removed</span> The internationalizable label @org.eclipse.sirius.viewpoint.provider.Messages.OpenRepresentationsFileJob_initModelingProjectsTask@ has been removed as this message is no more used.
 * <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.ui.business.api.editor.SpecificSessionManager@ has been removed. 
 

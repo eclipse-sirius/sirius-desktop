@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.dialect.HierarchyLabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -155,7 +155,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
         ILabelProvider labelProvider = propertyDescriptor.getLabelProvider();
         // Start of user code getLabelProvider
         if (getSelection() instanceof TreeSelection) {
-            labelProvider = DialectUIManager.INSTANCE.getHierarchyLabelProvider(labelProvider);
+            labelProvider = new HierarchyLabelProvider(labelProvider);
         }
         // End of user code getLabelProvider
         return labelProvider;

@@ -588,9 +588,6 @@ public final class Messages {
     public static String HiddenElementsSelectionCommand_dialogTitle;
 
     @TranslatableMessage
-    public static String HierarchyLabelProvider_elementWihtoutNameLabel;
-
-    @TranslatableMessage
     public static String IAbstractDiagramNodeEditPart_createViewCommandLabel;
 
     @TranslatableMessage
