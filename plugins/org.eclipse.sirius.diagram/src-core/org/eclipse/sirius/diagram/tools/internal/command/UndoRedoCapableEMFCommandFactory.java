@@ -80,6 +80,7 @@ import org.eclipse.sirius.tools.api.command.view.JavaActionFromToolCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.tools.internal.command.builders.CommandBuilder;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -160,6 +161,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
                 }
             }
             addRefreshTask(rootObject, result, tool);
+            result.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(rootObject), rootObject.getTarget(), representation.get()));
             return result;
         }
         return UnexecutableCommand.INSTANCE;
@@ -274,6 +276,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
 
         for (final DSemanticDecorator containerView : containerViews) {
             addRefreshTask(containerView, dCommand, tool);
+            Option<DDiagram> parentDiagram = new EObjectQuery(containerView).getParentDiagram();
+            dCommand.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(containerView), anySemantic, parentDiagram.get()));
         }
         return compoundCommand;
     }
@@ -294,6 +298,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
         final DCommand command = buildOperationActionFromTool(tool, anySemantic, containerViews);
         for (final DSemanticDecorator containerView : containerViews) {
             addRefreshTask(containerView, command, tool);
+            Option<DDiagram> parentDiagram = new EObjectQuery(containerView).getParentDiagram();
+            command.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(containerView), anySemantic, parentDiagram.get()));
         }
         return command;
     }

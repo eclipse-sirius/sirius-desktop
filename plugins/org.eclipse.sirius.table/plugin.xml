@@ -39,5 +39,12 @@
              class="org.eclipse.sirius.table.business.internal.dialect.TableMetamodelsProvider">
        </descriptorprovider>
     </extension>
+    <extension
+          point="org.eclipse.sirius.migrationParticipant">
+       <participant
+             class="org.eclipse.sirius.table.business.internal.migration.description.InitializeCreationToolElementsToSelectExpressionParticipant"
+             kind="VSM">
+       </participant>
+    </extension>
    
 </plugin>

@@ -176,7 +176,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.tools.internal.editor.SelectCreatedDRepresentationElementsListener;
+import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -369,7 +369,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private Composite parentComposite;
 
-    private SelectCreatedDRepresentationElementsListener selectNewElementsListener;
+    private SelectDRepresentationElementsListener selectElementsListener;
 
     private Job refreshJob;
 
@@ -597,7 +597,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 
             keyHandler.put(/* CTRL + D */
-                    KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
+            KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
         }
         return keyHandler;
     }
@@ -676,8 +676,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         getSite().getPage().addSelectionListener(this);
 
         // Add a post commit listener to select newly created diagram elements.
-        selectNewElementsListener = new SelectCreatedDRepresentationElementsListener(this);
-        session.getTransactionalEditingDomain().addResourceSetListener(selectNewElementsListener);
+        selectElementsListener = new SelectDRepresentationElementsListener(this, true);
     }
 
     @Override
@@ -700,11 +699,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         dRepresentationLockStatusListener = null;
         if (getSession() != null) {
             getSession().removeListener(this);
-            if (getSession().getTransactionalEditingDomain() != null) {
-                getSession().getTransactionalEditingDomain().removeResourceSetListener(selectNewElementsListener);
-                selectNewElementsListener = null;
-            }
         }
+        selectElementsListener.dispose();
+        selectElementsListener = null;
 
         if (getGraphicalViewer() != null) {
             getGraphicalViewer().removeDropTargetListener(transferDropTargetListener);

@@ -82,7 +82,7 @@ public abstract class AbstractDTableViewerManager {
     /**
      * The associated editor.
      */
-    protected final AbstractDTreeEditor tableEditor;
+    protected final AbstractDTreeEditor treeEditor;
 
     /**
      * Menu manager.
@@ -122,7 +122,7 @@ public abstract class AbstractDTableViewerManager {
         this.editingDomain = editingDomain;
         this.accessor = accessor;
         this.tableCommandFactory = tableCommandFactory;
-        this.tableEditor = tableEditor;
+        this.treeEditor = tableEditor;
     }
 
     public static ImageRegistry getImageRegistry() {
@@ -216,7 +216,7 @@ public abstract class AbstractDTableViewerManager {
      * @return a table editor
      */
     public AbstractDTreeEditor getEditor() {
-        return tableEditor;
+        return treeEditor;
     }
 
     /**

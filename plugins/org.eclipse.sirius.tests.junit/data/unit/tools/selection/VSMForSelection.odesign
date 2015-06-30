@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VSMForSelection" version="10.0.0.201507021600">
+  <ownedViewpoints name="VSMForSelection" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20EClass']" name="Diagram" domainClass="ecore.EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="EPackageNode" semanticCandidatesExpression="[self.eSubpackages/]" domainClass="ecore.EPackage">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EReference" preconditionExpression="[not name.equalsIgnoreCase('inOut')/]" labelDirectEdit="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Name']" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore.EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='ReconnectEReference']">
+          <style sourceArrow="Diamond" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ESupertypes" semanticCandidatesExpression="" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" targetFinderExpression="feature:eSuperTypes">
+          <style targetArrow="InputClosedArrow" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="InOutReference" preconditionExpression="[name.equalsIgnoreCase('inOut')/]" labelDirectEdit="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Name']" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@borderedNodeMappings[name='PortOut']" targetMapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@borderedNodeMappings[name='PortIn']" targetFinderExpression="[eType.oclAsType(ecore::EClass).eStructuralFeatures->select(name.equalsIgnoreCase('in'))/]" sourceFinderExpression="[eContainer().oclAsType(ecore::EClass).eStructuralFeatures->select(name.equalsIgnoreCase('out'))/]" domainClass="ecore.EReference" useDomainElement="true">
+          <style lineStyle="dash" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClass" deletionDescription="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Class']" labelDirectEdit="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Name']" doubleClickDescription="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Double%20Click']" synchronizationLock="true" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='DnDPortOut']" childrenPresentation="List">
+          <borderedNodeMappings name="PortIn" preconditionExpression="[name.equalsIgnoreCase('in')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="PortOut" preconditionExpression="[name.equalsIgnoreCase('out')/]" semanticCandidatesExpression="feature:eAttributes" createElements="false" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="Operation" labelDirectEdit="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eOperations" domainClass="ecore.EOperation">
+            <style xsi:type="style:BundledImageDescription" labelExpression="[name + '()'/]" labelAlignment="LEFT" tooltipExpression="feature:name" sizeComputationExpression="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='EClass']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="feature:interface">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" tooltipExpression="feature:name" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="feature:abstract">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="8" arcHeight="8" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Dark%20EClass']" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_abstract.gif" tooltipExpression="service:renderTooltip" roundedCorner="true" widthComputationExpression="12" heightComputationExpression="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Abstract%20EClass']">
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="DesignPatterns" label="Design Patterns">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to &quot;compose&quot; objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly [1].&#xA;&#xA;[1] http://en.wikipedia.org/wiki/Composite_pattern" name="Composite pattern With forceRefresh" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="component">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Component"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="interface" valueExpression="true"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="true"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="operation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="leaf">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Leaf"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="leafOperation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:component"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="composite">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Composite"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentOperation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentAdd">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="add"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentRemove">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="remove"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures" variableName="parentChildRef">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:component"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="child"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:component"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to &quot;compose&quot; objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly [1].&#xA;&#xA;[1] http://en.wikipedia.org/wiki/Composite_pattern" name="Composite pattern Without forceRefresh">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="component">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Component"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="interface" valueExpression="true"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="true"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="operation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="leaf">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Leaf"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="leafOperation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:component"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="composite">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Composite"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentOperation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentAdd">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="add"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentRemove">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="remove"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures" variableName="parentChildRef">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:component"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="child"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:component"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to &quot;compose&quot; objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly [1].&#xA;&#xA;[1] http://en.wikipedia.org/wiki/Composite_pattern" name="Composite_With_Views_Creation">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="component">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Component"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="interface" valueExpression="true"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="true"/>
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" containerViewExpression="var:elementView" variableName="viewForComponent"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentOperation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@subNodeMappings[name='Operation']" containerViewExpression="var:viewForComponent" variableName="viewForComponentOperation"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="leaf">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Leaf"/>
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" containerViewExpression="var:elementView" variableName="viewForLeaf"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="leafOperation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@subNodeMappings[name='Operation']" containerViewExpression="var:viewForLeaf" variableName="viewForLeafOperation"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:component"/>
+                  <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='ESupertypes']" containerViewExpression="var:elementView" variableName="leafSuperTypeView" sourceExpression="var:leaf" targetExpression="var:component"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="composite">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Composite"/>
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" containerViewExpression="var:elementView" variableName="viewForComposite"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentOperation">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="operation"/>
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@subNodeMappings[name='Operation']" containerViewExpression="var:viewForComposite" variableName="viewForCompositeOperation"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentAdd">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="add"/>
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@subNodeMappings[name='Operation']" containerViewExpression="var:viewForComposite" variableName="viewForCompositeAdd"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations" variableName="componentRemove">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="remove"/>
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@subNodeMappings[name='Operation']" containerViewExpression="var:viewForComposite" variableName="viewForCompositeRemove"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EReference" referenceName="eStructuralFeatures" variableName="parentChildRef">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:component"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="child"/>
+                    <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='EReference']" containerViewExpression="var:elementView" variableName="parentChildRefView" sourceExpression="var:composite" targetExpression="var:component"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:component"/>
+                  <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='ESupertypes']" containerViewExpression="var:elementView" variableName="compositeSuperTypeView" sourceExpression="var:composite" targetExpression="var:component"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Class creation">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Create_two_sub_class" precondition="[container.oclIsKindOf(ecore::EClass)/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" extraMappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.eContainer()/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="subClass">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Sub' + containerView.name+'_1'/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:container"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="subClass2">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Sub' + containerView.name+'_2'/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:container"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Create_sub_class_with_Views" precondition="[container.oclIsKindOf(ecore::EClass)/]" elementsToSelect="[containerView.eContainer()/]" containerMappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" extraMappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.eContainer()/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="subClass">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Sub' + container.name/]"/>
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" containerViewExpression="[containerView.eContainer()/]" variableName="subClassView"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:container"/>
+                  <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='ESupertypes']" containerViewExpression="[containerView.eContainer()/]" variableName="superTypeView" sourceExpression="var:subClass" targetExpression="var:container"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Class">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop EClass" mappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Package Creation" nodeMappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='EPackageNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Edge creation">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="InOutEdge" edgeMappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='InOutReference']" extraSourceMappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']" extraTargetMappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EAttribute" referenceName="eStructuralFeatures" variableName="outAttribute">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="out"/>
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@borderedNodeMappings[name='PortOut']" containerViewExpression="var:sourceView" variableName="portOutView"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EAttribute" referenceName="eStructuralFeatures" variableName="inAttribute">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="in"/>
+                    <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@borderedNodeMappings[name='PortIn']" containerViewExpression="var:targetView" variableName="portInView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="inOutReference">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="inOut"/>
+                      <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='InOutReference']" containerViewExpression="[sourceView.eContainer()/]" variableName="inOutRefView" sourceExpression="var:outAttribute" targetExpression="var:inAttribute"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectEReference">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation/>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Direct Edit">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Double Click" mappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="DragNDrop">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnDPortOut" mappings="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='EClass']/@borderedNodeMappings[name='PortOut']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="[oldSemanticContainer.oclAsType(ecore::EClass).eReferences->first()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:TreeDescription" name="Tree" domainClass="ecore.EPackage" preconditionExpression="true">
+      <subItemMappings name="Tree_Package" domainClass="ecore.EPackage" semanticCandidatesExpression="var:self">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="Tree_NamedElement" domainClass="ecore.ENamedElement" semanticCandidatesExpression="aql:self.eContents()">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+      </subItemMappings>
+      <createTreeItem name="Tree_CreateItem" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Tree_Package']/@subItemMappings[name='Tree_NamedElement']">
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
+        </firstModelOperation>
+        <variables name="root" documentation="The semantic element of the tree."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+      </createTreeItem>
+      <createTreeItem name="Initialized_Tree_CreateItem" elementsToSelect="[instance/]" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Tree_Package']/@subItemMappings[name='Tree_NamedElement']">
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
+        </firstModelOperation>
+        <variables name="root" documentation="The semantic element of the tree."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+      </createTreeItem>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="Classes" domainClass="EPackage">
+      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="[eContents(ecore::EClass)/]"/>
+      <ownedCreateLine name="Create Class" forceRefresh="true" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['NewEClass'  + eContainer().eContents(ecore::EClass)->size()/]"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedCreateLine name="Initialized_Create Class" forceRefresh="true" elementsToSelect="[instance/]" mapping="//@ownedViewpoints[name='VSMForSelection']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['NewEClass'  + eContainer().eContents(ecore::EClass)->size()/]"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="Name" featureName="name"/>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
+  </ownedViewpoints>
+  <userColorsPalettes name="Ecore Palette">
+    <entries xsi:type="description:UserFixedColor" red="255" green="252" blue="216" name="EClass"/>
+    <entries xsi:type="description:UserFixedColor" red="228" green="228" blue="228" name="Abstract EClass"/>
+    <entries xsi:type="description:UserFixedColor" name="Dark EClass"/>
+  </userColorsPalettes>
+</description:Group>

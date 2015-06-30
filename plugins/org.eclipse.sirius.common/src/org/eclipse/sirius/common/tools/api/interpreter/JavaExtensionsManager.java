@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2014 Obeo.
+ * Copyright (c) 2013, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EPackageLoadingCallback.EPackageDeclaration;
 import org.eclipse.sirius.common.tools.api.interpreter.EPackageLoadingCallback.EPackageDeclarationSource;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -52,6 +54,8 @@ import com.google.common.collect.Sets;
 public final class JavaExtensionsManager {
 
     private static final String WORKSPACE_SEPARATOR = "/";
+
+    private static final Set<String> JAVA_SERVICES_BUNDLES_WHITE_LIST = Sets.newHashSet(DslCommonPlugin.PLUGIN_ID);
 
     /**
      * This will be updated with the list of accessible viewpoint plugins, if
@@ -88,6 +92,7 @@ public final class JavaExtensionsManager {
 
     private ClasspathChangeCallback onWorkspaceChange = new ClasspathChangeCallback() {
 
+        @Override
         public void classpathChanged(Set<String> updatedProjects) {
             /*
              * we get a notification if something in the classpath we used so
@@ -490,6 +495,11 @@ public final class JavaExtensionsManager {
         Set<String> notFound = Sets.newLinkedHashSet();
         for (String qualifiedName : addedImports) {
             Class<?> found = classLoading.findClass(viewpointProjects, viewpointPlugins, qualifiedName);
+            if (found == null) {
+                // Find services in white list
+                found = classLoading.findClass(Collections.<String> emptySet(), JAVA_SERVICES_BUNDLES_WHITE_LIST, qualifiedName);
+            }
+
             if (found != null) {
                 this.couldNotBeLoaded.remove(qualifiedName);
                 Class<?> alreadyHere = loadedClasses.get(qualifiedName);

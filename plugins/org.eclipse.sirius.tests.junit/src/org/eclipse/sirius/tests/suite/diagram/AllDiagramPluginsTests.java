@@ -216,6 +216,7 @@ import org.eclipse.sirius.tests.unit.diagram.tools.GMFbugTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.NoteBehaviorOnHideRevealDeleteElementTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.NoteBehaviorOnHideRevealDeleteManyElementsTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.PartAndLabelPartSelectionDeletionTest;
+import org.eclipse.sirius.tests.unit.diagram.tools.SelectionAfterToolExecutionTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.ToolsApplicabilityTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.ModifySessionOutsideEclipseTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.palette.PaletteManagerWithFiltersTest;
@@ -230,6 +231,8 @@ import org.eclipse.sirius.tests.unit.diagram.vsm.VSMValidationTest;
 import org.eclipse.sirius.tests.unit.diagram.vsm.VSMVariableTypesValidationTest;
 import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationTests;
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
+import org.eclipse.sirius.tests.unit.table.unit.migration.InitializeElementsToSelectExpressionForTableMigrationTest;
+import org.eclipse.sirius.tests.unit.table.unit.tools.SelectionInTableAfterToolExecutionTest;
 
 public class AllDiagramPluginsTests {
 
@@ -480,6 +483,9 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(ModifyNodeStyleTest.class);
         suite.addTestSuite(NavigationOperationTest.class);
         suite.addTestSuite(ComputedColorTest.class);
+        suite.addTestSuite(SelectionAfterToolExecutionTest.class);
+        suite.addTestSuite(SelectionInTableAfterToolExecutionTest.class);
+        suite.addTestSuite(InitializeElementsToSelectExpressionForTableMigrationTest.class);
 
         // Edge on edge tests
         suite.addTestSuite(EdgeOnEdgeHideRevealTest.class);

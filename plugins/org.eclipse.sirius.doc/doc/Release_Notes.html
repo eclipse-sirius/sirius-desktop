@@ -127,6 +127,40 @@
 				<code>getSession</code> method calls getSession(true).
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>addEvaluateSelectionExpressionTask</code> has been added in class 
+				<code>org.eclipse.sirius.tools.api.command.AbstractCommandFactory</code> to allow selection after tool execution.
+			</li>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.StandardServices</code> has been added. This class owns methods used for service: interpreter.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.support">Changes in 
+			<code>org.eclipse.sirius.tests.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.tests.support.api.AbstractToolDescriptionTestCase</code> has been created. It contains utility methods about tools.
+			</li>
+			<li><span class="label label-info">Modified</span> The class 
+				<code>org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase</code> has been modified 
+				<ul>
+					<li>It inherits from 
+						<code>AbstractToolDescriptionTestCase</code> 
+					</li>
+					<li>The method 
+						<code>applyContainerCreationTool(String,DDiagram,EObject)</code> has been added.
+					</li>
+					<li>The method 
+						<code>applyGenericTool(String,DDiagram,EObject)</code> has been added.
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
@@ -454,7 +488,7 @@
 				<code>org.eclipse.sirius.common.ui.ext</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1165,7 +1199,7 @@
 			<li>&#171;Lozenge&#187; is replaced by &#171;Diamond&#187; in diagram style.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1519,7 +1553,7 @@
 				<code>UIDiagramRepresentation</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.support2">Changes in 
 			<code>org.eclipse.sirius.tests.support</code>
 		</h4>
 		<ul>

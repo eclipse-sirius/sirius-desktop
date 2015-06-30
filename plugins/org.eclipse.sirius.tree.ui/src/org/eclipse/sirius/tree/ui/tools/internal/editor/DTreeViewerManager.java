@@ -67,6 +67,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
 import org.eclipse.sirius.ui.tools.internal.editor.DescriptionFileChangedNotifier;
+import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
@@ -114,6 +115,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     private DTreeMenuListener actualMenuListener;
 
     private final EditorCreateTreeItemMenuAction createTreeItemMenu = new EditorCreateTreeItemMenuAction();
+
+    private SelectDRepresentationElementsListener selectTableElementsListener;
 
     /**
      * The constructor.
@@ -167,13 +170,14 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         new TreeItemExpansionManager(dTreeViewer.getTree(), getSession());
 
         // Add a focus listener to deactivate the EMF actions on the Tree
-        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
+        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(treeEditor, treeViewer.getTree()));
         treeViewer.setUseHashlookup(true);
 
         // tableViewer.setSorter(new
         // ExampleTaskSorter(ExampleTaskSorter.DESCRIPTION));
 
         treeUIUpdater = new TreeUIUpdater(dTreeViewer, dRepresentation);
+        selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, false);
         descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
 
         dTreeContentProvider = new DTreeContentProvider();
@@ -193,8 +197,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         // Create a new CellFocusManager
         final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
         // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
-                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
+                | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 
         // The input for the table viewer is the instance of DTable
         treeViewer.setInput(dRepresentation);
@@ -255,8 +259,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
         ISelectionProvider selectionProvider = this.treeViewer;
         this.treeViewer.addDragSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() }, new ModelDragTargetAdapter(selectionProvider));
-        this.treeViewer.addDropSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() },
-                new DTreeItemDropListener(this.treeViewer, this.editingDomain, this.treeCommandFactory, this.accessor));
+        this.treeViewer.addDropSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() }, new DTreeItemDropListener(this.treeViewer, this.editingDomain,
+                this.treeCommandFactory, this.accessor));
     }
 
     /**
@@ -295,8 +299,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table.
-     * <BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
      * Cached the actions of creation and deletion in order to increase
      * performance and not calculate it on each contextual menu.<BR>
      */
@@ -320,7 +323,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
                 final Menu menu = mgr.createContextMenu(treeViewer.getControl());
                 treeViewer.getControl().setMenu(menu);
                 // // Add this line to have others contextual menus
-                tableEditor.getSite().registerContextMenu(mgr, treeViewer);
+                treeEditor.getSite().registerContextMenu(mgr, treeViewer);
             }
             getCreateTreeItemMenu().update(createActionsForTree);
         }
@@ -451,6 +454,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         descriptionFileChangedNotifier = null;
         treeUIUpdater.dispose();
         treeUIUpdater = null;
+        selectTableElementsListener.dispose();
+        selectTableElementsListener = null;
         dTreeContentProvider.dispose();
         dTreeContentProvider = null;
         super.dispose();

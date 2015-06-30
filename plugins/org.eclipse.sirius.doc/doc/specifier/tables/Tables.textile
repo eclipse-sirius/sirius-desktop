@@ -48,6 +48,10 @@ Some tools which apply to the whole table are specified directly inside the _Edi
 * _Representation Navigation Tools_: These tools (one for each kind of representation supported by Sirius) are very similar to the previous ones. The only differences is that they allow users to navigate to existing representation instead of creating new ones. If such a tool exists, the _Navigate_ context menu on an element will contains an entry for each corresponding representation which already exists on the element selected (or reachable from the selected element using the _Browse expression_). You can specify a _Navigation name expression_ (_Advanced_ category) to be used in the menu entry instead of using the title of the existing representation. This can be useful to make it more explicit what the relationship is between the current element and the target tree.
 * _Line Creation Tools_ which are directly contained inside the _Table Description_ are used to create root table lines. They are available to end-users through a combo button in the main Eclipse tool-bar. To configure it, simply select the kind of line the tool will create in the _Mapping_ property, and specify the tool's behavior using normal model operations.
 
+h4(#tools_specification). Tools Specification
+
+"Refer to Tools specification":../general/ToolsSpecification.html
+
 h3(#line_mappings). Line Mappings
 
 The lines which will appear in a table (and their organization in sub-lines) are defined by the _Line_ mapping elements inside the _Table Description_ element. A _Table Description_ contains _Line_ mappings which define which elements will appear as top-level lines of the table, while each _Line_ mapping can contain sub-mappings which define its own direct sub-lines. If an element (the table or a line mapping) contains several sub-mappings, the element's content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
@@ -105,6 +109,10 @@ Cross tables are specified using a _Cross Table Description_ element, which work
 h3(#cross_table_tools). Table Tools
 
 Cross tables can contain the same kinds of tools as edition tables (see "the corresponding section":#table_tools for details). In addition, they can contain _Create Column Tools_, which behave exactly like _Create Line_ tools, except that they apply to "_Element Column_ mappings":#element_column_mapping (see below) and are used to create new columns in the table.
+
+h4(#cross_table_tools_specification). Tools Specification
+
+"Refer to Tools specification":../general/ToolsSpecification.html
 
 h3(#element_column_mapping). Element Column Mappings
 

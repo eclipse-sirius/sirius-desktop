@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteWithoutToolTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -37,6 +38,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.InvalidPermissionCommand;
@@ -45,6 +47,7 @@ import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.view.JavaActionFromToolCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -58,6 +61,7 @@ import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
@@ -105,6 +109,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      * @param modelAccessor
      *            the modelAccessor to set
      */
+    @Override
     public void setModelAccessor(final ModelAccessor modelAccessor) {
         this.modelAccessor = modelAccessor;
         commandTaskHelper = new TaskHelper(modelAccessor, uiCallBack);
@@ -134,6 +139,9 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                     if (deleteTool != null) {
                         addDeleteTreeElementFromTool(result, element, deleteTool);
                         addRefreshTask(parentTree, result, deleteTool);
+                        Option<DRepresentation> dRepresentation = new EObjectQuery(element).getRepresentation();
+                        result.getTasks().add(new ElementsToSelectTask(deleteTool, InterpreterUtil.getInterpreter(element), element, dRepresentation.get()));
+
                         cmd = new NoNullResourceCommand(result, element);
                     } else {
                         result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
@@ -247,6 +255,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      * @return a command able to create the line and putting it in the
      *         container, corresponding to the {@link CreateTool}.
      */
+    @Override
     public Command buildCreateLineCommandFromTool(final DTreeItemContainer lineContainer, final EObject semanticCurrentElement, final TreeItemCreationTool tool) {
         Command result = UnexecutableCommand.INSTANCE;
         if (!getPermissionAuthority().canEditInstance(lineContainer)) {
@@ -255,6 +264,9 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
             if (commandTaskHelper.checkPrecondition(semanticCurrentElement, tool)) {
                 SiriusCommand createLineCommand = buildCommandFromModelOfTool(semanticCurrentElement, tool, lineContainer);
                 addRefreshTask(lineContainer, createLineCommand, tool);
+                Option<DRepresentation> dRepresentation = new EObjectQuery(lineContainer).getRepresentation();
+                createLineCommand.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(lineContainer), semanticCurrentElement, dRepresentation.get()));
+
                 result = createLineCommand;
             }
         }
@@ -298,6 +310,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      *      org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
      *      java.lang.String)
      */
+    @Override
     public AbstractCommand buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {
         final SiriusCommand cmd = new SiriusCommand(domain);
         final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
@@ -317,6 +330,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      *      org.eclipse.sirius.tree.description.TreeItemEditionTool,
      *      java.lang.String)
      */
+    @Override
     public Command buildDirectEditLabelFromTool(final DTreeItem editedTreeItem, TreeItemEditionTool directEditTool, String newValue) {
         SiriusCommand result = new SiriusCommand(domain, "Direct Edit on " + editedTreeItem.getName());
         if (!getPermissionAuthority().canEditInstance(editedTreeItem)) {
@@ -363,6 +377,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      *      org.eclipse.sirius.tree.DTreeItem,
      *      org.eclipse.sirius.tree.description.TreeItemDragTool)
      */
+    @Override
     public Command buildDropItemFromTool(EObject dropped, DTreeItemContainer dropTarget, Collection<DTreeItem> precedingSiblings, TreeItemContainerDropTool dropTool) {
         final SiriusCommand result = new SiriusCommand(domain, "Drop the item " + dropped);
 
@@ -402,6 +417,8 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         if (dropDec != null) {
             addRefreshTask(dropDec, result, dropTool);
         }
+        Option<DRepresentation> dRepresentation = new EObjectQuery(dropTarget).getRepresentation();
+        result.getTasks().add(new ElementsToSelectTask(dropTool, InterpreterUtil.getInterpreter(dropTarget), dropTarget.getTarget(), dRepresentation.get()));
 
         return result;
     }
@@ -427,6 +444,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildOperationActionFromTool(org.eclipse.sirius.viewpoint.description.tool.OperationAction,
      *      org.eclipse.sirius.tree.DTreeItem)
      */
+    @Override
     public Command buildOperationActionFromTool(OperationAction operationAction, final DTreeItem selectedItem) {
         final SiriusCommand result = new SiriusCommand(domain, operationAction.getName() + " on " + selectedItem.getName());
         // Step 1 : variables initialization
@@ -441,6 +459,8 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
 
         // Step 3 : adding task to refresh
         addRefreshTask(targetTree, result, null);
+        Option<DRepresentation> dRepresentation = new EObjectQuery(selectedItem).getRepresentation();
+        result.getTasks().add(new ElementsToSelectTask(operationAction, InterpreterUtil.getInterpreter(selectedItem.getTarget()), selectedItem.getTarget(), dRepresentation.get()));
 
         return result.chain(new RecordingCommand(domain) {
 
@@ -458,6 +478,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      *      org.eclipse.sirius.tree.DTreeItem,
      *      org.eclipse.sirius.tools.api.ui.IExternalJavaAction)
      */
+    @Override
     public Command buildJavaActionFromTool(ExternalJavaAction javaActionItem, DTreeItem selectedItem, IExternalJavaAction javaAction) {
         final CompoundCommand compoundCommand = new CompoundCommand();
         // Step 1 : creating the command from the java action tool
@@ -469,6 +490,9 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         // Step 2 : creating a command for refreshing the representation
         final SiriusCommand dCommand = new SiriusCommand(this.domain, selectedItem.getName());
         addRefreshTask(selectedItem, dCommand, javaActionItem);
+        Option<DRepresentation> dRepresentation = new EObjectQuery(selectedItem).getRepresentation();
+        dCommand.getTasks().add(new ElementsToSelectTask(javaActionItem, InterpreterUtil.getInterpreter(selectedItem.getTarget()), selectedItem.getTarget(), dRepresentation.get()));
+
         compoundCommand.append(dCommand);
 
         return compoundCommand;

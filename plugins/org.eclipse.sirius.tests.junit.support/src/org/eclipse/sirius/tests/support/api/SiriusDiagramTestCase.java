@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,7 +57,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
@@ -118,7 +117,7 @@ import com.google.common.collect.Sets.SetView;
  * 
  * @author mchauvin
  */
-public class SiriusDiagramTestCase extends SiriusTestCase {
+public class SiriusDiagramTestCase extends AbstractToolDescriptionTestCase {
 
     private static final String TOOL_NAME_INCORRECT = "The tool name is not correct";
 
@@ -166,6 +165,54 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
         partsToArrange.add(diagramEditPart);
         arrangeRequest.setPartsToArrange(partsToArrange);
         diagramEditPart.performRequest(arrangeRequest);
+    }
+
+    /**
+     * Apply a container creation tool on a diagram.
+     * 
+     * @param toolName
+     *            the tool name
+     * @param diagram
+     *            the diagram
+     * @param container
+     *            the graphical container, for instance the diagram
+     * @return <code>true</code> if the tool could be applied,
+     *         <code>false</code> otherwise
+     */
+    protected final boolean applyContainerCreationTool(final String toolName, final DDiagram diagram, final EObject container) {
+        final AbstractToolDescription tool = getTool(diagram, toolName);
+        if (tool instanceof ContainerCreationDescription) {
+            final Command command = getCommand(container, tool);
+            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(container);
+            boolean canExecute = command.canExecute();
+            domain.getCommandStack().execute(command);
+            return canExecute;
+        }
+        throw new IllegalArgumentException(SiriusDiagramTestCase.TOOL_NAME_INCORRECT);
+    }
+
+    /**
+     * Apply a generic tool on a diagram.
+     * 
+     * @param toolName
+     *            the tool name
+     * @param diagram
+     *            the diagram
+     * @param container
+     *            the graphical container, for instance the diagram
+     * @return <code>true</code> if the tool could be applied,
+     *         <code>false</code> otherwise
+     */
+    protected final boolean applyGenericTool(final String toolName, final DDiagram diagram, final EObject container) {
+        final AbstractToolDescription tool = getTool(diagram, toolName);
+        if (tool instanceof ToolDescription) {
+            final Command command = getCommand(container, tool);
+            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(container);
+            boolean canExecute = command.canExecute();
+            domain.getCommandStack().execute(command);
+            return canExecute;
+        }
+        throw new IllegalArgumentException(SiriusDiagramTestCase.TOOL_NAME_INCORRECT);
     }
 
     /**
@@ -828,8 +875,8 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
         } else if (tool instanceof ContainerCreationDescription) {
             if (container instanceof DDiagram) {
                 cmd = getCommandFactory().buildCreateContainerCommandFromTool((DDiagram) container, (ContainerCreationDescription) tool);
-            } else if (container instanceof DNodeContainer) {
-                cmd = getCommandFactory().buildCreateContainerCommandFromTool((DNodeContainer) container, (ContainerCreationDescription) tool);
+            } else if (container instanceof DDiagramElementContainer) {
+                cmd = getCommandFactory().buildCreateContainerCommandFromTool((DDiagramElementContainer) container, (ContainerCreationDescription) tool);
             }
         } else if (tool instanceof ToolDescription) {
             cmd = getCommandFactory().buildGenericToolCommandFromTool(container, (ToolDescription) tool);
@@ -1393,7 +1440,7 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
     @Deprecated
     protected void setReadOnly(IFile file) throws Exception {
         EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(true, file);
-        
+
         TestCase.assertTrue("The file must be read only", file.isReadOnly());
     }
 

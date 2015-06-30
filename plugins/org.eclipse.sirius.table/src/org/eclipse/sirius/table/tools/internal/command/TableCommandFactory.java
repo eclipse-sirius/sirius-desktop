@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteWithoutToolTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -63,6 +64,8 @@ import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -163,6 +166,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             if (commandTaskHelper.checkPrecondition(semanticCurrentElement, tool)) {
                 SiriusCommand createLineCommand = buildCommandFromModelOfTool(semanticCurrentElement, tool, lineContainer);
                 addRefreshTask(lineContainer, createLineCommand, tool);
+                Option<DRepresentation> dRepresentation = new EObjectQuery(lineContainer).getRepresentation();
+                createLineCommand.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(lineContainer.getTarget()), lineContainer.getTarget(), dRepresentation.get()));
                 result = createLineCommand;
             }
         }
@@ -194,6 +199,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                 // result.getTasks().add(new CreateDLineTask(tool, result,
                 // modelAccessor, lineContainer));
                 addRefreshTask(containerView, createColumnCommand, tool);
+                Option<DRepresentation> dRepresentation = new EObjectQuery(containerView).getRepresentation();
+                createColumnCommand.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(containerView.getTarget()), containerView.getTarget(), dRepresentation.get()));
                 result = createColumnCommand;
             }
         }
@@ -491,6 +498,9 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                 if (optionalCreateCellTool.some()) {
                     result = buildCommandFromIntersection(line, column, optionalCreateCellTool.get(), newValue);
                     addRefreshTask(TableHelper.getTable(line), (SiriusCommand) result, optionalCreateCellTool.get());
+                    Option<DRepresentation> dRepresentation = new EObjectQuery(line).getRepresentation();
+                    ((SiriusCommand) result).getTasks().add(
+                            new ElementsToSelectTask(optionalCreateCellTool.get(), InterpreterUtil.getInterpreter(line.getTarget()), line.getTarget(), dRepresentation.get()));
                 }
             }
         }

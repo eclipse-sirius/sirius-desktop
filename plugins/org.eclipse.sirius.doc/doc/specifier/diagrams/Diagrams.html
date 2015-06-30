@@ -1228,70 +1228,8 @@
 			<i>WARNING</i> : It was possible to define a ToolSection directly under a DiagramDescription, outside a layer. Defining tool section outside a layer is discouraged, that&#8217;s why this action has been deleted. The tool sections created before are still present but you should move it into the default layer since it is likely to be deleted in the future.
 		</p>
 		<h3 id="tools_specification">Tools Specification</h3>
-		<p>All tools are specified in roughly the same way. Like most elements inside the VSM, they have an 
-			<em>Id</em> and a 
-			<em>Label</em>. For elements which will appear to the end-user (in the palette or in menus), make sure the 
-			<em>Label</em> is meaningful to them.
-		</p>
 		<p>
-			<strong>Tools Applicability</strong>. Most tools apply to a set of 
-			<em>Mappings</em>, sometimes only on certain kinds of mappings (e.g. 
-			<em>Container Drop</em> description only makes sense for container mappings). For tools which create new elements, the 
-			<em>Mappings</em> correspond to the kinds of elements the tool will create. For other tools, it corresponds to the kinds of element the tool can be applied to.
-		</p>
-		<p>Many tools also support the notion of 
-			<em>Extra Mappings</em>. If these are specified, they indicate other kinds of elements than the primary ones on which the tool can be applied.
-		</p>
-		<p>The 
-			<em>Precondition</em> of a tool definition can be used to restrict its applicability to only some instances of the 
-			<em>Mappings</em> (and 
-			<em>Extra Mappings</em>) associated with the tool. When the user tries to invoke the tool on an element, the expression will be evaluated in the context of that element' semantic target, and the tool will be applicable only if the expression returns true. Otherwise the user will have a feedback (typically a change in the mouse cursor&#8217;s shape) to indicate the tool can not be applied on this element.
-		</p>
-		<p>
-			<strong>Force Refresh.</strong> Tools have a 
-			<em>Force Refresh</em> flag. As most tools only perform a local change in the underlying model, by default Sirius will try to optimize its refresh operation (which synchronizes the graphical view with the state of the underlying semantic model) by only refreshing elements of the mappings explicitly associated with the tool. If you know your tool will have side-effects which can change other parts of the diagram, set the 
-			<em>Force Refresh</em> flag to force Sirius to perform a complete refresh of the whole diagram after the tool is executed. This ensures a perfect synchronization of the graphical representation with the state of the underlying model, possibly at the cost of performance and reactivity on big diagrams.
-		</p>
-		<p>
-			<strong>Tools' Body and Variables.</strong> The actual effect of a tool is defined inside its 
-			<em>body</em>, which is usually represented by a 
-			<em>Begin</em> element (the starting point of the tool&#8217;s execution). You can use any of the available 
-			<a href="../general/Model_Operations.html">model operations</a> to specify the behavior of your tools, including, if necessary, operations which invoke complex algorithms written in Java. Inside the tools&#8217;body, you have access to 
-			<em>variables</em>, which are specific to each kind of tools and give you all the necessary information on how the tool was invoked, on which elements, etc. How you access these variables from the expressions inside the tool&#8217;s body depend on the query language you use for the expressions.
-		</p>
-		<p>
-			<strong>Static Variables.</strong> The static variables defined by each tool are visible directly inside the tool&#8217;s element in the VSM. The exact set of variables available will depend on each tool, but typically you will have access to both 
-			<em>semantic variables</em> which reference semantic elements and 
-			<em>view variables</em> which reference graphical elements. As an example, in a 
-			<em>Node Creation Tool</em>, you have both a 
-			<em>container</em> and a 
-			<em>containerView</em> variable. 
-			<em>containerView</em> will point to the graphical element on which the user invoked the node creation tool (for example a container view) while 
-			<em>container</em> will point to that view&#8217;s target semantic element. Usually the tools use only the semantic variables, but you may want to use the view variables if the same semantic elements can be represented in different ways on your diagram and you want your tool to behave differently depending on which of these representations the user targeted.
-		</p>
-		<p>
-			<strong>User-Defined Variables.</strong> In addition to the static variables which are pre-defined by Sirius for each kind of tool, you can define your own, which will also be available inside the tool&#8217;s body. These user variables are defined as sub-elements of the static variables using the 
-			<em>New Variable...</em> context menu. There are two kinds:
-		</p>
-		<ul>
-			<li>
-				<em>Expression Variables</em> have a name and a 
-				<em>Computation Expression</em>. When the tool is invoked, the computation expression will be evaluated in the context or the parent variable&#8217;s value (i.e. the static variable inside which the 
-				<em>Expression Variable</em> is defined).
-			</li>
-			<li>
-				<em>Select Model Element Variables</em> will open a dialog box when the tool is invoked, from which the user can manually select model elements from a list you can configure. The element or elements selected by the user will become the value of the variable. To configure the dialog box, you must set a 
-				<em>Message</em> and a 
-				<em>Candidates Expression</em> (evaluated in the context of the parent variable&#8217;s value). The candidates expression should return a list of elements from which the user can select the variable&#8217;s value. By default these candidates are presented as a list. You can also enable the 
-				<em>Tree</em> mode, and specify a 
-				<em>Children Expression</em>, which will be evaluated recursively on each candidate to build a tree of possible values. Finally, you can set the 
-				<em>Multiple</em> flag to allow users to select several of the candidates instead of a single one.
-			</li>
-		</ul>
-		<p>
-			<strong>Tool Filters.</strong> Tool filters can be specified inside a tool to hide a tool in the diagram palette depending on dynamic conditions. The 
-			<em>Elements To Listen</em> is evaluated in the context of the diagram&#8217;s semantic element, and should return a set of semantic elements. The 
-			<em>Precondition</em> is re-evaluated on each of these elements whenever a change occurs.
+			<a href="../general/ToolsSpecification.html">Refer to Tools specification</a>
 		</p>
 		<p><div style="display: none">
 			<br/>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
@@ -72,6 +73,7 @@ public class PaneBasedSelectionWizardCommandBuilder extends AbstractDiagramComma
      * 
      * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
      */
+    @Override
     public final Command buildCommand() {
         final DCommand result = createEnclosingCommand();
         final IInterpreter interpreter = InterpreterUtil.getInterpreter(containerView);
@@ -118,6 +120,8 @@ public class PaneBasedSelectionWizardCommandBuilder extends AbstractDiagramComma
         } else if (containerView instanceof DDiagram) {
             addRefreshTask((DDiagram) containerView, command, tool);
         }
+        Option<DDiagram> parentDiagram = new EObjectQuery(containerView).getParentDiagram();
+        command.getTasks().add(new ElementsToSelectTask(tool, interpreter, containerView.getTarget(), parentDiagram.get()));
     }
 
     private InitInterpreterVariablesTask buildInitVariablesTasks(final IInterpreter interpreter) {
@@ -158,6 +162,7 @@ public class PaneBasedSelectionWizardCommandBuilder extends AbstractDiagramComma
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
     }

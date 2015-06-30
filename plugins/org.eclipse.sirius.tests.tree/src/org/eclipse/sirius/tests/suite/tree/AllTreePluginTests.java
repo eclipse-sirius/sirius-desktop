@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010,2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,10 +22,12 @@ import org.eclipse.sirius.tests.api.tools.TreeItemDragAndDropToolTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemDragAndDropToolUsingRecordingCommandCompositionTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemEditionToolTest;
 import org.eclipse.sirius.tests.api.tools.TreeItemRefreshWithToolsTest;
+import org.eclipse.sirius.tests.unit.migration.InitializeElementsToSelectExpressionForTreeMigrationTest;
 import org.eclipse.sirius.tests.unit.tree.MappingHierarchyTableTest;
 import org.eclipse.sirius.tests.unit.tree.TreeItemOrderTests;
 import org.eclipse.sirius.tests.unit.tree.TreeRefreshTests;
 import org.eclipse.sirius.tests.unit.tree.TreeVariablesTest;
+import org.eclipse.sirius.tests.unit.tree.tools.SelectionInTreeAfterToolExecutionTest;
 
 /**
  * The designer main test suite for the tree component.
@@ -67,6 +69,8 @@ public class AllTreePluginTests extends TestCase {
         suite.addTestSuite(RefreshWhenSeveralEditorsOpenTest.class);
         suite.addTestSuite(TreeItemOrderTests.class);
         suite.addTestSuite(TreeItemRefreshWithToolsTest.class);
+        suite.addTestSuite(SelectionInTreeAfterToolExecutionTest.class);
+        suite.addTestSuite(InitializeElementsToSelectExpressionForTreeMigrationTest.class);
         return suite;
     }
 

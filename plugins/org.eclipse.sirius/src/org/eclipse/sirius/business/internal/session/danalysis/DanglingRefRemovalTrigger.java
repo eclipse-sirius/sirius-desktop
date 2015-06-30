@@ -81,7 +81,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
 
     /**
      * Filter {@link Notification}s which are not an attachment. An attachment
-     * is : an EObject being removed from the reference it is contained in.
+     * is : an EObject is attached from the reference it is contained in.
      */
     public static final Predicate<Notification> IS_ATTACHMENT = new Predicate<Notification>() {
 

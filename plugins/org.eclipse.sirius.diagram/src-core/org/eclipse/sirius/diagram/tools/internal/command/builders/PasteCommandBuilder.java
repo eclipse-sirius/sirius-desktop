@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -90,6 +91,7 @@ public class PasteCommandBuilder extends AbstractDiagramCommandBuilder {
      * 
      * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
      */
+    @Override
     public Command buildCommand() {
         if (permissionAuthority.canEditInstance(pasteTarget) && permissionAuthority.canEditInstance(droppedElement)) {
             /* Check the precondition of the tool */
@@ -103,6 +105,7 @@ public class PasteCommandBuilder extends AbstractDiagramCommandBuilder {
                 // to the DDiagram modifications
                 final DDiagram diagram = getDDiagram().get();
                 this.addRefreshTask(diagram, cmd, tool);
+                cmd.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(pasteTarget.getTarget()), pasteTarget.getTarget(), diagram));
                 return cmd;
             }
 
@@ -185,6 +188,7 @@ public class PasteCommandBuilder extends AbstractDiagramCommandBuilder {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getEnclosingCommandLabel() {
         return tool != null ? new IdentifiedElementQuery(tool).getLabel() : "Paste";
     }

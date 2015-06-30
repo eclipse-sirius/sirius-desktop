@@ -12,10 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.compute.variable;
 
 import java.util.List;
 
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -26,7 +23,6 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
  * Verify that all mapping object (container, node, listElement, begin, center
@@ -96,7 +92,7 @@ public class ComputeAvailableVariableLabelTest extends SiriusDiagramTestCase {
             }
         }
         assertEquals("Creation Container tool does not create new Container", 3, nbContainer);
-        assertTrue("Creation Container tool fail", applyContainerCreationTool("Class", diagram));
+        assertTrue("Creation Container tool fail", applyContainerCreationTool("Class", diagram, diagram));
         nbContainer = 0;
         for (DDiagramElement elements : diagram.getDiagramElements()) {
             assertTrue("The diagram element does not contain label in the name of the representation", elements.getName().contains(representationName));
@@ -207,27 +203,5 @@ public class ComputeAvailableVariableLabelTest extends SiriusDiagramTestCase {
      */
     protected String getModelerPath() {
         return DEFAULT_MODELER_PATH;
-    }
-
-    /**
-     * Apply a container creation tool on a diagram.
-     * 
-     * @param toolName
-     *            the tool name
-     * @param diagram
-     *            the diagram
-     * @return <code>true</code> if the tool could be applied,
-     *         <code>false</code> otherwise
-     */
-    protected final boolean applyContainerCreationTool(final String toolName, final DDiagram diagram) {
-        final AbstractToolDescription tool = getTool(diagram, toolName);
-        if (tool != null) {
-            final Command command = getCommand(diagram, tool);
-            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(diagram);
-            boolean canExecute = command.canExecute();
-            domain.getCommandStack().execute(command);
-            return canExecute;
-        }
-        return false;
     }
 }

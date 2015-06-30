@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.ui.resource.ISiriusMessages;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DModel;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -120,6 +121,7 @@ public class DragAndDropCommandBuilder extends AbstractDiagramCommandBuilder {
      * 
      * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
      */
+    @Override
     public Command buildCommand() {
         if (permissionAuthority.canEditInstance(container) && permissionAuthority.canEditInstance(dragSemantic ? droppedElement : diagramElement)
         // Layouting mode on diagrams
@@ -151,6 +153,7 @@ public class DragAndDropCommandBuilder extends AbstractDiagramCommandBuilder {
                         // to the DDiagram modifications
                         final DDiagram diagram = getDDiagram().get();
                         this.addRefreshTask(diagram, cmd, tool);
+                        cmd.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(semanticContainer), semanticContainer, diagram));
                         return cmd;
                     }
                 }
@@ -251,6 +254,7 @@ public class DragAndDropCommandBuilder extends AbstractDiagramCommandBuilder {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
     }

@@ -71,6 +71,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
 import org.eclipse.sirius.ui.tools.internal.editor.DescriptionFileChangedNotifier;
+import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
@@ -175,6 +176,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
     private DTableMenuListener actualMenuListener;
 
+    private SelectDRepresentationElementsListener selectTableElementsListener;
+
     /**
      * The constructor.
      * 
@@ -225,10 +228,58 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         final int style = SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.MULTI;
         treeViewer = new DTableTreeViewer(composite, style, this);
         // Add a focus listener to deactivate the EMF actions on the Tree
-        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
+        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(treeEditor, treeViewer.getTree()));
         initializeDragSupport();
         sortListener = new DLinesSorter(getEditingDomain(), getEditor().getTableModel());
         // 1st column with line labels
+        TreeViewerColumn headerTreeColumn = addFirstColumn(treeLayout);
+
+        // Next columns
+        int index = 1;
+        for (final DColumn column : ((DTable) dRepresentation).getColumns()) {
+            addNewColumn(column, index++);
+        }
+        treeViewer.setUseHashlookup(true);
+        tableUIUpdater = new TableUIUpdater(this, dRepresentation);
+        selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, false);
+        descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
+        dTableContentProvider = new DTableContentProvider();
+        treeViewer.setContentProvider(dTableContentProvider);
+        // The input for the table viewer is the instance of DTable
+        treeViewer.setInput(dRepresentation);
+
+        treeViewer.getTree().setLinesVisible(true);
+        treeViewer.getTree().setHeaderVisible(true);
+        fillMenu();
+        triggerColumnSelectedColumn();
+
+        // Expands the line according to the model
+        treeViewer.setExpandedElements(TableHelper.getExpandedLines((DTable) dRepresentation).toArray());
+
+        // Pack after expand for resize column on all subLines
+        for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
+            // Do the pack only if the ColumnData is a ColumnWeightData
+            final Object data = treeViewer.getTree().getColumn(i).getData(AbstractDTableViewerManager.LAYOUT_DATA);
+            if (data instanceof ColumnWeightData) {
+                treeViewer.getTree().getColumn(i).pack();
+            }
+        }
+        treeViewer.addTreeListener(tableViewerListener);
+        // Manage height of the lines, selected colors,
+        triggerCustomDrawingTreeItems();
+
+        // Create a new CellFocusManager
+        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
+        // Create a TreeViewerEditor with focusable cell
+        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
+                | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        // Set after the setInput to avoid layout call it several time for
+        // nothing at opening
+        headerTreeColumn.getColumn().addControlListener(tableViewerListener);
+        initializeKeyBindingSupport();
+    }
+
+    private TreeViewerColumn addFirstColumn(TreeColumnLayout treeLayout) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
         final TreeViewerColumn headerTreeColumn = new TreeViewerColumn(treeViewer, SWT.CENTER, 0);
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
@@ -272,48 +323,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         headerTreeColumn.getColumn().addListener(SWT.Selection, sortListener);
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
 
-        // Next columns
-        int index = 1;
-        for (final DColumn column : ((DTable) dRepresentation).getColumns()) {
-            addNewColumn(column, index++);
-        }
-        treeViewer.setUseHashlookup(true);
-        tableUIUpdater = new TableUIUpdater(this, dRepresentation);
-        descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
-        dTableContentProvider = new DTableContentProvider();
-        treeViewer.setContentProvider(dTableContentProvider);
-        // The input for the table viewer is the instance of DTable
-        treeViewer.setInput(dRepresentation);
-
-        treeViewer.getTree().setLinesVisible(true);
-        treeViewer.getTree().setHeaderVisible(true);
-        fillMenu();
-        triggerColumnSelectedColumn();
-
-        // Expands the line according to the model
-        treeViewer.setExpandedElements(TableHelper.getExpandedLines((DTable) dRepresentation).toArray());
-
-        // Pack after expand for resize column on all subLines
-        for (int i = 0; i < treeViewer.getTree().getColumnCount(); i++) {
-            // Do the pack only if the ColumnData is a ColumnWeightData
-            final Object data = treeViewer.getTree().getColumn(i).getData(AbstractDTableViewerManager.LAYOUT_DATA);
-            if (data instanceof ColumnWeightData) {
-                treeViewer.getTree().getColumn(i).pack();
-            }
-        }
-        treeViewer.addTreeListener(tableViewerListener);
-        // Manage height of the lines, selected colors,
-        triggerCustomDrawingTreeItems();
-
-        // Create a new CellFocusManager
-        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
-        // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
-                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
-        // Set after the setInput to avoid layout call it several time for
-        // nothing at opening
-        headerTreeColumn.getColumn().addControlListener(tableViewerListener);
-        initializeKeyBindingSupport();
+        return headerTreeColumn;
     }
 
     private void initializeKeyBindingSupport() {
@@ -345,8 +355,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table.
-     * <BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
      * Cached the actions of creation and deletion in order to increase
      * performance and not calculate it on each contextual menu.<BR>
      * Problem for action on column header :
@@ -374,7 +383,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 final Menu menu = mgr.createContextMenu(treeViewer.getControl());
                 treeViewer.getControl().setMenu(menu);
                 // Add this line to have others contextual menus
-                tableEditor.getSite().registerContextMenu(mgr, treeViewer);
+                treeEditor.getSite().registerContextMenu(mgr, treeViewer);
             }
             getCreateLineMenu().update(createActionsForTable);
             getCreateTargetColumnMenu().update(createActionsForTable);
@@ -658,11 +667,11 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
 
         if (newColumn instanceof DFeatureColumn) {
-            treeViewerColumn.setEditingSupport(
-                    new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(), (AbstractDTableEditor) tableEditor));
+            treeViewerColumn.setEditingSupport(new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(),
+                    (AbstractDTableEditor) treeEditor));
         } else if (newColumn instanceof DTargetColumn) {
-            treeViewerColumn.setEditingSupport(
-                    new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory, (AbstractDTableEditor) tableEditor));
+            treeViewerColumn.setEditingSupport(new DTargetColumnEditingSupport(treeViewer, (DTargetColumn) newColumn, getEditingDomain(), getAccessor(), tableCommandFactory,
+                    (AbstractDTableEditor) treeEditor));
         }
         treeViewerColumn.getColumn().setData(TABLE_COLUMN_DATA, newColumn);
         treeViewerColumn.getColumn().addControlListener(tableViewerListener);
@@ -694,7 +703,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      */
     @Override
     public AbstractDTableEditor getEditor() {
-        return (AbstractDTableEditor) tableEditor;
+        return (AbstractDTableEditor) treeEditor;
     }
 
     /**
@@ -726,6 +735,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         descriptionFileChangedNotifier = null;
         tableUIUpdater.dispose();
         tableUIUpdater = null;
+        selectTableElementsListener.dispose();
+        selectTableElementsListener = null;
         dTableContentProvider.dispose();
         dTableContentProvider = null;
         super.dispose();

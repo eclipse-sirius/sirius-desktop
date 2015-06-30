@@ -38,5 +38,12 @@
             class="org.eclipse.sirius.tree.business.internal.dialect.TreeMetamodelsProvider">
       </descriptorprovider>
    </extension>
+   <extension
+         point="org.eclipse.sirius.migrationParticipant">
+      <participant
+            class="org.eclipse.sirius.tree.business.internal.migration.description.InitializeCreationToolElementsToSelectExpressionParticipant"
+            kind="VSM">
+      </participant>
+   </extension>
 
 </plugin>

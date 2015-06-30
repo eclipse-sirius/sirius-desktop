@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
@@ -99,6 +100,8 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
     protected void addPostOperationTasks(final DCommand command, IInterpreter interpreter) {
         if (repElement instanceof DDiagramElement) {
             addRefreshTask((DDiagramElement) repElement, command, directEditTool);
+            Option<DDiagram> parentDiagram = new EObjectQuery(repElement).getParentDiagram();
+            command.getTasks().add(new ElementsToSelectTask(directEditTool, interpreter, repElement.getTarget(), parentDiagram.get()));
         }
     }
 

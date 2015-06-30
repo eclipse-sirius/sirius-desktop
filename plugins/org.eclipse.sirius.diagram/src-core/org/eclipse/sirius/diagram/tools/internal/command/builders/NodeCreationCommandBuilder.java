@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,12 +26,14 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.helper.task.CreateDNodeTask;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
@@ -96,6 +98,7 @@ public class NodeCreationCommandBuilder extends AbstractDiagramCommandBuilder {
      * 
      * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
      */
+    @Override
     public Command buildCommand() {
         if (createInDiagram) {
             return buildInDiagramCommand();
@@ -111,6 +114,8 @@ public class NodeCreationCommandBuilder extends AbstractDiagramCommandBuilder {
                 final DCommand result = buildCreateNodeCommandFromTool(diagramElement.getTarget(), diagramElement);
                 result.getTasks().add(buildCreateNodeTask(result));
                 addRefreshTask(diagramElement, result, tool);
+                Option<DDiagram> parentDiagram = new EObjectQuery(diagramElement).getParentDiagram();
+                result.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(diagramElement.getTarget()), diagramElement.getTarget(), parentDiagram.get()));
                 return result;
             }
         }
@@ -127,6 +132,7 @@ public class NodeCreationCommandBuilder extends AbstractDiagramCommandBuilder {
                 final DCommand result = buildCreateNodeCommandFromTool(model, diagram);
                 result.getTasks().add(new CreateDNodeTask(tool, result, modelAccessor, diagram));
                 addRefreshTask(diagram, result, tool);
+                result.getTasks().add(new ElementsToSelectTask(tool, InterpreterUtil.getInterpreter(model), model, diagram));
                 return result;
             }
         }
@@ -203,6 +209,7 @@ public class NodeCreationCommandBuilder extends AbstractDiagramCommandBuilder {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
     }

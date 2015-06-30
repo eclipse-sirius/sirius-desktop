@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -256,8 +256,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
             @Override
             public void run() {
-                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Viewpoints selection",
-                        "The current diagram requires some viewpoints selected (" + description + "), because some activated layers are contributed by these viewpoints");
+                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Viewpoints selection", "The current diagram requires some viewpoints selected (" + description
+                        + "), because some activated layers are contributed by these viewpoints");
             }
 
         });
@@ -643,7 +643,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
      */
     @Override
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
-        if (dialectEditor instanceof DiagramEditor && selection != null && !selection.isEmpty()) {
+        if (dialectEditor instanceof DiagramEditor && selection != null) {
             DiagramEditor diagramEditor = (DiagramEditor) dialectEditor;
             List<EditPart> selectedParts = Lists.newArrayList();
             final EditPartViewer graphicalViewer = diagramEditor.getDiagramGraphicalViewer();
@@ -752,8 +752,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
         if (parentDiagramDescription.some()) {
             parentPackage = parentDiagramDescription.get().eClass().getEPackage();
         } else {
-            Option<EObject> parentDiagramExtensionDescription = new EObjectQuery(eObject)
-                    .getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramExtensionDescription());
+            Option<EObject> parentDiagramExtensionDescription = new EObjectQuery(eObject).getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
+                    .getDiagramExtensionDescription());
             if (parentDiagramExtensionDescription.some()) {
                 parentPackage = parentDiagramExtensionDescription.get().eClass().getEPackage();
             }
