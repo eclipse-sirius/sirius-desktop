@@ -1088,7 +1088,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(targetEditPartBounds.getRight(), bracketEdgePointListAfterReconnect.getPoint(5));
 
         // Undo
-        undo();
+        undo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
         // Check
@@ -1103,7 +1103,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(bracketEdgePointList.getPoint(5), bracketEdgePointListAfterUndo.getPoint(5));
 
         // Redo
-        redo();
+        redo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
         // Check
