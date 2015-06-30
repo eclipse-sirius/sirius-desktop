@@ -836,6 +836,15 @@ public final class StyleHelper {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
+
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE.getName())) {
+            style.setBorderLineStyle(previousStyle.get().getBorderLineStyle());
+            style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE.getName());
+        } else {
+            if (!style.getBorderLineStyle().equals(description.getBorderLineStyle()) && !style.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE.getName())) {
+                style.setBorderLineStyle(description.getBorderLineStyle());
+            }
+        }
     }
 
     private void affectStyle(final AbstractDNode container, final NodeStyle newStyle) {
