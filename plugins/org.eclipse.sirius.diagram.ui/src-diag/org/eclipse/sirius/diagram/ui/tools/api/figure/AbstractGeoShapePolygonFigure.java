@@ -74,7 +74,8 @@ public abstract class AbstractGeoShapePolygonFigure extends DefaultSizeNodeFigur
         g.setBackgroundColor(getBackgroundColor());
         g.setForegroundColor(getForegroundColor());
         g.setLineWidth(getLineWidth());
-        
+        g.setLineStyle(getLineStyle());
+
         final PointList points = calculatePoints(new Rectangle(getBounds()));
         g.fillPolygon(points);
         g.drawPolygon(points);

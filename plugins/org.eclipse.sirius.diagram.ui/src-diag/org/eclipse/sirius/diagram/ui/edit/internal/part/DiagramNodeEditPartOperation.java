@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,10 +20,12 @@ import org.eclipse.draw2d.Shape;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
@@ -168,6 +170,8 @@ public final class DiagramNodeEditPartOperation {
             lineBorder.setColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderColor));
         }
 
+        refreshBorderLineStyle(borderedStyle, styledFigure, lineBorder);
+
         if (borderSize == 0) {
             /* NoteFigure in GMF does not expect a null figure since GMF 2.2 */
             if (!(styledFigure instanceof NoteFigure)) {
@@ -179,6 +183,17 @@ public final class DiagramNodeEditPartOperation {
         } else if (styledFigure instanceof Shape) {
             ((Shape) styledFigure).setOutline(true);
         }
+    }
+
+    private static void refreshBorderLineStyle(final BorderedStyle borderedStyle, final StyledFigure styledFigure, LineBorder lineBorder) {
+        final LineStyle borderLineStyle = borderedStyle.getBorderLineStyle();
+        if (styledFigure instanceof Shape) {
+            DiagramElementEditPartOperation.setLineStyle((Shape) styledFigure, borderLineStyle);
+        } else if (styledFigure instanceof NodeFigure) {
+            DiagramElementEditPartOperation.setLineStyle((NodeFigure) styledFigure, borderLineStyle);
+        }
+
+        DiagramElementEditPartOperation.setLineStyle(lineBorder, borderLineStyle);
     }
 
     /**

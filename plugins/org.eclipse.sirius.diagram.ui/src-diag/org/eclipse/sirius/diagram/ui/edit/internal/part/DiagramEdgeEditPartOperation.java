@@ -20,7 +20,6 @@ import java.util.Map;
 import org.eclipse.draw2d.AbsoluteBendpoint;
 import org.eclipse.draw2d.Bendpoint;
 import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolygonDecoration;
 import org.eclipse.draw2d.Polyline;
@@ -41,6 +40,7 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -55,7 +55,6 @@ import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
@@ -87,9 +86,6 @@ public final class DiagramEdgeEditPartOperation {
      * margin is needed because the zoom can modify coordinates.
      */
     private static final int ZOOM_ERROR_MARGIN = 4;
-
-    /** The dashes. */
-    private static final int[] DASH_STYLE = new int[] { 5, 5 };
 
     /**
      * Avoid instanciation
@@ -320,44 +316,25 @@ public final class DiagramEdgeEditPartOperation {
      */
     public static void refreshLineStyle(final IDiagramEdgeEditPart self) {
         final EObject semanticElement = self.resolveSemanticElement();
-        if (semanticElement instanceof DEdge) {
+        PolylineConnectionEx polylineConnectionFigure = self.getPolylineConnectionFigure();
+        
+        if (semanticElement instanceof DEdge && polylineConnectionFigure != null) {
             final DEdge edge = (DEdge) semanticElement;
             if (edge.getOwnedStyle() != null) {
                 final EdgeStyle style = edge.getOwnedStyle();
-
-                // Line style.
-
-                final int lineStyleValue = style.getLineStyle().getValue();
-
-                switch (lineStyleValue) {
-                case LineStyle.SOLID:
-                    self.getPolylineConnectionFigure().setLineStyle(Graphics.LINE_SOLID);
-                    break;
-                case LineStyle.DOT:
-                    self.getPolylineConnectionFigure().setLineStyle(Graphics.LINE_DOT);
-                    break;
-                case LineStyle.DASH:
-                    self.getPolylineConnectionFigure().setLineDash(DASH_STYLE);
-                    self.getPolylineConnectionFigure().setLineStyle(Graphics.LINE_CUSTOM);
-                    break;
-                case LineStyle.DASH_DOT:
-                    self.getPolylineConnectionFigure().setLineStyle(Graphics.LINE_DASHDOT);
-                    break;
-                default:
-                    break;
-                }
+                DiagramElementEditPartOperation.setLineStyle(polylineConnectionFigure, style.getLineStyle());
             }
             // We don't change the line width to keep the selected effect.
             if (!DiagramEdgeEditPartOperation.isSelected(self) && !DiagramEdgeEditPartOperation.isLabelSelected(self)) {
                 // Width of the line.
                 final int lineWidth = DiagramEdgeEditPartOperation.getLineWidth(edge);
-                if (lineWidth != 0 || (lineWidth == 0 && self.getPolylineConnectionFigure().getLineWidth() != 1)) {
-                    self.getPolylineConnectionFigure().setLineWidth(DiagramEdgeEditPartOperation.getLineWidth(edge));
+                if (lineWidth != 0 || (lineWidth == 0 && polylineConnectionFigure.getLineWidth() != 1)) {
+                    polylineConnectionFigure.setLineWidth(DiagramEdgeEditPartOperation.getLineWidth(edge));
                 }
             }
         }
     }
-
+    
     /**
      * Return the computed line width.
      * 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,8 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LineBorder;
+import org.eclipse.draw2d.Shape;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -25,6 +27,7 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -39,6 +42,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
@@ -60,6 +64,7 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 
@@ -71,6 +76,9 @@ import com.google.common.collect.Iterables;
  * @author ymortier
  */
 public final class DiagramElementEditPartOperation {
+
+    /** The dashes. */
+    private static final float[] DASH_STYLE = new float[] { 5, 5 };
 
     /**
      * Avoid instantiation.
@@ -540,5 +548,96 @@ public final class DiagramElementEditPartOperation {
             fontStyle = (FontStyle) parent.getNotationView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
         }
         return fontStyle;
+    }
+
+    /**
+     * Sets the SWT line style of the given figure. The SWT line style is
+     * computed from the Sirius VSM defined line style.
+     * 
+     * @param figure
+     *            the figure to update
+     * @param lineStyle
+     *            the {@link LineStyle} to set.
+     */
+    public static void setLineStyle(Shape figure, final LineStyle lineStyle) {
+        // Line style.
+        final int lineStyleValue = lineStyle.getValue();
+        switch (lineStyleValue) {
+        case LineStyle.SOLID:
+            figure.setLineStyle(SWT.LINE_SOLID);
+            break;
+        case LineStyle.DOT:
+            figure.setLineStyle(SWT.LINE_DOT);
+            break;
+        case LineStyle.DASH:
+            figure.setLineDash(DASH_STYLE);
+            figure.setLineStyle(SWT.LINE_CUSTOM);
+            break;
+        case LineStyle.DASH_DOT:
+            figure.setLineStyle(SWT.LINE_DASHDOT);
+            break;
+        default:
+            break;
+        }
+    }
+
+    /**
+     * Sets the SWT line style of the given figure. The SWT line style is
+     * computed from the Sirius VSM defined line style.
+     * 
+     * @param figure
+     *            the figure to update
+     * @param lineStyle
+     *            the {@link LineStyle} to set.
+     */
+    public static void setLineStyle(NodeFigure figure, final LineStyle lineStyle) {
+        // Line style.
+        final int lineStyleValue = lineStyle.getValue();
+        switch (lineStyleValue) {
+        case LineStyle.SOLID:
+            figure.setLineStyle(SWT.LINE_SOLID);
+            break;
+        case LineStyle.DOT:
+            figure.setLineStyle(SWT.LINE_DOT);
+            break;
+        case LineStyle.DASH:
+            figure.setLineStyle(SWT.LINE_DASH);
+            break;
+        case LineStyle.DASH_DOT:
+            figure.setLineStyle(SWT.LINE_DASHDOT);
+            break;
+        default:
+            break;
+        }
+    }
+
+    /**
+     * Sets the SWT line style of the given border. The SWT line style is
+     * computed from the Sirius VSM defined line style.
+     * 
+     * @param border
+     *            the border to update
+     * @param lineStyle
+     *            the {@link LineStyle} to set.
+     */
+    public static void setLineStyle(LineBorder border, final LineStyle lineStyle) {
+        // Line style.
+        final int lineStyleValue = lineStyle.getValue();
+        switch (lineStyleValue) {
+        case LineStyle.SOLID:
+            border.setStyle(SWT.LINE_SOLID);
+            break;
+        case LineStyle.DOT:
+            border.setStyle(SWT.LINE_DOT);
+            break;
+        case LineStyle.DASH:
+            border.setStyle(SWT.LINE_DASH);
+            break;
+        case LineStyle.DASH_DOT:
+            border.setStyle(SWT.LINE_DASHDOT);
+            break;
+        default:
+            break;
+        }
     }
 }

@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
@@ -249,19 +250,20 @@ public final class DiagramContainerEditPartOperation {
     }
 
     private static ViewNodeContainerFigureDesc refreshBorder(final AbstractDiagramElementContainerEditPart self, final ViewNodeContainerFigureDesc primaryShape, final ContainerStyle style) {
+        final LineStyle borderLineStyle = style.getBorderLineStyle();
         int borderSize = 0;
         if (style != null && style.getBorderSize() != null) {
             borderSize = style.getBorderSize().intValue();
         }
         if (primaryShape instanceof Shape) {
-            ((Shape) primaryShape).setLineWidth(borderSize);
-            if (borderSize == 0) {
-                ((Shape) primaryShape).setOutline(false);
-            } else {
-                ((Shape) primaryShape).setOutline(true);
-            }
+            Shape shape = (Shape) primaryShape;
+            shape.setLineWidth(borderSize);
+            shape.setOutline(borderSize > 0);
+            DiagramElementEditPartOperation.setLineStyle(shape, borderLineStyle);
         } else if (primaryShape instanceof NodeFigure) {
-            ((NodeFigure) primaryShape).setLineWidth(borderSize);
+            NodeFigure nodeFigure = (NodeFigure) primaryShape;
+            nodeFigure.setLineWidth(borderSize);
+            DiagramElementEditPartOperation.setLineStyle(nodeFigure, borderLineStyle);
         }
 
         // Do not add the container label offset margin if there is no
@@ -272,12 +274,13 @@ public final class DiagramContainerEditPartOperation {
         }
 
         if (primaryShape != null && primaryShape.getBorder() instanceof LineBorder) {
-            ((LineBorder) primaryShape.getBorder()).setWidth(borderSize);
-            if (primaryShape.getBorder() instanceof OneLineMarginBorder) {
-                OneLineMarginBorder border = (OneLineMarginBorder) primaryShape.getBorder();
-                border.setMargin(labelOffset, 0, 0, 0);
-                if (self.isRegion() && border instanceof RoundedCornerMarginBorder) {
-                    ((RoundedCornerMarginBorder) border).setCornerDimensions(getCornerDimension(self));
+            LineBorder lineBorder = (LineBorder) primaryShape.getBorder();
+            lineBorder.setWidth(borderSize);
+            DiagramElementEditPartOperation.setLineStyle(lineBorder, borderLineStyle);
+            if (lineBorder instanceof OneLineMarginBorder) {
+                ((OneLineMarginBorder) lineBorder).setMargin(labelOffset, 0, 0, 0);
+                if (self.isRegion() && lineBorder instanceof RoundedCornerMarginBorder) {
+                    ((RoundedCornerMarginBorder) lineBorder).setCornerDimensions(getCornerDimension(self));
                 }
             }
         } else if (primaryShape != null && primaryShape.getBorder() instanceof MarginBorder) {
