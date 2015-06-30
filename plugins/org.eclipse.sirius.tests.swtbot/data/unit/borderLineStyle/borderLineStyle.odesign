@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="My" version="10.1.0.201507271600">
+  <ownedViewpoints name="borderLineStyle" modelFileExtension="*.ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" domainClass="ecore.EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="ImageNode" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="feature:name" labelExpression="C1" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="unfoundImage">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Diamond" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="feature:name" labelExpression="C2" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Dot" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:DotDescription" borderSizeComputationExpression="feature:name" labelExpression="C3" sizeComputationExpression="5" resizeKind="NSEW" strokeSizeComputationExpression="4">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Ellipse" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="feature:name" labelExpression="C4" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Gauge" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:GaugeCompositeStyleDescription" borderSizeComputationExpression="feature:name" labelExpression="C5" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <sections maxValueExpression="100" valueExpression="30">
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </sections>
+            <sections maxValueExpression="100" valueExpression="70">
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </sections>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Note" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:NoteDescription" borderSizeComputationExpression="feature:name" labelExpression="C6" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Square" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="feature:name" labelExpression="C7" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="BasicShape_Square" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="feature:name" labelExpression="C8" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="BasicShape_Stroke" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="feature:name" labelExpression="C9" sizeComputationExpression="5" resizeKind="NSEW" shape="stroke">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="BasicShape_Triangle" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="feature:name" labelExpression="C10" sizeComputationExpression="5" resizeKind="NSEW" shape="triangle">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="BasicShape_Dot" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="feature:name" labelExpression="C11" sizeComputationExpression="5" resizeKind="NSEW" shape="dot">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="BasicShape_Ring" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="feature:name" labelExpression="C12" sizeComputationExpression="5" resizeKind="NSEW" shape="ring">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Edge" semanticCandidatesExpression="feature:eClassifiers" sourceMapping="//@ownedViewpoints[name='borderLineStyle']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='ImageContainer']" targetMapping="//@ownedViewpoints[name='borderLineStyle']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Gradient']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EClass" useDomainElement="true">
+          <style sizeComputationExpression="feature:name">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="C16">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Gradient" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="feature:name" labelExpression="C13">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Parallelogram" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EClass">
+          <style xsi:type="style:ShapeContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="feature:name" labelExpression="C14">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="ImageContainer" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EClass">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="feature:name" labelExpression="C15" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="unfoundImage">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="Dot">
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="borderLineStyle" value="[LineStyle::dot/]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="lineStyle" value="[LineStyle::dot/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </additionalLayers>
+      <additionalLayers name="Dash_Dot">
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="borderLineStyle" value="[LineStyle::dash_dot/]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="lineStyle" value="[LineStyle::dash_dot/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </additionalLayers>
+      <additionalLayers name="Dash">
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="borderLineStyle" value="[LineStyle::dash/]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="lineStyle" value="[LineStyle::dash/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
