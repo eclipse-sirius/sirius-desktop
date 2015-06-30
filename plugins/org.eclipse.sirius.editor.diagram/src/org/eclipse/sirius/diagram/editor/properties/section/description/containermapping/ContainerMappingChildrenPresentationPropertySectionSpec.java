@@ -15,6 +15,8 @@ import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.Button;
@@ -55,31 +57,41 @@ public class ContainerMappingChildrenPresentationPropertySectionSpec extends Con
         super.makeWrittable();
 
         if (button != null && eObject instanceof ContainerMapping) {
-            boolean stackButtonEnabled = shouldEnableCompartiments((ContainerMapping) eObject);
+            Option<String> stackButtonDisabled = shouldDisableCompartiments((ContainerMapping) eObject);
 
             String hStackButtonText = getText(ContainerLayout.HORIZONTAL_STACK);
             String vStackButtonText = getText(ContainerLayout.VERTICAL_STACK);
             for (Button b : button) {
                 if (hStackButtonText.equals(b.getText()) || vStackButtonText.equals(b.getText())) {
-                    b.setEnabled(stackButtonEnabled);
+                    b.setEnabled(!stackButtonDisabled.some());
+                }
+            }
+
+            if (group != null) {
+                if (stackButtonDisabled.some()) {
+                    group.setToolTipText(stackButtonDisabled.get());
+                } else {
+                    group.setToolTipText(null);
                 }
             }
         }
     }
 
-    private boolean shouldEnableCompartiments(ContainerMapping containerMapping) {
+    private Option<String> shouldDisableCompartiments(ContainerMapping containerMapping) {
         ContainerMappingQuery query = new ContainerMappingQuery(containerMapping);
 
-        boolean enableCompartiments = !query.isRegion();
-        if (enableCompartiments) {
+        String message = query.isRegion() ?  "A Region mapping cannot be a RegionContainer mapping.": null;
+        if (message == null) {
             for (ContainerMapping subContainer : containerMapping.getAllContainerMappings()) {
                 ContainerMappingQuery subQuery = new ContainerMappingQuery(subContainer);
-                enableCompartiments = enableCompartiments && !subQuery.isRegionContainer();
+                if (message == null && subQuery.isRegionContainer()) {
+                message = "The mapping contains RegionContainer sub mappings, they cannot be Region and RegionContainer.";
+                }
             }
         }
-        if (enableCompartiments) {
-            enableCompartiments = enableCompartiments && containerMapping.getAllNodeMappings().isEmpty();
+        if (message == null && !containerMapping.getAllNodeMappings().isEmpty()) {
+            message = "The mapping contains node mappings, it cannot be a RegionContainer mapping.";
         }
-        return enableCompartiments;
+        return Options.newSome(message);
     }
 }
