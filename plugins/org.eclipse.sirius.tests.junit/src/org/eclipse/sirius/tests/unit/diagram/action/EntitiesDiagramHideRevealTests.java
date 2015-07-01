@@ -224,7 +224,6 @@ public class EntitiesDiagramHideRevealTests extends SiriusDiagramTestCase implem
         assertEquals("[HIDE] Bad number of diagram elements.", NB_ELTS, newDiagram.getOwnedDiagramElements().size());
         assertEquals("[HIDE] Bad number of visible diagram elements.", NB_VISIBLE_ELTS + 2, getNbVisibleDiagramElements(newDiagram));
         assertEquals("[HIDE] Bad number of visible diagram elements.", NB_VISIBLE_ELTS + 2, getNbVisibleGMFDiagramElements(newDiagram));
-
     }
 
     private DDiagram copyDiagram(final String name, final DDiagram diagramToCopy) {
@@ -471,6 +470,8 @@ public class EntitiesDiagramHideRevealTests extends SiriusDiagramTestCase implem
         hideAction = null;
         revealAction = null;
         diagramEditPart = null;
+        session.close(new NullProgressMonitor());
+        session = null;
         super.tearDown();
     }
 }

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.diagram.style;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
@@ -57,11 +58,13 @@ public class EdgeSizeComputationVariableTest extends SiriusDiagramTestCase {
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, defaultProgress);
         TestsUtil.synchronizationWithUIThread();
     }
-    
+
     @Override
     protected void tearDown() throws Exception {
         diagram = null;
         editor = null;
+        session.close(new NullProgressMonitor());
+        session = null;
         super.tearDown();
     }
 

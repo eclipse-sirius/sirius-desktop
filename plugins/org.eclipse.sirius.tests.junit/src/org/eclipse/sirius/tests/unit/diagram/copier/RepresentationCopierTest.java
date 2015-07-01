@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.tests.unit.diagram.modelers.uml.UML2ModelerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -75,10 +76,16 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
         assertEquals(INITIAL_USECASE_DNODE_NUMBER, getNumberOfDiagramElements(originalUseCaseDiagram));
 
         final IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, originalDiagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        session.save(new NullProgressMonitor());
         DialectUIManager.INSTANCE.closeEditor(part, true);
+        TestsUtil.synchronizationWithUIThread();
 
         final IEditorPart part2 = DialectUIManager.INSTANCE.openEditor(session, originalUseCaseDiagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        session.save(new NullProgressMonitor());
         DialectUIManager.INSTANCE.closeEditor(part2, true);
+        TestsUtil.synchronizationWithUIThread();
 
         originalGMFDiagram = getGMFDiagram(originalDiagram, session);
         assertEquals(INITIAL_NODE_NUMBER, numberOfNodes(originalGMFDiagram));
@@ -206,6 +213,7 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
         final Diagram gmfCopy = getGMFDiagram(copy, session);
 
         final Predicate<View> elementIsUnsetPredicate = new Predicate<View>() {
+            @Override
             public boolean apply(final View input) {
                 if (!input.isSetElement())
                     return true;
