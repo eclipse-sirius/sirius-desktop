@@ -266,11 +266,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//GaugeCompositeStyle/sections"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//BorderedStyle">
-      <genFeatures property="None" createChild="false" propertyCategory="Border" propertyDescription=""
+      <genFeatures createChild="false" propertyCategory="Border" propertyDescription=""
           ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderSize"/>
-      <genFeatures createChild="false" propertyCategory="Border" ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderSizeComputationExpression"/>
+      <genFeatures property="None" createChild="false" propertyCategory="Border" ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderSizeComputationExpression"/>
       <genFeatures createChild="false" propertyCategory="Border" propertyDescription=""
           ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderColor"/>
+      <genFeatures createChild="false" propertyCategory="Border" ecoreFeature="ecore:EAttribute diagram.ecore#//BorderedStyle/borderLineStyle"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//Note">
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//Note/color"/>
@@ -618,6 +619,8 @@
           <genFeatures createChild="false" propertyCategory="Border" propertyDescription="Expression returning the size of the border."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/BorderedStyleDescription/borderSizeComputationExpression"/>
           <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference diagram.ecore#//description/style/BorderedStyleDescription/borderColor"/>
+          <genFeatures createChild="false" propertyCategory="Border" propertyDescription="The style of the border line."
+              ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/BorderedStyleDescription/borderLineStyle"/>
         </genClasses>
         <genClasses image="false" ecoreClass="diagram.ecore#//description/style/NodeStyleDescription">
           <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/NodeStyleDescription/sizeComputationExpression"/>

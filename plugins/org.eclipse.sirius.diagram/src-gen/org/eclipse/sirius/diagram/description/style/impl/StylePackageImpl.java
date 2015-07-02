@@ -349,6 +349,16 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * @generated
      */
     @Override
+    public EAttribute getBorderedStyleDescription_BorderLineStyle() {
+        return (EAttribute) borderedStyleDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EClass getNodeStyleDescription() {
         return nodeStyleDescriptionEClass;
     }
@@ -1117,6 +1127,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         borderedStyleDescriptionEClass = createEClass(StylePackage.BORDERED_STYLE_DESCRIPTION);
         createEAttribute(borderedStyleDescriptionEClass, StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION);
         createEReference(borderedStyleDescriptionEClass, StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR);
+        createEAttribute(borderedStyleDescriptionEClass, StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE);
 
         nodeStyleDescriptionEClass = createEClass(StylePackage.NODE_STYLE_DESCRIPTION);
         createEAttribute(nodeStyleDescriptionEClass, StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION);
@@ -1295,6 +1306,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         initEReference(getBorderedStyleDescription_BorderColor(), theDescriptionPackage_1.getColorDescription(), null, "borderColor", null, 1, 1, BorderedStyleDescription.class,
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBorderedStyleDescription_BorderLineStyle(), theDiagramPackage.getLineStyle(), "borderLineStyle", "solid", 0, 1, BorderedStyleDescription.class, !EPackageImpl.IS_TRANSIENT,
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(nodeStyleDescriptionEClass, NodeStyleDescription.class, "NodeStyleDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNodeStyleDescription_SizeComputationExpression(), theDescriptionPackage_1.getInterpretedExpression(), "sizeComputationExpression", "3", 0, 1, NodeStyleDescription.class,

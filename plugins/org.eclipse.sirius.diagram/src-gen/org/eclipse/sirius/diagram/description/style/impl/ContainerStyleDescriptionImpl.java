@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.HideLabelCapabilityStyleDescription;
@@ -42,6 +43,9 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getBorderColor
  * <em>Border Color</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getBorderLineStyle
+ * <em>Border Line Style</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl#getLabelSize
  * <em>Label Size</em>}</li>
@@ -83,7 +87,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * The default value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -94,7 +98,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * The cached value of the '{@link #getBorderSizeComputationExpression()
      * <em>Border Size Computation Expression</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getBorderSizeComputationExpression()
      * @generated
      * @ordered
@@ -110,6 +114,28 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @ordered
      */
     protected ColorDescription borderColor;
+
+    /**
+     * The default value of the '{@link #getBorderLineStyle()
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBorderLineStyle()
+     * @generated
+     * @ordered
+     */
+    protected static final LineStyle BORDER_LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
+
+    /**
+     * The cached value of the '{@link #getBorderLineStyle()
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBorderLineStyle()
+     * @generated
+     * @ordered
+     */
+    protected LineStyle borderLineStyle = ContainerStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelSize() <em>Label Size</em>}'
@@ -393,6 +419,30 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      */
     @Override
+    public LineStyle getBorderLineStyle() {
+        return borderLineStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setBorderLineStyle(LineStyle newBorderLineStyle) {
+        LineStyle oldBorderLineStyle = borderLineStyle;
+        borderLineStyle = newBorderLineStyle == null ? ContainerStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT : newBorderLineStyle;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE, oldBorderLineStyle, borderLineStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public int getLabelSize() {
         return labelSize;
     }
@@ -649,6 +699,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
                 return getBorderColor();
             }
             return basicGetBorderColor();
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+            return getBorderLineStyle();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             return getLabelSize();
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
@@ -690,6 +742,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) newValue);
+            return;
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+            setBorderLineStyle((LineStyle) newValue);
             return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             setLabelSize((Integer) newValue);
@@ -740,6 +795,9 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) null);
             return;
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+            setBorderLineStyle(ContainerStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT);
+            return;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             setLabelSize(ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT);
             return;
@@ -787,6 +845,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
                     : !ContainerStyleDescriptionImpl.BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             return borderColor != null;
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+            return borderLineStyle != ContainerStyleDescriptionImpl.BORDER_LINE_STYLE_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             return labelSize != ContainerStyleDescriptionImpl.LABEL_SIZE_EDEFAULT;
         case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
@@ -824,6 +884,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
                 return StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
             case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
                 return StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+                return StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
             default:
                 return -1;
             }
@@ -886,6 +948,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
                 return StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
             case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
                 return StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
+            case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
             default:
                 return -1;
             }
@@ -949,6 +1013,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (borderSizeComputationExpression: ");
         result.append(borderSizeComputationExpression);
+        result.append(", borderLineStyle: ");
+        result.append(borderLineStyle);
         result.append(", labelSize: ");
         result.append(labelSize);
         result.append(", labelFormat: ");

@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
@@ -42,6 +43,9 @@ import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
  * <em>Border Size Computation Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getBorderColor
  * <em>Border Color</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#getBorderLineStyle
+ * <em>Border Line Style</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.ContainerStyleImpl#isHideLabelByDefault
  * <em>Hide Label By Default</em>}</li>
@@ -122,6 +126,28 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @ordered
      */
     protected RGBValues borderColor = ContainerStyleImpl.BORDER_COLOR_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getBorderLineStyle()
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBorderLineStyle()
+     * @generated
+     * @ordered
+     */
+    protected static final LineStyle BORDER_LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
+
+    /**
+     * The cached value of the '{@link #getBorderLineStyle()
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBorderLineStyle()
+     * @generated
+     * @ordered
+     */
+    protected LineStyle borderLineStyle = ContainerStyleImpl.BORDER_LINE_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isHideLabelByDefault()
@@ -285,6 +311,30 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @generated
      */
     @Override
+    public LineStyle getBorderLineStyle() {
+        return borderLineStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setBorderLineStyle(LineStyle newBorderLineStyle) {
+        LineStyle oldBorderLineStyle = borderLineStyle;
+        borderLineStyle = newBorderLineStyle == null ? ContainerStyleImpl.BORDER_LINE_STYLE_EDEFAULT : newBorderLineStyle;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE, oldBorderLineStyle, borderLineStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public boolean isHideLabelByDefault() {
         return hideLabelByDefault;
     }
@@ -334,6 +384,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
             return getBorderSizeComputationExpression();
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
             return getBorderColor();
+        case DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE:
+            return getBorderLineStyle();
         case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
             return isHideLabelByDefault();
         }
@@ -359,6 +411,9 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
             return;
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
             setBorderColor((RGBValues) newValue);
+            return;
+        case DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE:
+            setBorderLineStyle((LineStyle) newValue);
             return;
         case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
             setHideLabelByDefault((Boolean) newValue);
@@ -387,6 +442,9 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
             setBorderColor(ContainerStyleImpl.BORDER_COLOR_EDEFAULT);
             return;
+        case DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE:
+            setBorderLineStyle(ContainerStyleImpl.BORDER_LINE_STYLE_EDEFAULT);
+            return;
         case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
             setHideLabelByDefault(ContainerStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
             return;
@@ -411,6 +469,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
                     .equals(borderSizeComputationExpression);
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
             return ContainerStyleImpl.BORDER_COLOR_EDEFAULT == null ? borderColor != null : !ContainerStyleImpl.BORDER_COLOR_EDEFAULT.equals(borderColor);
+        case DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE:
+            return borderLineStyle != ContainerStyleImpl.BORDER_LINE_STYLE_EDEFAULT;
         case DiagramPackage.CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT:
             return hideLabelByDefault != ContainerStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         }
@@ -446,6 +506,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
                 return DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
             case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
                 return DiagramPackage.BORDERED_STYLE__BORDER_COLOR;
+            case DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE:
+                return DiagramPackage.BORDERED_STYLE__BORDER_LINE_STYLE;
             default:
                 return -1;
             }
@@ -490,6 +552,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
                 return DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
             case DiagramPackage.BORDERED_STYLE__BORDER_COLOR:
                 return DiagramPackage.CONTAINER_STYLE__BORDER_COLOR;
+            case DiagramPackage.BORDERED_STYLE__BORDER_LINE_STYLE:
+                return DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE;
             default:
                 return -1;
             }
@@ -523,6 +587,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         result.append(borderSizeComputationExpression);
         result.append(", borderColor: ");
         result.append(borderColor);
+        result.append(", borderLineStyle: ");
+        result.append(borderLineStyle);
         result.append(", hideLabelByDefault: ");
         result.append(hideLabelByDefault);
         result.append(')');

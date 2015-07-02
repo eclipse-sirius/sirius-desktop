@@ -55,24 +55,23 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addBorderSizeComputationExpressionPropertyDescriptor(object);
+            addBorderSizePropertyDescriptor(object);
             addBorderColorPropertyDescriptor(object);
+            addBorderLineStylePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Border Size Computation
-     * Expression feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * This adds a property descriptor for the Border Size feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
+    protected void addBorderSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BorderedStyle_borderSizeComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderSizeComputationExpression_feature", "_UI_BorderedStyle_type"),
-                DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"),
-                null));
+                getString("_UI_BorderedStyle_borderSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderSize_feature", "_UI_BorderedStyle_type"),
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
     }
 
     /**
@@ -85,6 +84,18 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BorderedStyle_borderColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderColor_feature", "_UI_BorderedStyle_type"),
                 DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Border Line Style feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addBorderLineStylePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BorderedStyle_borderLineStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderLineStyle_feature", "_UI_BorderedStyle_type"),
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
     }
 
     /**
@@ -127,6 +138,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE:
         case DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
         case DiagramPackage.BORDERED_STYLE__BORDER_COLOR:
+        case DiagramPackage.BORDERED_STYLE__BORDER_LINE_STYLE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

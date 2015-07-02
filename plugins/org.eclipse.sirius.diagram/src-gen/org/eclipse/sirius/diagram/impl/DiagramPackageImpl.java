@@ -2046,6 +2046,16 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
+    public EAttribute getBorderedStyle_BorderLineStyle() {
+        return (EAttribute) borderedStyleEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EClass getNote() {
         return noteEClass;
     }
@@ -2559,6 +2569,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEAttribute(borderedStyleEClass, DiagramPackage.BORDERED_STYLE__BORDER_SIZE);
         createEAttribute(borderedStyleEClass, DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION);
         createEAttribute(borderedStyleEClass, DiagramPackage.BORDERED_STYLE__BORDER_COLOR);
+        createEAttribute(borderedStyleEClass, DiagramPackage.BORDERED_STYLE__BORDER_LINE_STYLE);
 
         noteEClass = createEClass(DiagramPackage.NOTE);
         createEAttribute(noteEClass, DiagramPackage.NOTE__COLOR);
@@ -3065,6 +3076,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
         initEAttribute(getBorderedStyle_BorderColor(), theViewpointPackage.getRGBValues(), "borderColor", "0,0,0", 0, 1, BorderedStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getBorderedStyle_BorderLineStyle(), this.getLineStyle(), "borderLineStyle", null, 0, 1, BorderedStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE,
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(noteEClass, Note.class, "Note", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);

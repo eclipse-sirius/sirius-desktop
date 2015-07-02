@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelCapabilityStyle;
 import org.eclipse.sirius.diagram.LabelPosition;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -43,6 +44,8 @@ import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
  * <em>Border Size Computation Expression</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getBorderColor <em>
  * Border Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#getBorderLineStyle
+ * <em>Border Line Style</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.NodeStyleImpl#isHideLabelByDefault
  * <em>Hide Label By Default</em>}</li>
@@ -125,6 +128,28 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @ordered
      */
     protected RGBValues borderColor = NodeStyleImpl.BORDER_COLOR_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getBorderLineStyle()
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBorderLineStyle()
+     * @generated
+     * @ordered
+     */
+    protected static final LineStyle BORDER_LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
+
+    /**
+     * The cached value of the '{@link #getBorderLineStyle()
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBorderLineStyle()
+     * @generated
+     * @ordered
+     */
+    protected LineStyle borderLineStyle = NodeStyleImpl.BORDER_LINE_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #isHideLabelByDefault()
@@ -309,6 +334,30 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      */
     @Override
+    public LineStyle getBorderLineStyle() {
+        return borderLineStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setBorderLineStyle(LineStyle newBorderLineStyle) {
+        LineStyle oldBorderLineStyle = borderLineStyle;
+        borderLineStyle = newBorderLineStyle == null ? NodeStyleImpl.BORDER_LINE_STYLE_EDEFAULT : newBorderLineStyle;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE, oldBorderLineStyle, borderLineStyle));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public LabelPosition getLabelPosition() {
         return labelPosition;
     }
@@ -382,6 +431,8 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
             return getBorderSizeComputationExpression();
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
             return getBorderColor();
+        case DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE:
+            return getBorderLineStyle();
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
             return isHideLabelByDefault();
         case DiagramPackage.NODE_STYLE__LABEL_POSITION:
@@ -409,6 +460,9 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
             return;
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
             setBorderColor((RGBValues) newValue);
+            return;
+        case DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE:
+            setBorderLineStyle((LineStyle) newValue);
             return;
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
             setHideLabelByDefault((Boolean) newValue);
@@ -440,6 +494,9 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
             setBorderColor(NodeStyleImpl.BORDER_COLOR_EDEFAULT);
             return;
+        case DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE:
+            setBorderLineStyle(NodeStyleImpl.BORDER_LINE_STYLE_EDEFAULT);
+            return;
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
             setHideLabelByDefault(NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT);
             return;
@@ -467,6 +524,8 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
                     .equals(borderSizeComputationExpression);
         case DiagramPackage.NODE_STYLE__BORDER_COLOR:
             return NodeStyleImpl.BORDER_COLOR_EDEFAULT == null ? borderColor != null : !NodeStyleImpl.BORDER_COLOR_EDEFAULT.equals(borderColor);
+        case DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE:
+            return borderLineStyle != NodeStyleImpl.BORDER_LINE_STYLE_EDEFAULT;
         case DiagramPackage.NODE_STYLE__HIDE_LABEL_BY_DEFAULT:
             return hideLabelByDefault != NodeStyleImpl.HIDE_LABEL_BY_DEFAULT_EDEFAULT;
         case DiagramPackage.NODE_STYLE__LABEL_POSITION:
@@ -504,6 +563,8 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
                 return DiagramPackage.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
             case DiagramPackage.NODE_STYLE__BORDER_COLOR:
                 return DiagramPackage.BORDERED_STYLE__BORDER_COLOR;
+            case DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE:
+                return DiagramPackage.BORDERED_STYLE__BORDER_LINE_STYLE;
             default:
                 return -1;
             }
@@ -548,6 +609,8 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
                 return DiagramPackage.NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
             case DiagramPackage.BORDERED_STYLE__BORDER_COLOR:
                 return DiagramPackage.NODE_STYLE__BORDER_COLOR;
+            case DiagramPackage.BORDERED_STYLE__BORDER_LINE_STYLE:
+                return DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
             default:
                 return -1;
             }
@@ -581,6 +644,8 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         result.append(borderSizeComputationExpression);
         result.append(", borderColor: ");
         result.append(borderColor);
+        result.append(", borderLineStyle: ");
+        result.append(borderLineStyle);
         result.append(", hideLabelByDefault: ");
         result.append(hideLabelByDefault);
         result.append(", labelPosition: ");

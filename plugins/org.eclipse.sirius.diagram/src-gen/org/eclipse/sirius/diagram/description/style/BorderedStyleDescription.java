@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.diagram.description.style;
 
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
@@ -27,6 +28,9 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderColor
  * <em>Border Color</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
+ * <em>Border Line Style</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,5 +101,35 @@ public interface BorderedStyleDescription extends StyleDescription {
      * @generated
      */
     void setBorderColor(ColorDescription value);
+
+    /**
+     * Returns the value of the '<em><b>Border Line Style</b></em>' attribute.
+     * The default value is <code>"solid"</code>. The literals are from the
+     * enumeration {@link org.eclipse.sirius.diagram.LineStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * style of the border line. <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Border Line Style</em>' attribute.
+     * @see org.eclipse.sirius.diagram.LineStyle
+     * @see #setBorderLineStyle(LineStyle)
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription_BorderLineStyle()
+     * @model default="solid"
+     * @generated
+     */
+    LineStyle getBorderLineStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
+     * <em>Border Line Style</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Border Line Style</em>' attribute.
+     * @see org.eclipse.sirius.diagram.LineStyle
+     * @see #getBorderLineStyle()
+     * @generated
+     */
+    void setBorderLineStyle(LineStyle value);
 
 } // BorderedStyleDescription

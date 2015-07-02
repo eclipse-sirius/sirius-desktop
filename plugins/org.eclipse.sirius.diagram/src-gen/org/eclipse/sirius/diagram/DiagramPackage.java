@@ -2374,13 +2374,22 @@ public interface DiagramPackage extends EPackage {
     int NODE_STYLE__BORDER_COLOR = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 3;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NODE_STYLE__BORDER_LINE_STYLE = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 4;
+
+    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int NODE_STYLE__HIDE_LABEL_BY_DEFAULT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 4;
+    int NODE_STYLE__HIDE_LABEL_BY_DEFAULT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
@@ -2389,7 +2398,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE__LABEL_POSITION = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 5;
+    int NODE_STYLE__LABEL_POSITION = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 6;
 
     /**
      * The number of structural features of the '<em>Node Style</em>' class.
@@ -2398,7 +2407,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_FEATURE_COUNT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 6;
+    int NODE_STYLE_FEATURE_COUNT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '
@@ -2510,6 +2519,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DOT__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DOT__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -2754,13 +2772,22 @@ public interface DiagramPackage extends EPackage {
     int CONTAINER_STYLE__BORDER_COLOR = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 3;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_STYLE__BORDER_LINE_STYLE = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 4;
+
+    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 4;
+    int CONTAINER_STYLE__HIDE_LABEL_BY_DEFAULT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>Container Style</em>'
@@ -2769,7 +2796,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_FEATURE_COUNT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 5;
+    int CONTAINER_STYLE_FEATURE_COUNT = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '
@@ -2882,6 +2909,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int FLAT_CONTAINER_STYLE__BORDER_COLOR = DiagramPackage.CONTAINER_STYLE__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE__BORDER_LINE_STYLE = DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3041,6 +3077,15 @@ public interface DiagramPackage extends EPackage {
     int SHAPE_CONTAINER_STYLE__BORDER_COLOR = DiagramPackage.CONTAINER_STYLE__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE__BORDER_LINE_STYLE = DiagramPackage.CONTAINER_STYLE__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3186,6 +3231,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int SQUARE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SQUARE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3353,6 +3407,15 @@ public interface DiagramPackage extends EPackage {
     int ELLIPSE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ELLIPSE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3516,6 +3579,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int LOZENGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int LOZENGE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -3684,6 +3756,15 @@ public interface DiagramPackage extends EPackage {
     int BUNDLED_IMAGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BUNDLED_IMAGE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3841,6 +3922,15 @@ public interface DiagramPackage extends EPackage {
     int WORKSPACE_IMAGE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int WORKSPACE_IMAGE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3987,6 +4077,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int CUSTOM_STYLE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -4313,6 +4412,15 @@ public interface DiagramPackage extends EPackage {
     int GAUGE_COMPOSITE_STYLE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GAUGE_COMPOSITE_STYLE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4416,13 +4524,22 @@ public interface DiagramPackage extends EPackage {
     int BORDERED_STYLE__BORDER_COLOR = ViewpointPackage.STYLE_FEATURE_COUNT + 2;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BORDERED_STYLE__BORDER_LINE_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 3;
+
+    /**
      * The number of structural features of the '<em>Bordered Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int BORDERED_STYLE_FEATURE_COUNT = ViewpointPackage.STYLE_FEATURE_COUNT + 3;
+    int BORDERED_STYLE_FEATURE_COUNT = ViewpointPackage.STYLE_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -4534,6 +4651,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int NOTE__BORDER_COLOR = DiagramPackage.NODE_STYLE__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NOTE__BORDER_LINE_STYLE = DiagramPackage.NODE_STYLE__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -7093,6 +7219,19 @@ public interface DiagramPackage extends EPackage {
     EAttribute getBorderedStyle_BorderColor();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.BorderedStyle#getBorderLineStyle
+     * <em>Border Line Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Border Line Style</em>'.
+     * @see org.eclipse.sirius.diagram.BorderedStyle#getBorderLineStyle()
+     * @see #getBorderedStyle()
+     * @generated
+     */
+    EAttribute getBorderedStyle_BorderLineStyle();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.Note <em>Note</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -8797,6 +8936,14 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EAttribute BORDERED_STYLE__BORDER_COLOR = DiagramPackage.eINSTANCE.getBorderedStyle_BorderColor();
+
+        /**
+         * The meta object literal for the '<em><b>Border Line Style</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute BORDERED_STYLE__BORDER_LINE_STYLE = DiagramPackage.eINSTANCE.getBorderedStyle_BorderLineStyle();
 
         /**
          * The meta object literal for the '

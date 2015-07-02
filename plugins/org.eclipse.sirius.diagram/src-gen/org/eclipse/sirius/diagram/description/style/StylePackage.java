@@ -93,6 +93,15 @@ public interface StylePackage extends EPackage {
     int BORDERED_STYLE_DESCRIPTION__BORDER_COLOR = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The number of structural features of the '
      * <em>Bordered Style Description</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -100,7 +109,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int BORDERED_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int BORDERED_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -134,13 +143,22 @@ public interface StylePackage extends EPackage {
     int NODE_STYLE_DESCRIPTION__BORDER_COLOR = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_SIZE = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int NODE_STYLE_DESCRIPTION__LABEL_SIZE = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
@@ -149,7 +167,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_FORMAT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int NODE_STYLE_DESCRIPTION__LABEL_FORMAT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
@@ -158,7 +176,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__SHOW_ICON = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int NODE_STYLE_DESCRIPTION__SHOW_ICON = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
@@ -167,7 +185,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 5;
+    int NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
@@ -176,7 +194,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_COLOR = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 6;
+    int NODE_STYLE_DESCRIPTION__LABEL_COLOR = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -185,7 +203,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__ICON_PATH = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 7;
+    int NODE_STYLE_DESCRIPTION__ICON_PATH = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -195,7 +213,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 8;
+    int NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
@@ -205,7 +223,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 9;
+    int NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -214,7 +232,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+    int NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Size Computation Expression</b></em>'
@@ -223,7 +241,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+    int NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Label Position</b></em>' attribute. <!--
@@ -232,7 +250,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__LABEL_POSITION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 12;
+    int NODE_STYLE_DESCRIPTION__LABEL_POSITION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
@@ -241,7 +259,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION__RESIZE_KIND = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 13;
+    int NODE_STYLE_DESCRIPTION__RESIZE_KIND = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
      * The number of structural features of the '<em>Node Style Description</em>
@@ -250,7 +268,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 14;
+    int NODE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 15;
 
     /**
      * The meta object id for the '
@@ -282,6 +300,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int CUSTOM_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -442,6 +469,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int SQUARE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SQUARE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -621,6 +657,15 @@ public interface StylePackage extends EPackage {
     int LOZENGE_NODE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int LOZENGE_NODE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -796,6 +841,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int ELLIPSE_NODE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ELLIPSE_NODE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -976,6 +1030,15 @@ public interface StylePackage extends EPackage {
     int BUNDLED_IMAGE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BUNDLED_IMAGE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1143,6 +1206,15 @@ public interface StylePackage extends EPackage {
     int NOTE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NOTE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -1298,6 +1370,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int DOT_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DOT_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -1467,6 +1548,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int GAUGE_COMPOSITE_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -1812,13 +1902,22 @@ public interface StylePackage extends EPackage {
     int CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
@@ -1827,7 +1926,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
@@ -1836,7 +1935,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int CONTAINER_STYLE_DESCRIPTION__SHOW_ICON = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!--
@@ -1845,7 +1944,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' reference. <!--
@@ -1854,7 +1953,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -1863,7 +1962,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ICON_PATH = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 7;
+    int CONTAINER_STYLE_DESCRIPTION__ICON_PATH = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -1873,7 +1972,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 8;
+    int CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
@@ -1882,7 +1981,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 9;
+    int CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -1891,7 +1990,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+    int CONTAINER_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Rounded Corner</b></em>' attribute. <!--
@@ -1900,7 +1999,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+    int CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The number of structural features of the '
@@ -1910,7 +2009,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 12;
+    int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = StylePackage.ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The meta object id for the '
@@ -1960,6 +2059,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int FLAT_CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -2167,6 +2275,15 @@ public interface StylePackage extends EPackage {
     int SHAPE_CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
 
     /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -2334,6 +2451,15 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int WORKSPACE_IMAGE_DESCRIPTION__BORDER_COLOR = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Border Line Style</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int WORKSPACE_IMAGE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -3064,6 +3190,19 @@ public interface StylePackage extends EPackage {
      * @generated
      */
     EReference getBorderedStyleDescription_BorderColor();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle
+     * <em>Border Line Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>Border Line Style</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.BorderedStyleDescription#getBorderLineStyle()
+     * @see #getBorderedStyleDescription()
+     * @generated
+     */
+    EAttribute getBorderedStyleDescription_BorderLineStyle();
 
     /**
      * Returns the meta object for class '
@@ -4056,6 +4195,14 @@ public interface StylePackage extends EPackage {
          * @generated
          */
         EReference BORDERED_STYLE_DESCRIPTION__BORDER_COLOR = StylePackage.eINSTANCE.getBorderedStyleDescription_BorderColor();
+
+        /**
+         * The meta object literal for the '<em><b>Border Line Style</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE = StylePackage.eINSTANCE.getBorderedStyleDescription_BorderLineStyle();
 
         /**
          * The meta object literal for the '

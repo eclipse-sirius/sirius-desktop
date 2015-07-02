@@ -63,6 +63,7 @@ IItemPropertySource {
 
             addBorderSizeComputationExpressionPropertyDescriptor(object);
             addBorderColorPropertyDescriptor(object);
+            addBorderLineStylePropertyDescriptor(object);
             addLabelSizePropertyDescriptor(object);
             addLabelFormatPropertyDescriptor(object);
             addShowIconPropertyDescriptor(object);
@@ -103,6 +104,18 @@ IItemPropertySource {
                 getString("_UI_BorderedStyleDescription_borderColor_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyleDescription_borderColor_feature", "_UI_BorderedStyleDescription_type"),
                 StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Border Line Style feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addBorderLineStylePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BorderedStyleDescription_borderLineStyle_feature"), getString("_UI_BorderedStyleDescription_borderLineStyle_description"),
+                StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
     }
 
     /**
@@ -295,6 +308,7 @@ IItemPropertySource {
         switch (notification.getFeatureID(NodeStyleDescription.class)) {
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
         case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_LINE_STYLE:
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
         case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
         case StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:

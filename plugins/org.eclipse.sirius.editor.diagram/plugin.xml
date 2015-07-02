@@ -761,6 +761,14 @@
                 tab="viewpoint.tab.border">
         <input type="org.eclipse.sirius.diagram.description.style.BorderedStyleDescription"/>
       </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.borderedstyledescription.BorderedStyleDescriptionBorderLineStylePropertySection"
+               id="style.section.borderedStyleDescription.BorderLineStyle"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.borderedstyledescription.BorderedStyleDescriptionBorderLineStyleFilter"
+               afterSection="style.section.borderedStyleDescription.BorderSizeComputationExpression"
+                tab="viewpoint.tab.border">
+        <input type="org.eclipse.sirius.diagram.description.style.BorderedStyleDescription"/>
+      </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.borderedstyledescription.BorderedStyleDescriptionBorderColorPropertySection"
                id="style.section.borderedStyleDescription.BorderColor"
