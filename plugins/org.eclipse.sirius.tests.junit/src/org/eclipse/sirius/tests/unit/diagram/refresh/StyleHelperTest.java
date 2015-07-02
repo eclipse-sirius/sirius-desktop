@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.unit.diagram.refresh;
 import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.diagram.AlignmentKind;
@@ -2583,7 +2582,6 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseBorderedStyle(BorderedStyle object) {
             assertTrue("Bad kind of StyleDescription for this style", getStyleDesc() instanceof BorderedStyleDescription);
-            assertEquals("Bad border size computation expression", ((BorderedStyleDescription) getStyleDesc()).getBorderSizeComputationExpression(), object.getBorderSizeComputationExpression());
             return null;
         }
 
