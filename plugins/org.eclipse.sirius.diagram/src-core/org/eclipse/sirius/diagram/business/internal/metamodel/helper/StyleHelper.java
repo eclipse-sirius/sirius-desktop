@@ -227,8 +227,8 @@ public final class StyleHelper {
         if (description.getCenterLabelStyleDescription() != null) {
             style.setCenterLabelStyle(DiagramFactory.eINSTANCE.createCenterLabelStyle());
         }
-        updateEdgeStyle(description, style);
-        Option<Style> noPreviousStyle = Options.newNone();
+        Option<EdgeStyle> noPreviousStyle = Options.newNone();
+        updateEdgeStyle(description, style, noPreviousStyle);
         refreshColors(style, noPreviousStyle);
         return style;
     }
@@ -328,16 +328,6 @@ public final class StyleHelper {
             updateLabels(edgeDescription, edgeStyle, previousStyle);
             updateEdgeCenteringInformations(edgeDescription, edgeStyle, previousStyle);
         }
-    }
-
-    /**
-     * @param description
-     * @param style
-     * @param previousStyle
-     */
-    private void updateEdgeStyle(EdgeStyleDescription description, EdgeStyle style) {
-        Option<EdgeStyle> noneEdgeStyle = Options.newNone();
-        updateEdgeStyle(description, style, noneEdgeStyle);
     }
 
     private void updateLabels(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle, Option<EdgeStyle> previousStyle) {
@@ -826,7 +816,7 @@ public final class StyleHelper {
                 }
             }
         }
-        
+
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
             style.getCustomFeatures().add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
