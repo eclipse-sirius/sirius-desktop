@@ -41,6 +41,7 @@ import org.eclipse.sirius.tests.unit.api.session.DAnalysisSessionTests;
 import org.eclipse.sirius.tests.unit.api.session.OpenSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.ReloadSessionTest;
 import org.eclipse.sirius.tests.unit.api.session.SampleSessionTest;
+import org.eclipse.sirius.tests.unit.api.session.SessionEditorInputTests;
 import org.eclipse.sirius.tests.unit.api.session.SessionManagerListener2Tests;
 import org.eclipse.sirius.tests.unit.api.session.SessionSemanticResourceTests;
 import org.eclipse.sirius.tests.unit.api.session.SessionServiceTest;
@@ -226,6 +227,7 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(DAnalysisSessionTests.class);
         suite.addTestSuite(SampleSessionTest.class);
+        suite.addTestSuite(SessionEditorInputTests.class);
         suite.addTestSuite(SiriusRegistryTests.class);
         suite.addTestSuite(SiriusRegistryListener2Tests.class);
         suite.addTestSuite(SessionSemanticResourceTests.class);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ public class SiriusMatchingStrategy implements IEditorMatchingStrategy {
     /**
      * @was-generated
      */
+    @Override
     public boolean matches(IEditorReference editorRef, IEditorInput input) {
         IEditorInput editorInput;
         try {
@@ -39,13 +40,8 @@ public class SiriusMatchingStrategy implements IEditorMatchingStrategy {
         if (editorInput.equals(input)) {
             return true;
         }
-        if (editorInput instanceof URIEditorInput && input instanceof URIEditorInput) {
-            return ((URIEditorInput) editorInput).getURI().equals(((URIEditorInput) input).getURI());
-        }
+        // Manage FileEditorInput to support Sirius editor opening from a marker
         if (input instanceof FileEditorInput && editorInput instanceof URIEditorInput) {
-            // Check if the file is the same
-            // CDO Bridge for Sirius : uriEditorPath can be null,
-            // as the URI is a cdo URI
             String uriEditorInputPath = ((URIEditorInput) editorInput).getURI().toPlatformString(false);
             String fileEditorInputPath = ((FileEditorInput) input).getFile().getFullPath().toString();
             return ((uriEditorInputPath != null) && (fileEditorInputPath != null) && (uriEditorInputPath.equals(fileEditorInputPath)));

@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
@@ -34,6 +35,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.NavigationMarkerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 import org.eclipse.ui.IEditorReference;
@@ -94,12 +96,19 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
         if (defaultEditor.getDiagram().equals(markerDiagram)) {
             targetEditor = defaultEditor;
         } else {
-            final URIEditorInput editorInput = new URIEditorInput(markerDiagramURI, SiriusMarkerNavigationProviderSpec.resolveSemanticElement(markerDiagram).getName());
+            URIEditorInput editorInput = null;
+            String editorName = SiriusMarkerNavigationProviderSpec.resolveSemanticElement(markerDiagram).getName();
+            Session session = new EObjectQuery(markerDiagram).getSession();
+            if (session != null) {
+                editorInput = new SessionEditorInput(markerDiagramURI, editorName, session);
+            } else {
+                editorInput = new URIEditorInput(markerDiagramURI, editorName);
+            }
             final SiriusDiagramEditor searchEditor = searchEditor(editorInput);
             if (searchEditor != null) {
                 targetEditor = searchEditor;
             } else {
-                Session session = getOrOpenTargetSession(sessionResourceUri);
+                session = getOrOpenTargetSession(sessionResourceUri);
 
                 // Open the corresponding editor
                 SiriusDiagramEditor openedEditor = null;
@@ -137,8 +146,8 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
     }
 
     /**
-     * Search a {@link SiriusDiagramEditor} with the <code>editorInput</code>
-     * in the opened editors.
+     * Search a {@link SiriusDiagramEditor} with the <code>editorInput</code> in
+     * the opened editors.
      * 
      * @param editorInput
      *            The editorInput to find.
@@ -183,7 +192,8 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
      *            defined by the platform.
      * @return The added marker.
      */
-    public static IMarker addMarker(final IFile file, final String elementId, final String diagramURI, final String semanticURI, final String location, final String message, final int statusSeverity) {
+    public static IMarker addMarker(final IFile file, final String elementId, final String diagramURI, final String semanticURI, final String location, final String message,
+            final int statusSeverity) {
         final IMarker marker = SiriusMarkerNavigationProvider.addMarker(file, elementId, location, message, statusSeverity);
         try {
             marker.setAttribute(NavigationMarkerConstants.DIAGRAM_URI, diagramURI);

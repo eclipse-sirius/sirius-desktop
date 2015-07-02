@@ -47,7 +47,6 @@ public class SaveWhenNoEditorsTests extends SiriusDiagramTestCase implements Eco
 
     @Override
     protected void setUp() throws Exception {
-        super.createModelingProject = true;
         super.setUp();
 
         changePlatformUIPreference(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, true);

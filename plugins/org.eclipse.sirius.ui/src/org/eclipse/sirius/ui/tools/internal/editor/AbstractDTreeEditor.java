@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,6 @@ import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQu
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.internal.dialect.TreeEditorDialogFactory;
 import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
@@ -234,7 +233,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     }
 
     /**
-     * Lasily gets the image when there is no write permission of the
+     * Lazily gets the image when there is no write permission of the
      * DRepresentation.
      * 
      * @return the image when there is no write permission of the
@@ -254,6 +253,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      */
     public abstract Image getFrozenRepresentationImage();
 
+    @Override
     public TransactionalEditingDomain getEditingDomain() {
         return session.getTransactionalEditingDomain();
     }
@@ -354,29 +354,17 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public boolean isDirty() {
         final boolean dirty = this.session.getStatus() == SessionStatus.DIRTY;
         return dirty;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public boolean isSaveAsAllowed() {
         return false;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void setFocus() {
         if (treeViewerManager != null) {
@@ -421,11 +409,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return editorDesc;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#needsRefresh(int)
-     */
+    @Override
     public boolean needsRefresh(int propId) {
         boolean result = false;
         if (propId == DialectEditor.PROP_REFRESH) {
@@ -443,11 +427,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      */
     protected abstract void launchRefresh();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#getAdapter(java.lang.Class)
-     */
     @Override
     public Object getAdapter(@SuppressWarnings("rawtypes") final Class type) {
         Object result = super.getAdapter(type);
@@ -471,11 +450,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.common.ui.viewer.IViewerProvider#getViewer()
-     */
+    @Override
     public Viewer getViewer() {
         Viewer viewer = null;
         if (treeViewerManager != null) {
@@ -497,11 +472,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return accessor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#dispose()
-     */
     @Override
     public void dispose() {
 
@@ -521,12 +491,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         if (getTableViewer() != null) {
             getTableViewer().dispose();
         }
-        // Dispose the session editor input to keep the minimum information to
-        // be restore from the INavigationHistory and EditorHistory.
-        if (getEditorInput() instanceof SessionEditorInput) {
-            ((SessionEditorInput) getEditorInput()).dispose();
-        }
-
         // We need to perform the detachEditor after having disposed the viewer
         // and the editor input to avoid a refresh. A refresh can occurs in the
         // case where the detach triggers the reload of the modified resources
@@ -541,11 +505,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.EditorPart#setInput(org.eclipse.ui.IEditorInput)
-     */
     @Override
     public void setInput(final IEditorInput input) {
         super.setInput(input);
@@ -599,9 +558,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return propertiesUpdateEnabled;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void notify(final int changeKind) {
         AbstractDTreeEditorSessionListenerDelegate abstractDTreeEditorSessionListenerDelegate = new AbstractDTreeEditorSessionListenerDelegate(this, changeKind);
         if (Display.getCurrent() == null) {
@@ -640,11 +597,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return SessionUIManager.INSTANCE.getUISession(session);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.EditorPart#isSaveOnCloseNeeded()
-     */
     @Override
     public boolean isSaveOnCloseNeeded() {
         /*
@@ -669,20 +621,12 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return autoRefresh;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#setDialogFactory(org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory)
-     */
+    @Override
     public void setDialogFactory(DialectEditorDialogFactory dialogFactory) {
         myDialogFactory = dialogFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.ISaveablesSource#getSaveables()
-     */
+    @Override
     public Saveable[] getSaveables() {
         if (session != null && session.isOpen()) {
             IEditingSession uiSession = getUISession();
@@ -693,20 +637,12 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return new Saveable[0];
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.ISaveablesSource#getActiveSaveables()
-     */
+    @Override
     public Saveable[] getActiveSaveables() {
         return getSaveables();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see ISaveablePart2#promptToSaveOnClose()
-     */
+    @Override
     public int promptToSaveOnClose() {
         choice = ISaveablePart2.DEFAULT;
         if (session != null && session.isOpen()) {
@@ -720,11 +656,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return choice;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     public void createPartControl(Composite parent) {
         // setting up a UndoActionHandler
@@ -733,31 +664,19 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         setUpUndoRedoActionHandler();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IPageListener#pageOpened(org.eclipse.ui.IWorkbenchPage)
-     */
+    @Override
     public void pageOpened(IWorkbenchPage page) {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IPageListener#pageActivated(org.eclipse.ui.IWorkbenchPage)
-     */
+    @Override
     public void pageActivated(IWorkbenchPage page) {
         // As the page has been activated, we now can create the
         // UndoRedoActionHandler
         setUpUndoRedoActionHandler();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IPageListener#pageClosed(org.eclipse.ui.IWorkbenchPage)
-     */
+    @Override
     public void pageClosed(IWorkbenchPage page) {
 
     }
@@ -808,6 +727,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         return searchedTreeItem;
     }
 
+    @Override
     public DialectEditorDialogFactory getDialogFactory() {
         return myDialogFactory;
     }

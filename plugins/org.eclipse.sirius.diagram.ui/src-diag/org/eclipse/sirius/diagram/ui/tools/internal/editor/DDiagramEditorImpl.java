@@ -470,6 +470,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     private IEditorInput getCorrectedInput(IEditorInput input) {
+        // input is a FileEditorInput in case editor is opened from a marker
+        // then we don't have yet uriFragment to gmf Diagram, we will get it
+        // when gotoMarker() method will be called
         if (input instanceof FileEditorInput) {
             IFile file = ((FileEditorInput) input).getFile();
             URI analysisURI = URI.createPlatformResourceURI("/" + file.getProject().getName() + "/" + file.getProjectRelativePath(), true);
@@ -739,12 +742,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                 sGViewer.getControl().dispose();
             }
             sGViewer = null;
-        }
-
-        // Dispose the session editor input to keep the minimum information to
-        // be restore from the INavigationHistory and EditorHistory.
-        if (getEditorInput() instanceof SessionEditorInput) {
-            ((SessionEditorInput) getEditorInput()).dispose();
         }
         IUndoContext savedUndoContext = getUndoContext();
         // to avoid dispose of current session related IUndoeableOperation

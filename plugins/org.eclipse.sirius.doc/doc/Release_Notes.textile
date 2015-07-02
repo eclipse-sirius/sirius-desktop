@@ -23,6 +23,11 @@ h4. Changes in @org.eclipse.sirius@
 * @org.eclipse.sirius.tools.api.command.IUndoableCommand@ interface removed because it is useless since undo/redo is managed by EMF Transaction.
 * @org.eclipse.sirius.tools.api.command.DCommand@ no more inherits of @IUndoableCommand@ because useless since undo/redo is managed by EMF Transaction.
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()@ method has been deprecated as a @IEditorInput@ can be reused by several instances of @IEditorPart@ through the navigation history view.
+* @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()@ method has been added to get the real input for a @DRepresentation@.
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The methods @closePerspective(String)@, @closeSiriusPerspective()@ and @closeModelingPerspective()@ have been added in class @org.eclipse.sirius.tests.swtbot.support.api.perspective.DesignerPerspectives@ to allow the closing of perspectives.
