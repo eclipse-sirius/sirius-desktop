@@ -18,6 +18,11 @@ mvn -Dplatform-version-name="$PLATFORM" -Declipse.p2.mirrors=false -f "$BUILD_PO
 # instead of the latest published nightly.
 readonly ORIGINAL_SETTINGS=$(mktemp)
 cp "$TESTS_SETTINGS" "$ORIGINAL_SETTINGS"
-sed -i -e "s!@BASEDIR@!$BASEDIR!" "$TESTS_SETTINGS"
-SWT_GTK3=0 mvn -Dplatform-version-name="$PLATFORM" -Declipse.p2.mirrors=false -s "$TESTS_SETTINGS" -f "$TESTS_POM" -P"$TESTS_SUITES" clean "$TESTS_GOAL"
+sed -i -e "s|@BASEDIR@|$BASEDIR|" "$TESTS_SETTINGS"
+if [ "$OSTYPE" = "msys" ]; then
+    # for windows, replace file:///c/xxx by  file:///c:/xxx
+    sed -r -i -e "s|file:///([A-Za-z]{1})/|file:///\1:/|" "$TESTS_SETTINGS"
+fi
+
+SWT_GTK3=0 mvn -Dplatform-version-name="$PLATFORM" -Declipse.p2.mirrors=false -s "$TESTS_SETTINGS" -f "$TESTS_POM" -P "$TESTS_SUITES" clean "$TESTS_GOAL"
 mv "$ORIGINAL_SETTINGS" "$TESTS_SETTINGS"
