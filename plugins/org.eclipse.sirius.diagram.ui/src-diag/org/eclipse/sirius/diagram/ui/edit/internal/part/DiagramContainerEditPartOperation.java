@@ -169,50 +169,49 @@ public final class DiagramContainerEditPartOperation {
         if (style != null && style.getBorderSize() != null) {
             borderSize = style.getBorderSize().intValue();
         }
-        if (borderSize == 0) {
-            borderSize = 1;
+        if (primaryShape instanceof Shape) {
+            ((Shape) primaryShape).setLineWidth(borderSize);
+            if (borderSize == 0) {
+                ((Shape) primaryShape).setOutline(false);
+            } else {
+                ((Shape) primaryShape).setOutline(true);
+            }
+        } else if (primaryShape instanceof NodeFigure) {
+            ((NodeFigure) primaryShape).setLineWidth(borderSize);
         }
 
-        if (borderSize > 0) {
-            if (primaryShape instanceof Shape) {
-                ((Shape) primaryShape).setLineWidth(borderSize);
-            } else if (primaryShape instanceof NodeFigure) {
-                ((NodeFigure) primaryShape).setLineWidth(borderSize);
+        // Do not add the container label offset margin if there is no
+        // visible label.
+        int labelOffset = IContainerLabelOffsets.LABEL_OFFSET;
+        if (primaryShape.getLabelFigure() == null || !primaryShape.getLabelFigure().isVisible()) {
+            labelOffset = 0;
+        }
+
+        if (primaryShape != null && primaryShape.getBorder() instanceof LineBorder) {
+            ((LineBorder) primaryShape.getBorder()).setWidth(borderSize);
+            if (primaryShape.getBorder() instanceof OneLineMarginBorder) {
+                ((OneLineMarginBorder) primaryShape.getBorder()).setMargin(labelOffset, 0, 0, 0);
             }
-            
-            // Do not add the container label offset margin if there is no
-            // visible label.
-            int labelOffset = IContainerLabelOffsets.LABEL_OFFSET;
-            if (primaryShape.getLabelFigure() == null || !primaryShape.getLabelFigure().isVisible()) {
-                labelOffset = 0;
+        } else if (primaryShape != null && primaryShape.getBorder() instanceof MarginBorder) {
+            MarginBorder margin = null;
+            int borderMagin = borderSize;
+            switch (self.getParentStackDirection()) {
+            case PositionConstants.NORTH_SOUTH:
+                borderMagin = isFirstRegionPart(self) ? 0 : borderSize - 1;
+                margin = new MarginBorder(borderMagin + labelOffset, 0, 0, 0);
+                break;
+            case PositionConstants.EAST_WEST:
+                borderMagin = isFirstRegionPart(self) ? 0 : borderSize;
+                margin = new MarginBorder(labelOffset, borderMagin, 0, 0);
+                break;
+            case PositionConstants.NONE:
+            default:
+                // Keep the old behavior : min margin size= 4
+                // The current container is not a region, the figure has
+                // been added to the content pane.
+                margin = new MarginBorder(borderMagin + labelOffset - 1, borderMagin, borderMagin, borderMagin);
             }
-            
-            if (primaryShape != null && primaryShape.getBorder() instanceof LineBorder) {
-                ((LineBorder) primaryShape.getBorder()).setWidth(borderSize);
-                if (primaryShape.getBorder() instanceof OneLineMarginBorder) {
-                  ((OneLineMarginBorder)  primaryShape.getBorder()).setMargin(labelOffset, 0, 0, 0);
-                }
-            } else if (primaryShape != null && primaryShape.getBorder() instanceof MarginBorder) {
-                MarginBorder margin = null;
-                int borderMagin = borderSize;
-                switch (self.getParentStackDirection()) {
-                case PositionConstants.NORTH_SOUTH:
-                    borderMagin = isFirstRegionPart(self) ? 0 : borderSize - 1;
-                    margin = new MarginBorder(borderMagin + labelOffset, 0, 0, 0);
-                    break;
-                case PositionConstants.EAST_WEST:
-                    borderMagin = isFirstRegionPart(self) ? 0 : borderSize;
-                    margin = new MarginBorder(labelOffset, borderMagin, 0, 0);
-                    break;
-                case PositionConstants.NONE:
-                default:
-                    // Keep the old behavior : min margin size= 5
-                    // The current container is not a region, the figure has
-                    // been added to the content pane.
-                    margin = new MarginBorder(borderMagin + labelOffset - 1, borderMagin, borderMagin, borderMagin);
-                }
-                primaryShape.setBorder(margin);
-            }
+            primaryShape.setBorder(margin);
         }
         return primaryShape;
     }

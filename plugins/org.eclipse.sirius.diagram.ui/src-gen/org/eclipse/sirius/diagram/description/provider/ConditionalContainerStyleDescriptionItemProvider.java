@@ -22,6 +22,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.provider.ConditionalStyleDescriptionItemProvider;
@@ -140,10 +142,33 @@ public class ConditionalContainerStyleDescriptionItemProvider extends Conditiona
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @generated
+     * @not-generated: Set to 1 the default borderSizeComputationExpression
+     *                 instead of 0 for flatContainerStyle and
+     *                 shapeContainerStyle.
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        FlatContainerStyleDescription flatContainerStyleDescription = StyleFactory.eINSTANCE.createFlatContainerStyleDescription();
+        flatContainerStyleDescription.setBorderSizeComputationExpression("1");
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE, flatContainerStyleDescription));
+
+        ShapeContainerStyleDescription shapeContainerStyleDescription = StyleFactory.eINSTANCE.createShapeContainerStyleDescription();
+        shapeContainerStyleDescription.setBorderSizeComputationExpression("1");
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE, shapeContainerStyleDescription));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
+    }
+
+    /**
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
+     * describing the children that can be created under this object. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE, StyleFactory.eINSTANCE.createFlatContainerStyleDescription()));

@@ -19,6 +19,9 @@
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
 							</li>
 							<li>
+								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+							</li>
+							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
 							</li>
 						</ol>
@@ -30,7 +33,7 @@
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
@@ -44,7 +47,7 @@
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#APIChanges">API Changes</a>
@@ -67,6 +70,18 @@
 				<em>Snap to Grid</em> and 
 				<em>Snap to Shapes</em> are now automatically disabled on Sequence diagrams. As indicated in the user documentation, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. see 
 				<a href="./user/sequences/Sequence%20Diagrams.html#introduction">documentation</a> for details. Previously, the user has to explicitely disable the snap features.
+			</li>
+		</ul>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> You have now really the capability to set the 
+				<code>BorderSizeComputationExpression</code> as 0 for style of 
+				<code>ContainerMapping</code>. Before Sirius 3.1.0, a size of 0 is interpreted as 1 at runtime. For compatibility reason, all existing 
+				<code>BorderSizeComputationExpression</code> equals to 0 for style of 
+				<code>ContainerMapping</code> are automatically set to 1 (ditto for results of this expression in representations file for container elements). For 
+				<code>ContainerMapping</code>, the default value of 
+				<code>BorderSizeComputationExpression</code> for new style is now 1, except for 
+				<em>Worskpace Image</em> where the value is 0.
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
@@ -165,7 +180,7 @@
 				<em>Viewpoint Selection</em> dialog and wizard page, the &#171;plug-in&#187; decorator for viewpoints loaded from plug-ins is removed, and a &#171;Folder&#187; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the most common where viewpoints come from installed plug-ins.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> <span class="label label-info">Experimental</span> Optional support for the experimental 
 				<em>Acceleo Query Language</em> (AQL) has been added to write interpreted expressions.  It is provided by the 
@@ -1134,7 +1149,7 @@
 			<li>Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.</li>
 			<li>A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li>The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the &#171;advance&#187; tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See 
 				<a href="specifier/diagrams/Diagrams.html#edges_styles">Edges Styles &gt; Edge Centering</a> in the specifier manual for more details.

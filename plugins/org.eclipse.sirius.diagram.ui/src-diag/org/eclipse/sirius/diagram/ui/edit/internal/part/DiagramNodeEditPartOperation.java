@@ -172,7 +172,12 @@ public final class DiagramNodeEditPartOperation {
             /* NoteFigure in GMF does not expect a null figure since GMF 2.2 */
             if (!(styledFigure instanceof NoteFigure)) {
                 styledFigure.setBorder(null);
+                if (styledFigure instanceof Shape) {
+                    ((Shape) styledFigure).setOutline(false);
+                }
             }
+        } else if (styledFigure instanceof Shape) {
+            ((Shape) styledFigure).setOutline(true);
         }
     }
 

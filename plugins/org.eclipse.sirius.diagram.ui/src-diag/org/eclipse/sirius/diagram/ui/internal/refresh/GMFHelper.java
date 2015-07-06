@@ -144,9 +144,6 @@ public final class GMFHelper {
                 DDiagramElementContainer ddec = (DDiagramElementContainer) element;
                 ContainerStyle containerStyle = ddec.getOwnedStyle();
                 int borderSize = containerStyle.getBorderSize().intValue();
-                if (borderSize == 0) {
-                    borderSize = 1;
-                }
 
                 // RegionContainer do not have containers insets
                 if (ddec instanceof DNodeContainer) {

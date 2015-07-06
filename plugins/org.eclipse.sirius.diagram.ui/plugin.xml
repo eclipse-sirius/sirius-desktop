@@ -1828,6 +1828,14 @@
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.CollapseSupportOnRegionMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.description.BorderSizeComputationExpressionMigrationParticipant"
+            kind="VSM">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.BorderSizeRepresentationFileMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">

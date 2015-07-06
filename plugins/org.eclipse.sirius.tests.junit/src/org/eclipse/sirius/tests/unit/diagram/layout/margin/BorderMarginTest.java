@@ -53,8 +53,6 @@ import com.google.common.collect.Maps;
  * pixels for example): scroll bars were displayed on the border, label, list
  * items and children figure bounds (placed by layout/arrange all) sometimes
  * intersected the borders. The current behavior produce a 4+border size margin.
- * For common 0 and 1 pixel vsm values, the resulting border is a 1 pixel
- * border, and the resulting margin did not changed: 5 pixels.
  * 
  * @author mporhel
  * 
@@ -157,7 +155,7 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
         openDiagram(AUTO_SIZE);
 
         int[] expectedVSMBorderSizes = new int[] { 0, 1, 10, 0, 1, 10 };
-        int[] expectedFigureBorderSizes = new int[] { 1, 1, 10, 1, 1, 10 };
+        int[] expectedFigureBorderSizes = new int[] { 0, 1, 10, 0, 1, 10 };
 
         List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
         for (int i = 0; i < ownedDiagramElements.size(); i++) {
@@ -172,11 +170,11 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
             Insets expectedMainMargin = new Insets(expectedFigureBorderSize + IContainerLabelOffsets.LABEL_OFFSET - 1, expectedFigureBorderSize, expectedFigureBorderSize, expectedFigureBorderSize);
 
             // Check that the border size is reported into the border margin and
-            // is not only used to draw the border.O
+            // is not only used to draw the border.
             if (part instanceof IDiagramListEditPart) {
                 IFigure figure = ((IDiagramListEditPart) part).getPrimaryShape();
                 Insets insets = figure.getBorder().getInsets(figure);
-                assertEquals(expectedMainMargin, insets);
+                assertEquals("Pb in list figure for a border size=" + expectedFigureBorderSize, expectedMainMargin, insets);
 
                 // Check that scroll bars are not displayed on the border.
                 DNodeListElement listChild = ((DNodeList) dde).getOwnedElements().iterator().next();
@@ -185,11 +183,11 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
                 ResizableCompartmentFigure compartmentFigure = (ResizableCompartmentFigure) ((IGraphicalEditPart) listChildEditPart.getParent()).getFigure();
                 IFigure contentPane = compartmentFigure.getContentPane();
                 Insets contentPaneInsets = contentPane.getBorder().getInsets(contentPane);
-                assertEquals(new Insets(1, 4, 0, 4), contentPaneInsets);
+                assertEquals("Scrollbar pb in list figure for a border size=" + expectedFigureBorderSize, new Insets(1, 4, 0, 4), contentPaneInsets);
             } else if (part instanceof IDiagramContainerEditPart) {
                 IFigure figure = ((IDiagramContainerEditPart) part).getPrimaryShape();
                 Insets insets = figure.getBorder().getInsets(figure);
-                assertEquals(expectedMainMargin, insets);
+                assertEquals("Pb in container figure for a border size=" + expectedFigureBorderSize, expectedMainMargin, insets);
 
                 // Check that scroll bars are not displayed on the border.
                 DDiagramElement containerChild = ((DNodeContainer) dde).getOwnedDiagramElements().iterator().next();
@@ -198,7 +196,7 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
                 IFigure compartmentFigure = ((IGraphicalEditPart) containerChildEditPart.getParent()).getFigure();
                 IFigure scrollPane = (IFigure) compartmentFigure.getChildren().get(1);
                 Insets scrollPaneInsets = scrollPane.getBorder().getInsets(scrollPane);
-                assertEquals(new Insets(expectedFigureBorderSize + 4), scrollPaneInsets);
+                assertEquals("Scrollbar pb in container figure for a border size=" + expectedFigureBorderSize, new Insets(expectedFigureBorderSize + 4), scrollPaneInsets);
             }
         }
     }
@@ -240,11 +238,6 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
                 if (labelFigure.some()) {
                     Dimension labelFigureSize = labelFigure.get().getBounds().getSize();
                     int borderSize = Integer.valueOf(borderSizeString);
-                    if (borderSize == 0) {
-                        // There is a specific case for border size of 0 pixel.
-                        // It is currently considered as 1 pixel.
-                        borderSize = 1;
-                    }
                     int expectedWidth = labelFigureSize.width + 2 + (borderSize * 2);
                     Dimension figureSize = part.getFigure().getBounds().getSize();
                     if (expectedWidth != figureSize.width) {

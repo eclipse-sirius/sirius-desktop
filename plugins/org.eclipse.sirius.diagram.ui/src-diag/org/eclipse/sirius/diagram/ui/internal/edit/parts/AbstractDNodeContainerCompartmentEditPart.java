@@ -169,9 +169,6 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 if (ownedStyle.getBorderSize() != null) {
                     borderSize = ownedStyle.getBorderSize().intValue();
                 }
-                if (borderSize == 0) {
-                    borderSize = 1;
-                }
 
                 if (getFigure() instanceof ResizableCompartmentFigure) {
                     ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
@@ -180,7 +177,11 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                         Border border;
                         if (isRegionContainerCompartment()) {
                             // scroll pane / layout compensation
-                            border = new MarginBorder(0, 0, -1, -1);
+                            if (borderSize == 0) {
+                                border = new MarginBorder(0, 0, 0, 0);
+                            } else {
+                                border = new MarginBorder(0, 0, -1, -1);
+                            }
                         } else {
                             // We should not have to report the border size
                             // here, but the content pane of the figure will be
