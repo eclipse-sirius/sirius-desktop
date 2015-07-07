@@ -361,6 +361,7 @@ public class AllTestSuite extends TestCase {
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
         suite.addTestSuite(ValidationTest.class);
+        suite.addTestSuite(ViewpointSelectionDialogTest.class);
         suite.addTestSuite(InitializeEmptySessionTest.class);
         suite.addTestSuite(InitializeSessionTest.class);
         suite.addTestSuite(RepairTest.class);
