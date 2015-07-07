@@ -61,7 +61,6 @@ import org.eclipse.gef.ui.parts.ScrollingGraphicalViewer;
 import org.eclipse.gef.ui.rulers.RulerComposite;
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
@@ -163,7 +162,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWrapperPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
@@ -658,9 +656,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void hookGraphicalViewer() {
         super.hookGraphicalViewer();
-
-        final Diagram gmfDiagram = getDiagram();
-
         // Manage palette.
         paletteManager = new PaletteManagerImpl(getEditDomain());
         paletteManager.update(getDiagram());
@@ -669,19 +664,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         paletteTransferDropTargetListener = new SiriusPaletteToolDropTargetListener(getGraphicalViewer());
         getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
 
-        // Initialize Java Service.
-        EObject semantic = ViewUtil.resolveSemanticElement(gmfDiagram);
-        if (semantic instanceof DSemanticDecorator) {
-            semantic = ((DSemanticDecorator) semantic).getTarget();
-            if (semantic != null && semantic.eResource() == null) {
-                ModelUtils.resolveAll(semantic);
-            }
-        }
-
-        // Semantic element can be null if the editor has been opened from the
-        // project explorer (=> a GMF Diagram associated to no semantic element
-        // is created)
-        if (semantic != null) {
+        if (getSession() != null) {
             final IInterpreter interpreter = getSession().getInterpreter();
             InterpreterRegistry.prepareImportsFromSession(interpreter, getSession());
         }
@@ -692,7 +675,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // Add a post commit listener to select newly created diagram elements.
         selectNewElementsListener = new SelectCreatedDRepresentationElementsListener(this);
         session.getTransactionalEditingDomain().addResourceSetListener(selectNewElementsListener);
-
     }
 
     @Override

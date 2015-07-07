@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +25,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -43,7 +41,6 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tree.DTree;
@@ -61,7 +58,6 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
@@ -88,7 +84,6 @@ import org.eclipse.ui.part.FileEditorInput;
  * Editor for tree representations.
  * 
  * @author nlepine
- * 
  */
 public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor {
 
@@ -107,9 +102,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
     private DTree treeModel;
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Image getInitialImage() {
         if (initialTitleImage == null || initialTitleImage.isDisposed()) {
             initialTitleImage = SiriusEditPlugin.getPlugin().getImage(INITIAL_TITLE_IMAGE_DESCRIPTOR);
@@ -117,9 +110,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         return initialTitleImage;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Image getFrozenRepresentationImage() {
         if (frozenRepresentationImage == null || frozenRepresentationImage.isDisposed()) {
@@ -221,35 +211,9 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         // DslCommonPlugin.PROFILER.stopWork(SiriusTasks.CREATE_TREE);
         getSite().setSelectionProvider(treeViewerManager.getTreeViewer());
 
-        /* initialize Java Service. */
-        EObject semantic = null;
-        if (treeModel != null) {
-            semantic = treeModel.getTarget();
-        }
-        if (semantic == null) {
-            final TreeIterator<?> allContents = this.getEditingDomain().getResourceSet().getAllContents();
-            while (allContents.hasNext() && semantic == null) {
-                final Object next = allContents.next();
-                if (next instanceof DSemanticDecorator) {
-                    semantic = ((DSemanticDecorator) next).getTarget();
-                }
-            }
-        }
-        EObject anyEObject = semantic;
-        final Iterator<Resource> iterResources = this.getEditingDomain().getResourceSet().getResources().iterator();
-        while (iterResources.hasNext() && anyEObject == null) {
-            final Resource res = iterResources.next();
-            if (!res.getContents().isEmpty()) {
-                anyEObject = res.getContents().get(0);
-            }
-        }
-        Resource resource = anyEObject.eResource();
-        if (resource.getResourceSet() != getEditingDomain().getResourceSet()) {
-            resource.unload();
-        }
-        if (anyEObject != null) {
-            final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(anyEObject);
-            InterpreterRegistry.prepareImportsFromSession(interpreter, SessionManager.INSTANCE.getSession(anyEObject));
+        /* initialize interpreter. */
+        if (session != null) {
+            InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
         }
         // Add the CreateTreeItem menu of the toolbar
         ((DTreeActionBarContributor) getEditorSite().getActionBarContributor()).addCreateTreeItemMenu(((DTreeViewerManager) this.getTableViewer()).getCreateTreeItemMenu());
@@ -303,10 +267,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
     }
 
-    private IInterpreter getInterpreter() {
-        return SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(getTreeModel().getTarget());
-    }
-
     /**
      * @param accessor
      *            the accessor to set
@@ -316,21 +276,13 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         ((ITreeCommandFactory) emfCommandFactory).setModelAccessor(this.accessor);
     }
 
-    /**
-     * {@inheritDoc}
-     * */
-    protected void launchRefresh(boolean loading) {
+    private void launchRefresh(boolean loading) {
         getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getTreeModel()));
         if (!loading) {
             getViewer().refresh();
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor#launchRefresh()
-     */
     @Override
     protected void launchRefresh() {
         launchRefresh(false);
@@ -341,11 +293,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#validateRepresentation()
-     */
+    @Override
     public void validateRepresentation() {
         // TODO Auto-generated method stub
     }
@@ -359,6 +307,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     public void close(final boolean save) {
         Display display = getSite().getShell().getDisplay();
         display.asyncExec(new Runnable() {
+            @Override
             public void run() {
                 if (treeViewerManager != null) {
                     getSite().getPage().closeEditor(DTreeEditor.this, save);
@@ -372,22 +321,16 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         return this.treeModel;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public DRepresentation getRepresentation() {
         return getTreeModel();
     }
 
+    @Override
     public String getContributorId() {
         return ID;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.EditorPart#doSave(org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     public void doSave(final IProgressMonitor progressMonitor) {
         if (isDeleted(getEditorInput())) {
@@ -447,10 +390,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void doSaveAs() {
         if (isSaveAsAllowed()) {
@@ -458,11 +397,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.ide.IGotoMarker#gotoMarker(org.eclipse.core.resources.IMarker)
-     */
+    @Override
     public void gotoMarker(IMarker marker) {
         if (TraceabilityMarkerNavigationProvider.isTraceabilityMarker(marker)) {
             new TraceabilityMarkerNavigationProvider(this).gotoMarker(marker);
@@ -549,6 +484,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
      * @return the adapter factory used for providing views of the model of this
      *         editor.
      */
+    @Override
     public AdapterFactory getAdapterFactory() {
         if (adapterFactory == null) {
             // Create an adapter factory that yields item providers.
@@ -557,9 +493,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         return adapterFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void dispose() {
         if (refreshAtOpeningActivator != null) {
@@ -572,9 +505,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Control getControl() {
         TreeViewer treeViewer = this.getTableViewer().getTreeViewer();
         return treeViewer.getTree();
