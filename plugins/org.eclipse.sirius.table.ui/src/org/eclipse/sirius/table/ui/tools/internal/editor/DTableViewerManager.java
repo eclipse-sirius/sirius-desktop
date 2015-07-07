@@ -525,10 +525,10 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         treeViewer.getTree().addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(final KeyEvent e) {
-                if (e.keyCode == SWT.ARROW_LEFT && activeColumn >= 0) {
+                if (e.keyCode == SWT.ARROW_LEFT && activeColumn > 0) {
                     activeColumn--;
                     treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
-                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn < treeViewer.getTree().getColumnCount()) {
+                } else if (e.keyCode == SWT.ARROW_RIGHT && activeColumn < treeViewer.getTree().getColumnCount() - 1) {
                     activeColumn++;
                     treeViewer.getTree().showColumn(treeViewer.getTree().getColumn(activeColumn));
                 }
