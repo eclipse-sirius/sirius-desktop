@@ -34,6 +34,7 @@ import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.ToolTip;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -94,7 +95,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
          * @return viewpoint name
          */
         public String getLabel() {
-            return viewpoint.getName();
+            return new IdentifiedElementQuery(viewpoint).getLabel();
         }
 
         /**

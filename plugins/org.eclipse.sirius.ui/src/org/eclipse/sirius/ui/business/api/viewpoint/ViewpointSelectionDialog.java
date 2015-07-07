@@ -28,6 +28,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
@@ -99,7 +100,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         }
 
         public String getLabel() {
-            return viewpoint.getName();
+            return new IdentifiedElementQuery(viewpoint).getLabel();
         }
 
         public URI getViewpointURI() {
