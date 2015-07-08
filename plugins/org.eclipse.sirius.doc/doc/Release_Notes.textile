@@ -19,14 +19,14 @@ h4. Changes in @org.eclipse.sirius.ext.gef@
 
 h4. Changes in @org.eclipse.sirius@
 
-* @org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()@ methods removed because they are useless since undo/redo is managed by EMF Transaction.
-* @org.eclipse.sirius.tools.api.command.IUndoableCommand@ interface removed because it is useless since undo/redo is managed by EMF Transaction.
-* @org.eclipse.sirius.tools.api.command.DCommand@ no more inherits of @IUndoableCommand@ because useless since undo/redo is managed by EMF Transaction.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()@ methods removed because they are useless since undo/redo is managed by EMF Transaction.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.tools.api.command.IUndoableCommand@ interface removed because it is useless since undo/redo is managed by EMF Transaction.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.tools.api.command.DCommand@ no more inherits of @IUndoableCommand@ because useless since undo/redo is managed by EMF Transaction.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
-* @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()@ method has been deprecated as a @IEditorInput@ can be reused by several instances of @IEditorPart@ through the navigation history view.
-* @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()@ method has been added to get the real input for a @DRepresentation@.
+* <span class="label label-warning">Deprecated</span>  @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()@ method has been deprecated as a @IEditorInput@ can be reused by several instances of @IEditorPart@ through the navigation history view.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()@ method has been added to get the real input for a @DRepresentation@.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 

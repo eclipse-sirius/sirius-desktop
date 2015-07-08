@@ -82,13 +82,13 @@
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
-			<li>
+			<li><span class="label label-danger">Removed</span> 
 				<code>org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()</code> methods removed because they are useless since undo/redo is managed by EMF Transaction.
 			</li>
-			<li>
+			<li><span class="label label-danger">Removed</span> 
 				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
 			</li>
-			<li>
+			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.tools.api.command.DCommand</code> no more inherits of 
 				<code>IUndoableCommand</code> because useless since undo/redo is managed by EMF Transaction.
 			</li>
@@ -97,12 +97,12 @@
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
-			<li>
+			<li><span class="label label-warning">Deprecated</span>  
 				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()</code> method has been deprecated as a 
 				<code>IEditorInput</code> can be reused by several instances of 
 				<code>IEditorPart</code> through the navigation history view.
 			</li>
-			<li>
+			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()</code> method has been added to get the real input for a 
 				<code>DRepresentation</code>.
 			</li>
