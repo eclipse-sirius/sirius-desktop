@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,8 +32,8 @@ import com.google.common.collect.Lists;
  * (especially when reopening an editor from Navigation History).
  * 
  * @author alagarde
- * 
  */
+@SuppressWarnings("restriction")
 public class RestoreSessionFromEditorInputTests extends SiriusDiagramTestCase {
 
     private static final String SEMANTIC_ROOT = "/vp-2067/2067.ecore";
@@ -69,16 +69,45 @@ public class RestoreSessionFromEditorInputTests extends SiriusDiagramTestCase {
     public void testRestoreSessionFromHistory() {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            junit.framework.AssertionFailedError: Wrong initial state: expecting only one active session expected:<1> but was:<2>
-            at junit.framework.Assert.fail(Assert.java:57)
-            at junit.framework.Assert.failNotEquals(Assert.java:329)
-            at junit.framework.Assert.assertEquals(Assert.java:78)
-            at junit.framework.Assert.assertEquals(Assert.java:234)
-            at junit.framework.TestCase.assertEquals(TestCase.java:401)
-            at org.eclipse.sirius.tests.unit.common.RestoreSessionFromEditorInputTests.testRestoreSessionFromHistory(RestoreSessionFromEditorInputTests.java:61)
-            */
+             * junit.framework.AssertionFailedError: Wrong initial state:
+             * expecting only one active session expected:<1> but was:<2> at
+             * junit.framework.Assert.fail(Assert.java:57) at
+             * junit.framework.Assert.failNotEquals(Assert.java:329) at
+             * junit.framework.Assert.assertEquals(Assert.java:78) at
+             * junit.framework.Assert.assertEquals(Assert.java:234) at
+             * junit.framework.TestCase.assertEquals(TestCase.java:401) at
+             * org.eclipse.sirius.tests.unit.common.
+             * RestoreSessionFromEditorInputTests.testRestoreSessionFromHistory(
+             * RestoreSessionFromEditorInputTests.java:61)
+             */
             return;
         }
+        testRestoreSessionFromHistory(false);
+    }
+
+    /**
+     * Same test as previous but close the session before restoring the editor.
+     */
+    public void testRestoreSessionFromHistoryWithClosedSession() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            /*
+             * junit.framework.AssertionFailedError: Wrong initial state:
+             * expecting only one active session expected:<1> but was:<2> at
+             * junit.framework.Assert.fail(Assert.java:57) at
+             * junit.framework.Assert.failNotEquals(Assert.java:329) at
+             * junit.framework.Assert.assertEquals(Assert.java:78) at
+             * junit.framework.Assert.assertEquals(Assert.java:234) at
+             * junit.framework.TestCase.assertEquals(TestCase.java:401) at
+             * org.eclipse.sirius.tests.unit.common.
+             * RestoreSessionFromEditorInputTests.testRestoreSessionFromHistory(
+             * RestoreSessionFromEditorInputTests.java:61)
+             */
+            return;
+        }
+        testRestoreSessionFromHistory(true);
+    }
+
+    private void testRestoreSessionFromHistory(boolean closeSession) {
         assertEquals("Wrong initial state: expecting only one active session", 1, SessionManager.INSTANCE.getSessions().size());
 
         // Step 1: open editor on the controlled representation
@@ -88,6 +117,10 @@ public class RestoreSessionFromEditorInputTests extends SiriusDiagramTestCase {
         // Step 2: close editor
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
+
+        if (closeSession) {
+            closeSession(session);
+        }
 
         // Step 3: restore editor from navigation history
         new NavigationHistoryAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), false).run();

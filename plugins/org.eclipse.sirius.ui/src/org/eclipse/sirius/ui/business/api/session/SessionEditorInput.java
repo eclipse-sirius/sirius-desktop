@@ -108,7 +108,7 @@ public class SessionEditorInput extends URIEditorInput {
      */
     private Session getSession(boolean restore) {
         Session session = sessionRef != null ? sessionRef.get() : null;
-        if (session == null) {
+        if (session == null || !session.isOpen()) {
             URI sessionModelURI = getURI().trimFragment();
             if (sessionResourceURI != null) {
                 sessionModelURI = sessionResourceURI;
