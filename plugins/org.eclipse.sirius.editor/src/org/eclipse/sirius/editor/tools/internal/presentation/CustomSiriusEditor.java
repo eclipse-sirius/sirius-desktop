@@ -98,8 +98,10 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
     private final ViewpointURIHandler vsmURIHandler;
 
     private CommandStackListener cmdStackListener = new CommandStackListener() {
+        @Override
         public void commandStackChanged(EventObject event) {
             getContainer().getDisplay().asyncExec(new Runnable() {
+                @Override
                 public void run() {
                     if (isDirty()) {
                         ToolBarManager tbm = getToolBarManager();
@@ -133,8 +135,10 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             editingDomain.getResourceSet().setURIConverter(new ViewpointURIConverter(registry));
             loader = new DynamicVSMLoader(editingDomain.getResourceSet(), registry);
             loader.setErrorHandler(new Runnable() {
+                @Override
                 public void run() {
                     getSite().getShell().getDisplay().asyncExec(new Runnable() {
+                        @Override
                         public void run() {
                             MessageDialog.openError(getSite().getShell(), "Error", "The editor will be closed.");
                             getSite().getPage().closeEditor(CustomSiriusEditor.this, false);
@@ -217,6 +221,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                  * corresponding resource for Viewpoints loaded by dependency.
                  */
                 decoratingLabelProvider = new GeneratedElementsLabelProvider((ILabelProvider) selectionViewer.getLabelProvider(), validationDecorator) {
+                    @Override
                     public String getText(Object element) {
                         String result = super.getText(element);
                         if (element instanceof Viewpoint) {
@@ -245,6 +250,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             selectionViewer.setLabelProvider(decoratingLabelProvider);
             selectionViewer.addDoubleClickListener(new IDoubleClickListener() {
 
+                @Override
                 public void doubleClick(DoubleClickEvent event) {
                     ISelection selection = selectionViewer.getSelection();
                     if (selection instanceof StructuredSelection && ((StructuredSelection) selection).getFirstElement() instanceof EObject) {
@@ -300,6 +306,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                     if (provider.some()) {
                         Resource res = resourceSet.getResource(provider.get(), true);
                         viewpoints.add(Iterables.find(registry.getSiriusResourceHandler().collectViewpointDefinitions(res), new Predicate<Viewpoint>() {
+                            @Override
                             public boolean apply(Viewpoint input) {
                                 Option<URI> inputURI = new ViewpointQuery(input).getViewpointURI();
                                 return inputURI.some() && inputURI.get().equals(uri);
@@ -379,7 +386,9 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         editingDomain.getCommandStack().removeCommandStackListener(cmdStackListener);
 
         editingDomain.getResourceSet().eAdapters().remove(templateUpdateTrigger);
-        decoratingLabelProvider.dispose();
+        if (decoratingLabelProvider != null) {
+            decoratingLabelProvider.dispose();
+        }
 
         if (Movida.isEnabled()) {
             loader.dispose();
