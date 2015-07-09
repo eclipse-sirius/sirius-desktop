@@ -4,16 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -112,7 +110,7 @@ public interface ScxmlIfType extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Core Executablecontent</em>'
      *         attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_ScxmlCoreExecutablecontent()
@@ -132,7 +130,7 @@ public interface ScxmlIfType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -153,7 +151,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Raise</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Raise()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -173,7 +171,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>If</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_If()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -193,7 +191,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreach</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Foreach()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -213,7 +211,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Send</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Send()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -233,7 +231,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Script</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Script()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -253,7 +251,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Assign</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Assign()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -273,7 +271,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Log</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Log()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -293,7 +291,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cancel</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Cancel()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -311,7 +309,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Elseif</em>' containment reference.
      * @see #setElseif(ScxmlElseifType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Elseif()
@@ -326,7 +324,7 @@ public interface ScxmlIfType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getElseif
      * <em>Elseif</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Elseif</em>' containment reference.
      * @see #getElseif()
@@ -344,7 +342,7 @@ public interface ScxmlIfType extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Core Executablecontent1</em>'
      *         attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_ScxmlCoreExecutablecontent1()
@@ -364,7 +362,7 @@ public interface ScxmlIfType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any1</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Any1()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -385,7 +383,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Raise1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Raise1()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -405,7 +403,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>If1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_If1()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -425,7 +423,7 @@ public interface ScxmlIfType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreach1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Foreach1()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -445,7 +443,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Send1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Send1()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -465,7 +463,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Script1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Script1()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -485,7 +483,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Assign1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Assign1()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -505,7 +503,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Log1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Log1()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -525,7 +523,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cancel1</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Cancel1()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -543,7 +541,7 @@ public interface ScxmlIfType extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Else</em>' containment reference.
      * @see #setElse(ScxmlElseType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Else()
@@ -558,7 +556,7 @@ public interface ScxmlIfType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getElse
      * <em>Else</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Else</em>' containment reference.
      * @see #getElse()
@@ -576,7 +574,7 @@ public interface ScxmlIfType extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Core Executablecontent2</em>'
      *         attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_ScxmlCoreExecutablecontent2()
@@ -596,7 +594,7 @@ public interface ScxmlIfType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any2</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Any2()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -617,7 +615,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Raise2</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Raise2()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -637,7 +635,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>If2</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_If2()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -657,7 +655,7 @@ public interface ScxmlIfType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreach2</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Foreach2()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -677,7 +675,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Send2</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Send2()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -697,7 +695,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Script2</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Script2()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -717,7 +715,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Assign2</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Assign2()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -737,7 +735,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Log2</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Log2()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -757,7 +755,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cancel2</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Cancel2()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -775,7 +773,7 @@ public interface ScxmlIfType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cond</em>' attribute.
      * @see #setCond(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_Cond()
@@ -789,7 +787,7 @@ public interface ScxmlIfType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCond
      * <em>Cond</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Cond</em>' attribute.
      * @see #getCond()
@@ -807,7 +805,7 @@ public interface ScxmlIfType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlIfType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

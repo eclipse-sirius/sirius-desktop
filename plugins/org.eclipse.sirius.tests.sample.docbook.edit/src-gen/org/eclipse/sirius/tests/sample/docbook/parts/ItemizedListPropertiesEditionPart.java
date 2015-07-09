@@ -26,22 +26,22 @@ public interface ItemizedListPropertiesEditionPart {
 
     /**
      * @return the mark
-     * 
+     *
      */
     public String getMark();
 
     /**
      * Defines a new mark
-     * 
+     *
      * @param newValue
      *            the new mark to set
-     * 
+     *
      */
     public void setMark(String newValue);
 
     /**
      * Init the listitem
-     * 
+     *
      * @param current
      *            the current value
      * @param containgFeature
@@ -53,44 +53,44 @@ public interface ItemizedListPropertiesEditionPart {
 
     /**
      * Update the listitem
-     * 
+     *
      * @param newValue
      *            the listitem to update
-     * 
+     *
      */
     public void updateListitem();
 
     /**
      * Adds the given filter to the listitem edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addFilterToListitem(ViewerFilter filter);
 
     /**
      * Adds the given filter to the listitem edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addBusinessFilterToListitem(ViewerFilter filter);
 
     /**
      * @return true if the given element is contained inside the listitem table
-     * 
+     *
      */
     public boolean isContainedInListitemTable(EObject element);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

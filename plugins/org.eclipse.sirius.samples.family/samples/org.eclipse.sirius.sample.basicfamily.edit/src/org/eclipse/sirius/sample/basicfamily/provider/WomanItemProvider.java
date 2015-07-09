@@ -22,14 +22,14 @@ import org.eclipse.sirius.sample.basicfamily.Woman;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.sample.basicfamily.Woman} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class WomanItemProvider extends PersonItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public WomanItemProvider(AdapterFactory adapterFactory) {
@@ -39,7 +39,7 @@ public class WomanItemProvider extends PersonItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -58,7 +58,7 @@ public class WomanItemProvider extends PersonItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Woman"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Woman")); //$NON-NLS-1$
     }
 
     /**
@@ -70,7 +70,8 @@ public class WomanItemProvider extends PersonItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((Woman) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Woman_type") : getString("_UI_Woman_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Woman_type") : //$NON-NLS-1$
+                getString("_UI_Woman_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -91,7 +92,7 @@ public class WomanItemProvider extends PersonItemProvider {
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

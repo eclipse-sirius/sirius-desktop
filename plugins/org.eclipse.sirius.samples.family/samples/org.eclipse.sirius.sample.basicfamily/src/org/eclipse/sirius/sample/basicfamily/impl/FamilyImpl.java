@@ -95,6 +95,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -104,6 +105,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
@@ -116,6 +118,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
      * 
      * @generated
      */
+    @Override
     public EList<Person> getMembers() {
         if (members == null) {
             members = new EObjectContainmentEList<Person>(Person.class, this, BasicfamilyPackage.FAMILY__MEMBERS);
@@ -218,7 +221,7 @@ public class FamilyImpl extends MinimalEObjectImpl.Container implements Family {
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
         return result.toString();

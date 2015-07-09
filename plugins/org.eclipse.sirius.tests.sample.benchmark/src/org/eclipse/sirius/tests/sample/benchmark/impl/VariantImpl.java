@@ -33,7 +33,7 @@ import org.eclipse.sirius.tests.sample.benchmark.Variant;
  * <em>Results</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class VariantImpl extends NamedElementImpl implements Variant {

@@ -81,10 +81,10 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public InfoPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -92,11 +92,11 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.forms.widgets.FormToolkit)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
@@ -112,11 +112,11 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createControls(org.eclipse.ui.forms.widgets.FormToolkit,
      *      org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(final FormToolkit widgetFactory, Composite view) {
@@ -167,7 +167,7 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createAuthorTableComposition(FormToolkit widgetFactory, Composite parent) {
         this.author = new ReferencesTable(getDescription(DocbookViewsRepository.Info.Properties.author, DocbookMessages.InfoPropertiesEditionPart_AuthorLabel), new ReferencesTableListener() {
@@ -242,7 +242,7 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
         date.addFocusListener(new FocusAdapter() {
             /**
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -269,7 +269,7 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
         date.addKeyListener(new KeyAdapter() {
             /**
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -301,7 +301,7 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
         pubdate.addFocusListener(new FocusAdapter() {
             /**
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -328,7 +328,7 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
         pubdate.addKeyListener(new KeyAdapter() {
             /**
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -352,9 +352,9 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -365,7 +365,7 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#initAuthor(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -389,9 +389,9 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#updateAuthor()
-     * 
+     *
      */
     @Override
     public void updateAuthor() {
@@ -400,10 +400,10 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#addFilterAuthor(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToAuthor(ViewerFilter filter) {
@@ -415,10 +415,10 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#addBusinessFilterAuthor(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToAuthor(ViewerFilter filter) {
@@ -427,10 +427,10 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#isContainedInAuthorTable(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInAuthorTable(EObject element) {
@@ -439,9 +439,9 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#getDate()
-     * 
+     *
      */
     @Override
     public String getDate() {
@@ -450,10 +450,10 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#setDate(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setDate(String newValue) {
@@ -474,9 +474,9 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#getPubdate()
-     * 
+     *
      */
     @Override
     public String getPubdate() {
@@ -485,10 +485,10 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.InfoPropertiesEditionPart#setPubdate(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setPubdate(String newValue) {
@@ -511,7 +511,7 @@ public class InfoPropertiesEditionPartForm extends SectionPropertiesEditingPart 
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

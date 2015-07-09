@@ -23,24 +23,24 @@ public interface XRefPropertiesEditionPart {
 
     /**
      * @return the linkend
-     * 
+     *
      */
     public String getLinkend();
 
     /**
      * Defines a new linkend
-     * 
+     *
      * @param newValue
      *            the new linkend to set
-     * 
+     *
      */
     public void setLinkend(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

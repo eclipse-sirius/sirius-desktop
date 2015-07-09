@@ -298,7 +298,7 @@ public class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSize: ");
+        result.append(" (borderSize: "); //$NON-NLS-1$
         result.append(borderSize);
         result.append(')');
         return result.toString();

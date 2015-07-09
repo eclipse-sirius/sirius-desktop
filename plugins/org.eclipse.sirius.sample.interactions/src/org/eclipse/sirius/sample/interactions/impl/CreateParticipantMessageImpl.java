@@ -19,13 +19,13 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * <em><b>Create Participant Message</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class CreateParticipantMessageImpl extends MessageImpl implements CreateParticipantMessage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateParticipantMessageImpl() {
@@ -34,7 +34,7 @@ public class CreateParticipantMessageImpl extends MessageImpl implements CreateP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

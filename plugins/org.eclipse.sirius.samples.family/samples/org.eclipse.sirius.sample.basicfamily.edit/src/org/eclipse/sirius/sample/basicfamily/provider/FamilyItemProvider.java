@@ -35,14 +35,14 @@ import org.eclipse.sirius.sample.basicfamily.Family;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.sample.basicfamily.Family} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class FamilyItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public FamilyItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +52,7 @@ public class FamilyItemProvider extends ItemProviderAdapter implements IEditingD
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,9 +72,9 @@ public class FamilyItemProvider extends ItemProviderAdapter implements IEditingD
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Family_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Family_name_feature", "_UI_Family_type"), BasicfamilyPackage.Literals.FAMILY__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Family_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Family_name_feature", "_UI_Family_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                BasicfamilyPackage.Literals.FAMILY__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -117,7 +117,7 @@ public class FamilyItemProvider extends ItemProviderAdapter implements IEditingD
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Family"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Family")); //$NON-NLS-1$
     }
 
     /**
@@ -129,7 +129,8 @@ public class FamilyItemProvider extends ItemProviderAdapter implements IEditingD
     @Override
     public String getText(Object object) {
         String label = ((Family) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Family_type") : getString("_UI_Family_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Family_type") : //$NON-NLS-1$
+                getString("_UI_Family_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -159,7 +160,7 @@ public class FamilyItemProvider extends ItemProviderAdapter implements IEditingD
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -174,7 +175,7 @@ public class FamilyItemProvider extends ItemProviderAdapter implements IEditingD
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

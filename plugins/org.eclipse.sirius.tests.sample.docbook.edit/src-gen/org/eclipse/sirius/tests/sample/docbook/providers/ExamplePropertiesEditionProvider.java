@@ -39,7 +39,7 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
     /**
      * Constructor with providers for super types.
-     * 
+     *
      * @param superProviders
      *            providers to use for super types.
      */
@@ -49,9 +49,9 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
-     * 
+     *
      */
     @Override
     public boolean provides(PropertiesEditingContext editingContext) {
@@ -60,10 +60,10 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
      *      java.lang.String)
-     * 
+     *
      */
     @Override
     public boolean provides(PropertiesEditingContext editingContext, String part) {
@@ -72,10 +72,10 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
      *      java.lang.Class)
-     * 
+     *
      */
     @Override
     @SuppressWarnings("rawtypes")
@@ -85,10 +85,10 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
      *      java.lang.String, java.lang.Class)
-     * 
+     *
      */
     @Override
     @SuppressWarnings("rawtypes")
@@ -98,10 +98,10 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
      *      java.lang.String)
-     * 
+     *
      */
     @Override
     public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
@@ -113,10 +113,10 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
      *      java.lang.String, java.lang.String)
-     * 
+     *
      */
     @Override
     public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
@@ -130,7 +130,7 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
      *      java.lang.String, java.lang.String, java.lang.Class)
      */
@@ -152,7 +152,7 @@ public class ExamplePropertiesEditionProvider extends PropertiesEditingProviderI
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
          */
         @Override

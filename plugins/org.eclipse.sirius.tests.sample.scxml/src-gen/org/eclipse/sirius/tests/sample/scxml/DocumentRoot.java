@@ -4,16 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -100,7 +98,7 @@ public interface DocumentRoot extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mixed</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Mixed()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -119,7 +117,7 @@ public interface DocumentRoot extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>XMLNS Prefix Map</em>' map.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_XMLNSPrefixMap()
      * @model mapType=
@@ -139,7 +137,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>XSI Schema Location</em>' map.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_XSISchemaLocation()
      * @model mapType=
@@ -158,7 +156,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Assign</em>' containment reference.
      * @see #setAssign(ScxmlAssignType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Assign()
@@ -174,7 +172,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getAssign
      * <em>Assign</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Assign</em>' containment reference.
      * @see #getAssign()
@@ -190,7 +188,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cancel</em>' containment reference.
      * @see #setCancel(ScxmlCancelType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Cancel()
@@ -206,7 +204,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getCancel
      * <em>Cancel</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Cancel</em>' containment reference.
      * @see #getCancel()
@@ -222,7 +220,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Content</em>' containment reference.
      * @see #setContent(ScxmlContentType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Content()
@@ -238,7 +236,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getContent
      * <em>Content</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Content</em>' containment reference.
      * @see #getContent()
@@ -254,7 +252,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Data</em>' containment reference.
      * @see #setData(ScxmlDataType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Data()
@@ -270,7 +268,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getData
      * <em>Data</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Data</em>' containment reference.
      * @see #getData()
@@ -286,7 +284,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Datamodel</em>' containment reference.
      * @see #setDatamodel(ScxmlDatamodelType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Datamodel()
@@ -302,7 +300,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getDatamodel
      * <em>Datamodel</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Datamodel</em>' containment
      *            reference.
@@ -319,7 +317,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Donedata</em>' containment reference.
      * @see #setDonedata(ScxmlDonedataType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Donedata()
@@ -335,7 +333,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getDonedata
      * <em>Donedata</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Donedata</em>' containment
      *            reference.
@@ -352,7 +350,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Else</em>' containment reference.
      * @see #setElse(ScxmlElseType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Else()
@@ -368,7 +366,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getElse
      * <em>Else</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Else</em>' containment reference.
      * @see #getElse()
@@ -384,7 +382,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Elseif</em>' containment reference.
      * @see #setElseif(ScxmlElseifType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Elseif()
@@ -400,7 +398,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getElseif
      * <em>Elseif</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Elseif</em>' containment reference.
      * @see #getElseif()
@@ -416,7 +414,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Final</em>' containment reference.
      * @see #setFinal(ScxmlFinalType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Final()
@@ -432,7 +430,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getFinal
      * <em>Final</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Final</em>' containment reference.
      * @see #getFinal()
@@ -448,7 +446,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finalize</em>' containment reference.
      * @see #setFinalize(ScxmlFinalizeType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Finalize()
@@ -464,7 +462,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getFinalize
      * <em>Finalize</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finalize</em>' containment
      *            reference.
@@ -481,7 +479,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreach</em>' containment reference.
      * @see #setForeach(ScxmlForeachType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Foreach()
@@ -497,7 +495,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getForeach
      * <em>Foreach</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Foreach</em>' containment reference.
      * @see #getForeach()
@@ -513,7 +511,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>History</em>' containment reference.
      * @see #setHistory(ScxmlHistoryType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_History()
@@ -529,7 +527,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getHistory
      * <em>History</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>History</em>' containment reference.
      * @see #getHistory()
@@ -545,7 +543,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>If</em>' containment reference.
      * @see #setIf(ScxmlIfType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_If()
@@ -561,7 +559,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getIf
      * <em>If</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>If</em>' containment reference.
      * @see #getIf()
@@ -577,7 +575,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial</em>' containment reference.
      * @see #setInitial(ScxmlInitialType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Initial()
@@ -593,7 +591,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getInitial
      * <em>Initial</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial</em>' containment reference.
      * @see #getInitial()
@@ -609,7 +607,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Invoke</em>' containment reference.
      * @see #setInvoke(ScxmlInvokeType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Invoke()
@@ -625,7 +623,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getInvoke
      * <em>Invoke</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Invoke</em>' containment reference.
      * @see #getInvoke()
@@ -641,7 +639,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Log</em>' containment reference.
      * @see #setLog(ScxmlLogType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Log()
@@ -657,7 +655,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getLog
      * <em>Log</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Log</em>' containment reference.
      * @see #getLog()
@@ -673,7 +671,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Onentry</em>' containment reference.
      * @see #setOnentry(ScxmlOnentryType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Onentry()
@@ -689,7 +687,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getOnentry
      * <em>Onentry</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Onentry</em>' containment reference.
      * @see #getOnentry()
@@ -705,7 +703,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Onexit</em>' containment reference.
      * @see #setOnexit(ScxmlOnexitType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Onexit()
@@ -721,7 +719,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getOnexit
      * <em>Onexit</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Onexit</em>' containment reference.
      * @see #getOnexit()
@@ -737,7 +735,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Parallel</em>' containment reference.
      * @see #setParallel(ScxmlParallelType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Parallel()
@@ -753,7 +751,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getParallel
      * <em>Parallel</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Parallel</em>' containment
      *            reference.
@@ -770,7 +768,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Param</em>' containment reference.
      * @see #setParam(ScxmlParamType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Param()
@@ -786,7 +784,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getParam
      * <em>Param</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Param</em>' containment reference.
      * @see #getParam()
@@ -802,7 +800,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Raise</em>' containment reference.
      * @see #setRaise(ScxmlRaiseType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Raise()
@@ -818,7 +816,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getRaise
      * <em>Raise</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Raise</em>' containment reference.
      * @see #getRaise()
@@ -834,7 +832,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Script</em>' containment reference.
      * @see #setScript(ScxmlScriptType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Script()
@@ -850,7 +848,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getScript
      * <em>Script</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Script</em>' containment reference.
      * @see #getScript()
@@ -866,7 +864,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml</em>' containment reference.
      * @see #setScxml(ScxmlScxmlType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Scxml()
@@ -882,7 +880,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getScxml
      * <em>Scxml</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Scxml</em>' containment reference.
      * @see #getScxml()
@@ -898,7 +896,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Send</em>' containment reference.
      * @see #setSend(ScxmlSendType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Send()
@@ -914,7 +912,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getSend
      * <em>Send</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Send</em>' containment reference.
      * @see #getSend()
@@ -930,7 +928,7 @@ public interface DocumentRoot extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>State</em>' containment reference.
      * @see #setState(ScxmlStateType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_State()
@@ -946,7 +944,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getState
      * <em>State</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>State</em>' containment reference.
      * @see #getState()
@@ -962,7 +960,7 @@ public interface DocumentRoot extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Transition</em>' containment reference.
      * @see #setTransition(ScxmlTransitionType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getDocumentRoot_Transition()
@@ -978,7 +976,7 @@ public interface DocumentRoot extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getTransition
      * <em>Transition</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Transition</em>' containment
      *            reference.

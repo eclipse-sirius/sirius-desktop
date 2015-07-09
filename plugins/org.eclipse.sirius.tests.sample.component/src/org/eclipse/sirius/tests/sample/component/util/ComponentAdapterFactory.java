@@ -14,7 +14,8 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.tests.sample.component.*;
+import org.eclipse.sirius.tests.sample.component.Component;
+import org.eclipse.sirius.tests.sample.component.ComponentPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides

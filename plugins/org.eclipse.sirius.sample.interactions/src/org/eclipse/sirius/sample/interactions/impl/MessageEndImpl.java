@@ -29,14 +29,14 @@ import org.eclipse.sirius.sample.interactions.MessageEnd;
  * <em>Message</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MessageEndImpl() {
@@ -54,7 +54,7 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,16 +64,18 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Message getMessage() {
         if (message != null && message.eIsProxy()) {
             InternalEObject oldMessage = (InternalEObject) message;
             message = (Message) eResolveProxy(oldMessage);
             if (message != oldMessage) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.MESSAGE_END__MESSAGE, oldMessage, message));
+                }
             }
         }
         return message;
@@ -81,7 +83,7 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Message basicGetMessage() {
@@ -90,27 +92,30 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setMessage(Message newMessage) {
         Message oldMessage = message;
         message = newMessage;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MESSAGE_END__MESSAGE, oldMessage, message));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.MESSAGE_END__MESSAGE:
-            if (resolve)
+            if (resolve) {
                 return getMessage();
+            }
             return basicGetMessage();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -118,7 +123,7 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +138,7 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +153,7 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

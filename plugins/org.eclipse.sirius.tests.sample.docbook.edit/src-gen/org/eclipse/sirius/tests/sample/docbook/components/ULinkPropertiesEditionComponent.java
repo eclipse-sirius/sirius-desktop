@@ -45,7 +45,7 @@ public class ULinkPropertiesEditionComponent extends SiriusAwarePropertiesEditin
 
     /**
      * Default constructor
-     * 
+     *
      */
     public ULinkPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject uLink, String editing_mode) {
         super(editingContext, uLink, editing_mode);
@@ -56,11 +56,11 @@ public class ULinkPropertiesEditionComponent extends SiriusAwarePropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
      *      int, org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
+     *
      */
     @Override
     public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
@@ -91,7 +91,7 @@ public class ULinkPropertiesEditionComponent extends SiriusAwarePropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
      */
     @Override
@@ -107,9 +107,9 @@ public class ULinkPropertiesEditionComponent extends SiriusAwarePropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void updateSemanticModel(final IPropertiesEditionEvent event) {
@@ -124,7 +124,7 @@ public class ULinkPropertiesEditionComponent extends SiriusAwarePropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
      */
     @Override
@@ -154,7 +154,7 @@ public class ULinkPropertiesEditionComponent extends SiriusAwarePropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
      */
     @Override
@@ -165,9 +165,9 @@ public class ULinkPropertiesEditionComponent extends SiriusAwarePropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public Diagnostic validateValue(IPropertiesEditionEvent event) {

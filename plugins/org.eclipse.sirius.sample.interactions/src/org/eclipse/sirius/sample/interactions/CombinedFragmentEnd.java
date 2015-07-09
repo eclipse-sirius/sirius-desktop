@@ -13,7 +13,7 @@ package org.eclipse.sirius.sample.interactions;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Combined Fragment End</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ package org.eclipse.sirius.sample.interactions;
  * <em>Owner</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragmentEnd()
  * @model
  * @generated
@@ -36,7 +36,7 @@ public interface CombinedFragmentEnd extends AbstractEnd {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owner</em>' reference.
      * @see #setOwner(CombinedFragment)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragmentEnd_Owner()
@@ -49,7 +49,7 @@ public interface CombinedFragmentEnd extends AbstractEnd {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd#getOwner
      * <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owner</em>' reference.
      * @see #getOwner()

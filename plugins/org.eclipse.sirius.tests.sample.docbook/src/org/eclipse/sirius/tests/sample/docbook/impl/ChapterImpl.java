@@ -340,7 +340,7 @@ public class ChapterImpl extends EObjectImpl implements Chapter {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (id: ");
+        result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
         result.append(')');
         return result.toString();

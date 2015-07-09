@@ -26,7 +26,7 @@ public interface InfoPropertiesEditionPart {
 
     /**
      * Init the author
-     * 
+     *
      * @param current
      *            the current value
      * @param containgFeature
@@ -38,74 +38,74 @@ public interface InfoPropertiesEditionPart {
 
     /**
      * Update the author
-     * 
+     *
      * @param newValue
      *            the author to update
-     * 
+     *
      */
     public void updateAuthor();
 
     /**
      * Adds the given filter to the author edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addFilterToAuthor(ViewerFilter filter);
 
     /**
      * Adds the given filter to the author edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addBusinessFilterToAuthor(ViewerFilter filter);
 
     /**
      * @return true if the given element is contained inside the author table
-     * 
+     *
      */
     public boolean isContainedInAuthorTable(EObject element);
 
     /**
      * @return the date
-     * 
+     *
      */
     public String getDate();
 
     /**
      * Defines a new date
-     * 
+     *
      * @param newValue
      *            the new date to set
-     * 
+     *
      */
     public void setDate(String newValue);
 
     /**
      * @return the pubdate
-     * 
+     *
      */
     public String getPubdate();
 
     /**
      * Defines a new pubdate
-     * 
+     *
      * @param newValue
      *            the new pubdate to set
-     * 
+     *
      */
     public void setPubdate(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

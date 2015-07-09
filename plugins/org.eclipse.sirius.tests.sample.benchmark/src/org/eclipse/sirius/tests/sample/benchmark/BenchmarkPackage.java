@@ -36,21 +36,21 @@ public interface BenchmarkPackage extends EPackage {
      * 
      * @generated
      */
-    String eNAME = "benchmark";
+    String eNAME = "benchmark"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/tests/sample/benchmark";
+    String eNS_URI = "http://www.eclipse.org/sirius/tests/sample/benchmark"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_PREFIX = "benchmark";
+    String eNS_PREFIX = "benchmark"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--

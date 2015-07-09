@@ -22,9 +22,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createBookAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createBookAdapter() {
@@ -33,9 +33,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createInfoAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createInfoAdapter() {
@@ -44,9 +44,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createAuthorAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createAuthorAdapter() {
@@ -55,9 +55,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createChapterAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createChapterAdapter() {
@@ -66,9 +66,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createTitleAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createTitleAdapter() {
@@ -77,9 +77,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createParaAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createParaAdapter() {
@@ -88,9 +88,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createItemizedListAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createItemizedListAdapter() {
@@ -99,9 +99,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createOrderedListAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createOrderedListAdapter() {
@@ -110,9 +110,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createSect1Adapter()
-     * 
+     *
      */
     @Override
     public Adapter createSect1Adapter() {
@@ -121,9 +121,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createSect2Adapter()
-     * 
+     *
      */
     @Override
     public Adapter createSect2Adapter() {
@@ -132,9 +132,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createEmphasisAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createEmphasisAdapter() {
@@ -143,9 +143,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createULinkAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createULinkAdapter() {
@@ -154,9 +154,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createXRefAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createXRefAdapter() {
@@ -165,9 +165,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createExampleAdapter()
-     * 
+     *
      */
     @Override
     public Adapter createExampleAdapter() {
@@ -176,9 +176,9 @@ public class DocbookEEFAdapterFactory extends DocbookAdapterFactory {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.util.DocbookAdapterFactory#createSect3Adapter()
-     * 
+     *
      */
     @Override
     public Adapter createSect3Adapter() {

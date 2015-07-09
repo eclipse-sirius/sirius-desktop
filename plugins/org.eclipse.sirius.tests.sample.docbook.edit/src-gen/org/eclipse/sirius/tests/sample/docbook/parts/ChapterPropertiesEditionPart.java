@@ -26,7 +26,7 @@ public interface ChapterPropertiesEditionPart {
 
     /**
      * Init the para
-     * 
+     *
      * @param current
      *            the current value
      * @param containgFeature
@@ -38,42 +38,42 @@ public interface ChapterPropertiesEditionPart {
 
     /**
      * Update the para
-     * 
+     *
      * @param newValue
      *            the para to update
-     * 
+     *
      */
     public void updatePara();
 
     /**
      * Adds the given filter to the para edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addFilterToPara(ViewerFilter filter);
 
     /**
      * Adds the given filter to the para edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addBusinessFilterToPara(ViewerFilter filter);
 
     /**
      * @return true if the given element is contained inside the para table
-     * 
+     *
      */
     public boolean isContainedInParaTable(EObject element);
 
     /**
      * Init the sect1
-     * 
+     *
      * @param current
      *            the current value
      * @param containgFeature
@@ -85,59 +85,59 @@ public interface ChapterPropertiesEditionPart {
 
     /**
      * Update the sect1
-     * 
+     *
      * @param newValue
      *            the sect1 to update
-     * 
+     *
      */
     public void updateSect1();
 
     /**
      * Adds the given filter to the sect1 edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addFilterToSect1(ViewerFilter filter);
 
     /**
      * Adds the given filter to the sect1 edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addBusinessFilterToSect1(ViewerFilter filter);
 
     /**
      * @return true if the given element is contained inside the sect1 table
-     * 
+     *
      */
     public boolean isContainedInSect1Table(EObject element);
 
     /**
      * @return the id
-     * 
+     *
      */
     public String getId();
 
     /**
      * Defines a new id
-     * 
+     *
      * @param newValue
      *            the new id to set
-     * 
+     *
      */
     public void setId(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

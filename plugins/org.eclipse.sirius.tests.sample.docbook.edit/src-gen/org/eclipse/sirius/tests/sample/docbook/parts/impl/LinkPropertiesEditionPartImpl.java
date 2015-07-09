@@ -35,10 +35,10 @@ public class LinkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public LinkPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -46,10 +46,10 @@ public class LinkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent) {
@@ -63,10 +63,10 @@ public class LinkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(Composite view) {
@@ -84,9 +84,9 @@ public class LinkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -99,7 +99,7 @@ public class LinkPropertiesEditionPartImpl extends CompositePropertiesEditionPar
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

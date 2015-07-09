@@ -4,14 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -51,7 +50,7 @@ public interface ScxmlLogType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Extra Content</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlLogType_ScxmlExtraContent()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -70,7 +69,7 @@ public interface ScxmlLogType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlLogType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -89,7 +88,7 @@ public interface ScxmlLogType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Expr</em>' attribute.
      * @see #setExpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlLogType_Expr()
@@ -103,7 +102,7 @@ public interface ScxmlLogType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getExpr
      * <em>Expr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Expr</em>' attribute.
      * @see #getExpr()
@@ -119,7 +118,7 @@ public interface ScxmlLogType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlLogType_Label()
@@ -133,7 +132,7 @@ public interface ScxmlLogType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getLabel
      * <em>Label</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Label</em>' attribute.
      * @see #getLabel()
@@ -151,7 +150,7 @@ public interface ScxmlLogType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlLogType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

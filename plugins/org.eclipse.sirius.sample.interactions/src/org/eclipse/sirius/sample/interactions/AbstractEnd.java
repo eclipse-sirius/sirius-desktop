@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract End</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> All the atomic events (sending of a message, start
  * and finish of an execution...) are represented by AbstractEnds and stored in
  * chronological order in the interaction. The ordering must be total. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * Context</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getAbstractEnd()
  * @model abstract="true"
  * @generated
@@ -44,7 +44,7 @@ public interface AbstractEnd extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getAbstractEnd_Name()
@@ -57,7 +57,7 @@ public interface AbstractEnd extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.AbstractEnd#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -73,7 +73,7 @@ public interface AbstractEnd extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Context</em>' reference.
      * @see #setContext(Participant)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getAbstractEnd_Context()
@@ -87,7 +87,7 @@ public interface AbstractEnd extends EObject {
      * {@link org.eclipse.sirius.sample.interactions.AbstractEnd#getContext
      * <em>Context</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Context</em>' reference.
      * @see #getContext()

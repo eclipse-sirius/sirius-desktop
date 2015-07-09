@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
@@ -13,9 +13,7 @@ package org.eclipse.sirius.tests.sample.scxml;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -76,7 +74,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml State Mix</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_ScxmlStateMix()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -95,7 +93,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Onentry</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Onentry()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -115,7 +113,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Onexit</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Onexit()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -135,7 +133,7 @@ public interface ScxmlStateType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Transition</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Transition()
@@ -156,7 +154,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Initial()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -176,7 +174,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>State</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_State()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -196,7 +194,7 @@ public interface ScxmlStateType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Parallel</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Parallel()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -216,7 +214,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Final</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Final()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -236,7 +234,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>History</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_History()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -256,7 +254,7 @@ public interface ScxmlStateType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Datamodel</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Datamodel()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -276,7 +274,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Invoke</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Invoke()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -295,7 +293,7 @@ public interface ScxmlStateType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -314,7 +312,7 @@ public interface ScxmlStateType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Id()
@@ -328,7 +326,7 @@ public interface ScxmlStateType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -344,7 +342,7 @@ public interface ScxmlStateType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial1</em>' attribute.
      * @see #setInitial1(List)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_Initial1()
@@ -359,7 +357,7 @@ public interface ScxmlStateType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getInitial1
      * <em>Initial1</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial1</em>' attribute.
      * @see #getInitial1()
@@ -377,7 +375,7 @@ public interface ScxmlStateType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlStateType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

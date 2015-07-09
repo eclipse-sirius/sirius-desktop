@@ -13,7 +13,7 @@ package org.eclipse.sirius.sample.interactions;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>State End</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -21,7 +21,7 @@ package org.eclipse.sirius.sample.interactions;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getStateEnd()
  * @model
  * @generated
@@ -35,7 +35,7 @@ public interface StateEnd extends AbstractEnd {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>State</em>' reference.
      * @see #setState(State)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getStateEnd_State()
@@ -48,7 +48,7 @@ public interface StateEnd extends AbstractEnd {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.StateEnd#getState
      * <em>State</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>State</em>' reference.
      * @see #getState()

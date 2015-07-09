@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
@@ -20,13 +20,13 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Assign Type Datatype</b></em>', and utility methods for working with
  * them. <!-- end-user-doc --> <!-- begin-model-doc -->
- * 
+ *
  * The assign type that allows for precise manipulation of the datamodel
  * location. Types are: replacechildren (default), firstchild, lastchild,
  * previoussibling, nextsibling, replace, delete, addattribute
- * 
+ *
  * <!-- end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getAssignTypeDatatype()
  * @model extendedMetaData="name='AssignType.datatype'"
  * @generated
@@ -35,7 +35,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Replacechildren</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #REPLACECHILDREN_VALUE
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Firstchild</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #FIRSTCHILD_VALUE
      * @generated
      * @ordered
@@ -55,7 +55,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Lastchild</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #LASTCHILD_VALUE
      * @generated
      * @ordered
@@ -65,7 +65,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Previoussibling</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #PREVIOUSSIBLING_VALUE
      * @generated
      * @ordered
@@ -75,7 +75,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Nextsibling</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #NEXTSIBLING_VALUE
      * @generated
      * @ordered
@@ -85,7 +85,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Replace</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #REPLACE_VALUE
      * @generated
      * @ordered
@@ -95,7 +95,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Delete</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #DELETE_VALUE
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Addattribute</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @see #ADDATTRIBUTE_VALUE
      * @generated
      * @ordered
@@ -120,7 +120,7 @@ public enum AssignTypeDatatype implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #REPLACECHILDREN
      * @model name="replacechildren"
      * @generated
@@ -135,7 +135,7 @@ public enum AssignTypeDatatype implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #FIRSTCHILD
      * @model name="firstchild"
      * @generated
@@ -150,7 +150,7 @@ public enum AssignTypeDatatype implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #LASTCHILD
      * @model name="lastchild"
      * @generated
@@ -166,7 +166,7 @@ public enum AssignTypeDatatype implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #PREVIOUSSIBLING
      * @model name="previoussibling"
      * @generated
@@ -181,7 +181,7 @@ public enum AssignTypeDatatype implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #NEXTSIBLING
      * @model name="nextsibling"
      * @generated
@@ -196,7 +196,7 @@ public enum AssignTypeDatatype implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #REPLACE
      * @model name="replace"
      * @generated
@@ -211,7 +211,7 @@ public enum AssignTypeDatatype implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #DELETE
      * @model name="delete"
      * @generated
@@ -226,7 +226,7 @@ public enum AssignTypeDatatype implements Enumerator {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #ADDATTRIBUTE
      * @model name="addattribute"
      * @generated
@@ -237,7 +237,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * An array of all the '<em><b>Assign Type Datatype</b></em>' enumerators.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final AssignTypeDatatype[] VALUES_ARRAY = new AssignTypeDatatype[] { REPLACECHILDREN, FIRSTCHILD, LASTCHILD, PREVIOUSSIBLING, NEXTSIBLING, REPLACE, DELETE, ADDATTRIBUTE, };
@@ -245,20 +245,19 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Assign Type Datatype</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    public static final List<AssignTypeDatatype> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<AssignTypeDatatype> VALUES = Collections.unmodifiableList(Arrays.asList(AssignTypeDatatype.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Assign Type Datatype</b></em>' literal with the
      * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static AssignTypeDatatype get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            AssignTypeDatatype result = VALUES_ARRAY[i];
+        for (AssignTypeDatatype result : AssignTypeDatatype.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -269,12 +268,11 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * Returns the '<em><b>Assign Type Datatype</b></em>' literal with the
      * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static AssignTypeDatatype getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            AssignTypeDatatype result = VALUES_ARRAY[i];
+        for (AssignTypeDatatype result : AssignTypeDatatype.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -285,7 +283,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * Returns the '<em><b>Assign Type Datatype</b></em>' literal with the
      * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static AssignTypeDatatype get(int value) {
@@ -312,21 +310,21 @@ public enum AssignTypeDatatype implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -334,7 +332,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private AssignTypeDatatype(int value, String name, String literal) {
@@ -345,27 +343,30 @@ public enum AssignTypeDatatype implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }
@@ -373,7 +374,7 @@ public enum AssignTypeDatatype implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

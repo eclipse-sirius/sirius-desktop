@@ -164,7 +164,7 @@ public class XRefImpl extends EObjectImpl implements XRef {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (linkend: ");
+        result.append(" (linkend: "); //$NON-NLS-1$
         result.append(linkend);
         result.append(')');
         return result.toString();

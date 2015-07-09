@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Constraint</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A constraint between two abstract ends. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Constrained Ends</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getConstraint()
  * @model
  * @generated
@@ -44,7 +44,7 @@ public interface Constraint extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Expression</em>' attribute.
      * @see #setExpression(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getConstraint_Expression()
@@ -58,7 +58,7 @@ public interface Constraint extends EObject {
      * {@link org.eclipse.sirius.sample.interactions.Constraint#getExpression
      * <em>Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Expression</em>' attribute.
      * @see #getExpression()
@@ -76,7 +76,7 @@ public interface Constraint extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Constrained Ends</em>' reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getConstraint_ConstrainedEnds()
      * @model

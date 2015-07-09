@@ -26,7 +26,7 @@ public interface Sect3PropertiesEditionPart {
 
     /**
      * Init the para
-     * 
+     *
      * @param current
      *            the current value
      * @param containgFeature
@@ -38,59 +38,59 @@ public interface Sect3PropertiesEditionPart {
 
     /**
      * Update the para
-     * 
+     *
      * @param newValue
      *            the para to update
-     * 
+     *
      */
     public void updatePara();
 
     /**
      * Adds the given filter to the para edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addFilterToPara(ViewerFilter filter);
 
     /**
      * Adds the given filter to the para edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addBusinessFilterToPara(ViewerFilter filter);
 
     /**
      * @return true if the given element is contained inside the para table
-     * 
+     *
      */
     public boolean isContainedInParaTable(EObject element);
 
     /**
      * @return the id
-     * 
+     *
      */
     public String getId();
 
     /**
      * Defines a new id
-     * 
+     *
      * @param newValue
      *            the new id to set
-     * 
+     *
      */
     public void setId(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

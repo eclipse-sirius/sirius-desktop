@@ -4,14 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -42,7 +41,7 @@ public interface ScxmlElseifType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cond</em>' attribute.
      * @see #setCond(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlElseifType_Cond()
@@ -56,7 +55,7 @@ public interface ScxmlElseifType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlElseifType#getCond
      * <em>Cond</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Cond</em>' attribute.
      * @see #getCond()
@@ -74,7 +73,7 @@ public interface ScxmlElseifType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlElseifType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

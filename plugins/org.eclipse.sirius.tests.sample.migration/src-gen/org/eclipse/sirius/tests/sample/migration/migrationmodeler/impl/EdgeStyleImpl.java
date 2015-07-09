@@ -499,7 +499,7 @@ public class EdgeStyleImpl extends EObjectImpl implements EdgeStyle {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (routingStyle: ");
+        result.append(" (routingStyle: "); //$NON-NLS-1$
         result.append(routingStyle);
         result.append(')');
         return result.toString();

@@ -166,7 +166,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
         case MigrationmodelerPackage.NOTE:
             return createNote();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -195,7 +195,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
         case MigrationmodelerPackage.BUNDLED_IMAGE_SHAPE:
             return createBundledImageShapeFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -224,7 +224,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
         case MigrationmodelerPackage.BUNDLED_IMAGE_SHAPE:
             return convertBundledImageShapeToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -588,7 +588,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     public RoutingStyle createRoutingStyleFromString(EDataType eDataType, String initialValue) {
         RoutingStyle result = RoutingStyle.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -610,7 +610,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     public LabelPosition createLabelPositionFromString(EDataType eDataType, String initialValue) {
         LabelPosition result = LabelPosition.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -632,7 +632,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     public FontFormat createFontFormatFromString(EDataType eDataType, String initialValue) {
         FontFormat result = FontFormat.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -654,7 +654,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     public LabelAlignment createLabelAlignmentFromString(EDataType eDataType, String initialValue) {
         LabelAlignment result = LabelAlignment.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -676,7 +676,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     public ContainerShape createContainerShapeFromString(EDataType eDataType, String initialValue) {
         ContainerShape result = ContainerShape.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -698,7 +698,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     public BackgroundStyle createBackgroundStyleFromString(EDataType eDataType, String initialValue) {
         BackgroundStyle result = BackgroundStyle.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -720,7 +720,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     public AlignmentKind createAlignmentKindFromString(EDataType eDataType, String initialValue) {
         AlignmentKind result = AlignmentKind.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -742,7 +742,7 @@ public class MigrationmodelerFactoryImpl extends EFactoryImpl implements Migrati
     public BundledImageShape createBundledImageShapeFromString(EDataType eDataType, String initialValue) {
         BundledImageShape result = BundledImageShape.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

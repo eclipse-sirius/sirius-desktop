@@ -58,7 +58,7 @@ public class ExampleItemProvider extends AbstractSectItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Example"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Example")); //$NON-NLS-1$
     }
 
     /**
@@ -69,7 +69,7 @@ public class ExampleItemProvider extends AbstractSectItemProvider {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_Example_type");
+        return getString("_UI_Example_type"); //$NON-NLS-1$
     }
 
     /**

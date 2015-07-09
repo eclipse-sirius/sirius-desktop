@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Model</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A simple container for Interactions, so that one can
  * put several interactions inside the same resource. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Owned Interactions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getModel()
  * @model
  * @generated
@@ -43,7 +43,7 @@ public interface Model extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getModel_Name()
@@ -56,7 +56,7 @@ public interface Model extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Model#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -74,7 +74,7 @@ public interface Model extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Interactions</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getModel_OwnedInteractions()

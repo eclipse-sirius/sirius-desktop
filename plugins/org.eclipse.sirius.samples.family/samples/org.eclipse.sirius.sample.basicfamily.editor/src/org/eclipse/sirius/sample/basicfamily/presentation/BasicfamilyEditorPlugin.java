@@ -17,14 +17,14 @@ import org.eclipse.emf.common.util.ResourceLocator;
 /**
  * This is the central singleton for the Basicfamily editor plugin. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public final class BasicfamilyEditorPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public static final BasicfamilyEditorPlugin INSTANCE = new BasicfamilyEditorPlugin();
@@ -32,7 +32,7 @@ public final class BasicfamilyEditorPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
@@ -72,7 +72,7 @@ public final class BasicfamilyEditorPlugin extends EMFPlugin {
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class Implementation extends EclipseUIPlugin {

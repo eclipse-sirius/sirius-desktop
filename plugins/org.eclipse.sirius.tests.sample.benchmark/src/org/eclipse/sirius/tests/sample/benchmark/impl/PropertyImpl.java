@@ -31,7 +31,7 @@ import org.eclipse.sirius.tests.sample.benchmark.Property;
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PropertyImpl extends EObjectImpl implements Property {
@@ -215,9 +215,9 @@ public class PropertyImpl extends EObjectImpl implements Property {
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", value: ");
+        result.append(", value: "); //$NON-NLS-1$
         result.append(value);
         result.append(')');
         return result.toString();

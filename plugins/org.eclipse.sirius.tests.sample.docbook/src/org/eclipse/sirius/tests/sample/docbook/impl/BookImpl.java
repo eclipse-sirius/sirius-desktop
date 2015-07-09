@@ -413,11 +413,11 @@ public class BookImpl extends EObjectImpl implements Book {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (id: ");
+        result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
-        result.append(", lang: ");
+        result.append(", lang: "); //$NON-NLS-1$
         result.append(lang);
-        result.append(", version: ");
+        result.append(", version: "); //$NON-NLS-1$
         result.append(version);
         result.append(')');
         return result.toString();

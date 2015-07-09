@@ -68,10 +68,10 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public ExamplePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -79,11 +79,11 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.forms.widgets.FormToolkit)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
@@ -99,11 +99,11 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createControls(org.eclipse.ui.forms.widgets.FormToolkit,
      *      org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(final FormToolkit widgetFactory, Composite view) {
@@ -145,7 +145,7 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createParaTableComposition(FormToolkit widgetFactory, Composite parent) {
         this.para = new ReferencesTable(getDescription(DocbookViewsRepository.Example.Properties.para, DocbookMessages.ExamplePropertiesEditionPart_ParaLabel), new ReferencesTableListener() {
@@ -212,9 +212,9 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -225,7 +225,7 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#initPara(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -249,9 +249,9 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#updatePara()
-     * 
+     *
      */
     @Override
     public void updatePara() {
@@ -260,10 +260,10 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#addFilterPara(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToPara(ViewerFilter filter) {
@@ -275,10 +275,10 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#addBusinessFilterPara(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToPara(ViewerFilter filter) {
@@ -287,10 +287,10 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#isContainedInParaTable(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInParaTable(EObject element) {
@@ -301,7 +301,7 @@ public class ExamplePropertiesEditionPartForm extends SectionPropertiesEditingPa
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

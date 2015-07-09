@@ -33,14 +33,14 @@ import org.eclipse.sirius.sample.basicfamily.Person;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.sample.basicfamily.Person} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PersonItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PersonItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,53 +74,57 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Person_name_feature", "_UI_Person_type"), BasicfamilyPackage.Literals.PERSON__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Person_name_feature", "_UI_Person_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                BasicfamilyPackage.Literals.PERSON__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Children feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addChildrenPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_children_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Person_children_feature", "_UI_Person_type"), BasicfamilyPackage.Literals.PERSON__CHILDREN, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_children_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Person_children_feature", "_UI_Person_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                BasicfamilyPackage.Literals.PERSON__CHILDREN, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Parents feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addParentsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_parents_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Person_parents_feature", "_UI_Person_type"), BasicfamilyPackage.Literals.PERSON__PARENTS, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_parents_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Person_parents_feature", "_UI_Person_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                BasicfamilyPackage.Literals.PERSON__PARENTS, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Mother feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMotherPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_mother_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Person_mother_feature", "_UI_Person_type"), BasicfamilyPackage.Literals.PERSON__MOTHER, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_mother_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Person_mother_feature", "_UI_Person_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                BasicfamilyPackage.Literals.PERSON__MOTHER, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Father feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFatherPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_father_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Person_father_feature", "_UI_Person_type"), BasicfamilyPackage.Literals.PERSON__FATHER, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Person_father_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Person_father_feature", "_UI_Person_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                BasicfamilyPackage.Literals.PERSON__FATHER, true, false, true, null, null, null));
     }
 
     /**
@@ -132,7 +136,8 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     @Override
     public String getText(Object object) {
         String label = ((Person) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Person_type") : getString("_UI_Person_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Person_type") : //$NON-NLS-1$
+                getString("_UI_Person_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -159,7 +164,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -170,7 +175,7 @@ public class PersonItemProvider extends ItemProviderAdapter implements IEditingD
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

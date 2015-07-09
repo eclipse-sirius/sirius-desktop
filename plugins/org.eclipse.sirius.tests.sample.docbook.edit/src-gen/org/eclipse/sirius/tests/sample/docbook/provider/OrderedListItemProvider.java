@@ -38,7 +38,7 @@ import org.eclipse.sirius.tests.sample.docbook.OrderedList;
  * @generated
  */
 public class OrderedListItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -73,7 +73,8 @@ public class OrderedListItemProvider extends ItemProviderAdapter implements IEdi
      */
     protected void addNumerationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_OrderedList_numeration_feature"), getString("_UI_PropertyDescriptor_description", "_UI_OrderedList_numeration_feature", "_UI_OrderedList_type"),
+                getString("_UI_OrderedList_numeration_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_OrderedList_numeration_feature", "_UI_OrderedList_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DocbookPackage.Literals.ORDERED_LIST__NUMERATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -85,7 +86,7 @@ public class OrderedListItemProvider extends ItemProviderAdapter implements IEdi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/OrderedList"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/OrderedList")); //$NON-NLS-1$
     }
 
     /**
@@ -97,7 +98,8 @@ public class OrderedListItemProvider extends ItemProviderAdapter implements IEdi
     @Override
     public String getText(Object object) {
         String label = ((OrderedList) object).getNumeration();
-        return label == null || label.length() == 0 ? getString("_UI_OrderedList_type") : getString("_UI_OrderedList_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_OrderedList_type") : //$NON-NLS-1$
+            getString("_UI_OrderedList_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -66,7 +66,7 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
 
     /**
      * Default constructor
-     * 
+     *
      */
     public ChapterPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject chapter, String editing_mode) {
         super(editingContext, chapter, editing_mode);
@@ -77,11 +77,11 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
      *      int, org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
+     *
      */
     @Override
     public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
@@ -109,13 +109,13 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
                 basePart.addFilterToPara(new ViewerFilter() {
                     /**
                      * {@inheritDoc}
-                     * 
+                     *
                      * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
                      *      java.lang.Object, java.lang.Object)
                      */
                     @Override
                     public boolean select(Viewer viewer, Object parentElement, Object element) {
-                        return (element instanceof String && element.equals("")) || (element instanceof Para); //$NON-NLS-1$ 
+                        return (element instanceof String && element.equals("")) || (element instanceof Para); //$NON-NLS-1$
                     }
 
                 });
@@ -126,13 +126,13 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
                 basePart.addFilterToSect1(new ViewerFilter() {
                     /**
                      * {@inheritDoc}
-                     * 
+                     *
                      * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
                      *      java.lang.Object, java.lang.Object)
                      */
                     @Override
                     public boolean select(Viewer viewer, Object parentElement, Object element) {
-                        return (element instanceof String && element.equals("")) || (element instanceof Sect1); //$NON-NLS-1$ 
+                        return (element instanceof String && element.equals("")) || (element instanceof Sect1); //$NON-NLS-1$
                     }
 
                 });
@@ -150,7 +150,7 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
      */
     @Override
@@ -169,9 +169,9 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void updateSemanticModel(final IPropertiesEditionEvent event) {
@@ -233,7 +233,7 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
      */
     @Override
@@ -261,7 +261,7 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
      */
     @Override
@@ -273,9 +273,9 @@ public class ChapterPropertiesEditionComponent extends SiriusAwarePropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public Diagnostic validateValue(IPropertiesEditionEvent event) {

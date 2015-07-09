@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Feature Access Message</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * <em>Feature</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getFeatureAccessMessage()
  * @model
  * @generated
@@ -41,7 +41,7 @@ public interface FeatureAccessMessage extends Message {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Is Write</em>' attribute.
      * @see #setIsWrite(boolean)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getFeatureAccessMessage_IsWrite()
@@ -55,7 +55,7 @@ public interface FeatureAccessMessage extends Message {
      * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage#isIsWrite
      * <em>Is Write</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Is Write</em>' attribute.
      * @see #isIsWrite()
@@ -71,7 +71,7 @@ public interface FeatureAccessMessage extends Message {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature</em>' reference.
      * @see #setFeature(EStructuralFeature)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getFeatureAccessMessage_Feature()
@@ -85,7 +85,7 @@ public interface FeatureAccessMessage extends Message {
      * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage#getFeature
      * <em>Feature</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Feature</em>' reference.
      * @see #getFeature()

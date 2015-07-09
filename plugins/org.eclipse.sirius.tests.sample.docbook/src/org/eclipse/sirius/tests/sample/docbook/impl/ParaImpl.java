@@ -164,7 +164,7 @@ public class ParaImpl extends EObjectImpl implements Para {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (data: ");
+        result.append(" (data: "); //$NON-NLS-1$
         result.append(data);
         result.append(')');
         return result.toString();

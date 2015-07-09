@@ -279,9 +279,9 @@ public class InfoImpl extends EObjectImpl implements Info {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (date: ");
+        result.append(" (date: "); //$NON-NLS-1$
         result.append(date);
-        result.append(", pubdate: ");
+        result.append(", pubdate: "); //$NON-NLS-1$
         result.append(pubdate);
         result.append(')');
         return result.toString();

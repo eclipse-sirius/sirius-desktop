@@ -4,14 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -59,7 +58,7 @@ public interface ScxmlHistoryType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Extra Content</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlHistoryType_ScxmlExtraContent()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -78,7 +77,7 @@ public interface ScxmlHistoryType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlHistoryType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -97,7 +96,7 @@ public interface ScxmlHistoryType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Transition</em>' containment reference.
      * @see #setTransition(ScxmlTransitionType)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlHistoryType_Transition()
@@ -112,7 +111,7 @@ public interface ScxmlHistoryType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getTransition
      * <em>Transition</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Transition</em>' containment
      *            reference.
@@ -131,7 +130,7 @@ public interface ScxmlHistoryType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Extra Content1</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlHistoryType_ScxmlExtraContent1()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -150,7 +149,7 @@ public interface ScxmlHistoryType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any1</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlHistoryType_Any1()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -169,7 +168,7 @@ public interface ScxmlHistoryType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlHistoryType_Id()
@@ -183,7 +182,7 @@ public interface ScxmlHistoryType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -201,7 +200,7 @@ public interface ScxmlHistoryType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Type</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
      * @see #isSetType()
@@ -217,7 +216,7 @@ public interface ScxmlHistoryType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
@@ -232,7 +231,7 @@ public interface ScxmlHistoryType extends EObject {
      * Unsets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isSetType()
      * @see #getType()
      * @see #setType(HistoryTypeDatatype)
@@ -245,7 +244,7 @@ public interface ScxmlHistoryType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getType
      * <em>Type</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Type</em>' attribute is set.
      * @see #unsetType()
      * @see #getType()
@@ -264,7 +263,7 @@ public interface ScxmlHistoryType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlHistoryType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

@@ -29,14 +29,14 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * <em>Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CallMessageImpl extends MessageImpl implements CallMessage {
     /**
      * The cached value of the '{@link #getOperation() <em>Operation</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOperation()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CallMessageImpl() {
@@ -54,7 +54,7 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,16 +64,18 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EOperation getOperation() {
         if (operation != null && operation.eIsProxy()) {
             InternalEObject oldOperation = (InternalEObject) operation;
             operation = (EOperation) eResolveProxy(oldOperation);
             if (operation != oldOperation) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.CALL_MESSAGE__OPERATION, oldOperation, operation));
+                }
             }
         }
         return operation;
@@ -81,7 +83,7 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EOperation basicGetOperation() {
@@ -90,27 +92,30 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setOperation(EOperation newOperation) {
         EOperation oldOperation = operation;
         operation = newOperation;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.CALL_MESSAGE__OPERATION, oldOperation, operation));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.CALL_MESSAGE__OPERATION:
-            if (resolve)
+            if (resolve) {
                 return getOperation();
+            }
             return basicGetOperation();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -118,7 +123,7 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +138,7 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +153,7 @@ public class CallMessageImpl extends MessageImpl implements CallMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

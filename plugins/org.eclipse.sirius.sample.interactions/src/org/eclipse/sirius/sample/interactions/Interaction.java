@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Interaction</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Describes the interactions between several
  * participants over time. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -46,7 +46,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Constraints</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction()
  * @model
  * @generated
@@ -60,7 +60,7 @@ public interface Interaction extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_Name()
@@ -73,7 +73,7 @@ public interface Interaction extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -91,7 +91,7 @@ public interface Interaction extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Participants</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_Participants()
@@ -110,7 +110,7 @@ public interface Interaction extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Messages</em>' containment reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_Messages()
      * @model containment="true"
@@ -128,7 +128,7 @@ public interface Interaction extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Executions</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_Executions()
@@ -147,7 +147,7 @@ public interface Interaction extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>States</em>' containment reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_States()
      * @model containment="true"
@@ -165,7 +165,7 @@ public interface Interaction extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Interaction Uses</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_InteractionUses()
@@ -184,7 +184,7 @@ public interface Interaction extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Combined Fragments</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_CombinedFragments()
@@ -203,7 +203,7 @@ public interface Interaction extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Ends</em>' reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_Ends()
      * @model
@@ -221,7 +221,7 @@ public interface Interaction extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Constraints</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteraction_Constraints()

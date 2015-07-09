@@ -13,7 +13,8 @@ package org.eclipse.sirius.tests.sample.component.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.eclipse.sirius.tests.sample.component.*;
+import org.eclipse.sirius.tests.sample.component.Component;
+import org.eclipse.sirius.tests.sample.component.ComponentPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance

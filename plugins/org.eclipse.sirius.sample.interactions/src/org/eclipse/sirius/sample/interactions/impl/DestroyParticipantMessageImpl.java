@@ -19,13 +19,13 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * <em><b>Destroy Participant Message</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DestroyParticipantMessageImpl extends MessageImpl implements DestroyParticipantMessage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DestroyParticipantMessageImpl() {
@@ -34,7 +34,7 @@ public class DestroyParticipantMessageImpl extends MessageImpl implements Destro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

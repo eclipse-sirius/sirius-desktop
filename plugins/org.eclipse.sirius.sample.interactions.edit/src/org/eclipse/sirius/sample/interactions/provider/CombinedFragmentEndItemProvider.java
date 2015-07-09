@@ -16,12 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.sample.interactions.CombinedFragmentEnd;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 
@@ -29,15 +24,14 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
-public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public CombinedFragmentEndItemProvider(AdapterFactory adapterFactory) {
@@ -47,7 +41,7 @@ public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider imp
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -63,36 +57,38 @@ public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider imp
     /**
      * This adds a property descriptor for the Owner feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addOwnerPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CombinedFragmentEnd_owner_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CombinedFragmentEnd_owner_feature", "_UI_CombinedFragmentEnd_type"),
+                getString("_UI_CombinedFragmentEnd_owner_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CombinedFragmentEnd_owner_feature", "_UI_CombinedFragmentEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 InteractionsPackage.Literals.COMBINED_FRAGMENT_END__OWNER, true, false, true, null, null, null));
     }
 
     /**
      * This returns CombinedFragmentEnd.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CombinedFragmentEnd"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CombinedFragmentEnd")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((CombinedFragmentEnd) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_CombinedFragmentEnd_type") : getString("_UI_CombinedFragmentEnd_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CombinedFragmentEnd_type") : //$NON-NLS-1$
+            getString("_UI_CombinedFragmentEnd_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -100,7 +96,7 @@ public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider imp
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -113,7 +109,7 @@ public class CombinedFragmentEndItemProvider extends AbstractEndItemProvider imp
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

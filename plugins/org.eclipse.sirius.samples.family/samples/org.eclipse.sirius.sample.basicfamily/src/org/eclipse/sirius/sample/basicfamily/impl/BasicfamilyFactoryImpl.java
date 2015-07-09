@@ -71,7 +71,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
         case BasicfamilyPackage.WOMAN:
             return createWoman();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -80,6 +80,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
      * 
      * @generated
      */
+    @Override
     public Family createFamily() {
         FamilyImpl family = new FamilyImpl();
         return family;
@@ -90,6 +91,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
      * 
      * @generated
      */
+    @Override
     public Man createMan() {
         ManImpl man = new ManImpl();
         return man;
@@ -100,6 +102,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
      * 
      * @generated
      */
+    @Override
     public Woman createWoman() {
         WomanImpl woman = new WomanImpl();
         return woman;
@@ -110,6 +113,7 @@ public class BasicfamilyFactoryImpl extends EFactoryImpl implements BasicfamilyF
      * 
      * @generated
      */
+    @Override
     public BasicfamilyPackage getBasicfamilyPackage() {
         return (BasicfamilyPackage) getEPackage();
     }

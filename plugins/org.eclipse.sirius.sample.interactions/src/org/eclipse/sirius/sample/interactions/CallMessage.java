@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EOperation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Call Message</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EOperation;
  * <em>Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCallMessage()
  * @model
  * @generated
@@ -37,7 +37,7 @@ public interface CallMessage extends Message {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Operation</em>' reference.
      * @see #setOperation(EOperation)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCallMessage_Operation()
@@ -51,7 +51,7 @@ public interface CallMessage extends Message {
      * {@link org.eclipse.sirius.sample.interactions.CallMessage#getOperation
      * <em>Operation</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Operation</em>' reference.
      * @see #getOperation()

@@ -23,24 +23,24 @@ public interface ParaPropertiesEditionPart {
 
     /**
      * @return the data
-     * 
+     *
      */
     public String getData();
 
     /**
      * Defines a new data
-     * 
+     *
      * @param newValue
      *            the new data to set
-     * 
+     *
      */
     public void setData(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

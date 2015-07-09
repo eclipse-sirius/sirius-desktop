@@ -67,14 +67,14 @@ import org.eclipse.sirius.sample.interactions.State;
  * <em>Constraints</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InteractionImpl extends EObjectImpl implements Interaction {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -84,18 +84,18 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = InteractionImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getParticipants() <em>Participants</em>}
      * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #getParticipants()
      * @generated
      * @ordered
@@ -105,7 +105,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     /**
      * The cached value of the '{@link #getMessages() <em>Messages</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessages()
      * @generated
      * @ordered
@@ -115,7 +115,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     /**
      * The cached value of the '{@link #getExecutions() <em>Executions</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getExecutions()
      * @generated
      * @ordered
@@ -125,7 +125,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     /**
      * The cached value of the '{@link #getStates() <em>States</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStates()
      * @generated
      * @ordered
@@ -136,7 +136,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
      * The cached value of the '{@link #getInteractionUses()
      * <em>Interaction Uses</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getInteractionUses()
      * @generated
      * @ordered
@@ -147,7 +147,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
      * The cached value of the '{@link #getCombinedFragments()
      * <em>Combined Fragments</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getCombinedFragments()
      * @generated
      * @ordered
@@ -157,7 +157,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     /**
      * The cached value of the '{@link #getEnds() <em>Ends</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getEnds()
      * @generated
      * @ordered
@@ -167,7 +167,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
     /**
      * The cached value of the '{@link #getConstraints() <em>Constraints</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getConstraints()
      * @generated
      * @ordered
@@ -176,7 +176,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InteractionImpl() {
@@ -185,7 +185,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,30 +195,34 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.INTERACTION__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Participant> getParticipants() {
         if (participants == null) {
             participants = new EObjectContainmentEList<Participant>(Participant.class, this, InteractionsPackage.INTERACTION__PARTICIPANTS);
@@ -228,9 +232,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Message> getMessages() {
         if (messages == null) {
             messages = new EObjectContainmentEList<Message>(Message.class, this, InteractionsPackage.INTERACTION__MESSAGES);
@@ -240,9 +245,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Execution> getExecutions() {
         if (executions == null) {
             executions = new EObjectContainmentEList<Execution>(Execution.class, this, InteractionsPackage.INTERACTION__EXECUTIONS);
@@ -252,9 +258,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<State> getStates() {
         if (states == null) {
             states = new EObjectContainmentEList<State>(State.class, this, InteractionsPackage.INTERACTION__STATES);
@@ -264,9 +271,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<InteractionUse> getInteractionUses() {
         if (interactionUses == null) {
             interactionUses = new EObjectContainmentEList<InteractionUse>(InteractionUse.class, this, InteractionsPackage.INTERACTION__INTERACTION_USES);
@@ -276,9 +284,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<CombinedFragment> getCombinedFragments() {
         if (combinedFragments == null) {
             combinedFragments = new EObjectContainmentEList<CombinedFragment>(CombinedFragment.class, this, InteractionsPackage.INTERACTION__COMBINED_FRAGMENTS);
@@ -288,9 +297,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<AbstractEnd> getEnds() {
         if (ends == null) {
             ends = new EObjectContainmentEList<AbstractEnd>(AbstractEnd.class, this, InteractionsPackage.INTERACTION__ENDS);
@@ -300,9 +310,10 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Constraint> getConstraints() {
         if (constraints == null) {
             constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, InteractionsPackage.INTERACTION__CONSTRAINTS);
@@ -312,7 +323,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -340,7 +351,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -370,7 +381,7 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -418,14 +429,14 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION__NAME:
-            setName(NAME_EDEFAULT);
+            setName(InteractionImpl.NAME_EDEFAULT);
             return;
         case InteractionsPackage.INTERACTION__PARTICIPANTS:
             getParticipants().clear();
@@ -457,14 +468,14 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return InteractionImpl.NAME_EDEFAULT == null ? name != null : !InteractionImpl.NAME_EDEFAULT.equals(name);
         case InteractionsPackage.INTERACTION__PARTICIPANTS:
             return participants != null && !participants.isEmpty();
         case InteractionsPackage.INTERACTION__MESSAGES:
@@ -487,16 +498,17 @@ public class InteractionImpl extends EObjectImpl implements Interaction {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
         return result.toString();

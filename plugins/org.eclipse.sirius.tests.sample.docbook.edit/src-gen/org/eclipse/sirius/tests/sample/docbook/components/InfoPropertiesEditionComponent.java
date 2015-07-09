@@ -60,7 +60,7 @@ public class InfoPropertiesEditionComponent extends SiriusAwarePropertiesEditing
 
     /**
      * Default constructor
-     * 
+     *
      */
     public InfoPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject info, String editing_mode) {
         super(editingContext, info, editing_mode);
@@ -71,11 +71,11 @@ public class InfoPropertiesEditionComponent extends SiriusAwarePropertiesEditing
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
      *      int, org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.resource.ResourceSet)
-     * 
+     *
      */
     @Override
     public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
@@ -103,13 +103,13 @@ public class InfoPropertiesEditionComponent extends SiriusAwarePropertiesEditing
                 basePart.addFilterToAuthor(new ViewerFilter() {
                     /**
                      * {@inheritDoc}
-                     * 
+                     *
                      * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
                      *      java.lang.Object, java.lang.Object)
                      */
                     @Override
                     public boolean select(Viewer viewer, Object parentElement, Object element) {
-                        return (element instanceof String && element.equals("")) || (element instanceof Author); //$NON-NLS-1$ 
+                        return (element instanceof String && element.equals("")) || (element instanceof Author); //$NON-NLS-1$
                     }
 
                 });
@@ -127,7 +127,7 @@ public class InfoPropertiesEditionComponent extends SiriusAwarePropertiesEditing
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
      */
     @Override
@@ -146,9 +146,9 @@ public class InfoPropertiesEditionComponent extends SiriusAwarePropertiesEditing
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void updateSemanticModel(final IPropertiesEditionEvent event) {
@@ -188,7 +188,7 @@ public class InfoPropertiesEditionComponent extends SiriusAwarePropertiesEditing
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
      */
     @Override
@@ -221,7 +221,7 @@ public class InfoPropertiesEditionComponent extends SiriusAwarePropertiesEditing
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
      */
     @Override
@@ -233,9 +233,9 @@ public class InfoPropertiesEditionComponent extends SiriusAwarePropertiesEditing
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public Diagnostic validateValue(IPropertiesEditionEvent event) {

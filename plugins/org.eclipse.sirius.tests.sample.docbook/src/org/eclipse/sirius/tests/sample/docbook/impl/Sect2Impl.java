@@ -222,7 +222,7 @@ public class Sect2Impl extends AbstractSectImpl implements Sect2 {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (id: ");
+        result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
         result.append(')');
         return result.toString();

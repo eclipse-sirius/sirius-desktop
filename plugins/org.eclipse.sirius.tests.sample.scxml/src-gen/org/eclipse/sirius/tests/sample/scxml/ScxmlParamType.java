@@ -4,14 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -53,7 +52,7 @@ public interface ScxmlParamType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Extra Content</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlParamType_ScxmlExtraContent()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -72,7 +71,7 @@ public interface ScxmlParamType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlParamType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -91,7 +90,7 @@ public interface ScxmlParamType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Expr</em>' attribute.
      * @see #setExpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlParamType_Expr()
@@ -105,7 +104,7 @@ public interface ScxmlParamType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getExpr
      * <em>Expr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Expr</em>' attribute.
      * @see #getExpr()
@@ -121,7 +120,7 @@ public interface ScxmlParamType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Location</em>' attribute.
      * @see #setLocation(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlParamType_Location()
@@ -136,7 +135,7 @@ public interface ScxmlParamType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getLocation
      * <em>Location</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Location</em>' attribute.
      * @see #getLocation()
@@ -152,7 +151,7 @@ public interface ScxmlParamType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlParamType_Name()
@@ -166,7 +165,7 @@ public interface ScxmlParamType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -184,7 +183,7 @@ public interface ScxmlParamType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlParamType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

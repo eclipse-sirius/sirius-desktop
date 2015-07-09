@@ -417,11 +417,11 @@ public class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSize: ");
+        result.append(" (borderSize: "); //$NON-NLS-1$
         result.append(borderSize);
-        result.append(", labelPosition: ");
+        result.append(", labelPosition: "); //$NON-NLS-1$
         result.append(labelPosition);
-        result.append(", hideLabelByDefault: ");
+        result.append(", hideLabelByDefault: "); //$NON-NLS-1$
         result.append(hideLabelByDefault);
         result.append(')');
         return result.toString();

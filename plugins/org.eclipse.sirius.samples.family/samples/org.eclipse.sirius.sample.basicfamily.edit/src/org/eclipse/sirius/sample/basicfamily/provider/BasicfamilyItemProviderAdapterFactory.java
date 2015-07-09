@@ -52,7 +52,7 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -69,7 +69,7 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public BasicfamilyItemProviderAdapterFactory() {
@@ -84,7 +84,7 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.basicfamily.Family} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FamilyItemProvider familyItemProvider;
@@ -109,7 +109,7 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.basicfamily.Man} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ManItemProvider manItemProvider;
@@ -134,7 +134,7 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.basicfamily.Woman} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected WomanItemProvider womanItemProvider;
@@ -158,9 +158,10 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -168,9 +169,10 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
@@ -218,6 +220,7 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
      * 
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
@@ -227,6 +230,7 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
      * 
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -235,9 +239,10 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -249,9 +254,10 @@ public class BasicfamilyItemProviderAdapterFactory extends BasicfamilyAdapterFac
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
         if (familyItemProvider != null)
             familyItemProvider.dispose();

@@ -35,15 +35,15 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.sample.interactions.Interaction} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InteractionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InteractionItemProvider(AdapterFactory adapterFactory) {
@@ -53,7 +53,7 @@ public class InteractionItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -72,48 +72,50 @@ public class InteractionItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Interaction_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Interaction_name_feature", "_UI_Interaction_type"), InteractionsPackage.Literals.INTERACTION__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Interaction_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Interaction_name_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                InteractionsPackage.Literals.INTERACTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Messages feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addMessagesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Interaction_messages_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Interaction_messages_feature", "_UI_Interaction_type"),
+                getString("_UI_Interaction_messages_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Interaction_messages_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 InteractionsPackage.Literals.INTERACTION__MESSAGES, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Ends feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addEndsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Interaction_ends_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Interaction_ends_feature", "_UI_Interaction_type"), InteractionsPackage.Literals.INTERACTION__ENDS, true, false, true, null, null,
-                null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Interaction_ends_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Interaction_ends_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                InteractionsPackage.Literals.INTERACTION__ENDS, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Constraints feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addConstraintsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Interaction_constraints_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Interaction_constraints_feature", "_UI_Interaction_type"),
+                getString("_UI_Interaction_constraints_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Interaction_constraints_feature", "_UI_Interaction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 InteractionsPackage.Literals.INTERACTION__CONSTRAINTS, true, false, true, null, null, null));
     }
 
@@ -124,7 +126,7 @@ public class InteractionItemProvider extends ItemProviderAdapter implements IEdi
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +147,7 @@ public class InteractionItemProvider extends ItemProviderAdapter implements IEdi
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -160,24 +162,25 @@ public class InteractionItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * This returns Interaction.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Interaction"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Interaction")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((Interaction) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Interaction_type") : getString("_UI_Interaction_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Interaction_type") : //$NON-NLS-1$
+            getString("_UI_Interaction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -185,7 +188,7 @@ public class InteractionItemProvider extends ItemProviderAdapter implements IEdi
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -214,7 +217,7 @@ public class InteractionItemProvider extends ItemProviderAdapter implements IEdi
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -261,7 +264,7 @@ public class InteractionItemProvider extends ItemProviderAdapter implements IEdi
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

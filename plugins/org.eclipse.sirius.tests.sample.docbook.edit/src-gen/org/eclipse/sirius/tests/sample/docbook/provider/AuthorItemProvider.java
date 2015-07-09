@@ -73,9 +73,9 @@ public class AuthorItemProvider extends ItemProviderAdapter implements IEditingD
      * @generated
      */
     protected void addEmailPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Author_email_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Author_email_feature", "_UI_Author_type"), DocbookPackage.Literals.AUTHOR__EMAIL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Author_email_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Author_email_feature", "_UI_Author_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.AUTHOR__EMAIL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -86,7 +86,8 @@ public class AuthorItemProvider extends ItemProviderAdapter implements IEditingD
      */
     protected void addPersonnamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Author_personname_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Author_personname_feature", "_UI_Author_type"),
+                getString("_UI_Author_personname_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Author_personname_feature", "_UI_Author_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DocbookPackage.Literals.AUTHOR__PERSONNAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -97,9 +98,9 @@ public class AuthorItemProvider extends ItemProviderAdapter implements IEditingD
      * @generated
      */
     protected void addAddressPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Author_address_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Author_address_feature", "_UI_Author_type"), DocbookPackage.Literals.AUTHOR__ADDRESS, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Author_address_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Author_address_feature", "_UI_Author_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.AUTHOR__ADDRESS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -109,7 +110,7 @@ public class AuthorItemProvider extends ItemProviderAdapter implements IEditingD
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Author"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Author")); //$NON-NLS-1$
     }
 
     /**
@@ -121,7 +122,8 @@ public class AuthorItemProvider extends ItemProviderAdapter implements IEditingD
     @Override
     public String getText(Object object) {
         String label = ((Author) object).getPersonname();
-        return label == null || label.length() == 0 ? getString("_UI_Author_type") : getString("_UI_Author_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Author_type") : //$NON-NLS-1$
+            getString("_UI_Author_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

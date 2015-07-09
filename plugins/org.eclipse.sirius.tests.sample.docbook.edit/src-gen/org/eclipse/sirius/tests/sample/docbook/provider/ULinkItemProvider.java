@@ -72,9 +72,9 @@ public class ULinkItemProvider extends ItemProviderAdapter implements IEditingDo
      * @generated
      */
     protected void addUrlPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ULink_url_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ULink_url_feature", "_UI_ULink_type"), DocbookPackage.Literals.ULINK__URL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ULink_url_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ULink_url_feature", "_UI_ULink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.ULINK__URL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -84,9 +84,9 @@ public class ULinkItemProvider extends ItemProviderAdapter implements IEditingDo
      * @generated
      */
     protected void addDataPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ULink_data_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ULink_data_feature", "_UI_ULink_type"), DocbookPackage.Literals.ULINK__DATA, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ULink_data_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ULink_data_feature", "_UI_ULink_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.ULINK__DATA, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -96,7 +96,7 @@ public class ULinkItemProvider extends ItemProviderAdapter implements IEditingDo
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ULink"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ULink")); //$NON-NLS-1$
     }
 
     /**
@@ -108,7 +108,8 @@ public class ULinkItemProvider extends ItemProviderAdapter implements IEditingDo
     @Override
     public String getText(Object object) {
         String label = ((ULink) object).getUrl();
-        return label == null || label.length() == 0 ? getString("_UI_ULink_type") : getString("_UI_ULink_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ULink_type") : //$NON-NLS-1$
+            getString("_UI_ULink_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Message</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A message sent from a participant to another (or
  * itself). <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Receiving End</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessage()
  * @model abstract="true"
  * @generated
@@ -44,7 +44,7 @@ public interface Message extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessage_Name()
@@ -57,7 +57,7 @@ public interface Message extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Message#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -73,7 +73,7 @@ public interface Message extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sending End</em>' reference.
      * @see #setSendingEnd(MessageEnd)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessage_SendingEnd()
@@ -87,7 +87,7 @@ public interface Message extends EObject {
      * {@link org.eclipse.sirius.sample.interactions.Message#getSendingEnd
      * <em>Sending End</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Sending End</em>' reference.
      * @see #getSendingEnd()
@@ -103,7 +103,7 @@ public interface Message extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Receiving End</em>' reference.
      * @see #setReceivingEnd(MessageEnd)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessage_ReceivingEnd()
@@ -117,7 +117,7 @@ public interface Message extends EObject {
      * {@link org.eclipse.sirius.sample.interactions.Message#getReceivingEnd
      * <em>Receiving End</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Receiving End</em>' reference.
      * @see #getReceivingEnd()

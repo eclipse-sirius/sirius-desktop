@@ -73,9 +73,9 @@ public class ChapterItemProvider extends ItemProviderAdapter implements IEditing
      * @generated
      */
     protected void addIdPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Chapter_id_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Chapter_id_feature", "_UI_Chapter_type"), DocbookPackage.Literals.CHAPTER__ID, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Chapter_id_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Chapter_id_feature", "_UI_Chapter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.CHAPTER__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -120,7 +120,7 @@ public class ChapterItemProvider extends ItemProviderAdapter implements IEditing
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Chapter"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Chapter")); //$NON-NLS-1$
     }
 
     /**
@@ -132,7 +132,8 @@ public class ChapterItemProvider extends ItemProviderAdapter implements IEditing
     @Override
     public String getText(Object object) {
         String label = ((Chapter) object).getId();
-        return label == null || label.length() == 0 ? getString("_UI_Chapter_type") : getString("_UI_Chapter_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Chapter_type") : //$NON-NLS-1$
+            getString("_UI_Chapter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

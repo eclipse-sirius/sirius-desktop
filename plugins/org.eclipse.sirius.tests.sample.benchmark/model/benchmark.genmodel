@@ -1,73 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;" modelDirectory="/org.eclipse.sirius.tests.sample.benchmark/src" modelPluginID="org.eclipse.sirius.tests.sample.benchmark" modelName="Benchmark" editPluginClass="org.eclipse.sirius.tests.sample.benchmark.provider.BenchmarkEditPlugin" editorPluginClass="org.eclipse.sirius.tests.sample.benchmark.presentation.BenchmarkEditorPlugin" importerID="org.eclipse.emf.importer.ecore" nonNLSMarkers="true" complianceLevel="5.0" copyrightFields="false">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;"
+    modelDirectory="/org.eclipse.sirius.tests.sample.benchmark/src" modelPluginID="org.eclipse.sirius.tests.sample.benchmark"
+    modelName="Benchmark" editPluginClass="org.eclipse.sirius.tests.sample.benchmark.provider.BenchmarkEditPlugin"
+    editorPluginClass="org.eclipse.sirius.tests.sample.benchmark.presentation.BenchmarkEditorPlugin"
+    nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false">
   <foreignModel>benchmark.ecore</foreignModel>
-  <genPackages prefix="Benchmark" basePackage="org.eclipse.sirius.tests.sample" disposableProviderFactory="true">
-    <ecorePackage href="benchmark.ecore#/"/>
-    <genClasses>
-      <ecoreClass href="benchmark.ecore#//Scenario"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//Scenario/inputData"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//Scenario/testCases"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//Scenario/variants"/>
-      </genFeatures>
+  <genPackages prefix="Benchmark" basePackage="org.eclipse.sirius.tests.sample" disposableProviderFactory="true"
+      ecorePackage="benchmark.ecore#/">
+    <genClasses ecoreClass="benchmark.ecore#//Scenario">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference benchmark.ecore#//Scenario/inputData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference benchmark.ecore#//Scenario/testCases"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference benchmark.ecore#//Scenario/variants"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="benchmark.ecore#//TestCase"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//TestCase/inputData"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//TestCase/results"/>
-      </genFeatures>
+    <genClasses ecoreClass="benchmark.ecore#//TestCase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference benchmark.ecore#//TestCase/inputData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference benchmark.ecore#//TestCase/results"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="benchmark.ecore#//InputData"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//InputData/tests"/>
-      </genFeatures>
+    <genClasses ecoreClass="benchmark.ecore#//InputData">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference benchmark.ecore#//InputData/tests"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="benchmark.ecore#//Property"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="benchmark.ecore#//Property/name"/>
-      </genFeatures>
-      <genFeatures createChild="false" propertyMultiLine="true">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="benchmark.ecore#//Property/value"/>
-      </genFeatures>
+    <genClasses ecoreClass="benchmark.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute benchmark.ecore#//Property/name"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute benchmark.ecore#//Property/value"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="benchmark.ecore#//NamedElement"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="benchmark.ecore#//NamedElement/name"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//NamedElement/properties"/>
-      </genFeatures>
+    <genClasses ecoreClass="benchmark.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute benchmark.ecore#//NamedElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference benchmark.ecore#//NamedElement/properties"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="benchmark.ecore#//TimeResult"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="benchmark.ecore#//TimeResult/elapsedTime"/>
-      </genFeatures>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="benchmark.ecore#//TimeResult/elapsedMaxTime"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//TimeResult/variant"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//TimeResult/properties"/>
-      </genFeatures>
+    <genClasses ecoreClass="benchmark.ecore#//TimeResult">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute benchmark.ecore#//TimeResult/elapsedTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute benchmark.ecore#//TimeResult/elapsedMaxTime"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference benchmark.ecore#//TimeResult/variant"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference benchmark.ecore#//TimeResult/properties"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="benchmark.ecore#//Variant"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="benchmark.ecore#//Variant/results"/>
-      </genFeatures>
+    <genClasses ecoreClass="benchmark.ecore#//Variant">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference benchmark.ecore#//Variant/results"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -165,7 +165,7 @@ public class EmphasisImpl extends EObjectImpl implements Emphasis {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (remap: ");
+        result.append(" (remap: "); //$NON-NLS-1$
         result.append(remap);
         result.append(')');
         return result.toString();
