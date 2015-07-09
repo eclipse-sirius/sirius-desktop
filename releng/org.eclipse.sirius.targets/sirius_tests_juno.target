@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_tests_juno" sequenceNumber="1433771131">
+<target name="sirius_tests_juno" sequenceNumber="1436447411">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
@@ -69,7 +69,7 @@
       <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
-      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/latest/juno"/>
+      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/3.0.x/juno"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.uml2.sdk.feature.group" version="4.0.2.v20130114-0902"/>
