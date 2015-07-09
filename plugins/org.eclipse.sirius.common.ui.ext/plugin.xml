@@ -17,13 +17,13 @@
          point="org.eclipse.ui.views">
       <category
             id="org.eclipse.sirius.common.ui.profiling"
-            name="Sirius Profiler">
+            name="%category.profiling.name">
       </category>
       <view
             category="org.eclipse.sirius.common.ui.profiling"
             class="org.eclipse.sirius.common.ui.tools.api.profiler.view.TimeProfilerView"
             id="org.eclipse.sirius.common.ui.view.timeProfiler"
-            name="Time Profiler View">
+            name="%view.profiler.name">
       </view>
    </extension>
 </plugin>

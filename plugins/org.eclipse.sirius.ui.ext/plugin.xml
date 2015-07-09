@@ -16,19 +16,19 @@
          point="org.eclipse.ui.views">
       <category
             id="org.eclipse.sirius.category"
-            name="Sirius"/>
+            name="%category.sirius.name"/>
       <view
             category="org.eclipse.sirius.category"
             class="org.eclipse.sirius.ui.tools.internal.views.interpreterview.DesignerInterpreterView"
             icon="icons/full/others/information.gif"
             id="org.eclipse.sirius.ui.tools.views.interpreterview"
-            name="Model requests interpreter"/>
+            name="%view.legacyInterpreter.name"/>
       <view
             category="org.eclipse.sirius.category"
             class="org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView"
             icon="icons/full/others/ModelExplorer.gif"
             id="org.eclipse.sirius.ui.tools.views.model.explorer"
-            name="Model Explorer">
+            name="%view.modelExplorer.name">
       </view>
    </extension>
    
@@ -38,7 +38,7 @@
              class="org.eclipse.sirius.ui.tools.internal.perspectives.DesignerModelingPerspective"
              icon="icons/full/others/ModelingPerspective.gif"
              id="org.eclipse.sirius.ui.tools.perspective.modeling"
-             name="Modeling">
+             name="%perspective.modeling.name">
        </perspective>
     </extension>
 
@@ -47,7 +47,7 @@
      <page
            class="org.eclipse.sirius.ui.tools.internal.preference.SiriusPreferencePage"
            id="org.eclipse.sirius.ui.page"
-           name="Sirius">
+           name="%page.sirius.name">
      </page>
   </extension>
 
@@ -69,14 +69,14 @@
   </extension>
 
    <extension point="org.eclipse.ui.newWizards">
-	   <category id="org.eclipse.sirius.category" name="Sirius"/>
+	   <category id="org.eclipse.sirius.category" name="%category.sirius.name"/>
 		<wizard
         category="org.eclipse.sirius.category"
         class="org.eclipse.sirius.ui.tools.internal.wizards.ModelingProjectWizard"
         finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
         icon="icons/obj16/ModelingProject.gif"
         id="org.eclipse.sirius.ui.modelingproject.wizard"
-        name="Modeling Project"
+        name="%wizard.modelingProject.name"
         preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.design"
         project="true">
      <description>
@@ -90,7 +90,7 @@
           finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
           icon="icons/obj16/SiriusFile.gif"
           id="org.eclipse.sirius.ui.session.creation"
-          name="Representations File"
+          name="%wizard.representationFile.name"
           preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.design"
           project="false">
         <description>
@@ -112,7 +112,7 @@
             extensions="aird"
             icon="icons/obj16/SiriusFile.gif"
             id="org.eclipse.sirius.ui.fakeeditoronlyforicon"
-            name="Text editor">
+            name="%editor.textEditor.name">
       </editor>
    </extension>
   
@@ -158,7 +158,7 @@
 		<command
 	    	commandId="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
 	        icon="icons/obj16/ModelingProject.gif"
-	        label="Convert to Modeling Project"
+	        label="%command.addModelingNature.label"
 	        style="push">
 	        <visibleWhen
             	checkEnabled="false">
@@ -186,7 +186,7 @@
 		<command
 	    	commandId="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
 	    	icon="icons/obj16/ModelingProject.gif"
-	        label="Remove Modeling Project Nature"
+	        label="%command.removeModelingNature.label"
 	        style="push">
 	        <visibleWhen
             	checkEnabled="false">

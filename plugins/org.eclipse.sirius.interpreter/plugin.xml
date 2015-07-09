@@ -16,7 +16,7 @@
          point="org.eclipse.acceleo.ui.language.interpreter">
       <languageInterpreter
             class="org.eclipse.sirius.common.acceleo.interpreter.SiriusInterpreter"
-            label="Sirius">
+            label="%siriusInterpreter.label">
       </languageInterpreter>
    </extension>
 </plugin>

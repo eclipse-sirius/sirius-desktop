@@ -15,7 +15,7 @@
 
   <extension id="org.eclipse.sirius.diagram.sequence.ui.editPartProvider"
              point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders"
-             name="Sequence Diagram Edit Parts Provider">
+             name="%extension.editPartProvider.name">
     <editpartProvider class="org.eclipse.sirius.diagram.sequence.ui.tool.internal.provider.SequenceDiagramEditPartProvider">
       <Priority name="High" />
     </editpartProvider>
@@ -39,7 +39,7 @@
         point="org.eclipse.sirius.diagram.diagramTypeProvider">
      <provider
            descriptionProvider="org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype.SequenceDiagramTypeProvider"
-           label="Sequence Diagram">
+           label="%diagramTypeProvider.label">
      </provider>
   </extension>
    <extension

@@ -21,7 +21,7 @@
             extensions="dtree"
             icon="icons/full/obj16/TreeDescription.gif"
             id="org.eclipse.sirius.tree.ui.EditorID"
-            name="DTree editor">
+            name="%editor.treeEditor.name">
       </editor>
    </extension>
    

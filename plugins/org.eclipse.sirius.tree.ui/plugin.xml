@@ -73,7 +73,7 @@
          <propertyTab
                category="default"
                id="org.eclipse.sirius.tree.ui.tab.default"
-               label="default">
+               label="%propertyTab.default.label">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -85,7 +85,7 @@
                afterTab="org.eclipse.sirius.tree.ui.tab.default"
                category="default"
                id="org.eclipse.sirius.tree.ui.tab.semantic"
-               label="Semantic">
+               label="%propertyTab.semantic.label">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -151,7 +151,7 @@
             targetID="org.eclipse.sirius.tree.ui.EditorID">
          <menu
                id="org.eclipse.sirius.tree.ui.EditorID.actions.DTree"
-               label="DTree"
+               label="%menu.dtree.label"
                path="additions">
             <separator
                   name="line">
@@ -167,10 +167,10 @@
                class="org.eclipse.sirius.tree.ui.tools.internal.editor.actions.EditorRefreshAction"
                icon="icons/tree/refresh.gif"
                id="org.eclipse.sirius.tree.ui.refresh"
-               label="Refresh"
+               label="%action.treeRefresh.label"
                menubarPath="org.eclipse.sirius.tree.ui.EditorID.actions.DTree/refresh"
                toolbarPath="Normal/additions"
-               tooltip="Force a refresh of the tree">
+               tooltip="%action.treeRefresh.tooltip">
          </action>
       </editorContribution>
      </extension>
@@ -194,7 +194,7 @@
    <extension point="org.eclipse.ui.commands">
      <command
            id="org.eclipse.sirius.tree.ui.command.refreshElement"
-           name="Refresh element">
+           name="%command.treeRefresh.name">
      </command>
    </extension>
    

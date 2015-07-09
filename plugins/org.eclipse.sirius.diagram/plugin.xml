@@ -12,8 +12,8 @@
 -->
 
 <plugin>
-   <extension-point id="diagramTypeProvider" name="org.eclipse.sirius.diagram.diagramTypeProvider" schema="schema/diagramTypeProvider.exsd"/>
-   <extension-point id="canonicalSynchronizerFactoryOverride" name="org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride" schema="schema/canonicalSynchronizerFactoryOverride.exsd"/>
+   <extension-point id="diagramTypeProvider" name="%extension-point.diagramTypeProvider.name" schema="schema/diagramTypeProvider.exsd"/>
+   <extension-point id="canonicalSynchronizerFactoryOverride" name="%extension-point.canonicalSynchronizerFactoryOverride.name" schema="schema/canonicalSynchronizerFactoryOverride.exsd"/>
 
    <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
       <?gmfgen generated="false"?>
@@ -297,7 +297,7 @@
       <category
 		id="org.eclipse.sirius.diagram.category"
 		mandatory="false"
-		name="Sirius Diagram Validation Rules">   
+		name="%category.siriusValidation.name">   
 			<![CDATA[Sirius]]>
       </category>	
       <constraintProvider
@@ -310,13 +310,13 @@
                   class="org.eclipse.sirius.diagram.tools.internal.validation.constraints.ErrorConstraint"
                   severity="ERROR"
                   mode="Batch"
-                  name="Sirius Error"
+                  name="%constraint.siriusValidationError.name"
                   id="org.eclipse.sirius.diagram.category.validation.error"
                   statusCode="1">
-               <description><![CDATA[Validation Error]]>
+               <description>%constraint.siriusValidationError.description
                </description>
                <message>
-                  <![CDATA[{0}]]>
+                  %constraint.siriusValidationError.message
                </message>               
                <target class="DDiagramElement"/>
                <target class="DDiagram"/>
@@ -326,13 +326,13 @@
                   class="org.eclipse.sirius.diagram.tools.internal.validation.constraints.WarningConstraint"
                   severity="WARNING"
                   mode="Batch"
-                  name="Sirius Warning"
+                  name="%constraint.siriusValidationWarningname"
                   id="org.eclipse.sirius.diagram.category.validation.warning"
                   statusCode="1">
-               <description><![CDATA[Validation warning]]>
+               <description>%constraint.siriusValidationWarning.description
                </description>
                <message>
-                  <![CDATA[{0}]]>
+                  %constraint.siriusValidationWarning.message
                </message>               
                <target class="DDiagramElement"/>
                <target class="DDiagram"/>
@@ -342,13 +342,13 @@
                   class="org.eclipse.sirius.diagram.tools.internal.validation.constraints.InfoConstraint"
                   severity="INFO"
                   mode="Batch"
-                  name="Sirius Info"
+                  name="%constraint.siriusValidationInfo.name"
                   id="org.eclipse.sirius.diagram.category.validation.info"
                   statusCode="1">
-               <description><![CDATA[Validation info]]>
+               <description>%constraint.siriusValidationInfo.description
                </description>
                <message>
-                  <![CDATA[{0}]]>
+                  %constraint.siriusValidationInfo.message
                </message>               
                <target class="DDiagramElement"/>
                <target class="DDiagram"/>
@@ -359,7 +359,7 @@
   <extension
          point="org.eclipse.emf.validation.constraintProviders">
       <category
-            name="Sirius Diagram Constraints"
+            name="%category.siriusDiagramConstraints.name"
             id="org.eclipse.sirius.diagram.constraints"/>
       <constraintProvider
             cache="true"
@@ -376,14 +376,14 @@
                   id="org.eclipse.sirius.diagram.constraints.MandatoryDomainClass"
                   lang="Java"
                   mode="Batch"
-                  name="Diagram Mandatory Domain Class"
+                  name="%constraint.mandatoryDomainClass.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Domain Class is mandatory for this element
+                  %constraint.mandatoryDomainClass.message
                </message>
                <description>
-                  Validates DomainClass features.
+                  %constraint.mandatoryDomainClass.description
                </description>
             </constraint>
             <constraint
@@ -391,14 +391,14 @@
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ExistingDomainClassConstraint"
                   severity="ERROR"
                   mode="Batch"
-                  name="Valid Domain Classes"
+                  name="%constraint.validDomainClass.name"
                   id="org.eclipse.sirius.diagram.constraints.ValidDomainClass"
                   statusCode="1">
                <description>
-                  Invalid Class
+                  %constraint.validDomainClass.description
                </description>
                <message>
-                  The Class {0} does not exist.
+                  %constraint.validDomainClass.message
                </message>
             </constraint>
             <constraint
@@ -406,14 +406,14 @@
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ExistingDefaultLayerConstraint"
                   severity="ERROR"
                   mode="Batch"
-                  name="Diagram Has Default Layer"
+                  name="%constraint.defaultLayerExists.name"
                   id="org.eclipse.sirius.diagram.constraints.DiagramHasDefaultLayer"
                   statusCode="1">
                <description>
-                  Validate that each diagram has a default layer.
+                  %constraint.defaultLayerExists.description
                </description>
                <message>
-                  The default layer is missing for the diagram {0}.
+                  %constraint.defaultLayerExists.message
                </message>
             </constraint>
             <constraint
@@ -421,14 +421,14 @@
                   id="org.eclipse.sirius.diagram.constraints.BlankCandidatesExpressionWithRecursiveMapping"
                   lang="Java"
                   mode="Batch"
-                  name="Blank Candidates Expression With Recursive Mapping"
+                  name="%constraint.candidateExpressionExistsForRecursiveMapping.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The SemanticCandidatesExpression field of {0} does not accept a blank value because it is recursively imported by another ContainerMapping ({1}). This can cause infinite loop, StackOverflowError (except in case of not synchronized mapping).
+                  %constraint.candidateExpressionExistsForRecursiveMapping.message
                </message>
                <description>
-                  Validates that there is no blank SemanticCandidatesExpression for a recursive ContainerMapping
+                  %constraint.candidateExpressionExistsForRecursiveMapping.description
                </description>
             </constraint>
             <constraint
@@ -436,14 +436,14 @@
                   id="org.eclipse.sirius.diagram.constraints.RegionMappingCardinalityConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="Region mapping cardinality constraint"
+                  name="%constraint.regionMappingCardinality.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Mapping {0} is defined as a Region Container, it should have at least one Container mapping as child or reused mapping.
+                  %constraint.regionMappingCardinality.message
                </message>
                <description>
-                  Validates that Region Container Mapping should not be a Region (contained by another RegionContainer)
+                  %constraint.regionMappingCardinality.description
                </description>
             </constraint>
             <constraint
@@ -451,14 +451,14 @@
                   id="org.eclipse.sirius.diagram.constraints.CompartmentContainmentConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="Compartment recursivity constraint"
+                  name="%constraint.compartmentRecusrion.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Mapping {0} should not be defined as a Region Container (ie children presentation set to horizontal stack or vertical stack) as it is itself defined as a Region (ie contained in a Region Container).
+                  %constraint.compartmentRecusrion.message
                </message>
                <description>
-                  Validates that Region Container Mapping should not be a Region (contained by another RegionContainer)
+                  %constraint.compartmentRecusrion.description
                </description>
             </constraint>
             <constraint
@@ -466,14 +466,14 @@
                   id="org.eclipse.sirius.diagram.constraints.ReuseContainersInContainerListConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="Reused Containers in Container List constraint"
+                  name="%constraint.reuseContainersInContainerList.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Container List Mapping {0} should not reuse a container mappings.
+                  %constraint.reuseContainersInContainerList.message
                </message>
                <description>
-                  Validates that List mappings does not reuse container mappings.
+                  %constraint.reuseContainersInContainerList.description
                </description>
             </constraint>
             <constraint
@@ -481,14 +481,14 @@
                   id="org.eclipse.sirius.diagram.constraints.ContainersInContainerListConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="Containers in Container List constraint"
+                  name="%constraint.containersInContainerList.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Mapping {0} should not be defined as a container mapping as it is contained in a Container List.
+                  %constraint.containersInContainerList.message
                </message>
                <description>
-                  Validates that Container mapping should not be contained by a List mapping.
+                  %constraint.containersInContainerList.description
                </description>
             </constraint>
             <constraint
@@ -496,14 +496,14 @@
                   id="org.eclipse.sirius.diagram.constraints.NoReusedNodesInRegionContainerConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="No reused nodes in region container constraint"
+                  name="%constraint.noReusedNodesInRegionContainer.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Region Container mapping {0} should not reuse nodes as sub node mappings.
+                  %constraint.noReusedNodesInRegionContainer.message
                </message>
                <description>
-                  Validates that a Region Container mapping does not reuse children node mapping.
+                  %constraint.noReusedNodesInRegionContainer.description
                </description>
             </constraint>
             <constraint
@@ -511,14 +511,14 @@
                   id="org.eclipse.sirius.diagram.constraints.NoReusedBorderedNodesInRegion"
                   lang="Java"
                   mode="Batch"
-                  name="No reused bordered nodes in region constraint"
+                  name="%constraint.noReusedBorderedNodesInRegion.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Region mapping {0} should not reuse Bordered Node mappings. However, they can be placed as bordered node mappings of the parent RegionContainer mapping.
+                  %constraint.noReusedBorderedNodesInRegion.message
                </message>
                <description>
-                  Validates that a Region does not reuse Bordered Nodes.
+                  %constraint.noReusedBorderedNodesInRegion.description
                </description>
             </constraint>
             <constraint
@@ -526,14 +526,14 @@
                   id="org.eclipse.sirius.diagram.constraints.NoMappingFilterOnRegionsConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="No mapping filter on regions constraint"
+                  name="%constraint.noMappingFilterOnRegions.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Filter {0} is not supported on Region mapping.
+                  %constraint.noMappingFilterOnRegions.message
                </message>
                <description>
-                  Validates that filtering nodes is not supported on Region mapping.
+                  %constraint.noMappingFilterOnRegions.description
                </description>
             </constraint>
             <constraint
@@ -541,14 +541,14 @@
                   id="org.eclipse.sirius.diagram.constraints.RegionStyleConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="RegionContainer and Region style constraint"
+                  name="%constraint.regionStyle.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-            The style {0} is not valid for its parent mapping {1}. Only the gradient style is supported for RegionContainer and Region mappings.
+            %constraint.regionStyle.message
                </message>
                <description>
-            Validates that only Gradient is used as style of RegionContainer and Region mappings.
+            %constraint.regionStyle.description
                </description>
             </constraint>
             <constraint
@@ -556,14 +556,14 @@
                   id="org.eclipse.sirius.diagram.constraints.NoSubNodesInRegionContainerConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="No sub nodes in region container constraint"
+                  name="%constraint.noSubNodesInRegionContainer.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The Node mapping {0} should not be placed in a RegionContainer mapping as a sub node mapping. However, they can be placed in one of the Region mapping.
+                  %constraint.noSubNodesInRegionContainer.message
                </message>
                <description>
-                  Validates that Node mappings are not contained in a RegionContainer mapping.
+                  %constraint.noSubNodesInRegionContainer.description
                </description>
             </constraint>
             <constraint
@@ -571,14 +571,14 @@
                   id="org.eclipse.sirius.diagram.constraints.NoBorderedNodesInRegion"
                   lang="Java"
                   mode="Batch"
-                  name="No bordered nodes in region constraint"
+                  name="%constraint.noBorderedNodesInRegion.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  BorderedNodes are not supported for Regions. However, they can be placed in the parent RegionContainer.
+                  %constraint.noBorderedNodesInRegion.message
                </message>
                <description>
-                  Validates that BorderNode mapping are not contained in a Region mapping.
+                  %constraint.noBorderedNodesInRegion.description
                </description>
             </constraint>
             <constraint
@@ -586,14 +586,14 @@
                   id="org.eclipse.sirius.diagram.constraints.MissingRequiredEdgeSizeExpressionConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="Missing Required Size Expression On Edge Style Description"
+                  name="%constraint.missingRequiredEdgeSizeExpression.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  The SizeComputationExpression field of {0} does not accept a blank value.
+                  %constraint.missingRequiredEdgeSizeExpression.message
                </message>
                <description>
-                  Validates that the size computation expression of an EdgeStyleDecription is set
+                  %constraint.missingRequiredEdgeSizeExpression.description
                </description>
             </constraint>
             <constraint
@@ -601,14 +601,14 @@
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.EdgeMappingCycleConstraint"
                   severity="ERROR"
                   mode="Batch"
-                  name="Check that EdgeMappings with an EdgeMapping as source or target does not cause cycles."
+                  name="%constraint.edgeMappingCycle.name"
                   id="org.eclipse.sirius.diagram.constraints.EdgeMappingCycle"
                   statusCode="1">
                <description>
-                  Check that EdgeMappings with an EdgeMapping as source or target does not cause cycles.
+                  %constraint.edgeMappingCycle.description
                </description>
                <message>
-                  EdgeMappings {0} causes a cycle. You should modify the source or target mapping with an EdgeMapping that causes this cycle.
+                  %constraint.edgeMappingCycle.message
                </message>
             </constraint>
             <constraint
@@ -616,14 +616,14 @@
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.DiagramExistingExpressionVariablesConstraint"
                   severity="ERROR"
                   mode="Batch"
-                  name="Valid Variables"
+                  name="%constraint.validVariable.name"
                   id="org.eclipse.sirius.constraints.ValidAcceleoVariable"
                   statusCode="1">
                <description>
-                  Invalid variable
+                  %constraint.validVariable.description
                </description>
                <message>
-                  The expression {0} of {1} does not accept the {2} variable.
+                  %constraint.validVariable.message
                </message>
             </constraint>
             <constraint
@@ -632,11 +632,11 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="Representation extension description representation name validation"
+                  name="%constraint.representationExtensionDescriptionRepresentationName.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.representationExtensionDescriptionRepresentationName.message
                </message>
             </constraint>
             <constraint
@@ -644,14 +644,14 @@
                   id="org.eclipse.sirius.constraints.ValidStyleConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="Valid Style"
+                  name="%constraint.validStyle.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  A style is missing for {0}
+                  %constraint.validStyle.message
                </message>
                <description>
-                  Validates that the style is set
+                  %constraint.validStyle.description
                </description>
             </constraint>
          </constraints>
@@ -660,7 +660,7 @@
    <extension
          point="org.eclipse.emf.validation.constraintProviders">
       <category
-            name="Sirius Diagram Constraints"
+            name="%category.siriusDiagramConstraints.name"
             id="org.eclipse.sirius.diagram.constraints"/>
       <constraintProvider
             cache="true"
@@ -673,14 +673,14 @@
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.PreconditionForDndToolsConstraint"
                   severity="WARNING"
                   mode="Batch"
-                  name="Check that drag and drop tools which accept the model as source have an explicit precondition."
+                  name="%constraint.preconditionForDndTools.name"
                   id="org.eclipse.sirius.diagram.constraints.PreconditionForDndTools"
                   statusCode="1">
                <description>
-                  Drag and drop tools which accept Model or Both as source should have an explicit precondition.
+                  %constraint.preconditionForDndTools.description
                </description>
                <message>
-                  The Drop tool {0} accepts arbitrary elements from the Model Content view as drag source. You should specify a precondition to validate the nature of the dragged element.
+                  %constraint.preconditionForDndTools.message
                </message>
             </constraint>            
          </constraints>

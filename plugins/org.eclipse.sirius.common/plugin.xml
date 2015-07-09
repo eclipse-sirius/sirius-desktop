@@ -13,13 +13,13 @@
 
 <plugin>
 
-  <extension-point id="editingDomainFactory" name="org.eclipse.sirius.common.editingDomainFactory" schema="schema/editingDomainFactory.exsd"/>
-  <extension-point id="expressionInterpreter" name="org.eclipse.sirius.common.expressionInterpreter" schema="schema/expressionInterpreter.exsd"/>
-  <extension-point id="proposalProvider" name="org.eclipse.sirius.common.proposalProvider" schema="schema/proposalProvider.exsd"/>
-  <extension-point id="dynamic_package" name="Forked Ecore Package Registry for Dynamic Packages" schema="schema/dynamic_package.exsd"/>
-  <extension-point id="fileModificationValidator" name="File Modification Validator" schema="schema/fileModificationValidator.exsd"/>
-  <extension-point id="resourceSetFactory" name="org.eclipse.sirius.common.resourceSetFactory" schema="schema/resourceSetFactory.exsd"/>
-  <extension-point id="classloading_override" name="org.eclipse.sirius.common.classloading_override" schema="schema/classloading_override.exsd"/>
+  <extension-point id="editingDomainFactory" name="%extension-point.editingDomainFactory.name" schema="schema/editingDomainFactory.exsd"/>
+  <extension-point id="expressionInterpreter" name="%extension-point.expressionInterpreter.name" schema="schema/expressionInterpreter.exsd"/>
+  <extension-point id="proposalProvider" name="%extension-point.proposalProvider.name" schema="schema/proposalProvider.exsd"/>
+  <extension-point id="dynamic_package" name="%extension-point.dynamicPackages.name" schema="schema/dynamic_package.exsd"/>
+  <extension-point id="fileModificationValidator" name="%extension-point.fileModificationValidator.name" schema="schema/fileModificationValidator.exsd"/>
+  <extension-point id="resourceSetFactory" name="%extension-point.resourceSetFactory.name" schema="schema/resourceSetFactory.exsd"/>
+  <extension-point id="classloading_override" name="%extension-point.classloading_override.name" schema="schema/classloading_override.exsd"/>
   
   <extension id="org.eclipse.sirius.common.variableInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
     <expressionInterpreterProvider interpreterProviderClass="org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter" />

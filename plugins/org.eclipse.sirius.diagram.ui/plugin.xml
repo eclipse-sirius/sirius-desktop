@@ -12,12 +12,12 @@
 -->
 
 <plugin>
-   <extension-point id="styleConfigurationProvider" name="org.eclipse.sirius.diagram.ui.styleConfigurationProvider" schema="schema/styleConfigurationProvider.exsd"/>
-   <extension-point id="viewOrderingProvider" name="org.eclipse.sirius.diagram.ui.viewOrderingProvider" schema="schema/viewOrderingProvider.exsd"/>
-   <extension-point id="diagramIdentifierProvider" name="org.eclipse.sirius.diagram.ui.diagramIdentifierProvider" schema="schema/diagramIdentifierProvider.exsd"/>
-   <extension-point id="layoutProvider" name="org.eclipse.sirius.diagram.ui.layoutProvider" schema="schema/layoutProvider.exsd"/>
-   <extension-point id="layoutDataManager" name="org.eclipse.sirius.diagram.ui.layoutDataManager" schema="schema/layoutDataManager.exsd"/>
-   <extension-point id="imageSelector" name="org.eclipse.sirius.diagram.ui.imageSelector" schema="schema/imageSelector.exsd"/>
+   <extension-point id="styleConfigurationProvider" name="%extension-point.styleConfigurationProvider..name" schema="schema/styleConfigurationProvider.exsd"/>
+   <extension-point id="viewOrderingProvider" name="%extension-point.viewOrderingProvider.name" schema="schema/viewOrderingProvider.exsd"/>
+   <extension-point id="diagramIdentifierProvider" name="%extension-point.diagramIdentifierProvider.name" schema="schema/diagramIdentifierProvider.exsd"/>
+   <extension-point id="layoutProvider" name="%extension-point.layoutProvider.name" schema="schema/layoutProvider.exsd"/>
+   <extension-point id="layoutDataManager" name="%extension-point.layoutDataManager.name" schema="schema/layoutDataManager.exsd"/>
+   <extension-point id="imageSelector" name="%extension-point.imageSelector.name" schema="schema/imageSelector.exsd"/>
 
    <extension point="org.eclipse.ui.elementFactories">
      <factory
@@ -809,98 +809,98 @@
       <?gmfgen generated="false"?>
       <command
          categoryId="org.eclipse.ui.category.edit"
-         description="Refresh the element"
+         description="%command.refresh.description"
          id="org.eclipse.sirius.diagram.ui.refreshSirius"
-         name="Refresh Sirius"/>
+         name="%command.refresh.name"/>
        <command
          categoryId="org.eclipse.ui.category.edit"
-         description="Hide the element"
+         description="%command.hideElement.description"
          id="org.eclipse.sirius.diagram.ui.hideElement"
-         name="Hide element"/>
+         name="%command.hideElement.name"/>
        <command
          categoryId="org.eclipse.ui.category.edit"
-         description="Hide the label of the element"
+         description="%command.hideLabel.description"
          id="org.eclipse.sirius.diagram.ui.hideLabel"
-         name="Hide label"/>
+         name="%command.hideLabel.name"/>
        <command
          categoryId="org.eclipse.ui.category.edit"
-         description="Reveal all the elements"
+         description="%command.revealHiddenElements.description"
          id="org.eclipse.sirius.diagram.ui.revealElements"
-         name="Reveal hidden elements"/>
+         name="%command.revealHiddenElements.name"/>
      <command
          categoryId="org.eclipse.ui.category.edit"
-         description="Show the label of the element"
+         description="%command.showLabel.description"
          id="org.eclipse.sirius.diagram.ui.revealLabel"
-         name="Show label"/>
+         name="%command.showLabel.name"/>
        <command
              categoryId="org.eclipse.ui.category.edit"
-             description="Launch all rules"
+             description="%command.launchRules.description"
              id="org.eclipse.sirius.diagram.ui.launchRules"
-             name="Launch Rules">
+             name="%command.launchRules.name">
        </command>
        <command
              categoryId="org.eclipse.sirius.ui.tools.commands"
              defaultHandler="org.eclipse.sirius.diagram.ui.tools.internal.commands.PinElementsHandler"
-             description="Mark diagram elements as pinned"
+             description="%command.pinElements.description"
              id="org.eclipse.sirius.diagram.ui.pinElementsCommand"
-             name="Pin elements">
+             name="%command.pinElements.name">
        </command>
        <command
              categoryId="org.eclipse.sirius.ui.tools.commands"
              defaultHandler="org.eclipse.sirius.diagram.ui.tools.internal.commands.UnpinElementsHandler"
-             description="Mark diagram elements as unpinned"
+             description="%command.unpinElements.description"
              id="org.eclipse.sirius.diagram.ui.unpinElementsCommand"
-             name="Unpin elements">
+             name="%command.unpinElements.name">
        </command>
        <command
            id="org.eclipse.sirius.diagram.ui.command.revealAllElements"
-           name="Reveal all elements">
+           name="%command.revealAllElements.name">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.command.hideElement"
-           name="Hide element">
+           name="%command.hideElement.name">
      </command>
    <command
            id="org.eclipse.sirius.diagram.ui.command.hideLabel"
-           name="Hide label">
+           name="%command.hideLabel.name">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.command.showLabel"
-           name="Show label">
+           name="%command.showLabel.name">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.command.refreshElement"
-           name="Refresh element">
+           name="%command.refresh.name">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.command.synchronizedDiagram"
-           name="Synchronized Diagram">
+           name="%command.synchronizedDiagram.name">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.command.validateDiagram"
-           name="Validate Diagram">
+           name="%command.validateDiagram.name">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.command.deleteFromDiagram"
-           name="Delete From Diagram">
+           name="%command.deleteFromDiagram.name">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.command.show.outline"
-           name="Quick outline">
+           name="%command.quickOutline.name">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.command.deselectAll"
-           name="Deselect all">
+           name="%command.deselectAll.name">
      </command>
-     <category name="Sirius" id="org.eclipse.sirius.common.ui.category"/>
-     <command categoryId="org.eclipse.sirius.common.ui.category" description="Find in model" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="Find Element"/>
+     <category name="%category.sirius.name" id="org.eclipse.sirius.common.ui.category"/>
+     <command categoryId="org.eclipse.sirius.common.ui.category" description="%command.findInModel.description" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="%command.findInModel.name"/>
      <command
            id="org.eclipse.sirius.diagram.ui.removeBendpoints"
-           name="Remove Bend-points">
+           name="%command.removeBendpoints.label">
      </command>
      <command
            id="org.eclipse.sirius.diagram.ui.resetOrigin"
-           name="Reset Origin">
+           name="%command.resetOrigin.label">
      </command>
    </extension>
 
@@ -979,7 +979,7 @@
          <Priority name="Lowest"/>
       </MarkerNavigationProvider>
    </extension>
-<extension id="diagnostic" name="Sirius diagram editor Plugin problems" point="org.eclipse.core.resources.markers">
+<extension id="diagnostic" name="%extension.diagramProblems.name" point="org.eclipse.core.resources.markers">
       <?gmfgen generated="true"?>
       <super type="org.eclipse.core.resources.problemmarker"/>
       <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
@@ -1155,7 +1155,7 @@
       <command
             commandId="org.eclipse.sirius.diagram.ui.command.hideElement"
             icon="icons/categoryHidden.gif"
-            label="Hide element"
+            label="%command.hideElement.name"
             style="push">
          <visibleWhen
                checkEnabled="false">
@@ -1176,7 +1176,7 @@
       <command
             commandId="org.eclipse.sirius.diagram.ui.command.hideLabel"
             icon="icons/categoryLabelHidden.gif"
-            label="Hide label"
+            label="%command.hideLabel.name"
             style="push">
          <visibleWhen
                checkEnabled="false">
@@ -1197,7 +1197,7 @@
       <command
             commandId="org.eclipse.sirius.diagram.ui.command.showLabel"
             icon="icons/categoryLabelVisible.gif"
-            label="Show label"
+            label="%command.showLabel.name"
             style="push">
          <visibleWhen
                checkEnabled="false">
@@ -1221,7 +1221,7 @@
       <command
             commandId="org.eclipse.sirius.diagram.ui.command.refreshElement"
             icon="images/refresh.gif"
-            label="Refresh"
+            label="%command.refresh.name"
             style="push">
          <visibleWhen
                checkEnabled="false">
@@ -1237,7 +1237,7 @@
       </command>
       <command
             commandId="org.eclipse.sirius.diagram.ui.command.synchronizedDiagram"
-            label="Synchronized"
+            label="%command.synchronizedDiagram.name"
             style="toggle">
          <visibleWhen
                checkEnabled="false">
@@ -1253,7 +1253,7 @@
       </command>
       <menu
             id="org.eclipse.sirius.diagram.ui.popup.hideReveal"
-            label="Show/Hide">
+            label="%menu.showHide.label">
          <visibleWhen
                checkEnabled="false">
             <with
@@ -1283,7 +1283,7 @@
          locationURI="popup:org.eclipse.ui.popup.any?after=org.eclipse.sirius.diagram.ui.popup.otherActions">
       <command
             commandId="org.eclipse.sirius.diagram.ui.command.validateDiagram"
-            label="Validate diagram"
+            label="%command.validateDiagram.label"
             style="push">
          <visibleWhen
                checkEnabled="false">
@@ -1307,7 +1307,7 @@
          locationURI="popup:org.eclipse.ui.popup.any?after=formatMenu">
       <command
             commandId="org.eclipse.sirius.diagram.ui.removeBendpoints"
-            label="Remove Bend-points"
+            label="%command.removeBendpoints.label"
             style="push">
          <visibleWhen
                checkEnabled="false">
@@ -1337,7 +1337,7 @@
          locationURI="popup:org.eclipse.ui.popup.any?after=arrangeMenu">
       <command
             commandId="org.eclipse.sirius.diagram.ui.resetOrigin"
-            label="Reset Origin"
+            label="%command.resetOrigin.label"
             style="push">
             <visibleWhen
                checkEnabled="false">
@@ -1415,7 +1415,7 @@
                enablesFor="+"
                icon="icons/delete.gif"
                id="org.eclipse.sirius.diagram.ui.actions.DeleteFromDiagramActionID"
-               label="Delete from Diagram"
+               label="%action.deleteFromDiagram.label"
                menubarPath="editMenu/deleteFromGroup">
          </action>
       </objectContribution>
@@ -1428,7 +1428,7 @@
                definitionId="org.eclipse.sirius.diagram.ui.command.show.outline"
                enablesFor="*"
                id="org.eclipse.sirius.diagram.ui.action.show.outline"
-               label="Quick search">
+               label="%action.quickSearch.label">
          </action>
       </objectContribution>
       <objectContribution
@@ -1437,7 +1437,7 @@
             objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
          <menu
                id="org.eclipse.sirius.common.ui.menu.findelement"
-               label="Find"
+               label="%menu.find.label"
                path="additions">
             <separator
                   name="group1">
@@ -1447,7 +1447,7 @@
                class="org.eclipse.sirius.diagram.ui.tools.api.action.FindElementAction"
                definitionId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
                id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
-               label="Find"
+               label="%action.find.label"
                style="push">
          </action>
       </objectContribution>

@@ -14,7 +14,7 @@
 <plugin>
 
    <extension-point id="org.eclipse.sirius.eef.adapters.sectionFilters" 
-   		            name="sectionfilters" 
+   		            name="%extension-point.sectionFilters.name" 
             		schema="schema/sectionFilters.exsd"/>
 
    <extension point="org.eclipse.sirius.externalJavaAction">

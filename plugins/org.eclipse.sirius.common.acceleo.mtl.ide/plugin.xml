@@ -16,7 +16,7 @@
          point="org.eclipse.sirius.common.acceleo.mtl.importhandler">
       <importHandler
             class="org.eclipse.sirius.common.acceleo.mtl.ide.WorkspaceJavaImportHandler"
-            label="Java services from workspace">
+            label="%wksJavaImportHandler.label">
       </importHandler>
    </extension>
    <extension
@@ -31,7 +31,7 @@
       <command
             defaultHandler="org.eclipse.acceleo.internal.ide.ui.natures.AcceleoToggleNatureAction"
             id="org.eclipse.sirius.common.acceleo.mtl.ide.internal.convert"
-            name="Convert to Acceleo project">
+            name="%command.toggleAcceleoNature.name">
       </command>
    </extension>
 </plugin>

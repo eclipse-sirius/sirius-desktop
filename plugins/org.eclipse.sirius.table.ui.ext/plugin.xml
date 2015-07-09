@@ -24,7 +24,7 @@
             extensions="dtable"
             icon="icons/full/obj16/EditionTableDescription.gif"
             id="org.eclipse.sirius.table.ui.EditionTableEditorID"
-            name="EditionTable editor">
+            name="%editor.editionTable.name">
       </editor>
       <editor
             class="org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor"
@@ -33,7 +33,7 @@
             extensions="dtable"
             icon="icons/full/obj16/CrossTableDescription.gif"
             id="org.eclipse.sirius.table.ui.CrossTableEditorID"
-            name="CrossTable editor">
+            name="%editor.crossTable.name">
       </editor>
    </extension>
    

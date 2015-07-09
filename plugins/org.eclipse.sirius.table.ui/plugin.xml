@@ -53,7 +53,7 @@
             targetID="org.eclipse.sirius.table.ui.EditionTableEditorID">
          <menu
                id="org.eclipse.sirius.table.ui.EditorID.actions.DTable"
-               label="DTable"
+               label="%menu.table.label"
                path="additions">
             <separator
                   name="column">
@@ -75,10 +75,10 @@
                class="org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorRefreshAction"
                icon="icons/table/refresh.gif"
                id="org.eclipse.sirius.table.ui.refresh"
-               label="Refresh"
+               label="%action.tableRefresh.label"
                menubarPath="org.eclipse.sirius.table.ui.EditorID.actions.DTable/refresh"
                toolbarPath="Normal/additions"
-               tooltip="Force a refresh of the table">
+               tooltip="%action.tableRefresh.tooltip">
          </action>
       </editorContribution>
       <editorContribution
@@ -86,7 +86,7 @@
             targetID="org.eclipse.sirius.table.ui.CrossTableEditorID">
          <menu
                id="org.eclipse.sirius.table.ui.EditorID.actions.DTable"
-               label="DTable"
+               label="%menu.table.label"
                path="additions">
             <separator
                   name="column">
@@ -108,10 +108,10 @@
                class="org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorRefreshAction"
                icon="icons/table/refresh.gif"
                id="org.eclipse.sirius.table.ui.refresh"
-               label="Refresh"
+               label="%action.tableRefresh.label"
                menubarPath="org.eclipse.sirius.table.ui.EditorID.actions.DTable/refresh"
                toolbarPath="Normal/additions"
-               tooltip="Force a refresh of the table">
+               tooltip="%action.tableRefresh.tooltip">
          </action>
       </editorContribution>
    </extension>
@@ -132,7 +132,7 @@
          <propertyTab
                category="default"
                id="org.eclipse.sirius.table.ui.tab.default"
-               label="default">
+               label="%propertyTab.default.label">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -144,7 +144,7 @@
                afterTab="org.eclipse.sirius.table.ui.tab.default"
                category="default"
                id="org.eclipse.sirius.table.ui.tab.semantic"
-               label="Semantic">
+               label="%propertyTab.semantic.label">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -156,7 +156,7 @@
                afterTab="org.eclipse.sirius.table.ui.tab.semantic"
                category="default"
                id="org.eclipse.sirius.table.ui.tab.style"
-               label="Style">
+               label="%propertyTab.style.label">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -202,7 +202,7 @@
       <command
             defaultHandler="org.eclipse.sirius.table.ui.tools.internal.export.ExportToCsvHandler"
             id="org.eclipse.sirius.table.ui.exportToCsv"
-            name="Export to CSV">
+            name="%command.exportToCSV.name">
       </command>
    </extension>
    
@@ -225,7 +225,7 @@
    <extension point="org.eclipse.ui.commands">
      <command
            id="org.eclipse.sirius.table.ui.command.refreshElement"
-           name="Refresh element">
+           name="%command.tableElementRefresh.name">
      </command>
    </extension>
    

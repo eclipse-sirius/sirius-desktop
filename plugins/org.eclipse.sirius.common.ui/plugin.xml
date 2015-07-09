@@ -12,8 +12,8 @@
 -->
 
 <plugin>
-   <extension-point id="savedialogextension" name="org.eclipse.sirius.common.ui.savedialogextension" schema="schema/savedialogextension.exsd"/>
-   <extension-point id="propertyContributorLabelProviderDelegate" name="org.eclipse.sirius.common.ui.views.properties.tabbed.propertyContributorLabelProviderDelegate" schema="schema/propertyContributorLabelProviderDelegate.exsd"/>
+   <extension-point id="savedialogextension" name="%extension-point.savedialogextension.name" schema="schema/savedialogextension.exsd"/>
+   <extension-point id="propertyContributorLabelProviderDelegate" name="%extension-point.propertyContributorLabelProviderDelegate.name" schema="schema/propertyContributorLabelProviderDelegate.exsd"/>
    
    <extension
        point="org.eclipse.sirius.common.fileModificationValidator">

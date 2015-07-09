@@ -12,21 +12,21 @@
 -->
 
 <plugin>
-   <extension-point id="refreshExtensionProvider" name="viewpoint.semantic.refresh.refreshExtensionProvider" schema="schema/refreshExtensionProvider.exsd"/>
-   <extension-point id="dialect" name="org.eclipse.sirius.dialect" schema="schema/dialect.exsd"/>
-   <extension-point id="mmdescriptor" name="org.eclipse.sirius.mmdescriptor" schema="schema/mmdescriptor.exsd"/>
-   <extension-point id="featureExtensions" name="org.eclipse.sirius.featureExtensions" schema="schema/featureExtensions.exsd"/>
-   <extension-point id="componentization" name="org.eclipse.sirius.componentization" schema="schema/componentization.exsd"/>
-   <extension-point id="externalJavaAction" name="%ExtPoint.externalJavaAction" schema="schema/externalJavaAction.exsd"/>
-   <extension-point id="sessionManagerListener" name="org.eclipse.sirius.sessionManagerListener" schema="schema/sessionManagerListener.exsd"/>
-   <extension-point id="analysisSelectorProvider" name="org.eclipse.sirius.analysisSelectorProvider" schema="schema/analysisSelectorProvider.exsd"/>
-   <extension-point id="runtimeLogger" name="org.eclipse.sirius.runtimeLogger" schema="schema/runtimeLogger.exsd"/>
-   <extension-point id="deleteHook" name="org.eclipse.sirius.deleteHook" schema="schema/deleteHook.exsd"/>
-   <extension-point id="sessionFactory" name="org.eclipse.sirius.sessionFactory" schema="schema/sessionFactory.exsd"/>
-   <extension-point id="viewpointSpecificationModel" name="org.eclipse.sirius.viewpointSpecificationModel" schema="schema/viewpointSpecificationModel.exsd"/>
-   <extension-point id="viewpointResourceType" name="org.eclipse.sirius.viewpointResourceType" schema="schema/viewpointResourceType.exsd"/>
-   <extension-point id="migrationParticipant" name="org.eclipse.sirius.migration" schema="schema/migrationParticipant.exsd"/>
-   <extension-point id="repairParticipant" name="viewpoint.repair.repairParticipant" schema="schema/repairParticipant.exsd"/>
+   <extension-point id="refreshExtensionProvider" name="%extension-point.refreshExtensionProvider.name" schema="schema/refreshExtensionProvider.exsd"/>
+   <extension-point id="dialect" name="%extension-point.dialect.name" schema="schema/dialect.exsd"/>
+   <extension-point id="mmdescriptor" name="%extension-point.mmdescriptor.name" schema="schema/mmdescriptor.exsd"/>
+   <extension-point id="featureExtensions" name="%extension-point.featureExtensions.name" schema="schema/featureExtensions.exsd"/>
+   <extension-point id="componentization" name="%extension-point.componentization.name" schema="schema/componentization.exsd"/>
+   <extension-point id="externalJavaAction" name="%extension-point.externalJavaAction" schema="schema/externalJavaAction.exsd"/>
+   <extension-point id="sessionManagerListener" name="%extension-point.sessionManagerListener.name" schema="schema/sessionManagerListener.exsd"/>
+   <extension-point id="analysisSelectorProvider" name="%extension-point.analysisSelectorProvider.name" schema="schema/analysisSelectorProvider.exsd"/>
+   <extension-point id="runtimeLogger" name="%extension-point.runtimeLogger.name" schema="schema/runtimeLogger.exsd"/>
+   <extension-point id="deleteHook" name="%extension-point.deleteHook.name" schema="schema/deleteHook.exsd"/>
+   <extension-point id="sessionFactory" name="%extension-point.sessionFactory.name" schema="schema/sessionFactory.exsd"/>
+   <extension-point id="viewpointSpecificationModel" name="%extension-point.viewpointSpecificationModel.name" schema="schema/viewpointSpecificationModel.exsd"/>
+   <extension-point id="viewpointResourceType" name="%extension-point.viewpointResourceType.name" schema="schema/viewpointResourceType.exsd"/>
+   <extension-point id="migrationParticipant" name="%extension-point.migration.name" schema="schema/migrationParticipant.exsd"/>
+   <extension-point id="repairParticipant" name="%extension-point.repairParticipant.name" schema="schema/repairParticipant.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated viewpoint -->
@@ -113,7 +113,7 @@
   <extension
          point="org.eclipse.emf.validation.constraintProviders"> 
       <category
-            name="Sirius Constraints"
+            name="%constraint.category.name"
             id="org.eclipse.sirius.constraints"/>
       <constraintProvider
             cache="true"
@@ -129,14 +129,14 @@
                   class="org.eclipse.sirius.tools.internal.validation.description.constraints.ExistingExpressionVariablesConstraint"
                   severity="ERROR"
                   mode="Batch"
-                  name="Valid Variables"
+                  name="%constraint.validVariables.name"
                   id="org.eclipse.sirius.constraints.ValidAcceleoVariable"
                   statusCode="1">
                <description>
-                  Invalid variable
+                  %constraint.validVariables.description
                </description>
                <message>
-                  The expression {0} of {1} does not accept the {2} variable.
+                  %constraint.validVariables.message
                </message>
             </constraint>
             <constraint
@@ -144,14 +144,14 @@
                   id="org.eclipse.sirius.constraints.ValidImagePathConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="Invalid Image Path"
+                  name="%constraint.validImagePath.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.validImagePath.message
                </message>
                <description>
-                  Validates that image paths are valid
+                  %constraint.validImagePath.description
                </description>
             </constraint>
             <constraint
@@ -159,14 +159,14 @@
                   id="org.eclipse.sirius.constraints.ValidInterpretedExpressionConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="Invalid Interpreted Expression"
+                  name="%constraint.validExpression.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  Invalid Interpreter Expression
+                  %constraint.validExpression.message
                </message>
                <description>
-                  Validates that the typed Interpreter Expression is valid
+                  %constraint.validExpression.description
                </description>
             </constraint>
              <constraint
@@ -174,14 +174,14 @@
                   id="org.eclipse.sirius.tools.internal.validation.description.constraints.EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="EAttributeCustomization referenced style descriptions elements conforms to attributeName "
+                  name="%constraint.validAttributeCustomization.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.validAttributeCustomization.message
                </message>
                <description>
-                  Check the constraint that EAttributeCustomization.attributeName is the name of a common EAttribute to all referenced style description or a description element owned by a style description through EAttributeCustomization.appliedOn.
+                  %constraint.validAttributeCustomization.description
                </description>
                <target
                      class="EAttributeCustomization">
@@ -192,14 +192,14 @@
                   id="org.eclipse.sirius.tools.internal.validation.description.constraints.EReferenceCustomizationReferenceNameCommonToAppliedOnConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="EReferenceCustomization referenced style descriptions elements conforms to referenceName "
+                  name="%constraint.validReferenceCustomization.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.validReferenceCustomization.message
                </message>
                <description>
-                  Check the constraint that EReferenceCustomization.referenceName is the name of a common EReference to all referenced style description or a description element owned by a style description through EAttributeCustomization.appliedOn or different EReference with the same name and a common type.
+                  %constraint.validReferenceCustomization.description
                </description>
                <target
                      class="EReferenceCustomization">
@@ -210,14 +210,14 @@
                   id="org.eclipse.sirius.tools.internal.validation.description.constraints.VSMElementCustomizationReuseValidConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="VSMElementCustomizationReuse validity checking "
+                  name="%constraint.validVSMElementCustomization.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.validVSMElementCustomization.message
                </message>
                <description>
-                  Check the constraint that a VSMElementCustomizationReuse is valid.
+                  %constraint.validVSMElementCustomization.description
                </description>
                <target
                      class="VSMElementCustomizationReuse">
@@ -229,11 +229,11 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="Empty appliedOn list validation"
+                  name="%constraint.validAppliedOn.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.validAppliedOn.message
                </message>
             </constraint>
             <constraint
@@ -242,14 +242,14 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="Empty or null element name validation"
+                  name="%constraint.validVSMElementName.name"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}
+                  %constraint.validVSMElementName.message
                </message>
                <description>
-                  Check the constraint that the name of vsm element is not empty or null.
+                  %constraint.validVSMElementName.description
                </description>    
                <target
                      class="IdentifiedElement">
@@ -291,7 +291,7 @@
   </extension>
   <extension
         id="LocalSessionEditingDomainFactory"
-        name="Local Session EditingDomain Factory"
+        name="%extension.sessionEditingDomainFactory.name"
         point="org.eclipse.sirius.common.editingDomainFactory">
      <editingDomainFactory
            class="org.eclipse.sirius.business.internal.session.LocalSessionEditingDomainFactory">
@@ -314,7 +314,7 @@
 
    <extension
          id="viewpointMarker"
-         name="Sirius Marker"
+         name="%extension.siriusMarker.name"
          point="org.eclipse.core.resources.markers">
       <super type="org.eclipse.core.resources.problemmarker"/>
       <attribute
@@ -324,7 +324,7 @@
    </extension>
    <extension
          id="modelingMarker"
-         name="Modeling Marker"
+         name="%extension.modelingMarker.name"
          point="org.eclipse.core.resources.markers">
       <super type="org.eclipse.sirius.viewpointMarker"/>
       <persistent value="true"/>

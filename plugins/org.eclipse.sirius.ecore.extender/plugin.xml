@@ -12,8 +12,8 @@
 -->
 
 <plugin>
-   <extension-point id="org.eclipse.sirius.ecore.extender.ExtenderProvider" name="org.eclipse.sirius.ecore.extender.ExtenderProvider" schema="schema/extenderProvider.exsd"/>
-   <extension-point id="org.eclipse.sirius.ecore.extender.PermissionProvider" name="org.eclipse.sirius.ecore.extender.PermissionProvider" schema="schema/permissionProvider.exsd"/>
+   <extension-point id="org.eclipse.sirius.ecore.extender.ExtenderProvider" name="%extension-point.extenderProvider.name" schema="schema/extenderProvider.exsd"/>
+   <extension-point id="org.eclipse.sirius.ecore.extender.PermissionProvider" name="%extension-point.permissionProvider.name" schema="schema/permissionProvider.exsd"/>
 
    <extension point="org.eclipse.sirius.ecore.extender.ExtenderProvider">
       <extenderprovider priority="normal" providerClass="org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore.EcoreExtenderProvider"/>

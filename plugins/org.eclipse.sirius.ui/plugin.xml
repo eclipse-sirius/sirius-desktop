@@ -12,17 +12,17 @@
 -->
 
 <plugin>
-   <extension-point id="dialectui" name="org.eclipse.sirius.dialect.ui" schema="schema/dialect.ui.exsd"/>
-   <extension-point id="featureExtensionsui" name="org.eclipse.sirius.ui.featureExtensions.ui" schema="schema/featureExtensions.ui.exsd"/>
-   <extension-point id="exportRepresentationsAsImagesExtension" name="org.eclipse.sirius.ui.exportRepresentationsAsImages" schema="schema/exportRepresentationsAsImagesExtension.exsd"/>
-   <extension-point id="assistContentProvider" name="org.eclipse.sirius.ui.assistContentProvider" schema="schema/IAssistContentProvider.exsd"/>
-   <extension-point id="resourcelocator" name="org.eclipse.sirius.ui.resourcelocator" schema="schema/resourcelocator.exsd"/>
-   <extension-point id="representationTemplateEdit" name="org.eclipse.sirius.ui.representationTemplateEdit" schema="schema/representationTemplateEdit.exsd"/>
-   <extension-point id="modelExplorerTabExtension" name="org.eclipse.sirius.ui.modelExplorerTabExtension" schema="schema/modelExplorerTabExtension.exsd"/>
-   <extension-point id="uiSessionFactory" name="UI Session Factory" schema="schema/uiSessionFactory.exsd"/>
-   <extension-point id="newmodeldependencywizard" name="newmodeldependencywizard" schema="schema/newmodeldependencywizard.exsd"/>
-   <extension-point id="modelingprojectresourcelistener" name="org.eclipse.sirius.ui.resourcelistener" schema="schema/modelingprojectresourcelistener.exsd"/>
-   <extension-point id="siriuspropertiescelleditor" name="org.eclipse.sirius.ui.siriuspropertiescelleditor" schema="schema/siriuspropertiescelleditor.exsd"/>
+   <extension-point id="dialectui" name="%extension-point.dialectUI.name" schema="schema/dialect.ui.exsd"/>
+   <extension-point id="featureExtensionsui" name="%extension-point.featureExtensionUI.name" schema="schema/featureExtensions.ui.exsd"/>
+   <extension-point id="exportRepresentationsAsImagesExtension" name="%extension-point.exporteAsImages.name" schema="schema/exportRepresentationsAsImagesExtension.exsd"/>
+   <extension-point id="assistContentProvider" name="%extension-point.assistContentProvider.name" schema="schema/IAssistContentProvider.exsd"/>
+   <extension-point id="resourcelocator" name="%extension-point.resourceLocator.name" schema="schema/resourcelocator.exsd"/>
+   <extension-point id="representationTemplateEdit" name="%extension-point.representationTemplateEdit.name" schema="schema/representationTemplateEdit.exsd"/>
+   <extension-point id="modelExplorerTabExtension" name="%extension-point.modelExplorerTabExtension.name" schema="schema/modelExplorerTabExtension.exsd"/>
+   <extension-point id="uiSessionFactory" name="%extension-point.uiSessionFactory.name" schema="schema/uiSessionFactory.exsd"/>
+   <extension-point id="newmodeldependencywizard" name="%extension-point.newmodeldependencywizard.name" schema="schema/newmodeldependencywizard.exsd"/>
+   <extension-point id="modelingprojectresourcelistener" name="%extension-point.modelingProjectResourceListener.name" schema="schema/modelingprojectresourcelistener.exsd"/>
+   <extension-point id="siriuspropertiescelleditor" name="%extension-point.siriusPropertiesCellEditor.name" schema="schema/siriuspropertiescelleditor.exsd"/>
 
    
    <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
@@ -42,7 +42,7 @@
          <propertyTab
                category="default"
                id="org.eclipse.sirius.ui.tools.views.model.explorer.tab"
-               label="Default">
+               label="%propertyTab.default.label">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -168,19 +168,19 @@
         point="org.eclipse.ui.commands">
      <category
            id="org.eclipse.sirius.ui.tools.commands"
-           name="Sirius Commands">
+           name="%category.siriusCommands.name">
      </category>
      <command
            categoryId="org.eclipse.sirius.ui.tools.commands"
            defaultHandler="org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler"
            id="org.eclipse.sirius.ui.tools.controlCommand"
-           name="Control">
+           name="%command.control.name">
      </command>
      <command
            categoryId="org.eclipse.sirius.ui.tools.commands"
            defaultHandler="org.eclipse.sirius.ui.tools.api.control.SiriusUncontrolHandler"
            id="org.eclipse.sirius.ui.tools.uncontrolCommand"
-           name="Uncontrol">
+           name="%command.uncontrol.name">
      </command>
   </extension>
     <!-- Standard External Java Actions usable from VSMs. --> 
@@ -293,7 +293,7 @@
            icon="icons/obj16/SessionResourceFile.gif"
            id="org.eclipse.sirius.ui.resource.content.session"
            labelProvider="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider"
-           name="Sirius Content Management"
+           name="%navigatorContent.siriusContent.name"
            priority="high"
            providesSaveables="false">
         <commonSorter
@@ -474,9 +474,9 @@
         </enablement>
      </commonWizard> 
     <commonFilter
-           description="Hides &quot;Representations per resource&quot; item in viewpoint legacy mode. This item displays linked aird files with their activated viewpoints and their available representations."
+           description="%commonFilter.representationPerResource.description"
            id="org.eclipse.sirius.ui.commonFilter.resourceFolderItem"
-           name="Representations per resource">
+           name="%commonFilter.representationPerResource.name">
         <filterExpression>
            <instanceof
                  value="org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem">
@@ -484,9 +484,9 @@
         </filterExpression>
      </commonFilter>
      <commonFilter
-           description="Hides &quot;Representations per category&quot; item in viewpoint legacy mode. This item displays activated Viewpoints and their available representations."
+           description="%commonFilter.representationPerCategory.description"
            id="org.eclipse.sirius.ui.commonFilter.viewpointFolderItem"
-           name="Representations per category">
+           name="%commonFilter.representationPerCategory.name">
         <filterExpression>
            <instanceof
                  value="org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem">
@@ -495,31 +495,31 @@
      </commonFilter>
      <commonFilter
            class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.RepresentationInSemanticNodeCommonFilter"
-           description="Hides the representations in the model tree"
+           description="%commonFilter.representations.description"
            id="org.eclipse.sirius.ui.commonFilter.representation"
-           name="Representations as child of the represented element">
+           name="%commonFilter.representations.name">
      </commonFilter>
      <commonFilter
            activeByDefault="true"
            class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.RepresentationDescriptionWithoutRepresentationCommonFilter"
-           description="Hides Representation descriptions without instances"
+           description="%commonFilter.emptyRepresentationType.description"
            id="org.eclipse.sirius.ui.commonFilter.representation.description"
-           name="Representation descriptions without instance">
+           name="%commonFilter.emptyRepresentationType.name">
      </commonFilter>
      <commonFilter
            activeByDefault="true"
            class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.PatternFilter"
-           description="Filter used in in the filter text area of Model Explorer view"
+           description="%commonFilter.patternFilter.description"
            id="org.eclipse.sirius.ui.commonFilter.pattern"
-           name="Pattern filter"
+           name="%commonFilter.patternFilter.name"
            visibleInUI="false">
      </commonFilter>
      <commonFilter
            activeByDefault="false"
            class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.DanglingRepresentationCommonFilter"
-           description="Hides the dangling representations, ie. whitout represented element or whose element has been detached or deleted."
+           description="%commonFilter.danglingRepresentations.description"
            id="org.eclipse.sirius.ui.commonFilter.dangling.representation"
-           name="Representations known as dangling">
+           name="%commonFilter.danglingRepresentations.name">
      </commonFilter>
   </extension>
   <extension
