@@ -6,8 +6,8 @@
     modelPluginID="org.eclipse.sirius.tests.sample.migration" modelName="MigrationModeler"
     editPluginClass="org.eclipse.sirius.tests.sample.migration.migrationmodeler.provider.MigrationModelerEditPlugin"
     editorPluginClass="org.eclipse.sirius.tests.sample.migration.migrationmodeler.presentation.MigrationModelerEditorPlugin"
-    testsDirectory="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" editPluginID="org.eclipse.sirius.tests.sample.migration.edit"
+    nonNLSMarkers="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.tests.sample.migration.edit"
     editorPluginID="org.eclipse.sirius.tests.sample.migration.editor" runtimeVersion="2.3"
     usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>migrationModeler.ecore</foreignModel>
