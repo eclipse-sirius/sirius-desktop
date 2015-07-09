@@ -96,13 +96,24 @@ public class SessionEditorInput extends URIEditorInput {
      * @return the model editing session.
      */
     public Session getSession() {
+        return getSession(true);
+    }
+
+    /**
+     * return the model editing session.
+     * 
+     * @param restore
+     *            true to restore the session if it is not instantiated
+     * @return the model editing session.
+     */
+    private Session getSession(boolean restore) {
         Session session = sessionRef != null ? sessionRef.get() : null;
         if (session == null) {
             URI sessionModelURI = getURI().trimFragment();
             if (sessionResourceURI != null) {
                 sessionModelURI = sessionResourceURI;
             }
-            session = getSession(sessionModelURI);
+            session = getSession(sessionModelURI, restore);
             if (session != null) {
                 this.sessionRef = new WeakReference<Session>(session);
             }
@@ -116,10 +127,23 @@ public class SessionEditorInput extends URIEditorInput {
      * @return the input of this editor input
      */
     public EObject getInput() {
+        return getInput(true);
+    }
+
+    /**
+     * Get the input of this editor input.
+     * 
+     * @param restore
+     *            true to restore the input and associated session if they are
+     *            not instantiated
+     * @return the input of this editor input
+     */
+    private EObject getInput(boolean restore) {
         EObject input = inputRef != null ? inputRef.get() : null;
         if (input == null) {
-            if (getSession() != null && getSession().isOpen() && getURI().hasFragment()) {
-                input = getSession().getTransactionalEditingDomain().getResourceSet().getEObject(getURI(), false);
+            Session session = getSession(restore);
+            if (session != null && session.isOpen() && getURI().hasFragment()) {
+                input = session.getTransactionalEditingDomain().getResourceSet().getEObject(getURI(), false);
                 if (input != null) {
                     inputRef = new WeakReference<EObject>(input);
                 }
@@ -175,15 +199,42 @@ public class SessionEditorInput extends URIEditorInput {
      * @since 0.9.0
      */
     protected Session getSession(URI sessionModelURI) {
+        return getSession(sessionModelURI, true);
+    }
+
+    /**
+     * Get the session.
+     * 
+     * @param sessionModelURI
+     *            the Session Resource URI
+     * @param restore
+     *            true to restore the session if it is not instantiated
+     * @return the session if it can be found, <code>null</code> otherwise
+     * 
+     * @since 0.9.0
+     */
+    private Session getSession(URI sessionModelURI, boolean restore) {
         Session sessionFromURI;
         try {
-            sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI, new NullProgressMonitor());
+            sessionFromURI = null;
+            if (restore) {
+                sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI, new NullProgressMonitor());
+            } else {
+                sessionFromURI = SessionManager.INSTANCE.getExistingSession(sessionModelURI);
+            }
             if (sessionFromURI != null) {
                 if (!sessionFromURI.isOpen()) {
                     sessionFromURI.open(new NullProgressMonitor());
                 }
-                IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(sessionFromURI);
-                uiSession.open();
+                IEditingSession uiSession = null;
+                if (restore) {
+                    uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(sessionFromURI);
+                } else {
+                    uiSession = SessionUIManager.INSTANCE.getUISession(sessionFromURI);
+                }
+                if (uiSession != null && !uiSession.isOpen()) {
+                    uiSession.open();
+                }
             }
         } catch (IllegalStateException e) {
             sessionFromURI = null;
@@ -248,25 +299,19 @@ public class SessionEditorInput extends URIEditorInput {
     }
 
     /**
-     * Super class URIEditorInput only check for existence of local URIs, and
-     * this behavior is not acceptable for collaborative sessions.
-     * 
-     * Instead we only want to ask the session knows about this URI.
-     * 
-     * This caused a bug when saving/restoring editor state in workbench memento
-     * state with collaborative sessions (URI with "cdo" scheme)
+     * Overridden to test input existence in a generic way.
      * 
      * {@inheritDoc}
      */
     @Override
     public boolean exists() {
         boolean exists = super.exists();
-        if (!exists && getSession() != null) {
-            URI resourceURI = getURI().trimFragment();
-            for (Resource resource : getSession().getAllSessionResources()) {
-                if (resource.getURI().equals(resourceURI)) {
-                    exists = true;
-                    break;
+        if (!exists) {
+            EObject input = getInput(false);
+            if (input != null) {
+                Resource resource = input.eResource();
+                if (resource != null) {
+                    exists = resource.getResourceSet().getURIConverter().exists(resource.getURI(), null);
                 }
             }
         }
@@ -289,18 +334,23 @@ public class SessionEditorInput extends URIEditorInput {
 
     @Override
     public int hashCode() {
-        if (getInput() != null) {
-            return getInput().hashCode();
+        EObject input = getInput(false);
+        if (input != null) {
+            return input.hashCode();
         }
         return super.hashCode();
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof SessionEditorInput && getInput() != null) {
-            SessionEditorInput otherSessionEditorInput = (SessionEditorInput) o;
-            return getInput().equals(otherSessionEditorInput.getInput());
+        boolean equals = super.equals(o);
+        if (equals && o instanceof SessionEditorInput) {
+            EObject input = getInput(false);
+            if (input != null) {
+                SessionEditorInput otherSessionEditorInput = (SessionEditorInput) o;
+                return input.equals(otherSessionEditorInput.getInput(false));
+            }
         }
-        return super.equals(o);
+        return equals;
     }
 }
