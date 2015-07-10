@@ -14,15 +14,31 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.operations.IOperationHistory;
+import org.eclipse.core.commands.operations.IUndoContext;
+import org.eclipse.core.commands.operations.ObjectUndoContext;
+import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.gmf.runtime.common.core.util.Trace;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
+import org.eclipse.gmf.runtime.diagram.ui.properties.internal.DiagramPropertiesDebugOptions;
+import org.eclipse.gmf.runtime.diagram.ui.properties.internal.DiagramPropertiesPlugin;
+import org.eclipse.gmf.runtime.diagram.ui.properties.internal.DiagramPropertiesStatusCodes;
 import org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.emf.core.util.PackageUtil;
@@ -46,6 +62,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStyleProp
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -93,6 +110,8 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
      * button to set back the view to default color.
      */
     private Button fontStrikeThroughButton;
+
+    private boolean bIsCommandInProgress;
 
     /**
      * {@inheritDoc}
@@ -184,6 +203,40 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
         }
         return colorToReturn;
 
+    }
+
+    /**
+     * This method has been overridden to add the undo context to the command.
+     * 
+     * {@inheritDoc}
+     */
+    @Override
+    protected CommandResult executeAsCompositeCommand(String actionName, List commands) {
+        if (bIsCommandInProgress)
+            return null;
+
+        bIsCommandInProgress = true;
+
+        CompositeCommand command = new CompositeCommand(actionName, commands);
+        IOperationHistory history = OperationHistoryFactory.getOperationHistory();
+
+        command.addContext(getUndoContext());
+
+        try {
+            IStatus status = history.execute(command, new NullProgressMonitor(), null);
+
+            if (status.getCode() == DiagramPropertiesStatusCodes.CANCELLED || status.getSeverity() == IStatus.CANCEL || status.getSeverity() == IStatus.ERROR) {
+                refresh();
+            }
+
+        } catch (ExecutionException e) {
+            Trace.catching(DiagramPropertiesPlugin.getDefault(), DiagramPropertiesDebugOptions.EXCEPTIONS_CATCHING, getClass(), "executeAsCompositeCommand", e); //$NON-NLS-1$
+            DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, DiagramUIPlugin.ID, e.getLocalizedMessage()));
+        }
+
+        bIsCommandInProgress = false;
+
+        return command.getCommandResult();
     }
 
     /**
@@ -454,5 +507,23 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
         }
 
         executeAsCompositeCommand(FONT_COMMAND_NAME, commands);
+    }
+
+    private IUndoContext getUndoContext() {
+        IUndoContext undoContext;
+
+        final TransactionalEditingDomain domain = getEditingDomain();
+
+        if (domain != null) {
+            if (domain.getCommandStack() instanceof IWorkspaceCommandStack) {
+                undoContext = ((IWorkspaceCommandStack) domain.getCommandStack()).getDefaultUndoContext();
+            } else {
+                undoContext = new EditingDomainUndoContext(domain);
+            }
+        } else {
+            undoContext = new ObjectUndoContext(this);
+        }
+
+        return undoContext;
     }
 }
