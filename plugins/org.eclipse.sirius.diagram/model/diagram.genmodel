@@ -398,7 +398,7 @@
         <genFeatures property="None" createChild="false" propertyCategory="Advanced"
             propertyDescription="Tell whether the element should be created during the diagram initialization or not. If not the diagram will be created empty and then the user will have to fill it."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/DiagramElementMapping/createElements"/>
-        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression used to associate more than one semantic element to the viewpoint element. If you associate more than one element, any change "
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression used to associate more than one semantic element to the viewpoint element. If you associate more than one element, any change on one of these elements will trigger a refresh of the graphical element."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/DiagramElementMapping/semanticElements"/>
         <genFeatures notify="false" createChild="false" propertyCategory="Behavior"
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramElementMapping/doubleClickDescription"/>
