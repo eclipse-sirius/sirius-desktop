@@ -135,7 +135,7 @@ public class DiagramElementMappingSemanticElementsPropertySection extends Abstra
      * {@inheritDoc}
      */
     protected String getPropertyDescription() {
-        return "Expression used to associate more than one semantic element to the viewpoint element. If you associate more than one element, any change ";
+        return "Expression used to associate more than one semantic element to the viewpoint element. If you associate more than one element, any change on one of these elements will trigger a refresh of the graphical element.";
     }
 
     // Start of user code user operations

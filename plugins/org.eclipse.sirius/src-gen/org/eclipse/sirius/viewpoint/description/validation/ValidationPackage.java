@@ -140,13 +140,31 @@ public interface ValidationPackage extends EPackage {
     int VALIDATION_RULE = 1;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int VALIDATION_RULE__NAME = DescriptionPackage.IDENTIFIED_ELEMENT__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int VALIDATION_RULE__LABEL = DescriptionPackage.IDENTIFIED_ELEMENT__LABEL;
+
+    /**
      * The feature id for the '<em><b>Level</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int VALIDATION_RULE__LEVEL = 0;
+    int VALIDATION_RULE__LEVEL = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Message</b></em>' attribute. <!--
@@ -155,7 +173,7 @@ public interface ValidationPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VALIDATION_RULE__MESSAGE = 1;
+    int VALIDATION_RULE__MESSAGE = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Audits</b></em>' containment reference
@@ -164,7 +182,7 @@ public interface ValidationPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VALIDATION_RULE__AUDITS = 2;
+    int VALIDATION_RULE__AUDITS = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Fixes</b></em>' containment reference
@@ -173,7 +191,7 @@ public interface ValidationPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VALIDATION_RULE__FIXES = 3;
+    int VALIDATION_RULE__FIXES = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>Rule</em>' class. <!--
@@ -182,7 +200,7 @@ public interface ValidationPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VALIDATION_RULE_FEATURE_COUNT = 4;
+    int VALIDATION_RULE_FEATURE_COUNT = DescriptionPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -195,6 +213,24 @@ public interface ValidationPackage extends EPackage {
      * @generated
      */
     int SEMANTIC_VALIDATION_RULE = 2;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEMANTIC_VALIDATION_RULE__NAME = ValidationPackage.VALIDATION_RULE__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEMANTIC_VALIDATION_RULE__LABEL = ValidationPackage.VALIDATION_RULE__LABEL;
 
     /**
      * The feature id for the '<em><b>Level</b></em>' attribute. <!--
@@ -262,6 +298,24 @@ public interface ValidationPackage extends EPackage {
      * @generated
      */
     int VIEW_VALIDATION_RULE = 3;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int VIEW_VALIDATION_RULE__NAME = ValidationPackage.VALIDATION_RULE__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int VIEW_VALIDATION_RULE__LABEL = ValidationPackage.VALIDATION_RULE__LABEL;
 
     /**
      * The feature id for the '<em><b>Level</b></em>' attribute. <!--

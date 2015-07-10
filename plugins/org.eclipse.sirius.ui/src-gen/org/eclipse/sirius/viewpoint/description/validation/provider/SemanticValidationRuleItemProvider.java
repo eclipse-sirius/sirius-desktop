@@ -20,7 +20,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
@@ -86,12 +86,12 @@ public class SemanticValidationRuleItemProvider extends ValidationRuleItemProvid
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        ERROR_LEVEL labelValue = ((SemanticValidationRule) object).getLevel();
-        String label = labelValue == null ? null : labelValue.toString();
+        IdentifiedElementQuery query = new IdentifiedElementQuery((SemanticValidationRule) object);
+        String label = query.getLabel();
         return label == null || label.length() == 0 ? getString("_UI_SemanticValidationRule_type") : getString("_UI_SemanticValidationRule_type") + " " + label;
     }
 

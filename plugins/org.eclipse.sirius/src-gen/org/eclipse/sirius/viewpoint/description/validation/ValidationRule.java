@@ -13,6 +13,7 @@ package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -42,7 +43,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface ValidationRule extends EObject {
+public interface ValidationRule extends IdentifiedElement {
     /**
      * Returns the value of the '<em><b>Level</b></em>' attribute. The default
      * value is <code>"INFO"</code>. The literals are from the enumeration

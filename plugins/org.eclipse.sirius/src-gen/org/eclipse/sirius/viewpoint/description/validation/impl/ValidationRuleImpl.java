@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
@@ -52,7 +52,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  *
  * @generated
  */
-public abstract class ValidationRuleImpl extends MinimalEObjectImpl.Container implements ValidationRule {
+public abstract class ValidationRuleImpl extends IdentifiedElementImpl implements ValidationRule {
     /**
      * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

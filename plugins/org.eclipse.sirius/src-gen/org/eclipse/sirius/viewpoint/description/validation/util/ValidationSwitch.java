@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
@@ -112,6 +113,9 @@ public class ValidationSwitch<T> {
             ValidationRule validationRule = (ValidationRule) theEObject;
             T result = caseValidationRule(validationRule);
             if (result == null) {
+                result = caseIdentifiedElement(validationRule);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -123,6 +127,9 @@ public class ValidationSwitch<T> {
                 result = caseValidationRule(semanticValidationRule);
             }
             if (result == null) {
+                result = caseIdentifiedElement(semanticValidationRule);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -132,6 +139,9 @@ public class ValidationSwitch<T> {
             T result = caseViewValidationRule(viewValidationRule);
             if (result == null) {
                 result = caseValidationRule(viewValidationRule);
+            }
+            if (result == null) {
+                result = caseIdentifiedElement(viewValidationRule);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -275,6 +285,23 @@ public class ValidationSwitch<T> {
      * @generated
      */
     public T caseDocumentedElement(DocumentedElement object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Identified Element</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Identified Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseIdentifiedElement(IdentifiedElement object) {
         return null;
     }
 

@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
@@ -112,6 +113,11 @@ public class ValidationAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDocumentedElement(DocumentedElement object) {
             return createDocumentedElementAdapter();
+        }
+
+        @Override
+        public Adapter caseIdentifiedElement(IdentifiedElement object) {
+            return createIdentifiedElementAdapter();
         }
 
         @Override
@@ -243,6 +249,22 @@ public class ValidationAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDocumentedElementAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement
+     * <em>Identified Element</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.IdentifiedElement
+     * @generated
+     */
+    public Adapter createIdentifiedElementAdapter() {
         return null;
     }
 

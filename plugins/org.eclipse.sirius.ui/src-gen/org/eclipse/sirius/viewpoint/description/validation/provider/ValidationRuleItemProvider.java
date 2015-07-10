@@ -16,20 +16,14 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IChildCreationExtender;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.viewpoint.description.provider.IdentifiedElementItemProvider;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
@@ -41,8 +35,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * 
  * @generated
  */
-public class ValidationRuleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+public class ValidationRuleItemProvider extends IdentifiedElementItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -132,12 +125,12 @@ IItemPropertySource {
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        ERROR_LEVEL labelValue = ((ValidationRule) object).getLevel();
-        String label = labelValue == null ? null : labelValue.toString();
+        IdentifiedElementQuery query = new IdentifiedElementQuery((SemanticValidationRule) object);
+        String label = query.getLabel();
         return label == null || label.length() == 0 ? getString("_UI_ValidationRule_type") : getString("_UI_ValidationRule_type") + " " + label;
     }
 
@@ -180,17 +173,6 @@ IItemPropertySource {
         newChildDescriptors.add(createChildParameter(ValidationPackage.Literals.VALIDATION_RULE__AUDITS, ValidationFactory.eINSTANCE.createRuleAudit()));
 
         newChildDescriptors.add(createChildParameter(ValidationPackage.Literals.VALIDATION_RULE__FIXES, ValidationFactory.eINSTANCE.createValidationFix()));
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return ((IChildCreationExtender) adapterFactory).getResourceLocator();
     }
 
 }

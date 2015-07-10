@@ -109,7 +109,7 @@ public class EditMaskVariablesMaskPropertySection extends AbstractTextPropertySe
      * {@inheritDoc}
      */
     protected String getPropertyDescription() {
-        return "Typing mask, something like {0}: {1} for instance, then when the user type MyName : MyType the 'MyName' value will be kept in $0 variable and 'MyType' in $1.";
+        return "Typing mask, something like {0}: {1} for instance, then when the user type MyName : MyType the 'MyName' value will be kept in arg0 variable and 'MyType' in arg1.";
     }
 
     // Start of user code user operations

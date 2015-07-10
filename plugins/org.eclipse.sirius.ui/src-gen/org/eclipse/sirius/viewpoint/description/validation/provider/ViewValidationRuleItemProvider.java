@@ -18,9 +18,9 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
-import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
  * This is the item provider adapter for a
@@ -83,12 +83,12 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        ERROR_LEVEL labelValue = ((ViewValidationRule) object).getLevel();
-        String label = labelValue == null ? null : labelValue.toString();
+        IdentifiedElementQuery query = new IdentifiedElementQuery((SemanticValidationRule) object);
+        String label = query.getLabel();
         return label == null || label.length() == 0 ? getString("_UI_ViewValidationRule_type") : getString("_UI_ViewValidationRule_type") + " " + label;
     }
 

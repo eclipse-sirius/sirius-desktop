@@ -481,6 +481,7 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
 
         // Add supertypes to classes
         validationSetEClass.getESuperTypes().add(theDescriptionPackage.getDocumentedElement());
+        validationRuleEClass.getESuperTypes().add(theDescriptionPackage.getIdentifiedElement());
         semanticValidationRuleEClass.getESuperTypes().add(this.getValidationRule());
         viewValidationRuleEClass.getESuperTypes().add(this.getValidationRule());
 
