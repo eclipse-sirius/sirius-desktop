@@ -548,7 +548,7 @@
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/ContainerViewVariable"/>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/SelectModelElementVariable"/>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/EditMaskVariables">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Typing mask, something like {0}: {1} for instance, then when the user type MyName : MyType the 'MyName' value will be kept in $0 variable and 'MyType' in $1."
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Typing mask, something like {0}: {1} for instance, then when the user type MyName : MyType the 'MyName' value will be kept in arg0 variable and 'MyType' in arg1."
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/EditMaskVariables/mask"/>
         </genClasses>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/ContainerModelOperation">
