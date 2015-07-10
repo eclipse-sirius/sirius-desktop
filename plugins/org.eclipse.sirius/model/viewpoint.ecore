@@ -1623,7 +1623,8 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ValidationRule" abstract="true">
+      <eClassifiers xsi:type="ecore:EClass" name="ValidationRule" abstract="true"
+          eSuperTypes="#//description/IdentifiedElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="A validation rule."/>
         </eAnnotations>
