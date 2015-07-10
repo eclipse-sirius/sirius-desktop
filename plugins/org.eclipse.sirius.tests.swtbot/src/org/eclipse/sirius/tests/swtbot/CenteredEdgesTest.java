@@ -882,17 +882,17 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         editor.click(targetPoint);
     }
 
-    private Rectangle getAbsoluteBounds(IGraphicalEditPart part) {
+    private PrecisionRectangle getAbsoluteBounds(IGraphicalEditPart part) {
         IFigure figure = part.getFigure();
         PrecisionRectangle r = new PrecisionRectangle(figure.getBounds());
         figure.getParent().translateToAbsolute(r);
         return r;
     }
 
-    private PrecisionPoint getProportionalPoint(Rectangle bounds, PrecisionPoint proportions) {
+    private PrecisionPoint getProportionalPoint(PrecisionRectangle bounds, PrecisionPoint proportions) {
         PrecisionPoint result = new PrecisionPoint(bounds.getTopLeft());
-        double xOffest = bounds.width * proportions.preciseX();
-        double yOffset = bounds.height * proportions.preciseY();
+        double xOffest = bounds.preciseWidth() * proportions.preciseX();
+        double yOffset = bounds.preciseHeight() * proportions.preciseY();
         result.translate(xOffest, yOffset);
         return result;
     }

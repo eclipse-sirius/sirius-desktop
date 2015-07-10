@@ -143,7 +143,7 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
         if (EditPolicy.CONNECTION_BENDPOINTS_ROLE.equals(key)) {
             if (editPolicy instanceof ConnectionLineSegEditPolicy) {
                 super.installEditPolicy(key, new TreeLayoutConnectionLineSegEditPolicy());
-            } else if (editPolicy.getClass().equals(ConnectionBendpointEditPolicy.class)) {
+            } else if (editPolicy != null && editPolicy.getClass().equals(ConnectionBendpointEditPolicy.class)) {
                 super.installEditPolicy(key, new SiriusConnectionBendpointEditPolicy());
             } else {
                 super.installEditPolicy(key, editPolicy);
