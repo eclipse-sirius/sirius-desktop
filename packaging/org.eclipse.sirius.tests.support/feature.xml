@@ -14,7 +14,7 @@
       label="%featureName"
       version="3.1.0.qualifier"
       provider-name="%providerName"
-      plugin="org.eclipse.sirius.tests.support"
+      plugin="org.eclipse.sirius.tests.junit.support"
       license-feature="org.eclipse.license"
       license-feature-version="0.0.0">
 
