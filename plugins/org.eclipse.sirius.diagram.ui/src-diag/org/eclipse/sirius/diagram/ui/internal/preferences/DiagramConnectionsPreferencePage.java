@@ -30,7 +30,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 /**
- * This preference page change the behavior of the default GMF preference page.<BR>
+ * This preference page change the behavior of the default GMF preference page.
+ * <BR>
  * The default GMF preference page has only one combo field corresponding to
  * IPreferenceConstants.PREF_LINE_STYLE. The preference is used to draw the
  * feedback during the creation of an edge and also to determine the routing of
@@ -107,6 +108,7 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
         // Listen changes of combo to change GMF preference value used for
         // creation feedback.
         lineStyleCombo.addSelectionListener(new SelectionAdapter() {
+            @Override
             public void widgetSelected(SelectionEvent evt) {
                 String comboValue = ((Combo) evt.getSource()).getText();
                 if (DiagramUIMessages.ConnectionsPreferencePage_ConnectionView_Manual_text.equals(comboValue)) {
@@ -126,7 +128,7 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
         super.initialize();
 
         // Set preference store to Diagram core plugin
-        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(new InstanceScope(), DiagramPlugin.ID);
+        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, DiagramPlugin.ID);
         enableOverrideFieldEditor.setPreferenceStore(diagramCorePreferenceStore);
         enableOverrideFieldEditor.load();
         lineStyleFieldEditor.setPreferenceStore(diagramCorePreferenceStore);
