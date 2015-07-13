@@ -52,17 +52,18 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
     protected void createFieldEditors() {
         super.createFieldEditors();
 
-        autosizeOnArrangeAll = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), "Auto-size containers during arrange-all action.", getFieldEditorParent());
+        autosizeOnArrangeAll = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), "Auto-size containers during arrange-all action.",
+                getFieldEditorParent());
         addField(autosizeOnArrangeAll);
 
-        moveUnlinkedNotesDuringLayout = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(),
-                "Move unlinked notes during layout", getFieldEditorParent());
+        moveUnlinkedNotesDuringLayout = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), "Move unlinked notes during layout", getFieldEditorParent());
         addField(moveUnlinkedNotesDuringLayout);
 
         autoPinOnMove = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name(), "Automatically mark moved elements as pinned", getFieldEditorParent());
         addField(autoPinOnMove);
 
-        synchronizeOnDiagramCreation = new BooleanFieldEditor(SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), "Synchronized mode for new diagrams", getFieldEditorParent());
+        synchronizeOnDiagramCreation = new BooleanFieldEditor(SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), "Synchronized mode for new diagrams",
+                getFieldEditorParent());
         addField(synchronizeOnDiagramCreation);
 
         removeHideNoteWhenAnnotatedElementRemovedHidden = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(),
@@ -78,7 +79,7 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
         super.initialize();
 
         // Set preference store to Diagram core plugin
-        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(new InstanceScope(), DiagramPlugin.ID);
+        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, DiagramPlugin.ID);
         moveUnlinkedNotesDuringLayout.setPreferenceStore(diagramCorePreferenceStore);
         moveUnlinkedNotesDuringLayout.load();
 
