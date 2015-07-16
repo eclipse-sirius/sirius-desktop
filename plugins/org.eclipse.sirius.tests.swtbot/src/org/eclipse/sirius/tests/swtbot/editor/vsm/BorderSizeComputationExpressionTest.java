@@ -44,6 +44,10 @@ public class BorderSizeComputationExpressionTest extends AbstractSiriusSwtBotGef
 
     private static final String BORDER = "Border";
 
+    private static final String DEFAULT_NODE_OR_IMAGE_BORDER_SIZE = "0";
+
+    private static final String DEFAULT_CONTAINER_BORDER_SIZE = "1";
+
     private SWTBotText labelText;
 
     @Override
@@ -60,17 +64,20 @@ public class BorderSizeComputationExpressionTest extends AbstractSiriusSwtBotGef
         SWTBotVSMEditor odesignEditor = openViewpointSpecificationModel(VSM);
         // expands the tree
         SWTBotTreeItem tree = odesignEditor.bot().tree().expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(DIAGRAM);
-        testBorderSizeComputationExpression(tree, "BasicShape", "Basic Shape black square");
-        testBorderSizeComputationExpression(tree, "Diamond", "Diamond gray");
-        testBorderSizeComputationExpression(tree, "Dot", "Dot gray");
-        testBorderSizeComputationExpression(tree, "Ellipse", "Ellipse gray");
-        testBorderSizeComputationExpression(tree, "Gauge", "Gauge");
-        testBorderSizeComputationExpression(tree, "Note", "Note yellow");
-        testBorderSizeComputationExpression(tree, "SquareGray", "Square gray");
-        testBorderSizeComputationExpression(tree, "Gradient", "Gradient white to light_gray");
+        testBorderSizeComputationExpression(tree, "BasicShape", "Basic Shape black square", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "Diamond", "Diamond gray", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "Dot", "Dot gray", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "Ellipse", "Ellipse gray", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "Gauge", "Gauge", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "Note", "Note yellow", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "SquareGray", "Square gray", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "ImageNode", "Workspace Image", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "Gradient", "Gradient white to light_gray", DEFAULT_CONTAINER_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "Parallelogram", "Parallelogram light_gray", DEFAULT_CONTAINER_BORDER_SIZE);
+        testBorderSizeComputationExpression(tree, "ImageContainer", "Workspace Image", DEFAULT_NODE_OR_IMAGE_BORDER_SIZE);
     }
 
-    private void testBorderSizeComputationExpression(SWTBotTreeItem tree, String node, String style) {
+    private void testBorderSizeComputationExpression(SWTBotTreeItem tree, String node, String style, String expectedDefaultSize) {
         tree.expandNode(DEFAULT).expandNode(node).expandNode(style).select();
         // set the focus on the Properties view
         bot.viewByTitle(PROPERTIES).setFocus();
@@ -86,7 +93,7 @@ public class BorderSizeComputationExpressionTest extends AbstractSiriusSwtBotGef
         SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
         // set the focus on the Border tab
         SWTBotSiriusHelper.selectPropertyTabItem(BORDER);
-        assertEquals("Border Size Computation Expression should not be empty", "0", labelText.getText());
+        assertEquals("Border Size Computation Expression should not be empty for " + style, expectedDefaultSize, labelText.getText());
     }
 
 }
