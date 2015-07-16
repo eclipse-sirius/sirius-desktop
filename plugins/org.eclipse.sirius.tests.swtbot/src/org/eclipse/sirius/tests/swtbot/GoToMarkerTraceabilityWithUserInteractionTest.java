@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import junit.framework.AssertionFailedError;
-
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -57,6 +55,8 @@ import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.junit.Assert;
+
+import junit.framework.AssertionFailedError;
 
 /**
  * Checks the behavior of the goToMarker method of all DialectEditors, when
@@ -171,6 +171,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
 
         Display.getDefault().asyncExec(new Runnable() {
 
+            @Override
             public void run() {
                 try {
                     checkEditorHasRightSelection(dialectEditor, semanticElementForTraceability);
@@ -234,9 +235,9 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         node.select();
 
         // Double click the error marker to reopen the diagram
-        Assert.assertFalse("An error happened before opening an editor using an error marker", doesAnErrorOccurs());
+        Assert.assertFalse("An error happened before opening an editor using an error marker: " + getErrorLoggersMessage(), doesAnErrorOccurs());
         node.doubleClick();
-        Assert.assertFalse("An error happened on opening of an editor using an error marker", doesAnErrorOccurs());
+        Assert.assertFalse("An error happened on opening of an editor using an error marker: " + getErrorLoggersMessage(), doesAnErrorOccurs());
     }
 
     /**
@@ -402,6 +403,7 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
         SWTBotUtils.waitAllUiEvents();
         UIThreadRunnable.asyncExec(new VoidResult() {
 
+            @Override
             public void run() {
                 for (IEditorReference ref : PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences()) {
                     IEditorPart part = ref.getEditor(true);
