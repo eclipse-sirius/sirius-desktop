@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description" xmi:id="_Cx5V8CvEEeWSX-jWVe8JSA" selectedViews="_Ds3wcCvEEeWSX-jWVe8JSA _DtO80CvEEeWSX-jWVe8JSA" version="10.1.0.201507101000">
+  <semanticResources>My.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Ds3wcCvEEeWSX-jWVe8JSA">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_E02sMCvEEeWSX-jWVe8JSA" name="new classDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_E04hYCvEEeWSX-jWVe8JSA" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_E04hYSvEEeWSX-jWVe8JSA"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_E1MqcCvEEeWSX-jWVe8JSA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_E1NRgCvEEeWSX-jWVe8JSA" type="Sirius" element="_E02sMCvEEeWSX-jWVe8JSA" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_E1NRgSvEEeWSX-jWVe8JSA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="main.odesign#//@ownedViewpoints[name='classes']/@ownedRepresentations[name='classDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_E04hYivEEeWSX-jWVe8JSA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="main.odesign#//@ownedViewpoints[name='classes']/@ownedRepresentations[name='classDiagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="main.odesign#//@ownedViewpoints[name='classes']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_DtO80CvEEeWSX-jWVe8JSA">
+    <viewpoint xmi:type="description:Viewpoint" href="extended.odesign#//@ownedViewpoints[name='others']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

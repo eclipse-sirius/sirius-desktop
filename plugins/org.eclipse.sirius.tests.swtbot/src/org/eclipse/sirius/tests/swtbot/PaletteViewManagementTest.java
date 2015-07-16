@@ -14,7 +14,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -63,7 +62,6 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
     protected void tearDown() throws Exception {
         localSession = null;
         super.tearDown();
-        new ExportAsImageHelper().resetDialogSettings();
     }
 
     /**
