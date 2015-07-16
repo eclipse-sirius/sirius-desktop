@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.unit.common;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -120,6 +121,7 @@ public class RestoreSessionFromEditorInputTests extends SiriusDiagramTestCase {
 
         if (closeSession) {
             closeSession(session);
+            assertTrue("Session should be closed and removed from the manager", SessionManager.INSTANCE.getSessions().isEmpty() && !session.isOpen());
         }
 
         // Step 3: restore editor from navigation history
@@ -130,6 +132,12 @@ public class RestoreSessionFromEditorInputTests extends SiriusDiagramTestCase {
 
         // => This should not have created a new session but use the current one
         assertEquals("No new session should have been opened while restoring editor from navigation history", 1, SessionManager.INSTANCE.getSessions().size());
+        Session currentSession = SessionManager.INSTANCE.getSessions().iterator().next();
+        if (closeSession) {
+            assertNotSame(session, currentSession);
+        } else {
+            assertEquals(session, currentSession);
+        }
         activePage.closeAllEditors(false);
         TestsUtil.synchronizationWithUIThread();
     }

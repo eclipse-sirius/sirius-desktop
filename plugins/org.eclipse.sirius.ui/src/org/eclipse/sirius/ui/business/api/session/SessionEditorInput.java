@@ -108,8 +108,9 @@ public class SessionEditorInput extends URIEditorInput {
      */
     private Session getSession(boolean restore) {
         Session session = sessionRef != null ? sessionRef.get() : null;
-        // Avoid to create a new session if the default editor name is used:
-        // GoToMarker case.
+        // Avoid to create a new session if the default editor name is used: we
+        // do not known yet for which representation the input is, like
+        // in the GotoMarker case for example.
         if (session == null || (!session.isOpen() && !DEFAULT_EDITOR_NAME.equals(name))) {
             URI sessionModelURI = getURI().trimFragment();
             if (sessionResourceURI != null) {
@@ -218,21 +219,29 @@ public class SessionEditorInput extends URIEditorInput {
     private Session getSession(URI sessionModelURI, boolean restore) {
         Session sessionFromURI;
         try {
-            sessionFromURI = null;
-            if (restore) {
+            sessionFromURI = SessionManager.INSTANCE.getExistingSession(sessionModelURI);
+
+            // A session adds and removes itself from the session manager during
+            // open()/close()
+            // If restore, we try to create a new one and open it only in this
+            // case: the session lifecycle is not safe enough to try to open a
+            // previously closed session.
+            if (sessionFromURI == null && restore) {
                 sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI, new NullProgressMonitor());
-            } else {
-                sessionFromURI = SessionManager.INSTANCE.getExistingSession(sessionModelURI);
-            }
-            if (sessionFromURI != null) {
-                if (!sessionFromURI.isOpen()) {
+                if (sessionFromURI != null && !sessionFromURI.isOpen()) {
                     sessionFromURI.open(new NullProgressMonitor());
                 }
-                IEditingSession uiSession = null;
-                if (restore) {
+            }
+
+            if (sessionFromURI != null && sessionFromURI.isOpen()) {
+                // The SessionUIManager creates and open an IEditingSession when
+                // a session is added to the SessionManager. This
+                // IEditingSession is closed and removed from the ui manager
+                // when the corresponding session is removed from the session
+                // manager (closed).
+                IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(sessionFromURI);
+                if (uiSession == null && restore) {
                     uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(sessionFromURI);
-                } else {
-                    uiSession = SessionUIManager.INSTANCE.getUISession(sessionFromURI);
                 }
                 if (uiSession != null && !uiSession.isOpen()) {
                     uiSession.open();
