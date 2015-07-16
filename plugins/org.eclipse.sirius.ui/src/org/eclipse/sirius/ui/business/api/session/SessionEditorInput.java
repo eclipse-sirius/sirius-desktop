@@ -310,7 +310,7 @@ public class SessionEditorInput extends URIEditorInput {
             EObject input = getInput(false);
             if (input != null) {
                 Resource resource = input.eResource();
-                if (resource != null) {
+                if (resource != null && resource.getResourceSet() != null) {
                     exists = resource.getResourceSet().getURIConverter().exists(resource.getURI(), null);
                 }
             }
