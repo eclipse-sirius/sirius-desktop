@@ -18,6 +18,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
@@ -46,11 +47,13 @@ public class SequenceDiagramNoSnapTest extends AbstractDefaultModelSequenceTests
         editor.setSnapToShape(true);
         assertFalse("It should not be possible to activate snap to shapes on a Sequence diagram.", editor.isSnapToShape());
 
+        editor.click(5, 5);
+        SWTBotUtils.waitAllUiEvents();
         SWTBotView propertyView = bot.viewByTitle("Properties");
         propertyView.setFocus();
         SWTBot propertyViewBot = propertyView.bot();
         SWTBotSiriusHelper.selectPropertyTabItem("Rulers & Grid");
-        
+
         SWTBotCheckBox snapToGridCheckBox = propertyViewBot.checkBox("Snap To Grid");
         assertFalse(snapToGridCheckBox.isChecked());
         snapToGridCheckBox.click();
