@@ -108,7 +108,9 @@ public class SessionEditorInput extends URIEditorInput {
      */
     private Session getSession(boolean restore) {
         Session session = sessionRef != null ? sessionRef.get() : null;
-        if (session == null || !session.isOpen()) {
+        // Avoid to create a new session if the default editor name is used:
+        // GoToMarker case.
+        if (session == null || (!session.isOpen() && !DEFAULT_EDITOR_NAME.equals(name))) {
             URI sessionModelURI = getURI().trimFragment();
             if (sessionResourceURI != null) {
                 sessionModelURI = sessionResourceURI;
