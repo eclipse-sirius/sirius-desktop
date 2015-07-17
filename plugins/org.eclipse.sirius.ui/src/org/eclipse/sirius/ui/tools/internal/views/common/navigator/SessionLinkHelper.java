@@ -52,6 +52,7 @@ public class SessionLinkHelper implements ILinkHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IStructuredSelection findSelection(IEditorInput anInput) {
         Object foundElement = null;
 
@@ -80,7 +81,8 @@ public class SessionLinkHelper implements ILinkHelper {
 
         if (anInput instanceof SessionEditorInput) {
             SessionEditorInput sessionInput = (SessionEditorInput) anInput;
-            if (sessionInput.getSession() != null && sessionInput.getSession().isOpen() && editor instanceof DialectEditor) {
+            Session session = sessionInput.getSession(false);
+            if (session != null && session.isOpen() && editor instanceof DialectEditor) {
                 foundElement = ((DialectEditor) editor).getRepresentation();
             }
         }
@@ -90,6 +92,7 @@ public class SessionLinkHelper implements ILinkHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void activateEditor(IWorkbenchPage aPage, IStructuredSelection aSelection) {
         if (aPage == null || aSelection == null || aSelection.isEmpty())
             return;

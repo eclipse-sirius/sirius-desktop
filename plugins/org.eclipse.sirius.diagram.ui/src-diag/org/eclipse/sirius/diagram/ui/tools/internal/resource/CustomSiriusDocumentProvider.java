@@ -302,6 +302,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocumentProvider#createInputWithEditingDomain(org.eclipse.ui.IEditorInput,
      *      org.eclipse.emf.transaction.TransactionalEditingDomain)
      */
+    @Override
     public IEditorInput createInputWithEditingDomain(final IEditorInput editorInput, final TransactionalEditingDomain domain) {
         return editorInput;
     }
@@ -311,6 +312,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocumentProvider#getDiagramDocument(java.lang.Object)
      */
+    @Override
     public IDiagramDocument getDiagramDocument(final Object element) {
         final IDocument doc = getDocument(element);
         if (doc instanceof IDiagramDocument) {
@@ -341,7 +343,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
         boolean isModifiable = true;
         if (element instanceof SessionEditorInput) {
             SessionEditorInput sessionEditorInput = (SessionEditorInput) element;
-            Session session = sessionEditorInput.getSession();
+            Session session = sessionEditorInput.getSession(false);
             if (session != null) {
                 ResourceSet resourceSet = session.getTransactionalEditingDomain().getResourceSet();
                 URI inputURI = sessionEditorInput.getURI();
@@ -375,7 +377,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
     @Override
     public boolean canSaveDocument(final Object element) {
         if (element instanceof SessionEditorInput) {
-            Session session = ((SessionEditorInput) element).getSession();
+            Session session = ((SessionEditorInput) element).getSession(false);
             return session != null && session.isOpen() && session.getStatus() == SessionStatus.DIRTY;
         }
         return super.canSaveDocument(element);

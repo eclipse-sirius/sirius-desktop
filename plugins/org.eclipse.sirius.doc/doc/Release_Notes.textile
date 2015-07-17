@@ -31,6 +31,7 @@ h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-warning">Deprecated</span>  @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()@ method has been deprecated as a @IEditorInput@ can be reused by several instances of @IEditorPart@ through the navigation history view.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()@ method has been added to get the real input for a @DRepresentation@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getSession(boolean)@ method has been added to let the caller choose to create and open a new @Session@ or not when the known session is closed or does not exist. The @getSession@ method calls getSession(true).
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 

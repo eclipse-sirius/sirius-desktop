@@ -100,13 +100,14 @@ public class SessionEditorInput extends URIEditorInput {
     }
 
     /**
-     * return the model editing session.
+     * Return the model editing session.
      * 
      * @param restore
-     *            true to restore the session if it is not instantiated
+     *            true to restore the session if it is not instantiated or
+     *            closed.
      * @return the model editing session.
      */
-    private Session getSession(boolean restore) {
+    public Session getSession(boolean restore) {
         Session session = sessionRef != null ? sessionRef.get() : null;
         // Avoid to create a new session if the default editor name is used: we
         // do not known yet for which representation the input is, like

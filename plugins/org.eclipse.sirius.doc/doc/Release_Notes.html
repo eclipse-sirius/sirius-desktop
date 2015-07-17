@@ -121,6 +121,11 @@
 				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()</code> method has been added to get the real input for a 
 				<code>DRepresentation</code>.
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getSession(boolean)</code> method has been added to let the caller choose to create and open a new 
+				<code>Session</code> or not when the known session is closed or does not exist. The 
+				<code>getSession</code> method calls getSession(true).
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
