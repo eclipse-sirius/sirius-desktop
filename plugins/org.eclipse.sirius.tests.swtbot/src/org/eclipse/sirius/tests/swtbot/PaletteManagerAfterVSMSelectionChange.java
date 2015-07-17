@@ -45,7 +45,7 @@ public class PaletteManagerAfterVSMSelectionChange extends AbstractSiriusSwtBotG
 
     private static final String MODELER_EXTENSION_NAME = "extended.odesign";
 
-    private static final String SESSION_NAME = "my.aird";
+    private static final String SESSION_NAME = "My.aird";
 
     private static final String REPRESENTATION_DESC_NAME = "classDiagram";
 
