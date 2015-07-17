@@ -46,7 +46,7 @@ public class SessionEditorInput extends URIEditorInput {
      * 
      * @since 0.9.0
      */
-    private static final String DEFAULT_EDITOR_NAME = "Representation";
+    private static final String DEFAULT_EDITOR_NAME = "Default_Representation_Editor";
 
     private WeakReference<Session> sessionRef;
 
