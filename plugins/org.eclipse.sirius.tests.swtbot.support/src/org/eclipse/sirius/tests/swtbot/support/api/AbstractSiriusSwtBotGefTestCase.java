@@ -275,6 +275,15 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         warnings = LinkedHashMultimap.create();
         initLoggers();
 
+        Set<String> idsOfSessionClosedOnSetup = closeAllSessions();
+        if (!idsOfSessionClosedOnSetup.isEmpty()) {
+            System.out.println("WARNING : the followings sessions were not closed on tearDown of previous tests : ");
+            for (String idOfSessionClosedOnSetup : idsOfSessionClosedOnSetup) {
+                System.out.println("\t" + idOfSessionClosedOnSetup);
+            }
+            System.out.println("They have been closed now.");
+        }
+
         System.out.println("Setup of " + this.getClass().getName() + AbstractSiriusSwtBotGefTestCase.POINT + getName() + "()");
         try {
             super.setUp();
@@ -391,17 +400,20 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         SWTBotUtils.waitAllUiEvents();
     }
 
-    private void closeAllSessions() {
+    private Set<String> closeAllSessions() {
+        final Set<String> sessionIDs = new HashSet<String>();
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
                 for (final Session sess : Sets.newLinkedHashSet(SessionManager.INSTANCE.getSessions())) {
                     if (sess.isOpen()) {
+                        sessionIDs.add(sess.getID());
                         sess.close(new NullProgressMonitor());
                     }
                 }
             }
         });
+        return sessionIDs;
     }
 
     /**
@@ -458,7 +470,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     public void takeScreenshot(CharSequence suffix) {
         String fileName = SWTBotPreferences.SCREENSHOTS_DIR + "/" + "screenshot-" + ClassUtils.simpleClassName(getClass()) + AbstractSiriusSwtBotGefTestCase.POINT + getName() + suffix
                 + AbstractSiriusSwtBotGefTestCase.POINT + SWTBotPreferences.SCREENSHOT_FORMAT.toLowerCase();
-        new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs(); //$NON-NLS-1$
+        new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs(); // $NON-NLS-1$
         SWTUtils.captureScreenshot(fileName);
     }
 
@@ -626,8 +638,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /**
      * Restore this preference to its initial value. Should be called after
-     * {@link #changeDiagramPreference(String, Boolean)} of
-     * {@link #changeDiagramPreference(String, Integer)} to have effect.
+     * {@link #changeDiagramPreference(String, Boolean)} to have effect.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -639,8 +650,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /**
      * Restore this preference to its initial value. Should be called after
-     * {@link #changeDiagramPreference(String, Boolean)} of
-     * {@link #changeDiagramPreference(String, Integer)} to have effect.
+     * {@link #changeDiagramPreference(String, Boolean)} to have effect.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -682,8 +692,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /**
      * Restore this preference to its initial value. Should be called after
-     * {@link #changeDiagramUIPreference(String, Boolean)} of
-     * {@link #changeDiagramUIPreference(String, Integer)} to have effect.
+     * {@link #changeDiagramUIPreference(String, Boolean)} to have effect.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -695,8 +704,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /**
      * Restore this preference to its initial value. Should be called after
-     * {@link #changeDiagramUIPreference(String, Boolean)} of
-     * {@link #changeDiagramUIPreference(String, Integer)} to have effect.
+     * {@link #changeDiagramUIPreference(String, Boolean)} to have effect.
      * 
      * @param preferenceKey
      *            The key of the preference.
@@ -1303,12 +1311,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             public void logging(IStatus status, String plugin) {
                 switch (status.getSeverity()) {
                 case IStatus.ERROR:
-                    if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin())
-                            && status.getMessage() != null
-                            && !status
-                                    .getMessage()
-                                    .startsWith(
-                                            "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
+                    if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin()) && status.getMessage() != null && !status.getMessage().startsWith(
+                            "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
                         errorOccurs(status, plugin);
                     }
                     break;
@@ -1893,10 +1897,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     private void captureScreenshot() {
         try {
             int maximumScreenshots = SWTBotPreferences.MAX_ERROR_SCREENSHOT_COUNT;
-            String fileName = SWTBotPreferences.SCREENSHOTS_DIR + "/screenshot-" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + POINT //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            String fileName = SWTBotPreferences.SCREENSHOTS_DIR + "/screenshot-" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + POINT //$NON-NLS-1$ //$NON-NLS-2$
+                                                                                                                                                      // $NON-NLS-1$
+                                                                                                                                                      // $NON-NLS-1$
+                                                                                                                                                      // $NON-NLS-1$
+                                                                                                                                                      // $NON-NLS-1$
+                                                                                                                                                      // $NON-NLS-1$
+                                                                                                                                                      //$NON-NLS-1$ //$NON-NLS-3$
                     + SWTBotPreferences.SCREENSHOT_FORMAT.toLowerCase();
             if (++screenshotCounter <= maximumScreenshots) {
-                new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs(); //$NON-NLS-1$
+                new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs(); // $NON-NLS-1$
                 SWTUtils.captureScreenshot(fileName);
             } else {
                 log.info("No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() //$NON-NLS-1$ //$NON-NLS-2$
