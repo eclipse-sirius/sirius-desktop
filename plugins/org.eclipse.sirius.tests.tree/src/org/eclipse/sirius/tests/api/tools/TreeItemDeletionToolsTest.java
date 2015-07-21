@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,11 @@ import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.support.api.TreeTestCase;
+import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
+import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
@@ -30,16 +33,10 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IEditorPart;
 import org.junit.Assert;
 
-import org.eclipse.sirius.tests.support.api.TreeTestCase;
-import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
-import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
-
 /**
  * Test Item Deletion tool.
  * 
  * @author jdupont
- * 
  */
 public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreModeler, TreeEcoreModeler {
 
@@ -47,9 +44,6 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
 
     private AbstractDTreeEditor treeEditor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -75,10 +69,6 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
         Assert.assertNull(TreeTestCase.THE_UNIT_TEST_DATA_SEEMS_INCORRECT, treeItemMapping.getDelete());
         final TreeItemDeletionTool treeItemDeletionTool = DescriptionFactory.eINSTANCE.createTreeItemDeletionTool();
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * 
-             * {@inheritDoc}
-             */
             @Override
             protected void doExecute() {
                 treeItemMapping.setDelete(treeItemDeletionTool);
@@ -89,11 +79,13 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
     }
 
     /**
-     * Test delete deletion tool on Tree. Test deletion in semantic model. Test
-     * deletion in Tree and test that deletion is effective visually. Test
-     * undo/Redo after deletion on tree.
+     * Test delete tool on Tree. Test deletion in semantic model. Test deletion
+     * in Tree and test that deletion is effective visually. Test undo/Redo
+     * after deletion on tree.
+     * 
+     * @throws Exception
      */
-    public void testDeleteUndo() {
+    public void testDeleteUndo() throws Exception {
         DTree newTree = (DTree) getRepresentations(TREE_DESCRIPTION_ID).toArray()[0];
 
         final TreeDescription desc = newTree.getDescription();
@@ -115,67 +107,62 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
 
         Assert.assertNotNull("Unit test data is not correct", desc);
 
-        // Check that there is all elements in tree (9)
-        Assert.assertEquals("We have 9 elements in ecore model, so we should have 9 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
+        // Check that there is all elements in tree (8)
+        Assert.assertEquals("We have 8 elements in ecore model, so we should have 9 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
 
-        try {
-            instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
 
-            // Check that there is the element that will be removed
-            Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
+        // Check that there is the element that will be removed
+        Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
 
-            // Deletion element EClass1 in tree.
-            applyDeletionTool(treeElement);
-            TestsUtil.synchronizationWithUIThread();
+        // Deletion element EClass1 in tree.
+        applyDeletionTool(treeElement);
+        TestsUtil.synchronizationWithUIThread();
 
-            instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
 
-            // Check that the element are removed
-            Assert.assertEquals("Wrong count of elementhaving the wanted value.", 0, instanceCount);
-            // Check there is an element within
-            Assert.assertEquals("We have 8 elements in ecore model, so we should have 8 elements in tree.", ELEMENTS_NUMBER_IN_TREE - 1, newTree.getOwnedTreeItems().size());
+        // Check that the element are removed
+        Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);
+        // Check there is an element within
+        Assert.assertEquals("We have 7 elements in ecore model, so we should have 7 elements in tree.", ELEMENTS_NUMBER_IN_TREE - 1, newTree.getOwnedTreeItems().size());
 
-            currentHtml = TreeUIHelper.toContentHTMl(tree);
+        currentHtml = TreeUIHelper.toContentHTMl(tree);
 
-            // Check that the deletion is effective visually
-            Assert.assertEquals("The delete is not effetive in editor", TreeItemDeletionToolsTest.getModelHtmlAfterDelete(), currentHtml);
+        // Check that the deletion is effective visually
+        Assert.assertEquals("The delete is not effetive in editor", TreeItemDeletionToolsTest.getModelHtmlAfterDelete(), currentHtml);
 
-            // Undo deletion.
-            applyUndo();
-            TestsUtil.synchronizationWithUIThread();
+        // Undo deletion.
+        applyUndo();
+        TestsUtil.synchronizationWithUIThread();
 
-            // Check that there is all elements in tree (9)
-            Assert.assertEquals("We have 9 elements in ecore model, so we should have 9 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
+        // Check that there is all elements in tree (8)
+        Assert.assertEquals("We have 8 elements in ecore model, so we should have 8 elements in tree.", ELEMENTS_NUMBER_IN_TREE, newTree.getOwnedTreeItems().size());
 
-            instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
 
-            // Check that there is the element removed was restored
-            Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
+        // Check that there is the element removed was restored
+        Assert.assertEquals("Wrong count of element having the wanted value.", 1, instanceCount);
 
-            currentHtml = TreeUIHelper.toContentHTMl(tree);
+        currentHtml = TreeUIHelper.toContentHTMl(tree);
 
-            // Check that undo is effective visually
-            Assert.assertEquals("The undo is not effetive visually", TreeItemDeletionToolsTest.getModelHtml(), currentHtml);
+        // Check that undo is effective visually
+        Assert.assertEquals("The undo is not effetive visually", TreeItemDeletionToolsTest.getModelHtml(), currentHtml);
 
-            // Redo deletion.
-            applyRedo();
-            TestsUtil.synchronizationWithUIThread();
+        // Redo deletion.
+        applyRedo();
+        TestsUtil.synchronizationWithUIThread();
 
-            instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
+        instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
 
-            // Check that the element are removed
-            Assert.assertEquals("Wrong count of elementhaving the wanted value.", 0, instanceCount);
-            // Check there is an element within
-            Assert.assertEquals("We have 8 elements in ecore model, so we should have 8 elements in tree.", ELEMENTS_NUMBER_IN_TREE - 1, newTree.getOwnedTreeItems().size());
+        // Check that the element are removed
+        Assert.assertEquals("Wrong count of element having the wanted value.", 0, instanceCount);
+        // Check there is an element within
+        Assert.assertEquals("We have 8 elements in ecore model, so we should have 8 elements in tree.", ELEMENTS_NUMBER_IN_TREE - 1, newTree.getOwnedTreeItems().size());
 
-            currentHtml = TreeUIHelper.toContentHTMl(tree);
+        currentHtml = TreeUIHelper.toContentHTMl(tree);
 
-            // Check that the deletion is effective visually
-            Assert.assertEquals("The delete is not effetive in editor", TreeItemDeletionToolsTest.getModelHtmlAfterDelete(), currentHtml);
-
-        } catch (EvaluationException e) {
-            e.printStackTrace();
-        }
+        // Check that the deletion is effective visually
+        Assert.assertEquals("The delete is not effetive in editor", TreeItemDeletionToolsTest.getModelHtmlAfterDelete(), currentHtml);
 
     }
 
@@ -233,9 +220,6 @@ public class TreeItemDeletionToolsTest extends TreeCommonTest implements EcoreMo
         return TreeUIHelper.toHTML(expected);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         DialectUIManager.INSTANCE.closeEditor(treeEditor, false);
