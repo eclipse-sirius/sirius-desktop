@@ -78,7 +78,7 @@
         <input type="org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.foregroundstyledescription.ForegroundStyleDescriptionLabelSizePropertySection"
+               class="org.eclipse.sirius.table.editor.properties.sections.description.spec.foregroundstyledescription.ForegroundStyleDescriptionLabelSizePropertySectionSpec"
                id="description.section.foregroundStyleDescription.LabelSize"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.foregroundstyledescription.ForegroundStyleDescriptionLabelSizeFilter"
                 tab="viewpoint.tab.label">

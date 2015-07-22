@@ -25,6 +25,7 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotSpinner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 
@@ -94,6 +95,39 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
         // Check background style element choice
         checkBackgroundStyleElement(odesignEditor);
 
+    }
+
+    /**
+     * Tests that on a style in a diagram description, the label size minimal
+     * value is 1.
+     */
+    public void testLabelSizeMinimalValueOnDiagramStyle() {
+        // Open VSM
+        SWTBotVSMEditor odesignEditor = openViewpointSpecificationModel(VSM);
+        // Check background style element choice
+        checkDiagramStyleLabelSize(odesignEditor);
+    }
+
+    /**
+     * Tests that on a style in a table description, the label size minimal
+     * value is 1.
+     */
+    public void testLabelSizeMinimalValueOnTableStyle() {
+        // Open VSM
+        SWTBotVSMEditor odesignEditor = openViewpointSpecificationModel(VSM);
+        // Check background style element choice
+        checkTableStyleLabelSize(odesignEditor);
+    }
+
+    /**
+     * Tests that on a style in a table description, the label size minimal
+     * value is 1.
+     */
+    public void testLabelSizeMinimalValueOnTreeStyle() {
+        // Open VSM
+        SWTBotVSMEditor odesignEditor = openViewpointSpecificationModel(VSM);
+        // Check background style element choice
+        checkTreeStyleLabelSize(odesignEditor);
     }
 
     /**
@@ -320,5 +354,71 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
         assertEquals("Second element must be  : " + liquid_oblique, liquid_oblique, ccomboBox.items()[1]);
         assertEquals("Third element must be : " + gradientTopToBottom, gradientTopToBottom, ccomboBox.items()[2]);
 
+    }
+
+    /**
+     * Check that the label size of a style in a diagram description cannot be
+     * set as 0.
+     * 
+     * @param odesignEditor
+     */
+    private void checkDiagramStyleLabelSize(SWTBotVSMEditor odesignEditor) {
+        // Retrieve properties value of background style choices
+        String gradientLeftToRight = DiagramUIPlugin.getPlugin().getString(GRADIENT_TO_LEFT);
+        assertNotNull("The properties '" + GRADIENT_TO_LEFT + "' should be available", gradientLeftToRight);
+        String gradientTopToBottom = DiagramUIPlugin.getPlugin().getString(GRADIENT_TO_BOTTOM);
+        assertNotNull("The properties '" + GRADIENT_TO_BOTTOM + "' should be available", gradientTopToBottom);
+        String liquid_oblique = DiagramUIPlugin.getPlugin().getString(LIQUID_OBLIQUE);
+        assertNotNull("The properties '" + LIQUID_OBLIQUE + "' should be available", liquid_oblique);
+        String gradient = DiagramUIPlugin.getPlugin().getString(FLAT_CONTAINER_STYLE);
+
+        // expands the tree : Container style description
+        SWTBotTree tree = odesignEditor.bot().tree();
+        tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("vsm").expandNode("Diagram").expandNode("Package").expandNode(gradient + " white to light_gray").select();
+        processLabelSizeTests("8");
+    }
+
+    /**
+     * Check that the label size of a style in a table description cannot be set
+     * as 0.
+     * 
+     * @param odesignEditor
+     */
+    private void checkTableStyleLabelSize(SWTBotVSMEditor odesignEditor) {
+        // expands the tree : Container style description
+        SWTBotTree tree = odesignEditor.bot().tree();
+        tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("vsm").expandNode("Table").expandNode("Line").expandNode("Foreground 12").select();
+        processLabelSizeTests("12");
+    }
+
+    /**
+     * Check that the label size of a style in a table description cannot be set
+     * as 0.
+     * 
+     * @param odesignEditor
+     */
+    private void checkTreeStyleLabelSize(SWTBotVSMEditor odesignEditor) {
+        // expands the tree : Tree item style description
+        SWTBotTree tree = odesignEditor.bot().tree();
+        tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("vsm").expandNode("Tree").expandNode("Tree").expandNode("feature:name").select();
+        processLabelSizeTests("8");
+    }
+
+    /**
+     * 
+     */
+    private void processLabelSizeTests(String initialValue) {
+        // set the focus on the Properties view
+        bot.viewByTitle(PROPERTIES).setFocus();
+        // set the focus on the General tab
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+
+        // check that background style field choices are correct
+        SWTBotSpinner ccomboBox = bot.viewByTitle(PROPERTIES).bot().spinner();
+        assertEquals("Initial value of the Label Size is expected to be " + initialValue, initialValue, ccomboBox.getText());
+        ccomboBox.setSelection(3);
+        assertEquals("Value of the Label Size is expected to have been changed to 3", "3", ccomboBox.getText());
+        ccomboBox.setSelection(0);
+        assertEquals("Value of the Label Size is expected to have been changed to 1, the minimal value", "1", ccomboBox.getText());
     }
 }

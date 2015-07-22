@@ -550,11 +550,11 @@ public final class StyleHelper {
         }
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
-            style.setLabelSize(previousStyle.get().getLabelSize());
+            style.setLabelSize(Math.max(previousStyle.get().getLabelSize(), 1));
             style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName());
         } else {
             if (style.getLabelSize() != size && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
-                style.setLabelSize(size);
+                style.setLabelSize(Math.max(size, 1));
             }
         }
     }

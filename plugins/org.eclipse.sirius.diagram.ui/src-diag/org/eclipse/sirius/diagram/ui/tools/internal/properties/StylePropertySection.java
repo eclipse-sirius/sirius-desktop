@@ -246,7 +246,7 @@ public class StylePropertySection extends SemanticPropertySection {
                             fontStyle.setStrikeThrough(false);
                         }
                     } else if (value instanceof Integer && propertyId.equals(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
-                        fontStyle.setFontHeight((Integer) value);
+                        fontStyle.setFontHeight(Math.max((Integer) value, 1));
                     }
                 } else if (notationStyle instanceof ConnectorStyle) {
                     ConnectorStyle connectorStyle = (ConnectorStyle) notationStyle;

@@ -144,7 +144,7 @@ public class ViewPropertiesSynchronizer {
             fontStyle.setStrikeThrough(labelFormat.contains(FontFormat.STRIKE_THROUGH_LITERAL));
         }
 
-        fontStyle.setFontHeight(basicLabelStyle.getLabelSize());
+        fontStyle.setFontHeight(Math.max(basicLabelStyle.getLabelSize(), 1));
         //
         // Default font (Change the code here to insert new font in the
         // case

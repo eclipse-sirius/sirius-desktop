@@ -238,6 +238,13 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TreeUtils.checkTreeItemLabelSize(tableEditorBot, firstDCellOfSecondDLine);
 
+        // Test a label size down
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_SIZE, 0);
+        commandStack.execute(changeDTreeItemLabelStyleCmd);
+
+        // Validates that even if the table model element feature label size is
+        // 0, the graphical table item label size is 1
+        TreeUtils.checkTreeItemLabelSize(tableEditorBot, firstDCellOfSecondDLine, 1);
     }
 
     /**

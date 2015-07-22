@@ -11,30 +11,46 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.CustomizableQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Test the style customization features.
@@ -44,6 +60,47 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomizedStyleOnCompleteExampleTest {
+
+    /**
+     * A condition that wait for a text widget to be available in the property
+     * view.
+     * 
+     * @author <a href="mailto:steve.monnier@obeo.fr">Steve Monnier</a>
+     *
+     */
+    private final class TextWidgetAppearanceCondition extends DefaultCondition {
+        /**
+         * Current {@link SWTBot} of the property view.
+         */
+        private final SWTBot propertiesBot;
+
+        /**
+         * @param propertiesBot
+         *            Current {@link SWTBot} of the property view.
+         */
+        private TextWidgetAppearanceCondition(SWTBot propertiesBot) {
+            this.propertiesBot = propertiesBot;
+        }
+
+        @Override
+        public boolean test() throws Exception {
+            try {
+                propertiesBot.text();
+            } catch (WidgetNotFoundException wnfe) {
+                return false;
+            }
+            return true;
+        }
+
+        @Override
+        public String getFailureMessage() {
+            return "no text widget found in the properties view";
+        }
+    }
+
+    private static final String PROPERTIES = "Properties";
+
+    private static final String STYLE = "Style";
 
     /**
      * Test all GMF Note features customization.
@@ -303,6 +360,97 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
      */
     public void testBracketEdgeStyleCustomization() throws Exception {
         testStyleCustomization(superTypeEditPartBot);
+    }
+
+    /**
+     * Test that label size customization has a minimal value of 1.
+     * 
+     * @throws Exception
+     *             thrown cause failure
+     */
+    public void testLabelSizeCustomization() throws Exception {
+        editor.select(eClass1WithSquareStyleBot);
+        // set the focus on the Properties view
+        bot.viewByTitle(PROPERTIES).setFocus();
+        // set the focus on the Style tab
+        SWTBotSiriusHelper.selectPropertyTabItem(STYLE);
+
+        // Access the Label Size field
+        final SWTBot propertiesBot = bot.viewByTitle(PROPERTIES).bot();
+        SWTBotTree tree = propertiesBot.tree();
+        tree.expandNode("Misc").select().getNode("Label Size").select().click();
+        SWTBotText text = propertiesBot.text();
+        assertEquals("Initial value of the Label Size is expected to be 8", "8", text.getText());
+
+        // Validate the font size from the graphical element
+        DNode eClass1WithSquareStyleDNode = (DNode) ((DNodeEditPart) eClass1WithSquareStyleBot.part()).resolveSemanticElement();
+        Style style = eClass1WithSquareStyleDNode.getStyle();
+        LabelEditPart labelEditPart = Iterables.getOnlyElement(Iterables.filter(((GraphicalEditPart) eClass1WithSquareStyleBot.part()).getChildren(), LabelEditPart.class));
+        FontData[] fontData = labelEditPart.getFigure().getFont().getFontData();
+        int labelSize = fontData[0].getHeight();
+        assertEquals("Initial value of the Label Size is expected to be 8", 8, labelSize);
+
+        // Set label size value as 3
+        text.setText("3");
+        // Change focus to validate Label Size change
+        editor.setFocus();
+        bot.viewByTitle(PROPERTIES).setFocus();
+        tree.expandNode("Misc").select().getNode("Label Size").select().click();
+        bot.waitUntil(new TextWidgetAppearanceCondition(propertiesBot));
+        text = propertiesBot.text();
+        assertEquals("Value of the Label Size is expected to have been changed to 3", "3", text.getText());
+        fontData = labelEditPart.getFigure().getFont().getFontData();
+        labelSize = fontData[0].getHeight();
+        assertEquals("Value of the Label Size is expected to have been changed to 3", 3, labelSize);
+
+        // Set label size value as 0
+        text.setText("0");
+        // Change focus to validate Label Size change
+        editor.setFocus();
+        bot.viewByTitle(PROPERTIES).setFocus();
+        tree.expandNode("Misc").select().getNode("Label Size").select().click();
+        bot.waitUntil(new TextWidgetAppearanceCondition(propertiesBot));
+        text = propertiesBot.text();
+        assertEquals("Value of the Label Size is expected to have been changed to 1, the minimal value", "1", text.getText());
+        fontData = labelEditPart.getFigure().getFont().getFontData();
+        labelSize = fontData[0].getHeight();
+        assertEquals("Value of the Label Size is expected to have been changed to 1", 1, labelSize);
+
+        // Test to modify the property programmatically
+        Style originalStyle = eClass1WithSquareStyleDNode.getStyle();
+        CustomizableQuery customizableQuery = new CustomizableQuery(originalStyle);
+        Collection<String> customizableFeatureNames = customizableQuery.getCustomizableFeatureNames();
+        for (String customizableFeatureName : customizableFeatureNames) {
+            if ("labelSize".equals(customizableFeatureName)) {
+                // Validate that style label size feature is set as 1
+                EStructuralFeature feature = originalStyle.eClass().getEStructuralFeature(customizableFeatureName);
+                style = eClass1WithSquareStyleDNode.getStyle();
+                Object currentValue = style.eGet(feature);
+                assertEquals("Value of the Label Size is expected to have been changed to 1", 1, currentValue);
+                TransactionalEditingDomain domain = localSession.getOpenedSession().getTransactionalEditingDomain();
+
+                // Set style label size as 3
+                Command customizeStyleCmd = SetCommand.create(domain, style, feature, 3);
+                domain.getCommandStack().execute(customizeStyleCmd);
+                currentValue = style.eGet(feature);
+                assertEquals("Value of the Label Size is expected to have been changed to 3", 3, currentValue);
+                fontData = labelEditPart.getFigure().getFont().getFontData();
+                labelSize = fontData[0].getHeight();
+                assertEquals("Value of the Label Size is expected to have been changed to 3", 3, labelSize);
+
+                // Set style label size as 0
+                customizeStyleCmd = SetCommand.create(domain, style, feature, 0);
+                domain.getCommandStack().execute(customizeStyleCmd);
+                currentValue = style.eGet(feature);
+
+                // Validate that the style label size is set as 0 but that the
+                // diagram element font is set as 1
+                assertEquals("Value of the Label Size is expected to have been changed to 0", 0, currentValue);
+                fontData = labelEditPart.getFigure().getFont().getFontData();
+                labelSize = fontData[0].getHeight();
+                assertEquals("Value of the Label Size is expected to have been changed to 1", 1, labelSize);
+            }
+        }
     }
 
     private void testStyleCustomization(SWTBotGefEditPart swtBotGefEditPart) throws Exception {

@@ -333,9 +333,25 @@ public final class TreeUtils {
      */
     public static void checkTreeItemLabelSize(SWTBotEditor swtBotTreeEditor, DTreeItem dTreeItem) {
         int labelSize = dTreeItem.getOwnedStyle().getLabelSize();
+        checkTreeItemLabelSize(swtBotTreeEditor, dTreeItem, labelSize);
+    }
+
+    /**
+     * Checks the swt {@link TreeItem#getFont()}'s label size for a specified
+     * {@link DTreeItem}.
+     * 
+     * @param swtBotTreeEditor
+     *            the editor bot owning the swt {@link TreeItem} referencing the
+     *            specified {@link DTreeItem}
+     * @param dTreeItem
+     *            the {@link DTreeItem}
+     * @param expectedLabelSize
+     *            expected size of the label
+     */
+    public static void checkTreeItemLabelSize(SWTBotEditor swtBotTreeEditor, DTreeItem dTreeItem, int expectedLabelSize) {
         TreeItem treeItem = TreeUtils.getTreeItem(swtBotTreeEditor, dTreeItem);
         int treeItemLabelSize = TreeUtils.getWidgetLabelSize(treeItem);
-        Assert.assertEquals("The TreeItem label size should corresponds to its DTreeItem.ownedStyle.labelSize", labelSize, treeItemLabelSize);
+        Assert.assertEquals("The TreeItem label size should corresponds to its DTreeItem.ownedStyle.labelSize", expectedLabelSize, treeItemLabelSize);
     }
 
     /**
@@ -352,10 +368,26 @@ public final class TreeUtils {
         Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(dCell).getForegroundStyleToApply();
         Assert.assertTrue("We should have a foreground Style for the cell.", optionalForegroundStyleToApply.some());
         int labelSize = optionalForegroundStyleToApply.get().getLabelSize();
+        checkTreeItemLabelSize(swtBotTableEditor, dCell, labelSize);
+    }
+
+    /**
+     * Checks the swt {@link TreeItem#getFont()}'s label size for a specified
+     * {@link DCell}.
+     * 
+     * @param swtBotTableEditor
+     *            the editor bot owning the swt {@link TreeItem} referencing the
+     *            specified {@link DCell}
+     * @param dCell
+     *            the {@link DCell}
+     * @param expectedLabelSize
+     *            expected size of the label
+     */
+    public static void checkTreeItemLabelSize(SWTBotEditor swtBotTableEditor, DCell dCell, int expectedLabelSize) {
         TreeItem treeItem = TreeUtils.getTreeItem(swtBotTableEditor, dCell.getLine());
         int dCellIndex = new DCellQuery(dCell).getColumnIndex();
         int treeItemLabelSize = TreeUtils.getWidgetLabelSize(treeItem, dCellIndex + 1);
-        Assert.assertEquals("The TreeItem label size should corresponds to its DCell.currentStyle.labelSize", labelSize, treeItemLabelSize);
+        Assert.assertEquals("The TreeItem label size should corresponds to its DCell.currentStyle.labelSize", expectedLabelSize, treeItemLabelSize);
     }
 
     /**

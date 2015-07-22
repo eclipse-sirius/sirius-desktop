@@ -606,7 +606,7 @@
         <input type="org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyledescription.BasicLabelStyleDescriptionLabelSizePropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyledescription.BasicLabelStyleDescriptionLabelSizePropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.style.basiclabelstyledescription.BasicLabelStyleDescriptionLabelSizeFilter"
                id="style.section.basicLabelStyleDescription.LabelSize"
                 tab="viewpoint.tab.label">

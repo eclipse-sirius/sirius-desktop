@@ -193,7 +193,7 @@ public class ConnectionsFactory {
                 CenterLabelStyle centerLabelStyle = dEdge.getOwnedStyle().getCenterLabelStyle();
                 if (centerLabelStyle != null) {
                     int labelSize = centerLabelStyle.getLabelSize();
-                    fontStyle.setFontHeight(labelSize);
+                    fontStyle.setFontHeight(Math.max(labelSize, 1));
                 }
             }
         }

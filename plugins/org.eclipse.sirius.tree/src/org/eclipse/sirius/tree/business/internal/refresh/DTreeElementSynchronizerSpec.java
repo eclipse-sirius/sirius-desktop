@@ -196,7 +196,7 @@ public class DTreeElementSynchronizerSpec extends DTreeElementSynchronizerImpl {
             if (bestTreeItemStyle.getLabelFormat() != null && !isEqual(style.getLabelFormat(), bestTreeItemStyle.getLabelFormat())) {
                 FontFormatHelper.setFontFormat(style.getLabelFormat(), bestTreeItemStyle.getLabelFormat());
             }
-            if (bestTreeItemStyle.getLabelSize() != -1 && style.getLabelSize() != bestTreeItemStyle.getLabelSize()) {
+            if (bestTreeItemStyle.getLabelSize() > 0 && style.getLabelSize() != bestTreeItemStyle.getLabelSize()) {
                 style.setLabelSize(bestTreeItemStyle.getLabelSize());
             }
             if (bestTreeItemStyle.getLabelAlignment() != null && style.getLabelAlignment() != bestTreeItemStyle.getLabelAlignment()) {
