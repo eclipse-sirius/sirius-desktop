@@ -245,6 +245,45 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         }
     }
 
+    /**
+     * 
+     * {@inheritDoc}
+     */
+    @Override
+    public void setFocus() {
+        if (treeViewerManager != null) {
+            super.setFocus();
+
+            // Resolve proxy model after aird reload.
+            if (treeModel != null && treeModel.eIsProxy() && session != null) {
+                IEditorInput editorInput = getEditorInput();
+                if (editorInput instanceof URIEditorInput) {
+                    URIEditorInput sessionEditorInput = (URIEditorInput) editorInput;
+                    final URI uri = sessionEditorInput.getURI();
+                    setTreeModel(getDTree(uri, false));
+                    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+                    if (uiSession != null && treeModel != null) {
+                        //Reinit dialect editor closer and other IEditingSession mechanisms.
+                        uiSession.detachEditor(this);
+                        uiSession.attachEditor(this);
+                    }
+                }
+            }
+
+            checkSemanticAssociation();
+        }
+    }
+
+    private void checkSemanticAssociation() {
+        if (treeModel == null || treeModel.eResource() == null || treeModel.getTarget() == null || treeModel.getTarget().eResource() == null) {
+            /*
+             * The element has been deleted, we should close the editor
+             */
+            myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
+            DialectUIManager.INSTANCE.closeEditor(this, false);
+        }
+    }
+
     private DTree getDTree(final URI uri, final boolean loadOnDemand) {
         DTree result = null;
         final Resource resource = getEditingDomain().getResourceSet().getResource(uri.trimFragment(), loadOnDemand);
