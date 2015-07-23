@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -115,7 +116,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
      */
     protected AdapterFactory adapterFactory;
 
-    /** This is the one adapter factory used for providing views of the model */
+    /** This DTable model */
     private DTable tableModel;
 
     private IPartListener refreshAtOpeningActivator;
@@ -450,6 +451,24 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     public void setFocus() {
         if (treeViewerManager != null) {
             super.setFocus();
+
+            // Resolve proxy model after aird reload.
+            if (tableModel != null && tableModel.eIsProxy() && session != null) {
+                IEditorInput editorInput = getEditorInput();
+                if (editorInput instanceof URIEditorInput) {
+                    URIEditorInput sessionEditorInput = (URIEditorInput) editorInput;
+                    final URI uri = sessionEditorInput.getURI();
+                    setTableModel(getDTable(uri, false));
+                    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+                    if (uiSession != null && tableModel != null) {
+                        // Reinit dialect editor closer and other
+                        // IEditingSession mechanisms.
+                        uiSession.detachEditor(this);
+                        uiSession.attachEditor(this);
+                    }
+                }
+            }
+
             checkSemanticAssociation();
         }
     }
