@@ -147,26 +147,32 @@ public interface IPermissionAuthority {
     void setListening(boolean shouldListen);
 
     /**
-     * Tell whether the given instance may be deleted or not.
+     * Tell whether the given instance may be deleted or not. If true is
+     * returned then it will return also true for children because if the
+     * instance is deleted the children will be also deleted.
      * 
      * @param target
      *            any instance.
      * @return true if the instance can be deleted.
      */
     boolean canDeleteInstance(EObject target);
-    
+
     /**
      * Notify the lock of given elements.
-     * @param elements the locked elements
+     * 
+     * @param elements
+     *            the locked elements
      */
-    void notifyLock(Collection <? extends EObject> elements);
-    
+    void notifyLock(Collection<? extends EObject> elements);
+
     /**
      * Notify the unlock of given elements.
-     * @param elements the unlocked elements
+     * 
+     * @param elements
+     *            the unlocked elements
      */
-    void notifyUnlock(Collection <? extends EObject> elements);
-    
+    void notifyUnlock(Collection<? extends EObject> elements);
+
     /**
      * Get the {@link LockStatus} of the <code>element</code> {@link EObject}.
      * 
@@ -176,5 +182,5 @@ public interface IPermissionAuthority {
      * @return the {@link LockStatus} of <code>element</code>
      */
     LockStatus getLockStatus(EObject element);
-    
+
 }

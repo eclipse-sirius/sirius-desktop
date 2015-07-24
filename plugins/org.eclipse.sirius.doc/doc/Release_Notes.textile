@@ -72,6 +72,7 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.tools.api.command.DCommand@ no more inherits of @IUndoableCommand@ because useless since undo/redo is managed by EMF Transaction.
 * <span class="label label-success">Added</span> The method @addEvaluateSelectionExpressionTask@ has been added in class @org.eclipse.sirius.tools.api.command.AbstractCommandFactory@ to allow selection after tool execution.
 * <span class="label label-success">Added</span> The class @org.eclipse.sirius.common.tools.api.interpreter.StandardServices@ has been added. This class owns methods used for service: interpreter.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.canDeleteInstance(EObject)@ when called for an object will not be called for children of this object as we know it will return true because if we can delete a parent object we can delete its children. 
 
 h4. Changes in @org.eclipse.sirius.ui@
 

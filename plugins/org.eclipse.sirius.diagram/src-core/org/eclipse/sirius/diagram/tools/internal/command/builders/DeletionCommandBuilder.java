@@ -18,6 +18,7 @@ import java.util.Set;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
@@ -172,7 +173,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
 
             // We also check that the underlying semantic elements can be
             // deleted
-            Set<EObject> semanticElements = getSemanticElementsToDestroy(diagramElement);
+            Set<EObject> semanticElements = getRootSemanticElementsToDestroy(diagramElement);
 
             // If both graphical and semantic elements can be deleted, we build
             // the command
@@ -312,20 +313,24 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     /**
-     * Add all the semantic elements to destroy to delete the specified diagram
+     * Get root semantic elements to destroy to delete the specified diagram
      * element.
+     * 
+     * Note: this method can returns more than root semantic elements to
+     * destroy, in case DDiagramElement tree to delete doesn't mirror the
+     * semantic tree, the result can be not minimized.
      */
-    private Set<EObject> getSemanticElementsToDestroy(final DDiagramElement currentDiagramElement) {
+    private Set<EObject> getRootSemanticElementsToDestroy(final DDiagramElement currentDiagramElement) {
         Set<EObject> elementsToDestroy = Sets.newLinkedHashSet();
-        boolean canDelete = appendSemanticElementsToDestroy(currentDiagramElement, elementsToDestroy);
+        boolean canDelete = appendRootSemanticElementsToDestroy(currentDiagramElement, elementsToDestroy);
         return canDelete ? elementsToDestroy : null;
     }
 
-    private boolean appendSemanticElementsToDestroy(final DDiagramElement currentDiagramElement, Set<EObject> elementsToDestroy) {
+    private boolean appendRootSemanticElementsToDestroy(final DDiagramElement currentDiagramElement, Set<EObject> elementsToDestroy) {
         boolean canDelete = true;
 
         for (final EObject semantic : currentDiagramElement.getSemanticElements()) {
-            if (semantic != null && !elementsToDestroy.contains(semantic)) {
+            if (semantic != null && !EcoreUtil.isAncestor(elementsToDestroy, semantic)) {
                 if (!permissionAuthority.canDeleteInstance(semantic)) {
                     canDelete = false;
                     break;
@@ -333,17 +338,17 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                     elementsToDestroy.add(semantic);
                 }
             }
-        } // for
+        }
 
         if (canDelete) {
             for (final EObject child : currentDiagramElement.eContents()) {
                 if (child instanceof DDiagramElement) {
-                    if (!appendSemanticElementsToDestroy((DDiagramElement) child, elementsToDestroy)) {
+                    if (!appendRootSemanticElementsToDestroy((DDiagramElement) child, elementsToDestroy)) {
                         canDelete = false;
                         break;
                     }
                 }
-            } // for
+            }
         }
 
         return canDelete;
