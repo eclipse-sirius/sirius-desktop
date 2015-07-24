@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>460610</title>
+		<link type="text/css" rel="stylesheet" href="../../../doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../../../doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationHaveabidirectionalLinkWithEditor">Sirius Evolution Specification: Have a bidirectional Link With Editor</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: This enhancement aims to have a bidirectional link with editor.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2015-07-23</td>
+				<td>fbarbin</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>PROPOSAL</td>
+				<td>2015-07-24</td>
+				<td>fbarbin</td>
+				<td>Corrections.</td>
+			</tr>
+			<tr>
+				<td>v0.3</td>
+				<td>PROPOSAL</td>
+				<td>2015-07-27</td>
+				<td>fbarbin</td>
+				<td>Corrections.</td>
+			</tr>
+			<tr>
+				<td>v0.4</td>
+				<td>PROPOSAL</td>
+				<td>2015-07-30</td>
+				<td>fbarbin</td>
+				<td>Corrections.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=460610">Bug 460610 &#8211; Have a bidirectional Link With Editor</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>(From ticket 
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=460610#c0">description</a> )
+		</p>
+		<p>The main idea of this enhancement is to make the link with editor bidirectional in Sirius: when a DRepresentationElement/DRepresentation is selected in a Sirius editor (Diagram, Tree or Table), if the link editor is active, the corresponding semantic element should be selected in the common viewer if it uses the 
+			<code>SiriusCommonContentProvider</code>. That means for instance that both Model Explorer view and Project Explorer view should work with this new behavior.
+		</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>(Mainly extracted from ticket  
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=460610#c0">description</a> and  
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=460610#c1">Comment 1</a> )
+		</p>
+		<h3 id="Thecurrentbehavior">The current behavior</h3>
+		<ul>
+			<li>Selection of an element in the model explorer:
+				<ul>
+					<li>semantic element -&gt; selection of the corresponding element in the active representation (if exist).</li>
+					<li>representation node -&gt; set focus to the corresponding editor</li>
+				</ul>
+			</li>
+			<li>Selection of an element in a representation -&gt; no selection change in explorer</li>
+			<li>Set focus on the editor -&gt; focus and selection of the representation node in the explorer</li>
+		</ul>
+		<h3 id="Expectedbehavior">Expected behavior</h3>
+		<p>We would like to have a similar behavior with the outline view; in a diagram editor powered by Sirius, the outline can display the overview of the diagram or a tree which shows semantic element displayed on the diagram regarding the diagram structure (and not the model structure). The selection synchronization between editor and outline is bi-directional.</p>
+		<p>If the semantic element is not visible in the model explorer, we should expand the tree to make it visible. If the model element is expanded but not visible, we should scroll to make it visible.</p>
+		<p>When the user set back the focus on an opened editor, if the editor already contains selected element(s), we will select them in the common viewer, and not the representation node.</p>
+		<h3 id="Importantpoints">Important points</h3>
+		<p>The current behavior is implemented by 
+			<code>org.eclipse.sirius.ui.tools.internal.views.common.navigator.SessionLinkHelper</code>. We cannot extend the behavior by using this class since the 
+			<code>findSelection</code> method is called only when the user activate an editor by clicking on the corresponding tab. 
+		</p>
+		<p>So we want to extends the behavior of the link with editor: </p>
+		<ul>
+			<li>The new behavior must be active only when the link with editor is active</li>
+			<li>It has to handle the cases not supported by the ILinkHelper and must not react to the basic/standard ILinkHelper cases
+				<ul>
+					<li>When the focus is set to a new editor: let the link with editor works.</li>
+					<li>When changing the selection in the active editor
+						<ul>
+							<li>selection of the editor (diagram background) -&gt; selection of the diagram/tree/table node in the model browser (placed under the semantic element which holds the representation)</li>
+							<li>selection of an element in the representation -&gt; selection of the corresponding semantic element in the model browser</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>We have to pay attention to selections loops: when the selection in the model explorer comes from the synchronization from editor selection, the link with editor must not react !</li>
+		</ul>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>No metamodel changes are needed for this feature.</p>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>For now, no API changes have been identified.</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>Except the link with editor behavior, there won&#8217;t be any user interface changes.</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>The new behavior should be documented in the  New and Noteworthy. The enhancement should also be added in the section &#8220;The Model Explorer View&#8221; in the user documentation.</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>We already have the test 
+			<code>org.eclipse.sirius.tests.swtbot.modelexplorer.LinkWithEditorFeatureWithModelExplorerViewTest</code> that tests the current link with editor behavior. We could complete this test to check the additional behavior with different combinations with the &#8220;link with editor&#8221; activated and deactivated.
+		</p>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+		<h3 id="Implementationschoices">Implementations choices</h3>
+		<p>The choice has been made to install a selection listener on each opened DialectEditors. The benefit of this solution is to be notified only on editors selection. The selection listeners are removed from each editor when the &#8220;link with editor&#8221; is deactivated. The initial POC used The Model Explorer View to handle this behavior but we need to extend it to all common viewer using the 
+			<code>SiriusCommonContentProvider</code> (Model Explorer View, Project Explorer).
+		</p>
+		<p>We also decided to handle several selections from the editor. For now, when selecting several elements in the model explorer, we only select one in the representation. A limitation at l.73 in 
+			<code>LinkEditorAction</code> doesn&#8217;t permit to select several elements from the view toward the representation. That means an other solution which is not based on the 
+			<code>SessionLinkHelper</code> have to be found.
+		</p>
+		<p>Currently, If the semantic element selected in the model explorer is not visible in the active editor, the link with editor doesn&#8217;t look for other active editors. We could look for the first Sirius editor with a Representation / Representation element whose semantic element is the selected element, activate this editor and set the selection. This point will be treated in a second time since it doesn&#8217;t concern the bidirectional feature but the current link with editor.</p>
+	</body>
+</html>

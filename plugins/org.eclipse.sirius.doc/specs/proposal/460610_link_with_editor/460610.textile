@@ -1,0 +1,86 @@
+h1. Sirius Evolution Specification: Have a bidirectional Link With Editor
+
+h2. Preamble
+
+_Summary_: This enhancement aims to have a bidirectional link with editor.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2015-07-23 | fbarbin    | Initial version. |
+| v0.2        | PROPOSAL    | 2015-07-24 | fbarbin    | Corrections. |
+| v0.3        | PROPOSAL    | 2015-07-27 | fbarbin    | Corrections. |
+| v0.4        | PROPOSAL    | 2015-07-30 | fbarbin    | Corrections. |
+
+_Relevant tickets_:
+* "Bug 460610 - Have a bidirectional Link With Editor":https://bugs.eclipse.org/bugs/show_bug.cgi?id=460610
+
+h2. Introduction
+
+(From ticket "description":https://bugs.eclipse.org/bugs/show_bug.cgi?id=460610#c0 )
+
+The main idea of this enhancement is to make the link with editor bidirectional in Sirius: when a DRepresentationElement/DRepresentation is selected in a Sirius editor (Diagram, Tree or Table), if the link editor is active, the corresponding semantic element should be selected in the common viewer if it uses the @SiriusCommonContentProvider@. That means for instance that both Model Explorer view and Project Explorer view should work with this new behavior.
+
+h2. Detailed Specification
+
+(Mainly extracted from ticket  "description":https://bugs.eclipse.org/bugs/show_bug.cgi?id=460610#c0 and  "Comment 1":https://bugs.eclipse.org/bugs/show_bug.cgi?id=460610#c1 )
+
+h3. The current behavior
+
+* Selection of an element in the model explorer:
+** semantic element -> selection of the corresponding element in the active representation (if exist).
+** representation node -> set focus to the corresponding editor
+* Selection of an element in a representation -> no selection change in explorer
+* Set focus on the editor -> focus and selection of the representation node in the explorer
+
+h3. Expected behavior
+
+We would like to have a similar behavior with the outline view; in a diagram editor powered by Sirius, the outline can display the overview of the diagram or a tree which shows semantic element displayed on the diagram regarding the diagram structure (and not the model structure). The selection synchronization between editor and outline is bi-directional.
+
+If the semantic element is not visible in the model explorer, we should expand the tree to make it visible. If the model element is expanded but not visible, we should scroll to make it visible.
+
+When the user set back the focus on an opened editor, if the editor already contains selected element(s), we will select them in the common viewer, and not the representation node.
+
+h3. Important points
+
+The current behavior is implemented by @org.eclipse.sirius.ui.tools.internal.views.common.navigator.SessionLinkHelper@. We cannot extend the behavior by using this class since the @findSelection@ method is called only when the user activate an editor by clicking on the corresponding tab. 
+
+So we want to extends the behavior of the link with editor: 
+* The new behavior must be active only when the link with editor is active
+* It has to handle the cases not supported by the ILinkHelper and must not react to the basic/standard ILinkHelper cases
+** When the focus is set to a new editor: let the link with editor works.
+** When changing the selection in the active editor
+*** selection of the editor (diagram background) -> selection of the diagram/tree/table node in the model browser (placed under the semantic element which holds the representation)
+*** selection of an element in the representation -> selection of the corresponding semantic element in the model browser
+* We have to pay attention to selections loops: when the selection in the model explorer comes from the synchronization from editor selection, the link with editor must not react !
+
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+No metamodel changes are needed for this feature.
+  
+h3. API Changes
+
+For now, no API changes have been identified.
+
+h3. User Interface Changes
+
+Except the link with editor behavior, there won't be any user interface changes.
+
+h3. Documentation Changes
+
+The new behavior should be documented in the  New and Noteworthy. The enhancement should also be added in the section "The Model Explorer View" in the user documentation.
+
+h2. Tests and Non-regression strategy
+
+We already have the test @org.eclipse.sirius.tests.swtbot.modelexplorer.LinkWithEditorFeatureWithModelExplorerViewTest@ that tests the current link with editor behavior. We could complete this test to check the additional behavior with different combinations with the "link with editor" activated and deactivated.
+
+h2. Implementation choices and tradeoffs
+
+h3. Implementations choices
+
+The choice has been made to install a selection listener on each opened DialectEditors. The benefit of this solution is to be notified only on editors selection. The selection listeners are removed from each editor when the "link with editor" is deactivated. The initial POC used The Model Explorer View to handle this behavior but we need to extend it to all common viewer using the @SiriusCommonContentProvider@ (Model Explorer View, Project Explorer).
+
+We also decided to handle several selections from the editor. For now, when selecting several elements in the model explorer, we only select one in the representation. A limitation at l.73 in @LinkEditorAction@ doesn't permit to select several elements from the view toward the representation. That means an other solution which is not based on the @SessionLinkHelper@ have to be found.
+
+Currently, If the semantic element selected in the model explorer is not visible in the active editor, the link with editor doesn't look for other active editors. We could look for the first Sirius editor with a Representation / Representation element whose semantic element is the selected element, activate this editor and set the selection. This point will be treated in a second time since it doesn't concern the bidirectional feature but the current link with editor.
