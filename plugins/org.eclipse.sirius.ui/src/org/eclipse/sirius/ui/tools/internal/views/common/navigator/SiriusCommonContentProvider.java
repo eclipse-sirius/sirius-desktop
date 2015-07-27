@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,6 +57,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.AnalysisResourceIt
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.InternalCommonItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ProjectDependenciesItemImpl;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.SiriusDialectLinkWithEditorSelectionListener;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -64,6 +65,8 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IMemento;
+import org.eclipse.ui.navigator.CommonNavigator;
+import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
 import org.eclipse.ui.progress.UIJob;
@@ -104,6 +107,8 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     private boolean shouldAskExtension;
 
     private ITreeViewerListener expandListener;
+
+    private SiriusDialectLinkWithEditorSelectionListener linkWithEditorSelectionListener;
 
     /**
      * Constructor.
@@ -158,6 +163,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object[] getChildren(Object parentElement) {
         Collection<Object> allChildren = Lists.newArrayList();
 
@@ -203,6 +209,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         // modeling projects, all aird for modeling ones, semantic file for
         // transient sessions.
         List<Session> openedSessions = Lists.newArrayList(Iterables.filter(FileSessionFinder.getSelectedSessions(Collections.singletonList(parentFile)), new Predicate<Session>() {
+            @Override
             public boolean apply(Session input) {
                 return input.isOpen();
             }
@@ -305,6 +312,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object getParent(Object element) {
         Object parent = null;
 
@@ -390,6 +398,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean hasChildren(Object element) {
         if (element instanceof IFile) {
             // Show expansion arrows during session load.
@@ -404,6 +413,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object[] getElements(Object inputElement) {
         return getChildren(inputElement);
     }
@@ -411,6 +421,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
         if (defaultContentProvider != null) {
             defaultContentProvider.inputChanged(viewer, oldInput, newInput);
@@ -419,11 +430,27 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         if (viewer != myViewer) {
             removeDoubleClickListener();
             removeExpandListener();
+            if (linkWithEditorSelectionListener != null) {
+                linkWithEditorSelectionListener.dispose();
+            }
 
             myViewer = viewer;
 
             addDoubleClickListener();
             addExpandListener();
+            createLWESelectionListener();
+        }
+    }
+
+    /**
+     * Creates and initializes the
+     * {@link SiriusDialectLinkWithEditorSelectionListener}.
+     */
+    private void createLWESelectionListener() {
+        if (myViewer instanceof CommonViewer) {
+            CommonNavigator commonNavigator = ((CommonViewer) myViewer).getCommonNavigator();
+            linkWithEditorSelectionListener = new SiriusDialectLinkWithEditorSelectionListener(commonNavigator);
+            linkWithEditorSelectionListener.init();
         }
     }
 
@@ -454,12 +481,14 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void init(ICommonContentExtensionSite aConfig) {
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public void dispose() {
         removeDoubleClickListener();
         removeExpandListener();
@@ -479,6 +508,8 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             SessionManager.INSTANCE.removeSessionsListener(sessionManagerListener);
             sessionManagerListener = null;
         }
+        linkWithEditorSelectionListener.dispose();
+        linkWithEditorSelectionListener = null;
     }
 
     /**
@@ -550,6 +581,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      */
     private void updateViewer(final Collection<?> toUpdate) {
         Runnable updateViewer = new Runnable() {
+            @Override
             public void run() {
                 if (myViewer instanceof StructuredViewer && toUpdate != null && !toUpdate.isEmpty()) {
                     ((StructuredViewer) myViewer).update(toUpdate.toArray(), null);
@@ -573,6 +605,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      */
     private void refreshViewer(final Collection<?> toRefresh) {
         Runnable refreshViewer = new Runnable() {
+            @Override
             public void run() {
                 try {
                     if (myViewer instanceof StructuredViewer && toRefresh != null && !toRefresh.isEmpty()) {
@@ -707,6 +740,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     private void postAsyncUpdate(final Display display) {
         if (updateJob == null) {
             updateJob = new UIJob(display, "Async viewer updates") {
+                @Override
                 public IStatus runInUIThread(IProgressMonitor monitor) {
                     if (isViewerBusy()) {
                         schedule(100);
@@ -750,6 +784,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void saveState(IMemento aMemento) {
         // Do nothing
     }
@@ -757,6 +792,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void restoreState(IMemento aMemento) {
         // Do nothing
     }
@@ -812,23 +848,28 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
      * Session Manager Listener.
      */
     private class CommonSessionManagerListener implements SessionManagerListener {
+        @Override
         public void notifyAddSession(Session newSession) {
             /* does nothing. */
         }
 
+        @Override
         public void notifyRemoveSession(Session removedSession) {
             removeRefreshViewerTriggers(removedSession);
             refreshViewer(removedSession);
         }
 
+        @Override
         public void viewpointSelected(Viewpoint selectedSirius) {
             /* does nothing. */
         }
 
+        @Override
         public void viewpointDeselected(Viewpoint deselectedSirius) {
             // does nothing.
         }
 
+        @Override
         public void notify(Session updated, int notification) {
             switch (notification) {
             case SessionListener.REPRESENTATION_CHANGE:
@@ -864,6 +905,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(Session input) {
             return new URIQuery(input.getSessionResource().getURI()).isInMemoryURI();
         }
@@ -885,10 +927,12 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             return session;
         }
 
+        @Override
         public void resourceSetChanged(ResourceSetChangeEvent event) {
             Collection<Notification> notifications = Lists.newArrayList(Iterables.filter(Iterables.filter(event.getNotifications(), Notification.class), new RefreshViewerTriggerScope(session)));
 
             Function<Notification, Object> notifToNotifier = new Function<Notification, Object>() {
+                @Override
                 public Object apply(Notification from) {
                     return from.getNotifier();
                 }
@@ -931,6 +975,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             return false;
         }
 
+        @Override
         public boolean isPostcommitOnly() {
             return true;
         }
@@ -954,6 +999,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             }
         }
 
+        @Override
         public boolean apply(Notification notification) {
             Object notifier = notification.getNotifier();
             boolean result = false;

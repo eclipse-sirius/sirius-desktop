@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,7 +27,6 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -36,14 +36,14 @@ import org.eclipse.ui.ide.ResourceUtil;
 import org.eclipse.ui.navigator.ILinkHelper;
 
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * The current link helper is able to activate an opened editor on the selected
  * representation in a common viewer.
  * 
- * For an EObject selection, the selection in the activated editor is updated
- * with
+ * For one or several EObject selection in the Common Navigator, the selection
+ * is now handled by the
+ * <code>SiriusDialectLinkWithEditorSelectionListener</code>.
  * 
  * @author mporhel
  * 
@@ -54,26 +54,39 @@ public class SessionLinkHelper implements ILinkHelper {
      */
     @Override
     public IStructuredSelection findSelection(IEditorInput anInput) {
-        Object foundElement = null;
+        IStructuredSelection returnSelection = null;
 
         IFile file = ResourceUtil.getFile(anInput);
         if (file != null) {
-            foundElement = file;
+            returnSelection = new StructuredSelection(file);
         }
 
         IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
         IEditorPart editor = page.findEditor(anInput);
-        if (editor != null) {
+        if (editor instanceof DialectEditor) {
 
-            // It is possible to get the representation, the associated semantic
-            // element or even the semantic selection.
-            // The choice was made to select representation.
-            Object editorRepresentation = getEditorRepresentation(anInput, editor);
-            if (editorRepresentation != null) {
-                foundElement = editorRepresentation;
+            Collection<DSemanticDecorator> semanticDecorators = DialectUIManager.INSTANCE.getSelection((DialectEditor) editor);
+
+            // When the focus is set back on the representation by selecting
+            // a representation element, we select the corresponding target
+            // instead of the representation node.
+            if (!semanticDecorators.isEmpty()) {
+                List<EObject> elements = new ArrayList<EObject>();
+                for (DSemanticDecorator currentDecorator : semanticDecorators) {
+                    elements.add(currentDecorator.getTarget());
+                }
+                returnSelection = new StructuredSelection(elements);
+            } else {
+                // It is possible to get the representation, the associated
+                // semantic element or even the semantic selection. The choice
+                // was made to select representation.
+                Object editorRepresentation = getEditorRepresentation(anInput, editor);
+                if (editorRepresentation != null) {
+                    returnSelection = new StructuredSelection(editorRepresentation);
+                }
             }
         }
-        return foundElement == null ? StructuredSelection.EMPTY : new StructuredSelection(foundElement);
+        return returnSelection == null ? StructuredSelection.EMPTY : returnSelection;
     }
 
     private Object getEditorRepresentation(IEditorInput anInput, IEditorPart editor) {
@@ -113,11 +126,6 @@ public class SessionLinkHelper implements ILinkHelper {
                     }
                 }
             }
-        } else if (activeEditor instanceof DialectEditor && activeEditor.getEditorInput() instanceof SessionEditorInput && aSelection.getFirstElement() instanceof EObject) {
-            aPage.bringToTop(activeEditor);
-            DialectEditor dialectEditor = (DialectEditor) activeEditor;
-            List<DRepresentationElement> vpSelection = getRepresentationsForElement(dialectEditor.getRepresentation(), aSelection.toList());
-            DialectUIManager.INSTANCE.setSelection(dialectEditor, vpSelection);
         }
     }
 
@@ -133,26 +141,5 @@ public class SessionLinkHelper implements ILinkHelper {
             }
         }
         return rep;
-    }
-
-    /**
-     * Get the representation element from the semantic one.
-     * 
-     * @param representation
-     *            the representation
-     * @param selection
-     *            the semantic element
-     * @return the first representation element which has as target the semantic
-     *         element given as parameter
-     */
-    protected final List<DRepresentationElement> getRepresentationsForElement(final DRepresentation representation, final List<?> selection) {
-        List<DRepresentationElement> result = Lists.newArrayList();
-        if (representation != null) {
-            for (final DRepresentationElement element : representation.getRepresentationElements()) {
-                if (selection != null && selection.contains(element.getTarget()))
-                    result.add(element);
-            }
-        }
-        return result;
     }
 }
