@@ -150,10 +150,10 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
             if (isEdgeWithRectilinearRoutingStyle) {
                 LineSeg firstSegment = new LineSeg(connectionPointList.getPoint(0), connectionPointList.getPoint(1));
                 if (firstSegment.isHorizontal()) {
-                    connectionPointList.setPoint(connectionPointList.getPoint(0).translate(0, moveDelta.y), 0);
+                    connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta.x, moveDelta.y), 0);
                     connectionPointList.setPoint(connectionPointList.getPoint(1).translate(0, moveDelta.y), 1);
                 } else {
-                    connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta.x, 0), 0);
+                    connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta.x, moveDelta.y), 0);
                     connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
                 }
             } else {
@@ -175,10 +175,10 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                 LineSeg lastSegment = new LineSeg(connectionPointList.getPoint(connectionPointList.size() - 2), connectionPointList.getPoint(connectionPointList.size() - 1));
                 if (lastSegment.isHorizontal()) {
                     connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 2).translate(0, moveDelta.y), connectionPointList.size() - 2);
-                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(0, moveDelta.y), connectionPointList.size() - 1);
+                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta.x, moveDelta.y), connectionPointList.size() - 1);
                 } else {
                     connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 2).translate(moveDelta.x, 0), connectionPointList.size() - 2);
-                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta.x, 0), connectionPointList.size() - 1);
+                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta.x, moveDelta.y), connectionPointList.size() - 1);
                 }
             } else {
                 // Compute intersection between the line
