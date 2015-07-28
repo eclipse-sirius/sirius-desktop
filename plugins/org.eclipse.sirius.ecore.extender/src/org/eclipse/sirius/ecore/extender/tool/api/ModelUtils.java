@@ -44,7 +44,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin;
 import org.eclipse.sirius.ecore.extender.tool.internal.ReferencesResolver;
-import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 import com.google.common.collect.Iterators;
@@ -189,7 +188,7 @@ public final class ModelUtils {
         if (extension != null) {
             fileExtension = extension;
         } else {
-            fileExtension = StringUtil.EMPTY_STRING;
+            fileExtension = "";
         }
 
         if (directory.exists() && directory.isDirectory() && directory.listFiles() != null) {
