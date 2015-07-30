@@ -16,7 +16,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 
 /**
@@ -29,7 +28,7 @@ public class ShowTypeActionButtonTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String VIEWPOINT_NAME = "Design";
 
-    private static final String TYPED_VIEWPOINT_NAME = "<Sirius> Design";
+    private static final String TYPED_VIEWPOINT_NAME = "<Viewpoint> Design";
 
     private static final String VSM_FILE = "ecore.odesign";
 
@@ -54,19 +53,16 @@ public class ShowTypeActionButtonTest extends AbstractSiriusSwtBotGefTestCase {
         openVSM();
         SWTBotEditor activeEditor = bot.activeEditor();
         activeEditor.setFocus();
-        try {
-            SWTBotMenu contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(GROUP).expandNode(VIEWPOINT_NAME)
-                    .expandNode(REPRESENTATION_NAME).contextMenu(SHOW_TYPE);
-            contextualMenu.click();
-            contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(TYPED_GROUP).expandNode(TYPED_VIEWPOINT_NAME)
-                    .expandNode(TYPED_REPRESENTATION_NAME).contextMenu(HIDE_TYPE);
-            contextualMenu.click();
-            contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(GROUP).expandNode(VIEWPOINT_NAME)
-                    .expandNode(REPRESENTATION_NAME).contextMenu(SHOW_TYPE);
-        } catch (WidgetNotFoundException wnfe) {
-            fail("There is a problem with show/hide type Action. The Elements are not named correctly");
-        }
-
+        
+        //Active the 
+        SWTBotMenu contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(GROUP).expandNode(VIEWPOINT_NAME)
+                .expandNode(REPRESENTATION_NAME).contextMenu(SHOW_TYPE);
+        contextualMenu.click();
+        contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(TYPED_GROUP).expandNode(TYPED_VIEWPOINT_NAME)
+                .expandNode(TYPED_REPRESENTATION_NAME).contextMenu(HIDE_TYPE);
+        contextualMenu.click();
+        contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(REPRESENTATION_NAME)
+                .contextMenu(SHOW_TYPE);
     }
 
     /**

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_b55WMEaEEeCF5Jfq2eAAHg" selectedViews="_cbxUMEaEEeCF5Jfq2eAAHg" version="8.0.0">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_3="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_b55WMEaEEeCF5Jfq2eAAHg" selectedViews="_cbxUMEaEEeCF5Jfq2eAAHg" version="8.1.1">
   <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_cbxUMEaEEeCF5Jfq2eAAHg" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_m6R6cEaEEeCF5Jfq2eAAHg" name="new diag1">
@@ -49,38 +49,38 @@
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_3VlwYNh-EeCxiN3ZLK48lg">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3VlwYdh-EeCxiN3ZLK48lg"/>
-          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']/@style"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3VlwYth-EeCxiN3ZLK48lg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_3VlwY9h-EeCxiN3ZLK48lg" red="136" green="136" blue="136"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_3VlwZNh-EeCxiN3ZLK48lg" name="BBB" incomingEdges="_3V5SYNh-EeCxiN3ZLK48lg" width="3" height="3">
         <target xmi:type="ecore:EClass" href="My.ecore#//BBB"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//BBB"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_3VmXcNh-EeCxiN3ZLK48lg">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3VmXcdh-EeCxiN3ZLK48lg"/>
-          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']/@style"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3VmXcth-EeCxiN3ZLK48lg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_3VmXc9h-EeCxiN3ZLK48lg" red="136" green="136" blue="136"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@nodeMappings[name='class']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3V5SYNh-EeCxiN3ZLK48lg" sourceNode="_3VlJUNh-EeCxiN3ZLK48lg" targetNode="_3VlwZNh-EeCxiN3ZLK48lg">
         <target xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
         <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_NY6f4dLoEeC8B54yvhXdAw" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag1']/@defaultLayer/@edgeMappings[name='inheritance']/@style"/>
+          <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@edgeMappings[name='inheritance']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_NY6f49LoEeC8B54yvhXdAw" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_3LcV4Nh-EeCxiN3ZLK48lg">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3LcV4dh-EeCxiN3ZLK48lg"/>
           </centerLabelStyle>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag1']/@defaultLayer/@edgeMappings[name='inheritance']"/>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer/@edgeMappings[name='inheritance']"/>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag1']"/>
+      <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_m6R6cUaEEeCF5Jfq2eAAHg"/>
-      <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag1']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag1']/@defaultLayer"/>
       <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
     </ownedRepresentations>
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_oEMI0EaEEeCF5Jfq2eAAHg" name="new diag2">
@@ -116,28 +116,59 @@
         <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//AAA/att1"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_3WAnINh-EeCxiN3ZLK48lg">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3WAnIdh-EeCxiN3ZLK48lg"/>
-          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag2']/@defaultLayer/@nodeMappings[name='attribute']/@style"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag2']/@defaultLayer/@nodeMappings[name='attribute']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3WAnIth-EeCxiN3ZLK48lg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_3WAnI9h-EeCxiN3ZLK48lg" red="136" green="136" blue="136"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag2']/@defaultLayer/@nodeMappings[name='attribute']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag2']/@defaultLayer/@nodeMappings[name='attribute']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_3WBOMNh-EeCxiN3ZLK48lg" name="att2" width="3" height="3">
         <target xmi:type="ecore:EAttribute" href="My.ecore#//AAA/att2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//AAA/att2"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_3WBOMdh-EeCxiN3ZLK48lg">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3WBOMth-EeCxiN3ZLK48lg"/>
-          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag2']/@defaultLayer/@nodeMappings[name='attribute']/@style"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag2']/@defaultLayer/@nodeMappings[name='attribute']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3WBOM9h-EeCxiN3ZLK48lg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_3WBONNh-EeCxiN3ZLK48lg" red="136" green="136" blue="136"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag2']/@defaultLayer/@nodeMappings[name='attribute']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag2']/@defaultLayer/@nodeMappings[name='attribute']"/>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag2']"/>
+      <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag2']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_oEMI0UaEEeCF5Jfq2eAAHg"/>
-      <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']/@ownedRepresentations[name='diag2']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='diag2']/@defaultLayer"/>
       <target xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='testclosingotherdiagram']"/>
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_zbWwcDadEeWdd9gkeser_Q" name="new tree">
+      <target xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_zbXXgDadEeWdd9gkeser_Q" name="AAA">
+        <target xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_zbXXgTadEeWdd9gkeser_Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zbXXgjadEeWdd9gkeser_Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zbXXgzadEeWdd9gkeser_Q" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_2:TreeItemMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='tree']/@subItemMappings[name='treeElement']"/>
+      </ownedTreeItems>
+      <description xmi:type="description_2:TreeDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='tree']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_0GGWkDadEeWdd9gkeser_Q" name="new crossTable" headerColumnWidth="115">
+      <target xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+      <lines xmi:type="table:DLine" xmi:id="_0GGWkTadEeWdd9gkeser_Q" label="AAA -> BBB">
+        <target xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+        <originMapping xmi:type="description_3:LineMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='crossTable']/@ownedLineMappings[name='crossLine']"/>
+      </lines>
+      <description xmi:type="description_3:CrossTableDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='crossTable']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_0wFHsDadEeWdd9gkeser_Q" name="new editionTable" headerColumnWidth="115">
+      <target xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+      <lines xmi:type="table:DLine" xmi:id="_0wFHsTadEeWdd9gkeser_Q" label="AAA -> BBB">
+        <target xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//AAA"/>
+        <originMapping xmi:type="description_3:LineMapping" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='editionTable']/@ownedLineMappings[name='editionLine']"/>
+      </lines>
+      <description xmi:type="description_3:EditionTableDescription" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']/@ownedRepresentations[name='editionTable']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='testclosingotherrepresentation']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
