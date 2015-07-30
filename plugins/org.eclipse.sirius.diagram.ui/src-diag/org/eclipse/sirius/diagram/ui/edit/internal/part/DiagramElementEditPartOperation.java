@@ -254,11 +254,13 @@ public final class DiagramElementEditPartOperation {
             // There is no need to refresh
             if (semDiag.getTarget() != null) {
                 Session session = SessionManager.INSTANCE.getSession(semDiag.getTarget());
-                final DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(semDiag, session.getInterpreter(), SiriusPlugin.getDefault().getModelAccessorRegistry()
-                        .getModelAccessor(semDiag.getTarget()));
+                if (session != null) {
+                    final DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(semDiag, session.getInterpreter(), SiriusPlugin.getDefault().getModelAccessorRegistry()
+                            .getModelAccessor(semDiag.getTarget()));
 
-                // refresh diagram element.
-                sync.refresh(dde);
+                    // refresh diagram element.
+                    sync.refresh(dde);
+                }
             }
         }
     }
