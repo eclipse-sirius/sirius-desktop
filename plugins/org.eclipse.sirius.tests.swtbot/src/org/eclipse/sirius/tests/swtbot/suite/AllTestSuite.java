@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -58,11 +63,6 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests.
@@ -132,7 +132,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
         suite.addTestSuite(CellEditorExtensionTest.class);
         suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
-
+        suite.addTestSuite(ShowTypeActionButtonTest.class);
+        suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
     }
 
     /**
