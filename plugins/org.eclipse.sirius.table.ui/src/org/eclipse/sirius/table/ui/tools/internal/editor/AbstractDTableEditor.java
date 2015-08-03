@@ -103,11 +103,8 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     @Override
     public void doSave(final IProgressMonitor progressMonitor) {
-
         if (isDeleted(getEditorInput())) {
-
             if (isSaveAsAllowed()) {
-
                 /*
                  * 1GEUSSR: ITPUI:ALL - User should never loose changes made in
                  * the editors. Changed Behavior to make sure that if called
@@ -115,9 +112,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
                  * there is a way to report back to the caller.
                  */
                 performSaveAs(progressMonitor);
-
             } else {
-
                 final Shell shell = getSite().getShell();
                 final String title = Messages.dTableEditor_ErrorSaveDeletedTitle;
                 final String msg = Messages.dTableEditor_ErrorSaveDeletedMessage;
@@ -206,13 +201,12 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             }
         }
     }
-    
+
     @Override
     public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
         super.init(site, input);
 
         if (getTableModel() != null) {
-
             // Launch the refresh if needed
             if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
                 launchRefresh();
@@ -224,7 +218,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             initPermissionAuthority(getTableModel());
         }
     }
-    
+
     @Override
     protected void configureCommandFactoryProviders() {
         /* get IEMFCommandFactories */
@@ -232,37 +226,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
         /* We add a callback for UI stuffs */
         emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
-    }
-
-
-    @Override
-    protected void setRepresentation(URI uri, boolean loadOnDemand) {
-        setTableModel(getDTable(uri, loadOnDemand));
-    }
-
-    /**
-     * Get the DTable corresponding to this URI
-     * 
-     * @param uri
-     *            the URI to resolve.
-     * @param loadOnDemand
-     *            whether to create and load the resource, if it doesn't already
-     *            exists.
-     * @return the DTable resource resolved by the URI, or <code>null</code> if
-     *         there isn't one and it's not being demand loaded.
-     */
-    private DTable getDTable(final URI uri, final boolean loadOnDemand) {
-        DTable result = null;
-        final Resource resource = getEditingDomain().getResourceSet().getResource(uri.trimFragment(), loadOnDemand);
-        if (resource != null && resource.isLoaded()) {
-            if (uri.fragment() != null) {
-                final EObject rootElement = resource.getEObject(uri.fragment());
-                if (rootElement instanceof DTable) {
-                    result = (DTable) rootElement;
-                }
-            }
-        }
-        return result;
     }
 
     @Override
@@ -338,7 +301,37 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     @Override
     public String getContributorId() {
-        return AbstractDTableEditor.CONTRIBUTOR_ID;
+        return CONTRIBUTOR_ID;
+    }
+
+    @Override
+    protected void setRepresentation(URI uri, boolean loadOnDemand) {
+        setTableModel(getDTable(uri, loadOnDemand));
+    }
+
+    /**
+     * Get the DTable corresponding to this URI
+     * 
+     * @param uri
+     *            the URI to resolve.
+     * @param loadOnDemand
+     *            whether to create and load the resource, if it doesn't already
+     *            exists.
+     * @return the DTable resource resolved by the URI, or <code>null</code> if
+     *         there isn't one and it's not being demand loaded.
+     */
+    private DTable getDTable(final URI uri, final boolean loadOnDemand) {
+        DTable result = null;
+        final Resource resource = getEditingDomain().getResourceSet().getResource(uri.trimFragment(), loadOnDemand);
+        if (resource != null && resource.isLoaded()) {
+            if (uri.fragment() != null) {
+                final EObject rootElement = resource.getEObject(uri.fragment());
+                if (rootElement instanceof DTable) {
+                    result = (DTable) rootElement;
+                }
+            }
+        }
+        return result;
     }
 
     @Override
@@ -347,9 +340,9 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     }
 
     /**
-     * Get the tableModel.
+     * Get the table model.
      * 
-     * @return the tableModel
+     * @return the table model
      */
     public DTable getTableModel() {
         return tableModel;
