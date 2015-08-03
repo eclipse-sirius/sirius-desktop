@@ -12,7 +12,6 @@ package org.eclipse.sirius.table.ui.tools.internal.editor;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,7 +27,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -45,8 +43,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -62,12 +58,8 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -103,12 +95,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     /** the context ID. */
     private static final String CONTEXT_ID = CONTRIBUTOR_ID + ".tableContext";
-
-    /**
-     * This is the one adapter factory used for providing views of the model (as
-     * in EcoreEditor).
-     */
-    protected AdapterFactory adapterFactory;
 
     /** This DTable model */
     private DTable tableModel;
@@ -220,70 +206,38 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             }
         }
     }
-
-    /**
-     * We have to take care of the case when Eclipse starts up with a session
-     * and diagram already open.
-     * 
-     * {@inheritDoc}
-     */
+    
     @Override
     public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
-        setSite(site);
-
-        final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
-
-        /*
-         * we are during eclipse boot, we are not trying to close the editor
-         */
-        if (sessions.isEmpty() && (!isClosing)) {
-            SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
-        }
-        isClosing = false;
-
-        if (input instanceof SessionEditorInput) {
-            SessionEditorInput sessionEditorInput = (SessionEditorInput) input;
-            final URI uri = sessionEditorInput.getURI();
-            this.session = sessionEditorInput.getSession();
-            setTableModel(getDTable(uri, false));
-        }
-
-        setInput(input);
-
-        if (session != null) {
-            session.addListener(this);
-        }
-
-        configureCommandFactoryProviders();
-
-        final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(this.session);
-        uiSession.open();
-        uiSession.attachEditor(this);
-        setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getTableModel()));
+        super.init(site, input);
 
         if (getTableModel() != null) {
-            /* Update title. Semantic table could have been renamed */
-            notify(PROP_TITLE);
 
             // Launch the refresh if needed
             if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
                 launchRefresh();
             }
 
-            initialTitleImage = getTitleImage();
-
-            // In case of shared table representation, we notify the use of tree
+            // In case of shared table representation, we notify the use of
+            // table
             // representation locking
-            initCollaborativeIPermissionAuthority(getTableModel());
+            initPermissionAuthority(getTableModel());
         }
     }
-
-    private void configureCommandFactoryProviders() {
+    
+    @Override
+    protected void configureCommandFactoryProviders() {
         /* get IEMFCommandFactories */
         emfCommandFactory = TableCommandFactoryService.getInstance().getNewProvider().getCommandFactory(getEditingDomain());
 
         /* We add a callback for UI stuffs */
         emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
+    }
+
+
+    @Override
+    protected void setRepresentation(URI uri, boolean loadOnDemand) {
+        setTableModel(getDTable(uri, loadOnDemand));
     }
 
     /**
@@ -378,44 +332,8 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     }
 
     @Override
-    public void setFocus() {
-        if (treeViewerManager != null) {
-            super.setFocus();
-
-            // Resolve proxy model after aird reload.
-            if (tableModel != null && tableModel.eIsProxy() && session != null) {
-                IEditorInput editorInput = getEditorInput();
-                if (editorInput instanceof URIEditorInput) {
-                    URIEditorInput sessionEditorInput = (URIEditorInput) editorInput;
-                    final URI uri = sessionEditorInput.getURI();
-                    setTableModel(getDTable(uri, false));
-                    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
-                    if (uiSession != null && tableModel != null) {
-                        // Reinit dialect editor closer and other
-                        // IEditingSession mechanisms.
-                        uiSession.detachEditor(this);
-                        uiSession.attachEditor(this);
-                    }
-                }
-            }
-
-            checkSemanticAssociation();
-        }
-    }
-
-    private void checkSemanticAssociation() {
-        if (tableModel == null || tableModel.eResource() == null || tableModel.getTarget() == null || tableModel.getTarget().eResource() == null) {
-            /*
-             * The element has been deleted, we should close the editor
-             */
-            myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
-            DialectUIManager.INSTANCE.closeEditor(this, false);
-        }
-    }
-
-    @Override
     protected void launchRefresh() {
-        getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getTableModel()));
+        getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getRepresentation()));
     }
 
     @Override
@@ -452,12 +370,9 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
         // TODO implement validation for Table Editor.
     }
 
-    /**
-     * @param accessor
-     *            the accessor to set
-     */
-    private void setAccessor(final ModelAccessor accessor) {
-        this.accessor = accessor;
+    @Override
+    protected void setAccessor(ModelAccessor accessor) {
+        super.setAccessor(accessor);
         ((ITableCommandFactory) emfCommandFactory).setModelAccessor(this.accessor);
     }
 

@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,11 +23,9 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -39,8 +36,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tree.DTree;
@@ -53,12 +48,8 @@ import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -124,64 +115,20 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         return frozenRepresentationImage;
     }
 
-    /**
-     * We have to take care of the case when Eclipse starts up with a session
-     * and diagram already open.
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
-        setSite(site);
-
-        final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
-
-        /*
-         * we are during eclipse boot, we are not trying to close the editor
-         */
-        if (sessions.isEmpty() && (!isClosing)) {
-            SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
-        }
-        isClosing = false;
-
-        if (input instanceof SessionEditorInput) {
-            final URI uri = ((SessionEditorInput) input).getURI();
-            this.session = ((SessionEditorInput) input).getSession();
-            setTreeModel(getDTree(uri, false));
-        } else if (input instanceof URIEditorInput) {
-            /* This happens when Eclipse is launched with an open tree editor */
-            final URI uri = ((URIEditorInput) input).getURI();
-            final DTree rootElement = getDTree(uri, true);
-            if (rootElement != null) {
-                setTreeModel(rootElement);
-            }
-        }
-
-        setInput(input);
-
-        if (session != null) {
-            session.addListener(this);
-        }
-
-        initCommandFactoryProviders();
-
-        adapterFactory = new ComposedAdapterFactory(TreeUIPlugin.getPlugin().getItemProvidersAdapterFactory());
-
-        final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(this.session);
-        uiSession.open();
-        uiSession.attachEditor(this);
-        setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getTreeModel()));
+        super.init(site, input);
 
         if (getTreeModel() != null) {
-            /* Update title. Semantic tree could have been renamed */
-            notify(PROP_TITLE);
 
             // Launch the refresh if needed
             if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
                 launchRefresh(true);
             }
 
-            initCollaborativeIPermissionAuthority(getTreeModel());
+            // In case of shared tree representation, we notify the use of tree
+            // representation locking
+            initPermissionAuthority(getTreeModel());
         }
     }
 
@@ -245,45 +192,22 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
-    public void setFocus() {
-        if (treeViewerManager != null) {
-            super.setFocus();
-
-            // Resolve proxy model after aird reload.
-            if (treeModel != null && treeModel.eIsProxy() && session != null) {
-                IEditorInput editorInput = getEditorInput();
-                if (editorInput instanceof URIEditorInput) {
-                    URIEditorInput sessionEditorInput = (URIEditorInput) editorInput;
-                    final URI uri = sessionEditorInput.getURI();
-                    setTreeModel(getDTree(uri, false));
-                    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
-                    if (uiSession != null && treeModel != null) {
-                        //Reinit dialect editor closer and other IEditingSession mechanisms.
-                        uiSession.detachEditor(this);
-                        uiSession.attachEditor(this);
-                    }
-                }
-            }
-
-            checkSemanticAssociation();
-        }
+    protected void setRepresentation(URI uri, boolean loadOnDemand) {
+        setTreeModel(getDTree(uri, loadOnDemand));
     }
 
-    private void checkSemanticAssociation() {
-        if (treeModel == null || treeModel.eResource() == null || treeModel.getTarget() == null || treeModel.getTarget().eResource() == null) {
-            /*
-             * The element has been deleted, we should close the editor
-             */
-            myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
-            DialectUIManager.INSTANCE.closeEditor(this, false);
-        }
-    }
-
+    /**
+     * Get the DTree corresponding to this URI
+     * 
+     * @param uri
+     *            the URI to resolve.
+     * @param loadOnDemand
+     *            whether to create and load the resource, if it doesn't already
+     *            exists.
+     * @return the DTree resource resolved by the URI, or <code>null</code> if
+     *         there isn't one and it's not being demand loaded.
+     */
     private DTree getDTree(final URI uri, final boolean loadOnDemand) {
         DTree result = null;
         final Resource resource = getEditingDomain().getResourceSet().getResource(uri.trimFragment(), loadOnDemand);
@@ -298,7 +222,8 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         return result;
     }
 
-    private void initCommandFactoryProviders() {
+    @Override
+    protected void configureCommandFactoryProviders() {
         /* get IEMFCommandFactories */
         emfCommandFactory = TreeCommandFactoryService.getInstance().getNewProvider().getCommandFactory(getEditingDomain());
 
@@ -306,12 +231,9 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
     }
 
-    /**
-     * @param accessor
-     *            the accessor to set
-     */
-    private void setAccessor(final ModelAccessor accessor) {
-        this.accessor = accessor;
+    @Override
+    protected void setAccessor(ModelAccessor accessor) {
+        super.setAccessor(accessor);
         ((ITreeCommandFactory) emfCommandFactory).setModelAccessor(this.accessor);
     }
 
@@ -329,7 +251,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
     private void setTreeModel(final DTree rootElement) {
         this.treeModel = rootElement;
-
     }
 
     @Override

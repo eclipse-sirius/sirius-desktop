@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
+import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -18,12 +19,13 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -48,7 +50,9 @@ import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusLi
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQuery;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.internal.dialect.TreeEditorDialogFactory;
 import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
@@ -99,7 +103,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     /**
      * This is the one adapter factory used for providing views of the model.
      */
-    protected ComposedAdapterFactory adapterFactory;
+    protected AdapterFactory adapterFactory;
 
     /**
      * Model accessor.
@@ -309,16 +313,65 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      * {@inheritDoc}
      */
     @Override
-    public abstract void init(final IEditorSite site, final IEditorInput input) throws PartInitException;
+    public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
+        setSite(site);
+
+        final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
+
+        /*
+         * we are during eclipse boot, we are not trying to close the editor
+         */
+        if (sessions.isEmpty() && (!isClosing)) {
+            SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
+        }
+        isClosing = false;
+
+        if (input instanceof SessionEditorInput) {
+            SessionEditorInput sessionEditorInput = (SessionEditorInput) input;
+            final URI uri = sessionEditorInput.getURI();
+            this.session = sessionEditorInput.getSession();
+            setRepresentation(uri, false);
+        } else if (input instanceof URIEditorInput) {
+            /* This happens when Eclipse is launched with an open tree editor */
+            final URI uri = ((URIEditorInput) input).getURI();
+            setRepresentation(uri, true);
+        }
+
+        setInput(input);
+
+        if (session != null) {
+            session.addListener(this);
+        }
+
+        configureCommandFactoryProviders();
+
+        final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(this.session);
+        uiSession.open();
+        uiSession.attachEditor(this);
+        setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getRepresentation()));
+
+        DRepresentation representation = getRepresentation();
+        if (representation != null) {
+            /* Update title. Semantic table could have been renamed */
+            notify(PROP_TITLE);
+
+            initialTitleImage = getTitleImage();
+        }
+    }
 
     /**
-     * Initialize CDO {@link IPermissionAuthority} and the title image if the
+     * Configure and set the command factory.
+     */
+    protected abstract void configureCommandFactoryProviders();
+
+    /**
+     * Initialize {@link IPermissionAuthority} and the title image if the
      * Table is already locked by the current user before opening.
      * 
      * @param representation
      *            the {@link DSemanticDecorator} that is opening.
      */
-    protected void initCollaborativeIPermissionAuthority(DSemanticDecorator representation) {
+    protected void initPermissionAuthority(DSemanticDecorator representation) {
         // This IPermissionAuthority is added only on shared
         // representations.
         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation.getTarget());
@@ -380,6 +433,54 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
                 treeViewerManager.getControl().setFocus();
             }
             setEclipseWindowTitle();
+
+            // Resolve proxy model after aird reload.
+            DRepresentation representation = getRepresentation();
+            if (representation != null && representation.eIsProxy() && session != null) {
+                IEditorInput editorInput = getEditorInput();
+                if (editorInput instanceof URIEditorInput) {
+                    URIEditorInput sessionEditorInput = (URIEditorInput) editorInput;
+                    final URI uri = sessionEditorInput.getURI();
+                    setRepresentation(uri, false);
+                    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+                    if (uiSession != null && representation != null) {
+                        // Reinit dialect editor closer and other
+                        // IEditingSession mechanisms.
+                        uiSession.detachEditor(this);
+                        uiSession.attachEditor(this);
+                    }
+                }
+            }
+
+            checkSemanticAssociation();
+        }
+    }
+
+    /**
+     * Retrieve and set the representation from the given URI.
+     * 
+     * @param uri
+     *            the URI to resolve.
+     * @param loadOnDemand
+     *            whether to create and load the resource, if it doesn't already
+     *            exists.
+     */
+    protected abstract void setRepresentation(URI uri, boolean loadOnDemand);
+
+    private void checkSemanticAssociation() {
+        DRepresentation representation = getRepresentation();
+        boolean shouldClose = representation == null || representation.eResource() == null;
+        if (!shouldClose && representation instanceof DSemanticDecorator) {
+            EObject semanticTarget = ((DSemanticDecorator) representation).getTarget();
+            shouldClose = semanticTarget == null || semanticTarget.eResource() == null;
+        }
+
+        if (shouldClose) {
+            /*
+             * The element has been deleted, we should close the editor
+             */
+            myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
+            DialectUIManager.INSTANCE.closeEditor(this, false);
         }
     }
 
@@ -534,7 +635,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         }
 
     }
-
+    
     public AdapterFactory getAdapterFactory() {
         return adapterFactory;
     }
@@ -750,5 +851,15 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
             };
             refreshJob.schedule();
         }
+    }
+
+    /**
+     * Set the accessor.
+     * 
+     * @param accessor
+     *            the accessor to set
+     */
+    protected void setAccessor(ModelAccessor accessor) {
+        this.accessor = accessor;
     }
 }

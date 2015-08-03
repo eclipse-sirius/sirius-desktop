@@ -445,7 +445,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             /* Update title. Semantic diagram could have been renamed */
             notify(PROP_TITLE);
 
-            initCollaborativeIPermissionAuthority();
+            initPermissionAuthority();
 
         } catch (NullPointerException e) {
             DiagramPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, "Error while getting the session.", e));
@@ -542,10 +542,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * Initialize CDO {@link IPermissionAuthority} and the title image if the
+     * Initialize {@link IPermissionAuthority} and the title image if the
      * Diagram is already locked by the current user before opening.
      */
-    private void initCollaborativeIPermissionAuthority() {
+    private void initPermissionAuthority() {
         // This IPermissionAuthority is added only on shared
         // representations.
         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getDiagram().getElement());
