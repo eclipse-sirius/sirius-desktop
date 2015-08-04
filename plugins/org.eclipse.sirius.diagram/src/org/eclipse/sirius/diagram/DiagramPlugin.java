@@ -14,6 +14,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.osgi.framework.BundleContext;
 
 /**
  * Sirius Diagram plug-in.
@@ -151,4 +153,12 @@ public class DiagramPlugin extends Plugin {
         // CHECKSTYLE:ON
     }
 
+    @Override
+    public void stop(BundleContext context) throws Exception {
+        try {
+            InstanceScope.INSTANCE.getNode(ID).flush();
+        } finally {
+            super.stop(context);
+        }
+    }
 }

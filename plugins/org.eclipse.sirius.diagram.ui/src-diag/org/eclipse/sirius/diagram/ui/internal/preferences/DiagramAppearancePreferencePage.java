@@ -59,7 +59,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
     /**
      * Title of the group containing display header option.
      */
-    public static final String LABEL_DISPLAY_HEADER_TITLE = "Display header"; //$NON-NLS-1$/**
+    public static final String LABEL_DISPLAY_HEADER_TITLE = "Display header"; //$NON-NLS-1$ /**
 
     /**
      * Message explaining user the action of display header.
@@ -79,6 +79,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         setPreferenceStore(DiagramUIPlugin.getPlugin().getPreferenceStore());
     }
 
+    @Override
     protected void addFields(Composite parent) {
         Composite main = createPageLayout(parent);
         createLabelIconsGroup(main);
@@ -179,7 +180,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         super.initialize();
 
         // Set preference store to Diagram core plugin
-        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(new InstanceScope(), DiagramPlugin.ID);
+        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, DiagramPlugin.ID);
         displayHeader.setPreferenceStore(diagramCorePreferenceStore);
         displayHeader.load();
     }
