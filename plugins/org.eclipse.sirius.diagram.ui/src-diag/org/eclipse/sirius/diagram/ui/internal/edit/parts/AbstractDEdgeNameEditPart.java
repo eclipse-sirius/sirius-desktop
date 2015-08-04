@@ -11,10 +11,14 @@
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.editparts.AbstractConnectionEditPart;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.tools.DirectEditManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.figures.ResizableLabelLocator;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
@@ -24,6 +28,7 @@ import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeNameSelectionFeedbackEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResizableShapeLabelEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelLocator;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
@@ -46,6 +51,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
      * 
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new ResizableShapeLabelEditPolicy());
@@ -83,6 +89,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     /**
      * @not-generated remove direct edit manager if there is no edit behavior
      */
+    @Override
     protected void setManager(DirectEditManager manager) {
         DEdge edge = (DEdge) resolveSemanticElement();
         Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
@@ -93,6 +100,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     /**
      * @not-generated
      */
+    @Override
     protected void handleNotificationEvent(Notification event) {
         if (resolveSemanticElement() instanceof DEdge) {
             Object feature = event.getFeature();
@@ -109,6 +117,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     /**
      * @was-generated
      */
+    @Override
     protected IFigure createFigure() {
         // Parent should assign one using setLabel() method
         return null;
@@ -117,9 +126,36 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     /**
      * @not-generated
      */
+    @Override
     public void setLabel(IFigure figure) {
         if (figure instanceof SiriusWrapLabel) {
             this.setLabel((SiriusWrapLabel) figure);
         }
     }
+
+    @Override
+    public void refreshBounds() {
+        // The case of NonResizable is useless here for SiriusWrapLabel.
+        handleResizableRefreshBounds();
+    }
+
+    /**
+     * Handles resizable label refresh bounds. "Override" to use a specific
+     * {@link EdgeLabelLocator}.
+     */
+    private void handleResizableRefreshBounds() {
+        int dx = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_X())).intValue();
+        int dy = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_Y())).intValue();
+        int width = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width())).intValue();
+        int height = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
+        Rectangle rectangle = new Rectangle(dx, dy, width, height);
+        if (getParent() instanceof AbstractConnectionEditPart) {
+            if (this instanceof AbstractDEdgeNameEditPart) {
+                ((AbstractGraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), new EdgeLabelLocator(getFigure().getParent(), rectangle, getKeyPoint()));
+            } else {
+                ((AbstractGraphicalEditPart) getParent()).setLayoutConstraint(this, getFigure(), new ResizableLabelLocator(getFigure().getParent(), rectangle, getKeyPoint()));
+            }
+        }
+    }
+
 }

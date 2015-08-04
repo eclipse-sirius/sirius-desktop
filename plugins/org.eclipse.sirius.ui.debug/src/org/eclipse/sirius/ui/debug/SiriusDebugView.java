@@ -257,9 +257,9 @@ public class SiriusDebugView extends AbstractDebugView {
             sb.append("Bounds (logical):              " + elt.get().getProperLogicalBounds()).append("\n");
         }
         Rectangle bounds = part.getFigure().getBounds().getCopy();
-        sb.append("Bounds (Draw2D):                   " + bounds.toString() + "\n");
+        sb.append("Bounds (Draw2D):                   " + bounds.toString() + " --> center: " + bounds.getCenter() + "\n");
         part.getFigure().translateToAbsolute(bounds);
-        sb.append("Bounds (Draw2D absolute):          " + bounds.toString() + "\n");
+        sb.append("Bounds (Draw2D absolute):          " + bounds.toString() + " --> center: " + bounds.getCenter() + "\n");
         sb.append("\n");
     }
 
@@ -895,8 +895,8 @@ public class SiriusDebugView extends AbstractDebugView {
                     final int size = Integer.parseInt(askStringFromUser("Expansion", "Size", "0"));
                     final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
                     TransactionalEditingDomain ted = sdep.getEditingDomain();
-                    RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted, new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(start, start + size), 0,
-                            Collections.<ISequenceEvent> emptyList()));
+                    RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
+                            new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(start, start + size), 0, Collections.<ISequenceEvent> emptyList()));
                     sdep.getEditingDomain().getCommandStack().execute(verticalSpaceExpansion);
                 }
             }

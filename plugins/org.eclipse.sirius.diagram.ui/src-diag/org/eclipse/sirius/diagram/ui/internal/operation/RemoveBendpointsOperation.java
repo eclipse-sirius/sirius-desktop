@@ -11,6 +11,8 @@
 
 package org.eclipse.sirius.diagram.ui.internal.operation;
 
+import java.util.List;
+
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
@@ -20,9 +22,15 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.notation.Bendpoints;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.LabelHelper2;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -34,7 +42,7 @@ import com.google.common.collect.Lists;
  * connection bendpoints. We obtain the new edge ends by computing the
  * intersection points with the source and target figure on the straight line
  * formed by the source and target anchors.
- * 
+ *
  * @author Florian Barbin
  *
  */
@@ -44,7 +52,7 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
 
     /**
      * The Operation constructor.
-     * 
+     *
      * @param editPart
      *            The Edge Edit Part to remove bendpoints.
      */
@@ -100,6 +108,25 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
             pointList.addPoint(sourceConnection);
             pointList.addPoint(targetConnection);
             GMFNotationUtilities.setGMFBendpoints((Edge) model, pointList, absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates);
+            // For each label, reset the offset to default
+            List<?> children = editPart.getChildren();
+            for (Object child : children) {
+                if (child instanceof AbstractDEdgeNameEditPart) {
+                    AbstractDEdgeNameEditPart labelEditPartToUpdate = (AbstractDEdgeNameEditPart) child;
+                    Node labelNodeToUpdate = (Node) labelEditPartToUpdate.getModel();
+                    LayoutConstraint layoutConstraint = labelNodeToUpdate.getLayoutConstraint();
+                    if (layoutConstraint instanceof Bounds) {
+                        Bounds bounds = (Bounds) layoutConstraint;
+                        Point snapBackPosition = LabelHelper2.getSnapBackPosition(labelEditPartToUpdate.getKeyPoint());
+                        Bounds labelBounds = NotationFactory.eINSTANCE.createBounds();
+                        labelBounds.setX(snapBackPosition.x);
+                        labelBounds.setY(snapBackPosition.y);
+                        labelBounds.setWidth(bounds.getWidth());
+                        labelBounds.setHeight(bounds.getHeight());
+                        labelNodeToUpdate.setLayoutConstraint(labelBounds);
+                    }
+                }
+            }
         }
 
     }

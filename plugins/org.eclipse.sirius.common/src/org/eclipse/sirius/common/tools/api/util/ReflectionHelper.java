@@ -59,7 +59,7 @@ public final class ReflectionHelper {
      *            The class to modify.
      * @param fieldName
      *            The name of the field to modify
-     * @return The modify field
+     * @return The modified field
      * @throws SecurityException
      *             In case of problem
      * @throws NoSuchFieldException
@@ -418,5 +418,78 @@ public final class ReflectionHelper {
             }
         }
         return Options.newNone();
+    }
+    
+
+    /**
+     * Invoke a method.
+     * 
+     * @param object
+     *            The object on which we must invoke method
+     * @param aClass
+     *            The class which declares the method
+     * @param methodName
+     *            The name of the method to invoke
+     * @param parameterTypes
+     *            The type of the parameters
+     * @param parameters
+     *            The parameters of the method
+     * @param setVisible
+     *            true to set the method visible before calling.
+     * @return true if the method is invoke without exception, false otherwise.
+     */
+    public static boolean invokeMethodWithoutException(Object object, Class aClass, String methodName, Class<?>[] parameterTypes, Object[] parameters, boolean setVisible) {
+        try {
+            invokeMethod(object, aClass, methodName, parameterTypes, parameters, setVisible);
+            return true;
+        } catch (SecurityException e) {
+            // Do nothing
+        } catch (IllegalArgumentException e) {
+            // Do nothing
+        } catch (NoSuchMethodException e) {
+            // Do nothing
+        } catch (IllegalAccessException e) {
+            // Do nothing
+        } catch (InvocationTargetException e) {
+            // Do nothing
+        }
+        return false;
+    }
+
+    /**
+     * Invoke a method.
+     * 
+     * @param object
+     *            The object on which we must invoke method
+     * @param aClass
+     *            The class which declares the method
+     * @param methodName
+     *            The name of the method to invoke
+     * @param parameterTypes
+     *            The types of the parameters
+     * @param parameters
+     *            The parameters of the method
+     * @param setVisible
+     *            true to set the method visible before calling.
+     * @throws SecurityException
+     *             In case of problem
+     * @throws NoSuchMethodException
+     *             In case of problem
+     * @throws IllegalArgumentException
+     *             In case of problem
+     * @throws IllegalAccessException
+     *             In case of problem
+     * @throws InvocationTargetException
+     *             In case of problem
+     */
+    // CHECKSTYLE:OFF
+    public static Object invokeMethod(Object object, Class aClass, String methodName, Class<?>[] parameterTypes, Object[] parameters, boolean setVisible)
+            throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+        // CHECKSTYLE:ON
+        Method method = aClass.getDeclaredMethod(methodName, parameterTypes);
+        if (setVisible) {
+            method.setAccessible(true);
+        }
+        return method.invoke(object, parameters);
     }
 }

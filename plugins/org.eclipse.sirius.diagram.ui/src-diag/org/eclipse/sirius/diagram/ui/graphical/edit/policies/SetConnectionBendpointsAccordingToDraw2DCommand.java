@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
@@ -24,7 +19,6 @@ import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 // CHECKSTYLE:OFF
@@ -32,7 +26,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
  */
-public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnectionBendpointsCommand {
+public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnectionBendpointsAndLabelCommmand {
 
     private boolean sourceMove;
 
@@ -46,20 +40,14 @@ public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnecti
         super(editingDomain);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand#doExecute(org.eclipse.core.runtime.IProgressMonitor,
-     *      org.eclipse.core.runtime.IAdaptable)
-     */
     @Override
-    protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-        if (getEdgeAdaptor() instanceof ConnectionEditPart) {
-            ConnectionEditPart connectionEditPart = (ConnectionEditPart) getEdgeAdaptor();
+    public void setLabelsToUpdate(org.eclipse.gef.ConnectionEditPart connectionEditPart) {
+        if (connectionEditPart instanceof ConnectionEditPart) {
+            ConnectionEditPart gmfConnectionEditPart = (ConnectionEditPart) connectionEditPart;
             // Apply inverse zoom on moveDelta, because moveDelta is only
             // element in relative value
-            GraphicalHelper.applyInverseZoomOnPoint(connectionEditPart, moveDelta);
-            Connection connection = connectionEditPart.getConnectionFigure();
+            GraphicalHelper.applyInverseZoomOnPoint(gmfConnectionEditPart, moveDelta);
+            Connection connection = gmfConnectionEditPart.getConnectionFigure();
 
             Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
             connection.translateToRelative(tempSourceRefPoint);
@@ -160,11 +148,9 @@ public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnecti
                     }
                 }
             }
-
             setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-            return super.doExecute(monitor, info);
+            super.setLabelsToUpdate(connectionEditPart);
         }
-        return Status.OK_STATUS;
     }
 
     /**

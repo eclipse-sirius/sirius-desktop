@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -24,7 +19,6 @@ import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
@@ -36,11 +30,11 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
  * keep, as much as possible, the edges aspects when a node (container or not)
  * is moved. A move of a node should move only the closest segment of the linked
  * edges.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
+ *
  */
-public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends SetConnectionBendpointsCommand {
+public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends SetConnectionBendpointsAndLabelCommmand {
 
     private boolean sourceMove;
 
@@ -48,7 +42,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
 
     /**
      * Default constructor.
-     * 
+     *
      * @param editingDomain
      *            the editing domain through which model changes are made
      */
@@ -56,21 +50,16 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
         super(editingDomain);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand#doExecute(org.eclipse.core.runtime.IProgressMonitor,
-     *      org.eclipse.core.runtime.IAdaptable)
-     */
     @Override
-    protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-
-        if (getEdgeAdaptor() instanceof ConnectionEditPart) {
-            ConnectionEditPart connectionEditPart = (ConnectionEditPart) getEdgeAdaptor();
+    public void setLabelsToUpdate(org.eclipse.gef.ConnectionEditPart connectionEditPart) {
+        // Before setting the labels to update (and compute the new offset, we
+        // must set the newPointList.
+        if (connectionEditPart instanceof ConnectionEditPart) {
+            ConnectionEditPart gmfConnectionEditPart = (ConnectionEditPart) connectionEditPart;
             // Applied zoom on moveDelta, because moveDelta is only element in
             // relative value
-            GraphicalHelper.appliedZoomOnRelativePoint(connectionEditPart, moveDelta);
-            Connection connection = connectionEditPart.getConnectionFigure();
+            GraphicalHelper.appliedZoomOnRelativePoint(gmfConnectionEditPart, moveDelta);
+            Connection connection = gmfConnectionEditPart.getConnectionFigure();
 
             Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
             connection.translateToRelative(tempSourceRefPoint);
@@ -80,17 +69,15 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
 
             PointList connectionPointList = connection.getPoints().getCopy();
             adaptPointListAndRefPoints(sourceMove, moveDelta, connectionEditPart, tempSourceRefPoint, tempTargetRefPoint, connectionPointList);
-
             setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-            return super.doExecute(monitor, info);
+            super.setLabelsToUpdate(connectionEditPart);
         }
-        return Status.OK_STATUS;
     }
 
     /**
      * Adapt the point list and the source reference point (or target reference
      * point) according to a move of the source (or of the target).
-     * 
+     *
      * @param sourceMove
      *            true if the source node of edge has been moved, false
      *            otherwise
@@ -123,7 +110,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     /**
      * Adapt the point list and the source reference point according to a move
      * of the source.
-     * 
+     *
      * @param moveDelta
      *            the delta of the move of the extremity (source or target)
      * @param isEdgeWithRectilinearRoutingStyle
@@ -172,7 +159,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     /**
      * Adapt the point list and the target reference point according to a move
      * of the target.
-     * 
+     *
      * @param moveDelta
      *            the delta of the move of the extremity (source or target)
      * @param isEdgeWithRectilinearRoutingStyle
@@ -227,7 +214,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
      * Logic extracted from
      * {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter.routeLine(Connection,
      * int, PointList)}.
-     * 
+     *
      * @param connectionPointList
      *            <code>PointList</code> to normalize
      */
@@ -247,7 +234,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
      * segments from nearly straight segments.<BR>
      * Copied from
      * {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter}
-     * 
+     *
      * @param line
      *            polyline
      * @param tolerance
@@ -271,7 +258,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
      * been removed an extra point outside source and target shapes will be
      * added. Inspired from
      * {@link org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter#removePointsInViews(Connection, PointList, Point, Point)}
-     * 
+     *
      * @param newLine
      *            polyline of the connection
      * @param source
@@ -386,7 +373,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     /**
      * Get a complementary point to go from the <code>otherPointExtremity</code>
      * to the <code>nodeBouds</code> through <code>lastRemoved</code> point.
-     * 
+     *
      * @param pointsList
      *            Current points of the edge
      * @param nodeBouds
@@ -434,7 +421,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
 
     /**
      * Set if the source is moved, or if the target is moved.
-     * 
+     *
      * @param sourceMove
      *            true if the source of the edge is moved, false otherwise.
      */
@@ -449,7 +436,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
 
     /**
      * Set the move delta.
-     * 
+     *
      * @param moveDelta
      *            Point representing the distance the EditPart has moved.
      */

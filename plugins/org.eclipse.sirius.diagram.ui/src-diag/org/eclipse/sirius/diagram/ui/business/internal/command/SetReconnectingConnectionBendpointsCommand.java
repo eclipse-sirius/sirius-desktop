@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,26 +22,26 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.EdgeReconnectionHelper;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAndLabelCommmand;
 import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 
 /**
- * This {@link SetConnectionBendpointsCommand} overrides the execution in order
- * to set the {@link RelativeBendpoint} of the edge resulting of the
+ * This {@link SetConnectionBendpointsAndLabelCommmand} overrides the execution
+ * in order to set the {@link RelativeBendpoint} of the edge resulting of the
  * reconnection.
  * 
  * @author <a href="mailto:steve.monnier@obeo.fr">Steve Monnier</a>
  * 
  */
 @SuppressWarnings("restriction")
-public class SetReconnectingConnectionBendpointsCommand extends SetConnectionBendpointsCommand {
+public class SetReconnectingConnectionBendpointsCommand extends SetConnectionBendpointsAndLabelCommmand {
 
     /**
      * Helper used to access the edge after reconnection.

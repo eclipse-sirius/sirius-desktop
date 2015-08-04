@@ -13,13 +13,17 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.BendpointLocator;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
@@ -27,24 +31,28 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.internal.editpolicies.LineMode;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionBendpointsCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.handles.SiriusBendpointMoveHandle;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.InitialPointsOfRequestDataManager;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionBendpointEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 
 /**
  * A specific ConnectionLineSegEditPolicy to override
  * getBendpointsChangedCommand to change all GMF edges of this tree (and not
  * only the moved edge).
- * 
+ *
  * @author jdupont
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 @SuppressWarnings("restriction")
 public class TreeLayoutConnectionLineSegEditPolicy extends SiriusConnectionBendpointEditPolicy {
+    private InitialPointsOfRequestDataManager initialPointsManager = new InitialPointsOfRequestDataManager();
 
     /**
      * Default constructor.
@@ -53,10 +61,34 @@ public class TreeLayoutConnectionLineSegEditPolicy extends SiriusConnectionBendp
         super(LineMode.ORTHOGONAL_FREE);
     }
 
+    @Override
+    protected Command getBendpointsChangedCommand(BendpointRequest request) {
+        PointList originalPoints = InitialPointsOfRequestDataManager.getOriginalPoints(request);
+        Command result = super.getBendpointsChangedCommand(request);
+        // Search the SetConnectionBendpointsAndLabelCommmand to call
+        // setLabelsToUpdate
+        if (result instanceof CompoundCommand) {
+            for (Object subCmd : ((CompoundCommand) result).getChildren()) {
+                if (subCmd instanceof ICommandProxy) {
+                    ICommand iCommand = ((ICommandProxy) subCmd).getICommand();
+                    if (iCommand instanceof SetConnectionBendpointsAndLabelCommmand) {
+                        ((SetConnectionBendpointsAndLabelCommmand) iCommand).setLabelsToUpdate((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) getHost(), originalPoints);
+                    }
+                }
+            }
+        } else if (result instanceof ICommandProxy) {
+            ICommand iCommand = ((ICommandProxy) result).getICommand();
+            if (iCommand instanceof SetConnectionBendpointsAndLabelCommmand) {
+                ((SetConnectionBendpointsAndLabelCommmand) iCommand).setLabelsToUpdate((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) getHost(), originalPoints);
+            }
+        }
+        return result;
+    }
+
     /**
      * Override to launch a specific SetConnectionBendpointsCommand (
      * {@link TreeLayoutSetConnectionBendpointsCommand}. {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConnectionBendpointEditPolicy#getBendpointsChangedCommand(org.eclipse.draw2d.Connection,
      *      org.eclipse.gmf.runtime.notation.Edge)
      */
@@ -76,7 +108,22 @@ public class TreeLayoutConnectionLineSegEditPolicy extends SiriusConnectionBendp
             // we add a new command based on CenterEdgeEndModelChangeOperation
             // to center the edge end(s) if needed.
             CompoundCommand compoundCommand = new CompoundCommand();
-            compoundCommand.add(super.getBendpointsChangedCommand(connection, edge));
+            // Start : Copied from
+            // ConnectionBendpointEditPolicy.getBendpointsChangedCommand to
+            // replace SetConnectionBendpointsCommand by a
+            // SetConnectionBendpointsAndLabelCommmand.
+            Point ptRef1 = connection.getSourceAnchor().getReferencePoint();
+            getConnection().translateToRelative(ptRef1);
+
+            Point ptRef2 = connection.getTargetAnchor().getReferencePoint();
+            getConnection().translateToRelative(ptRef2);
+
+            SetConnectionBendpointsAndLabelCommmand sbbCommand = new SetConnectionBendpointsAndLabelCommmand(editingDomain);
+            sbbCommand.setEdgeAdapter(new EObjectAdapter(edge));
+            sbbCommand.setNewPointList(connection.getPoints(), ptRef1, ptRef2);
+            // End :
+
+            compoundCommand.add(new ICommandProxy(sbbCommand));
             ICommand command = CommandFactory.createICommand(editingDomain, new CenterEdgeEndModelChangeOperation((ConnectionEditPart) getHost(), edge));
             compoundCommand.add(new ICommandProxy(command));
             return compoundCommand;
@@ -109,5 +156,69 @@ public class TreeLayoutConnectionLineSegEditPolicy extends SiriusConnectionBendp
         }
         addInvisibleCreationHandle(list, connEP, points.size() - 2);
         return list;
+    }
+
+    /**
+     * Override to store the initial points of the edge in the request.
+     */
+    @Override
+    protected void showMoveLineSegFeedback(BendpointRequest request) {
+        initialPointsManager.storeInitialPointsInRequest(request, (ConnectionEditPart) getHost());
+        super.showMoveLineSegFeedback(request);
+    }
+
+    /**
+     * Override only to modify private showMoveOrthogonalBenspointFeedback
+     * method.
+     */
+    @Override
+    public void showSourceFeedback(Request request) {
+        if (getLineSegMode() != LineMode.OBLIQUE) {
+            if (REQ_CREATE_BENDPOINT.equals(request.getType())) {
+                showMoveLineSegFeedback((BendpointRequest) request);
+            } else if (REQ_MOVE_BENDPOINT.equals(request.getType())) {
+                showMoveOrthogonalBendpointFeedback2((BendpointRequest) request);
+            }
+
+        } else {
+            if (REQ_MOVE_BENDPOINT.equals(request.getType())) {
+                showMoveBendpointFeedback((BendpointRequest) request);
+            } else if (REQ_CREATE_BENDPOINT.equals(request.getType())) {
+                showCreateBendpointFeedback((BendpointRequest) request);
+            }
+        }
+
+        super.showSourceFeedback(request);
+    }
+
+    /**
+     * Draws feedback for moving a bend point of a rectilinear connection. See
+     * {@link org.eclipse.gmf.runtime.gef.ui.internal.editpolicies.ConnectionBendpointEditPolicy#showMoveOrthogonalBenspointFeedback(BendpointRequest)}
+     * .
+     *
+     * @param request
+     *            Bendpoint request
+     */
+    protected void showMoveOrthogonalBendpointFeedback2(BendpointRequest request) {
+        // Change visibility of super method and call it. The bugzilla 331779
+        // exists to make this method protected.
+        if (!ReflectionHelper.invokeMethodWithoutException(this, org.eclipse.gmf.runtime.gef.ui.internal.editpolicies.ConnectionBendpointEditPolicy.class, "showMoveOrthogonalBenspointFeedback",
+                new Class[] { BendpointRequest.class }, new Object[] { request }, true)) {
+            DiagramUIPlugin.INSTANCE.log(new Status(IStatus.WARNING, DiagramUIPlugin.ID,
+                    "Impossible to call showMoveOrthogonalBenspointFeedback by reflection to handle edge label correctly during edge move (bug 465328)."));
+        } else {
+            initialPointsManager.storeInitialPointsInRequest(request, (ConnectionEditPart) getHost());
+        }
+    }
+
+    /**
+     * Override to clean the initial points of the edge.
+     */
+    @Override
+    protected void eraseConnectionFeedback(BendpointRequest request, boolean removeFeedbackFigure) {
+        super.eraseConnectionFeedback(request, removeFeedbackFigure);
+        if (removeFeedbackFigure) {
+            initialPointsManager.eraseInitialPoints(getConnection());
+        }
     }
 }

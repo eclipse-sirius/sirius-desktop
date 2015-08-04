@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.TreeGraphicalNodeEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
-import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
@@ -111,6 +110,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.V
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramEdgeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.InitialPointsOfRequestDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
@@ -267,8 +267,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
         // Set the connection bendpoints with a PointList using a command
         @SuppressWarnings("unchecked")
-        SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getSourceEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
+        SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getSourceEdges(),
+                ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+        sbbCommand.setLabelsToUpdate(request.getConnectionEditPart());
 
         cc.compose(sbbCommand);
         return new ICommandProxy(cc);
@@ -366,9 +368,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         PointList connectionPointList = connection.getPoints().getCopy();
 
         // Set the connection bendpoints with a PointList using a command
-        SetConnectionBendpointsCommand sbbCommand = new SetConnectionBendpointsCommand(editingDomain);
+        SetConnectionBendpointsAndLabelCommmand sbbCommand = new SetConnectionBendpointsAndLabelCommmand(editingDomain);
         sbbCommand.setEdgeAdapter(request.getConnectionEditPart());
         sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+        sbbCommand.setLabelsToUpdate(request.getConnectionEditPart(), InitialPointsOfRequestDataManager.getOriginalPoints(request));
         cc.compose(sbbCommand);
 
         return new ICommandProxy(cc);
@@ -434,9 +437,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             pointList.addPoint(targetAnchor.getLocation(sourceAnchor.getReferencePoint()));
 
             @SuppressWarnings("unchecked")
-            SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
+            SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(pointList, sourceAnchor.getReferencePoint(), targetAnchor.getReferencePoint());
+            sbbCommand.setLabelsToUpdate(request.getConnectionEditPart());
             Command cmdBP = new ICommandProxy(sbbCommand);
             if (cmdBP != null) {
                 cmd = cmd == null ? cmdBP : cmd.chain(cmdBP);
@@ -460,9 +464,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
             // Set the connection bendpoints with a PointList using a command
             @SuppressWarnings("unchecked")
-            SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
+            SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+            sbbCommand.setLabelsToUpdate(request.getConnectionEditPart());
 
             Command cmdBP = new ICommandProxy(sbbCommand);
             if (cmdBP != null) {

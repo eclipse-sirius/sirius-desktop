@@ -10,6 +10,11 @@ h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to brother shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of edge, see "documentation":./user/diagrams/Diagrams.html#snap_to_shapes for details.
 * <span class="label label-success">Added</span> A new feature allows to move the edge group (Edge, Label, Border Nodes) if the <kdb>F3</kdb> shortcut is pressed during the edge moving/draging. This feature is only available for the case of edges with border node as source and target. See "documentation":./user/diagrams/Diagrams.html#move_edge_group for more details.
+* <span class="label label-success">Added</span> The label of edges now stays as much as possible near the edge when it is moved.
+Sample before Sirius 3.1:
+!images/edgeLabelMoveBeforeSirius3.1.gif! 
+Same sample since Sirius 3.1:
+!images/edgeLabelMoveAfterSirius3.1.gif!
 * <span class="label label-info">Modified</span> The _Snap to Grid_ and _Snap to Shapes_ are now automatically disabled on Sequence diagrams. As indicated in the user documentation, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. see "documentation":./user/sequences/Sequence%20Diagrams.html#introduction for details. Previously, the user has to explicitely disable the snap features.
 * <span class="label label-info">Modified</span> The Link with Editor behavior has changed. The link with editor was previously unidirectional from the Common Navigator (Model Explorer view or Project view) toward the active representation. By now, when selecting one or several elements in the representation, the corresponding semantic elements are selected in the Common Navigator.
 * <span class="label label-info">Modified</span> The "Arrange Linked Bordered Nodes" tabbar action has been renamed to "Arrange Linked Border Nodes" as it is border nodes which are layouted and not bordered nodes.
@@ -77,6 +82,11 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-danger">Removed</span> @org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()@ methods removed because they are useless since undo/redo is managed by EMF Transaction.
 * <span class="label label-danger">Removed</span> @org.eclipse.sirius.tools.api.command.IUndoableCommand@ interface removed because it is useless since undo/redo is managed by EMF Transaction.
 
+h4. Changes in @org.eclipse.sirius.common@
+
+* <span class="label label-success">Added</span> The method @invokeMethod@ has been added in class @org.eclipse.sirius.common.tools.api.util.ReflectionHelper@ to call a private method. Warning: This method must be used carefully.
+* <span class="label label-success">Added</span> The method @invokeMethodWithoutException@ has been added in class @org.eclipse.sirius.common.tools.api.util.ReflectionHelper@ to call a private method. This method returns true (and not the result of the method) if it is called without exception. It returns false otherwise. Warning: This method must be used carefully.
+
 h4. Changes in @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()@ method has been added to get the real input for a @DRepresentation@.
@@ -90,6 +100,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart/IDiagramBorderNodeEditPart.getNodeLabel()@ methods has been moved up to @org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart.getNodeLabel()@ as both @IDiagramNodeEditPart@ and @IDiagramBorderNodeEditPart@ inherits of @IAbstractDiagramNodeEditPart@.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES@ added to replace @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR@ which is deprecated  
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR@ added to replace @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES@ which is deprecated 
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAndLabelCommmand@ is a new class that allows to update edge label when updating bendpoints. Several existing Sirius commands now extends this new class.
 * <span class="label label-warning">Deprecated</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES@ deprecated in favor @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES@ as it is an action id about border nodes layout.
 * <span class="label label-warning">Deprecated</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR@ deprecated in favor @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR@ as it is an action id about border nodes layout.
 * <span class="label label-danger">Removed</span> @org.eclipse.sirius.diagram.ui.graphical.edit.policies.EdgeCreationEditPolicy@ has been removed as it should not be in API and has been replaced by internal @org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionEditPolicy@.

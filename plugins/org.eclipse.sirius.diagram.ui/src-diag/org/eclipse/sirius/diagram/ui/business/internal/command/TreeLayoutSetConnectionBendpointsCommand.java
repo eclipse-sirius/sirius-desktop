@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,10 +22,10 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAndLabelCommmand;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -63,7 +63,8 @@ import org.eclipse.sirius.ext.base.Option;
  * does not work. <BR>
  * When one of this element is moved :
  * <UL>
- * <LI>The source or the target anchor of the moved edge is changed if needed,</LI>
+ * <LI>The source or the target anchor of the moved edge is changed if needed,
+ * </LI>
  * <LI>The bendpoints of the moved edge is changed,</LI>
  * <LI>The brother edges of the moved edge are adapted according to the new edge
  * anchors and bendpoints.</LI>
@@ -73,7 +74,7 @@ import org.eclipse.sirius.ext.base.Option;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 @SuppressWarnings("all")
-public class TreeLayoutSetConnectionBendpointsCommand extends SetConnectionBendpointsCommand {
+public class TreeLayoutSetConnectionBendpointsCommand extends SetConnectionBendpointsAndLabelCommmand {
 
     /**
      * Default constructor.
@@ -102,8 +103,8 @@ public class TreeLayoutSetConnectionBendpointsCommand extends SetConnectionBendp
                 Point oldLocationForEndOfSourceSegment = new Point(((RelativeBendpoint) relativeBendpoints.getPoints().get(1)).getSourceX(),
                         ((RelativeBendpoint) relativeBendpoints.getPoints().get(1)).getSourceY());
                 // Retrieve the third point (start of the target segment)
-                Point oldLocationForStartOfTargetSegment = new Point(((RelativeBendpoint) relativeBendpoints.getPoints().get(2)).getSourceX(), ((RelativeBendpoint) relativeBendpoints.getPoints().get(
-                        2)).getSourceY());
+                Point oldLocationForStartOfTargetSegment = new Point(((RelativeBendpoint) relativeBendpoints.getPoints().get(2)).getSourceX(),
+                        ((RelativeBendpoint) relativeBendpoints.getPoints().get(2)).getSourceY());
 
                 // Compute temporary list of bendpoints to determine the delta
                 List newBendpoints = new ArrayList();
