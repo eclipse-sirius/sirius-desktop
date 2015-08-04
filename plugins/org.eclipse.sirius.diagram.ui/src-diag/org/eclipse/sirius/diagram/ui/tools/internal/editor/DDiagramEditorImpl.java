@@ -161,7 +161,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListe
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWrapperPermissionAuthority;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
@@ -554,17 +553,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
         if (!permissionAuthority.canEditInstance(this.getRepresentation())) {
             notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_DENIED);
-        } else if (permissionAuthority instanceof ReadOnlyWrapperPermissionAuthority) {
-            // Find the CDOLockBasedPermissionAuthority and investigate by
-            // introspection if the diagram is "locked by me" in order to
-            // display the proper title image
-            ReadOnlyWrapperPermissionAuthority readOnlyWrapperPermissionAuthority = (ReadOnlyWrapperPermissionAuthority) permissionAuthority;
-            IPermissionAuthority wrappedAuthority = readOnlyWrapperPermissionAuthority.getWrappedAuthority();
-            if ("CDOLockBasedPermissionAuthority".equals(wrappedAuthority.getClass().getSimpleName())) {
-                if (LockStatus.LOCKED_BY_ME.equals(wrappedAuthority.getLockStatus(getDiagram().getElement()))) {
-                    notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY);
-                }
-            }
+        } else if (LockStatus.LOCKED_BY_ME.equals(permissionAuthority.getLockStatus(getDiagram().getElement()))) {
+            notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY);
         }
     }
 

@@ -44,7 +44,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListe
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWrapperPermissionAuthority;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusListener;
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQuery;
@@ -380,17 +379,8 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
         if (!permissionAuthority.canEditInstance(this.getRepresentation())) {
             notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_DENIED);
-        } else if (permissionAuthority instanceof ReadOnlyWrapperPermissionAuthority) {
-            // Find the CDOLockBasedPermissionAuthority and investigate by
-            // introspection if the diagram is "locked by me" in order to
-            // display the proper title image
-            ReadOnlyWrapperPermissionAuthority readOnlyWrapperPermissionAuthority = (ReadOnlyWrapperPermissionAuthority) permissionAuthority;
-            IPermissionAuthority wrappedAuthority = readOnlyWrapperPermissionAuthority.getWrappedAuthority();
-            if ("CDOLockBasedPermissionAuthority".equals(wrappedAuthority.getClass().getSimpleName())) {
-                if (LockStatus.LOCKED_BY_ME.equals(wrappedAuthority.getLockStatus(representation))) {
-                    notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY);
-                }
-            }
+        } else if (LockStatus.LOCKED_BY_ME.equals(permissionAuthority.getLockStatus(representation))) {
+            notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY);
         }
     }
 
