@@ -45,6 +45,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
@@ -312,6 +314,12 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
                         //Reinit dialect editor closer and other IEditingSession mechanisms.
                         uiSession.detachEditor(this);
                         uiSession.attachEditor(this);
+                    }
+                    // Reinit the lock status listener.
+                    if (dRepresentationLockStatusListener != null) {
+                        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(treeModel);
+                        permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
+                        initCollaborativeIPermissionAuthority(treeModel);
                     }
                 }
             }
