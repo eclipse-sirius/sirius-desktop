@@ -180,7 +180,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     /** Singleton instance of the Image for the REPRESENTATION_FROZEN status. */
     protected Image frozenRepresentationImage;
 
-    /** CDO specific {@link IAuthorityListener}. */
+    /** The {@link IAuthorityListener}. */
     private IAuthorityListener dRepresentationLockStatusListener;
 
     /** Singleton instance of the Image for the LOCK_BY_ME status */
@@ -365,8 +365,8 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     protected abstract void configureCommandFactoryProviders();
 
     /**
-     * Initialize {@link IPermissionAuthority} and the title image if the
-     * Table is already locked by the current user before opening.
+     * Initialize {@link IPermissionAuthority} and the title image if the Table
+     * is already locked by the current user before opening.
      * 
      * @param representation
      *            the {@link DSemanticDecorator} that is opening.
@@ -443,11 +443,21 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
                     final URI uri = sessionEditorInput.getURI();
                     setRepresentation(uri, false);
                     IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+
+                    // Get the new representation
+                    representation = getRepresentation();
                     if (uiSession != null && representation != null) {
                         // Reinit dialect editor closer and other
                         // IEditingSession mechanisms.
                         uiSession.detachEditor(this);
                         uiSession.attachEditor(this);
+                    }
+
+                    // Reinit the lock status listener.
+                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation);
+                    if (representation instanceof DSemanticDecorator && permissionAuthority != null && dRepresentationLockStatusListener != null) {
+                        permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
+                        initPermissionAuthority((DSemanticDecorator) representation);
                     }
                 }
             }
