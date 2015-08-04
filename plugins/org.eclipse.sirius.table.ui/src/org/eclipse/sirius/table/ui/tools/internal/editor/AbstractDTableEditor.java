@@ -52,6 +52,8 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
@@ -451,6 +453,12 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
                         // IEditingSession mechanisms.
                         uiSession.detachEditor(this);
                         uiSession.attachEditor(this);
+                    }
+                    // Reinit the lock status listener.
+                    if (dRepresentationLockStatusListener != null) {
+                        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(tableModel);
+                        permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
+                        initCollaborativeIPermissionAuthority(tableModel);
                     }
                 }
             }

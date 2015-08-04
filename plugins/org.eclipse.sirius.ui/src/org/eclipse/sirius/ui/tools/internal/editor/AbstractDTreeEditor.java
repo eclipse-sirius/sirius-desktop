@@ -178,7 +178,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     protected Image frozenRepresentationImage;
 
     /** CDO specific {@link IAuthorityListener}. */
-    private IAuthorityListener dRepresentationLockStatusListener;
+    protected IAuthorityListener dRepresentationLockStatusListener;
 
     /** Singleton instance of the Image for the LOCK_BY_ME status */
     private Image lockByMeImage;
