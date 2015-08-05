@@ -11,8 +11,8 @@
 package org.eclipse.sirius.business.api.dialect.description;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -450,8 +450,8 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
 
         // Merge all the definitions, by taking the one closest to
         // <code>bottom</code> when there are multiple ones.
-        for (String var : definitions.keySet()) {
-            availableVariables.put(var, ((List<VariableType>) definitions.get(var)).get(0));
+        for (Entry<String, Collection<VariableType>> var : definitions.entrySet()) {
+            availableVariables.put(var.getKey(), var.getValue().iterator().next());
         }
     }
 

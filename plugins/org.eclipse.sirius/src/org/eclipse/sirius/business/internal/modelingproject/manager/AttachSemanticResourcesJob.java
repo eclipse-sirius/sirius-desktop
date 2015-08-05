@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.modelingproject.manager;
 
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -58,9 +59,10 @@ public class AttachSemanticResourcesJob extends Job {
     public IStatus run(IProgressMonitor monitor) {
         try {
             monitor.beginTask(ACTION_NAME, 6 * semanticResourcesURIsToAttachPerSession.size());
-            for (Session session : semanticResourcesURIsToAttachPerSession.keySet()) {
+            for (Entry<Session, Set<URI>> entry : semanticResourcesURIsToAttachPerSession.entrySet()) {
+                Session session = entry.getKey();
                 if (session != null && session.isOpen()) {
-                    Set<URI> semanticResourcesURIsToAdd = semanticResourcesURIsToAttachPerSession.get(session);
+                    Set<URI> semanticResourcesURIsToAdd = entry.getValue();
                     CompoundCommand compoundCommand = new CompoundCommand();
                     for (URI semanticResourcesURI : semanticResourcesURIsToAdd) {
                         Command addSemanticResourceCmd = new AddSemanticResourceCommand(session, semanticResourcesURI, new SubProgressMonitor(monitor, 5));

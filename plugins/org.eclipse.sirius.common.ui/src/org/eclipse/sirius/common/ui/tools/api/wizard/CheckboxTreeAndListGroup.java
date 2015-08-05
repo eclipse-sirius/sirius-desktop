@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.runtime.SafeRunner;
@@ -48,7 +49,8 @@ import org.eclipse.swt.widgets.Tree;
  * CheckboxListViewer. All viewer selection-driven interactions are handled
  * within this object
  */
-// This is copied from org.eclipse.ui.internal.ide.misc, so we'd rather keep it as close as the original than trying to fix the warnings.
+// This is copied from org.eclipse.ui.internal.ide.misc, so we'd rather keep it
+// as close as the original than trying to fix the warnings.
 @SuppressWarnings({ "rawtypes", "deprecation", "unchecked" })
 public class CheckboxTreeAndListGroup implements ICheckStateListener, ISelectionChangedListener, ITreeViewerListener {
     private Object root;
@@ -882,24 +884,24 @@ public class CheckboxTreeAndListGroup implements ICheckStateListener, ISelection
         // Potentially long operation - show a busy cursor
         BusyIndicator.showWhile(treeViewer.getControl().getDisplay(), new Runnable() {
             public void run() {
-                Iterator keyIterator = items.keySet().iterator();
+                Iterator<Entry> entryIterator = items.entrySet().iterator();
 
                 // Update the store before the hierarchy to prevent
                 // updating
                 // parents before all of the children are done
-                while (keyIterator.hasNext()) {
-                    final Object key = keyIterator.next();
+                while (entryIterator.hasNext()) {
+                    final Entry entry = entryIterator.next();
                     // Replace the items in the checked state store with
                     // those
                     // from the supplied items
-                    final List selections = (List) items.get(key);
+                    final List selections = (List) entry.getValue();
                     if (selections.size() == 0) {
                         // If it is empty remove it from the list
-                        checkedStateStore.remove(key);
+                        checkedStateStore.remove(entry.getKey());
                     } else {
-                        checkedStateStore.put(key, selections);
+                        checkedStateStore.put(entry.getKey(), selections);
                         // proceed up the tree element hierarchy
-                        final Object parent = treeContentProvider.getParent(key);
+                        final Object parent = treeContentProvider.getParent(entry.getKey());
                         if (parent != null) {
                             addToHierarchyToCheckedStore(parent);
                         }
@@ -907,14 +909,14 @@ public class CheckboxTreeAndListGroup implements ICheckStateListener, ISelection
                 }
 
                 // Now update hierarchies
-                keyIterator = items.keySet().iterator();
+                entryIterator = items.entrySet().iterator();
 
-                while (keyIterator.hasNext()) {
-                    final Object key = keyIterator.next();
-                    updateHierarchy(key);
-                    if (currentTreeSelection != null && currentTreeSelection.equals(key)) {
+                while (entryIterator.hasNext()) {
+                    final Entry entry = entryIterator.next();
+                    updateHierarchy(entry.getKey());
+                    if (currentTreeSelection != null && currentTreeSelection.equals(entry.getKey())) {
                         listViewer.setAllChecked(false);
-                        listViewer.setCheckedElements(((List) items.get(key)).toArray());
+                        listViewer.setCheckedElements(((List) entry.getValue()).toArray());
                     }
                 }
             }

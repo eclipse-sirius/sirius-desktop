@@ -18,6 +18,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ext.base.collect.StackEx;
@@ -58,17 +60,17 @@ public class TimeProfiler2 extends TimeProfiler {
         if (runningTasks != null) {
             this.runningTasks.clear();
         } else {
-        	this.runningTasks = new StackEx<CompositeTask>();
+            this.runningTasks = new StackEx<CompositeTask>();
         }
         if (runningTasksTime != null) {
             this.runningTasksTime.clear();
         } else {
-        	this.runningTasksTime = new HashMap<CompositeTask, Date>();
+            this.runningTasksTime = new HashMap<CompositeTask, Date>();
         }
         if (this.roots != null) {
-        	this.roots.clear();
+            this.roots.clear();
         } else {
-        	this.roots = new LinkedList<CompositeTask>();
+            this.roots = new LinkedList<CompositeTask>();
         }
     }
 
@@ -91,19 +93,20 @@ public class TimeProfiler2 extends TimeProfiler {
      */
     @Override
     public String getStatus() {
-        final StringBuffer result = new StringBuffer(times.keySet().size() * 100);
+        Set<Entry<ProfilerTask, Long>> timeSet = times.entrySet();
+        final StringBuffer result = new StringBuffer(timeSet.size() * 100);
         if (isActive) {
-            final Iterator<ProfilerTask> it = times.keySet().iterator();
+            final Iterator<Entry<ProfilerTask, Long>> it = timeSet.iterator();
             while (it.hasNext()) {
-                final ProfilerTask task = it.next();
-                final StringBuffer line = new StringBuffer("\n  " + task + "  :");
-                final CompositeTask compositeTask = getCompositeTask(task);
+                final Entry<ProfilerTask, Long> entry = it.next();
+                final StringBuffer line = new StringBuffer("\n  " + entry.getKey() + "  :");
+                final CompositeTask compositeTask = getCompositeTask(entry.getKey());
                 if (compositeTask != null) {
                     line.append(compositeTask.getOccurences());
                     line.append(" occurences for ");
                 }
                 line.append(getMissingSpacesForAlignment(line.toString(), TimeProfiler.ALIGNMENT_LINE_SIZE));
-                line.append(times.get(task).toString());
+                line.append(entry.getValue().toString());
                 line.append(getMissingSpacesForAlignment(line.toString(), TimeProfiler.ALIGNMENT_LINE_SIZE + 10));
                 line.append(" ms");
                 result.append(line);

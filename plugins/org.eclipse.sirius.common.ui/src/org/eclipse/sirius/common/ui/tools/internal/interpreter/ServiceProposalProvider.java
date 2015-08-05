@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -133,9 +134,10 @@ public class ServiceProposalProvider implements IProposalProvider {
                 serviceNamePrefix = serviceNamePrefix.substring(receiverVariableName.get().length() + 1);
             }
 
-            for (String serviceName : services.keySet()) {
+            for (Entry<String, IService> entry : services.entrySet()) {
+                String serviceName = entry.getKey();
                 if (serviceName.startsWith(serviceNamePrefix)) {
-                    IService service = services.get(serviceName);
+                    IService service = entry.getValue();
                     if (service instanceof IPolymorphicService) {
                         addAllImplementations(proposals, (IPolymorphicService) service);
                     } else {

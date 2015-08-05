@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
@@ -112,9 +113,8 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
     }
 
     private void setFinalMessagesRanges() {
-        for (Message smep : finalMessagesRanges.keySet()) {
-            smep.setVerticalRange(finalMessagesRanges.get(smep));
-            // setMessageRange(smep, finalMessagesRanges.get(smep));
+        for (Entry<Message, Range> smep : finalMessagesRanges.entrySet()) {
+            smep.getKey().setVerticalRange(smep.getValue());
         }
     }
 

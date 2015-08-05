@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -431,10 +432,10 @@ public class VisualBindingManager {
     public SystemColors findClosestSystemColor(final FixedColor color) {
         int bestDistanceSoFar = Integer.MAX_VALUE;
         String bestColorNameSoFar = null;
-        for (final String defaultColorName : systemPalette.keySet()) {
-            final int dist = squareDistance(systemPalette.get(defaultColorName), color);
+        for (Entry<String, RGB> defaultColorName : systemPalette.entrySet()) {
+            final int dist = squareDistance(defaultColorName.getValue(), color);
             if (dist < bestDistanceSoFar) {
-                bestColorNameSoFar = defaultColorName;
+                bestColorNameSoFar = defaultColorName.getKey();
                 bestDistanceSoFar = dist;
                 if (dist == 0) {
                     break;

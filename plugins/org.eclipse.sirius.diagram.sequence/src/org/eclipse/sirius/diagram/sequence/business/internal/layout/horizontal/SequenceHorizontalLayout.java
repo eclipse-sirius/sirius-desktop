@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -446,9 +447,9 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
 
     private int getMaxReflexiveDepth(Lifeline lifeline, Range zone) {
         int maxWidth = 0;
-        for (Message msg : reflexiveMessagesToLayout.keySet()) {
-            if (lifeline.equals(msg.getLifeline().get()) && (zone == null || zone.includes(msg.getVerticalRange()))) {
-                maxWidth = Math.max(maxWidth, reflexiveMessagesToLayout.get(msg));
+        for (Entry<Message, Integer> msg : reflexiveMessagesToLayout.entrySet()) {
+            if (lifeline.equals(msg.getKey().getLifeline().get()) && (zone == null || zone.includes(msg.getKey().getVerticalRange()))) {
+                maxWidth = Math.max(maxWidth, msg.getValue());
             }
         }
         return maxWidth;
@@ -456,10 +457,10 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
 
     private Map<Message, Rectangle> computeReflexiveMessagesHorizontalBounds() {
         final Map<Message, Rectangle> computedMoves = new HashMap<Message, Rectangle>();
-        for (Message msg : reflexiveMessagesToLayout.keySet()) {
-            Rectangle properLogicalBounds = msg.getProperLogicalBounds();
-            properLogicalBounds.width = reflexiveMessagesToLayout.get(msg);
-            computedMoves.put(msg, properLogicalBounds);
+        for (Entry<Message, Integer> msg : reflexiveMessagesToLayout.entrySet()) {
+            Rectangle properLogicalBounds = msg.getKey().getProperLogicalBounds();
+            properLogicalBounds.width = msg.getValue();
+            computedMoves.put(msg.getKey(), properLogicalBounds);
         }
         return computedMoves;
     }

@@ -23,6 +23,8 @@ import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import junit.framework.TestCase;
+
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -130,8 +132,6 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
-
-import junit.framework.TestCase;
 
 /**
  * Wrapper for several UI* classes to handle ui management in tests. If needed,
@@ -1688,19 +1688,19 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             System.out.println("This test has not reset the oldUiPreference : " + this.getClass().getName() + " (it is currently true).");
         }
 
-        IPreferenceStore platformPrefs = PlatformUI.getPreferenceStore();
-        for (String key : oldPlatformUIPreferences.keySet()) {
-            platformPrefs.setValue(key, (Boolean) oldPlatformUIPreferences.get(key));
+        IPreferenceStore platformUIPrefs = PlatformUI.getPreferenceStore();
+        for (Entry<String, Object> pref : oldPlatformUIPreferences.entrySet()) {
+            platformUIPrefs.setValue(pref.getKey(), (Boolean) pref.getValue());
         }
 
         IPreferenceStore viewpointUIPrefs = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        for (String key : oldValueSiriusUIPreferences.keySet()) {
-            viewpointUIPrefs.setValue(key, (Boolean) oldValueSiriusUIPreferences.get(key));
+        for (Entry<String, Object> pref : oldValueSiriusUIPreferences.entrySet()) {
+            viewpointUIPrefs.setValue(pref.getKey(), (Boolean) pref.getValue());
         }
 
         IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
-        for (String key : oldValueSiriusPreferences.keySet()) {
-            corePreferences.putBoolean(key, (Boolean) oldValueSiriusPreferences.get(key));
+        for (Entry<String, Object> pref : oldValueSiriusPreferences.entrySet()) {
+            corePreferences.putBoolean(pref.getKey(), (Boolean) pref.getValue());
         }
     }
 

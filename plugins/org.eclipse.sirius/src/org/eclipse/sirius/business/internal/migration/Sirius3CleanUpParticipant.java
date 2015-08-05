@@ -12,7 +12,6 @@ package org.eclipse.sirius.business.internal.migration;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -47,9 +46,9 @@ public class Sirius3CleanUpParticipant extends AbstractRepresentationsFileMigrat
     @Override
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
-            Set<DView> keySet = initializedFeature.keySet();
-            for (DView dView : keySet) {
-                EStructuralFeature eStructuralFeature = initializedFeature.get(dView);
+            for (java.util.Map.Entry<DView, EStructuralFeature> feature : initializedFeature.entrySet()) {
+                DView dView = feature.getKey();
+                EStructuralFeature eStructuralFeature = feature.getValue();
                 Resource eResource = dView.eResource();
                 AnyType anyType = ((XMLResource) eResource).getEObjectToExtensionMap().get(dView);
                 FeatureMap any = anyType.getAnyAttribute();

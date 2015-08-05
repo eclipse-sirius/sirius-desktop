@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.ui.tools.api.dialog;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialogWithToggle;
@@ -238,9 +239,9 @@ public class SiriusMessageDialogWithToggle extends MessageDialogWithToggle {
             return IDialogConstants.DETAILS_ID;
         }
 
-        for (String providedButton : buttonsMap.keySet()) {
-            if (providedButton.equals(buttonLabel)) {
-                return buttonsMap.get(providedButton);
+        for (Entry<String, Integer> providedButton : buttonsMap.entrySet()) {
+            if (providedButton.getKey().equals(buttonLabel)) {
+                return providedButton.getValue();
             }
         }
 

@@ -1890,16 +1890,16 @@ public abstract class SiriusTestCase extends TestCase {
             resetDiagramUiPreference(key, diagramUIPreferences);
         }
         IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
-        for (String key : oldValueSiriusPreferences.keySet()) {
-            corePreferences.putBoolean(key, (Boolean) oldValueSiriusPreferences.get(key));
+        for (Entry<String, Object> pref : oldValueSiriusPreferences.entrySet()) {
+            corePreferences.putBoolean(pref.getKey(), (Boolean) pref.getValue());
         }
         IPreferenceStore viewpointUIPrefs = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        for (String key : oldValueSiriusUIPreferences.keySet()) {
-            viewpointUIPrefs.setValue(key, (Boolean) oldValueSiriusUIPreferences.get(key));
+        for (Entry<String, Object> pref : oldValueSiriusUIPreferences.entrySet()) {
+            viewpointUIPrefs.setValue(pref.getKey(), (Boolean) pref.getValue());
         }
         IPreferenceStore platformUIPrefs = PlatformUI.getPreferenceStore();
-        for (String key : oldPlatformUIPreferences.keySet()) {
-            platformUIPrefs.setValue(key, (Boolean) oldPlatformUIPreferences.get(key));
+        for (Entry<String, Object> pref : oldPlatformUIPreferences.entrySet()) {
+            platformUIPrefs.setValue(pref.getKey(), (Boolean) pref.getValue());
         }
 
         crossRefDetector.assertNoCrossReferenceAdapterFound();
