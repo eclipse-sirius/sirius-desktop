@@ -300,6 +300,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
         final MenuManager menuManager = new MenuManager();
         menuManager.setRemoveAllWhenShown(true);
         menuManager.addMenuListener(new IMenuListener() {
+            @Override
             public void menuAboutToShow(final IMenuManager mgr) {
                 menuManager.removeAll();
                 for (IObjectActionDelegateWrapper menuContribution : menuContributions) {
@@ -488,6 +489,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
         lws.setContents(thumbnail);
         disposeListener = new DisposeListener() {
 
+            @Override
             public void widgetDisposed(final DisposeEvent e) {
                 if (thumbnail != null) {
                     thumbnail.deactivate();
@@ -595,7 +597,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
      * 
      * @return <code>Control</code>
      */
-    protected Control getEditor() {
+    public Control getEditor() {
         return graphicalViewer.getControl();
     }
 
@@ -667,6 +669,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
          * 
          * @see org.eclipse.jface.viewers.ISelection#isEmpty()
          */
+        @Override
         public boolean isEmpty() {
             return selection.isEmpty();
         }
@@ -676,6 +679,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
          * 
          * @see org.eclipse.jface.viewers.IStructuredSelection#getFirstElement()
          */
+        @Override
         public Object getFirstElement() {
             return selection.getFirstElement();
         }
@@ -685,6 +689,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
          * 
          * @see org.eclipse.jface.viewers.IStructuredSelection#iterator()
          */
+        @Override
         public Iterator<?> iterator() {
             return selection.iterator();
         }
@@ -694,6 +699,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
          * 
          * @see org.eclipse.jface.viewers.IStructuredSelection#size()
          */
+        @Override
         public int size() {
             return selection.size();
         }
@@ -703,6 +709,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
          * 
          * @see org.eclipse.jface.viewers.IStructuredSelection#toArray()
          */
+        @Override
         public Object[] toArray() {
             return selection.toArray();
         }
@@ -712,6 +719,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
          * 
          * @see org.eclipse.jface.viewers.IStructuredSelection#toList()
          */
+        @Override
         public List<?> toList() {
             return selection.toList();
         }

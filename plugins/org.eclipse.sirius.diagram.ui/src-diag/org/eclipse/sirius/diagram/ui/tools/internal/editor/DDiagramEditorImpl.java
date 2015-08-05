@@ -206,6 +206,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.part.IPage;
+import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
 import com.google.common.collect.Iterables;
@@ -959,7 +961,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             return;
         }
 
-        if (selection instanceof IStructuredSelection) {
+        // We want to change the diagram selection only on Outline page
+        // selection changes.
+        if (isDiagramOutlinePage(part) && selection instanceof IStructuredSelection) {
 
             final List<?> selected = ((IStructuredSelection) selection).toList();
             final List<IGraphicalEditPart> result = new ArrayList<IGraphicalEditPart>(selected.size());
@@ -1010,6 +1014,20 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
             }
         }
+    }
+
+    private boolean isDiagramOutlinePage(IWorkbenchPart part) {
+        if (part instanceof ContentOutline) {
+            IPage page = ((ContentOutline) part).getCurrentPage();
+            if (page instanceof DiagramOutlinePage) {
+                GraphicalViewer graphicalViewer = getGraphicalViewer();
+                if (graphicalViewer != null) {
+                    Control control = ((DiagramOutlinePage) page).getEditor();
+                    return control == graphicalViewer.getControl();
+                }
+            }
+        }
+        return false;
     }
 
     @Override
