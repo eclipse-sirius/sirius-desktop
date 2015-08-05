@@ -106,9 +106,12 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
     private void init(DialectEditor editor, boolean defaultSelection) {
         dialectEditor = Preconditions.checkNotNull(editor);
         this.activateDefaultSelection = defaultSelection;
-        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(editor.getRepresentation());
-        if (domain != null) {
-            domain.addResourceSetListener(this);
+        DRepresentation representation = editor.getRepresentation();
+        if (representation != null) {
+            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(representation);
+            if (domain != null) {
+                domain.addResourceSetListener(this);
+            }
         }
     }
 
