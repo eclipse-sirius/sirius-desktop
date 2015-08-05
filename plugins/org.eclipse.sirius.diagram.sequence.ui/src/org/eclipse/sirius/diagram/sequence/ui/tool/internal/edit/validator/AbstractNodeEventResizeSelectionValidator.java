@@ -381,7 +381,7 @@ public class AbstractNodeEventResizeSelectionValidator {
 
             if (iSequenceEvent instanceof Lifeline || iSequenceEvent instanceof AbstractNodeEvent) {
                 reconnectionParent = iSequenceEvent;
-            } else if (ise != null) {
+            } else {
                 reconnectionParent = getReconnectionFinalParent(iSequenceEvent);
             }
         }

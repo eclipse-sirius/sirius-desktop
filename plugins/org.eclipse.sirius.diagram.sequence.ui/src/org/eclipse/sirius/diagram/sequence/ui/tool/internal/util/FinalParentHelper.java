@@ -73,7 +73,7 @@ public class FinalParentHelper {
         if (fullFinalRange != null) {
             if (isInvalidInteractionInsideOperand(fullFinalRange)) {
                 globalFinalParent = null;
-            } else if (fullFinalRange != null && request.isResize()) {
+            } else if (request.isResize()) {
                 globalFinalParent = getFinalParentOnResize(fullFinalRange);
             }
         }

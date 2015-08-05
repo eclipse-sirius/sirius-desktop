@@ -199,7 +199,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
                     if (res != null) {
                         found = getSession(res);
                     }
-                    if (found == null && any != null) {
+                    if (found == null) {
                         final Resource resource = any.eResource();
                         if (resource != null) {
                             found = getSession(resource);

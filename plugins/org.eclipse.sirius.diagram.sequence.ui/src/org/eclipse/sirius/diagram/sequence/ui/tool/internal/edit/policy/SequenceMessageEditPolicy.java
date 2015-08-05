@@ -680,12 +680,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         EndOfLifeEditPart endOfLifeEditPart = (EndOfLifeEditPart) smep.getTarget();
         final LifelineEditPart lifelineEditPart = (LifelineEditPart) endOfLifeEditPart.getParent();
 
-        ChangeBoundsRequest cbr = SequenceMessageEditPolicy.getEndOfLifeMoveRequest(endOfLifeEditPart, br.getLocation().getCopy());
-        if (cbr != null) {
-            ctc.compose(new CommandProxy(endOfLifeEditPart.getCommand(cbr)));
-        } else {
-            ctc.compose(org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE);
-        }
+        ChangeBoundsRequest cbr = getEndOfLifeMoveRequest(endOfLifeEditPart, br.getLocation().getCopy());
+        ctc.compose(new CommandProxy(endOfLifeEditPart.getCommand(cbr)));
 
         if (ctc.canExecute()) {
             ctc.compose(new CommandProxy(baseCommand));

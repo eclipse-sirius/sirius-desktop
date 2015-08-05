@@ -468,7 +468,7 @@ public class FilteredCommonTree extends Composite {
                         boolean initial = initialText != null && initialText.equals(text);
                         if (initial) {
                             patternFilter.setPattern(null);
-                        } else if (text != null) {
+                        } else {
                             patternFilter.setPattern(text);
                         }
 
@@ -1075,7 +1075,7 @@ public class FilteredCommonTree extends Composite {
                     boolean initial = initialText != null && initialText.equals(filterText);
                     if (initial) {
                         filter.setPattern(null);
-                    } else if (filterText != null) {
+                    } else {
                         filter.setPattern(filterText);
                     }
                 }

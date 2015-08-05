@@ -113,7 +113,7 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
         if (validator != null && validator.isValid()) {
             CompositeTransactionalCommand ctc = getRezizeCustomCommand(cfep, request);
 
-            Range expansionZone = validator == null ? Range.emptyRange() : validator.getExpansionZone();
+            Range expansionZone = validator.getExpansionZone();
             ICommand autoExpand = null;
             if (expansionZone != null && !expansionZone.isEmpty()) {
                 SequenceDiagram diagram = fragment.getDiagram();

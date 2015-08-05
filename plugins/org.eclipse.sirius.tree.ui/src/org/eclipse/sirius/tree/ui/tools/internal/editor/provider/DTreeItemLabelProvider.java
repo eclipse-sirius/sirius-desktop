@@ -139,10 +139,8 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider im
     public String getText(final Object element) {
         String result = StringUtil.EMPTY_STRING;
         if (element instanceof DTreeItem) {
-            final DTreeItem item = (DTreeItem) element;
-            if (item != null) {
-                result = item.getName();
-            }
+            DTreeItem item = (DTreeItem) element;
+            result = item.getName();
         }
         return result;
     }

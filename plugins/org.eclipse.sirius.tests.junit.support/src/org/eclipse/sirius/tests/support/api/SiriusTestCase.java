@@ -1081,8 +1081,7 @@ public abstract class SiriusTestCase extends TestCase {
 
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(semantic);
         domain.getCommandStack().execute(cmd);
-        final Collection<?> result = cmd.getResult();
-        return result != null ? (DRepresentation) result.toArray()[0] : null;
+        return (DRepresentation) cmd.getResult().iterator().next();
     }
 
     /**

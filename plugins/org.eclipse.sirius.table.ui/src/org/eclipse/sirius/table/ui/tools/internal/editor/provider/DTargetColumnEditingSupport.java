@@ -141,7 +141,7 @@ public class DTargetColumnEditingSupport extends EditingSupport {
                     tableEditor.enablePropertiesUpdate(true);
                     tableEditor.forceRefreshProperties();
                 }
-            } else if (value != null) {
+            } else {
                 tableEditor.enablePropertiesUpdate(false);
                 Command command = tableCommandFactory.buildCreateCellFromTool(line, targetColumn, value);
                 if (command.canExecute()) {

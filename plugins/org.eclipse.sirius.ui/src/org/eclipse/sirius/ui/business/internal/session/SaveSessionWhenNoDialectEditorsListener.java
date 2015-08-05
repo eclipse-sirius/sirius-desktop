@@ -137,7 +137,7 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
                 return;
 
             if (SessionStatus.DIRTY.equals(session.getStatus())) {
-                if (saveSessionJob == null || saveSessionJob != null && saveSessionJob.getState() == Job.NONE) {
+                if (saveSessionJob == null || saveSessionJob.getState() == Job.NONE) {
                     saveSessionJob = new SaveSessionJob(session);
                     saveSessionJob.schedule();
                 }
