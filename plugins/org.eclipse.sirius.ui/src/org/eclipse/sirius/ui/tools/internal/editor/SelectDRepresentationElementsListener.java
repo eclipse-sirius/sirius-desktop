@@ -154,7 +154,14 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
             if (elementsToSelectFromUiState != null) {
                 elementsToSelect = elementsToSelectFromUiState;
             } else { // keep default selection and reverse it if necessary
-                elementsToSelect = notifiedElements;
+                if (notifiedElements.size() > 0) {
+                    // Select created elements
+                    elementsToSelect = notifiedElements;
+                } else {
+                    // do not change the selection if there is no created
+                    // elements
+                    elementsToSelect = null;
+                }
             }
         } else {
             // Keep default behavior if change has been done out of a tool

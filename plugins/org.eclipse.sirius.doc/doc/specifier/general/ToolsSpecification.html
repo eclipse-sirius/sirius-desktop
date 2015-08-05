@@ -42,7 +42,7 @@
 			<li>
 				<code>InterpretedExpression Elements to select</code>: Expression to list the elements to select after the execution of the tool. There are four possibilities for the list of elements returned by this expression. In any case, if the default list of elements is not empty, the list of elements returned is filtered with the default selected elements. In case of creation tool, the default list contains newly created elements so, the returned list can contain at most that elements.
 				<ul>
-					<li>Empty expression: The default behavior is applied.</li>
+					<li>Empty expression: The default behavior is applied: if graphical elements has been created, these elements will be selected(excluding the sub elements), else, the selection is unchanged.</li>
 					<li>List of 
 						<code>DRepresentationElement</code>: All this graphical elements will be selected after the execution of the tool.
 					</li>

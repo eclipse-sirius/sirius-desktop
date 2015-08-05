@@ -184,8 +184,12 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
 
     /**
      * Test selection when no objects have been notified according to
-     * SelectDRepresentationElementsListener filter. In that case the result of
-     * interpreted query is taken as is.
+     * SelectDRepresentationElementsListener filter. In that case the selected
+     * elements are
+     * <ul>
+     * <li>the result of interpreted query if provided.</li>
+     * <li>not changed if query expression is empty</li>
+     * </ul>
      */
     public void testSelectionAfterDirectEditTool() {
         final String tool_Name = "Edit Name";
@@ -200,6 +204,14 @@ public class SelectionAfterToolExecutionTest extends SiriusDiagramTestCase {
 
         // check the selection
         checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("NodeList A1", "NodeList B", "NodeList C"), 3);
+
+        changeSelectionExpression(tool, "", false);
+        TestsUtil.synchronizationWithUIThread();
+        applyDirectEditTool(tool_Name, diagramForSelection, nodeA, "A2");
+        TestsUtil.synchronizationWithUIThread();
+
+        // check the selection is the same than previous
+        checkExpectedElementsInSelection(editorForSelection, Lists.newArrayList("NodeList A2", "NodeList B", "NodeList C"), 3);
     }
 
     /**
