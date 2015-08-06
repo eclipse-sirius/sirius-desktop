@@ -70,6 +70,8 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
      */
     protected IFigure primaryShape;
 
+    private Object savedConstraint;
+
     /**
      * Construct the edit part from the view.
      * 
@@ -89,6 +91,7 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
 
@@ -133,6 +136,7 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     protected void addBorderItem(final IFigure borderItemContainer, final IBorderItemEditPart borderItemEditPart) {
         if (borderItemEditPart instanceof DNodeNameEditPart) {
             if (this.resolveSemanticElement() instanceof DNode) {
@@ -140,12 +144,17 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
                 final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(node.getDiagramElementMapping(), node.getStyle());
                 final IBorderItemLocator locator = styleConfiguration.getNameBorderItemLocator(node, getMainFigure());
                 borderItemContainer.add(borderItemEditPart.getFigure(), locator);
-            } else {
-                // Older behaviour
-                final BorderItemLocator locator = new BorderItemLocator(getMainFigure(), PositionConstants.SOUTH);
-                locator.setBorderItemOffset(IBorderItemOffsets.NO_OFFSET);
-                borderItemContainer.add(borderItemEditPart.getFigure(), locator);
             }
+        } else if (borderItemEditPart instanceof DNode4EditPart && borderItemEditPart.resolveSemanticElement() instanceof DDiagramElement) {
+            IBorderItemLocator locator = null;
+            if (!(this.savedConstraint instanceof BorderItemLocator)) {
+                locator = this.createBorderItemLocator(getMainFigure(), (DDiagramElement) borderItemEditPart.resolveSemanticElement());
+                locator.setConstraint(borderItemEditPart.getFigure().getBounds());
+            } else {
+                locator = (BorderItemLocator) this.savedConstraint;
+                this.savedConstraint = null;
+            }
+            borderItemContainer.add(borderItemEditPart.getFigure(), locator);
         } else {
             super.addBorderItem(borderItemContainer, borderItemEditPart);
         }
@@ -198,6 +207,7 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
      * 
      * @not-generated : remove the layout manager to fix the size
      */
+    @Override
     protected NodeFigure createMainFigure() {
         final NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -227,6 +237,7 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -237,6 +248,7 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public EditPart getPrimaryChildEditPart() {
         return getChildBySemanticHint(SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID));
     }
@@ -244,6 +256,7 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @not-generated
      */
+    @Override
     public SiriusWrapLabel getNodeLabel() {
         return getPrimaryShape().getNodeLabel();
     }
@@ -251,10 +264,12 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public IFigure getPrimaryFigure() {
         return getPrimaryShape();
     }
 
+    @Override
     public Class<?> getMetamodelType() {
         return DNode.class;
     }

@@ -71,6 +71,8 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
      */
     protected IFigure primaryShape;
 
+    private Object savedConstraint;
+
     /**
      * Construct the edit part from the view.
      * 
@@ -90,6 +92,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart#refreshBounds()
      */
+    @Override
     protected void refreshBounds() {
         // super.refreshBounds();
     }
@@ -97,8 +100,10 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy() {
+            @Override
             public Command getCommand(final Request request) {
                 if (understandsRequest(request)) {
                     if (request instanceof CreateViewRequest) {
@@ -153,6 +158,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @not-generated : changed offset
      */
+    @Override
     protected void addBorderItem(final IFigure borderItemContainer, final IBorderItemEditPart borderItemEditPart) {
         if (borderItemEditPart instanceof DNodeNameEditPart) {
             if (this.resolveSemanticElement() instanceof DNode) {
@@ -161,7 +167,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
                 final IBorderItemLocator locator = styleConfiguration.getNameBorderItemLocator(node, getMainFigure());
                 borderItemContainer.add(borderItemEditPart.getFigure(), locator);
             }
-        } else if (borderItemEditPart instanceof DNode2EditPart) {
+        } else if (borderItemEditPart instanceof DNode2EditPart && borderItemEditPart.resolveSemanticElement() instanceof DDiagramElement) {
             IBorderItemLocator locator = null;
             if (!(this.savedConstraint instanceof BorderItemLocator)) {
                 locator = this.createBorderItemLocator(getMainFigure(), (DDiagramElement) borderItemEditPart.resolveSemanticElement());
@@ -176,14 +182,13 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
         }
     }
 
-    private Object savedConstraint;
-
     /**
      * {@inheritDoc}
      * 
      * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#reorderChild(org.eclipse.gef.EditPart,
      *      int)
      */
+    @Override
     protected void reorderChild(final EditPart child, final int index) {
         if (child instanceof DNode2EditPart) {
             this.savedConstraint = ((DNode2EditPart) child).getBorderItemLocator();
@@ -238,6 +243,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
      * 
      * @not-generated : remove the layout manager to fix the size
      */
+    @Override
     protected NodeFigure createMainFigure() {
         final NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -267,6 +273,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -277,6 +284,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public EditPart getPrimaryChildEditPart() {
         return getChildBySemanticHint(SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID));
     }
@@ -284,6 +292,7 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @not-generated
      */
+    @Override
     public SiriusWrapLabel getNodeLabel() {
         return getPrimaryShape().getNodeLabel();
     }
@@ -291,10 +300,12 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     /**
      * @was-generated
      */
+    @Override
     public IFigure getPrimaryFigure() {
         return getPrimaryShape();
     }
 
+    @Override
     public Class<?> getMetamodelType() {
         return DNode.class;
     }
