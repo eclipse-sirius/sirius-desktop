@@ -159,6 +159,12 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     protected static final String GMF_EDGE_SOURCE_TERMINAL = "edge.newSourceTerminal";
 
     /**
+     * Constant use to store the feedback figure. This feedback figure is used
+     * only when necessary (detection of potential straightened edge feedback).
+     */
+    protected static final String GMF_EDGE_FEEDBACK = "edge.feedback.figure";
+
+    /**
      * Extra width edge for this feedback.
      */
     private static final int WIDTH_FEEDBACK = 2;
@@ -949,24 +955,23 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     private Point getConvertedLocation(final CreateRequest request) {
-        //
-        // Retrieves the location.
-        Point location = request.getLocation().getCopy();
-        final Point realLocation;
-        if (location != null && getHost() instanceof GraphicalEditPart) {
-            final IFigure fig = ((GraphicalEditPart) getHost()).getFigure();
-            fig.translateToRelative(location);
+        return getConvertedLocation(request.getLocation().getCopy(), getHost());
+    }
+
+    private Point getConvertedLocation(Point pointToConvert, EditPart referencePart) {
+        Point realLocation;
+        if (pointToConvert != null && referencePart instanceof GraphicalEditPart) {
+            final IFigure fig = ((GraphicalEditPart) referencePart).getFigure();
+            fig.translateToRelative(pointToConvert);
             final Point containerLocation = fig.getBounds().getLocation();
-            location = new Point(location.x - containerLocation.x, location.y - containerLocation.y);
+            realLocation = new Point(pointToConvert.x - containerLocation.x, pointToConvert.y - containerLocation.y);
             if (fig instanceof ResizableCompartmentFigure) {
                 final Point scrollOffset = ((ResizableCompartmentFigure) fig).getScrollPane().getViewport().getViewLocation();
-                realLocation = new Point(location.x + scrollOffset.x, location.y + scrollOffset.y);
-            } else {
-                realLocation = location;
+                realLocation = new Point(realLocation.x + scrollOffset.x, realLocation.y + scrollOffset.y);
             }
 
         } else {
-            realLocation = location;
+            realLocation = pointToConvert;
         }
         return realLocation;
     }
@@ -1025,7 +1030,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         CompoundCommand result = new CompoundCommand(edgeCreationDescription.getName());
         // Store location hints so that the new view can be put as the proper
         // location after the refresh.
-        addStoreLayoutDataCommand(result, edgeLayoutData);
+        addStoreLayoutDataCommand(result, edgeLayoutData, request);
         // Create the actual edge
         org.eclipse.emf.common.command.Command emfCommand = cmdFactoryProvider.getCommandFactory(domain).buildCreateEdgeCommandFromTool(source, target, edgeCreationDescription);
         result.add(new ICommandProxy(new GMFCommandWrapper(domain, emfCommand)));
@@ -1033,7 +1038,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * .
+     * Add a command to store the edge layout data.
      * 
      * @param result
      *            The compound command
@@ -1041,10 +1046,62 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      *            The layout data to add to the SiriusLayoutDataManager
      */
     protected void addStoreLayoutDataCommand(CompoundCommand result, final EdgeLayoutData edgeLayoutData) {
+        addStoreLayoutDataCommand(result, edgeLayoutData, null);
+    }
+
+    /**
+     * Add a command to store the edge layout data. The edgeLayoutData can be
+     * override by another one extract from the feedback data stored in the
+     * request if necessary. The connection feedback of the request is used only
+     * if:
+     * <ul>
+     * <li>it is available in the extendedData of the request (key
+     * {@link #GMF_EDGE_FEEDBACK}).</li>
+     * <li>there is a potential straightened edge feedback (edge with only two
+     * points and with same x or same y).</li>
+     * </ul>
+     * .
+     * 
+     * @param result
+     *            The compound command
+     * @param edgeLayoutData
+     *            The layout data to add to the SiriusLayoutDataManager
+     * @param request
+     *            the CreateConnectionRequest
+     */
+    protected void addStoreLayoutDataCommand(CompoundCommand result, final EdgeLayoutData edgeLayoutData, final CreateConnectionRequest request) {
         result.add(new Command() {
             @Override
             public void execute() {
-                SiriusLayoutDataManager.INSTANCE.addData(edgeLayoutData);
+                EdgeLayoutData feedbackEdgeLayoutData = null;
+                if (request != null) {
+                    Connection connectionFeedback = (Connection) request.getExtendedData().get(SiriusGraphicalNodeEditPolicy.GMF_EDGE_FEEDBACK);
+                    // The connection feedback is used only if we detect a
+                    // potential straightened edge feedback.
+                    if (connectionFeedback != null && connectionFeedback.getPoints().size() == 2
+                            && ((connectionFeedback.getPoints().getFirstPoint().x == connectionFeedback.getPoints().getLastPoint().x
+                                    || connectionFeedback.getPoints().getFirstPoint().y == connectionFeedback.getPoints().getLastPoint().y))) {
+                        // Override edgeLayoutData
+                        Point sourceLocationFromFeedback = connectionFeedback.getPoints().getFirstPoint();
+                        sourceLocationFromFeedback = getConvertedLocation(sourceLocationFromFeedback, request.getSourceEditPart());
+                        if (sourceLocationFromFeedback != null) {
+                            Point targetLocationFromFeedback = connectionFeedback.getPoints().getLastPoint();
+                            targetLocationFromFeedback = getConvertedLocation(targetLocationFromFeedback, request.getTargetEditPart());
+                            if (GraphicalHelper.isSnapToGridEnabled(request.getSourceEditPart())) {
+                                feedbackEdgeLayoutData = getEdgeLayoutDataWithSnapToGrid(request, (INodeEditPart) request.getSourceEditPart(), (INodeEditPart) request.getTargetEditPart(),
+                                        sourceLocationFromFeedback, targetLocationFromFeedback);
+                            } else {
+                                feedbackEdgeLayoutData = getEdgeLayoutData(request, (INodeEditPart) request.getSourceEditPart(), (INodeEditPart) request.getTargetEditPart(),
+                                        sourceLocationFromFeedback, targetLocationFromFeedback);
+                            }
+                        }
+                    }
+                }
+                if (feedbackEdgeLayoutData != null) {
+                    SiriusLayoutDataManager.INSTANCE.addData(feedbackEdgeLayoutData);
+                } else {
+                    SiriusLayoutDataManager.INSTANCE.addData(edgeLayoutData);
+                }
             }
         });
     }
@@ -1362,4 +1419,13 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         return new ICommandProxy(cc);
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    protected void showCreationFeedback(CreateConnectionRequest request) {
+        super.showCreationFeedback(request);
+        // Add the connection feedback figure to the request to use it during
+        // the execution of the command. It is needed to not use the real mouse
+        // click locations but the feedback data instead.
+        request.getExtendedData().put(SiriusGraphicalNodeEditPolicy.GMF_EDGE_FEEDBACK, connectionFeedback);
+    }
 }
