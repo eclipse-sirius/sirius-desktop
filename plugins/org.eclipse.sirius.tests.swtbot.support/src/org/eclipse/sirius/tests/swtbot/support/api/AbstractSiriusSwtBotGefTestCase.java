@@ -275,14 +275,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         warnings = LinkedHashMultimap.create();
         initLoggers();
 
-        Set<String> idsOfSessionClosedOnSetup = closeAllSessions();
-        if (!idsOfSessionClosedOnSetup.isEmpty()) {
-            System.out.println("WARNING : the followings sessions were not closed on tearDown of previous tests : ");
-            for (String idOfSessionClosedOnSetup : idsOfSessionClosedOnSetup) {
-                System.out.println("\t" + idOfSessionClosedOnSetup);
-            }
-            System.out.println("They have been closed now.");
-        }
+        closeAllSessions(true);
 
         System.out.println("Setup of " + this.getClass().getName() + AbstractSiriusSwtBotGefTestCase.POINT + getName() + "()");
         try {
@@ -400,15 +393,39 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         SWTBotUtils.waitAllUiEvents();
     }
 
-    private Set<String> closeAllSessions() {
+    private Set<String> closeAllSessions(final boolean warn) {
         final Set<String> sessionIDs = new HashSet<String>();
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
             @Override
             public void run() {
+                Collection<Session> sessionsToClose = Sets.newLinkedHashSet();
                 for (final Session sess : Sets.newLinkedHashSet(SessionManager.INSTANCE.getSessions())) {
+                    if (sess.isOpen()) {
+                        sessionsToClose.add(sess);
+                    }
+                }
+                if (warn && !sessionsToClose.isEmpty()) {
+                    System.out.println("WARNING : the followings sessions were not closed on tearDown of previous tests: ");
+                    for (Session s : sessionsToClose) {
+                        System.out.println("\t" + s.getID());
+                    }
+                }
+                for (final Session sess : sessionsToClose) {
                     if (sess.isOpen()) {
                         sessionIDs.add(sess.getID());
                         sess.close(new NullProgressMonitor());
+                    }
+                }
+                if (warn && !sessionsToClose.isEmpty()) {
+                    if (sessionsToClose.size() == sessionIDs.size()) {
+                        System.out.println("They have been closed now.");
+                    } else {
+                        System.out.println("WARNING: some session are still open after close attempt: ");
+                        for (Session s : sessionsToClose) {
+                            if (!sessionIDs.contains(s.getID())) {
+                                System.out.println("\t" + s.getID());
+                            }
+                        }
                     }
                 }
             }
@@ -1311,8 +1328,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             public void logging(IStatus status, String plugin) {
                 switch (status.getSeverity()) {
                 case IStatus.ERROR:
-                    if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin()) && status.getMessage() != null && !status.getMessage().startsWith(
-                            "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
+                    if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin())
+                            && status.getMessage() != null
+                            && !status
+                                    .getMessage()
+                                    .startsWith(
+                                            "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
                         errorOccurs(status, plugin);
                     }
                     break;
@@ -1623,7 +1644,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             SWTBotUtils.waitAllUiEvents();
 
             crossRefDetector.checkNoCrossReferenceAdapter();
-            closeAllSessions();
+            closeAllSessions(false);
 
             SWTBotUtils.waitAllUiEvents();
             Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
