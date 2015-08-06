@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.sirius.tests.swtbot.BorderedNodeCreationNearCollapsedTest;
 import org.eclipse.sirius.tests.swtbot.BorderedNodeCreationNearCollapsedWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.BorderedNodeCreationTest;
@@ -29,11 +24,17 @@ import org.eclipse.sirius.tests.swtbot.DNodeListCreationTest;
 import org.eclipse.sirius.tests.swtbot.DNodeListCreationWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.EdgeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.EdgeCreationPositionWithSnapToGridTest;
+import org.eclipse.sirius.tests.swtbot.EdgeWithBorderNodeCreationPositionWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationPositionTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationTest;
 import org.eclipse.sirius.tests.swtbot.NodeCreationWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.NoteCreationTest;
 import org.eclipse.sirius.tests.swtbot.NoteCreationWithSnapToGridTest;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests.
@@ -81,6 +82,7 @@ public class AllCreationTestSuite extends TestCase {
         suite.addTestSuite(CollapsedBorderedNodeCreationNearCollapsedWithSnapToGridTest.class);
         suite.addTestSuite(EdgeCreationPositionTest.class);
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
+        suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
 
         return suite;
     }

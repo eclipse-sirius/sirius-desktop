@@ -486,8 +486,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         Point targetEndAnchorLocation = null;
         DEdge dedge = (DEdge) edge.getElement();
 
-        if (!EdgeRouting.STRAIGHT_LITERAL.equals(((EdgeStyle) dedge.getStyle()).getRoutingStyle()) || bendpoints instanceof RelativeBendpoints
-                && connectionPointList.size() == ((RelativeBendpoints) bendpoints).getPoints().size()) {
+        if (!EdgeRouting.STRAIGHT_LITERAL.equals(((EdgeStyle) dedge.getStyle()).getRoutingStyle())
+                || bendpoints instanceof RelativeBendpoints && connectionPointList.size() == ((RelativeBendpoints) bendpoints).getPoints().size()) {
             // Only the oblique router can remove bendpoints or there is no
             // missing bendpoint here. Move Along.
             return;
@@ -844,10 +844,12 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
         // Compute intersection between the line (source location<-->target
         // location) and the source node
-        Option<Point> intersectionSourcePoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, (IGraphicalEditPart) sourceEditPart, false);
+        Option<Point> intersectionSourcePoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, (IGraphicalEditPart) sourceEditPart, false,
+                true);
         // Compute intersection between the line (source location<-->target
         // location) and the target node
-        Option<Point> intersectionTargetPoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, (IGraphicalEditPart) targetEditPart, true);
+        Option<Point> intersectionTargetPoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, (IGraphicalEditPart) targetEditPart, true,
+                true);
         // Compute the snap source location and the snap target location
         Point absoluteSourceLocationSnapIn100Percent;
         Point absoluteTargetLocationSnapIn100Percent;
@@ -867,13 +869,13 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         final LayoutData targetLayoutData = new RootLayoutData(targetEditPart, targetLocationSnapIn100Percent, null);
         EdgeLayoutData edgeLayoutData = new EdgeLayoutData(sourceLayoutData, targetLayoutData);
         // Compute the new source terminal anchor
-        PrecisionPoint sourceTerminalPosition = new PrecisionPoint((double) sourceLocationSnapIn100Percent.x / absoluteSourceBoundsIn100Percent.width, (double) sourceLocationSnapIn100Percent.y
-                / absoluteSourceBoundsIn100Percent.height);
+        PrecisionPoint sourceTerminalPosition = new PrecisionPoint((double) sourceLocationSnapIn100Percent.x / absoluteSourceBoundsIn100Percent.width,
+                (double) sourceLocationSnapIn100Percent.y / absoluteSourceBoundsIn100Percent.height);
         String sourceTerminal = new SlidableAnchor(null, sourceTerminalPosition).getTerminal();
         edgeLayoutData.setSourceTerminal("" + sourceTerminal);
         // Compute the new target terminal anchor
-        PrecisionPoint targetTerminalPosition = new PrecisionPoint((double) targetLocationSnapIn100Percent.x / absoluteTargetBoundsIn100Percent.width, (double) targetLocationSnapIn100Percent.y
-                / absoluteTargetBoundsIn100Percent.height);
+        PrecisionPoint targetTerminalPosition = new PrecisionPoint((double) targetLocationSnapIn100Percent.x / absoluteTargetBoundsIn100Percent.width,
+                (double) targetLocationSnapIn100Percent.y / absoluteTargetBoundsIn100Percent.height);
         String targetTerminal = new SlidableAnchor(null, targetTerminalPosition).getTerminal();
         edgeLayoutData.setTargetTerminal("" + targetTerminal);
         // Applied the zoom of the current diagram to set the pointList, the

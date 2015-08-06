@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -64,6 +59,11 @@ import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWit
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropOnDiagramTest;
 import org.eclipse.sirius.tests.swtbot.uml.PortLocationAfterDragAndDropTest;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * All SWTBot tests.
@@ -144,7 +144,7 @@ public class AllTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addGerritPart2(TestSuite suite) {
-       
+
         suite.addTestSuite(NoteCreationTest.class);
         suite.addTestSuite(MigrationOnVsmEditorReloadTest.class);
         suite.addTestSuite(VSMFieldTest.class);
@@ -298,6 +298,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CollapsedBorderedNodeCreationNearCollapsedWithSnapToGridTest.class);
         suite.addTestSuite(EdgeCreationPositionTest.class);
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
+        suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
 
         suite.addTestSuite(DeleteHookTests.class);
 
@@ -358,7 +359,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ToolCreationPositionTest.class);
         suite.addTestSuite(LocalSessionViewTest.class);
         suite.addTestSuite(ShowTypeActionButtonTest.class);
-        
+
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
         suite.addTestSuite(ValidationTest.class);
