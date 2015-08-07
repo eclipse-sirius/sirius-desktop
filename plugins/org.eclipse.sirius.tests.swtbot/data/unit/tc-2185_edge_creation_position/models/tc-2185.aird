@@ -554,6 +554,64 @@
       <activatedLayers xmi:type="description_1:Layer" href="../description/tc-2185.odesign#//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Bordered%20Node%20on%20Node']/@defaultLayer"/>
       <target xmi:type="ecore:EPackage" href="tc-2185.ecore#/"/>
     </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_bNxoQDzWEeWflaMpVJ1jYw" name="NodeForStraightCase">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_bNxoQTzWEeWflaMpVJ1jYw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_bNxoQjzWEeWflaMpVJ1jYw" type="Sirius" element="_bNxoQDzWEeWflaMpVJ1jYw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_bNxoQzzWEeWflaMpVJ1jYw" type="2001" element="_bNxoVjzWEeWflaMpVJ1jYw">
+            <children xmi:type="notation:Node" xmi:id="_bNxoRDzWEeWflaMpVJ1jYw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_bNxoRTzWEeWflaMpVJ1jYw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_bNxoRjzWEeWflaMpVJ1jYw" type="3003" element="_bNxoVzzWEeWflaMpVJ1jYw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bNxoRzzWEeWflaMpVJ1jYw" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bNxoSDzWEeWflaMpVJ1jYw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bNxoSTzWEeWflaMpVJ1jYw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bNxoSjzWEeWflaMpVJ1jYw" x="99" y="40" width="307" height="101"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bNxoSzzWEeWflaMpVJ1jYw" type="2001" element="_bNxoWDzWEeWflaMpVJ1jYw">
+            <children xmi:type="notation:Node" xmi:id="_bNxoTDzWEeWflaMpVJ1jYw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_bNxoTTzWEeWflaMpVJ1jYw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_bNxoTjzWEeWflaMpVJ1jYw" type="3003" element="_bNxoWTzWEeWflaMpVJ1jYw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bNxoTzzWEeWflaMpVJ1jYw" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bNxoUDzWEeWflaMpVJ1jYw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bNxoUTzWEeWflaMpVJ1jYw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bNxoUjzWEeWflaMpVJ1jYw" x="99" y="200" width="302" height="101"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_bNxoUzzWEeWflaMpVJ1jYw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_bNxoVDzWEeWflaMpVJ1jYw" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_bNxoVTzWEeWflaMpVJ1jYw"/>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_bNxoVjzWEeWflaMpVJ1jYw" name="A" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="tc-2185.ecore#//A"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc-2185.ecore#//A"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_bNxoVzzWEeWflaMpVJ1jYw" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="../description/tc-2185.odesign#//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="../description/tc-2185.odesign#//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_bNxoWDzWEeWflaMpVJ1jYw" name="B" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="tc-2185.ecore#//B"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc-2185.ecore#//B"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_bNxoWTzWEeWflaMpVJ1jYw" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="../description/tc-2185.odesign#//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="../description/tc-2185.odesign#//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="../description/tc-2185.odesign#//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_bNxoWjzWEeWflaMpVJ1jYw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="../description/tc-2185.odesign#//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="tc-2185.ecore#/"/>
+    </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="../description/tc-2185.odesign#//@ownedViewpoints[name='TC2185']"/>
   </ownedViews>
 </viewpoint:DAnalysis>

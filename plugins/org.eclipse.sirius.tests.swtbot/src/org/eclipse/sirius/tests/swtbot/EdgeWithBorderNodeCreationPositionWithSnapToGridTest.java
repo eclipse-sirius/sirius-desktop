@@ -18,9 +18,15 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 import com.google.common.collect.Iterables;
 
@@ -93,5 +99,44 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeCr
             result = (location.x == parentBounds.x || location.x == (parentBounds.x + parentBounds.width)) || (location.y == parentBounds.y || location.y == (parentBounds.y + parentBounds.height));
         }
         return result;
+    }
+
+    /**
+     * For closed source and target points on an axis, the feedback shows a
+     * straighten edge, the result must be also 2 aligned border nodes.
+     */
+    public void testBorderNodesAreAligned() {
+        testBorderNodesAreAligned(new Point(200, 135), new Point(209, 203));
+    }
+
+    /**
+     * For closed source and target points on an axis, the feedback shows a
+     * straighten edge, the result must be also 2 aligned border nodes.<BR>
+     * For this test, the feedback behavior is slightly different as
+     * {@link #testBorderNodesAreAligned()}.
+     */
+    public void testBorderNodesAreAlignedAnotherCase() {
+        testBorderNodesAreAligned(new Point(200, 135), new Point(210, 203));
+    }
+
+    private void testBorderNodesAreAligned(Point source, Point target) {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VIEWPOINT_NAME + " " + "Node", "NodeForStraightCase", DDiagram.class);
+        editor.setSnapToGrid(true, 2, 2);
+
+        ICondition done = new OperationDoneCondition();
+        editor.activateTool(getCreateEdgeToolName());
+        editor.click(source);
+        editor.click(target, true);
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(done);
+
+        // Get the new source border node
+        IGraphicalEditPart sourcePart = (IGraphicalEditPart) editor.getEditPart("A", AbstractDiagramNodeEditPart.class).part();
+        IGraphicalEditPart sourceBorderNode = getBorderNode(sourcePart);
+        // Get the new target border node
+        IGraphicalEditPart targetPart = (IGraphicalEditPart) editor.getEditPart("B", AbstractDiagramNodeEditPart.class).part();
+        IGraphicalEditPart targetBorderNode = getBorderNode(targetPart);
+        assertEquals("The source and the target border nodes should be aligned.", GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceBorderNode).getLocation().x,
+                GraphicalHelper.getAbsoluteBoundsIn100Percent(targetBorderNode).getLocation().x);
     }
 }

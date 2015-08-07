@@ -32,7 +32,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -49,11 +48,12 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
  * @author pcdavid
  */
 public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
+    /** The viewpoint name. */
+    protected static final String VIEWPOINT_NAME = "TC2185";
+
     private static final PrecisionPoint TOP_LEFT_CORNER = new PrecisionPoint(0.1, 0.1);
 
     private static final PrecisionPoint BOTTOM_RIGHT_CORNER = new PrecisionPoint(0.9, 0.9);
-
-    private static final String VIEWPOINT_NAME = "TC2185";
 
     private static final String MODEL = "tc-2185.ecore";
 
@@ -62,13 +62,6 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DATA_UNIT_DIR = "data/unit/tc-2185_edge_creation_position/";
 
     private static final String FILE_DIR = "models/";
-
-    /** The current editor */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    private UIResource sessionAirdResource;
-
-    private UILocalSession localSession;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {

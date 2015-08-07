@@ -96,6 +96,44 @@ public class SWTBotSiriusFigureCanvas extends SWTBotGefFigureCanvas {
         });
     }
 
+    /**
+     * Contrary to {@link #mouseMoveLeftClick(int, int)}, this method allows to
+     * display the feedback during the creation: Useful for edge creation.
+     * 
+     * @param xPosition
+     *            the relative x position
+     * @param yPosition
+     *            the relative y position
+     * @param displayFeedback
+     *            true to display feedback, false otherwise.
+     * 
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas#mouseMoveLeftClick(int,
+     *      int)
+     */
+    public void mouseMoveLeftClick(final int xPosition, final int yPosition, boolean displayFeedback) {
+        if (!displayFeedback) {
+            mouseMoveLeftClick(xPosition, yPosition);
+        } else {
+            UIThreadRunnable.asyncExec(new VoidResult() {
+                @Override
+                public void run() {
+                    org.eclipse.swt.events.MouseEvent meMove = wrapMouseEvent(xPosition, yPosition, 0, 0, 0);
+                    eventDispatcher.dispatchMouseMoved(meMove);
+                    // Force an update of viewport (necessary to have a correct
+                    // feedback of edge in case of edge creation for example)
+                    if (widget instanceof FigureCanvas) {
+                        ((FigureCanvas) widget).getViewport().getUpdateManager().performUpdate();
+                    }
+                    org.eclipse.swt.events.MouseEvent meDown = wrapMouseEvent(xPosition, yPosition, 1, SWT.None, 1);
+                    eventDispatcher.dispatchMousePressed(meDown);
+                    org.eclipse.swt.events.MouseEvent meUp = wrapMouseEvent(xPosition, yPosition, 1, SWT.BUTTON1, 1);
+                    eventDispatcher.dispatchMouseReleased(meUp);
+                }
+            });
+        }
+
+    }
+
     private org.eclipse.swt.events.MouseEvent wrapMouseEvent(int x, int y, int button, int stateMask, int count) {
         return new org.eclipse.swt.events.MouseEvent(createMouseEvent(x, y, button, stateMask, count));
     }

@@ -225,6 +225,21 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
+     * Helper to click with a Point as parameter.
+     * 
+     * @param point
+     *            the coordinate to click on described as a Point. This
+     *            coordinates is relative to screen.
+     * @param displayFeedback
+     *            true to display feedback, false otherwise.
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#click(int,
+     *      int)
+     */
+    public void click(final Point point, boolean displayFeedback) {
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).click(point.x, point.y, displayFeedback);
+    }
+
+    /**
      * Clicks on the center of the targeted GraphicalEditPart known by its
      * label.
      * 
@@ -1475,7 +1490,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
             }
         });
     }
-    
+
     /**
      * Return the "Snap to grid" option value for this editor.
      * 

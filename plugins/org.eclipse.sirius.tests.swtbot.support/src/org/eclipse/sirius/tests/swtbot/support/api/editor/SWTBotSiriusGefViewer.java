@@ -324,4 +324,22 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
             canvas.mouseDrag(fromXPosition, fromYPosition, toXPosition, toYPosition);
         }
     }
+
+    /**
+     * Click on the editor at the specified location.
+     * 
+     * @param xPosition
+     *            the x relative position
+     * @param yPosition
+     *            the y relative position
+     * @param displayFeedback
+     *            true to display feedback, false otherwise.
+     */
+    public void click(final int xPosition, final int yPosition, boolean displayFeedback) {
+        if (canvas instanceof SWTBotSiriusFigureCanvas) {
+            ((SWTBotSiriusFigureCanvas) canvas).mouseMoveLeftClick(xPosition, yPosition, displayFeedback);
+        } else {
+            canvas.mouseMoveLeftClick(xPosition, yPosition);
+        }
+    }
 }
