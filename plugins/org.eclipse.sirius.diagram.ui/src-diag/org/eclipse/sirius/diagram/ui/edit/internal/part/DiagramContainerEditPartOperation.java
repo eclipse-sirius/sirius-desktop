@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelo
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DStylizable;
@@ -179,25 +180,35 @@ public final class DiagramContainerEditPartOperation {
 
     private static void refreshCorners(final AbstractDiagramElementContainerEditPart self, DDiagramElement diagElement, RoundedRectangle gradientRoundedShape) {
         Dimension cornerDimension = getCornerDimension(self);
+        Dimension specificDimension = cornerDimension;
+        int specificCornerPosition = PositionConstants.NONE;
         if (self.isRegion()) {
-            // If the current stack is a Region, reuse the parent corner
-            // dimension as max, to avoid to overlap its border.
+            // If the current stack is a Region, check and avoid overlap of the
+            // region container border.
+
             DNodeContainer regionContainer = (DNodeContainer) diagElement.eContainer();
             Dimension regionContainerCornerDimension = getCornerDimension(regionContainer);
-            if (regionContainerCornerDimension.contains(cornerDimension)) {
+            if (!regionContainerCornerDimension.getShrinked(cornerDimension).isEmpty()) {
                 int parentStackDirection = self.getParentStackDirection();
                 if (parentStackDirection == PositionConstants.NORTH_SOUTH && isLastRegionPart(self)) {
+                    specificDimension = cornerDimension;
                     cornerDimension = Dimension.max(cornerDimension, regionContainerCornerDimension);
-                    // TODO: Vertical stack and last region, we should have
-                    // bottom rounded corners only;
+                    if (specificDimension != cornerDimension) {
+                        specificCornerPosition = PositionConstants.NORTH_WEST | PositionConstants.NORTH_EAST;
+                    }
                     updatePrecedingSiblingCorner(self);
                 } else if (parentStackDirection == PositionConstants.EAST_WEST) {
                     boolean firstRegionPart = isFirstRegionPart(self);
                     boolean lastRegionPart = isLastRegionPart(self);
-                    cornerDimension = (firstRegionPart || lastRegionPart) ? Dimension.max(cornerDimension, regionContainerCornerDimension) : cornerDimension;
-                    // TODO: Horizontal stack and first/last region, we should
-                    // have bottom
-                    // left/right rounded corner only
+
+                    if (firstRegionPart || lastRegionPart) {
+                        specificDimension = cornerDimension;
+                        cornerDimension = Dimension.max(cornerDimension, regionContainerCornerDimension);
+                        specificCornerPosition = PositionConstants.NORTH_WEST | PositionConstants.NORTH_EAST;
+                        specificCornerPosition = firstRegionPart ? specificCornerPosition : specificCornerPosition | PositionConstants.SOUTH_WEST;
+                        specificCornerPosition = lastRegionPart ? specificCornerPosition : specificCornerPosition | PositionConstants.SOUTH_EAST;
+                    }
+
                     if (lastRegionPart) {
                         updatePrecedingSiblingCorner(self);
                     }
@@ -207,6 +218,9 @@ public final class DiagramContainerEditPartOperation {
 
         // Update the corner dimension.
         gradientRoundedShape.setCornerDimensions(cornerDimension);
+        if (gradientRoundedShape instanceof RegionRoundedGradientRectangle) {
+            ((RegionRoundedGradientRectangle) gradientRoundedShape).setAdditionalCornerDimensions(specificCornerPosition, specificDimension);
+        }
     }
 
     private static void updatePrecedingSiblingCorner(final AbstractDiagramElementContainerEditPart self) {
@@ -258,7 +272,7 @@ public final class DiagramContainerEditPartOperation {
             int borderMagin = borderSize;
             switch (self.getParentStackDirection()) {
             case PositionConstants.NORTH_SOUTH:
-                borderMagin = isFirstRegionPart(self) ? 0 : borderSize - 1;
+                borderMagin = isFirstRegionPart(self) ? 0 : Math.max(0, borderSize - 1);
                 margin = new MarginBorder(borderMagin + labelOffset, 0, 0, 0);
                 break;
             case PositionConstants.EAST_WEST:

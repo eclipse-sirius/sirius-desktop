@@ -19,7 +19,6 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -90,6 +89,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangle
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -327,11 +327,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      */
     protected void configureBorder(IFigure shapeFigure) {
         if (isRegion() && shapeFigure != null) {
-            // If the figure is a shape, do not draw the shape border.
-            if (shapeFigure instanceof Shape) {
-                ((Shape) shapeFigure).setOutline(false);
-            }
-
             if (isFirstRegionPart()) {
                 shapeFigure.setBorder(new MarginBorder(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0));
             } else {
@@ -494,7 +489,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             deactivate();
         }
         if (shapeFigure == null) {
-            shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+            if (isRegion()) {
+                shapeFigure = new RegionRoundedGradientRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+            } else {
+                shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
+            }
         }
 
         // Compute label visibility
