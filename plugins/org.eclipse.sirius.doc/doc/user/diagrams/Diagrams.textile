@@ -85,6 +85,7 @@ h3. Moving elements
 There are specific shortcuts to change the move behavior:
 * SHIFT: Constrained move (only vertical or horizontal move is authorized at once).
 * ALT (or CTRL for Mac users): Ignore snap while dragging (temporarily disables the snap during the move if it is activated).
+* F3: Move the edge source and target if pressed during the edge move. See the "Move edge group" subsection below for more details. 
 * F4: Move with snap to all shapes (if the "Snap to shapes":#snap_to_shapes is already activated for the current diagram)
 
 h3. Manage edges
@@ -105,6 +106,30 @@ The user defines some bend-points:
 
 The user executes the "Remove Bend-points" action:
 !images/afterRemoveBendpoints.png!
+
+h4(#move_edge_group). Move edge group
+
+In specific cases, we can find edges connected to border nodes. For example in a diagram representing data flows, exchanges are connected to port in and port out. When the user wants to move an exchange on a layouted diagram, he has to move the source port, then the target port and possibly move some bendpoints of the edge.
+This feature aims to move the group {edge, labels, ports} in a single “drag like” operation when using the F3 shortcut and drag/move the edge. The F3 key has no effect if you attempt a reconnect by moving the first or last edge end.
+
+Example when activating the tool and moving the second edge toward the top:
+!images/moveEdgeGroup1.png!
+
+The final result:
+!images/moveEdgeGroup2.png!
+
+The edge group moving is authorized only if these conditions are met:
+
+* A border node as source.
+* A border node as target.
+* Source node has only one connection: the moved edge.
+* Target node has only one connection: the moved edge.
+* Source and target are on the same "axis":
+** located on west or east sides of their respective parent (could be the same).
+** located on north or south sides of their respective parent (could be the same).
+
+Examples of authorized moving:
+!images/compoundmoves2.png!
  
 h3(#distribute). Distribute elements
 

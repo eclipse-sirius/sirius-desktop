@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2006, 2008 IBM Corporation and others.
+ * Copyright (c) 2002, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -544,7 +544,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      */
     private boolean isFeedbackForBorderedNodeDropping(ChangeBoundsRequest request, AbstractGraphicalEditPart targetAbstractGraphicalEditPart) {
         boolean isFeedbackForBorderedNodeDropping = false;
-        if (!(new RequestQuery(request).isResize() || org.eclipse.gef.RequestConstants.REQ_RESIZE_CHILDREN.equals(request.getType()))) {
+        if (!(new RequestQuery(request).isResize() || RequestConstants.REQ_RESIZE_CHILDREN.equals(request.getType()) || RequestConstants.REQ_MOVE.equals(request.getType()))) {
 
             EditPart hostEditPart = getHost();
             IFigure diagramFigure = ((AbstractGraphicalEditPart) hostEditPart.getRoot().getChildren().get(0)).getFigure();
@@ -644,7 +644,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     private Rectangle getNewBounds(final ChangeBoundsRequest request) {
         IBorderItemEditPart borderItemEP = (IBorderItemEditPart) getHost();
         IBorderItemLocator borderItemLocator = borderItemEP.getBorderItemLocator();
-
         if (borderItemLocator != null) {
             final PrecisionRectangle rect = new PrecisionRectangle(getInitialFeedbackBounds());
             getHostFigure().translateToAbsolute(rect);
@@ -759,6 +758,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
     static class IBorderedShapeEditPartCondition implements Conditional {
 
+        @Override
         public boolean evaluate(EditPart editpart) {
             return editpart instanceof IBorderedShapeEditPart;
         }

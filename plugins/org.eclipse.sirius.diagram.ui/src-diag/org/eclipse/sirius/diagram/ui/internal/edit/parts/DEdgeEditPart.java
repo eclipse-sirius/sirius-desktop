@@ -11,8 +11,10 @@
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.Connection;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConnectionBendpointEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -26,6 +28,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.TreeLayoutConnectio
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DEdgeItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionBendpointEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusSelectConnectionEditPartTracker;
 
 /**
  * @was-generated
@@ -151,5 +154,10 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
         } else {
             super.installEditPolicy(key, editPolicy);
         }
+    }
+
+    @Override
+    public DragTracker getDragTracker(Request req) {
+        return new SiriusSelectConnectionEditPartTracker(this);
     }
 }

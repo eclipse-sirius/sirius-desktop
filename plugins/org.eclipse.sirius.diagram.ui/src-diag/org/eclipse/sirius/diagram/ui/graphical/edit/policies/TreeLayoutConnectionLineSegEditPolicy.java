@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,13 +24,14 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionLineSegEditPolicy;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
+import org.eclipse.gmf.runtime.gef.ui.internal.editpolicies.LineMode;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionBendpointsCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.handles.SiriusBendpointMoveHandle;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionBendpointEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 
@@ -42,7 +43,15 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
  * @author jdupont
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class TreeLayoutConnectionLineSegEditPolicy extends ConnectionLineSegEditPolicy {
+@SuppressWarnings("restriction")
+public class TreeLayoutConnectionLineSegEditPolicy extends SiriusConnectionBendpointEditPolicy {
+
+    /**
+     * Default constructor.
+     */
+    public TreeLayoutConnectionLineSegEditPolicy() {
+        super(LineMode.ORTHOGONAL_FREE);
+    }
 
     /**
      * Override to launch a specific SetConnectionBendpointsCommand (
@@ -86,6 +95,7 @@ public class TreeLayoutConnectionLineSegEditPolicy extends ConnectionLineSegEdit
         return new ICommandProxy(sbbCommand);
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     protected List createManualHandles() {
         List list = new ArrayList();
