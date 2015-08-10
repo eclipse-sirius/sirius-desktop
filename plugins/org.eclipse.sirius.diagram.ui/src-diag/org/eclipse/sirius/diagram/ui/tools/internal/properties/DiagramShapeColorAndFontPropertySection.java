@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,24 +90,22 @@ import org.eclipse.ui.IWorkbenchPart;
 @SuppressWarnings("restriction")
 public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFontsPropertySection {
 
-    /**
-     * button to set back the view to default color.
-     */
+    /** button to set back the view to default color. */
     protected Button resetStylePropertiesToDefaultValuesButton;
 
     /**
      * button to allow user to select an image in the workspace and set the
-     * selected image as view backgroud image.
+     * selected image as view background image.
      */
     protected Button setStyleToWorkspaceImageButton;
 
     /**
-     * button to set back the view to default color.
+     * button to set the font underlined.
      */
     private Button fontUnderlineButton;
 
     /**
-     * button to set back the view to default color.
+     * button to set the font struck through.
      */
     private Button fontStrikeThroughButton;
 
@@ -186,11 +184,8 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
                             newColor.setRed(finalColor.red);
 
                             IInterpreter interpreter = new EObjectQuery(view).getSession().getInterpreter();
-                            // new
-                            // ViewPropertiesSynchronizer().synchronizeDDiagramElementStyleProperties(view);
                             new ViewPropertiesSynchronizer().synchronizeDDiagramElementStyleColorProperties(view, newColor, propertyId, interpreter);
                         }
-
                     }));
                 }
             }
@@ -322,7 +317,6 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
                 updateFontStrikeThrough();
             }
         });
-
         return toolBar;
     }
 
