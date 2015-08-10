@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
+import java.util.BitSet;
 import java.util.Collection;
 
 import org.eclipse.draw2d.IFigure;
@@ -181,7 +182,7 @@ public final class DiagramContainerEditPartOperation {
     private static void refreshCorners(final AbstractDiagramElementContainerEditPart self, DDiagramElement diagElement, RoundedRectangle gradientRoundedShape) {
         Dimension cornerDimension = getCornerDimension(self);
         Dimension specificDimension = cornerDimension;
-        int specificCornerPosition = PositionConstants.NONE;
+        BitSet specificCornerPosition = new BitSet(PositionConstants.NSEW);
         if (self.isRegion()) {
             // If the current stack is a Region, check and avoid overlap of the
             // region container border.
@@ -190,27 +191,30 @@ public final class DiagramContainerEditPartOperation {
             Dimension regionContainerCornerDimension = getCornerDimension(regionContainer);
             if (!regionContainerCornerDimension.getShrinked(cornerDimension).isEmpty()) {
                 int parentStackDirection = self.getParentStackDirection();
-                if (parentStackDirection == PositionConstants.NORTH_SOUTH && isLastRegionPart(self)) {
+                boolean firstRegionPart = isFirstRegionPart(self);
+                boolean lastRegionPart = isLastRegionPart(self);
+                if (parentStackDirection == PositionConstants.NORTH_SOUTH && lastRegionPart) {
                     specificDimension = cornerDimension;
                     cornerDimension = Dimension.max(cornerDimension, regionContainerCornerDimension);
                     if (specificDimension != cornerDimension) {
-                        specificCornerPosition = PositionConstants.NORTH_WEST | PositionConstants.NORTH_EAST;
+                        specificCornerPosition.set(PositionConstants.NORTH_WEST);
+                        specificCornerPosition.set(PositionConstants.NORTH_EAST);
                     }
-                    updatePrecedingSiblingCorner(self);
-                } else if (parentStackDirection == PositionConstants.EAST_WEST) {
-                    boolean firstRegionPart = isFirstRegionPart(self);
-                    boolean lastRegionPart = isLastRegionPart(self);
+                    updatePrecedingSiblingCorner(self, PositionConstants.SOUTH_WEST, PositionConstants.SOUTH_EAST);
+                } else if (parentStackDirection == PositionConstants.EAST_WEST && (firstRegionPart || lastRegionPart)) {
+                    specificDimension = cornerDimension;
+                    cornerDimension = Dimension.max(cornerDimension, regionContainerCornerDimension);
 
-                    if (firstRegionPart || lastRegionPart) {
-                        specificDimension = cornerDimension;
-                        cornerDimension = Dimension.max(cornerDimension, regionContainerCornerDimension);
-                        specificCornerPosition = PositionConstants.NORTH_WEST | PositionConstants.NORTH_EAST;
-                        specificCornerPosition = firstRegionPart ? specificCornerPosition : specificCornerPosition | PositionConstants.SOUTH_WEST;
-                        specificCornerPosition = lastRegionPart ? specificCornerPosition : specificCornerPosition | PositionConstants.SOUTH_EAST;
+                    specificCornerPosition.set(PositionConstants.NORTH_WEST);
+                    specificCornerPosition.set(PositionConstants.NORTH_EAST);
+                    if (firstRegionPart && !lastRegionPart) {
+                        specificCornerPosition.set(PositionConstants.SOUTH_EAST);
+                    } else if (!firstRegionPart && lastRegionPart) {
+                        specificCornerPosition.set(PositionConstants.SOUTH_WEST);
                     }
 
-                    if (lastRegionPart) {
-                        updatePrecedingSiblingCorner(self);
+                    if (lastRegionPart && !firstRegionPart) {
+                        updatePrecedingSiblingCorner(self, PositionConstants.SOUTH_EAST);
                     }
                 }
             }
@@ -219,19 +223,28 @@ public final class DiagramContainerEditPartOperation {
         // Update the corner dimension.
         gradientRoundedShape.setCornerDimensions(cornerDimension);
         if (gradientRoundedShape instanceof RegionRoundedGradientRectangle) {
-            ((RegionRoundedGradientRectangle) gradientRoundedShape).setAdditionalCornerDimensions(specificCornerPosition, specificDimension);
+            ((RegionRoundedGradientRectangle) gradientRoundedShape).setAdditionalCornerDimensions(specificDimension, specificCornerPosition);
         }
     }
 
-    private static void updatePrecedingSiblingCorner(final AbstractDiagramElementContainerEditPart self) {
+    private static void updatePrecedingSiblingCorner(final AbstractDiagramElementContainerEditPart self, int... cornerToCorrect) {
         // Update previous siblings: needed for the diagram
         // opening and the region container creation cases in
         // which each child will be the last element once.
         Collection<AbstractDiagramElementContainerEditPart> siblings = Lists.newArrayList(Iterables.filter(self.getParent().getChildren(), AbstractDiagramElementContainerEditPart.class));
         siblings.remove(self);
         AbstractDiagramElementContainerEditPart previous = siblings.isEmpty() ? null : Iterables.getLast(siblings);
-        if (previous != null && previous.getPrimaryShape() instanceof GradientRoundedRectangle) {
-            ((GradientRoundedRectangle) previous.getPrimaryShape()).setCornerDimensions(getCornerDimension(previous));
+        if (previous != null && previous.getPrimaryShape() instanceof RegionRoundedGradientRectangle) {
+            RegionRoundedGradientRectangle gradientRoundedRectangle = (RegionRoundedGradientRectangle) previous.getPrimaryShape();
+            for (int i : cornerToCorrect) {
+                gradientRoundedRectangle.getAdditionalDimensionCorners().set(i);
+            }
+
+            if (gradientRoundedRectangle.getAdditionalDimensionCorners().cardinality() == 4) {
+                // we do not need specific corner anymore
+                gradientRoundedRectangle.getAdditionalDimensionCorners().clear();
+                gradientRoundedRectangle.setCornerDimensions(gradientRoundedRectangle.getAdditionalCornerDimensions());
+            }
         }
     }
 

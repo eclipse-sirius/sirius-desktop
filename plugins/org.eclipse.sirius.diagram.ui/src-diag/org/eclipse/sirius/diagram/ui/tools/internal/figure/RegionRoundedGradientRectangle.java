@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.figure;
 
+import java.util.BitSet;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -40,7 +42,7 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
 
     private final Dimension secondaryCorner = new Dimension(0, 0);
 
-    private int position = PositionConstants.NONE;
+    private BitSet positions = new BitSet(PositionConstants.NSEW);
 
     /**
      * Create a new {@link RegionRoundedGradientRectangle}.
@@ -69,16 +71,22 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
      * Sets the dimensions of each corner. This will form the radii of the arcs
      * which form the additional corners.
      * 
-     * @param chosenCorners
-     *            a bit-wise OR of the chosen corners. see
-     *            {@link PositionConstants}
      * @param d
      *            the dimensions of the corner, it should be smaller than the
      *            main corner dimension to be visible.
+     * 
+     * @param chosenCorners
+     *            the chosen corners, see values of the BitSet for the following
+     *            indexes: {@link PositionConstants.NORTH_WEST},
+     *            {@link PositionConstants.NORTH_EAST},
+     *            {@link PositionConstants.SOUTH_EAST},
+     *            {@link PositionConstants.SOUTH_WEST}.
      */
-    public void setAdditionalCornerDimensions(int chosenCorners, Dimension d) {
-        position = chosenCorners;
-
+    public void setAdditionalCornerDimensions(Dimension d, BitSet chosenCorners) {
+        positions.clear();
+        if (chosenCorners != null) {
+            positions.or(chosenCorners);
+        }
         if (d == null) {
             secondaryCorner.width = 0;
             secondaryCorner.height = 0;
@@ -87,36 +95,55 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
         secondaryCorner.height = d.height;
     }
 
+    /**
+     * Get the additional corner dimension.
+     * 
+     * @return the additional corner dimension
+     */
+    public Dimension getAdditionalCornerDimensions() {
+        return secondaryCorner.getCopy();
+    }
+
+    /**
+     * Return a {@link BitSet} knowing the chosen corner, see values of the
+     * BitSet for the following indexes: {@link PositionConstants.NORTH_WEST},
+     * {@link PositionConstants.NORTH_EAST},
+     * {@link PositionConstants.SOUTH_EAST},
+     * {@link PositionConstants.SOUTH_WEST}.
+     * 
+     * @return the positions of the corner to draw with the additional corner
+     *         dimension.
+     */
+    public BitSet getAdditionalDimensionCorners() {
+        return positions;
+    }
+
     @Override
     protected void fillShape(Graphics graphics) {
         super.fillShape(graphics);
 
-        if (PositionConstants.NONE == position) {
+        if (positions.isEmpty()) {
             return;
         }
 
-        if (correspondsTo(PositionConstants.NORTH_WEST)) {
+        if (positions.get(PositionConstants.NORTH_WEST)) {
             Rectangle corner = new Rectangle(bounds.getCenter(), bounds.getTopLeft());
             graphics.fillRoundRectangle(corner, secondaryCorner.width, secondaryCorner.height);
         }
 
-        if (correspondsTo(PositionConstants.NORTH_EAST)) {
+        if (positions.get(PositionConstants.NORTH_EAST)) {
             Rectangle corner = new Rectangle(bounds.getCenter(), bounds.getTopRight());
             graphics.fillRoundRectangle(corner, secondaryCorner.width, secondaryCorner.height);
         }
 
-        if (correspondsTo(PositionConstants.SOUTH_EAST)) {
+        if (positions.get(PositionConstants.SOUTH_EAST)) {
             Rectangle corner = new Rectangle(bounds.getCenter(), bounds.getBottomRight());
             graphics.fillRoundRectangle(corner, secondaryCorner.width, secondaryCorner.height);
         }
 
-        if (correspondsTo(PositionConstants.SOUTH_WEST)) {
+        if (positions.get(PositionConstants.SOUTH_WEST)) {
             Rectangle corner = new Rectangle(bounds.getCenter(), bounds.getBottomLeft());
             graphics.fillRoundRectangle(corner, secondaryCorner.width, secondaryCorner.height);
         }
-    }
-
-    private boolean correspondsTo(int corner) {
-        return (corner & position) == corner;
     }
 }
