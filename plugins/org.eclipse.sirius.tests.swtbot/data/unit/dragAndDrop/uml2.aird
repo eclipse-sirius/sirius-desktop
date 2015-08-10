@@ -5651,7 +5651,7 @@
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6i0T9ErgEeSRw9blU02bnQ"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_6izs5ErgEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6izs5UrgEeSRw9blU02bnQ" x="99" y="8" width="10" height="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6izs5UrgEeSRw9blU02bnQ" x="92" y="8" width="10" height="10"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_6izF0UrgEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6izF0krgEeSRw9blU02bnQ" y="90" width="100" height="100"/>
@@ -6040,7 +6040,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_6jcmEUrgEeSRw9blU02bnQ"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_6jcmEkrgEeSRw9blU02bnQ" fontName="Cantarell"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6jcmE0rgEeSRw9blU02bnQ" points="[3, 7, -309, 7]$[65, 133, -247, 133]$[233, 133, -79, 133]$[308, 7, -4, 7]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6jcmE0rgEeSRw9blU02bnQ" points="[3, 7, -323, 7]$[70, 133, -256, 133]$[242, 133, -84, 133]$[322, 7, -4, 7]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6jdNJUrgEeSRw9blU02bnQ" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6jdNJkrgEeSRw9blU02bnQ" id="(0.5,0.5)"/>
           </edges>
