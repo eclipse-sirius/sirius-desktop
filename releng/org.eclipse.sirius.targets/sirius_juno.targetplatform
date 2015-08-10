@@ -7,7 +7,7 @@ include "modules/orbit.tpd"
 include "modules/swtbot-2.1.tpd"
 include "modules/xtext-2.3.tpd"
 include "modules/shared-license.tpd"
-include "modules/aql-3.6.tpd"
+include "modules/aql-nightly.tpd"
 
 with source, requirements
 

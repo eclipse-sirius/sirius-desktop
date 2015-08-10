@@ -1,7 +1,7 @@
 target "sirius_headless_mars"
 
 include "../modules/orbit.tpd"
-include "../modules/aql-3.6.tpd"
+include "../modules/aql-nightly.tpd"
 include "../modules/shared-license.tpd"
 
 with source, requirements

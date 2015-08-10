@@ -1,0 +1,9 @@
+target "aql-nightly"
+
+with source, requirements
+
+location Acceleo-Nightly "http://download.eclipse.org/acceleo/updates/nightly/latest" {
+	org.eclipse.acceleo.query.feature.group lazy
+	org.antlr.runtime [4.3.0,4.4.0)
+}
+
