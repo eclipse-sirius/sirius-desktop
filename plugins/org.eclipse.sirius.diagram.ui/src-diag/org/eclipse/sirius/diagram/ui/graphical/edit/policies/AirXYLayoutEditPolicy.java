@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.FigureCanvas;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -258,18 +259,15 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
         return element instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) element).isRegionContainer();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gef.editpolicies.XYLayoutEditPolicy#getCurrentConstraintFor(org.eclipse.gef.GraphicalEditPart)
-     */
     @Override
-    protected Rectangle getCurrentConstraintFor(final GraphicalEditPart child) {
-        Rectangle result = super.getCurrentConstraintFor(child);
-        if (result == null) {
-            result = new Rectangle(0, 0, -1, -1);
+    protected Rectangle getCurrentConstraintFor(GraphicalEditPart child) {
+        IFigure fig = child.getFigure();
+        Object constraint = fig.getParent().getLayoutManager().getConstraint(fig);
+        if (constraint instanceof Rectangle) {
+            return (Rectangle) constraint;
+        } else {
+            return new Rectangle(0, 0, -1, -1);
         }
-        return result;
     }
 
     /**
