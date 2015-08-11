@@ -15,6 +15,7 @@ import java.util.Iterator;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPolicy;
@@ -41,6 +42,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
@@ -240,5 +242,14 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
             }
         }
         return false;
+    }
+
+    @Override
+    protected void handleNotificationEvent(Notification notification) {
+        if (DiagramPackage.eINSTANCE.getDNodeContainer_ChildrenPresentation().equals(notification.getFeature())) {
+            handleMajorSemanticChange();
+        } else {
+            super.handleNotificationEvent(notification);
+        }
     }
 }
