@@ -112,7 +112,8 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      */
     public void testLastPointConsistency() {
         // Step 1: open the testing diagram editor
-        SWTBotSiriusDiagramEditor diagramEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "rectilinearCase1", DSemanticDiagram.class);
+        SWTBotSiriusDiagramEditor diagramEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "rectilinearCase1", DSemanticDiagram.class,
+                true, true);
         try {
             String nodeToMoveName = "C2";
             diagramEditor.reveal(nodeToMoveName);
@@ -143,7 +144,8 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      */
     public void testFirstPointConsistency() {
         // Step 1: open the testing diagram editor
-        SWTBotSiriusDiagramEditor diagramEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "rectilinearCase1", DSemanticDiagram.class);
+        SWTBotSiriusDiagramEditor diagramEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "rectilinearCase1", DSemanticDiagram.class,
+                true, true);
         try {
             String nodeToMoveName = "C1";
             diagramEditor.reveal(nodeToMoveName);
