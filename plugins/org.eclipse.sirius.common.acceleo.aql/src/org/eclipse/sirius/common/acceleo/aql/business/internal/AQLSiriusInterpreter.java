@@ -134,7 +134,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
             @Override
             public void unloaded(String nsURI, EPackage pak) {
-                queryEnvironment.removeEPackage(pak.getNsPrefix());
+                queryEnvironment.removeEPackage(pak.getName());
             }
         };
         this.javaExtensions.addClassLoadingCallBack(callback);

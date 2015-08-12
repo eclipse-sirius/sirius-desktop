@@ -85,8 +85,8 @@ public final class TypesUtil {
         EClassifier found = null;
         if (targetTypeName.getPackagePrefix().some()) {
             String typeName = targetTypeName.getClassifierName();
-            String nsPrefix = targetTypeName.getPackagePrefix().get();
-            found = queryEnvironment.getEPackageProvider().getType(nsPrefix, typeName);
+            String name = targetTypeName.getPackagePrefix().get();
+            found = queryEnvironment.getEPackageProvider().getType(name, typeName);
         } else {
             found = queryEnvironment.getEPackageProvider().getType(targetTypeName.getClassifierName());
         }
