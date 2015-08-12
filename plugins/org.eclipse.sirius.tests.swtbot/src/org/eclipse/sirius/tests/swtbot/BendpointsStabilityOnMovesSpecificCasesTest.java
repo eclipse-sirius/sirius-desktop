@@ -83,10 +83,15 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
                 }
             }
         });
+
+        // Open the testing diagram editor
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "rectilinearCase1", DSemanticDiagram.class, true, true);
     }
 
     @Override
     protected void tearDown() throws Exception {
+        editor.close();
+        SWTBotUtils.waitAllUiEvents();
         if (isOutlineViewOpened) {
             designerViews.openOutlineView();
         }
@@ -107,93 +112,136 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
     }
 
     /**
+     * Test that first point is moved has expected and that draw2d and GMF last
+     * points are consistency.
+     */
+    public void testFirstPointConsistency() {
+        testFirstPointConsistency(new Point(20, 20), false);
+    }
+
+    /**
+     * Test that first point is moved has expected and that draw2d and GMF last
+     * points are consistency. In this case, the first segment is merged with
+     * the second one.
+     */
+    public void testFirstPointConsistencyWithMergeSegment() {
+        testFirstPointConsistency(new Point(0, 99), true);
+    }
+
+    /**
      * Test that last point is moved has expected and that draw2d and GMF last
      * points are consistency.
      */
     public void testLastPointConsistency() {
-        // Step 1: open the testing diagram editor
-        SWTBotSiriusDiagramEditor diagramEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "rectilinearCase1", DSemanticDiagram.class,
-                true, true);
-        try {
-            String nodeToMoveName = "C2";
-            diagramEditor.reveal(nodeToMoveName);
-            // Step 2: store the previous bendpoints
-            SWTBotGefEditPart editPartToMove = diagramEditor.getEditPart(nodeToMoveName, IAbstractDiagramNodeEditPart.class);
-            SWTBotGefConnectionEditPart connectionEditPart = editPartToMove.targetConnections().get(0);
-            PointList previousPoints = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
+        testLastPointConsistency(new Point(-20, 50), false);
+    }
 
-            // Step 3: Drag node
-            Point moveDelta = new Point(-20, 50);
-            Point initialLocation = diagramEditor.getBounds(editPartToMove).getCenter();
-            Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
-            ICondition editPartMovedCondition = new CheckEditPartMoved(editPartToMove);
-            diagramEditor.drag(initialLocation, targetLocation);
-            bot.waitUntil(editPartMovedCondition);
-            assertEquals("Drag as failed: selection should be the same before and after drag.", editPartToMove, diagramEditor.selectedEditParts().get(0));
-            // Step 4: Check bendpoints
-            compareActualBendpointsWithExpected(diagramEditor, connectionEditPart, previousPoints, moveDelta, false);
-        } finally {
-            diagramEditor.close();
-            SWTBotUtils.waitAllUiEvents();
-        }
+    /**
+     * Test that last point is moved has expected and that draw2d and GMF last
+     * points are consistency. In this case, the last segment is merged with the
+     * previous one.
+     */
+    public void testLastPointConsistencyWithMergeSegment() {
+        testLastPointConsistency(new Point(0, -139), true);
+    }
+
+    /**
+     * Test that last point is moved has expected and that draw2d and GMF last
+     * points are consistency.
+     * 
+     * @param moveDelta
+     *            The delta from which the source node will be moved
+     * @param segmentMerged
+     *            true if the corresponding segment is merged with the next one
+     *            (2 points less and segments normalize and straight), false
+     *            otherwise.
+     */
+    protected void testLastPointConsistency(Point moveDelta, boolean segmentMerged) {
+        String nodeToMoveName = "C2";
+        editor.reveal(nodeToMoveName);
+        // Step 2: store the previous bendpoints
+        SWTBotGefEditPart editPartToMove = editor.getEditPart(nodeToMoveName, IAbstractDiagramNodeEditPart.class);
+        SWTBotGefConnectionEditPart connectionEditPart = editPartToMove.targetConnections().get(0);
+        PointList previousPoints = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
+
+        // Step 3: Drag node
+        Point initialLocation = editor.getBounds(editPartToMove).getCenter();
+        Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
+        ICondition editPartMovedCondition = new CheckEditPartMoved(editPartToMove);
+        editor.drag(initialLocation, targetLocation);
+        bot.waitUntil(editPartMovedCondition);
+        assertEquals("Drag as failed: selection should be the same before and after drag.", editPartToMove, editor.selectedEditParts().get(0));
+        // Step 4: Check bendpoints
+        compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, false, segmentMerged);
     }
 
     /**
      * Test that first point is moved has expected and that draw2d and GMF last
      * points are consistency.
+     * 
+     * @param moveDelta
+     *            The delta from which the source node will be moved
+     * @param segmentMerged
+     *            true if the corresponding segment is merged with the next one
+     *            (2 points less and segments normalize and straight), false
+     *            otherwise.
      */
-    public void testFirstPointConsistency() {
-        // Step 1: open the testing diagram editor
-        SWTBotSiriusDiagramEditor diagramEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESCRIPTION_NAME, "rectilinearCase1", DSemanticDiagram.class,
-                true, true);
-        try {
-            String nodeToMoveName = "C1";
-            diagramEditor.reveal(nodeToMoveName);
-            // Step 2: store the previous bendpoints
-            SWTBotGefEditPart editPartToMove = diagramEditor.getEditPart(nodeToMoveName, IAbstractDiagramNodeEditPart.class);
-            SWTBotGefConnectionEditPart connectionEditPart = editPartToMove.sourceConnections().get(0);
-            PointList previousPoints = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
+    protected void testFirstPointConsistency(Point moveDelta, boolean segmentMerged) {
+        String nodeToMoveName = "C1";
+        editor.reveal(nodeToMoveName);
+        // Step 2: store the previous bendpoints
+        SWTBotGefEditPart editPartToMove = editor.getEditPart(nodeToMoveName, IAbstractDiagramNodeEditPart.class);
+        SWTBotGefConnectionEditPart connectionEditPart = editPartToMove.sourceConnections().get(0);
+        PointList previousPoints = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
 
-            // Step 3: Drag node
-            Point moveDelta = new Point(20, 20);
-            Point initialLocation = diagramEditor.getBounds(editPartToMove).getCenter();
-            Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
-            ICondition editPartMovedCondition = new CheckEditPartMoved(editPartToMove);
-            diagramEditor.drag(initialLocation, targetLocation);
-            bot.waitUntil(editPartMovedCondition);
-            assertEquals("Drag as failed: selection should be the same before and after drag.", editPartToMove, diagramEditor.selectedEditParts().get(0));
-            // Step 4: Check bendpoints
-            compareActualBendpointsWithExpected(diagramEditor, connectionEditPart, previousPoints, moveDelta, true);
-        } finally {
-            diagramEditor.close();
-            SWTBotUtils.waitAllUiEvents();
-        }
+        // Step 3: Drag node
+        Point initialLocation = editor.getBounds(editPartToMove).getCenter();
+        Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
+        ICondition editPartMovedCondition = new CheckEditPartMoved(editPartToMove);
+        editor.drag(initialLocation, targetLocation);
+        bot.waitUntil(editPartMovedCondition);
+        assertEquals("Drag as failed: selection should be the same before and after drag.", editPartToMove, editor.selectedEditParts().get(0));
+        // Step 4: Check bendpoints
+        compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, true, segmentMerged);
     }
 
     // Check the first or last benpoint of the connection.
     private void compareActualBendpointsWithExpected(SWTBotSiriusDiagramEditor diagramEditor, SWTBotGefConnectionEditPart connectionEditPart, PointList expectedBendPoints, Point moveDelta,
-            boolean firstPoint) {
-        PointList actualBendPoints = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
+            boolean firstPoint, boolean segmentMerged) {
         List<Point> newGMFBendpointsFromSource = GMFHelper.getPointsFromSource(connectionEditPart.part());
-        Point expectedDraw2dPoint;
-        Point actualDraw2dPoint;
-        Point actualGmfPoint;
-        if (firstPoint) {
-            expectedDraw2dPoint = expectedBendPoints.getFirstPoint();
-            actualDraw2dPoint = actualBendPoints.getFirstPoint();
-            actualGmfPoint = newGMFBendpointsFromSource.get(0);
-        } else {
-            expectedDraw2dPoint = expectedBendPoints.getLastPoint();
-            actualDraw2dPoint = actualBendPoints.getLastPoint();
-            actualGmfPoint = newGMFBendpointsFromSource.get(newGMFBendpointsFromSource.size() - 1);
-        }
-        // The first (or last) bendpoint should have moved.
         String messagePrefix = "First";
         if (!firstPoint) {
             messagePrefix = "Last";
         }
+        if (segmentMerged) {
+            assertEquals(messagePrefix + " segment must me merged. We should have 2 points less.", expectedBendPoints.size() - 2, newGMFBendpointsFromSource.size());
+        }
+        Point expectedDraw2dPoint;
+        Point expectedMergedPoint;
+        Point actualDraw2dPoint;
+        Point actualGmfPoint;
+        PointList actualBendPoints = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
+        if (firstPoint) {
+            expectedDraw2dPoint = expectedBendPoints.getFirstPoint();
+            expectedMergedPoint = expectedBendPoints.getPoint(2);
+            actualDraw2dPoint = actualBendPoints.getFirstPoint();
+            actualGmfPoint = newGMFBendpointsFromSource.get(0);
+        } else {
+            expectedDraw2dPoint = expectedBendPoints.getLastPoint();
+            expectedMergedPoint = expectedBendPoints.getPoint(expectedBendPoints.size() - 3);
+            actualDraw2dPoint = actualBendPoints.getLastPoint();
+            actualGmfPoint = newGMFBendpointsFromSource.get(newGMFBendpointsFromSource.size() - 1);
+        }
+        // The first (or last) bendpoint should have moved.
         assertNotEquals(messagePrefix + " point should have moved", expectedDraw2dPoint, actualDraw2dPoint);
-        assertEquals(messagePrefix + " point should have moved at the expected location", expectedDraw2dPoint.getTranslated(moveDelta), actualDraw2dPoint);
+        if (segmentMerged) {
+            Point expectedPoint = expectedDraw2dPoint.getTranslated(moveDelta);
+            Point otherExpectedPoint = new Point(expectedPoint.x, expectedMergedPoint.y);
+            assertTrue(messagePrefix + " point should have moved at the expected location. expected:<" + expectedPoint + "or " + otherExpectedPoint + "> but was:<" + actualBendPoints + ">",
+                    expectedPoint.equals(actualDraw2dPoint) || otherExpectedPoint.equals(actualDraw2dPoint));
+        } else {
+            assertEquals(messagePrefix + " point should have moved at the expected location", expectedDraw2dPoint.getTranslated(moveDelta), actualDraw2dPoint);
+        }
         // The draw2d and GMF point should be the same.
         assertEquals(messagePrefix + " draw2d and GMF points should be the same", actualDraw2dPoint, actualGmfPoint);
     }
