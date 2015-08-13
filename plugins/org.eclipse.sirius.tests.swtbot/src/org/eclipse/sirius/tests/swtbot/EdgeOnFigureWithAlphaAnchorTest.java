@@ -80,6 +80,8 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
 
     private static final String ECLASS_CIRCLE_WITH_BLANK = "circleWithBlank";
 
+    private static final String ECLASS_A = "a";
+
     private static final String EREFERENCE_TO_NOTE = "toNote";
 
     private static final String EREFERENCE_TO_NOTE2 = "toNote2";
@@ -190,6 +192,17 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
+     * Test oblique edge creation on node with border image (to check that the
+     * border image is not considered to compute the anchor of the node).
+     */
+    public void testCreateEdgeOnNodeWithBorderImage() {
+        String newReferenceName = "newReference";
+        createEdge(ECLASS_A, ECLASS_SQUARE, "Reference", newReferenceName);
+        // Check edge extremities of this new edge
+        checkEdgeExtremitiesLocation(newReferenceName, ECLASS_A, ECLASS_SQUARE, true, true);
+    }
+
+    /**
      * Test drag edge source from a figure with alpha to another one. This test
      * is not enabled because of known bug that does not directly concerns this
      * issue (bugzilla 461200).
@@ -278,8 +291,8 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     private void checkEdgeExtremityLocation(Rectangle bounds, Point extremity, boolean onBoundingBoxExpected, String messagePrefix, String referenceName) {
         PointList boundingBoxLine = PointListUtilities.createPointsFromRect(bounds);
         boolean extremityIsOnBoundingBox = boundingBoxLine.polylineContainsPoint(extremity.x(), extremity.y(), 0);
-        assertTrue(getBoundingBoxMessage(messagePrefix, referenceName, onBoundingBoxExpected), (onBoundingBoxExpected && extremityIsOnBoundingBox)
-                || (!onBoundingBoxExpected && !extremityIsOnBoundingBox));
+        assertTrue(getBoundingBoxMessage(messagePrefix, referenceName, onBoundingBoxExpected),
+                (onBoundingBoxExpected && extremityIsOnBoundingBox) || (!onBoundingBoxExpected && !extremityIsOnBoundingBox));
 
         if (!onBoundingBoxExpected) {
             assertTrue(getInsideMessage(messagePrefix, referenceName), bounds.contains(extremity));

@@ -24,4 +24,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="circleWithBlank">
     <eStructuralFeatures xsi:type="ecore:EReference" name="toNote2" eType="#//note"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="withBorderNode"/>
 </ecore:EPackage>

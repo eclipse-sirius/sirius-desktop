@@ -18,6 +18,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ImageFigureWithAlpha;
@@ -89,12 +90,17 @@ public class AlphaBasedSlidableImageAnchor extends SlidableAnchor {
      */
     private static ImageFigureWithAlpha getImageFigure(final IFigure root) {
         ImageFigureWithAlpha ret = null;
-        if (root instanceof ImageFigureWithAlpha) {
-            ret = (ImageFigureWithAlpha) root;
-        }
-        final Iterator<IFigure> iterChilren = Iterators.filter(root.getChildren().iterator(), IFigure.class);
-        while (iterChilren.hasNext() && ret == null) {
-            ret = AlphaBasedSlidableImageAnchor.getImageFigure(iterChilren.next());
+        // Do not go through BorderItemContainerFigure. Indeed this figure
+        // contains BorderItems and the anchor is not expected to be in border
+        // items.
+        if (!(root instanceof BorderItemContainerFigure)) {
+            if (root instanceof ImageFigureWithAlpha) {
+                ret = (ImageFigureWithAlpha) root;
+            }
+            final Iterator<IFigure> iterChilren = Iterators.filter(root.getChildren().iterator(), IFigure.class);
+            while (iterChilren.hasNext() && ret == null) {
+                ret = AlphaBasedSlidableImageAnchor.getImageFigure(iterChilren.next());
+            }
         }
         return ret;
     }
@@ -114,6 +120,7 @@ public class AlphaBasedSlidableImageAnchor extends SlidableAnchor {
      * @see org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor#getLocation(org.eclipse.draw2d.geometry.Point,
      *      org.eclipse.draw2d.geometry.Point)
      */
+    @Override
     protected Point getLocation(final Point ownReference, final Point foreignReference) {
         return getLocation(ownReference, foreignReference, PositionConstants.NONE);
     }
@@ -148,6 +155,7 @@ public class AlphaBasedSlidableImageAnchor extends SlidableAnchor {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Point getOrthogonalLocation(Point orthoReference) {
         /*
          * copy pasted from super, only to customize the call to getLocation to
