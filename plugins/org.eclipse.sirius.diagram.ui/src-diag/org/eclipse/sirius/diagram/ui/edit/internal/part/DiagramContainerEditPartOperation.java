@@ -250,10 +250,13 @@ public final class DiagramContainerEditPartOperation {
     }
 
     private static ViewNodeContainerFigureDesc refreshBorder(final AbstractDiagramElementContainerEditPart self, final ViewNodeContainerFigureDesc primaryShape, final ContainerStyle style) {
-        final LineStyle borderLineStyle = style.getBorderLineStyle();
+        LineStyle borderLineStyle = LineStyle.SOLID_LITERAL;
         int borderSize = 0;
-        if (style != null && style.getBorderSize() != null) {
-            borderSize = style.getBorderSize().intValue();
+        if (style != null) {
+            borderLineStyle = style.getBorderLineStyle();
+            if (style.getBorderSize() != null) {
+                borderSize = style.getBorderSize().intValue();
+            }
         }
         if (primaryShape instanceof Shape) {
             Shape shape = (Shape) primaryShape;
