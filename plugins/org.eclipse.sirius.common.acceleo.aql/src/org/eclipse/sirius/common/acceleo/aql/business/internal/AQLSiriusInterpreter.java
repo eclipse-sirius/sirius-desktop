@@ -186,19 +186,38 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
     @Override
     public Object evaluate(EObject target, String fullExpression) throws EvaluationException {
+        IEvaluationResult evaluationResult = this.evaluateExpression(target, fullExpression);
+        // We fire the exception to keep the old behavior
+        if (evaluationResult.getDiagnostic().getSeverity() == Diagnostic.ERROR) {
+            throw new EvaluationException(evaluationResult.getDiagnostic().getMessage(), evaluationResult.getDiagnostic().getException());
+        }
+        return evaluationResult.getValue();
+    }
+
+    @Override
+    public IEvaluationResult evaluateExpression(final EObject target, final String fullExpression) throws EvaluationException {
         this.javaExtensions.reloadIfNeeded();
         String expression = new ExpressionTrimmer(fullExpression).getExpression();
         Map<String, Object> variables = getVariables();
         variables.put("self", target); //$NON-NLS-1$
-        AstResult build;
+
         try {
-            build = parsedExpressions.get(expression);
+            AstResult build = parsedExpressions.get(expression);
             IQueryEvaluationEngine evaluationEngine = QueryEvaluation.newEngine(queryEnvironment);
-            EvaluationResult evalResult = evaluationEngine.eval(build, variables);
-            if (evalResult.getDiagnostic().getSeverity() == Diagnostic.ERROR) {
-                throw new EvaluationException(evalResult.getDiagnostic().getMessage(), evalResult.getDiagnostic().getException());
-            }
-            return evalResult.getResult();
+            final EvaluationResult evalResult = evaluationEngine.eval(build, variables);
+
+            return new IEvaluationResult() {
+
+                @Override
+                public Object getValue() {
+                    return evalResult.getResult();
+                }
+
+                @Override
+                public Diagnostic getDiagnostic() {
+                    return evalResult.getDiagnostic();
+                }
+            };
         } catch (ExecutionException e) {
             throw new EvaluationException(e.getCause());
         }

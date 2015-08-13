@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,14 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
 
-import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
 
@@ -25,8 +20,20 @@ import org.eclipse.acceleo.ui.interpreter.language.EvaluationContext;
 import org.eclipse.acceleo.ui.interpreter.language.EvaluationResult;
 import org.eclipse.acceleo.ui.interpreter.view.Variable;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic.IEvaluationResult;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * This task delegates to the viewpoint's CompoundInterpreter for expression
@@ -53,6 +60,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
      * 
      * @see java.util.concurrent.Callable#call()
      */
+    @Override
     public EvaluationResult call() throws Exception {
         checkCancelled();
 
@@ -86,9 +94,15 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
 
         EvaluationResult evaluationResult = null;
         try {
-            final Object result = vpInterpreter.evaluate(target, expression);
-            final IStatus status = createResultStatus(result);
-            evaluationResult = new EvaluationResult(result, status);
+            if (vpInterpreter instanceof IInterpreterWithDiagnostic) {
+                IEvaluationResult result = ((IInterpreterWithDiagnostic) vpInterpreter).evaluateExpression(target, expression);
+                final IStatus status = createResultStatus(result);
+                evaluationResult = new EvaluationResult(result.getValue(), status);
+            } else {
+                Object result = vpInterpreter.evaluate(target, expression);
+                final IStatus status = createResultStatus(result);
+                evaluationResult = new EvaluationResult(result, status);
+            }
         } catch (EvaluationException e) {
             final IStatus status = new Status(IStatus.ERROR, InterpreterViewPlugin.PLUGIN_ID, e.getMessage(), e);
             evaluationResult = new EvaluationResult(status);
@@ -109,25 +123,123 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
      *         evaluation.
      */
     private IStatus createResultStatus(Object result) {
-        if (result == null) {
-            return new Status(IStatus.OK, InterpreterViewPlugin.PLUGIN_ID, ""); //$NON-NLS-1$
+        IStatus status = new Status(IStatus.OK, InterpreterViewPlugin.PLUGIN_ID, ""); //$NON-NLS-1$
+        if (result instanceof IEvaluationResult) {
+            IEvaluationResult evaluationResult = (IEvaluationResult) result;
+            status = this.getStatus(evaluationResult);
+        } else if (result != null) {
+            // Fallback to the original behavior if we are not using an
+            // IEvaluationResult but a regular object
+            String message = this.getDefaultMessage(result);
+            status = new Status(IStatus.OK, InterpreterViewPlugin.PLUGIN_ID, message);
+        }
+        return status;
+    }
+
+    /**
+     * Computes the status representing the given evaluation result.
+     * 
+     * @param evaluationResult
+     *            The evaluation result
+     * @return The status to be displayed to the end user
+     */
+    private IStatus getStatus(IEvaluationResult evaluationResult) {
+        Object result = evaluationResult.getValue();
+
+        String message = this.getDefaultMessage(result);
+
+        Diagnostic diagnostic = evaluationResult.getDiagnostic();
+        int statusCode = this.getStatusCodeFromDiagnostic(diagnostic);
+
+        IStatus status = new Status(statusCode, InterpreterViewPlugin.PLUGIN_ID, message);
+        if (Diagnostic.OK != diagnostic.getSeverity() && diagnostic.getChildren().size() > 0) {
+            MultiStatus multiStatus = new MultiStatus(InterpreterViewPlugin.PLUGIN_ID, statusCode, message, null);
+
+            List<Diagnostic> children = diagnostic.getChildren();
+            for (Diagnostic childDiagnostic : children) {
+                int childStatusCode = this.getStatusCodeFromDiagnostic(childDiagnostic);
+                String childMessage = childDiagnostic.getMessage();
+                IStatus childStatus = new Status(childStatusCode, InterpreterViewPlugin.PLUGIN_ID, childMessage);
+                multiStatus.add(childStatus);
+            }
+
+            status = multiStatus;
         }
 
-        final String type = result.getClass().getSimpleName();
+        return status;
+    }
+
+    /**
+     * Computes the status code matching the given {@link Diagnostic}.
+     * 
+     * @param diagnostic
+     *            The diagnostic of the evaluation result
+     * @return A {@link IStatus} code.
+     */
+    private int getStatusCodeFromDiagnostic(Diagnostic diagnostic) {
+        int statusCode = IStatus.OK;
+        switch (diagnostic.getSeverity()) {
+        case Diagnostic.ERROR:
+            statusCode = IStatus.ERROR;
+            break;
+        case Diagnostic.WARNING:
+            statusCode = IStatus.WARNING;
+            break;
+        case Diagnostic.INFO:
+            statusCode = IStatus.INFO;
+            break;
+        case Diagnostic.CANCEL:
+            statusCode = IStatus.CANCEL;
+            break;
+        case Diagnostic.OK:
+            statusCode = IStatus.OK;
+            break;
+        default:
+            statusCode = IStatus.ERROR;
+        }
+        return statusCode;
+    }
+
+    /**
+     * Computes the default message to display in the interpreter view.
+     * 
+     * @param result
+     *            The result of the evaluation
+     * @return A message to be displayed in the interpreter
+     */
+    private String getDefaultMessage(Object result) {
+        String type = "null"; //$NON-NLS-1$
+
+        if (result != null) {
+            type = result.getClass().getSimpleName();
+        }
 
         String size = null;
         if (result instanceof String) {
             size = String.valueOf(((String) result).length());
         } else if (result instanceof Collection<?>) {
             size = String.valueOf(((Collection<?>) result).size());
+
+            // Convert the type of collection displayed (List -> Sequence, Set
+            // -> Set)
+            if (result instanceof List<?>) {
+                type = "Sequence"; //$NON-NLS-1$
+            } else if (result instanceof Set<?>) {
+                type = "Set"; //$NON-NLS-1$
+            }
+        } else if (result instanceof EObject) {
+            // Improve the type displayed if we have an EObject
+            EObject eObject = (EObject) result;
+            EClass eClass = eObject.eClass();
+            EPackage ePackage = eClass.getEPackage();
+            type = ePackage.getName() + "::" + eClass.getName(); //$NON-NLS-1$
         }
 
         String message = "Result of type " + type;
         if (size != null) {
             message += " and size " + size;
         }
-
-        return new Status(IStatus.OK, InterpreterViewPlugin.PLUGIN_ID, message);
+        return message;
     }
 
     /**

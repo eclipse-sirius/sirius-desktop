@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -48,7 +49,7 @@ import com.google.common.collect.Sets;
  * 
  * @author ymortier
  */
-public final class CompoundInterpreter implements IInterpreter, IProposalProvider, TypedValidation {
+public final class CompoundInterpreter implements IInterpreter, IProposalProvider, TypedValidation, IInterpreterWithDiagnostic {
 
     /** The shared instance of the registry. */
     public static final CompoundInterpreter INSTANCE = new CompoundInterpreter();
@@ -131,6 +132,36 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     public Object evaluate(final EObject target, final String expression) throws EvaluationException {
         final IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.evaluate(target, expression);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic#evaluateExpression(EObject,
+     *      String)
+     */
+    public IEvaluationResult evaluateExpression(final EObject target, final String expression) throws EvaluationException {
+        final IInterpreter interpreter = getInterpreterForExpression(expression);
+        if (interpreter instanceof IInterpreterWithDiagnostic) {
+            return ((IInterpreterWithDiagnostic) interpreter).evaluateExpression(target, expression);
+        }
+
+        // Fall back on the default behavior otherwise with an OK diagnostic
+        final Object result = interpreter.evaluate(target, expression);
+
+        IEvaluationResult evaluationResult = new IEvaluationResult() {
+            @Override
+            public Object getValue() {
+                return result;
+            }
+
+            @Override
+            public Diagnostic getDiagnostic() {
+                return Diagnostic.OK_INSTANCE;
+            }
+        };
+
+        return evaluationResult;
     }
 
     /**
