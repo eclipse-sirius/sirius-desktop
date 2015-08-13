@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.ui.internal.refresh;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.DiagramPackage;
 
@@ -28,7 +28,7 @@ import com.google.common.collect.Sets;
  */
 public class DSemanticDiagramScopePredicate implements Predicate<Notification> {
 
-    private Set<EReference> featureToContainDDiagramElements = Sets.newLinkedHashSet();
+    private Set<EStructuralFeature> featureToContainDDiagramElements = Sets.newLinkedHashSet();
 
     /**
      * Create the predicate.
@@ -40,6 +40,7 @@ public class DSemanticDiagramScopePredicate implements Predicate<Notification> {
         featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDEdge_SourceNode());
         featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDEdge_TargetNode());
         featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDNodeContainer_ChildrenPresentation());
         featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDDiagramElementContainer_Containers());
         featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDNode_OwnedStyle());
         featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDEdge_OwnedStyle());

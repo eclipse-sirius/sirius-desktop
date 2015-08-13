@@ -45,6 +45,8 @@ import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.Collap
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.SetBestHeightHeaderCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.AbstractCanonicalSynchronizer;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
@@ -123,13 +125,14 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
     }
 
     private void manageRegions() {
-        for (EObject regionContainer : regionsToLayout) {
-            if (regionContainer instanceof Node) {
+        for (View regionContainer : regionContainersToLayout) {
+            int type = SiriusVisualIDRegistry.getVisualID(regionContainer.getType());
+            if (regionContainer instanceof Node && (type == DNodeContainerEditPart.VISUAL_ID || type == DNodeContainer2EditPart.VISUAL_ID)) {
                 new RegionContainerUpdateLayoutOperation((Node) regionContainer).execute();
             }
         }
 
-        regionsToLayout.clear();
+        regionContainersToLayout.clear();
     }
 
     private void manageCreatedViewsLayout(Set<View> createdViews) {
@@ -248,8 +251,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             final EObject nextDiagramLinkEContainer = nextDiagramLink.eContainer();
             if (diagramLinkObject != null) {
                 final EObject diagramLinkEContainer = diagramLinkObject.eContainer();
-                if (nextDiagramLink.getSource() != null && nextDiagramLink.getTarget() != null && nextDiagramLink.getSource().eContainer() != null
-                        && nextDiagramLink.getTarget().eContainer() != null) {
+                if (nextDiagramLink.getSource() != null && nextDiagramLink.getTarget() != null && nextDiagramLink.getSource().eContainer() != null && nextDiagramLink.getTarget().eContainer() != null) {
                     final EObject diagramLinkSrc = nextDiagramLink.getSource().getElement();
                     final EObject diagramLinkDst = nextDiagramLink.getTarget().getElement();
                     final int diagramLinkVisualID = SiriusVisualIDRegistry.getVisualID(nextDiagramLink);

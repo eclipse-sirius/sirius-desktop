@@ -46,14 +46,12 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
@@ -94,9 +92,9 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
     protected IViewProvider viewpointViewProvider = new SiriusViewProvider();
 
     /**
-     * Store region containers to layout and created/updated regions.
+     * Store region containers to layout.
      */
-    protected Collection<EObject> regionsToLayout = Sets.newLinkedHashSet();
+    protected Collection<View> regionContainersToLayout = Sets.newLinkedHashSet();
 
     /**
      * Default constructor.
@@ -157,28 +155,14 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         Set<View> createdViews = createViews(semanticChildren, gmfView.getType(), gmfView);
 
         boolean regionContainer = semanticView instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) semanticView).isRegionContainer();
-        boolean region = semanticView instanceof DDiagramElementContainer && new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) semanticView).isRegion();
-        if (!orphaned.isEmpty() || !createdViews.isEmpty()) {
-            if (regionContainer) {
-                regionsToLayout.add(gmfView);
-            } else if (region && gmfView.eContainer() != null) {
-                EObject eContainer = gmfView.eContainer();
-                if (eContainer instanceof View && semanticView.equals(((View) eContainer).getElement()) && eContainer.eContainer() != null) {
-                    eContainer = eContainer.eContainer();
-                }
-                regionsToLayout.add(eContainer);
-            }
+        if (regionContainer) {
+            regionContainersToLayout.add(gmfView);
         }
 
         // Manage Nodes ordering in Compartment according to DNodeListElement
         // ordering
-        if (semanticView instanceof DNodeList) {
+        if (semanticView instanceof DNodeList || regionContainer) {
             refreshSemanticChildrenOrdering(gmfView);
-        } else if (regionContainer) {
-            boolean moveOccur = refreshSemanticChildrenOrdering(gmfView);
-            if (moveOccur) {
-                regionsToLayout.add(gmfView);
-            }
         }
 
         return createdViews;
@@ -590,7 +574,6 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         boolean isAlreadylayouted = false;
         if (element instanceof AbstractDNode && parent instanceof DNodeContainer) {
             if (new DNodeContainerExperimentalQuery((DNodeContainer) parent).isRegionContainer()) {
-                regionsToLayout.add(createdView.eContainer());
                 isAlreadylayouted = true;
             } else {
                 isAlreadylayouted = updateFreeFormContainerChildButNotBorderedNodeBounds(createdView, previousCreatedView, element);
