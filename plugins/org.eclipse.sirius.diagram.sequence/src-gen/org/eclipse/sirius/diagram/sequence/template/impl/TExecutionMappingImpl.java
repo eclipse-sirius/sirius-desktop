@@ -464,11 +464,11 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (startingEndFinderExpression: ");
+        result.append(" (startingEndFinderExpression: "); //$NON-NLS-1$
         result.append(startingEndFinderExpression);
-        result.append(", finishingEndFinderExpression: ");
+        result.append(", finishingEndFinderExpression: "); //$NON-NLS-1$
         result.append(finishingEndFinderExpression);
-        result.append(", recursive: ");
+        result.append(", recursive: "); //$NON-NLS-1$
         result.append(recursive);
         result.append(')');
         return result.toString();

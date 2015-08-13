@@ -260,7 +260,7 @@ public class TConditionalMessageStyleImpl extends TTransformerImpl implements TC
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (predicateExpression: ");
+        result.append(" (predicateExpression: "); //$NON-NLS-1$
         result.append(predicateExpression);
         result.append(')');
         return result.toString();

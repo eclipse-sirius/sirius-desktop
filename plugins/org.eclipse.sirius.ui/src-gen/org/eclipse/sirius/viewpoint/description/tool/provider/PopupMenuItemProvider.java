@@ -98,7 +98,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PopupMenu"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PopupMenu")); //$NON-NLS-1$
     }
 
     /**

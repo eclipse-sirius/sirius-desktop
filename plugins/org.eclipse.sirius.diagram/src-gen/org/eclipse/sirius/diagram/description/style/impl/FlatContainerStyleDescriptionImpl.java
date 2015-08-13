@@ -541,11 +541,11 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (widthComputationExpression: ");
+        result.append(" (widthComputationExpression: "); //$NON-NLS-1$
         result.append(widthComputationExpression);
-        result.append(", heightComputationExpression: ");
+        result.append(", heightComputationExpression: "); //$NON-NLS-1$
         result.append(heightComputationExpression);
-        result.append(", backgroundStyle: ");
+        result.append(", backgroundStyle: "); //$NON-NLS-1$
         result.append(backgroundStyle);
         result.append(')');
         return result.toString();

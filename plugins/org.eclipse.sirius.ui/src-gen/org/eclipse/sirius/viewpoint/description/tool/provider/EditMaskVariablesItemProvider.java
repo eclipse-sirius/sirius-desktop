@@ -74,8 +74,10 @@ IItemPropertySource {
      */
     protected void addMaskPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EditMaskVariables_mask_feature"), getString("_UI_EditMaskVariables_mask_description"), ToolPackage.Literals.EDIT_MASK_VARIABLES__MASK, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_EditMaskVariables_mask_feature"), //$NON-NLS-1$
+                getString("_UI_EditMaskVariables_mask_description"), //$NON-NLS-1$
+                ToolPackage.Literals.EDIT_MASK_VARIABLES__MASK, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -86,7 +88,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EditMaskVariables"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EditMaskVariables")); //$NON-NLS-1$
     }
 
     /**
@@ -98,7 +100,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((EditMaskVariables) object).getMask();
-        return label == null || label.length() == 0 ? getString("_UI_EditMaskVariables_type") : getString("_UI_EditMaskVariables_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_EditMaskVariables_type") : //$NON-NLS-1$
+            getString("_UI_EditMaskVariables_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -240,7 +240,7 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (lifelineWidthComputationExpression: ");
+        result.append(" (lifelineWidthComputationExpression: "); //$NON-NLS-1$
         result.append(lifelineWidthComputationExpression);
         result.append(')');
         return result.toString();

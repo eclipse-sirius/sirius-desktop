@@ -65,7 +65,8 @@ public class DTreeElementItemProvider extends DRepresentationElementItemProvider
      */
     protected void addTreeElementMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeElement_treeElementMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTreeElement_treeElementMapping_feature", "_UI_DTreeElement_type"),
+                getString("_UI_DTreeElement_treeElementMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTreeElement_treeElementMapping_feature", "_UI_DTreeElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TreePackage.Literals.DTREE_ELEMENT__TREE_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
@@ -77,7 +78,7 @@ public class DTreeElementItemProvider extends DRepresentationElementItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTreeElement"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTreeElement")); //$NON-NLS-1$
     }
 
     /**
@@ -89,7 +90,8 @@ public class DTreeElementItemProvider extends DRepresentationElementItemProvider
     @Override
     public String getText(Object object) {
         String label = ((DTreeElement) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DTreeElement_type") : getString("_UI_DTreeElement_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DTreeElement_type") : //$NON-NLS-1$
+            getString("_UI_DTreeElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

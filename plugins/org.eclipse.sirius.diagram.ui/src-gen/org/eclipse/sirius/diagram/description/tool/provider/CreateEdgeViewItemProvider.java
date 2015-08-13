@@ -66,8 +66,10 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
      */
     protected void addSourceExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateEdgeView_sourceExpression_feature"), getString("_UI_CreateEdgeView_sourceExpression_description"), ToolPackage.Literals.CREATE_EDGE_VIEW__SOURCE_EXPRESSION, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateEdgeView_sourceExpression_feature"), //$NON-NLS-1$
+                getString("_UI_CreateEdgeView_sourceExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CREATE_EDGE_VIEW__SOURCE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,8 +80,10 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
      */
     protected void addTargetExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateEdgeView_targetExpression_feature"), getString("_UI_CreateEdgeView_targetExpression_description"), ToolPackage.Literals.CREATE_EDGE_VIEW__TARGET_EXPRESSION, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateEdgeView_targetExpression_feature"), //$NON-NLS-1$
+                getString("_UI_CreateEdgeView_targetExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CREATE_EDGE_VIEW__TARGET_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,7 +94,7 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateEdgeView"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateEdgeView")); //$NON-NLS-1$
     }
 
     /**
@@ -102,7 +106,8 @@ public class CreateEdgeViewItemProvider extends CreateViewItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((CreateEdgeView) object).getVariableName();
-        return label == null || label.length() == 0 ? getString("_UI_CreateEdgeView_type") : getString("_UI_CreateEdgeView_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CreateEdgeView_type") : //$NON-NLS-1$
+            getString("_UI_CreateEdgeView_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

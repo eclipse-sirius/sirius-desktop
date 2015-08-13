@@ -74,8 +74,10 @@ IItemPropertySource {
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DocumentedElement_documentation_feature"), getString("_UI_DocumentedElement_documentation_description"), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION,
-                true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), null));
+                getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -87,7 +89,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = crop(((DocumentedElement) object).getDocumentation());
-        return label == null || label.length() == 0 ? getString("_UI_DocumentedElement_type") : getString("_UI_DocumentedElement_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DocumentedElement_type") : //$NON-NLS-1$
+            getString("_UI_DocumentedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

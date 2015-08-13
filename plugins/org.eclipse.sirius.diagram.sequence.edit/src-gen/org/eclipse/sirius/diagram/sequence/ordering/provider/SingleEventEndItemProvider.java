@@ -65,7 +65,8 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
      */
     protected void addStartPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SingleEventEnd_start_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SingleEventEnd_start_feature", "_UI_SingleEventEnd_type"),
+                getString("_UI_SingleEventEnd_start_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SingleEventEnd_start_feature", "_UI_SingleEventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 OrderingPackage.Literals.SINGLE_EVENT_END__START, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -77,7 +78,8 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
      */
     protected void addSemanticEventPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SingleEventEnd_semanticEvent_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SingleEventEnd_semanticEvent_feature", "_UI_SingleEventEnd_type"),
+                getString("_UI_SingleEventEnd_semanticEvent_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SingleEventEnd_semanticEvent_feature", "_UI_SingleEventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 OrderingPackage.Literals.SINGLE_EVENT_END__SEMANTIC_EVENT, true, false, true, null, null, null));
     }
 
@@ -90,7 +92,7 @@ public class SingleEventEndItemProvider extends EventEndItemProvider {
     @Override
     public String getText(Object object) {
         SingleEventEnd singleEventEnd = (SingleEventEnd) object;
-        return getString("_UI_SingleEventEnd_type") + " " + singleEventEnd.isStart();
+        return getString("_UI_SingleEventEnd_type") + " " + singleEventEnd.isStart(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

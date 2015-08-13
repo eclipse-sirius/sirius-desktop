@@ -100,7 +100,7 @@ public class SourceEdgeCreationVariableItemProvider extends AbstractVariableItem
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SourceEdgeCreationVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SourceEdgeCreationVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -112,7 +112,8 @@ public class SourceEdgeCreationVariableItemProvider extends AbstractVariableItem
     @Override
     public String getText(Object object) {
         String label = ((SourceEdgeCreationVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_SourceEdgeCreationVariable_type") : getString("_UI_SourceEdgeCreationVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_SourceEdgeCreationVariable_type") : //$NON-NLS-1$
+            getString("_UI_SourceEdgeCreationVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

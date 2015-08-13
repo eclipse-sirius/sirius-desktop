@@ -65,7 +65,7 @@ public class EndOfLifeMappingItemProvider extends NodeMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EndOfLifeMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EndOfLifeMapping")); //$NON-NLS-1$
     }
 
     /**

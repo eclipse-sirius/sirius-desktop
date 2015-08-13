@@ -800,15 +800,15 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (preconditionExpression: ");
+        result.append(" (preconditionExpression: "); //$NON-NLS-1$
         result.append(preconditionExpression);
-        result.append(", semanticCandidatesExpression: ");
+        result.append(", semanticCandidatesExpression: "); //$NON-NLS-1$
         result.append(semanticCandidatesExpression);
-        result.append(", createElements: ");
+        result.append(", createElements: "); //$NON-NLS-1$
         result.append(createElements);
-        result.append(", semanticElements: ");
+        result.append(", semanticElements: "); //$NON-NLS-1$
         result.append(semanticElements);
-        result.append(", synchronizationLock: ");
+        result.append(", synchronizationLock: "); //$NON-NLS-1$
         result.append(synchronizationLock);
         result.append(')');
         return result.toString();

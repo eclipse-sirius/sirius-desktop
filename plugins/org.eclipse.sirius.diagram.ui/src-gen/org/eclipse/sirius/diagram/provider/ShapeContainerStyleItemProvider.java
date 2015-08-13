@@ -66,8 +66,10 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
      */
     protected void addShapePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ShapeContainerStyle_shape_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyle_shape_feature", "_UI_ShapeContainerStyle_type"),
-                DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ShapeContainerStyle_shape_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyle_shape_feature", "_UI_ShapeContainerStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,9 +80,10 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ShapeContainerStyle_backgroundColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyle_backgroundColor_feature", "_UI_ShapeContainerStyle_type"),
-                DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ShapeContainerStyle_backgroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyle_backgroundColor_feature", "_UI_ShapeContainerStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -91,7 +94,7 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ShapeContainerStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ShapeContainerStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -103,7 +106,7 @@ public class ShapeContainerStyleItemProvider extends ContainerStyleItemProvider 
     @Override
     public String getText(Object object) {
         ShapeContainerStyle shapeContainerStyle = (ShapeContainerStyle) object;
-        return getString("_UI_ShapeContainerStyle_type") + " " + shapeContainerStyle.getLabelSize();
+        return getString("_UI_ShapeContainerStyle_type") + " " + shapeContainerStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -298,9 +298,9 @@ public class LozengeNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (widthComputationExpression: ");
+        result.append(" (widthComputationExpression: "); //$NON-NLS-1$
         result.append(widthComputationExpression);
-        result.append(", heightComputationExpression: ");
+        result.append(", heightComputationExpression: "); //$NON-NLS-1$
         result.append(heightComputationExpression);
         result.append(')');
         return result.toString();

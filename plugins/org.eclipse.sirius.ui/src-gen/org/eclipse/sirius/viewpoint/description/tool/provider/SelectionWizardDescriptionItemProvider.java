@@ -78,9 +78,9 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_candidatesExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_candidatesExpression_feature", "_UI_SelectionDescription_type"),
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_SelectionDescription_candidatesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_candidatesExpression_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.SELECTION_DESCRIPTION__CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -92,8 +92,10 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     protected void addMultiplePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_multiple_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_multiple_feature", "_UI_SelectionDescription_type"),
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__MULTIPLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SelectionDescription_multiple_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_multiple_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.SELECTION_DESCRIPTION__MULTIPLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -104,8 +106,10 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     protected void addTreePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_tree_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_tree_feature", "_UI_SelectionDescription_type"),
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__TREE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SelectionDescription_tree_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_tree_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.SELECTION_DESCRIPTION__TREE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -116,9 +120,10 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_rootExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_rootExpression_feature", "_UI_SelectionDescription_type"),
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__ROOT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SelectionDescription_rootExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_rootExpression_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.SELECTION_DESCRIPTION__ROOT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -128,12 +133,11 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      * @generated
      */
     protected void addChildrenExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_childrenExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_childrenExpression_feature", "_UI_SelectionDescription_type"),
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_SelectionDescription_childrenExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_childrenExpression_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -144,8 +148,10 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     protected void addMessagePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionDescription_message_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_message_feature", "_UI_SelectionDescription_type"),
-                DescriptionPackage.Literals.SELECTION_DESCRIPTION__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SelectionDescription_message_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SelectionDescription_message_feature", "_UI_SelectionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.SELECTION_DESCRIPTION__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -156,8 +162,10 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionWizardDescription_iconPath_feature"), getString("_UI_SelectionWizardDescription_iconPath_description"),
-                ToolPackage.Literals.SELECTION_WIZARD_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_SelectionWizardDescription_iconPath_feature"), //$NON-NLS-1$
+                getString("_UI_SelectionWizardDescription_iconPath_description"), //$NON-NLS-1$
+                ToolPackage.Literals.SELECTION_WIZARD_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -168,8 +176,10 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     protected void addWindowTitlePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionWizardDescription_windowTitle_feature"), getString("_UI_SelectionWizardDescription_windowTitle_description"),
-                ToolPackage.Literals.SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_SelectionWizardDescription_windowTitle_feature"), //$NON-NLS-1$
+                getString("_UI_SelectionWizardDescription_windowTitle_description"), //$NON-NLS-1$
+                ToolPackage.Literals.SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -180,8 +190,10 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     protected void addWindowImagePathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SelectionWizardDescription_windowImagePath_feature"), getString("_UI_SelectionWizardDescription_windowImagePath_description"),
-                ToolPackage.Literals.SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_SelectionWizardDescription_windowImagePath_feature"), //$NON-NLS-1$
+                getString("_UI_SelectionWizardDescription_windowImagePath_description"), //$NON-NLS-1$
+                ToolPackage.Literals.SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -228,7 +240,7 @@ public class SelectionWizardDescriptionItemProvider extends AbstractToolDescript
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SelectionWizardDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SelectionWizardDescription")); //$NON-NLS-1$
     }
 
     /**

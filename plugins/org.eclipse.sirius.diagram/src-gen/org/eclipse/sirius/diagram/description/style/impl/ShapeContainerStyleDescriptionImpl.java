@@ -400,11 +400,11 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (widthComputationExpression: ");
+        result.append(" (widthComputationExpression: "); //$NON-NLS-1$
         result.append(widthComputationExpression);
-        result.append(", heightComputationExpression: ");
+        result.append(", heightComputationExpression: "); //$NON-NLS-1$
         result.append(heightComputationExpression);
-        result.append(", shape: ");
+        result.append(", shape: "); //$NON-NLS-1$
         result.append(shape);
         result.append(')');
         return result.toString();

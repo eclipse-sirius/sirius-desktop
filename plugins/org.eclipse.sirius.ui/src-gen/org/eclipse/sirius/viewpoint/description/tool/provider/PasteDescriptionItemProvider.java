@@ -103,7 +103,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PasteDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PasteDescription")); //$NON-NLS-1$
     }
 
     /**

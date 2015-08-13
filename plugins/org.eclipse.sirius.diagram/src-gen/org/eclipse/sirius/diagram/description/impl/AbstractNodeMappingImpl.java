@@ -412,9 +412,9 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (documentation: ");
+        result.append(" (documentation: "); //$NON-NLS-1$
         result.append(documentation);
-        result.append(", domainClass: ");
+        result.append(", domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
         result.append(')');
         return result.toString();

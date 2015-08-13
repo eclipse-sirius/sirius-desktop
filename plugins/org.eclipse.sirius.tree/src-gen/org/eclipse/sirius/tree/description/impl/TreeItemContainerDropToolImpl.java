@@ -754,7 +754,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (dragSource: ");
+        result.append(" (dragSource: "); //$NON-NLS-1$
         result.append(dragSource);
         result.append(')');
         return result.toString();

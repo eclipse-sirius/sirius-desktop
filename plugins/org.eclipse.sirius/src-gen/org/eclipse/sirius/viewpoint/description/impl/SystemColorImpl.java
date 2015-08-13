@@ -165,7 +165,7 @@ public class SystemColorImpl extends FixedColorImpl implements SystemColor {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
         return result.toString();

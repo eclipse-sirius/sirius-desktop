@@ -167,7 +167,7 @@ public class TableMappingImpl extends RepresentationElementMappingImpl implement
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (semanticElements: ");
+        result.append(" (semanticElements: "); //$NON-NLS-1$
         result.append(semanticElements);
         result.append(')');
         return result.toString();

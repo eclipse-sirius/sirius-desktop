@@ -68,8 +68,8 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
      */
     protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LozengeNodeDescription_widthComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_LozengeNodeDescription_widthComputationExpression_feature", "_UI_LozengeNodeDescription_type"),
+                getString("_UI_LozengeNodeDescription_widthComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LozengeNodeDescription_widthComputationExpression_feature", "_UI_LozengeNodeDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 StylePackage.Literals.LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -81,8 +81,8 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
      */
     protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LozengeNodeDescription_heightComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_LozengeNodeDescription_heightComputationExpression_feature", "_UI_LozengeNodeDescription_type"),
+                getString("_UI_LozengeNodeDescription_heightComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LozengeNodeDescription_heightComputationExpression_feature", "_UI_LozengeNodeDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 StylePackage.Literals.LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -94,8 +94,10 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
      */
     protected void addColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LozengeNodeDescription_color_feature"), getString("_UI_PropertyDescriptor_description", "_UI_LozengeNodeDescription_color_feature", "_UI_LozengeNodeDescription_type"),
-                StylePackage.Literals.LOZENGE_NODE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_LozengeNodeDescription_color_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LozengeNodeDescription_color_feature", "_UI_LozengeNodeDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.LOZENGE_NODE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -106,7 +108,7 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LozengeNodeDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LozengeNodeDescription")); //$NON-NLS-1$
     }
 
     /**

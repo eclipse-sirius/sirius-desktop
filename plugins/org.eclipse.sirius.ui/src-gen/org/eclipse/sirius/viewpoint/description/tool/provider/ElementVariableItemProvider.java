@@ -97,7 +97,7 @@ public class ElementVariableItemProvider extends AbstractVariableItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -109,7 +109,8 @@ public class ElementVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((ElementVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ElementVariable_type") : getString("_UI_ElementVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ElementVariable_type") : //$NON-NLS-1$
+            getString("_UI_ElementVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

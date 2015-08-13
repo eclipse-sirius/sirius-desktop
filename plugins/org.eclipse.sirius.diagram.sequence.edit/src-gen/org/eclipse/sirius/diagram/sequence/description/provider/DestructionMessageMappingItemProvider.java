@@ -60,7 +60,7 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DestructionMessageMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DestructionMessageMapping")); //$NON-NLS-1$
     }
 
     /**

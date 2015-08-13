@@ -69,8 +69,10 @@ public class ToolDescriptionItemProvider extends MappingBasedToolDescriptionItem
      */
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ToolDescription_iconPath_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ToolDescription_iconPath_feature", "_UI_ToolDescription_type"),
-                ToolPackage.Literals.TOOL_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ToolDescription_iconPath_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ToolDescription_iconPath_feature", "_UI_ToolDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.TOOL_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -116,7 +118,7 @@ public class ToolDescriptionItemProvider extends MappingBasedToolDescriptionItem
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ToolDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ToolDescription")); //$NON-NLS-1$
     }
 
     /**

@@ -2262,27 +2262,27 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (documentation: ");
+        result.append(" (documentation: "); //$NON-NLS-1$
         result.append(documentation);
-        result.append(", endUserDocumentation: ");
+        result.append(", endUserDocumentation: "); //$NON-NLS-1$
         result.append(endUserDocumentation);
-        result.append(", name: ");
+        result.append(", name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", titleExpression: ");
+        result.append(", titleExpression: "); //$NON-NLS-1$
         result.append(titleExpression);
-        result.append(", initialisation: ");
+        result.append(", initialisation: "); //$NON-NLS-1$
         result.append(initialisation);
-        result.append(", showOnStartup: ");
+        result.append(", showOnStartup: "); //$NON-NLS-1$
         result.append(showOnStartup);
-        result.append(", domainClass: ");
+        result.append(", domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
-        result.append(", preconditionExpression: ");
+        result.append(", preconditionExpression: "); //$NON-NLS-1$
         result.append(preconditionExpression);
-        result.append(", rootExpression: ");
+        result.append(", rootExpression: "); //$NON-NLS-1$
         result.append(rootExpression);
-        result.append(", enablePopupBars: ");
+        result.append(", enablePopupBars: "); //$NON-NLS-1$
         result.append(enablePopupBars);
         result.append(')');
         return result.toString();

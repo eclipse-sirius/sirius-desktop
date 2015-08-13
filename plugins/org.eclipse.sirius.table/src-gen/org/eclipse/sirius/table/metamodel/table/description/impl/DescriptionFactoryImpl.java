@@ -148,7 +148,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.TABLE_NAVIGATION_DESCRIPTION:
             return createTableNavigationDescription();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

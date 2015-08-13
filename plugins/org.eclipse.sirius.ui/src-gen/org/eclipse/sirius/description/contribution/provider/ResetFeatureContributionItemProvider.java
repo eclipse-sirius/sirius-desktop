@@ -21,10 +21,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.description.contribution.ResetFeatureContribution;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class ResetFeatureContributionItemProvider extends FeatureContributionItemProvider {
@@ -54,14 +52,14 @@ public class ResetFeatureContributionItemProvider extends FeatureContributionIte
     }
 
     /**
-     * This returns ResetFeatureContribution.gif. <!-- begin-user-doc --> <!--
+     * This returns ResetFeatureContribution.gif.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ResetFeatureContribution"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ResetFeatureContribution")); //$NON-NLS-1$
     }
 
     /**
@@ -89,11 +87,10 @@ public class ResetFeatureContributionItemProvider extends FeatureContributionIte
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override

@@ -59,7 +59,7 @@ public class DFolderItemProvider extends DResourceContainerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DFolder"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DFolder")); //$NON-NLS-1$
     }
 
     /**
@@ -71,7 +71,8 @@ public class DFolderItemProvider extends DResourceContainerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DFolder) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DFolder_type") : getString("_UI_DFolder_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DFolder_type") : //$NON-NLS-1$
+            getString("_UI_DFolder_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -601,11 +601,11 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", viewpointURI: ");
+        result.append(", viewpointURI: "); //$NON-NLS-1$
         result.append(viewpointURI);
-        result.append(", representationName: ");
+        result.append(", representationName: "); //$NON-NLS-1$
         result.append(representationName);
         result.append(')');
         return result.toString();

@@ -77,7 +77,8 @@ IItemPropertySource {
      */
     protected void addSourcePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnnotation_source_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnnotation_source_feature", "_UI_DAnnotation_type"),
+                getString("_UI_DAnnotation_source_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnnotation_source_feature", "_UI_DAnnotation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.DANNOTATION__SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -122,7 +123,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnnotation"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnnotation")); //$NON-NLS-1$
     }
 
     /**
@@ -134,7 +135,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((DAnnotation) object).getSource();
-        return label == null || label.length() == 0 ? getString("_UI_DAnnotation_type") : getString("_UI_DAnnotation_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DAnnotation_type") : //$NON-NLS-1$
+            getString("_UI_DAnnotation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

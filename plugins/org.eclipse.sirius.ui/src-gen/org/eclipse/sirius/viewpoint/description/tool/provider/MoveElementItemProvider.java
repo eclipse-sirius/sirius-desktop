@@ -66,8 +66,10 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
      */
     protected void addNewContainerExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MoveElement_newContainerExpression_feature"), getString("_UI_MoveElement_newContainerExpression_description"),
-                ToolPackage.Literals.MOVE_ELEMENT__NEW_CONTAINER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_MoveElement_newContainerExpression_feature"), //$NON-NLS-1$
+                getString("_UI_MoveElement_newContainerExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.MOVE_ELEMENT__NEW_CONTAINER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,8 +80,10 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MoveElement_featureName_feature"), getString("_UI_MoveElement_featureName_description"), ToolPackage.Literals.MOVE_ELEMENT__FEATURE_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_MoveElement_featureName_feature"), //$NON-NLS-1$
+                getString("_UI_MoveElement_featureName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.MOVE_ELEMENT__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,7 +94,7 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/MoveElement"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/MoveElement")); //$NON-NLS-1$
     }
 
     /**
@@ -102,7 +106,8 @@ public class MoveElementItemProvider extends ContainerModelOperationItemProvider
     @Override
     public String getText(Object object) {
         String label = ((MoveElement) object).getFeatureName();
-        return label == null || label.length() == 0 ? getString("_UI_MoveElement_type") : getString("_UI_MoveElement_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_MoveElement_type") : //$NON-NLS-1$
+            getString("_UI_MoveElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

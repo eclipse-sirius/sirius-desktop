@@ -286,9 +286,9 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (precondition: ");
+        result.append(" (precondition: "); //$NON-NLS-1$
         result.append(precondition);
-        result.append(", elementsToListen: ");
+        result.append(", elementsToListen: "); //$NON-NLS-1$
         result.append(elementsToListen);
         result.append(')');
         return result.toString();

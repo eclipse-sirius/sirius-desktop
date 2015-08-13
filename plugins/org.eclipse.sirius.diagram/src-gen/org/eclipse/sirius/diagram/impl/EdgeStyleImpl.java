@@ -907,21 +907,21 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (lineStyle: ");
+        result.append(" (lineStyle: "); //$NON-NLS-1$
         result.append(lineStyle);
-        result.append(", sourceArrow: ");
+        result.append(", sourceArrow: "); //$NON-NLS-1$
         result.append(sourceArrow);
-        result.append(", targetArrow: ");
+        result.append(", targetArrow: "); //$NON-NLS-1$
         result.append(targetArrow);
-        result.append(", foldingStyle: ");
+        result.append(", foldingStyle: "); //$NON-NLS-1$
         result.append(foldingStyle);
-        result.append(", size: ");
+        result.append(", size: "); //$NON-NLS-1$
         result.append(size);
-        result.append(", routingStyle: ");
+        result.append(", routingStyle: "); //$NON-NLS-1$
         result.append(routingStyle);
-        result.append(", centered: ");
+        result.append(", centered: "); //$NON-NLS-1$
         result.append(centered);
-        result.append(", strokeColor: ");
+        result.append(", strokeColor: "); //$NON-NLS-1$
         result.append(strokeColor);
         result.append(')');
         return result.toString();

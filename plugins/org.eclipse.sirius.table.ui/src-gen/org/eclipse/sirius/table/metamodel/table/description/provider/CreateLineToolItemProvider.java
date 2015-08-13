@@ -64,8 +64,10 @@ public class CreateLineToolItemProvider extends CreateToolItemProvider {
      */
     protected void addMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateLineTool_mapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CreateLineTool_mapping_feature", "_UI_CreateLineTool_type"),
-                DescriptionPackage.Literals.CREATE_LINE_TOOL__MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateLineTool_mapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CreateLineTool_mapping_feature", "_UI_CreateLineTool_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.CREATE_LINE_TOOL__MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -76,7 +78,7 @@ public class CreateLineToolItemProvider extends CreateToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateLineTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateLineTool")); //$NON-NLS-1$
     }
 
     /**

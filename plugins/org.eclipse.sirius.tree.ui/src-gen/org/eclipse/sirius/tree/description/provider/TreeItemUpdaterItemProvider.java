@@ -105,7 +105,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemUpdater"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemUpdater")); //$NON-NLS-1$
     }
 
     /**
@@ -116,7 +116,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_TreeItemUpdater_type");
+        return getString("_UI_TreeItemUpdater_type"); //$NON-NLS-1$
     }
 
     /**

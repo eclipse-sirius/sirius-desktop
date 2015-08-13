@@ -235,7 +235,7 @@ public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (start: ");
+        result.append(" (start: "); //$NON-NLS-1$
         result.append(start);
         result.append(')');
         return result.toString();

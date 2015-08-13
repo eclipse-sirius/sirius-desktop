@@ -180,7 +180,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (filterKind: ");
+        result.append(" (filterKind: "); //$NON-NLS-1$
         result.append(filterKind);
         result.append(')');
         return result.toString();

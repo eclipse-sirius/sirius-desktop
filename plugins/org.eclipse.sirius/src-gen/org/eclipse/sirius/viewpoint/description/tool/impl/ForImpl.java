@@ -224,9 +224,9 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (expression: ");
+        result.append(" (expression: "); //$NON-NLS-1$
         result.append(expression);
-        result.append(", iteratorName: ");
+        result.append(", iteratorName: "); //$NON-NLS-1$
         result.append(iteratorName);
         result.append(')');
         return result.toString();

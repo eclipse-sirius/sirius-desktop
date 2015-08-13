@@ -110,7 +110,7 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateTool")); //$NON-NLS-1$
     }
 
     /**

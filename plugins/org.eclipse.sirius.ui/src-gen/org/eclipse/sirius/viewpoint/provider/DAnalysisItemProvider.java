@@ -79,7 +79,8 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      */
     protected void addReferencedAnalysisPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_referencedAnalysis_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_referencedAnalysis_feature", "_UI_DAnalysis_type"),
+                getString("_UI_DAnalysis_referencedAnalysis_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_referencedAnalysis_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS, true, false, true, null, null, null));
     }
 
@@ -90,10 +91,9 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      * @generated
      */
     protected void addModelsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_models_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_models_feature", "_UI_DAnalysis_type"), ViewpointPackage.Literals.DANALYSIS__MODELS, true, false, true, null,
-                null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_models_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_models_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ViewpointPackage.Literals.DANALYSIS__MODELS, true, false, true, null, null, null));
     }
 
     /**
@@ -104,7 +104,8 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      */
     protected void addSelectedViewsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_selectedViews_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_selectedViews_feature", "_UI_DAnalysis_type"),
+                getString("_UI_DAnalysis_selectedViews_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_selectedViews_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS__SELECTED_VIEWS, true, false, true, null, null, null));
     }
 
@@ -116,7 +117,8 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      */
     protected void addVersionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_version_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_version_feature", "_UI_DAnalysis_type"),
+                getString("_UI_DAnalysis_version_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_version_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS__VERSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -128,7 +130,8 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      */
     protected void addSemanticResourcesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_semanticResources_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_semanticResources_feature", "_UI_DAnalysis_type"),
+                getString("_UI_DAnalysis_semanticResources_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_semanticResources_feature", "_UI_DAnalysis_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS__SEMANTIC_RESOURCES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -174,7 +177,7 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnalysis"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnalysis")); //$NON-NLS-1$
     }
 
     /**
@@ -186,7 +189,8 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     @Override
     public String getText(Object object) {
         String label = ((DAnalysis) object).getVersion();
-        return label == null || label.length() == 0 ? getString("_UI_DAnalysis_type") : getString("_UI_DAnalysis_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DAnalysis_type") : //$NON-NLS-1$
+            getString("_UI_DAnalysis_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -224,9 +224,9 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (attributeName: ");
+        result.append(" (attributeName: "); //$NON-NLS-1$
         result.append(attributeName);
-        result.append(", value: ");
+        result.append(", value: "); //$NON-NLS-1$
         result.append(value);
         result.append(')');
         return result.toString();

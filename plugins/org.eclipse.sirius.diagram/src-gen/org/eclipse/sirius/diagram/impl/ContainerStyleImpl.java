@@ -581,15 +581,15 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSize: ");
+        result.append(" (borderSize: "); //$NON-NLS-1$
         result.append(borderSize);
-        result.append(", borderSizeComputationExpression: ");
+        result.append(", borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
-        result.append(", borderColor: ");
+        result.append(", borderColor: "); //$NON-NLS-1$
         result.append(borderColor);
-        result.append(", borderLineStyle: ");
+        result.append(", borderLineStyle: "); //$NON-NLS-1$
         result.append(borderLineStyle);
-        result.append(", hideLabelByDefault: ");
+        result.append(", hideLabelByDefault: "); //$NON-NLS-1$
         result.append(hideLabelByDefault);
         result.append(')');
         return result.toString();

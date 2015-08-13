@@ -76,7 +76,8 @@ IItemPropertySource {
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_VSMElementCustomization_predicateExpression_feature"), getString("_UI_VSMElementCustomization_predicateExpression_description"),
+                getString("_UI_VSMElementCustomization_predicateExpression_feature"), //$NON-NLS-1$
+                getString("_UI_VSMElementCustomization_predicateExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -121,7 +122,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/VSMElementCustomization"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/VSMElementCustomization")); //$NON-NLS-1$
     }
 
     /**
@@ -133,7 +134,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((VSMElementCustomization) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_VSMElementCustomization_type") : getString("_UI_VSMElementCustomization_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_VSMElementCustomization_type") : //$NON-NLS-1$
+            getString("_UI_VSMElementCustomization_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

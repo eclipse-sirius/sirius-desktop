@@ -100,7 +100,7 @@ public class OperationActionItemProvider extends MenuItemDescriptionItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationAction"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationAction")); //$NON-NLS-1$
     }
 
     /**

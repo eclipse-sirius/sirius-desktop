@@ -60,7 +60,7 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/IndirectlyCollapseFilter"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/IndirectlyCollapseFilter")); //$NON-NLS-1$
     }
 
     /**
@@ -72,7 +72,7 @@ public class IndirectlyCollapseFilterItemProvider extends CollapseFilterItemProv
     @Override
     public String getText(Object object) {
         IndirectlyCollapseFilter indirectlyCollapseFilter = (IndirectlyCollapseFilter) object;
-        return getString("_UI_IndirectlyCollapseFilter_type") + " " + indirectlyCollapseFilter.getWidth();
+        return getString("_UI_IndirectlyCollapseFilter_type") + " " + indirectlyCollapseFilter.getWidth(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

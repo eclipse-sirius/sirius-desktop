@@ -79,9 +79,9 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      */
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_iconPath_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_iconPath_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
-                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                getString("_UI_PaneBasedSelectionWizardDescription_iconPath_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_iconPath_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -93,9 +93,9 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      */
     protected void addWindowTitlePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_windowTitle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_windowTitle_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
-                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                getString("_UI_PaneBasedSelectionWizardDescription_windowTitle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_windowTitle_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -106,11 +106,13 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addWindowImagePathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_windowImagePath_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_windowImagePath_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_PaneBasedSelectionWizardDescription_windowImagePath_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_windowImagePath_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -121,9 +123,10 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      */
     protected void addMessagePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_message_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_message_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
-                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_PaneBasedSelectionWizardDescription_message_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_message_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -133,11 +136,13 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addChoiceOfValuesMessagePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_choiceOfValuesMessage_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_choiceOfValuesMessage_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_PaneBasedSelectionWizardDescription_choiceOfValuesMessage_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_choiceOfValuesMessage_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CHOICE_OF_VALUES_MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -147,11 +152,13 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_candidatesExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_candidatesExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_PaneBasedSelectionWizardDescription_candidatesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_candidatesExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -162,9 +169,10 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      */
     protected void addTreePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_tree_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_tree_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
-                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__TREE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_PaneBasedSelectionWizardDescription_tree_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_tree_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__TREE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -174,11 +182,13 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addRootExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_rootExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_rootExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_PaneBasedSelectionWizardDescription_rootExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_rootExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -188,11 +198,13 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addChildrenExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_childrenExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_childrenExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_PaneBasedSelectionWizardDescription_childrenExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_childrenExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -202,11 +214,13 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addSelectedValuesMessagePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_selectedValuesMessage_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_selectedValuesMessage_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_PaneBasedSelectionWizardDescription_selectedValuesMessage_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_selectedValuesMessage_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__SELECTED_VALUES_MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -216,11 +230,13 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addPreSelectedCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_PaneBasedSelectionWizardDescription_preSelectedCandidatesExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_preSelectedCandidatesExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_PaneBasedSelectionWizardDescription_preSelectedCandidatesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_preSelectedCandidatesExpression_feature", "_UI_PaneBasedSelectionWizardDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__PRE_SELECTED_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -267,7 +283,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PaneBasedSelectionWizardDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PaneBasedSelectionWizardDescription")); //$NON-NLS-1$
     }
 
     /**

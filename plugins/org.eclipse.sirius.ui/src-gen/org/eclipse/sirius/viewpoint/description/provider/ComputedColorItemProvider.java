@@ -67,8 +67,10 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
      */
     protected void addRedPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ComputedColor_red_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ComputedColor_red_feature", "_UI_ComputedColor_type"),
-                DescriptionPackage.Literals.COMPUTED_COLOR__RED, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ComputedColor_red_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ComputedColor_red_feature", "_UI_ComputedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.COMPUTED_COLOR__RED, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,8 +81,10 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
      */
     protected void addGreenPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ComputedColor_green_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ComputedColor_green_feature", "_UI_ComputedColor_type"),
-                DescriptionPackage.Literals.COMPUTED_COLOR__GREEN, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ComputedColor_green_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ComputedColor_green_feature", "_UI_ComputedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.COMPUTED_COLOR__GREEN, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -91,8 +95,10 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
      */
     protected void addBluePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ComputedColor_blue_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ComputedColor_blue_feature", "_UI_ComputedColor_type"),
-                DescriptionPackage.Literals.COMPUTED_COLOR__BLUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ComputedColor_blue_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ComputedColor_blue_feature", "_UI_ComputedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.COMPUTED_COLOR__BLUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -103,7 +109,7 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ComputedColor"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ComputedColor")); //$NON-NLS-1$
     }
 
     /**
@@ -115,7 +121,8 @@ public class ComputedColorItemProvider extends UserColorItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((ComputedColor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ComputedColor_type") : getString("_UI_ComputedColor_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ComputedColor_type") : //$NON-NLS-1$
+            getString("_UI_ComputedColor_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

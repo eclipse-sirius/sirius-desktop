@@ -59,7 +59,7 @@ public class RemoveElementItemProvider extends ContainerModelOperationItemProvid
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RemoveElement"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RemoveElement")); //$NON-NLS-1$
     }
 
     /**
@@ -70,7 +70,7 @@ public class RemoveElementItemProvider extends ContainerModelOperationItemProvid
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_RemoveElement_type");
+        return getString("_UI_RemoveElement_type"); //$NON-NLS-1$
     }
 
     /**

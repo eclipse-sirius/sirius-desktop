@@ -71,8 +71,8 @@ IItemPropertySource {
      */
     protected void addItemPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MenuItemDescriptionReference_item_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MenuItemDescriptionReference_item_feature", "_UI_MenuItemDescriptionReference_type"),
+                getString("_UI_MenuItemDescriptionReference_item_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MenuItemDescriptionReference_item_feature", "_UI_MenuItemDescriptionReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.MENU_ITEM_DESCRIPTION_REFERENCE__ITEM, true, false, true, null, null, null));
     }
 
@@ -84,7 +84,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/MenuItemDescriptionReference"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/MenuItemDescriptionReference")); //$NON-NLS-1$
     }
 
     /**
@@ -95,7 +95,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_MenuItemDescriptionReference_type");
+        return getString("_UI_MenuItemDescriptionReference_type"); //$NON-NLS-1$
     }
 
     /**

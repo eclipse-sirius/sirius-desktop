@@ -66,8 +66,10 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
      */
     protected void addShapePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImage_shape_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_shape_feature", "_UI_BundledImage_type"),
-                DiagramPackage.Literals.BUNDLED_IMAGE__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_BundledImage_shape_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_shape_feature", "_UI_BundledImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BUNDLED_IMAGE__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,8 +80,10 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
      */
     protected void addColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImage_color_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_color_feature", "_UI_BundledImage_type"),
-                DiagramPackage.Literals.BUNDLED_IMAGE__COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_BundledImage_color_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_color_feature", "_UI_BundledImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BUNDLED_IMAGE__COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,7 +94,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/BundledImage"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/BundledImage")); //$NON-NLS-1$
     }
 
     /**
@@ -102,7 +106,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
     @Override
     public String getText(Object object) {
         BundledImage bundledImage = (BundledImage) object;
-        return getString("_UI_BundledImage_type") + " " + bundledImage.getLabelSize();
+        return getString("_UI_BundledImage_type") + " " + bundledImage.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

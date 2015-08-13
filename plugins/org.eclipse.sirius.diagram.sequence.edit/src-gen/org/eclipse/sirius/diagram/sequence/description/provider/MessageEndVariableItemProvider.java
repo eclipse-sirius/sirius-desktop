@@ -61,7 +61,7 @@ public class MessageEndVariableItemProvider extends AbstractVariableItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/MessageEndVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/MessageEndVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -73,7 +73,8 @@ public class MessageEndVariableItemProvider extends AbstractVariableItemProvider
     @Override
     public String getText(Object object) {
         String label = ((MessageEndVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_MessageEndVariable_type") : getString("_UI_MessageEndVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_MessageEndVariable_type") : //$NON-NLS-1$
+            getString("_UI_MessageEndVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

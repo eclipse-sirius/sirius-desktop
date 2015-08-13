@@ -64,8 +64,10 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
      */
     protected void addMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemCreationTool_mapping_feature"), getString("_UI_TreeItemCreationTool_mapping_description"), DescriptionPackage.Literals.TREE_ITEM_CREATION_TOOL__MAPPING, true,
-                false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TreeItemCreationTool_mapping_feature"), //$NON-NLS-1$
+                getString("_UI_TreeItemCreationTool_mapping_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_ITEM_CREATION_TOOL__MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -76,7 +78,7 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemCreationTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemCreationTool")); //$NON-NLS-1$
     }
 
     /**

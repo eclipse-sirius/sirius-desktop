@@ -338,9 +338,9 @@ public class NodeMappingImportImpl extends NodeMappingImpl implements NodeMappin
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (hideSubMappings: ");
+        result.append(" (hideSubMappings: "); //$NON-NLS-1$
         result.append(hideSubMappings);
-        result.append(", inheritsAncestorFilters: ");
+        result.append(", inheritsAncestorFilters: "); //$NON-NLS-1$
         result.append(inheritsAncestorFilters);
         result.append(')');
         return result.toString();

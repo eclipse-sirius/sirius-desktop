@@ -101,7 +101,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreePopupMenu"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreePopupMenu")); //$NON-NLS-1$
     }
 
     /**

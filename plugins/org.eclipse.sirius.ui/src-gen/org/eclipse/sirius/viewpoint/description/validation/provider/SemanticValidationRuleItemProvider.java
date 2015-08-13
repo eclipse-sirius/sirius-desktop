@@ -66,9 +66,10 @@ public class SemanticValidationRuleItemProvider extends ValidationRuleItemProvid
      */
     protected void addTargetClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SemanticValidationRule_targetClass_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SemanticValidationRule_targetClass_feature", "_UI_SemanticValidationRule_type"),
-                ValidationPackage.Literals.SEMANTIC_VALIDATION_RULE__TARGET_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SemanticValidationRule_targetClass_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SemanticValidationRule_targetClass_feature", "_UI_SemanticValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.SEMANTIC_VALIDATION_RULE__TARGET_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,13 +80,13 @@ public class SemanticValidationRuleItemProvider extends ValidationRuleItemProvid
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SemanticValidationRule"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SemanticValidationRule")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override

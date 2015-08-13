@@ -236,7 +236,7 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (shape: ");
+        result.append(" (shape: "); //$NON-NLS-1$
         result.append(shape);
         result.append(')');
         return result.toString();

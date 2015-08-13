@@ -970,21 +970,21 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (endUserDocumentation: ");
+        result.append(" (endUserDocumentation: "); //$NON-NLS-1$
         result.append(endUserDocumentation);
-        result.append(", name: ");
+        result.append(", name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", modelFileExtension: ");
+        result.append(", modelFileExtension: "); //$NON-NLS-1$
         result.append(modelFileExtension);
-        result.append(", icon: ");
+        result.append(", icon: "); //$NON-NLS-1$
         result.append(icon);
-        result.append(", conflicts: ");
+        result.append(", conflicts: "); //$NON-NLS-1$
         result.append(conflicts);
-        result.append(", reuses: ");
+        result.append(", reuses: "); //$NON-NLS-1$
         result.append(reuses);
-        result.append(", customizes: ");
+        result.append(", customizes: "); //$NON-NLS-1$
         result.append(customizes);
         result.append(')');
         return result.toString();

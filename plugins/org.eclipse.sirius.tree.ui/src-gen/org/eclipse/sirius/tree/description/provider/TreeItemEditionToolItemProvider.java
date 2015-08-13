@@ -104,7 +104,7 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemEditionTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemEditionTool")); //$NON-NLS-1$
     }
 
     /**
@@ -174,7 +174,8 @@ public class TreeItemEditionToolItemProvider extends TreeItemToolItemProvider {
         boolean qualify = childFeature == DescriptionPackage.Literals.TREE_ITEM_EDITION_TOOL__ELEMENT || childFeature == DescriptionPackage.Literals.TREE_ITEM_EDITION_TOOL__ROOT;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

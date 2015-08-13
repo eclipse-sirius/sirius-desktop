@@ -239,7 +239,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (associatedValue: ");
+        result.append(" (associatedValue: "); //$NON-NLS-1$
         result.append(associatedValue);
         result.append(')');
         return result.toString();

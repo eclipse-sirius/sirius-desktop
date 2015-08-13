@@ -401,13 +401,13 @@ public abstract class FrameMappingImpl extends ContainerMappingImpl implements F
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (startingEndFinderExpression: ");
+        result.append(" (startingEndFinderExpression: "); //$NON-NLS-1$
         result.append(startingEndFinderExpression);
-        result.append(", finishingEndFinderExpression: ");
+        result.append(", finishingEndFinderExpression: "); //$NON-NLS-1$
         result.append(finishingEndFinderExpression);
-        result.append(", coveredLifelinesExpression: ");
+        result.append(", coveredLifelinesExpression: "); //$NON-NLS-1$
         result.append(coveredLifelinesExpression);
-        result.append(", centerLabelExpression: ");
+        result.append(", centerLabelExpression: "); //$NON-NLS-1$
         result.append(centerLabelExpression);
         result.append(')');
         return result.toString();

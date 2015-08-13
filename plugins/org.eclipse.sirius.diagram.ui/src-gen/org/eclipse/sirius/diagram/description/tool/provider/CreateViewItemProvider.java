@@ -71,8 +71,10 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
      */
     protected void addMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateView_mapping_feature"), getString("_UI_CreateView_mapping_description"), ToolPackage.Literals.CREATE_VIEW__MAPPING, true, false, true, null,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateView_mapping_feature"), //$NON-NLS-1$
+                getString("_UI_CreateView_mapping_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CREATE_VIEW__MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -83,8 +85,10 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
      */
     protected void addContainerViewExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateView_containerViewExpression_feature"), getString("_UI_CreateView_containerViewExpression_description"),
-                ToolPackage.Literals.CREATE_VIEW__CONTAINER_VIEW_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateView_containerViewExpression_feature"), //$NON-NLS-1$
+                getString("_UI_CreateView_containerViewExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CREATE_VIEW__CONTAINER_VIEW_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -95,8 +99,10 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
      */
     protected void addVariableNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateView_variableName_feature"), getString("_UI_CreateView_variableName_description"), ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateView_variableName_feature"), //$NON-NLS-1$
+                getString("_UI_CreateView_variableName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -107,7 +113,7 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateView"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateView")); //$NON-NLS-1$
     }
 
     /**
@@ -119,7 +125,8 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
     @Override
     public String getText(Object object) {
         String label = ((CreateView) object).getVariableName();
-        return label == null || label.length() == 0 ? getString("_UI_CreateView_type") : getString("_UI_CreateView_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CreateView_type") : //$NON-NLS-1$
+            getString("_UI_CreateView_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

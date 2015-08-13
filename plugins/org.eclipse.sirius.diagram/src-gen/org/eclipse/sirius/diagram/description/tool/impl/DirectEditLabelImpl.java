@@ -413,7 +413,7 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (inputLabelExpression: ");
+        result.append(" (inputLabelExpression: "); //$NON-NLS-1$
         result.append(inputLabelExpression);
         result.append(')');
         return result.toString();

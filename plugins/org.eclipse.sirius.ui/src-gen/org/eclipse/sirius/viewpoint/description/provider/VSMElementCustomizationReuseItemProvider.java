@@ -72,7 +72,8 @@ IItemPropertySource {
      */
     protected void addReusePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_VSMElementCustomizationReuse_reuse_feature"), getString("_UI_VSMElementCustomizationReuse_reuse_description"),
+                getString("_UI_VSMElementCustomizationReuse_reuse_feature"), //$NON-NLS-1$
+                getString("_UI_VSMElementCustomizationReuse_reuse_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.VSM_ELEMENT_CUSTOMIZATION_REUSE__REUSE, true, false, true, null, null, null));
     }
 
@@ -84,7 +85,8 @@ IItemPropertySource {
      */
     protected void addAppliedOnPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_VSMElementCustomizationReuse_appliedOn_feature"), getString("_UI_VSMElementCustomizationReuse_appliedOn_description"),
+                getString("_UI_VSMElementCustomizationReuse_appliedOn_feature"), //$NON-NLS-1$
+                getString("_UI_VSMElementCustomizationReuse_appliedOn_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.VSM_ELEMENT_CUSTOMIZATION_REUSE__APPLIED_ON, true, false, true, null, null, null));
     }
 
@@ -96,7 +98,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/VSMElementCustomizationReuse"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/VSMElementCustomizationReuse")); //$NON-NLS-1$
     }
 
     /**
@@ -107,7 +109,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_VSMElementCustomizationReuse_type");
+        return getString("_UI_VSMElementCustomizationReuse_type"); //$NON-NLS-1$
     }
 
     /**

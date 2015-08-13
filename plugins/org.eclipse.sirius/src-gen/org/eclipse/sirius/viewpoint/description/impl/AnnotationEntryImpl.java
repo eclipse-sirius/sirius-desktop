@@ -259,7 +259,7 @@ public class AnnotationEntryImpl extends MinimalEObjectImpl.Container implements
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (source: ");
+        result.append(" (source: "); //$NON-NLS-1$
         result.append(source);
         result.append(')');
         return result.toString();

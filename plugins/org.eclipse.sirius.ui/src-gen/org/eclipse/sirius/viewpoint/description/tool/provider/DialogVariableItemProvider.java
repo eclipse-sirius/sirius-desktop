@@ -65,8 +65,10 @@ public class DialogVariableItemProvider extends AbstractVariableItemProvider {
      */
     protected void addDialogPromptPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DialogVariable_dialogPrompt_feature"), getString("_UI_DialogVariable_dialogPrompt_description"), ToolPackage.Literals.DIALOG_VARIABLE__DIALOG_PROMPT, true, false,
-                false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_DialogVariable_dialogPrompt_feature"), //$NON-NLS-1$
+                getString("_UI_DialogVariable_dialogPrompt_description"), //$NON-NLS-1$
+                ToolPackage.Literals.DIALOG_VARIABLE__DIALOG_PROMPT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,7 +80,8 @@ public class DialogVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DialogVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DialogVariable_type") : getString("_UI_DialogVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DialogVariable_type") : //$NON-NLS-1$
+            getString("_UI_DialogVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

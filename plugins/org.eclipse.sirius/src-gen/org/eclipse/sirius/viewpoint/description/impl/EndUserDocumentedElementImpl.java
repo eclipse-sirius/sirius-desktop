@@ -169,7 +169,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (endUserDocumentation: ");
+        result.append(" (endUserDocumentation: "); //$NON-NLS-1$
         result.append(endUserDocumentation);
         result.append(')');
         return result.toString();

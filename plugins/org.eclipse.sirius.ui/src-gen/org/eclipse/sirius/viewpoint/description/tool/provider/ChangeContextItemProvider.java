@@ -65,8 +65,10 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
      */
     protected void addBrowseExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ChangeContext_browseExpression_feature"), getString("_UI_ChangeContext_browseExpression_description"), ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ChangeContext_browseExpression_feature"), //$NON-NLS-1$
+                getString("_UI_ChangeContext_browseExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CHANGE_CONTEXT__BROWSE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -77,7 +79,7 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ChangeContext"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ChangeContext")); //$NON-NLS-1$
     }
 
     /**
@@ -89,7 +91,8 @@ public class ChangeContextItemProvider extends ContainerModelOperationItemProvid
     @Override
     public String getText(Object object) {
         String label = ((ChangeContext) object).getBrowseExpression();
-        return label == null || label.length() == 0 ? getString("_UI_ChangeContext_type") : getString("_UI_ChangeContext_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ChangeContext_type") : //$NON-NLS-1$
+            getString("_UI_ChangeContext_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

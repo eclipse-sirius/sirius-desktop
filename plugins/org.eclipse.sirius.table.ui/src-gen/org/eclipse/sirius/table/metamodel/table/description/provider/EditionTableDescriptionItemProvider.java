@@ -100,7 +100,7 @@ public class EditionTableDescriptionItemProvider extends TableDescriptionItemPro
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EditionTableDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EditionTableDescription")); //$NON-NLS-1$
     }
 
     /**

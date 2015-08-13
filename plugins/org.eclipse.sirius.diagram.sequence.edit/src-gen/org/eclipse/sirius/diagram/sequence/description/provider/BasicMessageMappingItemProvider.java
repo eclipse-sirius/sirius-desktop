@@ -60,7 +60,7 @@ public class BasicMessageMappingItemProvider extends MessageMappingItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/BasicMessageMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/BasicMessageMapping")); //$NON-NLS-1$
     }
 
     /**

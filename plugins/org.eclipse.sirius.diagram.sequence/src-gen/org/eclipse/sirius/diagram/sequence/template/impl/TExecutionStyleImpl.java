@@ -307,7 +307,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSizeComputationExpression: ");
+        result.append(" (borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
         result.append(')');
         return result.toString();

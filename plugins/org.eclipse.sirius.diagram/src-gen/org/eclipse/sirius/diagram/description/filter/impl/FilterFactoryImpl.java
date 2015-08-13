@@ -80,7 +80,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
         case FilterPackage.FILTER_VARIABLE:
             return createFilterVariable();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -95,7 +95,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
         case FilterPackage.FILTER_KIND:
             return createFilterKindFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -110,7 +110,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
         case FilterPackage.FILTER_KIND:
             return convertFilterKindToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -166,7 +166,7 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
     public FilterKind createFilterKindFromString(EDataType eDataType, String initialValue) {
         FilterKind result = FilterKind.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

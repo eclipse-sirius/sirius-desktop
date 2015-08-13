@@ -120,7 +120,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.OBSERVATION_POINT_MAPPING:
             return createObservationPointMapping();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

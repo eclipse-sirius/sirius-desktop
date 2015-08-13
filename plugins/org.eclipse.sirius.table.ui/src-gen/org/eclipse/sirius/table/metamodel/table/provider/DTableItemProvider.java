@@ -72,7 +72,8 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      */
     protected void addTargetPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DSemanticDecorator_target_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"),
+                getString("_UI_DSemanticDecorator_target_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
     }
 
@@ -84,7 +85,8 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTable_description_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTable_description_feature", "_UI_DTable_type"),
+                getString("_UI_DTable_description_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTable_description_feature", "_UI_DTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE__DESCRIPTION, true, false, true, null, null, null));
     }
 
@@ -96,7 +98,8 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      */
     protected void addHeaderColumnWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTable_headerColumnWidth_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTable_headerColumnWidth_feature", "_UI_DTable_type"),
+                getString("_UI_DTable_headerColumnWidth_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTable_headerColumnWidth_feature", "_UI_DTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE__HEADER_COLUMN_WIDTH, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 

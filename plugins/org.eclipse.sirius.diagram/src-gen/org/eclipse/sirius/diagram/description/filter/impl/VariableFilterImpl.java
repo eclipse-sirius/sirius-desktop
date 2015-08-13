@@ -242,7 +242,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (semanticConditionExpression: ");
+        result.append(" (semanticConditionExpression: "); //$NON-NLS-1$
         result.append(semanticConditionExpression);
         result.append(')');
         return result.toString();

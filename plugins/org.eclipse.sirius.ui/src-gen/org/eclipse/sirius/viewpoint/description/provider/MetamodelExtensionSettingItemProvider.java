@@ -71,9 +71,10 @@ IItemPropertySource {
      */
     protected void addExtensionGroupPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MetamodelExtensionSetting_extensionGroup_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MetamodelExtensionSetting_extensionGroup_feature", "_UI_MetamodelExtensionSetting_type"),
-                DescriptionPackage.Literals.METAMODEL_EXTENSION_SETTING__EXTENSION_GROUP, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_MetamodelExtensionSetting_extensionGroup_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MetamodelExtensionSetting_extensionGroup_feature", "_UI_MetamodelExtensionSetting_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.METAMODEL_EXTENSION_SETTING__EXTENSION_GROUP, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -84,7 +85,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/MetamodelExtensionSetting"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/MetamodelExtensionSetting")); //$NON-NLS-1$
     }
 
     /**
@@ -95,7 +96,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_MetamodelExtensionSetting_type");
+        return getString("_UI_MetamodelExtensionSetting_type"); //$NON-NLS-1$
     }
 
     /**

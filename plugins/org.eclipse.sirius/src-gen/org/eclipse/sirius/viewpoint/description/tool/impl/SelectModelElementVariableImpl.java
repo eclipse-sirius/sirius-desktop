@@ -516,17 +516,17 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (candidatesExpression: ");
+        result.append(" (candidatesExpression: "); //$NON-NLS-1$
         result.append(candidatesExpression);
-        result.append(", multiple: ");
+        result.append(", multiple: "); //$NON-NLS-1$
         result.append(multiple);
-        result.append(", tree: ");
+        result.append(", tree: "); //$NON-NLS-1$
         result.append(tree);
-        result.append(", rootExpression: ");
+        result.append(", rootExpression: "); //$NON-NLS-1$
         result.append(rootExpression);
-        result.append(", childrenExpression: ");
+        result.append(", childrenExpression: "); //$NON-NLS-1$
         result.append(childrenExpression);
-        result.append(", message: ");
+        result.append(", message: "); //$NON-NLS-1$
         result.append(message);
         result.append(')');
         return result.toString();

@@ -102,7 +102,7 @@ public class CrossTableDescriptionItemProvider extends TableDescriptionItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CrossTableDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CrossTableDescription")); //$NON-NLS-1$
     }
 
     /**

@@ -304,9 +304,9 @@ public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl impleme
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (horizontalDiameterComputationExpression: ");
+        result.append(" (horizontalDiameterComputationExpression: "); //$NON-NLS-1$
         result.append(horizontalDiameterComputationExpression);
-        result.append(", verticalDiameterComputationExpression: ");
+        result.append(", verticalDiameterComputationExpression: "); //$NON-NLS-1$
         result.append(verticalDiameterComputationExpression);
         result.append(')');
         return result.toString();

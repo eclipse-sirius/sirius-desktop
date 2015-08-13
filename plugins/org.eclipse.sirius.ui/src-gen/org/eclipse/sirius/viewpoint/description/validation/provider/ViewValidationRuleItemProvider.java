@@ -64,8 +64,10 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
      */
     protected void addTargetsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ViewValidationRule_targets_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ViewValidationRule_targets_feature", "_UI_ViewValidationRule_type"),
-                ValidationPackage.Literals.VIEW_VALIDATION_RULE__TARGETS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ViewValidationRule_targets_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ViewValidationRule_targets_feature", "_UI_ViewValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VIEW_VALIDATION_RULE__TARGETS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -76,13 +78,13 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewValidationRule"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewValidationRule")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override

@@ -75,7 +75,8 @@ IItemPropertySource {
      */
     protected void addKeyPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisCustomData_key_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisCustomData_key_feature", "_UI_DAnalysisCustomData_type"),
+                getString("_UI_DAnalysisCustomData_key_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisCustomData_key_feature", "_UI_DAnalysisCustomData_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS_CUSTOM_DATA__KEY, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -120,7 +121,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnalysisCustomData"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnalysisCustomData")); //$NON-NLS-1$
     }
 
     /**
@@ -132,7 +133,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((DAnalysisCustomData) object).getKey();
-        return label == null || label.length() == 0 ? getString("_UI_DAnalysisCustomData_type") : getString("_UI_DAnalysisCustomData_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DAnalysisCustomData_type") : //$NON-NLS-1$
+            getString("_UI_DAnalysisCustomData_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

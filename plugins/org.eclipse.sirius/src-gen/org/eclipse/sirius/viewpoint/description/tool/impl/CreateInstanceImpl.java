@@ -283,11 +283,11 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (typeName: ");
+        result.append(" (typeName: "); //$NON-NLS-1$
         result.append(typeName);
-        result.append(", referenceName: ");
+        result.append(", referenceName: "); //$NON-NLS-1$
         result.append(referenceName);
-        result.append(", variableName: ");
+        result.append(", variableName: "); //$NON-NLS-1$
         result.append(variableName);
         result.append(')');
         return result.toString();

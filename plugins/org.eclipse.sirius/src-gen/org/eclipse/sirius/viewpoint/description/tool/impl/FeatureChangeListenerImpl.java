@@ -223,9 +223,9 @@ public class FeatureChangeListenerImpl extends MinimalEObjectImpl.Container impl
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (domainClass: ");
+        result.append(" (domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
-        result.append(", featureName: ");
+        result.append(", featureName: "); //$NON-NLS-1$
         result.append(featureName);
         result.append(')');
         return result.toString();

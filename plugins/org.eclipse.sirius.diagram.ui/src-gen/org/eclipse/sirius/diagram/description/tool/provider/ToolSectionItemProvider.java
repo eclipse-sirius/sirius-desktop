@@ -82,8 +82,10 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_name_feature"), getString("_UI_IdentifiedElement_name_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -94,8 +96,10 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
      */
     protected void addLabelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_label_feature"), getString("_UI_IdentifiedElement_label_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -105,9 +109,10 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addIconPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ToolSection_icon_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ToolSection_icon_feature", "_UI_ToolSection_type"), ToolPackage.Literals.TOOL_SECTION__ICON, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ToolSection_icon_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ToolSection_icon_feature", "_UI_ToolSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.TOOL_SECTION__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -118,7 +123,8 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
      */
     protected void addPopupMenusPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ToolSection_popupMenus_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ToolSection_popupMenus_feature", "_UI_ToolSection_type"),
+                getString("_UI_ToolSection_popupMenus_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ToolSection_popupMenus_feature", "_UI_ToolSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.TOOL_SECTION__POPUP_MENUS, false, false, false, null, null, null));
     }
 
@@ -130,8 +136,10 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
      */
     protected void addReusedToolsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ToolSection_reusedTools_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ToolSection_reusedTools_feature", "_UI_ToolSection_type"),
-                ToolPackage.Literals.TOOL_SECTION__REUSED_TOOLS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ToolSection_reusedTools_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ToolSection_reusedTools_feature", "_UI_ToolSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.TOOL_SECTION__REUSED_TOOLS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -177,7 +185,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ToolSection"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ToolSection")); //$NON-NLS-1$
     }
 
     /**

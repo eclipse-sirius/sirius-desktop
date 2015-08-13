@@ -73,7 +73,8 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"),
+                getString("_UI_DRepresentationElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -85,8 +86,8 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_semanticElements_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_semanticElements_feature", "_UI_DRepresentationElement_type"),
+                getString("_UI_DRepresentationElement_semanticElements_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_semanticElements_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS, true, false, true, null, null, null));
     }
 
@@ -98,7 +99,8 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      */
     protected void addTreeElementMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeElement_treeElementMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTreeElement_treeElementMapping_feature", "_UI_DTreeElement_type"),
+                getString("_UI_DTreeElement_treeElementMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTreeElement_treeElementMapping_feature", "_UI_DTreeElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TreePackage.Literals.DTREE_ELEMENT__TREE_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
@@ -110,7 +112,8 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      */
     protected void addExpandedPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeItem_expanded_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_expanded_feature", "_UI_DTreeItem_type"),
+                getString("_UI_DTreeItem_expanded_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_expanded_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TreePackage.Literals.DTREE_ITEM__EXPANDED, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -122,7 +125,8 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeItem_actualMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_actualMapping_feature", "_UI_DTreeItem_type"),
+                getString("_UI_DTreeItem_actualMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_actualMapping_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TreePackage.Literals.DTREE_ITEM__ACTUAL_MAPPING, true, false, true, null, null, null));
     }
 
@@ -134,7 +138,8 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      */
     protected void addStyleUpdaterPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeItem_styleUpdater_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_styleUpdater_feature", "_UI_DTreeItem_type"),
+                getString("_UI_DTreeItem_styleUpdater_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_styleUpdater_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TreePackage.Literals.DTREE_ITEM__STYLE_UPDATER, false, false, false, null, null, null));
     }
 
@@ -146,7 +151,8 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      */
     protected void addUpdaterPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTreeItem_updater_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_updater_feature", "_UI_DTreeItem_type"),
+                getString("_UI_DTreeItem_updater_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTreeItem_updater_feature", "_UI_DTreeItem_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TreePackage.Literals.DTREE_ITEM__UPDATER, false, false, true, null, null, null));
     }
 
@@ -190,7 +196,7 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTreeItem"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTreeItem")); //$NON-NLS-1$
     }
 
     /**
@@ -202,7 +208,8 @@ public class DTreeItemItemProvider extends DTreeItemContainerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DTreeItem) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DTreeItem_type") : getString("_UI_DTreeItem_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DTreeItem_type") : //$NON-NLS-1$
+            getString("_UI_DTreeItem_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

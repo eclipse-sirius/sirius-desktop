@@ -283,11 +283,11 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (horizontalDiameter: ");
+        result.append(" (horizontalDiameter: "); //$NON-NLS-1$
         result.append(horizontalDiameter);
-        result.append(", verticalDiameter: ");
+        result.append(", verticalDiameter: "); //$NON-NLS-1$
         result.append(verticalDiameter);
-        result.append(", color: ");
+        result.append(", color: "); //$NON-NLS-1$
         result.append(color);
         result.append(')');
         return result.toString();

@@ -66,7 +66,8 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
      */
     protected void addLabelAlignmentPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelStyle_labelAlignment_feature"), getString("_UI_PropertyDescriptor_description", "_UI_LabelStyle_labelAlignment_feature", "_UI_LabelStyle_type"),
+                getString("_UI_LabelStyle_labelAlignment_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LabelStyle_labelAlignment_feature", "_UI_LabelStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -78,7 +79,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -90,7 +91,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider {
     @Override
     public String getText(Object object) {
         LabelStyle labelStyle = (LabelStyle) object;
-        return getString("_UI_LabelStyle_type") + " " + labelStyle.getLabelSize();
+        return getString("_UI_LabelStyle_type") + " " + labelStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

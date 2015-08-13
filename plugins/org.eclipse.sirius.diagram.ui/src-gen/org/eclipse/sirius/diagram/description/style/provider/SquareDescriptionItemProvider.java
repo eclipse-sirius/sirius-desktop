@@ -68,8 +68,10 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
      */
     protected void addWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SquareDescription_width_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SquareDescription_width_feature", "_UI_SquareDescription_type"),
-                StylePackage.Literals.SQUARE_DESCRIPTION__WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_SquareDescription_width_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SquareDescription_width_feature", "_UI_SquareDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.SQUARE_DESCRIPTION__WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -80,8 +82,10 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
      */
     protected void addHeightPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SquareDescription_height_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SquareDescription_height_feature", "_UI_SquareDescription_type"),
-                StylePackage.Literals.SQUARE_DESCRIPTION__HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_SquareDescription_height_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SquareDescription_height_feature", "_UI_SquareDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.SQUARE_DESCRIPTION__HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -92,8 +96,10 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
      */
     protected void addColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SquareDescription_color_feature"), getString("_UI_PropertyDescriptor_description", "_UI_SquareDescription_color_feature", "_UI_SquareDescription_type"),
-                StylePackage.Literals.SQUARE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_SquareDescription_color_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SquareDescription_color_feature", "_UI_SquareDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.SQUARE_DESCRIPTION__COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -104,7 +110,7 @@ public class SquareDescriptionItemProvider extends NodeStyleDescriptionItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SquareDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SquareDescription")); //$NON-NLS-1$
     }
 
     /**

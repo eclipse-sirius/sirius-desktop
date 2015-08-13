@@ -75,8 +75,10 @@ IItemPropertySource {
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureChangeListener_domainClass_feature"), getString("_UI_FeatureChangeListener_domainClass_description"), ToolPackage.Literals.FEATURE_CHANGE_LISTENER__DOMAIN_CLASS,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_FeatureChangeListener_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_FeatureChangeListener_domainClass_description"), //$NON-NLS-1$
+                ToolPackage.Literals.FEATURE_CHANGE_LISTENER__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -87,8 +89,10 @@ IItemPropertySource {
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureChangeListener_featureName_feature"), getString("_UI_FeatureChangeListener_featureName_description"), ToolPackage.Literals.FEATURE_CHANGE_LISTENER__FEATURE_NAME,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_FeatureChangeListener_featureName_feature"), //$NON-NLS-1$
+                getString("_UI_FeatureChangeListener_featureName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.FEATURE_CHANGE_LISTENER__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -99,7 +103,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FeatureChangeListener"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FeatureChangeListener")); //$NON-NLS-1$
     }
 
     /**
@@ -111,7 +115,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((FeatureChangeListener) object).getFeatureName();
-        return label == null || label.length() == 0 ? getString("_UI_FeatureChangeListener_type") : getString("_UI_FeatureChangeListener_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_FeatureChangeListener_type") : //$NON-NLS-1$
+            getString("_UI_FeatureChangeListener_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

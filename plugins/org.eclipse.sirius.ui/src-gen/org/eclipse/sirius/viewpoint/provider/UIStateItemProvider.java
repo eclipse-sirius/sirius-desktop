@@ -73,7 +73,8 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
      */
     protected void addInverseSelectionOrderPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_UIState_inverseSelectionOrder_feature"), getString("_UI_PropertyDescriptor_description", "_UI_UIState_inverseSelectionOrder_feature", "_UI_UIState_type"),
+                getString("_UI_UIState_inverseSelectionOrder_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_UIState_inverseSelectionOrder_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.UI_STATE__INVERSE_SELECTION_ORDER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -85,7 +86,8 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
      */
     protected void addElementsToSelectPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_UIState_elementsToSelect_feature"), getString("_UI_PropertyDescriptor_description", "_UI_UIState_elementsToSelect_feature", "_UI_UIState_type"),
+                getString("_UI_UIState_elementsToSelect_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_UIState_elementsToSelect_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT, true, false, true, null, null, null));
     }
 
@@ -98,7 +100,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
     @Override
     public String getText(Object object) {
         UIState uiState = (UIState) object;
-        return getString("_UI_UIState_type") + " " + uiState.isInverseSelectionOrder();
+        return getString("_UI_UIState_type") + " " + uiState.isInverseSelectionOrder(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

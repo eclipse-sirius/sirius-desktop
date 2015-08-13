@@ -34,14 +34,14 @@ import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
  * <em>Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractLayoutDataImpl extends EObjectImpl implements AbstractLayoutData {
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -51,7 +51,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
     /**
      * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getId()
      * @generated
      * @ordered
@@ -92,6 +92,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
      * 
      * @generated
      */
+    @Override
     public String getId() {
         return id;
     }
@@ -101,6 +102,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
      * 
      * @generated
      */
+    @Override
     public void setId(String newId) {
         String oldId = id;
         id = newId;
@@ -113,6 +115,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
      * 
      * @generated
      */
+    @Override
     public NodeLayoutData getLabel() {
         if (label != null && label.eIsProxy()) {
             InternalEObject oldLabel = (InternalEObject) label;
@@ -164,6 +167,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
      * 
      * @generated
      */
+    @Override
     public void setLabel(NodeLayoutData newLabel) {
         if (newLabel != label) {
             NotificationChain msgs = null;
@@ -273,7 +277,7 @@ public abstract class AbstractLayoutDataImpl extends EObjectImpl implements Abst
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (id: ");
+        result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
         result.append(')');
         return result.toString();

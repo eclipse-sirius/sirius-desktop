@@ -281,11 +281,11 @@ public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractM
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", domainClass: ");
+        result.append(", domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
-        result.append(", semanticCandidatesExpression: ");
+        result.append(", semanticCandidatesExpression: "); //$NON-NLS-1$
         result.append(semanticCandidatesExpression);
         result.append(')');
         return result.toString();

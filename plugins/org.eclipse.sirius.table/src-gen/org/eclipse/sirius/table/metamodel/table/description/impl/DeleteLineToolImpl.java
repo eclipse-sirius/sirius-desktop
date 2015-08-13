@@ -86,7 +86,7 @@ public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool
     public void setMapping(LineMapping newMapping) {
         if (newMapping != eInternalContainer() || (eContainerFeatureID() != DescriptionPackage.DELETE_LINE_TOOL__MAPPING && newMapping != null)) {
             if (EcoreUtil.isAncestor(this, newMapping)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
             }
             NotificationChain msgs = null;
             if (eInternalContainer() != null) {

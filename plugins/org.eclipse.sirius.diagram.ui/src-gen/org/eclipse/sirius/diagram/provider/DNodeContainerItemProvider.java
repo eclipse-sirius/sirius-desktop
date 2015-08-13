@@ -67,8 +67,8 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
      */
     protected void addChildrenPresentationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DNodeContainer_childrenPresentation_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DNodeContainer_childrenPresentation_feature", "_UI_DNodeContainer_type"),
+                getString("_UI_DNodeContainer_childrenPresentation_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DNodeContainer_childrenPresentation_feature", "_UI_DNodeContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DNODE_CONTAINER__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -113,7 +113,7 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DNodeContainer"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DNodeContainer")); //$NON-NLS-1$
     }
 
     /**
@@ -188,7 +188,8 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
         boolean qualify = childFeature == DiagramPackage.Literals.ABSTRACT_DNODE__OWNED_BORDERED_NODES || childFeature == DiagramPackage.Literals.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

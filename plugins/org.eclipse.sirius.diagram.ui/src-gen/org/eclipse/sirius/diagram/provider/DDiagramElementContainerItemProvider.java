@@ -77,7 +77,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addArrangeConstraintsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractDNode_arrangeConstraints_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbstractDNode_arrangeConstraints_feature", "_UI_AbstractDNode_type"),
+                getString("_UI_AbstractDNode_arrangeConstraints_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractDNode_arrangeConstraints_feature", "_UI_AbstractDNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.ABSTRACT_DNODE__ARRANGE_CONSTRAINTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -89,7 +90,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeTarget_outgoingEdges_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_outgoingEdges_feature", "_UI_EdgeTarget_type"),
+                getString("_UI_EdgeTarget_outgoingEdges_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_outgoingEdges_feature", "_UI_EdgeTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_TARGET__OUTGOING_EDGES, false, false, false, null, null, null));
     }
 
@@ -101,7 +103,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeTarget_incomingEdges_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_incomingEdges_feature", "_UI_EdgeTarget_type"),
+                getString("_UI_EdgeTarget_incomingEdges_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_incomingEdges_feature", "_UI_EdgeTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_TARGET__INCOMING_EDGES, false, false, false, null, null, null));
     }
 
@@ -113,8 +116,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addNodesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElementContainer_nodes_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_nodes_feature", "_UI_DDiagramElementContainer_type"),
+                getString("_UI_DDiagramElementContainer_nodes_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_nodes_feature", "_UI_DDiagramElementContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__NODES, false, false, false, null, null, null));
     }
 
@@ -126,8 +129,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addContainersPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElementContainer_containers_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_containers_feature", "_UI_DDiagramElementContainer_type"),
+                getString("_UI_DDiagramElementContainer_containers_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_containers_feature", "_UI_DDiagramElementContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS, false, false, false, null, null, null));
     }
 
@@ -139,8 +142,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addElementsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElementContainer_elements_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_elements_feature", "_UI_DDiagramElementContainer_type"),
+                getString("_UI_DDiagramElementContainer_elements_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_elements_feature", "_UI_DDiagramElementContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS, false, false, false, null, null, null));
     }
 
@@ -152,8 +155,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElementContainer_originalStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_originalStyle_feature", "_UI_DDiagramElementContainer_type"),
+                getString("_UI_DDiagramElementContainer_originalStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_originalStyle_feature", "_UI_DDiagramElementContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE, true, false, true, null, null, null));
     }
 
@@ -165,8 +168,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElementContainer_actualMapping_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_actualMapping_feature", "_UI_DDiagramElementContainer_type"),
+                getString("_UI_DDiagramElementContainer_actualMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_actualMapping_feature", "_UI_DDiagramElementContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING, true, false, true, null, null, null));
     }
 
@@ -178,8 +181,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addCandidatesMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElementContainer_candidatesMapping_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_candidatesMapping_feature", "_UI_DDiagramElementContainer_type"),
+                getString("_UI_DDiagramElementContainer_candidatesMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_candidatesMapping_feature", "_UI_DDiagramElementContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING, true, false, true, null, null, null));
     }
 
@@ -191,8 +194,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElementContainer_width_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_width_feature", "_UI_DDiagramElementContainer_type"),
+                getString("_UI_DDiagramElementContainer_width_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_width_feature", "_UI_DDiagramElementContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -204,8 +207,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
      */
     protected void addHeightPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElementContainer_height_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_height_feature", "_UI_DDiagramElementContainer_type"),
+                getString("_UI_DDiagramElementContainer_height_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElementContainer_height_feature", "_UI_DDiagramElementContainer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -252,7 +255,8 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
     @Override
     public String getText(Object object) {
         String label = ((DDiagramElementContainer) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DDiagramElementContainer_type") : getString("_UI_DDiagramElementContainer_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DDiagramElementContainer_type") : //$NON-NLS-1$
+            getString("_UI_DDiagramElementContainer_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

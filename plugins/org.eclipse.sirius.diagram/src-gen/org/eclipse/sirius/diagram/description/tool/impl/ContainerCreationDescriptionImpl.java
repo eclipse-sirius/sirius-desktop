@@ -589,7 +589,7 @@ public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptio
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (iconPath: ");
+        result.append(" (iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
         result.append(')');
         return result.toString();

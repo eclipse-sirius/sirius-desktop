@@ -69,8 +69,10 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
      */
     protected void addChildrenExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_OrderedTreeLayout_childrenExpression_feature"), getString("_UI_OrderedTreeLayout_childrenExpression_description"),
-                DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_OrderedTreeLayout_childrenExpression_feature"), //$NON-NLS-1$
+                getString("_UI_OrderedTreeLayout_childrenExpression_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -81,8 +83,10 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
      */
     protected void addNodeMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_OrderedTreeLayout_nodeMapping_feature"), getString("_UI_OrderedTreeLayout_nodeMapping_description"), DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__NODE_MAPPING,
-                true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_OrderedTreeLayout_nodeMapping_feature"), //$NON-NLS-1$
+                getString("_UI_OrderedTreeLayout_nodeMapping_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.ORDERED_TREE_LAYOUT__NODE_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -93,7 +97,7 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/OrderedTreeLayout"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/OrderedTreeLayout")); //$NON-NLS-1$
     }
 
     /**
@@ -105,7 +109,8 @@ public class OrderedTreeLayoutItemProvider extends DocumentedElementItemProvider
     @Override
     public String getText(Object object) {
         String label = crop(((OrderedTreeLayout) object).getDocumentation());
-        return label == null || label.length() == 0 ? getString("_UI_OrderedTreeLayout_type") : getString("_UI_OrderedTreeLayout_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_OrderedTreeLayout_type") : //$NON-NLS-1$
+            getString("_UI_OrderedTreeLayout_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -100,7 +100,7 @@ public class NodeCreationVariableItemProvider extends AbstractVariableItemProvid
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeCreationVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeCreationVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -112,7 +112,8 @@ public class NodeCreationVariableItemProvider extends AbstractVariableItemProvid
     @Override
     public String getText(Object object) {
         String label = ((NodeCreationVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_NodeCreationVariable_type") : getString("_UI_NodeCreationVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_NodeCreationVariable_type") : //$NON-NLS-1$
+            getString("_UI_NodeCreationVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

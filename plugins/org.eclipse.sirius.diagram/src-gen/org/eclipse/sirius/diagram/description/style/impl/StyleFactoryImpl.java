@@ -121,7 +121,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
         case StylePackage.BRACKET_EDGE_STYLE_DESCRIPTION:
             return createBracketEdgeStyleDescription();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

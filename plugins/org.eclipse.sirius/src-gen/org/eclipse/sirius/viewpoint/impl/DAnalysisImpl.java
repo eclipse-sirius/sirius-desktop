@@ -474,9 +474,9 @@ public class DAnalysisImpl extends MinimalEObjectImpl.Container implements DAnal
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (semanticResources: ");
+        result.append(" (semanticResources: "); //$NON-NLS-1$
         result.append(semanticResources);
-        result.append(", version: ");
+        result.append(", version: "); //$NON-NLS-1$
         result.append(version);
         result.append(')');
         return result.toString();

@@ -227,9 +227,9 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (shape: ");
+        result.append(" (shape: "); //$NON-NLS-1$
         result.append(shape);
-        result.append(", backgroundColor: ");
+        result.append(", backgroundColor: "); //$NON-NLS-1$
         result.append(backgroundColor);
         result.append(')');
         return result.toString();

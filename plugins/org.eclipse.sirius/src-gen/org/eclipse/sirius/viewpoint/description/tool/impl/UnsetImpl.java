@@ -224,9 +224,9 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (featureName: ");
+        result.append(" (featureName: "); //$NON-NLS-1$
         result.append(featureName);
-        result.append(", elementExpression: ");
+        result.append(", elementExpression: "); //$NON-NLS-1$
         result.append(elementExpression);
         result.append(')');
         return result.toString();

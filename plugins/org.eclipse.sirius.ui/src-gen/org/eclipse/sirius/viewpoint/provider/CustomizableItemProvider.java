@@ -71,7 +71,8 @@ IItemPropertySource {
      */
     protected void addCustomFeaturesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Customizable_customFeatures_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Customizable_customFeatures_feature", "_UI_Customizable_type"),
+                getString("_UI_Customizable_customFeatures_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Customizable_customFeatures_feature", "_UI_Customizable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -83,7 +84,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_Customizable_type");
+        return getString("_UI_Customizable_type"); //$NON-NLS-1$
     }
 
     /**

@@ -237,7 +237,7 @@ public class EReferenceCustomizationImpl extends EStructuralFeatureCustomization
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (referenceName: ");
+        result.append(" (referenceName: "); //$NON-NLS-1$
         result.append(referenceName);
         result.append(')');
         return result.toString();

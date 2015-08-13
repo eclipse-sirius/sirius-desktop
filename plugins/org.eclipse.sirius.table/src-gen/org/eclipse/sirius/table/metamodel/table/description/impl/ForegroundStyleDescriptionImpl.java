@@ -280,9 +280,9 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (labelSize: ");
+        result.append(" (labelSize: "); //$NON-NLS-1$
         result.append(labelSize);
-        result.append(", labelFormat: ");
+        result.append(", labelFormat: "); //$NON-NLS-1$
         result.append(labelFormat);
         result.append(')');
         return result.toString();

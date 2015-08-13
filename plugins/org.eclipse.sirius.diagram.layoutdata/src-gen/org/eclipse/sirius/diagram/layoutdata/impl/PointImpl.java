@@ -29,14 +29,14 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PointImpl extends EObjectImpl implements Point {
     /**
      * The default value of the '{@link #getX() <em>X</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getX()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class PointImpl extends EObjectImpl implements Point {
     /**
      * The cached value of the '{@link #getX() <em>X</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getX()
      * @generated
      * @ordered
@@ -56,7 +56,7 @@ public class PointImpl extends EObjectImpl implements Point {
     /**
      * The default value of the '{@link #getY() <em>Y</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getY()
      * @generated
      * @ordered
@@ -66,7 +66,7 @@ public class PointImpl extends EObjectImpl implements Point {
     /**
      * The cached value of the '{@link #getY() <em>Y</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getY()
      * @generated
      * @ordered
@@ -97,6 +97,7 @@ public class PointImpl extends EObjectImpl implements Point {
      * 
      * @generated
      */
+    @Override
     public int getX() {
         return x;
     }
@@ -106,6 +107,7 @@ public class PointImpl extends EObjectImpl implements Point {
      * 
      * @generated
      */
+    @Override
     public void setX(int newX) {
         int oldX = x;
         x = newX;
@@ -118,6 +120,7 @@ public class PointImpl extends EObjectImpl implements Point {
      * 
      * @generated
      */
+    @Override
     public int getY() {
         return y;
     }
@@ -127,6 +130,7 @@ public class PointImpl extends EObjectImpl implements Point {
      * 
      * @generated
      */
+    @Override
     public void setY(int newY) {
         int oldY = y;
         y = newY;
@@ -213,9 +217,9 @@ public class PointImpl extends EObjectImpl implements Point {
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (x: ");
+        result.append(" (x: "); //$NON-NLS-1$
         result.append(x);
-        result.append(", y: ");
+        result.append(", y: "); //$NON-NLS-1$
         result.append(y);
         result.append(')');
         return result.toString();

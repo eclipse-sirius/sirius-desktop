@@ -72,9 +72,10 @@ IItemPropertySource {
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BackgroundStyleDescription_backgroundColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_BackgroundStyleDescription_backgroundColor_feature", "_UI_BackgroundStyleDescription_type"),
-                DescriptionPackage.Literals.BACKGROUND_STYLE_DESCRIPTION__BACKGROUND_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_BackgroundStyleDescription_backgroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BackgroundStyleDescription_backgroundColor_feature", "_UI_BackgroundStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.BACKGROUND_STYLE_DESCRIPTION__BACKGROUND_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -85,7 +86,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/BackgroundStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/BackgroundStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -96,7 +97,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_BackgroundStyleDescription_type");
+        return getString("_UI_BackgroundStyleDescription_type"); //$NON-NLS-1$
     }
 
     /**

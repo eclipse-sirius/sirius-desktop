@@ -325,9 +325,9 @@ public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
         result.append(')');
         return result.toString();

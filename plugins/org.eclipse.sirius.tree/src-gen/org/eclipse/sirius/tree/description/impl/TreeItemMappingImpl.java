@@ -1035,11 +1035,11 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (domainClass: ");
+        result.append(" (domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
-        result.append(", preconditionExpression: ");
+        result.append(", preconditionExpression: "); //$NON-NLS-1$
         result.append(preconditionExpression);
-        result.append(", semanticCandidatesExpression: ");
+        result.append(", semanticCandidatesExpression: "); //$NON-NLS-1$
         result.append(semanticCandidatesExpression);
         result.append(')');
         return result.toString();

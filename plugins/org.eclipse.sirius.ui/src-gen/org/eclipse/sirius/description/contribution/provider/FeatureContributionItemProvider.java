@@ -31,10 +31,8 @@ import org.eclipse.sirius.description.contribution.FeatureContribution;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.description.contribution.FeatureContribution}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.FeatureContribution} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class FeatureContributionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
@@ -73,9 +71,19 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
      * @generated
      */
     protected void addSourceFeaturePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureContribution_sourceFeature_feature"), getString("_UI_FeatureContribution_sourceFeature_description"),
-                ContributionPackage.Literals.FEATURE_CONTRIBUTION__SOURCE_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FeatureContribution_sourceFeature_feature"), //$NON-NLS-1$
+                 getString("_UI_FeatureContribution_sourceFeature_description"), //$NON-NLS-1$
+                 ContributionPackage.Literals.FEATURE_CONTRIBUTION__SOURCE_FEATURE,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                 null));
     }
 
     /**
@@ -85,28 +93,37 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
      * @generated
      */
     protected void addTargetFeaturePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureContribution_targetFeature_feature"), getString("_UI_FeatureContribution_targetFeature_description"),
-                ContributionPackage.Literals.FEATURE_CONTRIBUTION__TARGET_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_FeatureContribution_targetFeature_feature"), //$NON-NLS-1$
+                 getString("_UI_FeatureContribution_targetFeature_description"), //$NON-NLS-1$
+                 ContributionPackage.Literals.FEATURE_CONTRIBUTION__TARGET_FEATURE,
+                 true,
+                 false,
+                 true,
+                 null,
+                 getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                 null));
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_FeatureContribution_type");
+        return getString("_UI_FeatureContribution_type"); //$NON-NLS-1$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -114,10 +131,10 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
         updateChildren(notification);
 
         switch (notification.getFeatureID(FeatureContribution.class)) {
-        case ContributionPackage.FEATURE_CONTRIBUTION__SOURCE_FEATURE:
-        case ContributionPackage.FEATURE_CONTRIBUTION__TARGET_FEATURE:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case ContributionPackage.FEATURE_CONTRIBUTION__SOURCE_FEATURE:
+            case ContributionPackage.FEATURE_CONTRIBUTION__TARGET_FEATURE:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }

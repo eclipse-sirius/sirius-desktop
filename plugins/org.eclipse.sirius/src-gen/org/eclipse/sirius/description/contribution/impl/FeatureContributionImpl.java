@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution.impl;
 
@@ -42,7 +42,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
      * The cached value of the '{@link #getSourceFeature()
      * <em>Source Feature</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getSourceFeature()
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
      * The cached value of the '{@link #getTargetFeature()
      * <em>Target Feature</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getTargetFeature()
      * @generated
      * @ordered
@@ -62,7 +62,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FeatureContributionImpl() {
@@ -71,7 +71,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,16 +81,18 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EStructuralFeature getSourceFeature() {
         if (sourceFeature != null && sourceFeature.eIsProxy()) {
             InternalEObject oldSourceFeature = (InternalEObject) sourceFeature;
             sourceFeature = (EStructuralFeature) eResolveProxy(oldSourceFeature);
             if (sourceFeature != oldSourceFeature) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContributionPackage.FEATURE_CONTRIBUTION__SOURCE_FEATURE, oldSourceFeature, sourceFeature));
+                }
             }
         }
         return sourceFeature;
@@ -98,7 +100,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EStructuralFeature basicGetSourceFeature() {
@@ -107,28 +109,32 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSourceFeature(EStructuralFeature newSourceFeature) {
         EStructuralFeature oldSourceFeature = sourceFeature;
         sourceFeature = newSourceFeature;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ContributionPackage.FEATURE_CONTRIBUTION__SOURCE_FEATURE, oldSourceFeature, sourceFeature));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EStructuralFeature getTargetFeature() {
         if (targetFeature != null && targetFeature.eIsProxy()) {
             InternalEObject oldTargetFeature = (InternalEObject) targetFeature;
             targetFeature = (EStructuralFeature) eResolveProxy(oldTargetFeature);
             if (targetFeature != oldTargetFeature) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContributionPackage.FEATURE_CONTRIBUTION__TARGET_FEATURE, oldTargetFeature, targetFeature));
+                }
             }
         }
         return targetFeature;
@@ -136,7 +142,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EStructuralFeature basicGetTargetFeature() {
@@ -145,31 +151,35 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTargetFeature(EStructuralFeature newTargetFeature) {
         EStructuralFeature oldTargetFeature = targetFeature;
         targetFeature = newTargetFeature;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ContributionPackage.FEATURE_CONTRIBUTION__TARGET_FEATURE, oldTargetFeature, targetFeature));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ContributionPackage.FEATURE_CONTRIBUTION__SOURCE_FEATURE:
-            if (resolve)
+            if (resolve) {
                 return getSourceFeature();
+            }
             return basicGetSourceFeature();
         case ContributionPackage.FEATURE_CONTRIBUTION__TARGET_FEATURE:
-            if (resolve)
+            if (resolve) {
                 return getTargetFeature();
+            }
             return basicGetTargetFeature();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -177,7 +187,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -195,7 +205,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -213,7 +223,7 @@ public abstract class FeatureContributionImpl extends EObjectImpl implements Fea
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

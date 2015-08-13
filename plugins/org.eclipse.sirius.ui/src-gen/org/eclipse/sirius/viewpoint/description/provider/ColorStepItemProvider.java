@@ -74,8 +74,10 @@ public class ColorStepItemProvider extends ItemProviderAdapter implements IEditi
      */
     protected void addAssociatedValuePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ColorStep_associatedValue_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ColorStep_associatedValue_feature", "_UI_ColorStep_type"),
-                DescriptionPackage.Literals.COLOR_STEP__ASSOCIATED_VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ColorStep_associatedValue_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ColorStep_associatedValue_feature", "_UI_ColorStep_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.COLOR_STEP__ASSOCIATED_VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -86,8 +88,10 @@ public class ColorStepItemProvider extends ItemProviderAdapter implements IEditi
      */
     protected void addAssociatedColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ColorStep_associatedColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ColorStep_associatedColor_feature", "_UI_ColorStep_type"),
-                DescriptionPackage.Literals.COLOR_STEP__ASSOCIATED_COLOR, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ColorStep_associatedColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ColorStep_associatedColor_feature", "_UI_ColorStep_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.COLOR_STEP__ASSOCIATED_COLOR, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -97,7 +101,7 @@ public class ColorStepItemProvider extends ItemProviderAdapter implements IEditi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ColorStep"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ColorStep")); //$NON-NLS-1$
     }
 
     /**
@@ -109,7 +113,8 @@ public class ColorStepItemProvider extends ItemProviderAdapter implements IEditi
     @Override
     public String getText(Object object) {
         String label = ((ColorStep) object).getAssociatedValue();
-        return label == null || label.length() == 0 ? getString("_UI_ColorStep_type") : getString("_UI_ColorStep_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ColorStep_type") : //$NON-NLS-1$
+            getString("_UI_ColorStep_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

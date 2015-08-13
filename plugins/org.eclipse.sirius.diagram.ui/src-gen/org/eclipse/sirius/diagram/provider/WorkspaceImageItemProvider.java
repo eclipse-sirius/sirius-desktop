@@ -65,8 +65,10 @@ public class WorkspaceImageItemProvider extends NodeStyleItemProvider {
      */
     protected void addWorkspacePathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_WorkspaceImage_workspacePath_feature"), getString("_UI_PropertyDescriptor_description", "_UI_WorkspaceImage_workspacePath_feature", "_UI_WorkspaceImage_type"),
-                DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_WorkspaceImage_workspacePath_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_WorkspaceImage_workspacePath_feature", "_UI_WorkspaceImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -77,7 +79,7 @@ public class WorkspaceImageItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/WorkspaceImage"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/WorkspaceImage")); //$NON-NLS-1$
     }
 
     /**
@@ -89,7 +91,7 @@ public class WorkspaceImageItemProvider extends NodeStyleItemProvider {
     @Override
     public String getText(Object object) {
         WorkspaceImage workspaceImage = (WorkspaceImage) object;
-        return getString("_UI_WorkspaceImage_type") + " " + workspaceImage.getLabelSize();
+        return getString("_UI_WorkspaceImage_type") + " " + workspaceImage.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

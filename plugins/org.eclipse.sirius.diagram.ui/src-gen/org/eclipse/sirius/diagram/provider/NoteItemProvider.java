@@ -64,9 +64,10 @@ public class NoteItemProvider extends NodeStyleItemProvider {
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Note_color_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Note_color_feature", "_UI_Note_type"), DiagramPackage.Literals.NOTE__COLOR, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Note_color_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Note_color_feature", "_UI_Note_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.NOTE__COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -76,7 +77,7 @@ public class NoteItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Note"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Note")); //$NON-NLS-1$
     }
 
     /**
@@ -88,7 +89,7 @@ public class NoteItemProvider extends NodeStyleItemProvider {
     @Override
     public String getText(Object object) {
         Note note = (Note) object;
-        return getString("_UI_Note_type") + " " + note.getLabelSize();
+        return getString("_UI_Note_type") + " " + note.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

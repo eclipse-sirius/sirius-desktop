@@ -66,8 +66,10 @@ public class SetObjectItemProvider extends ContainerModelOperationItemProvider {
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SetObject_featureName_feature"), getString("_UI_SetObject_featureName_description"), ToolPackage.Literals.SET_OBJECT__FEATURE_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SetObject_featureName_feature"), //$NON-NLS-1$
+                getString("_UI_SetObject_featureName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.SET_OBJECT__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -77,8 +79,10 @@ public class SetObjectItemProvider extends ContainerModelOperationItemProvider {
      * @generated
      */
     protected void addObjectPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SetObject_object_feature"),
-                getString("_UI_SetObject_object_description"), ToolPackage.Literals.SET_OBJECT__OBJECT, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SetObject_object_feature"), //$NON-NLS-1$
+                getString("_UI_SetObject_object_description"), //$NON-NLS-1$
+                ToolPackage.Literals.SET_OBJECT__OBJECT, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -88,7 +92,7 @@ public class SetObjectItemProvider extends ContainerModelOperationItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SetObject"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SetObject")); //$NON-NLS-1$
     }
 
     /**
@@ -100,7 +104,8 @@ public class SetObjectItemProvider extends ContainerModelOperationItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((SetObject) object).getFeatureName();
-        return label == null || label.length() == 0 ? getString("_UI_SetObject_type") : getString("_UI_SetObject_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_SetObject_type") : //$NON-NLS-1$
+            getString("_UI_SetObject_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

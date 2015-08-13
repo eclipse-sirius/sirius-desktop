@@ -78,8 +78,10 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     protected void addLineStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyle_lineStyle_feature"), getString("_UI_EdgeStyle_lineStyle_description"), DiagramPackage.Literals.EDGE_STYLE__LINE_STYLE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_EdgeStyle_lineStyle_feature"), //$NON-NLS-1$
+                getString("_UI_EdgeStyle_lineStyle_description"), //$NON-NLS-1$
+                DiagramPackage.Literals.EDGE_STYLE__LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,7 +92,8 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     protected void addSourceArrowPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyle_sourceArrow_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_sourceArrow_feature", "_UI_EdgeStyle_type"),
+                getString("_UI_EdgeStyle_sourceArrow_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_sourceArrow_feature", "_UI_EdgeStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_STYLE__SOURCE_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -102,7 +105,8 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     protected void addTargetArrowPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyle_targetArrow_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_targetArrow_feature", "_UI_EdgeStyle_type"),
+                getString("_UI_EdgeStyle_targetArrow_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_targetArrow_feature", "_UI_EdgeStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_STYLE__TARGET_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -114,7 +118,8 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     protected void addFoldingStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyle_foldingStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_foldingStyle_feature", "_UI_EdgeStyle_type"),
+                getString("_UI_EdgeStyle_foldingStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_foldingStyle_feature", "_UI_EdgeStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_STYLE__FOLDING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -125,9 +130,9 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      * @generated
      */
     protected void addSizePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeStyle_size_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_size_feature", "_UI_EdgeStyle_type"), DiagramPackage.Literals.EDGE_STYLE__SIZE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_EdgeStyle_size_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_size_feature", "_UI_EdgeStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.EDGE_STYLE__SIZE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -138,7 +143,8 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     protected void addRoutingStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyle_routingStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_routingStyle_feature", "_UI_EdgeStyle_type"),
+                getString("_UI_EdgeStyle_routingStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_routingStyle_feature", "_UI_EdgeStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_STYLE__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -150,7 +156,8 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     protected void addCenteredPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyle_centered_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_centered_feature", "_UI_EdgeStyle_type"),
+                getString("_UI_EdgeStyle_centered_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_centered_feature", "_UI_EdgeStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_STYLE__CENTERED, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -162,7 +169,8 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     protected void addStrokeColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyle_strokeColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_strokeColor_feature", "_UI_EdgeStyle_type"),
+                getString("_UI_EdgeStyle_strokeColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_strokeColor_feature", "_UI_EdgeStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -208,7 +216,7 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EdgeStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EdgeStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -221,7 +229,8 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
     public String getText(Object object) {
         LineStyle labelValue = ((EdgeStyle) object).getLineStyle();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_EdgeStyle_type") : getString("_UI_EdgeStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_EdgeStyle_type") : //$NON-NLS-1$
+            getString("_UI_EdgeStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

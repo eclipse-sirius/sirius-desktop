@@ -168,7 +168,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (tooltipExpression: ");
+        result.append(" (tooltipExpression: "); //$NON-NLS-1$
         result.append(tooltipExpression);
         result.append(')');
         return result.toString();

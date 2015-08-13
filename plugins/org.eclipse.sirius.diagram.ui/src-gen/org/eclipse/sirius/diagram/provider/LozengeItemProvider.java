@@ -66,9 +66,9 @@ public class LozengeItemProvider extends NodeStyleItemProvider {
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Lozenge_width_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Lozenge_width_feature", "_UI_Lozenge_type"), DiagramPackage.Literals.LOZENGE__WIDTH, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Lozenge_width_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Lozenge_width_feature", "_UI_Lozenge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.LOZENGE__WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -78,9 +78,9 @@ public class LozengeItemProvider extends NodeStyleItemProvider {
      * @generated
      */
     protected void addHeightPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Lozenge_height_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Lozenge_height_feature", "_UI_Lozenge_type"), DiagramPackage.Literals.LOZENGE__HEIGHT, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Lozenge_height_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Lozenge_height_feature", "_UI_Lozenge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.LOZENGE__HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -90,9 +90,9 @@ public class LozengeItemProvider extends NodeStyleItemProvider {
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Lozenge_color_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Lozenge_color_feature", "_UI_Lozenge_type"), DiagramPackage.Literals.LOZENGE__COLOR, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Lozenge_color_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Lozenge_color_feature", "_UI_Lozenge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.LOZENGE__COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -102,7 +102,7 @@ public class LozengeItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Lozenge"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Lozenge")); //$NON-NLS-1$
     }
 
     /**
@@ -114,7 +114,7 @@ public class LozengeItemProvider extends NodeStyleItemProvider {
     @Override
     public String getText(Object object) {
         Lozenge lozenge = (Lozenge) object;
-        return getString("_UI_Lozenge_type") + " " + lozenge.getLabelSize();
+        return getString("_UI_Lozenge_type") + " " + lozenge.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

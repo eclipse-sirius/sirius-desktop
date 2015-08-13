@@ -70,8 +70,10 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationSet_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_name_feature", "_UI_ValidationSet_type"),
-                ValidationPackage.Literals.VALIDATION_SET__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ValidationSet_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_name_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VALIDATION_SET__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -82,8 +84,10 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
      */
     protected void addReusedRulesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationSet_reusedRules_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_reusedRules_feature", "_UI_ValidationSet_type"),
-                ValidationPackage.Literals.VALIDATION_SET__REUSED_RULES, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_ValidationSet_reusedRules_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_reusedRules_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VALIDATION_SET__REUSED_RULES, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -94,8 +98,10 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
      */
     protected void addAllRulesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationSet_allRules_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_allRules_feature", "_UI_ValidationSet_type"),
-                ValidationPackage.Literals.VALIDATION_SET__ALL_RULES, false, false, false, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_ValidationSet_allRules_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidationSet_allRules_feature", "_UI_ValidationSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VALIDATION_SET__ALL_RULES, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -139,7 +145,7 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ValidationSet"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ValidationSet")); //$NON-NLS-1$
     }
 
     /**
@@ -151,7 +157,8 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((ValidationSet) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ValidationSet_type") : getString("_UI_ValidationSet_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ValidationSet_type") : //$NON-NLS-1$
+            getString("_UI_ValidationSet_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

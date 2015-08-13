@@ -100,7 +100,7 @@ public class InstanceRoleCreationToolItemProvider extends NodeCreationDescriptio
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleCreationTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleCreationTool")); //$NON-NLS-1$
     }
 
     /**

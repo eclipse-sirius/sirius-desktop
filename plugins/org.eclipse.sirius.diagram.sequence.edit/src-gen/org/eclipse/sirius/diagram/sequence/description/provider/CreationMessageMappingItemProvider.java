@@ -60,7 +60,7 @@ public class CreationMessageMappingItemProvider extends MessageMappingItemProvid
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreationMessageMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreationMessageMapping")); //$NON-NLS-1$
     }
 
     /**

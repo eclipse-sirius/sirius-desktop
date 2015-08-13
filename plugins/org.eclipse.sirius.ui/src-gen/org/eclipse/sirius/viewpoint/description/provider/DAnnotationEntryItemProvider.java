@@ -75,7 +75,8 @@ IItemPropertySource {
      */
     protected void addSourcePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnnotationEntry_source_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnnotationEntry_source_feature", "_UI_DAnnotationEntry_type"),
+                getString("_UI_DAnnotationEntry_source_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnnotationEntry_source_feature", "_UI_DAnnotationEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.DANNOTATION_ENTRY__SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -87,7 +88,8 @@ IItemPropertySource {
      */
     protected void addDetailsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnnotationEntry_details_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnnotationEntry_details_feature", "_UI_DAnnotationEntry_type"),
+                getString("_UI_DAnnotationEntry_details_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnnotationEntry_details_feature", "_UI_DAnnotationEntry_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.DANNOTATION_ENTRY__DETAILS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -99,7 +101,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnnotationEntry"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnnotationEntry")); //$NON-NLS-1$
     }
 
     /**
@@ -111,7 +113,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((DAnnotationEntry) object).getSource();
-        return label == null || label.length() == 0 ? getString("_UI_DAnnotationEntry_type") : getString("_UI_DAnnotationEntry_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DAnnotationEntry_type") : //$NON-NLS-1$
+            getString("_UI_DAnnotationEntry_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -64,7 +64,7 @@ public class ObservationPointMappingItemProvider extends NodeMappingItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ObservationPointMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ObservationPointMapping")); //$NON-NLS-1$
     }
 
     /**

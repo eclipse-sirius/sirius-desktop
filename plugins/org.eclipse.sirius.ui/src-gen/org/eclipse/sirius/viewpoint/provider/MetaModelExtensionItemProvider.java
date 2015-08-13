@@ -70,8 +70,8 @@ IItemPropertySource {
      */
     protected void addExtensionGroupPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MetaModelExtension_extensionGroup_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MetaModelExtension_extensionGroup_feature", "_UI_MetaModelExtension_type"),
+                getString("_UI_MetaModelExtension_extensionGroup_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MetaModelExtension_extensionGroup_feature", "_UI_MetaModelExtension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.META_MODEL_EXTENSION__EXTENSION_GROUP, true, false, true, null, null, null));
     }
 
@@ -83,7 +83,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/MetaModelExtension"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/MetaModelExtension")); //$NON-NLS-1$
     }
 
     /**
@@ -94,7 +94,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_MetaModelExtension_type");
+        return getString("_UI_MetaModelExtension_type"); //$NON-NLS-1$
     }
 
     /**

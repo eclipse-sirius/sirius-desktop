@@ -65,8 +65,10 @@ public class CustomStyleDescriptionItemProvider extends NodeStyleDescriptionItem
      */
     protected void addIdPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CustomStyleDescription_id_feature"), getString("_UI_CustomStyleDescription_id_description"), StylePackage.Literals.CUSTOM_STYLE_DESCRIPTION__ID, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CustomStyleDescription_id_feature"), //$NON-NLS-1$
+                getString("_UI_CustomStyleDescription_id_description"), //$NON-NLS-1$
+                StylePackage.Literals.CUSTOM_STYLE_DESCRIPTION__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -77,7 +79,7 @@ public class CustomStyleDescriptionItemProvider extends NodeStyleDescriptionItem
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -89,7 +91,8 @@ public class CustomStyleDescriptionItemProvider extends NodeStyleDescriptionItem
     @Override
     public String getText(Object object) {
         String label = ((CustomStyleDescription) object).getId();
-        return label == null || label.length() == 0 ? getString("_UI_CustomStyleDescription_type") : getString("_UI_CustomStyleDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CustomStyleDescription_type") : //$NON-NLS-1$
+            getString("_UI_CustomStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

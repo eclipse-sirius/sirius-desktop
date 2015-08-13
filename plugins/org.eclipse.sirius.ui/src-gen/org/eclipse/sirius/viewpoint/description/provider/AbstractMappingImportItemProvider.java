@@ -75,9 +75,10 @@ IItemPropertySource {
      */
     protected void addHideSubMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractMappingImport_hideSubMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AbstractMappingImport_hideSubMappings_feature", "_UI_AbstractMappingImport_type"),
-                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_AbstractMappingImport_hideSubMappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractMappingImport_hideSubMappings_feature", "_UI_AbstractMappingImport_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -87,10 +88,13 @@ IItemPropertySource {
      * @generated
      */
     protected void addInheritsAncestorFiltersPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractMappingImport_inheritsAncestorFilters_feature"), getString("_UI_AbstractMappingImport_inheritsAncestorFilters_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_AbstractMappingImport_inheritsAncestorFilters_feature"), //$NON-NLS-1$
+                getString("_UI_AbstractMappingImport_inheritsAncestorFilters_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -102,7 +106,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         AbstractMappingImport abstractMappingImport = (AbstractMappingImport) object;
-        return getString("_UI_AbstractMappingImport_type") + " " + abstractMappingImport.isHideSubMappings();
+        return getString("_UI_AbstractMappingImport_type") + " " + abstractMappingImport.isHideSubMappings(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

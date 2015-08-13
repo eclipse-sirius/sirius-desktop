@@ -481,11 +481,11 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", inheritsAncestorFilters: ");
+        result.append(", inheritsAncestorFilters: "); //$NON-NLS-1$
         result.append(inheritsAncestorFilters);
         result.append(')');
         return result.toString();

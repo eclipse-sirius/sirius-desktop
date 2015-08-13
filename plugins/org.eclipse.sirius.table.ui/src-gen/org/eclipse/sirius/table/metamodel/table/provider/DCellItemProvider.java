@@ -75,7 +75,8 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"),
+                getString("_UI_DRepresentationElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -86,9 +87,9 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DCell_label_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DCell_label_feature", "_UI_DCell_type"), TablePackage.Literals.DCELL__LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DCell_label_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DCell_label_feature", "_UI_DCell_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DCELL__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -99,8 +100,8 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_semanticElements_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_semanticElements_feature", "_UI_DRepresentationElement_type"),
+                getString("_UI_DRepresentationElement_semanticElements_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_semanticElements_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS, true, false, true, null, null, null));
     }
 
@@ -112,7 +113,8 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addTableElementMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElement_tableElementMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTableElement_tableElementMapping_feature", "_UI_DTableElement_type"),
+                getString("_UI_DTableElement_tableElementMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElement_tableElementMapping_feature", "_UI_DTableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
@@ -123,8 +125,9 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      * @generated
      */
     protected void addColumnPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DCell_column_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DCell_column_feature", "_UI_DCell_type"), TablePackage.Literals.DCELL__COLUMN, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DCell_column_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DCell_column_feature", "_UI_DCell_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DCELL__COLUMN, true, false, true, null, null, null));
     }
 
     /**
@@ -134,8 +137,9 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      * @generated
      */
     protected void addUpdaterPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DCell_updater_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DCell_updater_feature", "_UI_DCell_type"), TablePackage.Literals.DCELL__UPDATER, false, false, false, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DCell_updater_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DCell_updater_feature", "_UI_DCell_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DCELL__UPDATER, false, false, false, null, null, null));
     }
 
     /**
@@ -146,7 +150,8 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addIntersectionMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DCell_intersectionMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DCell_intersectionMapping_feature", "_UI_DCell_type"),
+                getString("_UI_DCell_intersectionMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DCell_intersectionMapping_feature", "_UI_DCell_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DCELL__INTERSECTION_MAPPING, true, false, true, null, null, null));
     }
 
@@ -190,7 +195,7 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DCell"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DCell")); //$NON-NLS-1$
     }
 
     /**
@@ -202,7 +207,8 @@ public class DCellItemProvider extends DSemanticDecoratorItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DCell) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DCell_type") : getString("_UI_DCell_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DCell_type") : //$NON-NLS-1$
+            getString("_UI_DCell_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

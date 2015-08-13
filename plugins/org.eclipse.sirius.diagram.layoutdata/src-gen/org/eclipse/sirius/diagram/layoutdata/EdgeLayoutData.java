@@ -15,9 +15,9 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Edge Layout Data</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The layout data for an edge. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -51,7 +51,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Smoothness</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getEdgeLayoutData()
  * @model
  * @generated
@@ -61,7 +61,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Source Terminal</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Identifier associated with the source anchor.
-     * 
+     *
      * @see {@link org.eclipse.gmf.runtime.draw2d.ui.figures.IAnchorableFigure}
      * @see {@link org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor.parseTerminalString}
      *      <!-- end-model-doc -->
@@ -90,7 +90,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Target Terminal</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Identifier associated with the target anchor.
-     * 
+     *
      * @see {@link org.eclipse.gmf.runtime.draw2d.ui.figures.IAnchorableFigure}
      * @see {@link org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor.parseTerminalString}
      *      <!-- end-model-doc -->
@@ -119,7 +119,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Routing</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * literal value of the routing.
-     * 
+     *
      * @see {@link org.eclipse.gmf.runtime.notation.Routing} <!-- end-model-doc
      *      -->
      * @return the value of the '<em>Routing</em>' attribute.
@@ -135,7 +135,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getRouting
      * <em>Routing</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Routing</em>' attribute.
      * @see #getRouting()
@@ -149,7 +149,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.Point}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> List of points by
      * which the edge passes. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Point List</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getEdgeLayoutData_PointList()
@@ -226,7 +226,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Jump Link Status</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The literal value of the Jump Links Status
-     * 
+     *
      * @see {@link org.eclipse.gmf.runtime.notation.JumpLinkStatus} <!--
      *      end-model-doc -->
      * @return the value of the '<em>Jump Link Status</em>' attribute.
@@ -254,7 +254,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Jump Link Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * literal value of the Jump Links Type.
-     * 
+     *
      * @see {@link org.eclipse.gmf.runtime.notation.JumpLinkType} <!--
      *      end-model-doc -->
      * @return the value of the '<em>Jump Link Type</em>' attribute.
@@ -282,7 +282,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Reverse Jump Link</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The literal value of the Reverse Jump Links. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Reverse Jump Link</em>' attribute.
      * @see #setReverseJumpLink(boolean)
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getEdgeLayoutData_ReverseJumpLink()
@@ -308,7 +308,7 @@ public interface EdgeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Smoothness</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * literal value of the smotohness.
-     * 
+     *
      * @see {@link org.eclipse.gmf.runtime.notation.Smoothness} <!--
      *      end-model-doc -->
      * @return the value of the '<em>Smoothness</em>' attribute.

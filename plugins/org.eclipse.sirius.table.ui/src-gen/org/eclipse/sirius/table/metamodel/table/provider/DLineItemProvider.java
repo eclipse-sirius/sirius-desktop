@@ -74,7 +74,8 @@ public class DLineItemProvider extends LineContainerItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"),
+                getString("_UI_DRepresentationElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -86,8 +87,8 @@ public class DLineItemProvider extends LineContainerItemProvider {
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_semanticElements_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_semanticElements_feature", "_UI_DRepresentationElement_type"),
+                getString("_UI_DRepresentationElement_semanticElements_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_semanticElements_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS, true, false, true, null, null, null));
     }
 
@@ -99,7 +100,8 @@ public class DLineItemProvider extends LineContainerItemProvider {
      */
     protected void addTableElementMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElement_tableElementMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTableElement_tableElementMapping_feature", "_UI_DTableElement_type"),
+                getString("_UI_DTableElement_tableElementMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElement_tableElementMapping_feature", "_UI_DTableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
@@ -110,9 +112,9 @@ public class DLineItemProvider extends LineContainerItemProvider {
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DLine_label_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DLine_label_feature", "_UI_DLine_type"), TablePackage.Literals.DLINE__LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DLine_label_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DLine_label_feature", "_UI_DLine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DLINE__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -123,7 +125,8 @@ public class DLineItemProvider extends LineContainerItemProvider {
      */
     protected void addOriginMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DLine_originMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DLine_originMapping_feature", "_UI_DLine_type"),
+                getString("_UI_DLine_originMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DLine_originMapping_feature", "_UI_DLine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DLINE__ORIGIN_MAPPING, true, false, true, null, null, null));
     }
 
@@ -134,9 +137,9 @@ public class DLineItemProvider extends LineContainerItemProvider {
      * @generated
      */
     protected void addVisiblePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DLine_visible_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DLine_visible_feature", "_UI_DLine_type"), TablePackage.Literals.DLINE__VISIBLE, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DLine_visible_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DLine_visible_feature", "_UI_DLine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DLINE__VISIBLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -146,9 +149,9 @@ public class DLineItemProvider extends LineContainerItemProvider {
      * @generated
      */
     protected void addCollapsedPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DLine_collapsed_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DLine_collapsed_feature", "_UI_DLine_type"), TablePackage.Literals.DLINE__COLLAPSED, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DLine_collapsed_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DLine_collapsed_feature", "_UI_DLine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DLINE__COLLAPSED, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -159,7 +162,8 @@ public class DLineItemProvider extends LineContainerItemProvider {
      */
     protected void addOrderedCellsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DLine_orderedCells_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DLine_orderedCells_feature", "_UI_DLine_type"),
+                getString("_UI_DLine_orderedCells_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DLine_orderedCells_feature", "_UI_DLine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DLINE__ORDERED_CELLS, false, false, false, null, null, null));
     }
 
@@ -204,7 +208,7 @@ public class DLineItemProvider extends LineContainerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DLine"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DLine")); //$NON-NLS-1$
     }
 
     /**
@@ -216,7 +220,8 @@ public class DLineItemProvider extends LineContainerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DLine) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DLine_type") : getString("_UI_DLine_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DLine_type") : //$NON-NLS-1$
+            getString("_UI_DLine_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

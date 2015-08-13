@@ -96,7 +96,7 @@ public class LabelEditToolItemProvider extends TableToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelEditTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelEditTool")); //$NON-NLS-1$
     }
 
     /**
@@ -107,7 +107,7 @@ public class LabelEditToolItemProvider extends TableToolItemProvider {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_LabelEditTool_type");
+        return getString("_UI_LabelEditTool_type"); //$NON-NLS-1$
     }
 
     /**

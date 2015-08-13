@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Point</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Represents a point (x, y) in 2-dimensional space.
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.Point#getY <em>Y</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getPoint()
  * @model
  * @generated
@@ -36,7 +36,7 @@ public interface Point extends EObject {
      * Returns the value of the '<em><b>X</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Represents the x coordinate. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>X</em>' attribute.
      * @see #setX(int)
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getPoint_X()
@@ -61,7 +61,7 @@ public interface Point extends EObject {
      * Returns the value of the '<em><b>Y</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Represents the y coordinate. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Y</em>' attribute.
      * @see #setY(int)
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getPoint_Y()

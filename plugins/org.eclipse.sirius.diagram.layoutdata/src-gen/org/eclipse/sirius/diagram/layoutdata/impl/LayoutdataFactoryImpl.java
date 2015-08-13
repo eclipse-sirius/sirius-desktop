@@ -71,7 +71,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
         case LayoutdataPackage.POINT:
             return createPoint();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -80,6 +80,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
      * 
      * @generated
      */
+    @Override
     public NodeLayoutData createNodeLayoutData() {
         NodeLayoutDataImpl nodeLayoutData = new NodeLayoutDataImpl();
         return nodeLayoutData;
@@ -90,6 +91,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
      * 
      * @generated
      */
+    @Override
     public EdgeLayoutData createEdgeLayoutData() {
         EdgeLayoutDataImpl edgeLayoutData = new EdgeLayoutDataImpl();
         return edgeLayoutData;
@@ -100,6 +102,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
      * 
      * @generated
      */
+    @Override
     public Point createPoint() {
         PointImpl point = new PointImpl();
         return point;
@@ -110,6 +113,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
      * 
      * @generated
      */
+    @Override
     public LayoutdataPackage getLayoutdataPackage() {
         return (LayoutdataPackage) getEPackage();
     }

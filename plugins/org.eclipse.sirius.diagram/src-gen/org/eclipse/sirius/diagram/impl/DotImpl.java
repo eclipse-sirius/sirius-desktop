@@ -229,9 +229,9 @@ public class DotImpl extends NodeStyleImpl implements Dot {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (strokeSizeComputationExpression: ");
+        result.append(" (strokeSizeComputationExpression: "); //$NON-NLS-1$
         result.append(strokeSizeComputationExpression);
-        result.append(", backgroundColor: ");
+        result.append(", backgroundColor: "); //$NON-NLS-1$
         result.append(backgroundColor);
         result.append(')');
         return result.toString();

@@ -86,7 +86,7 @@ public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumn
     public void setMapping(ElementColumnMapping newMapping) {
         if (newMapping != eInternalContainer() || (eContainerFeatureID() != DescriptionPackage.CREATE_COLUMN_TOOL__MAPPING && newMapping != null)) {
             if (EcoreUtil.isAncestor(this, newMapping)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
             }
             NotificationChain msgs = null;
             if (eInternalContainer() != null) {

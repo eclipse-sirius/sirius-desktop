@@ -239,7 +239,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (strokeSizeComputationExpression: ");
+        result.append(" (strokeSizeComputationExpression: "); //$NON-NLS-1$
         result.append(strokeSizeComputationExpression);
         result.append(')');
         return result.toString();

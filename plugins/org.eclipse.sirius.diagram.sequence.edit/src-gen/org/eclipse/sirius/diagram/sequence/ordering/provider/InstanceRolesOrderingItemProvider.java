@@ -70,8 +70,8 @@ IItemPropertySource {
      */
     protected void addSemanticInstanceRolesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_InstanceRolesOrdering_semanticInstanceRoles_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_InstanceRolesOrdering_semanticInstanceRoles_feature", "_UI_InstanceRolesOrdering_type"),
+                getString("_UI_InstanceRolesOrdering_semanticInstanceRoles_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_InstanceRolesOrdering_semanticInstanceRoles_feature", "_UI_InstanceRolesOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 OrderingPackage.Literals.INSTANCE_ROLES_ORDERING__SEMANTIC_INSTANCE_ROLES, true, false, true, null, null, null));
     }
 
@@ -83,7 +83,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRolesOrdering"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRolesOrdering")); //$NON-NLS-1$
     }
 
     /**
@@ -94,7 +94,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_InstanceRolesOrdering_type");
+        return getString("_UI_InstanceRolesOrdering_type"); //$NON-NLS-1$
     }
 
     /**

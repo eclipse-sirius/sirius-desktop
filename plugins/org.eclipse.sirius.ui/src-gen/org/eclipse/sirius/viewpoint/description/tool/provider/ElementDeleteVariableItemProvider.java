@@ -97,7 +97,7 @@ public class ElementDeleteVariableItemProvider extends AbstractVariableItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementDeleteVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementDeleteVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -109,7 +109,8 @@ public class ElementDeleteVariableItemProvider extends AbstractVariableItemProvi
     @Override
     public String getText(Object object) {
         String label = ((ElementDeleteVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ElementDeleteVariable_type") : getString("_UI_ElementDeleteVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ElementDeleteVariable_type") : //$NON-NLS-1$
+            getString("_UI_ElementDeleteVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

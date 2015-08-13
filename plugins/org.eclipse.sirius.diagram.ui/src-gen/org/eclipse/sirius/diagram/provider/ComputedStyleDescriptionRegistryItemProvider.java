@@ -106,7 +106,7 @@ IItemLabelProvider, IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ComputedStyleDescriptionRegistry"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ComputedStyleDescriptionRegistry")); //$NON-NLS-1$
     }
 
     /**
@@ -117,7 +117,7 @@ IItemLabelProvider, IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ComputedStyleDescriptionRegistry_type");
+        return getString("_UI_ComputedStyleDescriptionRegistry_type"); //$NON-NLS-1$
     }
 
     /**

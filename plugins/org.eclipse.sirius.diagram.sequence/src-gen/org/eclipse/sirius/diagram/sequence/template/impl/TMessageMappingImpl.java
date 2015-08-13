@@ -367,9 +367,9 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (sendingEndFinderExpression: ");
+        result.append(" (sendingEndFinderExpression: "); //$NON-NLS-1$
         result.append(sendingEndFinderExpression);
-        result.append(", receivingEndFinderExpression: ");
+        result.append(", receivingEndFinderExpression: "); //$NON-NLS-1$
         result.append(receivingEndFinderExpression);
         result.append(')');
         return result.toString();

@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract Layout Data</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An astract class for all layout data. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getAbstractLayoutData()
  * @model abstract="true"
  * @generated
@@ -39,7 +39,7 @@ public interface AbstractLayoutData extends EObject {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Serialization of the ID of the associated graphical element <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getAbstractLayoutData_Id()
@@ -65,7 +65,7 @@ public interface AbstractLayoutData extends EObject {
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Represents the layout of the label of this edge (only the location is
      * used). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Label</em>' containment reference.
      * @see #setLabel(NodeLayoutData)
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getAbstractLayoutData_Label()

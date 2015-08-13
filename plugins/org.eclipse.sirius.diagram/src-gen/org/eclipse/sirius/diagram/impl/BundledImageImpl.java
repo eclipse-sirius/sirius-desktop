@@ -224,9 +224,9 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (shape: ");
+        result.append(" (shape: "); //$NON-NLS-1$
         result.append(shape);
-        result.append(", color: ");
+        result.append(", color: "); //$NON-NLS-1$
         result.append(color);
         result.append(')');
         return result.toString();

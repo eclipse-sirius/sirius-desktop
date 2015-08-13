@@ -106,7 +106,7 @@ public class DeleteElementDescriptionItemProvider extends MappingBasedToolDescri
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteElementDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteElementDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -182,7 +182,8 @@ public class DeleteElementDescriptionItemProvider extends MappingBasedToolDescri
         boolean qualify = childFeature == ToolPackage.Literals.DELETE_ELEMENT_DESCRIPTION__ELEMENT || childFeature == ToolPackage.Literals.DELETE_ELEMENT_DESCRIPTION__ELEMENT_VIEW;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

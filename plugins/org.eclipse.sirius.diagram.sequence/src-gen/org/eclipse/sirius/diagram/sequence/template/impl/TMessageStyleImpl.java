@@ -409,13 +409,13 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (lineStyle: ");
+        result.append(" (lineStyle: "); //$NON-NLS-1$
         result.append(lineStyle);
-        result.append(", sourceArrow: ");
+        result.append(", sourceArrow: "); //$NON-NLS-1$
         result.append(sourceArrow);
-        result.append(", targetArrow: ");
+        result.append(", targetArrow: "); //$NON-NLS-1$
         result.append(targetArrow);
-        result.append(", labelExpression: ");
+        result.append(", labelExpression: "); //$NON-NLS-1$
         result.append(labelExpression);
         result.append(')');
         return result.toString();

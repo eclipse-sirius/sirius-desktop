@@ -75,8 +75,10 @@ IItemPropertySource {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ExternalJavaActionParameter_name_feature"), getString("_UI_ExternalJavaActionParameter_name_description"), ToolPackage.Literals.EXTERNAL_JAVA_ACTION_PARAMETER__NAME,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ExternalJavaActionParameter_name_feature"), //$NON-NLS-1$
+                getString("_UI_ExternalJavaActionParameter_name_description"), //$NON-NLS-1$
+                ToolPackage.Literals.EXTERNAL_JAVA_ACTION_PARAMETER__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -87,8 +89,10 @@ IItemPropertySource {
      */
     protected void addValuePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ExternalJavaActionParameter_value_feature"), getString("_UI_ExternalJavaActionParameter_value_description"), ToolPackage.Literals.EXTERNAL_JAVA_ACTION_PARAMETER__VALUE,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ExternalJavaActionParameter_value_feature"), //$NON-NLS-1$
+                getString("_UI_ExternalJavaActionParameter_value_description"), //$NON-NLS-1$
+                ToolPackage.Literals.EXTERNAL_JAVA_ACTION_PARAMETER__VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -99,7 +103,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ExternalJavaActionParameter"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ExternalJavaActionParameter")); //$NON-NLS-1$
     }
 
     /**
@@ -111,7 +115,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((ExternalJavaActionParameter) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ExternalJavaActionParameter_type") : getString("_UI_ExternalJavaActionParameter_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ExternalJavaActionParameter_type") : //$NON-NLS-1$
+            getString("_UI_ExternalJavaActionParameter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

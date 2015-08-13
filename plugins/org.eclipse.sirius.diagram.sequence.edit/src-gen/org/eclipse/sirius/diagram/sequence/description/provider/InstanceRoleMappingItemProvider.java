@@ -65,7 +65,7 @@ public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleMapping")); //$NON-NLS-1$
     }
 
     /**

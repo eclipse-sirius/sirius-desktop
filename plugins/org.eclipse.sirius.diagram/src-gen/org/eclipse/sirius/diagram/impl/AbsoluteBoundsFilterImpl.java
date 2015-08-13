@@ -334,13 +334,13 @@ public class AbsoluteBoundsFilterImpl extends MinimalEObjectImpl.Container imple
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (x: ");
+        result.append(" (x: "); //$NON-NLS-1$
         result.append(x);
-        result.append(", y: ");
+        result.append(", y: "); //$NON-NLS-1$
         result.append(y);
-        result.append(", height: ");
+        result.append(", height: "); //$NON-NLS-1$
         result.append(height);
-        result.append(", width: ");
+        result.append(", width: "); //$NON-NLS-1$
         result.append(width);
         result.append(')');
         return result.toString();

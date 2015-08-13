@@ -66,7 +66,8 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TAbstractMapping_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_name_feature", "_UI_TAbstractMapping_type"),
+                getString("_UI_TAbstractMapping_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_name_feature", "_UI_TAbstractMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TemplatePackage.Literals.TABSTRACT_MAPPING__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -78,7 +79,8 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TAbstractMapping_domainClass_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_domainClass_feature", "_UI_TAbstractMapping_type"),
+                getString("_UI_TAbstractMapping_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_domainClass_feature", "_UI_TAbstractMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TemplatePackage.Literals.TABSTRACT_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -90,8 +92,8 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TAbstractMapping_semanticCandidatesExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_semanticCandidatesExpression_feature", "_UI_TAbstractMapping_type"),
+                getString("_UI_TAbstractMapping_semanticCandidatesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TAbstractMapping_semanticCandidatesExpression_feature", "_UI_TAbstractMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TemplatePackage.Literals.TABSTRACT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -103,7 +105,7 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TAbstractMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TAbstractMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -115,7 +117,8 @@ public class TAbstractMappingItemProvider extends TTransformerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TAbstractMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TAbstractMapping_type") : getString("_UI_TAbstractMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_TAbstractMapping_type") : //$NON-NLS-1$
+            getString("_UI_TAbstractMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

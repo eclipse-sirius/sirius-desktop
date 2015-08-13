@@ -108,7 +108,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_StyleUpdater_type");
+        return getString("_UI_StyleUpdater_type"); //$NON-NLS-1$
     }
 
     /**

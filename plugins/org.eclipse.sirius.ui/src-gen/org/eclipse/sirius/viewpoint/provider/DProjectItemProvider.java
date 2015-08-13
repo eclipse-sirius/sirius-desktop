@@ -59,7 +59,7 @@ public class DProjectItemProvider extends DResourceContainerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DProject"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DProject")); //$NON-NLS-1$
     }
 
     /**
@@ -71,7 +71,8 @@ public class DProjectItemProvider extends DResourceContainerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DProject) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DProject_type") : getString("_UI_DProject_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DProject_type") : //$NON-NLS-1$
+            getString("_UI_DProject_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

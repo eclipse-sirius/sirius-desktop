@@ -247,15 +247,17 @@ public class AuditPackageImpl extends EPackageImpl implements AuditPackage {
         templateInformationSectionEClass.getESuperTypes().add(this.getInformationSection());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(informationSectionEClass, InformationSection.class, "InformationSection", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(informationSectionEClass, InformationSection.class, "InformationSection", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        EOperation op = addEOperation(informationSectionEClass, theEcorePackage.getEString(), "getContent", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "eObj", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED);
+        EOperation op = addEOperation(informationSectionEClass, theEcorePackage.getEString(), "getContent", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        addEParameter(op, theEcorePackage.getEObject(), "eObj", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(templateInformationSectionEClass, TemplateInformationSection.class, "TemplateInformationSection", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTemplateInformationSection_TemplatePath(), theEcorePackage.getEString(), "templatePath", null, 0, 1, TemplateInformationSection.class, !EPackageImpl.IS_TRANSIENT,
-                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEClass(templateInformationSectionEClass, TemplateInformationSection.class,
+                "TemplateInformationSection", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getTemplateInformationSection_TemplatePath(),
+                theEcorePackage.getEString(),
+                "templatePath", null, 0, 1, TemplateInformationSection.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
     }
 
 } // AuditPackageImpl

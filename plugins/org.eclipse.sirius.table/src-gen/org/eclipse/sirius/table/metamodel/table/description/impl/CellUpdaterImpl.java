@@ -283,7 +283,7 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (canEdit: ");
+        result.append(" (canEdit: "); //$NON-NLS-1$
         result.append(canEdit);
         result.append(')');
         return result.toString();

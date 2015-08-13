@@ -32,10 +32,8 @@ import org.eclipse.sirius.description.contribution.ContributionProvider;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.description.contribution.ContributionProvider}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.ContributionProvider} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class ContributionProviderItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
@@ -66,13 +64,10 @@ public class ContributionProviderItemProvider extends ItemProviderAdapter implem
     }
 
     /**
-     * This specifies how to implement {@link #getChildren} and is used to
-     * deduce an appropriate feature for an
-     * {@link org.eclipse.emf.edit.command.AddCommand},
-     * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-     * {@link org.eclipse.emf.edit.command.MoveCommand} in
-     * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -86,35 +81,32 @@ public class ContributionProviderItemProvider extends ItemProviderAdapter implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     protected EStructuralFeature getChildFeature(Object object, Object child) {
-        // Check the type of the specified child object and return the proper
-        // feature to use for
+        // Check the type of the specified child object and return the proper feature to use for
         // adding (see {@link AddCommand}) it as a child.
 
         return super.getChildFeature(object, child);
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ContributionProvider_type");
+        return getString("_UI_ContributionProvider_type"); //$NON-NLS-1$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -122,9 +114,9 @@ public class ContributionProviderItemProvider extends ItemProviderAdapter implem
         updateChildren(notification);
 
         switch (notification.getFeatureID(ContributionProvider.class)) {
-        case ContributionPackage.CONTRIBUTION_PROVIDER__CONTRIBUTIONS:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-            return;
+            case ContributionPackage.CONTRIBUTION_PROVIDER__CONTRIBUTIONS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
         }
         super.notifyChanged(notification);
     }
@@ -140,7 +132,10 @@ public class ContributionProviderItemProvider extends ItemProviderAdapter implem
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(ContributionPackage.Literals.CONTRIBUTION_PROVIDER__CONTRIBUTIONS, ContributionFactory.eINSTANCE.createContribution()));
+        newChildDescriptors.add
+            (createChildParameter
+                (ContributionPackage.Literals.CONTRIBUTION_PROVIDER__CONTRIBUTIONS,
+                 ContributionFactory.eINSTANCE.createContribution()));
     }
 
     /**

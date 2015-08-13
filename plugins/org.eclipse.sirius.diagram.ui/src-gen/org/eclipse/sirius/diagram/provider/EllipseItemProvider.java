@@ -67,7 +67,8 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
      */
     protected void addHorizontalDiameterPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Ellipse_horizontalDiameter_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Ellipse_horizontalDiameter_feature", "_UI_Ellipse_type"),
+                getString("_UI_Ellipse_horizontalDiameter_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Ellipse_horizontalDiameter_feature", "_UI_Ellipse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -79,7 +80,8 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
      */
     protected void addVerticalDiameterPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Ellipse_verticalDiameter_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Ellipse_verticalDiameter_feature", "_UI_Ellipse_type"),
+                getString("_UI_Ellipse_verticalDiameter_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Ellipse_verticalDiameter_feature", "_UI_Ellipse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.ELLIPSE__VERTICAL_DIAMETER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -90,9 +92,9 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
      * @generated
      */
     protected void addColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Ellipse_color_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Ellipse_color_feature", "_UI_Ellipse_type"), DiagramPackage.Literals.ELLIPSE__COLOR, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Ellipse_color_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Ellipse_color_feature", "_UI_Ellipse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.ELLIPSE__COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -102,7 +104,7 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Ellipse"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Ellipse")); //$NON-NLS-1$
     }
 
     /**
@@ -114,7 +116,7 @@ public class EllipseItemProvider extends NodeStyleItemProvider {
     @Override
     public String getText(Object object) {
         Ellipse ellipse = (Ellipse) object;
-        return getString("_UI_Ellipse_type") + " " + ellipse.getLabelSize();
+        return getString("_UI_Ellipse_type") + " " + ellipse.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

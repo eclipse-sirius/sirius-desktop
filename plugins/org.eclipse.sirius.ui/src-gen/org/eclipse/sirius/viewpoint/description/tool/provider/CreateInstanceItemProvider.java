@@ -67,8 +67,10 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
      */
     protected void addTypeNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateInstance_typeName_feature"), getString("_UI_CreateInstance_typeName_description"), ToolPackage.Literals.CREATE_INSTANCE__TYPE_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateInstance_typeName_feature"), //$NON-NLS-1$
+                getString("_UI_CreateInstance_typeName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CREATE_INSTANCE__TYPE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,8 +81,10 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
      */
     protected void addReferenceNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateInstance_referenceName_feature"), getString("_UI_CreateInstance_referenceName_description"), ToolPackage.Literals.CREATE_INSTANCE__REFERENCE_NAME, true, false,
-                false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateInstance_referenceName_feature"), //$NON-NLS-1$
+                getString("_UI_CreateInstance_referenceName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CREATE_INSTANCE__REFERENCE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -91,8 +95,10 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
      */
     protected void addVariableNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CreateInstance_variableName_feature"), getString("_UI_CreateInstance_variableName_description"), ToolPackage.Literals.CREATE_INSTANCE__VARIABLE_NAME, true, false,
-                false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_CreateInstance_variableName_feature"), //$NON-NLS-1$
+                getString("_UI_CreateInstance_variableName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CREATE_INSTANCE__VARIABLE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -103,7 +109,7 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateInstance"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateInstance")); //$NON-NLS-1$
     }
 
     /**
@@ -115,7 +121,8 @@ public class CreateInstanceItemProvider extends ContainerModelOperationItemProvi
     @Override
     public String getText(Object object) {
         String label = ((CreateInstance) object).getTypeName();
-        return label == null || label.length() == 0 ? getString("_UI_CreateInstance_type") : getString("_UI_CreateInstance_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CreateInstance_type") : //$NON-NLS-1$
+            getString("_UI_CreateInstance_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

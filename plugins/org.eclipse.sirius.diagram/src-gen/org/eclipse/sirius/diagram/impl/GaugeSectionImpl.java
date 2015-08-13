@@ -454,17 +454,17 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (min: ");
+        result.append(" (min: "); //$NON-NLS-1$
         result.append(min);
-        result.append(", max: ");
+        result.append(", max: "); //$NON-NLS-1$
         result.append(max);
-        result.append(", value: ");
+        result.append(", value: "); //$NON-NLS-1$
         result.append(value);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", backgroundColor: ");
+        result.append(", backgroundColor: "); //$NON-NLS-1$
         result.append(backgroundColor);
-        result.append(", foregroundColor: ");
+        result.append(", foregroundColor: "); //$NON-NLS-1$
         result.append(foregroundColor);
         result.append(')');
         return result.toString();

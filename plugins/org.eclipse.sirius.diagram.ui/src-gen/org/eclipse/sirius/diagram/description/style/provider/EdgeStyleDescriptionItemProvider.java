@@ -86,9 +86,10 @@ IItemPropertySource {
      */
     protected void addStrokeColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_strokeColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_strokeColor_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__STROKE_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_EdgeStyleDescription_strokeColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_strokeColor_feature", "_UI_EdgeStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__STROKE_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -99,9 +100,10 @@ IItemPropertySource {
      */
     protected void addLineStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_lineStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_lineStyle_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_EdgeStyleDescription_lineStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_lineStyle_feature", "_UI_EdgeStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -112,9 +114,10 @@ IItemPropertySource {
      */
     protected void addSourceArrowPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_sourceArrow_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_sourceArrow_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__SOURCE_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DecoratorsPropertyCategory"), null));
+                getString("_UI_EdgeStyleDescription_sourceArrow_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_sourceArrow_feature", "_UI_EdgeStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__SOURCE_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DecoratorsPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -125,9 +128,10 @@ IItemPropertySource {
      */
     protected void addTargetArrowPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_targetArrow_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_targetArrow_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__TARGET_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DecoratorsPropertyCategory"), null));
+                getString("_UI_EdgeStyleDescription_targetArrow_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_targetArrow_feature", "_UI_EdgeStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__TARGET_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DecoratorsPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -138,9 +142,9 @@ IItemPropertySource {
      */
     protected void addSizeComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_sizeComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_sizeComputationExpression_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                getString("_UI_EdgeStyleDescription_sizeComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_sizeComputationExpression_feature", "_UI_EdgeStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -152,9 +156,10 @@ IItemPropertySource {
      */
     protected void addRoutingStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_routingStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_routingStyle_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_EdgeStyleDescription_routingStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_routingStyle_feature", "_UI_EdgeStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -165,9 +170,10 @@ IItemPropertySource {
      */
     protected void addFoldingStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_foldingStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_foldingStyle_feature", "_UI_EdgeStyleDescription_type"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_EdgeStyleDescription_foldingStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_foldingStyle_feature", "_UI_EdgeStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -178,7 +184,8 @@ IItemPropertySource {
      */
     protected void addEndsCenteringPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_endsCentering_feature"), getString("_UI_EdgeStyleDescription_endsCentering_description"),
+                getString("_UI_EdgeStyleDescription_endsCentering_feature"), //$NON-NLS-1$
+                getString("_UI_EdgeStyleDescription_endsCentering_description"), //$NON-NLS-1$
                 StylePackage.Literals.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -190,8 +197,10 @@ IItemPropertySource {
      */
     protected void addCenteredSourceMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_centeredSourceMappings_feature"), getString("_UI_EdgeStyleDescription_centeredSourceMappings_description"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_EdgeStyleDescription_centeredSourceMappings_feature"), //$NON-NLS-1$
+                getString("_UI_EdgeStyleDescription_centeredSourceMappings_description"), //$NON-NLS-1$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -202,8 +211,10 @@ IItemPropertySource {
      */
     protected void addCenteredTargetMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_centeredTargetMappings_feature"), getString("_UI_EdgeStyleDescription_centeredTargetMappings_description"),
-                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_EdgeStyleDescription_centeredTargetMappings_feature"), //$NON-NLS-1$
+                getString("_UI_EdgeStyleDescription_centeredTargetMappings_description"), //$NON-NLS-1$
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -249,7 +260,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EdgeStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EdgeStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -262,7 +273,8 @@ IItemPropertySource {
     public String getText(Object object) {
         LineStyle labelValue = ((EdgeStyleDescription) object).getLineStyle();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_EdgeStyleDescription_type") : getString("_UI_EdgeStyleDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_EdgeStyleDescription_type") : //$NON-NLS-1$
+            getString("_UI_EdgeStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

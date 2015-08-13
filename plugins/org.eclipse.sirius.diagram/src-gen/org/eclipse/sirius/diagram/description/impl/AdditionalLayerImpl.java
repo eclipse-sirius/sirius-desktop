@@ -224,9 +224,9 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (activeByDefault: ");
+        result.append(" (activeByDefault: "); //$NON-NLS-1$
         result.append(activeByDefault);
-        result.append(", optional: ");
+        result.append(", optional: "); //$NON-NLS-1$
         result.append(optional);
         result.append(')');
         return result.toString();

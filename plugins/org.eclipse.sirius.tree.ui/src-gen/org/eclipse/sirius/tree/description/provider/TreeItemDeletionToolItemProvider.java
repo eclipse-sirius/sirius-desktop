@@ -61,7 +61,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemDeletionTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemDeletionTool")); //$NON-NLS-1$
     }
 
     /**

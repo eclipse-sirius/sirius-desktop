@@ -300,9 +300,9 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSizeComputationExpression: ");
+        result.append(" (borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
-        result.append(", borderLineStyle: ");
+        result.append(", borderLineStyle: "); //$NON-NLS-1$
         result.append(borderLineStyle);
         result.append(')');
         return result.toString();

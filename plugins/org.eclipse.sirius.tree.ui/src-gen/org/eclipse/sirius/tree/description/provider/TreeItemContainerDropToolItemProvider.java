@@ -79,7 +79,8 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
      */
     protected void addDragSourcePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemContainerDropTool_dragSource_feature"), getString("_UI_TreeItemContainerDropTool_dragSource_description"),
+                getString("_UI_TreeItemContainerDropTool_dragSource_feature"), //$NON-NLS-1$
+                getString("_UI_TreeItemContainerDropTool_dragSource_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.TREE_ITEM_CONTAINER_DROP_TOOL__DRAG_SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -130,7 +131,7 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemContainerDropTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemContainerDropTool")); //$NON-NLS-1$
     }
 
     /**
@@ -250,7 +251,8 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
                 || childFeature == DescriptionPackage.Literals.TREE_ITEM_CONTAINER_DROP_TOOL__NEW_CONTAINER;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

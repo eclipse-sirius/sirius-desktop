@@ -100,7 +100,7 @@ public class ContainerModelOperationItemProvider extends ModelOperationItemProvi
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ContainerModelOperation_type");
+        return getString("_UI_ContainerModelOperation_type"); //$NON-NLS-1$
     }
 
     /**

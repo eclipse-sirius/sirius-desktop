@@ -63,7 +63,7 @@ public class LifelineCreationToolItemProvider extends ContainerCreationDescripti
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LifelineCreationTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LifelineCreationTool")); //$NON-NLS-1$
     }
 
     /**

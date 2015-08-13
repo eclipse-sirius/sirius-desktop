@@ -75,8 +75,10 @@ IItemPropertySource {
      */
     protected void addCanEditPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CellUpdater_canEdit_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CellUpdater_canEdit_feature", "_UI_CellUpdater_type"),
-                DescriptionPackage.Literals.CELL_UPDATER__CAN_EDIT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BehaviorPropertyCategory"), null));
+                getString("_UI_CellUpdater_canEdit_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CellUpdater_canEdit_feature", "_UI_CellUpdater_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.CELL_UPDATER__CAN_EDIT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -120,7 +122,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CellUpdater"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CellUpdater")); //$NON-NLS-1$
     }
 
     /**
@@ -132,7 +134,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((CellUpdater) object).getCanEdit();
-        return label == null || label.length() == 0 ? getString("_UI_CellUpdater_type") : getString("_UI_CellUpdater_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CellUpdater_type") : //$NON-NLS-1$
+            getString("_UI_CellUpdater_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

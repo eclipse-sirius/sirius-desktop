@@ -67,8 +67,9 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
      */
     protected void addSendingEndFinderExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TMessageMapping_sendingEndFinderExpression_feature"), getString("_UI_TMessageMapping_sendingEndFinderExpression_description"),
-                TemplatePackage.Literals.TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_TMessageMapping_sendingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TMessageMapping_sendingEndFinderExpression_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TMESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -80,8 +81,9 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
      */
     protected void addReceivingEndFinderExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TMessageMapping_receivingEndFinderExpression_feature"), getString("_UI_TMessageMapping_receivingEndFinderExpression_description"),
-                TemplatePackage.Literals.TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_TMessageMapping_receivingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TMessageMapping_receivingEndFinderExpression_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TMESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -128,7 +130,8 @@ public class TMessageMappingItemProvider extends TAbstractMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TMessageMapping_type") : getString("_UI_TMessageMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_TMessageMapping_type") : //$NON-NLS-1$
+            getString("_UI_TMessageMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

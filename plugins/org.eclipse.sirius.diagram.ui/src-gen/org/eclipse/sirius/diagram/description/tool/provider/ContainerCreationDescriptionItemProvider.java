@@ -74,8 +74,10 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
      */
     protected void addContainerMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerCreationDescription_containerMappings_feature"), getString("_UI_ContainerCreationDescription_containerMappings_description"),
-                ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ContainerCreationDescription_containerMappings_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerCreationDescription_containerMappings_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -86,8 +88,10 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
      */
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerCreationDescription_iconPath_feature"), getString("_UI_ContainerCreationDescription_iconPath_description"),
-                ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_ContainerCreationDescription_iconPath_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerCreationDescription_iconPath_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -98,8 +102,10 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
      */
     protected void addExtraMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerCreationDescription_extraMappings_feature"), getString("_UI_ContainerCreationDescription_extraMappings_description"),
-                ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_ContainerCreationDescription_extraMappings_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerCreationDescription_extraMappings_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -145,7 +151,7 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerCreationDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerCreationDescription")); //$NON-NLS-1$
     }
 
     /**

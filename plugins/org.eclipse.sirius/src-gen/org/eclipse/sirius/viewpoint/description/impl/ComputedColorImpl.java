@@ -279,11 +279,11 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (red: ");
+        result.append(" (red: "); //$NON-NLS-1$
         result.append(red);
-        result.append(", green: ");
+        result.append(", green: "); //$NON-NLS-1$
         result.append(green);
-        result.append(", blue: ");
+        result.append(", blue: "); //$NON-NLS-1$
         result.append(blue);
         result.append(')');
         return result.toString();

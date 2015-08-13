@@ -167,7 +167,7 @@ public class CaseImpl extends SwitchChildImpl implements Case {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (conditionExpression: ");
+        result.append(" (conditionExpression: "); //$NON-NLS-1$
         result.append(conditionExpression);
         result.append(')');
         return result.toString();

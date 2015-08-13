@@ -71,8 +71,8 @@ IItemPropertySource {
      */
     protected void addSequenceDiagramPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EventEndsOrdering_sequenceDiagram_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EventEndsOrdering_sequenceDiagram_feature", "_UI_EventEndsOrdering_type"),
+                getString("_UI_EventEndsOrdering_sequenceDiagram_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EventEndsOrdering_sequenceDiagram_feature", "_UI_EventEndsOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 OrderingPackage.Literals.EVENT_ENDS_ORDERING__SEQUENCE_DIAGRAM, true, false, true, null, null, null));
     }
 
@@ -84,7 +84,8 @@ IItemPropertySource {
      */
     protected void addEventEndsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EventEndsOrdering_eventEnds_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EventEndsOrdering_eventEnds_feature", "_UI_EventEndsOrdering_type"),
+                getString("_UI_EventEndsOrdering_eventEnds_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EventEndsOrdering_eventEnds_feature", "_UI_EventEndsOrdering_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 OrderingPackage.Literals.EVENT_ENDS_ORDERING__EVENT_ENDS, true, false, true, null, null, null));
     }
 
@@ -96,7 +97,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EventEndsOrdering"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EventEndsOrdering")); //$NON-NLS-1$
     }
 
     /**
@@ -107,7 +108,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_EventEndsOrdering_type");
+        return getString("_UI_EventEndsOrdering_type"); //$NON-NLS-1$
     }
 
     /**

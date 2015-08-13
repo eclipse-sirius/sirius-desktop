@@ -286,7 +286,7 @@ public class DAnalysisCustomDataImpl extends MinimalEObjectImpl.Container implem
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (key: ");
+        result.append(" (key: "); //$NON-NLS-1$
         result.append(key);
         result.append(')');
         return result.toString();

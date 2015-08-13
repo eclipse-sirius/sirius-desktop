@@ -63,7 +63,7 @@ public class EndLabelStyleItemProvider extends BasicLabelStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EndLabelStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EndLabelStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -75,7 +75,7 @@ public class EndLabelStyleItemProvider extends BasicLabelStyleItemProvider {
     @Override
     public String getText(Object object) {
         EndLabelStyle endLabelStyle = (EndLabelStyle) object;
-        return getString("_UI_EndLabelStyle_type") + " " + endLabelStyle.getLabelSize();
+        return getString("_UI_EndLabelStyle_type") + " " + endLabelStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

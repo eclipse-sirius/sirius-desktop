@@ -66,7 +66,8 @@ public class DotItemProvider extends NodeStyleItemProvider {
      */
     protected void addStrokeSizeComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Dot_strokeSizeComputationExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Dot_strokeSizeComputationExpression_feature", "_UI_Dot_type"),
+                getString("_UI_Dot_strokeSizeComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Dot_strokeSizeComputationExpression_feature", "_UI_Dot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -78,7 +79,8 @@ public class DotItemProvider extends NodeStyleItemProvider {
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Dot_backgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Dot_backgroundColor_feature", "_UI_Dot_type"),
+                getString("_UI_Dot_backgroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Dot_backgroundColor_feature", "_UI_Dot_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DOT__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -89,7 +91,7 @@ public class DotItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Dot"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Dot")); //$NON-NLS-1$
     }
 
     /**
@@ -101,7 +103,7 @@ public class DotItemProvider extends NodeStyleItemProvider {
     @Override
     public String getText(Object object) {
         Dot dot = (Dot) object;
-        return getString("_UI_Dot_type") + " " + dot.getLabelSize();
+        return getString("_UI_Dot_type") + " " + dot.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

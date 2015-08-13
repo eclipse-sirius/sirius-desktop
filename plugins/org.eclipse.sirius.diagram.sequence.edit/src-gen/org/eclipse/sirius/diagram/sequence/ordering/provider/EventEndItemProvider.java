@@ -69,7 +69,8 @@ public class EventEndItemProvider extends ItemProviderAdapter implements IEditin
      */
     protected void addSemanticEndPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EventEnd_semanticEnd_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EventEnd_semanticEnd_feature", "_UI_EventEnd_type"),
+                getString("_UI_EventEnd_semanticEnd_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EventEnd_semanticEnd_feature", "_UI_EventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 OrderingPackage.Literals.EVENT_END__SEMANTIC_END, true, false, true, null, null, null));
     }
 
@@ -80,7 +81,7 @@ public class EventEndItemProvider extends ItemProviderAdapter implements IEditin
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EventEnd"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EventEnd")); //$NON-NLS-1$
     }
 
     /**
@@ -91,7 +92,7 @@ public class EventEndItemProvider extends ItemProviderAdapter implements IEditin
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_EventEnd_type");
+        return getString("_UI_EventEnd_type"); //$NON-NLS-1$
     }
 
     /**

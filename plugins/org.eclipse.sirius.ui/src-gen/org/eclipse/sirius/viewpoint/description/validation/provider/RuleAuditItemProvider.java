@@ -73,8 +73,10 @@ public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditi
      */
     protected void addAuditExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RuleAudit_auditExpression_feature"), getString("_UI_RuleAudit_auditExpression_description"), ValidationPackage.Literals.RULE_AUDIT__AUDIT_EXPRESSION, true, false,
-                false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_RuleAudit_auditExpression_feature"), //$NON-NLS-1$
+                getString("_UI_RuleAudit_auditExpression_description"), //$NON-NLS-1$
+                ValidationPackage.Literals.RULE_AUDIT__AUDIT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -84,7 +86,7 @@ public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RuleAudit"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RuleAudit")); //$NON-NLS-1$
     }
 
     /**
@@ -96,7 +98,8 @@ public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditi
     @Override
     public String getText(Object object) {
         String label = ((RuleAudit) object).getAuditExpression();
-        return label == null || label.length() == 0 ? getString("_UI_RuleAudit_type") : getString("_UI_RuleAudit_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_RuleAudit_type") : //$NON-NLS-1$
+            getString("_UI_RuleAudit_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

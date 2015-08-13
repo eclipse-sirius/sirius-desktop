@@ -289,7 +289,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (domainClass: ");
+        result.append(" (domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
         result.append(')');
         return result.toString();

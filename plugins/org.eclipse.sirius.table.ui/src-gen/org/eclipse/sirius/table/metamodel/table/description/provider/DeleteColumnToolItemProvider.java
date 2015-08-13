@@ -61,7 +61,7 @@ public class DeleteColumnToolItemProvider extends DeleteToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteColumnTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteColumnTool")); //$NON-NLS-1$
     }
 
     /**

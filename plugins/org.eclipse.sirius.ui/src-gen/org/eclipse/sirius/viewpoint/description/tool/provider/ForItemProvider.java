@@ -65,9 +65,10 @@ public class ForItemProvider extends ContainerModelOperationItemProvider {
      * @generated
      */
     protected void addExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_For_expression_feature"),
-                getString("_UI_For_expression_description"), ToolPackage.Literals.FOR__EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_For_expression_feature"), //$NON-NLS-1$
+                getString("_UI_For_expression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.FOR__EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -77,9 +78,10 @@ public class ForItemProvider extends ContainerModelOperationItemProvider {
      * @generated
      */
     protected void addIteratorNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_For_iteratorName_feature"),
-                getString("_UI_For_iteratorName_description"), ToolPackage.Literals.FOR__ITERATOR_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_For_iteratorName_feature"), //$NON-NLS-1$
+                getString("_UI_For_iteratorName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.FOR__ITERATOR_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -89,7 +91,7 @@ public class ForItemProvider extends ContainerModelOperationItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/For"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/For")); //$NON-NLS-1$
     }
 
     /**
@@ -101,7 +103,8 @@ public class ForItemProvider extends ContainerModelOperationItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((For) object).getIteratorName();
-        return label == null || label.length() == 0 ? getString("_UI_For_type") : getString("_UI_For_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_For_type") : //$NON-NLS-1$
+            getString("_UI_For_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

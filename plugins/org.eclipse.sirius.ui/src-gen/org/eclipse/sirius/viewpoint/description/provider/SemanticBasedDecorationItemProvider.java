@@ -65,9 +65,10 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SemanticBasedDecoration_domainClass_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SemanticBasedDecoration_domainClass_feature", "_UI_SemanticBasedDecoration_type"),
-                DescriptionPackage.Literals.SEMANTIC_BASED_DECORATION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SemanticBasedDecoration_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SemanticBasedDecoration_domainClass_feature", "_UI_SemanticBasedDecoration_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.SEMANTIC_BASED_DECORATION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,7 +79,7 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SemanticBasedDecoration"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SemanticBasedDecoration")); //$NON-NLS-1$
     }
 
     /**
@@ -90,7 +91,8 @@ public class SemanticBasedDecorationItemProvider extends DecorationDescriptionIt
     @Override
     public String getText(Object object) {
         String label = ((SemanticBasedDecoration) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_SemanticBasedDecoration_type") : getString("_UI_SemanticBasedDecoration_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_SemanticBasedDecoration_type") : //$NON-NLS-1$
+            getString("_UI_SemanticBasedDecoration_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

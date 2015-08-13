@@ -66,7 +66,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_DTableElementSynchronizer_type");
+        return getString("_UI_DTableElementSynchronizer_type"); //$NON-NLS-1$
     }
 
     /**

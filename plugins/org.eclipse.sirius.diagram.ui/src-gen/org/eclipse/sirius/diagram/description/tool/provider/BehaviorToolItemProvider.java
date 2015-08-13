@@ -72,8 +72,10 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BehaviorTool_domainClass_feature"), getString("_UI_BehaviorTool_domainClass_description"), ToolPackage.Literals.BEHAVIOR_TOOL__DOMAIN_CLASS, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_BehaviorTool_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_BehaviorTool_domainClass_description"), //$NON-NLS-1$
+                ToolPackage.Literals.BEHAVIOR_TOOL__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -117,7 +119,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/BehaviorTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/BehaviorTool")); //$NON-NLS-1$
     }
 
     /**

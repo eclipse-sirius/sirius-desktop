@@ -61,7 +61,8 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
      */
     protected void addEventEndsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CompoundEventEnd_eventEnds_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CompoundEventEnd_eventEnds_feature", "_UI_CompoundEventEnd_type"),
+                getString("_UI_CompoundEventEnd_eventEnds_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CompoundEventEnd_eventEnds_feature", "_UI_CompoundEventEnd_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 OrderingPackage.Literals.COMPOUND_EVENT_END__EVENT_ENDS, true, false, true, null, null, null));
     }
 
@@ -73,7 +74,7 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CompoundEventEnd"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CompoundEventEnd")); //$NON-NLS-1$
     }
 
     /**
@@ -84,7 +85,7 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_CompoundEventEnd_type");
+        return getString("_UI_CompoundEventEnd_type"); //$NON-NLS-1$
     }
 
     /**

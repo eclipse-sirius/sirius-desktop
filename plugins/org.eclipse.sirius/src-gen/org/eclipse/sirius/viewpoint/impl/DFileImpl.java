@@ -221,9 +221,9 @@ public class DFileImpl extends MinimalEObjectImpl.Container implements DFile {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", path: ");
+        result.append(", path: "); //$NON-NLS-1$
         result.append(path);
         result.append(')');
         return result.toString();

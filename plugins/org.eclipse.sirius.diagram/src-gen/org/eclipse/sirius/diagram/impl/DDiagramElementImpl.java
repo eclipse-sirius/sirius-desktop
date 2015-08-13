@@ -411,9 +411,9 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (visible: ");
+        result.append(" (visible: "); //$NON-NLS-1$
         result.append(visible);
-        result.append(", tooltipText: ");
+        result.append(", tooltipText: "); //$NON-NLS-1$
         result.append(tooltipText);
         result.append(')');
         return result.toString();

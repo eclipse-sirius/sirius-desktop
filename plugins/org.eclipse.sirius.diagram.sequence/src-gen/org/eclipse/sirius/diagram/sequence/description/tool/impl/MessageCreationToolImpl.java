@@ -1724,23 +1724,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (documentation: ");
+        result.append(" (documentation: "); //$NON-NLS-1$
         result.append(documentation);
-        result.append(", name: ");
+        result.append(", name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", precondition: ");
+        result.append(", precondition: "); //$NON-NLS-1$
         result.append(precondition);
-        result.append(", forceRefresh: ");
+        result.append(", forceRefresh: "); //$NON-NLS-1$
         result.append(forceRefresh);
-        result.append(", elementsToSelect: ");
+        result.append(", elementsToSelect: "); //$NON-NLS-1$
         result.append(elementsToSelect);
-        result.append(", inverseSelectionOrder: ");
+        result.append(", inverseSelectionOrder: "); //$NON-NLS-1$
         result.append(inverseSelectionOrder);
-        result.append(", iconPath: ");
+        result.append(", iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
-        result.append(", connectionStartPrecondition: ");
+        result.append(", connectionStartPrecondition: "); //$NON-NLS-1$
         result.append(connectionStartPrecondition);
         result.append(')');
         return result.toString();

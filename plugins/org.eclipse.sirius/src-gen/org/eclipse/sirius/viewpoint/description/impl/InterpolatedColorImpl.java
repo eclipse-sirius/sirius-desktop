@@ -445,13 +445,13 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", colorValueComputationExpression: ");
+        result.append(", colorValueComputationExpression: "); //$NON-NLS-1$
         result.append(colorValueComputationExpression);
-        result.append(", minValueComputationExpression: ");
+        result.append(", minValueComputationExpression: "); //$NON-NLS-1$
         result.append(minValueComputationExpression);
-        result.append(", maxValueComputationExpression: ");
+        result.append(", maxValueComputationExpression: "); //$NON-NLS-1$
         result.append(maxValueComputationExpression);
         result.append(')');
         return result.toString();

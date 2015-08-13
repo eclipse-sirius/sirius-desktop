@@ -110,7 +110,7 @@ public class DeleteToolItemProvider extends AbstractToolDescriptionItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteTool")); //$NON-NLS-1$
     }
 
     /**

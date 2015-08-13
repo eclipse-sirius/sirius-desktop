@@ -61,7 +61,7 @@ public class CreateColumnToolItemProvider extends CreateToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateColumnTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CreateColumnTool")); //$NON-NLS-1$
     }
 
     /**

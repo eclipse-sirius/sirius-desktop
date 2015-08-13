@@ -208,9 +208,9 @@ public class DAnnotationEntryImpl extends MinimalEObjectImpl.Container implement
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (source: ");
+        result.append(" (source: "); //$NON-NLS-1$
         result.append(source);
-        result.append(", details: ");
+        result.append(", details: "); //$NON-NLS-1$
         result.append(details);
         result.append(')');
         return result.toString();

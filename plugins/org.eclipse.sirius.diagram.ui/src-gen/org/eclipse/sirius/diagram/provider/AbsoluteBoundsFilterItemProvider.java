@@ -77,7 +77,8 @@ IItemPropertySource {
      */
     protected void addXPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbsoluteBoundsFilter_x_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_x_feature", "_UI_AbsoluteBoundsFilter_type"),
+                getString("_UI_AbsoluteBoundsFilter_x_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_x_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__X, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -89,7 +90,8 @@ IItemPropertySource {
      */
     protected void addYPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbsoluteBoundsFilter_y_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_y_feature", "_UI_AbsoluteBoundsFilter_type"),
+                getString("_UI_AbsoluteBoundsFilter_y_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_y_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__Y, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -101,7 +103,8 @@ IItemPropertySource {
      */
     protected void addHeightPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbsoluteBoundsFilter_height_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_height_feature", "_UI_AbsoluteBoundsFilter_type"),
+                getString("_UI_AbsoluteBoundsFilter_height_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_height_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -113,7 +116,8 @@ IItemPropertySource {
      */
     protected void addWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbsoluteBoundsFilter_width_feature"), getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_width_feature", "_UI_AbsoluteBoundsFilter_type"),
+                getString("_UI_AbsoluteBoundsFilter_width_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AbsoluteBoundsFilter_width_feature", "_UI_AbsoluteBoundsFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.ABSOLUTE_BOUNDS_FILTER__WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -125,7 +129,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/AbsoluteBoundsFilter"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/AbsoluteBoundsFilter")); //$NON-NLS-1$
     }
 
     /**
@@ -138,7 +142,8 @@ IItemPropertySource {
     public String getText(Object object) {
         Integer labelValue = ((AbsoluteBoundsFilter) object).getX();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_AbsoluteBoundsFilter_type") : getString("_UI_AbsoluteBoundsFilter_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_AbsoluteBoundsFilter_type") : //$NON-NLS-1$
+            getString("_UI_AbsoluteBoundsFilter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

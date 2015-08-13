@@ -61,7 +61,7 @@ public class BracketEdgeStyleItemProvider extends EdgeStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/BracketEdgeStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/BracketEdgeStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -74,7 +74,8 @@ public class BracketEdgeStyleItemProvider extends EdgeStyleItemProvider {
     public String getText(Object object) {
         LineStyle labelValue = ((BracketEdgeStyle) object).getLineStyle();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_BracketEdgeStyle_type") : getString("_UI_BracketEdgeStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_BracketEdgeStyle_type") : //$NON-NLS-1$
+            getString("_UI_BracketEdgeStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

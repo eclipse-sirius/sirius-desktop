@@ -71,8 +71,8 @@ IItemPropertySource {
      */
     protected void addCompositeFilterDescriptionsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AppliedCompositeFilters_compositeFilterDescriptions_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_AppliedCompositeFilters_compositeFilterDescriptions_feature", "_UI_AppliedCompositeFilters_type"),
+                getString("_UI_AppliedCompositeFilters_compositeFilterDescriptions_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_AppliedCompositeFilters_compositeFilterDescriptions_feature", "_UI_AppliedCompositeFilters_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.APPLIED_COMPOSITE_FILTERS__COMPOSITE_FILTER_DESCRIPTIONS, true, false, true, null, null, null));
     }
 
@@ -84,7 +84,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/AppliedCompositeFilters"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/AppliedCompositeFilters")); //$NON-NLS-1$
     }
 
     /**
@@ -95,7 +95,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_AppliedCompositeFilters_type");
+        return getString("_UI_AppliedCompositeFilters_type"); //$NON-NLS-1$
     }
 
     /**

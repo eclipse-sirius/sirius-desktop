@@ -329,11 +329,11 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (sourceFinderExpression: ");
+        result.append(" (sourceFinderExpression: "); //$NON-NLS-1$
         result.append(sourceFinderExpression);
-        result.append(", targetFinderExpression: ");
+        result.append(", targetFinderExpression: "); //$NON-NLS-1$
         result.append(targetFinderExpression);
-        result.append(", useDomainElement: ");
+        result.append(", useDomainElement: "); //$NON-NLS-1$
         result.append(useDomainElement);
         result.append(')');
         return result.toString();

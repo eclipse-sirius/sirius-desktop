@@ -559,17 +559,17 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", precondition: ");
+        result.append(", precondition: "); //$NON-NLS-1$
         result.append(precondition);
-        result.append(", forceRefresh: ");
+        result.append(", forceRefresh: "); //$NON-NLS-1$
         result.append(forceRefresh);
-        result.append(", elementsToSelect: ");
+        result.append(", elementsToSelect: "); //$NON-NLS-1$
         result.append(elementsToSelect);
-        result.append(", inverseSelectionOrder: ");
+        result.append(", inverseSelectionOrder: "); //$NON-NLS-1$
         result.append(inverseSelectionOrder);
         result.append(')');
         return result.toString();

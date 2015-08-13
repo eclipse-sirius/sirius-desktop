@@ -67,8 +67,10 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
      */
     protected void addAlignmentPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GaugeCompositeStyleDescription_alignment_feature"), getString("_UI_GaugeCompositeStyleDescription_alignment_description"),
-                StylePackage.Literals.GAUGE_COMPOSITE_STYLE_DESCRIPTION__ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_GaugeCompositeStyleDescription_alignment_feature"), //$NON-NLS-1$
+                getString("_UI_GaugeCompositeStyleDescription_alignment_description"), //$NON-NLS-1$
+                StylePackage.Literals.GAUGE_COMPOSITE_STYLE_DESCRIPTION__ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -112,7 +114,7 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/GaugeCompositeStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GaugeCompositeStyleDescription")); //$NON-NLS-1$
     }
 
     /**

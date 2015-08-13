@@ -190,7 +190,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         case ToolPackage.SWITCH:
             return createSwitch();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -205,7 +205,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         case ToolPackage.DRAG_SOURCE:
             return createDragSourceFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -220,7 +220,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         case ToolPackage.DRAG_SOURCE:
             return convertDragSourceToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -739,7 +739,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public DragSource createDragSourceFromString(EDataType eDataType, String initialValue) {
         DragSource result = DragSource.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

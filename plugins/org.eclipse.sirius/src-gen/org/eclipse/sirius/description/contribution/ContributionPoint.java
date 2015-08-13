@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution;
 
@@ -42,7 +42,7 @@ public interface ContributionPoint extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Origin</em>' attribute.
      * @see #setOrigin(String)
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContributionPoint_Origin()
@@ -56,7 +56,7 @@ public interface ContributionPoint extends EObject {
      * {@link org.eclipse.sirius.description.contribution.ContributionPoint#getOrigin
      * <em>Origin</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Origin</em>' attribute.
      * @see #getOrigin()
@@ -72,7 +72,7 @@ public interface ContributionPoint extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Contributed</em>' reference.
      * @see #setContributed(EObject)
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContributionPoint_Contributed()
@@ -86,7 +86,7 @@ public interface ContributionPoint extends EObject {
      * {@link org.eclipse.sirius.description.contribution.ContributionPoint#getContributed
      * <em>Contributed</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Contributed</em>' reference.
      * @see #getContributed()
