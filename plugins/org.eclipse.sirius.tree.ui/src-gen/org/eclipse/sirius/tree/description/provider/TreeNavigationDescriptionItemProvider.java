@@ -93,7 +93,7 @@ public class TreeNavigationDescriptionItemProvider extends RepresentationNavigat
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeNavigationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeNavigationDescription_type") : getString("_UI_TreeNavigationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeNavigationDescription_type") : getString("_UI_TreeNavigationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

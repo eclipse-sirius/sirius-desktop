@@ -176,7 +176,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     @Override
     public String getText(Object object) {
         String label = ((InterpolatedColor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_InterpolatedColor_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_InterpolatedColor_type") : label; //$NON-NLS-1$
     }
 
     /**

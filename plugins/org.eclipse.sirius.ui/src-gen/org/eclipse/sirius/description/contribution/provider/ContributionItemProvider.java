@@ -92,7 +92,7 @@ public class ContributionItemProvider extends ItemProviderAdapter implements IEd
 
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Contribution"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Contribution")); //$NON-NLS-1$
     }
 
     /**

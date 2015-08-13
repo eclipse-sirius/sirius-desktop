@@ -36,21 +36,21 @@ public interface LayoutdataPackage extends EPackage {
      * 
      * @generated
      */
-    String eNAME = "layoutdata";
+    String eNAME = "layoutdata"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_PREFIX = "layoutdata";
+    String eNS_PREFIX = "layoutdata"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--

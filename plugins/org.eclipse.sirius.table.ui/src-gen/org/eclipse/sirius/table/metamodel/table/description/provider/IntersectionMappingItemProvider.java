@@ -293,7 +293,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((IntersectionMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_IntersectionMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_IntersectionMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

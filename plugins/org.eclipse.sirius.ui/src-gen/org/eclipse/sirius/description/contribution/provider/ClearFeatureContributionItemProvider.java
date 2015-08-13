@@ -70,10 +70,10 @@ public class ClearFeatureContributionItemProvider extends FeatureContributionIte
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_ClearFeatureContribution_type");
+        String result = getString("_UI_ClearFeatureContribution_type"); //$NON-NLS-1$
         if (object instanceof ClearFeatureContribution) {
             ClearFeatureContribution cfc = (ClearFeatureContribution) object;
-            result += " target." + featureString(cfc.getTargetFeature());
+            result += " target." + featureString(cfc.getTargetFeature()); //$NON-NLS-1$
         }
         return result;
     }
@@ -82,7 +82,7 @@ public class ClearFeatureContributionItemProvider extends FeatureContributionIte
         if (feature != null) {
             return feature.getName();
         } else {
-            return "[unset]";
+            return "[unset]"; //$NON-NLS-1$
         }
     }
 

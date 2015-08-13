@@ -36,7 +36,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    NO_DECORATION_LITERAL(0, "NoDecoration", "NoDecoration"),
+    NO_DECORATION_LITERAL(0, "NoDecoration", "NoDecoration"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Output Arrow</b></em>' literal object. <!-- begin-user-doc
@@ -46,7 +46,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    OUTPUT_ARROW_LITERAL(1, "OutputArrow", "OutputArrow"),
+    OUTPUT_ARROW_LITERAL(1, "OutputArrow", "OutputArrow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Input Arrow</b></em>' literal object. <!-- begin-user-doc -->
@@ -56,7 +56,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    INPUT_ARROW_LITERAL(2, "InputArrow", "InputArrow"),
+    INPUT_ARROW_LITERAL(2, "InputArrow", "InputArrow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Output Closed Arrow</b></em>' literal object. <!--
@@ -66,7 +66,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    OUTPUT_CLOSED_ARROW_LITERAL(3, "OutputClosedArrow", "OutputClosedArrow"),
+    OUTPUT_CLOSED_ARROW_LITERAL(3, "OutputClosedArrow", "OutputClosedArrow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Input Closed Arrow</b></em>' literal object. <!--
@@ -76,7 +76,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    INPUT_CLOSED_ARROW_LITERAL(4, "InputClosedArrow", "InputClosedArrow"),
+    INPUT_CLOSED_ARROW_LITERAL(4, "InputClosedArrow", "InputClosedArrow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Output Fill Closed Arrow</b></em>' literal object. <!--
@@ -86,7 +86,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    OUTPUT_FILL_CLOSED_ARROW_LITERAL(5, "OutputFillClosedArrow", "OutputFillClosedArrow"),
+    OUTPUT_FILL_CLOSED_ARROW_LITERAL(5, "OutputFillClosedArrow", "OutputFillClosedArrow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Input Fill Closed Arrow</b></em>' literal object. <!--
@@ -96,7 +96,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    INPUT_FILL_CLOSED_ARROW_LITERAL(6, "InputFillClosedArrow", "InputFillClosedArrow"),
+    INPUT_FILL_CLOSED_ARROW_LITERAL(6, "InputFillClosedArrow", "InputFillClosedArrow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Diamond</b></em>' literal object. <!-- begin-user-doc -->
@@ -106,7 +106,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    DIAMOND_LITERAL(7, "Diamond", "Diamond"),
+    DIAMOND_LITERAL(7, "Diamond", "Diamond"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Fill Diamond</b></em>' literal object. <!-- begin-user-doc
@@ -116,7 +116,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    FILL_DIAMOND_LITERAL(8, "FillDiamond", "FillDiamond"),
+    FILL_DIAMOND_LITERAL(8, "FillDiamond", "FillDiamond"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Input Arrow With Diamond</b></em>' literal object. <!--
@@ -126,7 +126,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    INPUT_ARROW_WITH_DIAMOND_LITERAL(9, "InputArrowWithDiamond", "InputArrowWithDiamond"),
+    INPUT_ARROW_WITH_DIAMOND_LITERAL(9, "InputArrowWithDiamond", "InputArrowWithDiamond"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Input Arrow With Fill Diamond</b></em>' literal object. <!--
@@ -136,7 +136,7 @@ public enum EdgeArrows implements Enumerator {
      * @generated
      * @ordered
      */
-    INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL(10, "InputArrowWithFillDiamond", "InputArrowWithFillDiamond");
+    INPUT_ARROW_WITH_FILL_DIAMOND_LITERAL(10, "InputArrowWithFillDiamond", "InputArrowWithFillDiamond"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>No Decoration</b></em>' literal value. <!-- begin-user-doc

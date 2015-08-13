@@ -103,7 +103,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * @generated
      * @ordered
      */
-    protected static final String END_USER_DOCUMENTATION_EDEFAULT = "";
+    protected static final String END_USER_DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getEndUserDocumentation()
@@ -124,7 +124,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -165,7 +165,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
      * @generated
      * @ordered
      */
-    protected static final String MODEL_FILE_EXTENSION_EDEFAULT = "*";
+    protected static final String MODEL_FILE_EXTENSION_EDEFAULT = "*"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getModelFileExtension()

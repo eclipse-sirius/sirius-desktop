@@ -130,7 +130,7 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TLifelineMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TLifelineMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TLifelineMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

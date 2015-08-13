@@ -131,7 +131,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif";
+    protected static final String ICON_PATH_EDEFAULT = "/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'

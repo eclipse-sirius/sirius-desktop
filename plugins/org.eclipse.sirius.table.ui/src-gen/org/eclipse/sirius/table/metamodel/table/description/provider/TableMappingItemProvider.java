@@ -95,7 +95,7 @@ public class TableMappingItemProvider extends RepresentationElementMappingItemPr
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TableMapping) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TableMapping_type") : getString("_UI_TableMapping_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TableMapping_type") : getString("_UI_TableMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

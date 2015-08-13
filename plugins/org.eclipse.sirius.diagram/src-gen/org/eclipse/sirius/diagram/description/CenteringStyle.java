@@ -35,7 +35,7 @@ public enum CenteringStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    NONE(0, "None", "None"),
+    NONE(0, "None", "None"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Both</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -45,7 +45,7 @@ public enum CenteringStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    BOTH(1, "Both", "Both"),
+    BOTH(1, "Both", "Both"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Source</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -55,7 +55,7 @@ public enum CenteringStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    SOURCE(2, "Source", "Source"),
+    SOURCE(2, "Source", "Source"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Target</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -65,7 +65,7 @@ public enum CenteringStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    TARGET(3, "Target", "Target");
+    TARGET(3, "Target", "Target"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>None</b></em>' literal value. <!-- begin-user-doc -->

@@ -279,7 +279,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
     @Override
     public String getText(final Object object) {
         final String label = new IdentifiedElementQuery((TableDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_TableDescription_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TableDescription_type") : label; //$NON-NLS-1$
     }
 
     /**

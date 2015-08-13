@@ -136,7 +136,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * @generated
      * @ordered
      */
-    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -158,7 +158,7 @@ public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {
      * @generated
      * @ordered
      */
-    protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "138,226,52");
+    protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "138,226,52"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getForegroundColor()

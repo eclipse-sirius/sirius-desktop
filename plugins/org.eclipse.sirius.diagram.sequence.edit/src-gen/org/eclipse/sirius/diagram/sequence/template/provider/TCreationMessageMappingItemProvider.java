@@ -88,7 +88,7 @@ public class TCreationMessageMappingItemProvider extends TSourceTargetMessageMap
     @Override
     public String getText(Object object) {
         String label = ((TCreationMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TCreationMessageMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TCreationMessageMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

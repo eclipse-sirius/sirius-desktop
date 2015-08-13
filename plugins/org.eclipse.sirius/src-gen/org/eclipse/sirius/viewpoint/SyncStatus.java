@@ -35,7 +35,7 @@ public enum SyncStatus implements Enumerator {
      * @generated
      * @ordered
      */
-    DIRTY(0, "dirty", "dirty"),
+    DIRTY(0, "dirty", "dirty"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Sync</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -45,7 +45,7 @@ public enum SyncStatus implements Enumerator {
      * @generated
      * @ordered
      */
-    SYNC(1, "sync", "sync");
+    SYNC(1, "sync", "sync"); //$NON-NLS-1$
 
     /**
      * The '<em><b>Dirty</b></em>' literal value. <!-- begin-user-doc -->

@@ -97,7 +97,7 @@ public class UserColorItemProvider extends ItemProviderAdapter implements IEditi
     @Override
     public String getText(Object object) {
         String label = ((UserColor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_UserColor_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_UserColor_type") : label; //$NON-NLS-1$
     }
 
     /**

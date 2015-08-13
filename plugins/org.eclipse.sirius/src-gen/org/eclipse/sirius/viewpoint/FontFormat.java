@@ -36,7 +36,7 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    ITALIC_LITERAL(0, "italic", "italic"),
+    ITALIC_LITERAL(0, "italic", "italic"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Bold</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -46,7 +46,7 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    BOLD_LITERAL(1, "bold", "bold"),
+    BOLD_LITERAL(1, "bold", "bold"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Underline</b></em>' literal object. <!-- begin-user-doc -->
@@ -56,7 +56,7 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    UNDERLINE_LITERAL(2, "underline", "underline"),
+    UNDERLINE_LITERAL(2, "underline", "underline"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Strike through</b></em>' literal object. <!-- begin-user-doc
@@ -66,7 +66,7 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    STRIKE_THROUGH_LITERAL(3, "strike_through", "strike_through");
+    STRIKE_THROUGH_LITERAL(3, "strike_through", "strike_through"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Italic</b></em>' literal value. <!-- begin-user-doc -->

@@ -36,21 +36,21 @@ public interface SequencePackage extends EPackage {
      * 
      * @generated
      */
-    String eNAME = "sequence";
+    String eNAME = "sequence"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/diagram/sequence/2.0.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/diagram/sequence/2.0.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_PREFIX = "sequence";
+    String eNS_PREFIX = "sequence"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--

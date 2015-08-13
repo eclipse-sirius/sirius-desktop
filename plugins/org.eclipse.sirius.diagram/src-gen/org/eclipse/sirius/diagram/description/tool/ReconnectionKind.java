@@ -35,7 +35,7 @@ public enum ReconnectionKind implements Enumerator {
      * @generated
      * @ordered
      */
-    RECONNECT_TARGET_LITERAL(0, "RECONNECT_TARGET", "RECONNECT_TARGET"),
+    RECONNECT_TARGET_LITERAL(0, "RECONNECT_TARGET", "RECONNECT_TARGET"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>RECONNECT SOURCE</b></em>' literal object. <!--
@@ -45,7 +45,7 @@ public enum ReconnectionKind implements Enumerator {
      * @generated
      * @ordered
      */
-    RECONNECT_SOURCE_LITERAL(1, "RECONNECT_SOURCE", "RECONNECT_SOURCE"),
+    RECONNECT_SOURCE_LITERAL(1, "RECONNECT_SOURCE", "RECONNECT_SOURCE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>RECONNECT BOTH</b></em>' literal object. <!-- begin-user-doc
@@ -55,7 +55,7 @@ public enum ReconnectionKind implements Enumerator {
      * @generated
      * @ordered
      */
-    RECONNECT_BOTH_LITERAL(2, "RECONNECT_BOTH", "RECONNECT_BOTH");
+    RECONNECT_BOTH_LITERAL(2, "RECONNECT_BOTH", "RECONNECT_BOTH"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>RECONNECT TARGET</b></em>' literal value. <!-- begin-user-doc

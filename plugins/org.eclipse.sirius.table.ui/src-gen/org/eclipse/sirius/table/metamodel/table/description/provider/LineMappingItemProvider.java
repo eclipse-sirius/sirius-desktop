@@ -196,7 +196,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((LineMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_LineMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_LineMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

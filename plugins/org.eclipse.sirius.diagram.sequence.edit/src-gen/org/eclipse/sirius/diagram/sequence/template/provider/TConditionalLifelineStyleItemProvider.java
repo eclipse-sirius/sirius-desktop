@@ -124,7 +124,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
     @Override
     public String getText(Object object) {
         String label = ((TConditionalLifelineStyle) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TConditionalLifelineStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TConditionalLifelineStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

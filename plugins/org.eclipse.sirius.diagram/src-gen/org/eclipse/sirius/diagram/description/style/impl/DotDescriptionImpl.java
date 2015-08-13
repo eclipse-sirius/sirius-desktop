@@ -57,7 +57,7 @@ public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotD
      * @generated
      * @ordered
      */
-    protected static final String STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "2";
+    protected static final String STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "2"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getStrokeSizeComputationExpression()

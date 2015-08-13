@@ -233,10 +233,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public ToolDescription createToolDescription() {
         ToolDescriptionImpl toolDescription = new ToolDescriptionImpl();
         ElementVariable elementVar = createElementVariable();
-        elementVar.setName("element");
+        elementVar.setName("element"); //$NON-NLS-1$
         toolDescription.setElement(elementVar);
         ElementViewVariable elementViewVar = createElementViewVariable();
-        elementViewVar.setName("elementView");
+        elementViewVar.setName("elementView"); //$NON-NLS-1$
         toolDescription.setElementView(elementViewVar);
         toolDescription.setInitialOperation(this.createInitialOperation());
         return toolDescription;
@@ -283,11 +283,11 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public SelectionWizardDescription createSelectionWizardDescription() {
         SelectionWizardDescriptionImpl selectionWizardDescription = new SelectionWizardDescriptionImpl();
         ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
-        elementSelectVariable.setName("element");
+        elementSelectVariable.setName("element"); //$NON-NLS-1$
         ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         SelectContainerVariable selectContainerVariable = this.createSelectContainerVariable();
-        selectContainerVariable.setName("container");
+        selectContainerVariable.setName("container"); //$NON-NLS-1$
         selectionWizardDescription.setElement(elementSelectVariable);
         selectionWizardDescription.setContainer(selectContainerVariable);
         selectionWizardDescription.setContainerView(containerViewVariable);
@@ -305,11 +305,11 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public PaneBasedSelectionWizardDescription createPaneBasedSelectionWizardDescription() {
         PaneBasedSelectionWizardDescriptionImpl paneBasedSelectionWizardDescription = new PaneBasedSelectionWizardDescriptionImpl();
         ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
-        elementSelectVariable.setName("element");
+        elementSelectVariable.setName("element"); //$NON-NLS-1$
         ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         SelectContainerVariable selectContainerVariable = this.createSelectContainerVariable();
-        selectContainerVariable.setName("container");
+        selectContainerVariable.setName("container"); //$NON-NLS-1$
         paneBasedSelectionWizardDescription.setElement(elementSelectVariable);
         paneBasedSelectionWizardDescription.setContainer(selectContainerVariable);
         paneBasedSelectionWizardDescription.setContainerView(containerViewVariable);
@@ -338,7 +338,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public OperationAction createOperationAction() {
         OperationActionImpl operationAction = new OperationActionImpl();
         ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
-        containerViewVariable.setName("views");
+        containerViewVariable.setName("views"); //$NON-NLS-1$
         InitialOperation initalOperation = this.createInitialOperation();
         operationAction.setView(containerViewVariable);
         operationAction.setInitialOperation(initalOperation);
@@ -496,7 +496,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     @Override
     public EditMaskVariables createEditMaskVariables() {
         EditMaskVariablesImpl editMaskVariables = new EditMaskVariablesImpl();
-        editMaskVariables.setMask("{0}");
+        editMaskVariables.setMask("{0}"); //$NON-NLS-1$
         return editMaskVariables;
     }
 

@@ -82,7 +82,7 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((MenuItemDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_MenuItemDescription_type") : getString("_UI_MenuItemDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_MenuItemDescription_type") : getString("_UI_MenuItemDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

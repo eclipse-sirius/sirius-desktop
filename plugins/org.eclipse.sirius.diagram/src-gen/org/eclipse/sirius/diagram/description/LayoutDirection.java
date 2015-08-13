@@ -35,7 +35,7 @@ public enum LayoutDirection implements Enumerator {
      * @generated
      * @ordered
      */
-    TOP_TO_BOTTOM(0, "TopToBottom", "topToBottom"),
+    TOP_TO_BOTTOM(0, "TopToBottom", "topToBottom"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Left To Right</b></em>' literal object. <!-- begin-user-doc
@@ -45,7 +45,7 @@ public enum LayoutDirection implements Enumerator {
      * @generated
      * @ordered
      */
-    LEFT_TO_RIGHT(1, "LeftToRight", "LeftToRight"),
+    LEFT_TO_RIGHT(1, "LeftToRight", "LeftToRight"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Bottom To Top</b></em>' literal object. <!-- begin-user-doc
@@ -55,7 +55,7 @@ public enum LayoutDirection implements Enumerator {
      * @generated
      * @ordered
      */
-    BOTTOM_TO_TOP(2, "BottomToTop", "bottomToTop");
+    BOTTOM_TO_TOP(2, "BottomToTop", "bottomToTop"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Top To Bottom</b></em>' literal value. <!-- begin-user-doc

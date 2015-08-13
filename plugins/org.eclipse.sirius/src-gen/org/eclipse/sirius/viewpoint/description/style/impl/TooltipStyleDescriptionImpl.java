@@ -42,7 +42,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
      * @generated
      * @ordered
      */
-    protected static final String TOOLTIP_EXPRESSION_EDEFAULT = "";
+    protected static final String TOOLTIP_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTooltipExpression()

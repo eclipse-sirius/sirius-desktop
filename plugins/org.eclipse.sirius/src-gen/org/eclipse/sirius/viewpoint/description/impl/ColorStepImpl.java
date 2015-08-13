@@ -47,7 +47,7 @@ public class ColorStepImpl extends MinimalEObjectImpl.Container implements Color
      * @generated
      * @ordered
      */
-    protected static final String ASSOCIATED_VALUE_EDEFAULT = "";
+    protected static final String ASSOCIATED_VALUE_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getAssociatedValue()

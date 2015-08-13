@@ -63,7 +63,7 @@ public class MappingBasedToolDescriptionItemProvider extends AbstractToolDescrip
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((MappingBasedToolDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_MappingBasedToolDescription_type") : getString("_UI_MappingBasedToolDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_MappingBasedToolDescription_type") : getString("_UI_MappingBasedToolDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

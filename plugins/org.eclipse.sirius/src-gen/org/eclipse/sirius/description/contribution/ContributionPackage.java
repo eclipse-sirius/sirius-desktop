@@ -37,21 +37,21 @@ public interface ContributionPackage extends EPackage {
      *
      * @generated
      */
-    String eNAME = "contribution";
+    String eNAME = "contribution"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/description/contribution/1.0.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/description/contribution/1.0.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
-    String eNS_PREFIX = "contribution";
+    String eNS_PREFIX = "contribution"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--

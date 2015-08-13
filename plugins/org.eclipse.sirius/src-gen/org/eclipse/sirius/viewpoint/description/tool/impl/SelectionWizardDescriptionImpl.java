@@ -252,7 +252,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif";
+    protected static final String ICON_PATH_EDEFAULT = "/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'

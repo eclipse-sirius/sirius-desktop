@@ -64,7 +64,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
      * @generated
      * @ordered
      */
-    protected static final String ITERATOR_NAME_EDEFAULT = "i";
+    protected static final String ITERATOR_NAME_EDEFAULT = "i"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIteratorName()

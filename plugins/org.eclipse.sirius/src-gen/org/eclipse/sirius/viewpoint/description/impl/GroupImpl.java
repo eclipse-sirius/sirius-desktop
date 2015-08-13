@@ -66,7 +66,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * @generated
      * @ordered
      */
-    protected static final String DOCUMENTATION_EDEFAULT = "";
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getDocumentation()
@@ -87,7 +87,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.

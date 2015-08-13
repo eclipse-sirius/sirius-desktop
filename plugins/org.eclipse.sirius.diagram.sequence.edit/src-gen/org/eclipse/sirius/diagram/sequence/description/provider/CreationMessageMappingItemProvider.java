@@ -72,7 +72,7 @@ public class CreationMessageMappingItemProvider extends MessageMappingItemProvid
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((CreationMessageMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_CreationMessageMapping_type") : getString("_UI_CreationMessageMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CreationMessageMapping_type") : getString("_UI_CreationMessageMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

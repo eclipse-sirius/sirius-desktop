@@ -164,7 +164,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "1";
+    protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getSizeComputationExpression()

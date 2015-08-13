@@ -35,7 +35,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    NORTH_LITERAL(0, "NORTH", "NORTH"),
+    NORTH_LITERAL(0, "NORTH", "NORTH"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>WEST</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -45,7 +45,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    WEST_LITERAL(1, "WEST", "WEST"),
+    WEST_LITERAL(1, "WEST", "WEST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>SOUTH</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -55,7 +55,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    SOUTH_LITERAL(2, "SOUTH", "SOUTH"),
+    SOUTH_LITERAL(2, "SOUTH", "SOUTH"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>EAST</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -65,7 +65,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    EAST_LITERAL(3, "EAST", "EAST"),
+    EAST_LITERAL(3, "EAST", "EAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>NORTH WEST</b></em>' literal object. <!-- begin-user-doc -->
@@ -75,7 +75,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    NORTH_WEST_LITERAL(4, "NORTH_WEST", "NORTH_WEST"),
+    NORTH_WEST_LITERAL(4, "NORTH_WEST", "NORTH_WEST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>NORTH EAST</b></em>' literal object. <!-- begin-user-doc -->
@@ -85,7 +85,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    NORTH_EAST_LITERAL(5, "NORTH_EAST", "NORTH_EAST"),
+    NORTH_EAST_LITERAL(5, "NORTH_EAST", "NORTH_EAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>SOUTH WEST</b></em>' literal object. <!-- begin-user-doc -->
@@ -95,7 +95,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    SOUTH_WEST_LITERAL(6, "SOUTH_WEST", "SOUTH_WEST"),
+    SOUTH_WEST_LITERAL(6, "SOUTH_WEST", "SOUTH_WEST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>SOUTH EAST</b></em>' literal object. <!-- begin-user-doc -->
@@ -105,7 +105,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    SOUTH_EAST_LITERAL(7, "SOUTH_EAST", "SOUTH_EAST"),
+    SOUTH_EAST_LITERAL(7, "SOUTH_EAST", "SOUTH_EAST"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>CENTER</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -115,7 +115,7 @@ public enum Position implements Enumerator {
      * @generated
      * @ordered
      */
-    CENTER_LITERAL(8, "CENTER", "CENTER");
+    CENTER_LITERAL(8, "CENTER", "CENTER"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>NORTH</b></em>' literal value. <!-- begin-user-doc -->

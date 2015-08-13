@@ -70,10 +70,10 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_SetFeatureContribution_type");
+        String result = getString("_UI_SetFeatureContribution_type"); //$NON-NLS-1$
         if (object instanceof SetFeatureContribution) {
             SetFeatureContribution sfc = (SetFeatureContribution) object;
-            result += " target." + featureString(sfc.getTargetFeature()) + " = source." + featureString(sfc.getSourceFeature());
+            result += " target." + featureString(sfc.getTargetFeature()) + " = source." + featureString(sfc.getSourceFeature()); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return result;
     }
@@ -82,7 +82,7 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
         if (feature != null) {
             return feature.getName();
         } else {
-            return "[unset]";
+            return "[unset]"; //$NON-NLS-1$
         }
     }
 

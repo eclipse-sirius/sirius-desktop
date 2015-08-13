@@ -64,7 +64,7 @@ public class VariableFilterImpl extends FilterImpl implements VariableFilter {
      * @generated
      * @ordered
      */
-    protected static final String SEMANTIC_CONDITION_EXPRESSION_EDEFAULT = "";
+    protected static final String SEMANTIC_CONDITION_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getSemanticConditionExpression()

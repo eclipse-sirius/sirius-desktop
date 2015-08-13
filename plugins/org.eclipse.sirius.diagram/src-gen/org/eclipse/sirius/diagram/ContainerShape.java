@@ -35,7 +35,7 @@ public enum ContainerShape implements Enumerator {
      * @generated
      * @ordered
      */
-    PARALLELOGRAM_LITERAL(0, "parallelogram", "parallelogram");
+    PARALLELOGRAM_LITERAL(0, "parallelogram", "parallelogram"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Parallelogram</b></em>' literal value. <!-- begin-user-doc

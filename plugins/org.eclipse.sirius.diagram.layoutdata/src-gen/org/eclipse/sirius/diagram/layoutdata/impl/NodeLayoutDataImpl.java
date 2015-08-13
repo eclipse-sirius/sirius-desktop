@@ -420,16 +420,16 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
         StringBuffer result = new StringBuffer(super.toString());
         if (location != null) {
-            result.append(" (x: ");
+            result.append(" (x: "); //$NON-NLS-1$
             result.append(location.getX());
-            result.append(", y: ");
+            result.append(", y: "); //$NON-NLS-1$
             result.append(location.getY());
-            result.append(") ");
+            result.append(") "); //$NON-NLS-1$
         }
 
-        result.append(" (width: ");
+        result.append(" (width: "); //$NON-NLS-1$
         result.append(width);
-        result.append(", height: ");
+        result.append(", height: "); //$NON-NLS-1$
         result.append(height);
         result.append(')');
         return result.toString();

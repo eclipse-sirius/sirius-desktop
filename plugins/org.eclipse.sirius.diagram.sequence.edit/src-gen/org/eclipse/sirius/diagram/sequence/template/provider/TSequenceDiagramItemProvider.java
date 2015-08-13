@@ -146,7 +146,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
     @Override
     public String getText(Object object) {
         String label = ((TSequenceDiagram) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TSequenceDiagram_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TSequenceDiagram_type") : label; //$NON-NLS-1$
     }
 
     /**

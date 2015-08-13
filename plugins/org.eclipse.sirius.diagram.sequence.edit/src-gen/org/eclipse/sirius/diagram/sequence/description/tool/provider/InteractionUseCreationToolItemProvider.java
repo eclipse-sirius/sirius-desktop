@@ -114,7 +114,7 @@ public class InteractionUseCreationToolItemProvider extends ContainerCreationDes
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((InteractionUseCreationTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_InteractionUseCreationTool_type") : getString("_UI_InteractionUseCreationTool_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_InteractionUseCreationTool_type") : getString("_UI_InteractionUseCreationTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

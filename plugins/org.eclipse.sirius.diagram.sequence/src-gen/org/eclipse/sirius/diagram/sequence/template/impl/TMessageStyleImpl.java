@@ -126,7 +126,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name";
+    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getLabelExpression()

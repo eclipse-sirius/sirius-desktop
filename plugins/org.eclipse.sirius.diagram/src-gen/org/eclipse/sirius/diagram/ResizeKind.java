@@ -35,7 +35,7 @@ public enum ResizeKind implements Enumerator {
      * @generated
      * @ordered
      */
-    NONE_LITERAL(0, "NONE", "NONE"),
+    NONE_LITERAL(0, "NONE", "NONE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>NSEW</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -45,7 +45,7 @@ public enum ResizeKind implements Enumerator {
      * @generated
      * @ordered
      */
-    NSEW_LITERAL(1, "NSEW", "NSEW"),
+    NSEW_LITERAL(1, "NSEW", "NSEW"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>NORTH SOUTH</b></em>' literal object. <!-- begin-user-doc -->
@@ -55,7 +55,7 @@ public enum ResizeKind implements Enumerator {
      * @generated
      * @ordered
      */
-    NORTH_SOUTH_LITERAL(2, "NORTH_SOUTH", "NORTH_SOUTH"),
+    NORTH_SOUTH_LITERAL(2, "NORTH_SOUTH", "NORTH_SOUTH"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>EAST WEST</b></em>' literal object. <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public enum ResizeKind implements Enumerator {
      * @generated
      * @ordered
      */
-    EAST_WEST_LITERAL(3, "EAST_WEST", "EAST_WEST");
+    EAST_WEST_LITERAL(3, "EAST_WEST", "EAST_WEST"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>NONE</b></em>' literal value. <!-- begin-user-doc -->

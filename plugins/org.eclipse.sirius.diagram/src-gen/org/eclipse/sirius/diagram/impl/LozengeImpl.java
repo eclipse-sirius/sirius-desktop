@@ -86,7 +86,7 @@ public class LozengeImpl extends NodeStyleImpl implements Lozenge {
      * @generated
      * @ordered
      */
-    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136");
+    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.

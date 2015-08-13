@@ -91,7 +91,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
      * @generated
      * @ordered
      */
-    protected static final String PRECONDITION_EXPRESSION_EDEFAULT = "";
+    protected static final String PRECONDITION_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getPreconditionExpression()

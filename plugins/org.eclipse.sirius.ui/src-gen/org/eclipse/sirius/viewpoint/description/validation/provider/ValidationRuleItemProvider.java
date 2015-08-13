@@ -135,7 +135,7 @@ public class ValidationRuleItemProvider extends IdentifiedElementItemProvider {
     public String getText(Object object) {
         IdentifiedElementQuery query = new IdentifiedElementQuery((SemanticValidationRule) object);
         String label = query.getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ValidationRule_type") : getString("_UI_ValidationRule_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ValidationRule_type") : getString("_UI_ValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

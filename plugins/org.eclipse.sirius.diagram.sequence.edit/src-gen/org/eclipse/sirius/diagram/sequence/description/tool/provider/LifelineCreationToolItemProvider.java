@@ -75,7 +75,7 @@ public class LifelineCreationToolItemProvider extends ContainerCreationDescripti
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((LifelineCreationTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_LifelineCreationTool_type") : getString("_UI_LifelineCreationTool_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_LifelineCreationTool_type") : getString("_UI_LifelineCreationTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

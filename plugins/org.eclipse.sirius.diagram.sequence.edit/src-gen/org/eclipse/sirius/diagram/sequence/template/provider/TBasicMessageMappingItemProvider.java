@@ -88,7 +88,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
     @Override
     public String getText(Object object) {
         String label = ((TBasicMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TBasicMessageMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TBasicMessageMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

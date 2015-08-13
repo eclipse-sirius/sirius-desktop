@@ -220,7 +220,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     private SytemColorsPalette forgeSystemPaletteProxy() {
         final EObject environment = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSytemColorsPalette());
-        URI paletteURI = URI.createURI(SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors");
+        URI paletteURI = URI.createURI(SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors"); //$NON-NLS-1$
         ((InternalEObject) environment).eSetProxyURI(paletteURI);
         return ((SytemColorsPalette) environment);
     }
@@ -376,7 +376,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     @Override
     public ColorStep createColorStep() {
         ColorStepImpl colorStep = new ColorStepImpl();
-        FixedColor defaultColor = EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("black");
+        FixedColor defaultColor = EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("black"); //$NON-NLS-1$
         colorStep.setAssociatedColor(defaultColor);
         return colorStep;
     }

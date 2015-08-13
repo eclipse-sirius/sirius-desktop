@@ -69,7 +69,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -110,7 +110,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
      * @generated
      * @ordered
      */
-    protected static final String PRECONDITION_EDEFAULT = "";
+    protected static final String PRECONDITION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
@@ -162,7 +162,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
      * @generated
      * @ordered
      */
-    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = "";
+    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getElementsToSelect()

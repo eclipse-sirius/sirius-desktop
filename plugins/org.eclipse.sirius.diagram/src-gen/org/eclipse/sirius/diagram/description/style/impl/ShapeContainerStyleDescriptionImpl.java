@@ -54,7 +54,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * @generated
      * @ordered
      */
-    protected static final String WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "-1";
+    protected static final String WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getWidthComputationExpression()
@@ -76,7 +76,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * @generated
      * @ordered
      */
-    protected static final String HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT = "-1";
+    protected static final String HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getHeightComputationExpression()

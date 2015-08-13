@@ -106,16 +106,16 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_ComputedEObjectReference_type");
+        String result = getString("_UI_ComputedEObjectReference_type"); //$NON-NLS-1$
         if (object instanceof ComputedEObjectReference) {
             ComputedEObjectReference ref = (ComputedEObjectReference) object;
             if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Source()) {
-                result = "Source " + result;
+                result = "Source " + result; //$NON-NLS-1$
             } else if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Target()) {
-                result = "Target " + result;
+                result = "Target " + result; //$NON-NLS-1$
             }
             if (!StringUtil.isEmpty(ref.getValueExpression())) {
-                result = result + " to: " + ref.getValueExpression();
+                result = result + " to: " + ref.getValueExpression(); //$NON-NLS-1$
             }
         }
         return result;

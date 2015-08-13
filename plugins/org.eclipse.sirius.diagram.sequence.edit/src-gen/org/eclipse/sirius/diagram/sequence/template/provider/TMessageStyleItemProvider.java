@@ -152,7 +152,7 @@ public class TMessageStyleItemProvider extends TTransformerItemProvider {
     public String getText(Object object) {
         LineStyle labelValue = ((TMessageStyle) object).getLineStyle();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_TMessageStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TMessageStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

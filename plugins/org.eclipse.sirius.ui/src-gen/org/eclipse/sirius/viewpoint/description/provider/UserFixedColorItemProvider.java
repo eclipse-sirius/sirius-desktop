@@ -90,7 +90,7 @@ public class UserFixedColorItemProvider extends FixedColorItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((UserFixedColor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_UserFixedColor_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_UserFixedColor_type") : label; //$NON-NLS-1$
     }
 
     /**

@@ -114,7 +114,7 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((StateMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_StateMapping_type") : getString("_UI_StateMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_StateMapping_type") : getString("_UI_StateMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -192,7 +192,7 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
         qualify = qualify && childObject instanceof EObject && DescriptionPackage.eINSTANCE.equals(((EObject) childObject).eClass().getEPackage());
 
         if (qualify) {
-            return getString("_UI_CreateChild_text", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

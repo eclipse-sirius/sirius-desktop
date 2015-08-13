@@ -180,7 +180,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * @generated
      * @ordered
      */
-    protected static final String END_USER_DOCUMENTATION_EDEFAULT = "";
+    protected static final String END_USER_DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getEndUserDocumentation()
@@ -201,7 +201,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -242,7 +242,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * @generated
      * @ordered
      */
-    protected static final String TITLE_EXPRESSION_EDEFAULT = "";
+    protected static final String TITLE_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTitleExpression()

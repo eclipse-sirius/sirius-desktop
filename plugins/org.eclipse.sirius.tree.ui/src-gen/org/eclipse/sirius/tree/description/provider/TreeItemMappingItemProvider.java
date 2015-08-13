@@ -204,7 +204,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_TreeMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TreeMapping_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -259,7 +259,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
         TreeItemMapping newItemMapping = DescriptionFactory.eINSTANCE.createTreeItemMapping();
         newItemMapping.setDefaultStyle(DescriptionFactory.eINSTANCE.createTreeItemStyleDescription());
-        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents");
+        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS, newItemMapping));
 

@@ -90,7 +90,7 @@ public class CreateCrossColumnToolItemProvider extends CreateToolItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((CreateCrossColumnTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_CreateCrossColumnTool_type") : getString("_UI_CreateCrossColumnTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_CreateCrossColumnTool_type") : getString("_UI_CreateCrossColumnTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

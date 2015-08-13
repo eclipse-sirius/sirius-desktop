@@ -114,7 +114,7 @@ public class CrossTableDescriptionItemProvider extends TableDescriptionItemProvi
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((CrossTableDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_CrossTableDescription_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_CrossTableDescription_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -154,7 +154,7 @@ public class CrossTableDescriptionItemProvider extends TableDescriptionItemProvi
 
         IntersectionMapping newIntersection = DescriptionFactory.eINSTANCE.createIntersectionMapping();
 
-        newIntersection.setLabelExpression("X");
+        newIntersection.setLabelExpression("X"); //$NON-NLS-1$
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CROSS_TABLE_DESCRIPTION__INTERSECTION, newIntersection));
 

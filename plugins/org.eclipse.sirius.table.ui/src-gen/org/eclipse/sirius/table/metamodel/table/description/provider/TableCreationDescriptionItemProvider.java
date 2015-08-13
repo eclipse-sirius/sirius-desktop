@@ -93,7 +93,7 @@ public class TableCreationDescriptionItemProvider extends RepresentationCreation
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TableCreationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TableCreationDescription_type") : getString("_UI_TableCreationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TableCreationDescription_type") : getString("_UI_TableCreationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

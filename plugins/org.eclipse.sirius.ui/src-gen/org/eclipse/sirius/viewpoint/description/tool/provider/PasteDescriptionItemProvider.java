@@ -115,7 +115,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((PasteDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_PasteDescription_type") : getString("_UI_PasteDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_PasteDescription_type") : getString("_UI_PasteDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

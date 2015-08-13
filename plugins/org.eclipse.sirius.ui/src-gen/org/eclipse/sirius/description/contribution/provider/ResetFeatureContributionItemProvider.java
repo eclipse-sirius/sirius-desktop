@@ -70,10 +70,10 @@ public class ResetFeatureContributionItemProvider extends FeatureContributionIte
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_ResetFeatureContribution_type");
+        String result = getString("_UI_ResetFeatureContribution_type"); //$NON-NLS-1$
         if (object instanceof ResetFeatureContribution) {
             ResetFeatureContribution rfc = (ResetFeatureContribution) object;
-            result += " target." + featureString(rfc.getTargetFeature());
+            result += " target." + featureString(rfc.getTargetFeature()); //$NON-NLS-1$
         }
         return result;
     }
@@ -82,7 +82,7 @@ public class ResetFeatureContributionItemProvider extends FeatureContributionIte
         if (feature != null) {
             return feature.getName();
         } else {
-            return "[unset]";
+            return "[unset]"; //$NON-NLS-1$
         }
     }
 

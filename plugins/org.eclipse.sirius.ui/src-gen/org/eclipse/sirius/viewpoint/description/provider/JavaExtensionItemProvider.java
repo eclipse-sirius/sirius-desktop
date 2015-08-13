@@ -100,7 +100,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((JavaExtension) object).getQualifiedClassName();
-        return label == null || label.length() == 0 ? getString("_UI_JavaExtension_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_JavaExtension_type") : label; //$NON-NLS-1$
     }
 
     /**

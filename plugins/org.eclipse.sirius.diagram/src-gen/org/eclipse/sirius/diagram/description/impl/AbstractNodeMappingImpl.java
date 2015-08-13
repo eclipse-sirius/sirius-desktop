@@ -63,7 +63,7 @@ public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl 
      * @generated
      * @ordered
      */
-    protected static final String DOCUMENTATION_EDEFAULT = "";
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getDocumentation()

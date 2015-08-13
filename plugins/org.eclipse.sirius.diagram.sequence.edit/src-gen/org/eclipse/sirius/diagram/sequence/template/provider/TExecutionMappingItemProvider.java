@@ -157,7 +157,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     @Override
     public String getText(Object object) {
         String label = ((TExecutionMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TExecutionMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TExecutionMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

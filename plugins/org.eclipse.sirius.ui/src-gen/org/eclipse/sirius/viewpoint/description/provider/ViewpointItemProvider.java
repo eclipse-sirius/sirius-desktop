@@ -236,7 +236,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
                 return optionImageURL.get();
             }
         }
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Sirius"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Sirius")); //$NON-NLS-1$
     }
 
     /**
@@ -248,7 +248,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((Viewpoint) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_Viewpoint_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_Viewpoint_type") : label; //$NON-NLS-1$
     }
 
     /**

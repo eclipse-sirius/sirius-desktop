@@ -129,7 +129,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((InstanceRoleReorderTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleReorderTool_type") : getString("_UI_InstanceRoleReorderTool_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleReorderTool_type") : getString("_UI_InstanceRoleReorderTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

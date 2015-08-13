@@ -92,7 +92,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()
@@ -196,7 +196,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name";
+    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getLabelExpression()
@@ -227,7 +227,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "";
+    protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
@@ -270,7 +270,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * @generated
      * @ordered
      */
-    protected static final String TOOLTIP_EXPRESSION_EDEFAULT = "";
+    protected static final String TOOLTIP_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTooltipExpression()

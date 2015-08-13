@@ -124,7 +124,7 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
     @Override
     public String getText(Object object) {
         String label = ((TConditionalExecutionStyle) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TConditionalExecutionStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TConditionalExecutionStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

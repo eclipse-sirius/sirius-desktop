@@ -130,7 +130,7 @@ public class TreeVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TreeVariable) object).getName();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeVariable_type") : getString("_UI_TreeVariable_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeVariable_type") : getString("_UI_TreeVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

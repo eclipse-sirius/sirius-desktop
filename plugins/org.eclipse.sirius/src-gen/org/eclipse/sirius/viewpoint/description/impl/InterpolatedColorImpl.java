@@ -82,7 +82,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * @generated
      * @ordered
      */
-    protected static final String COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "1";
+    protected static final String COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getColorValueComputationExpression()
@@ -104,7 +104,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * @generated
      * @ordered
      */
-    protected static final String MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getMinValueComputationExpression()
@@ -126,7 +126,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * @generated
      * @ordered
      */
-    protected static final String MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "10";
+    protected static final String MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "10"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getMaxValueComputationExpression()

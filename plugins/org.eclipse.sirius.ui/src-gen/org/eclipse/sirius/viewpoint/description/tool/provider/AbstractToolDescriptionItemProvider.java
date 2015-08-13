@@ -192,7 +192,7 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((AbstractToolDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_AbstractToolDescription_type") : getString("_UI_AbstractToolDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_AbstractToolDescription_type") : getString("_UI_AbstractToolDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

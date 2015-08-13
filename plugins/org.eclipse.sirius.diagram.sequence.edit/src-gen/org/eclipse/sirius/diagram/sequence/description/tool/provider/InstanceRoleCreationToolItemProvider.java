@@ -112,7 +112,7 @@ public class InstanceRoleCreationToolItemProvider extends NodeCreationDescriptio
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((InstanceRoleCreationTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleCreationTool_type") : getString("_UI_InstanceRoleCreationTool_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleCreationTool_type") : getString("_UI_InstanceRoleCreationTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

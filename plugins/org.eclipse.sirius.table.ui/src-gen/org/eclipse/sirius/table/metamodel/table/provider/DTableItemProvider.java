@@ -145,9 +145,9 @@ public class DTableItemProvider extends DRepresentationItemProvider {
     @Override
     public Object getImage(final Object object) {
         if (object instanceof DTable && ((DTable) object).getDescription() instanceof CrossTableDescription) {
-            return overlayImage(object, getResourceLocator().getImage("full/obj16/CrossTableDescription"));
+            return overlayImage(object, getResourceLocator().getImage("full/obj16/CrossTableDescription")); //$NON-NLS-1$
         }
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTable")); //$NON-NLS-1$
     }
 
     /**
@@ -159,7 +159,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
     @Override
     public String getText(final Object object) {
         final String label = ((DTable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DTable_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_DTable_type") : label; //$NON-NLS-1$
     }
 
     /**

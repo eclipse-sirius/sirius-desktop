@@ -43,7 +43,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
      * @generated
      * @ordered
      */
-    protected static final String FEATURE_NAME_EDEFAULT = "";
+    protected static final String FEATURE_NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'

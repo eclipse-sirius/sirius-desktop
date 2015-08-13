@@ -173,7 +173,7 @@ IItemPropertySource {
         }
 
         DAnalysisSessionEObject dAnalysisSessionEObject = (DAnalysisSessionEObject) object;
-        return getString("_UI_DAnalysisSessionEObject_type") + " " + dAnalysisSessionEObject.isOpen();
+        return getString("_UI_DAnalysisSessionEObject_type") + " " + dAnalysisSessionEObject.isOpen(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

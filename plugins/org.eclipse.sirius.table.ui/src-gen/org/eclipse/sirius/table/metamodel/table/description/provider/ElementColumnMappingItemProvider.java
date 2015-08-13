@@ -153,7 +153,7 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ElementColumnMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ElementColumnMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_ElementColumnMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

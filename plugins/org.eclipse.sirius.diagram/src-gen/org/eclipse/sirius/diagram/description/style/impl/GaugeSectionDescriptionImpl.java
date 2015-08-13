@@ -59,7 +59,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * @generated
      * @ordered
      */
-    protected static final String MIN_VALUE_EXPRESSION_EDEFAULT = "0";
+    protected static final String MIN_VALUE_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getMinValueExpression()
@@ -81,7 +81,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * @generated
      * @ordered
      */
-    protected static final String MAX_VALUE_EXPRESSION_EDEFAULT = "0";
+    protected static final String MAX_VALUE_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getMaxValueExpression()
@@ -103,7 +103,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * @generated
      * @ordered
      */
-    protected static final String VALUE_EXPRESSION_EDEFAULT = "0";
+    protected static final String VALUE_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getValueExpression()

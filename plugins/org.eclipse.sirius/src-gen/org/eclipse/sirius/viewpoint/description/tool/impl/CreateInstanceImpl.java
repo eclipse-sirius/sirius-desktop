@@ -89,7 +89,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
      * @generated
      * @ordered
      */
-    protected static final String VARIABLE_NAME_EDEFAULT = "instance";
+    protected static final String VARIABLE_NAME_EDEFAULT = "instance"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getVariableName()

@@ -93,7 +93,7 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TableNavigationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TableNavigationDescription_type") : getString("_UI_TableNavigationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TableNavigationDescription_type") : getString("_UI_TableNavigationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

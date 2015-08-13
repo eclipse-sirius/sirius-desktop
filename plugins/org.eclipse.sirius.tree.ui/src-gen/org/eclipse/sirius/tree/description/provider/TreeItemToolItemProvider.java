@@ -110,7 +110,7 @@ public class TreeItemToolItemProvider extends AbstractToolDescriptionItemProvide
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeItemTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeItemTool_type") : getString("_UI_TreeItemTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeItemTool_type") : getString("_UI_TreeItemTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

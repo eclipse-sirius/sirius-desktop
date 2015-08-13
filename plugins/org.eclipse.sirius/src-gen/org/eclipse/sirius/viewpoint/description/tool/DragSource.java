@@ -35,7 +35,7 @@ public enum DragSource implements Enumerator {
      * @generated
      * @ordered
      */
-    DIAGRAM_LITERAL(1, "DIAGRAM", "DIAGRAM"),
+    DIAGRAM_LITERAL(1, "DIAGRAM", "DIAGRAM"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>PROJECT EXPLORER</b></em>' literal object. <!--
@@ -45,7 +45,7 @@ public enum DragSource implements Enumerator {
      * @generated
      * @ordered
      */
-    PROJECT_EXPLORER_LITERAL(2, "PROJECT_EXPLORER", "PROJECT_EXPLORER"),
+    PROJECT_EXPLORER_LITERAL(2, "PROJECT_EXPLORER", "PROJECT_EXPLORER"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>BOTH</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -55,7 +55,7 @@ public enum DragSource implements Enumerator {
      * @generated
      * @ordered
      */
-    BOTH_LITERAL(3, "BOTH", "BOTH");
+    BOTH_LITERAL(3, "BOTH", "BOTH"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>DIAGRAM</b></em>' literal value. <!-- begin-user-doc -->

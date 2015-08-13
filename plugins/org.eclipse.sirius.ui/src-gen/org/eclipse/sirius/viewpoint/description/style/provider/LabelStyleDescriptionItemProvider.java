@@ -92,8 +92,8 @@ public class LabelStyleDescriptionItemProvider extends BasicLabelStyleDescriptio
     @Override
     public String getText(Object object) {
         LabelStyleDescription labelStyleDescription = (LabelStyleDescription) object;
-        return getString("_UI_LabelStyleDescription_type") + " " + labelStyleDescription.getLabelAlignment().getName() + " " + labelStyleDescription.getLabelFormat() + " "
-        + labelStyleDescription.getLabelSize();
+        return getString("_UI_LabelStyleDescription_type") + " " + labelStyleDescription.getLabelAlignment().getName() + " " + labelStyleDescription.getLabelFormat() + " " //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+                + labelStyleDescription.getLabelSize();
     }
 
     /**

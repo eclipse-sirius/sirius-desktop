@@ -95,7 +95,7 @@ public class TreeMappingItemProvider extends RepresentationElementMappingItemPro
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeMapping) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeMapping_type") : getString("_UI_TreeMapping_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeMapping_type") : getString("_UI_TreeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

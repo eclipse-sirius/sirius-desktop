@@ -140,7 +140,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((Group) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Group_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_Group_type") : label; //$NON-NLS-1$
     }
 
     /**

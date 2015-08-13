@@ -115,7 +115,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * @generated
      * @ordered
      */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name";
+    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getLabelExpression()
@@ -146,7 +146,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "";
+    protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'

@@ -122,7 +122,7 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((CreateTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_CreateTool_type") : getString("_UI_CreateTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_CreateTool_type") : getString("_UI_CreateTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

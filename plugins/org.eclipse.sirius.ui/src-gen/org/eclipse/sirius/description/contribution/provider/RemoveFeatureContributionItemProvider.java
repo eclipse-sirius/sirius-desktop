@@ -70,10 +70,10 @@ public class RemoveFeatureContributionItemProvider extends FeatureContributionIt
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_RemoveFeatureContribution_type");
+        String result = getString("_UI_RemoveFeatureContribution_type"); //$NON-NLS-1$
         if (object instanceof RemoveFeatureContribution) {
             RemoveFeatureContribution rfc = (RemoveFeatureContribution) object;
-            result += " target." + featureString(rfc.getTargetFeature()) + " -= source." + featureString(rfc.getSourceFeature());
+            result += " target." + featureString(rfc.getTargetFeature()) + " -= source." + featureString(rfc.getSourceFeature()); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return result;
     }
@@ -82,7 +82,7 @@ public class RemoveFeatureContributionItemProvider extends FeatureContributionIt
         if (feature != null) {
             return feature.getName();
         } else {
-            return "[unset]";
+            return "[unset]"; //$NON-NLS-1$
         }
     }
 

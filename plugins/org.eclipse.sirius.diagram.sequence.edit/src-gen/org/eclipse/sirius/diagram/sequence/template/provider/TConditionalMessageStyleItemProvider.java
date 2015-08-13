@@ -124,7 +124,7 @@ public class TConditionalMessageStyleItemProvider extends TTransformerItemProvid
     @Override
     public String getText(Object object) {
         String label = ((TConditionalMessageStyle) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TConditionalMessageStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TConditionalMessageStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

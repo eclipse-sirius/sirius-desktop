@@ -34,7 +34,7 @@ public enum TreeDragSource implements Enumerator {
      * @generated
      * @ordered
      */
-    TREE(1, "TREE", "TREE"),
+    TREE(1, "TREE", "TREE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>PROJECT EXPLORER</b></em>' literal object. <!--
@@ -44,7 +44,7 @@ public enum TreeDragSource implements Enumerator {
      * @generated
      * @ordered
      */
-    PROJECT_EXPLORER(2, "PROJECT_EXPLORER", "PROJECT_EXPLORER"),
+    PROJECT_EXPLORER(2, "PROJECT_EXPLORER", "PROJECT_EXPLORER"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>BOTH</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -54,7 +54,7 @@ public enum TreeDragSource implements Enumerator {
      * @generated
      * @ordered
      */
-    BOTH(3, "BOTH", "BOTH");
+    BOTH(3, "BOTH", "BOTH"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>TREE</b></em>' literal value. <!-- begin-user-doc -->

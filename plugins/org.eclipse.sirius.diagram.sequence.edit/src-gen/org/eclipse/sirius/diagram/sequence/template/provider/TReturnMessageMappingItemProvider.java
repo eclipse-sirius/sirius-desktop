@@ -107,7 +107,7 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     @Override
     public String getText(Object object) {
         String label = ((TReturnMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TReturnMessageMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TReturnMessageMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

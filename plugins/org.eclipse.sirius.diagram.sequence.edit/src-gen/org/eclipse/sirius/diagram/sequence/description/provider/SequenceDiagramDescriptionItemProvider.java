@@ -108,7 +108,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     @Override
     public String getText(Object object) {
         final String label = new IdentifiedElementQuery((SequenceDiagramDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_SequenceDiagramDescription_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_SequenceDiagramDescription_type") : label; //$NON-NLS-1$
     }
 
     /**

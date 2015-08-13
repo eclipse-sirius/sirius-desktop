@@ -64,7 +64,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * @generated
      * @ordered
      */
-    protected static final String TITLE_EXPRESSION_EDEFAULT = "";
+    protected static final String TITLE_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTitleExpression()

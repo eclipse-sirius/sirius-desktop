@@ -259,7 +259,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @generated
      * @ordered
      */
-    protected static final String BEGIN_LABEL_EDEFAULT = "";
+    protected static final String BEGIN_LABEL_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBeginLabel() <em>Begin Label</em>}'
@@ -279,7 +279,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @generated
      * @ordered
      */
-    protected static final String END_LABEL_EDEFAULT = "";
+    protected static final String END_LABEL_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getEndLabel() <em>End Label</em>}'

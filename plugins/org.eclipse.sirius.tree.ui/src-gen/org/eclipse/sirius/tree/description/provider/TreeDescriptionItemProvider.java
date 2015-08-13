@@ -265,7 +265,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         final String label = new IdentifiedElementQuery((TreeDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeDescription_type") : label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeDescription_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -315,7 +315,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
 
         TreeItemMapping newItemMapping = DescriptionFactory.eINSTANCE.createTreeItemMapping();
         newItemMapping.setDefaultStyle(DescriptionFactory.eINSTANCE.createTreeItemStyleDescription());
-        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents");
+        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS, newItemMapping));
 

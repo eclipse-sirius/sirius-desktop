@@ -89,7 +89,7 @@ public class SystemColorItemProvider extends FixedColorItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((SystemColor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_SystemColor_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_SystemColor_type") : label; //$NON-NLS-1$
     }
 
     /**

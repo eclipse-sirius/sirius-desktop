@@ -37,21 +37,21 @@ public interface ConcernPackage extends EPackage {
      * 
      * @generated
      */
-    String eNAME = "concern";
+    String eNAME = "concern"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/concern/1.1.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/concern/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_PREFIX = "concern";
+    String eNS_PREFIX = "concern"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--

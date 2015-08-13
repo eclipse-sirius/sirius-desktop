@@ -67,7 +67,7 @@ public class DTreeElementUpdaterItemProvider extends ItemProviderAdapter impleme
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTreeElementUpdater"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTreeElementUpdater")); //$NON-NLS-1$
     }
 
     /**
@@ -78,7 +78,7 @@ public class DTreeElementUpdaterItemProvider extends ItemProviderAdapter impleme
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_DTreeElementUpdater_type");
+        return getString("_UI_DTreeElementUpdater_type"); //$NON-NLS-1$
     }
 
     /**

@@ -186,7 +186,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((FeatureColumnMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_FeatureColumnMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_FeatureColumnMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

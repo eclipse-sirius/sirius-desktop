@@ -90,7 +90,7 @@ public class CreateLineToolItemProvider extends CreateToolItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((CreateLineTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_CreateLineTool_type") : getString("_UI_CreateLineTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_CreateLineTool_type") : getString("_UI_CreateLineTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

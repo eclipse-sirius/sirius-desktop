@@ -70,10 +70,10 @@ public class IgnoreFeatureContributionItemProvider extends FeatureContributionIt
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_IgnoreFeatureContribution_type");
+        String result = getString("_UI_IgnoreFeatureContribution_type"); //$NON-NLS-1$
         if (object instanceof IgnoreFeatureContribution) {
             IgnoreFeatureContribution ifc = (IgnoreFeatureContribution) object;
-            result += " " + featureString(ifc.getTargetFeature());
+            result += " " + featureString(ifc.getTargetFeature()); //$NON-NLS-1$
         }
         return result;
     }
@@ -82,7 +82,7 @@ public class IgnoreFeatureContributionItemProvider extends FeatureContributionIt
         if (feature != null) {
             return feature.getName();
         } else {
-            return "[unset]";
+            return "[unset]"; //$NON-NLS-1$
         }
     }
 

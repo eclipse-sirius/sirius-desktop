@@ -97,7 +97,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected static final String DOCUMENTATION_EDEFAULT = "";
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getDocumentation()
@@ -141,7 +141,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected static final String TARGET_FINDER_EXPRESSION_EDEFAULT = "";
+    protected static final String TARGET_FINDER_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTargetFinderExpression()

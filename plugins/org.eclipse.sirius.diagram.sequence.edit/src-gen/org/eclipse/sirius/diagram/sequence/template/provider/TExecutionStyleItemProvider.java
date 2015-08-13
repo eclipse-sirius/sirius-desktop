@@ -122,7 +122,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TExecutionStyle) object).getBorderSizeComputationExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TExecutionStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TExecutionStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

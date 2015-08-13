@@ -153,7 +153,7 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
     @Override
     public String getText(Object object) {
         final String label = ((DTree) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DTree_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_DTree_type") : label; //$NON-NLS-1$
     }
 
     /**

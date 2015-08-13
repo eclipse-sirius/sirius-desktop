@@ -104,20 +104,20 @@ public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter impl
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_DirectEObjectReference_type");
+        String result = getString("_UI_DirectEObjectReference_type"); //$NON-NLS-1$
         if (object instanceof DirectEObjectReference) {
             DirectEObjectReference ref = (DirectEObjectReference) object;
             if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Source()) {
-                result = "Source " + result;
+                result = "Source " + result; //$NON-NLS-1$
             } else if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Target()) {
-                result = "Target " + result;
+                result = "Target " + result; //$NON-NLS-1$
             }
             if (ref.getValue() == null) {
-                result += " [unset]";
+                result += " [unset]"; //$NON-NLS-1$
             } else {
                 AdapterFactory ipaf = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
-                result += " to: " + ((IItemLabelProvider) ipaf.adapt(ref.getValue(), IItemLabelProvider.class)).getText(ref.getValue());
-                result += " (" + ref.getValue().eClass().getName() + ")";
+                result += " to: " + ((IItemLabelProvider) ipaf.adapt(ref.getValue(), IItemLabelProvider.class)).getText(ref.getValue()); //$NON-NLS-1$
+                result += " (" + ref.getValue().eClass().getName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
             }
         }
         return result;

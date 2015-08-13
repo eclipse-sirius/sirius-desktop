@@ -107,7 +107,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ColumnMapping) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_ColumnMapping_type") : getString("_UI_ColumnMapping_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_ColumnMapping_type") : getString("_UI_ColumnMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

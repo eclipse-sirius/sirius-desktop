@@ -87,7 +87,7 @@ public class TDestructionMessageMappingItemProvider extends TSourceTargetMessage
     @Override
     public String getText(Object object) {
         String label = ((TDestructionMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TDestructionMessageMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TDestructionMessageMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

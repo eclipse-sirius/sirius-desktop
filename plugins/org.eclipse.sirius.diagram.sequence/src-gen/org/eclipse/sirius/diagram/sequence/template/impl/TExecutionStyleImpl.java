@@ -48,7 +48,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "1";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()

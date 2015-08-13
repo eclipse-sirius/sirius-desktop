@@ -129,7 +129,7 @@ public class TableVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TableVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TableVariable_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TableVariable_type") : label; //$NON-NLS-1$
     }
 
     /**

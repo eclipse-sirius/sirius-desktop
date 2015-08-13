@@ -129,7 +129,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ExternalJavaAction) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_ExternalJavaAction_type") : getString("_UI_ExternalJavaAction_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_ExternalJavaAction_type") : getString("_UI_ExternalJavaAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

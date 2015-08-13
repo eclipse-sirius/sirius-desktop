@@ -113,7 +113,7 @@ public class SequenceDDiagramItemProvider extends DSemanticDiagramItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((SequenceDDiagram) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_SequenceDDiagram_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_SequenceDDiagram_type") : label; //$NON-NLS-1$
     }
 
     /**

@@ -107,7 +107,7 @@ public class TLifelineStyleItemProvider extends TTransformerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TLifelineStyle) object).getLifelineWidthComputationExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TLifelineStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TLifelineStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

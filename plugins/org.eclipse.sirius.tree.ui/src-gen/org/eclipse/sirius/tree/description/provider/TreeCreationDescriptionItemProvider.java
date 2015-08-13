@@ -93,7 +93,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeCreationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeCreationDescription_type") : getString("_UI_TreeCreationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeCreationDescription_type") : getString("_UI_TreeCreationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

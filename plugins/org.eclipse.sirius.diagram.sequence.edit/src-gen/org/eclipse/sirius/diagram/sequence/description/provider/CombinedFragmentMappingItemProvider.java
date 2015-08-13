@@ -73,7 +73,7 @@ public class CombinedFragmentMappingItemProvider extends FrameMappingItemProvide
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((CombinedFragmentMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_CombinedFragmentMapping_type") : getString("_UI_CombinedFragmentMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CombinedFragmentMapping_type") : getString("_UI_CombinedFragmentMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -138,7 +138,7 @@ public class CombinedFragmentMappingItemProvider extends FrameMappingItemProvide
         boolean qualify = childFeature == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS || childFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }
