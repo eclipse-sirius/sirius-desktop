@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -58,6 +59,7 @@ import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -99,6 +101,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
      * 
      * @see org.eclipse.sirius.diagram.business.api.refresh.view.refresh.CanonicalSynchronizer#synchronize()
      */
+    @Override
     public void synchronize() {
         refreshSemantic();
     }
@@ -125,19 +128,27 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
     }
 
     private void manageRegions() {
-        for (View regionContainer : regionContainersToLayout) {
+        if (regionContainersToLayout.isEmpty()) {
+            return;
+        }
+
+        // Step 1: update regions layout from the deepest ones.
+        List<View> newArrayList = Lists.newArrayList(regionContainersToLayout);
+        ListIterator<View> regionToLayoutListIterator = newArrayList.listIterator(newArrayList.size() - 1);
+        while (regionToLayoutListIterator.hasPrevious()) {
+            View regionContainer = regionToLayoutListIterator.previous();
             int type = SiriusVisualIDRegistry.getVisualID(regionContainer.getType());
             if (regionContainer instanceof Node && (type == DNodeContainerEditPart.VISUAL_ID || type == DNodeContainer2EditPart.VISUAL_ID)) {
                 new RegionContainerUpdateLayoutOperation((Node) regionContainer).execute();
             }
         }
-
         regionContainersToLayout.clear();
     }
 
     private void manageCreatedViewsLayout(Set<View> createdViews) {
         // get view to layout "normally"
         Set<View> filteredCreatedViewsToLayout = Sets.filter(createdViews, new Predicate<View>() {
+            @Override
             public boolean apply(View input) {
                 return input.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getAdapterMarker());
             }
@@ -145,6 +156,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
         // get view to center layout
         Set<View> filteredCreatedViewsWithCenterLayout = Sets.filter(createdViews, new Predicate<View>() {
+            @Override
             public boolean apply(View input) {
                 return input.eAdapters().contains(SiriusLayoutDataManager.INSTANCE.getCenterAdapterMarker());
             }
@@ -264,6 +276,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
                         if (exist && diagramLinkSrc instanceof DEdge) {
                             Predicate<SiriusLinkDescriptor> existingEdgeSource = new Predicate<SiriusLinkDescriptor>() {
 
+                                @Override
                                 public boolean apply(SiriusLinkDescriptor input) {
                                     return input.getModelElement().equals(diagramLinkSrc);
                                 }
@@ -274,6 +287,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
                         if (exist && diagramLinkDst instanceof DEdge) {
                             Predicate<SiriusLinkDescriptor> existingEdgeTarget = new Predicate<SiriusLinkDescriptor>() {
 
+                                @Override
                                 public boolean apply(SiriusLinkDescriptor input) {
                                     return input.getModelElement().equals(diagramLinkDst);
                                 }

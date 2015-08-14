@@ -59,20 +59,42 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
 
     ChangeBoundsRequest request;
 
+    private boolean adjustBorderNodes;
+
+    private boolean adjustSubNodes;
+
     /**
      * Default constructor.
      * 
      * @param host
      *            the <i>host</i> EditPart on which this policy is installed.
-     * @param moveDelta
-     *            The move delta
-     * @param movedEditParts
-     *            Selected edit parts that will be moved
+     * @param request
+     *            the initial change bounds request
      */
     public ChildrenAdjustmentCommand(IGraphicalEditPart host, ChangeBoundsRequest request) {
+        this(host, request, true, true);
+    }
+
+    /**
+     * Default constructor.
+     * 
+     * @param host
+     *            the <i>host</i> EditPart on which this policy is installed.
+     * @param request
+     *            the initial change bounds request
+     * @param borderNodes
+     *            true to adjust border nodes positions
+     * @param subNodes
+     *            true to adjust sub nodes positions (Containers and Nodes in
+     *            the content pane)
+     */
+    public ChildrenAdjustmentCommand(IGraphicalEditPart host, ChangeBoundsRequest request, boolean borderNodes, boolean subNodes) {
         super(host.getEditingDomain(), "Adapt children location", null);
         this.host = host;
         this.request = request;
+        this.adjustBorderNodes = borderNodes;
+        this.adjustSubNodes = subNodes;
+
     }
 
     @Override
@@ -86,7 +108,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
             Object childrenMoveModeExtendedData = request.getExtendedData().get(SiriusResizeTracker.CHILDREN_MOVE_MODE_KEY);
             keepSameAbsoluteLocation = (childrenMoveModeExtendedData == null && SiriusResizeTracker.DEFAULT_CHILDREN_MOVE_MODE)
                     || (childrenMoveModeExtendedData != null && ((Boolean) childrenMoveModeExtendedData).booleanValue());
-            if (keepSameAbsoluteLocation) {
+            if (keepSameAbsoluteLocation && adjustSubNodes) {
                 addChildrenAdjustmentCommands(host, wrappedCommand, request);
             } else {
                 // Children have been indirectly moved so their edges must
@@ -95,7 +117,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
             }
         }
 
-        if (host instanceof IBorderedShapeEditPart) {
+        if (host instanceof IBorderedShapeEditPart && adjustBorderNodes) {
             addBorderChildrenAdjustmentCommands(host, wrappedCommand, request, keepSameAbsoluteLocation);
         }
 

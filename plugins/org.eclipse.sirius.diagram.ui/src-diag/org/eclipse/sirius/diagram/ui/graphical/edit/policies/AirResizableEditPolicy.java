@@ -187,25 +187,14 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
                 result = new ICommandProxy(solution);
             }
         }
-
-        // we add a command to keep the edges centered (if they should be)
-        if (result != null && getHost() instanceof IGraphicalEditPart) {
-            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand((IGraphicalEditPart) getHost(), request);
-            result = result.chain(new ICommandProxy(centerEditPartEdgesCommand));
-        }
         return result;
     }
 
     /**
      * Build a specific command from the request that resize the edit part as
-     * the normal command and change the location of children if needed:
-     * <UL>
-     * <LI>border nodes: to avoid an unexpected change of side</LI>
-     * <LI>children nodes (container or not): The GMF coordinates of these nodes
-     * are moved in order to keep these nodes at the same location graphically
-     * (on screen). The GMF coordinates of these nodes are relative to its
-     * parent.</LI>
-     * </UL>
+     * the normal command and call completeResizeCommand to add sub-commands to
+     * handle children/sibling/parent elements if required. Then add a command
+     * to keep the edges centered if needed.
      * 
      * @param request
      *            the resize request
@@ -217,11 +206,35 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
         if (getHost() instanceof IGraphicalEditPart) {
             CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((IGraphicalEditPart) getHost()).getEditingDomain(), cmd.getLabel());
             ctc.add(new CommandProxy(cmd));
-            ctc.add(new ChildrenAdjustmentCommand((IGraphicalEditPart) getHost(), request));
+            completeResizeCommand(ctc, request);
+            // we add a command to keep the edges centered (if they should be)
+            ctc.add(new CenterEditPartEdgesCommand((IGraphicalEditPart) getHost(), request));
             result = ctc;
         } else if (cmd != null) {
             result = new CommandProxy(cmd);
         }
         return result;
+    }
+
+    /**
+     * Add a command to change the location of children if needed:
+     * <UL>
+     * <LI>border nodes: to avoid an unexpected change of side</LI>
+     * <LI>children nodes (container or not): The GMF coordinates of these nodes
+     * are moved in order to keep these nodes at the same location graphically
+     * (on screen). The GMF coordinates of these nodes are relative to its
+     * parent.</LI>
+     * </UL>
+     * 
+     * This method can be overridden to add specific resize task to affect
+     * children, parent or sibling elements.
+     * 
+     * @param ctc
+     *            the {@link CompositeTransactionalCommand} to complete.
+     * @param request
+     *            the initial request.
+     * */
+    protected void completeResizeCommand(CompositeTransactionalCommand ctc, ChangeBoundsRequest request) {
+        ctc.add(new ChildrenAdjustmentCommand((IGraphicalEditPart) getHost(), request));
     }
 }

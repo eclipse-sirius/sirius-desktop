@@ -225,12 +225,19 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
         EditPolicy childEditPolicy = new AirResizableEditPolicy();
 
         if (isRegionContainerCompartment(getHost())) {
+            if (isRegionContainer(child)) {
+                /*
+                 * If the added child is a region and a region container.
+                 */
+                childEditPolicy = new RegionRegionContainerResizableEditPolicy();
+            } else {
             /*
              * If the current element is a region container, each added child
              * will be considered as a region and will receive the expected
              * resizable edit policy.
              */
             childEditPolicy = new RegionResizableEditPolicy();
+            }
         } else if (isRegionContainer(child)) {
             /* If the added element is a region container. */
             childEditPolicy = new RegionContainerResizableEditPolicy();

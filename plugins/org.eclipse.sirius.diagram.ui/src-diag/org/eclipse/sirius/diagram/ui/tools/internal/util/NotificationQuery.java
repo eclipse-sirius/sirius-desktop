@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.util;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -17,6 +19,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideFilter;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Sets;
 
 /**
  * Queries on EMF Notifications to identify what they are about.
@@ -24,6 +27,11 @@ import com.google.common.base.Preconditions;
  * @author pcdavid
  */
 public class NotificationQuery extends org.eclipse.sirius.common.tools.api.query.NotificationQuery {
+    
+    private static final Collection<EStructuralFeature> NOTATION_LAYOUT_FEATURES = Sets.newHashSet(NotationPackage.eINSTANCE.getRelativeBendpoints_Points(), NotationPackage.eINSTANCE.getEdge_Bendpoints(),
+            NotationPackage.eINSTANCE.getLocation_Y(), NotationPackage.eINSTANCE.getLocation_X(), NotationPackage.eINSTANCE.getSize_Width(), NotationPackage.eINSTANCE.getSize_Height(),
+            NotationPackage.eINSTANCE.getNode_LayoutConstraint());
+
     private final Notification notif;
 
     /**
@@ -46,6 +54,16 @@ public class NotificationQuery extends org.eclipse.sirius.common.tools.api.query
     public boolean isNotationChange() {
         Object feature = notif.getFeature();
         return (feature instanceof EStructuralFeature) && ((EStructuralFeature) feature).getEContainingClass().getEPackage().equals(NotationPackage.eINSTANCE);
+    }
+
+    /**
+     * Tests whether the notification concerns a GMF Notation layout element.
+     * 
+     * @return <code>true</code> if the notification concerns a GMF Notation layout
+     *         element.
+     */
+    public boolean isNotationLayoutChange() {
+        return NOTATION_LAYOUT_FEATURES.contains(notif.getFeature());
     }
 
     /**

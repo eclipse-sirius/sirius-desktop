@@ -21,10 +21,11 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
+import org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -33,6 +34,7 @@ import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperime
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChildrenAdjustmentCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
@@ -55,80 +57,93 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
     protected static final String REGION_AUTO_SIZE_PROPAGATOR = "region_auto-size_propagator"; //$NON-NLS-1$
 
     /**
-     * {@inheritDoc}
+     * Key to store the part responsible for resize propagation.
      */
+    protected static final String REGION_RESIZE_PROPAGATOR = "region_resize_propagator";
+
+    /**
+     * Key to store the initial request for resize propragation.
+     */
+    protected static final String REGION_RESIZE_INITIAL_REQUEST = "region_resize_initial_request";
+
     @Override
     protected Command getAutoSizeCommand(Request request) {
         Command autoSizeCommand = super.getAutoSizeCommand(request);
         if (concernRegionContainer()) {
-            IDiagramElementEditPart host = (IDiagramElementEditPart) getHost();
-            TransactionalEditingDomain domain = host.getEditingDomain();
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(domain, "Region Container Auto Size Command");
-            ctc.add(new CommandProxy(autoSizeCommand));
-            autoSizeCommand = new ICommandProxy(ctc);
-
-            // Propagate the auto-size request to the regions.
-            Request req = new Request();
-            req.setType(request.getType());
-            req.getExtendedData().put(REGION_AUTO_SIZE_PROPAGATOR, getHost());
-
-            Object object = request.getExtendedData().get(REGION_AUTO_SIZE_PROPAGATOR);
-            for (EditPart regionPart : getRegionParts()) {
-                if (object != regionPart) {
-                    ctc.add(new CommandProxy(regionPart.getCommand(req)));
-                }
-            }
-
-            ctc.add(CommandFactory.createICommand(domain, new RegionContainerUpdateLayoutOperation((Node) host.getModel())));
+            autoSizeCommand = getRegionContainerAutoSizeCommand(request, autoSizeCommand);
         }
         return autoSizeCommand;
     }
 
     /**
-     * {@inheritDoc}
+     * Returns a composite command with the given initial command and the
+     * RegionContainer specific auto-size commands to propagate the auto-size to
+     * the regions.
+     * 
+     * @param request
+     *            the initial request
+     * @param autoSizeCommand
+     *            the initial command
+     * @return a composite command with the initial command and the region
+     *         container specific additional commands.
      */
-    @Override
-    protected Command getResizeCommand(ChangeBoundsRequest request) {
-        Command resizeCommand = super.getResizeCommand(request);
-        if (concernRegionContainer()) {
-            resizeCommand = getRegionContainerResizeCommand(request, resizeCommand);
+    protected Command getRegionContainerAutoSizeCommand(Request request, Command autoSizeCommand) {
+        IDiagramElementEditPart host = (IDiagramElementEditPart) getHost();
+        TransactionalEditingDomain domain = host.getEditingDomain();
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(domain, "Region Container Auto Size Command");
+        ctc.add(new CommandProxy(autoSizeCommand));
+        Command regionContainerAutoSizeCommand = new ICommandProxy(ctc);
+
+        // Propagate the auto-size request to the regions.
+        Request req = new Request();
+        req.setType(request.getType());
+        req.getExtendedData().put(REGION_AUTO_SIZE_PROPAGATOR, host);
+
+        Object object = request.getExtendedData().get(REGION_AUTO_SIZE_PROPAGATOR);
+        for (EditPart regionPart : getRegionParts()) {
+            if (object != regionPart) {
+                ctc.add(new CommandProxy(regionPart.getCommand(req)));
+            }
         }
-        return resizeCommand;
+
+        ctc.add(CommandFactory.createICommand(domain, new RegionContainerUpdateLayoutOperation((Node) host.getModel())));
+        return regionContainerAutoSizeCommand;
     }
 
-    private Command getRegionContainerResizeCommand(ChangeBoundsRequest request, Command command) {
-        if (request.getEditParts().size() > 1) {
-            return UnexecutableCommand.INSTANCE;
+    /**
+     * Complete the given composite command with RegionContainer specific resize
+     * commands: the commands to report the RegionContainer resize on its
+     * regions.
+     */
+    @Override
+    protected void completeResizeCommand(CompositeTransactionalCommand ctc, ChangeBoundsRequest request) {
+        if (request.getEditParts().size() > 1 && !request.isConstrainedResize()) {
+            ctc.add(UnexecutableCommand.INSTANCE);
+            return;
         }
 
-        Command regionsResizeCommand = command;
         Collection<ChangeBoundsRequest> siblingRequests = getConstrainedRegionRequests(request);
         if (!siblingRequests.isEmpty()) {
-            String name = "Region Container Resize Composite Command";
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((IDiagramElementEditPart) getHost()).getEditingDomain(), name);
-            ctc.add(new CommandProxy(command));
-            regionsResizeCommand = new ICommandProxy(ctc);
-
             for (ChangeBoundsRequest siblingRequest : siblingRequests) {
                 if (siblingRequest.getEditParts() != null) {
-                    for (EditPart constrainedPart : Iterables.filter(siblingRequest.getEditParts(), EditPart.class)) {
+                    for (IGraphicalEditPart constrainedPart : Iterables.filter(siblingRequest.getEditParts(), IGraphicalEditPart.class)) {
                         Command constrainedCommand = constrainedPart.getCommand(siblingRequest);
-
                         if (constrainedCommand == null) {
-                            constrainedCommand = UnexecutableCommand.INSTANCE;
+                            ctc.add(UnexecutableCommand.INSTANCE);
+                        } else {
+                            ctc.add(new CommandProxy(constrainedCommand));
                         }
-
-                        ctc.add(new CommandProxy(constrainedCommand));
                     }
                 }
             }
         } else if (!(request.isConstrainedMove() || request.isConstrainedResize())) {
-            // Deactivate the manual resize of RegionCotnainer when there are no
+            // Deactivate the manual resize of RegionContainer when there are no
             // regions.
-            regionsResizeCommand = UnexecutableCommand.INSTANCE;
+            ctc.add(UnexecutableCommand.INSTANCE);
         }
 
-        return regionsResizeCommand;
+        // Adjust border nodes and edges.
+        ctc.add(new ChildrenAdjustmentCommand((IGraphicalEditPart) getHost(), request, true, false));
     }
 
     private Collection<ChangeBoundsRequest> getConstrainedRegionRequests(ChangeBoundsRequest request) {
@@ -141,17 +156,18 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
         List<AbstractDiagramElementContainerEditPart> regionToResize = getRegionParts();
         int stackDirection = getStackDirection();
         // Handle first and last regions.
+        Object resizePropagator = request.getExtendedData().get(REGION_RESIZE_PROPAGATOR);
         if (query.isResizeFromTop() && stackDirection == PositionConstants.NORTH_SOUTH || query.isResizeFromLeft() && stackDirection == PositionConstants.EAST_WEST) {
             Option<AbstractDiagramElementContainerEditPart> firstRegionPart = getFirstRegionPart();
-            if (firstRegionPart.some() && !request.isConstrainedResize()) {
+            if (firstRegionPart.some() && (!request.isConstrainedResize() || resizePropagator != firstRegionPart.get())) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
                 req.setEditParts(firstRegionPart.get());
                 req.setSizeDelta(sizeDelta.getCopy());
                 constrainedRequests.add(req);
-                regionToResize.remove(firstRegionPart.get());
             }
             // shift all other regions.
-            if (!regionToResize.isEmpty() && !request.isConstrainedResize()) {
+            regionToResize.remove(firstRegionPart.get());
+            if (!regionToResize.isEmpty() && (!request.isConstrainedResize() || !regionToResize.contains(resizePropagator))) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
                 req.setEditParts(Lists.newArrayList(regionToResize));
 
@@ -168,7 +184,7 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
         } else if (query.isResizeFromBottom() && stackDirection == PositionConstants.NORTH_SOUTH || query.isResizeFromRight() && stackDirection == PositionConstants.EAST_WEST) {
             // Resize the last region.
             Option<AbstractDiagramElementContainerEditPart> lastRegionPart = getLastRegionPart();
-            if (lastRegionPart.some() && !request.isConstrainedResize()) {
+            if (lastRegionPart.some() && (!request.isConstrainedResize() || resizePropagator != lastRegionPart.get())) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
                 req.setEditParts(lastRegionPart.get());
                 req.setSizeDelta(sizeDelta.getCopy());
@@ -178,15 +194,16 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
         }
 
         // Handle horizontal resize for vstacks and vertical resize for hstacks.
-        if (stackDirection == PositionConstants.NORTH_SOUTH && (query.isResizeFromLeft() || query.isResizeFromRight())) {
-            if (!regionToResize.isEmpty() && !request.isConstrainedResize()) {
+        if (request.isConstrainedResize() && resizePropagator != null) {
+            regionToResize.remove(resizePropagator);
+        }
+        if (!regionToResize.isEmpty()) {
+            if (stackDirection == PositionConstants.NORTH_SOUTH && (query.isResizeFromLeft() || query.isResizeFromRight()) && sizeDelta.width != 0) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
                 req.setEditParts(Lists.newArrayList(regionToResize));
                 req.setSizeDelta(new Dimension(sizeDelta.width, 0));
                 constrainedRequests.add(req);
-            }
-        } else if (stackDirection == PositionConstants.EAST_WEST && (query.isResizeFromTop() || query.isResizeFromBottom())) {
-            if (!regionToResize.isEmpty() && !request.isConstrainedResize()) {
+            } else if (stackDirection == PositionConstants.EAST_WEST && (query.isResizeFromTop() || query.isResizeFromBottom()) && sizeDelta.height != 0) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
                 req.setEditParts(Lists.newArrayList(regionToResize));
                 req.setSizeDelta(new Dimension(0, sizeDelta.height));
@@ -203,6 +220,9 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
         req.setConstrainedMove(true);
         req.setType(request.getType());
         req.setResizeDirection(request.getResizeDirection());
+        req.getExtendedData().put(REGION_RESIZE_PROPAGATOR, getHost());
+        req.getExtendedData().put(SiriusResizeTracker.CHILDREN_MOVE_MODE_KEY, request.getExtendedData().get(SiriusResizeTracker.CHILDREN_MOVE_MODE_KEY));
+        req.getExtendedData().put(REGION_RESIZE_INITIAL_REQUEST, request);
         return req;
     }
 

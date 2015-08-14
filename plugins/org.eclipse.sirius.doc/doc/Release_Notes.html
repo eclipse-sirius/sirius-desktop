@@ -270,16 +270,6 @@
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
-			<li><span class="label label-danger">Removed</span> 
-				<code>org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()</code> methods removed because they are useless since undo/redo is managed by EMF Transaction.
-			</li>
-			<li><span class="label label-danger">Removed</span> 
-				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
-			</li>
-			<li><span class="label label-info">Modified</span> 
-				<code>org.eclipse.sirius.tools.api.command.DCommand</code> no more inherits of 
-				<code>IUndoableCommand</code> because useless since undo/redo is managed by EMF Transaction.
-			</li>
 			<li><span class="label label-success">Added</span> The method 
 				<code>addEvaluateSelectionExpressionTask</code> has been added in class 
 				<code>org.eclipse.sirius.tools.api.command.AbstractCommandFactory</code> to allow selection after tool execution.
@@ -290,16 +280,21 @@
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.canDeleteInstance(EObject)</code> when called for an object will not be called for children of this object as we know it will return true because if we can delete a parent object we can delete its children. 
 			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.tools.api.command.DCommand</code> no more inherits of 
+				<code>IUndoableCommand</code> because useless since undo/redo is managed by EMF Transaction.
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()</code> methods removed because they are useless since undo/redo is managed by EMF Transaction.
+			</li>
+			<li><span class="label label-danger">Removed</span> 
+				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
-			<li><span class="label label-warning">Deprecated</span>  
-				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()</code> method has been deprecated as a 
-				<code>IEditorInput</code> can be reused by several instances of 
-				<code>IEditorPart</code> through the navigation history view.
-			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getInput()</code> method has been added to get the real input for a 
 				<code>DRepresentation</code>.
@@ -309,11 +304,22 @@
 				<code>Session</code> or not when the known session is closed or does not exist. The 
 				<code>getSession</code> method calls getSession(true).
 			</li>
+			<li><span class="label label-warning">Deprecated</span>  
+				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()</code> method has been deprecated as a 
+				<code>IEditorInput</code> can be reused by several instances of 
+				<code>IEditorPart</code> through the navigation history view.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The class 
+				<code>org.eclipse.sirius.diagram.ui.graphical.edit.policies.RegionRegionContainerResizableEditPolicy</code> has been added to handle 
+				<code>DNodeContainer</code> which are both 
+				<code>Region</code> and 
+				<code>RegionContainer</code>: during resize they might have to propagate the resize to their children and/or parents.  
+			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart/IDiagramBorderNodeEditPart.getNodeLabel()</code> methods has been moved up to 
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart.getNodeLabel()</code> as both 

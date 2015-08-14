@@ -47,6 +47,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -89,6 +90,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DStylizable;
@@ -151,6 +153,22 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification);
 
         handleDefaultSizeNotification(notification);
+
+        if (isRegion() && getParent() != null && new NotificationQuery(notification).isNotationLayoutChange()) {
+            EditPart regionContainer = getParent().getParent();
+            if (regionContainer instanceof AbstractDiagramContainerEditPart && shouldRefreshRegionContainerBounds(regionContainer)) {
+                ((AbstractDiagramContainerEditPart) regionContainer).refreshBounds();
+            }
+        }
+    }
+
+    private boolean shouldRefreshRegionContainerBounds(EditPart regionContainer) {
+        Object view = regionContainer.getModel();
+        if (view instanceof Node) {
+            LayoutConstraint lc = ((Node) view).getLayoutConstraint();
+            return lc instanceof Size && (((Size) lc).getHeight() == -1 || ((Size) lc).getWidth() == -1);
+        }
+        return false;
     }
 
     private void handleDefaultSizeNotification(Notification notification) {
@@ -815,8 +833,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                                 break;
                             }
                         }
-                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()),
-                                new Rectangle(position, dimension));
+                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()), new Rectangle(position,
+                                dimension));
                         cmd = new ICommandProxy(setBoundsCommand);
                     }
                 }
