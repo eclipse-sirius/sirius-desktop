@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA; &#xA;Contributors:&#xA;   Obeo - initial API and implementation"
     modelDirectory="/org.eclipse.sirius.tests.sample.scxml/src-gen" editDirectory="/org.eclipse.sirius.tests.sample.scxml.edit/src-gen"
     editorDirectory="/org.eclipse.sirius.tests.sample.scxml.editor/src-gen" modelPluginID="org.eclipse.sirius.tests.sample.scxml"
-    modelName="Scxml" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    modelName="Scxml" nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.xsd.ecore.importer" complianceLevel="5.0" copyrightFields="false"
     editPluginID="org.eclipse.sirius.tests.sample.scxml.edit" usedGenPackages="../../org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace"
     interfaceNamePattern="" operationReflection="true" importOrganizing="true">
