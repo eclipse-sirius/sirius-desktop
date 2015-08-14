@@ -54,7 +54,7 @@ public class TableSwtbotTestSuite extends TestCase {
         suite.addTestSuite(HideRevealTableColumnsTest.class);
         suite.addTestSuite(HideRevealTableLinesTest.class);
         suite.addTestSuite(RenameTableRepresentationTest.class);
-        suite.addTestSuite(DeleteHideSeveralLineOnTable.class);
+        //suite.addTestSuite(DeleteHideSeveralLineOnTable.class);
         suite.addTestSuite(ContextMenuTableTest.class);
         suite.addTestSuite(TableUIPermissionAuthorityTests.class);
         suite.addTestSuite(TableUIRefreshTests.class);
