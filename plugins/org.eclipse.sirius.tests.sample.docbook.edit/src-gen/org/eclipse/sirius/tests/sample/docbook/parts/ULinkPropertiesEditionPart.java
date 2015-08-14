@@ -23,39 +23,39 @@ public interface ULinkPropertiesEditionPart {
 
     /**
      * @return the url
-     * 
+     *
      */
     public String getUrl();
 
     /**
      * Defines a new url
-     * 
+     *
      * @param newValue
      *            the new url to set
-     * 
+     *
      */
     public void setUrl(String newValue);
 
     /**
      * @return the data
-     * 
+     *
      */
     public String getData();
 
     /**
      * Defines a new data
-     * 
+     *
      * @param newValue
      *            the new data to set
-     * 
+     *
      */
     public void setData(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

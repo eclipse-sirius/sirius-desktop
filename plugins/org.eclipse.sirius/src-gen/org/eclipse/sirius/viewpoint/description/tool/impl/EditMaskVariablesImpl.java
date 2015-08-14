@@ -166,7 +166,7 @@ public class EditMaskVariablesImpl extends MinimalEObjectImpl.Container implemen
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (mask: ");
+        result.append(" (mask: "); //$NON-NLS-1$
         result.append(mask);
         result.append(')');
         return result.toString();

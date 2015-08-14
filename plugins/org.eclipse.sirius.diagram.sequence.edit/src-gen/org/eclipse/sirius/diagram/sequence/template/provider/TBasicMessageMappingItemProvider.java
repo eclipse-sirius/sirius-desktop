@@ -62,8 +62,10 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
      */
     protected void addTargetPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TBasicMessageMapping_target_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TBasicMessageMapping_target_feature", "_UI_TBasicMessageMapping_type"),
-                TemplatePackage.Literals.TBASIC_MESSAGE_MAPPING__TARGET, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TBasicMessageMapping_target_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TBasicMessageMapping_target_feature", "_UI_TBasicMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TemplatePackage.Literals.TBASIC_MESSAGE_MAPPING__TARGET, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -74,7 +76,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TBasicMessageMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TBasicMessageMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -86,7 +88,7 @@ public class TBasicMessageMappingItemProvider extends TSourceTargetMessageMappin
     @Override
     public String getText(Object object) {
         String label = ((TBasicMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TBasicMessageMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TBasicMessageMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

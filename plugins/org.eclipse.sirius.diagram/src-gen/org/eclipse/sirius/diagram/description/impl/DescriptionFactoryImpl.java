@@ -130,7 +130,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.ADDITIONAL_LAYER:
             return createAdditionalLayer();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -149,7 +149,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.CENTERING_STYLE:
             return createCenteringStyleFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -168,7 +168,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.CENTERING_STYLE:
             return convertCenteringStyleToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -380,7 +380,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public FoldingStyle createFoldingStyleFromString(EDataType eDataType, String initialValue) {
         FoldingStyle result = FoldingStyle.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -402,7 +402,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public LayoutDirection createLayoutDirectionFromString(EDataType eDataType, String initialValue) {
         LayoutDirection result = LayoutDirection.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -424,7 +424,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public CenteringStyle createCenteringStyleFromString(EDataType eDataType, String initialValue) {
         CenteringStyle result = CenteringStyle.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

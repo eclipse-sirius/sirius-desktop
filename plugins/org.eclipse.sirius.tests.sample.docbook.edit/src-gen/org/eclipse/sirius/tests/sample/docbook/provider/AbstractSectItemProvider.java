@@ -38,7 +38,7 @@ import org.eclipse.sirius.tests.sample.docbook.DocbookPackage;
  * @generated
  */
 public class AbstractSectItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -106,7 +106,7 @@ public class AbstractSectItemProvider extends ItemProviderAdapter implements IEd
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_AbstractSect_type");
+        return getString("_UI_AbstractSect_type"); //$NON-NLS-1$
     }
 
     /**

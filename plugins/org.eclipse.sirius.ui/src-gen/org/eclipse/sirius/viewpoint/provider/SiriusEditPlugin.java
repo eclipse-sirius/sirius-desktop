@@ -80,7 +80,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
      */
     public static final SiriusEditPlugin INSTANCE = new SiriusEditPlugin();
 
-    public static final String ID = "org.eclipse.sirius.ui";
+    public static final String ID = "org.eclipse.sirius.ui"; //$NON-NLS-1$
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
@@ -108,7 +108,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        final List<ResourceLocator> overridingLocator = EclipseUtil.getExtensionPlugins(ResourceLocator.class, "org.eclipse.sirius.ui.resourcelocator", "class");
+        final List<ResourceLocator> overridingLocator = EclipseUtil.getExtensionPlugins(ResourceLocator.class, "org.eclipse.sirius.ui.resourcelocator", "class"); //$NON-NLS-1$ //$NON-NLS-2$
         if (overridingLocator.size() > 0) {
             return overridingLocator.get(0);
         }
@@ -214,7 +214,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
             try {
                 // Just a call to load all plugins that provide a specific
                 // resource locator (can be usefull as for automaticall test).
-                EclipseUtil.getExtensionPlugins(ResourceLocator.class, "org.eclipse.sirius.ui.resourcelocator", "class");
+                EclipseUtil.getExtensionPlugins(ResourceLocator.class, "org.eclipse.sirius.ui.resourcelocator", "class"); //$NON-NLS-1$ //$NON-NLS-2$
             } finally {
                 // Do nothing
             }

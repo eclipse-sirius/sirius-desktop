@@ -74,8 +74,10 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      */
     protected void addMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerDropDescription_mappings_feature"), getString("_UI_ContainerDropDescription_mappings_description"), ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__MAPPINGS,
-                true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ContainerDropDescription_mappings_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerDropDescription_mappings_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -86,8 +88,10 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      */
     protected void addDragSourcePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerDropDescription_dragSource_feature"), getString("_UI_ContainerDropDescription_dragSource_description"),
-                ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ContainerDropDescription_dragSource_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerDropDescription_dragSource_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -98,8 +102,10 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      */
     protected void addMoveEdgesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerDropDescription_moveEdges_feature"), getString("_UI_ContainerDropDescription_moveEdges_description"),
-                ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__MOVE_EDGES, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_ContainerDropDescription_moveEdges_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerDropDescription_moveEdges_description"), //$NON-NLS-1$
+                ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__MOVE_EDGES, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -147,7 +153,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerDropDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerDropDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -227,7 +233,8 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
         boolean qualify = childFeature == ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER || childFeature == ToolPackage.Literals.CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

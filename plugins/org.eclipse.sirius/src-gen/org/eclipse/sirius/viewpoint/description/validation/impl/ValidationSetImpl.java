@@ -59,7 +59,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -288,7 +288,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
         return result.toString();

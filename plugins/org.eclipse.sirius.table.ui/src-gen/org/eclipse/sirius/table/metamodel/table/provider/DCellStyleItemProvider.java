@@ -63,7 +63,8 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
      */
     protected void addForegroundStyleOriginPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DCellStyle_foregroundStyleOrigin_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DCellStyle_foregroundStyleOrigin_feature", "_UI_DCellStyle_type"),
+                getString("_UI_DCellStyle_foregroundStyleOrigin_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DCellStyle_foregroundStyleOrigin_feature", "_UI_DCellStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DCELL_STYLE__FOREGROUND_STYLE_ORIGIN, true, false, true, null, null, null));
     }
 
@@ -75,7 +76,8 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
      */
     protected void addBackgroundStyleOriginPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DCellStyle_backgroundStyleOrigin_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DCellStyle_backgroundStyleOrigin_feature", "_UI_DCellStyle_type"),
+                getString("_UI_DCellStyle_backgroundStyleOrigin_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DCellStyle_backgroundStyleOrigin_feature", "_UI_DCellStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DCELL_STYLE__BACKGROUND_STYLE_ORIGIN, true, false, true, null, null, null));
     }
 
@@ -87,7 +89,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DCellStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DCellStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -99,7 +101,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     @Override
     public String getText(Object object) {
         DCellStyle dCellStyle = (DCellStyle) object;
-        return getString("_UI_DCellStyle_type") + " " + dCellStyle.getLabelSize();
+        return getString("_UI_DCellStyle_type") + " " + dCellStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

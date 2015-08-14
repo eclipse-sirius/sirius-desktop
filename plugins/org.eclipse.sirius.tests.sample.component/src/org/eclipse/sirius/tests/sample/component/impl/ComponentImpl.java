@@ -514,9 +514,9 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", payload: ");
+        result.append(", payload: "); //$NON-NLS-1$
         result.append(payload);
         result.append(')');
         return result.toString();

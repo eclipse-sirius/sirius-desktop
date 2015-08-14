@@ -68,11 +68,11 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
      * @generated
      */
     protected void addEndsOrderingPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SequenceDiagramDescription_endsOrdering_feature"), getString("_UI_SequenceDiagramDescription_endsOrdering_description"),
-                DescriptionPackage.Literals.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_SequenceDiagramDescription_endsOrdering_feature"), //$NON-NLS-1$
+                getString("_UI_SequenceDiagramDescription_endsOrdering_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -83,7 +83,8 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
      */
     protected void addInstanceRolesOrderingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SequenceDiagramDescription_instanceRolesOrdering_feature"), getString("_UI_SequenceDiagramDescription_instanceRolesOrdering_description"),
+                getString("_UI_SequenceDiagramDescription_instanceRolesOrdering_feature"), //$NON-NLS-1$
+                getString("_UI_SequenceDiagramDescription_instanceRolesOrdering_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -95,7 +96,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SequenceDiagramDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SequenceDiagramDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -107,7 +108,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
     @Override
     public String getText(Object object) {
         final String label = new IdentifiedElementQuery((SequenceDiagramDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_SequenceDiagramDescription_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_SequenceDiagramDescription_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -195,7 +196,8 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
                 || childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

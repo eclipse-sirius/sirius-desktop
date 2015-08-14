@@ -269,7 +269,7 @@ public abstract class StyleImpl extends MinimalEObjectImpl.Container implements 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (customFeatures: ");
+        result.append(" (customFeatures: "); //$NON-NLS-1$
         result.append(customFeatures);
         result.append(')');
         return result.toString();

@@ -111,7 +111,7 @@ public class TableToolItemProvider extends ItemProviderAdapter implements IEditi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TableTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TableTool")); //$NON-NLS-1$
     }
 
     /**
@@ -122,7 +122,7 @@ public class TableToolItemProvider extends ItemProviderAdapter implements IEditi
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_TableTool_type");
+        return getString("_UI_TableTool_type"); //$NON-NLS-1$
     }
 
     /**

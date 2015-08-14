@@ -339,13 +339,13 @@ public class LabelBorderStyleDescriptionImpl extends MinimalEObjectImpl.Containe
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (id: ");
+        result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
-        result.append(", name: ");
+        result.append(", name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", cornerHeight: ");
+        result.append(", cornerHeight: "); //$NON-NLS-1$
         result.append(cornerHeight);
-        result.append(", cornerWidth: ");
+        result.append(", cornerWidth: "); //$NON-NLS-1$
         result.append(cornerWidth);
         result.append(')');
         return result.toString();

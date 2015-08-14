@@ -73,10 +73,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public Sect1PropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -84,10 +84,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent) {
@@ -101,10 +101,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(Composite view) {
@@ -153,7 +153,7 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createParaAdvancedTableComposition(Composite parent) {
         this.para = new ReferencesTable(getDescription(DocbookViewsRepository.Sect1.Properties.para, DocbookMessages.Sect1PropertiesEditionPart_ParaLabel), new ReferencesTableListener() {
@@ -227,9 +227,9 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -245,9 +245,9 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -272,7 +272,7 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createSect2AdvancedTableComposition(Composite parent) {
         this.sect2 = new ReferencesTable(getDescription(DocbookViewsRepository.Sect1.Properties.sect2, DocbookMessages.Sect1PropertiesEditionPart_Sect2Label), new ReferencesTableListener() {
@@ -339,9 +339,9 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -352,7 +352,7 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#initPara(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -376,9 +376,9 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#updatePara()
-     * 
+     *
      */
     @Override
     public void updatePara() {
@@ -387,10 +387,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#addFilterPara(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToPara(ViewerFilter filter) {
@@ -402,10 +402,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#addBusinessFilterPara(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToPara(ViewerFilter filter) {
@@ -414,10 +414,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#isContainedInParaTable(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInParaTable(EObject element) {
@@ -426,9 +426,9 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#getId()
-     * 
+     *
      */
     @Override
     public String getId() {
@@ -437,10 +437,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#setId(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setId(String newValue) {
@@ -461,7 +461,7 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#initSect2(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -485,9 +485,9 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#updateSect2()
-     * 
+     *
      */
     @Override
     public void updateSect2() {
@@ -496,10 +496,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#addFilterSect2(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToSect2(ViewerFilter filter) {
@@ -511,10 +511,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#addBusinessFilterSect2(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToSect2(ViewerFilter filter) {
@@ -523,10 +523,10 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Sect1PropertiesEditionPart#isContainedInSect2Table(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInSect2Table(EObject element) {
@@ -537,7 +537,7 @@ public class Sect1PropertiesEditionPartImpl extends CompositePropertiesEditionPa
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

@@ -60,10 +60,10 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public XRefPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -71,11 +71,11 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.forms.widgets.FormToolkit)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
@@ -91,11 +91,11 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createControls(org.eclipse.ui.forms.widgets.FormToolkit,
      *      org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(final FormToolkit widgetFactory, Composite view) {
@@ -145,7 +145,7 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
         linkend.addFocusListener(new FocusAdapter() {
             /**
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -172,7 +172,7 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
         linkend.addKeyListener(new KeyAdapter() {
             /**
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -196,9 +196,9 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -209,9 +209,9 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.XRefPropertiesEditionPart#getLinkend()
-     * 
+     *
      */
     @Override
     public String getLinkend() {
@@ -220,10 +220,10 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.XRefPropertiesEditionPart#setLinkend(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setLinkend(String newValue) {
@@ -246,7 +246,7 @@ public class XRefPropertiesEditionPartForm extends SectionPropertiesEditingPart 
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

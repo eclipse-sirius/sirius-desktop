@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Combined Fragment</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A group of events with some special semantics (e.g.
  * optional). <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Owned Operands</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment()
  * @model
  * @generated
@@ -52,7 +52,7 @@ public interface CombinedFragment extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Operator</em>' attribute.
      * @see #setOperator(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment_Operator()
@@ -66,7 +66,7 @@ public interface CombinedFragment extends EObject {
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOperator
      * <em>Operator</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Operator</em>' attribute.
      * @see #getOperator()
@@ -84,7 +84,7 @@ public interface CombinedFragment extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Covered Participants</em>' reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment_CoveredParticipants()
      * @model required="true"
@@ -100,7 +100,7 @@ public interface CombinedFragment extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Start</em>' reference.
      * @see #setStart(InteractionUseEnd)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment_Start()
@@ -113,7 +113,7 @@ public interface CombinedFragment extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getStart
      * <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Start</em>' reference.
      * @see #getStart()
@@ -129,7 +129,7 @@ public interface CombinedFragment extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finish</em>' reference.
      * @see #setFinish(InteractionUseEnd)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment_Finish()
@@ -143,7 +143,7 @@ public interface CombinedFragment extends EObject {
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getFinish
      * <em>Finish</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finish</em>' reference.
      * @see #getFinish()
@@ -161,7 +161,7 @@ public interface CombinedFragment extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owned Operands</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCombinedFragment_OwnedOperands()

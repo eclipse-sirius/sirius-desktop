@@ -63,7 +63,8 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
      */
     protected void addTargetPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DSemanticDecorator_target_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"),
+                getString("_UI_DSemanticDecorator_target_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
     }
 
@@ -75,7 +76,7 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DSemanticDiagram"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DSemanticDiagram")); //$NON-NLS-1$
     }
 
     /**

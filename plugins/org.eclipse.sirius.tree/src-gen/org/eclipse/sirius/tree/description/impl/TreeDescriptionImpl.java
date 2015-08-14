@@ -97,7 +97,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected static final String END_USER_DOCUMENTATION_EDEFAULT = "";
+    protected static final String END_USER_DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getEndUserDocumentation()
@@ -118,7 +118,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -159,7 +159,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
      * @generated
      * @ordered
      */
-    protected static final String TITLE_EXPRESSION_EDEFAULT = "";
+    protected static final String TITLE_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTitleExpression()
@@ -920,21 +920,21 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (endUserDocumentation: ");
+        result.append(" (endUserDocumentation: "); //$NON-NLS-1$
         result.append(endUserDocumentation);
-        result.append(", name: ");
+        result.append(", name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", titleExpression: ");
+        result.append(", titleExpression: "); //$NON-NLS-1$
         result.append(titleExpression);
-        result.append(", initialisation: ");
+        result.append(", initialisation: "); //$NON-NLS-1$
         result.append(initialisation);
-        result.append(", showOnStartup: ");
+        result.append(", showOnStartup: "); //$NON-NLS-1$
         result.append(showOnStartup);
-        result.append(", domainClass: ");
+        result.append(", domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
-        result.append(", preconditionExpression: ");
+        result.append(", preconditionExpression: "); //$NON-NLS-1$
         result.append(preconditionExpression);
         result.append(')');
         return result.toString();

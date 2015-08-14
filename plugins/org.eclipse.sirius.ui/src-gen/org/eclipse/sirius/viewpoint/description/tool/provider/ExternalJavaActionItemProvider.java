@@ -69,8 +69,10 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
      */
     protected void addIdPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ExternalJavaAction_id_feature"), getString("_UI_ExternalJavaAction_id_description"), ToolPackage.Literals.EXTERNAL_JAVA_ACTION__ID, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ExternalJavaAction_id_feature"), //$NON-NLS-1$
+                getString("_UI_ExternalJavaAction_id_description"), //$NON-NLS-1$
+                ToolPackage.Literals.EXTERNAL_JAVA_ACTION__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -115,7 +117,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ExternalJavaAction"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ExternalJavaAction")); //$NON-NLS-1$
     }
 
     /**
@@ -127,7 +129,7 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ExternalJavaAction) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_ExternalJavaAction_type") : getString("_UI_ExternalJavaAction_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_ExternalJavaAction_type") : getString("_UI_ExternalJavaAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

@@ -235,7 +235,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (featureName: ");
+        result.append(" (featureName: "); //$NON-NLS-1$
         result.append(featureName);
         result.append(')');
         return result.toString();

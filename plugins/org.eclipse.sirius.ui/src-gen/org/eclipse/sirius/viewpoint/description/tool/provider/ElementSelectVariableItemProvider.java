@@ -60,7 +60,7 @@ public class ElementSelectVariableItemProvider extends AbstractVariableItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementSelectVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementSelectVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -72,7 +72,8 @@ public class ElementSelectVariableItemProvider extends AbstractVariableItemProvi
     @Override
     public String getText(Object object) {
         String label = ((ElementSelectVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ElementSelectVariable_type") : getString("_UI_ElementSelectVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ElementSelectVariable_type") : //$NON-NLS-1$
+            getString("_UI_ElementSelectVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

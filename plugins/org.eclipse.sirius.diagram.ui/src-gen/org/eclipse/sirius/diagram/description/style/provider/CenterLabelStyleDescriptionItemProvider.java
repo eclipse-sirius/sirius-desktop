@@ -63,7 +63,7 @@ public class CenterLabelStyleDescriptionItemProvider extends BasicLabelStyleDesc
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CenterLabelStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CenterLabelStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -75,7 +75,7 @@ public class CenterLabelStyleDescriptionItemProvider extends BasicLabelStyleDesc
     @Override
     public String getText(Object object) {
         CenterLabelStyleDescription centerLabelStyleDescription = (CenterLabelStyleDescription) object;
-        return getString("_UI_CenterLabelStyleDescription_type") + " " + centerLabelStyleDescription.getLabelSize();
+        return getString("_UI_CenterLabelStyleDescription_type") + " " + centerLabelStyleDescription.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

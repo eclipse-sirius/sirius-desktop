@@ -53,7 +53,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
     /**
      * This keeps track of the active editor. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IEditorPart activeEditorPart;
@@ -61,7 +61,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
     /**
      * This keeps track of the current selection provider. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ISelectionProvider selectionProvider;
@@ -69,14 +69,15 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
     /**
      * This action opens the Properties view. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
-    protected IAction showPropertiesViewAction = new Action(DocbookEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+    protected IAction showPropertiesViewAction = new Action(DocbookEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
+    {
         @Override
         public void run() {
             try {
-                getPage().showView("org.eclipse.ui.views.PropertySheet");
+                getPage().showView("org.eclipse.ui.views.PropertySheet"); //$NON-NLS-1$
             } catch (PartInitException exception) {
                 DocbookEditorPlugin.INSTANCE.log(exception);
             }
@@ -90,7 +91,8 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      *
      * @generated
      */
-    protected IAction refreshViewerAction = new Action(DocbookEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+    protected IAction refreshViewerAction = new Action(DocbookEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
+    {
         @Override
         public boolean isEnabled() {
             return activeEditorPart instanceof IViewerProvider;
@@ -112,7 +114,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      * {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to
      * each descriptor generated for the current selection by the item provider.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<IAction> createChildActions;
@@ -131,7 +133,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding
      * to each descriptor generated for the current selection by the item
      * provider. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<IAction> createSiblingActions;
@@ -140,7 +142,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      * This is the menu manager into which menu contribution items should be
      * added for CreateSibling actions. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IMenuManager createSiblingMenuManager;
@@ -148,7 +150,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
     /**
      * This creates an instance of the contributor. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DocbookActionBarContributor() {
@@ -166,8 +168,8 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      */
     @Override
     public void contributeToToolBar(IToolBarManager toolBarManager) {
-        toolBarManager.add(new Separator("docbook-settings"));
-        toolBarManager.add(new Separator("docbook-additions"));
+        toolBarManager.add(new Separator("docbook-settings")); //$NON-NLS-1$
+        toolBarManager.add(new Separator("docbook-additions")); //$NON-NLS-1$
     }
 
     /**
@@ -181,22 +183,22 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
     public void contributeToMenu(IMenuManager menuManager) {
         super.contributeToMenu(menuManager);
 
-        IMenuManager submenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookEditor_menu"), "org.eclipse.sirius.tests.sample.docbookMenuID");
-        menuManager.insertAfter("additions", submenuManager);
-        submenuManager.add(new Separator("settings"));
-        submenuManager.add(new Separator("actions"));
-        submenuManager.add(new Separator("additions"));
-        submenuManager.add(new Separator("additions-end"));
+        IMenuManager submenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookEditor_menu"), "org.eclipse.sirius.tests.sample.docbookMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
+        menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
+        submenuManager.add(new Separator("settings")); //$NON-NLS-1$
+        submenuManager.add(new Separator("actions")); //$NON-NLS-1$
+        submenuManager.add(new Separator("additions")); //$NON-NLS-1$
+        submenuManager.add(new Separator("additions-end")); //$NON-NLS-1$
 
         // Prepare for CreateChild item addition or removal.
         //
-        createChildMenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
-        submenuManager.insertBefore("additions", createChildMenuManager);
+        createChildMenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+        submenuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
 
         // Prepare for CreateSibling item addition or removal.
         //
-        createSiblingMenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
-        submenuManager.insertBefore("additions", createSiblingMenuManager);
+        createSiblingMenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+        submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
 
         // Force an update because Eclipse hides empty menus now.
         //
@@ -214,7 +216,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      * When the active editor changes, this remembers the change and registers
      * with it as a selection provider. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -296,7 +298,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction}
      * for each object in <code>descriptors</code>, and returns the collection
      * of these actions. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
@@ -314,7 +316,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each
      * object in <code>descriptors</code>, and returns the collection of these
      * actions. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
@@ -335,7 +337,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      * contribution item <code>contributionID</code>. If
      * <code>contributionID</code> is <code>null</code>, they are simply added.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions, String contributionID) {
@@ -356,7 +358,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      * {@link org.eclipse.jface.action.IAction}s contained in the
      * <code>actions</code> collection. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
@@ -385,7 +387,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
     /**
      * This populates the pop-up menu before it appears. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -393,13 +395,13 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
         super.menuAboutToShow(menuManager);
         MenuManager submenuManager = null;
 
-        submenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+        submenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
         populateManager(submenuManager, createChildActions, null);
-        menuManager.insertBefore("edit", submenuManager);
+        menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
-        submenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+        submenuManager = new MenuManager(DocbookEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
         populateManager(submenuManager, createSiblingActions, null);
-        menuManager.insertBefore("edit", submenuManager);
+        menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
     }
 
     /**
@@ -410,11 +412,11 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
      */
     @Override
     protected void addGlobalActions(IMenuManager menuManager) {
-        menuManager.insertAfter("additions-end", new Separator("ui-actions"));
-        menuManager.insertAfter("ui-actions", showPropertiesViewAction);
+        menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
+        menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
 
         refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());
-        menuManager.insertAfter("ui-actions", refreshViewerAction);
+        menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
 
         super.addGlobalActions(menuManager);
     }
@@ -422,7 +424,7 @@ public class DocbookActionBarContributor extends EditingDomainActionBarContribut
     /**
      * This ensures that a delete action will clean up all references to deleted
      * objects. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

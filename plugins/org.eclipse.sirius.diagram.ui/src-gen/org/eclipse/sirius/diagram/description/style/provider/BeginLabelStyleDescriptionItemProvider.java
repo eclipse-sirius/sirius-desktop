@@ -63,7 +63,7 @@ public class BeginLabelStyleDescriptionItemProvider extends BasicLabelStyleDescr
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/BeginLabelStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/BeginLabelStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -75,7 +75,7 @@ public class BeginLabelStyleDescriptionItemProvider extends BasicLabelStyleDescr
     @Override
     public String getText(Object object) {
         BeginLabelStyleDescription beginLabelStyleDescription = (BeginLabelStyleDescription) object;
-        return getString("_UI_BeginLabelStyleDescription_type") + " " + beginLabelStyleDescription.getLabelSize();
+        return getString("_UI_BeginLabelStyleDescription_type") + " " + beginLabelStyleDescription.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

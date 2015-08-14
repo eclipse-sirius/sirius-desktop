@@ -266,7 +266,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (documentation: ");
+        result.append(" (documentation: "); //$NON-NLS-1$
         result.append(documentation);
         result.append(')');
         return result.toString();

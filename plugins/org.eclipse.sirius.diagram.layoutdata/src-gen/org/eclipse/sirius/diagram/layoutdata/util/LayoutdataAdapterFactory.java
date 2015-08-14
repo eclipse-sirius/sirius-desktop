@@ -71,7 +71,7 @@ public class LayoutdataAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected LayoutdataSwitch<Adapter> modelSwitch = new LayoutdataSwitch<Adapter>() {
@@ -169,7 +169,7 @@ public class LayoutdataAdapterFactory extends AdapterFactoryImpl {
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
+     *
      * @return the new adapter.
      * @see org.eclipse.sirius.diagram.layoutdata.Point
      * @generated

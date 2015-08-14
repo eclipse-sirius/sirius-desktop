@@ -61,7 +61,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemDeletionTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemDeletionTool")); //$NON-NLS-1$
     }
 
     /**
@@ -73,7 +73,7 @@ public class TreeItemDeletionToolItemProvider extends TreeItemToolItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeItemDeletionTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeItemDeletionTool_type") : getString("_UI_TreeItemDeletionTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeItemDeletionTool_type") : getString("_UI_TreeItemDeletionTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

@@ -220,9 +220,9 @@ public class ULinkImpl extends EObjectImpl implements ULink {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (url: ");
+        result.append(" (url: "); //$NON-NLS-1$
         result.append(url);
-        result.append(", data: ");
+        result.append(", data: "); //$NON-NLS-1$
         result.append(data);
         result.append(')');
         return result.toString();

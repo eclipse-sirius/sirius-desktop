@@ -97,7 +97,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected static final String DOCUMENTATION_EDEFAULT = "";
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getDocumentation()
@@ -141,7 +141,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
      * @generated
      * @ordered
      */
-    protected static final String TARGET_FINDER_EXPRESSION_EDEFAULT = "";
+    protected static final String TARGET_FINDER_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTargetFinderExpression()
@@ -986,19 +986,19 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (documentation: ");
+        result.append(" (documentation: "); //$NON-NLS-1$
         result.append(documentation);
-        result.append(", targetFinderExpression: ");
+        result.append(", targetFinderExpression: "); //$NON-NLS-1$
         result.append(targetFinderExpression);
-        result.append(", sourceFinderExpression: ");
+        result.append(", sourceFinderExpression: "); //$NON-NLS-1$
         result.append(sourceFinderExpression);
-        result.append(", targetExpression: ");
+        result.append(", targetExpression: "); //$NON-NLS-1$
         result.append(targetExpression);
-        result.append(", domainClass: ");
+        result.append(", domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
-        result.append(", useDomainElement: ");
+        result.append(", useDomainElement: "); //$NON-NLS-1$
         result.append(useDomainElement);
-        result.append(", pathExpression: ");
+        result.append(", pathExpression: "); //$NON-NLS-1$
         result.append(pathExpression);
         result.append(')');
         return result.toString();

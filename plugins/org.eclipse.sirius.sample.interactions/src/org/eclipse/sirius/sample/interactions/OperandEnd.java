@@ -13,7 +13,7 @@ package org.eclipse.sirius.sample.interactions;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Operand End</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -21,7 +21,7 @@ package org.eclipse.sirius.sample.interactions;
  * Owner</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getOperandEnd()
  * @model
  * @generated
@@ -35,7 +35,7 @@ public interface OperandEnd extends AbstractEnd {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owner</em>' reference.
      * @see #setOwner(Operand)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getOperandEnd_Owner()
@@ -48,7 +48,7 @@ public interface OperandEnd extends AbstractEnd {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.OperandEnd#getOwner
      * <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owner</em>' reference.
      * @see #getOwner()

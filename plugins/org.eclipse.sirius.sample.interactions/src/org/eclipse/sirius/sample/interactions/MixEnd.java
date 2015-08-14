@@ -13,8 +13,8 @@ package org.eclipse.sirius.sample.interactions;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Mix End</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMixEnd()
  * @model
  * @generated

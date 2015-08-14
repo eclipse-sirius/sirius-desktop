@@ -70,14 +70,14 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 /**
  * This is a simple wizard for creating a new model file. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * The supported extensions for created files. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays.asList(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookEditorFilenameExtensions").split("\\s*,\\s*")));
@@ -93,7 +93,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * This caches an instance of the model package. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DocbookPackage docbookPackage = DocbookPackage.eINSTANCE;
@@ -101,7 +101,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * This caches an instance of the model factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DocbookFactory docbookFactory = docbookPackage.getDocbookFactory();
@@ -117,7 +117,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * This is the initial object creation page. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DocbookModelWizardInitialObjectCreationPage initialObjectCreationPage;
@@ -125,7 +125,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * Remember the selection during initialization for populating the default
      * container. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IStructuredSelection selection;
@@ -133,7 +133,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * Remember the workbench during initialization. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IWorkbench workbench;
@@ -141,7 +141,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * Caches the names of the types that can be created as the root object.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected List<String> initialObjectNames;
@@ -149,21 +149,21 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * This just records the information. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.workbench = workbench;
         this.selection = selection;
-        setWindowTitle(DocbookEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-        setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(DocbookEditorPlugin.INSTANCE.getImage("full/wizban/NewDocbook")));
+        setWindowTitle(DocbookEditorPlugin.INSTANCE.getString("_UI_Wizard_label")); //$NON-NLS-1$
+        setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(DocbookEditorPlugin.INSTANCE.getImage("full/wizban/NewDocbook"))); //$NON-NLS-1$
     }
 
     /**
      * Returns the names of the types that can be created as the root object.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<String> getInitialObjectNames() {
@@ -184,7 +184,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
     /**
      * Create a new model. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EObject createInitialModel() {
@@ -196,7 +196,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * Do the work after everything is specified. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -266,7 +266,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
             try {
                 page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
             } catch (PartInitException exception) {
-                MessageDialog.openError(workbenchWindow.getShell(), DocbookEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
+                MessageDialog.openError(workbenchWindow.getShell(), DocbookEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
                 return false;
             }
 
@@ -280,13 +280,13 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     /**
      * This is the one page of the wizard. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public class DocbookModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
         /**
          * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public DocbookModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
@@ -304,7 +304,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
             if (super.validatePage()) {
                 String extension = new Path(getFileName()).getFileExtension();
                 if (extension == null || !DocbookModelWizard.FILE_EXTENSIONS.contains(extension)) {
-                    String key = DocbookModelWizard.FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+                    String key = DocbookModelWizard.FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
                     setErrorMessage(DocbookEditorPlugin.INSTANCE.getString(key, new Object[] { DocbookModelWizard.FORMATTED_FILE_EXTENSIONS }));
                     return false;
                 }
@@ -315,7 +315,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public IFile getModelFile() {
@@ -332,7 +332,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     public class DocbookModelWizardInitialObjectCreationPage extends WizardPage {
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected Combo initialObjectField;
@@ -344,14 +344,14 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected Combo encodingField;
 
         /**
          * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public DocbookModelWizardInitialObjectCreationPage(String pageId) {
@@ -360,7 +360,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -381,7 +381,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
             Label containerLabel = new Label(composite, SWT.LEFT);
             {
-                containerLabel.setText(DocbookEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
+                containerLabel.setText(DocbookEditorPlugin.INSTANCE.getString("_UI_ModelObject")); //$NON-NLS-1$
 
                 GridData data = new GridData();
                 data.horizontalAlignment = GridData.FILL;
@@ -407,7 +407,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
             Label encodingLabel = new Label(composite, SWT.LEFT);
             {
-                encodingLabel.setText(DocbookEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
+                encodingLabel.setText(DocbookEditorPlugin.INSTANCE.getString("_UI_XMLEncoding")); //$NON-NLS-1$
 
                 GridData data = new GridData();
                 data.horizontalAlignment = GridData.FILL;
@@ -434,7 +434,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected ModifyListener validator = new ModifyListener() {
@@ -446,7 +446,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected boolean validatePage() {
@@ -455,7 +455,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -474,7 +474,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public String getInitialObjectName() {
@@ -490,7 +490,7 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public String getEncoding() {
@@ -500,12 +500,12 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
         /**
          * Returns the label for the specified type name. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected String getLabel(String typeName) {
             try {
-                return DocbookEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
+                return DocbookEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
             } catch (MissingResourceException mre) {
                 DocbookEditorPlugin.INSTANCE.log(mre);
             }
@@ -514,13 +514,14 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         protected Collection<String> getEncodings() {
             if (encodings == null) {
                 encodings = new ArrayList<String>();
-                for (StringTokenizer stringTokenizer = new StringTokenizer(DocbookEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) {
+                for (StringTokenizer stringTokenizer = new StringTokenizer(DocbookEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) //$NON-NLS-1$
+                {
                     encodings.add(stringTokenizer.nextToken());
                 }
             }
@@ -538,10 +539,10 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
     public void addPages() {
         // Create a page, set the title, and the initial model file name.
         //
-        newFileCreationPage = new DocbookModelWizardNewFileCreationPage("Whatever", selection);
-        newFileCreationPage.setTitle(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookModelWizard_label"));
-        newFileCreationPage.setDescription(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookModelWizard_description"));
-        newFileCreationPage.setFileName(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookEditorFilenameDefaultBase") + "." + DocbookModelWizard.FILE_EXTENSIONS.get(0));
+        newFileCreationPage = new DocbookModelWizardNewFileCreationPage("Whatever", selection); //$NON-NLS-1$
+        newFileCreationPage.setTitle(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookModelWizard_label")); //$NON-NLS-1$
+        newFileCreationPage.setDescription(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookModelWizard_description")); //$NON-NLS-1$
+        newFileCreationPage.setFileName(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookEditorFilenameDefaultBase") + "." + DocbookModelWizard.FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
         addPage(newFileCreationPage);
 
         // Try and get the resource selection to determine a current directory
@@ -568,25 +569,25 @@ public class DocbookModelWizard extends Wizard implements INewWizard {
 
                     // Make up a unique new name here.
                     //
-                    String defaultModelBaseFilename = DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookEditorFilenameDefaultBase");
+                    String defaultModelBaseFilename = DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookEditorFilenameDefaultBase"); //$NON-NLS-1$
                     String defaultModelFilenameExtension = DocbookModelWizard.FILE_EXTENSIONS.get(0);
-                    String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
+                    String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension; //$NON-NLS-1$
                     for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
-                        modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
+                        modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension; //$NON-NLS-1$
                     }
                     newFileCreationPage.setFileName(modelFilename);
                 }
             }
         }
-        initialObjectCreationPage = new DocbookModelWizardInitialObjectCreationPage("Whatever2");
-        initialObjectCreationPage.setTitle(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookModelWizard_label"));
-        initialObjectCreationPage.setDescription(DocbookEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+        initialObjectCreationPage = new DocbookModelWizardInitialObjectCreationPage("Whatever2"); //$NON-NLS-1$
+        initialObjectCreationPage.setTitle(DocbookEditorPlugin.INSTANCE.getString("_UI_DocbookModelWizard_label")); //$NON-NLS-1$
+        initialObjectCreationPage.setDescription(DocbookEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description")); //$NON-NLS-1$
         addPage(initialObjectCreationPage);
     }
 
     /**
      * Get the file from the page. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IFile getModelFile() {

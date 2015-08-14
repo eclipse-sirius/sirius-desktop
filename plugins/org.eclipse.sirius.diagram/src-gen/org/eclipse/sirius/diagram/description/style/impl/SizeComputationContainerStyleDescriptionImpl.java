@@ -46,7 +46,7 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      * @generated
      * @ordered
      */
-    protected static final String WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "-1";
+    protected static final String WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getWidthComputationExpression()
@@ -68,7 +68,7 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
      * @generated
      * @ordered
      */
-    protected static final String HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT = "-1";
+    protected static final String HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getHeightComputationExpression()
@@ -232,9 +232,9 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (widthComputationExpression: ");
+        result.append(" (widthComputationExpression: "); //$NON-NLS-1$
         result.append(widthComputationExpression);
-        result.append(", heightComputationExpression: ");
+        result.append(", heightComputationExpression: "); //$NON-NLS-1$
         result.append(heightComputationExpression);
         result.append(')');
         return result.toString();

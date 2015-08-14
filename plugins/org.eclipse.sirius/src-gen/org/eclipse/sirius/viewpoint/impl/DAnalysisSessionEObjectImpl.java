@@ -385,13 +385,13 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (open: ");
+        result.append(" (open: "); //$NON-NLS-1$
         result.append(open);
-        result.append(", resources: ");
+        result.append(", resources: "); //$NON-NLS-1$
         result.append(resources);
-        result.append(", controlledResources: ");
+        result.append(", controlledResources: "); //$NON-NLS-1$
         result.append(controlledResources);
-        result.append(", synchronizationStatus: ");
+        result.append(", synchronizationStatus: "); //$NON-NLS-1$
         result.append(synchronizationStatus);
         result.append(')');
         return result.toString();

@@ -33,14 +33,14 @@ import org.eclipse.sirius.sample.interactions.Operand;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.sample.interactions.Operand} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class OperandItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public OperandItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class OperandItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -67,46 +67,48 @@ public class OperandItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Operand_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Operand_name_feature", "_UI_Operand_type"), InteractionsPackage.Literals.OPERAND__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Operand_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Operand_name_feature", "_UI_Operand_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                InteractionsPackage.Literals.OPERAND__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Start feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addStartPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Operand_start_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Operand_start_feature", "_UI_Operand_type"), InteractionsPackage.Literals.OPERAND__START, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Operand_start_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Operand_start_feature", "_UI_Operand_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                InteractionsPackage.Literals.OPERAND__START, true, false, true, null, null, null));
     }
 
     /**
      * This returns Operand.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Operand"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Operand")); //$NON-NLS-1$
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((Operand) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Operand_type") : getString("_UI_Operand_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Operand_type") : //$NON-NLS-1$
+            getString("_UI_Operand_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -114,7 +116,7 @@ public class OperandItemProvider extends ItemProviderAdapter implements IEditing
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +135,7 @@ public class OperandItemProvider extends ItemProviderAdapter implements IEditing
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +146,7 @@ public class OperandItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

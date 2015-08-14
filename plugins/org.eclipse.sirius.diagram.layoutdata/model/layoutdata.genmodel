@@ -4,7 +4,8 @@
     modelDirectory="/org.eclipse.sirius.diagram.layoutdata/src-gen" editDirectory="/org.eclipse.sirius.diagram.layoutdata.edit/src-gen"
     modelPluginID="org.eclipse.sirius.diagram.layoutdata" modelName="Layoutdata" editPluginClass="org.eclipse.sirius.diagram.layoutdata.provider.LayoutdataEditPlugin"
     editorPluginClass="org.eclipse.sirius.diagram.layoutdata.presentation.LayoutdataEditorPlugin"
-    testsDirectory="/org.eclipse.sirius.diagram.layoutdata.tests/src-gen" testSuiteClass="org.eclipse.sirius.diagram.layoutdata.tests.LayoutdataAllTests"
+    nonNLSMarkers="true" testsDirectory="/org.eclipse.sirius.diagram.layoutdata.tests/src-gen"
+    testSuiteClass="org.eclipse.sirius.diagram.layoutdata.tests.LayoutdataAllTests"
     importerID="org.eclipse.emf.importer.ecore" containmentProxies="true" complianceLevel="5.0"
     copyrightFields="false" runtimeVersion="2.6" language="">
   <foreignModel>layoutdata.ecore</foreignModel>

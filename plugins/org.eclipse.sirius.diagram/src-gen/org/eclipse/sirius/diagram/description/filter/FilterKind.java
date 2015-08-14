@@ -35,7 +35,7 @@ public enum FilterKind implements Enumerator {
      * @generated
      * @ordered
      */
-    HIDE_LITERAL(0, "HIDE", "HIDE"),
+    HIDE_LITERAL(0, "HIDE", "HIDE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>COLLAPSE</b></em>' literal object. <!-- begin-user-doc -->
@@ -45,7 +45,7 @@ public enum FilterKind implements Enumerator {
      * @generated
      * @ordered
      */
-    COLLAPSE_LITERAL(1, "COLLAPSE", "COLLAPSE");
+    COLLAPSE_LITERAL(1, "COLLAPSE", "COLLAPSE"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>HIDE</b></em>' literal value. <!-- begin-user-doc -->

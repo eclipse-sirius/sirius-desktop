@@ -76,7 +76,8 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addReusedSubLinesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LineMapping_reusedSubLines_feature"), getString("_UI_PropertyDescriptor_description", "_UI_LineMapping_reusedSubLines_feature", "_UI_LineMapping_type"),
+                getString("_UI_LineMapping_reusedSubLines_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LineMapping_reusedSubLines_feature", "_UI_LineMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.LINE_MAPPING__REUSED_SUB_LINES, true, false, true, null, null, null));
     }
 
@@ -88,8 +89,10 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LineMapping_domainClass_feature"), getString("_UI_LineMapping_domainClass_description"), DescriptionPackage.Literals.LINE_MAPPING__DOMAIN_CLASS, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_LineMapping_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_LineMapping_domainClass_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.LINE_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -100,8 +103,9 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LineMapping_semanticCandidatesExpression_feature"), getString("_UI_LineMapping_semanticCandidatesExpression_description"),
-                DescriptionPackage.Literals.LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_LineMapping_semanticCandidatesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_LineMapping_semanticCandidatesExpression_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.LINE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -113,8 +117,10 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addHeaderLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LineMapping_headerLabelExpression_feature"), getString("_UI_PropertyDescriptor_description", "_UI_LineMapping_headerLabelExpression_feature", "_UI_LineMapping_type"),
-                DescriptionPackage.Literals.LINE_MAPPING__HEADER_LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                getString("_UI_LineMapping_headerLabelExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LineMapping_headerLabelExpression_feature", "_UI_LineMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.LINE_MAPPING__HEADER_LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -125,8 +131,10 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addReusedInMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LineMapping_reusedInMappings_feature"), getString("_UI_LineMapping_reusedInMappings_description"), DescriptionPackage.Literals.LINE_MAPPING__REUSED_IN_MAPPINGS, true,
-                false, true, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_LineMapping_reusedInMappings_feature"), //$NON-NLS-1$
+                getString("_UI_LineMapping_reusedInMappings_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.LINE_MAPPING__REUSED_IN_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -176,7 +184,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LineMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LineMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -188,7 +196,7 @@ public class LineMappingItemProvider extends TableMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((LineMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_LineMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_LineMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

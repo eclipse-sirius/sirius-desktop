@@ -74,8 +74,10 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     protected void addNodeMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeCreationDescription_nodeMappings_feature"), getString("_UI_NodeCreationDescription_nodeMappings_description"),
-                ToolPackage.Literals.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_NodeCreationDescription_nodeMappings_feature"), //$NON-NLS-1$
+                getString("_UI_NodeCreationDescription_nodeMappings_description"), //$NON-NLS-1$
+                ToolPackage.Literals.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -86,8 +88,10 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeCreationDescription_iconPath_feature"), getString("_UI_NodeCreationDescription_iconPath_description"), ToolPackage.Literals.NODE_CREATION_DESCRIPTION__ICON_PATH,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_NodeCreationDescription_iconPath_feature"), //$NON-NLS-1$
+                getString("_UI_NodeCreationDescription_iconPath_description"), //$NON-NLS-1$
+                ToolPackage.Literals.NODE_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -98,8 +102,10 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     protected void addExtraMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeCreationDescription_extraMappings_feature"), getString("_UI_NodeCreationDescription_extraMappings_description"),
-                ToolPackage.Literals.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_NodeCreationDescription_extraMappings_feature"), //$NON-NLS-1$
+                getString("_UI_NodeCreationDescription_extraMappings_description"), //$NON-NLS-1$
+                ToolPackage.Literals.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -145,7 +151,7 @@ public class NodeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeCreationDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeCreationDescription")); //$NON-NLS-1$
     }
 
     /**

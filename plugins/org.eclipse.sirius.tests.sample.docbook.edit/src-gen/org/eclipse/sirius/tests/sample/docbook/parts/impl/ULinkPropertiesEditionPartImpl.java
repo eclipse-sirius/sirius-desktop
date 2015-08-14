@@ -51,10 +51,10 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public ULinkPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -62,10 +62,10 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent) {
@@ -79,10 +79,10 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(Composite view) {
@@ -134,9 +134,9 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -152,9 +152,9 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -186,9 +186,9 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -204,9 +204,9 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -231,9 +231,9 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -244,9 +244,9 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ULinkPropertiesEditionPart#getUrl()
-     * 
+     *
      */
     @Override
     public String getUrl() {
@@ -255,10 +255,10 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ULinkPropertiesEditionPart#setUrl(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setUrl(String newValue) {
@@ -279,9 +279,9 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ULinkPropertiesEditionPart#getData()
-     * 
+     *
      */
     @Override
     public String getData() {
@@ -290,10 +290,10 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ULinkPropertiesEditionPart#setData(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setData(String newValue) {
@@ -316,7 +316,7 @@ public class ULinkPropertiesEditionPartImpl extends CompositePropertiesEditionPa
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

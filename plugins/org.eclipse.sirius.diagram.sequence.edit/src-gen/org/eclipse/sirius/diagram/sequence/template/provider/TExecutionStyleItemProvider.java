@@ -65,10 +65,13 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
      * @generated
      */
     protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionStyle_borderSizeComputationExpression_feature"), getString("_UI_TExecutionStyle_borderSizeComputationExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_TExecutionStyle_borderSizeComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TExecutionStyle_borderSizeComputationExpression_description"), //$NON-NLS-1$
                 TemplatePackage.Literals.TEXECUTION_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,8 +82,10 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionStyle_borderColor_feature"), getString("_UI_TExecutionStyle_borderColor_description"), TemplatePackage.Literals.TEXECUTION_STYLE__BORDER_COLOR, true, false,
-                true, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_TExecutionStyle_borderColor_feature"), //$NON-NLS-1$
+                getString("_UI_TExecutionStyle_borderColor_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TEXECUTION_STYLE__BORDER_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -91,8 +96,10 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionStyle_backgroundColor_feature"), getString("_UI_TExecutionStyle_backgroundColor_description"), TemplatePackage.Literals.TEXECUTION_STYLE__BACKGROUND_COLOR,
-                true, false, true, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_TExecutionStyle_backgroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_TExecutionStyle_backgroundColor_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TEXECUTION_STYLE__BACKGROUND_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -103,7 +110,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TExecutionStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TExecutionStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -115,7 +122,7 @@ public class TExecutionStyleItemProvider extends TTransformerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TExecutionStyle) object).getBorderSizeComputationExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TExecutionStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TExecutionStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

@@ -26,7 +26,7 @@ public interface BookPropertiesEditionPart {
 
     /**
      * Init the chapter
-     * 
+     *
      * @param current
      *            the current value
      * @param containgFeature
@@ -38,89 +38,89 @@ public interface BookPropertiesEditionPart {
 
     /**
      * Update the chapter
-     * 
+     *
      * @param newValue
      *            the chapter to update
-     * 
+     *
      */
     public void updateChapter();
 
     /**
      * Adds the given filter to the chapter edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addFilterToChapter(ViewerFilter filter);
 
     /**
      * Adds the given filter to the chapter edition editor.
-     * 
+     *
      * @param filter
      *            a viewer filter
      * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-     * 
+     *
      */
     public void addBusinessFilterToChapter(ViewerFilter filter);
 
     /**
      * @return true if the given element is contained inside the chapter table
-     * 
+     *
      */
     public boolean isContainedInChapterTable(EObject element);
 
     /**
      * @return the id
-     * 
+     *
      */
     public String getId();
 
     /**
      * Defines a new id
-     * 
+     *
      * @param newValue
      *            the new id to set
-     * 
+     *
      */
     public void setId(String newValue);
 
     /**
      * @return the lang
-     * 
+     *
      */
     public String getLang();
 
     /**
      * Defines a new lang
-     * 
+     *
      * @param newValue
      *            the new lang to set
-     * 
+     *
      */
     public void setLang(String newValue);
 
     /**
      * @return the version
-     * 
+     *
      */
     public String getVersion();
 
     /**
      * Defines a new version
-     * 
+     *
      * @param newValue
      *            the new version to set
-     * 
+     *
      */
     public void setVersion(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

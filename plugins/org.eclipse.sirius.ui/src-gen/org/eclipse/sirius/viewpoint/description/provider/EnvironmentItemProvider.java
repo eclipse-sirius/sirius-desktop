@@ -110,7 +110,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Environment"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Environment")); //$NON-NLS-1$
     }
 
     /**
@@ -121,7 +121,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_Environment_type");
+        return getString("_UI_Environment_type"); //$NON-NLS-1$
     }
 
     /**

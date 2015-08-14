@@ -41,7 +41,7 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
      * resources proxy resolution. Default is false. This option is considered
      * only for odesign in plugin.
      */
-    public static final String OPTION_USE_URI_FRAGMENT_AS_ID = "SIRIUS_USE_URI_FRAGMENT_AS_ID";
+    public static final String OPTION_USE_URI_FRAGMENT_AS_ID = "SIRIUS_USE_URI_FRAGMENT_AS_ID"; //$NON-NLS-1$
 
     private boolean useURIFragmentAsId;
 

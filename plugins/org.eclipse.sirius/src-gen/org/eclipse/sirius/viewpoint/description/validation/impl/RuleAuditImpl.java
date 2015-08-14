@@ -168,7 +168,7 @@ public class RuleAuditImpl extends MinimalEObjectImpl.Container implements RuleA
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (auditExpression: ");
+        result.append(" (auditExpression: "); //$NON-NLS-1$
         result.append(auditExpression);
         result.append(')');
         return result.toString();

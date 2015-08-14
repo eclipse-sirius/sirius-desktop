@@ -75,9 +75,9 @@ public class BookItemProvider extends ItemProviderAdapter implements IEditingDom
      * @generated
      */
     protected void addIdPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Book_id_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Book_id_feature", "_UI_Book_type"), DocbookPackage.Literals.BOOK__ID, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Book_id_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Book_id_feature", "_UI_Book_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.BOOK__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -87,9 +87,9 @@ public class BookItemProvider extends ItemProviderAdapter implements IEditingDom
      * @generated
      */
     protected void addLangPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Book_lang_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Book_lang_feature", "_UI_Book_type"), DocbookPackage.Literals.BOOK__LANG, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Book_lang_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Book_lang_feature", "_UI_Book_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.BOOK__LANG, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -99,9 +99,9 @@ public class BookItemProvider extends ItemProviderAdapter implements IEditingDom
      * @generated
      */
     protected void addVersionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Book_version_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Book_version_feature", "_UI_Book_type"), DocbookPackage.Literals.BOOK__VERSION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Book_version_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Book_version_feature", "_UI_Book_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.BOOK__VERSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -145,7 +145,7 @@ public class BookItemProvider extends ItemProviderAdapter implements IEditingDom
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Book"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Book")); //$NON-NLS-1$
     }
 
     /**
@@ -157,7 +157,8 @@ public class BookItemProvider extends ItemProviderAdapter implements IEditingDom
     @Override
     public String getText(Object object) {
         String label = ((Book) object).getId();
-        return label == null || label.length() == 0 ? getString("_UI_Book_type") : getString("_UI_Book_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Book_type") : //$NON-NLS-1$
+            getString("_UI_Book_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

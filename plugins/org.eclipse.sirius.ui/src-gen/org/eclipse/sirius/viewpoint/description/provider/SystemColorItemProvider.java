@@ -64,9 +64,9 @@ public class SystemColorItemProvider extends FixedColorItemProvider {
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SystemColor_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SystemColor_name_feature", "_UI_SystemColor_type"), DescriptionPackage.Literals.SYSTEM_COLOR__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_SystemColor_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_SystemColor_name_feature", "_UI_SystemColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.SYSTEM_COLOR__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -77,7 +77,7 @@ public class SystemColorItemProvider extends FixedColorItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemColor"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SystemColor")); //$NON-NLS-1$
     }
 
     /**
@@ -89,7 +89,7 @@ public class SystemColorItemProvider extends FixedColorItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((SystemColor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_SystemColor_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_SystemColor_type") : label; //$NON-NLS-1$
     }
 
     /**

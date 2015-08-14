@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Interaction Use</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A reference to or invocation of another interaction
  * defined elsewhere. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Finish</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse()
  * @model
  * @generated
@@ -51,7 +51,7 @@ public interface InteractionUse extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Type</em>' attribute.
      * @see #setType(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse_Type()
@@ -64,7 +64,7 @@ public interface InteractionUse extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type</em>' attribute.
      * @see #getType()
@@ -80,7 +80,7 @@ public interface InteractionUse extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Interaction</em>' reference.
      * @see #setInteraction(Interaction)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse_Interaction()
@@ -94,7 +94,7 @@ public interface InteractionUse extends EObject {
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getInteraction
      * <em>Interaction</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Interaction</em>' reference.
      * @see #getInteraction()
@@ -112,7 +112,7 @@ public interface InteractionUse extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Covered Participants</em>' reference list.
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse_CoveredParticipants()
      * @model required="true"
@@ -128,7 +128,7 @@ public interface InteractionUse extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Start</em>' reference.
      * @see #setStart(InteractionUseEnd)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse_Start()
@@ -141,7 +141,7 @@ public interface InteractionUse extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getStart
      * <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Start</em>' reference.
      * @see #getStart()
@@ -157,7 +157,7 @@ public interface InteractionUse extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finish</em>' reference.
      * @see #setFinish(InteractionUseEnd)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getInteractionUse_Finish()
@@ -171,7 +171,7 @@ public interface InteractionUse extends EObject {
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getFinish
      * <em>Finish</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Finish</em>' reference.
      * @see #getFinish()

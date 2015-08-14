@@ -65,7 +65,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -481,11 +481,11 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", inheritsAncestorFilters: ");
+        result.append(", inheritsAncestorFilters: "); //$NON-NLS-1$
         result.append(inheritsAncestorFilters);
         result.append(')');
         return result.toString();

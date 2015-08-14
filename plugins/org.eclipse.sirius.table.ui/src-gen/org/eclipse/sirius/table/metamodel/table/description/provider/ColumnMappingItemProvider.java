@@ -67,9 +67,10 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addHeaderLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ColumnMapping_headerLabelExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ColumnMapping_headerLabelExpression_feature", "_UI_ColumnMapping_type"),
-                DescriptionPackage.Literals.COLUMN_MAPPING__HEADER_LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                getString("_UI_ColumnMapping_headerLabelExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ColumnMapping_headerLabelExpression_feature", "_UI_ColumnMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.COLUMN_MAPPING__HEADER_LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -80,8 +81,10 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addInitialWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ColumnMapping_initialWidth_feature"), getString("_UI_ColumnMapping_initialWidth_description"), DescriptionPackage.Literals.COLUMN_MAPPING__INITIAL_WIDTH, true, false,
-                false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_ColumnMapping_initialWidth_feature"), //$NON-NLS-1$
+                getString("_UI_ColumnMapping_initialWidth_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.COLUMN_MAPPING__INITIAL_WIDTH, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -92,7 +95,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ColumnMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ColumnMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -104,7 +107,7 @@ public class ColumnMappingItemProvider extends TableMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ColumnMapping) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_ColumnMapping_type") : getString("_UI_ColumnMapping_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_ColumnMapping_type") : getString("_UI_ColumnMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

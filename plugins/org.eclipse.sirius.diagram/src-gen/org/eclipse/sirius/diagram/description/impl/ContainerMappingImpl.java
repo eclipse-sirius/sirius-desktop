@@ -636,7 +636,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (childrenPresentation: ");
+        result.append(" (childrenPresentation: "); //$NON-NLS-1$
         result.append(childrenPresentation);
         result.append(')');
         return result.toString();

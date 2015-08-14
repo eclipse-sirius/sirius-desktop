@@ -4,16 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -73,7 +71,7 @@ public interface ScxmlInvokeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Invoke Mix</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_ScxmlInvokeMix()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -93,7 +91,7 @@ public interface ScxmlInvokeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Content</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Content()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -113,7 +111,7 @@ public interface ScxmlInvokeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Param</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Param()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -133,7 +131,7 @@ public interface ScxmlInvokeType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Finalize</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Finalize()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -152,7 +150,7 @@ public interface ScxmlInvokeType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -173,7 +171,7 @@ public interface ScxmlInvokeType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Autoforward</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
      * @see #isSetAutoforward()
@@ -191,7 +189,7 @@ public interface ScxmlInvokeType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAutoforward
      * <em>Autoforward</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Autoforward</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
@@ -207,7 +205,7 @@ public interface ScxmlInvokeType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAutoforward
      * <em>Autoforward</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isSetAutoforward()
      * @see #getAutoforward()
      * @see #setAutoforward(BooleanDatatype)
@@ -220,7 +218,7 @@ public interface ScxmlInvokeType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAutoforward
      * <em>Autoforward</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Autoforward</em>' attribute is set.
      * @see #unsetAutoforward()
      * @see #getAutoforward()
@@ -237,7 +235,7 @@ public interface ScxmlInvokeType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Id()
@@ -251,7 +249,7 @@ public interface ScxmlInvokeType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -267,7 +265,7 @@ public interface ScxmlInvokeType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Idlocation</em>' attribute.
      * @see #setIdlocation(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Idlocation()
@@ -282,7 +280,7 @@ public interface ScxmlInvokeType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getIdlocation
      * <em>Idlocation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Idlocation</em>' attribute.
      * @see #getIdlocation()
@@ -298,7 +296,7 @@ public interface ScxmlInvokeType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Namelist</em>' attribute.
      * @see #setNamelist(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Namelist()
@@ -313,7 +311,7 @@ public interface ScxmlInvokeType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getNamelist
      * <em>Namelist</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Namelist</em>' attribute.
      * @see #getNamelist()
@@ -329,7 +327,7 @@ public interface ScxmlInvokeType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Src</em>' attribute.
      * @see #setSrc(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Src()
@@ -343,7 +341,7 @@ public interface ScxmlInvokeType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getSrc
      * <em>Src</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Src</em>' attribute.
      * @see #getSrc()
@@ -359,7 +357,7 @@ public interface ScxmlInvokeType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Srcexpr</em>' attribute.
      * @see #setSrcexpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Srcexpr()
@@ -374,7 +372,7 @@ public interface ScxmlInvokeType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getSrcexpr
      * <em>Srcexpr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Srcexpr</em>' attribute.
      * @see #getSrcexpr()
@@ -390,7 +388,7 @@ public interface ScxmlInvokeType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Type</em>' attribute.
      * @see #isSetType()
      * @see #unsetType()
@@ -407,7 +405,7 @@ public interface ScxmlInvokeType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type</em>' attribute.
      * @see #isSetType()
@@ -421,7 +419,7 @@ public interface ScxmlInvokeType extends EObject {
      * Unsets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isSetType()
      * @see #getType()
      * @see #setType(String)
@@ -434,7 +432,7 @@ public interface ScxmlInvokeType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getType
      * <em>Type</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Type</em>' attribute is set.
      * @see #unsetType()
      * @see #getType()
@@ -451,7 +449,7 @@ public interface ScxmlInvokeType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Typeexpr</em>' attribute.
      * @see #setTypeexpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_Typeexpr()
@@ -466,7 +464,7 @@ public interface ScxmlInvokeType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getTypeexpr
      * <em>Typeexpr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Typeexpr</em>' attribute.
      * @see #getTypeexpr()
@@ -484,7 +482,7 @@ public interface ScxmlInvokeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlInvokeType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

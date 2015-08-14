@@ -113,7 +113,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "";
+    protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
@@ -133,7 +133,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected static final RGBValues LABEL_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+    protected static final RGBValues LABEL_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
@@ -176,7 +176,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      * @ordered
      */
-    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255");
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -565,19 +565,19 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (labelSize: ");
+        result.append(" (labelSize: "); //$NON-NLS-1$
         result.append(labelSize);
-        result.append(", labelFormat: ");
+        result.append(", labelFormat: "); //$NON-NLS-1$
         result.append(labelFormat);
-        result.append(", showIcon: ");
+        result.append(", showIcon: "); //$NON-NLS-1$
         result.append(showIcon);
-        result.append(", iconPath: ");
+        result.append(", iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
-        result.append(", labelColor: ");
+        result.append(", labelColor: "); //$NON-NLS-1$
         result.append(labelColor);
-        result.append(", labelAlignment: ");
+        result.append(", labelAlignment: "); //$NON-NLS-1$
         result.append(labelAlignment);
-        result.append(", backgroundColor: ");
+        result.append(", backgroundColor: "); //$NON-NLS-1$
         result.append(backgroundColor);
         result.append(')');
         return result.toString();

@@ -82,7 +82,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * @generated
      * @ordered
      */
-    protected static final String COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "1";
+    protected static final String COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getColorValueComputationExpression()
@@ -104,7 +104,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * @generated
      * @ordered
      */
-    protected static final String MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String MIN_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getMinValueComputationExpression()
@@ -126,7 +126,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * @generated
      * @ordered
      */
-    protected static final String MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "10";
+    protected static final String MAX_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "10"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getMaxValueComputationExpression()
@@ -445,13 +445,13 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", colorValueComputationExpression: ");
+        result.append(", colorValueComputationExpression: "); //$NON-NLS-1$
         result.append(colorValueComputationExpression);
-        result.append(", minValueComputationExpression: ");
+        result.append(", minValueComputationExpression: "); //$NON-NLS-1$
         result.append(minValueComputationExpression);
-        result.append(", maxValueComputationExpression: ");
+        result.append(", maxValueComputationExpression: "); //$NON-NLS-1$
         result.append(maxValueComputationExpression);
         result.append(')');
         return result.toString();

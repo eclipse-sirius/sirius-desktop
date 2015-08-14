@@ -97,7 +97,7 @@ public class DropContainerVariableItemProvider extends AbstractVariableItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DropContainerVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DropContainerVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -109,7 +109,8 @@ public class DropContainerVariableItemProvider extends AbstractVariableItemProvi
     @Override
     public String getText(Object object) {
         String label = ((DropContainerVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DropContainerVariable_type") : getString("_UI_DropContainerVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DropContainerVariable_type") : //$NON-NLS-1$
+            getString("_UI_DropContainerVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

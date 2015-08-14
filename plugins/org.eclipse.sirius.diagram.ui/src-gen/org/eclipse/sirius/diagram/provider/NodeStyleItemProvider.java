@@ -74,7 +74,8 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Style_description_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Style_description_feature", "_UI_Style_type"),
+                getString("_UI_Style_description_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Style_description_feature", "_UI_Style_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.STYLE__DESCRIPTION, true, false, true, null, null, null));
     }
 
@@ -86,8 +87,10 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addBorderSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BorderedStyle_borderSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderSize_feature", "_UI_BorderedStyle_type"),
-                DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
+                getString("_UI_BorderedStyle_borderSize_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderSize_feature", "_UI_BorderedStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -98,8 +101,10 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addBorderColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BorderedStyle_borderColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderColor_feature", "_UI_BorderedStyle_type"),
-                DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
+                getString("_UI_BorderedStyle_borderColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderColor_feature", "_UI_BorderedStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -110,8 +115,10 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addBorderLineStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BorderedStyle_borderLineStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderLineStyle_feature", "_UI_BorderedStyle_type"),
-                DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
+                getString("_UI_BorderedStyle_borderLineStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyle_borderLineStyle_feature", "_UI_BorderedStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BORDERED_STYLE__BORDER_LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -122,7 +129,8 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addLabelPositionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_NodeStyle_labelPosition_feature"), getString("_UI_PropertyDescriptor_description", "_UI_NodeStyle_labelPosition_feature", "_UI_NodeStyle_type"),
+                getString("_UI_NodeStyle_labelPosition_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_NodeStyle_labelPosition_feature", "_UI_NodeStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.NODE_STYLE__LABEL_POSITION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -134,8 +142,8 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
      */
     protected void addHideLabelByDefaultPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature", "_UI_HideLabelCapabilityStyle_type"),
+                getString("_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_HideLabelCapabilityStyle_hideLabelByDefault_feature", "_UI_HideLabelCapabilityStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -148,7 +156,7 @@ public class NodeStyleItemProvider extends LabelStyleItemProvider {
     @Override
     public String getText(Object object) {
         NodeStyle nodeStyle = (NodeStyle) object;
-        return getString("_UI_NodeStyle_type") + " " + nodeStyle.getLabelSize();
+        return getString("_UI_NodeStyle_type") + " " + nodeStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

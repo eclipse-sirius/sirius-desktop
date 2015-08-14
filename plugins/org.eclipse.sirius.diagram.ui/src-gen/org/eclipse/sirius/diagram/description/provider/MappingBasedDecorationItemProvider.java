@@ -66,8 +66,10 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
      */
     protected void addMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MappingBasedDecoration_mappings_feature"), getString("_UI_MappingBasedDecoration_mappings_description"), DescriptionPackage.Literals.MAPPING_BASED_DECORATION__MAPPINGS,
-                true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_MappingBasedDecoration_mappings_feature"), //$NON-NLS-1$
+                getString("_UI_MappingBasedDecoration_mappings_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.MAPPING_BASED_DECORATION__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,7 +80,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/MappingBasedDecoration"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/MappingBasedDecoration")); //$NON-NLS-1$
     }
 
     /**
@@ -90,7 +92,8 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
     @Override
     public String getText(Object object) {
         String label = ((MappingBasedDecoration) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_MappingBasedDecoration_type") : getString("_UI_MappingBasedDecoration_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_MappingBasedDecoration_type") : //$NON-NLS-1$
+            getString("_UI_MappingBasedDecoration_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

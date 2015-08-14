@@ -66,8 +66,10 @@ public class LabelStyleDescriptionItemProvider extends BasicLabelStyleDescriptio
      */
     protected void addLabelAlignmentPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelStyleDescription_labelAlignment_feature"), getString("_UI_LabelStyleDescription_labelAlignment_description"),
-                StylePackage.Literals.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                getString("_UI_LabelStyleDescription_labelAlignment_feature"), //$NON-NLS-1$
+                getString("_UI_LabelStyleDescription_labelAlignment_description"), //$NON-NLS-1$
+                StylePackage.Literals.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,7 +80,7 @@ public class LabelStyleDescriptionItemProvider extends BasicLabelStyleDescriptio
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -90,8 +92,8 @@ public class LabelStyleDescriptionItemProvider extends BasicLabelStyleDescriptio
     @Override
     public String getText(Object object) {
         LabelStyleDescription labelStyleDescription = (LabelStyleDescription) object;
-        return getString("_UI_LabelStyleDescription_type") + " " + labelStyleDescription.getLabelAlignment().getName() + " " + labelStyleDescription.getLabelFormat() + " "
-        + labelStyleDescription.getLabelSize();
+        return getString("_UI_LabelStyleDescription_type") + " " + labelStyleDescription.getLabelAlignment().getName() + " " + labelStyleDescription.getLabelFormat() + " " //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+                + labelStyleDescription.getLabelSize();
     }
 
     /**

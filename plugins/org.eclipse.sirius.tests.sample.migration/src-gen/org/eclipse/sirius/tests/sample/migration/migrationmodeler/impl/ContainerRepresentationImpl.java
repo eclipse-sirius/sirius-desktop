@@ -257,7 +257,7 @@ public class ContainerRepresentationImpl extends AbstractRepresentationImpl impl
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (autoSized: ");
+        result.append(" (autoSized: "); //$NON-NLS-1$
         result.append(autoSized);
         result.append(')');
         return result.toString();

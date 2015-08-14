@@ -225,7 +225,7 @@ public class ItemizedListImpl extends EObjectImpl implements ItemizedList {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (mark: ");
+        result.append(" (mark: "); //$NON-NLS-1$
         result.append(mark);
         result.append(')');
         return result.toString();

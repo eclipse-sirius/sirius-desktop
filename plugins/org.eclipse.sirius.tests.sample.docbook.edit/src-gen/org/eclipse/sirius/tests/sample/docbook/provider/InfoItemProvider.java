@@ -74,9 +74,9 @@ public class InfoItemProvider extends ItemProviderAdapter implements IEditingDom
      * @generated
      */
     protected void addDatePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Info_date_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Info_date_feature", "_UI_Info_type"), DocbookPackage.Literals.INFO__DATE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Info_date_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Info_date_feature", "_UI_Info_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.INFO__DATE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -86,9 +86,9 @@ public class InfoItemProvider extends ItemProviderAdapter implements IEditingDom
      * @generated
      */
     protected void addPubdatePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Info_pubdate_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Info_pubdate_feature", "_UI_Info_type"), DocbookPackage.Literals.INFO__PUBDATE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Info_pubdate_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Info_pubdate_feature", "_UI_Info_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.INFO__PUBDATE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -131,7 +131,7 @@ public class InfoItemProvider extends ItemProviderAdapter implements IEditingDom
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Info"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Info")); //$NON-NLS-1$
     }
 
     /**
@@ -143,7 +143,8 @@ public class InfoItemProvider extends ItemProviderAdapter implements IEditingDom
     @Override
     public String getText(Object object) {
         String label = ((Info) object).getDate();
-        return label == null || label.length() == 0 ? getString("_UI_Info_type") : getString("_UI_Info_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Info_type") : //$NON-NLS-1$
+            getString("_UI_Info_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

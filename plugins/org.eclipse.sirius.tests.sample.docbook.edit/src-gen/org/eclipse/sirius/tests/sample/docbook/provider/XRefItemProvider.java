@@ -71,9 +71,9 @@ public class XRefItemProvider extends ItemProviderAdapter implements IEditingDom
      * @generated
      */
     protected void addLinkendPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_XRef_linkend_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_XRef_linkend_feature", "_UI_XRef_type"), DocbookPackage.Literals.XREF__LINKEND, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_XRef_linkend_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_XRef_linkend_feature", "_UI_XRef_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DocbookPackage.Literals.XREF__LINKEND, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -83,7 +83,7 @@ public class XRefItemProvider extends ItemProviderAdapter implements IEditingDom
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/XRef"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/XRef")); //$NON-NLS-1$
     }
 
     /**
@@ -95,7 +95,8 @@ public class XRefItemProvider extends ItemProviderAdapter implements IEditingDom
     @Override
     public String getText(Object object) {
         String label = ((XRef) object).getLinkend();
-        return label == null || label.length() == 0 ? getString("_UI_XRef_type") : getString("_UI_XRef_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_XRef_type") : //$NON-NLS-1$
+            getString("_UI_XRef_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

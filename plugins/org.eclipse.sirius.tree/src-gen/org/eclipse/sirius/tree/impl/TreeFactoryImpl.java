@@ -79,7 +79,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
         case TreePackage.DTREE_ELEMENT_SYNCHRONIZER:
             return createDTreeElementSynchronizer();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

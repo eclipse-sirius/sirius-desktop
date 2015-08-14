@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
@@ -20,11 +20,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Boolean Datatype</b></em>', and utility methods for working with them.
  * <!-- end-user-doc --> <!-- begin-model-doc -->
- * 
+ *
  * Boolean: true or false only
- * 
+ *
  * <!-- end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getBooleanDatatype()
  * @model extendedMetaData="name='Boolean.datatype'"
  * @generated
@@ -33,7 +33,7 @@ public enum BooleanDatatype implements Enumerator {
     /**
      * The '<em><b>True</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #TRUE_VALUE
      * @generated
      * @ordered
@@ -43,7 +43,7 @@ public enum BooleanDatatype implements Enumerator {
     /**
      * The '<em><b>False</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #FALSE_VALUE
      * @generated
      * @ordered
@@ -57,7 +57,7 @@ public enum BooleanDatatype implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #TRUE
      * @model name="true"
      * @generated
@@ -72,7 +72,7 @@ public enum BooleanDatatype implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #FALSE
      * @model name="false"
      * @generated
@@ -83,7 +83,7 @@ public enum BooleanDatatype implements Enumerator {
     /**
      * An array of all the '<em><b>Boolean Datatype</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final BooleanDatatype[] VALUES_ARRAY = new BooleanDatatype[] { TRUE, FALSE, };
@@ -91,20 +91,19 @@ public enum BooleanDatatype implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Boolean Datatype</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    public static final List<BooleanDatatype> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<BooleanDatatype> VALUES = Collections.unmodifiableList(Arrays.asList(BooleanDatatype.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Boolean Datatype</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static BooleanDatatype get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            BooleanDatatype result = VALUES_ARRAY[i];
+        for (BooleanDatatype result : BooleanDatatype.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -115,12 +114,11 @@ public enum BooleanDatatype implements Enumerator {
     /**
      * Returns the '<em><b>Boolean Datatype</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static BooleanDatatype getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            BooleanDatatype result = VALUES_ARRAY[i];
+        for (BooleanDatatype result : BooleanDatatype.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -131,7 +129,7 @@ public enum BooleanDatatype implements Enumerator {
     /**
      * Returns the '<em><b>Boolean Datatype</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static BooleanDatatype get(int value) {
@@ -146,21 +144,21 @@ public enum BooleanDatatype implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -168,7 +166,7 @@ public enum BooleanDatatype implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private BooleanDatatype(int value, String name, String literal) {
@@ -179,27 +177,30 @@ public enum BooleanDatatype implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }
@@ -207,7 +208,7 @@ public enum BooleanDatatype implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

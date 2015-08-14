@@ -48,7 +48,7 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * <em>Location</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLayoutData {
@@ -147,6 +147,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * 
      * @generated
      */
+    @Override
     public int getWidth() {
         return width;
     }
@@ -156,6 +157,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * 
      * @generated
      */
+    @Override
     public void setWidth(int newWidth) {
         int oldWidth = width;
         width = newWidth;
@@ -168,6 +170,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * 
      * @generated
      */
+    @Override
     public int getHeight() {
         return height;
     }
@@ -177,6 +180,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * 
      * @generated
      */
+    @Override
     public void setHeight(int newHeight) {
         int oldHeight = height;
         height = newHeight;
@@ -189,6 +193,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * 
      * @generated
      */
+    @Override
     public EList<NodeLayoutData> getChildren() {
         if (children == null) {
             children = new EObjectContainmentEList.Resolving<NodeLayoutData>(NodeLayoutData.class, this, LayoutdataPackage.NODE_LAYOUT_DATA__CHILDREN);
@@ -201,6 +206,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * 
      * @generated
      */
+    @Override
     public EList<EdgeLayoutData> getOutgoingEdges() {
         if (outgoingEdges == null) {
             outgoingEdges = new EObjectContainmentEList.Resolving<EdgeLayoutData>(EdgeLayoutData.class, this, LayoutdataPackage.NODE_LAYOUT_DATA__OUTGOING_EDGES);
@@ -213,6 +219,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * 
      * @generated
      */
+    @Override
     public Point getLocation() {
         if (location != null && location.eIsProxy()) {
             InternalEObject oldLocation = (InternalEObject) location;
@@ -264,6 +271,7 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
      * 
      * @generated
      */
+    @Override
     public void setLocation(Point newLocation) {
         if (newLocation != location) {
             NotificationChain msgs = null;
@@ -401,26 +409,27 @@ public class NodeLayoutDataImpl extends AbstractLayoutDataImpl implements NodeLa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
         if (location != null) {
-            result.append(" (x: ");
+            result.append(" (x: "); //$NON-NLS-1$
             result.append(location.getX());
-            result.append(", y: ");
+            result.append(", y: "); //$NON-NLS-1$
             result.append(location.getY());
-            result.append(") ");
+            result.append(") "); //$NON-NLS-1$
         }
 
-        result.append(" (width: ");
+        result.append(" (width: "); //$NON-NLS-1$
         result.append(width);
-        result.append(", height: ");
+        result.append(", height: "); //$NON-NLS-1$
         result.append(height);
         result.append(')');
         return result.toString();

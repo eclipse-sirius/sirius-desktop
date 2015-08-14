@@ -110,7 +110,7 @@ public class DeleteToolItemProvider extends AbstractToolDescriptionItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteTool")); //$NON-NLS-1$
     }
 
     /**
@@ -122,7 +122,7 @@ public class DeleteToolItemProvider extends AbstractToolDescriptionItemProvider 
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((DeleteTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_DeleteTool_type") : getString("_UI_DeleteTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_DeleteTool_type") : getString("_UI_DeleteTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

@@ -69,8 +69,10 @@ public class TMessageStyleItemProvider extends TTransformerItemProvider {
      */
     protected void addStrokeColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TMessageStyle_strokeColor_feature"), getString("_UI_TMessageStyle_strokeColor_description"), TemplatePackage.Literals.TMESSAGE_STYLE__STROKE_COLOR, true, false, true,
-                null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_TMessageStyle_strokeColor_feature"), //$NON-NLS-1$
+                getString("_UI_TMessageStyle_strokeColor_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TMESSAGE_STYLE__STROKE_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -81,8 +83,10 @@ public class TMessageStyleItemProvider extends TTransformerItemProvider {
      */
     protected void addLineStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TMessageStyle_lineStyle_feature"), getString("_UI_TMessageStyle_lineStyle_description"), TemplatePackage.Literals.TMESSAGE_STYLE__LINE_STYLE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TMessageStyle_lineStyle_feature"), //$NON-NLS-1$
+                getString("_UI_TMessageStyle_lineStyle_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TMESSAGE_STYLE__LINE_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -93,8 +97,10 @@ public class TMessageStyleItemProvider extends TTransformerItemProvider {
      */
     protected void addSourceArrowPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TMessageStyle_sourceArrow_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TMessageStyle_sourceArrow_feature", "_UI_TMessageStyle_type"),
-                TemplatePackage.Literals.TMESSAGE_STYLE__SOURCE_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TMessageStyle_sourceArrow_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TMessageStyle_sourceArrow_feature", "_UI_TMessageStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TemplatePackage.Literals.TMESSAGE_STYLE__SOURCE_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -105,8 +111,10 @@ public class TMessageStyleItemProvider extends TTransformerItemProvider {
      */
     protected void addTargetArrowPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TMessageStyle_targetArrow_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TMessageStyle_targetArrow_feature", "_UI_TMessageStyle_type"),
-                TemplatePackage.Literals.TMESSAGE_STYLE__TARGET_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TMessageStyle_targetArrow_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TMessageStyle_targetArrow_feature", "_UI_TMessageStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TemplatePackage.Literals.TMESSAGE_STYLE__TARGET_ARROW, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -117,8 +125,10 @@ public class TMessageStyleItemProvider extends TTransformerItemProvider {
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TMessageStyle_labelExpression_feature"), getString("_UI_TMessageStyle_labelExpression_description"), TemplatePackage.Literals.TMESSAGE_STYLE__LABEL_EXPRESSION, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                getString("_UI_TMessageStyle_labelExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TMessageStyle_labelExpression_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TMESSAGE_STYLE__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -129,7 +139,7 @@ public class TMessageStyleItemProvider extends TTransformerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TMessageStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TMessageStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -142,7 +152,7 @@ public class TMessageStyleItemProvider extends TTransformerItemProvider {
     public String getText(Object object) {
         LineStyle labelValue = ((TMessageStyle) object).getLineStyle();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_TMessageStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TMessageStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

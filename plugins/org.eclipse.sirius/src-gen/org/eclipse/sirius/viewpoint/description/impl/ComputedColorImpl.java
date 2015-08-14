@@ -46,7 +46,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
      * @generated
      * @ordered
      */
-    protected static final String RED_EDEFAULT = "";
+    protected static final String RED_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getRed() <em>Red</em>}' attribute. <!--
@@ -66,7 +66,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
      * @generated
      * @ordered
      */
-    protected static final String GREEN_EDEFAULT = "";
+    protected static final String GREEN_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getGreen() <em>Green</em>}' attribute.
@@ -86,7 +86,7 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
      * @generated
      * @ordered
      */
-    protected static final String BLUE_EDEFAULT = "";
+    protected static final String BLUE_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBlue() <em>Blue</em>}' attribute.
@@ -279,11 +279,11 @@ public class ComputedColorImpl extends UserColorImpl implements ComputedColor {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (red: ");
+        result.append(" (red: "); //$NON-NLS-1$
         result.append(red);
-        result.append(", green: ");
+        result.append(", green: "); //$NON-NLS-1$
         result.append(green);
-        result.append(", blue: ");
+        result.append(", blue: "); //$NON-NLS-1$
         result.append(blue);
         result.append(')');
         return result.toString();

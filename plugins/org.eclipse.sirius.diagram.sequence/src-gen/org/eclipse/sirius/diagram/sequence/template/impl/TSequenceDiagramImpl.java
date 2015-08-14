@@ -402,9 +402,9 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (domainClass: ");
+        result.append(" (domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
-        result.append(", endsOrdering: ");
+        result.append(", endsOrdering: "); //$NON-NLS-1$
         result.append(endsOrdering);
         result.append(')');
         return result.toString();

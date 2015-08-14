@@ -54,7 +54,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * @generated
      * @ordered
      */
-    protected static final String WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "-1";
+    protected static final String WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getWidthComputationExpression()
@@ -76,7 +76,7 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * @generated
      * @ordered
      */
-    protected static final String HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT = "-1";
+    protected static final String HEIGHT_COMPUTATION_EXPRESSION_EDEFAULT = "-1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getHeightComputationExpression()
@@ -400,11 +400,11 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (widthComputationExpression: ");
+        result.append(" (widthComputationExpression: "); //$NON-NLS-1$
         result.append(widthComputationExpression);
-        result.append(", heightComputationExpression: ");
+        result.append(", heightComputationExpression: "); //$NON-NLS-1$
         result.append(heightComputationExpression);
-        result.append(", shape: ");
+        result.append(", shape: "); //$NON-NLS-1$
         result.append(shape);
         result.append(')');
         return result.toString();

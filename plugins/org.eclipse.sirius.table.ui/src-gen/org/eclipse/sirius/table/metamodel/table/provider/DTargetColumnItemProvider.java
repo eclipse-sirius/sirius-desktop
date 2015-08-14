@@ -77,7 +77,8 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"),
+                getString("_UI_DRepresentationElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_name_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -89,8 +90,8 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentationElement_semanticElements_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_semanticElements_feature", "_UI_DRepresentationElement_type"),
+                getString("_UI_DRepresentationElement_semanticElements_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentationElement_semanticElements_feature", "_UI_DRepresentationElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS, true, false, true, null, null, null));
     }
 
@@ -102,7 +103,8 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addTableElementMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElement_tableElementMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTableElement_tableElementMapping_feature", "_UI_DTableElement_type"),
+                getString("_UI_DTableElement_tableElementMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElement_tableElementMapping_feature", "_UI_DTableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
@@ -113,9 +115,9 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      * @generated
      */
     protected void addLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_label_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_label_feature", "_UI_DColumn_type"), TablePackage.Literals.DCOLUMN__LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_label_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_label_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DCOLUMN__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -125,8 +127,9 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      * @generated
      */
     protected void addCellsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_cells_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_cells_feature", "_UI_DColumn_type"), TablePackage.Literals.DCOLUMN__CELLS, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_cells_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_cells_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DCOLUMN__CELLS, true, false, true, null, null, null));
     }
 
     /**
@@ -137,7 +140,8 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addOriginMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DColumn_originMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DColumn_originMapping_feature", "_UI_DColumn_type"),
+                getString("_UI_DColumn_originMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_originMapping_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DCOLUMN__ORIGIN_MAPPING, true, false, true, null, null, null));
     }
 
@@ -149,7 +153,8 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      */
     protected void addOrderedCellsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DColumn_orderedCells_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DColumn_orderedCells_feature", "_UI_DColumn_type"),
+                getString("_UI_DColumn_orderedCells_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_orderedCells_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DCOLUMN__ORDERED_CELLS, false, false, false, null, null, null));
     }
 
@@ -160,9 +165,9 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      * @generated
      */
     protected void addVisiblePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_visible_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_visible_feature", "_UI_DColumn_type"), TablePackage.Literals.DCOLUMN__VISIBLE, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_visible_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_visible_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DCOLUMN__VISIBLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -172,9 +177,9 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      * @generated
      */
     protected void addWidthPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_width_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_width_feature", "_UI_DColumn_type"), TablePackage.Literals.DCOLUMN__WIDTH, true, false, false,
-                ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DColumn_width_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DColumn_width_feature", "_UI_DColumn_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TablePackage.Literals.DCOLUMN__WIDTH, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -218,7 +223,7 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTargetColumn"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTargetColumn")); //$NON-NLS-1$
     }
 
     /**
@@ -230,7 +235,8 @@ public class DTargetColumnItemProvider extends DSemanticDecoratorItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DTargetColumn) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DTargetColumn_type") : getString("_UI_DTargetColumn_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DTargetColumn_type") : //$NON-NLS-1$
+            getString("_UI_DTargetColumn_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

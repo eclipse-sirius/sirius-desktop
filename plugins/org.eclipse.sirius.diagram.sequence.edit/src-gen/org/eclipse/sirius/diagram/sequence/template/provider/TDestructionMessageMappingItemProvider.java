@@ -62,8 +62,8 @@ public class TDestructionMessageMappingItemProvider extends TSourceTargetMessage
      */
     protected void addTargetPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TDestructionMessageMapping_target_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TDestructionMessageMapping_target_feature", "_UI_TDestructionMessageMapping_type"),
+                getString("_UI_TDestructionMessageMapping_target_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TDestructionMessageMapping_target_feature", "_UI_TDestructionMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TemplatePackage.Literals.TDESTRUCTION_MESSAGE_MAPPING__TARGET, true, false, true, null, null, null));
     }
 
@@ -75,7 +75,7 @@ public class TDestructionMessageMappingItemProvider extends TSourceTargetMessage
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TDestructionMessageMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TDestructionMessageMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -87,7 +87,7 @@ public class TDestructionMessageMappingItemProvider extends TSourceTargetMessage
     @Override
     public String getText(Object object) {
         String label = ((TDestructionMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TDestructionMessageMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TDestructionMessageMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

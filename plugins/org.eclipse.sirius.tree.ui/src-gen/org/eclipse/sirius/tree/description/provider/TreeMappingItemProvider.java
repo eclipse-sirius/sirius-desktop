@@ -69,8 +69,10 @@ public class TreeMappingItemProvider extends RepresentationElementMappingItemPro
      */
     protected void addSemanticElementsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeMapping_semanticElements_feature"), getString("_UI_TreeMapping_semanticElements_description"), DescriptionPackage.Literals.TREE_MAPPING__SEMANTIC_ELEMENTS, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_TreeMapping_semanticElements_feature"), //$NON-NLS-1$
+                getString("_UI_TreeMapping_semanticElements_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_MAPPING__SEMANTIC_ELEMENTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -81,7 +83,7 @@ public class TreeMappingItemProvider extends RepresentationElementMappingItemPro
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -93,7 +95,7 @@ public class TreeMappingItemProvider extends RepresentationElementMappingItemPro
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeMapping) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeMapping_type") : getString("_UI_TreeMapping_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeMapping_type") : getString("_UI_TreeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

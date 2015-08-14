@@ -77,8 +77,10 @@ IItemPropertySource {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_name_feature"), getString("_UI_IdentifiedElement_name_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -89,8 +91,10 @@ IItemPropertySource {
      */
     protected void addLabelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_label_feature"), getString("_UI_IdentifiedElement_label_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -101,7 +105,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/IdentifiedElement"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/IdentifiedElement")); //$NON-NLS-1$
     }
 
     /**
@@ -113,7 +117,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_IdentifiedElement_type") : getString("_UI_IdentifiedElement_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_IdentifiedElement_type") : getString("_UI_IdentifiedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

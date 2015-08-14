@@ -69,10 +69,13 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
      * @generated
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DelimitedEventMapping_startingEndFinderExpression_feature"), getString("_UI_DelimitedEventMapping_startingEndFinderExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_DelimitedEventMapping_startingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_DelimitedEventMapping_startingEndFinderExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -82,10 +85,13 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
      * @generated
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_feature"), getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -96,7 +102,7 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/StateMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/StateMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -108,7 +114,7 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((StateMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_StateMapping_type") : getString("_UI_StateMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_StateMapping_type") : getString("_UI_StateMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -186,7 +192,7 @@ public class StateMappingItemProvider extends NodeMappingItemProvider {
         qualify = qualify && childObject instanceof EObject && DescriptionPackage.eINSTANCE.equals(((EObject) childObject).eClass().getEPackage());
 
         if (qualify) {
-            return getString("_UI_CreateChild_text", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

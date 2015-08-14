@@ -85,10 +85,10 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public ChapterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -96,11 +96,11 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.forms.widgets.FormToolkit)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
@@ -116,11 +116,11 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createControls(org.eclipse.ui.forms.widgets.FormToolkit,
      *      org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(final FormToolkit widgetFactory, Composite view) {
@@ -171,7 +171,7 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createParaTableComposition(FormToolkit widgetFactory, Composite parent) {
         this.para = new ReferencesTable(getDescription(DocbookViewsRepository.Chapter.Properties.para, DocbookMessages.ChapterPropertiesEditionPart_ParaLabel), new ReferencesTableListener() {
@@ -238,7 +238,7 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createSect1TableComposition(FormToolkit widgetFactory, Composite parent) {
         this.sect1 = new ReferencesTable(getDescription(DocbookViewsRepository.Chapter.Properties.sect1, DocbookMessages.ChapterPropertiesEditionPart_Sect1Label), new ReferencesTableListener() {
@@ -313,7 +313,7 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
         id.addFocusListener(new FocusAdapter() {
             /**
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -340,7 +340,7 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
         id.addKeyListener(new KeyAdapter() {
             /**
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -364,9 +364,9 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -377,7 +377,7 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#initPara(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -401,9 +401,9 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#updatePara()
-     * 
+     *
      */
     @Override
     public void updatePara() {
@@ -412,10 +412,10 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#addFilterPara(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToPara(ViewerFilter filter) {
@@ -427,10 +427,10 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#addBusinessFilterPara(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToPara(ViewerFilter filter) {
@@ -439,10 +439,10 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#isContainedInParaTable(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInParaTable(EObject element) {
@@ -451,7 +451,7 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#initSect1(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -475,9 +475,9 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#updateSect1()
-     * 
+     *
      */
     @Override
     public void updateSect1() {
@@ -486,10 +486,10 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#addFilterSect1(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToSect1(ViewerFilter filter) {
@@ -501,10 +501,10 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#addBusinessFilterSect1(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToSect1(ViewerFilter filter) {
@@ -513,10 +513,10 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#isContainedInSect1Table(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInSect1Table(EObject element) {
@@ -525,9 +525,9 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#getId()
-     * 
+     *
      */
     @Override
     public String getId() {
@@ -536,10 +536,10 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ChapterPropertiesEditionPart#setId(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setId(String newValue) {
@@ -562,7 +562,7 @@ public class ChapterPropertiesEditionPartForm extends SectionPropertiesEditingPa
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

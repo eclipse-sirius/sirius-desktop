@@ -65,8 +65,10 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
      */
     protected void addDetailDescriptionsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationElementMapping_detailDescriptions_feature"), getString("_UI_RepresentationElementMapping_detailDescriptions_description"),
-                DescriptionPackage.Literals.REPRESENTATION_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS, false, false, false, null, getString("_UI_BehaviorPropertyCategory"), null));
+                getString("_UI_RepresentationElementMapping_detailDescriptions_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationElementMapping_detailDescriptions_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.REPRESENTATION_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS, false, false, false, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -77,8 +79,10 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
      */
     protected void addNavigationDescriptionsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationElementMapping_navigationDescriptions_feature"), getString("_UI_RepresentationElementMapping_navigationDescriptions_description"),
-                DescriptionPackage.Literals.REPRESENTATION_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), null));
+                getString("_UI_RepresentationElementMapping_navigationDescriptions_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationElementMapping_navigationDescriptions_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.REPRESENTATION_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,7 +94,7 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((RepresentationElementMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_RepresentationElementMapping_type") : getString("_UI_RepresentationElementMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_RepresentationElementMapping_type") : getString("_UI_RepresentationElementMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

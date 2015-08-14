@@ -83,7 +83,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
         case ValidationPackage.VALIDATION_FIX:
             return createValidationFix();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -98,7 +98,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
         case ValidationPackage.ERROR_LEVEL:
             return createERROR_LEVELFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -113,7 +113,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
         case ValidationPackage.ERROR_LEVEL:
             return convertERROR_LEVELToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -180,7 +180,7 @@ public class ValidationFactoryImpl extends EFactoryImpl implements ValidationFac
     public ERROR_LEVEL createERROR_LEVELFromString(EDataType eDataType, String initialValue) {
         ERROR_LEVEL result = ERROR_LEVEL.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

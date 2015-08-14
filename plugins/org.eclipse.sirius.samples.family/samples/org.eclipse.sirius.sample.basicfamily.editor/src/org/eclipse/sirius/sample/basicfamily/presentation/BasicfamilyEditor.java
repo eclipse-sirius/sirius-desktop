@@ -182,7 +182,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * This is the viewer that shadows the selection in the content outline. The
      * parent relation must be correctly defined for this to work. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeViewer selectionViewer;
@@ -230,7 +230,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This keeps track of the active viewer pane, in the book. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ViewerPane currentViewerPane;
@@ -239,7 +239,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * This keeps track of the active content viewer, which may be either one of
      * the viewers in the pages or the content outline viewer. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Viewer currentViewer;
@@ -264,7 +264,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This keeps track of the selection of the editor as a whole. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ISelection editorSelection = StructuredSelection.EMPTY;
@@ -322,7 +322,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Resources that have been removed since last activation. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Resource> removedResources = new ArrayList<Resource>();
@@ -330,7 +330,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Resources that have been changed since last activation. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Resource> changedResources = new ArrayList<Resource>();
@@ -338,7 +338,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Resources that have been saved. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected Collection<Resource> savedResources = new ArrayList<Resource>();
@@ -346,7 +346,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Map to store the diagnostic associated with a resource. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
@@ -354,7 +354,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Controls whether the problem indication should be updated. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected boolean updateProblemIndication = true;
@@ -492,7 +492,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Handles activation of the editor or it's associated views. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void handleActivate() {
@@ -525,7 +525,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Handles what to do with changed resources on activation. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void handleChangedResources() {
@@ -562,7 +562,8 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      */
     protected void updateProblemIndication() {
         if (updateProblemIndication) {
-            BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "org.eclipse.sirius.sample.basicfamily.editor", 0, null, new Object[] { editingDomain.getResourceSet() });
+            BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "org.eclipse.sirius.sample.basicfamily.editor", //$NON-NLS-1$
+                    0, null, new Object[] { editingDomain.getResourceSet() });
             for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
                 if (childDiagnostic.getSeverity() != Diagnostic.OK) {
                     diagnostic.add(childDiagnostic);
@@ -605,17 +606,18 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Shows a dialog that asks if conflicting changes should be discarded. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected boolean handleDirtyConflict() {
-        return MessageDialog.openQuestion(getSite().getShell(), getString("_UI_FileConflict_label"), getString("_WARN_FileConflict"));
+        return MessageDialog.openQuestion(getSite().getShell(), getString("_UI_FileConflict_label"), //$NON-NLS-1$
+                getString("_WARN_FileConflict")); //$NON-NLS-1$
     }
 
     /**
      * This creates a model editor. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public BasicfamilyEditor() {
@@ -690,7 +692,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This sets the selection into whichever viewer is active. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setSelectionToViewer(Collection<?> collection) {
@@ -721,6 +723,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * 
      * @generated
      */
+    @Override
     public EditingDomain getEditingDomain() {
         return editingDomain;
     }
@@ -803,7 +806,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * This makes sure that one content viewer, either for the current page or
      * the outline view, if it has focus, is the current one. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setCurrentViewer(Viewer viewer) {
@@ -852,6 +855,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * 
      * @generated
      */
+    @Override
     public Viewer getViewer() {
         return currentViewer;
     }
@@ -864,8 +868,8 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * @generated
      */
     protected void createContextMenuFor(StructuredViewer viewer) {
-        MenuManager contextMenu = new MenuManager("#PopUp");
-        contextMenu.add(new Separator("additions"));
+        MenuManager contextMenu = new MenuManager("#PopUp"); //$NON-NLS-1$
+        contextMenu.add(new Separator("additions")); //$NON-NLS-1$
         contextMenu.setRemoveAllWhenShown(true);
         contextMenu.addMenuListener(this);
         Menu menu = contextMenu.createContextMenu(viewer.getControl());
@@ -914,12 +918,15 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      */
     public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
         if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
-            BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.sample.basicfamily.editor", 0, getString("_UI_CreateModelError_message", resource.getURI()),
+            BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.sample.basicfamily.editor", //$NON-NLS-1$
+                    0, getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
                     new Object[] { exception == null ? (Object) resource : exception });
             basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
             return basicDiagnostic;
         } else if (exception != null) {
-            return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.sample.basicfamily.editor", 0, getString("_UI_CreateModelError_message", resource.getURI()), new Object[] { exception });
+            return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.sample.basicfamily.editor", //$NON-NLS-1$
+                    0, getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+                    new Object[] { exception });
         } else {
             return Diagnostic.OK_INSTANCE;
         }
@@ -971,7 +978,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
 
                 createContextMenuFor(selectionViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, getString("_UI_SelectionPage_label"));
+                setPageText(pageIndex, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
             }
 
             // Create a page for the parent tree view.
@@ -1000,7 +1007,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
 
                 createContextMenuFor(parentViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, getString("_UI_ParentPage_label"));
+                setPageText(pageIndex, getString("_UI_ParentPage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the list viewer
@@ -1025,7 +1032,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
 
                 createContextMenuFor(listViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, getString("_UI_ListPage_label"));
+                setPageText(pageIndex, getString("_UI_ListPage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the tree viewer
@@ -1052,7 +1059,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
 
                 createContextMenuFor(treeViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, getString("_UI_TreePage_label"));
+                setPageText(pageIndex, getString("_UI_TreePage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the table viewer.
@@ -1081,21 +1088,21 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
 
                 TableColumn objectColumn = new TableColumn(table, SWT.NONE);
                 layout.addColumnData(new ColumnWeightData(3, 100, true));
-                objectColumn.setText(getString("_UI_ObjectColumn_label"));
+                objectColumn.setText(getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
                 objectColumn.setResizable(true);
 
                 TableColumn selfColumn = new TableColumn(table, SWT.NONE);
                 layout.addColumnData(new ColumnWeightData(2, 100, true));
-                selfColumn.setText(getString("_UI_SelfColumn_label"));
+                selfColumn.setText(getString("_UI_SelfColumn_label")); //$NON-NLS-1$
                 selfColumn.setResizable(true);
 
-                tableViewer.setColumnProperties(new String[] { "a", "b" });
+                tableViewer.setColumnProperties(new String[] { "a", "b" }); //$NON-NLS-1$ //$NON-NLS-2$
                 tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
                 tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
                 createContextMenuFor(tableViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, getString("_UI_TablePage_label"));
+                setPageText(pageIndex, getString("_UI_TablePage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the table tree viewer.
@@ -1123,22 +1130,22 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
                 tree.setLinesVisible(true);
 
                 TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-                objectColumn.setText(getString("_UI_ObjectColumn_label"));
+                objectColumn.setText(getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
                 objectColumn.setResizable(true);
                 objectColumn.setWidth(250);
 
                 TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-                selfColumn.setText(getString("_UI_SelfColumn_label"));
+                selfColumn.setText(getString("_UI_SelfColumn_label")); //$NON-NLS-1$
                 selfColumn.setResizable(true);
                 selfColumn.setWidth(200);
 
-                treeViewerWithColumns.setColumnProperties(new String[] { "a", "b" });
+                treeViewerWithColumns.setColumnProperties(new String[] { "a", "b" }); //$NON-NLS-1$ //$NON-NLS-2$
                 treeViewerWithColumns.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
                 treeViewerWithColumns.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
                 createContextMenuFor(treeViewerWithColumns);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
+                setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label")); //$NON-NLS-1$
             }
 
             getSite().getShell().getDisplay().asyncExec(new Runnable() {
@@ -1179,7 +1186,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      */
     protected void hideTabs() {
         if (getPageCount() <= 1) {
-            setPageText(0, "");
+            setPageText(0, ""); //$NON-NLS-1$
             if (getContainer() instanceof CTabFolder) {
                 ((CTabFolder) getContainer()).setTabHeight(1);
                 Point point = getContainer().getSize();
@@ -1196,7 +1203,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      */
     protected void showTabs() {
         if (getPageCount() > 1) {
-            setPageText(0, getString("_UI_SelectionPage_label"));
+            setPageText(0, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
             if (getContainer() instanceof CTabFolder) {
                 ((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
                 Point point = getContainer().getSize();
@@ -1223,7 +1230,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This is how the framework determines which interfaces we implement. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("rawtypes")
@@ -1243,7 +1250,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This accesses a cached version of the content outliner. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IContentOutlinePage getContentOutlinePage() {
@@ -1461,7 +1468,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This always returns true because it is not currently supported. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1506,6 +1513,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * 
      * @generated
      */
+    @Override
     public void gotoMarker(IMarker marker) {
         List<?> targetObjects = markerHelper.getTargetObjects(editingDomain, marker);
         if (!targetObjects.isEmpty()) {
@@ -1516,7 +1524,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This is called during startup. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1549,6 +1557,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * 
      * @generated
      */
+    @Override
     public void addSelectionChangedListener(ISelectionChangedListener listener) {
         selectionChangedListeners.add(listener);
     }
@@ -1559,6 +1568,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * 
      * @generated
      */
+    @Override
     public void removeSelectionChangedListener(ISelectionChangedListener listener) {
         selectionChangedListeners.remove(listener);
     }
@@ -1570,6 +1580,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * 
      * @generated
      */
+    @Override
     public ISelection getSelection() {
         return editorSelection;
     }
@@ -1581,6 +1592,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * 
      * @generated
      */
+    @Override
     public void setSelection(ISelection selection) {
         editorSelection = selection;
 
@@ -1603,21 +1615,21 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
                 Collection<?> collection = ((IStructuredSelection) selection).toList();
                 switch (collection.size()) {
                 case 0: {
-                    statusLineManager.setMessage(getString("_UI_NoObjectSelected"));
+                    statusLineManager.setMessage(getString("_UI_NoObjectSelected")); //$NON-NLS-1$
                     break;
                 }
                 case 1: {
                     String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());
-                    statusLineManager.setMessage(getString("_UI_SingleObjectSelected", text));
+                    statusLineManager.setMessage(getString("_UI_SingleObjectSelected", text)); //$NON-NLS-1$
                     break;
                 }
                 default: {
-                    statusLineManager.setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size())));
+                    statusLineManager.setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
                     break;
                 }
                 }
             } else {
-                statusLineManager.setMessage("");
+                statusLineManager.setMessage(""); //$NON-NLS-1$
             }
         }
     }
@@ -1625,7 +1637,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This looks up a string in the plugin's plugin.properties file. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static String getString(String key) {
@@ -1635,7 +1647,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * This looks up a string in plugin.properties, making a substitution. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static String getString(String key, Object s1) {
@@ -1646,9 +1658,10 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
      * This implements {@link org.eclipse.jface.action.IMenuListener} to help
      * fill the context menus with contributions from the Edit menu. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void menuAboutToShow(IMenuManager menuManager) {
         ((IMenuListener) getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
     }
@@ -1713,7 +1726,7 @@ public class BasicfamilyEditor extends MultiPageEditorPart implements IEditingDo
     /**
      * Returns whether the outline view should be presented to the user. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected boolean showOutlineView() {

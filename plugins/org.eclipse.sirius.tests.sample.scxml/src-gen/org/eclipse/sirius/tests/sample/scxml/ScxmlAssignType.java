@@ -4,14 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -53,7 +52,7 @@ public interface ScxmlAssignType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mixed</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlAssignType_Mixed()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -72,7 +71,7 @@ public interface ScxmlAssignType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlAssignType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -91,7 +90,7 @@ public interface ScxmlAssignType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Attr</em>' attribute.
      * @see #setAttr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlAssignType_Attr()
@@ -105,7 +104,7 @@ public interface ScxmlAssignType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getAttr
      * <em>Attr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Attr</em>' attribute.
      * @see #getAttr()
@@ -121,7 +120,7 @@ public interface ScxmlAssignType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Expr</em>' attribute.
      * @see #setExpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlAssignType_Expr()
@@ -135,7 +134,7 @@ public interface ScxmlAssignType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getExpr
      * <em>Expr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Expr</em>' attribute.
      * @see #getExpr()
@@ -151,7 +150,7 @@ public interface ScxmlAssignType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Location</em>' attribute.
      * @see #setLocation(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlAssignType_Location()
@@ -167,7 +166,7 @@ public interface ScxmlAssignType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getLocation
      * <em>Location</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Location</em>' attribute.
      * @see #getLocation()
@@ -186,7 +185,7 @@ public interface ScxmlAssignType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Type</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
      * @see #isSetType()
@@ -203,7 +202,7 @@ public interface ScxmlAssignType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
@@ -218,7 +217,7 @@ public interface ScxmlAssignType extends EObject {
      * Unsets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isSetType()
      * @see #getType()
      * @see #setType(AssignTypeDatatype)
@@ -231,7 +230,7 @@ public interface ScxmlAssignType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getType
      * <em>Type</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Type</em>' attribute is set.
      * @see #unsetType()
      * @see #getType()
@@ -250,7 +249,7 @@ public interface ScxmlAssignType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlAssignType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

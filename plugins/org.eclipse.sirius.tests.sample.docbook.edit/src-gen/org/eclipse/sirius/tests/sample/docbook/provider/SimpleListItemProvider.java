@@ -33,7 +33,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * @generated
  */
 public class SimpleListItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -67,7 +67,7 @@ public class SimpleListItemProvider extends ItemProviderAdapter implements IEdit
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SimpleList"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SimpleList")); //$NON-NLS-1$
     }
 
     /**
@@ -78,7 +78,7 @@ public class SimpleListItemProvider extends ItemProviderAdapter implements IEdit
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_SimpleList_type");
+        return getString("_UI_SimpleList_type"); //$NON-NLS-1$
     }
 
     /**

@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution.impl;
 
@@ -57,7 +57,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     /**
      * The cached value of the '{@link #getSource() <em>Source</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSource()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getTarget()
      * @generated
      * @ordered
@@ -77,7 +77,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     /**
      * The cached value of the '{@link #getFeatureMask() <em>Feature Mask</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getFeatureMask()
      * @generated
      * @ordered
@@ -88,7 +88,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
      * The cached value of the '{@link #getSubContributions()
      * <em>Sub Contributions</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSubContributions()
      * @generated
      * @ordered
@@ -98,7 +98,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     /**
      * The default value of the '{@link #getDescription() <em>Description</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
@@ -108,16 +108,16 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
     /**
      * The cached value of the '{@link #getDescription() <em>Description</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getDescription()
      * @generated
      * @ordered
      */
-    protected String description = DESCRIPTION_EDEFAULT;
+    protected String description = ContributionImpl.DESCRIPTION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContributionImpl() {
@@ -126,7 +126,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -136,23 +136,26 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObjectReference getSource() {
         if (source != null && source.eIsProxy()) {
             InternalEObject oldSource = (InternalEObject) source;
             source = (EObjectReference) eResolveProxy(oldSource);
             if (source != oldSource) {
                 InternalEObject newSource = (InternalEObject) source;
-                NotificationChain msgs = oldSource.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__SOURCE, null, null);
+                NotificationChain msgs = oldSource.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__SOURCE, null, null);
                 if (newSource.eInternalContainer() == null) {
-                    msgs = newSource.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__SOURCE, null, msgs);
+                    msgs = newSource.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__SOURCE, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContributionPackage.CONTRIBUTION__SOURCE, oldSource, source));
+                }
             }
         }
         return source;
@@ -160,7 +163,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObjectReference basicGetSource() {
@@ -169,7 +172,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetSource(EObjectReference newSource, NotificationChain msgs) {
@@ -177,52 +180,61 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
         source = newSource;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContributionPackage.CONTRIBUTION__SOURCE, oldSource, newSource);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSource(EObjectReference newSource) {
         if (newSource != source) {
             NotificationChain msgs = null;
-            if (source != null)
-                msgs = ((InternalEObject) source).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__SOURCE, null, msgs);
-            if (newSource != null)
-                msgs = ((InternalEObject) newSource).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__SOURCE, null, msgs);
+            if (source != null) {
+                msgs = ((InternalEObject) source).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__SOURCE, null, msgs);
+            }
+            if (newSource != null) {
+                msgs = ((InternalEObject) newSource).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__SOURCE, null, msgs);
+            }
             msgs = basicSetSource(newSource, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ContributionPackage.CONTRIBUTION__SOURCE, newSource, newSource));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObjectReference getTarget() {
         if (target != null && target.eIsProxy()) {
             InternalEObject oldTarget = (InternalEObject) target;
             target = (EObjectReference) eResolveProxy(oldTarget);
             if (target != oldTarget) {
                 InternalEObject newTarget = (InternalEObject) target;
-                NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__TARGET, null, null);
+                NotificationChain msgs = oldTarget.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__TARGET, null, null);
                 if (newTarget.eInternalContainer() == null) {
-                    msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__TARGET, null, msgs);
+                    msgs = newTarget.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__TARGET, null, msgs);
                 }
-                if (msgs != null)
+                if (msgs != null) {
                     msgs.dispatch();
-                if (eNotificationRequired())
+                }
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContributionPackage.CONTRIBUTION__TARGET, oldTarget, target));
+                }
             }
         }
         return target;
@@ -230,7 +242,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObjectReference basicGetTarget() {
@@ -239,7 +251,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public NotificationChain basicSetTarget(EObjectReference newTarget, NotificationChain msgs) {
@@ -247,38 +259,45 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
         target = newTarget;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ContributionPackage.CONTRIBUTION__TARGET, oldTarget, newTarget);
-            if (msgs == null)
+            if (msgs == null) {
                 msgs = notification;
-            else
+            } else {
                 msgs.add(notification);
+            }
         }
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setTarget(EObjectReference newTarget) {
         if (newTarget != target) {
             NotificationChain msgs = null;
-            if (target != null)
-                msgs = ((InternalEObject) target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__TARGET, null, msgs);
-            if (newTarget != null)
-                msgs = ((InternalEObject) newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__TARGET, null, msgs);
+            if (target != null) {
+                msgs = ((InternalEObject) target).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__TARGET, null, msgs);
+            }
+            if (newTarget != null) {
+                msgs = ((InternalEObject) newTarget).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ContributionPackage.CONTRIBUTION__TARGET, null, msgs);
+            }
             msgs = basicSetTarget(newTarget, msgs);
-            if (msgs != null)
+            if (msgs != null) {
                 msgs.dispatch();
-        } else if (eNotificationRequired())
+            }
+        } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ContributionPackage.CONTRIBUTION__TARGET, newTarget, newTarget));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<FeatureContribution> getFeatureMask() {
         if (featureMask == null) {
             featureMask = new EObjectContainmentEList.Resolving<FeatureContribution>(FeatureContribution.class, this, ContributionPackage.CONTRIBUTION__FEATURE_MASK);
@@ -288,9 +307,10 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EList<Contribution> getSubContributions() {
         if (subContributions == null) {
             subContributions = new EObjectContainmentEList.Resolving<Contribution>(Contribution.class, this, ContributionPackage.CONTRIBUTION__SUB_CONTRIBUTIONS);
@@ -300,28 +320,31 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getDescription() {
         return description;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setDescription(String newDescription) {
         String oldDescription = description;
         description = newDescription;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ContributionPackage.CONTRIBUTION__DESCRIPTION, oldDescription, description));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -341,19 +364,21 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ContributionPackage.CONTRIBUTION__SOURCE:
-            if (resolve)
+            if (resolve) {
                 return getSource();
+            }
             return basicGetSource();
         case ContributionPackage.CONTRIBUTION__TARGET:
-            if (resolve)
+            if (resolve) {
                 return getTarget();
+            }
             return basicGetTarget();
         case ContributionPackage.CONTRIBUTION__FEATURE_MASK:
             return getFeatureMask();
@@ -367,7 +392,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -397,7 +422,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -416,7 +441,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
             getSubContributions().clear();
             return;
         case ContributionPackage.CONTRIBUTION__DESCRIPTION:
-            setDescription(DESCRIPTION_EDEFAULT);
+            setDescription(ContributionImpl.DESCRIPTION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -424,7 +449,7 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -439,23 +464,24 @@ public class ContributionImpl extends EObjectImpl implements Contribution {
         case ContributionPackage.CONTRIBUTION__SUB_CONTRIBUTIONS:
             return subContributions != null && !subContributions.isEmpty();
         case ContributionPackage.CONTRIBUTION__DESCRIPTION:
-            return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+            return ContributionImpl.DESCRIPTION_EDEFAULT == null ? description != null : !ContributionImpl.DESCRIPTION_EDEFAULT.equals(description);
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (description: ");
+        result.append(" (description: "); //$NON-NLS-1$
         result.append(description);
         result.append(')');
         return result.toString();

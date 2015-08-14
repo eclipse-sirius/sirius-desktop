@@ -60,7 +60,7 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DestructionMessageMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DestructionMessageMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -72,7 +72,7 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((DestructionMessageMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_DestructionMessageMapping_type") : getString("_UI_DestructionMessageMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DestructionMessageMapping_type") : getString("_UI_DestructionMessageMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

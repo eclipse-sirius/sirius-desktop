@@ -68,8 +68,10 @@ public class GroupItemProvider extends DModelElementItemProvider {
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DocumentedElement_documentation_feature"), getString("_UI_DocumentedElement_documentation_description"), DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION,
-                true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), null));
+                getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,9 +81,10 @@ public class GroupItemProvider extends DModelElementItemProvider {
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Group_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Group_name_feature", "_UI_Group_type"), DescriptionPackage.Literals.GROUP__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Group_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Group_name_feature", "_UI_Group_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.GROUP__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -125,7 +128,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Group"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Group")); //$NON-NLS-1$
     }
 
     /**
@@ -137,7 +140,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((Group) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Group_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_Group_type") : label; //$NON-NLS-1$
     }
 
     /**

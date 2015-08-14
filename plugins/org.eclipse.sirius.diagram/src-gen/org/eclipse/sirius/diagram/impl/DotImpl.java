@@ -46,7 +46,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * @generated
      * @ordered
      */
-    protected static final String STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "2";
+    protected static final String STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "2"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getStrokeSizeComputationExpression()
@@ -68,7 +68,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * @generated
      * @ordered
      */
-    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136");
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -229,9 +229,9 @@ public class DotImpl extends NodeStyleImpl implements Dot {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (strokeSizeComputationExpression: ");
+        result.append(" (strokeSizeComputationExpression: "); //$NON-NLS-1$
         result.append(strokeSizeComputationExpression);
-        result.append(", backgroundColor: ");
+        result.append(", backgroundColor: "); //$NON-NLS-1$
         result.append(backgroundColor);
         result.append(')');
         return result.toString();

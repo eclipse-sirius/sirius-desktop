@@ -42,7 +42,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
      * @generated
      * @ordered
      */
-    protected static final String END_USER_DOCUMENTATION_EDEFAULT = "";
+    protected static final String END_USER_DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getEndUserDocumentation()
@@ -169,7 +169,7 @@ public abstract class EndUserDocumentedElementImpl extends MinimalEObjectImpl.Co
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (endUserDocumentation: ");
+        result.append(" (endUserDocumentation: "); //$NON-NLS-1$
         result.append(endUserDocumentation);
         result.append(')');
         return result.toString();

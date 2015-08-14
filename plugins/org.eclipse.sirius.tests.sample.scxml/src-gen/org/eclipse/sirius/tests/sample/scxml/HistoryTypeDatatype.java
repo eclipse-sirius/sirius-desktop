@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>History Type Datatype</b></em>', and utility methods for working with
  * them. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getHistoryTypeDatatype()
  * @model extendedMetaData="name='HistoryType.datatype'"
  * @generated
@@ -29,7 +29,7 @@ public enum HistoryTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Shallow</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #SHALLOW_VALUE
      * @generated
      * @ordered
@@ -39,7 +39,7 @@ public enum HistoryTypeDatatype implements Enumerator {
     /**
      * The '<em><b>Deep</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #DEEP_VALUE
      * @generated
      * @ordered
@@ -53,7 +53,7 @@ public enum HistoryTypeDatatype implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #SHALLOW
      * @model name="shallow"
      * @generated
@@ -68,7 +68,7 @@ public enum HistoryTypeDatatype implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #DEEP
      * @model name="deep"
      * @generated
@@ -79,7 +79,7 @@ public enum HistoryTypeDatatype implements Enumerator {
     /**
      * An array of all the '<em><b>History Type Datatype</b></em>' enumerators.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final HistoryTypeDatatype[] VALUES_ARRAY = new HistoryTypeDatatype[] { SHALLOW, DEEP, };
@@ -87,20 +87,19 @@ public enum HistoryTypeDatatype implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>History Type Datatype</b></em>
      * ' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    public static final List<HistoryTypeDatatype> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<HistoryTypeDatatype> VALUES = Collections.unmodifiableList(Arrays.asList(HistoryTypeDatatype.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>History Type Datatype</b></em>' literal with the
      * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static HistoryTypeDatatype get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            HistoryTypeDatatype result = VALUES_ARRAY[i];
+        for (HistoryTypeDatatype result : HistoryTypeDatatype.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -111,12 +110,11 @@ public enum HistoryTypeDatatype implements Enumerator {
     /**
      * Returns the '<em><b>History Type Datatype</b></em>' literal with the
      * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static HistoryTypeDatatype getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            HistoryTypeDatatype result = VALUES_ARRAY[i];
+        for (HistoryTypeDatatype result : HistoryTypeDatatype.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -127,7 +125,7 @@ public enum HistoryTypeDatatype implements Enumerator {
     /**
      * Returns the '<em><b>History Type Datatype</b></em>' literal with the
      * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static HistoryTypeDatatype get(int value) {
@@ -142,21 +140,21 @@ public enum HistoryTypeDatatype implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -164,7 +162,7 @@ public enum HistoryTypeDatatype implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private HistoryTypeDatatype(int value, String name, String literal) {
@@ -175,27 +173,30 @@ public enum HistoryTypeDatatype implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }
@@ -203,7 +204,7 @@ public enum HistoryTypeDatatype implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

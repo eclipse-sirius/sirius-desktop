@@ -79,8 +79,10 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemMapping_domainClass_feature"), getString("_UI_TreeItemMapping_domainClass_description"), DescriptionPackage.Literals.TREE_ITEM_MAPPING__DOMAIN_CLASS, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TreeItemMapping_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_TreeItemMapping_domainClass_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_ITEM_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,11 +92,11 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemMapping_preconditionExpression_feature"), getString("_UI_TreeItemMapping_preconditionExpression_description"),
-                DescriptionPackage.Literals.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_AdvancedPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_TreeItemMapping_preconditionExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TreeItemMapping_preconditionExpression_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_ITEM_MAPPING__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -104,11 +106,13 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemMapping_semanticCandidatesExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TreeItemMapping_semanticCandidatesExpression_feature", "_UI_TreeItemMapping_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_TreeItemMapping_semanticCandidatesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TreeItemMapping_semanticCandidatesExpression_feature", "_UI_TreeItemMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.TREE_ITEM_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -119,8 +123,10 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      */
     protected void addReusedTreeItemMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemMapping_reusedTreeItemMappings_feature"), getString("_UI_TreeItemMapping_reusedTreeItemMappings_description"),
-                DescriptionPackage.Literals.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_TreeItemMapping_reusedTreeItemMappings_feature"), //$NON-NLS-1$
+                getString("_UI_TreeItemMapping_reusedTreeItemMappings_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -131,8 +137,10 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      */
     protected void addSpecializePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemMapping_specialize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TreeItemMapping_specialize_feature", "_UI_TreeItemMapping_type"),
-                DescriptionPackage.Literals.TREE_ITEM_MAPPING__SPECIALIZE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TreeItemMapping_specialize_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TreeItemMapping_specialize_feature", "_UI_TreeItemMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.TREE_ITEM_MAPPING__SPECIALIZE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -184,7 +192,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -196,7 +204,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_TreeMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TreeMapping_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -251,7 +259,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider {
 
         TreeItemMapping newItemMapping = DescriptionFactory.eINSTANCE.createTreeItemMapping();
         newItemMapping.setDefaultStyle(DescriptionFactory.eINSTANCE.createTreeItemStyleDescription());
-        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents");
+        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS, newItemMapping));
 

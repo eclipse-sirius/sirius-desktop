@@ -67,8 +67,10 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
      */
     protected void addIconPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MenuItemDescription_icon_feature"), getString("_UI_PropertyDescriptor_description", "_UI_MenuItemDescription_icon_feature", "_UI_MenuItemDescription_type"),
-                ToolPackage.Literals.MENU_ITEM_DESCRIPTION__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_MenuItemDescription_icon_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MenuItemDescription_icon_feature", "_UI_MenuItemDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.MENU_ITEM_DESCRIPTION__ICON, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -80,7 +82,7 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((MenuItemDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_MenuItemDescription_type") : getString("_UI_MenuItemDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_MenuItemDescription_type") : getString("_UI_MenuItemDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

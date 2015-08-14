@@ -66,7 +66,7 @@ public class AuditFactoryImpl extends EFactoryImpl implements AuditFactory {
         case AuditPackage.TEMPLATE_INFORMATION_SECTION:
             return createTemplateInformationSection();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

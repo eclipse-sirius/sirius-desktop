@@ -31,7 +31,7 @@ public interface LayoutdataFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Node Layout Data</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Node Layout Data</em>'.
      * @generated
      */
@@ -40,7 +40,7 @@ public interface LayoutdataFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Edge Layout Data</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Edge Layout Data</em>'.
      * @generated
      */

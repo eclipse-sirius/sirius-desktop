@@ -72,9 +72,10 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
      */
     protected void addReconnectionKindPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ReconnectEdgeDescription_reconnectionKind_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ReconnectEdgeDescription_reconnectionKind_feature", "_UI_ReconnectEdgeDescription_type"),
-                ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ReconnectEdgeDescription_reconnectionKind_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ReconnectEdgeDescription_reconnectionKind_feature", "_UI_ReconnectEdgeDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__RECONNECTION_KIND, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -124,7 +125,7 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReconnectEdgeDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReconnectEdgeDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -212,7 +213,8 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
         boolean qualify = childFeature == ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__ELEMENT || childFeature == ToolPackage.Literals.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

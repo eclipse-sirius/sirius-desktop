@@ -70,7 +70,8 @@ IItemPropertySource {
      */
     protected void addDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DFeatureExtension_description_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DFeatureExtension_description_feature", "_UI_DFeatureExtension_type"),
+                getString("_UI_DFeatureExtension_description_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DFeatureExtension_description_feature", "_UI_DFeatureExtension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DFEATURE_EXTENSION__DESCRIPTION, true, false, true, null, null, null));
     }
 
@@ -82,7 +83,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_DFeatureExtension_type");
+        return getString("_UI_DFeatureExtension_type"); //$NON-NLS-1$
     }
 
     /**

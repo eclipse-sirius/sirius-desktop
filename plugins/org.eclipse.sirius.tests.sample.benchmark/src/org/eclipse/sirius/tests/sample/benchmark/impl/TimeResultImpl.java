@@ -46,7 +46,7 @@ import org.eclipse.sirius.tests.sample.benchmark.Variant;
  * <em>Properties</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TimeResultImpl extends EObjectImpl implements TimeResult {
@@ -383,9 +383,9 @@ public class TimeResultImpl extends EObjectImpl implements TimeResult {
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (elapsedTime: ");
+        result.append(" (elapsedTime: "); //$NON-NLS-1$
         result.append(elapsedTime);
-        result.append(", elapsedMaxTime: ");
+        result.append(", elapsedMaxTime: "); //$NON-NLS-1$
         result.append(elapsedMaxTime);
         result.append(')');
         return result.toString();

@@ -41,7 +41,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
      * @generated
      * @ordered
      */
-    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "252,233,79");
+    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "252,233,79"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -166,7 +166,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (color: ");
+        result.append(" (color: "); //$NON-NLS-1$
         result.append(color);
         result.append(')');
         return result.toString();

@@ -70,8 +70,10 @@ public class TableVariableItemProvider extends AbstractVariableItemProvider {
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TableVariable_documentation_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TableVariable_documentation_feature", "_UI_TableVariable_type"),
-                DescriptionPackage.Literals.TABLE_VARIABLE__DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), null));
+                getString("_UI_TableVariable_documentation_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TableVariable_documentation_feature", "_UI_TableVariable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.TABLE_VARIABLE__DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -115,7 +117,7 @@ public class TableVariableItemProvider extends AbstractVariableItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TableVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TableVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -127,7 +129,7 @@ public class TableVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TableVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TableVariable_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TableVariable_type") : label; //$NON-NLS-1$
     }
 
     /**

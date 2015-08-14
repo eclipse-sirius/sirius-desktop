@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution.impl;
 
@@ -41,7 +41,7 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
     /**
      * The default value of the '{@link #getOrigin() <em>Origin</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOrigin()
      * @generated
      * @ordered
@@ -51,17 +51,17 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
     /**
      * The cached value of the '{@link #getOrigin() <em>Origin</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOrigin()
      * @generated
      * @ordered
      */
-    protected String origin = ORIGIN_EDEFAULT;
+    protected String origin = ContributionPointImpl.ORIGIN_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getContributed() <em>Contributed</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getContributed()
      * @generated
      * @ordered
@@ -70,7 +70,7 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ContributionPointImpl() {
@@ -79,7 +79,7 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -89,37 +89,42 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getOrigin() {
         return origin;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setOrigin(String newOrigin) {
         String oldOrigin = origin;
         origin = newOrigin;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ContributionPackage.CONTRIBUTION_POINT__ORIGIN, oldOrigin, origin));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public EObject getContributed() {
         if (contributed != null && contributed.eIsProxy()) {
             InternalEObject oldContributed = (InternalEObject) contributed;
             contributed = eResolveProxy(oldContributed);
             if (contributed != oldContributed) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, ContributionPackage.CONTRIBUTION_POINT__CONTRIBUTED, oldContributed, contributed));
+                }
             }
         }
         return contributed;
@@ -127,7 +132,7 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EObject basicGetContributed() {
@@ -136,19 +141,21 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setContributed(EObject newContributed) {
         EObject oldContributed = contributed;
         contributed = newContributed;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, ContributionPackage.CONTRIBUTION_POINT__CONTRIBUTED, oldContributed, contributed));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -157,8 +164,9 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
         case ContributionPackage.CONTRIBUTION_POINT__ORIGIN:
             return getOrigin();
         case ContributionPackage.CONTRIBUTION_POINT__CONTRIBUTED:
-            if (resolve)
+            if (resolve) {
                 return getContributed();
+            }
             return basicGetContributed();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -166,7 +174,7 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,14 +192,14 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case ContributionPackage.CONTRIBUTION_POINT__ORIGIN:
-            setOrigin(ORIGIN_EDEFAULT);
+            setOrigin(ContributionPointImpl.ORIGIN_EDEFAULT);
             return;
         case ContributionPackage.CONTRIBUTION_POINT__CONTRIBUTED:
             setContributed((EObject) null);
@@ -202,14 +210,14 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ContributionPackage.CONTRIBUTION_POINT__ORIGIN:
-            return ORIGIN_EDEFAULT == null ? origin != null : !ORIGIN_EDEFAULT.equals(origin);
+            return ContributionPointImpl.ORIGIN_EDEFAULT == null ? origin != null : !ContributionPointImpl.ORIGIN_EDEFAULT.equals(origin);
         case ContributionPackage.CONTRIBUTION_POINT__CONTRIBUTED:
             return contributed != null;
         }
@@ -218,16 +226,17 @@ public class ContributionPointImpl extends EObjectImpl implements ContributionPo
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (origin: ");
+        result.append(" (origin: "); //$NON-NLS-1$
         result.append(origin);
         result.append(')');
         return result.toString();

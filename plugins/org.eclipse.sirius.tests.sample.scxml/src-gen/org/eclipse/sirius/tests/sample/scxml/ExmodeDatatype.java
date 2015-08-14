@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
@@ -20,12 +20,12 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Exmode Datatype</b></em>', and utility methods for working with them.
  * <!-- end-user-doc --> <!-- begin-model-doc -->
- * 
+ *
  * Describes the processor execution mode for this document, being either "lax"
  * or "strict".
- * 
+ *
  * <!-- end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getExmodeDatatype()
  * @model extendedMetaData="name='Exmode.datatype'"
  * @generated
@@ -34,7 +34,7 @@ public enum ExmodeDatatype implements Enumerator {
     /**
      * The '<em><b>Lax</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #LAX_VALUE
      * @generated
      * @ordered
@@ -44,7 +44,7 @@ public enum ExmodeDatatype implements Enumerator {
     /**
      * The '<em><b>Strict</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #STRICT_VALUE
      * @generated
      * @ordered
@@ -58,7 +58,7 @@ public enum ExmodeDatatype implements Enumerator {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #LAX
      * @model name="lax"
      * @generated
@@ -73,7 +73,7 @@ public enum ExmodeDatatype implements Enumerator {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #STRICT
      * @model name="strict"
      * @generated
@@ -84,7 +84,7 @@ public enum ExmodeDatatype implements Enumerator {
     /**
      * An array of all the '<em><b>Exmode Datatype</b></em>' enumerators. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private static final ExmodeDatatype[] VALUES_ARRAY = new ExmodeDatatype[] { LAX, STRICT, };
@@ -92,20 +92,19 @@ public enum ExmodeDatatype implements Enumerator {
     /**
      * A public read-only list of all the '<em><b>Exmode Datatype</b></em>'
      * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    public static final List<ExmodeDatatype> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+    public static final List<ExmodeDatatype> VALUES = Collections.unmodifiableList(Arrays.asList(ExmodeDatatype.VALUES_ARRAY));
 
     /**
      * Returns the '<em><b>Exmode Datatype</b></em>' literal with the specified
      * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ExmodeDatatype get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ExmodeDatatype result = VALUES_ARRAY[i];
+        for (ExmodeDatatype result : ExmodeDatatype.VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -116,12 +115,11 @@ public enum ExmodeDatatype implements Enumerator {
     /**
      * Returns the '<em><b>Exmode Datatype</b></em>' literal with the specified
      * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ExmodeDatatype getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            ExmodeDatatype result = VALUES_ARRAY[i];
+        for (ExmodeDatatype result : ExmodeDatatype.VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -132,7 +130,7 @@ public enum ExmodeDatatype implements Enumerator {
     /**
      * Returns the '<em><b>Exmode Datatype</b></em>' literal with the specified
      * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ExmodeDatatype get(int value) {
@@ -147,21 +145,21 @@ public enum ExmodeDatatype implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     private final String literal;
@@ -169,7 +167,7 @@ public enum ExmodeDatatype implements Enumerator {
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     private ExmodeDatatype(int value, String name, String literal) {
@@ -180,27 +178,30 @@ public enum ExmodeDatatype implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public int getValue() {
         return value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getLiteral() {
         return literal;
     }
@@ -208,7 +209,7 @@ public enum ExmodeDatatype implements Enumerator {
     /**
      * Returns the literal value of the enumerator, which is its string
      * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

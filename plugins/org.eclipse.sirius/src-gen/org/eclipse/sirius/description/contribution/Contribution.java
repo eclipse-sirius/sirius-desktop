@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution;
 
@@ -52,7 +52,7 @@ public interface Contribution extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Source</em>' containment reference.
      * @see #setSource(EObjectReference)
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution_Source()
@@ -66,7 +66,7 @@ public interface Contribution extends EObject {
      * {@link org.eclipse.sirius.description.contribution.Contribution#getSource
      * <em>Source</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Source</em>' containment reference.
      * @see #getSource()
@@ -82,7 +82,7 @@ public interface Contribution extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' containment reference.
      * @see #setTarget(EObjectReference)
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution_Target()
@@ -96,7 +96,7 @@ public interface Contribution extends EObject {
      * {@link org.eclipse.sirius.description.contribution.Contribution#getTarget
      * <em>Target</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target</em>' containment reference.
      * @see #getTarget()
@@ -114,7 +114,7 @@ public interface Contribution extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Feature Mask</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution_FeatureMask()
@@ -134,7 +134,7 @@ public interface Contribution extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sub Contributions</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution_SubContributions()
@@ -151,7 +151,7 @@ public interface Contribution extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Description</em>' attribute.
      * @see #setDescription(String)
      * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution_Description()
@@ -165,7 +165,7 @@ public interface Contribution extends EObject {
      * {@link org.eclipse.sirius.description.contribution.Contribution#getDescription
      * <em>Description</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Description</em>' attribute.
      * @see #getDescription()

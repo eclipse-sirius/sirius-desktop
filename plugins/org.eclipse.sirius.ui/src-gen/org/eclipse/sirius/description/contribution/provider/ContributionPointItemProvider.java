@@ -32,10 +32,8 @@ import org.eclipse.sirius.description.contribution.ContributionPoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.description.contribution.ContributionPoint} object.
+ * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.ContributionPoint} object.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ContributionPointItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
@@ -74,9 +72,19 @@ public class ContributionPointItemProvider extends ItemProviderAdapter implement
      * @generated
      */
     protected void addOriginPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContributionPoint_origin_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ContributionPoint_origin_feature", "_UI_ContributionPoint_type"),
-                ContributionPackage.Literals.CONTRIBUTION_POINT__ORIGIN, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ContributionPoint_origin_feature"), //$NON-NLS-1$
+                 getString("_UI_PropertyDescriptor_description", "_UI_ContributionPoint_origin_feature", "_UI_ContributionPoint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                 ContributionPackage.Literals.CONTRIBUTION_POINT__ORIGIN,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
     }
 
     /**
@@ -86,40 +94,51 @@ public class ContributionPointItemProvider extends ItemProviderAdapter implement
      * @generated
      */
     protected void addContributedPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContributionPoint_contributed_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ContributionPoint_contributed_feature", "_UI_ContributionPoint_type"),
-                ContributionPackage.Literals.CONTRIBUTION_POINT__CONTRIBUTED, true, false, true, null, null, null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ContributionPoint_contributed_feature"), //$NON-NLS-1$
+                 getString("_UI_PropertyDescriptor_description", "_UI_ContributionPoint_contributed_feature", "_UI_ContributionPoint_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                 ContributionPackage.Literals.CONTRIBUTION_POINT__CONTRIBUTED,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
     }
 
     /**
-     * This returns ContributionPoint.gif. <!-- begin-user-doc --> <!--
+     * This returns ContributionPoint.gif.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContributionPoint"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContributionPoint")); //$NON-NLS-1$
     }
 
     /**
-     * This returns the label text for the adapted class. <!-- begin-user-doc
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ContributionPoint) object).getOrigin();
-        return label == null || label.length() == 0 ? getString("_UI_ContributionPoint_type") : getString("_UI_ContributionPoint_type") + " " + label;
+        String label = ((ContributionPoint)object).getOrigin();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ContributionPoint_type") : //$NON-NLS-1$
+            getString("_UI_ContributionPoint_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -127,9 +146,9 @@ public class ContributionPointItemProvider extends ItemProviderAdapter implement
         updateChildren(notification);
 
         switch (notification.getFeatureID(ContributionPoint.class)) {
-        case ContributionPackage.CONTRIBUTION_POINT__ORIGIN:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case ContributionPackage.CONTRIBUTION_POINT__ORIGIN:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }

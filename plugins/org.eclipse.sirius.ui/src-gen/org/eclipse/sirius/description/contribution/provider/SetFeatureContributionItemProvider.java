@@ -21,10 +21,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.description.contribution.SetFeatureContribution;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.description.contribution.SetFeatureContribution}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.SetFeatureContribution} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class SetFeatureContributionItemProvider extends FeatureContributionItemProvider {
@@ -54,14 +52,14 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
     }
 
     /**
-     * This returns SetFeatureContribution.gif. <!-- begin-user-doc --> <!--
+     * This returns SetFeatureContribution.gif.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SetFeatureContribution"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SetFeatureContribution")); //$NON-NLS-1$
     }
 
     /**
@@ -72,10 +70,10 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_SetFeatureContribution_type");
+        String result = getString("_UI_SetFeatureContribution_type"); //$NON-NLS-1$
         if (object instanceof SetFeatureContribution) {
             SetFeatureContribution sfc = (SetFeatureContribution) object;
-            result += " target." + featureString(sfc.getTargetFeature()) + " = source." + featureString(sfc.getSourceFeature());
+            result += " target." + featureString(sfc.getTargetFeature()) + " = source." + featureString(sfc.getSourceFeature()); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return result;
     }
@@ -84,16 +82,15 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
         if (feature != null) {
             return feature.getName();
         } else {
-            return "[unset]";
+            return "[unset]"; //$NON-NLS-1$
         }
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override

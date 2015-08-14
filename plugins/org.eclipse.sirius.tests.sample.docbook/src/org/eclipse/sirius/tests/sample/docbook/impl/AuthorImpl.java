@@ -278,11 +278,11 @@ public class AuthorImpl extends EObjectImpl implements Author {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (email: ");
+        result.append(" (email: "); //$NON-NLS-1$
         result.append(email);
-        result.append(", personname: ");
+        result.append(", personname: "); //$NON-NLS-1$
         result.append(personname);
-        result.append(", address: ");
+        result.append(", address: "); //$NON-NLS-1$
         result.append(address);
         result.append(')');
         return result.toString();

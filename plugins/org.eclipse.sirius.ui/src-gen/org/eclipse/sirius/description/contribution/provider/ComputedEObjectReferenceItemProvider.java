@@ -33,10 +33,8 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
@@ -74,22 +72,30 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
      * @generated
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ComputedEObjectReference_valueExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ComputedEObjectReference_valueExpression_feature", "_UI_ComputedEObjectReference_type"),
-                ContributionPackage.Literals.COMPUTED_EOBJECT_REFERENCE__VALUE_EXPRESSION, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
-                null));
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ComputedEObjectReference_valueExpression_feature"), //$NON-NLS-1$
+                 getString("_UI_PropertyDescriptor_description", "_UI_ComputedEObjectReference_valueExpression_feature", "_UI_ComputedEObjectReference_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                 ContributionPackage.Literals.COMPUTED_EOBJECT_REFERENCE__VALUE_EXPRESSION,
+                 true,
+                 false,
+                 true,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                 null));
     }
 
     /**
-     * This returns ComputedEObjectReference.gif. <!-- begin-user-doc --> <!--
+     * This returns ComputedEObjectReference.gif.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ComputedEObjectReference"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ComputedEObjectReference")); //$NON-NLS-1$
     }
 
     /**
@@ -100,27 +106,26 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_ComputedEObjectReference_type");
+        String result = getString("_UI_ComputedEObjectReference_type"); //$NON-NLS-1$
         if (object instanceof ComputedEObjectReference) {
             ComputedEObjectReference ref = (ComputedEObjectReference) object;
             if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Source()) {
-                result = "Source " + result;
+                result = "Source " + result; //$NON-NLS-1$
             } else if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Target()) {
-                result = "Target " + result;
+                result = "Target " + result; //$NON-NLS-1$
             }
             if (!StringUtil.isEmpty(ref.getValueExpression())) {
-                result = result + " to: " + ref.getValueExpression();
+                result = result + " to: " + ref.getValueExpression(); //$NON-NLS-1$
             }
         }
         return result;
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -128,9 +133,9 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
         updateChildren(notification);
 
         switch (notification.getFeatureID(ComputedEObjectReference.class)) {
-        case ContributionPackage.COMPUTED_EOBJECT_REFERENCE__VALUE_EXPRESSION:
-            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-            return;
+            case ContributionPackage.COMPUTED_EOBJECT_REFERENCE__VALUE_EXPRESSION:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
         }
         super.notifyChanged(notification);
     }

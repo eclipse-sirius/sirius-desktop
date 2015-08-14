@@ -66,8 +66,8 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TConditionalExecutionStyle_predicateExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TConditionalExecutionStyle_predicateExpression_feature", "_UI_TConditionalExecutionStyle_type"),
+                getString("_UI_TConditionalExecutionStyle_predicateExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TConditionalExecutionStyle_predicateExpression_feature", "_UI_TConditionalExecutionStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TemplatePackage.Literals.TCONDITIONAL_EXECUTION_STYLE__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -112,7 +112,7 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TConditionalExecutionStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TConditionalExecutionStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -124,7 +124,7 @@ public class TConditionalExecutionStyleItemProvider extends TTransformerItemProv
     @Override
     public String getText(Object object) {
         String label = ((TConditionalExecutionStyle) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TConditionalExecutionStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TConditionalExecutionStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

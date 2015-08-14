@@ -148,7 +148,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.DANNOTATION_ENTRY:
             return createDAnnotationEntry();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -175,7 +175,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.URI:
             return createURIFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -202,7 +202,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.URI:
             return convertURIToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -220,7 +220,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     private SytemColorsPalette forgeSystemPaletteProxy() {
         final EObject environment = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSytemColorsPalette());
-        URI paletteURI = URI.createURI(SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors");
+        URI paletteURI = URI.createURI(SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors"); //$NON-NLS-1$
         ((InternalEObject) environment).eSetProxyURI(paletteURI);
         return ((SytemColorsPalette) environment);
     }
@@ -376,7 +376,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     @Override
     public ColorStep createColorStep() {
         ColorStepImpl colorStep = new ColorStepImpl();
-        FixedColor defaultColor = EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("black");
+        FixedColor defaultColor = EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("black"); //$NON-NLS-1$
         colorStep.setAssociatedColor(defaultColor);
         return colorStep;
     }
@@ -488,7 +488,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public Position createPositionFromString(EDataType eDataType, String initialValue) {
         Position result = Position.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -510,7 +510,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public SystemColors createSystemColorsFromString(EDataType eDataType, String initialValue) {
         SystemColors result = SystemColors.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

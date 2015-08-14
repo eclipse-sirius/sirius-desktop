@@ -4,16 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -66,7 +64,7 @@ public interface ScxmlFinalizeType extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Core Executablecontent</em>'
      *         attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_ScxmlCoreExecutablecontent()
@@ -86,7 +84,7 @@ public interface ScxmlFinalizeType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -107,7 +105,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Raise</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_Raise()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -127,7 +125,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>If</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_If()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -147,7 +145,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreach</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_Foreach()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -167,7 +165,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Send</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_Send()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -187,7 +185,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Script</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_Script()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -207,7 +205,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Assign</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_Assign()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -227,7 +225,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Log</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_Log()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -247,7 +245,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cancel</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_Cancel()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -267,7 +265,7 @@ public interface ScxmlFinalizeType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlFinalizeType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

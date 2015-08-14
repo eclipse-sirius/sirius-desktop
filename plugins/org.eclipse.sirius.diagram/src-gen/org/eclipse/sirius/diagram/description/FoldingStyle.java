@@ -35,7 +35,7 @@ public enum FoldingStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    NONE_LITERAL(0, "NONE", "NONE"),
+    NONE_LITERAL(0, "NONE", "NONE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>SOURCE</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -45,7 +45,7 @@ public enum FoldingStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    SOURCE_LITERAL(1, "SOURCE", "SOURCE"),
+    SOURCE_LITERAL(1, "SOURCE", "SOURCE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>TARGET</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -55,7 +55,7 @@ public enum FoldingStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    TARGET_LITERAL(2, "TARGET", "TARGET");
+    TARGET_LITERAL(2, "TARGET", "TARGET"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>NONE</b></em>' literal value. <!-- begin-user-doc -->

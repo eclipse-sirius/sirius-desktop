@@ -65,7 +65,7 @@ public class LinkItemProvider extends ItemProviderAdapter implements IEditingDom
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Link"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Link")); //$NON-NLS-1$
     }
 
     /**
@@ -76,7 +76,7 @@ public class LinkItemProvider extends ItemProviderAdapter implements IEditingDom
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_Link_type");
+        return getString("_UI_Link_type"); //$NON-NLS-1$
     }
 
     /**

@@ -36,7 +36,7 @@ public enum LabelPosition implements Enumerator {
      * @generated
      * @ordered
      */
-    BORDER_LITERAL(0, "border", "border"),
+    BORDER_LITERAL(0, "border", "border"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Node</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -46,7 +46,7 @@ public enum LabelPosition implements Enumerator {
      * @generated
      * @ordered
      */
-    NODE_LITERAL(1, "node", "node");
+    NODE_LITERAL(1, "node", "node"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Border</b></em>' literal value. <!-- begin-user-doc --> <!--

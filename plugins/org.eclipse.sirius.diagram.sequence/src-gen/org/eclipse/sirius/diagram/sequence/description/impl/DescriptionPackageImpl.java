@@ -698,76 +698,85 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         observationPointMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getNodeMapping());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(sequenceDiagramDescriptionEClass, SequenceDiagramDescription.class, "SequenceDiagramDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getSequenceDiagramDescription_EndsOrdering(), theDescriptionPackage_2.getInterpretedExpression(), "endsOrdering", null, 1, 1, SequenceDiagramDescription.class,
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEAttribute(getSequenceDiagramDescription_InstanceRolesOrdering(), theDescriptionPackage_2.getInterpretedExpression(), "instanceRolesOrdering", null, 1, 1,
-                SequenceDiagramDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEClass(sequenceDiagramDescriptionEClass, SequenceDiagramDescription.class,
+                "SequenceDiagramDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getSequenceDiagramDescription_EndsOrdering(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "endsOrdering", null, 1, 1, SequenceDiagramDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(
+                getSequenceDiagramDescription_InstanceRolesOrdering(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "instanceRolesOrdering", null, 1, 1, SequenceDiagramDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(instanceRoleMappingEClass, InstanceRoleMapping.class, "InstanceRoleMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(instanceRoleMappingEClass, InstanceRoleMapping.class, "InstanceRoleMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(eventMappingEClass, EventMapping.class, "EventMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(eventMappingEClass, EventMapping.class, "EventMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(delimitedEventMappingEClass, DelimitedEventMapping.class, "DelimitedEventMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDelimitedEventMapping_StartingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "startingEndFinderExpression", null, 1, 1,
-                DelimitedEventMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getDelimitedEventMapping_FinishingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "finishingEndFinderExpression", null, 1, 1,
-                DelimitedEventMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEClass(delimitedEventMappingEClass, DelimitedEventMapping.class, "DelimitedEventMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getDelimitedEventMapping_StartingEndFinderExpression(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "startingEndFinderExpression", null, 1, 1, DelimitedEventMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(
+                getDelimitedEventMapping_FinishingEndFinderExpression(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "finishingEndFinderExpression", null, 1, 1, DelimitedEventMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(executionMappingEClass, ExecutionMapping.class, "ExecutionMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(executionMappingEClass, ExecutionMapping.class, "ExecutionMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(stateMappingEClass, StateMapping.class, "StateMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(stateMappingEClass, StateMapping.class, "StateMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(endOfLifeMappingEClass, EndOfLifeMapping.class, "EndOfLifeMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(endOfLifeMappingEClass, EndOfLifeMapping.class, "EndOfLifeMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(messageMappingEClass, MessageMapping.class, "MessageMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getMessageMapping_SendingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "sendingEndFinderExpression", null, 1, 1, MessageMapping.class,
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEAttribute(getMessageMapping_ReceivingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "receivingEndFinderExpression", null, 1, 1, MessageMapping.class,
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
+        initEClass(messageMappingEClass, MessageMapping.class, "MessageMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getMessageMapping_SendingEndFinderExpression(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "sendingEndFinderExpression", null, 1, 1, MessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(
+                getMessageMapping_ReceivingEndFinderExpression(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "receivingEndFinderExpression", null, 1, 1, MessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(basicMessageMappingEClass, BasicMessageMapping.class, "BasicMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(basicMessageMappingEClass, BasicMessageMapping.class, "BasicMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(returnMessageMappingEClass, ReturnMessageMapping.class, "ReturnMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getReturnMessageMapping_InvocationMessageFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "invocationMessageFinderExpression", null, 1, 1,
-                ReturnMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID,
-                EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEClass(returnMessageMappingEClass, ReturnMessageMapping.class, "ReturnMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getReturnMessageMapping_InvocationMessageFinderExpression(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "invocationMessageFinderExpression", null, 1, 1, ReturnMessageMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(creationMessageMappingEClass, CreationMessageMapping.class, "CreationMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(creationMessageMappingEClass, CreationMessageMapping.class,
+                "CreationMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(destructionMessageMappingEClass, DestructionMessageMapping.class, "DestructionMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(destructionMessageMappingEClass, DestructionMessageMapping.class,
+                "DestructionMessageMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(messageEndVariableEClass, MessageEndVariable.class, "MessageEndVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(messageEndVariableEClass, MessageEndVariable.class, "MessageEndVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(coveredLifelinesVariableEClass, CoveredLifelinesVariable.class, "CoveredLifelinesVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(coveredLifelinesVariableEClass, CoveredLifelinesVariable.class,
+                "CoveredLifelinesVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(frameMappingEClass, FrameMapping.class, "FrameMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getFrameMapping_CoveredLifelinesExpression(), theDescriptionPackage_2.getInterpretedExpression(), "coveredLifelinesExpression", null, 1, 1, FrameMapping.class,
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
-        initEAttribute(getFrameMapping_CenterLabelExpression(), theDescriptionPackage_2.getInterpretedExpression(), "centerLabelExpression", null, 0, 1, FrameMapping.class,
-                !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
-                EPackageImpl.IS_ORDERED);
+        initEClass(frameMappingEClass, FrameMapping.class, "FrameMapping", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getFrameMapping_CoveredLifelinesExpression(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "coveredLifelinesExpression", null, 1, 1, FrameMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(
+                getFrameMapping_CenterLabelExpression(),
+                theDescriptionPackage_2.getInterpretedExpression(),
+                "centerLabelExpression", null, 0, 1, FrameMapping.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(interactionUseMappingEClass, InteractionUseMapping.class, "InteractionUseMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(interactionUseMappingEClass, InteractionUseMapping.class, "InteractionUseMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(combinedFragmentMappingEClass, CombinedFragmentMapping.class, "CombinedFragmentMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(combinedFragmentMappingEClass, CombinedFragmentMapping.class,
+                "CombinedFragmentMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(operandMappingEClass, OperandMapping.class, "OperandMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(operandMappingEClass, OperandMapping.class, "OperandMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(observationPointMappingEClass, ObservationPointMapping.class, "ObservationPointMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE,
-                EPackageImpl.IS_GENERATED_INSTANCE_CLASS);
+        initEClass(observationPointMappingEClass, ObservationPointMapping.class,
+                "ObservationPointMapping", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType
@@ -784,17 +793,26 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     protected void createReturnTypeAnnotations() {
-        String source = "http://www.eclipse.org/sirius/interpreted/expression/returnType";
-        addAnnotation(getSequenceDiagramDescription_EndsOrdering(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." });
-        addAnnotation(getSequenceDiagramDescription_InstanceRolesOrdering(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." });
-        addAnnotation(getDelimitedEventMapping_StartingEndFinderExpression(), source, new String[] { "returnType", "an EObject." });
-        addAnnotation(getDelimitedEventMapping_FinishingEndFinderExpression(), source, new String[] { "returnType", "an EObject." });
-        addAnnotation(getMessageMapping_SendingEndFinderExpression(), source, new String[] { "returnType", "an EObject." });
-        addAnnotation(getMessageMapping_ReceivingEndFinderExpression(), source, new String[] { "returnType", "an EObject." });
-        addAnnotation(getReturnMessageMapping_InvocationMessageFinderExpression(), source, new String[] { "returnType", "an EObject." });
-        addAnnotation(getFrameMapping_CoveredLifelinesExpression(), source, new String[] { "returnType",
-        "the list of semantic EObjects representing the lifelines which are semantically covered by the frame." });
-        addAnnotation(getFrameMapping_CenterLabelExpression(), source, new String[] { "returnType", "the text to show in the center of the IU" });
+        String source = "http://www.eclipse.org/sirius/interpreted/expression/returnType"; //$NON-NLS-1$
+        addAnnotation(getSequenceDiagramDescription_EndsOrdering(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getSequenceDiagramDescription_InstanceRolesOrdering(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getDelimitedEventMapping_StartingEndFinderExpression(), source, new String[] { "returnType", "an EObject." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getDelimitedEventMapping_FinishingEndFinderExpression(), source, new String[] { "returnType", "an EObject." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getMessageMapping_SendingEndFinderExpression(), source, new String[] { "returnType", "an EObject." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getMessageMapping_ReceivingEndFinderExpression(), source, new String[] { "returnType", "an EObject." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getReturnMessageMapping_InvocationMessageFinderExpression(), source, new String[] { "returnType", "an EObject." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getFrameMapping_CoveredLifelinesExpression(), source, new String[] {
+            "returnType", "the list of semantic EObjects representing the lifelines which are semantically covered by the frame." //$NON-NLS-1$ //$NON-NLS-2$
+        });
+        addAnnotation(getFrameMapping_CenterLabelExpression(), source, new String[] { "returnType", "the text to show in the center of the IU" //$NON-NLS-1$ //$NON-NLS-2$
+        });
     }
 
     /**
@@ -805,8 +823,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     protected void createVariablesAnnotations() {
-        String source = "http://www.eclipse.org/sirius/interpreted/expression/variables";
-        addAnnotation(getSequenceDiagramDescription_EndsOrdering(), source, new String[] { "eventEnds", "a List<EObject> containing the semantic event ends." });
+        String source = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
+        addAnnotation(getSequenceDiagramDescription_EndsOrdering(), source, new String[] { "eventEnds", "a List<EObject> containing the semantic event ends." //$NON-NLS-1$ //$NON-NLS-2$
+        });
         addAnnotation(getSequenceDiagramDescription_InstanceRolesOrdering(), source, new String[] {});
         addAnnotation(getDelimitedEventMapping_StartingEndFinderExpression(), source, new String[] {});
         addAnnotation(getDelimitedEventMapping_FinishingEndFinderExpression(), source, new String[] {});

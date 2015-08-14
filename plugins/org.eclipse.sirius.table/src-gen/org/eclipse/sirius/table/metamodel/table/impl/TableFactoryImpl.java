@@ -88,7 +88,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
         case TablePackage.DTABLE_ELEMENT_STYLE:
             return createDTableElementStyle();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

@@ -43,7 +43,7 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
      * @generated
      * @ordered
      */
-    protected static final String FEATURE_NAME_EDEFAULT = "";
+    protected static final String FEATURE_NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}'
@@ -224,9 +224,9 @@ public class UnsetImpl extends ContainerModelOperationImpl implements Unset {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (featureName: ");
+        result.append(" (featureName: "); //$NON-NLS-1$
         result.append(featureName);
-        result.append(", elementExpression: ");
+        result.append(", elementExpression: "); //$NON-NLS-1$
         result.append(elementExpression);
         result.append(')');
         return result.toString();

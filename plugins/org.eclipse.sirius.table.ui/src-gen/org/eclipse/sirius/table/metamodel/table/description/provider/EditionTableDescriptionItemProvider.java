@@ -100,7 +100,7 @@ public class EditionTableDescriptionItemProvider extends TableDescriptionItemPro
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EditionTableDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EditionTableDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -112,7 +112,7 @@ public class EditionTableDescriptionItemProvider extends TableDescriptionItemPro
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((EditionTableDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_EditionTableDescription_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_EditionTableDescription_type") : label; //$NON-NLS-1$
     }
 
     /**

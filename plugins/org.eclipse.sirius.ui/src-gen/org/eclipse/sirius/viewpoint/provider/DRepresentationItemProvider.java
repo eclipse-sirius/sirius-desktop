@@ -73,8 +73,8 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
      */
     protected void addOwnedRepresentationElementsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentation_ownedRepresentationElements_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_ownedRepresentationElements_feature", "_UI_DRepresentation_type"),
+                getString("_UI_DRepresentation_ownedRepresentationElements_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_ownedRepresentationElements_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS, false, false, false, null, null, null));
     }
 
@@ -86,8 +86,8 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
      */
     protected void addRepresentationElementsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentation_representationElements_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_representationElements_feature", "_UI_DRepresentation_type"),
+                getString("_UI_DRepresentation_representationElements_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_representationElements_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION__REPRESENTATION_ELEMENTS, false, false, false, null, null, null));
     }
 
@@ -99,7 +99,8 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DRepresentation_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_name_feature", "_UI_DRepresentation_type"),
+                getString("_UI_DRepresentation_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_name_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -147,7 +148,8 @@ public class DRepresentationItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DRepresentation) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DRepresentation_type") : getString("_UI_DRepresentation_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DRepresentation_type") : //$NON-NLS-1$
+            getString("_UI_DRepresentation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

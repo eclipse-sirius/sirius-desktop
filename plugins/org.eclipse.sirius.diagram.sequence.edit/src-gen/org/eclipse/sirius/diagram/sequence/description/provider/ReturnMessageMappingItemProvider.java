@@ -64,11 +64,13 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
      * @generated
      */
     protected void addInvocationMessageFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ReturnMessageMapping_invocationMessageFinderExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ReturnMessageMapping_invocationMessageFinderExpression_feature", "_UI_ReturnMessageMapping_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_ReturnMessageMapping_invocationMessageFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ReturnMessageMapping_invocationMessageFinderExpression_feature", "_UI_ReturnMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.RETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,7 +81,7 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReturnMessageMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReturnMessageMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -91,7 +93,7 @@ public class ReturnMessageMappingItemProvider extends MessageMappingItemProvider
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ReturnMessageMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ReturnMessageMapping_type") : getString("_UI_ReturnMessageMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ReturnMessageMapping_type") : getString("_UI_ReturnMessageMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

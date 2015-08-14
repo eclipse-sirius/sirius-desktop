@@ -71,8 +71,10 @@ public class TreeVariableItemProvider extends AbstractVariableItemProvider {
      */
     protected void addDocumentationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeVariable_documentation_feature"), getString("_UI_PropertyDescriptor_description", "_UI_TreeVariable_documentation_feature", "_UI_TreeVariable_type"),
-                DescriptionPackage.Literals.TREE_VARIABLE__DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TreeVariable_documentation_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TreeVariable_documentation_feature", "_UI_TreeVariable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.TREE_VARIABLE__DOCUMENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -116,7 +118,7 @@ public class TreeVariableItemProvider extends AbstractVariableItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -128,7 +130,7 @@ public class TreeVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TreeVariable) object).getName();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeVariable_type") : getString("_UI_TreeVariable_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeVariable_type") : getString("_UI_TreeVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

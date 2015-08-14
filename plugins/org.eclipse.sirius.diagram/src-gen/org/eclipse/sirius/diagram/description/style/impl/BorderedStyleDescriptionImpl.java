@@ -51,7 +51,7 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()
@@ -300,9 +300,9 @@ public class BorderedStyleDescriptionImpl extends MinimalEObjectImpl.Container i
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSizeComputationExpression: ");
+        result.append(" (borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
-        result.append(", borderLineStyle: ");
+        result.append(", borderLineStyle: "); //$NON-NLS-1$
         result.append(borderLineStyle);
         result.append(')');
         return result.toString();

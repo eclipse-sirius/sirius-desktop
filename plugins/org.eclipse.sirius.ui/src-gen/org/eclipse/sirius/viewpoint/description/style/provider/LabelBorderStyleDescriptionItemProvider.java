@@ -77,8 +77,8 @@ IItemPropertySource {
      */
     protected void addIdPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelBorderStyleDescription_id_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_LabelBorderStyleDescription_id_feature", "_UI_LabelBorderStyleDescription_type"),
+                getString("_UI_LabelBorderStyleDescription_id_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LabelBorderStyleDescription_id_feature", "_UI_LabelBorderStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 StylePackage.Literals.LABEL_BORDER_STYLE_DESCRIPTION__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -90,8 +90,8 @@ IItemPropertySource {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelBorderStyleDescription_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_LabelBorderStyleDescription_name_feature", "_UI_LabelBorderStyleDescription_type"),
+                getString("_UI_LabelBorderStyleDescription_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LabelBorderStyleDescription_name_feature", "_UI_LabelBorderStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 StylePackage.Literals.LABEL_BORDER_STYLE_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -103,8 +103,8 @@ IItemPropertySource {
      */
     protected void addCornerHeightPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelBorderStyleDescription_cornerHeight_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_LabelBorderStyleDescription_cornerHeight_feature", "_UI_LabelBorderStyleDescription_type"),
+                getString("_UI_LabelBorderStyleDescription_cornerHeight_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LabelBorderStyleDescription_cornerHeight_feature", "_UI_LabelBorderStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 StylePackage.Literals.LABEL_BORDER_STYLE_DESCRIPTION__CORNER_HEIGHT, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
@@ -116,8 +116,8 @@ IItemPropertySource {
      */
     protected void addCornerWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelBorderStyleDescription_cornerWidth_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_LabelBorderStyleDescription_cornerWidth_feature", "_UI_LabelBorderStyleDescription_type"),
+                getString("_UI_LabelBorderStyleDescription_cornerWidth_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_LabelBorderStyleDescription_cornerWidth_feature", "_UI_LabelBorderStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 StylePackage.Literals.LABEL_BORDER_STYLE_DESCRIPTION__CORNER_WIDTH, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
@@ -129,7 +129,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelBorderStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelBorderStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -141,15 +141,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((LabelBorderStyleDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_LabelBorderStyleDescription_type") : /*
-         * getString
-         * (
-         * "_UI_LabelBorderStyleDescription_type"
-         * )
-         * +
-         * " "
-         * +
-         */label;
+        return label == null || label.length() == 0 ? getString("_UI_LabelBorderStyleDescription_type") : label; //$NON-NLS-1$
     }
 
     /**

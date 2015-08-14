@@ -69,8 +69,8 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
      */
     protected void addMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_InstanceRoleReorderTool_mappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_InstanceRoleReorderTool_mappings_feature", "_UI_InstanceRoleReorderTool_type"),
+                getString("_UI_InstanceRoleReorderTool_mappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_InstanceRoleReorderTool_mappings_feature", "_UI_InstanceRoleReorderTool_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.INSTANCE_ROLE_REORDER_TOOL__MAPPINGS, true, false, true, null, null, null));
     }
 
@@ -117,7 +117,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleReorderTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleReorderTool")); //$NON-NLS-1$
     }
 
     /**
@@ -129,7 +129,7 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((InstanceRoleReorderTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleReorderTool_type") : getString("_UI_InstanceRoleReorderTool_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleReorderTool_type") : getString("_UI_InstanceRoleReorderTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -187,7 +187,8 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
         boolean qualify = childFeature == ToolPackage.Literals.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_BEFORE || childFeature == ToolPackage.Literals.INSTANCE_ROLE_REORDER_TOOL__PREDECESSOR_AFTER;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

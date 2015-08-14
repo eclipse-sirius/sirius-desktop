@@ -221,7 +221,7 @@ public final class TableUIPlugin extends EMFPlugin {
                 URL url;
                 try {
                     // We try to create an image descriptor for the given path
-                    url = new URL("platform:/resource" + p.makeAbsolute().toString());
+                    url = new URL("platform:/resource" + p.makeAbsolute().toString()); //$NON-NLS-1$
                     return ImageDescriptor.createFromURL(url);
                 } catch (MalformedURLException e) {
                     // nothing to do, we will try to create the Image Descriptor

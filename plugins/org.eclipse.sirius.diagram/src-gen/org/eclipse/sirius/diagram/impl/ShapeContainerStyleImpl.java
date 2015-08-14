@@ -67,7 +67,7 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
      * @generated
      * @ordered
      */
-    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "209,209,209");
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "209,209,209"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -227,9 +227,9 @@ public class ShapeContainerStyleImpl extends ContainerStyleImpl implements Shape
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (shape: ");
+        result.append(" (shape: "); //$NON-NLS-1$
         result.append(shape);
-        result.append(", backgroundColor: ");
+        result.append(", backgroundColor: "); //$NON-NLS-1$
         result.append(backgroundColor);
         result.append(')');
         return result.toString();

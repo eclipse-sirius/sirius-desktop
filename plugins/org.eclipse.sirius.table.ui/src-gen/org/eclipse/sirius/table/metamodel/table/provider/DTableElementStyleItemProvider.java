@@ -77,7 +77,8 @@ IItemPropertySource {
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElementStyle_labelSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_labelSize_feature", "_UI_DTableElementStyle_type"),
+                getString("_UI_DTableElementStyle_labelSize_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_labelSize_feature", "_UI_DTableElementStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
@@ -89,7 +90,8 @@ IItemPropertySource {
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElementStyle_labelFormat_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_labelFormat_feature", "_UI_DTableElementStyle_type"),
+                getString("_UI_DTableElementStyle_labelFormat_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_labelFormat_feature", "_UI_DTableElementStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT_STYLE__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -101,8 +103,8 @@ IItemPropertySource {
      */
     protected void addDefaultForegroundStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElementStyle_defaultForegroundStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_defaultForegroundStyle_feature", "_UI_DTableElementStyle_type"),
+                getString("_UI_DTableElementStyle_defaultForegroundStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_defaultForegroundStyle_feature", "_UI_DTableElementStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -114,8 +116,8 @@ IItemPropertySource {
      */
     protected void addDefaultBackgroundStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElementStyle_defaultBackgroundStyle_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_defaultBackgroundStyle_feature", "_UI_DTableElementStyle_type"),
+                getString("_UI_DTableElementStyle_defaultBackgroundStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_defaultBackgroundStyle_feature", "_UI_DTableElementStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -127,8 +129,8 @@ IItemPropertySource {
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElementStyle_foregroundColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_foregroundColor_feature", "_UI_DTableElementStyle_type"),
+                getString("_UI_DTableElementStyle_foregroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_foregroundColor_feature", "_UI_DTableElementStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -140,8 +142,8 @@ IItemPropertySource {
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElementStyle_backgroundColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_backgroundColor_feature", "_UI_DTableElementStyle_type"),
+                getString("_UI_DTableElementStyle_backgroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElementStyle_backgroundColor_feature", "_UI_DTableElementStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -153,7 +155,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTableElementStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DTableElementStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -165,7 +167,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         DTableElementStyle dTableElementStyle = (DTableElementStyle) object;
-        return getString("_UI_DTableElementStyle_type") + " " + dTableElementStyle.getLabelSize();
+        return getString("_UI_DTableElementStyle_type") + " " + dTableElementStyle.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -37,21 +37,21 @@ public interface BasicfamilyPackage extends EPackage {
      * 
      * @generated
      */
-    String eNAME = "basicfamily";
+    String eNAME = "basicfamily"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/sample/basicfamily";
+    String eNS_URI = "http://www.eclipse.org/sirius/sample/basicfamily"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_PREFIX = "basicfamily";
+    String eNS_PREFIX = "basicfamily"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
@@ -75,7 +75,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -84,7 +84,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Children</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -93,7 +93,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Parents</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -102,7 +102,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mother</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -111,7 +111,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Father</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -120,7 +120,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Person</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -140,7 +140,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -158,7 +158,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Family</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -178,7 +178,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -187,7 +187,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Children</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -196,7 +196,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Parents</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -205,7 +205,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mother</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -214,7 +214,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Father</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -223,7 +223,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Man</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -243,7 +243,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -252,7 +252,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Children</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -261,7 +261,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Parents</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -270,7 +270,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mother</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -279,7 +279,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Father</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -288,7 +288,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Woman</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -405,7 +405,7 @@ public interface BasicfamilyPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.basicfamily.Man <em>Man</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Man</em>'.
      * @see org.eclipse.sirius.sample.basicfamily.Man
      * @generated
@@ -416,7 +416,7 @@ public interface BasicfamilyPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.basicfamily.Woman <em>Woman</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Woman</em>'.
      * @see org.eclipse.sirius.sample.basicfamily.Woman
      * @generated
@@ -426,7 +426,7 @@ public interface BasicfamilyPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -452,7 +452,7 @@ public interface BasicfamilyPackage extends EPackage {
          * {@link org.eclipse.sirius.sample.basicfamily.impl.PersonImpl
          * <em>Person</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.basicfamily.impl.PersonImpl
          * @see org.eclipse.sirius.sample.basicfamily.impl.BasicfamilyPackageImpl#getPerson()
          * @generated
@@ -504,7 +504,7 @@ public interface BasicfamilyPackage extends EPackage {
          * {@link org.eclipse.sirius.sample.basicfamily.impl.FamilyImpl
          * <em>Family</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.basicfamily.impl.FamilyImpl
          * @see org.eclipse.sirius.sample.basicfamily.impl.BasicfamilyPackageImpl#getFamily()
          * @generated

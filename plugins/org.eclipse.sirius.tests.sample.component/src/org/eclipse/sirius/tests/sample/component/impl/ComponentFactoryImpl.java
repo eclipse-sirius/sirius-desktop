@@ -65,7 +65,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
         case ComponentPackage.COMPONENT:
             return createComponent();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

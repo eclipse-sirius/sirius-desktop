@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsFactory
  * @model kind="package"
  * @generated
@@ -33,29 +33,29 @@ import org.eclipse.emf.ecore.EReference;
 public interface InteractionsPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    String eNAME = "interactions";
+    String eNAME = "interactions"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/sample/interactions";
+    String eNS_URI = "http://www.eclipse.org/sirius/sample/interactions"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    String eNS_PREFIX = "interactions";
+    String eNS_PREFIX = "interactions"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     InteractionsPackage eINSTANCE = org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl.init();
@@ -64,7 +64,7 @@ public interface InteractionsPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.ModelImpl
      * <em>Model</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.ModelImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getModel()
      * @generated
@@ -74,7 +74,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -83,7 +83,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owned Interactions</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -92,7 +92,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Model</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -103,7 +103,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl
      * <em>Interaction</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getInteraction()
      * @generated
@@ -113,7 +113,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -122,7 +122,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Participants</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -131,7 +131,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Messages</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -140,7 +140,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Executions</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -149,7 +149,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>States</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -158,7 +158,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Interaction Uses</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -167,7 +167,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Combined Fragments</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -176,7 +176,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Ends</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -185,7 +185,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Constraints</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -194,7 +194,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Interaction</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -205,7 +205,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.impl.ParticipantImpl
      * <em>Participant</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.ParticipantImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getParticipant()
      * @generated
@@ -215,7 +215,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -224,7 +224,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -233,7 +233,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Participant</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -243,7 +243,7 @@ public interface InteractionsPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.MessageImpl
      * <em>Message</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.MessageImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getMessage()
      * @generated
@@ -253,7 +253,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -262,7 +262,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sending End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -271,7 +271,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Receiving End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -280,7 +280,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Message</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -291,7 +291,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.impl.CallMessageImpl
      * <em>Call Message</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.CallMessageImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCallMessage()
      * @generated
@@ -301,54 +301,54 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CALL_MESSAGE__NAME = MESSAGE__NAME;
+    int CALL_MESSAGE__NAME = InteractionsPackage.MESSAGE__NAME;
 
     /**
      * The feature id for the '<em><b>Sending End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CALL_MESSAGE__SENDING_END = MESSAGE__SENDING_END;
+    int CALL_MESSAGE__SENDING_END = InteractionsPackage.MESSAGE__SENDING_END;
 
     /**
      * The feature id for the '<em><b>Receiving End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CALL_MESSAGE__RECEIVING_END = MESSAGE__RECEIVING_END;
+    int CALL_MESSAGE__RECEIVING_END = InteractionsPackage.MESSAGE__RECEIVING_END;
 
     /**
      * The feature id for the '<em><b>Operation</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CALL_MESSAGE__OPERATION = MESSAGE_FEATURE_COUNT + 0;
+    int CALL_MESSAGE__OPERATION = InteractionsPackage.MESSAGE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Call Message</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CALL_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 1;
+    int CALL_MESSAGE_FEATURE_COUNT = InteractionsPackage.MESSAGE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.FeatureAccessMessageImpl
      * <em>Feature Access Message</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.FeatureAccessMessageImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getFeatureAccessMessage()
      * @generated
@@ -358,63 +358,63 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_ACCESS_MESSAGE__NAME = MESSAGE__NAME;
+    int FEATURE_ACCESS_MESSAGE__NAME = InteractionsPackage.MESSAGE__NAME;
 
     /**
      * The feature id for the '<em><b>Sending End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_ACCESS_MESSAGE__SENDING_END = MESSAGE__SENDING_END;
+    int FEATURE_ACCESS_MESSAGE__SENDING_END = InteractionsPackage.MESSAGE__SENDING_END;
 
     /**
      * The feature id for the '<em><b>Receiving End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_ACCESS_MESSAGE__RECEIVING_END = MESSAGE__RECEIVING_END;
+    int FEATURE_ACCESS_MESSAGE__RECEIVING_END = InteractionsPackage.MESSAGE__RECEIVING_END;
 
     /**
      * The feature id for the '<em><b>Is Write</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_ACCESS_MESSAGE__IS_WRITE = MESSAGE_FEATURE_COUNT + 0;
+    int FEATURE_ACCESS_MESSAGE__IS_WRITE = InteractionsPackage.MESSAGE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Feature</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_ACCESS_MESSAGE__FEATURE = MESSAGE_FEATURE_COUNT + 1;
+    int FEATURE_ACCESS_MESSAGE__FEATURE = InteractionsPackage.MESSAGE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Feature Access Message</em>
      * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int FEATURE_ACCESS_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 2;
+    int FEATURE_ACCESS_MESSAGE_FEATURE_COUNT = InteractionsPackage.MESSAGE_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.CreateParticipantMessageImpl
      * <em>Create Participant Message</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.CreateParticipantMessageImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCreateParticipantMessage()
      * @generated
@@ -424,46 +424,46 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_PARTICIPANT_MESSAGE__NAME = MESSAGE__NAME;
+    int CREATE_PARTICIPANT_MESSAGE__NAME = InteractionsPackage.MESSAGE__NAME;
 
     /**
      * The feature id for the '<em><b>Sending End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_PARTICIPANT_MESSAGE__SENDING_END = MESSAGE__SENDING_END;
+    int CREATE_PARTICIPANT_MESSAGE__SENDING_END = InteractionsPackage.MESSAGE__SENDING_END;
 
     /**
      * The feature id for the '<em><b>Receiving End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_PARTICIPANT_MESSAGE__RECEIVING_END = MESSAGE__RECEIVING_END;
+    int CREATE_PARTICIPANT_MESSAGE__RECEIVING_END = InteractionsPackage.MESSAGE__RECEIVING_END;
 
     /**
      * The number of structural features of the '
      * <em>Create Participant Message</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int CREATE_PARTICIPANT_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 0;
+    int CREATE_PARTICIPANT_MESSAGE_FEATURE_COUNT = InteractionsPackage.MESSAGE_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.DestroyParticipantMessageImpl
      * <em>Destroy Participant Message</em>}' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.DestroyParticipantMessageImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getDestroyParticipantMessage()
      * @generated
@@ -473,46 +473,46 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTROY_PARTICIPANT_MESSAGE__NAME = MESSAGE__NAME;
+    int DESTROY_PARTICIPANT_MESSAGE__NAME = InteractionsPackage.MESSAGE__NAME;
 
     /**
      * The feature id for the '<em><b>Sending End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTROY_PARTICIPANT_MESSAGE__SENDING_END = MESSAGE__SENDING_END;
+    int DESTROY_PARTICIPANT_MESSAGE__SENDING_END = InteractionsPackage.MESSAGE__SENDING_END;
 
     /**
      * The feature id for the '<em><b>Receiving End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTROY_PARTICIPANT_MESSAGE__RECEIVING_END = MESSAGE__RECEIVING_END;
+    int DESTROY_PARTICIPANT_MESSAGE__RECEIVING_END = InteractionsPackage.MESSAGE__RECEIVING_END;
 
     /**
      * The number of structural features of the '
      * <em>Destroy Participant Message</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int DESTROY_PARTICIPANT_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 0;
+    int DESTROY_PARTICIPANT_MESSAGE_FEATURE_COUNT = InteractionsPackage.MESSAGE_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.ReturnMessageImpl
      * <em>Return Message</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.ReturnMessageImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getReturnMessage()
      * @generated
@@ -522,53 +522,53 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE__NAME = MESSAGE__NAME;
+    int RETURN_MESSAGE__NAME = InteractionsPackage.MESSAGE__NAME;
 
     /**
      * The feature id for the '<em><b>Sending End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE__SENDING_END = MESSAGE__SENDING_END;
+    int RETURN_MESSAGE__SENDING_END = InteractionsPackage.MESSAGE__SENDING_END;
 
     /**
      * The feature id for the '<em><b>Receiving End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE__RECEIVING_END = MESSAGE__RECEIVING_END;
+    int RETURN_MESSAGE__RECEIVING_END = InteractionsPackage.MESSAGE__RECEIVING_END;
 
     /**
      * The feature id for the '<em><b>Invocation Message</b></em>' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE__INVOCATION_MESSAGE = MESSAGE_FEATURE_COUNT + 0;
+    int RETURN_MESSAGE__INVOCATION_MESSAGE = InteractionsPackage.MESSAGE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Return Message</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int RETURN_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 1;
+    int RETURN_MESSAGE_FEATURE_COUNT = InteractionsPackage.MESSAGE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl
      * <em>Execution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.ExecutionImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getExecution()
      * @generated
@@ -578,7 +578,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -587,7 +587,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owner</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -596,7 +596,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Start</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -605,7 +605,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -614,7 +614,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Execution</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -624,7 +624,7 @@ public interface InteractionsPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.StateImpl
      * <em>State</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.StateImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getState()
      * @generated
@@ -634,7 +634,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -643,7 +643,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owner</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -652,7 +652,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Start</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -661,7 +661,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>End</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -670,7 +670,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>State</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -681,7 +681,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl
      * <em>Interaction Use</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getInteractionUse()
      * @generated
@@ -691,7 +691,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -700,7 +700,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Interaction</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -709,7 +709,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Covered Participants</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -718,7 +718,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Start</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -727,7 +727,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finish</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -736,7 +736,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Interaction Use</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -747,7 +747,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl
      * <em>Combined Fragment</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCombinedFragment()
      * @generated
@@ -757,7 +757,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Operator</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -766,7 +766,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Covered Participants</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -775,7 +775,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Start</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -784,7 +784,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finish</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -793,7 +793,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Owned Operands</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -802,7 +802,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Combined Fragment</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -812,7 +812,7 @@ public interface InteractionsPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.OperandImpl
      * <em>Operand</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.OperandImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getOperand()
      * @generated
@@ -822,7 +822,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -831,7 +831,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Start</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -840,7 +840,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Operand</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -851,7 +851,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl
      * <em>Abstract End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getAbstractEnd()
      * @generated
@@ -861,7 +861,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -870,7 +870,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Context</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -879,7 +879,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Abstract End</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -890,7 +890,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.impl.MessageEndImpl
      * <em>Message End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.MessageEndImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getMessageEnd()
      * @generated
@@ -900,45 +900,45 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MESSAGE_END__NAME = ABSTRACT_END__NAME;
+    int MESSAGE_END__NAME = InteractionsPackage.ABSTRACT_END__NAME;
 
     /**
      * The feature id for the '<em><b>Context</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MESSAGE_END__CONTEXT = ABSTRACT_END__CONTEXT;
+    int MESSAGE_END__CONTEXT = InteractionsPackage.ABSTRACT_END__CONTEXT;
 
     /**
      * The feature id for the '<em><b>Message</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MESSAGE_END__MESSAGE = ABSTRACT_END_FEATURE_COUNT + 0;
+    int MESSAGE_END__MESSAGE = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Message End</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MESSAGE_END_FEATURE_COUNT = ABSTRACT_END_FEATURE_COUNT + 1;
+    int MESSAGE_END_FEATURE_COUNT = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl
      * <em>Execution End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getExecutionEnd()
      * @generated
@@ -948,44 +948,44 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EXECUTION_END__NAME = ABSTRACT_END__NAME;
+    int EXECUTION_END__NAME = InteractionsPackage.ABSTRACT_END__NAME;
 
     /**
      * The feature id for the '<em><b>Context</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EXECUTION_END__CONTEXT = ABSTRACT_END__CONTEXT;
+    int EXECUTION_END__CONTEXT = InteractionsPackage.ABSTRACT_END__CONTEXT;
 
     /**
      * The feature id for the '<em><b>Execution</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EXECUTION_END__EXECUTION = ABSTRACT_END_FEATURE_COUNT + 0;
+    int EXECUTION_END__EXECUTION = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Execution End</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int EXECUTION_END_FEATURE_COUNT = ABSTRACT_END_FEATURE_COUNT + 1;
+    int EXECUTION_END_FEATURE_COUNT = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.StateEndImpl
      * <em>State End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.StateEndImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getStateEnd()
      * @generated
@@ -995,45 +995,45 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int STATE_END__NAME = ABSTRACT_END__NAME;
+    int STATE_END__NAME = InteractionsPackage.ABSTRACT_END__NAME;
 
     /**
      * The feature id for the '<em><b>Context</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int STATE_END__CONTEXT = ABSTRACT_END__CONTEXT;
+    int STATE_END__CONTEXT = InteractionsPackage.ABSTRACT_END__CONTEXT;
 
     /**
      * The feature id for the '<em><b>State</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int STATE_END__STATE = ABSTRACT_END_FEATURE_COUNT + 0;
+    int STATE_END__STATE = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>State End</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int STATE_END_FEATURE_COUNT = ABSTRACT_END_FEATURE_COUNT + 1;
+    int STATE_END_FEATURE_COUNT = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseEndImpl
      * <em>Interaction Use End</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionUseEndImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getInteractionUseEnd()
      * @generated
@@ -1043,45 +1043,45 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_END__NAME = ABSTRACT_END__NAME;
+    int INTERACTION_USE_END__NAME = InteractionsPackage.ABSTRACT_END__NAME;
 
     /**
      * The feature id for the '<em><b>Context</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_END__CONTEXT = ABSTRACT_END__CONTEXT;
+    int INTERACTION_USE_END__CONTEXT = InteractionsPackage.ABSTRACT_END__CONTEXT;
 
     /**
      * The feature id for the '<em><b>Owner</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_END__OWNER = ABSTRACT_END_FEATURE_COUNT + 0;
+    int INTERACTION_USE_END__OWNER = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Interaction Use End</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_END_FEATURE_COUNT = ABSTRACT_END_FEATURE_COUNT + 1;
+    int INTERACTION_USE_END_FEATURE_COUNT = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentEndImpl
      * <em>Combined Fragment End</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.CombinedFragmentEndImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCombinedFragmentEnd()
      * @generated
@@ -1091,45 +1091,45 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_END__NAME = ABSTRACT_END__NAME;
+    int COMBINED_FRAGMENT_END__NAME = InteractionsPackage.ABSTRACT_END__NAME;
 
     /**
      * The feature id for the '<em><b>Context</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_END__CONTEXT = ABSTRACT_END__CONTEXT;
+    int COMBINED_FRAGMENT_END__CONTEXT = InteractionsPackage.ABSTRACT_END__CONTEXT;
 
     /**
      * The feature id for the '<em><b>Owner</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_END__OWNER = ABSTRACT_END_FEATURE_COUNT + 0;
+    int COMBINED_FRAGMENT_END__OWNER = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Combined Fragment End</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_END_FEATURE_COUNT = ABSTRACT_END_FEATURE_COUNT + 1;
+    int COMBINED_FRAGMENT_END_FEATURE_COUNT = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.OperandEndImpl
      * <em>Operand End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.OperandEndImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getOperandEnd()
      * @generated
@@ -1139,44 +1139,44 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int OPERAND_END__NAME = ABSTRACT_END__NAME;
+    int OPERAND_END__NAME = InteractionsPackage.ABSTRACT_END__NAME;
 
     /**
      * The feature id for the '<em><b>Context</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int OPERAND_END__CONTEXT = ABSTRACT_END__CONTEXT;
+    int OPERAND_END__CONTEXT = InteractionsPackage.ABSTRACT_END__CONTEXT;
 
     /**
      * The feature id for the '<em><b>Owner</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int OPERAND_END__OWNER = ABSTRACT_END_FEATURE_COUNT + 0;
+    int OPERAND_END__OWNER = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Operand End</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int OPERAND_END_FEATURE_COUNT = ABSTRACT_END_FEATURE_COUNT + 1;
+    int OPERAND_END_FEATURE_COUNT = InteractionsPackage.ABSTRACT_END_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.MixEndImpl
      * <em>Mix End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.MixEndImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getMixEnd()
      * @generated
@@ -1186,54 +1186,54 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MIX_END__NAME = EXECUTION_END__NAME;
+    int MIX_END__NAME = InteractionsPackage.EXECUTION_END__NAME;
 
     /**
      * The feature id for the '<em><b>Context</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MIX_END__CONTEXT = EXECUTION_END__CONTEXT;
+    int MIX_END__CONTEXT = InteractionsPackage.EXECUTION_END__CONTEXT;
 
     /**
      * The feature id for the '<em><b>Execution</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MIX_END__EXECUTION = EXECUTION_END__EXECUTION;
+    int MIX_END__EXECUTION = InteractionsPackage.EXECUTION_END__EXECUTION;
 
     /**
      * The feature id for the '<em><b>Message</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MIX_END__MESSAGE = EXECUTION_END_FEATURE_COUNT + 0;
+    int MIX_END__MESSAGE = InteractionsPackage.EXECUTION_END_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Mix End</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
-    int MIX_END_FEATURE_COUNT = EXECUTION_END_FEATURE_COUNT + 1;
+    int MIX_END_FEATURE_COUNT = InteractionsPackage.EXECUTION_END_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
      * {@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl
      * <em>Constraint</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.sample.interactions.impl.ConstraintImpl
      * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getConstraint()
      * @generated
@@ -1243,7 +1243,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1252,7 +1252,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Constrained Ends</b></em>' reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1261,7 +1261,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Constraint</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1271,7 +1271,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.Model <em>Model</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Model</em>'.
      * @see org.eclipse.sirius.sample.interactions.Model
      * @generated
@@ -1282,7 +1282,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.Model#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.sample.interactions.Model#getName()
      * @see #getModel()
@@ -1295,7 +1295,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.Model#getOwnedInteractions
      * <em>Owned Interactions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Interactions</em>'.
      * @see org.eclipse.sirius.sample.interactions.Model#getOwnedInteractions()
@@ -1308,7 +1308,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.Interaction
      * <em>Interaction</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Interaction</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction
      * @generated
@@ -1319,7 +1319,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getName()
      * @see #getInteraction()
@@ -1331,7 +1331,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getParticipants
      * <em>Participants</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Participants</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getParticipants()
@@ -1344,7 +1344,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getMessages
      * <em>Messages</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Messages</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getMessages()
@@ -1357,7 +1357,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getExecutions
      * <em>Executions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Executions</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getExecutions()
@@ -1370,7 +1370,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getStates
      * <em>States</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>States</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getStates()
@@ -1384,7 +1384,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getInteractionUses
      * <em>Interaction Uses</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Interaction Uses</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getInteractionUses()
@@ -1398,7 +1398,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getCombinedFragments
      * <em>Combined Fragments</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Combined Fragments</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getCombinedFragments()
@@ -1411,7 +1411,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getEnds
      * <em>Ends</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Ends</em>
      *         '.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getEnds()
@@ -1424,7 +1424,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.sample.interactions.Interaction#getConstraints
      * <em>Constraints</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Constraints</em>'.
      * @see org.eclipse.sirius.sample.interactions.Interaction#getConstraints()
@@ -1437,7 +1437,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.Participant
      * <em>Participant</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Participant</em>'.
      * @see org.eclipse.sirius.sample.interactions.Participant
      * @generated
@@ -1448,7 +1448,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.Participant#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.sample.interactions.Participant#getName()
      * @see #getParticipant()
@@ -1460,7 +1460,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.Participant#getType
      * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Type</em>'.
      * @see org.eclipse.sirius.sample.interactions.Participant#getType()
      * @see #getParticipant()
@@ -1472,7 +1472,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.Message <em>Message</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Message</em>'.
      * @see org.eclipse.sirius.sample.interactions.Message
      * @generated
@@ -1483,7 +1483,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.Message#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.sample.interactions.Message#getName()
      * @see #getMessage()
@@ -1495,7 +1495,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.Message#getSendingEnd
      * <em>Sending End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Sending End</em>'.
      * @see org.eclipse.sirius.sample.interactions.Message#getSendingEnd()
      * @see #getMessage()
@@ -1507,7 +1507,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.Message#getReceivingEnd
      * <em>Receiving End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Receiving End</em>'.
      * @see org.eclipse.sirius.sample.interactions.Message#getReceivingEnd()
      * @see #getMessage()
@@ -1519,7 +1519,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.CallMessage
      * <em>Call Message</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Call Message</em>'.
      * @see org.eclipse.sirius.sample.interactions.CallMessage
      * @generated
@@ -1530,7 +1530,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.CallMessage#getOperation
      * <em>Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Operation</em>'.
      * @see org.eclipse.sirius.sample.interactions.CallMessage#getOperation()
      * @see #getCallMessage()
@@ -1543,7 +1543,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage
      * <em>Feature Access Message</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Feature Access Message</em>'.
      * @see org.eclipse.sirius.sample.interactions.FeatureAccessMessage
      * @generated
@@ -1554,7 +1554,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage#isIsWrite
      * <em>Is Write</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Is Write</em>'.
      * @see org.eclipse.sirius.sample.interactions.FeatureAccessMessage#isIsWrite()
      * @see #getFeatureAccessMessage()
@@ -1566,7 +1566,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage#getFeature
      * <em>Feature</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Feature</em>'.
      * @see org.eclipse.sirius.sample.interactions.FeatureAccessMessage#getFeature()
      * @see #getFeatureAccessMessage()
@@ -1579,7 +1579,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.CreateParticipantMessage
      * <em>Create Participant Message</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Create Participant Message</em>'.
      * @see org.eclipse.sirius.sample.interactions.CreateParticipantMessage
      * @generated
@@ -1591,7 +1591,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.DestroyParticipantMessage
      * <em>Destroy Participant Message</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Destroy Participant Message</em>'.
      * @see org.eclipse.sirius.sample.interactions.DestroyParticipantMessage
      * @generated
@@ -1602,7 +1602,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.ReturnMessage
      * <em>Return Message</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Return Message</em>'.
      * @see org.eclipse.sirius.sample.interactions.ReturnMessage
      * @generated
@@ -1614,7 +1614,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.ReturnMessage#getInvocationMessage
      * <em>Invocation Message</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference '<em>Invocation Message</em>'.
      * @see org.eclipse.sirius.sample.interactions.ReturnMessage#getInvocationMessage()
      * @see #getReturnMessage()
@@ -1626,7 +1626,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.Execution
      * <em>Execution</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Execution</em>'.
      * @see org.eclipse.sirius.sample.interactions.Execution
      * @generated
@@ -1637,7 +1637,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.Execution#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.sample.interactions.Execution#getName()
      * @see #getExecution()
@@ -1649,7 +1649,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.Execution#getOwner
      * <em>Owner</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Owner</em>'.
      * @see org.eclipse.sirius.sample.interactions.Execution#getOwner()
      * @see #getExecution()
@@ -1661,7 +1661,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.Execution#getStart
      * <em>Start</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Start</em>'.
      * @see org.eclipse.sirius.sample.interactions.Execution#getStart()
      * @see #getExecution()
@@ -1673,7 +1673,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.Execution#getEnd
      * <em>End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>End</em>'.
      * @see org.eclipse.sirius.sample.interactions.Execution#getEnd()
      * @see #getExecution()
@@ -1685,7 +1685,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.State <em>State</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>State</em>'.
      * @see org.eclipse.sirius.sample.interactions.State
      * @generated
@@ -1696,7 +1696,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.State#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.sample.interactions.State#getName()
      * @see #getState()
@@ -1708,7 +1708,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.State#getOwner
      * <em>Owner</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Owner</em>'.
      * @see org.eclipse.sirius.sample.interactions.State#getOwner()
      * @see #getState()
@@ -1720,7 +1720,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.State#getStart
      * <em>Start</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Start</em>'.
      * @see org.eclipse.sirius.sample.interactions.State#getStart()
      * @see #getState()
@@ -1732,7 +1732,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.State#getEnd <em>End</em>}
      * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>End</em>'.
      * @see org.eclipse.sirius.sample.interactions.State#getEnd()
      * @see #getState()
@@ -1744,7 +1744,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse
      * <em>Interaction Use</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Interaction Use</em>'.
      * @see org.eclipse.sirius.sample.interactions.InteractionUse
      * @generated
@@ -1755,7 +1755,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getType
      * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Type</em>'.
      * @see org.eclipse.sirius.sample.interactions.InteractionUse#getType()
      * @see #getInteractionUse()
@@ -1767,7 +1767,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getInteraction
      * <em>Interaction</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Interaction</em>'.
      * @see org.eclipse.sirius.sample.interactions.InteractionUse#getInteraction()
      * @see #getInteractionUse()
@@ -1780,7 +1780,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getCoveredParticipants
      * <em>Covered Participants</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Covered Participants</em>'.
      * @see org.eclipse.sirius.sample.interactions.InteractionUse#getCoveredParticipants()
@@ -1793,7 +1793,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getStart
      * <em>Start</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Start</em>'.
      * @see org.eclipse.sirius.sample.interactions.InteractionUse#getStart()
      * @see #getInteractionUse()
@@ -1805,7 +1805,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse#getFinish
      * <em>Finish</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Finish</em>'.
      * @see org.eclipse.sirius.sample.interactions.InteractionUse#getFinish()
      * @see #getInteractionUse()
@@ -1818,7 +1818,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment
      * <em>Combined Fragment</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Combined Fragment</em>'.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragment
      * @generated
@@ -1829,7 +1829,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOperator
      * <em>Operator</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Operator</em>'.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragment#getOperator()
      * @see #getCombinedFragment()
@@ -1842,7 +1842,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getCoveredParticipants
      * <em>Covered Participants</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference list '
      *         <em>Covered Participants</em>'.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragment#getCoveredParticipants()
@@ -1855,7 +1855,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getStart
      * <em>Start</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Start</em>'.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragment#getStart()
      * @see #getCombinedFragment()
@@ -1867,7 +1867,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getFinish
      * <em>Finish</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Finish</em>'.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragment#getFinish()
      * @see #getCombinedFragment()
@@ -1879,7 +1879,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedOperands
      * <em>Owned Operands</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Owned Operands</em>'.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragment#getOwnedOperands()
@@ -1892,7 +1892,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.Operand <em>Operand</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Operand</em>'.
      * @see org.eclipse.sirius.sample.interactions.Operand
      * @generated
@@ -1903,7 +1903,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.Operand#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.sample.interactions.Operand#getName()
      * @see #getOperand()
@@ -1915,7 +1915,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.Operand#getStart
      * <em>Start</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Start</em>'.
      * @see org.eclipse.sirius.sample.interactions.Operand#getStart()
      * @see #getOperand()
@@ -1927,7 +1927,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.AbstractEnd
      * <em>Abstract End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Abstract End</em>'.
      * @see org.eclipse.sirius.sample.interactions.AbstractEnd
      * @generated
@@ -1938,7 +1938,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.AbstractEnd#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.sample.interactions.AbstractEnd#getName()
      * @see #getAbstractEnd()
@@ -1950,7 +1950,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.AbstractEnd#getContext
      * <em>Context</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Context</em>'.
      * @see org.eclipse.sirius.sample.interactions.AbstractEnd#getContext()
      * @see #getAbstractEnd()
@@ -1962,7 +1962,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.MessageEnd
      * <em>Message End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Message End</em>'.
      * @see org.eclipse.sirius.sample.interactions.MessageEnd
      * @generated
@@ -1973,7 +1973,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.MessageEnd#getMessage
      * <em>Message</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Message</em>'.
      * @see org.eclipse.sirius.sample.interactions.MessageEnd#getMessage()
      * @see #getMessageEnd()
@@ -1985,7 +1985,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.ExecutionEnd
      * <em>Execution End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Execution End</em>'.
      * @see org.eclipse.sirius.sample.interactions.ExecutionEnd
      * @generated
@@ -1996,7 +1996,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.ExecutionEnd#getExecution
      * <em>Execution</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Execution</em>'.
      * @see org.eclipse.sirius.sample.interactions.ExecutionEnd#getExecution()
      * @see #getExecutionEnd()
@@ -2008,7 +2008,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.StateEnd
      * <em>State End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>State End</em>'.
      * @see org.eclipse.sirius.sample.interactions.StateEnd
      * @generated
@@ -2019,7 +2019,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.StateEnd#getState
      * <em>State</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>State</em>'.
      * @see org.eclipse.sirius.sample.interactions.StateEnd#getState()
      * @see #getStateEnd()
@@ -2032,7 +2032,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.InteractionUseEnd
      * <em>Interaction Use End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Interaction Use End</em>'.
      * @see org.eclipse.sirius.sample.interactions.InteractionUseEnd
      * @generated
@@ -2043,7 +2043,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.InteractionUseEnd#getOwner
      * <em>Owner</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Owner</em>'.
      * @see org.eclipse.sirius.sample.interactions.InteractionUseEnd#getOwner()
      * @see #getInteractionUseEnd()
@@ -2056,7 +2056,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd
      * <em>Combined Fragment End</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Combined Fragment End</em>'.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragmentEnd
      * @generated
@@ -2067,7 +2067,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd#getOwner
      * <em>Owner</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Owner</em>'.
      * @see org.eclipse.sirius.sample.interactions.CombinedFragmentEnd#getOwner()
      * @see #getCombinedFragmentEnd()
@@ -2079,7 +2079,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.OperandEnd
      * <em>Operand End</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Operand End</em>'.
      * @see org.eclipse.sirius.sample.interactions.OperandEnd
      * @generated
@@ -2090,7 +2090,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.sample.interactions.OperandEnd#getOwner
      * <em>Owner</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the reference '<em>Owner</em>'.
      * @see org.eclipse.sirius.sample.interactions.OperandEnd#getOwner()
      * @see #getOperandEnd()
@@ -2102,7 +2102,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.MixEnd <em>Mix End</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Mix End</em>'.
      * @see org.eclipse.sirius.sample.interactions.MixEnd
      * @generated
@@ -2113,7 +2113,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.sample.interactions.Constraint
      * <em>Constraint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Constraint</em>'.
      * @see org.eclipse.sirius.sample.interactions.Constraint
      * @generated
@@ -2124,7 +2124,7 @@ public interface InteractionsPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.sample.interactions.Constraint#getExpression
      * <em>Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Expression</em>'.
      * @see org.eclipse.sirius.sample.interactions.Constraint#getExpression()
      * @see #getConstraint()
@@ -2137,7 +2137,7 @@ public interface InteractionsPackage extends EPackage {
      * {@link org.eclipse.sirius.sample.interactions.Constraint#getConstrainedEnds
      * <em>Constrained Ends</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the reference list '<em>Constrained Ends</em>
      *         '.
      * @see org.eclipse.sirius.sample.interactions.Constraint#getConstrainedEnds()
@@ -2149,7 +2149,7 @@ public interface InteractionsPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -2165,7 +2165,7 @@ public interface InteractionsPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -2173,685 +2173,685 @@ public interface InteractionsPackage extends EPackage {
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.ModelImpl
          * <em>Model</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.ModelImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getModel()
          * @generated
          */
-        EClass MODEL = eINSTANCE.getModel();
+        EClass MODEL = InteractionsPackage.eINSTANCE.getModel();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute MODEL__NAME = eINSTANCE.getModel_Name();
+        EAttribute MODEL__NAME = InteractionsPackage.eINSTANCE.getModel_Name();
 
         /**
          * The meta object literal for the '<em><b>Owned Interactions</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference MODEL__OWNED_INTERACTIONS = eINSTANCE.getModel_OwnedInteractions();
+        EReference MODEL__OWNED_INTERACTIONS = InteractionsPackage.eINSTANCE.getModel_OwnedInteractions();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.InteractionImpl
          * <em>Interaction</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getInteraction()
          * @generated
          */
-        EClass INTERACTION = eINSTANCE.getInteraction();
+        EClass INTERACTION = InteractionsPackage.eINSTANCE.getInteraction();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute INTERACTION__NAME = eINSTANCE.getInteraction_Name();
+        EAttribute INTERACTION__NAME = InteractionsPackage.eINSTANCE.getInteraction_Name();
 
         /**
          * The meta object literal for the '<em><b>Participants</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION__PARTICIPANTS = eINSTANCE.getInteraction_Participants();
+        EReference INTERACTION__PARTICIPANTS = InteractionsPackage.eINSTANCE.getInteraction_Participants();
 
         /**
          * The meta object literal for the '<em><b>Messages</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION__MESSAGES = eINSTANCE.getInteraction_Messages();
+        EReference INTERACTION__MESSAGES = InteractionsPackage.eINSTANCE.getInteraction_Messages();
 
         /**
          * The meta object literal for the '<em><b>Executions</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION__EXECUTIONS = eINSTANCE.getInteraction_Executions();
+        EReference INTERACTION__EXECUTIONS = InteractionsPackage.eINSTANCE.getInteraction_Executions();
 
         /**
          * The meta object literal for the '<em><b>States</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION__STATES = eINSTANCE.getInteraction_States();
+        EReference INTERACTION__STATES = InteractionsPackage.eINSTANCE.getInteraction_States();
 
         /**
          * The meta object literal for the '<em><b>Interaction Uses</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION__INTERACTION_USES = eINSTANCE.getInteraction_InteractionUses();
+        EReference INTERACTION__INTERACTION_USES = InteractionsPackage.eINSTANCE.getInteraction_InteractionUses();
 
         /**
          * The meta object literal for the '<em><b>Combined Fragments</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION__COMBINED_FRAGMENTS = eINSTANCE.getInteraction_CombinedFragments();
+        EReference INTERACTION__COMBINED_FRAGMENTS = InteractionsPackage.eINSTANCE.getInteraction_CombinedFragments();
 
         /**
          * The meta object literal for the '<em><b>Ends</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION__ENDS = eINSTANCE.getInteraction_Ends();
+        EReference INTERACTION__ENDS = InteractionsPackage.eINSTANCE.getInteraction_Ends();
 
         /**
          * The meta object literal for the '<em><b>Constraints</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION__CONSTRAINTS = eINSTANCE.getInteraction_Constraints();
+        EReference INTERACTION__CONSTRAINTS = InteractionsPackage.eINSTANCE.getInteraction_Constraints();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.ParticipantImpl
          * <em>Participant</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.ParticipantImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getParticipant()
          * @generated
          */
-        EClass PARTICIPANT = eINSTANCE.getParticipant();
+        EClass PARTICIPANT = InteractionsPackage.eINSTANCE.getParticipant();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute PARTICIPANT__NAME = eINSTANCE.getParticipant_Name();
+        EAttribute PARTICIPANT__NAME = InteractionsPackage.eINSTANCE.getParticipant_Name();
 
         /**
          * The meta object literal for the '<em><b>Type</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference PARTICIPANT__TYPE = eINSTANCE.getParticipant_Type();
+        EReference PARTICIPANT__TYPE = InteractionsPackage.eINSTANCE.getParticipant_Type();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.MessageImpl
          * <em>Message</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.MessageImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getMessage()
          * @generated
          */
-        EClass MESSAGE = eINSTANCE.getMessage();
+        EClass MESSAGE = InteractionsPackage.eINSTANCE.getMessage();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute MESSAGE__NAME = eINSTANCE.getMessage_Name();
+        EAttribute MESSAGE__NAME = InteractionsPackage.eINSTANCE.getMessage_Name();
 
         /**
          * The meta object literal for the '<em><b>Sending End</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference MESSAGE__SENDING_END = eINSTANCE.getMessage_SendingEnd();
+        EReference MESSAGE__SENDING_END = InteractionsPackage.eINSTANCE.getMessage_SendingEnd();
 
         /**
          * The meta object literal for the '<em><b>Receiving End</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference MESSAGE__RECEIVING_END = eINSTANCE.getMessage_ReceivingEnd();
+        EReference MESSAGE__RECEIVING_END = InteractionsPackage.eINSTANCE.getMessage_ReceivingEnd();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.CallMessageImpl
          * <em>Call Message</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.CallMessageImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCallMessage()
          * @generated
          */
-        EClass CALL_MESSAGE = eINSTANCE.getCallMessage();
+        EClass CALL_MESSAGE = InteractionsPackage.eINSTANCE.getCallMessage();
 
         /**
          * The meta object literal for the '<em><b>Operation</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference CALL_MESSAGE__OPERATION = eINSTANCE.getCallMessage_Operation();
+        EReference CALL_MESSAGE__OPERATION = InteractionsPackage.eINSTANCE.getCallMessage_Operation();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.FeatureAccessMessageImpl
          * <em>Feature Access Message</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.FeatureAccessMessageImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getFeatureAccessMessage()
          * @generated
          */
-        EClass FEATURE_ACCESS_MESSAGE = eINSTANCE.getFeatureAccessMessage();
+        EClass FEATURE_ACCESS_MESSAGE = InteractionsPackage.eINSTANCE.getFeatureAccessMessage();
 
         /**
          * The meta object literal for the '<em><b>Is Write</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute FEATURE_ACCESS_MESSAGE__IS_WRITE = eINSTANCE.getFeatureAccessMessage_IsWrite();
+        EAttribute FEATURE_ACCESS_MESSAGE__IS_WRITE = InteractionsPackage.eINSTANCE.getFeatureAccessMessage_IsWrite();
 
         /**
          * The meta object literal for the '<em><b>Feature</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference FEATURE_ACCESS_MESSAGE__FEATURE = eINSTANCE.getFeatureAccessMessage_Feature();
+        EReference FEATURE_ACCESS_MESSAGE__FEATURE = InteractionsPackage.eINSTANCE.getFeatureAccessMessage_Feature();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.CreateParticipantMessageImpl
          * <em>Create Participant Message</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.CreateParticipantMessageImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCreateParticipantMessage()
          * @generated
          */
-        EClass CREATE_PARTICIPANT_MESSAGE = eINSTANCE.getCreateParticipantMessage();
+        EClass CREATE_PARTICIPANT_MESSAGE = InteractionsPackage.eINSTANCE.getCreateParticipantMessage();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.DestroyParticipantMessageImpl
          * <em>Destroy Participant Message</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.DestroyParticipantMessageImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getDestroyParticipantMessage()
          * @generated
          */
-        EClass DESTROY_PARTICIPANT_MESSAGE = eINSTANCE.getDestroyParticipantMessage();
+        EClass DESTROY_PARTICIPANT_MESSAGE = InteractionsPackage.eINSTANCE.getDestroyParticipantMessage();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.ReturnMessageImpl
          * <em>Return Message</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.ReturnMessageImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getReturnMessage()
          * @generated
          */
-        EClass RETURN_MESSAGE = eINSTANCE.getReturnMessage();
+        EClass RETURN_MESSAGE = InteractionsPackage.eINSTANCE.getReturnMessage();
 
         /**
          * The meta object literal for the '<em><b>Invocation Message</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference RETURN_MESSAGE__INVOCATION_MESSAGE = eINSTANCE.getReturnMessage_InvocationMessage();
+        EReference RETURN_MESSAGE__INVOCATION_MESSAGE = InteractionsPackage.eINSTANCE.getReturnMessage_InvocationMessage();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.ExecutionImpl
          * <em>Execution</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.ExecutionImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getExecution()
          * @generated
          */
-        EClass EXECUTION = eINSTANCE.getExecution();
+        EClass EXECUTION = InteractionsPackage.eINSTANCE.getExecution();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute EXECUTION__NAME = eINSTANCE.getExecution_Name();
+        EAttribute EXECUTION__NAME = InteractionsPackage.eINSTANCE.getExecution_Name();
 
         /**
          * The meta object literal for the '<em><b>Owner</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EXECUTION__OWNER = eINSTANCE.getExecution_Owner();
+        EReference EXECUTION__OWNER = InteractionsPackage.eINSTANCE.getExecution_Owner();
 
         /**
          * The meta object literal for the '<em><b>Start</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EXECUTION__START = eINSTANCE.getExecution_Start();
+        EReference EXECUTION__START = InteractionsPackage.eINSTANCE.getExecution_Start();
 
         /**
          * The meta object literal for the '<em><b>End</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EXECUTION__END = eINSTANCE.getExecution_End();
+        EReference EXECUTION__END = InteractionsPackage.eINSTANCE.getExecution_End();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.StateImpl
          * <em>State</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.StateImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getState()
          * @generated
          */
-        EClass STATE = eINSTANCE.getState();
+        EClass STATE = InteractionsPackage.eINSTANCE.getState();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute STATE__NAME = eINSTANCE.getState_Name();
+        EAttribute STATE__NAME = InteractionsPackage.eINSTANCE.getState_Name();
 
         /**
          * The meta object literal for the '<em><b>Owner</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference STATE__OWNER = eINSTANCE.getState_Owner();
+        EReference STATE__OWNER = InteractionsPackage.eINSTANCE.getState_Owner();
 
         /**
          * The meta object literal for the '<em><b>Start</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference STATE__START = eINSTANCE.getState_Start();
+        EReference STATE__START = InteractionsPackage.eINSTANCE.getState_Start();
 
         /**
          * The meta object literal for the '<em><b>End</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference STATE__END = eINSTANCE.getState_End();
+        EReference STATE__END = InteractionsPackage.eINSTANCE.getState_End();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl
          * <em>Interaction Use</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionUseImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getInteractionUse()
          * @generated
          */
-        EClass INTERACTION_USE = eINSTANCE.getInteractionUse();
+        EClass INTERACTION_USE = InteractionsPackage.eINSTANCE.getInteractionUse();
 
         /**
          * The meta object literal for the '<em><b>Type</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute INTERACTION_USE__TYPE = eINSTANCE.getInteractionUse_Type();
+        EAttribute INTERACTION_USE__TYPE = InteractionsPackage.eINSTANCE.getInteractionUse_Type();
 
         /**
          * The meta object literal for the '<em><b>Interaction</b></em>'
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION_USE__INTERACTION = eINSTANCE.getInteractionUse_Interaction();
+        EReference INTERACTION_USE__INTERACTION = InteractionsPackage.eINSTANCE.getInteractionUse_Interaction();
 
         /**
          * The meta object literal for the '<em><b>Covered Participants</b></em>
          * ' reference list feature. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION_USE__COVERED_PARTICIPANTS = eINSTANCE.getInteractionUse_CoveredParticipants();
+        EReference INTERACTION_USE__COVERED_PARTICIPANTS = InteractionsPackage.eINSTANCE.getInteractionUse_CoveredParticipants();
 
         /**
          * The meta object literal for the '<em><b>Start</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION_USE__START = eINSTANCE.getInteractionUse_Start();
+        EReference INTERACTION_USE__START = InteractionsPackage.eINSTANCE.getInteractionUse_Start();
 
         /**
          * The meta object literal for the '<em><b>Finish</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION_USE__FINISH = eINSTANCE.getInteractionUse_Finish();
+        EReference INTERACTION_USE__FINISH = InteractionsPackage.eINSTANCE.getInteractionUse_Finish();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl
          * <em>Combined Fragment</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.CombinedFragmentImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCombinedFragment()
          * @generated
          */
-        EClass COMBINED_FRAGMENT = eINSTANCE.getCombinedFragment();
+        EClass COMBINED_FRAGMENT = InteractionsPackage.eINSTANCE.getCombinedFragment();
 
         /**
          * The meta object literal for the '<em><b>Operator</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute COMBINED_FRAGMENT__OPERATOR = eINSTANCE.getCombinedFragment_Operator();
+        EAttribute COMBINED_FRAGMENT__OPERATOR = InteractionsPackage.eINSTANCE.getCombinedFragment_Operator();
 
         /**
          * The meta object literal for the '<em><b>Covered Participants</b></em>
          * ' reference list feature. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @generated
          */
-        EReference COMBINED_FRAGMENT__COVERED_PARTICIPANTS = eINSTANCE.getCombinedFragment_CoveredParticipants();
+        EReference COMBINED_FRAGMENT__COVERED_PARTICIPANTS = InteractionsPackage.eINSTANCE.getCombinedFragment_CoveredParticipants();
 
         /**
          * The meta object literal for the '<em><b>Start</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference COMBINED_FRAGMENT__START = eINSTANCE.getCombinedFragment_Start();
+        EReference COMBINED_FRAGMENT__START = InteractionsPackage.eINSTANCE.getCombinedFragment_Start();
 
         /**
          * The meta object literal for the '<em><b>Finish</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference COMBINED_FRAGMENT__FINISH = eINSTANCE.getCombinedFragment_Finish();
+        EReference COMBINED_FRAGMENT__FINISH = InteractionsPackage.eINSTANCE.getCombinedFragment_Finish();
 
         /**
          * The meta object literal for the '<em><b>Owned Operands</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference COMBINED_FRAGMENT__OWNED_OPERANDS = eINSTANCE.getCombinedFragment_OwnedOperands();
+        EReference COMBINED_FRAGMENT__OWNED_OPERANDS = InteractionsPackage.eINSTANCE.getCombinedFragment_OwnedOperands();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.OperandImpl
          * <em>Operand</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.OperandImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getOperand()
          * @generated
          */
-        EClass OPERAND = eINSTANCE.getOperand();
+        EClass OPERAND = InteractionsPackage.eINSTANCE.getOperand();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute OPERAND__NAME = eINSTANCE.getOperand_Name();
+        EAttribute OPERAND__NAME = InteractionsPackage.eINSTANCE.getOperand_Name();
 
         /**
          * The meta object literal for the '<em><b>Start</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference OPERAND__START = eINSTANCE.getOperand_Start();
+        EReference OPERAND__START = InteractionsPackage.eINSTANCE.getOperand_Start();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl
          * <em>Abstract End</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.AbstractEndImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getAbstractEnd()
          * @generated
          */
-        EClass ABSTRACT_END = eINSTANCE.getAbstractEnd();
+        EClass ABSTRACT_END = InteractionsPackage.eINSTANCE.getAbstractEnd();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute ABSTRACT_END__NAME = eINSTANCE.getAbstractEnd_Name();
+        EAttribute ABSTRACT_END__NAME = InteractionsPackage.eINSTANCE.getAbstractEnd_Name();
 
         /**
          * The meta object literal for the '<em><b>Context</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference ABSTRACT_END__CONTEXT = eINSTANCE.getAbstractEnd_Context();
+        EReference ABSTRACT_END__CONTEXT = InteractionsPackage.eINSTANCE.getAbstractEnd_Context();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.MessageEndImpl
          * <em>Message End</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.MessageEndImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getMessageEnd()
          * @generated
          */
-        EClass MESSAGE_END = eINSTANCE.getMessageEnd();
+        EClass MESSAGE_END = InteractionsPackage.eINSTANCE.getMessageEnd();
 
         /**
          * The meta object literal for the '<em><b>Message</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference MESSAGE_END__MESSAGE = eINSTANCE.getMessageEnd_Message();
+        EReference MESSAGE_END__MESSAGE = InteractionsPackage.eINSTANCE.getMessageEnd_Message();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl
          * <em>Execution End</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.ExecutionEndImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getExecutionEnd()
          * @generated
          */
-        EClass EXECUTION_END = eINSTANCE.getExecutionEnd();
+        EClass EXECUTION_END = InteractionsPackage.eINSTANCE.getExecutionEnd();
 
         /**
          * The meta object literal for the '<em><b>Execution</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference EXECUTION_END__EXECUTION = eINSTANCE.getExecutionEnd_Execution();
+        EReference EXECUTION_END__EXECUTION = InteractionsPackage.eINSTANCE.getExecutionEnd_Execution();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.StateEndImpl
          * <em>State End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.StateEndImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getStateEnd()
          * @generated
          */
-        EClass STATE_END = eINSTANCE.getStateEnd();
+        EClass STATE_END = InteractionsPackage.eINSTANCE.getStateEnd();
 
         /**
          * The meta object literal for the '<em><b>State</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference STATE_END__STATE = eINSTANCE.getStateEnd_State();
+        EReference STATE_END__STATE = InteractionsPackage.eINSTANCE.getStateEnd_State();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.InteractionUseEndImpl
          * <em>Interaction Use End</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionUseEndImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getInteractionUseEnd()
          * @generated
          */
-        EClass INTERACTION_USE_END = eINSTANCE.getInteractionUseEnd();
+        EClass INTERACTION_USE_END = InteractionsPackage.eINSTANCE.getInteractionUseEnd();
 
         /**
          * The meta object literal for the '<em><b>Owner</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference INTERACTION_USE_END__OWNER = eINSTANCE.getInteractionUseEnd_Owner();
+        EReference INTERACTION_USE_END__OWNER = InteractionsPackage.eINSTANCE.getInteractionUseEnd_Owner();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.CombinedFragmentEndImpl
          * <em>Combined Fragment End</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.CombinedFragmentEndImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getCombinedFragmentEnd()
          * @generated
          */
-        EClass COMBINED_FRAGMENT_END = eINSTANCE.getCombinedFragmentEnd();
+        EClass COMBINED_FRAGMENT_END = InteractionsPackage.eINSTANCE.getCombinedFragmentEnd();
 
         /**
          * The meta object literal for the '<em><b>Owner</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference COMBINED_FRAGMENT_END__OWNER = eINSTANCE.getCombinedFragmentEnd_Owner();
+        EReference COMBINED_FRAGMENT_END__OWNER = InteractionsPackage.eINSTANCE.getCombinedFragmentEnd_Owner();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.OperandEndImpl
          * <em>Operand End</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.OperandEndImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getOperandEnd()
          * @generated
          */
-        EClass OPERAND_END = eINSTANCE.getOperandEnd();
+        EClass OPERAND_END = InteractionsPackage.eINSTANCE.getOperandEnd();
 
         /**
          * The meta object literal for the '<em><b>Owner</b></em>' reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference OPERAND_END__OWNER = eINSTANCE.getOperandEnd_Owner();
+        EReference OPERAND_END__OWNER = InteractionsPackage.eINSTANCE.getOperandEnd_Owner();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.MixEndImpl
          * <em>Mix End</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.MixEndImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getMixEnd()
          * @generated
          */
-        EClass MIX_END = eINSTANCE.getMixEnd();
+        EClass MIX_END = InteractionsPackage.eINSTANCE.getMixEnd();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.sample.interactions.impl.ConstraintImpl
          * <em>Constraint</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.sample.interactions.impl.ConstraintImpl
          * @see org.eclipse.sirius.sample.interactions.impl.InteractionsPackageImpl#getConstraint()
          * @generated
          */
-        EClass CONSTRAINT = eINSTANCE.getConstraint();
+        EClass CONSTRAINT = InteractionsPackage.eINSTANCE.getConstraint();
 
         /**
          * The meta object literal for the '<em><b>Expression</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute CONSTRAINT__EXPRESSION = eINSTANCE.getConstraint_Expression();
+        EAttribute CONSTRAINT__EXPRESSION = InteractionsPackage.eINSTANCE.getConstraint_Expression();
 
         /**
          * The meta object literal for the '<em><b>Constrained Ends</b></em>'
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference CONSTRAINT__CONSTRAINED_ENDS = eINSTANCE.getConstraint_ConstrainedEnds();
+        EReference CONSTRAINT__CONSTRAINED_ENDS = InteractionsPackage.eINSTANCE.getConstraint_ConstrainedEnds();
 
     }
 

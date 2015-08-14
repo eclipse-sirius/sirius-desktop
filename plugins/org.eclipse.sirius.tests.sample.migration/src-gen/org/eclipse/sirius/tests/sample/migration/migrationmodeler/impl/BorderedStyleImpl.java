@@ -258,7 +258,7 @@ public class BorderedStyleImpl extends EObjectImpl implements BorderedStyle {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSize: ");
+        result.append(" (borderSize: "); //$NON-NLS-1$
         result.append(borderSize);
         result.append(')');
         return result.toString();

@@ -37,21 +37,21 @@ public interface TemplatePackage extends EPackage {
      * 
      * @generated
      */
-    String eNAME = "template";
+    String eNAME = "template"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_PREFIX = "template";
+    String eNS_PREFIX = "template"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--

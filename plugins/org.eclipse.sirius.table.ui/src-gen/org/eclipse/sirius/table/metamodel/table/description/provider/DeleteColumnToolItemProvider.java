@@ -61,7 +61,7 @@ public class DeleteColumnToolItemProvider extends DeleteToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteColumnTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteColumnTool")); //$NON-NLS-1$
     }
 
     /**
@@ -73,7 +73,7 @@ public class DeleteColumnToolItemProvider extends DeleteToolItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((DeleteColumnTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_DeleteColumnTool_type") : getString("_UI_DeleteColumnTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_DeleteColumnTool_type") : getString("_UI_DeleteColumnTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

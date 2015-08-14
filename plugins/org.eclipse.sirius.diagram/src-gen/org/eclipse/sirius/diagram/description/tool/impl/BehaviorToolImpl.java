@@ -47,7 +47,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
      * @generated
      * @ordered
      */
-    protected static final String DOMAIN_CLASS_EDEFAULT = "EObject";
+    protected static final String DOMAIN_CLASS_EDEFAULT = "EObject"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}'
@@ -289,7 +289,7 @@ public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements Beh
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (domainClass: ");
+        result.append(" (domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
         result.append(')');
         return result.toString();

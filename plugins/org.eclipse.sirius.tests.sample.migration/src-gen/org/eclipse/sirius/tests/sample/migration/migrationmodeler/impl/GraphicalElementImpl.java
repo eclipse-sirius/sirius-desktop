@@ -165,7 +165,7 @@ public abstract class GraphicalElementImpl extends EObjectImpl implements Graphi
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (id: ");
+        result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
         result.append(')');
         return result.toString();

@@ -71,8 +71,10 @@ public class ValidationRuleItemProvider extends IdentifiedElementItemProvider {
      */
     protected void addLevelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationRule_level_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ValidationRule_level_feature", "_UI_ValidationRule_type"),
-                ValidationPackage.Literals.VALIDATION_RULE__LEVEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ValidationRule_level_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidationRule_level_feature", "_UI_ValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VALIDATION_RULE__LEVEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -83,8 +85,10 @@ public class ValidationRuleItemProvider extends IdentifiedElementItemProvider {
      */
     protected void addMessagePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ValidationRule_message_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ValidationRule_message_feature", "_UI_ValidationRule_type"),
-                ValidationPackage.Literals.VALIDATION_RULE__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ValidationRule_message_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ValidationRule_message_feature", "_UI_ValidationRule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ValidationPackage.Literals.VALIDATION_RULE__MESSAGE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -124,14 +128,14 @@ public class ValidationRuleItemProvider extends IdentifiedElementItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @not-generated
      */
     @Override
     public String getText(Object object) {
         IdentifiedElementQuery query = new IdentifiedElementQuery((SemanticValidationRule) object);
         String label = query.getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ValidationRule_type") : getString("_UI_ValidationRule_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ValidationRule_type") : getString("_UI_ValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

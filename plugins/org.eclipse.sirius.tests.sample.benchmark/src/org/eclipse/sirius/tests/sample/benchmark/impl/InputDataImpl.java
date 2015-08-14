@@ -33,7 +33,7 @@ import org.eclipse.sirius.tests.sample.benchmark.TestCase;
  * <em>Tests</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InputDataImpl extends NamedElementImpl implements InputData {

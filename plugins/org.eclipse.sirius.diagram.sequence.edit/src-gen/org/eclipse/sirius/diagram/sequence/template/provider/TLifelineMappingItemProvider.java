@@ -67,8 +67,10 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
      */
     protected void addEolVisibleExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TLifelineMapping_eolVisibleExpression_feature"), getString("_UI_TLifelineMapping_eolVisibleExpression_description"),
-                TemplatePackage.Literals.TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TLifelineMapping_eolVisibleExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TLifelineMapping_eolVisibleExpression_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TLIFELINE_MAPPING__EOL_VISIBLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -116,7 +118,7 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TLifelineMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TLifelineMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -128,7 +130,7 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TLifelineMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TLifelineMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TLifelineMapping_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -227,7 +229,8 @@ public class TLifelineMappingItemProvider extends TAbstractMappingItemProvider {
         boolean qualify = childFeature == TemplatePackage.Literals.TLIFELINE_MAPPING__INSTANCE_ROLE_STYLE || childFeature == TemplatePackage.Literals.TLIFELINE_MAPPING__END_OF_LIFE_STYLE;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

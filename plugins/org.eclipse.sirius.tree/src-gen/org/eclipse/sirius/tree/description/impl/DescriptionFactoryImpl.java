@@ -120,7 +120,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.TREE_POPUP_MENU:
             return createTreePopupMenu();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -135,7 +135,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.TREE_DRAG_SOURCE:
             return createTreeDragSourceFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -150,7 +150,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         case DescriptionPackage.TREE_DRAG_SOURCE:
             return convertTreeDragSourceToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -351,7 +351,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public TreeDragSource createTreeDragSourceFromString(EDataType eDataType, String initialValue) {
         TreeDragSource result = TreeDragSource.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

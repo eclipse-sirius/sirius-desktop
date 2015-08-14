@@ -252,7 +252,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif";
+    protected static final String ICON_PATH_EDEFAULT = "/org.eclipse.sirius.ui/icons/full/obj16/SelectionWizardDescription.gif"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
@@ -1137,23 +1137,23 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (candidatesExpression: ");
+        result.append(" (candidatesExpression: "); //$NON-NLS-1$
         result.append(candidatesExpression);
-        result.append(", multiple: ");
+        result.append(", multiple: "); //$NON-NLS-1$
         result.append(multiple);
-        result.append(", tree: ");
+        result.append(", tree: "); //$NON-NLS-1$
         result.append(tree);
-        result.append(", rootExpression: ");
+        result.append(", rootExpression: "); //$NON-NLS-1$
         result.append(rootExpression);
-        result.append(", childrenExpression: ");
+        result.append(", childrenExpression: "); //$NON-NLS-1$
         result.append(childrenExpression);
-        result.append(", message: ");
+        result.append(", message: "); //$NON-NLS-1$
         result.append(message);
-        result.append(", iconPath: ");
+        result.append(", iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
-        result.append(", windowTitle: ");
+        result.append(", windowTitle: "); //$NON-NLS-1$
         result.append(windowTitle);
-        result.append(", windowImagePath: ");
+        result.append(", windowImagePath: "); //$NON-NLS-1$
         result.append(windowImagePath);
         result.append(')');
         return result.toString();

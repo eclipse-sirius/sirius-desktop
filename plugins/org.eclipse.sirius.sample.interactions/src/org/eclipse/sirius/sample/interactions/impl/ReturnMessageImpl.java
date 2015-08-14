@@ -29,7 +29,7 @@ import org.eclipse.sirius.sample.interactions.ReturnMessage;
  * <em>Invocation Message</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
@@ -37,7 +37,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
      * The cached value of the '{@link #getInvocationMessage()
      * <em>Invocation Message</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getInvocationMessage()
      * @generated
      * @ordered
@@ -46,7 +46,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ReturnMessageImpl() {
@@ -55,7 +55,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -65,16 +65,18 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Message getInvocationMessage() {
         if (invocationMessage != null && invocationMessage.eIsProxy()) {
             InternalEObject oldInvocationMessage = (InternalEObject) invocationMessage;
             invocationMessage = (Message) eResolveProxy(oldInvocationMessage);
             if (invocationMessage != oldInvocationMessage) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, oldInvocationMessage, invocationMessage));
+                }
             }
         }
         return invocationMessage;
@@ -82,7 +84,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Message basicGetInvocationMessage() {
@@ -91,27 +93,30 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setInvocationMessage(Message newInvocationMessage) {
         Message oldInvocationMessage = invocationMessage;
         invocationMessage = newInvocationMessage;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.RETURN_MESSAGE__INVOCATION_MESSAGE, oldInvocationMessage, invocationMessage));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.RETURN_MESSAGE__INVOCATION_MESSAGE:
-            if (resolve)
+            if (resolve) {
                 return getInvocationMessage();
+            }
             return basicGetInvocationMessage();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -119,7 +124,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +139,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -149,7 +154,7 @@ public class ReturnMessageImpl extends MessageImpl implements ReturnMessage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

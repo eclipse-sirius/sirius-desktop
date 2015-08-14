@@ -59,7 +59,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * @generated
      * @ordered
      */
-    protected static final String MIN_VALUE_EXPRESSION_EDEFAULT = "0";
+    protected static final String MIN_VALUE_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getMinValueExpression()
@@ -81,7 +81,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * @generated
      * @ordered
      */
-    protected static final String MAX_VALUE_EXPRESSION_EDEFAULT = "0";
+    protected static final String MAX_VALUE_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getMaxValueExpression()
@@ -103,7 +103,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
      * @generated
      * @ordered
      */
-    protected static final String VALUE_EXPRESSION_EDEFAULT = "0";
+    protected static final String VALUE_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getValueExpression()
@@ -485,13 +485,13 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (minValueExpression: ");
+        result.append(" (minValueExpression: "); //$NON-NLS-1$
         result.append(minValueExpression);
-        result.append(", maxValueExpression: ");
+        result.append(", maxValueExpression: "); //$NON-NLS-1$
         result.append(maxValueExpression);
-        result.append(", valueExpression: ");
+        result.append(", valueExpression: "); //$NON-NLS-1$
         result.append(valueExpression);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
         result.append(')');
         return result.toString();

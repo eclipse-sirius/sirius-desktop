@@ -209,7 +209,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (applyOnAll: ");
+        result.append(" (applyOnAll: "); //$NON-NLS-1$
         result.append(applyOnAll);
         result.append(')');
         return result.toString();

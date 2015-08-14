@@ -98,7 +98,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeFilterDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeFilterDescription")); //$NON-NLS-1$
     }
 
     /**

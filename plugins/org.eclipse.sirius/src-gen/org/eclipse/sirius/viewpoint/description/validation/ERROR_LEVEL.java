@@ -36,7 +36,7 @@ public enum ERROR_LEVEL implements Enumerator {
      * @generated
      * @ordered
      */
-    INFO_LITERAL(0, "INFO", "INFO"),
+    INFO_LITERAL(0, "INFO", "INFO"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>WARNING</b></em>' literal object. <!-- begin-user-doc -->
@@ -46,7 +46,7 @@ public enum ERROR_LEVEL implements Enumerator {
      * @generated
      * @ordered
      */
-    WARNING_LITERAL(1, "WARNING", "WARNING"),
+    WARNING_LITERAL(1, "WARNING", "WARNING"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>ERROR</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -56,7 +56,7 @@ public enum ERROR_LEVEL implements Enumerator {
      * @generated
      * @ordered
      */
-    ERROR_LITERAL(3, "ERROR", "ERROR");
+    ERROR_LITERAL(3, "ERROR", "ERROR"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>INFO</b></em>' literal value. <!-- begin-user-doc --> <!--

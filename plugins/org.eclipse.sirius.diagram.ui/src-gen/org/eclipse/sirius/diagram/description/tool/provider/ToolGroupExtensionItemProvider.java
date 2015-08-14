@@ -75,7 +75,8 @@ IItemPropertySource {
      */
     protected void addGroupPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ToolGroupExtension_group_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ToolGroupExtension_group_feature", "_UI_ToolGroupExtension_type"),
+                getString("_UI_ToolGroupExtension_group_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ToolGroupExtension_group_feature", "_UI_ToolGroupExtension_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.TOOL_GROUP_EXTENSION__GROUP, true, false, true, null, null, null));
     }
 
@@ -120,7 +121,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ToolGroupExtension"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ToolGroupExtension")); //$NON-NLS-1$
     }
 
     /**
@@ -131,7 +132,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ToolGroupExtension_type");
+        return getString("_UI_ToolGroupExtension_type"); //$NON-NLS-1$
     }
 
     /**

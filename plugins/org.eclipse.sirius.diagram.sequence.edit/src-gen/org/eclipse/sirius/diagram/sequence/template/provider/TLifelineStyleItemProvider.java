@@ -64,10 +64,13 @@ public class TLifelineStyleItemProvider extends TTransformerItemProvider {
      * @generated
      */
     protected void addLifelineWidthComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TLifelineStyle_lifelineWidthComputationExpression_feature"), getString("_UI_TLifelineStyle_lifelineWidthComputationExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_TLifelineStyle_lifelineWidthComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TLifelineStyle_lifelineWidthComputationExpression_description"), //$NON-NLS-1$
                 TemplatePackage.Literals.TLIFELINE_STYLE__LIFELINE_WIDTH_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,8 +81,10 @@ public class TLifelineStyleItemProvider extends TTransformerItemProvider {
      */
     protected void addLifelineColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TLifelineStyle_lifelineColor_feature"), getString("_UI_TLifelineStyle_lifelineColor_description"), TemplatePackage.Literals.TLIFELINE_STYLE__LIFELINE_COLOR, true,
-                false, true, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_TLifelineStyle_lifelineColor_feature"), //$NON-NLS-1$
+                getString("_UI_TLifelineStyle_lifelineColor_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TLIFELINE_STYLE__LIFELINE_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,7 +95,7 @@ public class TLifelineStyleItemProvider extends TTransformerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TLifelineStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TLifelineStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -102,7 +107,7 @@ public class TLifelineStyleItemProvider extends TTransformerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((TLifelineStyle) object).getLifelineWidthComputationExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TLifelineStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TLifelineStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

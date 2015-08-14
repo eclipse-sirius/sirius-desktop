@@ -259,7 +259,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @generated
      * @ordered
      */
-    protected static final String BEGIN_LABEL_EDEFAULT = "";
+    protected static final String BEGIN_LABEL_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBeginLabel() <em>Begin Label</em>}'
@@ -279,7 +279,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * @generated
      * @ordered
      */
-    protected static final String END_LABEL_EDEFAULT = "";
+    protected static final String END_LABEL_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getEndLabel() <em>End Label</em>}'
@@ -1146,19 +1146,19 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (size: ");
+        result.append(" (size: "); //$NON-NLS-1$
         result.append(size);
-        result.append(", routingStyle: ");
+        result.append(", routingStyle: "); //$NON-NLS-1$
         result.append(routingStyle);
-        result.append(", isFold: ");
+        result.append(", isFold: "); //$NON-NLS-1$
         result.append(isFold);
-        result.append(", isMockEdge: ");
+        result.append(", isMockEdge: "); //$NON-NLS-1$
         result.append(isMockEdge);
-        result.append(", arrangeConstraints: ");
+        result.append(", arrangeConstraints: "); //$NON-NLS-1$
         result.append(arrangeConstraints);
-        result.append(", beginLabel: ");
+        result.append(", beginLabel: "); //$NON-NLS-1$
         result.append(beginLabel);
-        result.append(", endLabel: ");
+        result.append(", endLabel: "); //$NON-NLS-1$
         result.append(endLabel);
         result.append(')');
         return result.toString();

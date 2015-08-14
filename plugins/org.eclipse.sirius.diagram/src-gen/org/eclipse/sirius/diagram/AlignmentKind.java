@@ -76,7 +76,7 @@ public enum AlignmentKind implements Enumerator {
      * @generated
      * @ordered
      */
-    VERTICAL_LITERAL(0, "VERTICAL", "VERTICAL"),
+    VERTICAL_LITERAL(0, "VERTICAL", "VERTICAL"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>HORIZONTAL</b></em>' literal object. <!-- begin-user-doc -->
@@ -86,7 +86,7 @@ public enum AlignmentKind implements Enumerator {
      * @generated
      * @ordered
      */
-    HORIZONTAL_LITERAL(1, "HORIZONTAL", "HORIZONTAL"),
+    HORIZONTAL_LITERAL(1, "HORIZONTAL", "HORIZONTAL"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>SQUARE</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -96,7 +96,7 @@ public enum AlignmentKind implements Enumerator {
      * @generated
      * @ordered
      */
-    SQUARE_LITERAL(2, "SQUARE", "SQUARE");
+    SQUARE_LITERAL(2, "SQUARE", "SQUARE"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>VERTICAL</b></em>' literal value. <!-- begin-user-doc -->

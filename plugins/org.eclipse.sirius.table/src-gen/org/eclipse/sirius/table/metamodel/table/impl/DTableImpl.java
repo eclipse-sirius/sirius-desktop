@@ -476,7 +476,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (headerColumnWidth: ");
+        result.append(" (headerColumnWidth: "); //$NON-NLS-1$
         result.append(headerColumnWidth);
         result.append(')');
         return result.toString();

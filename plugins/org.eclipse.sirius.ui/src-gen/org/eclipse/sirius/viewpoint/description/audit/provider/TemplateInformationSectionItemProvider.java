@@ -65,8 +65,10 @@ public class TemplateInformationSectionItemProvider extends InformationSectionIt
      */
     protected void addTemplatePathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TemplateInformationSection_templatePath_feature"), getString("_UI_TemplateInformationSection_templatePath_description"),
-                AuditPackage.Literals.TEMPLATE_INFORMATION_SECTION__TEMPLATE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TemplateInformationSection_templatePath_feature"), //$NON-NLS-1$
+                getString("_UI_TemplateInformationSection_templatePath_description"), //$NON-NLS-1$
+                AuditPackage.Literals.TEMPLATE_INFORMATION_SECTION__TEMPLATE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -77,7 +79,7 @@ public class TemplateInformationSectionItemProvider extends InformationSectionIt
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TemplateInformationSection"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TemplateInformationSection")); //$NON-NLS-1$
     }
 
     /**
@@ -89,7 +91,8 @@ public class TemplateInformationSectionItemProvider extends InformationSectionIt
     @Override
     public String getText(Object object) {
         String label = ((TemplateInformationSection) object).getTemplatePath();
-        return label == null || label.length() == 0 ? getString("_UI_TemplateInformationSection_type") : getString("_UI_TemplateInformationSection_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_TemplateInformationSection_type") : //$NON-NLS-1$
+            getString("_UI_TemplateInformationSection_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -59,7 +59,7 @@ public class DModelItemProvider extends DFileItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DModel"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DModel")); //$NON-NLS-1$
     }
 
     /**
@@ -71,7 +71,8 @@ public class DModelItemProvider extends DFileItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DModel) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DModel_type") : getString("_UI_DModel_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DModel_type") : //$NON-NLS-1$
+            getString("_UI_DModel_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -132,6 +132,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -141,6 +142,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
@@ -153,6 +155,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public EList<Person> getChildren() {
         if (children == null) {
             children = new EObjectWithInverseResolvingEList.ManyInverse<Person>(Person.class, this, BasicfamilyPackage.PERSON__CHILDREN, BasicfamilyPackage.PERSON__PARENTS);
@@ -165,6 +168,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
      * 
      * @generated
      */
+    @Override
     public EList<Person> getParents() {
         if (parents == null) {
             parents = new EObjectWithInverseResolvingEList.ManyInverse<Person>(Person.class, this, BasicfamilyPackage.PERSON__PARENTS, BasicfamilyPackage.PERSON__CHILDREN);
@@ -174,9 +178,10 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated NOT
      */
+    @Override
     public Woman getMother() {
         if (!getParents().isEmpty()) {
             for (Person parent : getParents()) {
@@ -199,28 +204,33 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated NOT
      */
+    @Override
     public void setMother(Woman newMother) {
         Woman oldMother = getMother();
         if (oldMother != newMother) {
-            if (oldMother != null)
+            if (oldMother != null) {
                 getParents().remove(oldMother);
-            if (newMother != null && !getParents().contains(newMother))
+            }
+            if (newMother != null && !getParents().contains(newMother)) {
                 getParents().add(newMother);
+            }
 
             mother = newMother;
-            if (eNotificationRequired())
+            if (eNotificationRequired()) {
                 eNotify(new ENotificationImpl(this, Notification.SET, BasicfamilyPackage.PERSON__MOTHER, oldMother, mother));
+            }
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated NOT
      */
+    @Override
     public Man getFather() {
         if (!getParents().isEmpty()) {
             for (Person parent : getParents()) {
@@ -243,21 +253,25 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated NOT
      */
+    @Override
     public void setFather(Man newFather) {
         Man oldFather = getFather();
 
         if (oldFather != newFather) {
-            if (oldFather != null)
+            if (oldFather != null) {
                 getParents().remove(oldFather);
-            if (newFather != null && !getParents().contains(newFather))
+            }
+            if (newFather != null && !getParents().contains(newFather)) {
                 getParents().add(newFather);
+            }
 
             father = newFather;
-            if (eNotificationRequired())
+            if (eNotificationRequired()) {
                 eNotify(new ENotificationImpl(this, Notification.SET, BasicfamilyPackage.PERSON__FATHER, oldFather, father));
+            }
         }
     }
 
@@ -410,7 +424,7 @@ public abstract class PersonImpl extends MinimalEObjectImpl.Container implements
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
         return result.toString();

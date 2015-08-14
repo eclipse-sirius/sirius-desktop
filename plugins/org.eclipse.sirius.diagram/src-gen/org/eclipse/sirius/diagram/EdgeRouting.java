@@ -36,7 +36,7 @@ public enum EdgeRouting implements Enumerator {
      * @generated
      * @ordered
      */
-    STRAIGHT_LITERAL(0, "straight", "straight"),
+    STRAIGHT_LITERAL(0, "straight", "straight"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Manhattan</b></em>' literal object. <!-- begin-user-doc -->
@@ -46,7 +46,7 @@ public enum EdgeRouting implements Enumerator {
      * @generated
      * @ordered
      */
-    MANHATTAN_LITERAL(1, "manhattan", "manhattan"),
+    MANHATTAN_LITERAL(1, "manhattan", "manhattan"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Tree</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -56,7 +56,7 @@ public enum EdgeRouting implements Enumerator {
      * @generated
      * @ordered
      */
-    TREE_LITERAL(2, "tree", "tree");
+    TREE_LITERAL(2, "tree", "tree"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Straight</b></em>' literal value. <!-- begin-user-doc -->

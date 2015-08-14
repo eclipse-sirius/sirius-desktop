@@ -61,7 +61,7 @@ public class DeleteLineToolItemProvider extends DeleteToolItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteLineTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DeleteLineTool")); //$NON-NLS-1$
     }
 
     /**
@@ -73,7 +73,7 @@ public class DeleteLineToolItemProvider extends DeleteToolItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((DeleteLineTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_DeleteLineTool_type") : getString("_UI_DeleteLineTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_DeleteLineTool_type") : getString("_UI_DeleteLineTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

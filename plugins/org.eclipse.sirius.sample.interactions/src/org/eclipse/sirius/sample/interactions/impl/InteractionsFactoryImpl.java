@@ -42,14 +42,14 @@ import org.eclipse.sirius.sample.interactions.StateEnd;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InteractionsFactoryImpl extends EFactoryImpl implements InteractionsFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static InteractionsFactory init() {
@@ -67,7 +67,7 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InteractionsFactoryImpl() {
@@ -76,7 +76,7 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -125,15 +125,16 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
         case InteractionsPackage.CONSTRAINT:
             return createConstraint();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Model createModel() {
         ModelImpl model = new ModelImpl();
         return model;
@@ -141,9 +142,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Interaction createInteraction() {
         InteractionImpl interaction = new InteractionImpl();
         return interaction;
@@ -151,9 +153,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Participant createParticipant() {
         ParticipantImpl participant = new ParticipantImpl();
         return participant;
@@ -161,9 +164,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public CallMessage createCallMessage() {
         CallMessageImpl callMessage = new CallMessageImpl();
         return callMessage;
@@ -171,9 +175,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public FeatureAccessMessage createFeatureAccessMessage() {
         FeatureAccessMessageImpl featureAccessMessage = new FeatureAccessMessageImpl();
         return featureAccessMessage;
@@ -181,9 +186,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public CreateParticipantMessage createCreateParticipantMessage() {
         CreateParticipantMessageImpl createParticipantMessage = new CreateParticipantMessageImpl();
         return createParticipantMessage;
@@ -191,9 +197,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DestroyParticipantMessage createDestroyParticipantMessage() {
         DestroyParticipantMessageImpl destroyParticipantMessage = new DestroyParticipantMessageImpl();
         return destroyParticipantMessage;
@@ -201,9 +208,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ReturnMessage createReturnMessage() {
         ReturnMessageImpl returnMessage = new ReturnMessageImpl();
         return returnMessage;
@@ -211,9 +219,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Execution createExecution() {
         ExecutionImpl execution = new ExecutionImpl();
         return execution;
@@ -221,9 +230,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public State createState() {
         StateImpl state = new StateImpl();
         return state;
@@ -231,9 +241,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InteractionUse createInteractionUse() {
         InteractionUseImpl interactionUse = new InteractionUseImpl();
         return interactionUse;
@@ -241,9 +252,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public CombinedFragment createCombinedFragment() {
         CombinedFragmentImpl combinedFragment = new CombinedFragmentImpl();
         return combinedFragment;
@@ -251,9 +263,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Operand createOperand() {
         OperandImpl operand = new OperandImpl();
         return operand;
@@ -261,9 +274,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MessageEnd createMessageEnd() {
         MessageEndImpl messageEnd = new MessageEndImpl();
         return messageEnd;
@@ -271,9 +285,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ExecutionEnd createExecutionEnd() {
         ExecutionEndImpl executionEnd = new ExecutionEndImpl();
         return executionEnd;
@@ -281,9 +296,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public StateEnd createStateEnd() {
         StateEndImpl stateEnd = new StateEndImpl();
         return stateEnd;
@@ -291,9 +307,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InteractionUseEnd createInteractionUseEnd() {
         InteractionUseEndImpl interactionUseEnd = new InteractionUseEndImpl();
         return interactionUseEnd;
@@ -301,9 +318,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public CombinedFragmentEnd createCombinedFragmentEnd() {
         CombinedFragmentEndImpl combinedFragmentEnd = new CombinedFragmentEndImpl();
         return combinedFragmentEnd;
@@ -311,9 +329,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public OperandEnd createOperandEnd() {
         OperandEndImpl operandEnd = new OperandEndImpl();
         return operandEnd;
@@ -321,9 +340,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MixEnd createMixEnd() {
         MixEndImpl mixEnd = new MixEndImpl();
         return mixEnd;
@@ -331,9 +351,10 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Constraint createConstraint() {
         ConstraintImpl constraint = new ConstraintImpl();
         return constraint;
@@ -341,16 +362,17 @@ public class InteractionsFactoryImpl extends EFactoryImpl implements Interaction
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InteractionsPackage getInteractionsPackage() {
         return (InteractionsPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

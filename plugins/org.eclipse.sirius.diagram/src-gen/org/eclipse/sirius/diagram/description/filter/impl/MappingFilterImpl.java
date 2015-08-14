@@ -271,9 +271,9 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (semanticConditionExpression: ");
+        result.append(" (semanticConditionExpression: "); //$NON-NLS-1$
         result.append(semanticConditionExpression);
-        result.append(", viewConditionExpression: ");
+        result.append(", viewConditionExpression: "); //$NON-NLS-1$
         result.append(viewConditionExpression);
         result.append(')');
         return result.toString();

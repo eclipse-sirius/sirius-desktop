@@ -36,7 +36,7 @@ public enum BundledImageShape implements Enumerator {
      * @generated
      * @ordered
      */
-    SQUARE_LITERAL(0, "square", "square"),
+    SQUARE_LITERAL(0, "square", "square"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Stroke</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -46,7 +46,7 @@ public enum BundledImageShape implements Enumerator {
      * @generated
      * @ordered
      */
-    STROKE_LITERAL(1, "stroke", "stroke"),
+    STROKE_LITERAL(1, "stroke", "stroke"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Triangle</b></em>' literal object. <!-- begin-user-doc -->
@@ -56,7 +56,7 @@ public enum BundledImageShape implements Enumerator {
      * @generated
      * @ordered
      */
-    TRIANGLE_LITERAL(3, "triangle", "triangle"),
+    TRIANGLE_LITERAL(3, "triangle", "triangle"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -66,7 +66,7 @@ public enum BundledImageShape implements Enumerator {
      * @generated
      * @ordered
      */
-    DOT_LITERAL(4, "dot", "dot"),
+    DOT_LITERAL(4, "dot", "dot"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Ring</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -76,7 +76,7 @@ public enum BundledImageShape implements Enumerator {
      * @generated
      * @ordered
      */
-    RING_LITERAL(5, "ring", "ring");
+    RING_LITERAL(5, "ring", "ring"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Square</b></em>' literal value. <!-- begin-user-doc -->

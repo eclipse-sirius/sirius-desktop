@@ -13,7 +13,7 @@ package org.eclipse.sirius.sample.interactions;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Execution End</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -21,7 +21,7 @@ package org.eclipse.sirius.sample.interactions;
  * <em>Execution</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getExecutionEnd()
  * @model
  * @generated
@@ -35,7 +35,7 @@ public interface ExecutionEnd extends AbstractEnd {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Execution</em>' reference.
      * @see #setExecution(Execution)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getExecutionEnd_Execution()
@@ -49,7 +49,7 @@ public interface ExecutionEnd extends AbstractEnd {
      * {@link org.eclipse.sirius.sample.interactions.ExecutionEnd#getExecution
      * <em>Execution</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Execution</em>' reference.
      * @see #getExecution()

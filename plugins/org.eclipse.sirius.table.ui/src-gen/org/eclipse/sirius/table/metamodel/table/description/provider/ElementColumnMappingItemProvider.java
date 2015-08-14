@@ -73,8 +73,10 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ElementColumnMapping_domainClass_feature"), getString("_UI_ElementColumnMapping_domainClass_description"),
-                DescriptionPackage.Literals.ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ElementColumnMapping_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_ElementColumnMapping_domainClass_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.ELEMENT_COLUMN_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -84,10 +86,13 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ElementColumnMapping_semanticCandidatesExpression_feature"), getString("_UI_ElementColumnMapping_semanticCandidatesExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_ElementColumnMapping_semanticCandidatesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_ElementColumnMapping_semanticCandidatesExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.ELEMENT_COLUMN_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -136,7 +141,7 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementColumnMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ElementColumnMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -148,7 +153,7 @@ public class ElementColumnMappingItemProvider extends ColumnMappingItemProvider 
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ElementColumnMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ElementColumnMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_ElementColumnMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

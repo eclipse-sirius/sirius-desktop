@@ -40,7 +40,7 @@ public interface Family extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.sample.basicfamily.BasicfamilyPackage#getFamily_Name()

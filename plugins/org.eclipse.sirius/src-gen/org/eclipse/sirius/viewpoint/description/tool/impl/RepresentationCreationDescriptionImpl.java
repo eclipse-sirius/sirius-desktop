@@ -64,7 +64,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
      * @generated
      * @ordered
      */
-    protected static final String TITLE_EXPRESSION_EDEFAULT = "";
+    protected static final String TITLE_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTitleExpression()
@@ -633,9 +633,9 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (titleExpression: ");
+        result.append(" (titleExpression: "); //$NON-NLS-1$
         result.append(titleExpression);
-        result.append(", browseExpression: ");
+        result.append(", browseExpression: "); //$NON-NLS-1$
         result.append(browseExpression);
         result.append(')');
         return result.toString();

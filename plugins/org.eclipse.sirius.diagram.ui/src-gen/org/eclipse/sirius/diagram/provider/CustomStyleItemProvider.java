@@ -64,9 +64,10 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
      * @generated
      */
     protected void addIdPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomStyle_id_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_CustomStyle_id_feature", "_UI_CustomStyle_type"), DiagramPackage.Literals.CUSTOM_STYLE__ID, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CustomStyle_id_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CustomStyle_id_feature", "_UI_CustomStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.CUSTOM_STYLE__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -77,7 +78,7 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CustomStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -89,7 +90,8 @@ public class CustomStyleItemProvider extends NodeStyleItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((CustomStyle) object).getId();
-        return label == null || label.length() == 0 ? getString("_UI_CustomStyle_type") : getString("_UI_CustomStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CustomStyle_type") : //$NON-NLS-1$
+            getString("_UI_CustomStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

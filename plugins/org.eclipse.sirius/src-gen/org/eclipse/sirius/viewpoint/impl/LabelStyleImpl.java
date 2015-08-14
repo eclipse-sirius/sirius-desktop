@@ -170,7 +170,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (labelAlignment: ");
+        result.append(" (labelAlignment: "); //$NON-NLS-1$
         result.append(labelAlignment);
         result.append(')');
         return result.toString();

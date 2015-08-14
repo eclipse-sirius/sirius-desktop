@@ -72,9 +72,9 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DResource_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DResource_name_feature", "_UI_DResource_type"), ViewpointPackage.Literals.DRESOURCE__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DResource_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DResource_name_feature", "_UI_DResource_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ViewpointPackage.Literals.DRESOURCE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -84,9 +84,9 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
      * @generated
      */
     protected void addPathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DResource_path_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DResource_path_feature", "_UI_DResource_type"), ViewpointPackage.Literals.DRESOURCE__PATH, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DResource_path_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DResource_path_feature", "_UI_DResource_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ViewpointPackage.Literals.DRESOURCE__PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -96,7 +96,7 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DFile"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DFile")); //$NON-NLS-1$
     }
 
     /**
@@ -108,7 +108,8 @@ public class DFileItemProvider extends ItemProviderAdapter implements IEditingDo
     @Override
     public String getText(Object object) {
         String label = ((DFile) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DFile_type") : getString("_UI_DFile_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DFile_type") : //$NON-NLS-1$
+            getString("_UI_DFile_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -70,8 +70,10 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
      */
     protected void addCreateIfNotExistentPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Navigation_createIfNotExistent_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Navigation_createIfNotExistent_feature", "_UI_Navigation_type"),
-                ToolPackage.Literals.NAVIGATION__CREATE_IF_NOT_EXISTENT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_Navigation_createIfNotExistent_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Navigation_createIfNotExistent_feature", "_UI_Navigation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.NAVIGATION__CREATE_IF_NOT_EXISTENT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -82,8 +84,10 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
      */
     protected void addDiagramDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Navigation_diagramDescription_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Navigation_diagramDescription_feature", "_UI_Navigation_type"),
-                ToolPackage.Literals.NAVIGATION__DIAGRAM_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_Navigation_diagramDescription_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Navigation_diagramDescription_feature", "_UI_Navigation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.NAVIGATION__DIAGRAM_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -94,7 +98,7 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Navigation"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Navigation")); //$NON-NLS-1$
     }
 
     /**

@@ -69,7 +69,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -110,7 +110,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
      * @generated
      * @ordered
      */
-    protected static final String PRECONDITION_EDEFAULT = "";
+    protected static final String PRECONDITION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
@@ -162,7 +162,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
      * @generated
      * @ordered
      */
-    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = "";
+    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getElementsToSelect()
@@ -559,17 +559,17 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", precondition: ");
+        result.append(", precondition: "); //$NON-NLS-1$
         result.append(precondition);
-        result.append(", forceRefresh: ");
+        result.append(", forceRefresh: "); //$NON-NLS-1$
         result.append(forceRefresh);
-        result.append(", elementsToSelect: ");
+        result.append(", elementsToSelect: "); //$NON-NLS-1$
         result.append(elementsToSelect);
-        result.append(", inverseSelectionOrder: ");
+        result.append(", inverseSelectionOrder: "); //$NON-NLS-1$
         result.append(inverseSelectionOrder);
         result.append(')');
         return result.toString();

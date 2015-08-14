@@ -66,7 +66,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * method {@link #init init()}, which also performs initialization of the
      * package, or returns the registered package, if one already exists. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.eclipse.sirius.sample.basicfamily.BasicfamilyPackage#eNS_URI
      * @see #init()
@@ -86,13 +86,13 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
     /**
      * Creates, registers, and initializes the <b>Package</b> for this model,
      * and for any others upon which it depends.
-     * 
+     *
      * <p>
      * This method is used to initialize {@link BasicfamilyPackage#eINSTANCE}
      * when that field is accessed. Clients should not invoke it directly.
      * Instead, they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -127,6 +127,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EClass getPerson() {
         return personEClass;
     }
@@ -136,6 +137,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EAttribute getPerson_Name() {
         return (EAttribute) personEClass.getEStructuralFeatures().get(0);
     }
@@ -145,6 +147,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EReference getPerson_Children() {
         return (EReference) personEClass.getEStructuralFeatures().get(1);
     }
@@ -154,6 +157,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EReference getPerson_Parents() {
         return (EReference) personEClass.getEStructuralFeatures().get(2);
     }
@@ -163,6 +167,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EReference getPerson_Mother() {
         return (EReference) personEClass.getEStructuralFeatures().get(3);
     }
@@ -172,6 +177,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EReference getPerson_Father() {
         return (EReference) personEClass.getEStructuralFeatures().get(4);
     }
@@ -181,6 +187,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EClass getFamily() {
         return familyEClass;
     }
@@ -190,6 +197,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EAttribute getFamily_Name() {
         return (EAttribute) familyEClass.getEStructuralFeatures().get(0);
     }
@@ -199,6 +207,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EReference getFamily_Members() {
         return (EReference) familyEClass.getEStructuralFeatures().get(1);
     }
@@ -208,6 +217,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EClass getMan() {
         return manEClass;
     }
@@ -217,6 +227,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public EClass getWoman() {
         return womanEClass;
     }
@@ -226,6 +237,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * 
      * @generated
      */
+    @Override
     public BasicfamilyFactory getBasicfamilyFactory() {
         return (BasicfamilyFactory) getEFactoryInstance();
     }
@@ -277,7 +289,7 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
      * Complete the initialization of the package and its meta-model. This
      * method is guarded to have no affect on any invocation but its first. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void initializePackageContents() {
@@ -299,27 +311,27 @@ public class BasicfamilyPackageImpl extends EPackageImpl implements BasicfamilyP
         womanEClass.getESuperTypes().add(this.getPerson());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(personEClass, Person.class, "Person", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getPerson_Name(), ecorePackage.getEString(), "name", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-        initEReference(getPerson_Children(), this.getPerson(), this.getPerson_Parents(), "children", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getPerson_Parents(), this.getPerson(), this.getPerson_Children(), "parents", null, 0, 2, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getPerson_Mother(), this.getWoman(), null, "mother", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-                IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getPerson_Father(), this.getMan(), null, "father", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-                IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEClass(personEClass, Person.class, "Person", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getPerson_Name(), ecorePackage.getEString(),
+                "name", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEReference(getPerson_Children(), this.getPerson(), this.getPerson_Parents(),
+                "children", null, 0, -1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEReference(getPerson_Parents(), this.getPerson(), this.getPerson_Children(),
+                "parents", null, 0, 2, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEReference(getPerson_Mother(), this.getWoman(), null,
+                "mother", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEReference(getPerson_Father(), this.getMan(), null,
+                "father", null, 0, 1, Person.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(familyEClass, Family.class, "Family", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getFamily_Name(), ecorePackage.getEString(), "name", null, 0, 1, Family.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-        initEReference(getFamily_Members(), this.getPerson(), null, "members", null, 0, -1, Family.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(familyEClass, Family.class, "Family", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getFamily_Name(), ecorePackage.getEString(),
+                "name", null, 0, 1, Family.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        initEReference(getFamily_Members(), this.getPerson(), null,
+                "members", null, 0, -1, Family.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-        initEClass(manEClass, Man.class, "Man", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(manEClass, Man.class, "Man", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
-        initEClass(womanEClass, Woman.class, "Woman", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEClass(womanEClass, Woman.class, "Woman", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         // Create resource
         createResource(eNS_URI);

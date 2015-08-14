@@ -66,8 +66,10 @@ public class AcceleoVariableItemProvider extends VariableContainerItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AbstractVariable_name_feature"), getString("_UI_AbstractVariable_name_description"), ToolPackage.Literals.ABSTRACT_VARIABLE__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_AbstractVariable_name_feature"), //$NON-NLS-1$
+                getString("_UI_AbstractVariable_name_description"), //$NON-NLS-1$
+                ToolPackage.Literals.ABSTRACT_VARIABLE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,8 +80,10 @@ public class AcceleoVariableItemProvider extends VariableContainerItemProvider {
      */
     protected void addComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AcceleoVariable_computationExpression_feature"), getString("_UI_AcceleoVariable_computationExpression_description"),
-                ToolPackage.Literals.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_AcceleoVariable_computationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_AcceleoVariable_computationExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.ACCELEO_VARIABLE__COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,7 +94,7 @@ public class AcceleoVariableItemProvider extends VariableContainerItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/AcceleoVariable"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/AcceleoVariable")); //$NON-NLS-1$
     }
 
     /**
@@ -102,7 +106,8 @@ public class AcceleoVariableItemProvider extends VariableContainerItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((AcceleoVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_AcceleoVariable_type") : getString("_UI_AcceleoVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_AcceleoVariable_type") : //$NON-NLS-1$
+            getString("_UI_AcceleoVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

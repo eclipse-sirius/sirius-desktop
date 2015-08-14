@@ -64,7 +64,7 @@ public class ObservationPointMappingItemProvider extends NodeMappingItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ObservationPointMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ObservationPointMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -76,7 +76,7 @@ public class ObservationPointMappingItemProvider extends NodeMappingItemProvider
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ObservationPointMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ObservationPointMapping_type") : getString("_UI_ObservationPointMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ObservationPointMapping_type") : getString("_UI_ObservationPointMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

@@ -72,8 +72,9 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
      * @generated
      */
     protected void addViewpointPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DView_viewpoint_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DView_viewpoint_feature", "_UI_DView_type"), ViewpointPackage.Literals.DVIEW__VIEWPOINT, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DView_viewpoint_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DView_viewpoint_feature", "_UI_DView_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ViewpointPackage.Literals.DVIEW__VIEWPOINT, true, false, true, null, null, null));
     }
 
     /**
@@ -117,7 +118,7 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DView"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DView")); //$NON-NLS-1$
     }
 
     /**
@@ -128,7 +129,7 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_DView_type");
+        return getString("_UI_DView_type"); //$NON-NLS-1$
     }
 
     /**

@@ -73,10 +73,13 @@ IItemPropertySource {
      * @generated
      */
     protected void addEndUserDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), //$NON-NLS-1$
+                getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_DocumentationPropertyCategory"), null));
+                getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -88,7 +91,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = crop(((EndUserDocumentedElement) object).getEndUserDocumentation());
-        return label == null || label.length() == 0 ? getString("_UI_EndUserDocumentedElement_type") : getString("_UI_EndUserDocumentedElement_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_EndUserDocumentedElement_type") : //$NON-NLS-1$
+            getString("_UI_EndUserDocumentedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

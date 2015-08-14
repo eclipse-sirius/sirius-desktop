@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution.util;
 
@@ -37,14 +37,14 @@ import org.eclipse.sirius.description.contribution.SetFeatureContribution;
  * starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the
  * result of the switch. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage
  * @generated
  */
 public class ContributionSwitch<T> {
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected static ContributionPackage modelPackage;
@@ -52,12 +52,12 @@ public class ContributionSwitch<T> {
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContributionSwitch() {
-        if (modelPackage == null) {
-            modelPackage = ContributionPackage.eINSTANCE;
+        if (ContributionSwitch.modelPackage == null) {
+            ContributionSwitch.modelPackage = ContributionPackage.eINSTANCE;
         }
     }
 
@@ -65,7 +65,7 @@ public class ContributionSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -78,13 +78,13 @@ public class ContributionSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
      */
     protected T doSwitch(EClass theEClass, EObject theEObject) {
-        if (theEClass.eContainer() == modelPackage) {
+        if (theEClass.eContainer() == ContributionSwitch.modelPackage) {
             return doSwitch(theEClass.getClassifierID(), theEObject);
         } else {
             List<EClass> eSuperTypes = theEClass.getESuperTypes();
@@ -96,7 +96,7 @@ public class ContributionSwitch<T> {
      * Calls <code>caseXXX</code> for each class of the model until one returns
      * a non null result; it yields that result. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the first non-null result returned by a <code>caseXXX</code>
      *         call.
      * @generated
@@ -106,108 +106,129 @@ public class ContributionSwitch<T> {
         case ContributionPackage.FEATURE_CONTRIBUTION: {
             FeatureContribution featureContribution = (FeatureContribution) theEObject;
             T result = caseFeatureContribution(featureContribution);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.IGNORE_FEATURE_CONTRIBUTION: {
             IgnoreFeatureContribution ignoreFeatureContribution = (IgnoreFeatureContribution) theEObject;
             T result = caseIgnoreFeatureContribution(ignoreFeatureContribution);
-            if (result == null)
+            if (result == null) {
                 result = caseFeatureContribution(ignoreFeatureContribution);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.SET_FEATURE_CONTRIBUTION: {
             SetFeatureContribution setFeatureContribution = (SetFeatureContribution) theEObject;
             T result = caseSetFeatureContribution(setFeatureContribution);
-            if (result == null)
+            if (result == null) {
                 result = caseFeatureContribution(setFeatureContribution);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.ADD_FEATURE_CONTRIBUTION: {
             AddFeatureContribution addFeatureContribution = (AddFeatureContribution) theEObject;
             T result = caseAddFeatureContribution(addFeatureContribution);
-            if (result == null)
+            if (result == null) {
                 result = caseFeatureContribution(addFeatureContribution);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.REMOVE_FEATURE_CONTRIBUTION: {
             RemoveFeatureContribution removeFeatureContribution = (RemoveFeatureContribution) theEObject;
             T result = caseRemoveFeatureContribution(removeFeatureContribution);
-            if (result == null)
+            if (result == null) {
                 result = caseFeatureContribution(removeFeatureContribution);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.CLEAR_FEATURE_CONTRIBUTION: {
             ClearFeatureContribution clearFeatureContribution = (ClearFeatureContribution) theEObject;
             T result = caseClearFeatureContribution(clearFeatureContribution);
-            if (result == null)
+            if (result == null) {
                 result = caseFeatureContribution(clearFeatureContribution);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.RESET_FEATURE_CONTRIBUTION: {
             ResetFeatureContribution resetFeatureContribution = (ResetFeatureContribution) theEObject;
             T result = caseResetFeatureContribution(resetFeatureContribution);
-            if (result == null)
+            if (result == null) {
                 result = caseFeatureContribution(resetFeatureContribution);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.EOBJECT_REFERENCE: {
             EObjectReference eObjectReference = (EObjectReference) theEObject;
             T result = caseEObjectReference(eObjectReference);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.DIRECT_EOBJECT_REFERENCE: {
             DirectEObjectReference directEObjectReference = (DirectEObjectReference) theEObject;
             T result = caseDirectEObjectReference(directEObjectReference);
-            if (result == null)
+            if (result == null) {
                 result = caseEObjectReference(directEObjectReference);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.COMPUTED_EOBJECT_REFERENCE: {
             ComputedEObjectReference computedEObjectReference = (ComputedEObjectReference) theEObject;
             T result = caseComputedEObjectReference(computedEObjectReference);
-            if (result == null)
+            if (result == null) {
                 result = caseEObjectReference(computedEObjectReference);
-            if (result == null)
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.CONTRIBUTION: {
             Contribution contribution = (Contribution) theEObject;
             T result = caseContribution(contribution);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.CONTRIBUTION_PROVIDER: {
             ContributionProvider contributionProvider = (ContributionProvider) theEObject;
             T result = caseContributionProvider(contributionProvider);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         case ContributionPackage.CONTRIBUTION_POINT: {
             ContributionPoint contributionPoint = (ContributionPoint) theEObject;
             T result = caseContributionPoint(contributionPoint);
-            if (result == null)
+            if (result == null) {
                 result = defaultCase(theEObject);
+            }
             return result;
         }
         default:
@@ -220,7 +241,7 @@ public class ContributionSwitch<T> {
      * <em>Feature Contribution</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -237,7 +258,7 @@ public class ContributionSwitch<T> {
      * <em>Ignore Feature Contribution</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -254,7 +275,7 @@ public class ContributionSwitch<T> {
      * <em>Set Feature Contribution</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -271,7 +292,7 @@ public class ContributionSwitch<T> {
      * <em>Add Feature Contribution</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -288,7 +309,7 @@ public class ContributionSwitch<T> {
      * <em>Remove Feature Contribution</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -305,7 +326,7 @@ public class ContributionSwitch<T> {
      * <em>Clear Feature Contribution</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -322,7 +343,7 @@ public class ContributionSwitch<T> {
      * <em>Reset Feature Contribution</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -339,7 +360,7 @@ public class ContributionSwitch<T> {
      * <em>EObject Reference</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -356,7 +377,7 @@ public class ContributionSwitch<T> {
      * <em>Direct EObject Reference</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -373,7 +394,7 @@ public class ContributionSwitch<T> {
      * <em>Computed EObject Reference</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -390,7 +411,7 @@ public class ContributionSwitch<T> {
      * <em>Contribution</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -407,7 +428,7 @@ public class ContributionSwitch<T> {
      * <em>Provider</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -424,7 +445,7 @@ public class ContributionSwitch<T> {
      * <em>Point</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -441,7 +462,7 @@ public class ContributionSwitch<T> {
      * <em>EObject</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch, but this is
      * the last case anyway. <!-- end-user-doc -->
-     * 
+     *
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '

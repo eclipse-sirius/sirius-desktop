@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Execution</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Represents an interval of time in which a
  * particapant is active executing some code. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getExecution()
  * @model
  * @generated
@@ -46,7 +46,7 @@ public interface Execution extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getExecution_Name()
@@ -59,7 +59,7 @@ public interface Execution extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Execution#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -75,7 +75,7 @@ public interface Execution extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Owner</em>' reference.
      * @see #setOwner(Participant)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getExecution_Owner()
@@ -88,7 +88,7 @@ public interface Execution extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Execution#getOwner
      * <em>Owner</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Owner</em>' reference.
      * @see #getOwner()
@@ -104,7 +104,7 @@ public interface Execution extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Start</em>' reference.
      * @see #setStart(ExecutionEnd)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getExecution_Start()
@@ -117,7 +117,7 @@ public interface Execution extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Execution#getStart
      * <em>Start</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Start</em>' reference.
      * @see #getStart()
@@ -133,7 +133,7 @@ public interface Execution extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>End</em>' reference.
      * @see #setEnd(ExecutionEnd)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getExecution_End()
@@ -146,7 +146,7 @@ public interface Execution extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Execution#getEnd
      * <em>End</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>End</em>' reference.
      * @see #getEnd()

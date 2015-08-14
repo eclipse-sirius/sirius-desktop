@@ -91,7 +91,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      */
     protected void addOutgoingEdgesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeTarget_outgoingEdges_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_outgoingEdges_feature", "_UI_EdgeTarget_type"),
+                getString("_UI_EdgeTarget_outgoingEdges_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_outgoingEdges_feature", "_UI_EdgeTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_TARGET__OUTGOING_EDGES, false, false, false, null, null, null));
     }
 
@@ -103,7 +104,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      */
     protected void addIncomingEdgesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeTarget_incomingEdges_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_incomingEdges_feature", "_UI_EdgeTarget_type"),
+                getString("_UI_EdgeTarget_incomingEdges_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeTarget_incomingEdges_feature", "_UI_EdgeTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.EDGE_TARGET__INCOMING_EDGES, false, false, false, null, null, null));
     }
 
@@ -114,9 +116,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addSizePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_size_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_size_feature", "_UI_DEdge_type"), DiagramPackage.Literals.DEDGE__SIZE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_size_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_size_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DEDGE__SIZE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -126,8 +128,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addSourceNodePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_sourceNode_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_sourceNode_feature", "_UI_DEdge_type"), DiagramPackage.Literals.DEDGE__SOURCE_NODE, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_sourceNode_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_sourceNode_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DEDGE__SOURCE_NODE, true, false, true, null, null, null));
     }
 
     /**
@@ -137,8 +140,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addTargetNodePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_targetNode_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_targetNode_feature", "_UI_DEdge_type"), DiagramPackage.Literals.DEDGE__TARGET_NODE, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_targetNode_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_targetNode_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DEDGE__TARGET_NODE, true, false, true, null, null, null));
     }
 
     /**
@@ -149,7 +153,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      */
     protected void addActualMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DEdge_actualMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DEdge_actualMapping_feature", "_UI_DEdge_type"),
+                getString("_UI_DEdge_actualMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_actualMapping_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DEDGE__ACTUAL_MAPPING, true, false, true, null, null, null));
     }
 
@@ -161,7 +166,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      */
     protected void addRoutingStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DEdge_routingStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DEdge_routingStyle_feature", "_UI_DEdge_type"),
+                getString("_UI_DEdge_routingStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_routingStyle_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DEDGE__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -172,9 +178,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addIsFoldPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_isFold_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_isFold_feature", "_UI_DEdge_type"), DiagramPackage.Literals.DEDGE__IS_FOLD, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_isFold_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_isFold_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DEDGE__IS_FOLD, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -184,9 +190,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addIsMockEdgePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_isMockEdge_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_isMockEdge_feature", "_UI_DEdge_type"), DiagramPackage.Literals.DEDGE__IS_MOCK_EDGE, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_isMockEdge_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_isMockEdge_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DEDGE__IS_MOCK_EDGE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -197,7 +203,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      */
     protected void addOriginalStylePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DEdge_originalStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DEdge_originalStyle_feature", "_UI_DEdge_type"),
+                getString("_UI_DEdge_originalStyle_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_originalStyle_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DEDGE__ORIGINAL_STYLE, true, false, true, null, null, null));
     }
 
@@ -208,8 +215,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addPathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_path_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_path_feature", "_UI_DEdge_type"), DiagramPackage.Literals.DEDGE__PATH, true, false, true, null, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_path_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_path_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DEDGE__PATH, true, false, true, null, null, null));
     }
 
     /**
@@ -220,7 +228,8 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      */
     protected void addArrangeConstraintsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DEdge_arrangeConstraints_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DEdge_arrangeConstraints_feature", "_UI_DEdge_type"),
+                getString("_UI_DEdge_arrangeConstraints_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_arrangeConstraints_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DEDGE__ARRANGE_CONSTRAINTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -231,9 +240,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addBeginLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_beginLabel_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_beginLabel_feature", "_UI_DEdge_type"), DiagramPackage.Literals.DEDGE__BEGIN_LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_beginLabel_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_beginLabel_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DEDGE__BEGIN_LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -243,9 +252,9 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      * @generated
      */
     protected void addEndLabelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_endLabel_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_endLabel_feature", "_UI_DEdge_type"), DiagramPackage.Literals.DEDGE__END_LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DEdge_endLabel_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DEdge_endLabel_feature", "_UI_DEdge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.DEDGE__END_LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -288,7 +297,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DEdge"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DEdge")); //$NON-NLS-1$
     }
 
     /**

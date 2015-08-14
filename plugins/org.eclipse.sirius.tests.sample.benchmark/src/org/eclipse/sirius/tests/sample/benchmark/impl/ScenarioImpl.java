@@ -41,7 +41,7 @@ import org.eclipse.sirius.tests.sample.benchmark.Variant;
  * <em>Variants</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ScenarioImpl extends NamedElementImpl implements Scenario {

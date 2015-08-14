@@ -83,10 +83,13 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addEndUserDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), //$NON-NLS-1$
+                getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_DocumentationPropertyCategory"), null));
+                getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -97,8 +100,10 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_name_feature"), getString("_UI_IdentifiedElement_name_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_name_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -109,8 +114,10 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      */
     protected void addLabelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IdentifiedElement_label_feature"), getString("_UI_IdentifiedElement_label_description"), DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IdentifiedElement_label_feature"), //$NON-NLS-1$
+                getString("_UI_IdentifiedElement_label_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.IDENTIFIED_ELEMENT__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -121,8 +128,9 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      */
     protected void addTitleExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationDescription_titleExpression_feature"), getString("_UI_RepresentationDescription_titleExpression_description"),
-                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__TITLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                getString("_UI_RepresentationDescription_titleExpression_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationDescription_titleExpression_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__TITLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -133,11 +141,11 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addInitialisationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationDescription_initialisation_feature"), getString("_UI_RepresentationDescription_initialisation_description"),
-                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__INITIALISATION, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationDescription_initialisation_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationDescription_initialisation_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__INITIALISATION, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -148,8 +156,10 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      */
     protected void addMetamodelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationDescription_metamodel_feature"), getString("_UI_RepresentationDescription_metamodel_description"),
-                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, true, false, true, null, getString("_UI_MetamodelsPropertyCategory"), null));
+                getString("_UI_RepresentationDescription_metamodel_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationDescription_metamodel_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, true, false, true, null, getString("_UI_MetamodelsPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -159,11 +169,11 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addShowOnStartupPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationDescription_showOnStartup_feature"), getString("_UI_RepresentationDescription_showOnStartup_description"),
-                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationDescription_showOnStartup_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationDescription_showOnStartup_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -173,10 +183,13 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeDescription_domainClass_feature"), getString("_UI_TreeDescription_domainClass_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_TreeDescription_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_TreeDescription_domainClass_description"), //$NON-NLS-1$
                 org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -186,10 +199,13 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      * @generated
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeDescription_preconditionExpression_feature"), getString("_UI_TreeDescription_preconditionExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_TreeDescription_preconditionExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TreeDescription_preconditionExpression_description"), //$NON-NLS-1$
                 org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -237,7 +253,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -249,7 +265,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         final String label = new IdentifiedElementQuery((TreeDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeDescription_type") : label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeDescription_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -299,7 +315,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
 
         TreeItemMapping newItemMapping = DescriptionFactory.eINSTANCE.createTreeItemMapping();
         newItemMapping.setDefaultStyle(DescriptionFactory.eINSTANCE.createTreeItemStyleDescription());
-        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents");
+        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS, newItemMapping));
 

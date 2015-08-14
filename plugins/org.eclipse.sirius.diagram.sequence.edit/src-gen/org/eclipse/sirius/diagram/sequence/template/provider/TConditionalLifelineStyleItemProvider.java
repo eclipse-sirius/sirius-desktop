@@ -66,8 +66,8 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TConditionalLifelineStyle_predicateExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TConditionalLifelineStyle_predicateExpression_feature", "_UI_TConditionalLifelineStyle_type"),
+                getString("_UI_TConditionalLifelineStyle_predicateExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TConditionalLifelineStyle_predicateExpression_feature", "_UI_TConditionalLifelineStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TemplatePackage.Literals.TCONDITIONAL_LIFELINE_STYLE__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -112,7 +112,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TConditionalLifelineStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TConditionalLifelineStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -124,7 +124,7 @@ public class TConditionalLifelineStyleItemProvider extends TTransformerItemProvi
     @Override
     public String getText(Object object) {
         String label = ((TConditionalLifelineStyle) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_TConditionalLifelineStyle_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TConditionalLifelineStyle_type") : label; //$NON-NLS-1$
     }
 
     /**

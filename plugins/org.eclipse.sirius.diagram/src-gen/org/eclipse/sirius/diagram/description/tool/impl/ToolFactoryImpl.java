@@ -162,7 +162,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         case ToolPackage.CONTAINER_DROP_DESCRIPTION:
             return createContainerDropDescription();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -177,7 +177,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         case ToolPackage.RECONNECTION_KIND:
             return createReconnectionKindFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -192,7 +192,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         case ToolPackage.RECONNECTION_KIND:
             return convertReconnectionKindToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -238,9 +238,9 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public NodeCreationDescription createNodeCreationDescription() {
         NodeCreationDescriptionImpl nodeCreationDescription = new NodeCreationDescriptionImpl();
         NodeCreationVariable defaultVariable = createNodeCreationVariable();
-        defaultVariable.setName("container");
+        defaultVariable.setName("container"); //$NON-NLS-1$
         ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         nodeCreationDescription.setVariable(defaultVariable);
         nodeCreationDescription.setViewVariable(containerViewVariable);
         InitialNodeCreationOperation init = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
@@ -258,16 +258,16 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         EdgeCreationDescriptionImpl edgeCreationDescription = new EdgeCreationDescriptionSpec();
 
         SourceEdgeCreationVariable sourceVariable = createSourceEdgeCreationVariable();
-        sourceVariable.setName("source");
+        sourceVariable.setName("source"); //$NON-NLS-1$
 
         TargetEdgeCreationVariable targetVariable = createTargetEdgeCreationVariable();
-        targetVariable.setName("target");
+        targetVariable.setName("target"); //$NON-NLS-1$
 
         SourceEdgeViewCreationVariable sourceEdgeViewVariable = createSourceEdgeViewCreationVariable();
-        sourceEdgeViewVariable.setName("sourceView");
+        sourceEdgeViewVariable.setName("sourceView"); //$NON-NLS-1$
 
         TargetEdgeViewCreationVariable targetEdgeViewVariable = createTargetEdgeViewCreationVariable();
-        targetEdgeViewVariable.setName("targetView");
+        targetEdgeViewVariable.setName("targetView"); //$NON-NLS-1$
 
         edgeCreationDescription.setSourceVariable(sourceVariable);
         edgeCreationDescription.setTargetVariable(targetVariable);
@@ -289,9 +289,9 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public ContainerCreationDescription createContainerCreationDescription() {
         ContainerCreationDescriptionImpl containerCreationDescription = new ContainerCreationDescriptionImpl();
         NodeCreationVariable defaultVariable = createNodeCreationVariable();
-        defaultVariable.setName("container");
+        defaultVariable.setName("container"); //$NON-NLS-1$
         ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         containerCreationDescription.setVariable(defaultVariable);
         containerCreationDescription.setViewVariable(containerViewVariable);
         InitialNodeCreationOperation init = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
@@ -308,13 +308,13 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public DeleteElementDescription createDeleteElementDescription() {
         DeleteElementDescriptionImpl deleteElementDescription = new DeleteElementDescriptionSpec();
         ElementDeleteVariable elementDeleteVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementDeleteVariable();
-        elementDeleteVariable.setName("element");
+        elementDeleteVariable.setName("element"); //$NON-NLS-1$
         deleteElementDescription.setElement(elementDeleteVariable);
         ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         deleteElementDescription.setContainerView(containerViewVariable);
         ElementDeleteVariable elementDeleteVariable2 = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementDeleteVariable();
-        elementDeleteVariable2.setName("elementView");
+        elementDeleteVariable2.setName("elementView"); //$NON-NLS-1$
         deleteElementDescription.setElementView(elementDeleteVariable2);
         InitialOperation init = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
         deleteElementDescription.setInitialOperation(init);
@@ -330,10 +330,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public DoubleClickDescription createDoubleClickDescription() {
         DoubleClickDescriptionImpl doubleClickDescription = new DoubleClickDescriptionImpl();
         ElementDoubleClickVariable elementDoubleClickVariable = createElementDoubleClickVariable();
-        elementDoubleClickVariable.setName("element");
+        elementDoubleClickVariable.setName("element"); //$NON-NLS-1$
         doubleClickDescription.setElement(elementDoubleClickVariable);
         ElementDoubleClickVariable elementViewDoubleClickVariable = createElementDoubleClickVariable();
-        elementViewDoubleClickVariable.setName("elementView");
+        elementViewDoubleClickVariable.setName("elementView"); //$NON-NLS-1$
         doubleClickDescription.setElementView(elementViewDoubleClickVariable);
         InitialOperation init = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
         doubleClickDescription.setInitialOperation(init);
@@ -371,22 +371,22 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public ReconnectEdgeDescription createReconnectEdgeDescription() {
         ReconnectEdgeDescriptionImpl reconnectEdgeDescription = new ReconnectEdgeDescriptionSpec();
         ElementSelectVariable elementSelectVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable();
-        elementSelectVariable.setName("element");
+        elementSelectVariable.setName("element"); //$NON-NLS-1$
         reconnectEdgeDescription.setElement(elementSelectVariable);
         SourceEdgeCreationVariable sourceEdgeCreationVariable = createSourceEdgeCreationVariable();
-        sourceEdgeCreationVariable.setName("source");
+        sourceEdgeCreationVariable.setName("source"); //$NON-NLS-1$
         reconnectEdgeDescription.setSource(sourceEdgeCreationVariable);
         SourceEdgeViewCreationVariable sourceEdgeViewCreationVariable = createSourceEdgeViewCreationVariable();
-        sourceEdgeViewCreationVariable.setName("sourceView");
+        sourceEdgeViewCreationVariable.setName("sourceView"); //$NON-NLS-1$
         reconnectEdgeDescription.setSourceView(sourceEdgeViewCreationVariable);
         TargetEdgeCreationVariable targetEdgeCreationVariable = createTargetEdgeCreationVariable();
-        targetEdgeCreationVariable.setName("target");
+        targetEdgeCreationVariable.setName("target"); //$NON-NLS-1$
         reconnectEdgeDescription.setTarget(targetEdgeCreationVariable);
         TargetEdgeViewCreationVariable targetEdgeViewCreationVariable = createTargetEdgeViewCreationVariable();
-        targetEdgeViewCreationVariable.setName("targetView");
+        targetEdgeViewCreationVariable.setName("targetView"); //$NON-NLS-1$
         reconnectEdgeDescription.setTargetView(targetEdgeViewCreationVariable);
         ElementSelectVariable edgeVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable();
-        edgeVariable.setName("edgeView");
+        edgeVariable.setName("edgeView"); //$NON-NLS-1$
         reconnectEdgeDescription.setEdgeView(edgeVariable);
         InitialOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
         reconnectEdgeDescription.setInitialOperation(initialOperation);
@@ -540,10 +540,10 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public DiagramCreationDescription createDiagramCreationDescription() {
         DiagramCreationDescriptionImpl diagramCreationDescription = new DiagramCreationDescriptionSpec();
         ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         diagramCreationDescription.setContainerViewVariable(containerViewVariable);
         NameVariable diagramNameVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createNameVariable();
-        diagramNameVariable.setName("diagramName");
+        diagramNameVariable.setName("diagramName"); //$NON-NLS-1$
         diagramCreationDescription.setRepresentationNameVariable(diagramNameVariable);
         InitialOperation init = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
         diagramCreationDescription.setInitialOperation(init);
@@ -559,13 +559,13 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public DiagramNavigationDescription createDiagramNavigationDescription() {
         DiagramNavigationDescriptionImpl diagramNavigationDescription = new DiagramNavigationDescriptionSpec();
         ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         diagramNavigationDescription.setContainerViewVariable(containerViewVariable);
         ElementSelectVariable containerVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementSelectVariable();
-        containerVariable.setName("container");
+        containerVariable.setName("container"); //$NON-NLS-1$
         diagramNavigationDescription.setContainerVariable(containerVariable);
         NameVariable diagramNameVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createNameVariable();
-        diagramNameVariable.setName("diagramName");
+        diagramNameVariable.setName("diagramName"); //$NON-NLS-1$
         diagramNavigationDescription.setRepresentationNameVariable(diagramNameVariable);
         return diagramNavigationDescription;
     }
@@ -579,13 +579,13 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public ContainerDropDescription createContainerDropDescription() {
         ContainerDropDescriptionImpl containerDropDescription = new ContainerDropDescriptionSpec();
         DropContainerVariable oldContainerVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createDropContainerVariable();
-        oldContainerVariable.setName("oldSemanticContainer");
+        oldContainerVariable.setName("oldSemanticContainer"); //$NON-NLS-1$
         DropContainerVariable newContainerVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createDropContainerVariable();
-        newContainerVariable.setName("newSemanticContainer");
+        newContainerVariable.setName("newSemanticContainer"); //$NON-NLS-1$
         ElementDropVariable elementDropVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementDropVariable();
-        elementDropVariable.setName("element");
+        elementDropVariable.setName("element"); //$NON-NLS-1$
         ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("newContainerView");
+        containerViewVariable.setName("newContainerView"); //$NON-NLS-1$
 
         containerDropDescription.setElement(elementDropVariable);
         containerDropDescription.setNewContainer(newContainerVariable);
@@ -606,7 +606,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public ReconnectionKind createReconnectionKindFromString(EDataType eDataType, String initialValue) {
         ReconnectionKind result = ReconnectionKind.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

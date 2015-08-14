@@ -116,7 +116,7 @@ public class DocbookFactoryImpl extends EFactoryImpl implements DocbookFactory {
         case DocbookPackage.LIST_ITEM:
             return createListItem();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

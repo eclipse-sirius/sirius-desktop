@@ -13,8 +13,8 @@ package org.eclipse.sirius.sample.interactions;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Create Participant Message</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getCreateParticipantMessage()
  * @model
  * @generated

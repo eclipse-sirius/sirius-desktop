@@ -101,7 +101,7 @@ public class SequenceDDiagramItemProvider extends DSemanticDiagramItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SequenceDDiagram"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SequenceDDiagram")); //$NON-NLS-1$
     }
 
     /**
@@ -113,7 +113,7 @@ public class SequenceDDiagramItemProvider extends DSemanticDiagramItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((SequenceDDiagram) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_SequenceDDiagram_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_SequenceDDiagram_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -171,7 +171,8 @@ public class SequenceDDiagramItemProvider extends DSemanticDiagramItemProvider {
         boolean qualify = childFeature == SequencePackage.Literals.SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING || childFeature == SequencePackage.Literals.SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

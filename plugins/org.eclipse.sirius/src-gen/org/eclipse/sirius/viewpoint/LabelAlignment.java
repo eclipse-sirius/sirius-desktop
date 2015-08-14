@@ -35,7 +35,7 @@ public enum LabelAlignment implements Enumerator {
      * @generated
      * @ordered
      */
-    CENTER(0, "CENTER", "CENTER"),
+    CENTER(0, "CENTER", "CENTER"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>LEFT</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -45,7 +45,7 @@ public enum LabelAlignment implements Enumerator {
      * @generated
      * @ordered
      */
-    LEFT(1, "LEFT", "LEFT"),
+    LEFT(1, "LEFT", "LEFT"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>RIGHT</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -55,7 +55,7 @@ public enum LabelAlignment implements Enumerator {
      * @generated
      * @ordered
      */
-    RIGHT(2, "RIGHT", "RIGHT");
+    RIGHT(2, "RIGHT", "RIGHT"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>CENTER</b></em>' literal value. <!-- begin-user-doc -->

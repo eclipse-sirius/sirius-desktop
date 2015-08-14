@@ -67,8 +67,10 @@ public class TreeNavigationDescriptionItemProvider extends RepresentationNavigat
      */
     protected void addTreeDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeNavigationDescription_treeDescription_feature"), getString("_UI_TreeNavigationDescription_treeDescription_description"),
-                DescriptionPackage.Literals.TREE_NAVIGATION_DESCRIPTION__TREE_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TreeNavigationDescription_treeDescription_feature"), //$NON-NLS-1$
+                getString("_UI_TreeNavigationDescription_treeDescription_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_NAVIGATION_DESCRIPTION__TREE_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,7 +81,7 @@ public class TreeNavigationDescriptionItemProvider extends RepresentationNavigat
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeNavigationDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeNavigationDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -91,7 +93,7 @@ public class TreeNavigationDescriptionItemProvider extends RepresentationNavigat
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeNavigationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeNavigationDescription_type") : getString("_UI_TreeNavigationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeNavigationDescription_type") : getString("_UI_TreeNavigationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

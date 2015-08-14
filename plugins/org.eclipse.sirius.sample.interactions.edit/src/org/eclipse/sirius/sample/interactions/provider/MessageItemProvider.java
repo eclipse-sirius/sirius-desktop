@@ -33,14 +33,14 @@ import org.eclipse.sirius.sample.interactions.Message;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.sample.interactions.Message} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MessageItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MessageItemProvider(AdapterFactory adapterFactory) {
@@ -50,7 +50,7 @@ public class MessageItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -68,49 +68,52 @@ public class MessageItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Message_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_Message_name_feature", "_UI_Message_type"), InteractionsPackage.Literals.MESSAGE__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Message_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Message_name_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                InteractionsPackage.Literals.MESSAGE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This adds a property descriptor for the Sending End feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addSendingEndPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Message_sendingEnd_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Message_sendingEnd_feature", "_UI_Message_type"),
+                getString("_UI_Message_sendingEnd_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Message_sendingEnd_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 InteractionsPackage.Literals.MESSAGE__SENDING_END, true, false, true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Receiving End feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addReceivingEndPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Message_receivingEnd_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Message_receivingEnd_feature", "_UI_Message_type"),
+                getString("_UI_Message_receivingEnd_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_Message_receivingEnd_feature", "_UI_Message_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 InteractionsPackage.Literals.MESSAGE__RECEIVING_END, true, false, true, null, null, null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String getText(Object object) {
         String label = ((Message) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_Message_type") : getString("_UI_Message_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Message_type") : //$NON-NLS-1$
+            getString("_UI_Message_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -118,7 +121,7 @@ public class MessageItemProvider extends ItemProviderAdapter implements IEditing
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -137,7 +140,7 @@ public class MessageItemProvider extends ItemProviderAdapter implements IEditing
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +151,7 @@ public class MessageItemProvider extends ItemProviderAdapter implements IEditing
     /**
      * Return the resource locator for this item provider's resources. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

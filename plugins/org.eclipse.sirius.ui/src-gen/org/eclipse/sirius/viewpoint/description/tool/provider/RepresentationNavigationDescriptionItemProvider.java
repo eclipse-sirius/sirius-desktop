@@ -70,10 +70,13 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addBrowseExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationNavigationDescription_browseExpression_feature"), getString("_UI_RepresentationNavigationDescription_browseExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_RepresentationNavigationDescription_browseExpression_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationNavigationDescription_browseExpression_description"), //$NON-NLS-1$
                 ToolPackage.Literals.REPRESENTATION_NAVIGATION_DESCRIPTION__BROWSE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -83,10 +86,13 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addNavigationNameExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationNavigationDescription_navigationNameExpression_feature"), getString("_UI_RepresentationNavigationDescription_navigationNameExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_RepresentationNavigationDescription_navigationNameExpression_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationNavigationDescription_navigationNameExpression_description"), //$NON-NLS-1$
                 ToolPackage.Literals.REPRESENTATION_NAVIGATION_DESCRIPTION__NAVIGATION_NAME_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -97,8 +103,8 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
      */
     protected void addRepresentationDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationNavigationDescription_representationDescription_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RepresentationNavigationDescription_representationDescription_feature", "_UI_RepresentationNavigationDescription_type"),
+                getString("_UI_RepresentationNavigationDescription_representationDescription_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RepresentationNavigationDescription_representationDescription_feature", "_UI_RepresentationNavigationDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.REPRESENTATION_NAVIGATION_DESCRIPTION__REPRESENTATION_DESCRIPTION, false, false, false, null, null, null));
     }
 
@@ -146,7 +152,7 @@ public class RepresentationNavigationDescriptionItemProvider extends AbstractToo
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((RepresentationNavigationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_RepresentationNavigationDescription_type") : getString("_UI_RepresentationNavigationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_RepresentationNavigationDescription_type") : getString("_UI_RepresentationNavigationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

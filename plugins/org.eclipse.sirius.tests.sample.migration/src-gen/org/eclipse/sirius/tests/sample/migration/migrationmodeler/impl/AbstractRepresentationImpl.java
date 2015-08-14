@@ -429,13 +429,13 @@ public abstract class AbstractRepresentationImpl extends EObjectImpl implements 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (mappingId: ");
+        result.append(" (mappingId: "); //$NON-NLS-1$
         result.append(mappingId);
-        result.append(", displayed: ");
+        result.append(", displayed: "); //$NON-NLS-1$
         result.append(displayed);
-        result.append(", hidden: ");
+        result.append(", hidden: "); //$NON-NLS-1$
         result.append(hidden);
-        result.append(", pinned: ");
+        result.append(", pinned: "); //$NON-NLS-1$
         result.append(pinned);
         result.append(')');
         return result.toString();

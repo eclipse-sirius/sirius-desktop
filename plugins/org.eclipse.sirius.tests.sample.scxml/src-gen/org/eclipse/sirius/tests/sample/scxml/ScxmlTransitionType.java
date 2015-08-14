@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
@@ -13,9 +13,7 @@ package org.eclipse.sirius.tests.sample.scxml;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -82,7 +80,7 @@ public interface ScxmlTransitionType extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Core Executablecontent</em>'
      *         attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_ScxmlCoreExecutablecontent()
@@ -102,7 +100,7 @@ public interface ScxmlTransitionType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -123,7 +121,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Raise</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Raise()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -143,7 +141,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>If</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_If()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -163,7 +161,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreach</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Foreach()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -183,7 +181,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Send</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Send()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -203,7 +201,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Script</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Script()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -223,7 +221,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Assign</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Assign()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -243,7 +241,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Log</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Log()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -263,7 +261,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cancel</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Cancel()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -281,7 +279,7 @@ public interface ScxmlTransitionType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cond</em>' attribute.
      * @see #setCond(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Cond()
@@ -295,7 +293,7 @@ public interface ScxmlTransitionType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getCond
      * <em>Cond</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Cond</em>' attribute.
      * @see #getCond()
@@ -311,11 +309,11 @@ public interface ScxmlTransitionType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Event</em>' attribute.
      * @see #setEvent(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Event()
-     * @model 
+     * @model
      *        dataType="org.eclipse.sirius.tests.sample.scxml.EventTypesDatatype"
      *        extendedMetaData="kind='attribute' name='event'"
      * @generated
@@ -326,7 +324,7 @@ public interface ScxmlTransitionType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getEvent
      * <em>Event</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Event</em>' attribute.
      * @see #getEvent()
@@ -342,7 +340,7 @@ public interface ScxmlTransitionType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' attribute.
      * @see #setTarget(List)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_Target()
@@ -357,7 +355,7 @@ public interface ScxmlTransitionType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getTarget
      * <em>Target</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target</em>' attribute.
      * @see #getTarget()
@@ -375,7 +373,7 @@ public interface ScxmlTransitionType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Type</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
      * @see #isSetType()
@@ -391,7 +389,7 @@ public interface ScxmlTransitionType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
@@ -406,7 +404,7 @@ public interface ScxmlTransitionType extends EObject {
      * Unsets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isSetType()
      * @see #getType()
      * @see #setType(TransitionTypeDatatype)
@@ -419,7 +417,7 @@ public interface ScxmlTransitionType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getType
      * <em>Type</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Type</em>' attribute is set.
      * @see #unsetType()
      * @see #getType()
@@ -438,7 +436,7 @@ public interface ScxmlTransitionType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlTransitionType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

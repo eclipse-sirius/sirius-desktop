@@ -953,7 +953,7 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (reconnectionKind: ");
+        result.append(" (reconnectionKind: "); //$NON-NLS-1$
         result.append(reconnectionKind);
         result.append(')');
         return result.toString();

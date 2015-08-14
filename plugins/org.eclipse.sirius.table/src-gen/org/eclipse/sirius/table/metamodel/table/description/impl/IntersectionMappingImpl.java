@@ -1222,21 +1222,21 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (canEdit: ");
+        result.append(" (canEdit: "); //$NON-NLS-1$
         result.append(canEdit);
-        result.append(", labelExpression: ");
+        result.append(", labelExpression: "); //$NON-NLS-1$
         result.append(labelExpression);
-        result.append(", useDomainClass: ");
+        result.append(", useDomainClass: "); //$NON-NLS-1$
         result.append(useDomainClass);
-        result.append(", columnFinderExpression: ");
+        result.append(", columnFinderExpression: "); //$NON-NLS-1$
         result.append(columnFinderExpression);
-        result.append(", lineFinderExpression: ");
+        result.append(", lineFinderExpression: "); //$NON-NLS-1$
         result.append(lineFinderExpression);
-        result.append(", semanticCandidatesExpression: ");
+        result.append(", semanticCandidatesExpression: "); //$NON-NLS-1$
         result.append(semanticCandidatesExpression);
-        result.append(", domainClass: ");
+        result.append(", domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
-        result.append(", preconditionExpression: ");
+        result.append(", preconditionExpression: "); //$NON-NLS-1$
         result.append(preconditionExpression);
         result.append(')');
         return result.toString();

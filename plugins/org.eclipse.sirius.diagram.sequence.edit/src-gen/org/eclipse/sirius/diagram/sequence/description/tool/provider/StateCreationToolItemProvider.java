@@ -101,7 +101,7 @@ public class StateCreationToolItemProvider extends NodeCreationDescriptionItemPr
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/StateCreationTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/StateCreationTool")); //$NON-NLS-1$
     }
 
     /**
@@ -113,7 +113,7 @@ public class StateCreationToolItemProvider extends NodeCreationDescriptionItemPr
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((StateCreationTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_StateCreationTool_type") : getString("_UI_StateCreationTool_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_StateCreationTool_type") : getString("_UI_StateCreationTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -169,7 +169,8 @@ public class StateCreationToolItemProvider extends NodeCreationDescriptionItemPr
                 || childFeature == ToolPackage.Literals.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

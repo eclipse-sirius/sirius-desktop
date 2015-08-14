@@ -40,7 +40,7 @@ public final class DocbookEditorPlugin extends EMFPlugin {
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public DocbookEditorPlugin() {
@@ -50,7 +50,7 @@ public final class DocbookEditorPlugin extends EMFPlugin {
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -62,7 +62,7 @@ public final class DocbookEditorPlugin extends EMFPlugin {
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
@@ -79,7 +79,7 @@ public final class DocbookEditorPlugin extends EMFPlugin {
     public static class Implementation extends EclipseUIPlugin {
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public Implementation() {

@@ -60,7 +60,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * @generated
      * @ordered
      */
-    protected static final String CONTAINER_VIEW_EXPRESSION_EDEFAULT = "";
+    protected static final String CONTAINER_VIEW_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getContainerViewExpression()
@@ -82,7 +82,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
      * @generated
      * @ordered
      */
-    protected static final String VARIABLE_NAME_EDEFAULT = "createdView";
+    protected static final String VARIABLE_NAME_EDEFAULT = "createdView"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getVariableName()
@@ -297,9 +297,9 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (containerViewExpression: ");
+        result.append(" (containerViewExpression: "); //$NON-NLS-1$
         result.append(containerViewExpression);
-        result.append(", variableName: ");
+        result.append(", variableName: "); //$NON-NLS-1$
         result.append(variableName);
         result.append(')');
         return result.toString();

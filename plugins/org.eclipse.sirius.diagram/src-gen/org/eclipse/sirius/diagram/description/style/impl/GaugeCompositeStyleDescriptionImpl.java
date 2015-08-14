@@ -226,7 +226,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (alignment: ");
+        result.append(" (alignment: "); //$NON-NLS-1$
         result.append(alignment);
         result.append(')');
         return result.toString();

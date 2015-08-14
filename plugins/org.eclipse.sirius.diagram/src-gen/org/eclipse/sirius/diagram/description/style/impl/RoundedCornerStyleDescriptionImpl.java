@@ -223,9 +223,9 @@ public abstract class RoundedCornerStyleDescriptionImpl extends MinimalEObjectIm
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (arcWidth: ");
+        result.append(" (arcWidth: "); //$NON-NLS-1$
         result.append(arcWidth);
-        result.append(", arcHeight: ");
+        result.append(", arcHeight: "); //$NON-NLS-1$
         result.append(arcHeight);
         result.append(')');
         return result.toString();

@@ -106,7 +106,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SytemColorsPalette"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SytemColorsPalette")); //$NON-NLS-1$
     }
 
     /**
@@ -117,7 +117,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_SytemColorsPalette_type");
+        return getString("_UI_SytemColorsPalette_type"); //$NON-NLS-1$
     }
 
     /**

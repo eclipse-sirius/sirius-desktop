@@ -4,16 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -75,7 +73,7 @@ public interface ScxmlSendType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Send Mix</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_ScxmlSendMix()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -94,7 +92,7 @@ public interface ScxmlSendType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Content</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Content()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -114,7 +112,7 @@ public interface ScxmlSendType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Param</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Param()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -133,7 +131,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -152,7 +150,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Delay</em>' attribute.
      * @see #isSetDelay()
      * @see #unsetDelay()
@@ -169,7 +167,7 @@ public interface ScxmlSendType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getDelay
      * <em>Delay</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Delay</em>' attribute.
      * @see #isSetDelay()
@@ -183,7 +181,7 @@ public interface ScxmlSendType extends EObject {
      * Unsets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getDelay
      * <em>Delay</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isSetDelay()
      * @see #getDelay()
      * @see #setDelay(String)
@@ -196,7 +194,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getDelay
      * <em>Delay</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Delay</em>' attribute is set.
      * @see #unsetDelay()
      * @see #getDelay()
@@ -213,7 +211,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Delayexpr</em>' attribute.
      * @see #setDelayexpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Delayexpr()
@@ -228,7 +226,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getDelayexpr
      * <em>Delayexpr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Delayexpr</em>' attribute.
      * @see #getDelayexpr()
@@ -244,7 +242,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Event</em>' attribute.
      * @see #setEvent(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Event()
@@ -258,7 +256,7 @@ public interface ScxmlSendType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getEvent
      * <em>Event</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Event</em>' attribute.
      * @see #getEvent()
@@ -274,7 +272,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Eventexpr</em>' attribute.
      * @see #setEventexpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Eventexpr()
@@ -289,7 +287,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getEventexpr
      * <em>Eventexpr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Eventexpr</em>' attribute.
      * @see #getEventexpr()
@@ -305,7 +303,7 @@ public interface ScxmlSendType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Id()
@@ -319,7 +317,7 @@ public interface ScxmlSendType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getId
      * <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Id</em>' attribute.
      * @see #getId()
@@ -335,7 +333,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Idlocation</em>' attribute.
      * @see #setIdlocation(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Idlocation()
@@ -350,7 +348,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getIdlocation
      * <em>Idlocation</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Idlocation</em>' attribute.
      * @see #getIdlocation()
@@ -366,7 +364,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Namelist</em>' attribute.
      * @see #setNamelist(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Namelist()
@@ -381,7 +379,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getNamelist
      * <em>Namelist</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Namelist</em>' attribute.
      * @see #getNamelist()
@@ -397,7 +395,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Target</em>' attribute.
      * @see #setTarget(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Target()
@@ -412,7 +410,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTarget
      * <em>Target</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Target</em>' attribute.
      * @see #getTarget()
@@ -428,7 +426,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Targetexpr</em>' attribute.
      * @see #setTargetexpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Targetexpr()
@@ -443,7 +441,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTargetexpr
      * <em>Targetexpr</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Targetexpr</em>' attribute.
      * @see #getTargetexpr()
@@ -459,7 +457,7 @@ public interface ScxmlSendType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Type</em>' attribute.
      * @see #isSetType()
      * @see #unsetType()
@@ -476,7 +474,7 @@ public interface ScxmlSendType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type</em>' attribute.
      * @see #isSetType()
@@ -490,7 +488,7 @@ public interface ScxmlSendType extends EObject {
      * Unsets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getType
      * <em>Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #isSetType()
      * @see #getType()
      * @see #setType(String)
@@ -503,7 +501,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getType
      * <em>Type</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Type</em>' attribute is set.
      * @see #unsetType()
      * @see #getType()
@@ -520,7 +518,7 @@ public interface ScxmlSendType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Typeexpr</em>' attribute.
      * @see #setTypeexpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_Typeexpr()
@@ -535,7 +533,7 @@ public interface ScxmlSendType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTypeexpr
      * <em>Typeexpr</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Typeexpr</em>' attribute.
      * @see #getTypeexpr()
@@ -553,7 +551,7 @@ public interface ScxmlSendType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlSendType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

@@ -75,7 +75,8 @@ IItemLabelProvider, IItemPropertySource {
      */
     protected void addAppliedOnPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EStructuralFeatureCustomization_appliedOn_feature"), getString("_UI_EStructuralFeatureCustomization_appliedOn_description"),
+                getString("_UI_EStructuralFeatureCustomization_appliedOn_feature"), //$NON-NLS-1$
+                getString("_UI_EStructuralFeatureCustomization_appliedOn_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLIED_ON, true, false, true, null, null, null));
     }
 
@@ -87,7 +88,8 @@ IItemLabelProvider, IItemPropertySource {
      */
     protected void addApplyOnAllPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EStructuralFeatureCustomization_applyOnAll_feature"), getString("_UI_EStructuralFeatureCustomization_applyOnAll_description"),
+                getString("_UI_EStructuralFeatureCustomization_applyOnAll_feature"), //$NON-NLS-1$
+                getString("_UI_EStructuralFeatureCustomization_applyOnAll_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLY_ON_ALL, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -100,7 +102,7 @@ IItemLabelProvider, IItemPropertySource {
     @Override
     public String getText(Object object) {
         EStructuralFeatureCustomization eStructuralFeatureCustomization = (EStructuralFeatureCustomization) object;
-        return getString("_UI_EStructuralFeatureCustomization_type") + " " + eStructuralFeatureCustomization.isApplyOnAll();
+        return getString("_UI_EStructuralFeatureCustomization_type") + " " + eStructuralFeatureCustomization.isApplyOnAll(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

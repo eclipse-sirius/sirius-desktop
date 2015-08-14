@@ -234,7 +234,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (inverseSelectionOrder: ");
+        result.append(" (inverseSelectionOrder: "); //$NON-NLS-1$
         result.append(inverseSelectionOrder);
         result.append(')');
         return result.toString();

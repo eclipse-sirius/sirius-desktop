@@ -131,7 +131,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif";
+    protected static final String ICON_PATH_EDEFAULT = "/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
@@ -1211,27 +1211,27 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (iconPath: ");
+        result.append(" (iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
-        result.append(", windowTitle: ");
+        result.append(", windowTitle: "); //$NON-NLS-1$
         result.append(windowTitle);
-        result.append(", windowImagePath: ");
+        result.append(", windowImagePath: "); //$NON-NLS-1$
         result.append(windowImagePath);
-        result.append(", message: ");
+        result.append(", message: "); //$NON-NLS-1$
         result.append(message);
-        result.append(", choiceOfValuesMessage: ");
+        result.append(", choiceOfValuesMessage: "); //$NON-NLS-1$
         result.append(choiceOfValuesMessage);
-        result.append(", candidatesExpression: ");
+        result.append(", candidatesExpression: "); //$NON-NLS-1$
         result.append(candidatesExpression);
-        result.append(", tree: ");
+        result.append(", tree: "); //$NON-NLS-1$
         result.append(tree);
-        result.append(", rootExpression: ");
+        result.append(", rootExpression: "); //$NON-NLS-1$
         result.append(rootExpression);
-        result.append(", childrenExpression: ");
+        result.append(", childrenExpression: "); //$NON-NLS-1$
         result.append(childrenExpression);
-        result.append(", selectedValuesMessage: ");
+        result.append(", selectedValuesMessage: "); //$NON-NLS-1$
         result.append(selectedValuesMessage);
-        result.append(", preSelectedCandidatesExpression: ");
+        result.append(", preSelectedCandidatesExpression: "); //$NON-NLS-1$
         result.append(preSelectedCandidatesExpression);
         result.append(')');
         return result.toString();

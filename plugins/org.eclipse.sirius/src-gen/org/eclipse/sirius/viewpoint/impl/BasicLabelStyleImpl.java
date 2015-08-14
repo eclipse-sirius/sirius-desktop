@@ -108,7 +108,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "";
+    protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
@@ -128,7 +128,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * @generated
      * @ordered
      */
-    protected static final RGBValues LABEL_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+    protected static final RGBValues LABEL_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
@@ -380,15 +380,15 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (labelSize: ");
+        result.append(" (labelSize: "); //$NON-NLS-1$
         result.append(labelSize);
-        result.append(", labelFormat: ");
+        result.append(", labelFormat: "); //$NON-NLS-1$
         result.append(labelFormat);
-        result.append(", showIcon: ");
+        result.append(", showIcon: "); //$NON-NLS-1$
         result.append(showIcon);
-        result.append(", iconPath: ");
+        result.append(", iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
-        result.append(", labelColor: ");
+        result.append(", labelColor: "); //$NON-NLS-1$
         result.append(labelColor);
         result.append(')');
         return result.toString();

@@ -21,10 +21,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.description.contribution.RemoveFeatureContribution;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class RemoveFeatureContributionItemProvider extends FeatureContributionItemProvider {
@@ -54,14 +52,14 @@ public class RemoveFeatureContributionItemProvider extends FeatureContributionIt
     }
 
     /**
-     * This returns RemoveFeatureContribution.gif. <!-- begin-user-doc --> <!--
+     * This returns RemoveFeatureContribution.gif.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RemoveFeatureContribution"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RemoveFeatureContribution")); //$NON-NLS-1$
     }
 
     /**
@@ -72,10 +70,10 @@ public class RemoveFeatureContributionItemProvider extends FeatureContributionIt
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_RemoveFeatureContribution_type");
+        String result = getString("_UI_RemoveFeatureContribution_type"); //$NON-NLS-1$
         if (object instanceof RemoveFeatureContribution) {
             RemoveFeatureContribution rfc = (RemoveFeatureContribution) object;
-            result += " target." + featureString(rfc.getTargetFeature()) + " -= source." + featureString(rfc.getSourceFeature());
+            result += " target." + featureString(rfc.getTargetFeature()) + " -= source." + featureString(rfc.getSourceFeature()); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return result;
     }
@@ -84,16 +82,15 @@ public class RemoveFeatureContributionItemProvider extends FeatureContributionIt
         if (feature != null) {
             return feature.getName();
         } else {
-            return "[unset]";
+            return "[unset]"; //$NON-NLS-1$
         }
     }
 
     /**
-     * This handles model notifications by calling {@link #updateChildren} to
-     * update any cached children and by creating a viewer notification, which
-     * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override

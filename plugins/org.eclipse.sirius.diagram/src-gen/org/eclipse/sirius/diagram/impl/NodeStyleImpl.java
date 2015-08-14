@@ -96,7 +96,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()
@@ -117,7 +117,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
      * @generated
      * @ordered
      */
-    protected static final RGBValues BORDER_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+    protected static final RGBValues BORDER_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
@@ -638,17 +638,17 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSize: ");
+        result.append(" (borderSize: "); //$NON-NLS-1$
         result.append(borderSize);
-        result.append(", borderSizeComputationExpression: ");
+        result.append(", borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
-        result.append(", borderColor: ");
+        result.append(", borderColor: "); //$NON-NLS-1$
         result.append(borderColor);
-        result.append(", borderLineStyle: ");
+        result.append(", borderLineStyle: "); //$NON-NLS-1$
         result.append(borderLineStyle);
-        result.append(", hideLabelByDefault: ");
+        result.append(", hideLabelByDefault: "); //$NON-NLS-1$
         result.append(hideLabelByDefault);
-        result.append(", labelPosition: ");
+        result.append(", labelPosition: "); //$NON-NLS-1$
         result.append(labelPosition);
         result.append(')');
         return result.toString();

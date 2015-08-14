@@ -68,9 +68,10 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
      */
     protected void addArcWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RoundedCornerStyleDescription_arcWidth_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RoundedCornerStyleDescription_arcWidth_feature", "_UI_RoundedCornerStyleDescription_type"),
-                StylePackage.Literals.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), null));
+                getString("_UI_RoundedCornerStyleDescription_arcWidth_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RoundedCornerStyleDescription_arcWidth_feature", "_UI_RoundedCornerStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -81,9 +82,10 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
      */
     protected void addArcHeightPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RoundedCornerStyleDescription_arcHeight_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RoundedCornerStyleDescription_arcHeight_feature", "_UI_RoundedCornerStyleDescription_type"),
-                StylePackage.Literals.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), null));
+                getString("_UI_RoundedCornerStyleDescription_arcHeight_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RoundedCornerStyleDescription_arcHeight_feature", "_UI_RoundedCornerStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -94,9 +96,10 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
      */
     protected void addRoundedCornerPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerStyleDescription_roundedCorner_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ContainerStyleDescription_roundedCorner_feature", "_UI_ContainerStyleDescription_type"),
-                StylePackage.Literals.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), null));
+                getString("_UI_ContainerStyleDescription_roundedCorner_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ContainerStyleDescription_roundedCorner_feature", "_UI_ContainerStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -107,8 +110,10 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
      */
     protected void addWorkspacePathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_WorkspaceImageDescription_workspacePath_feature"), getString("_UI_WorkspaceImageDescription_workspacePath_description"),
-                StylePackage.Literals.WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_WorkspaceImageDescription_workspacePath_feature"), //$NON-NLS-1$
+                getString("_UI_WorkspaceImageDescription_workspacePath_description"), //$NON-NLS-1$
+                StylePackage.Literals.WORKSPACE_IMAGE_DESCRIPTION__WORKSPACE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -119,7 +124,7 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/WorkspaceImageDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/WorkspaceImageDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -131,7 +136,8 @@ public class WorkspaceImageDescriptionItemProvider extends NodeStyleDescriptionI
     @Override
     public String getText(Object object) {
         String label = ((WorkspaceImageDescription) object).getWorkspacePath();
-        return label == null || label.length() == 0 ? getString("_UI_WorkspaceImageDescription_type") : getString("_UI_WorkspaceImageDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_WorkspaceImageDescription_type") : //$NON-NLS-1$
+            getString("_UI_WorkspaceImageDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

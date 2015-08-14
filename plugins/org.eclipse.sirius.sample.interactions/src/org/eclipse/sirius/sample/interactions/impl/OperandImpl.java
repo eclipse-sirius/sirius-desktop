@@ -31,14 +31,14 @@ import org.eclipse.sirius.sample.interactions.OperandEnd;
  * <em>Start</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class OperandImpl extends EObjectImpl implements Operand {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -48,17 +48,17 @@ public class OperandImpl extends EObjectImpl implements Operand {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = OperandImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getStart()
      * @generated
      * @ordered
@@ -67,7 +67,7 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperandImpl() {
@@ -76,7 +76,7 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -86,37 +86,42 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.OPERAND__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public OperandEnd getStart() {
         if (start != null && start.eIsProxy()) {
             InternalEObject oldStart = (InternalEObject) start;
             start = (OperandEnd) eResolveProxy(oldStart);
             if (start != oldStart) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.OPERAND__START, oldStart, start));
+                }
             }
         }
         return start;
@@ -124,7 +129,7 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public OperandEnd basicGetStart() {
@@ -133,19 +138,21 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setStart(OperandEnd newStart) {
         OperandEnd oldStart = start;
         start = newStart;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.OPERAND__START, oldStart, start));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,8 +161,9 @@ public class OperandImpl extends EObjectImpl implements Operand {
         case InteractionsPackage.OPERAND__NAME:
             return getName();
         case InteractionsPackage.OPERAND__START:
-            if (resolve)
+            if (resolve) {
                 return getStart();
+            }
             return basicGetStart();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -163,7 +171,7 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -181,14 +189,14 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.OPERAND__NAME:
-            setName(NAME_EDEFAULT);
+            setName(OperandImpl.NAME_EDEFAULT);
             return;
         case InteractionsPackage.OPERAND__START:
             setStart((OperandEnd) null);
@@ -199,14 +207,14 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.OPERAND__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return OperandImpl.NAME_EDEFAULT == null ? name != null : !OperandImpl.NAME_EDEFAULT.equals(name);
         case InteractionsPackage.OPERAND__START:
             return start != null;
         }
@@ -215,16 +223,17 @@ public class OperandImpl extends EObjectImpl implements Operand {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
         return result.toString();

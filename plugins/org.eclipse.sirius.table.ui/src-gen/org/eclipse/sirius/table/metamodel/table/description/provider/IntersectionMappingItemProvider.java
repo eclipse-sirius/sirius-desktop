@@ -88,8 +88,10 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addCanEditPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CellUpdater_canEdit_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CellUpdater_canEdit_feature", "_UI_CellUpdater_type"),
-                DescriptionPackage.Literals.CELL_UPDATER__CAN_EDIT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BehaviorPropertyCategory"), null));
+                getString("_UI_CellUpdater_canEdit_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CellUpdater_canEdit_feature", "_UI_CellUpdater_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.CELL_UPDATER__CAN_EDIT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -100,8 +102,10 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addLineMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_lineMapping_feature"), getString("_UI_IntersectionMapping_lineMapping_description"), DescriptionPackage.Literals.INTERSECTION_MAPPING__LINE_MAPPING,
-                true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IntersectionMapping_lineMapping_feature"), //$NON-NLS-1$
+                getString("_UI_IntersectionMapping_lineMapping_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__LINE_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -112,8 +116,10 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addColumnMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_columnMapping_feature"), getString("_UI_IntersectionMapping_columnMapping_description"),
-                DescriptionPackage.Literals.INTERSECTION_MAPPING__COLUMN_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_IntersectionMapping_columnMapping_feature"), //$NON-NLS-1$
+                getString("_UI_IntersectionMapping_columnMapping_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__COLUMN_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -124,8 +130,10 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_labelExpression_feature"), getString("_UI_IntersectionMapping_labelExpression_description"),
-                DescriptionPackage.Literals.INTERSECTION_MAPPING__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                getString("_UI_IntersectionMapping_labelExpression_feature"), //$NON-NLS-1$
+                getString("_UI_IntersectionMapping_labelExpression_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -135,12 +143,11 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      * @generated
      */
     protected void addUseDomainClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_useDomainClass_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_useDomainClass_feature", "_UI_IntersectionMapping_type"),
-                DescriptionPackage.Literals.INTERSECTION_MAPPING__USE_DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                getString("_UI_DomainBasedPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_IntersectionMapping_useDomainClass_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_useDomainClass_feature", "_UI_IntersectionMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__USE_DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_DomainBasedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -151,9 +158,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addColumnFinderExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_columnFinderExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_columnFinderExpression_feature", "_UI_IntersectionMapping_type"),
-                DescriptionPackage.Literals.INTERSECTION_MAPPING__COLUMN_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_IntersectionMapping_columnFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_columnFinderExpression_feature", "_UI_IntersectionMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__COLUMN_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -165,9 +172,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addLineFinderExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_lineFinderExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_lineFinderExpression_feature", "_UI_IntersectionMapping_type"),
-                DescriptionPackage.Literals.INTERSECTION_MAPPING__LINE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainBasedPropertyCategory"),
+                getString("_UI_IntersectionMapping_lineFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_lineFinderExpression_feature", "_UI_IntersectionMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__LINE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainBasedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -178,10 +185,13 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      * @generated
      */
     protected void addSemanticCandidatesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_semanticCandidatesExpression_feature"), getString("_UI_IntersectionMapping_semanticCandidatesExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_IntersectionMapping_semanticCandidatesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_IntersectionMapping_semanticCandidatesExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.INTERSECTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_DomainBasedPropertyCategory"), null));
+                getString("_UI_DomainBasedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -192,8 +202,10 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_domainClass_feature"), getString("_UI_IntersectionMapping_domainClass_description"), DescriptionPackage.Literals.INTERSECTION_MAPPING__DOMAIN_CLASS,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainBasedPropertyCategory"), null));
+                getString("_UI_IntersectionMapping_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_IntersectionMapping_domainClass_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DomainBasedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -204,8 +216,9 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_preconditionExpression_feature"), getString("_UI_IntersectionMapping_preconditionExpression_description"),
-                DescriptionPackage.Literals.INTERSECTION_MAPPING__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                getString("_UI_IntersectionMapping_preconditionExpression_feature"), //$NON-NLS-1$
+                getString("_UI_IntersectionMapping_preconditionExpression_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.INTERSECTION_MAPPING__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -217,7 +230,8 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     protected void addCreatePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_IntersectionMapping_create_feature"), getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_create_feature", "_UI_IntersectionMapping_type"),
+                getString("_UI_IntersectionMapping_create_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_IntersectionMapping_create_feature", "_UI_IntersectionMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.INTERSECTION_MAPPING__CREATE, true, false, true, null, null, null));
     }
 
@@ -267,7 +281,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/IntersectionMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/IntersectionMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -279,7 +293,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((IntersectionMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_IntersectionMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_IntersectionMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

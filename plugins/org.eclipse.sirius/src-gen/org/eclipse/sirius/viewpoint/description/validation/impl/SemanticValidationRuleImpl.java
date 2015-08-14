@@ -165,7 +165,7 @@ public class SemanticValidationRuleImpl extends ValidationRuleImpl implements Se
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (targetClass: ");
+        result.append(" (targetClass: "); //$NON-NLS-1$
         result.append(targetClass);
         result.append(')');
         return result.toString();

@@ -17,14 +17,14 @@ import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 /**
  * This is the central singleton for the Interactions edit plugin. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public final class InteractionsEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public static final InteractionsEditPlugin INSTANCE = new InteractionsEditPlugin();
@@ -32,14 +32,14 @@ public final class InteractionsEditPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     private static Implementation plugin;
 
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InteractionsEditPlugin() {
@@ -49,36 +49,36 @@ public final class InteractionsEditPlugin extends EMFPlugin {
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
     @Override
     public ResourceLocator getPluginResourceLocator() {
-        return plugin;
+        return InteractionsEditPlugin.plugin;
     }
 
     /**
      * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return the singleton instance.
      * @generated
      */
     public static Implementation getPlugin() {
-        return plugin;
+        return InteractionsEditPlugin.plugin;
     }
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static class Implementation extends EclipsePlugin {
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public Implementation() {
@@ -86,7 +86,7 @@ public final class InteractionsEditPlugin extends EMFPlugin {
 
             // Remember the static instance.
             //
-            plugin = this;
+            InteractionsEditPlugin.plugin = this;
         }
     }
 

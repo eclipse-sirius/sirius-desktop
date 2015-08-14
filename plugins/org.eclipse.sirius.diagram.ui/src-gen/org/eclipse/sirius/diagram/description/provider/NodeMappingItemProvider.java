@@ -74,8 +74,10 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DragAndDropTargetDescription_dropDescriptions_feature"), getString("_UI_DragAndDropTargetDescription_dropDescriptions_description"),
-                DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), null));
+                getString("_UI_DragAndDropTargetDescription_dropDescriptions_feature"), //$NON-NLS-1$
+                getString("_UI_DragAndDropTargetDescription_dropDescriptions_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -151,7 +153,8 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
      */
     public String getTextGen(Object object) {
         String label = ((NodeMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : getString("_UI_NodeMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : //$NON-NLS-1$
+            getString("_UI_NodeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

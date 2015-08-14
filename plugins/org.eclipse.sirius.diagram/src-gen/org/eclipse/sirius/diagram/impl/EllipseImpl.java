@@ -90,7 +90,7 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
      * @generated
      * @ordered
      */
-    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136");
+    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -283,11 +283,11 @@ public class EllipseImpl extends NodeStyleImpl implements Ellipse {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (horizontalDiameter: ");
+        result.append(" (horizontalDiameter: "); //$NON-NLS-1$
         result.append(horizontalDiameter);
-        result.append(", verticalDiameter: ");
+        result.append(", verticalDiameter: "); //$NON-NLS-1$
         result.append(verticalDiameter);
-        result.append(", color: ");
+        result.append(", color: "); //$NON-NLS-1$
         result.append(color);
         result.append(')');
         return result.toString();

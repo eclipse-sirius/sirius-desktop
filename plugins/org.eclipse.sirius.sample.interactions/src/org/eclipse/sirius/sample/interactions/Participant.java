@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Participant</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A named and typed instance which particpates in the
  * interaction. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * Type</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getParticipant()
  * @model
  * @generated
@@ -43,7 +43,7 @@ public interface Participant extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getParticipant_Name()
@@ -56,7 +56,7 @@ public interface Participant extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Participant#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -72,7 +72,7 @@ public interface Participant extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Type</em>' reference.
      * @see #setType(EClass)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getParticipant_Type()
@@ -85,7 +85,7 @@ public interface Participant extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.sample.interactions.Participant#getType
      * <em>Type</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Type</em>' reference.
      * @see #getType()

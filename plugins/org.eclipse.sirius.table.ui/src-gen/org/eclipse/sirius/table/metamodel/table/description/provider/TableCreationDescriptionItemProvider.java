@@ -67,9 +67,10 @@ public class TableCreationDescriptionItemProvider extends RepresentationCreation
      */
     protected void addTableDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TableCreationDescription_tableDescription_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TableCreationDescription_tableDescription_feature", "_UI_TableCreationDescription_type"),
-                DescriptionPackage.Literals.TABLE_CREATION_DESCRIPTION__TABLE_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TableCreationDescription_tableDescription_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TableCreationDescription_tableDescription_feature", "_UI_TableCreationDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.TABLE_CREATION_DESCRIPTION__TABLE_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -80,7 +81,7 @@ public class TableCreationDescriptionItemProvider extends RepresentationCreation
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TableCreationDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TableCreationDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -92,7 +93,7 @@ public class TableCreationDescriptionItemProvider extends RepresentationCreation
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TableCreationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TableCreationDescription_type") : getString("_UI_TableCreationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TableCreationDescription_type") : getString("_UI_TableCreationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

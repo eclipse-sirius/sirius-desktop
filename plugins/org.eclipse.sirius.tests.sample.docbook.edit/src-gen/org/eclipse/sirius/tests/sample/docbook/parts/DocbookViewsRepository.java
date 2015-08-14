@@ -23,7 +23,7 @@ public class DocbookViewsRepository {
 
     /**
      * Book view descriptor
-     * 
+     *
      */
     public static class Book {
         public static class Properties {
@@ -42,7 +42,7 @@ public class DocbookViewsRepository {
 
     /**
      * Info view descriptor
-     * 
+     *
      */
     public static class Info {
         public static class Properties {
@@ -59,7 +59,7 @@ public class DocbookViewsRepository {
 
     /**
      * Author view descriptor
-     * 
+     *
      */
     public static class Author {
         public static class Properties {
@@ -76,7 +76,7 @@ public class DocbookViewsRepository {
 
     /**
      * Chapter view descriptor
-     * 
+     *
      */
     public static class Chapter {
         public static class Properties {
@@ -93,7 +93,7 @@ public class DocbookViewsRepository {
 
     /**
      * Title view descriptor
-     * 
+     *
      */
     public static class Title_ {
         public static class Properties {
@@ -106,7 +106,7 @@ public class DocbookViewsRepository {
 
     /**
      * Para view descriptor
-     * 
+     *
      */
     public static class Para {
         public static class Properties {
@@ -119,14 +119,14 @@ public class DocbookViewsRepository {
 
     /**
      * SimpleList view descriptor
-     * 
+     *
      */
     public static class SimpleList {
     }
 
     /**
      * ItemizedList view descriptor
-     * 
+     *
      */
     public static class ItemizedList {
         public static class Properties {
@@ -141,7 +141,7 @@ public class DocbookViewsRepository {
 
     /**
      * OrderedList view descriptor
-     * 
+     *
      */
     public static class OrderedList {
         public static class Properties {
@@ -154,7 +154,7 @@ public class DocbookViewsRepository {
 
     /**
      * Sect1 view descriptor
-     * 
+     *
      */
     public static class Sect1 {
         public static class Properties {
@@ -171,7 +171,7 @@ public class DocbookViewsRepository {
 
     /**
      * Sect2 view descriptor
-     * 
+     *
      */
     public static class Sect2 {
         public static class Properties {
@@ -188,7 +188,7 @@ public class DocbookViewsRepository {
 
     /**
      * Emphasis view descriptor
-     * 
+     *
      */
     public static class Emphasis {
         public static class Properties {
@@ -201,7 +201,7 @@ public class DocbookViewsRepository {
 
     /**
      * ULink view descriptor
-     * 
+     *
      */
     public static class ULink {
         public static class Properties {
@@ -216,14 +216,14 @@ public class DocbookViewsRepository {
 
     /**
      * Link view descriptor
-     * 
+     *
      */
     public static class Link {
     }
 
     /**
      * XRef view descriptor
-     * 
+     *
      */
     public static class XRef {
         public static class Properties {
@@ -236,7 +236,7 @@ public class DocbookViewsRepository {
 
     /**
      * Example view descriptor
-     * 
+     *
      */
     public static class Example {
         public static class Properties {
@@ -249,7 +249,7 @@ public class DocbookViewsRepository {
 
     /**
      * Sect3 view descriptor
-     * 
+     *
      */
     public static class Sect3 {
         public static class Properties {
@@ -264,7 +264,7 @@ public class DocbookViewsRepository {
 
     /**
      * ListItem view descriptor
-     * 
+     *
      */
     public static class ListItem {
     }

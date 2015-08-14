@@ -71,8 +71,8 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
      */
     protected void addMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DoubleClickDescription_mappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DoubleClickDescription_mappings_feature", "_UI_DoubleClickDescription_type"),
+                getString("_UI_DoubleClickDescription_mappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DoubleClickDescription_mappings_feature", "_UI_DoubleClickDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__MAPPINGS, true, false, true, null, null, null));
     }
 
@@ -119,7 +119,7 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DoubleClickDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DoubleClickDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -190,7 +190,8 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
         boolean qualify = childFeature == ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__ELEMENT || childFeature == ToolPackage.Literals.DOUBLE_CLICK_DESCRIPTION__ELEMENT_VIEW;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

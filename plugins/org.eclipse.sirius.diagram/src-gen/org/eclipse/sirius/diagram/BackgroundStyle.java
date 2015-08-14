@@ -36,7 +36,7 @@ public enum BackgroundStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    GRADIENT_LEFT_TO_RIGHT_LITERAL(0, "GradientLeftToRight", "GradientLeftToRight"),
+    GRADIENT_LEFT_TO_RIGHT_LITERAL(0, "GradientLeftToRight", "GradientLeftToRight"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Liquid</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -46,7 +46,7 @@ public enum BackgroundStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    LIQUID_LITERAL(1, "Liquid", "Liquid"),
+    LIQUID_LITERAL(1, "Liquid", "Liquid"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Gradient Top To Bottom</b></em>' literal object. <!--
@@ -56,7 +56,7 @@ public enum BackgroundStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    GRADIENT_TOP_TO_BOTTOM_LITERAL(3, "GradientTopToBottom", "GradientTopToBottom");
+    GRADIENT_TOP_TO_BOTTOM_LITERAL(3, "GradientTopToBottom", "GradientTopToBottom"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Gradient Left To Right</b></em>' literal value. <!--

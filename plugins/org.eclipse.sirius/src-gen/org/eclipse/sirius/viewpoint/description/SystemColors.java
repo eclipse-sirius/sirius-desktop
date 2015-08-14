@@ -36,7 +36,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    BLACK_LITERAL(0, "black", "black"),
+    BLACK_LITERAL(0, "black", "black"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Blue</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -46,7 +46,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    BLUE_LITERAL(1, "blue", "blue"),
+    BLUE_LITERAL(1, "blue", "blue"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Red</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -56,7 +56,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    RED_LITERAL(2, "red", "red"),
+    RED_LITERAL(2, "red", "red"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Green</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -66,7 +66,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    GREEN_LITERAL(3, "green", "green"),
+    GREEN_LITERAL(3, "green", "green"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Yellow</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -76,7 +76,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    YELLOW_LITERAL(4, "yellow", "yellow"),
+    YELLOW_LITERAL(4, "yellow", "yellow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Purple</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -86,7 +86,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    PURPLE_LITERAL(5, "purple", "purple"),
+    PURPLE_LITERAL(5, "purple", "purple"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Orange</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -96,7 +96,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    ORANGE_LITERAL(6, "orange", "orange"),
+    ORANGE_LITERAL(6, "orange", "orange"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Chocolate</b></em>' literal object. <!-- begin-user-doc -->
@@ -106,7 +106,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    CHOCOLATE_LITERAL(7, "chocolate", "chocolate"),
+    CHOCOLATE_LITERAL(7, "chocolate", "chocolate"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Gray</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -116,7 +116,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    GRAY_LITERAL(8, "gray", "gray"),
+    GRAY_LITERAL(8, "gray", "gray"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>White</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -126,7 +126,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    WHITE_LITERAL(9, "white", "white"),
+    WHITE_LITERAL(9, "white", "white"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dark blue</b></em>' literal object. <!-- begin-user-doc -->
@@ -136,7 +136,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    DARK_BLUE_LITERAL(11, "dark_blue", "dark_blue"),
+    DARK_BLUE_LITERAL(11, "dark_blue", "dark_blue"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dark red</b></em>' literal object. <!-- begin-user-doc -->
@@ -146,7 +146,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    DARK_RED_LITERAL(12, "dark_red", "dark_red"),
+    DARK_RED_LITERAL(12, "dark_red", "dark_red"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dark green</b></em>' literal object. <!-- begin-user-doc -->
@@ -156,7 +156,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    DARK_GREEN_LITERAL(13, "dark_green", "dark_green"),
+    DARK_GREEN_LITERAL(13, "dark_green", "dark_green"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dark yellow</b></em>' literal object. <!-- begin-user-doc -->
@@ -166,7 +166,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    DARK_YELLOW_LITERAL(14, "dark_yellow", "dark_yellow"),
+    DARK_YELLOW_LITERAL(14, "dark_yellow", "dark_yellow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dark purple</b></em>' literal object. <!-- begin-user-doc -->
@@ -176,7 +176,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    DARK_PURPLE_LITERAL(15, "dark_purple", "dark_purple"),
+    DARK_PURPLE_LITERAL(15, "dark_purple", "dark_purple"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dark orange</b></em>' literal object. <!-- begin-user-doc -->
@@ -186,7 +186,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    DARK_ORANGE_LITERAL(16, "dark_orange", "dark_orange"),
+    DARK_ORANGE_LITERAL(16, "dark_orange", "dark_orange"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dark chocolate</b></em>' literal object. <!-- begin-user-doc
@@ -196,7 +196,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    DARK_CHOCOLATE_LITERAL(17, "dark_chocolate", "dark_chocolate"),
+    DARK_CHOCOLATE_LITERAL(17, "dark_chocolate", "dark_chocolate"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dark gray</b></em>' literal object. <!-- begin-user-doc -->
@@ -206,7 +206,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    DARK_GRAY_LITERAL(18, "dark_gray", "dark_gray"),
+    DARK_GRAY_LITERAL(18, "dark_gray", "dark_gray"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Light blue</b></em>' literal object. <!-- begin-user-doc -->
@@ -216,7 +216,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    LIGHT_BLUE_LITERAL(21, "light_blue", "light_blue"),
+    LIGHT_BLUE_LITERAL(21, "light_blue", "light_blue"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Light red</b></em>' literal object. <!-- begin-user-doc -->
@@ -226,7 +226,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    LIGHT_RED_LITERAL(22, "light_red", "light_red"),
+    LIGHT_RED_LITERAL(22, "light_red", "light_red"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Light green</b></em>' literal object. <!-- begin-user-doc -->
@@ -236,7 +236,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    LIGHT_GREEN_LITERAL(23, "light_green", "light_green"),
+    LIGHT_GREEN_LITERAL(23, "light_green", "light_green"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Light yellow</b></em>' literal object. <!-- begin-user-doc
@@ -246,7 +246,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    LIGHT_YELLOW_LITERAL(24, "light_yellow", "light_yellow"),
+    LIGHT_YELLOW_LITERAL(24, "light_yellow", "light_yellow"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Light purple</b></em>' literal object. <!-- begin-user-doc
@@ -256,7 +256,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    LIGHT_PURPLE_LITERAL(25, "light_purple", "light_purple"),
+    LIGHT_PURPLE_LITERAL(25, "light_purple", "light_purple"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Light orange</b></em>' literal object. <!-- begin-user-doc
@@ -266,7 +266,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    LIGHT_ORANGE_LITERAL(26, "light_orange", "light_orange"),
+    LIGHT_ORANGE_LITERAL(26, "light_orange", "light_orange"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Light chocolate</b></em>' literal object. <!-- begin-user-doc
@@ -276,7 +276,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    LIGHT_CHOCOLATE_LITERAL(27, "light_chocolate", "light_chocolate"),
+    LIGHT_CHOCOLATE_LITERAL(27, "light_chocolate", "light_chocolate"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Light gray</b></em>' literal object. <!-- begin-user-doc -->
@@ -286,7 +286,7 @@ public enum SystemColors implements Enumerator {
      * @generated
      * @ordered
      */
-    LIGHT_GRAY_LITERAL(28, "light_gray", "light_gray");
+    LIGHT_GRAY_LITERAL(28, "light_gray", "light_gray"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Black</b></em>' literal value. <!-- begin-user-doc -->

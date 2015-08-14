@@ -75,7 +75,8 @@ IItemPropertySource {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationTemplate_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_RepresentationTemplate_name_feature", "_UI_RepresentationTemplate_type"),
+                getString("_UI_RepresentationTemplate_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RepresentationTemplate_name_feature", "_UI_RepresentationTemplate_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.REPRESENTATION_TEMPLATE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -121,7 +122,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((RepresentationTemplate) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_RepresentationTemplate_type") : getString("_UI_RepresentationTemplate_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_RepresentationTemplate_type") : //$NON-NLS-1$
+            getString("_UI_RepresentationTemplate_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

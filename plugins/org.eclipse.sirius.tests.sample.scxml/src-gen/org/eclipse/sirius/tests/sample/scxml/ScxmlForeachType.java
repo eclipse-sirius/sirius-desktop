@@ -4,16 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -71,7 +69,7 @@ public interface ScxmlForeachType extends EObject {
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Core Executablecontent</em>'
      *         attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_ScxmlCoreExecutablecontent()
@@ -91,7 +89,7 @@ public interface ScxmlForeachType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -112,7 +110,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Raise</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Raise()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -132,7 +130,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>If</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_If()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -152,7 +150,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Foreach</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Foreach()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -172,7 +170,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Send</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Send()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -192,7 +190,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Script</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Script()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -212,7 +210,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Assign</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Assign()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -232,7 +230,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Log</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Log()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -252,7 +250,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Cancel</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Cancel()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -270,7 +268,7 @@ public interface ScxmlForeachType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Array</em>' attribute.
      * @see #setArray(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Array()
@@ -284,7 +282,7 @@ public interface ScxmlForeachType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getArray
      * <em>Array</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Array</em>' attribute.
      * @see #getArray()
@@ -300,7 +298,7 @@ public interface ScxmlForeachType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Index</em>' attribute.
      * @see #setIndex(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Index()
@@ -314,7 +312,7 @@ public interface ScxmlForeachType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getIndex
      * <em>Index</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Index</em>' attribute.
      * @see #getIndex()
@@ -330,7 +328,7 @@ public interface ScxmlForeachType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Item</em>' attribute.
      * @see #setItem(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_Item()
@@ -344,7 +342,7 @@ public interface ScxmlForeachType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getItem
      * <em>Item</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Item</em>' attribute.
      * @see #getItem()
@@ -362,7 +360,7 @@ public interface ScxmlForeachType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlForeachType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

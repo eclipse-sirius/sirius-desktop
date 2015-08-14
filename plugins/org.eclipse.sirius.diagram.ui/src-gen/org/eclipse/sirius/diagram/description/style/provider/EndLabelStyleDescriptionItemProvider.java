@@ -63,7 +63,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EndLabelStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EndLabelStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -75,7 +75,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
     @Override
     public String getText(Object object) {
         EndLabelStyleDescription endLabelStyleDescription = (EndLabelStyleDescription) object;
-        return getString("_UI_EndLabelStyleDescription_type") + " " + endLabelStyleDescription.getLabelSize();
+        return getString("_UI_EndLabelStyleDescription_type") + " " + endLabelStyleDescription.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

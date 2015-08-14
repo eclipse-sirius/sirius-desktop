@@ -66,8 +66,10 @@ public class UnsetItemProvider extends ContainerModelOperationItemProvider {
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Unset_featureName_feature"), getString("_UI_Unset_featureName_description"), ToolPackage.Literals.UNSET__FEATURE_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_Unset_featureName_feature"), //$NON-NLS-1$
+                getString("_UI_Unset_featureName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.UNSET__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,8 +80,10 @@ public class UnsetItemProvider extends ContainerModelOperationItemProvider {
      */
     protected void addElementExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Unset_elementExpression_feature"), getString("_UI_Unset_elementExpression_description"), ToolPackage.Literals.UNSET__ELEMENT_EXPRESSION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_Unset_elementExpression_feature"), //$NON-NLS-1$
+                getString("_UI_Unset_elementExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.UNSET__ELEMENT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -89,7 +93,7 @@ public class UnsetItemProvider extends ContainerModelOperationItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Unset"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Unset")); //$NON-NLS-1$
     }
 
     /**
@@ -101,7 +105,8 @@ public class UnsetItemProvider extends ContainerModelOperationItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((Unset) object).getFeatureName();
-        return label == null || label.length() == 0 ? getString("_UI_Unset_type") : getString("_UI_Unset_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Unset_type") : //$NON-NLS-1$
+            getString("_UI_Unset_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

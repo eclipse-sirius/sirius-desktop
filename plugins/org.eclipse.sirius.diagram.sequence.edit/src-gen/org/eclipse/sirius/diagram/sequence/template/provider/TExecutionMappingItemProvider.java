@@ -68,8 +68,9 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionMapping_startingEndFinderExpression_feature"), getString("_UI_TExecutionMapping_startingEndFinderExpression_description"),
-                TemplatePackage.Literals.TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_TExecutionMapping_startingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TExecutionMapping_startingEndFinderExpression_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TEXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -81,8 +82,9 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionMapping_finishingEndFinderExpression_feature"), getString("_UI_TExecutionMapping_finishingEndFinderExpression_description"),
-                TemplatePackage.Literals.TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_TExecutionMapping_finishingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TExecutionMapping_finishingEndFinderExpression_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TEXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -94,8 +96,10 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      */
     protected void addRecursivePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TExecutionMapping_recursive_feature"), getString("_UI_TExecutionMapping_recursive_description"), TemplatePackage.Literals.TEXECUTION_MAPPING__RECURSIVE, true, false,
-                false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TExecutionMapping_recursive_feature"), //$NON-NLS-1$
+                getString("_UI_TExecutionMapping_recursive_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TEXECUTION_MAPPING__RECURSIVE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -141,7 +145,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TExecutionMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TExecutionMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -153,7 +157,7 @@ public class TExecutionMappingItemProvider extends TAbstractMappingItemProvider 
     @Override
     public String getText(Object object) {
         String label = ((TExecutionMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TExecutionMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TExecutionMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

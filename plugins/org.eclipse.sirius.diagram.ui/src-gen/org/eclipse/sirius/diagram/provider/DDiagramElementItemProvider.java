@@ -74,7 +74,8 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
      */
     protected void addVisiblePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElement_visible_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_visible_feature", "_UI_DDiagramElement_type"),
+                getString("_UI_DDiagramElement_visible_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_visible_feature", "_UI_DDiagramElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT__VISIBLE, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -86,7 +87,8 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
      */
     protected void addTooltipTextPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElement_tooltipText_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_tooltipText_feature", "_UI_DDiagramElement_type"),
+                getString("_UI_DDiagramElement_tooltipText_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_tooltipText_feature", "_UI_DDiagramElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT__TOOLTIP_TEXT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -98,7 +100,8 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
      */
     protected void addParentLayersPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElement_parentLayers_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_parentLayers_feature", "_UI_DDiagramElement_type"),
+                getString("_UI_DDiagramElement_parentLayers_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_parentLayers_feature", "_UI_DDiagramElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT__PARENT_LAYERS, true, false, true, null, null, null));
     }
 
@@ -110,8 +113,8 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
      */
     protected void addDiagramElementMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DDiagramElement_diagramElementMapping_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_diagramElementMapping_feature", "_UI_DDiagramElement_type"),
+                getString("_UI_DDiagramElement_diagramElementMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DDiagramElement_diagramElementMapping_feature", "_UI_DDiagramElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.DDIAGRAM_ELEMENT__DIAGRAM_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
@@ -158,7 +161,8 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
     @Override
     public String getText(Object object) {
         String label = ((DDiagramElement) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DDiagramElement_type") : getString("_UI_DDiagramElement_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DDiagramElement_type") : //$NON-NLS-1$
+            getString("_UI_DDiagramElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

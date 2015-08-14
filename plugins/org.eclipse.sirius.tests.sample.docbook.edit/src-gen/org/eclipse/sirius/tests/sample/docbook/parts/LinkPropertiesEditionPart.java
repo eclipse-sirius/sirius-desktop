@@ -23,9 +23,9 @@ public interface LinkPropertiesEditionPart {
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

@@ -94,7 +94,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -396,7 +396,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     public void setTable(DTable newTable) {
         if (newTable != eInternalContainer() || (eContainerFeatureID() != TablePackage.DTARGET_COLUMN__TABLE && newTable != null)) {
             if (EcoreUtil.isAncestor(this, newTable)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
             }
             NotificationChain msgs = null;
             if (eInternalContainer() != null) {
@@ -924,13 +924,13 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", visible: ");
+        result.append(", visible: "); //$NON-NLS-1$
         result.append(visible);
-        result.append(", width: ");
+        result.append(", width: "); //$NON-NLS-1$
         result.append(width);
         result.append(')');
         return result.toString();

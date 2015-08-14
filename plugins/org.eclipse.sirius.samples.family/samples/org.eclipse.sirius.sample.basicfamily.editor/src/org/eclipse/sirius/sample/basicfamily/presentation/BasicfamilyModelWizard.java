@@ -79,16 +79,16 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
      * 
      * @generated
      */
-    public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays.asList(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameExtensions").split(
-            "\\s*,\\s*")));
+    public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays.asList(BasicfamilyEditorPlugin.INSTANCE
+            .getString("_UI_BasicfamilyEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * A formatted list of supported file extensions, suitable for display. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    public static final String FORMATTED_FILE_EXTENSIONS = BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+    public static final String FORMATTED_FILE_EXTENSIONS = BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
     /**
      * This caches an instance of the model package. <!-- begin-user-doc -->
@@ -109,7 +109,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     /**
      * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected BasicfamilyModelWizardNewFileCreationPage newFileCreationPage;
@@ -152,11 +152,12 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
      * 
      * @generated
      */
+    @Override
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.workbench = workbench;
         this.selection = selection;
-        setWindowTitle(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-        setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(BasicfamilyEditorPlugin.INSTANCE.getImage("full/wizban/NewBasicfamily")));
+        setWindowTitle(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_Wizard_label")); //$NON-NLS-1$
+        setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(BasicfamilyEditorPlugin.INSTANCE.getImage("full/wizban/NewBasicfamily"))); //$NON-NLS-1$
     }
 
     /**
@@ -264,7 +265,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
             try {
                 page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
             } catch (PartInitException exception) {
-                MessageDialog.openError(workbenchWindow.getShell(), BasicfamilyEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
+                MessageDialog.openError(workbenchWindow.getShell(), BasicfamilyEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
                 return false;
             }
 
@@ -294,7 +295,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
         /**
          * The framework calls this to see if the file is correct. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -302,7 +303,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
             if (super.validatePage()) {
                 String extension = new Path(getFileName()).getFileExtension();
                 if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-                    String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+                    String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
                     setErrorMessage(BasicfamilyEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
                     return false;
                 }
@@ -324,7 +325,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     /**
      * This is the page where the type of object to create is selected. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public class BasicfamilyModelWizardInitialObjectCreationPage extends WizardPage {
@@ -361,6 +362,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
          * 
          * @generated
          */
+        @Override
         public void createControl(Composite parent) {
             Composite composite = new Composite(parent, SWT.NONE);
             {
@@ -378,7 +380,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
             Label containerLabel = new Label(composite, SWT.LEFT);
             {
-                containerLabel.setText(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
+                containerLabel.setText(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_ModelObject")); //$NON-NLS-1$
 
                 GridData data = new GridData();
                 data.horizontalAlignment = GridData.FILL;
@@ -404,7 +406,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
             Label encodingLabel = new Label(composite, SWT.LEFT);
             {
-                encodingLabel.setText(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
+                encodingLabel.setText(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_XMLEncoding")); //$NON-NLS-1$
 
                 GridData data = new GridData();
                 data.horizontalAlignment = GridData.FILL;
@@ -501,7 +503,7 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
          */
         protected String getLabel(String typeName) {
             try {
-                return BasicfamilyEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
+                return BasicfamilyEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
             } catch (MissingResourceException mre) {
                 BasicfamilyEditorPlugin.INSTANCE.log(mre);
             }
@@ -516,7 +518,8 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
         protected Collection<String> getEncodings() {
             if (encodings == null) {
                 encodings = new ArrayList<String>();
-                for (StringTokenizer stringTokenizer = new StringTokenizer(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) {
+                for (StringTokenizer stringTokenizer = new StringTokenizer(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) //$NON-NLS-1$
+                {
                     encodings.add(stringTokenizer.nextToken());
                 }
             }
@@ -527,17 +530,17 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
     /**
      * The framework calls this to create the contents of the wizard. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void addPages() {
         // Create a page, set the title, and the initial model file name.
         //
-        newFileCreationPage = new BasicfamilyModelWizardNewFileCreationPage("Whatever", selection);
-        newFileCreationPage.setTitle(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyModelWizard_label"));
-        newFileCreationPage.setDescription(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyModelWizard_description"));
-        newFileCreationPage.setFileName(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
+        newFileCreationPage = new BasicfamilyModelWizardNewFileCreationPage("Whatever", selection); //$NON-NLS-1$
+        newFileCreationPage.setTitle(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyModelWizard_label")); //$NON-NLS-1$
+        newFileCreationPage.setDescription(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyModelWizard_description")); //$NON-NLS-1$
+        newFileCreationPage.setFileName(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
         addPage(newFileCreationPage);
 
         // Try and get the resource selection to determine a current directory
@@ -564,19 +567,19 @@ public class BasicfamilyModelWizard extends Wizard implements INewWizard {
 
                     // Make up a unique new name here.
                     //
-                    String defaultModelBaseFilename = BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameDefaultBase");
+                    String defaultModelBaseFilename = BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditorFilenameDefaultBase"); //$NON-NLS-1$
                     String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
-                    String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
+                    String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension; //$NON-NLS-1$
                     for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
-                        modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
+                        modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension; //$NON-NLS-1$
                     }
                     newFileCreationPage.setFileName(modelFilename);
                 }
             }
         }
-        initialObjectCreationPage = new BasicfamilyModelWizardInitialObjectCreationPage("Whatever2");
-        initialObjectCreationPage.setTitle(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyModelWizard_label"));
-        initialObjectCreationPage.setDescription(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+        initialObjectCreationPage = new BasicfamilyModelWizardInitialObjectCreationPage("Whatever2"); //$NON-NLS-1$
+        initialObjectCreationPage.setTitle(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyModelWizard_label")); //$NON-NLS-1$
+        initialObjectCreationPage.setDescription(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description")); //$NON-NLS-1$
         addPage(initialObjectCreationPage);
     }
 

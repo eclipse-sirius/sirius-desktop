@@ -69,8 +69,10 @@ public class RequestDescriptionItemProvider extends AbstractToolDescriptionItemP
      */
     protected void addTypePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RequestDescription_type_feature"), getString("_UI_RequestDescription_type_description"), ToolPackage.Literals.REQUEST_DESCRIPTION__TYPE, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_RequestDescription_type_feature"), //$NON-NLS-1$
+                getString("_UI_RequestDescription_type_description"), //$NON-NLS-1$
+                ToolPackage.Literals.REQUEST_DESCRIPTION__TYPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -81,7 +83,7 @@ public class RequestDescriptionItemProvider extends AbstractToolDescriptionItemP
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RequestDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RequestDescription")); //$NON-NLS-1$
     }
 
     /**

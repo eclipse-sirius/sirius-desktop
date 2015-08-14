@@ -228,7 +228,7 @@ public class DAnnotationImpl extends MinimalEObjectImpl.Container implements DAn
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (source: ");
+        result.append(" (source: "); //$NON-NLS-1$
         result.append(source);
         result.append(')');
         return result.toString();

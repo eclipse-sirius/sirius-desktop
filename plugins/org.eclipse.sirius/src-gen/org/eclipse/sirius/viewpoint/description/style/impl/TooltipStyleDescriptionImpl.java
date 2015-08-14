@@ -42,7 +42,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
      * @generated
      * @ordered
      */
-    protected static final String TOOLTIP_EXPRESSION_EDEFAULT = "";
+    protected static final String TOOLTIP_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getTooltipExpression()
@@ -168,7 +168,7 @@ public class TooltipStyleDescriptionImpl extends MinimalEObjectImpl.Container im
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (tooltipExpression: ");
+        result.append(" (tooltipExpression: "); //$NON-NLS-1$
         result.append(tooltipExpression);
         result.append(')');
         return result.toString();

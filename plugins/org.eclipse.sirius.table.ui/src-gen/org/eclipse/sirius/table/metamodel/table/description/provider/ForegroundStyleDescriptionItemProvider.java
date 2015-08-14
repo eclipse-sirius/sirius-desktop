@@ -75,9 +75,10 @@ IItemPropertySource {
      */
     protected void addLabelSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ForegroundStyleDescription_labelSize_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ForegroundStyleDescription_labelSize_feature", "_UI_ForegroundStyleDescription_type"),
-                DescriptionPackage.Literals.FOREGROUND_STYLE_DESCRIPTION__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                getString("_UI_ForegroundStyleDescription_labelSize_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ForegroundStyleDescription_labelSize_feature", "_UI_ForegroundStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.FOREGROUND_STYLE_DESCRIPTION__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -88,9 +89,10 @@ IItemPropertySource {
      */
     protected void addLabelFormatPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ForegroundStyleDescription_labelFormat_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ForegroundStyleDescription_labelFormat_feature", "_UI_ForegroundStyleDescription_type"),
-                DescriptionPackage.Literals.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                getString("_UI_ForegroundStyleDescription_labelFormat_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ForegroundStyleDescription_labelFormat_feature", "_UI_ForegroundStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -101,9 +103,10 @@ IItemPropertySource {
      */
     protected void addForeGroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ForegroundStyleDescription_foreGroundColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ForegroundStyleDescription_foreGroundColor_feature", "_UI_ForegroundStyleDescription_type"),
-                DescriptionPackage.Literals.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_ForegroundStyleDescription_foreGroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ForegroundStyleDescription_foreGroundColor_feature", "_UI_ForegroundStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.FOREGROUND_STYLE_DESCRIPTION__FORE_GROUND_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -114,7 +117,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ForegroundStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ForegroundStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -126,7 +129,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         ForegroundStyleDescription foregroundStyleDescription = (ForegroundStyleDescription) object;
-        return getString("_UI_ForegroundStyleDescription_type") + " " + foregroundStyleDescription.getLabelSize();
+        return getString("_UI_ForegroundStyleDescription_type") + " " + foregroundStyleDescription.getLabelSize(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

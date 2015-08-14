@@ -4,8 +4,8 @@
     modelDirectory="/org.eclipse.sirius/src-gen" creationIcons="false" editDirectory="/org.eclipse.sirius.ui/src-gen"
     editorDirectory="" modelPluginID="org.eclipse.sirius" modelName="Contribution"
     editPluginClass="org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin" editorPluginClass="org.eclipse.sirius.presentation.SiriusEditorPlugin"
-    testsDirectory="" importerID="org.eclipse.emf.importer.ecore" containmentProxies="true"
-    complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.ui"
+    nonNLSMarkers="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
+    containmentProxies="true" complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.ui"
     editorPluginID="org.eclipse.sirius.editor" runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>contribution.ecore</foreignModel>
   <genPackages prefix="Contribution" basePackage="org.eclipse.sirius.description"

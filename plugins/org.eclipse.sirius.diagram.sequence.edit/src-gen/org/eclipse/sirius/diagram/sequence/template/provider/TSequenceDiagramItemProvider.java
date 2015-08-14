@@ -70,8 +70,10 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
      */
     protected void addEndsOrderingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TSequenceDiagram_endsOrdering_feature"), getString("_UI_TSequenceDiagram_endsOrdering_description"), TemplatePackage.Literals.TSEQUENCE_DIAGRAM__ENDS_ORDERING, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TSequenceDiagram_endsOrdering_feature"), //$NON-NLS-1$
+                getString("_UI_TSequenceDiagram_endsOrdering_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TSEQUENCE_DIAGRAM__ENDS_ORDERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -82,8 +84,10 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
      */
     protected void addDomainClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TSequenceDiagram_domainClass_feature"), getString("_UI_TSequenceDiagram_domainClass_description"), TemplatePackage.Literals.TSEQUENCE_DIAGRAM__DOMAIN_CLASS, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TSequenceDiagram_domainClass_feature"), //$NON-NLS-1$
+                getString("_UI_TSequenceDiagram_domainClass_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TSEQUENCE_DIAGRAM__DOMAIN_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -130,7 +134,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TSequenceDiagram"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TSequenceDiagram")); //$NON-NLS-1$
     }
 
     /**
@@ -142,7 +146,7 @@ public class TSequenceDiagramItemProvider extends RepresentationTemplateItemProv
     @Override
     public String getText(Object object) {
         String label = ((TSequenceDiagram) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TSequenceDiagram_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TSequenceDiagram_type") : label; //$NON-NLS-1$
     }
 
     /**

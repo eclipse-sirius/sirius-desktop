@@ -4,14 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -52,7 +51,7 @@ public interface ScxmlCancelType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Extra Content</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlCancelType_ScxmlExtraContent()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -71,7 +70,7 @@ public interface ScxmlCancelType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlCancelType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -90,7 +89,7 @@ public interface ScxmlCancelType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sendid</em>' attribute.
      * @see #setSendid(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlCancelType_Sendid()
@@ -105,7 +104,7 @@ public interface ScxmlCancelType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getSendid
      * <em>Sendid</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Sendid</em>' attribute.
      * @see #getSendid()
@@ -121,7 +120,7 @@ public interface ScxmlCancelType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Sendidexpr</em>' attribute.
      * @see #setSendidexpr(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlCancelType_Sendidexpr()
@@ -136,7 +135,7 @@ public interface ScxmlCancelType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getSendidexpr
      * <em>Sendidexpr</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Sendidexpr</em>' attribute.
      * @see #getSendidexpr()
@@ -154,7 +153,7 @@ public interface ScxmlCancelType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlCancelType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

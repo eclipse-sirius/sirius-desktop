@@ -124,7 +124,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected static final String DOCUMENTATION_EDEFAULT = "";
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getDocumentation()
@@ -145,7 +145,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -186,7 +186,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected static final String PRECONDITION_EDEFAULT = "";
+    protected static final String PRECONDITION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getPrecondition() <em>Precondition</em>}
@@ -238,7 +238,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = "";
+    protected static final String ELEMENTS_TO_SELECT_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getElementsToSelect()
@@ -347,7 +347,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected static final String ICON_PATH_EDEFAULT = "";
+    protected static final String ICON_PATH_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
@@ -1724,23 +1724,23 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (documentation: ");
+        result.append(" (documentation: "); //$NON-NLS-1$
         result.append(documentation);
-        result.append(", name: ");
+        result.append(", name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", precondition: ");
+        result.append(", precondition: "); //$NON-NLS-1$
         result.append(precondition);
-        result.append(", forceRefresh: ");
+        result.append(", forceRefresh: "); //$NON-NLS-1$
         result.append(forceRefresh);
-        result.append(", elementsToSelect: ");
+        result.append(", elementsToSelect: "); //$NON-NLS-1$
         result.append(elementsToSelect);
-        result.append(", inverseSelectionOrder: ");
+        result.append(", inverseSelectionOrder: "); //$NON-NLS-1$
         result.append(inverseSelectionOrder);
-        result.append(", iconPath: ");
+        result.append(", iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
-        result.append(", connectionStartPrecondition: ");
+        result.append(", connectionStartPrecondition: "); //$NON-NLS-1$
         result.append(connectionStartPrecondition);
         result.append(')');
         return result.toString();

@@ -45,10 +45,10 @@ public class SimpleListPropertiesEditionPartForm extends SectionPropertiesEditin
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public SimpleListPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -56,11 +56,11 @@ public class SimpleListPropertiesEditionPartForm extends SectionPropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.forms.widgets.FormToolkit)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
@@ -76,11 +76,11 @@ public class SimpleListPropertiesEditionPartForm extends SectionPropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createControls(org.eclipse.ui.forms.widgets.FormToolkit,
      *      org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(final FormToolkit widgetFactory, Composite view) {
@@ -98,9 +98,9 @@ public class SimpleListPropertiesEditionPartForm extends SectionPropertiesEditin
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -113,7 +113,7 @@ public class SimpleListPropertiesEditionPartForm extends SectionPropertiesEditin
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

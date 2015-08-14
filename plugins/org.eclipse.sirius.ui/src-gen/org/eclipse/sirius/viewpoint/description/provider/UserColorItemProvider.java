@@ -72,9 +72,10 @@ public class UserColorItemProvider extends ItemProviderAdapter implements IEditi
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_UserColor_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_UserColor_name_feature", "_UI_UserColor_type"), DescriptionPackage.Literals.USER_COLOR__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_UserColor_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_UserColor_name_feature", "_UI_UserColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.USER_COLOR__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -84,7 +85,7 @@ public class UserColorItemProvider extends ItemProviderAdapter implements IEditi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/UserColor"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/UserColor")); //$NON-NLS-1$
     }
 
     /**
@@ -96,7 +97,7 @@ public class UserColorItemProvider extends ItemProviderAdapter implements IEditi
     @Override
     public String getText(Object object) {
         String label = ((UserColor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_UserColor_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_UserColor_type") : label; //$NON-NLS-1$
     }
 
     /**

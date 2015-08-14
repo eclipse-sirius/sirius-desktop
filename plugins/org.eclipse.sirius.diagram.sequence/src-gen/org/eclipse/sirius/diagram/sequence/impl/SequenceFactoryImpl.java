@@ -69,7 +69,7 @@ public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory
         case SequencePackage.SEQUENCE_DDIAGRAM:
             return createSequenceDDiagram();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

@@ -167,7 +167,7 @@ public class TemplateInformationSectionImpl extends InformationSectionImpl imple
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (templatePath: ");
+        result.append(" (templatePath: "); //$NON-NLS-1$
         result.append(templatePath);
         result.append(')');
         return result.toString();

@@ -103,7 +103,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PasteDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PasteDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -115,7 +115,7 @@ public class PasteDescriptionItemProvider extends MappingBasedToolDescriptionIte
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((PasteDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_PasteDescription_type") : getString("_UI_PasteDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_PasteDescription_type") : getString("_UI_PasteDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

@@ -79,10 +79,10 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public ItemizedListPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -90,11 +90,11 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.forms.widgets.FormToolkit)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
@@ -110,11 +110,11 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
      *      createControls(org.eclipse.ui.forms.widgets.FormToolkit,
      *      org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(final FormToolkit widgetFactory, Composite view) {
@@ -169,7 +169,7 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
         mark.addFocusListener(new FocusAdapter() {
             /**
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -196,7 +196,7 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
         mark.addKeyListener(new KeyAdapter() {
             /**
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -220,43 +220,43 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createListitemTableComposition(FormToolkit widgetFactory, Composite parent) {
         this.listitem = new ReferencesTable(getDescription(DocbookViewsRepository.ItemizedList.Properties.listitem, DocbookMessages.ItemizedListPropertiesEditionPart_ListitemLabel),
                 new ReferencesTableListener() {
-                    @Override
-                    public void handleAdd() {
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ItemizedListPropertiesEditionPartForm.this,
-                                DocbookViewsRepository.ItemizedList.Properties.listitem, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-                        listitem.refresh();
-                    }
+            @Override
+            public void handleAdd() {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ItemizedListPropertiesEditionPartForm.this,
+                        DocbookViewsRepository.ItemizedList.Properties.listitem, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+                listitem.refresh();
+            }
 
-                    @Override
-                    public void handleEdit(EObject element) {
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ItemizedListPropertiesEditionPartForm.this,
-                                DocbookViewsRepository.ItemizedList.Properties.listitem, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-                        listitem.refresh();
-                    }
+            @Override
+            public void handleEdit(EObject element) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ItemizedListPropertiesEditionPartForm.this,
+                        DocbookViewsRepository.ItemizedList.Properties.listitem, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+                listitem.refresh();
+            }
 
-                    @Override
-                    public void handleMove(EObject element, int oldIndex, int newIndex) {
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ItemizedListPropertiesEditionPartForm.this,
-                                DocbookViewsRepository.ItemizedList.Properties.listitem, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-                        listitem.refresh();
-                    }
+            @Override
+            public void handleMove(EObject element, int oldIndex, int newIndex) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ItemizedListPropertiesEditionPartForm.this,
+                        DocbookViewsRepository.ItemizedList.Properties.listitem, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+                listitem.refresh();
+            }
 
-                    @Override
-                    public void handleRemove(EObject element) {
-                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ItemizedListPropertiesEditionPartForm.this,
-                                DocbookViewsRepository.ItemizedList.Properties.listitem, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-                        listitem.refresh();
-                    }
+            @Override
+            public void handleRemove(EObject element) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ItemizedListPropertiesEditionPartForm.this,
+                        DocbookViewsRepository.ItemizedList.Properties.listitem, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+                listitem.refresh();
+            }
 
-                    @Override
-                    public void navigateTo(EObject element) {
-                    }
-                });
+            @Override
+            public void navigateTo(EObject element) {
+            }
+        });
         for (ViewerFilter filter : this.listitemFilters) {
             this.listitem.addFilter(filter);
         }
@@ -288,9 +288,9 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -301,9 +301,9 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ItemizedListPropertiesEditionPart#getMark()
-     * 
+     *
      */
     @Override
     public String getMark() {
@@ -312,10 +312,10 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ItemizedListPropertiesEditionPart#setMark(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setMark(String newValue) {
@@ -336,7 +336,7 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ItemizedListPropertiesEditionPart#initListitem(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -360,9 +360,9 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ItemizedListPropertiesEditionPart#updateListitem()
-     * 
+     *
      */
     @Override
     public void updateListitem() {
@@ -371,10 +371,10 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ItemizedListPropertiesEditionPart#addFilterListitem(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToListitem(ViewerFilter filter) {
@@ -386,10 +386,10 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ItemizedListPropertiesEditionPart#addBusinessFilterListitem(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToListitem(ViewerFilter filter) {
@@ -398,10 +398,10 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ItemizedListPropertiesEditionPart#isContainedInListitemTable(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInListitemTable(EObject element) {
@@ -412,7 +412,7 @@ public class ItemizedListPropertiesEditionPartForm extends SectionPropertiesEdit
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

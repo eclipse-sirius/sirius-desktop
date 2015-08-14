@@ -68,7 +68,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ModelOperation_type");
+        return getString("_UI_ModelOperation_type"); //$NON-NLS-1$
     }
 
     /**

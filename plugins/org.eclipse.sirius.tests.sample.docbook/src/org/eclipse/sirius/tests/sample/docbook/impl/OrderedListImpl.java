@@ -165,7 +165,7 @@ public class OrderedListImpl extends EObjectImpl implements OrderedList {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (numeration: ");
+        result.append(" (numeration: "); //$NON-NLS-1$
         result.append(numeration);
         result.append(')');
         return result.toString();

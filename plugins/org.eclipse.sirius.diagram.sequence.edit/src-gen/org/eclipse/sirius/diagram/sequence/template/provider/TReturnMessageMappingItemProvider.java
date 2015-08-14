@@ -65,8 +65,10 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
      */
     protected void addInvocationMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TReturnMessageMapping_invocationMapping_feature"), getString("_UI_TReturnMessageMapping_invocationMapping_description"),
-                TemplatePackage.Literals.TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TReturnMessageMapping_invocationMapping_feature"), //$NON-NLS-1$
+                getString("_UI_TReturnMessageMapping_invocationMapping_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TRETURN_MESSAGE_MAPPING__INVOCATION_MAPPING, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -76,10 +78,13 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
      * @generated
      */
     protected void addInvocationMessageFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TReturnMessageMapping_invocationMessageFinderExpression_feature"), getString("_UI_TReturnMessageMapping_invocationMessageFinderExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_TReturnMessageMapping_invocationMessageFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TReturnMessageMapping_invocationMessageFinderExpression_description"), //$NON-NLS-1$
                 TemplatePackage.Literals.TRETURN_MESSAGE_MAPPING__INVOCATION_MESSAGE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -90,7 +95,7 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TReturnMessageMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TReturnMessageMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -102,7 +107,7 @@ public class TReturnMessageMappingItemProvider extends TMessageMappingItemProvid
     @Override
     public String getText(Object object) {
         String label = ((TReturnMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TReturnMessageMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_TReturnMessageMapping_type") : label; //$NON-NLS-1$
     }
 
     /**

@@ -128,8 +128,8 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 /**
  * This is an example of a Docbook model editor. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
- * @generated
+ *
+ * @generated NOT
  */
 public class DocbookEditor extends MultiPageEditorPart implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker, ITabbedPropertySheetPageContributor {
 
@@ -141,7 +141,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This keeps track of the editing domain that is used to track all changes
      * to the model. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected AdapterFactoryEditingDomain editingDomain;
@@ -149,7 +149,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This is the one adapter factory used for providing views of the model.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory adapterFactory;
@@ -157,14 +157,14 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This is the content outline page. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IContentOutlinePage contentOutlinePage;
 
     /**
      * This is a kludge... <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IStatusLineManager contentOutlineStatusLineManager;
@@ -172,7 +172,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This is the content outline page's viewer. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeViewer contentOutlineViewer;
@@ -197,7 +197,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This inverts the roll of parent and child in the content provider and
      * show parents as a tree. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeViewer parentViewer;
@@ -205,7 +205,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This shows how a tree view works. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeViewer treeViewer;
@@ -213,7 +213,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This shows how a list view works. A list viewer doesn't support icons.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ListViewer listViewer;
@@ -221,7 +221,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This shows how a table view works. A table can be used as a list with
      * icons. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TableViewer tableViewer;
@@ -229,7 +229,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This shows how a tree view with columns works. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected TreeViewer treeViewerWithColumns;
@@ -254,7 +254,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This listens to which ever viewer is active. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ISelectionChangedListener selectionChangedListener;
@@ -263,7 +263,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * This keeps track of all the
      * {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are
      * listening to this editor. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
@@ -280,7 +280,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * The MarkerHelper is responsible for creating workspace resource markers
      * presented in Eclipse's Problems View. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MarkerHelper markerHelper = new EditUIMarkerHelper();
@@ -288,7 +288,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This listens for when the outline becomes active <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IPartListener partListener = new IPartListener() {
@@ -374,7 +374,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * Adapter used to update the problem indication when resources are demanded
      * loaded. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
@@ -432,7 +432,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This listens for workspace changes. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
@@ -579,12 +579,13 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * Updates the problems indication with the information described in the
      * specified diagnostic. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void updateProblemIndication() {
         if (updateProblemIndication) {
-            BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "org.eclipse.sirius.tests.sample.docbook.editor", 0, null, new Object[] { editingDomain.getResourceSet() });
+            BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK, "org.eclipse.sirius.tests.sample.docbook.editor", //$NON-NLS-1$
+                    0, null, new Object[] { editingDomain.getResourceSet() });
             for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
                 if (childDiagnostic.getSeverity() != Diagnostic.OK) {
                     diagnostic.add(childDiagnostic);
@@ -631,7 +632,8 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * @generated
      */
     protected boolean handleDirtyConflict() {
-        return MessageDialog.openQuestion(getSite().getShell(), DocbookEditor.getString("_UI_FileConflict_label"), DocbookEditor.getString("_WARN_FileConflict"));
+        return MessageDialog.openQuestion(getSite().getShell(), DocbookEditor.getString("_UI_FileConflict_label"), //$NON-NLS-1$
+                DocbookEditor.getString("_WARN_FileConflict")); //$NON-NLS-1$
     }
 
     /**
@@ -648,8 +650,8 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This sets up the editing domain for the model editor. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @generated
+     *
+     * @generated NOT
      */
     protected void initializeEditingDomain() {
         // Create an adapter factory that yields item providers.
@@ -703,7 +705,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This is here for the listener to be able to call it. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -743,7 +745,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * implementing the static methods of {@link AdapterFactoryEditingDomain}
      * and for supporting {@link org.eclipse.emf.edit.ui.action.CommandAction}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -753,13 +755,13 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
@@ -768,7 +770,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -779,7 +781,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -790,7 +792,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -801,7 +803,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
         @Override
@@ -812,7 +814,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setCurrentViewerPane(ViewerPane viewerPane) {
@@ -876,7 +878,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This returns the viewer as required by the {@link IViewerProvider}
      * interface. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -888,12 +890,12 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * This creates a context menu for the viewer and adds a listener as well
      * registering the menu for extension. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void createContextMenuFor(StructuredViewer viewer) {
-        MenuManager contextMenu = new MenuManager("#PopUp");
-        contextMenu.add(new Separator("additions"));
+        MenuManager contextMenu = new MenuManager("#PopUp"); //$NON-NLS-1$
+        contextMenu.add(new Separator("additions")); //$NON-NLS-1$
         contextMenu.setRemoveAllWhenShown(true);
         contextMenu.addMenuListener(this);
         Menu menu = contextMenu.createContextMenu(viewer.getControl());
@@ -910,7 +912,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * This is the method called to load a resource into the editing domain's
      * resource set based on the editor's input. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void createModel() {
@@ -937,17 +939,19 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * Returns a diagnostic describing the errors and warnings listed in the
      * resource and the specified exception (if any). <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
         if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
-            BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.tests.sample.docbook.editor", 0, DocbookEditor.getString("_UI_CreateModelError_message",
-                    resource.getURI()), new Object[] { exception == null ? (Object) resource : exception });
+            BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.tests.sample.docbook.editor", //$NON-NLS-1$
+                    0, DocbookEditor.getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+                    new Object[] { exception == null ? (Object) resource : exception });
             basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
             return basicDiagnostic;
         } else if (exception != null) {
-            return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.tests.sample.docbook.editor", 0, DocbookEditor.getString("_UI_CreateModelError_message", resource.getURI()),
+            return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.sirius.tests.sample.docbook.editor", //$NON-NLS-1$
+                    0, DocbookEditor.getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
                     new Object[] { exception });
         } else {
             return Diagnostic.OK_INSTANCE;
@@ -957,7 +961,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This is the method used by the framework to install your own controls.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1000,7 +1004,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
                 createContextMenuFor(selectionViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, DocbookEditor.getString("_UI_SelectionPage_label"));
+                setPageText(pageIndex, DocbookEditor.getString("_UI_SelectionPage_label")); //$NON-NLS-1$
             }
 
             // Create a page for the parent tree view.
@@ -1029,7 +1033,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
                 createContextMenuFor(parentViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, DocbookEditor.getString("_UI_ParentPage_label"));
+                setPageText(pageIndex, DocbookEditor.getString("_UI_ParentPage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the list viewer
@@ -1054,7 +1058,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
                 createContextMenuFor(listViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, DocbookEditor.getString("_UI_ListPage_label"));
+                setPageText(pageIndex, DocbookEditor.getString("_UI_ListPage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the tree viewer
@@ -1081,7 +1085,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
                 createContextMenuFor(treeViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, DocbookEditor.getString("_UI_TreePage_label"));
+                setPageText(pageIndex, DocbookEditor.getString("_UI_TreePage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the table viewer.
@@ -1110,21 +1114,21 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
                 TableColumn objectColumn = new TableColumn(table, SWT.NONE);
                 layout.addColumnData(new ColumnWeightData(3, 100, true));
-                objectColumn.setText(DocbookEditor.getString("_UI_ObjectColumn_label"));
+                objectColumn.setText(DocbookEditor.getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
                 objectColumn.setResizable(true);
 
                 TableColumn selfColumn = new TableColumn(table, SWT.NONE);
                 layout.addColumnData(new ColumnWeightData(2, 100, true));
-                selfColumn.setText(DocbookEditor.getString("_UI_SelfColumn_label"));
+                selfColumn.setText(DocbookEditor.getString("_UI_SelfColumn_label")); //$NON-NLS-1$
                 selfColumn.setResizable(true);
 
-                tableViewer.setColumnProperties(new String[] { "a", "b" });
+                tableViewer.setColumnProperties(new String[] { "a", "b" }); //$NON-NLS-1$ //$NON-NLS-2$
                 tableViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
                 tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
                 createContextMenuFor(tableViewer);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, DocbookEditor.getString("_UI_TablePage_label"));
+                setPageText(pageIndex, DocbookEditor.getString("_UI_TablePage_label")); //$NON-NLS-1$
             }
 
             // This is the page for the table tree viewer.
@@ -1152,22 +1156,22 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
                 tree.setLinesVisible(true);
 
                 TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-                objectColumn.setText(DocbookEditor.getString("_UI_ObjectColumn_label"));
+                objectColumn.setText(DocbookEditor.getString("_UI_ObjectColumn_label")); //$NON-NLS-1$
                 objectColumn.setResizable(true);
                 objectColumn.setWidth(250);
 
                 TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-                selfColumn.setText(DocbookEditor.getString("_UI_SelfColumn_label"));
+                selfColumn.setText(DocbookEditor.getString("_UI_SelfColumn_label")); //$NON-NLS-1$
                 selfColumn.setResizable(true);
                 selfColumn.setWidth(200);
 
-                treeViewerWithColumns.setColumnProperties(new String[] { "a", "b" });
+                treeViewerWithColumns.setColumnProperties(new String[] { "a", "b" }); //$NON-NLS-1$ //$NON-NLS-2$
                 treeViewerWithColumns.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
                 treeViewerWithColumns.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
                 createContextMenuFor(treeViewerWithColumns);
                 int pageIndex = addPage(viewerPane.getControl());
-                setPageText(pageIndex, DocbookEditor.getString("_UI_TreeWithColumnsPage_label"));
+                setPageText(pageIndex, DocbookEditor.getString("_UI_TreeWithColumnsPage_label")); //$NON-NLS-1$
             }
 
             getSite().getShell().getDisplay().asyncExec(new Runnable() {
@@ -1205,12 +1209,12 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * If there is just one page in the multi-page editor part, this hides the
      * single tab at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void hideTabs() {
         if (getPageCount() <= 1) {
-            setPageText(0, "");
+            setPageText(0, ""); //$NON-NLS-1$
             if (getContainer() instanceof CTabFolder) {
                 ((CTabFolder) getContainer()).setTabHeight(1);
                 Point point = getContainer().getSize();
@@ -1222,12 +1226,12 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * If there is more than one page in the multi-page editor part, this shows
      * the tabs at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void showTabs() {
         if (getPageCount() > 1) {
-            setPageText(0, DocbookEditor.getString("_UI_SelectionPage_label"));
+            setPageText(0, DocbookEditor.getString("_UI_SelectionPage_label")); //$NON-NLS-1$
             if (getContainer() instanceof CTabFolder) {
                 ((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
                 Point point = getContainer().getSize();
@@ -1239,7 +1243,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This is used to track the active viewer. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1350,7 +1354,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This deals with how we want selection in the outliner to affect the other
      * views. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void handleContentOutlineSelection(ISelection selection) {
@@ -1389,7 +1393,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This is for implementing {@link IEditorPart} and simply tests the command
      * stack. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1400,7 +1404,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This is for implementing {@link IEditorPart} and simply saves the model
      * file. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1462,7 +1466,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * specified resource. The implementation uses the URI converter from the
      * editor's resource set to try to open an input stream. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected boolean isPersisted(Resource resource) {
@@ -1493,7 +1497,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This also changes the editor's input. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1511,7 +1515,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void doSaveAs(URI uri, IEditorInput editorInput) {
@@ -1524,7 +1528,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1553,7 +1557,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1568,7 +1572,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1579,7 +1583,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
     /**
      * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1591,7 +1595,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
      * return this editor's overall selection. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1603,7 +1607,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
      * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
      * set this editor's overall selection. Calling this result will notify the
      * listeners. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -1618,7 +1622,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public void setStatusLineManager(ISelection selection) {
@@ -1629,21 +1633,21 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
                 Collection<?> collection = ((IStructuredSelection) selection).toList();
                 switch (collection.size()) {
                 case 0: {
-                    statusLineManager.setMessage(DocbookEditor.getString("_UI_NoObjectSelected"));
+                    statusLineManager.setMessage(DocbookEditor.getString("_UI_NoObjectSelected")); //$NON-NLS-1$
                     break;
                 }
                 case 1: {
                     String text = new AdapterFactoryItemDelegator(adapterFactory).getText(collection.iterator().next());
-                    statusLineManager.setMessage(DocbookEditor.getString("_UI_SingleObjectSelected", text));
+                    statusLineManager.setMessage(DocbookEditor.getString("_UI_SingleObjectSelected", text)); //$NON-NLS-1$
                     break;
                 }
                 default: {
-                    statusLineManager.setMessage(DocbookEditor.getString("_UI_MultiObjectSelected", Integer.toString(collection.size())));
+                    statusLineManager.setMessage(DocbookEditor.getString("_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
                     break;
                 }
                 }
             } else {
-                statusLineManager.setMessage("");
+                statusLineManager.setMessage(""); //$NON-NLS-1$
             }
         }
     }
@@ -1682,7 +1686,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public EditingDomainActionBarContributor getActionBarContributor() {
@@ -1691,7 +1695,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public IActionBars getActionBars() {
@@ -1700,7 +1704,7 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public AdapterFactory getAdapterFactory() {
@@ -1709,8 +1713,8 @@ public class DocbookEditor extends MultiPageEditorPart implements IEditingDomain
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
+     *
+     * @generated NOT
      */
     @Override
     public void dispose() {

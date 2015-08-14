@@ -507,7 +507,7 @@ public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifel
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (eolVisibleExpression: ");
+        result.append(" (eolVisibleExpression: "); //$NON-NLS-1$
         result.append(eolVisibleExpression);
         result.append(')');
         return result.toString();

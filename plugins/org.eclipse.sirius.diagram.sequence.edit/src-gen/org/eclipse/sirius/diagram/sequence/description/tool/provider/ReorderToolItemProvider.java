@@ -70,8 +70,10 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
      */
     protected void addMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ReorderTool_mappings_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ReorderTool_mappings_feature", "_UI_ReorderTool_type"),
-                ToolPackage.Literals.REORDER_TOOL__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ReorderTool_mappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ReorderTool_mappings_feature", "_UI_ReorderTool_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.REORDER_TOOL__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -119,7 +121,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReorderTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReorderTool")); //$NON-NLS-1$
     }
 
     /**
@@ -131,7 +133,7 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ReorderTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ReorderTool_type") : getString("_UI_ReorderTool_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ReorderTool_type") : getString("_UI_ReorderTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -196,7 +198,8 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
                 || childFeature == ToolPackage.Literals.REORDER_TOOL__FINISHING_END_PREDECESSOR_BEFORE || childFeature == ToolPackage.Literals.REORDER_TOOL__FINISHING_END_PREDECESSOR_AFTER;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

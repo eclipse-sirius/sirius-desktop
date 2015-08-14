@@ -6,8 +6,8 @@
     modelPluginID="org.eclipse.sirius.diagram.sequence" redirection="" modelName="Sequence"
     editPluginClass="org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin"
     editorPluginClass="org.eclipse.sirius.diagram.sequence.description.presentation.SequenceEditorPlugin"
-    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
-    testsDirectory="" testSuiteClass="org.eclipse.sirius.diagram.sequence.description.tests.SequenceAllTests"
+    nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testsDirectory="" testSuiteClass="org.eclipse.sirius.diagram.sequence.description.tests.SequenceAllTests"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint ../../org.eclipse.sirius.diagram/model/diagram.genmodel#//diagram"
     importOrganizing="true" cleanup="true">

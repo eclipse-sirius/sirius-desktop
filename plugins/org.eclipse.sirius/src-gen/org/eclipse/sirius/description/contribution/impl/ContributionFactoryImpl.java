@@ -4,10 +4,10 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
 package org.eclipse.sirius.description.contribution.impl;
 
@@ -32,14 +32,14 @@ import org.eclipse.sirius.description.contribution.SetFeatureContribution;
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ContributionFactoryImpl extends EFactoryImpl implements ContributionFactory {
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public static ContributionFactory init() {
@@ -57,7 +57,7 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ContributionFactoryImpl() {
@@ -66,7 +66,7 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -93,15 +93,16 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
         case ContributionPackage.CONTRIBUTION_POINT:
             return createContributionPoint();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public IgnoreFeatureContribution createIgnoreFeatureContribution() {
         IgnoreFeatureContributionImpl ignoreFeatureContribution = new IgnoreFeatureContributionImpl();
         return ignoreFeatureContribution;
@@ -109,9 +110,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public SetFeatureContribution createSetFeatureContribution() {
         SetFeatureContributionImpl setFeatureContribution = new SetFeatureContributionImpl();
         return setFeatureContribution;
@@ -119,9 +121,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public AddFeatureContribution createAddFeatureContribution() {
         AddFeatureContributionImpl addFeatureContribution = new AddFeatureContributionImpl();
         return addFeatureContribution;
@@ -129,9 +132,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public RemoveFeatureContribution createRemoveFeatureContribution() {
         RemoveFeatureContributionImpl removeFeatureContribution = new RemoveFeatureContributionImpl();
         return removeFeatureContribution;
@@ -139,9 +143,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ClearFeatureContribution createClearFeatureContribution() {
         ClearFeatureContributionImpl clearFeatureContribution = new ClearFeatureContributionImpl();
         return clearFeatureContribution;
@@ -149,9 +154,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ResetFeatureContribution createResetFeatureContribution() {
         ResetFeatureContributionImpl resetFeatureContribution = new ResetFeatureContributionImpl();
         return resetFeatureContribution;
@@ -159,9 +165,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public DirectEObjectReference createDirectEObjectReference() {
         DirectEObjectReferenceImpl directEObjectReference = new DirectEObjectReferenceImpl();
         return directEObjectReference;
@@ -169,9 +176,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComputedEObjectReference createComputedEObjectReference() {
         ComputedEObjectReferenceImpl computedEObjectReference = new ComputedEObjectReferenceImpl();
         return computedEObjectReference;
@@ -179,9 +187,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public Contribution createContribution() {
         ContributionImpl contribution = new ContributionImpl();
         return contribution;
@@ -189,9 +198,10 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ContributionPoint createContributionPoint() {
         ContributionPointImpl contributionPoint = new ContributionPointImpl();
         return contributionPoint;
@@ -199,16 +209,17 @@ public class ContributionFactoryImpl extends EFactoryImpl implements Contributio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ContributionPackage getContributionPackage() {
         return (ContributionPackage) getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @deprecated
      * @generated
      */

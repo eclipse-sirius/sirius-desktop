@@ -71,8 +71,9 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
      */
     protected void addTitleExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationCreationDescription_titleExpression_feature"), getString("_UI_RepresentationCreationDescription_titleExpression_description"),
-                ToolPackage.Literals.REPRESENTATION_CREATION_DESCRIPTION__TITLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                getString("_UI_RepresentationCreationDescription_titleExpression_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationCreationDescription_titleExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.REPRESENTATION_CREATION_DESCRIPTION__TITLE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -84,8 +85,9 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
      */
     protected void addBrowseExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationCreationDescription_browseExpression_feature"), getString("_UI_RepresentationCreationDescription_browseExpression_description"),
-                ToolPackage.Literals.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                getString("_UI_RepresentationCreationDescription_browseExpression_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationCreationDescription_browseExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.REPRESENTATION_CREATION_DESCRIPTION__BROWSE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -97,8 +99,8 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
      */
     protected void addRepresentationDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationCreationDescription_representationDescription_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RepresentationCreationDescription_representationDescription_feature", "_UI_RepresentationCreationDescription_type"),
+                getString("_UI_RepresentationCreationDescription_representationDescription_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RepresentationCreationDescription_representationDescription_feature", "_UI_RepresentationCreationDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.REPRESENTATION_CREATION_DESCRIPTION__REPRESENTATION_DESCRIPTION, false, false, false, null, null, null));
     }
 
@@ -146,7 +148,7 @@ public class RepresentationCreationDescriptionItemProvider extends AbstractToolD
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((RepresentationCreationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_RepresentationCreationDescription_type") : getString("_UI_RepresentationCreationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_RepresentationCreationDescription_type") : getString("_UI_RepresentationCreationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

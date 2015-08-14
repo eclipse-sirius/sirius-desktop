@@ -77,8 +77,10 @@ IItemPropertySource {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_UserColorsPalette_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_UserColorsPalette_name_feature", "_UI_UserColorsPalette_type"),
-                DescriptionPackage.Literals.USER_COLORS_PALETTE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_UserColorsPalette_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_UserColorsPalette_name_feature", "_UI_UserColorsPalette_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.USER_COLORS_PALETTE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -122,7 +124,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/UserColorsPalette"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/UserColorsPalette")); //$NON-NLS-1$
     }
 
     /**
@@ -134,7 +136,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((UserColorsPalette) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_UserColorsPalette_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_UserColorsPalette_type") : label; //$NON-NLS-1$
     }
 
     /**

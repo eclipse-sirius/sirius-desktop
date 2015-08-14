@@ -80,8 +80,10 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
      */
     protected void addContainersPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemDragTool_containers_feature"), getString("_UI_TreeItemDragTool_containers_description"), DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__CONTAINERS, true,
-                false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TreeItemDragTool_containers_feature"), //$NON-NLS-1$
+                getString("_UI_TreeItemDragTool_containers_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__CONTAINERS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -92,8 +94,10 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
      */
     protected void addDragSourceTypePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeItemDragTool_dragSourceType_feature"), getString("_UI_TreeItemDragTool_dragSourceType_description"),
-                DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__DRAG_SOURCE_TYPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TreeItemDragTool_dragSourceType_feature"), //$NON-NLS-1$
+                getString("_UI_TreeItemDragTool_dragSourceType_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__DRAG_SOURCE_TYPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -143,7 +147,7 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemDragTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeItemDragTool")); //$NON-NLS-1$
     }
 
     /**
@@ -155,7 +159,7 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeItemDragTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeItemDragTool_type") : getString("_UI_TreeItemDragTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeItemDragTool_type") : getString("_UI_TreeItemDragTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -262,7 +266,8 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
         boolean qualify = childFeature == DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__OLD_CONTAINER || childFeature == DescriptionPackage.Literals.TREE_ITEM_DRAG_TOOL__NEW_CONTAINER;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

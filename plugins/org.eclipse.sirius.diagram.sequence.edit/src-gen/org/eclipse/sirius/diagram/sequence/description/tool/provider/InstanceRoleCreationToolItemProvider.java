@@ -100,7 +100,7 @@ public class InstanceRoleCreationToolItemProvider extends NodeCreationDescriptio
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleCreationTool"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleCreationTool")); //$NON-NLS-1$
     }
 
     /**
@@ -112,7 +112,7 @@ public class InstanceRoleCreationToolItemProvider extends NodeCreationDescriptio
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((InstanceRoleCreationTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleCreationTool_type") : getString("_UI_InstanceRoleCreationTool_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleCreationTool_type") : getString("_UI_InstanceRoleCreationTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

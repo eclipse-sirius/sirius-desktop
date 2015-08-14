@@ -139,7 +139,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+    protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getForegroundColor()
@@ -161,7 +161,7 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      * @ordered
      */
-    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255");
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBackgroundColor()
@@ -448,17 +448,17 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (labelSize: ");
+        result.append(" (labelSize: "); //$NON-NLS-1$
         result.append(labelSize);
-        result.append(", labelFormat: ");
+        result.append(", labelFormat: "); //$NON-NLS-1$
         result.append(labelFormat);
-        result.append(", defaultForegroundStyle: ");
+        result.append(", defaultForegroundStyle: "); //$NON-NLS-1$
         result.append(defaultForegroundStyle);
-        result.append(", defaultBackgroundStyle: ");
+        result.append(", defaultBackgroundStyle: "); //$NON-NLS-1$
         result.append(defaultBackgroundStyle);
-        result.append(", foregroundColor: ");
+        result.append(", foregroundColor: "); //$NON-NLS-1$
         result.append(foregroundColor);
-        result.append(", backgroundColor: ");
+        result.append(", backgroundColor: "); //$NON-NLS-1$
         result.append(backgroundColor);
         result.append(')');
         return result.toString();

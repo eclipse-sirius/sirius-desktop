@@ -68,8 +68,10 @@ public class MappingFilterItemProvider extends FilterItemProvider {
      */
     protected void addMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MappingFilter_mappings_feature"), getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_mappings_feature", "_UI_MappingFilter_type"),
-                FilterPackage.Literals.MAPPING_FILTER__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_MappingFilter_mappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_mappings_feature", "_UI_MappingFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                FilterPackage.Literals.MAPPING_FILTER__MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -80,9 +82,10 @@ public class MappingFilterItemProvider extends FilterItemProvider {
      */
     protected void addSemanticConditionExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MappingFilter_semanticConditionExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_semanticConditionExpression_feature", "_UI_MappingFilter_type"),
-                FilterPackage.Literals.MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_MappingFilter_semanticConditionExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_semanticConditionExpression_feature", "_UI_MappingFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                FilterPackage.Literals.MAPPING_FILTER__SEMANTIC_CONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -93,9 +96,10 @@ public class MappingFilterItemProvider extends FilterItemProvider {
      */
     protected void addViewConditionExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MappingFilter_viewConditionExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_viewConditionExpression_feature", "_UI_MappingFilter_type"),
-                FilterPackage.Literals.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_MappingFilter_viewConditionExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MappingFilter_viewConditionExpression_feature", "_UI_MappingFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                FilterPackage.Literals.MAPPING_FILTER__VIEW_CONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -106,7 +110,7 @@ public class MappingFilterItemProvider extends FilterItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/MappingFilter"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/MappingFilter")); //$NON-NLS-1$
     }
 
     /**
@@ -119,7 +123,8 @@ public class MappingFilterItemProvider extends FilterItemProvider {
     public String getText(Object object) {
         FilterKind labelValue = ((MappingFilter) object).getFilterKind();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_MappingFilter_type") : getString("_UI_MappingFilter_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_MappingFilter_type") : //$NON-NLS-1$
+            getString("_UI_MappingFilter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

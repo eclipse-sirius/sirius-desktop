@@ -36,14 +36,14 @@ import org.eclipse.sirius.sample.interactions.util.InteractionsAdapterFactory;
  * adapters also support Eclipse property sheets. Note that most of the adapters
  * are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -52,7 +52,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This is used to implement
      * {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -61,7 +61,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of all the supported types checked by
      * {@link #isFactoryForType isFactoryForType}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
@@ -69,7 +69,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     public InteractionsItemProviderAdapterFactory() {
@@ -84,7 +84,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.Model} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ModelItemProvider modelItemProvider;
@@ -93,7 +93,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.Model}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -109,7 +109,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.Interaction} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InteractionItemProvider interactionItemProvider;
@@ -118,7 +118,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.Interaction}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -134,7 +134,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.Participant} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ParticipantItemProvider participantItemProvider;
@@ -143,7 +143,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.Participant}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -159,7 +159,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.CallMessage} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CallMessageItemProvider callMessageItemProvider;
@@ -168,7 +168,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.CallMessage}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -184,7 +184,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FeatureAccessMessageItemProvider featureAccessMessageItemProvider;
@@ -193,7 +193,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.FeatureAccessMessage}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.CreateParticipantMessage}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CreateParticipantMessageItemProvider createParticipantMessageItemProvider;
@@ -218,7 +218,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.CreateParticipantMessage}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -234,7 +234,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.DestroyParticipantMessage}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected DestroyParticipantMessageItemProvider destroyParticipantMessageItemProvider;
@@ -243,7 +243,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.DestroyParticipantMessage}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.ReturnMessage} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ReturnMessageItemProvider returnMessageItemProvider;
@@ -268,7 +268,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.ReturnMessage}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -284,7 +284,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.Execution} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExecutionItemProvider executionItemProvider;
@@ -293,7 +293,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.Execution}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.State} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StateItemProvider stateItemProvider;
@@ -318,7 +318,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.State}. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -334,7 +334,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InteractionUseItemProvider interactionUseItemProvider;
@@ -343,7 +343,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.InteractionUse}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CombinedFragmentItemProvider combinedFragmentItemProvider;
@@ -368,7 +368,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragment}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -384,7 +384,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.Operand} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperandItemProvider operandItemProvider;
@@ -393,7 +393,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.Operand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.MessageEnd} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MessageEndItemProvider messageEndItemProvider;
@@ -418,7 +418,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.MessageEnd}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -434,7 +434,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.ExecutionEnd} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ExecutionEndItemProvider executionEndItemProvider;
@@ -443,7 +443,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.ExecutionEnd}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -459,7 +459,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.StateEnd} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StateEndItemProvider stateEndItemProvider;
@@ -468,7 +468,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.StateEnd}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -484,7 +484,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.InteractionUseEnd}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InteractionUseEndItemProvider interactionUseEndItemProvider;
@@ -493,7 +493,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.InteractionUseEnd}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -509,7 +509,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected CombinedFragmentEndItemProvider combinedFragmentEndItemProvider;
@@ -518,7 +518,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.CombinedFragmentEnd}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -534,7 +534,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.OperandEnd} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OperandEndItemProvider operandEndItemProvider;
@@ -543,7 +543,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.OperandEnd}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -559,7 +559,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.MixEnd} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MixEndItemProvider mixEndItemProvider;
@@ -568,7 +568,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.MixEnd}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -584,7 +584,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.sample.interactions.Constraint} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ConstraintItemProvider constraintItemProvider;
@@ -593,7 +593,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This creates an adapter for a
      * {@link org.eclipse.sirius.sample.interactions.Constraint}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -608,9 +608,10 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
     /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
@@ -618,16 +619,17 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
     /**
      * This sets the composed adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -638,7 +640,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
     /**
      * This implementation substitutes the factory itself as the key for the
      * adapter. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -648,7 +650,7 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -665,18 +667,20 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
@@ -685,9 +689,10 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
      * This delegates to {@link #changeNotifier} and to
      * {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
@@ -699,52 +704,74 @@ public class InteractionsItemProviderAdapterFactory extends InteractionsAdapterF
     /**
      * This disposes all of the item providers created by this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void dispose() {
-        if (modelItemProvider != null)
+        if (modelItemProvider != null) {
             modelItemProvider.dispose();
-        if (interactionItemProvider != null)
+        }
+        if (interactionItemProvider != null) {
             interactionItemProvider.dispose();
-        if (participantItemProvider != null)
+        }
+        if (participantItemProvider != null) {
             participantItemProvider.dispose();
-        if (callMessageItemProvider != null)
+        }
+        if (callMessageItemProvider != null) {
             callMessageItemProvider.dispose();
-        if (featureAccessMessageItemProvider != null)
+        }
+        if (featureAccessMessageItemProvider != null) {
             featureAccessMessageItemProvider.dispose();
-        if (createParticipantMessageItemProvider != null)
+        }
+        if (createParticipantMessageItemProvider != null) {
             createParticipantMessageItemProvider.dispose();
-        if (destroyParticipantMessageItemProvider != null)
+        }
+        if (destroyParticipantMessageItemProvider != null) {
             destroyParticipantMessageItemProvider.dispose();
-        if (returnMessageItemProvider != null)
+        }
+        if (returnMessageItemProvider != null) {
             returnMessageItemProvider.dispose();
-        if (executionItemProvider != null)
+        }
+        if (executionItemProvider != null) {
             executionItemProvider.dispose();
-        if (stateItemProvider != null)
+        }
+        if (stateItemProvider != null) {
             stateItemProvider.dispose();
-        if (interactionUseItemProvider != null)
+        }
+        if (interactionUseItemProvider != null) {
             interactionUseItemProvider.dispose();
-        if (combinedFragmentItemProvider != null)
+        }
+        if (combinedFragmentItemProvider != null) {
             combinedFragmentItemProvider.dispose();
-        if (operandItemProvider != null)
+        }
+        if (operandItemProvider != null) {
             operandItemProvider.dispose();
-        if (messageEndItemProvider != null)
+        }
+        if (messageEndItemProvider != null) {
             messageEndItemProvider.dispose();
-        if (executionEndItemProvider != null)
+        }
+        if (executionEndItemProvider != null) {
             executionEndItemProvider.dispose();
-        if (stateEndItemProvider != null)
+        }
+        if (stateEndItemProvider != null) {
             stateEndItemProvider.dispose();
-        if (interactionUseEndItemProvider != null)
+        }
+        if (interactionUseEndItemProvider != null) {
             interactionUseEndItemProvider.dispose();
-        if (combinedFragmentEndItemProvider != null)
+        }
+        if (combinedFragmentEndItemProvider != null) {
             combinedFragmentEndItemProvider.dispose();
-        if (operandEndItemProvider != null)
+        }
+        if (operandEndItemProvider != null) {
             operandEndItemProvider.dispose();
-        if (mixEndItemProvider != null)
+        }
+        if (mixEndItemProvider != null) {
             mixEndItemProvider.dispose();
-        if (constraintItemProvider != null)
+        }
+        if (constraintItemProvider != null) {
             constraintItemProvider.dispose();
+        }
     }
 
 }

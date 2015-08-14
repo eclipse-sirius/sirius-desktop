@@ -54,9 +54,9 @@ public class DocbookPropertiesEditionPartProvider implements IPropertiesEditionP
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#provides(java.lang.Object)
-     * 
+     *
      */
     @Override
     public boolean provides(Object key) {
@@ -65,11 +65,11 @@ public class DocbookPropertiesEditionPartProvider implements IPropertiesEditionP
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPartProvider#getPropertiesEditionPart(java.lang.Object,
      *      int,
      *      org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent)
-     * 
+     *
      */
     @Override
     public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {

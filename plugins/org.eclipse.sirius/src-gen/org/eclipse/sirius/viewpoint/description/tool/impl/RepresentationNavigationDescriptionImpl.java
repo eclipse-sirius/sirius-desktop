@@ -635,9 +635,9 @@ public abstract class RepresentationNavigationDescriptionImpl extends AbstractTo
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (browseExpression: ");
+        result.append(" (browseExpression: "); //$NON-NLS-1$
         result.append(browseExpression);
-        result.append(", navigationNameExpression: ");
+        result.append(", navigationNameExpression: "); //$NON-NLS-1$
         result.append(navigationNameExpression);
         result.append(')');
         return result.toString();

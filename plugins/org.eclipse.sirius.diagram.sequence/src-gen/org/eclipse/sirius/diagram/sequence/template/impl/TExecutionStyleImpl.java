@@ -48,7 +48,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
      * @generated
      * @ordered
      */
-    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "1";
+    protected static final String BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getBorderSizeComputationExpression()
@@ -307,7 +307,7 @@ public class TExecutionStyleImpl extends TTransformerImpl implements TExecutionS
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (borderSizeComputationExpression: ");
+        result.append(" (borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
         result.append(')');
         return result.toString();

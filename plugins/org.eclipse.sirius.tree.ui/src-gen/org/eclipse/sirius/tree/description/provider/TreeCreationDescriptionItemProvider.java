@@ -67,9 +67,10 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
      */
     protected void addTreeDescriptionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TreeCreationDescription_treeDescription_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TreeCreationDescription_treeDescription_feature", "_UI_TreeCreationDescription_type"),
-                DescriptionPackage.Literals.TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TreeCreationDescription_treeDescription_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TreeCreationDescription_treeDescription_feature", "_UI_TreeCreationDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.TREE_CREATION_DESCRIPTION__TREE_DESCRIPTION, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -80,7 +81,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeCreationDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreeCreationDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -92,7 +93,7 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeCreationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreeCreationDescription_type") : getString("_UI_TreeCreationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeCreationDescription_type") : getString("_UI_TreeCreationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

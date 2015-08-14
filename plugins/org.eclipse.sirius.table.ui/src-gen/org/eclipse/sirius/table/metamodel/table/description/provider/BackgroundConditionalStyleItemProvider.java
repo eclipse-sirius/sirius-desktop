@@ -74,11 +74,13 @@ IItemPropertySource {
      * @generated
      */
     protected void addPredicateExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BackgroundConditionalStyle_predicateExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_BackgroundConditionalStyle_predicateExpression_feature", "_UI_BackgroundConditionalStyle_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_BackgroundConditionalStyle_predicateExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BackgroundConditionalStyle_predicateExpression_feature", "_UI_BackgroundConditionalStyle_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.BACKGROUND_CONDITIONAL_STYLE__PREDICATE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -122,7 +124,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/BackgroundConditionalStyle"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/BackgroundConditionalStyle")); //$NON-NLS-1$
     }
 
     /**
@@ -134,7 +136,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((BackgroundConditionalStyle) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_BackgroundConditionalStyle_type") : getString("_UI_BackgroundConditionalStyle_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_BackgroundConditionalStyle_type") : //$NON-NLS-1$
+            getString("_UI_BackgroundConditionalStyle_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

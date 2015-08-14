@@ -45,7 +45,7 @@ import org.eclipse.ui.PartInitException;
 /**
  * This is the action bar contributor for the Basicfamily model editor. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class BasicfamilyActionBarContributor extends EditingDomainActionBarContributor implements ISelectionChangedListener {
@@ -71,11 +71,12 @@ public class BasicfamilyActionBarContributor extends EditingDomainActionBarContr
      * 
      * @generated
      */
-    protected IAction showPropertiesViewAction = new Action(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+    protected IAction showPropertiesViewAction = new Action(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
+    {
         @Override
         public void run() {
             try {
-                getPage().showView("org.eclipse.ui.views.PropertySheet");
+                getPage().showView("org.eclipse.ui.views.PropertySheet"); //$NON-NLS-1$
             } catch (PartInitException exception) {
                 BasicfamilyEditorPlugin.INSTANCE.log(exception);
             }
@@ -86,10 +87,11 @@ public class BasicfamilyActionBarContributor extends EditingDomainActionBarContr
      * This action refreshes the viewer of the current editor if the editor
      * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
-    protected IAction refreshViewerAction = new Action(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+    protected IAction refreshViewerAction = new Action(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
+    {
         @Override
         public boolean isEnabled() {
             return activeEditorPart instanceof IViewerProvider;
@@ -120,7 +122,7 @@ public class BasicfamilyActionBarContributor extends EditingDomainActionBarContr
      * This is the menu manager into which menu contribution items should be
      * added for CreateChild actions. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     protected IMenuManager createChildMenuManager;
@@ -160,42 +162,42 @@ public class BasicfamilyActionBarContributor extends EditingDomainActionBarContr
     /**
      * This adds Separators for editor additions to the tool bar. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void contributeToToolBar(IToolBarManager toolBarManager) {
-        toolBarManager.add(new Separator("basicfamily-settings"));
-        toolBarManager.add(new Separator("basicfamily-additions"));
+        toolBarManager.add(new Separator("basicfamily-settings")); //$NON-NLS-1$
+        toolBarManager.add(new Separator("basicfamily-additions")); //$NON-NLS-1$
     }
 
     /**
      * This adds to the menu bar a menu and some separators for editor
      * additions, as well as the sub-menus for object creation items. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void contributeToMenu(IMenuManager menuManager) {
         super.contributeToMenu(menuManager);
 
-        IMenuManager submenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditor_menu"), "org.eclipse.sirius.sample.basicfamilyMenuID");
-        menuManager.insertAfter("additions", submenuManager);
-        submenuManager.add(new Separator("settings"));
-        submenuManager.add(new Separator("actions"));
-        submenuManager.add(new Separator("additions"));
-        submenuManager.add(new Separator("additions-end"));
+        IMenuManager submenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_BasicfamilyEditor_menu"), "org.eclipse.sirius.sample.basicfamilyMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
+        menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
+        submenuManager.add(new Separator("settings")); //$NON-NLS-1$
+        submenuManager.add(new Separator("actions")); //$NON-NLS-1$
+        submenuManager.add(new Separator("additions")); //$NON-NLS-1$
+        submenuManager.add(new Separator("additions-end")); //$NON-NLS-1$
 
         // Prepare for CreateChild item addition or removal.
         //
-        createChildMenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
-        submenuManager.insertBefore("additions", createChildMenuManager);
+        createChildMenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+        submenuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
 
         // Prepare for CreateSibling item addition or removal.
         //
-        createSiblingMenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
-        submenuManager.insertBefore("additions", createSiblingMenuManager);
+        createSiblingMenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+        submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
 
         // Force an update because Eclipse hides empty menus now.
         //
@@ -246,9 +248,10 @@ public class BasicfamilyActionBarContributor extends EditingDomainActionBarContr
      * the children and siblings that can be added to the selected object and
      * updating the menus accordingly. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void selectionChanged(SelectionChangedEvent event) {
         // Remove any menu items for old selection.
         //
@@ -390,28 +393,28 @@ public class BasicfamilyActionBarContributor extends EditingDomainActionBarContr
         super.menuAboutToShow(menuManager);
         MenuManager submenuManager = null;
 
-        submenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+        submenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
         populateManager(submenuManager, createChildActions, null);
-        menuManager.insertBefore("edit", submenuManager);
+        menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
-        submenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+        submenuManager = new MenuManager(BasicfamilyEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
         populateManager(submenuManager, createSiblingActions, null);
-        menuManager.insertBefore("edit", submenuManager);
+        menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
     }
 
     /**
      * This inserts global actions before the "additions-end" separator. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     protected void addGlobalActions(IMenuManager menuManager) {
-        menuManager.insertAfter("additions-end", new Separator("ui-actions"));
-        menuManager.insertAfter("ui-actions", showPropertiesViewAction);
+        menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
+        menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
 
         refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());
-        menuManager.insertAfter("ui-actions", refreshViewerAction);
+        menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
 
         super.addGlobalActions(menuManager);
     }

@@ -168,7 +168,7 @@ public class JavaExtensionImpl extends MinimalEObjectImpl.Container implements J
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (qualifiedClassName: ");
+        result.append(" (qualifiedClassName: "); //$NON-NLS-1$
         result.append(qualifiedClassName);
         result.append(')');
         return result.toString();

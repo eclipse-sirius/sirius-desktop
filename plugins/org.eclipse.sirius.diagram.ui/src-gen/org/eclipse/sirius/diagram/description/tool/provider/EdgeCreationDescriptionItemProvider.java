@@ -76,8 +76,10 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     protected void addEdgeMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeCreationDescription_edgeMappings_feature"), getString("_UI_EdgeCreationDescription_edgeMappings_description"),
-                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_EdgeCreationDescription_edgeMappings_feature"), //$NON-NLS-1$
+                getString("_UI_EdgeCreationDescription_edgeMappings_description"), //$NON-NLS-1$
+                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -88,8 +90,10 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeCreationDescription_iconPath_feature"), getString("_UI_EdgeCreationDescription_iconPath_description"), ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__ICON_PATH,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_EdgeCreationDescription_iconPath_feature"), //$NON-NLS-1$
+                getString("_UI_EdgeCreationDescription_iconPath_description"), //$NON-NLS-1$
+                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -100,8 +104,10 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     protected void addExtraSourceMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeCreationDescription_extraSourceMappings_feature"), getString("_UI_EdgeCreationDescription_extraSourceMappings_description"),
-                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_EdgeCreationDescription_extraSourceMappings_feature"), //$NON-NLS-1$
+                getString("_UI_EdgeCreationDescription_extraSourceMappings_description"), //$NON-NLS-1$
+                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -112,9 +118,10 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     protected void addExtraTargetMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeCreationDescription_extraTargetMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeCreationDescription_extraTargetMappings_feature", "_UI_EdgeCreationDescription_type"),
-                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_EdgeCreationDescription_extraTargetMappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeCreationDescription_extraTargetMappings_feature", "_UI_EdgeCreationDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -124,11 +131,13 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      * @generated
      */
     protected void addConnectionStartPreconditionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeCreationDescription_connectionStartPrecondition_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeCreationDescription_connectionStartPrecondition_feature", "_UI_EdgeCreationDescription_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_EdgeCreationDescription_connectionStartPrecondition_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeCreationDescription_connectionStartPrecondition_feature", "_UI_EdgeCreationDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -191,7 +200,7 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EdgeCreationDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EdgeCreationDescription")); //$NON-NLS-1$
     }
 
     /**

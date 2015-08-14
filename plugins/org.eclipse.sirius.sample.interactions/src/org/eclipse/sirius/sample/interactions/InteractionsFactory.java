@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage
  * @generated
  */
@@ -23,7 +23,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     InteractionsFactory eINSTANCE = org.eclipse.sirius.sample.interactions.impl.InteractionsFactoryImpl.init();
@@ -31,7 +31,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Model</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Model</em>'.
      * @generated
      */
@@ -40,7 +40,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Interaction</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Interaction</em>'.
      * @generated
      */
@@ -49,7 +49,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Participant</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Participant</em>'.
      * @generated
      */
@@ -58,7 +58,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Call Message</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Call Message</em>'.
      * @generated
      */
@@ -67,7 +67,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Feature Access Message</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Feature Access Message</em>'.
      * @generated
      */
@@ -76,7 +76,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Create Participant Message</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Create Participant Message</em>'.
      * @generated
      */
@@ -85,7 +85,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Destroy Participant Message</em>'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Destroy Participant Message</em>'.
      * @generated
      */
@@ -94,7 +94,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Return Message</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Return Message</em>'.
      * @generated
      */
@@ -103,7 +103,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Execution</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Execution</em>'.
      * @generated
      */
@@ -112,7 +112,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>State</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>State</em>'.
      * @generated
      */
@@ -121,7 +121,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Interaction Use</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Interaction Use</em>'.
      * @generated
      */
@@ -130,7 +130,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Combined Fragment</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Combined Fragment</em>'.
      * @generated
      */
@@ -139,7 +139,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Operand</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Operand</em>'.
      * @generated
      */
@@ -148,7 +148,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Message End</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Message End</em>'.
      * @generated
      */
@@ -157,7 +157,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Execution End</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Execution End</em>'.
      * @generated
      */
@@ -166,7 +166,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>State End</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>State End</em>'.
      * @generated
      */
@@ -175,7 +175,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Interaction Use End</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Interaction Use End</em>'.
      * @generated
      */
@@ -184,7 +184,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Combined Fragment End</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Combined Fragment End</em>'.
      * @generated
      */
@@ -193,7 +193,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Operand End</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Operand End</em>'.
      * @generated
      */
@@ -202,7 +202,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Mix End</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Mix End</em>'.
      * @generated
      */
@@ -211,7 +211,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns a new object of class '<em>Constraint</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @return a new object of class '<em>Constraint</em>'.
      * @generated
      */
@@ -220,7 +220,7 @@ public interface InteractionsFactory extends EFactory {
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the package supported by this factory.
      * @generated
      */

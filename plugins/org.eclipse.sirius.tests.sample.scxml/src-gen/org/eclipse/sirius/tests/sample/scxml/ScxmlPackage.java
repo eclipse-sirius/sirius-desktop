@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
@@ -28,31 +28,31 @@ import org.eclipse.emf.ecore.EReference;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc --> <!-- begin-model-doc -->
- * 
+ *
  * This is the XML Schema data module for SCXML * datamodel * data * assign *
  * param * script * content The data module defines these elements and their
  * attributes.
- * 
- * 
- * 
+ *
+ *
+ *
  * XML Schema datatypes for SCXML
- * 
+ *
  * Defines containers for the SCXML datatypes, many of these imported from other
  * specifications and standards.
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  * This is the XML Schema common attributes for SCXML
- * 
- * 
- * 
+ *
+ *
+ *
  * XML Schema content models for SCXML * scxml.extra.content * content *
  * scxml.extra.attribs Defines SCXML shared content models.
- * 
- * 
+ *
+ *
  * <!-- end-model-doc -->
- * 
+ *
  * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFactory
  * @model kind="package"
  * @generated
@@ -60,21 +60,21 @@ import org.eclipse.emf.ecore.EReference;
 public interface ScxmlPackage extends EPackage {
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNAME = "scxml";
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_URI = "http://www.w3.org/2005/07/scxml";
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     String eNS_PREFIX = "scxml";
@@ -82,7 +82,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     ScxmlPackage eINSTANCE = org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl.init();
@@ -92,7 +92,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.DocumentRootImpl
      * <em>Document Root</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.DocumentRootImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getDocumentRoot()
      * @generated
@@ -102,7 +102,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mixed</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -111,7 +111,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>XMLNS Prefix Map</b></em>' map. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -120,7 +120,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>XSI Schema Location</b></em>' map. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -129,7 +129,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -138,7 +138,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -147,7 +147,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Content</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -156,7 +156,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Data</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -165,7 +165,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Datamodel</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -174,7 +174,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Donedata</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -183,7 +183,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Else</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -192,7 +192,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Elseif</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -201,7 +201,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Final</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -210,7 +210,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finalize</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -219,7 +219,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -228,7 +228,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>History</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -237,7 +237,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -246,7 +246,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -255,7 +255,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Invoke</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -264,7 +264,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -273,7 +273,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Onentry</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -282,7 +282,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Onexit</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -291,7 +291,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Parallel</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -300,7 +300,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Param</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -309,7 +309,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -318,7 +318,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -327,7 +327,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -336,7 +336,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -345,7 +345,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>State</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -354,7 +354,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Transition</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -363,7 +363,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Document Root</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -372,7 +372,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Document Root</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -383,7 +383,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlAssignTypeImpl
      * <em>Assign Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlAssignTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlAssignType()
      * @generated
@@ -393,7 +393,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mixed</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -402,7 +402,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -411,7 +411,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Attr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -420,7 +420,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Expr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -429,7 +429,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Location</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -438,7 +438,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -447,7 +447,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -456,7 +456,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Assign Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -465,7 +465,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Assign Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -476,7 +476,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlCancelTypeImpl
      * <em>Cancel Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlCancelTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlCancelType()
      * @generated
@@ -486,7 +486,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -495,7 +495,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -504,7 +504,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sendid</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -513,7 +513,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Sendidexpr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -522,7 +522,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -531,7 +531,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Cancel Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -540,7 +540,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Cancel Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -551,7 +551,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlContentTypeImpl
      * <em>Content Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlContentTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlContentType()
      * @generated
@@ -561,7 +561,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mixed</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -570,7 +570,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -579,7 +579,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Expr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -588,7 +588,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -597,7 +597,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Content Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -606,7 +606,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Content Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -617,7 +617,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDatamodelTypeImpl
      * <em>Datamodel Type</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDatamodelTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlDatamodelType()
      * @generated
@@ -627,7 +627,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Data</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -636,7 +636,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -645,7 +645,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -654,7 +654,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -663,7 +663,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Datamodel Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -672,7 +672,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Datamodel Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -682,7 +682,7 @@ public interface ScxmlPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDataTypeImpl
      * <em>Data Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDataTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlDataType()
      * @generated
@@ -692,7 +692,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mixed</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -701,7 +701,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -710,7 +710,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Expr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -719,7 +719,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -728,7 +728,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Src</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -737,7 +737,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -746,7 +746,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Data Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -755,7 +755,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Data Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -766,7 +766,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDonedataTypeImpl
      * <em>Donedata Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDonedataTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlDonedataType()
      * @generated
@@ -776,7 +776,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Content</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -785,7 +785,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Param</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -794,7 +794,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -803,7 +803,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Donedata Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -812,7 +812,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Donedata Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -823,7 +823,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlElseifTypeImpl
      * <em>Elseif Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlElseifTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlElseifType()
      * @generated
@@ -833,7 +833,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cond</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -842,7 +842,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -851,7 +851,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Elseif Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -860,7 +860,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Elseif Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -870,7 +870,7 @@ public interface ScxmlPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlElseTypeImpl
      * <em>Else Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlElseTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlElseType()
      * @generated
@@ -880,7 +880,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -889,7 +889,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Else Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -898,7 +898,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Else Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -909,7 +909,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlFinalizeTypeImpl
      * <em>Finalize Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlFinalizeTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlFinalizeType()
      * @generated
@@ -919,7 +919,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Core Executablecontent</b></em>'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -928,7 +928,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -937,7 +937,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -946,7 +946,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -955,7 +955,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -964,7 +964,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -973,7 +973,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -982,7 +982,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -991,7 +991,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1000,7 +1000,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1009,7 +1009,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1018,7 +1018,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Finalize Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1027,7 +1027,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Finalize Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1038,7 +1038,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlFinalTypeImpl
      * <em>Final Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlFinalTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlFinalType()
      * @generated
@@ -1048,7 +1048,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Final Mix</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1057,7 +1057,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Onentry</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1066,7 +1066,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Onexit</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1075,7 +1075,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Donedata</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1084,7 +1084,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1093,7 +1093,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1102,7 +1102,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1111,7 +1111,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Final Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1120,7 +1120,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Final Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1131,7 +1131,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlForeachTypeImpl
      * <em>Foreach Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlForeachTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlForeachType()
      * @generated
@@ -1141,7 +1141,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Core Executablecontent</b></em>'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1150,7 +1150,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1159,7 +1159,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1168,7 +1168,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1177,7 +1177,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1186,7 +1186,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1195,7 +1195,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1204,7 +1204,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1213,7 +1213,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1222,7 +1222,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1231,7 +1231,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Array</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1240,7 +1240,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Index</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1249,7 +1249,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Item</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1258,7 +1258,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1267,7 +1267,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Foreach Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1276,7 +1276,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Foreach Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1287,7 +1287,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlHistoryTypeImpl
      * <em>History Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlHistoryTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlHistoryType()
      * @generated
@@ -1297,7 +1297,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1306,7 +1306,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1315,7 +1315,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Transition</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1324,7 +1324,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content1</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1333,7 +1333,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any1</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1342,7 +1342,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1351,7 +1351,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1360,7 +1360,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1369,7 +1369,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>History Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1378,7 +1378,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>History Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1388,7 +1388,7 @@ public interface ScxmlPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlIfTypeImpl
      * <em>If Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlIfTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlIfType()
      * @generated
@@ -1398,7 +1398,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Core Executablecontent</b></em>'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1407,7 +1407,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1416,7 +1416,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1425,7 +1425,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1434,7 +1434,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1443,7 +1443,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1452,7 +1452,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1461,7 +1461,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1470,7 +1470,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1479,7 +1479,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1488,7 +1488,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Elseif</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1497,7 +1497,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Core Executablecontent1</b></em>'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1506,7 +1506,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any1</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1515,7 +1515,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise1</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1524,7 +1524,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If1</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1533,7 +1533,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach1</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1542,7 +1542,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send1</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1551,7 +1551,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script1</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1560,7 +1560,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign1</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1569,7 +1569,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log1</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1578,7 +1578,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel1</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1587,7 +1587,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Else</b></em>' containment reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1596,7 +1596,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Core Executablecontent2</b></em>'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1605,7 +1605,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any2</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1614,7 +1614,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise2</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1623,7 +1623,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If2</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1632,7 +1632,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach2</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1641,7 +1641,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send2</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1650,7 +1650,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script2</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1659,7 +1659,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign2</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1668,7 +1668,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log2</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1677,7 +1677,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel2</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1686,7 +1686,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cond</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1695,7 +1695,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1704,7 +1704,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>If Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1713,7 +1713,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>If Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1724,7 +1724,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlInitialTypeImpl
      * <em>Initial Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlInitialTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlInitialType()
      * @generated
@@ -1734,7 +1734,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1743,7 +1743,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1752,7 +1752,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Transition</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1761,7 +1761,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content1</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1770,7 +1770,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any1</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1779,7 +1779,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1788,7 +1788,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Initial Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1797,7 +1797,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Initial Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1808,7 +1808,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlInvokeTypeImpl
      * <em>Invoke Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlInvokeTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlInvokeType()
      * @generated
@@ -1818,7 +1818,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Invoke Mix</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1827,7 +1827,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Content</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1836,7 +1836,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Param</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1845,7 +1845,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Finalize</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1854,7 +1854,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1863,7 +1863,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Autoforward</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1872,7 +1872,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1881,7 +1881,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Idlocation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1890,7 +1890,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Namelist</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1899,7 +1899,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Src</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1908,7 +1908,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Srcexpr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1917,7 +1917,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1926,7 +1926,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Typeexpr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1935,7 +1935,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1944,7 +1944,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Invoke Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1953,7 +1953,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Invoke Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1963,7 +1963,7 @@ public interface ScxmlPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlLogTypeImpl
      * <em>Log Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlLogTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlLogType()
      * @generated
@@ -1973,7 +1973,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1982,7 +1982,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -1991,7 +1991,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Expr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2000,7 +2000,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2009,7 +2009,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2018,7 +2018,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Log Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2027,7 +2027,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Log Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2038,7 +2038,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlOnentryTypeImpl
      * <em>Onentry Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlOnentryTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlOnentryType()
      * @generated
@@ -2048,7 +2048,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Core Executablecontent</b></em>'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2057,7 +2057,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2066,7 +2066,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2075,7 +2075,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2084,7 +2084,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2093,7 +2093,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2102,7 +2102,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2111,7 +2111,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2120,7 +2120,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2129,7 +2129,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2138,7 +2138,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2147,7 +2147,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Onentry Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2156,7 +2156,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Onentry Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2167,7 +2167,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlOnexitTypeImpl
      * <em>Onexit Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlOnexitTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlOnexitType()
      * @generated
@@ -2177,7 +2177,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Core Executablecontent</b></em>'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2186,7 +2186,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2195,7 +2195,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2204,7 +2204,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2213,7 +2213,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2222,7 +2222,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2231,7 +2231,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2240,7 +2240,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2249,7 +2249,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2258,7 +2258,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2267,7 +2267,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2276,7 +2276,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Onexit Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2285,7 +2285,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Onexit Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2296,7 +2296,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlParallelTypeImpl
      * <em>Parallel Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlParallelTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlParallelType()
      * @generated
@@ -2306,7 +2306,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Parallel Mix</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2315,7 +2315,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Onentry</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2324,7 +2324,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Onexit</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2333,7 +2333,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Transition</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2342,7 +2342,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>State</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2351,7 +2351,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Parallel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2360,7 +2360,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>History</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2369,7 +2369,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Datamodel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2378,7 +2378,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Invoke</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2387,7 +2387,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2396,7 +2396,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2405,7 +2405,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2414,7 +2414,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Parallel Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2423,7 +2423,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Parallel Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2434,7 +2434,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlParamTypeImpl
      * <em>Param Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlParamTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlParamType()
      * @generated
@@ -2444,7 +2444,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2453,7 +2453,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2462,7 +2462,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Expr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2471,7 +2471,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Location</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2480,7 +2480,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2489,7 +2489,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2498,7 +2498,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Param Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2507,7 +2507,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Param Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2518,7 +2518,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlRaiseTypeImpl
      * <em>Raise Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlRaiseTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlRaiseType()
      * @generated
@@ -2528,7 +2528,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Event</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2537,7 +2537,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2546,7 +2546,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Raise Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2555,7 +2555,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Raise Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2566,7 +2566,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlScriptTypeImpl
      * <em>Script Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlScriptTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlScriptType()
      * @generated
@@ -2576,7 +2576,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Mixed</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2585,7 +2585,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Extra Content</b></em>' attribute
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2594,7 +2594,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2603,7 +2603,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Src</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2612,7 +2612,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2621,7 +2621,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Script Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2630,7 +2630,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Script Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2641,7 +2641,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlScxmlTypeImpl
      * <em>Scxml Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlScxmlTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlScxmlType()
      * @generated
@@ -2651,7 +2651,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Scxml Mix</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2660,7 +2660,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>State</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2669,7 +2669,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Parallel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2678,7 +2678,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Final</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2687,7 +2687,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Datamodel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2696,7 +2696,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2705,7 +2705,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2714,7 +2714,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Binding</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2723,7 +2723,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Datamodel1</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2732,7 +2732,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Exmode</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2741,7 +2741,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2750,7 +2750,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2759,7 +2759,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Version</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2768,7 +2768,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2777,7 +2777,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Scxml Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2786,7 +2786,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Scxml Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2796,7 +2796,7 @@ public interface ScxmlPackage extends EPackage {
      * The meta object id for the '
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlSendTypeImpl
      * <em>Send Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlSendTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlSendType()
      * @generated
@@ -2806,7 +2806,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Send Mix</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2815,7 +2815,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Content</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2824,7 +2824,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Param</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2833,7 +2833,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2842,7 +2842,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Delay</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2851,7 +2851,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Delayexpr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2860,7 +2860,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Event</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2869,7 +2869,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Eventexpr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2878,7 +2878,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2887,7 +2887,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Idlocation</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2896,7 +2896,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Namelist</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2905,7 +2905,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2914,7 +2914,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Targetexpr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2923,7 +2923,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2932,7 +2932,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Typeexpr</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2941,7 +2941,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2950,7 +2950,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Send Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2959,7 +2959,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Send Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2970,7 +2970,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlStateTypeImpl
      * <em>State Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlStateTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlStateType()
      * @generated
@@ -2980,7 +2980,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml State Mix</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2989,7 +2989,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Onentry</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -2998,7 +2998,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Onexit</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3007,7 +3007,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Transition</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3016,7 +3016,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3025,7 +3025,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>State</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3034,7 +3034,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Parallel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3043,7 +3043,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Final</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3052,7 +3052,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>History</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3061,7 +3061,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Datamodel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3070,7 +3070,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Invoke</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3079,7 +3079,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3088,7 +3088,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3097,7 +3097,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Initial1</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3106,7 +3106,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3115,7 +3115,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>State Type</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3124,7 +3124,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>State Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3135,7 +3135,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlTransitionTypeImpl
      * <em>Transition Type</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlTransitionTypeImpl
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlTransitionType()
      * @generated
@@ -3145,7 +3145,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Scxml Core Executablecontent</b></em>'
      * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3154,7 +3154,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3163,7 +3163,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Raise</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3172,7 +3172,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>If</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3181,7 +3181,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Foreach</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3190,7 +3190,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Send</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3199,7 +3199,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Script</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3208,7 +3208,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Assign</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3217,7 +3217,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Log</b></em>' containment reference list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3226,7 +3226,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cancel</b></em>' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3235,7 +3235,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Cond</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3244,7 +3244,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Event</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3253,7 +3253,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3262,7 +3262,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3271,7 +3271,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Any Attribute</b></em>' attribute list.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3280,7 +3280,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Transition Type</em>'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3289,7 +3289,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The number of operations of the '<em>Transition Type</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -3300,7 +3300,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
      * <em>Assign Type Datatype</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getAssignTypeDatatype()
      * @generated
@@ -3312,7 +3312,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.BindingDatatype
      * <em>Binding Datatype</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.BindingDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getBindingDatatype()
      * @generated
@@ -3324,7 +3324,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
      * <em>Boolean Datatype</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getBooleanDatatype()
      * @generated
@@ -3336,7 +3336,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
      * <em>Exmode Datatype</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getExmodeDatatype()
      * @generated
@@ -3348,7 +3348,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
      * <em>History Type Datatype</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getHistoryTypeDatatype()
      * @generated
@@ -3360,7 +3360,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
      * <em>Transition Type Datatype</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getTransitionTypeDatatype()
      * @generated
@@ -3370,7 +3370,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Assign Type Datatype Object</em>' data
      * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getAssignTypeDatatypeObject()
      * @generated
@@ -3380,7 +3380,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Binding Datatype Object</em>' data type.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.BindingDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getBindingDatatypeObject()
      * @generated
@@ -3390,7 +3390,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Boolean Datatype Object</em>' data type.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getBooleanDatatypeObject()
      * @generated
@@ -3400,7 +3400,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Cond Lang Datatype</em>' data type. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.lang.String
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getCondLangDatatype()
      * @generated
@@ -3410,7 +3410,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Duration Datatype</em>' data type. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.lang.String
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getDurationDatatype()
      * @generated
@@ -3420,7 +3420,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Event Type Datatype</em>' data type. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.lang.String
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getEventTypeDatatype()
      * @generated
@@ -3430,7 +3430,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Event Types Datatype</em>' data type.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.lang.String
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getEventTypesDatatype()
      * @generated
@@ -3440,7 +3440,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Exmode Datatype Object</em>' data type.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getExmodeDatatypeObject()
      * @generated
@@ -3450,7 +3450,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>History Type Datatype Object</em>' data
      * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getHistoryTypeDatatypeObject()
      * @generated
@@ -3460,7 +3460,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Integer Datatype</em>' data type. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.math.BigInteger
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getIntegerDatatype()
      * @generated
@@ -3470,7 +3470,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Loc Lang Datatype</em>' data type. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.lang.String
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getLocLangDatatype()
      * @generated
@@ -3480,7 +3480,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Transition Type Datatype Object</em>'
      * data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getTransitionTypeDatatypeObject()
      * @generated
@@ -3490,7 +3490,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>URI Datatype</em>' data type. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.lang.String
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getURIDatatype()
      * @generated
@@ -3500,7 +3500,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * The meta object id for the '<em>Value Lang Datatype</em>' data type. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see java.lang.String
      * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getValueLangDatatype()
      * @generated
@@ -3511,7 +3511,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot
      * <em>Document Root</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Document Root</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot
      * @generated
@@ -3522,7 +3522,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getMixed
      * <em>Mixed</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Mixed</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getMixed()
      * @see #getDocumentRoot()
@@ -3535,7 +3535,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getXMLNSPrefixMap
      * <em>XMLNS Prefix Map</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the map '<em>XMLNS Prefix Map</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getXMLNSPrefixMap()
      * @see #getDocumentRoot()
@@ -3548,7 +3548,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getXSISchemaLocation
      * <em>XSI Schema Location</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the map '<em>XSI Schema Location</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getXSISchemaLocation()
      * @see #getDocumentRoot()
@@ -3560,7 +3560,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getAssign
      * <em>Assign</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Assign</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getAssign()
      * @see #getDocumentRoot()
@@ -3572,7 +3572,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getCancel
      * <em>Cancel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Cancel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getCancel()
      * @see #getDocumentRoot()
@@ -3584,7 +3584,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getContent
      * <em>Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getContent()
      * @see #getDocumentRoot()
@@ -3596,7 +3596,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getData
      * <em>Data</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Data</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getData()
      * @see #getDocumentRoot()
@@ -3608,7 +3608,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getDatamodel
      * <em>Datamodel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Datamodel</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getDatamodel()
@@ -3621,7 +3621,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getDonedata
      * <em>Donedata</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Donedata</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getDonedata()
@@ -3634,7 +3634,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getElse
      * <em>Else</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Else</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getElse()
      * @see #getDocumentRoot()
@@ -3646,7 +3646,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getElseif
      * <em>Elseif</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Elseif</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getElseif()
      * @see #getDocumentRoot()
@@ -3658,7 +3658,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getFinal
      * <em>Final</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Final</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getFinal()
      * @see #getDocumentRoot()
@@ -3670,7 +3670,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getFinalize
      * <em>Finalize</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Finalize</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getFinalize()
@@ -3683,7 +3683,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getForeach
      * <em>Foreach</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Foreach</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getForeach()
      * @see #getDocumentRoot()
@@ -3695,7 +3695,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getHistory
      * <em>History</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>History</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getHistory()
      * @see #getDocumentRoot()
@@ -3707,7 +3707,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getIf
      * <em>If</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>If</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getIf()
      * @see #getDocumentRoot()
@@ -3719,7 +3719,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getInitial
      * <em>Initial</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Initial</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getInitial()
      * @see #getDocumentRoot()
@@ -3731,7 +3731,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getInvoke
      * <em>Invoke</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Invoke</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getInvoke()
      * @see #getDocumentRoot()
@@ -3743,7 +3743,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getLog
      * <em>Log</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Log</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getLog()
      * @see #getDocumentRoot()
@@ -3755,7 +3755,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getOnentry
      * <em>Onentry</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Onentry</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getOnentry()
      * @see #getDocumentRoot()
@@ -3767,7 +3767,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getOnexit
      * <em>Onexit</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Onexit</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getOnexit()
      * @see #getDocumentRoot()
@@ -3779,7 +3779,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getParallel
      * <em>Parallel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Parallel</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getParallel()
@@ -3792,7 +3792,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getParam
      * <em>Param</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Param</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getParam()
      * @see #getDocumentRoot()
@@ -3804,7 +3804,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getRaise
      * <em>Raise</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Raise</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getRaise()
      * @see #getDocumentRoot()
@@ -3816,7 +3816,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getScript
      * <em>Script</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Script</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getScript()
      * @see #getDocumentRoot()
@@ -3828,7 +3828,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getScxml
      * <em>Scxml</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Scxml</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getScxml()
      * @see #getDocumentRoot()
@@ -3840,7 +3840,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getSend
      * <em>Send</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Send</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getSend()
      * @see #getDocumentRoot()
@@ -3852,7 +3852,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getState
      * <em>State</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>State</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getState()
      * @see #getDocumentRoot()
@@ -3864,7 +3864,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getTransition
      * <em>Transition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Transition</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.DocumentRoot#getTransition()
@@ -3877,7 +3877,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType
      * <em>Assign Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Assign Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType
      * @generated
@@ -3888,7 +3888,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getMixed
      * <em>Mixed</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Mixed</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getMixed()
      * @see #getScxmlAssignType()
@@ -3900,7 +3900,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getAny()
      * @see #getScxmlAssignType()
@@ -3912,7 +3912,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getAttr
      * <em>Attr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Attr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getAttr()
      * @see #getScxmlAssignType()
@@ -3924,7 +3924,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getExpr
      * <em>Expr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Expr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getExpr()
      * @see #getScxmlAssignType()
@@ -3936,7 +3936,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getLocation
      * <em>Location</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Location</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getLocation()
      * @see #getScxmlAssignType()
@@ -3948,7 +3948,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getType
      * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getType()
      * @see #getScxmlAssignType()
@@ -3960,7 +3960,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlAssignType#getAnyAttribute()
      * @see #getScxmlAssignType()
@@ -3972,7 +3972,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType
      * <em>Cancel Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Cancel Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType
      * @generated
@@ -3984,7 +3984,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getScxmlExtraContent
      * <em>Scxml Extra Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getScxmlExtraContent()
@@ -3997,7 +3997,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getAny()
      * @see #getScxmlCancelType()
@@ -4009,7 +4009,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getSendid
      * <em>Sendid</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Sendid</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getSendid()
      * @see #getScxmlCancelType()
@@ -4021,7 +4021,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getSendidexpr
      * <em>Sendidexpr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Sendidexpr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getSendidexpr()
      * @see #getScxmlCancelType()
@@ -4033,7 +4033,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlCancelType#getAnyAttribute()
      * @see #getScxmlCancelType()
@@ -4045,7 +4045,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlContentType
      * <em>Content Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Content Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlContentType
      * @generated
@@ -4056,7 +4056,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlContentType#getMixed
      * <em>Mixed</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Mixed</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlContentType#getMixed()
      * @see #getScxmlContentType()
@@ -4068,7 +4068,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlContentType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlContentType#getAny()
      * @see #getScxmlContentType()
@@ -4080,7 +4080,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlContentType#getExpr
      * <em>Expr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Expr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlContentType#getExpr()
      * @see #getScxmlContentType()
@@ -4092,7 +4092,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlContentType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlContentType#getAnyAttribute()
      * @see #getScxmlContentType()
@@ -4104,7 +4104,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType
      * <em>Datamodel Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Datamodel Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType
      * @generated
@@ -4115,7 +4115,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType#getData
      * <em>Data</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Data</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType#getData()
@@ -4129,7 +4129,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType#getScxmlExtraContent
      * <em>Scxml Extra Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType#getScxmlExtraContent()
@@ -4142,7 +4142,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType#getAny()
      * @see #getScxmlDatamodelType()
@@ -4154,7 +4154,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDatamodelType#getAnyAttribute()
      * @see #getScxmlDatamodelType()
@@ -4166,7 +4166,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDataType
      * <em>Data Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Data Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDataType
      * @generated
@@ -4177,7 +4177,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getMixed
      * <em>Mixed</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Mixed</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getMixed()
      * @see #getScxmlDataType()
@@ -4189,7 +4189,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getAny()
      * @see #getScxmlDataType()
@@ -4201,7 +4201,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getExpr
      * <em>Expr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Expr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getExpr()
      * @see #getScxmlDataType()
@@ -4213,7 +4213,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getId()
      * @see #getScxmlDataType()
@@ -4225,7 +4225,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getSrc
      * <em>Src</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Src</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getSrc()
      * @see #getScxmlDataType()
@@ -4237,7 +4237,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDataType#getAnyAttribute()
      * @see #getScxmlDataType()
@@ -4249,7 +4249,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDonedataType
      * <em>Donedata Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Donedata Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDonedataType
      * @generated
@@ -4260,7 +4260,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDonedataType#getContent
      * <em>Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDonedataType#getContent()
      * @see #getScxmlDonedataType()
@@ -4272,7 +4272,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDonedataType#getParam
      * <em>Param</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Param</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDonedataType#getParam()
@@ -4285,7 +4285,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlDonedataType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlDonedataType#getAnyAttribute()
      * @see #getScxmlDonedataType()
@@ -4297,7 +4297,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlElseifType
      * <em>Elseif Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Elseif Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlElseifType
      * @generated
@@ -4308,7 +4308,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlElseifType#getCond
      * <em>Cond</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Cond</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlElseifType#getCond()
      * @see #getScxmlElseifType()
@@ -4320,7 +4320,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlElseifType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlElseifType#getAnyAttribute()
      * @see #getScxmlElseifType()
@@ -4332,7 +4332,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlElseType
      * <em>Else Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Else Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlElseType
      * @generated
@@ -4343,7 +4343,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlElseType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlElseType#getAnyAttribute()
      * @see #getScxmlElseType()
@@ -4355,7 +4355,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType
      * <em>Finalize Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Finalize Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType
      * @generated
@@ -4367,7 +4367,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getScxmlCoreExecutablecontent
      * <em>Scxml Core Executablecontent</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Core Executablecontent</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getScxmlCoreExecutablecontent()
@@ -4380,7 +4380,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getAny()
      * @see #getScxmlFinalizeType()
@@ -4392,7 +4392,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getRaise
      * <em>Raise</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Raise</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getRaise()
@@ -4405,7 +4405,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getIf
      * <em>If</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>If</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getIf()
      * @see #getScxmlFinalizeType()
@@ -4417,7 +4417,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getForeach
      * <em>Foreach</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Foreach</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getForeach()
@@ -4430,7 +4430,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getSend
      * <em>Send</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Send</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getSend()
@@ -4443,7 +4443,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getScript
      * <em>Script</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getScript()
@@ -4456,7 +4456,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getAssign
      * <em>Assign</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Assign</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getAssign()
@@ -4469,7 +4469,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getLog
      * <em>Log</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Log</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getLog()
@@ -4482,7 +4482,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getCancel
      * <em>Cancel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cancel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getCancel()
@@ -4495,7 +4495,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalizeType#getAnyAttribute()
      * @see #getScxmlFinalizeType()
@@ -4507,7 +4507,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType
      * <em>Final Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Final Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType
      * @generated
@@ -4518,7 +4518,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getScxmlFinalMix
      * <em>Scxml Final Mix</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Scxml Final Mix</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getScxmlFinalMix()
@@ -4531,7 +4531,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getOnentry
      * <em>Onentry</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Onentry</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getOnentry()
@@ -4544,7 +4544,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getOnexit
      * <em>Onexit</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Onexit</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getOnexit()
@@ -4557,7 +4557,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getDonedata
      * <em>Donedata</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Donedata</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getDonedata()
@@ -4570,7 +4570,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getAny()
      * @see #getScxmlFinalType()
@@ -4582,7 +4582,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getId()
      * @see #getScxmlFinalType()
@@ -4594,7 +4594,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlFinalType#getAnyAttribute()
      * @see #getScxmlFinalType()
@@ -4606,7 +4606,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType
      * <em>Foreach Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Foreach Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType
      * @generated
@@ -4618,7 +4618,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getScxmlCoreExecutablecontent
      * <em>Scxml Core Executablecontent</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Core Executablecontent</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getScxmlCoreExecutablecontent()
@@ -4631,7 +4631,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getAny()
      * @see #getScxmlForeachType()
@@ -4643,7 +4643,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getRaise
      * <em>Raise</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Raise</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getRaise()
@@ -4656,7 +4656,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getIf
      * <em>If</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>If</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getIf()
      * @see #getScxmlForeachType()
@@ -4668,7 +4668,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getForeach
      * <em>Foreach</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Foreach</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getForeach()
@@ -4681,7 +4681,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getSend
      * <em>Send</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Send</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getSend()
@@ -4694,7 +4694,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getScript
      * <em>Script</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getScript()
@@ -4707,7 +4707,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getAssign
      * <em>Assign</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Assign</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getAssign()
@@ -4720,7 +4720,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getLog
      * <em>Log</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Log</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getLog()
@@ -4733,7 +4733,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getCancel
      * <em>Cancel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cancel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getCancel()
@@ -4746,7 +4746,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getArray
      * <em>Array</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Array</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getArray()
      * @see #getScxmlForeachType()
@@ -4758,7 +4758,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getIndex
      * <em>Index</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Index</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getIndex()
      * @see #getScxmlForeachType()
@@ -4770,7 +4770,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getItem
      * <em>Item</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Item</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getItem()
      * @see #getScxmlForeachType()
@@ -4782,7 +4782,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlForeachType#getAnyAttribute()
      * @see #getScxmlForeachType()
@@ -4794,7 +4794,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType
      * <em>History Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>History Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType
      * @generated
@@ -4806,7 +4806,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getScxmlExtraContent
      * <em>Scxml Extra Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getScxmlExtraContent()
@@ -4819,7 +4819,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getAny()
      * @see #getScxmlHistoryType()
@@ -4831,7 +4831,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getTransition
      * <em>Transition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Transition</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getTransition()
@@ -4845,7 +4845,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getScxmlExtraContent1
      * <em>Scxml Extra Content1</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getScxmlExtraContent1()
@@ -4858,7 +4858,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getAny1
      * <em>Any1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getAny1()
      * @see #getScxmlHistoryType()
@@ -4870,7 +4870,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getId()
      * @see #getScxmlHistoryType()
@@ -4882,7 +4882,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getType
      * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getType()
      * @see #getScxmlHistoryType()
@@ -4894,7 +4894,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlHistoryType#getAnyAttribute()
      * @see #getScxmlHistoryType()
@@ -4906,7 +4906,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType
      * <em>If Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>If Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType
      * @generated
@@ -4918,7 +4918,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScxmlCoreExecutablecontent
      * <em>Scxml Core Executablecontent</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Core Executablecontent</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScxmlCoreExecutablecontent()
@@ -4931,7 +4931,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAny()
      * @see #getScxmlIfType()
@@ -4943,7 +4943,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getRaise
      * <em>Raise</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Raise</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getRaise()
@@ -4956,7 +4956,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getIf
      * <em>If</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>If</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getIf()
      * @see #getScxmlIfType()
@@ -4968,7 +4968,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getForeach
      * <em>Foreach</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Foreach</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getForeach()
@@ -4981,7 +4981,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getSend
      * <em>Send</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Send</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getSend()
@@ -4994,7 +4994,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScript
      * <em>Script</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScript()
@@ -5007,7 +5007,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAssign
      * <em>Assign</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Assign</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAssign()
@@ -5020,7 +5020,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getLog
      * <em>Log</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Log</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getLog()
@@ -5033,7 +5033,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCancel
      * <em>Cancel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cancel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCancel()
@@ -5046,7 +5046,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getElseif
      * <em>Elseif</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Elseif</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getElseif()
      * @see #getScxmlIfType()
@@ -5059,7 +5059,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScxmlCoreExecutablecontent1
      * <em>Scxml Core Executablecontent1</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Core Executablecontent1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScxmlCoreExecutablecontent1()
@@ -5072,7 +5072,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAny1
      * <em>Any1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAny1()
      * @see #getScxmlIfType()
@@ -5084,7 +5084,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getRaise1
      * <em>Raise1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Raise1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getRaise1()
@@ -5097,7 +5097,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getIf1
      * <em>If1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>If1</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getIf1()
@@ -5110,7 +5110,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getForeach1
      * <em>Foreach1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Foreach1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getForeach1()
@@ -5123,7 +5123,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getSend1
      * <em>Send1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Send1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getSend1()
@@ -5136,7 +5136,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScript1
      * <em>Script1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScript1()
@@ -5149,7 +5149,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAssign1
      * <em>Assign1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Assign1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAssign1()
@@ -5162,7 +5162,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getLog1
      * <em>Log1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Log1</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getLog1()
@@ -5175,7 +5175,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCancel1
      * <em>Cancel1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cancel1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCancel1()
@@ -5188,7 +5188,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getElse
      * <em>Else</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '<em>Else</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getElse()
      * @see #getScxmlIfType()
@@ -5201,7 +5201,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScxmlCoreExecutablecontent2
      * <em>Scxml Core Executablecontent2</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Core Executablecontent2</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScxmlCoreExecutablecontent2()
@@ -5214,7 +5214,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAny2
      * <em>Any2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any2</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAny2()
      * @see #getScxmlIfType()
@@ -5226,7 +5226,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getRaise2
      * <em>Raise2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Raise2</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getRaise2()
@@ -5239,7 +5239,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getIf2
      * <em>If2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>If2</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getIf2()
@@ -5252,7 +5252,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getForeach2
      * <em>Foreach2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Foreach2</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getForeach2()
@@ -5265,7 +5265,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getSend2
      * <em>Send2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Send2</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getSend2()
@@ -5278,7 +5278,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScript2
      * <em>Script2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script2</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getScript2()
@@ -5291,7 +5291,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAssign2
      * <em>Assign2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Assign2</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAssign2()
@@ -5304,7 +5304,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getLog2
      * <em>Log2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Log2</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getLog2()
@@ -5317,7 +5317,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCancel2
      * <em>Cancel2</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cancel2</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCancel2()
@@ -5330,7 +5330,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCond
      * <em>Cond</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Cond</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getCond()
      * @see #getScxmlIfType()
@@ -5342,7 +5342,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlIfType#getAnyAttribute()
      * @see #getScxmlIfType()
@@ -5354,7 +5354,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType
      * <em>Initial Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Initial Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType
      * @generated
@@ -5366,7 +5366,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getScxmlExtraContent
      * <em>Scxml Extra Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getScxmlExtraContent()
@@ -5379,7 +5379,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getAny()
      * @see #getScxmlInitialType()
@@ -5391,7 +5391,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getTransition
      * <em>Transition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Transition</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getTransition()
@@ -5405,7 +5405,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getScxmlExtraContent1
      * <em>Scxml Extra Content1</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getScxmlExtraContent1()
@@ -5418,7 +5418,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getAny1
      * <em>Any1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getAny1()
      * @see #getScxmlInitialType()
@@ -5430,7 +5430,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInitialType#getAnyAttribute()
      * @see #getScxmlInitialType()
@@ -5442,7 +5442,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType
      * <em>Invoke Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Invoke Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType
      * @generated
@@ -5454,7 +5454,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getScxmlInvokeMix
      * <em>Scxml Invoke Mix</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Scxml Invoke Mix</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getScxmlInvokeMix()
@@ -5467,7 +5467,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getContent
      * <em>Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getContent()
@@ -5480,7 +5480,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getParam
      * <em>Param</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Param</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getParam()
@@ -5493,7 +5493,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getFinalize
      * <em>Finalize</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Finalize</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getFinalize()
@@ -5506,7 +5506,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAny()
      * @see #getScxmlInvokeType()
@@ -5518,7 +5518,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAutoforward
      * <em>Autoforward</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Autoforward</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAutoforward()
      * @see #getScxmlInvokeType()
@@ -5530,7 +5530,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getId()
      * @see #getScxmlInvokeType()
@@ -5542,7 +5542,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getIdlocation
      * <em>Idlocation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Idlocation</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getIdlocation()
      * @see #getScxmlInvokeType()
@@ -5554,7 +5554,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getNamelist
      * <em>Namelist</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Namelist</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getNamelist()
      * @see #getScxmlInvokeType()
@@ -5566,7 +5566,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getSrc
      * <em>Src</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Src</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getSrc()
      * @see #getScxmlInvokeType()
@@ -5578,7 +5578,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getSrcexpr
      * <em>Srcexpr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Srcexpr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getSrcexpr()
      * @see #getScxmlInvokeType()
@@ -5590,7 +5590,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getType
      * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getType()
      * @see #getScxmlInvokeType()
@@ -5602,7 +5602,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getTypeexpr
      * <em>Typeexpr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Typeexpr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getTypeexpr()
      * @see #getScxmlInvokeType()
@@ -5614,7 +5614,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlInvokeType#getAnyAttribute()
      * @see #getScxmlInvokeType()
@@ -5626,7 +5626,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlLogType
      * <em>Log Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Log Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlLogType
      * @generated
@@ -5638,7 +5638,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getScxmlExtraContent
      * <em>Scxml Extra Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getScxmlExtraContent()
@@ -5651,7 +5651,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getAny()
      * @see #getScxmlLogType()
@@ -5663,7 +5663,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getExpr
      * <em>Expr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Expr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getExpr()
      * @see #getScxmlLogType()
@@ -5675,7 +5675,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getLabel
      * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Label</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getLabel()
      * @see #getScxmlLogType()
@@ -5687,7 +5687,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlLogType#getAnyAttribute()
      * @see #getScxmlLogType()
@@ -5699,7 +5699,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType
      * <em>Onentry Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Onentry Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType
      * @generated
@@ -5711,7 +5711,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getScxmlCoreExecutablecontent
      * <em>Scxml Core Executablecontent</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Core Executablecontent</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getScxmlCoreExecutablecontent()
@@ -5724,7 +5724,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getAny()
      * @see #getScxmlOnentryType()
@@ -5736,7 +5736,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getRaise
      * <em>Raise</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Raise</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getRaise()
@@ -5749,7 +5749,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getIf
      * <em>If</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>If</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getIf()
      * @see #getScxmlOnentryType()
@@ -5761,7 +5761,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getForeach
      * <em>Foreach</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Foreach</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getForeach()
@@ -5774,7 +5774,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getSend
      * <em>Send</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Send</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getSend()
@@ -5787,7 +5787,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getScript
      * <em>Script</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getScript()
@@ -5800,7 +5800,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getAssign
      * <em>Assign</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Assign</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getAssign()
@@ -5813,7 +5813,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getLog
      * <em>Log</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Log</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getLog()
@@ -5826,7 +5826,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getCancel
      * <em>Cancel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cancel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getCancel()
@@ -5839,7 +5839,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnentryType#getAnyAttribute()
      * @see #getScxmlOnentryType()
@@ -5851,7 +5851,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType
      * <em>Onexit Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Onexit Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType
      * @generated
@@ -5863,7 +5863,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getScxmlCoreExecutablecontent
      * <em>Scxml Core Executablecontent</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Core Executablecontent</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getScxmlCoreExecutablecontent()
@@ -5876,7 +5876,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getAny()
      * @see #getScxmlOnexitType()
@@ -5888,7 +5888,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getRaise
      * <em>Raise</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Raise</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getRaise()
@@ -5901,7 +5901,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getIf
      * <em>If</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>If</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getIf()
      * @see #getScxmlOnexitType()
@@ -5913,7 +5913,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getForeach
      * <em>Foreach</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Foreach</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getForeach()
@@ -5926,7 +5926,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getSend
      * <em>Send</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Send</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getSend()
@@ -5939,7 +5939,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getScript
      * <em>Script</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getScript()
@@ -5952,7 +5952,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getAssign
      * <em>Assign</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Assign</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getAssign()
@@ -5965,7 +5965,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getLog
      * <em>Log</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Log</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getLog()
@@ -5978,7 +5978,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getCancel
      * <em>Cancel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cancel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getCancel()
@@ -5991,7 +5991,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlOnexitType#getAnyAttribute()
      * @see #getScxmlOnexitType()
@@ -6003,7 +6003,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType
      * <em>Parallel Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Parallel Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType
      * @generated
@@ -6015,7 +6015,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getScxmlParallelMix
      * <em>Scxml Parallel Mix</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Parallel Mix</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getScxmlParallelMix()
@@ -6028,7 +6028,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getOnentry
      * <em>Onentry</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Onentry</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getOnentry()
@@ -6041,7 +6041,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getOnexit
      * <em>Onexit</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Onexit</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getOnexit()
@@ -6054,7 +6054,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getTransition
      * <em>Transition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Transition</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getTransition()
@@ -6067,7 +6067,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getState
      * <em>State</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>State</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getState()
@@ -6080,7 +6080,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getParallel
      * <em>Parallel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Parallel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getParallel()
@@ -6093,7 +6093,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getHistory
      * <em>History</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>History</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getHistory()
@@ -6106,7 +6106,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getDatamodel
      * <em>Datamodel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Datamodel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getDatamodel()
@@ -6119,7 +6119,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getInvoke
      * <em>Invoke</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Invoke</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getInvoke()
@@ -6132,7 +6132,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getAny()
      * @see #getScxmlParallelType()
@@ -6144,7 +6144,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getId()
      * @see #getScxmlParallelType()
@@ -6156,7 +6156,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParallelType#getAnyAttribute()
      * @see #getScxmlParallelType()
@@ -6168,7 +6168,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType
      * <em>Param Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Param Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParamType
      * @generated
@@ -6180,7 +6180,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getScxmlExtraContent
      * <em>Scxml Extra Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getScxmlExtraContent()
@@ -6193,7 +6193,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getAny()
      * @see #getScxmlParamType()
@@ -6205,7 +6205,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getExpr
      * <em>Expr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Expr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getExpr()
      * @see #getScxmlParamType()
@@ -6217,7 +6217,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getLocation
      * <em>Location</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Location</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getLocation()
      * @see #getScxmlParamType()
@@ -6229,7 +6229,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getName()
      * @see #getScxmlParamType()
@@ -6241,7 +6241,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlParamType#getAnyAttribute()
      * @see #getScxmlParamType()
@@ -6253,7 +6253,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlRaiseType
      * <em>Raise Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Raise Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlRaiseType
      * @generated
@@ -6264,7 +6264,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlRaiseType#getEvent
      * <em>Event</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Event</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlRaiseType#getEvent()
      * @see #getScxmlRaiseType()
@@ -6276,7 +6276,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlRaiseType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlRaiseType#getAnyAttribute()
      * @see #getScxmlRaiseType()
@@ -6288,7 +6288,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType
      * <em>Script Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Script Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType
      * @generated
@@ -6299,7 +6299,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getMixed
      * <em>Mixed</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Mixed</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getMixed()
      * @see #getScxmlScriptType()
@@ -6312,7 +6312,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getScxmlExtraContent
      * <em>Scxml Extra Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Extra Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getScxmlExtraContent()
@@ -6325,7 +6325,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getAny()
      * @see #getScxmlScriptType()
@@ -6337,7 +6337,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getSrc
      * <em>Src</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Src</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getSrc()
      * @see #getScxmlScriptType()
@@ -6349,7 +6349,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScriptType#getAnyAttribute()
      * @see #getScxmlScriptType()
@@ -6361,7 +6361,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType
      * <em>Scxml Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Scxml Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType
      * @generated
@@ -6372,7 +6372,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getScxmlScxmlMix
      * <em>Scxml Scxml Mix</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Scxml Scxml Mix</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getScxmlScxmlMix()
@@ -6385,7 +6385,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getState
      * <em>State</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>State</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getState()
@@ -6398,7 +6398,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getParallel
      * <em>Parallel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Parallel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getParallel()
@@ -6411,7 +6411,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getFinal
      * <em>Final</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Final</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getFinal()
@@ -6424,7 +6424,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getDatamodel
      * <em>Datamodel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Datamodel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getDatamodel()
@@ -6437,7 +6437,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getScript
      * <em>Script</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getScript()
@@ -6450,7 +6450,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getAny()
      * @see #getScxmlScxmlType()
@@ -6462,7 +6462,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getBinding
      * <em>Binding</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Binding</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getBinding()
      * @see #getScxmlScxmlType()
@@ -6474,7 +6474,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getDatamodel1
      * <em>Datamodel1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Datamodel1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getDatamodel1()
      * @see #getScxmlScxmlType()
@@ -6486,7 +6486,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getExmode
      * <em>Exmode</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Exmode</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getExmode()
      * @see #getScxmlScxmlType()
@@ -6498,7 +6498,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getInitial
      * <em>Initial</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Initial</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getInitial()
      * @see #getScxmlScxmlType()
@@ -6510,7 +6510,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getName()
      * @see #getScxmlScxmlType()
@@ -6522,7 +6522,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getVersion
      * <em>Version</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Version</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getVersion()
      * @see #getScxmlScxmlType()
@@ -6534,7 +6534,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getAnyAttribute()
      * @see #getScxmlScxmlType()
@@ -6546,7 +6546,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType
      * <em>Send Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Send Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType
      * @generated
@@ -6557,7 +6557,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getScxmlSendMix
      * <em>Scxml Send Mix</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Scxml Send Mix</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getScxmlSendMix()
      * @see #getScxmlSendType()
@@ -6569,7 +6569,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getContent
      * <em>Content</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Content</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getContent()
@@ -6582,7 +6582,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getParam
      * <em>Param</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Param</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getParam()
@@ -6595,7 +6595,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getAny()
      * @see #getScxmlSendType()
@@ -6607,7 +6607,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getDelay
      * <em>Delay</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Delay</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getDelay()
      * @see #getScxmlSendType()
@@ -6619,7 +6619,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getDelayexpr
      * <em>Delayexpr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Delayexpr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getDelayexpr()
      * @see #getScxmlSendType()
@@ -6631,7 +6631,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getEvent
      * <em>Event</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Event</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getEvent()
      * @see #getScxmlSendType()
@@ -6643,7 +6643,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getEventexpr
      * <em>Eventexpr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Eventexpr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getEventexpr()
      * @see #getScxmlSendType()
@@ -6655,7 +6655,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getId()
      * @see #getScxmlSendType()
@@ -6667,7 +6667,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getIdlocation
      * <em>Idlocation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Idlocation</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getIdlocation()
      * @see #getScxmlSendType()
@@ -6679,7 +6679,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getNamelist
      * <em>Namelist</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Namelist</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getNamelist()
      * @see #getScxmlSendType()
@@ -6691,7 +6691,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTarget
      * <em>Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Target</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTarget()
      * @see #getScxmlSendType()
@@ -6703,7 +6703,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTargetexpr
      * <em>Targetexpr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Targetexpr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTargetexpr()
      * @see #getScxmlSendType()
@@ -6715,7 +6715,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getType
      * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getType()
      * @see #getScxmlSendType()
@@ -6727,7 +6727,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTypeexpr
      * <em>Typeexpr</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Typeexpr</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getTypeexpr()
      * @see #getScxmlSendType()
@@ -6739,7 +6739,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlSendType#getAnyAttribute()
      * @see #getScxmlSendType()
@@ -6751,7 +6751,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType
      * <em>State Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>State Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType
      * @generated
@@ -6762,7 +6762,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getScxmlStateMix
      * <em>Scxml State Mix</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Scxml State Mix</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getScxmlStateMix()
@@ -6775,7 +6775,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getOnentry
      * <em>Onentry</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Onentry</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getOnentry()
@@ -6788,7 +6788,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getOnexit
      * <em>Onexit</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Onexit</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getOnexit()
@@ -6801,7 +6801,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getTransition
      * <em>Transition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Transition</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getTransition()
@@ -6814,7 +6814,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getInitial
      * <em>Initial</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Initial</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getInitial()
@@ -6827,7 +6827,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getState
      * <em>State</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>State</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getState()
@@ -6840,7 +6840,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getParallel
      * <em>Parallel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Parallel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getParallel()
@@ -6853,7 +6853,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getFinal
      * <em>Final</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Final</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getFinal()
@@ -6866,7 +6866,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getHistory
      * <em>History</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>History</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getHistory()
@@ -6879,7 +6879,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getDatamodel
      * <em>Datamodel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Datamodel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getDatamodel()
@@ -6892,7 +6892,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getInvoke
      * <em>Invoke</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Invoke</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getInvoke()
@@ -6905,7 +6905,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getAny()
      * @see #getScxmlStateType()
@@ -6917,7 +6917,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getId
      * <em>Id</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Id</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getId()
      * @see #getScxmlStateType()
@@ -6929,7 +6929,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getInitial1
      * <em>Initial1</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Initial1</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getInitial1()
      * @see #getScxmlStateType()
@@ -6941,7 +6941,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlStateType#getAnyAttribute()
      * @see #getScxmlStateType()
@@ -6953,7 +6953,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType
      * <em>Transition Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Transition Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType
      * @generated
@@ -6965,7 +6965,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getScxmlCoreExecutablecontent
      * <em>Scxml Core Executablecontent</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '
      *         <em>Scxml Core Executablecontent</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getScxmlCoreExecutablecontent()
@@ -6978,7 +6978,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getAny
      * <em>Any</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getAny()
      * @see #getScxmlTransitionType()
@@ -6990,7 +6990,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getRaise
      * <em>Raise</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Raise</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getRaise()
@@ -7003,7 +7003,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getIf
      * <em>If</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>If</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getIf()
      * @see #getScxmlTransitionType()
@@ -7015,7 +7015,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getForeach
      * <em>Foreach</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Foreach</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getForeach()
@@ -7028,7 +7028,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getSend
      * <em>Send</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Send</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getSend()
@@ -7041,7 +7041,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getScript
      * <em>Script</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Script</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getScript()
@@ -7054,7 +7054,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getAssign
      * <em>Assign</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Assign</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getAssign()
@@ -7067,7 +7067,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getLog
      * <em>Log</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '<em>Log</em>
      *         '.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getLog()
@@ -7080,7 +7080,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getCancel
      * <em>Cancel</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the containment reference list '
      *         <em>Cancel</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getCancel()
@@ -7093,7 +7093,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getCond
      * <em>Cond</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Cond</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getCond()
      * @see #getScxmlTransitionType()
@@ -7105,7 +7105,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getEvent
      * <em>Event</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Event</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getEvent()
      * @see #getScxmlTransitionType()
@@ -7117,7 +7117,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getTarget
      * <em>Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Target</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getTarget()
      * @see #getScxmlTransitionType()
@@ -7129,7 +7129,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getType
      * <em>Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Type</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getType()
      * @see #getScxmlTransitionType()
@@ -7141,7 +7141,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getAnyAttribute
      * <em>Any Attribute</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for the attribute list '<em>Any Attribute</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlTransitionType#getAnyAttribute()
      * @see #getScxmlTransitionType()
@@ -7154,7 +7154,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
      * <em>Assign Type Datatype</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Assign Type Datatype</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
      * @generated
@@ -7166,7 +7166,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.BindingDatatype
      * <em>Binding Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Binding Datatype</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.BindingDatatype
      * @generated
@@ -7178,7 +7178,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
      * <em>Boolean Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for enum '<em>Boolean Datatype</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
      * @generated
@@ -7189,7 +7189,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
      * <em>Exmode Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Exmode Datatype</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
      * @generated
@@ -7201,7 +7201,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
      * <em>History Type Datatype</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>History Type Datatype</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
      * @generated
@@ -7213,7 +7213,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
      * <em>Transition Type Datatype</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for enum '<em>Transition Type Datatype</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
      * @generated
@@ -7225,11 +7225,11 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
      * <em>Assign Type Datatype Object</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for data type '
      *         <em>Assign Type Datatype Object</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
-     * @model 
+     * @model
      *        instanceClass="org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype"
      *        extendedMetaData=
      *        "name='AssignType.datatype:Object' baseType='AssignType.datatype'"
@@ -7242,10 +7242,10 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.BindingDatatype
      * <em>Binding Datatype Object</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for data type '<em>Binding Datatype Object</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.BindingDatatype
-     * @model 
+     * @model
      *        instanceClass="org.eclipse.sirius.tests.sample.scxml.BindingDatatype"
      *        extendedMetaData
      *        ="name='Binding.datatype:Object' baseType='Binding.datatype'"
@@ -7258,10 +7258,10 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
      * <em>Boolean Datatype Object</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for data type '<em>Boolean Datatype Object</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
-     * @model 
+     * @model
      *        instanceClass="org.eclipse.sirius.tests.sample.scxml.BooleanDatatype"
      *        extendedMetaData
      *        ="name='Boolean.datatype:Object' baseType='Boolean.datatype'"
@@ -7273,7 +7273,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for data type '{@link java.lang.String
      * <em>Cond Lang Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for data type '<em>Cond Lang Datatype</em>'.
      * @see java.lang.String
      * @model instanceClass="java.lang.String" extendedMetaData=
@@ -7286,7 +7286,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for data type '{@link java.lang.String
      * <em>Duration Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for data type '<em>Duration Datatype</em>'.
      * @see java.lang.String
      * @model instanceClass="java.lang.String" extendedMetaData=
@@ -7299,7 +7299,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for data type '{@link java.lang.String
      * <em>Event Type Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for data type '<em>Event Type Datatype</em>'.
      * @see java.lang.String
      * @model instanceClass="java.lang.String" extendedMetaData=
@@ -7312,7 +7312,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for data type '{@link java.lang.String
      * <em>Event Types Datatype</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for data type '<em>Event Types Datatype</em>'.
      * @see java.lang.String
      * @model instanceClass="java.lang.String" extendedMetaData=
@@ -7326,10 +7326,10 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
      * <em>Exmode Datatype Object</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for data type '<em>Exmode Datatype Object</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
-     * @model 
+     * @model
      *        instanceClass="org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype"
      *        extendedMetaData
      *        ="name='Exmode.datatype:Object' baseType='Exmode.datatype'"
@@ -7342,7 +7342,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
      * <em>History Type Datatype Object</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for data type '
      *         <em>History Type Datatype Object</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
@@ -7358,7 +7358,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for data type '{@link java.math.BigInteger
      * <em>Integer Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for data type '<em>Integer Datatype</em>'.
      * @see java.math.BigInteger
      * @model instanceClass="java.math.BigInteger" extendedMetaData=
@@ -7371,7 +7371,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for data type '{@link java.lang.String
      * <em>Loc Lang Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for data type '<em>Loc Lang Datatype</em>'.
      * @see java.lang.String
      * @model instanceClass="java.lang.String" extendedMetaData=
@@ -7385,7 +7385,7 @@ public interface ScxmlPackage extends EPackage {
      * {@link org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
      * <em>Transition Type Datatype Object</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return the meta object for data type '
      *         <em>Transition Type Datatype Object</em>'.
      * @see org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
@@ -7400,7 +7400,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * Returns the meta object for data type '{@link java.lang.String
      * <em>URI Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for data type '<em>URI Datatype</em>'.
      * @see java.lang.String
      * @model instanceClass="java.lang.String" extendedMetaData=
@@ -7413,7 +7413,7 @@ public interface ScxmlPackage extends EPackage {
      * Returns the meta object for data type '{@link java.lang.String
      * <em>Value Lang Datatype</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for data type '<em>Value Lang Datatype</em>'.
      * @see java.lang.String
      * @model instanceClass="java.lang.String" extendedMetaData=
@@ -7425,7 +7425,7 @@ public interface ScxmlPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -7442,7 +7442,7 @@ public interface ScxmlPackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     interface Literals {
@@ -7451,2703 +7451,2703 @@ public interface ScxmlPackage extends EPackage {
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.DocumentRootImpl
          * <em>Document Root</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.DocumentRootImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getDocumentRoot()
          * @generated
          */
-        EClass DOCUMENT_ROOT = eINSTANCE.getDocumentRoot();
+        EClass DOCUMENT_ROOT = ScxmlPackage.eINSTANCE.getDocumentRoot();
 
         /**
          * The meta object literal for the '<em><b>Mixed</b></em>' attribute
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute DOCUMENT_ROOT__MIXED = eINSTANCE.getDocumentRoot_Mixed();
+        EAttribute DOCUMENT_ROOT__MIXED = ScxmlPackage.eINSTANCE.getDocumentRoot_Mixed();
 
         /**
          * The meta object literal for the '<em><b>XMLNS Prefix Map</b></em>'
          * map feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
+        EReference DOCUMENT_ROOT__XMLNS_PREFIX_MAP = ScxmlPackage.eINSTANCE.getDocumentRoot_XMLNSPrefixMap();
 
         /**
          * The meta object literal for the '<em><b>XSI Schema Location</b></em>'
          * map feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = eINSTANCE.getDocumentRoot_XSISchemaLocation();
+        EReference DOCUMENT_ROOT__XSI_SCHEMA_LOCATION = ScxmlPackage.eINSTANCE.getDocumentRoot_XSISchemaLocation();
 
         /**
          * The meta object literal for the '<em><b>Assign</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__ASSIGN = eINSTANCE.getDocumentRoot_Assign();
+        EReference DOCUMENT_ROOT__ASSIGN = ScxmlPackage.eINSTANCE.getDocumentRoot_Assign();
 
         /**
          * The meta object literal for the '<em><b>Cancel</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__CANCEL = eINSTANCE.getDocumentRoot_Cancel();
+        EReference DOCUMENT_ROOT__CANCEL = ScxmlPackage.eINSTANCE.getDocumentRoot_Cancel();
 
         /**
          * The meta object literal for the '<em><b>Content</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__CONTENT = eINSTANCE.getDocumentRoot_Content();
+        EReference DOCUMENT_ROOT__CONTENT = ScxmlPackage.eINSTANCE.getDocumentRoot_Content();
 
         /**
          * The meta object literal for the '<em><b>Data</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__DATA = eINSTANCE.getDocumentRoot_Data();
+        EReference DOCUMENT_ROOT__DATA = ScxmlPackage.eINSTANCE.getDocumentRoot_Data();
 
         /**
          * The meta object literal for the '<em><b>Datamodel</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__DATAMODEL = eINSTANCE.getDocumentRoot_Datamodel();
+        EReference DOCUMENT_ROOT__DATAMODEL = ScxmlPackage.eINSTANCE.getDocumentRoot_Datamodel();
 
         /**
          * The meta object literal for the '<em><b>Donedata</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__DONEDATA = eINSTANCE.getDocumentRoot_Donedata();
+        EReference DOCUMENT_ROOT__DONEDATA = ScxmlPackage.eINSTANCE.getDocumentRoot_Donedata();
 
         /**
          * The meta object literal for the '<em><b>Else</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__ELSE = eINSTANCE.getDocumentRoot_Else();
+        EReference DOCUMENT_ROOT__ELSE = ScxmlPackage.eINSTANCE.getDocumentRoot_Else();
 
         /**
          * The meta object literal for the '<em><b>Elseif</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__ELSEIF = eINSTANCE.getDocumentRoot_Elseif();
+        EReference DOCUMENT_ROOT__ELSEIF = ScxmlPackage.eINSTANCE.getDocumentRoot_Elseif();
 
         /**
          * The meta object literal for the '<em><b>Final</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__FINAL = eINSTANCE.getDocumentRoot_Final();
+        EReference DOCUMENT_ROOT__FINAL = ScxmlPackage.eINSTANCE.getDocumentRoot_Final();
 
         /**
          * The meta object literal for the '<em><b>Finalize</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__FINALIZE = eINSTANCE.getDocumentRoot_Finalize();
+        EReference DOCUMENT_ROOT__FINALIZE = ScxmlPackage.eINSTANCE.getDocumentRoot_Finalize();
 
         /**
          * The meta object literal for the '<em><b>Foreach</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__FOREACH = eINSTANCE.getDocumentRoot_Foreach();
+        EReference DOCUMENT_ROOT__FOREACH = ScxmlPackage.eINSTANCE.getDocumentRoot_Foreach();
 
         /**
          * The meta object literal for the '<em><b>History</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__HISTORY = eINSTANCE.getDocumentRoot_History();
+        EReference DOCUMENT_ROOT__HISTORY = ScxmlPackage.eINSTANCE.getDocumentRoot_History();
 
         /**
          * The meta object literal for the '<em><b>If</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__IF = eINSTANCE.getDocumentRoot_If();
+        EReference DOCUMENT_ROOT__IF = ScxmlPackage.eINSTANCE.getDocumentRoot_If();
 
         /**
          * The meta object literal for the '<em><b>Initial</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__INITIAL = eINSTANCE.getDocumentRoot_Initial();
+        EReference DOCUMENT_ROOT__INITIAL = ScxmlPackage.eINSTANCE.getDocumentRoot_Initial();
 
         /**
          * The meta object literal for the '<em><b>Invoke</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__INVOKE = eINSTANCE.getDocumentRoot_Invoke();
+        EReference DOCUMENT_ROOT__INVOKE = ScxmlPackage.eINSTANCE.getDocumentRoot_Invoke();
 
         /**
          * The meta object literal for the '<em><b>Log</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__LOG = eINSTANCE.getDocumentRoot_Log();
+        EReference DOCUMENT_ROOT__LOG = ScxmlPackage.eINSTANCE.getDocumentRoot_Log();
 
         /**
          * The meta object literal for the '<em><b>Onentry</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__ONENTRY = eINSTANCE.getDocumentRoot_Onentry();
+        EReference DOCUMENT_ROOT__ONENTRY = ScxmlPackage.eINSTANCE.getDocumentRoot_Onentry();
 
         /**
          * The meta object literal for the '<em><b>Onexit</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__ONEXIT = eINSTANCE.getDocumentRoot_Onexit();
+        EReference DOCUMENT_ROOT__ONEXIT = ScxmlPackage.eINSTANCE.getDocumentRoot_Onexit();
 
         /**
          * The meta object literal for the '<em><b>Parallel</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__PARALLEL = eINSTANCE.getDocumentRoot_Parallel();
+        EReference DOCUMENT_ROOT__PARALLEL = ScxmlPackage.eINSTANCE.getDocumentRoot_Parallel();
 
         /**
          * The meta object literal for the '<em><b>Param</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__PARAM = eINSTANCE.getDocumentRoot_Param();
+        EReference DOCUMENT_ROOT__PARAM = ScxmlPackage.eINSTANCE.getDocumentRoot_Param();
 
         /**
          * The meta object literal for the '<em><b>Raise</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__RAISE = eINSTANCE.getDocumentRoot_Raise();
+        EReference DOCUMENT_ROOT__RAISE = ScxmlPackage.eINSTANCE.getDocumentRoot_Raise();
 
         /**
          * The meta object literal for the '<em><b>Script</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__SCRIPT = eINSTANCE.getDocumentRoot_Script();
+        EReference DOCUMENT_ROOT__SCRIPT = ScxmlPackage.eINSTANCE.getDocumentRoot_Script();
 
         /**
          * The meta object literal for the '<em><b>Scxml</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__SCXML = eINSTANCE.getDocumentRoot_Scxml();
+        EReference DOCUMENT_ROOT__SCXML = ScxmlPackage.eINSTANCE.getDocumentRoot_Scxml();
 
         /**
          * The meta object literal for the '<em><b>Send</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__SEND = eINSTANCE.getDocumentRoot_Send();
+        EReference DOCUMENT_ROOT__SEND = ScxmlPackage.eINSTANCE.getDocumentRoot_Send();
 
         /**
          * The meta object literal for the '<em><b>State</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__STATE = eINSTANCE.getDocumentRoot_State();
+        EReference DOCUMENT_ROOT__STATE = ScxmlPackage.eINSTANCE.getDocumentRoot_State();
 
         /**
          * The meta object literal for the '<em><b>Transition</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference DOCUMENT_ROOT__TRANSITION = eINSTANCE.getDocumentRoot_Transition();
+        EReference DOCUMENT_ROOT__TRANSITION = ScxmlPackage.eINSTANCE.getDocumentRoot_Transition();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlAssignTypeImpl
          * <em>Assign Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlAssignTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlAssignType()
          * @generated
          */
-        EClass SCXML_ASSIGN_TYPE = eINSTANCE.getScxmlAssignType();
+        EClass SCXML_ASSIGN_TYPE = ScxmlPackage.eINSTANCE.getScxmlAssignType();
 
         /**
          * The meta object literal for the '<em><b>Mixed</b></em>' attribute
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ASSIGN_TYPE__MIXED = eINSTANCE.getScxmlAssignType_Mixed();
+        EAttribute SCXML_ASSIGN_TYPE__MIXED = ScxmlPackage.eINSTANCE.getScxmlAssignType_Mixed();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ASSIGN_TYPE__ANY = eINSTANCE.getScxmlAssignType_Any();
+        EAttribute SCXML_ASSIGN_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlAssignType_Any();
 
         /**
          * The meta object literal for the '<em><b>Attr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ASSIGN_TYPE__ATTR = eINSTANCE.getScxmlAssignType_Attr();
+        EAttribute SCXML_ASSIGN_TYPE__ATTR = ScxmlPackage.eINSTANCE.getScxmlAssignType_Attr();
 
         /**
          * The meta object literal for the '<em><b>Expr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ASSIGN_TYPE__EXPR = eINSTANCE.getScxmlAssignType_Expr();
+        EAttribute SCXML_ASSIGN_TYPE__EXPR = ScxmlPackage.eINSTANCE.getScxmlAssignType_Expr();
 
         /**
          * The meta object literal for the '<em><b>Location</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ASSIGN_TYPE__LOCATION = eINSTANCE.getScxmlAssignType_Location();
+        EAttribute SCXML_ASSIGN_TYPE__LOCATION = ScxmlPackage.eINSTANCE.getScxmlAssignType_Location();
 
         /**
          * The meta object literal for the '<em><b>Type</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ASSIGN_TYPE__TYPE = eINSTANCE.getScxmlAssignType_Type();
+        EAttribute SCXML_ASSIGN_TYPE__TYPE = ScxmlPackage.eINSTANCE.getScxmlAssignType_Type();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ASSIGN_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlAssignType_AnyAttribute();
+        EAttribute SCXML_ASSIGN_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlAssignType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlCancelTypeImpl
          * <em>Cancel Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlCancelTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlCancelType()
          * @generated
          */
-        EClass SCXML_CANCEL_TYPE = eINSTANCE.getScxmlCancelType();
+        EClass SCXML_CANCEL_TYPE = ScxmlPackage.eINSTANCE.getScxmlCancelType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CANCEL_TYPE__SCXML_EXTRA_CONTENT = eINSTANCE.getScxmlCancelType_ScxmlExtraContent();
+        EAttribute SCXML_CANCEL_TYPE__SCXML_EXTRA_CONTENT = ScxmlPackage.eINSTANCE.getScxmlCancelType_ScxmlExtraContent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CANCEL_TYPE__ANY = eINSTANCE.getScxmlCancelType_Any();
+        EAttribute SCXML_CANCEL_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlCancelType_Any();
 
         /**
          * The meta object literal for the '<em><b>Sendid</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CANCEL_TYPE__SENDID = eINSTANCE.getScxmlCancelType_Sendid();
+        EAttribute SCXML_CANCEL_TYPE__SENDID = ScxmlPackage.eINSTANCE.getScxmlCancelType_Sendid();
 
         /**
          * The meta object literal for the '<em><b>Sendidexpr</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CANCEL_TYPE__SENDIDEXPR = eINSTANCE.getScxmlCancelType_Sendidexpr();
+        EAttribute SCXML_CANCEL_TYPE__SENDIDEXPR = ScxmlPackage.eINSTANCE.getScxmlCancelType_Sendidexpr();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CANCEL_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlCancelType_AnyAttribute();
+        EAttribute SCXML_CANCEL_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlCancelType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlContentTypeImpl
          * <em>Content Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlContentTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlContentType()
          * @generated
          */
-        EClass SCXML_CONTENT_TYPE = eINSTANCE.getScxmlContentType();
+        EClass SCXML_CONTENT_TYPE = ScxmlPackage.eINSTANCE.getScxmlContentType();
 
         /**
          * The meta object literal for the '<em><b>Mixed</b></em>' attribute
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CONTENT_TYPE__MIXED = eINSTANCE.getScxmlContentType_Mixed();
+        EAttribute SCXML_CONTENT_TYPE__MIXED = ScxmlPackage.eINSTANCE.getScxmlContentType_Mixed();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CONTENT_TYPE__ANY = eINSTANCE.getScxmlContentType_Any();
+        EAttribute SCXML_CONTENT_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlContentType_Any();
 
         /**
          * The meta object literal for the '<em><b>Expr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CONTENT_TYPE__EXPR = eINSTANCE.getScxmlContentType_Expr();
+        EAttribute SCXML_CONTENT_TYPE__EXPR = ScxmlPackage.eINSTANCE.getScxmlContentType_Expr();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_CONTENT_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlContentType_AnyAttribute();
+        EAttribute SCXML_CONTENT_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlContentType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDatamodelTypeImpl
          * <em>Datamodel Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDatamodelTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlDatamodelType()
          * @generated
          */
-        EClass SCXML_DATAMODEL_TYPE = eINSTANCE.getScxmlDatamodelType();
+        EClass SCXML_DATAMODEL_TYPE = ScxmlPackage.eINSTANCE.getScxmlDatamodelType();
 
         /**
          * The meta object literal for the '<em><b>Data</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_DATAMODEL_TYPE__DATA = eINSTANCE.getScxmlDatamodelType_Data();
+        EReference SCXML_DATAMODEL_TYPE__DATA = ScxmlPackage.eINSTANCE.getScxmlDatamodelType_Data();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATAMODEL_TYPE__SCXML_EXTRA_CONTENT = eINSTANCE.getScxmlDatamodelType_ScxmlExtraContent();
+        EAttribute SCXML_DATAMODEL_TYPE__SCXML_EXTRA_CONTENT = ScxmlPackage.eINSTANCE.getScxmlDatamodelType_ScxmlExtraContent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATAMODEL_TYPE__ANY = eINSTANCE.getScxmlDatamodelType_Any();
+        EAttribute SCXML_DATAMODEL_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlDatamodelType_Any();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATAMODEL_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlDatamodelType_AnyAttribute();
+        EAttribute SCXML_DATAMODEL_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlDatamodelType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDataTypeImpl
          * <em>Data Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDataTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlDataType()
          * @generated
          */
-        EClass SCXML_DATA_TYPE = eINSTANCE.getScxmlDataType();
+        EClass SCXML_DATA_TYPE = ScxmlPackage.eINSTANCE.getScxmlDataType();
 
         /**
          * The meta object literal for the '<em><b>Mixed</b></em>' attribute
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATA_TYPE__MIXED = eINSTANCE.getScxmlDataType_Mixed();
+        EAttribute SCXML_DATA_TYPE__MIXED = ScxmlPackage.eINSTANCE.getScxmlDataType_Mixed();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATA_TYPE__ANY = eINSTANCE.getScxmlDataType_Any();
+        EAttribute SCXML_DATA_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlDataType_Any();
 
         /**
          * The meta object literal for the '<em><b>Expr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATA_TYPE__EXPR = eINSTANCE.getScxmlDataType_Expr();
+        EAttribute SCXML_DATA_TYPE__EXPR = ScxmlPackage.eINSTANCE.getScxmlDataType_Expr();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATA_TYPE__ID = eINSTANCE.getScxmlDataType_Id();
+        EAttribute SCXML_DATA_TYPE__ID = ScxmlPackage.eINSTANCE.getScxmlDataType_Id();
 
         /**
          * The meta object literal for the '<em><b>Src</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATA_TYPE__SRC = eINSTANCE.getScxmlDataType_Src();
+        EAttribute SCXML_DATA_TYPE__SRC = ScxmlPackage.eINSTANCE.getScxmlDataType_Src();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DATA_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlDataType_AnyAttribute();
+        EAttribute SCXML_DATA_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlDataType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDonedataTypeImpl
          * <em>Donedata Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlDonedataTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlDonedataType()
          * @generated
          */
-        EClass SCXML_DONEDATA_TYPE = eINSTANCE.getScxmlDonedataType();
+        EClass SCXML_DONEDATA_TYPE = ScxmlPackage.eINSTANCE.getScxmlDonedataType();
 
         /**
          * The meta object literal for the '<em><b>Content</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_DONEDATA_TYPE__CONTENT = eINSTANCE.getScxmlDonedataType_Content();
+        EReference SCXML_DONEDATA_TYPE__CONTENT = ScxmlPackage.eINSTANCE.getScxmlDonedataType_Content();
 
         /**
          * The meta object literal for the '<em><b>Param</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_DONEDATA_TYPE__PARAM = eINSTANCE.getScxmlDonedataType_Param();
+        EReference SCXML_DONEDATA_TYPE__PARAM = ScxmlPackage.eINSTANCE.getScxmlDonedataType_Param();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_DONEDATA_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlDonedataType_AnyAttribute();
+        EAttribute SCXML_DONEDATA_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlDonedataType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlElseifTypeImpl
          * <em>Elseif Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlElseifTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlElseifType()
          * @generated
          */
-        EClass SCXML_ELSEIF_TYPE = eINSTANCE.getScxmlElseifType();
+        EClass SCXML_ELSEIF_TYPE = ScxmlPackage.eINSTANCE.getScxmlElseifType();
 
         /**
          * The meta object literal for the '<em><b>Cond</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ELSEIF_TYPE__COND = eINSTANCE.getScxmlElseifType_Cond();
+        EAttribute SCXML_ELSEIF_TYPE__COND = ScxmlPackage.eINSTANCE.getScxmlElseifType_Cond();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ELSEIF_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlElseifType_AnyAttribute();
+        EAttribute SCXML_ELSEIF_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlElseifType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlElseTypeImpl
          * <em>Else Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlElseTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlElseType()
          * @generated
          */
-        EClass SCXML_ELSE_TYPE = eINSTANCE.getScxmlElseType();
+        EClass SCXML_ELSE_TYPE = ScxmlPackage.eINSTANCE.getScxmlElseType();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ELSE_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlElseType_AnyAttribute();
+        EAttribute SCXML_ELSE_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlElseType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlFinalizeTypeImpl
          * <em>Finalize Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlFinalizeTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlFinalizeType()
          * @generated
          */
-        EClass SCXML_FINALIZE_TYPE = eINSTANCE.getScxmlFinalizeType();
+        EClass SCXML_FINALIZE_TYPE = ScxmlPackage.eINSTANCE.getScxmlFinalizeType();
 
         /**
          * The meta object literal for the '
          * <em><b>Scxml Core Executablecontent</b></em>' attribute list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FINALIZE_TYPE__SCXML_CORE_EXECUTABLECONTENT = eINSTANCE.getScxmlFinalizeType_ScxmlCoreExecutablecontent();
+        EAttribute SCXML_FINALIZE_TYPE__SCXML_CORE_EXECUTABLECONTENT = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_ScxmlCoreExecutablecontent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FINALIZE_TYPE__ANY = eINSTANCE.getScxmlFinalizeType_Any();
+        EAttribute SCXML_FINALIZE_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_Any();
 
         /**
          * The meta object literal for the '<em><b>Raise</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINALIZE_TYPE__RAISE = eINSTANCE.getScxmlFinalizeType_Raise();
+        EReference SCXML_FINALIZE_TYPE__RAISE = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_Raise();
 
         /**
          * The meta object literal for the '<em><b>If</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINALIZE_TYPE__IF = eINSTANCE.getScxmlFinalizeType_If();
+        EReference SCXML_FINALIZE_TYPE__IF = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_If();
 
         /**
          * The meta object literal for the '<em><b>Foreach</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINALIZE_TYPE__FOREACH = eINSTANCE.getScxmlFinalizeType_Foreach();
+        EReference SCXML_FINALIZE_TYPE__FOREACH = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_Foreach();
 
         /**
          * The meta object literal for the '<em><b>Send</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINALIZE_TYPE__SEND = eINSTANCE.getScxmlFinalizeType_Send();
+        EReference SCXML_FINALIZE_TYPE__SEND = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_Send();
 
         /**
          * The meta object literal for the '<em><b>Script</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINALIZE_TYPE__SCRIPT = eINSTANCE.getScxmlFinalizeType_Script();
+        EReference SCXML_FINALIZE_TYPE__SCRIPT = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_Script();
 
         /**
          * The meta object literal for the '<em><b>Assign</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINALIZE_TYPE__ASSIGN = eINSTANCE.getScxmlFinalizeType_Assign();
+        EReference SCXML_FINALIZE_TYPE__ASSIGN = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_Assign();
 
         /**
          * The meta object literal for the '<em><b>Log</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINALIZE_TYPE__LOG = eINSTANCE.getScxmlFinalizeType_Log();
+        EReference SCXML_FINALIZE_TYPE__LOG = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_Log();
 
         /**
          * The meta object literal for the '<em><b>Cancel</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINALIZE_TYPE__CANCEL = eINSTANCE.getScxmlFinalizeType_Cancel();
+        EReference SCXML_FINALIZE_TYPE__CANCEL = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_Cancel();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FINALIZE_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlFinalizeType_AnyAttribute();
+        EAttribute SCXML_FINALIZE_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlFinalizeType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlFinalTypeImpl
          * <em>Final Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlFinalTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlFinalType()
          * @generated
          */
-        EClass SCXML_FINAL_TYPE = eINSTANCE.getScxmlFinalType();
+        EClass SCXML_FINAL_TYPE = ScxmlPackage.eINSTANCE.getScxmlFinalType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Final Mix</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FINAL_TYPE__SCXML_FINAL_MIX = eINSTANCE.getScxmlFinalType_ScxmlFinalMix();
+        EAttribute SCXML_FINAL_TYPE__SCXML_FINAL_MIX = ScxmlPackage.eINSTANCE.getScxmlFinalType_ScxmlFinalMix();
 
         /**
          * The meta object literal for the '<em><b>Onentry</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINAL_TYPE__ONENTRY = eINSTANCE.getScxmlFinalType_Onentry();
+        EReference SCXML_FINAL_TYPE__ONENTRY = ScxmlPackage.eINSTANCE.getScxmlFinalType_Onentry();
 
         /**
          * The meta object literal for the '<em><b>Onexit</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINAL_TYPE__ONEXIT = eINSTANCE.getScxmlFinalType_Onexit();
+        EReference SCXML_FINAL_TYPE__ONEXIT = ScxmlPackage.eINSTANCE.getScxmlFinalType_Onexit();
 
         /**
          * The meta object literal for the '<em><b>Donedata</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FINAL_TYPE__DONEDATA = eINSTANCE.getScxmlFinalType_Donedata();
+        EReference SCXML_FINAL_TYPE__DONEDATA = ScxmlPackage.eINSTANCE.getScxmlFinalType_Donedata();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FINAL_TYPE__ANY = eINSTANCE.getScxmlFinalType_Any();
+        EAttribute SCXML_FINAL_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlFinalType_Any();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FINAL_TYPE__ID = eINSTANCE.getScxmlFinalType_Id();
+        EAttribute SCXML_FINAL_TYPE__ID = ScxmlPackage.eINSTANCE.getScxmlFinalType_Id();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FINAL_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlFinalType_AnyAttribute();
+        EAttribute SCXML_FINAL_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlFinalType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlForeachTypeImpl
          * <em>Foreach Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlForeachTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlForeachType()
          * @generated
          */
-        EClass SCXML_FOREACH_TYPE = eINSTANCE.getScxmlForeachType();
+        EClass SCXML_FOREACH_TYPE = ScxmlPackage.eINSTANCE.getScxmlForeachType();
 
         /**
          * The meta object literal for the '
          * <em><b>Scxml Core Executablecontent</b></em>' attribute list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FOREACH_TYPE__SCXML_CORE_EXECUTABLECONTENT = eINSTANCE.getScxmlForeachType_ScxmlCoreExecutablecontent();
+        EAttribute SCXML_FOREACH_TYPE__SCXML_CORE_EXECUTABLECONTENT = ScxmlPackage.eINSTANCE.getScxmlForeachType_ScxmlCoreExecutablecontent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FOREACH_TYPE__ANY = eINSTANCE.getScxmlForeachType_Any();
+        EAttribute SCXML_FOREACH_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlForeachType_Any();
 
         /**
          * The meta object literal for the '<em><b>Raise</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FOREACH_TYPE__RAISE = eINSTANCE.getScxmlForeachType_Raise();
+        EReference SCXML_FOREACH_TYPE__RAISE = ScxmlPackage.eINSTANCE.getScxmlForeachType_Raise();
 
         /**
          * The meta object literal for the '<em><b>If</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FOREACH_TYPE__IF = eINSTANCE.getScxmlForeachType_If();
+        EReference SCXML_FOREACH_TYPE__IF = ScxmlPackage.eINSTANCE.getScxmlForeachType_If();
 
         /**
          * The meta object literal for the '<em><b>Foreach</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FOREACH_TYPE__FOREACH = eINSTANCE.getScxmlForeachType_Foreach();
+        EReference SCXML_FOREACH_TYPE__FOREACH = ScxmlPackage.eINSTANCE.getScxmlForeachType_Foreach();
 
         /**
          * The meta object literal for the '<em><b>Send</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FOREACH_TYPE__SEND = eINSTANCE.getScxmlForeachType_Send();
+        EReference SCXML_FOREACH_TYPE__SEND = ScxmlPackage.eINSTANCE.getScxmlForeachType_Send();
 
         /**
          * The meta object literal for the '<em><b>Script</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FOREACH_TYPE__SCRIPT = eINSTANCE.getScxmlForeachType_Script();
+        EReference SCXML_FOREACH_TYPE__SCRIPT = ScxmlPackage.eINSTANCE.getScxmlForeachType_Script();
 
         /**
          * The meta object literal for the '<em><b>Assign</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FOREACH_TYPE__ASSIGN = eINSTANCE.getScxmlForeachType_Assign();
+        EReference SCXML_FOREACH_TYPE__ASSIGN = ScxmlPackage.eINSTANCE.getScxmlForeachType_Assign();
 
         /**
          * The meta object literal for the '<em><b>Log</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FOREACH_TYPE__LOG = eINSTANCE.getScxmlForeachType_Log();
+        EReference SCXML_FOREACH_TYPE__LOG = ScxmlPackage.eINSTANCE.getScxmlForeachType_Log();
 
         /**
          * The meta object literal for the '<em><b>Cancel</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_FOREACH_TYPE__CANCEL = eINSTANCE.getScxmlForeachType_Cancel();
+        EReference SCXML_FOREACH_TYPE__CANCEL = ScxmlPackage.eINSTANCE.getScxmlForeachType_Cancel();
 
         /**
          * The meta object literal for the '<em><b>Array</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FOREACH_TYPE__ARRAY = eINSTANCE.getScxmlForeachType_Array();
+        EAttribute SCXML_FOREACH_TYPE__ARRAY = ScxmlPackage.eINSTANCE.getScxmlForeachType_Array();
 
         /**
          * The meta object literal for the '<em><b>Index</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FOREACH_TYPE__INDEX = eINSTANCE.getScxmlForeachType_Index();
+        EAttribute SCXML_FOREACH_TYPE__INDEX = ScxmlPackage.eINSTANCE.getScxmlForeachType_Index();
 
         /**
          * The meta object literal for the '<em><b>Item</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FOREACH_TYPE__ITEM = eINSTANCE.getScxmlForeachType_Item();
+        EAttribute SCXML_FOREACH_TYPE__ITEM = ScxmlPackage.eINSTANCE.getScxmlForeachType_Item();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_FOREACH_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlForeachType_AnyAttribute();
+        EAttribute SCXML_FOREACH_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlForeachType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlHistoryTypeImpl
          * <em>History Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlHistoryTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlHistoryType()
          * @generated
          */
-        EClass SCXML_HISTORY_TYPE = eINSTANCE.getScxmlHistoryType();
+        EClass SCXML_HISTORY_TYPE = ScxmlPackage.eINSTANCE.getScxmlHistoryType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_HISTORY_TYPE__SCXML_EXTRA_CONTENT = eINSTANCE.getScxmlHistoryType_ScxmlExtraContent();
+        EAttribute SCXML_HISTORY_TYPE__SCXML_EXTRA_CONTENT = ScxmlPackage.eINSTANCE.getScxmlHistoryType_ScxmlExtraContent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_HISTORY_TYPE__ANY = eINSTANCE.getScxmlHistoryType_Any();
+        EAttribute SCXML_HISTORY_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlHistoryType_Any();
 
         /**
          * The meta object literal for the '<em><b>Transition</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_HISTORY_TYPE__TRANSITION = eINSTANCE.getScxmlHistoryType_Transition();
+        EReference SCXML_HISTORY_TYPE__TRANSITION = ScxmlPackage.eINSTANCE.getScxmlHistoryType_Transition();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content1</b></em>
          * ' attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_HISTORY_TYPE__SCXML_EXTRA_CONTENT1 = eINSTANCE.getScxmlHistoryType_ScxmlExtraContent1();
+        EAttribute SCXML_HISTORY_TYPE__SCXML_EXTRA_CONTENT1 = ScxmlPackage.eINSTANCE.getScxmlHistoryType_ScxmlExtraContent1();
 
         /**
          * The meta object literal for the '<em><b>Any1</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_HISTORY_TYPE__ANY1 = eINSTANCE.getScxmlHistoryType_Any1();
+        EAttribute SCXML_HISTORY_TYPE__ANY1 = ScxmlPackage.eINSTANCE.getScxmlHistoryType_Any1();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_HISTORY_TYPE__ID = eINSTANCE.getScxmlHistoryType_Id();
+        EAttribute SCXML_HISTORY_TYPE__ID = ScxmlPackage.eINSTANCE.getScxmlHistoryType_Id();
 
         /**
          * The meta object literal for the '<em><b>Type</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_HISTORY_TYPE__TYPE = eINSTANCE.getScxmlHistoryType_Type();
+        EAttribute SCXML_HISTORY_TYPE__TYPE = ScxmlPackage.eINSTANCE.getScxmlHistoryType_Type();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_HISTORY_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlHistoryType_AnyAttribute();
+        EAttribute SCXML_HISTORY_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlHistoryType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlIfTypeImpl
          * <em>If Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlIfTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlIfType()
          * @generated
          */
-        EClass SCXML_IF_TYPE = eINSTANCE.getScxmlIfType();
+        EClass SCXML_IF_TYPE = ScxmlPackage.eINSTANCE.getScxmlIfType();
 
         /**
          * The meta object literal for the '
          * <em><b>Scxml Core Executablecontent</b></em>' attribute list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_IF_TYPE__SCXML_CORE_EXECUTABLECONTENT = eINSTANCE.getScxmlIfType_ScxmlCoreExecutablecontent();
+        EAttribute SCXML_IF_TYPE__SCXML_CORE_EXECUTABLECONTENT = ScxmlPackage.eINSTANCE.getScxmlIfType_ScxmlCoreExecutablecontent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_IF_TYPE__ANY = eINSTANCE.getScxmlIfType_Any();
+        EAttribute SCXML_IF_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlIfType_Any();
 
         /**
          * The meta object literal for the '<em><b>Raise</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__RAISE = eINSTANCE.getScxmlIfType_Raise();
+        EReference SCXML_IF_TYPE__RAISE = ScxmlPackage.eINSTANCE.getScxmlIfType_Raise();
 
         /**
          * The meta object literal for the '<em><b>If</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__IF = eINSTANCE.getScxmlIfType_If();
+        EReference SCXML_IF_TYPE__IF = ScxmlPackage.eINSTANCE.getScxmlIfType_If();
 
         /**
          * The meta object literal for the '<em><b>Foreach</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__FOREACH = eINSTANCE.getScxmlIfType_Foreach();
+        EReference SCXML_IF_TYPE__FOREACH = ScxmlPackage.eINSTANCE.getScxmlIfType_Foreach();
 
         /**
          * The meta object literal for the '<em><b>Send</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__SEND = eINSTANCE.getScxmlIfType_Send();
+        EReference SCXML_IF_TYPE__SEND = ScxmlPackage.eINSTANCE.getScxmlIfType_Send();
 
         /**
          * The meta object literal for the '<em><b>Script</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__SCRIPT = eINSTANCE.getScxmlIfType_Script();
+        EReference SCXML_IF_TYPE__SCRIPT = ScxmlPackage.eINSTANCE.getScxmlIfType_Script();
 
         /**
          * The meta object literal for the '<em><b>Assign</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__ASSIGN = eINSTANCE.getScxmlIfType_Assign();
+        EReference SCXML_IF_TYPE__ASSIGN = ScxmlPackage.eINSTANCE.getScxmlIfType_Assign();
 
         /**
          * The meta object literal for the '<em><b>Log</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__LOG = eINSTANCE.getScxmlIfType_Log();
+        EReference SCXML_IF_TYPE__LOG = ScxmlPackage.eINSTANCE.getScxmlIfType_Log();
 
         /**
          * The meta object literal for the '<em><b>Cancel</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__CANCEL = eINSTANCE.getScxmlIfType_Cancel();
+        EReference SCXML_IF_TYPE__CANCEL = ScxmlPackage.eINSTANCE.getScxmlIfType_Cancel();
 
         /**
          * The meta object literal for the '<em><b>Elseif</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__ELSEIF = eINSTANCE.getScxmlIfType_Elseif();
+        EReference SCXML_IF_TYPE__ELSEIF = ScxmlPackage.eINSTANCE.getScxmlIfType_Elseif();
 
         /**
          * The meta object literal for the '
          * <em><b>Scxml Core Executablecontent1</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_IF_TYPE__SCXML_CORE_EXECUTABLECONTENT1 = eINSTANCE.getScxmlIfType_ScxmlCoreExecutablecontent1();
+        EAttribute SCXML_IF_TYPE__SCXML_CORE_EXECUTABLECONTENT1 = ScxmlPackage.eINSTANCE.getScxmlIfType_ScxmlCoreExecutablecontent1();
 
         /**
          * The meta object literal for the '<em><b>Any1</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_IF_TYPE__ANY1 = eINSTANCE.getScxmlIfType_Any1();
+        EAttribute SCXML_IF_TYPE__ANY1 = ScxmlPackage.eINSTANCE.getScxmlIfType_Any1();
 
         /**
          * The meta object literal for the '<em><b>Raise1</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__RAISE1 = eINSTANCE.getScxmlIfType_Raise1();
+        EReference SCXML_IF_TYPE__RAISE1 = ScxmlPackage.eINSTANCE.getScxmlIfType_Raise1();
 
         /**
          * The meta object literal for the '<em><b>If1</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__IF1 = eINSTANCE.getScxmlIfType_If1();
+        EReference SCXML_IF_TYPE__IF1 = ScxmlPackage.eINSTANCE.getScxmlIfType_If1();
 
         /**
          * The meta object literal for the '<em><b>Foreach1</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__FOREACH1 = eINSTANCE.getScxmlIfType_Foreach1();
+        EReference SCXML_IF_TYPE__FOREACH1 = ScxmlPackage.eINSTANCE.getScxmlIfType_Foreach1();
 
         /**
          * The meta object literal for the '<em><b>Send1</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__SEND1 = eINSTANCE.getScxmlIfType_Send1();
+        EReference SCXML_IF_TYPE__SEND1 = ScxmlPackage.eINSTANCE.getScxmlIfType_Send1();
 
         /**
          * The meta object literal for the '<em><b>Script1</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__SCRIPT1 = eINSTANCE.getScxmlIfType_Script1();
+        EReference SCXML_IF_TYPE__SCRIPT1 = ScxmlPackage.eINSTANCE.getScxmlIfType_Script1();
 
         /**
          * The meta object literal for the '<em><b>Assign1</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__ASSIGN1 = eINSTANCE.getScxmlIfType_Assign1();
+        EReference SCXML_IF_TYPE__ASSIGN1 = ScxmlPackage.eINSTANCE.getScxmlIfType_Assign1();
 
         /**
          * The meta object literal for the '<em><b>Log1</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__LOG1 = eINSTANCE.getScxmlIfType_Log1();
+        EReference SCXML_IF_TYPE__LOG1 = ScxmlPackage.eINSTANCE.getScxmlIfType_Log1();
 
         /**
          * The meta object literal for the '<em><b>Cancel1</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__CANCEL1 = eINSTANCE.getScxmlIfType_Cancel1();
+        EReference SCXML_IF_TYPE__CANCEL1 = ScxmlPackage.eINSTANCE.getScxmlIfType_Cancel1();
 
         /**
          * The meta object literal for the '<em><b>Else</b></em>' containment
          * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__ELSE = eINSTANCE.getScxmlIfType_Else();
+        EReference SCXML_IF_TYPE__ELSE = ScxmlPackage.eINSTANCE.getScxmlIfType_Else();
 
         /**
          * The meta object literal for the '
          * <em><b>Scxml Core Executablecontent2</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_IF_TYPE__SCXML_CORE_EXECUTABLECONTENT2 = eINSTANCE.getScxmlIfType_ScxmlCoreExecutablecontent2();
+        EAttribute SCXML_IF_TYPE__SCXML_CORE_EXECUTABLECONTENT2 = ScxmlPackage.eINSTANCE.getScxmlIfType_ScxmlCoreExecutablecontent2();
 
         /**
          * The meta object literal for the '<em><b>Any2</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_IF_TYPE__ANY2 = eINSTANCE.getScxmlIfType_Any2();
+        EAttribute SCXML_IF_TYPE__ANY2 = ScxmlPackage.eINSTANCE.getScxmlIfType_Any2();
 
         /**
          * The meta object literal for the '<em><b>Raise2</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__RAISE2 = eINSTANCE.getScxmlIfType_Raise2();
+        EReference SCXML_IF_TYPE__RAISE2 = ScxmlPackage.eINSTANCE.getScxmlIfType_Raise2();
 
         /**
          * The meta object literal for the '<em><b>If2</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__IF2 = eINSTANCE.getScxmlIfType_If2();
+        EReference SCXML_IF_TYPE__IF2 = ScxmlPackage.eINSTANCE.getScxmlIfType_If2();
 
         /**
          * The meta object literal for the '<em><b>Foreach2</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__FOREACH2 = eINSTANCE.getScxmlIfType_Foreach2();
+        EReference SCXML_IF_TYPE__FOREACH2 = ScxmlPackage.eINSTANCE.getScxmlIfType_Foreach2();
 
         /**
          * The meta object literal for the '<em><b>Send2</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__SEND2 = eINSTANCE.getScxmlIfType_Send2();
+        EReference SCXML_IF_TYPE__SEND2 = ScxmlPackage.eINSTANCE.getScxmlIfType_Send2();
 
         /**
          * The meta object literal for the '<em><b>Script2</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__SCRIPT2 = eINSTANCE.getScxmlIfType_Script2();
+        EReference SCXML_IF_TYPE__SCRIPT2 = ScxmlPackage.eINSTANCE.getScxmlIfType_Script2();
 
         /**
          * The meta object literal for the '<em><b>Assign2</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__ASSIGN2 = eINSTANCE.getScxmlIfType_Assign2();
+        EReference SCXML_IF_TYPE__ASSIGN2 = ScxmlPackage.eINSTANCE.getScxmlIfType_Assign2();
 
         /**
          * The meta object literal for the '<em><b>Log2</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__LOG2 = eINSTANCE.getScxmlIfType_Log2();
+        EReference SCXML_IF_TYPE__LOG2 = ScxmlPackage.eINSTANCE.getScxmlIfType_Log2();
 
         /**
          * The meta object literal for the '<em><b>Cancel2</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_IF_TYPE__CANCEL2 = eINSTANCE.getScxmlIfType_Cancel2();
+        EReference SCXML_IF_TYPE__CANCEL2 = ScxmlPackage.eINSTANCE.getScxmlIfType_Cancel2();
 
         /**
          * The meta object literal for the '<em><b>Cond</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_IF_TYPE__COND = eINSTANCE.getScxmlIfType_Cond();
+        EAttribute SCXML_IF_TYPE__COND = ScxmlPackage.eINSTANCE.getScxmlIfType_Cond();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_IF_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlIfType_AnyAttribute();
+        EAttribute SCXML_IF_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlIfType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlInitialTypeImpl
          * <em>Initial Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlInitialTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlInitialType()
          * @generated
          */
-        EClass SCXML_INITIAL_TYPE = eINSTANCE.getScxmlInitialType();
+        EClass SCXML_INITIAL_TYPE = ScxmlPackage.eINSTANCE.getScxmlInitialType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INITIAL_TYPE__SCXML_EXTRA_CONTENT = eINSTANCE.getScxmlInitialType_ScxmlExtraContent();
+        EAttribute SCXML_INITIAL_TYPE__SCXML_EXTRA_CONTENT = ScxmlPackage.eINSTANCE.getScxmlInitialType_ScxmlExtraContent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INITIAL_TYPE__ANY = eINSTANCE.getScxmlInitialType_Any();
+        EAttribute SCXML_INITIAL_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlInitialType_Any();
 
         /**
          * The meta object literal for the '<em><b>Transition</b></em>'
          * containment reference feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_INITIAL_TYPE__TRANSITION = eINSTANCE.getScxmlInitialType_Transition();
+        EReference SCXML_INITIAL_TYPE__TRANSITION = ScxmlPackage.eINSTANCE.getScxmlInitialType_Transition();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content1</b></em>
          * ' attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INITIAL_TYPE__SCXML_EXTRA_CONTENT1 = eINSTANCE.getScxmlInitialType_ScxmlExtraContent1();
+        EAttribute SCXML_INITIAL_TYPE__SCXML_EXTRA_CONTENT1 = ScxmlPackage.eINSTANCE.getScxmlInitialType_ScxmlExtraContent1();
 
         /**
          * The meta object literal for the '<em><b>Any1</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INITIAL_TYPE__ANY1 = eINSTANCE.getScxmlInitialType_Any1();
+        EAttribute SCXML_INITIAL_TYPE__ANY1 = ScxmlPackage.eINSTANCE.getScxmlInitialType_Any1();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INITIAL_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlInitialType_AnyAttribute();
+        EAttribute SCXML_INITIAL_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlInitialType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlInvokeTypeImpl
          * <em>Invoke Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlInvokeTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlInvokeType()
          * @generated
          */
-        EClass SCXML_INVOKE_TYPE = eINSTANCE.getScxmlInvokeType();
+        EClass SCXML_INVOKE_TYPE = ScxmlPackage.eINSTANCE.getScxmlInvokeType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Invoke Mix</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__SCXML_INVOKE_MIX = eINSTANCE.getScxmlInvokeType_ScxmlInvokeMix();
+        EAttribute SCXML_INVOKE_TYPE__SCXML_INVOKE_MIX = ScxmlPackage.eINSTANCE.getScxmlInvokeType_ScxmlInvokeMix();
 
         /**
          * The meta object literal for the '<em><b>Content</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_INVOKE_TYPE__CONTENT = eINSTANCE.getScxmlInvokeType_Content();
+        EReference SCXML_INVOKE_TYPE__CONTENT = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Content();
 
         /**
          * The meta object literal for the '<em><b>Param</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_INVOKE_TYPE__PARAM = eINSTANCE.getScxmlInvokeType_Param();
+        EReference SCXML_INVOKE_TYPE__PARAM = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Param();
 
         /**
          * The meta object literal for the '<em><b>Finalize</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_INVOKE_TYPE__FINALIZE = eINSTANCE.getScxmlInvokeType_Finalize();
+        EReference SCXML_INVOKE_TYPE__FINALIZE = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Finalize();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__ANY = eINSTANCE.getScxmlInvokeType_Any();
+        EAttribute SCXML_INVOKE_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Any();
 
         /**
          * The meta object literal for the '<em><b>Autoforward</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__AUTOFORWARD = eINSTANCE.getScxmlInvokeType_Autoforward();
+        EAttribute SCXML_INVOKE_TYPE__AUTOFORWARD = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Autoforward();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__ID = eINSTANCE.getScxmlInvokeType_Id();
+        EAttribute SCXML_INVOKE_TYPE__ID = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Id();
 
         /**
          * The meta object literal for the '<em><b>Idlocation</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__IDLOCATION = eINSTANCE.getScxmlInvokeType_Idlocation();
+        EAttribute SCXML_INVOKE_TYPE__IDLOCATION = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Idlocation();
 
         /**
          * The meta object literal for the '<em><b>Namelist</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__NAMELIST = eINSTANCE.getScxmlInvokeType_Namelist();
+        EAttribute SCXML_INVOKE_TYPE__NAMELIST = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Namelist();
 
         /**
          * The meta object literal for the '<em><b>Src</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__SRC = eINSTANCE.getScxmlInvokeType_Src();
+        EAttribute SCXML_INVOKE_TYPE__SRC = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Src();
 
         /**
          * The meta object literal for the '<em><b>Srcexpr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__SRCEXPR = eINSTANCE.getScxmlInvokeType_Srcexpr();
+        EAttribute SCXML_INVOKE_TYPE__SRCEXPR = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Srcexpr();
 
         /**
          * The meta object literal for the '<em><b>Type</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__TYPE = eINSTANCE.getScxmlInvokeType_Type();
+        EAttribute SCXML_INVOKE_TYPE__TYPE = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Type();
 
         /**
          * The meta object literal for the '<em><b>Typeexpr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__TYPEEXPR = eINSTANCE.getScxmlInvokeType_Typeexpr();
+        EAttribute SCXML_INVOKE_TYPE__TYPEEXPR = ScxmlPackage.eINSTANCE.getScxmlInvokeType_Typeexpr();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_INVOKE_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlInvokeType_AnyAttribute();
+        EAttribute SCXML_INVOKE_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlInvokeType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlLogTypeImpl
          * <em>Log Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlLogTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlLogType()
          * @generated
          */
-        EClass SCXML_LOG_TYPE = eINSTANCE.getScxmlLogType();
+        EClass SCXML_LOG_TYPE = ScxmlPackage.eINSTANCE.getScxmlLogType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_LOG_TYPE__SCXML_EXTRA_CONTENT = eINSTANCE.getScxmlLogType_ScxmlExtraContent();
+        EAttribute SCXML_LOG_TYPE__SCXML_EXTRA_CONTENT = ScxmlPackage.eINSTANCE.getScxmlLogType_ScxmlExtraContent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_LOG_TYPE__ANY = eINSTANCE.getScxmlLogType_Any();
+        EAttribute SCXML_LOG_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlLogType_Any();
 
         /**
          * The meta object literal for the '<em><b>Expr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_LOG_TYPE__EXPR = eINSTANCE.getScxmlLogType_Expr();
+        EAttribute SCXML_LOG_TYPE__EXPR = ScxmlPackage.eINSTANCE.getScxmlLogType_Expr();
 
         /**
          * The meta object literal for the '<em><b>Label</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_LOG_TYPE__LABEL = eINSTANCE.getScxmlLogType_Label();
+        EAttribute SCXML_LOG_TYPE__LABEL = ScxmlPackage.eINSTANCE.getScxmlLogType_Label();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_LOG_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlLogType_AnyAttribute();
+        EAttribute SCXML_LOG_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlLogType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlOnentryTypeImpl
          * <em>Onentry Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlOnentryTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlOnentryType()
          * @generated
          */
-        EClass SCXML_ONENTRY_TYPE = eINSTANCE.getScxmlOnentryType();
+        EClass SCXML_ONENTRY_TYPE = ScxmlPackage.eINSTANCE.getScxmlOnentryType();
 
         /**
          * The meta object literal for the '
          * <em><b>Scxml Core Executablecontent</b></em>' attribute list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ONENTRY_TYPE__SCXML_CORE_EXECUTABLECONTENT = eINSTANCE.getScxmlOnentryType_ScxmlCoreExecutablecontent();
+        EAttribute SCXML_ONENTRY_TYPE__SCXML_CORE_EXECUTABLECONTENT = ScxmlPackage.eINSTANCE.getScxmlOnentryType_ScxmlCoreExecutablecontent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ONENTRY_TYPE__ANY = eINSTANCE.getScxmlOnentryType_Any();
+        EAttribute SCXML_ONENTRY_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlOnentryType_Any();
 
         /**
          * The meta object literal for the '<em><b>Raise</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONENTRY_TYPE__RAISE = eINSTANCE.getScxmlOnentryType_Raise();
+        EReference SCXML_ONENTRY_TYPE__RAISE = ScxmlPackage.eINSTANCE.getScxmlOnentryType_Raise();
 
         /**
          * The meta object literal for the '<em><b>If</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONENTRY_TYPE__IF = eINSTANCE.getScxmlOnentryType_If();
+        EReference SCXML_ONENTRY_TYPE__IF = ScxmlPackage.eINSTANCE.getScxmlOnentryType_If();
 
         /**
          * The meta object literal for the '<em><b>Foreach</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONENTRY_TYPE__FOREACH = eINSTANCE.getScxmlOnentryType_Foreach();
+        EReference SCXML_ONENTRY_TYPE__FOREACH = ScxmlPackage.eINSTANCE.getScxmlOnentryType_Foreach();
 
         /**
          * The meta object literal for the '<em><b>Send</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONENTRY_TYPE__SEND = eINSTANCE.getScxmlOnentryType_Send();
+        EReference SCXML_ONENTRY_TYPE__SEND = ScxmlPackage.eINSTANCE.getScxmlOnentryType_Send();
 
         /**
          * The meta object literal for the '<em><b>Script</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONENTRY_TYPE__SCRIPT = eINSTANCE.getScxmlOnentryType_Script();
+        EReference SCXML_ONENTRY_TYPE__SCRIPT = ScxmlPackage.eINSTANCE.getScxmlOnentryType_Script();
 
         /**
          * The meta object literal for the '<em><b>Assign</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONENTRY_TYPE__ASSIGN = eINSTANCE.getScxmlOnentryType_Assign();
+        EReference SCXML_ONENTRY_TYPE__ASSIGN = ScxmlPackage.eINSTANCE.getScxmlOnentryType_Assign();
 
         /**
          * The meta object literal for the '<em><b>Log</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONENTRY_TYPE__LOG = eINSTANCE.getScxmlOnentryType_Log();
+        EReference SCXML_ONENTRY_TYPE__LOG = ScxmlPackage.eINSTANCE.getScxmlOnentryType_Log();
 
         /**
          * The meta object literal for the '<em><b>Cancel</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONENTRY_TYPE__CANCEL = eINSTANCE.getScxmlOnentryType_Cancel();
+        EReference SCXML_ONENTRY_TYPE__CANCEL = ScxmlPackage.eINSTANCE.getScxmlOnentryType_Cancel();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ONENTRY_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlOnentryType_AnyAttribute();
+        EAttribute SCXML_ONENTRY_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlOnentryType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlOnexitTypeImpl
          * <em>Onexit Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlOnexitTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlOnexitType()
          * @generated
          */
-        EClass SCXML_ONEXIT_TYPE = eINSTANCE.getScxmlOnexitType();
+        EClass SCXML_ONEXIT_TYPE = ScxmlPackage.eINSTANCE.getScxmlOnexitType();
 
         /**
          * The meta object literal for the '
          * <em><b>Scxml Core Executablecontent</b></em>' attribute list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ONEXIT_TYPE__SCXML_CORE_EXECUTABLECONTENT = eINSTANCE.getScxmlOnexitType_ScxmlCoreExecutablecontent();
+        EAttribute SCXML_ONEXIT_TYPE__SCXML_CORE_EXECUTABLECONTENT = ScxmlPackage.eINSTANCE.getScxmlOnexitType_ScxmlCoreExecutablecontent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ONEXIT_TYPE__ANY = eINSTANCE.getScxmlOnexitType_Any();
+        EAttribute SCXML_ONEXIT_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlOnexitType_Any();
 
         /**
          * The meta object literal for the '<em><b>Raise</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONEXIT_TYPE__RAISE = eINSTANCE.getScxmlOnexitType_Raise();
+        EReference SCXML_ONEXIT_TYPE__RAISE = ScxmlPackage.eINSTANCE.getScxmlOnexitType_Raise();
 
         /**
          * The meta object literal for the '<em><b>If</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONEXIT_TYPE__IF = eINSTANCE.getScxmlOnexitType_If();
+        EReference SCXML_ONEXIT_TYPE__IF = ScxmlPackage.eINSTANCE.getScxmlOnexitType_If();
 
         /**
          * The meta object literal for the '<em><b>Foreach</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONEXIT_TYPE__FOREACH = eINSTANCE.getScxmlOnexitType_Foreach();
+        EReference SCXML_ONEXIT_TYPE__FOREACH = ScxmlPackage.eINSTANCE.getScxmlOnexitType_Foreach();
 
         /**
          * The meta object literal for the '<em><b>Send</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONEXIT_TYPE__SEND = eINSTANCE.getScxmlOnexitType_Send();
+        EReference SCXML_ONEXIT_TYPE__SEND = ScxmlPackage.eINSTANCE.getScxmlOnexitType_Send();
 
         /**
          * The meta object literal for the '<em><b>Script</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONEXIT_TYPE__SCRIPT = eINSTANCE.getScxmlOnexitType_Script();
+        EReference SCXML_ONEXIT_TYPE__SCRIPT = ScxmlPackage.eINSTANCE.getScxmlOnexitType_Script();
 
         /**
          * The meta object literal for the '<em><b>Assign</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONEXIT_TYPE__ASSIGN = eINSTANCE.getScxmlOnexitType_Assign();
+        EReference SCXML_ONEXIT_TYPE__ASSIGN = ScxmlPackage.eINSTANCE.getScxmlOnexitType_Assign();
 
         /**
          * The meta object literal for the '<em><b>Log</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONEXIT_TYPE__LOG = eINSTANCE.getScxmlOnexitType_Log();
+        EReference SCXML_ONEXIT_TYPE__LOG = ScxmlPackage.eINSTANCE.getScxmlOnexitType_Log();
 
         /**
          * The meta object literal for the '<em><b>Cancel</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_ONEXIT_TYPE__CANCEL = eINSTANCE.getScxmlOnexitType_Cancel();
+        EReference SCXML_ONEXIT_TYPE__CANCEL = ScxmlPackage.eINSTANCE.getScxmlOnexitType_Cancel();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_ONEXIT_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlOnexitType_AnyAttribute();
+        EAttribute SCXML_ONEXIT_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlOnexitType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlParallelTypeImpl
          * <em>Parallel Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlParallelTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlParallelType()
          * @generated
          */
-        EClass SCXML_PARALLEL_TYPE = eINSTANCE.getScxmlParallelType();
+        EClass SCXML_PARALLEL_TYPE = ScxmlPackage.eINSTANCE.getScxmlParallelType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Parallel Mix</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARALLEL_TYPE__SCXML_PARALLEL_MIX = eINSTANCE.getScxmlParallelType_ScxmlParallelMix();
+        EAttribute SCXML_PARALLEL_TYPE__SCXML_PARALLEL_MIX = ScxmlPackage.eINSTANCE.getScxmlParallelType_ScxmlParallelMix();
 
         /**
          * The meta object literal for the '<em><b>Onentry</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_PARALLEL_TYPE__ONENTRY = eINSTANCE.getScxmlParallelType_Onentry();
+        EReference SCXML_PARALLEL_TYPE__ONENTRY = ScxmlPackage.eINSTANCE.getScxmlParallelType_Onentry();
 
         /**
          * The meta object literal for the '<em><b>Onexit</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_PARALLEL_TYPE__ONEXIT = eINSTANCE.getScxmlParallelType_Onexit();
+        EReference SCXML_PARALLEL_TYPE__ONEXIT = ScxmlPackage.eINSTANCE.getScxmlParallelType_Onexit();
 
         /**
          * The meta object literal for the '<em><b>Transition</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_PARALLEL_TYPE__TRANSITION = eINSTANCE.getScxmlParallelType_Transition();
+        EReference SCXML_PARALLEL_TYPE__TRANSITION = ScxmlPackage.eINSTANCE.getScxmlParallelType_Transition();
 
         /**
          * The meta object literal for the '<em><b>State</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_PARALLEL_TYPE__STATE = eINSTANCE.getScxmlParallelType_State();
+        EReference SCXML_PARALLEL_TYPE__STATE = ScxmlPackage.eINSTANCE.getScxmlParallelType_State();
 
         /**
          * The meta object literal for the '<em><b>Parallel</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_PARALLEL_TYPE__PARALLEL = eINSTANCE.getScxmlParallelType_Parallel();
+        EReference SCXML_PARALLEL_TYPE__PARALLEL = ScxmlPackage.eINSTANCE.getScxmlParallelType_Parallel();
 
         /**
          * The meta object literal for the '<em><b>History</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_PARALLEL_TYPE__HISTORY = eINSTANCE.getScxmlParallelType_History();
+        EReference SCXML_PARALLEL_TYPE__HISTORY = ScxmlPackage.eINSTANCE.getScxmlParallelType_History();
 
         /**
          * The meta object literal for the '<em><b>Datamodel</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_PARALLEL_TYPE__DATAMODEL = eINSTANCE.getScxmlParallelType_Datamodel();
+        EReference SCXML_PARALLEL_TYPE__DATAMODEL = ScxmlPackage.eINSTANCE.getScxmlParallelType_Datamodel();
 
         /**
          * The meta object literal for the '<em><b>Invoke</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_PARALLEL_TYPE__INVOKE = eINSTANCE.getScxmlParallelType_Invoke();
+        EReference SCXML_PARALLEL_TYPE__INVOKE = ScxmlPackage.eINSTANCE.getScxmlParallelType_Invoke();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARALLEL_TYPE__ANY = eINSTANCE.getScxmlParallelType_Any();
+        EAttribute SCXML_PARALLEL_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlParallelType_Any();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARALLEL_TYPE__ID = eINSTANCE.getScxmlParallelType_Id();
+        EAttribute SCXML_PARALLEL_TYPE__ID = ScxmlPackage.eINSTANCE.getScxmlParallelType_Id();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARALLEL_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlParallelType_AnyAttribute();
+        EAttribute SCXML_PARALLEL_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlParallelType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlParamTypeImpl
          * <em>Param Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlParamTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlParamType()
          * @generated
          */
-        EClass SCXML_PARAM_TYPE = eINSTANCE.getScxmlParamType();
+        EClass SCXML_PARAM_TYPE = ScxmlPackage.eINSTANCE.getScxmlParamType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARAM_TYPE__SCXML_EXTRA_CONTENT = eINSTANCE.getScxmlParamType_ScxmlExtraContent();
+        EAttribute SCXML_PARAM_TYPE__SCXML_EXTRA_CONTENT = ScxmlPackage.eINSTANCE.getScxmlParamType_ScxmlExtraContent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARAM_TYPE__ANY = eINSTANCE.getScxmlParamType_Any();
+        EAttribute SCXML_PARAM_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlParamType_Any();
 
         /**
          * The meta object literal for the '<em><b>Expr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARAM_TYPE__EXPR = eINSTANCE.getScxmlParamType_Expr();
+        EAttribute SCXML_PARAM_TYPE__EXPR = ScxmlPackage.eINSTANCE.getScxmlParamType_Expr();
 
         /**
          * The meta object literal for the '<em><b>Location</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARAM_TYPE__LOCATION = eINSTANCE.getScxmlParamType_Location();
+        EAttribute SCXML_PARAM_TYPE__LOCATION = ScxmlPackage.eINSTANCE.getScxmlParamType_Location();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARAM_TYPE__NAME = eINSTANCE.getScxmlParamType_Name();
+        EAttribute SCXML_PARAM_TYPE__NAME = ScxmlPackage.eINSTANCE.getScxmlParamType_Name();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_PARAM_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlParamType_AnyAttribute();
+        EAttribute SCXML_PARAM_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlParamType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlRaiseTypeImpl
          * <em>Raise Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlRaiseTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlRaiseType()
          * @generated
          */
-        EClass SCXML_RAISE_TYPE = eINSTANCE.getScxmlRaiseType();
+        EClass SCXML_RAISE_TYPE = ScxmlPackage.eINSTANCE.getScxmlRaiseType();
 
         /**
          * The meta object literal for the '<em><b>Event</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_RAISE_TYPE__EVENT = eINSTANCE.getScxmlRaiseType_Event();
+        EAttribute SCXML_RAISE_TYPE__EVENT = ScxmlPackage.eINSTANCE.getScxmlRaiseType_Event();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_RAISE_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlRaiseType_AnyAttribute();
+        EAttribute SCXML_RAISE_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlRaiseType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlScriptTypeImpl
          * <em>Script Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlScriptTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlScriptType()
          * @generated
          */
-        EClass SCXML_SCRIPT_TYPE = eINSTANCE.getScxmlScriptType();
+        EClass SCXML_SCRIPT_TYPE = ScxmlPackage.eINSTANCE.getScxmlScriptType();
 
         /**
          * The meta object literal for the '<em><b>Mixed</b></em>' attribute
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCRIPT_TYPE__MIXED = eINSTANCE.getScxmlScriptType_Mixed();
+        EAttribute SCXML_SCRIPT_TYPE__MIXED = ScxmlPackage.eINSTANCE.getScxmlScriptType_Mixed();
 
         /**
          * The meta object literal for the '<em><b>Scxml Extra Content</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCRIPT_TYPE__SCXML_EXTRA_CONTENT = eINSTANCE.getScxmlScriptType_ScxmlExtraContent();
+        EAttribute SCXML_SCRIPT_TYPE__SCXML_EXTRA_CONTENT = ScxmlPackage.eINSTANCE.getScxmlScriptType_ScxmlExtraContent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCRIPT_TYPE__ANY = eINSTANCE.getScxmlScriptType_Any();
+        EAttribute SCXML_SCRIPT_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlScriptType_Any();
 
         /**
          * The meta object literal for the '<em><b>Src</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCRIPT_TYPE__SRC = eINSTANCE.getScxmlScriptType_Src();
+        EAttribute SCXML_SCRIPT_TYPE__SRC = ScxmlPackage.eINSTANCE.getScxmlScriptType_Src();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCRIPT_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlScriptType_AnyAttribute();
+        EAttribute SCXML_SCRIPT_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlScriptType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlScxmlTypeImpl
          * <em>Scxml Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlScxmlTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlScxmlType()
          * @generated
          */
-        EClass SCXML_SCXML_TYPE = eINSTANCE.getScxmlScxmlType();
+        EClass SCXML_SCXML_TYPE = ScxmlPackage.eINSTANCE.getScxmlScxmlType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Scxml Mix</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__SCXML_SCXML_MIX = eINSTANCE.getScxmlScxmlType_ScxmlScxmlMix();
+        EAttribute SCXML_SCXML_TYPE__SCXML_SCXML_MIX = ScxmlPackage.eINSTANCE.getScxmlScxmlType_ScxmlScxmlMix();
 
         /**
          * The meta object literal for the '<em><b>State</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_SCXML_TYPE__STATE = eINSTANCE.getScxmlScxmlType_State();
+        EReference SCXML_SCXML_TYPE__STATE = ScxmlPackage.eINSTANCE.getScxmlScxmlType_State();
 
         /**
          * The meta object literal for the '<em><b>Parallel</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_SCXML_TYPE__PARALLEL = eINSTANCE.getScxmlScxmlType_Parallel();
+        EReference SCXML_SCXML_TYPE__PARALLEL = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Parallel();
 
         /**
          * The meta object literal for the '<em><b>Final</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_SCXML_TYPE__FINAL = eINSTANCE.getScxmlScxmlType_Final();
+        EReference SCXML_SCXML_TYPE__FINAL = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Final();
 
         /**
          * The meta object literal for the '<em><b>Datamodel</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_SCXML_TYPE__DATAMODEL = eINSTANCE.getScxmlScxmlType_Datamodel();
+        EReference SCXML_SCXML_TYPE__DATAMODEL = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Datamodel();
 
         /**
          * The meta object literal for the '<em><b>Script</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_SCXML_TYPE__SCRIPT = eINSTANCE.getScxmlScxmlType_Script();
+        EReference SCXML_SCXML_TYPE__SCRIPT = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Script();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__ANY = eINSTANCE.getScxmlScxmlType_Any();
+        EAttribute SCXML_SCXML_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Any();
 
         /**
          * The meta object literal for the '<em><b>Binding</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__BINDING = eINSTANCE.getScxmlScxmlType_Binding();
+        EAttribute SCXML_SCXML_TYPE__BINDING = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Binding();
 
         /**
          * The meta object literal for the '<em><b>Datamodel1</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__DATAMODEL1 = eINSTANCE.getScxmlScxmlType_Datamodel1();
+        EAttribute SCXML_SCXML_TYPE__DATAMODEL1 = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Datamodel1();
 
         /**
          * The meta object literal for the '<em><b>Exmode</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__EXMODE = eINSTANCE.getScxmlScxmlType_Exmode();
+        EAttribute SCXML_SCXML_TYPE__EXMODE = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Exmode();
 
         /**
          * The meta object literal for the '<em><b>Initial</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__INITIAL = eINSTANCE.getScxmlScxmlType_Initial();
+        EAttribute SCXML_SCXML_TYPE__INITIAL = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Initial();
 
         /**
          * The meta object literal for the '<em><b>Name</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__NAME = eINSTANCE.getScxmlScxmlType_Name();
+        EAttribute SCXML_SCXML_TYPE__NAME = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Name();
 
         /**
          * The meta object literal for the '<em><b>Version</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__VERSION = eINSTANCE.getScxmlScxmlType_Version();
+        EAttribute SCXML_SCXML_TYPE__VERSION = ScxmlPackage.eINSTANCE.getScxmlScxmlType_Version();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SCXML_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlScxmlType_AnyAttribute();
+        EAttribute SCXML_SCXML_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlScxmlType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlSendTypeImpl
          * <em>Send Type</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
          * -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlSendTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlSendType()
          * @generated
          */
-        EClass SCXML_SEND_TYPE = eINSTANCE.getScxmlSendType();
+        EClass SCXML_SEND_TYPE = ScxmlPackage.eINSTANCE.getScxmlSendType();
 
         /**
          * The meta object literal for the '<em><b>Scxml Send Mix</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__SCXML_SEND_MIX = eINSTANCE.getScxmlSendType_ScxmlSendMix();
+        EAttribute SCXML_SEND_TYPE__SCXML_SEND_MIX = ScxmlPackage.eINSTANCE.getScxmlSendType_ScxmlSendMix();
 
         /**
          * The meta object literal for the '<em><b>Content</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_SEND_TYPE__CONTENT = eINSTANCE.getScxmlSendType_Content();
+        EReference SCXML_SEND_TYPE__CONTENT = ScxmlPackage.eINSTANCE.getScxmlSendType_Content();
 
         /**
          * The meta object literal for the '<em><b>Param</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_SEND_TYPE__PARAM = eINSTANCE.getScxmlSendType_Param();
+        EReference SCXML_SEND_TYPE__PARAM = ScxmlPackage.eINSTANCE.getScxmlSendType_Param();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__ANY = eINSTANCE.getScxmlSendType_Any();
+        EAttribute SCXML_SEND_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlSendType_Any();
 
         /**
          * The meta object literal for the '<em><b>Delay</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__DELAY = eINSTANCE.getScxmlSendType_Delay();
+        EAttribute SCXML_SEND_TYPE__DELAY = ScxmlPackage.eINSTANCE.getScxmlSendType_Delay();
 
         /**
          * The meta object literal for the '<em><b>Delayexpr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__DELAYEXPR = eINSTANCE.getScxmlSendType_Delayexpr();
+        EAttribute SCXML_SEND_TYPE__DELAYEXPR = ScxmlPackage.eINSTANCE.getScxmlSendType_Delayexpr();
 
         /**
          * The meta object literal for the '<em><b>Event</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__EVENT = eINSTANCE.getScxmlSendType_Event();
+        EAttribute SCXML_SEND_TYPE__EVENT = ScxmlPackage.eINSTANCE.getScxmlSendType_Event();
 
         /**
          * The meta object literal for the '<em><b>Eventexpr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__EVENTEXPR = eINSTANCE.getScxmlSendType_Eventexpr();
+        EAttribute SCXML_SEND_TYPE__EVENTEXPR = ScxmlPackage.eINSTANCE.getScxmlSendType_Eventexpr();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__ID = eINSTANCE.getScxmlSendType_Id();
+        EAttribute SCXML_SEND_TYPE__ID = ScxmlPackage.eINSTANCE.getScxmlSendType_Id();
 
         /**
          * The meta object literal for the '<em><b>Idlocation</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__IDLOCATION = eINSTANCE.getScxmlSendType_Idlocation();
+        EAttribute SCXML_SEND_TYPE__IDLOCATION = ScxmlPackage.eINSTANCE.getScxmlSendType_Idlocation();
 
         /**
          * The meta object literal for the '<em><b>Namelist</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__NAMELIST = eINSTANCE.getScxmlSendType_Namelist();
+        EAttribute SCXML_SEND_TYPE__NAMELIST = ScxmlPackage.eINSTANCE.getScxmlSendType_Namelist();
 
         /**
          * The meta object literal for the '<em><b>Target</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__TARGET = eINSTANCE.getScxmlSendType_Target();
+        EAttribute SCXML_SEND_TYPE__TARGET = ScxmlPackage.eINSTANCE.getScxmlSendType_Target();
 
         /**
          * The meta object literal for the '<em><b>Targetexpr</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__TARGETEXPR = eINSTANCE.getScxmlSendType_Targetexpr();
+        EAttribute SCXML_SEND_TYPE__TARGETEXPR = ScxmlPackage.eINSTANCE.getScxmlSendType_Targetexpr();
 
         /**
          * The meta object literal for the '<em><b>Type</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__TYPE = eINSTANCE.getScxmlSendType_Type();
+        EAttribute SCXML_SEND_TYPE__TYPE = ScxmlPackage.eINSTANCE.getScxmlSendType_Type();
 
         /**
          * The meta object literal for the '<em><b>Typeexpr</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__TYPEEXPR = eINSTANCE.getScxmlSendType_Typeexpr();
+        EAttribute SCXML_SEND_TYPE__TYPEEXPR = ScxmlPackage.eINSTANCE.getScxmlSendType_Typeexpr();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_SEND_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlSendType_AnyAttribute();
+        EAttribute SCXML_SEND_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlSendType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlStateTypeImpl
          * <em>State Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlStateTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlStateType()
          * @generated
          */
-        EClass SCXML_STATE_TYPE = eINSTANCE.getScxmlStateType();
+        EClass SCXML_STATE_TYPE = ScxmlPackage.eINSTANCE.getScxmlStateType();
 
         /**
          * The meta object literal for the '<em><b>Scxml State Mix</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_STATE_TYPE__SCXML_STATE_MIX = eINSTANCE.getScxmlStateType_ScxmlStateMix();
+        EAttribute SCXML_STATE_TYPE__SCXML_STATE_MIX = ScxmlPackage.eINSTANCE.getScxmlStateType_ScxmlStateMix();
 
         /**
          * The meta object literal for the '<em><b>Onentry</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__ONENTRY = eINSTANCE.getScxmlStateType_Onentry();
+        EReference SCXML_STATE_TYPE__ONENTRY = ScxmlPackage.eINSTANCE.getScxmlStateType_Onentry();
 
         /**
          * The meta object literal for the '<em><b>Onexit</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__ONEXIT = eINSTANCE.getScxmlStateType_Onexit();
+        EReference SCXML_STATE_TYPE__ONEXIT = ScxmlPackage.eINSTANCE.getScxmlStateType_Onexit();
 
         /**
          * The meta object literal for the '<em><b>Transition</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__TRANSITION = eINSTANCE.getScxmlStateType_Transition();
+        EReference SCXML_STATE_TYPE__TRANSITION = ScxmlPackage.eINSTANCE.getScxmlStateType_Transition();
 
         /**
          * The meta object literal for the '<em><b>Initial</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__INITIAL = eINSTANCE.getScxmlStateType_Initial();
+        EReference SCXML_STATE_TYPE__INITIAL = ScxmlPackage.eINSTANCE.getScxmlStateType_Initial();
 
         /**
          * The meta object literal for the '<em><b>State</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__STATE = eINSTANCE.getScxmlStateType_State();
+        EReference SCXML_STATE_TYPE__STATE = ScxmlPackage.eINSTANCE.getScxmlStateType_State();
 
         /**
          * The meta object literal for the '<em><b>Parallel</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__PARALLEL = eINSTANCE.getScxmlStateType_Parallel();
+        EReference SCXML_STATE_TYPE__PARALLEL = ScxmlPackage.eINSTANCE.getScxmlStateType_Parallel();
 
         /**
          * The meta object literal for the '<em><b>Final</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__FINAL = eINSTANCE.getScxmlStateType_Final();
+        EReference SCXML_STATE_TYPE__FINAL = ScxmlPackage.eINSTANCE.getScxmlStateType_Final();
 
         /**
          * The meta object literal for the '<em><b>History</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__HISTORY = eINSTANCE.getScxmlStateType_History();
+        EReference SCXML_STATE_TYPE__HISTORY = ScxmlPackage.eINSTANCE.getScxmlStateType_History();
 
         /**
          * The meta object literal for the '<em><b>Datamodel</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__DATAMODEL = eINSTANCE.getScxmlStateType_Datamodel();
+        EReference SCXML_STATE_TYPE__DATAMODEL = ScxmlPackage.eINSTANCE.getScxmlStateType_Datamodel();
 
         /**
          * The meta object literal for the '<em><b>Invoke</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_STATE_TYPE__INVOKE = eINSTANCE.getScxmlStateType_Invoke();
+        EReference SCXML_STATE_TYPE__INVOKE = ScxmlPackage.eINSTANCE.getScxmlStateType_Invoke();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_STATE_TYPE__ANY = eINSTANCE.getScxmlStateType_Any();
+        EAttribute SCXML_STATE_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlStateType_Any();
 
         /**
          * The meta object literal for the '<em><b>Id</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_STATE_TYPE__ID = eINSTANCE.getScxmlStateType_Id();
+        EAttribute SCXML_STATE_TYPE__ID = ScxmlPackage.eINSTANCE.getScxmlStateType_Id();
 
         /**
          * The meta object literal for the '<em><b>Initial1</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_STATE_TYPE__INITIAL1 = eINSTANCE.getScxmlStateType_Initial1();
+        EAttribute SCXML_STATE_TYPE__INITIAL1 = ScxmlPackage.eINSTANCE.getScxmlStateType_Initial1();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_STATE_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlStateType_AnyAttribute();
+        EAttribute SCXML_STATE_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlStateType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.impl.ScxmlTransitionTypeImpl
          * <em>Transition Type</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlTransitionTypeImpl
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getScxmlTransitionType()
          * @generated
          */
-        EClass SCXML_TRANSITION_TYPE = eINSTANCE.getScxmlTransitionType();
+        EClass SCXML_TRANSITION_TYPE = ScxmlPackage.eINSTANCE.getScxmlTransitionType();
 
         /**
          * The meta object literal for the '
          * <em><b>Scxml Core Executablecontent</b></em>' attribute list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_TRANSITION_TYPE__SCXML_CORE_EXECUTABLECONTENT = eINSTANCE.getScxmlTransitionType_ScxmlCoreExecutablecontent();
+        EAttribute SCXML_TRANSITION_TYPE__SCXML_CORE_EXECUTABLECONTENT = ScxmlPackage.eINSTANCE.getScxmlTransitionType_ScxmlCoreExecutablecontent();
 
         /**
          * The meta object literal for the '<em><b>Any</b></em>' attribute list
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_TRANSITION_TYPE__ANY = eINSTANCE.getScxmlTransitionType_Any();
+        EAttribute SCXML_TRANSITION_TYPE__ANY = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Any();
 
         /**
          * The meta object literal for the '<em><b>Raise</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_TRANSITION_TYPE__RAISE = eINSTANCE.getScxmlTransitionType_Raise();
+        EReference SCXML_TRANSITION_TYPE__RAISE = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Raise();
 
         /**
          * The meta object literal for the '<em><b>If</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_TRANSITION_TYPE__IF = eINSTANCE.getScxmlTransitionType_If();
+        EReference SCXML_TRANSITION_TYPE__IF = ScxmlPackage.eINSTANCE.getScxmlTransitionType_If();
 
         /**
          * The meta object literal for the '<em><b>Foreach</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_TRANSITION_TYPE__FOREACH = eINSTANCE.getScxmlTransitionType_Foreach();
+        EReference SCXML_TRANSITION_TYPE__FOREACH = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Foreach();
 
         /**
          * The meta object literal for the '<em><b>Send</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_TRANSITION_TYPE__SEND = eINSTANCE.getScxmlTransitionType_Send();
+        EReference SCXML_TRANSITION_TYPE__SEND = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Send();
 
         /**
          * The meta object literal for the '<em><b>Script</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_TRANSITION_TYPE__SCRIPT = eINSTANCE.getScxmlTransitionType_Script();
+        EReference SCXML_TRANSITION_TYPE__SCRIPT = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Script();
 
         /**
          * The meta object literal for the '<em><b>Assign</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_TRANSITION_TYPE__ASSIGN = eINSTANCE.getScxmlTransitionType_Assign();
+        EReference SCXML_TRANSITION_TYPE__ASSIGN = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Assign();
 
         /**
          * The meta object literal for the '<em><b>Log</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_TRANSITION_TYPE__LOG = eINSTANCE.getScxmlTransitionType_Log();
+        EReference SCXML_TRANSITION_TYPE__LOG = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Log();
 
         /**
          * The meta object literal for the '<em><b>Cancel</b></em>' containment
          * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EReference SCXML_TRANSITION_TYPE__CANCEL = eINSTANCE.getScxmlTransitionType_Cancel();
+        EReference SCXML_TRANSITION_TYPE__CANCEL = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Cancel();
 
         /**
          * The meta object literal for the '<em><b>Cond</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_TRANSITION_TYPE__COND = eINSTANCE.getScxmlTransitionType_Cond();
+        EAttribute SCXML_TRANSITION_TYPE__COND = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Cond();
 
         /**
          * The meta object literal for the '<em><b>Event</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_TRANSITION_TYPE__EVENT = eINSTANCE.getScxmlTransitionType_Event();
+        EAttribute SCXML_TRANSITION_TYPE__EVENT = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Event();
 
         /**
          * The meta object literal for the '<em><b>Target</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_TRANSITION_TYPE__TARGET = eINSTANCE.getScxmlTransitionType_Target();
+        EAttribute SCXML_TRANSITION_TYPE__TARGET = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Target();
 
         /**
          * The meta object literal for the '<em><b>Type</b></em>' attribute
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_TRANSITION_TYPE__TYPE = eINSTANCE.getScxmlTransitionType_Type();
+        EAttribute SCXML_TRANSITION_TYPE__TYPE = ScxmlPackage.eINSTANCE.getScxmlTransitionType_Type();
 
         /**
          * The meta object literal for the '<em><b>Any Attribute</b></em>'
          * attribute list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @generated
          */
-        EAttribute SCXML_TRANSITION_TYPE__ANY_ATTRIBUTE = eINSTANCE.getScxmlTransitionType_AnyAttribute();
+        EAttribute SCXML_TRANSITION_TYPE__ANY_ATTRIBUTE = ScxmlPackage.eINSTANCE.getScxmlTransitionType_AnyAttribute();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
          * <em>Assign Type Datatype</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getAssignTypeDatatype()
          * @generated
          */
-        EEnum ASSIGN_TYPE_DATATYPE = eINSTANCE.getAssignTypeDatatype();
+        EEnum ASSIGN_TYPE_DATATYPE = ScxmlPackage.eINSTANCE.getAssignTypeDatatype();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.BindingDatatype
          * <em>Binding Datatype</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.BindingDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getBindingDatatype()
          * @generated
          */
-        EEnum BINDING_DATATYPE = eINSTANCE.getBindingDatatype();
+        EEnum BINDING_DATATYPE = ScxmlPackage.eINSTANCE.getBindingDatatype();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
          * <em>Boolean Datatype</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getBooleanDatatype()
          * @generated
          */
-        EEnum BOOLEAN_DATATYPE = eINSTANCE.getBooleanDatatype();
+        EEnum BOOLEAN_DATATYPE = ScxmlPackage.eINSTANCE.getBooleanDatatype();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
          * <em>Exmode Datatype</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getExmodeDatatype()
          * @generated
          */
-        EEnum EXMODE_DATATYPE = eINSTANCE.getExmodeDatatype();
+        EEnum EXMODE_DATATYPE = ScxmlPackage.eINSTANCE.getExmodeDatatype();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
          * <em>History Type Datatype</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getHistoryTypeDatatype()
          * @generated
          */
-        EEnum HISTORY_TYPE_DATATYPE = eINSTANCE.getHistoryTypeDatatype();
+        EEnum HISTORY_TYPE_DATATYPE = ScxmlPackage.eINSTANCE.getHistoryTypeDatatype();
 
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
          * <em>Transition Type Datatype</em>}' enum. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getTransitionTypeDatatype()
          * @generated
          */
-        EEnum TRANSITION_TYPE_DATATYPE = eINSTANCE.getTransitionTypeDatatype();
+        EEnum TRANSITION_TYPE_DATATYPE = ScxmlPackage.eINSTANCE.getTransitionTypeDatatype();
 
         /**
          * The meta object literal for the '<em>Assign Type Datatype Object</em>
          * ' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.AssignTypeDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getAssignTypeDatatypeObject()
          * @generated
          */
-        EDataType ASSIGN_TYPE_DATATYPE_OBJECT = eINSTANCE.getAssignTypeDatatypeObject();
+        EDataType ASSIGN_TYPE_DATATYPE_OBJECT = ScxmlPackage.eINSTANCE.getAssignTypeDatatypeObject();
 
         /**
          * The meta object literal for the '<em>Binding Datatype Object</em>'
          * data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.BindingDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getBindingDatatypeObject()
          * @generated
          */
-        EDataType BINDING_DATATYPE_OBJECT = eINSTANCE.getBindingDatatypeObject();
+        EDataType BINDING_DATATYPE_OBJECT = ScxmlPackage.eINSTANCE.getBindingDatatypeObject();
 
         /**
          * The meta object literal for the '<em>Boolean Datatype Object</em>'
          * data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.BooleanDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getBooleanDatatypeObject()
          * @generated
          */
-        EDataType BOOLEAN_DATATYPE_OBJECT = eINSTANCE.getBooleanDatatypeObject();
+        EDataType BOOLEAN_DATATYPE_OBJECT = ScxmlPackage.eINSTANCE.getBooleanDatatypeObject();
 
         /**
          * The meta object literal for the '<em>Cond Lang Datatype</em>' data
          * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.lang.String
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getCondLangDatatype()
          * @generated
          */
-        EDataType COND_LANG_DATATYPE = eINSTANCE.getCondLangDatatype();
+        EDataType COND_LANG_DATATYPE = ScxmlPackage.eINSTANCE.getCondLangDatatype();
 
         /**
          * The meta object literal for the '<em>Duration Datatype</em>' data
          * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.lang.String
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getDurationDatatype()
          * @generated
          */
-        EDataType DURATION_DATATYPE = eINSTANCE.getDurationDatatype();
+        EDataType DURATION_DATATYPE = ScxmlPackage.eINSTANCE.getDurationDatatype();
 
         /**
          * The meta object literal for the '<em>Event Type Datatype</em>' data
          * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.lang.String
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getEventTypeDatatype()
          * @generated
          */
-        EDataType EVENT_TYPE_DATATYPE = eINSTANCE.getEventTypeDatatype();
+        EDataType EVENT_TYPE_DATATYPE = ScxmlPackage.eINSTANCE.getEventTypeDatatype();
 
         /**
          * The meta object literal for the '<em>Event Types Datatype</em>' data
          * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.lang.String
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getEventTypesDatatype()
          * @generated
          */
-        EDataType EVENT_TYPES_DATATYPE = eINSTANCE.getEventTypesDatatype();
+        EDataType EVENT_TYPES_DATATYPE = ScxmlPackage.eINSTANCE.getEventTypesDatatype();
 
         /**
          * The meta object literal for the '<em>Exmode Datatype Object</em>'
          * data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getExmodeDatatypeObject()
          * @generated
          */
-        EDataType EXMODE_DATATYPE_OBJECT = eINSTANCE.getExmodeDatatypeObject();
+        EDataType EXMODE_DATATYPE_OBJECT = ScxmlPackage.eINSTANCE.getExmodeDatatypeObject();
 
         /**
          * The meta object literal for the '
          * <em>History Type Datatype Object</em>' data type. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.HistoryTypeDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getHistoryTypeDatatypeObject()
          * @generated
          */
-        EDataType HISTORY_TYPE_DATATYPE_OBJECT = eINSTANCE.getHistoryTypeDatatypeObject();
+        EDataType HISTORY_TYPE_DATATYPE_OBJECT = ScxmlPackage.eINSTANCE.getHistoryTypeDatatypeObject();
 
         /**
          * The meta object literal for the '<em>Integer Datatype</em>' data
          * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.math.BigInteger
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getIntegerDatatype()
          * @generated
          */
-        EDataType INTEGER_DATATYPE = eINSTANCE.getIntegerDatatype();
+        EDataType INTEGER_DATATYPE = ScxmlPackage.eINSTANCE.getIntegerDatatype();
 
         /**
          * The meta object literal for the '<em>Loc Lang Datatype</em>' data
          * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.lang.String
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getLocLangDatatype()
          * @generated
          */
-        EDataType LOC_LANG_DATATYPE = eINSTANCE.getLocLangDatatype();
+        EDataType LOC_LANG_DATATYPE = ScxmlPackage.eINSTANCE.getLocLangDatatype();
 
         /**
          * The meta object literal for the '
          * <em>Transition Type Datatype Object</em>' data type. <!--
          * begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see org.eclipse.sirius.tests.sample.scxml.TransitionTypeDatatype
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getTransitionTypeDatatypeObject()
          * @generated
          */
-        EDataType TRANSITION_TYPE_DATATYPE_OBJECT = eINSTANCE.getTransitionTypeDatatypeObject();
+        EDataType TRANSITION_TYPE_DATATYPE_OBJECT = ScxmlPackage.eINSTANCE.getTransitionTypeDatatypeObject();
 
         /**
          * The meta object literal for the '<em>URI Datatype</em>' data type.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.lang.String
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getURIDatatype()
          * @generated
          */
-        EDataType URI_DATATYPE = eINSTANCE.getURIDatatype();
+        EDataType URI_DATATYPE = ScxmlPackage.eINSTANCE.getURIDatatype();
 
         /**
          * The meta object literal for the '<em>Value Lang Datatype</em>' data
          * type. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
+         *
          * @see java.lang.String
          * @see org.eclipse.sirius.tests.sample.scxml.impl.ScxmlPackageImpl#getValueLangDatatype()
          * @generated
          */
-        EDataType VALUE_LANG_DATATYPE = eINSTANCE.getValueLangDatatype();
+        EDataType VALUE_LANG_DATATYPE = ScxmlPackage.eINSTANCE.getValueLangDatatype();
 
     }
 

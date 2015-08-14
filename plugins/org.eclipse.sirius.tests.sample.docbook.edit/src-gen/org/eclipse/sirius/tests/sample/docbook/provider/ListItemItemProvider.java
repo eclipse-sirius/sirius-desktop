@@ -65,7 +65,7 @@ public class ListItemItemProvider extends ItemProviderAdapter implements IEditin
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ListItem"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ListItem")); //$NON-NLS-1$
     }
 
     /**
@@ -76,7 +76,7 @@ public class ListItemItemProvider extends ItemProviderAdapter implements IEditin
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ListItem_type");
+        return getString("_UI_ListItem_type"); //$NON-NLS-1$
     }
 
     /**

@@ -79,7 +79,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
         case StylePackage.TOOLTIP_STYLE_DESCRIPTION:
             return createTooltipStyleDescription();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

@@ -430,13 +430,13 @@ public class BasicLabelStyleImpl extends EObjectImpl implements BasicLabelStyle 
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (labelSize: ");
+        result.append(" (labelSize: "); //$NON-NLS-1$
         result.append(labelSize);
-        result.append(", labelFormat: ");
+        result.append(", labelFormat: "); //$NON-NLS-1$
         result.append(labelFormat);
-        result.append(", showIcon: ");
+        result.append(", showIcon: "); //$NON-NLS-1$
         result.append(showIcon);
-        result.append(", iconPath: ");
+        result.append(", iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
         result.append(')');
         return result.toString();

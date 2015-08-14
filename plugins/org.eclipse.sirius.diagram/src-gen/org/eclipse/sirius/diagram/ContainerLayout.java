@@ -35,7 +35,7 @@ public enum ContainerLayout implements Enumerator {
      * @generated
      * @ordered
      */
-    FREE_FORM(0, "FreeForm", "FreeForm"),
+    FREE_FORM(0, "FreeForm", "FreeForm"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>List</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -45,7 +45,7 @@ public enum ContainerLayout implements Enumerator {
      * @generated
      * @ordered
      */
-    LIST(1, "List", "List"),
+    LIST(1, "List", "List"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Horizontal Stack</b></em>' literal object. <!--
@@ -55,7 +55,7 @@ public enum ContainerLayout implements Enumerator {
      * @generated
      * @ordered
      */
-    HORIZONTAL_STACK(2, "HorizontalStack", "HorizontalStack"),
+    HORIZONTAL_STACK(2, "HorizontalStack", "HorizontalStack"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Vertical Stack</b></em>' literal object. <!-- begin-user-doc
@@ -65,7 +65,7 @@ public enum ContainerLayout implements Enumerator {
      * @generated
      * @ordered
      */
-    VERTICAL_STACK(3, "VerticalStack", "VerticalStack");
+    VERTICAL_STACK(3, "VerticalStack", "VerticalStack"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Free Form</b></em>' literal value. <!-- begin-user-doc -->

@@ -23,24 +23,24 @@ public interface OrderedListPropertiesEditionPart {
 
     /**
      * @return the numeration
-     * 
+     *
      */
     public String getNumeration();
 
     /**
      * Defines a new numeration
-     * 
+     *
      * @param newValue
      *            the new numeration to set
-     * 
+     *
      */
     public void setNumeration(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

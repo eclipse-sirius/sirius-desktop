@@ -36,7 +36,7 @@ public enum LineStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    SOLID_LITERAL(0, "solid", "solid"),
+    SOLID_LITERAL(0, "solid", "solid"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dash</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -46,7 +46,7 @@ public enum LineStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    DASH_LITERAL(1, "dash", "dash"),
+    DASH_LITERAL(1, "dash", "dash"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!--
@@ -56,7 +56,7 @@ public enum LineStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    DOT_LITERAL(2, "dot", "dot"),
+    DOT_LITERAL(2, "dot", "dot"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Dash dot</b></em>' literal object. <!-- begin-user-doc -->
@@ -66,7 +66,7 @@ public enum LineStyle implements Enumerator {
      * @generated
      * @ordered
      */
-    DASH_DOT_LITERAL(3, "dash_dot", "dash_dot");
+    DASH_DOT_LITERAL(3, "dash_dot", "dash_dot"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>Solid</b></em>' literal value. <!-- begin-user-doc -->

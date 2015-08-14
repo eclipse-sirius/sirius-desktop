@@ -57,10 +57,10 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public ExamplePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -68,10 +68,10 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent) {
@@ -85,10 +85,10 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(Composite view) {
@@ -128,7 +128,7 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createParaAdvancedTableComposition(Composite parent) {
         this.para = new ReferencesTable(getDescription(DocbookViewsRepository.Example.Properties.para, DocbookMessages.ExamplePropertiesEditionPart_ParaLabel), new ReferencesTableListener() {
@@ -195,9 +195,9 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -208,7 +208,7 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#initPara(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -232,9 +232,9 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#updatePara()
-     * 
+     *
      */
     @Override
     public void updatePara() {
@@ -243,10 +243,10 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#addFilterPara(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToPara(ViewerFilter filter) {
@@ -258,10 +258,10 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#addBusinessFilterPara(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToPara(ViewerFilter filter) {
@@ -270,10 +270,10 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.ExamplePropertiesEditionPart#isContainedInParaTable(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInParaTable(EObject element) {
@@ -284,7 +284,7 @@ public class ExamplePropertiesEditionPartImpl extends CompositePropertiesEdition
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

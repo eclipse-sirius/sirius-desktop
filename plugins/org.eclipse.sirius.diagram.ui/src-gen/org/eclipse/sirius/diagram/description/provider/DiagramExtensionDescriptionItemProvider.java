@@ -81,12 +81,11 @@ IItemPropertySource {
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationExtensionDescription_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RepresentationExtensionDescription_name_feature", "_UI_RepresentationExtensionDescription_type"),
-                DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationExtensionDescription_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RepresentationExtensionDescription_name_feature", "_UI_RepresentationExtensionDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -96,10 +95,13 @@ IItemPropertySource {
      * @generated
      */
     protected void addViewpointURIPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationExtensionDescription_viewpointURI_feature"), getString("_UI_RepresentationExtensionDescription_viewpointURI_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_RepresentationExtensionDescription_viewpointURI_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationExtensionDescription_viewpointURI_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__VIEWPOINT_URI, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -109,10 +111,13 @@ IItemPropertySource {
      * @generated
      */
     protected void addRepresentationNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationExtensionDescription_representationName_feature"), getString("_UI_RepresentationExtensionDescription_representationName_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_RepresentationExtensionDescription_representationName_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationExtensionDescription_representationName_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__REPRESENTATION_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -123,8 +128,10 @@ IItemPropertySource {
      */
     protected void addMetamodelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationExtensionDescription_metamodel_feature"), getString("_UI_RepresentationExtensionDescription_metamodel_description"),
-                DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__METAMODEL, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_RepresentationExtensionDescription_metamodel_feature"), //$NON-NLS-1$
+                getString("_UI_RepresentationExtensionDescription_metamodel_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.REPRESENTATION_EXTENSION_DESCRIPTION__METAMODEL, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -170,7 +177,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DiagramExtensionDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DiagramExtensionDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -182,7 +189,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((DiagramExtensionDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DiagramExtensionDescription_type") : getString("_UI_DiagramExtensionDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DiagramExtensionDescription_type") : //$NON-NLS-1$
+            getString("_UI_DiagramExtensionDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -61,7 +61,8 @@ public class SubVariableItemProvider extends AbstractVariableItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((SubVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_SubVariable_type") : getString("_UI_SubVariable_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_SubVariable_type") : //$NON-NLS-1$
+            getString("_UI_SubVariable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -23,24 +23,24 @@ public interface EmphasisPropertiesEditionPart {
 
     /**
      * @return the remap
-     * 
+     *
      */
     public String getRemap();
 
     /**
      * Defines a new remap
-     * 
+     *
      * @param newValue
      *            the new remap to set
-     * 
+     *
      */
     public void setRemap(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

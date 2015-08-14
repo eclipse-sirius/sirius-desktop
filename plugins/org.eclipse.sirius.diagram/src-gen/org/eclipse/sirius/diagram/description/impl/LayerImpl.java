@@ -99,7 +99,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * @generated
      * @ordered
      */
-    protected static final String END_USER_DOCUMENTATION_EDEFAULT = "";
+    protected static final String END_USER_DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getEndUserDocumentation()
@@ -120,7 +120,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -964,13 +964,13 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (endUserDocumentation: ");
+        result.append(" (endUserDocumentation: "); //$NON-NLS-1$
         result.append(endUserDocumentation);
-        result.append(", name: ");
+        result.append(", name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", icon: ");
+        result.append(", icon: "); //$NON-NLS-1$
         result.append(icon);
         result.append(')');
         return result.toString();

@@ -68,7 +68,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_ColorDescription_type");
+        return getString("_UI_ColorDescription_type"); //$NON-NLS-1$
     }
 
     /**

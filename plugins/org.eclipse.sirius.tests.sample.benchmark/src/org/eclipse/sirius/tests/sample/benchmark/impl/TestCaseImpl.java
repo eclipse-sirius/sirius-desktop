@@ -39,7 +39,7 @@ import org.eclipse.sirius.tests.sample.benchmark.TimeResult;
  * <em>Results</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TestCaseImpl extends NamedElementImpl implements TestCase {

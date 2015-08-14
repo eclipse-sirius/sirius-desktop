@@ -13,7 +13,7 @@ package org.eclipse.sirius.sample.interactions;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Message End</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -21,7 +21,7 @@ package org.eclipse.sirius.sample.interactions;
  * Message</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessageEnd()
  * @model
  * @generated
@@ -35,7 +35,7 @@ public interface MessageEnd extends AbstractEnd {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Message</em>' reference.
      * @see #setMessage(Message)
      * @see org.eclipse.sirius.sample.interactions.InteractionsPackage#getMessageEnd_Message()
@@ -49,7 +49,7 @@ public interface MessageEnd extends AbstractEnd {
      * {@link org.eclipse.sirius.sample.interactions.MessageEnd#getMessage
      * <em>Message</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Message</em>' reference.
      * @see #getMessage()

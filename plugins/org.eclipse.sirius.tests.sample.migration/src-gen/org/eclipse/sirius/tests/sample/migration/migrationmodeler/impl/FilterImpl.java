@@ -222,9 +222,9 @@ public class FilterImpl extends EObjectImpl implements Filter {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (id: ");
+        result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
-        result.append(", activated: ");
+        result.append(", activated: "); //$NON-NLS-1$
         result.append(activated);
         result.append(')');
         return result.toString();

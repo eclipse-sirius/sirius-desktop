@@ -69,7 +69,8 @@ public class CompositeLayoutItemProvider extends DocumentedElementItemProvider {
      */
     protected void addPaddingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CompositeLayout_padding_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CompositeLayout_padding_feature", "_UI_CompositeLayout_type"),
+                getString("_UI_CompositeLayout_padding_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CompositeLayout_padding_feature", "_UI_CompositeLayout_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.COMPOSITE_LAYOUT__PADDING, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
@@ -81,7 +82,8 @@ public class CompositeLayoutItemProvider extends DocumentedElementItemProvider {
      */
     protected void addDirectionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CompositeLayout_direction_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CompositeLayout_direction_feature", "_UI_CompositeLayout_type"),
+                getString("_UI_CompositeLayout_direction_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CompositeLayout_direction_feature", "_UI_CompositeLayout_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.COMPOSITE_LAYOUT__DIRECTION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -93,7 +95,7 @@ public class CompositeLayoutItemProvider extends DocumentedElementItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeLayout"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeLayout")); //$NON-NLS-1$
     }
 
     /**
@@ -105,7 +107,8 @@ public class CompositeLayoutItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = crop(((CompositeLayout) object).getDocumentation());
-        return label == null || label.length() == 0 ? getString("_UI_CompositeLayout_type") : getString("_UI_CompositeLayout_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_CompositeLayout_type") : //$NON-NLS-1$
+            getString("_UI_CompositeLayout_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

@@ -102,7 +102,7 @@ public class ConditionalContainerStyleDescriptionItemProvider extends Conditiona
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ConditionalContainerStyleDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ConditionalContainerStyleDescription")); //$NON-NLS-1$
     }
 
     /**
@@ -114,7 +114,8 @@ public class ConditionalContainerStyleDescriptionItemProvider extends Conditiona
     @Override
     public String getText(Object object) {
         String label = ((ConditionalContainerStyleDescription) object).getPredicateExpression();
-        return label == null || label.length() == 0 ? getString("_UI_ConditionalContainerStyleDescription_type") : getString("_UI_ConditionalContainerStyleDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ConditionalContainerStyleDescription_type") : //$NON-NLS-1$
+            getString("_UI_ConditionalContainerStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

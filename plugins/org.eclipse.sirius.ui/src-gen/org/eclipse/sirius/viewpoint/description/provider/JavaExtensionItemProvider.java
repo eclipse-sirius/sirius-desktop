@@ -74,8 +74,10 @@ IItemPropertySource {
      */
     protected void addQualifiedClassNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_JavaExtension_qualifiedClassName_feature"), getString("_UI_JavaExtension_qualifiedClassName_description"),
-                DescriptionPackage.Literals.JAVA_EXTENSION__QUALIFIED_CLASS_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_JavaExtension_qualifiedClassName_feature"), //$NON-NLS-1$
+                getString("_UI_JavaExtension_qualifiedClassName_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.JAVA_EXTENSION__QUALIFIED_CLASS_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -86,7 +88,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/JavaExtension"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/JavaExtension")); //$NON-NLS-1$
     }
 
     /**
@@ -98,7 +100,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((JavaExtension) object).getQualifiedClassName();
-        return label == null || label.length() == 0 ? getString("_UI_JavaExtension_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_JavaExtension_type") : label; //$NON-NLS-1$
     }
 
     /**

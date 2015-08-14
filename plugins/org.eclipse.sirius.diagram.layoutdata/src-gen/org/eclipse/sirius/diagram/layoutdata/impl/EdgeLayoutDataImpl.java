@@ -62,7 +62,7 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * <em>Smoothness</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLayoutData {
@@ -272,6 +272,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public String getSourceTerminal() {
         return sourceTerminal;
     }
@@ -281,6 +282,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setSourceTerminal(String newSourceTerminal) {
         String oldSourceTerminal = sourceTerminal;
         sourceTerminal = newSourceTerminal;
@@ -293,6 +295,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public String getTargetTerminal() {
         return targetTerminal;
     }
@@ -302,6 +305,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setTargetTerminal(String newTargetTerminal) {
         String oldTargetTerminal = targetTerminal;
         targetTerminal = newTargetTerminal;
@@ -314,6 +318,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public int getRouting() {
         return routing;
     }
@@ -323,6 +328,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setRouting(int newRouting) {
         int oldRouting = routing;
         routing = newRouting;
@@ -335,6 +341,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public EList<Point> getPointList() {
         if (pointList == null) {
             pointList = new EObjectContainmentEList.Resolving<Point>(Point.class, this, LayoutdataPackage.EDGE_LAYOUT_DATA__POINT_LIST);
@@ -347,6 +354,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public Point getSourceRefPoint() {
         if (sourceRefPoint != null && sourceRefPoint.eIsProxy()) {
             InternalEObject oldSourceRefPoint = (InternalEObject) sourceRefPoint;
@@ -398,6 +406,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setSourceRefPoint(Point newSourceRefPoint) {
         if (newSourceRefPoint != sourceRefPoint) {
             NotificationChain msgs = null;
@@ -417,6 +426,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public Point getTargetRefPoint() {
         if (targetRefPoint != null && targetRefPoint.eIsProxy()) {
             InternalEObject oldTargetRefPoint = (InternalEObject) targetRefPoint;
@@ -468,6 +478,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setTargetRefPoint(Point newTargetRefPoint) {
         if (newTargetRefPoint != targetRefPoint) {
             NotificationChain msgs = null;
@@ -487,6 +498,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public int getJumpLinkStatus() {
         return jumpLinkStatus;
     }
@@ -496,6 +508,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setJumpLinkStatus(int newJumpLinkStatus) {
         int oldJumpLinkStatus = jumpLinkStatus;
         jumpLinkStatus = newJumpLinkStatus;
@@ -508,6 +521,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public int getJumpLinkType() {
         return jumpLinkType;
     }
@@ -517,6 +531,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setJumpLinkType(int newJumpLinkType) {
         int oldJumpLinkType = jumpLinkType;
         jumpLinkType = newJumpLinkType;
@@ -529,6 +544,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public boolean isReverseJumpLink() {
         return reverseJumpLink;
     }
@@ -538,6 +554,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setReverseJumpLink(boolean newReverseJumpLink) {
         boolean oldReverseJumpLink = reverseJumpLink;
         reverseJumpLink = newReverseJumpLink;
@@ -550,6 +567,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public int getSmoothness() {
         return smoothness;
     }
@@ -559,6 +577,7 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
      * 
      * @generated
      */
+    @Override
     public void setSmoothness(int newSmoothness) {
         int oldSmoothness = smoothness;
         smoothness = newSmoothness;
@@ -749,19 +768,19 @@ public class EdgeLayoutDataImpl extends AbstractLayoutDataImpl implements EdgeLa
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (sourceTerminal: ");
+        result.append(" (sourceTerminal: "); //$NON-NLS-1$
         result.append(sourceTerminal);
-        result.append(", targetTerminal: ");
+        result.append(", targetTerminal: "); //$NON-NLS-1$
         result.append(targetTerminal);
-        result.append(", routing: ");
+        result.append(", routing: "); //$NON-NLS-1$
         result.append(routing);
-        result.append(", jumpLinkStatus: ");
+        result.append(", jumpLinkStatus: "); //$NON-NLS-1$
         result.append(jumpLinkStatus);
-        result.append(", jumpLinkType: ");
+        result.append(", jumpLinkType: "); //$NON-NLS-1$
         result.append(jumpLinkType);
-        result.append(", reverseJumpLink: ");
+        result.append(", reverseJumpLink: "); //$NON-NLS-1$
         result.append(reverseJumpLink);
-        result.append(", smoothness: ");
+        result.append(", smoothness: "); //$NON-NLS-1$
         result.append(smoothness);
         result.append(')');
         return result.toString();

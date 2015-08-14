@@ -70,10 +70,13 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      * @generated
      */
     protected void addStartingEndFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DelimitedEventMapping_startingEndFinderExpression_feature"), getString("_UI_DelimitedEventMapping_startingEndFinderExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_DelimitedEventMapping_startingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_DelimitedEventMapping_startingEndFinderExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DELIMITED_EVENT_MAPPING__STARTING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -83,10 +86,13 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      * @generated
      */
     protected void addFinishingEndFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_feature"), getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_DelimitedEventMapping_finishingEndFinderExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.DELIMITED_EVENT_MAPPING__FINISHING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -96,12 +102,11 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      * @generated
      */
     protected void addCoveredLifelinesExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FrameMapping_coveredLifelinesExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_FrameMapping_coveredLifelinesExpression_feature", "_UI_FrameMapping_type"),
-                DescriptionPackage.Literals.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_FrameMapping_coveredLifelinesExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_FrameMapping_coveredLifelinesExpression_feature", "_UI_FrameMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -112,9 +117,10 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      */
     protected void addCenterLabelExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FrameMapping_centerLabelExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_FrameMapping_centerLabelExpression_feature", "_UI_FrameMapping_type"),
-                DescriptionPackage.Literals.FRAME_MAPPING__CENTER_LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_FrameMapping_centerLabelExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_FrameMapping_centerLabelExpression_feature", "_UI_FrameMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.FRAME_MAPPING__CENTER_LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -125,7 +131,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/FrameMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/FrameMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -137,7 +143,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((FrameMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_FrameMapping_type") : getString("_UI_FrameMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_FrameMapping_type") : getString("_UI_FrameMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -229,7 +235,8 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
                 || childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+                    new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }
@@ -250,7 +257,7 @@ public class FrameMappingItemProvider extends ContainerMappingItemProvider {
                 || childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

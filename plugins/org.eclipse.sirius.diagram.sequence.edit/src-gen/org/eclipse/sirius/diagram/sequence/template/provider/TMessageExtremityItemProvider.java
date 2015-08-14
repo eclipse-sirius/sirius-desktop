@@ -67,7 +67,7 @@ IItemPropertySource {
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_TMessageExtremity_type");
+        return getString("_UI_TMessageExtremity_type"); //$NON-NLS-1$
     }
 
     /**

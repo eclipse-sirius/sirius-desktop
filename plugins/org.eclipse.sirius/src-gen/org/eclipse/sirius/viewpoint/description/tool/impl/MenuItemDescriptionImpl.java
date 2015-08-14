@@ -165,7 +165,7 @@ public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImp
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (icon: ");
+        result.append(" (icon: "); //$NON-NLS-1$
         result.append(icon);
         result.append(')');
         return result.toString();

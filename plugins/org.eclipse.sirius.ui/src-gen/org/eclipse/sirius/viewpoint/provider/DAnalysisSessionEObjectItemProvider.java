@@ -79,7 +79,8 @@ IItemPropertySource {
      */
     protected void addOpenPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_open_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_open_feature", "_UI_DAnalysisSessionEObject_type"),
+                getString("_UI_DAnalysisSessionEObject_open_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_open_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__OPEN, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
@@ -91,8 +92,8 @@ IItemPropertySource {
      */
     protected void addResourcesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_resources_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_resources_feature", "_UI_DAnalysisSessionEObject_type"),
+                getString("_UI_DAnalysisSessionEObject_resources_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_resources_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__RESOURCES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -104,8 +105,8 @@ IItemPropertySource {
      */
     protected void addControlledResourcesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_controlledResources_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_controlledResources_feature", "_UI_DAnalysisSessionEObject_type"),
+                getString("_UI_DAnalysisSessionEObject_controlledResources_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_controlledResources_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -117,8 +118,8 @@ IItemPropertySource {
      */
     protected void addActivatedViewpointsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_activatedViewpoints_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_activatedViewpoints_feature", "_UI_DAnalysisSessionEObject_type"),
+                getString("_UI_DAnalysisSessionEObject_activatedViewpoints_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_activatedViewpoints_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS, true, false, true, null, null, null));
     }
 
@@ -130,8 +131,8 @@ IItemPropertySource {
      */
     protected void addAnalysesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_analyses_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_analyses_feature", "_UI_DAnalysisSessionEObject_type"),
+                getString("_UI_DAnalysisSessionEObject_analyses_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_analyses_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES, true, false, true, null, null, null));
     }
 
@@ -143,8 +144,8 @@ IItemPropertySource {
      */
     protected void addSynchronizationStatusPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_synchronizationStatus_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_synchronizationStatus_feature", "_UI_DAnalysisSessionEObject_type"),
+                getString("_UI_DAnalysisSessionEObject_synchronizationStatus_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_synchronizationStatus_feature", "_UI_DAnalysisSessionEObject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -156,7 +157,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnalysisSessionEObject"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DAnalysisSessionEObject")); //$NON-NLS-1$
     }
 
     /**
@@ -172,7 +173,7 @@ IItemPropertySource {
         }
 
         DAnalysisSessionEObject dAnalysisSessionEObject = (DAnalysisSessionEObject) object;
-        return getString("_UI_DAnalysisSessionEObject_type") + " " + dAnalysisSessionEObject.isOpen();
+        return getString("_UI_DAnalysisSessionEObject_type") + " " + dAnalysisSessionEObject.isOpen(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

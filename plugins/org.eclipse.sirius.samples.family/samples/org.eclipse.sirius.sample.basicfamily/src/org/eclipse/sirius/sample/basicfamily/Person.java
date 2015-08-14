@@ -46,7 +46,7 @@ public interface Person extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.sample.basicfamily.BasicfamilyPackage#getPerson_Name()
@@ -117,7 +117,7 @@ public interface Person extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Mother</em>' reference.
      * @see #setMother(Woman)
      * @see org.eclipse.sirius.sample.basicfamily.BasicfamilyPackage#getPerson_Mother()
@@ -131,7 +131,7 @@ public interface Person extends EObject {
      * {@link org.eclipse.sirius.sample.basicfamily.Person#getMother
      * <em>Mother</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Mother</em>' reference.
      * @see #getMother()
@@ -147,7 +147,7 @@ public interface Person extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Father</em>' reference.
      * @see #setFather(Man)
      * @see org.eclipse.sirius.sample.basicfamily.BasicfamilyPackage#getPerson_Father()
@@ -161,7 +161,7 @@ public interface Person extends EObject {
      * {@link org.eclipse.sirius.sample.basicfamily.Person#getFather
      * <em>Father</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Father</em>' reference.
      * @see #getFather()

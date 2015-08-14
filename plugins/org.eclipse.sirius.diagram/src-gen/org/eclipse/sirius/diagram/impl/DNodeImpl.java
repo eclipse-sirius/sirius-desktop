@@ -882,15 +882,15 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (arrangeConstraints: ");
+        result.append(" (arrangeConstraints: "); //$NON-NLS-1$
         result.append(arrangeConstraints);
-        result.append(", width: ");
+        result.append(", width: "); //$NON-NLS-1$
         result.append(width);
-        result.append(", height: ");
+        result.append(", height: "); //$NON-NLS-1$
         result.append(height);
-        result.append(", labelPosition: ");
+        result.append(", labelPosition: "); //$NON-NLS-1$
         result.append(labelPosition);
-        result.append(", resizeKind: ");
+        result.append(", resizeKind: "); //$NON-NLS-1$
         result.append(resizeKind);
         result.append(')');
         return result.toString();

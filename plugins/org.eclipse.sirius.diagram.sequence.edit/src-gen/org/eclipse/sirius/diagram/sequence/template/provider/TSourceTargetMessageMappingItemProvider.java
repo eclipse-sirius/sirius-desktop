@@ -67,9 +67,10 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
      */
     protected void addSourcePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TSourceTargetMessageMapping_source_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_TSourceTargetMessageMapping_source_feature", "_UI_TSourceTargetMessageMapping_type"),
-                TemplatePackage.Literals.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_TSourceTargetMessageMapping_source_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_TSourceTargetMessageMapping_source_feature", "_UI_TSourceTargetMessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                TemplatePackage.Literals.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,10 +80,13 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
      * @generated
      */
     protected void addSourceFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TSourceTargetMessageMapping_sourceFinderExpression_feature"), getString("_UI_TSourceTargetMessageMapping_sourceFinderExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_TSourceTargetMessageMapping_sourceFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TSourceTargetMessageMapping_sourceFinderExpression_description"), //$NON-NLS-1$
                 TemplatePackage.Literals.TSOURCE_TARGET_MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -92,10 +96,13 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
      * @generated
      */
     protected void addTargetFinderExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TSourceTargetMessageMapping_targetFinderExpression_feature"), getString("_UI_TSourceTargetMessageMapping_targetFinderExpression_description"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_TSourceTargetMessageMapping_targetFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_TSourceTargetMessageMapping_targetFinderExpression_description"), //$NON-NLS-1$
                 TemplatePackage.Literals.TSOURCE_TARGET_MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -106,8 +113,9 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
      */
     protected void addUseDomainElementPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_TSourceTargetMessageMapping_useDomainElement_feature"), getString("_UI_TSourceTargetMessageMapping_useDomainElement_description"),
-                TemplatePackage.Literals.TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_TSourceTargetMessageMapping_useDomainElement_feature"), //$NON-NLS-1$
+                getString("_UI_TSourceTargetMessageMapping_useDomainElement_description"), //$NON-NLS-1$
+                TemplatePackage.Literals.TSOURCE_TARGET_MESSAGE_MAPPING__USE_DOMAIN_ELEMENT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -120,7 +128,8 @@ public class TSourceTargetMessageMappingItemProvider extends TMessageMappingItem
     @Override
     public String getText(Object object) {
         String label = ((TSourceTargetMessageMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TSourceTargetMessageMapping_type") : getString("_UI_TSourceTargetMessageMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_TSourceTargetMessageMapping_type") : //$NON-NLS-1$
+            getString("_UI_TSourceTargetMessageMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

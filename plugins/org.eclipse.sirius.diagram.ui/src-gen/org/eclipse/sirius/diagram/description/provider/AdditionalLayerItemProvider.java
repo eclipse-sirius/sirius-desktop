@@ -71,8 +71,10 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
      */
     protected void addActiveByDefaultPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AdditionalLayer_activeByDefault_feature"), getString("_UI_AdditionalLayer_activeByDefault_description"),
-                DescriptionPackage.Literals.ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_AdditionalLayer_activeByDefault_feature"), //$NON-NLS-1$
+                getString("_UI_AdditionalLayer_activeByDefault_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -83,8 +85,10 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
      */
     protected void addOptionalPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_AdditionalLayer_optional_feature"), getString("_UI_AdditionalLayer_optional_description"), DescriptionPackage.Literals.ADDITIONAL_LAYER__OPTIONAL, true, false, false,
-                ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_AdditionalLayer_optional_feature"), //$NON-NLS-1$
+                getString("_UI_AdditionalLayer_optional_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.ADDITIONAL_LAYER__OPTIONAL, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**

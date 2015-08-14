@@ -46,7 +46,7 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
      * @generated
      * @ordered
      */
-    protected static final String LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "0";
+    protected static final String LIFELINE_WIDTH_COMPUTATION_EXPRESSION_EDEFAULT = "0"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getLifelineWidthComputationExpression()
@@ -240,7 +240,7 @@ public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineSty
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (lifelineWidthComputationExpression: ");
+        result.append(" (lifelineWidthComputationExpression: "); //$NON-NLS-1$
         result.append(lifelineWidthComputationExpression);
         result.append(')');
         return result.toString();

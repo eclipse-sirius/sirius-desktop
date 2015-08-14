@@ -225,9 +225,9 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (headerLabelExpression: ");
+        result.append(" (headerLabelExpression: "); //$NON-NLS-1$
         result.append(headerLabelExpression);
-        result.append(", initialWidth: ");
+        result.append(", initialWidth: "); //$NON-NLS-1$
         result.append(initialWidth);
         result.append(')');
         return result.toString();

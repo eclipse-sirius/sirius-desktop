@@ -66,8 +66,10 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SetValue_featureName_feature"), getString("_UI_SetValue_featureName_description"), ToolPackage.Literals.SET_VALUE__FEATURE_NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SetValue_featureName_feature"), //$NON-NLS-1$
+                getString("_UI_SetValue_featureName_description"), //$NON-NLS-1$
+                ToolPackage.Literals.SET_VALUE__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -78,8 +80,10 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
      */
     protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_SetValue_valueExpression_feature"), getString("_UI_SetValue_valueExpression_description"), ToolPackage.Literals.SET_VALUE__VALUE_EXPRESSION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SetValue_valueExpression_feature"), //$NON-NLS-1$
+                getString("_UI_SetValue_valueExpression_description"), //$NON-NLS-1$
+                ToolPackage.Literals.SET_VALUE__VALUE_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -89,7 +93,7 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SetValue"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SetValue")); //$NON-NLS-1$
     }
 
     /**
@@ -101,7 +105,8 @@ public class SetValueItemProvider extends ContainerModelOperationItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((SetValue) object).getFeatureName();
-        return label == null || label.length() == 0 ? getString("_UI_SetValue_type") : getString("_UI_SetValue_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_SetValue_type") : //$NON-NLS-1$
+            getString("_UI_SetValue_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

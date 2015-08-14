@@ -83,7 +83,7 @@ public class BenchmarkFactoryImpl extends EFactoryImpl implements BenchmarkFacto
         case BenchmarkPackage.VARIANT:
             return createVariant();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

@@ -75,9 +75,10 @@ IItemPropertySource {
      */
     protected void addArcWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RoundedCornerStyleDescription_arcWidth_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RoundedCornerStyleDescription_arcWidth_feature", "_UI_RoundedCornerStyleDescription_type"),
-                StylePackage.Literals.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), null));
+                getString("_UI_RoundedCornerStyleDescription_arcWidth_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RoundedCornerStyleDescription_arcWidth_feature", "_UI_RoundedCornerStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -88,9 +89,10 @@ IItemPropertySource {
      */
     protected void addArcHeightPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RoundedCornerStyleDescription_arcHeight_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_RoundedCornerStyleDescription_arcHeight_feature", "_UI_RoundedCornerStyleDescription_type"),
-                StylePackage.Literals.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), null));
+                getString("_UI_RoundedCornerStyleDescription_arcHeight_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_RoundedCornerStyleDescription_arcHeight_feature", "_UI_RoundedCornerStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -103,7 +105,8 @@ IItemPropertySource {
     public String getText(Object object) {
         Integer labelValue = ((RoundedCornerStyleDescription) object).getArcWidth();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_RoundedCornerStyleDescription_type") : getString("_UI_RoundedCornerStyleDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_RoundedCornerStyleDescription_type") : //$NON-NLS-1$
+            getString("_UI_RoundedCornerStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

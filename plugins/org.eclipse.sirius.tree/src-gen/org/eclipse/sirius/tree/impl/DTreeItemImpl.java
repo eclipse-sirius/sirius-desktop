@@ -75,7 +75,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -370,7 +370,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     public void setContainer(DTreeItemContainer newContainer) {
         if (newContainer != eInternalContainer() || (eContainerFeatureID() != TreePackage.DTREE_ITEM__CONTAINER && newContainer != null)) {
             if (EcoreUtil.isAncestor(this, newContainer)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
             }
             NotificationChain msgs = null;
             if (eInternalContainer() != null) {
@@ -773,9 +773,9 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", expanded: ");
+        result.append(", expanded: "); //$NON-NLS-1$
         result.append(expanded);
         result.append(')');
         return result.toString();

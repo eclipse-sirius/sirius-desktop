@@ -224,9 +224,9 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (featureName: ");
+        result.append(" (featureName: "); //$NON-NLS-1$
         result.append(featureName);
-        result.append(", valueExpression: ");
+        result.append(", valueExpression: "); //$NON-NLS-1$
         result.append(valueExpression);
         result.append(')');
         return result.toString();

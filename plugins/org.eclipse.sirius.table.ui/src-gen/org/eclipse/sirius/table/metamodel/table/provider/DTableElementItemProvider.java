@@ -64,7 +64,8 @@ public class DTableElementItemProvider extends DRepresentationElementItemProvide
      */
     protected void addTableElementMappingPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DTableElement_tableElementMapping_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DTableElement_tableElementMapping_feature", "_UI_DTableElement_type"),
+                getString("_UI_DTableElement_tableElementMapping_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DTableElement_tableElementMapping_feature", "_UI_DTableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 TablePackage.Literals.DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING, false, false, false, null, null, null));
     }
 
@@ -77,7 +78,8 @@ public class DTableElementItemProvider extends DRepresentationElementItemProvide
     @Override
     public String getText(Object object) {
         String label = ((DTableElement) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DTableElement_type") : getString("_UI_DTableElement_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DTableElement_type") : //$NON-NLS-1$
+            getString("_UI_DTableElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

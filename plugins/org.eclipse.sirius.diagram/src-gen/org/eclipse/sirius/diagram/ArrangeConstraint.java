@@ -35,7 +35,7 @@ public enum ArrangeConstraint implements Enumerator {
      * @generated
      * @ordered
      */
-    KEEP_LOCATION(0, "KEEP_LOCATION", "KEEP_LOCATION"),
+    KEEP_LOCATION(0, "KEEP_LOCATION", "KEEP_LOCATION"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>KEEP SIZE</b></em>' literal object. <!-- begin-user-doc -->
@@ -45,7 +45,7 @@ public enum ArrangeConstraint implements Enumerator {
      * @generated
      * @ordered
      */
-    KEEP_SIZE(1, "KEEP_SIZE", "KEEP_SIZE"),
+    KEEP_SIZE(1, "KEEP_SIZE", "KEEP_SIZE"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>KEEP RATIO</b></em>' literal object. <!-- begin-user-doc -->
@@ -55,7 +55,7 @@ public enum ArrangeConstraint implements Enumerator {
      * @generated
      * @ordered
      */
-    KEEP_RATIO(2, "KEEP_RATIO", "KEEP_RATIO");
+    KEEP_RATIO(2, "KEEP_RATIO", "KEEP_RATIO"); //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The '<em><b>KEEP LOCATION</b></em>' literal value. <!-- begin-user-doc

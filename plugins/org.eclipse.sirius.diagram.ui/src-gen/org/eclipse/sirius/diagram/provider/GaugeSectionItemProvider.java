@@ -70,8 +70,10 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      */
     protected void addLabelPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GaugeSection_label_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_label_feature", "_UI_GaugeSection_type"),
-                DiagramPackage.Literals.GAUGE_SECTION__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GaugeSection_label_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_label_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.GAUGE_SECTION__LABEL, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -82,7 +84,8 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GaugeSection_backgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_backgroundColor_feature", "_UI_GaugeSection_type"),
+                getString("_UI_GaugeSection_backgroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_backgroundColor_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -94,7 +97,8 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      */
     protected void addForegroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_GaugeSection_foregroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_foregroundColor_feature", "_UI_GaugeSection_type"),
+                getString("_UI_GaugeSection_foregroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_GaugeSection_foregroundColor_feature", "_UI_GaugeSection_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -106,7 +110,7 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/GaugeSection"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GaugeSection")); //$NON-NLS-1$
     }
 
     /**
@@ -119,7 +123,8 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
     public String getText(Object object) {
         Integer labelValue = ((GaugeSection) object).getMin();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_GaugeSection_type") : getString("_UI_GaugeSection_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_GaugeSection_type") : //$NON-NLS-1$
+            getString("_UI_GaugeSection_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

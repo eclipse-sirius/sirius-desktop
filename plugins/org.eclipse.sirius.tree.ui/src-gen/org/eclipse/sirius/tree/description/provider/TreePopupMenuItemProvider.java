@@ -101,7 +101,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreePopupMenu"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/TreePopupMenu")); //$NON-NLS-1$
     }
 
     /**
@@ -113,7 +113,7 @@ public class TreePopupMenuItemProvider extends AbstractToolDescriptionItemProvid
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreePopupMenu) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_TreePopupMenu_type") : getString("_UI_TreePopupMenu_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreePopupMenu_type") : getString("_UI_TreePopupMenu_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

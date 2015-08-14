@@ -65,7 +65,7 @@ public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/InstanceRoleMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -77,7 +77,7 @@ public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((InstanceRoleMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleMapping_type") : getString("_UI_InstanceRoleMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_InstanceRoleMapping_type") : getString("_UI_InstanceRoleMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -143,7 +143,7 @@ public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
         qualify = qualify && childObject instanceof EObject && org.eclipse.sirius.diagram.sequence.description.DescriptionPackage.eINSTANCE.equals(((EObject) childObject).eClass().getEPackage());
 
         if (qualify) {
-            return getString("_UI_CreateChild_text", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

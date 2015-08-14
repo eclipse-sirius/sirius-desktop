@@ -35,14 +35,14 @@ import org.eclipse.sirius.sample.interactions.MessageEnd;
  * <em>Receiving End</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class MessageImpl extends EObjectImpl implements Message {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
@@ -52,17 +52,17 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getName()
      * @generated
      * @ordered
      */
-    protected String name = NAME_EDEFAULT;
+    protected String name = MessageImpl.NAME_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSendingEnd() <em>Sending End</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getSendingEnd()
      * @generated
      * @ordered
@@ -73,7 +73,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
      * The cached value of the '{@link #getReceivingEnd()
      * <em>Receiving End</em>}' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #getReceivingEnd()
      * @generated
      * @ordered
@@ -82,7 +82,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected MessageImpl() {
@@ -91,7 +91,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -101,37 +101,42 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setName(String newName) {
         String oldName = name;
         name = newName;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MESSAGE__NAME, oldName, name));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MessageEnd getSendingEnd() {
         if (sendingEnd != null && sendingEnd.eIsProxy()) {
             InternalEObject oldSendingEnd = (InternalEObject) sendingEnd;
             sendingEnd = (MessageEnd) eResolveProxy(oldSendingEnd);
             if (sendingEnd != oldSendingEnd) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.MESSAGE__SENDING_END, oldSendingEnd, sendingEnd));
+                }
             }
         }
         return sendingEnd;
@@ -139,7 +144,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MessageEnd basicGetSendingEnd() {
@@ -148,28 +153,32 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setSendingEnd(MessageEnd newSendingEnd) {
         MessageEnd oldSendingEnd = sendingEnd;
         sendingEnd = newSendingEnd;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MESSAGE__SENDING_END, oldSendingEnd, sendingEnd));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public MessageEnd getReceivingEnd() {
         if (receivingEnd != null && receivingEnd.eIsProxy()) {
             InternalEObject oldReceivingEnd = (InternalEObject) receivingEnd;
             receivingEnd = (MessageEnd) eResolveProxy(oldReceivingEnd);
             if (receivingEnd != oldReceivingEnd) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.MESSAGE__RECEIVING_END, oldReceivingEnd, receivingEnd));
+                }
             }
         }
         return receivingEnd;
@@ -177,7 +186,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public MessageEnd basicGetReceivingEnd() {
@@ -186,19 +195,21 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setReceivingEnd(MessageEnd newReceivingEnd) {
         MessageEnd oldReceivingEnd = receivingEnd;
         receivingEnd = newReceivingEnd;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.MESSAGE__RECEIVING_END, oldReceivingEnd, receivingEnd));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -207,12 +218,14 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
         case InteractionsPackage.MESSAGE__NAME:
             return getName();
         case InteractionsPackage.MESSAGE__SENDING_END:
-            if (resolve)
+            if (resolve) {
                 return getSendingEnd();
+            }
             return basicGetSendingEnd();
         case InteractionsPackage.MESSAGE__RECEIVING_END:
-            if (resolve)
+            if (resolve) {
                 return getReceivingEnd();
+            }
             return basicGetReceivingEnd();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -220,7 +233,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -241,14 +254,14 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
         case InteractionsPackage.MESSAGE__NAME:
-            setName(NAME_EDEFAULT);
+            setName(MessageImpl.NAME_EDEFAULT);
             return;
         case InteractionsPackage.MESSAGE__SENDING_END:
             setSendingEnd((MessageEnd) null);
@@ -262,14 +275,14 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InteractionsPackage.MESSAGE__NAME:
-            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+            return MessageImpl.NAME_EDEFAULT == null ? name != null : !MessageImpl.NAME_EDEFAULT.equals(name);
         case InteractionsPackage.MESSAGE__SENDING_END:
             return sendingEnd != null;
         case InteractionsPackage.MESSAGE__RECEIVING_END:
@@ -280,16 +293,17 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
+        if (eIsProxy()) {
             return super.toString();
+        }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
         return result.toString();

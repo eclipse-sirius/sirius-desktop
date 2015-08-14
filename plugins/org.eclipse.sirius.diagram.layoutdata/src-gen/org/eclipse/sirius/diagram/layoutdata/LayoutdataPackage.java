@@ -36,21 +36,21 @@ public interface LayoutdataPackage extends EPackage {
      * 
      * @generated
      */
-    String eNAME = "layoutdata";
+    String eNAME = "layoutdata"; //$NON-NLS-1$
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0"; //$NON-NLS-1$
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    String eNS_PREFIX = "layoutdata";
+    String eNS_PREFIX = "layoutdata"; //$NON-NLS-1$
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!--
@@ -75,7 +75,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -114,7 +114,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -132,7 +132,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -141,7 +141,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -198,7 +198,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -216,7 +216,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Source Terminal</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -225,7 +225,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Target Terminal</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -234,7 +234,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Routing</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -270,7 +270,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Jump Link Status</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -279,7 +279,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Jump Link Type</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -297,7 +297,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The feature id for the '<em><b>Smoothness</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -344,7 +344,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * The number of structural features of the '<em>Point</em>' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      * @ordered
      */
@@ -391,7 +391,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData
      * <em>Node Layout Data</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Node Layout Data</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.NodeLayoutData
      * @generated
@@ -466,7 +466,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData
      * <em>Edge Layout Data</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for class '<em>Edge Layout Data</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData
      * @generated
@@ -527,7 +527,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSourceRefPoint
      * <em>Source Ref Point</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Source Ref Point</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSourceRefPoint()
@@ -541,7 +541,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getTargetRefPoint
      * <em>Target Ref Point</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the containment reference '
      *         <em>Target Ref Point</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getTargetRefPoint()
@@ -555,7 +555,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getJumpLinkStatus
      * <em>Jump Link Status</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Jump Link Status</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getJumpLinkStatus()
      * @see #getEdgeLayoutData()
@@ -580,7 +580,7 @@ public interface LayoutdataPackage extends EPackage {
      * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#isReverseJumpLink
      * <em>Reverse Jump Link</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @return the meta object for the attribute '<em>Reverse Jump Link</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#isReverseJumpLink()
      * @see #getEdgeLayoutData()
@@ -604,7 +604,7 @@ public interface LayoutdataPackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.layoutdata.Point <em>Point</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the meta object for class '<em>Point</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.Point
      * @generated
@@ -638,7 +638,7 @@ public interface LayoutdataPackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */

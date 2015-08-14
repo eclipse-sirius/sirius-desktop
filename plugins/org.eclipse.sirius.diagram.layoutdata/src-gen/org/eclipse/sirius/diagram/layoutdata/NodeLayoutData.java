@@ -15,9 +15,9 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Node Layout Data</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The layout data for a node. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Location</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getNodeLayoutData()
  * @model
  * @generated
@@ -44,7 +44,7 @@ public interface NodeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * width of this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(int)
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getNodeLayoutData_Width()
@@ -69,7 +69,7 @@ public interface NodeLayoutData extends AbstractLayoutData {
      * Returns the value of the '<em><b>Height</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * height of this node. <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(int)
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getNodeLayoutData_Height()
@@ -83,7 +83,7 @@ public interface NodeLayoutData extends AbstractLayoutData {
      * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getHeight
      * <em>Height</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Height</em>' attribute.
      * @see #getHeight()
@@ -98,7 +98,7 @@ public interface NodeLayoutData extends AbstractLayoutData {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Represents the layout of the children of this node. <!-- end-model-doc
      * -->
-     * 
+     *
      * @return the value of the '<em>Children</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getNodeLayoutData_Children()
      * @model containment="true" resolveProxies="true"
@@ -113,7 +113,7 @@ public interface NodeLayoutData extends AbstractLayoutData {
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Represents the layout of the edges that go out from this node. <!--
      * end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Outgoing Edges</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getNodeLayoutData_OutgoingEdges()
@@ -127,7 +127,7 @@ public interface NodeLayoutData extends AbstractLayoutData {
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> Represents the relative location of this node
      * (relative to the parent layoutData). <!-- end-model-doc -->
-     * 
+     *
      * @return the value of the '<em>Location</em>' containment reference.
      * @see #setLocation(Point)
      * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage#getNodeLayoutData_Location()

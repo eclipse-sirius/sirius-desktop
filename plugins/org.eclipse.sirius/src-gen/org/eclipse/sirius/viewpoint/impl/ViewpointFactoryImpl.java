@@ -123,7 +123,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         case ViewpointPackage.UI_STATE:
             return createUIState();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -146,7 +146,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         case ViewpointPackage.RESOURCE_DESCRIPTOR:
             return createResourceDescriptorFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -169,7 +169,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         case ViewpointPackage.RESOURCE_DESCRIPTOR:
             return convertResourceDescriptorToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -357,7 +357,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public FontFormat createFontFormatFromString(EDataType eDataType, String initialValue) {
         FontFormat result = FontFormat.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -380,7 +380,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public LabelAlignment createLabelAlignmentFromString(EDataType eDataType, String initialValue) {
         LabelAlignment result = LabelAlignment.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -403,7 +403,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public SyncStatus createSyncStatusFromString(EDataType eDataType, String initialValue) {
         SyncStatus result = SyncStatus.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

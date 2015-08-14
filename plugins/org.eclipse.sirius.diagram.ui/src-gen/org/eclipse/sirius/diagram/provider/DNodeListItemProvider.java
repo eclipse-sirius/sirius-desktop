@@ -96,7 +96,7 @@ public class DNodeListItemProvider extends DDiagramElementContainerItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DNodeList"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DNodeList")); //$NON-NLS-1$
     }
 
     /**

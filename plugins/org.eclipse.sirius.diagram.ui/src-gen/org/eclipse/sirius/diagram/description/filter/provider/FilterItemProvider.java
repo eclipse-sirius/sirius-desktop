@@ -74,8 +74,10 @@ public class FilterItemProvider extends ItemProviderAdapter implements IEditingD
      */
     protected void addFilterKindPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Filter_filterKind_feature"), getString("_UI_Filter_filterKind_description"), FilterPackage.Literals.FILTER__FILTER_KIND, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_Filter_filterKind_feature"), //$NON-NLS-1$
+                getString("_UI_Filter_filterKind_description"), //$NON-NLS-1$
+                FilterPackage.Literals.FILTER__FILTER_KIND, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -88,7 +90,8 @@ public class FilterItemProvider extends ItemProviderAdapter implements IEditingD
     public String getText(Object object) {
         FilterKind labelValue = ((Filter) object).getFilterKind();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_Filter_type") : getString("_UI_Filter_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_Filter_type") : //$NON-NLS-1$
+            getString("_UI_Filter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

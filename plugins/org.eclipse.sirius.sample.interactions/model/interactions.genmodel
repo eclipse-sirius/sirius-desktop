@@ -1,227 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;" modelDirectory="/org.eclipse.sirius.sample.interactions/src" creationIcons="false" modelPluginID="org.eclipse.sirius.sample.interactions" modelName="Interactions" modelPluginClass="" editPluginClass="org.eclipse.sirius.sample.interactions.provider.InteractionsEditPlugin" editorPluginClass="org.eclipse.sirius.sample.interactions.presentation.InteractionsEditorPlugin" nonNLSMarkers="true" codeFormatting="true" testSuiteClass="org.eclipse.sirius.sample.interactions.tests.InteractionsAllTests" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false" runtimeVersion="2.3" classNamePattern="">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;"
+    modelDirectory="/org.eclipse.sirius.sample.interactions/src" creationIcons="false"
+    modelPluginID="org.eclipse.sirius.sample.interactions" modelName="Interactions"
+    modelPluginClass="" editPluginClass="org.eclipse.sirius.sample.interactions.provider.InteractionsEditPlugin"
+    editorPluginClass="org.eclipse.sirius.sample.interactions.presentation.InteractionsEditorPlugin"
+    nonNLSMarkers="true" codeFormatting="true" testSuiteClass="org.eclipse.sirius.sample.interactions.tests.InteractionsAllTests"
+    booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    classNamePattern="">
   <foreignModel>interactions.ecore</foreignModel>
-  <genPackages prefix="Interactions" basePackage="org.eclipse.sirius.sample" disposableProviderFactory="true">
-    <ecorePackage href="interactions.ecore#/"/>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//Model"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//Model/name"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Model/ownedInteractions"/>
-      </genFeatures>
+  <genPackages prefix="Interactions" basePackage="org.eclipse.sirius.sample" disposableProviderFactory="true"
+      ecorePackage="interactions.ecore#/">
+    <genClasses ecoreClass="interactions.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Model/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//Model/ownedInteractions"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//Interaction"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//Interaction/name"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Interaction/participants"/>
-      </genFeatures>
-      <genFeatures children="true" createChild="true" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Interaction/messages"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Interaction/executions"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Interaction/states"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Interaction/interactionUses"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Interaction/combinedFragments"/>
-      </genFeatures>
-      <genFeatures children="true" createChild="true" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Interaction/ends"/>
-      </genFeatures>
-      <genFeatures children="true" createChild="true" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Interaction/constraints"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//Interaction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Interaction/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/participants"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/messages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/executions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/interactionUses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/combinedFragments"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/ends"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Interaction/constraints"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//Participant"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//Participant/name"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Participant/type"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//Participant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Participant/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Participant/type"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="interactions.ecore#//Message"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//Message/name"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Message/sendingEnd"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Message/receivingEnd"/>
-      </genFeatures>
+    <genClasses image="false" ecoreClass="interactions.ecore#//Message">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Message/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Message/sendingEnd"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Message/receivingEnd"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//CallMessage"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//CallMessage/operation"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//CallMessage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//CallMessage/operation"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//FeatureAccessMessage"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//FeatureAccessMessage/isWrite"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//FeatureAccessMessage/feature"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//FeatureAccessMessage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//FeatureAccessMessage/isWrite"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//FeatureAccessMessage/feature"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//CreateParticipantMessage"/>
+    <genClasses ecoreClass="interactions.ecore#//CreateParticipantMessage"/>
+    <genClasses ecoreClass="interactions.ecore#//DestroyParticipantMessage"/>
+    <genClasses ecoreClass="interactions.ecore#//ReturnMessage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//ReturnMessage/invocationMessage"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//DestroyParticipantMessage"/>
+    <genClasses ecoreClass="interactions.ecore#//Execution">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Execution/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Execution/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Execution/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Execution/end"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//ReturnMessage"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//ReturnMessage/invocationMessage"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//State/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//State/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//State/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//State/end"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//Execution"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//Execution/name"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Execution/owner"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Execution/start"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Execution/end"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//InteractionUse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//InteractionUse/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUse/interaction"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUse/coveredParticipants"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUse/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUse/finish"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//State"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//State/name"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//State/owner"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//State/start"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//State/end"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//CombinedFragment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//CombinedFragment/operator"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragment/coveredParticipants"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragment/start"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragment/finish"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragment/ownedOperands"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//InteractionUse"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//InteractionUse/type"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//InteractionUse/interaction"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//InteractionUse/coveredParticipants"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//InteractionUse/start"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//InteractionUse/finish"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//Operand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Operand/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Operand/start"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//CombinedFragment"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//CombinedFragment/operator"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//CombinedFragment/coveredParticipants"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//CombinedFragment/start"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//CombinedFragment/finish"/>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//CombinedFragment/ownedOperands"/>
-      </genFeatures>
+    <genClasses image="false" ecoreClass="interactions.ecore#//AbstractEnd">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//AbstractEnd/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//AbstractEnd/context"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//Operand"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//Operand/name"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Operand/start"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//MessageEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//MessageEnd/message"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="interactions.ecore#//AbstractEnd"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//AbstractEnd/name"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//AbstractEnd/context"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//ExecutionEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//ExecutionEnd/execution"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//MessageEnd"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//MessageEnd/message"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//StateEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//StateEnd/state"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//ExecutionEnd"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//ExecutionEnd/execution"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//InteractionUseEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//InteractionUseEnd/owner"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//StateEnd"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//StateEnd/state"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//CombinedFragmentEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//CombinedFragmentEnd/owner"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//InteractionUseEnd"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//InteractionUseEnd/owner"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//OperandEnd">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//OperandEnd/owner"/>
     </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//CombinedFragmentEnd"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//CombinedFragmentEnd/owner"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//OperandEnd"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//OperandEnd/owner"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//MixEnd"/>
-    </genClasses>
-    <genClasses>
-      <ecoreClass href="interactions.ecore#//Constraint"/>
-      <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="interactions.ecore#//Constraint/expression"/>
-      </genFeatures>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="interactions.ecore#//Constraint/constrainedEnds"/>
-      </genFeatures>
+    <genClasses ecoreClass="interactions.ecore#//MixEnd"/>
+    <genClasses ecoreClass="interactions.ecore#//Constraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute interactions.ecore#//Constraint/expression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference interactions.ecore#//Constraint/constrainedEnds"/>
     </genClasses>
   </genPackages>
-  <usedGenPackages href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"/>
 </genmodel:GenModel>

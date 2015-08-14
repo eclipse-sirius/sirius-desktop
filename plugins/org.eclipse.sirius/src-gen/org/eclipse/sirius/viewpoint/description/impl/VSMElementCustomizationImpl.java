@@ -231,7 +231,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (predicateExpression: ");
+        result.append(" (predicateExpression: "); //$NON-NLS-1$
         result.append(predicateExpression);
         result.append(')');
         return result.toString();

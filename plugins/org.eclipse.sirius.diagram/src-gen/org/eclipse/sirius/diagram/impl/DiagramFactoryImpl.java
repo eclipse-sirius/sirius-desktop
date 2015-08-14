@@ -205,7 +205,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
         case DiagramPackage.DRAG_AND_DROP_TARGET:
             return createDragAndDropTarget();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -240,7 +240,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
         case DiagramPackage.ARRANGE_CONSTRAINT:
             return createArrangeConstraintFromString(eDataType, initialValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -275,7 +275,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
         case DiagramPackage.ARRANGE_CONSTRAINT:
             return convertArrangeConstraintToString(eDataType, instanceValue);
         default:
-            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -694,7 +694,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public ContainerLayout createContainerLayoutFromString(EDataType eDataType, String initialValue) {
         ContainerLayout result = ContainerLayout.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -716,7 +716,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public LabelPosition createLabelPositionFromString(EDataType eDataType, String initialValue) {
         LabelPosition result = LabelPosition.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -738,7 +738,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public ContainerShape createContainerShapeFromString(EDataType eDataType, String initialValue) {
         ContainerShape result = ContainerShape.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -760,7 +760,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public BackgroundStyle createBackgroundStyleFromString(EDataType eDataType, String initialValue) {
         BackgroundStyle result = BackgroundStyle.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -782,7 +782,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public BundledImageShape createBundledImageShapeFromString(EDataType eDataType, String initialValue) {
         BundledImageShape result = BundledImageShape.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -804,7 +804,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public LineStyle createLineStyleFromString(EDataType eDataType, String initialValue) {
         LineStyle result = LineStyle.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -826,7 +826,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public EdgeArrows createEdgeArrowsFromString(EDataType eDataType, String initialValue) {
         EdgeArrows result = EdgeArrows.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -848,7 +848,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public EdgeRouting createEdgeRoutingFromString(EDataType eDataType, String initialValue) {
         EdgeRouting result = EdgeRouting.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -870,7 +870,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public AlignmentKind createAlignmentKindFromString(EDataType eDataType, String initialValue) {
         AlignmentKind result = AlignmentKind.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -892,7 +892,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public ResizeKind createResizeKindFromString(EDataType eDataType, String initialValue) {
         ResizeKind result = ResizeKind.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }
@@ -914,7 +914,7 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public ArrangeConstraint createArrangeConstraintFromString(EDataType eDataType, String initialValue) {
         ArrangeConstraint result = ArrangeConstraint.get(initialValue);
         if (result == null) {
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         return result;
     }

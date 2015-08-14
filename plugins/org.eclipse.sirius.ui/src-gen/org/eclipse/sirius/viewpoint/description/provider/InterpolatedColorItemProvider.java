@@ -69,9 +69,10 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
      * @generated
      */
     protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_UserColor_name_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_UserColor_name_feature", "_UI_UserColor_type"), DescriptionPackage.Literals.USER_COLOR__NAME, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_UserColor_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_UserColor_name_feature", "_UI_UserColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.USER_COLOR__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -81,11 +82,13 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
      * @generated
      */
     protected void addColorValueComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_InterpolatedColor_colorValueComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_colorValueComputationExpression_feature", "_UI_InterpolatedColor_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_InterpolatedColor_colorValueComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_colorValueComputationExpression_feature", "_UI_InterpolatedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.INTERPOLATED_COLOR__COLOR_VALUE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -95,11 +98,13 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
      * @generated
      */
     protected void addMinValueComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_InterpolatedColor_minValueComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_minValueComputationExpression_feature", "_UI_InterpolatedColor_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_InterpolatedColor_minValueComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_minValueComputationExpression_feature", "_UI_InterpolatedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.INTERPOLATED_COLOR__MIN_VALUE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -109,11 +114,13 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
      * @generated
      */
     protected void addMaxValueComputationExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_InterpolatedColor_maxValueComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_maxValueComputationExpression_feature", "_UI_InterpolatedColor_type"),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                getResourceLocator(),
+                getString("_UI_InterpolatedColor_maxValueComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_InterpolatedColor_maxValueComputationExpression_feature", "_UI_InterpolatedColor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DescriptionPackage.Literals.INTERPOLATED_COLOR__MAX_VALUE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -157,7 +164,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/InterpolatedColor"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/InterpolatedColor")); //$NON-NLS-1$
     }
 
     /**
@@ -169,7 +176,7 @@ public class InterpolatedColorItemProvider extends ColorDescriptionItemProvider 
     @Override
     public String getText(Object object) {
         String label = ((InterpolatedColor) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_InterpolatedColor_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_InterpolatedColor_type") : label; //$NON-NLS-1$
     }
 
     /**

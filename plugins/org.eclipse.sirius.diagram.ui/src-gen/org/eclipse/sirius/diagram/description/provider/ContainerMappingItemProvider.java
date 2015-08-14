@@ -77,8 +77,10 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      */
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DragAndDropTargetDescription_dropDescriptions_feature"), getString("_UI_DragAndDropTargetDescription_dropDescriptions_description"),
-                DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), null));
+                getString("_UI_DragAndDropTargetDescription_dropDescriptions_feature"), //$NON-NLS-1$
+                getString("_UI_DragAndDropTargetDescription_dropDescriptions_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -89,8 +91,10 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      */
     protected void addAllNodeMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMapping_allNodeMappings_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allNodeMappings_feature", "_UI_ContainerMapping_type"),
-                DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_NODE_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_ContainerMapping_allNodeMappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allNodeMappings_feature", "_UI_ContainerMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_NODE_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -101,8 +105,10 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      */
     protected void addReusedNodeMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMapping_reusedNodeMappings_feature"), getString("_UI_ContainerMapping_reusedNodeMappings_description"),
-                DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_ContainerMapping_reusedNodeMappings_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerMapping_reusedNodeMappings_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -113,8 +119,10 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      */
     protected void addReusedContainerMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMapping_reusedContainerMappings_feature"), getString("_UI_ContainerMapping_reusedContainerMappings_description"),
-                DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
+                getString("_UI_ContainerMapping_reusedContainerMappings_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerMapping_reusedContainerMappings_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -124,10 +132,11 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * @generated
      */
     protected void addAllContainerMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_ContainerMapping_allContainerMappings_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allContainerMappings_feature", "_UI_ContainerMapping_type"),
-                        DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ContainerMapping_allContainerMappings_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_ContainerMapping_allContainerMappings_feature", "_UI_ContainerMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS, false, false, false, null, getString("_UI_ImportPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -138,8 +147,10 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      */
     protected void addChildrenPresentationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContainerMapping_childrenPresentation_feature"), getString("_UI_ContainerMapping_childrenPresentation_description"),
-                DescriptionPackage.Literals.CONTAINER_MAPPING__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ContainerMapping_childrenPresentation_feature"), //$NON-NLS-1$
+                getString("_UI_ContainerMapping_childrenPresentation_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.CONTAINER_MAPPING__CHILDREN_PRESENTATION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -191,7 +202,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerMapping"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContainerMapping")); //$NON-NLS-1$
     }
 
     /**
@@ -237,8 +248,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
-     * @not-generated:
-     *                 <UL>
+     * @not-generated: <UL>
      *                 <LI>Add a default semantic candidate expression at
      *                 creation time.</LI>
      *                 <LI>Set to 1 the default borderSizeComputationExpression
@@ -254,8 +264,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
         createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents");
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, createNodeMapping));
 
-        newChildDescriptors.add(
-                createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createNodeMappingImport()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createNodeMappingImport()));
 
         ContainerMapping createContainerMapping = DescriptionFactory.eINSTANCE.createContainerMapping();
         createContainerMapping.setSemanticCandidatesExpression("feature:eAllContents");
@@ -272,8 +282,8 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
         shapeContainerStyleDescription.setBorderSizeComputationExpression("1");
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE, shapeContainerStyleDescription));
 
-        newChildDescriptors
-                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE,
+                StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__CONDITIONNAL_STYLES,
                 DescriptionFactory.eINSTANCE.createConditionalContainerStyleDescription()));

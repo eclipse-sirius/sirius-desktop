@@ -98,7 +98,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/PopupMenu"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/PopupMenu")); //$NON-NLS-1$
     }
 
     /**
@@ -110,7 +110,7 @@ public class PopupMenuItemProvider extends AbstractToolDescriptionItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((PopupMenu) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_PopupMenu_type") : getString("_UI_PopupMenu_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_PopupMenu_type") : getString("_UI_PopupMenu_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

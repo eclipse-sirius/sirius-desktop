@@ -78,10 +78,12 @@ IItemLabelProvider, IItemPropertySource {
         .add(createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
                 getResourceLocator(),
-                getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature",
-                        "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false,
-                        false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"), //$NON-NLS-1$
+                getString(
+                        "_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature", "_UI_SizeComputationContainerStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -95,10 +97,12 @@ IItemLabelProvider, IItemPropertySource {
         .add(createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
                 getResourceLocator(),
-                getString("_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature",
-                        "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false,
-                        false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature"), //$NON-NLS-1$
+                getString(
+                        "_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature", "_UI_SizeComputationContainerStyleDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                        getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -110,7 +114,8 @@ IItemLabelProvider, IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((SizeComputationContainerStyleDescription) object).getWidthComputationExpression();
-        return label == null || label.length() == 0 ? getString("_UI_SizeComputationContainerStyleDescription_type") : getString("_UI_SizeComputationContainerStyleDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_SizeComputationContainerStyleDescription_type") : //$NON-NLS-1$
+            getString("_UI_SizeComputationContainerStyleDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

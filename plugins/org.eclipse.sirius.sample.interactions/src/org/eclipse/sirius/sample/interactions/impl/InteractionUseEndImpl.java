@@ -29,14 +29,14 @@ import org.eclipse.sirius.sample.interactions.InteractionsPackage;
  * <em>Owner</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InteractionUseEndImpl extends AbstractEndImpl implements InteractionUseEnd {
     /**
      * The cached value of the '{@link #getOwner() <em>Owner</em>}' reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getOwner()
      * @generated
      * @ordered
@@ -45,7 +45,7 @@ public class InteractionUseEndImpl extends AbstractEndImpl implements Interactio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected InteractionUseEndImpl() {
@@ -54,7 +54,7 @@ public class InteractionUseEndImpl extends AbstractEndImpl implements Interactio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -64,16 +64,18 @@ public class InteractionUseEndImpl extends AbstractEndImpl implements Interactio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public InteractionUse getOwner() {
         if (owner != null && owner.eIsProxy()) {
             InternalEObject oldOwner = (InternalEObject) owner;
             owner = (InteractionUse) eResolveProxy(oldOwner);
             if (owner != oldOwner) {
-                if (eNotificationRequired())
+                if (eNotificationRequired()) {
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionsPackage.INTERACTION_USE_END__OWNER, oldOwner, owner));
+                }
             }
         }
         return owner;
@@ -81,7 +83,7 @@ public class InteractionUseEndImpl extends AbstractEndImpl implements Interactio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InteractionUse basicGetOwner() {
@@ -90,27 +92,30 @@ public class InteractionUseEndImpl extends AbstractEndImpl implements Interactio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
+    @Override
     public void setOwner(InteractionUse newOwner) {
         InteractionUse oldOwner = owner;
         owner = newOwner;
-        if (eNotificationRequired())
+        if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, InteractionsPackage.INTERACTION_USE_END__OWNER, oldOwner, owner));
+        }
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InteractionsPackage.INTERACTION_USE_END__OWNER:
-            if (resolve)
+            if (resolve) {
                 return getOwner();
+            }
             return basicGetOwner();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -118,7 +123,7 @@ public class InteractionUseEndImpl extends AbstractEndImpl implements Interactio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -133,7 +138,7 @@ public class InteractionUseEndImpl extends AbstractEndImpl implements Interactio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -148,7 +153,7 @@ public class InteractionUseEndImpl extends AbstractEndImpl implements Interactio
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

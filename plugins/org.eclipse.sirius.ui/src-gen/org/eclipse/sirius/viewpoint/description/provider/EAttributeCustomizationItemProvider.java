@@ -66,7 +66,8 @@ public class EAttributeCustomizationItemProvider extends EStructuralFeatureCusto
      */
     protected void addAttributeNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EAttributeCustomization_attributeName_feature"), getString("_UI_EAttributeCustomization_attributeName_description"),
+                getString("_UI_EAttributeCustomization_attributeName_feature"), //$NON-NLS-1$
+                getString("_UI_EAttributeCustomization_attributeName_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.EATTRIBUTE_CUSTOMIZATION__ATTRIBUTE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -78,8 +79,9 @@ public class EAttributeCustomizationItemProvider extends EStructuralFeatureCusto
      */
     protected void addValuePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EAttributeCustomization_value_feature"), getString("_UI_EAttributeCustomization_value_description"), DescriptionPackage.Literals.EATTRIBUTE_CUSTOMIZATION__VALUE, true,
-                false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_EAttributeCustomization_value_feature"), //$NON-NLS-1$
+                getString("_UI_EAttributeCustomization_value_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.EATTRIBUTE_CUSTOMIZATION__VALUE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -90,7 +92,7 @@ public class EAttributeCustomizationItemProvider extends EStructuralFeatureCusto
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EAttributeCustomization"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EAttributeCustomization")); //$NON-NLS-1$
     }
 
     /**
@@ -102,7 +104,8 @@ public class EAttributeCustomizationItemProvider extends EStructuralFeatureCusto
     @Override
     public String getText(Object object) {
         String label = ((EAttributeCustomization) object).getAttributeName();
-        return label == null || label.length() == 0 ? getString("_UI_EAttributeCustomization_type") : getString("_UI_EAttributeCustomization_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_EAttributeCustomization_type") : //$NON-NLS-1$
+            getString("_UI_EAttributeCustomization_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

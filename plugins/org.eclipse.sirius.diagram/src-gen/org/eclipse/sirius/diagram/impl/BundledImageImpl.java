@@ -65,7 +65,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * @generated
      * @ordered
      */
-    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0"); //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
@@ -224,9 +224,9 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (shape: ");
+        result.append(" (shape: "); //$NON-NLS-1$
         result.append(shape);
-        result.append(", color: ");
+        result.append(", color: "); //$NON-NLS-1$
         result.append(color);
         result.append(')');
         return result.toString();

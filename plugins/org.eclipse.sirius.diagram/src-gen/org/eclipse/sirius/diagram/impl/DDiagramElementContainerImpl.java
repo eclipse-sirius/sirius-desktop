@@ -874,11 +874,11 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (arrangeConstraints: ");
+        result.append(" (arrangeConstraints: "); //$NON-NLS-1$
         result.append(arrangeConstraints);
-        result.append(", width: ");
+        result.append(", width: "); //$NON-NLS-1$
         result.append(width);
-        result.append(", height: ");
+        result.append(", height: "); //$NON-NLS-1$
         result.append(height);
         result.append(')');
         return result.toString();

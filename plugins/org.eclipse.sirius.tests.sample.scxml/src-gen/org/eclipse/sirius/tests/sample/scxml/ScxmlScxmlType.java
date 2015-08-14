@@ -4,20 +4,17 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ *
  * Contributors:
  *    Obeo - initial API and implementation
  */
 package org.eclipse.sirius.tests.sample.scxml;
 
 import java.math.BigDecimal;
-
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
@@ -76,7 +73,7 @@ public interface ScxmlScxmlType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Scxml Scxml Mix</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_ScxmlScxmlMix()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -95,7 +92,7 @@ public interface ScxmlScxmlType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>State</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_State()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -115,7 +112,7 @@ public interface ScxmlScxmlType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Parallel</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_Parallel()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -135,7 +132,7 @@ public interface ScxmlScxmlType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Final</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_Final()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -155,7 +152,7 @@ public interface ScxmlScxmlType extends EObject {
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Datamodel</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_Datamodel()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -175,7 +172,7 @@ public interface ScxmlScxmlType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Script</em>' containment reference list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_Script()
      * @model containment="true" transient="true" volatile="true" derived="true"
@@ -194,7 +191,7 @@ public interface ScxmlScxmlType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_Any()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"
@@ -215,7 +212,7 @@ public interface ScxmlScxmlType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Binding</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.BindingDatatype
      * @see #isSetBinding()
@@ -233,7 +230,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getBinding
      * <em>Binding</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Binding</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.BindingDatatype
@@ -249,7 +246,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getBinding
      * <em>Binding</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #isSetBinding()
      * @see #getBinding()
      * @see #setBinding(BindingDatatype)
@@ -262,7 +259,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getBinding
      * <em>Binding</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Binding</em>' attribute is set.
      * @see #unsetBinding()
      * @see #getBinding()
@@ -279,7 +276,7 @@ public interface ScxmlScxmlType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Datamodel1</em>' attribute.
      * @see #isSetDatamodel1()
      * @see #unsetDatamodel1()
@@ -297,7 +294,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getDatamodel1
      * <em>Datamodel1</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Datamodel1</em>' attribute.
      * @see #isSetDatamodel1()
@@ -312,7 +309,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getDatamodel1
      * <em>Datamodel1</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @see #isSetDatamodel1()
      * @see #getDatamodel1()
      * @see #setDatamodel1(String)
@@ -325,7 +322,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getDatamodel1
      * <em>Datamodel1</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Datamodel1</em>' attribute is set.
      * @see #unsetDatamodel1()
      * @see #getDatamodel1()
@@ -344,7 +341,7 @@ public interface ScxmlScxmlType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Exmode</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
      * @see #isSetExmode()
@@ -362,7 +359,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getExmode
      * <em>Exmode</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Exmode</em>' attribute.
      * @see org.eclipse.sirius.tests.sample.scxml.ExmodeDatatype
@@ -378,7 +375,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getExmode
      * <em>Exmode</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #isSetExmode()
      * @see #getExmode()
      * @see #setExmode(ExmodeDatatype)
@@ -391,7 +388,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getExmode
      * <em>Exmode</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Exmode</em>' attribute is set.
      * @see #unsetExmode()
      * @see #getExmode()
@@ -408,7 +405,7 @@ public interface ScxmlScxmlType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Initial</em>' attribute.
      * @see #setInitial(List)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_Initial()
@@ -423,7 +420,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getInitial
      * <em>Initial</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Initial</em>' attribute.
      * @see #getInitial()
@@ -439,7 +436,7 @@ public interface ScxmlScxmlType extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_Name()
@@ -453,7 +450,7 @@ public interface ScxmlScxmlType extends EObject {
      * Sets the value of the '
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Name</em>' attribute.
      * @see #getName()
@@ -469,7 +466,7 @@ public interface ScxmlScxmlType extends EObject {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Version</em>' attribute.
      * @see #isSetVersion()
      * @see #unsetVersion()
@@ -487,7 +484,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getVersion
      * <em>Version</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Version</em>' attribute.
      * @see #isSetVersion()
@@ -502,7 +499,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getVersion
      * <em>Version</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @see #isSetVersion()
      * @see #getVersion()
      * @see #setVersion(BigDecimal)
@@ -515,7 +512,7 @@ public interface ScxmlScxmlType extends EObject {
      * {@link org.eclipse.sirius.tests.sample.scxml.ScxmlScxmlType#getVersion
      * <em>Version</em>}' attribute is set. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @return whether the value of the '<em>Version</em>' attribute is set.
      * @see #unsetVersion()
      * @see #getVersion()
@@ -534,7 +531,7 @@ public interface ScxmlScxmlType extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
+     *
      * @return the value of the '<em>Any Attribute</em>' attribute list.
      * @see org.eclipse.sirius.tests.sample.scxml.ScxmlPackage#getScxmlScxmlType_AnyAttribute()
      * @model unique="false" dataType="org.eclipse.emf.ecore.EFeatureMapEntry"

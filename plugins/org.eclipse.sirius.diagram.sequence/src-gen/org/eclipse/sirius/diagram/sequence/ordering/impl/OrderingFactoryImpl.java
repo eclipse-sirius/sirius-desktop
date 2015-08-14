@@ -76,7 +76,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
         case OrderingPackage.INSTANCE_ROLES_ORDERING:
             return createInstanceRolesOrdering();
         default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

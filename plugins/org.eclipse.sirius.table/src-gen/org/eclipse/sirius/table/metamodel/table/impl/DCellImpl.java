@@ -82,7 +82,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
      * @generated
      * @ordered
      */
-    protected static final String NAME_EDEFAULT = "";
+    protected static final String NAME_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -293,7 +293,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     public void setLine(DLine newLine) {
         if (newLine != eInternalContainer() || (eContainerFeatureID() != TablePackage.DCELL__LINE && newLine != null)) {
             if (EcoreUtil.isAncestor(this, newLine)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
             }
             NotificationChain msgs = null;
             if (eInternalContainer() != null) {
@@ -852,9 +852,9 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", label: ");
+        result.append(", label: "); //$NON-NLS-1$
         result.append(label);
         result.append(')');
         return result.toString();

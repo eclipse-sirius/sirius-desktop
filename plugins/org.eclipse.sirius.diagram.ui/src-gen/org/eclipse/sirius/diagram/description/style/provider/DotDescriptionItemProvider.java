@@ -67,8 +67,10 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
      */
     protected void addBackgroundColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DotDescription_backgroundColor_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DotDescription_backgroundColor_feature", "_UI_DotDescription_type"),
-                StylePackage.Literals.DOT_DESCRIPTION__BACKGROUND_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), null));
+                getString("_UI_DotDescription_backgroundColor_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DotDescription_backgroundColor_feature", "_UI_DotDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.DOT_DESCRIPTION__BACKGROUND_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -79,9 +81,9 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
      */
     protected void addStrokeSizeComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DotDescription_strokeSizeComputationExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DotDescription_strokeSizeComputationExpression_feature", "_UI_DotDescription_type"),
-                StylePackage.Literals.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                getString("_UI_DotDescription_strokeSizeComputationExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DotDescription_strokeSizeComputationExpression_feature", "_UI_DotDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.DOT_DESCRIPTION__STROKE_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -93,7 +95,7 @@ public class DotDescriptionItemProvider extends NodeStyleDescriptionItemProvider
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DotDescription"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DotDescription")); //$NON-NLS-1$
     }
 
     /**

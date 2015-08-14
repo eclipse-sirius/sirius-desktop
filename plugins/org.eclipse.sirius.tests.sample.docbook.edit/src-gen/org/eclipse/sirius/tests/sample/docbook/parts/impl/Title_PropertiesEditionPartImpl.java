@@ -48,10 +48,10 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public Title_PropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -59,10 +59,10 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent) {
@@ -76,10 +76,10 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(Composite view) {
@@ -126,9 +126,9 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -144,9 +144,9 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -171,9 +171,9 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -184,9 +184,9 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Title_PropertiesEditionPart#getData()
-     * 
+     *
      */
     @Override
     public String getData() {
@@ -195,10 +195,10 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.Title_PropertiesEditionPart#setData(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setData(String newValue) {
@@ -221,7 +221,7 @@ public class Title_PropertiesEditionPartImpl extends CompositePropertiesEditionP
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

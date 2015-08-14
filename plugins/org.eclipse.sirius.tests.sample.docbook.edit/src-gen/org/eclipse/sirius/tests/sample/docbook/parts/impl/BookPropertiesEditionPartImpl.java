@@ -71,10 +71,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * Default constructor
-     * 
+     *
      * @param editionComponent
      *            the {@link IPropertiesEditionComponent} that manage this part
-     * 
+     *
      */
     public BookPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
         super(editionComponent);
@@ -82,10 +82,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createFigure(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public Composite createFigure(final Composite parent) {
@@ -99,10 +99,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
      *      createControls(org.eclipse.swt.widgets.Composite)
-     * 
+     *
      */
     @Override
     public void createControls(Composite view) {
@@ -155,7 +155,7 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * @param container
-     * 
+     *
      */
     protected Composite createChapterAdvancedTableComposition(Composite parent) {
         this.chapter = new ReferencesTable(getDescription(DocbookViewsRepository.Book.Properties.chapter, DocbookMessages.BookPropertiesEditionPart_ChapterLabel), new ReferencesTableListener() {
@@ -229,9 +229,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -247,9 +247,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -281,9 +281,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -299,9 +299,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -333,9 +333,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -351,9 +351,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-             * 
+             *
              */
             @Override
             @SuppressWarnings("synthetic-access")
@@ -378,9 +378,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-     * 
+     *
      */
     @Override
     public void firePropertiesChanged(IPropertiesEditionEvent event) {
@@ -391,7 +391,7 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#initChapter(EObject
      *      current, EReference containingFeature, EReference feature)
      */
@@ -415,9 +415,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#updateChapter()
-     * 
+     *
      */
     @Override
     public void updateChapter() {
@@ -426,10 +426,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#addFilterChapter(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addFilterToChapter(ViewerFilter filter) {
@@ -441,10 +441,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#addBusinessFilterChapter(ViewerFilter
      *      filter)
-     * 
+     *
      */
     @Override
     public void addBusinessFilterToChapter(ViewerFilter filter) {
@@ -453,10 +453,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#isContainedInChapterTable(EObject
      *      element)
-     * 
+     *
      */
     @Override
     public boolean isContainedInChapterTable(EObject element) {
@@ -465,9 +465,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#getId()
-     * 
+     *
      */
     @Override
     public String getId() {
@@ -476,10 +476,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#setId(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setId(String newValue) {
@@ -500,9 +500,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#getLang()
-     * 
+     *
      */
     @Override
     public String getLang() {
@@ -511,10 +511,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#setLang(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setLang(String newValue) {
@@ -535,9 +535,9 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#getVersion()
-     * 
+     *
      */
     @Override
     public String getVersion() {
@@ -546,10 +546,10 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tests.sample.docbook.parts.BookPropertiesEditionPart#setVersion(String
      *      newValue)
-     * 
+     *
      */
     @Override
     public void setVersion(String newValue) {
@@ -572,7 +572,7 @@ public class BookPropertiesEditionPartImpl extends CompositePropertiesEditionPar
      * {@inheritDoc}
      *
      * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-     * 
+     *
      */
     @Override
     public String getTitle() {

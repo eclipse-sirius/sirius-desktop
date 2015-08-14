@@ -164,7 +164,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
      * @generated
      * @ordered
      */
-    protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "1";
+    protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "1"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getSizeComputationExpression()
@@ -1028,19 +1028,19 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (lineStyle: ");
+        result.append(" (lineStyle: "); //$NON-NLS-1$
         result.append(lineStyle);
-        result.append(", sourceArrow: ");
+        result.append(", sourceArrow: "); //$NON-NLS-1$
         result.append(sourceArrow);
-        result.append(", targetArrow: ");
+        result.append(", targetArrow: "); //$NON-NLS-1$
         result.append(targetArrow);
-        result.append(", sizeComputationExpression: ");
+        result.append(", sizeComputationExpression: "); //$NON-NLS-1$
         result.append(sizeComputationExpression);
-        result.append(", routingStyle: ");
+        result.append(", routingStyle: "); //$NON-NLS-1$
         result.append(routingStyle);
-        result.append(", foldingStyle: ");
+        result.append(", foldingStyle: "); //$NON-NLS-1$
         result.append(foldingStyle);
-        result.append(", endsCentering: ");
+        result.append(", endsCentering: "); //$NON-NLS-1$
         result.append(endsCentering);
         result.append(')');
         return result.toString();

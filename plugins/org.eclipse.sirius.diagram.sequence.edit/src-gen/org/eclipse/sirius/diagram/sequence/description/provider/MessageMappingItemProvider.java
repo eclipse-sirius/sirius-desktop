@@ -68,9 +68,9 @@ public class MessageMappingItemProvider extends EdgeMappingItemProvider {
      */
     protected void addSendingEndFinderExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MessageMapping_sendingEndFinderExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageMapping_sendingEndFinderExpression_feature", "_UI_MessageMapping_type"),
-                DescriptionPackage.Literals.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_MessageMapping_sendingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MessageMapping_sendingEndFinderExpression_feature", "_UI_MessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -82,9 +82,9 @@ public class MessageMappingItemProvider extends EdgeMappingItemProvider {
      */
     protected void addReceivingEndFinderExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_MessageMapping_receivingEndFinderExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_MessageMapping_receivingEndFinderExpression_feature", "_UI_MessageMapping_type"),
-                DescriptionPackage.Literals.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_MessageMapping_receivingEndFinderExpression_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_MessageMapping_receivingEndFinderExpression_feature", "_UI_MessageMapping_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -97,7 +97,7 @@ public class MessageMappingItemProvider extends EdgeMappingItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((MessageMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_MessageMapping_type") : getString("_UI_MessageMapping_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_MessageMapping_type") : getString("_UI_MessageMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

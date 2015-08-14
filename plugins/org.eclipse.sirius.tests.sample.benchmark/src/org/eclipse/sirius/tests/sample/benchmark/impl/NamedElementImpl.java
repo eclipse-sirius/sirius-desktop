@@ -39,7 +39,7 @@ import org.eclipse.sirius.tests.sample.benchmark.Property;
  * <em>Properties</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NamedElementImpl extends EObjectImpl implements NamedElement {
@@ -220,7 +220,7 @@ public class NamedElementImpl extends EObjectImpl implements NamedElement {
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(')');
         return result.toString();

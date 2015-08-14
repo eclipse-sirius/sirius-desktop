@@ -286,7 +286,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     public void setTable(DTable newTable) {
         if (newTable != eInternalContainer() || (eContainerFeatureID() != TablePackage.DCOLUMN__TABLE && newTable != null)) {
             if (EcoreUtil.isAncestor(this, newTable)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
             }
             NotificationChain msgs = null;
             if (eInternalContainer() != null) {
@@ -614,11 +614,11 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (label: ");
+        result.append(" (label: "); //$NON-NLS-1$
         result.append(label);
-        result.append(", visible: ");
+        result.append(", visible: "); //$NON-NLS-1$
         result.append(visible);
-        result.append(", width: ");
+        result.append(", width: "); //$NON-NLS-1$
         result.append(width);
         result.append(')');
         return result.toString();

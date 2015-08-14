@@ -343,13 +343,13 @@ public abstract class DecorationDescriptionImpl extends MinimalEObjectImpl.Conta
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
+        result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
-        result.append(", position: ");
+        result.append(", position: "); //$NON-NLS-1$
         result.append(position);
-        result.append(", decoratorPath: ");
+        result.append(", decoratorPath: "); //$NON-NLS-1$
         result.append(decoratorPath);
-        result.append(", preconditionExpression: ");
+        result.append(", preconditionExpression: "); //$NON-NLS-1$
         result.append(preconditionExpression);
         result.append(')');
         return result.toString();

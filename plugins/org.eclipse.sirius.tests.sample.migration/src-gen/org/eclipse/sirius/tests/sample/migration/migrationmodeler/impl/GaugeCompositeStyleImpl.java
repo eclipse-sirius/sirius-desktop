@@ -225,7 +225,7 @@ public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompo
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (alignment: ");
+        result.append(" (alignment: "); //$NON-NLS-1$
         result.append(alignment);
         result.append(')');
         return result.toString();

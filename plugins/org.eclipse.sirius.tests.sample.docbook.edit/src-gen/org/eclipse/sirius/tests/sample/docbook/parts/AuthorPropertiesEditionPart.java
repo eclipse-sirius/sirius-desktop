@@ -23,54 +23,54 @@ public interface AuthorPropertiesEditionPart {
 
     /**
      * @return the email
-     * 
+     *
      */
     public String getEmail();
 
     /**
      * Defines a new email
-     * 
+     *
      * @param newValue
      *            the new email to set
-     * 
+     *
      */
     public void setEmail(String newValue);
 
     /**
      * @return the personname
-     * 
+     *
      */
     public String getPersonname();
 
     /**
      * Defines a new personname
-     * 
+     *
      * @param newValue
      *            the new personname to set
-     * 
+     *
      */
     public void setPersonname(String newValue);
 
     /**
      * @return the address
-     * 
+     *
      */
     public String getAddress();
 
     /**
      * Defines a new address
-     * 
+     *
      * @param newValue
      *            the new address to set
-     * 
+     *
      */
     public void setAddress(String newValue);
 
     /**
      * Returns the internationalized title text.
-     * 
+     *
      * @return the internationalized title text.
-     * 
+     *
      */
     public String getTitle();
 

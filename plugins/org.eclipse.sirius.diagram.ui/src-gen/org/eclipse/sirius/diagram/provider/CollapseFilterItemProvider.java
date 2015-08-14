@@ -75,7 +75,8 @@ IItemPropertySource {
      */
     protected void addWidthPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CollapseFilter_width_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CollapseFilter_width_feature", "_UI_CollapseFilter_type"),
+                getString("_UI_CollapseFilter_width_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CollapseFilter_width_feature", "_UI_CollapseFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.COLLAPSE_FILTER__WIDTH, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
@@ -87,7 +88,8 @@ IItemPropertySource {
      */
     protected void addHeightPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CollapseFilter_height_feature"), getString("_UI_PropertyDescriptor_description", "_UI_CollapseFilter_height_feature", "_UI_CollapseFilter_type"),
+                getString("_UI_CollapseFilter_height_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_CollapseFilter_height_feature", "_UI_CollapseFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.COLLAPSE_FILTER__HEIGHT, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
@@ -99,7 +101,7 @@ IItemPropertySource {
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/CollapseFilter"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CollapseFilter")); //$NON-NLS-1$
     }
 
     /**
@@ -111,7 +113,7 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         CollapseFilter collapseFilter = (CollapseFilter) object;
-        return getString("_UI_CollapseFilter_type") + " " + collapseFilter.getWidth();
+        return getString("_UI_CollapseFilter_type") + " " + collapseFilter.getWidth(); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

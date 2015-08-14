@@ -77,8 +77,10 @@ IItemPropertySource {
      */
     protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DecorationDescription_name_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DecorationDescription_name_feature", "_UI_DecorationDescription_type"),
-                DescriptionPackage.Literals.DECORATION_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_DecorationDescription_name_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_DecorationDescription_name_feature", "_UI_DecorationDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DescriptionPackage.Literals.DECORATION_DESCRIPTION__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -89,8 +91,10 @@ IItemPropertySource {
      */
     protected void addPositionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DecorationDescription_position_feature"), getString("_UI_DecorationDescription_position_description"), DescriptionPackage.Literals.DECORATION_DESCRIPTION__POSITION,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_DecorationDescription_position_feature"), //$NON-NLS-1$
+                getString("_UI_DecorationDescription_position_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DECORATION_DESCRIPTION__POSITION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -101,8 +105,10 @@ IItemPropertySource {
      */
     protected void addDecoratorPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DecorationDescription_decoratorPath_feature"), getString("_UI_DecorationDescription_decoratorPath_description"),
-                DescriptionPackage.Literals.DECORATION_DESCRIPTION__DECORATOR_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_DecorationDescription_decoratorPath_feature"), //$NON-NLS-1$
+                getString("_UI_DecorationDescription_decoratorPath_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DECORATION_DESCRIPTION__DECORATOR_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                null));
     }
 
     /**
@@ -113,8 +119,9 @@ IItemPropertySource {
      */
     protected void addPreconditionExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DecorationDescription_preconditionExpression_feature"), getString("_UI_DecorationDescription_preconditionExpression_description"),
-                DescriptionPackage.Literals.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                getString("_UI_DecorationDescription_preconditionExpression_feature"), //$NON-NLS-1$
+                getString("_UI_DecorationDescription_preconditionExpression_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.DECORATION_DESCRIPTION__PRECONDITION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
     }
 
@@ -127,7 +134,8 @@ IItemPropertySource {
     @Override
     public String getText(Object object) {
         String label = ((DecorationDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DecorationDescription_type") : getString("_UI_DecorationDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DecorationDescription_type") : //$NON-NLS-1$
+            getString("_UI_DecorationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

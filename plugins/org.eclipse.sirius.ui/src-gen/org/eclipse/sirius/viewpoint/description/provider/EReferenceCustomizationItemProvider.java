@@ -66,7 +66,8 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
      */
     protected void addReferenceNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EReferenceCustomization_referenceName_feature"), getString("_UI_EReferenceCustomization_referenceName_description"),
+                getString("_UI_EReferenceCustomization_referenceName_feature"), //$NON-NLS-1$
+                getString("_UI_EReferenceCustomization_referenceName_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.EREFERENCE_CUSTOMIZATION__REFERENCE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -78,8 +79,9 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
      */
     protected void addValuePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EReferenceCustomization_value_feature"), getString("_UI_EReferenceCustomization_value_description"), DescriptionPackage.Literals.EREFERENCE_CUSTOMIZATION__VALUE, true,
-                false, true, null, null, null));
+                getString("_UI_EReferenceCustomization_value_feature"), //$NON-NLS-1$
+                getString("_UI_EReferenceCustomization_value_description"), //$NON-NLS-1$
+                DescriptionPackage.Literals.EREFERENCE_CUSTOMIZATION__VALUE, true, false, true, null, null, null));
     }
 
     /**
@@ -90,7 +92,7 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/EReferenceCustomization"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/EReferenceCustomization")); //$NON-NLS-1$
     }
 
     /**
@@ -102,7 +104,8 @@ public class EReferenceCustomizationItemProvider extends EStructuralFeatureCusto
     @Override
     public String getText(Object object) {
         String label = ((EReferenceCustomization) object).getReferenceName();
-        return label == null || label.length() == 0 ? getString("_UI_EReferenceCustomization_type") : getString("_UI_EReferenceCustomization_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_EReferenceCustomization_type") : //$NON-NLS-1$
+            getString("_UI_EReferenceCustomization_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

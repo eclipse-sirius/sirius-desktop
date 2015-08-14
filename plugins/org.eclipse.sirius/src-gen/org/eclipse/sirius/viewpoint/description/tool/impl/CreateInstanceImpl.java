@@ -89,7 +89,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
      * @generated
      * @ordered
      */
-    protected static final String VARIABLE_NAME_EDEFAULT = "instance";
+    protected static final String VARIABLE_NAME_EDEFAULT = "instance"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getVariableName()
@@ -283,11 +283,11 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (typeName: ");
+        result.append(" (typeName: "); //$NON-NLS-1$
         result.append(typeName);
-        result.append(", referenceName: ");
+        result.append(", referenceName: "); //$NON-NLS-1$
         result.append(referenceName);
-        result.append(", variableName: ");
+        result.append(", variableName: "); //$NON-NLS-1$
         result.append(variableName);
         result.append(')');
         return result.toString();

@@ -64,7 +64,7 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
      * @generated
      * @ordered
      */
-    protected static final String ITERATOR_NAME_EDEFAULT = "i";
+    protected static final String ITERATOR_NAME_EDEFAULT = "i"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getIteratorName()
@@ -224,9 +224,9 @@ public class ForImpl extends ContainerModelOperationImpl implements For {
         }
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (expression: ");
+        result.append(" (expression: "); //$NON-NLS-1$
         result.append(expression);
-        result.append(", iteratorName: ");
+        result.append(", iteratorName: "); //$NON-NLS-1$
         result.append(iteratorName);
         result.append(')');
         return result.toString();
