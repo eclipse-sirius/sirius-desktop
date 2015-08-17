@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.base.relations;
 
+import java.text.MessageFormat;
 import java.util.Set;
+
+import org.eclipse.sirius.ext.base.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.HashMultimap;
@@ -79,7 +82,7 @@ public class DependencyTracker<T> {
      */
     public Set<T> getDependencies(T element) {
         Preconditions.checkNotNull(element);
-        Preconditions.checkArgument(trackedElements.contains(element), "The specified element is not tracked.");
+        Preconditions.checkArgument(trackedElements.contains(element), MessageFormat.format(Messages.DependencyTracker_error_untrackedElement, element));
         return ImmutableSet.copyOf(dependencies.get(element));
     }
 

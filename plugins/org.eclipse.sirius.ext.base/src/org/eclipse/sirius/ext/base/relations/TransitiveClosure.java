@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.base.relations;
 
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.Set;
+
+import org.eclipse.sirius.ext.base.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
@@ -35,9 +38,7 @@ public class TransitiveClosure<T> implements Relation<T> {
         this.relation = Preconditions.checkNotNull(relation);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Set<T> apply(T from) {
         Preconditions.checkNotNull(from);
         Set<T> result = Sets.newHashSet(relation.apply(from));
@@ -56,11 +57,8 @@ public class TransitiveClosure<T> implements Relation<T> {
         return Collections.unmodifiableSet(result);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
-        return "Transitive closure of " + relation;
+        return MessageFormat.format(Messages.TransitiveClosure_message, relation);
     }
 }

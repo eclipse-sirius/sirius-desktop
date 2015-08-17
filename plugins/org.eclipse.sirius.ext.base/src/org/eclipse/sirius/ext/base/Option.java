@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.base;
 
+import java.text.MessageFormat;
+
 /**
  * This class means a value which might be here, or not depending on the "some"
  * method result. This class is useful to indicate to API's clients that a given
@@ -71,9 +73,6 @@ public final class Option<T> {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int hashCode() {
         if (this.some()) {
@@ -83,15 +82,12 @@ public final class Option<T> {
         }
     }
     
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         if (this.some()) {
-            return "Option: " + String.valueOf(this.get());
+            return MessageFormat.format(Messages.Option_present, String.valueOf(this.get()));
         } else {
-            return "Option: none";
+            return Messages.Option_absent;
         }
     }
 }
