@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.diagram;singleton:=true
 Bundle-Version: 3.1.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipse.sirius.diagram.DiagramPlugin
+Bundle-Activator: org.eclipse.sirius.diagram.DiagramPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: com.google.guava;bundle-version="[11.0.2,16.0)",

@@ -46,7 +46,7 @@ public class ExtenderProviderDescriptor extends AbstractProviderDescriptor {
                 provider = (IExtenderProvider) element.createExecutableExtension("providerClass"); //$NON-NLS-1$
             } catch (final CoreException e) {
                 /* log an error */
-                ExtenderPlugin.getInstance().logError("An extender provider could not be loaded", e);
+                ExtenderPlugin.getPlugin().logError("An extender provider could not be loaded", e);
             }
         }
         return provider;

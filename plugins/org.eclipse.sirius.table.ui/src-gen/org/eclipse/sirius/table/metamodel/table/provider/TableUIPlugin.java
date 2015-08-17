@@ -122,10 +122,6 @@ public final class TableUIPlugin extends EMFPlugin {
          * @generated
          */
         public Implementation() {
-            super();
-
-            // Remember the static instance.
-            //
             TableUIPlugin.plugin = this;
         }
 

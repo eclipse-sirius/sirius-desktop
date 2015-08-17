@@ -20,7 +20,7 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
-import org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramPlugin;
+import org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramUIPlugin;
 import org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype.SequenceDiagramTypeProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 
@@ -59,7 +59,7 @@ public class VisibilityEventHandler extends ResourceSetListenerImpl {
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
         if (containsVisibilityEvent(event)) {
-            throw new RollbackException(new Status(IStatus.ERROR, SequenceDiagramPlugin.PLUGIN_ID, "Hide/Reveal is not supported in Sequence Diagrams"));
+            throw new RollbackException(new Status(IStatus.ERROR, SequenceDiagramUIPlugin.PLUGIN_ID, "Hide/Reveal is not supported in Sequence Diagrams"));
         }
         return null;
     }

@@ -13,8 +13,9 @@ package org.eclipse.sirius.common.tools;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryRegistry;
 import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler;
 import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2;
@@ -29,7 +30,7 @@ import org.osgi.framework.BundleContext;
  * 
  * @author ymortier
  */
-public class DslCommonPlugin extends Plugin {
+public class DslCommonPlugin extends EMFPlugin {
 
     /** The plugin id. */
     public static final String PLUGIN_ID = "org.eclipse.sirius.common";
@@ -37,129 +38,129 @@ public class DslCommonPlugin extends Plugin {
     /** The profiler. */
     public static final TimeProfiler PROFILER = new TimeProfiler2();
 
-    // The shared instance
-    private static DslCommonPlugin plugin;
-
-    /** The registry listener that will be used to listen to extension changes. */
-    private EditingDomainFactoryRegistryListener editingDomainFactoryRegistryListener = new EditingDomainFactoryRegistryListener();
-
-    /**
-     * The registry listener that will be used to react to changes against the
-     * proposal providers extension point.
-     */
-    private final ProposalProviderRegistryListener proposalProviderRegistryListener = new ProposalProviderRegistryListener();
-
-   
+    private static Implementation plugin;
 
     /**
      * The constructor.
      */
     public DslCommonPlugin() {
+        super(new ResourceLocator[0]);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
-     */
     @Override
-    public void start(final BundleContext context) throws Exception {
-        super.start(context);
-        plugin = this;
-
-        initExtensionRegistries();
-
-        new DynamicPackageRegistryReader().readRegistry();
-
-
-    }
-
-    /**
-     * Initializes the extension registries and their listeners for this plugin.
-     */
-    private void initExtensionRegistries() {
-        final IExtensionRegistry registry = Platform.getExtensionRegistry();
-
-        registry.addRegistryChangeListener(editingDomainFactoryRegistryListener, EditingDomainFactoryRegistryListener.EDITING_DOMAIN_FACTORY_EXTENSION_POINT);
-        editingDomainFactoryRegistryListener.parseInitialContributions();
-
-        registry.addListener(proposalProviderRegistryListener, ProposalProviderRegistryListener.PROPOSAL_PROVIDER_EXTENSION_POINT);
-        proposalProviderRegistryListener.parseInitialContributions();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
-     */
-    @Override
-    public void stop(final BundleContext context) throws Exception {
-        plugin = null;
-        super.stop(context);
-
-        clearExtensionRegistries();
-    
-    }
-
-    /**
-     * Clears the extension registries for this plugin and remove their
-     * corresponding listeners.
-     */
-    private void clearExtensionRegistries() {
-        final IExtensionRegistry registry = Platform.getExtensionRegistry();
-
-        registry.removeRegistryChangeListener(editingDomainFactoryRegistryListener);
-        EditingDomainFactoryRegistry.clearRegistry();
-
-        registry.removeListener(proposalProviderRegistryListener);
-        ProposalProviderRegistry.clearRegistry();
-    }
-
-    /**
-     * Returns the shared instance.
-     * 
-     * @return the shared instance.
-     */
-    public static DslCommonPlugin getDefault() {
+    public ResourceLocator getPluginResourceLocator() {
         return plugin;
     }
 
     /**
-     * Logs the given message and throwable as an error.
+     * Returns the singleton instance of the Eclipse plugin.
      * 
-     * @param message
-     *            the message.
-     * @param t
-     *            the exception.
+     * @return the singleton instance.
      */
-    public void error(final String message, final Throwable t) {
-        final IStatus status = new Status(IStatus.ERROR, PLUGIN_ID, message, t);
-        this.getLog().log(status);
+    public static Implementation getDefault() {
+        return plugin;
     }
 
     /**
-     * Logs the given message and throwable as a warning.
-     * 
-     * @param message
-     *            the message.
-     * @param t
-     *            the exception.
+     * The actual implementation of the Eclipse <b>Plugin</b>.
      */
-    public void warning(final String message, final Throwable t) {
-        final IStatus status = new Status(IStatus.WARNING, PLUGIN_ID, message, t);
-        this.getLog().log(status);
-    }
+    public static class Implementation extends EclipsePlugin {
 
-    /**
-     * Logs the given message as an information.
-     * 
-     * @param message
-     *            the message.
-     */
-    public void info(final String message) {
-        final IStatus status = new Status(IStatus.INFO, PLUGIN_ID, message);
-        this.getLog().log(status);
-    }
+        /**
+         * The registry listener that will be used to listen to extension
+         * changes.
+         */
+        private EditingDomainFactoryRegistryListener editingDomainFactoryRegistryListener = new EditingDomainFactoryRegistryListener();
 
-  
+        /**
+         * The registry listener that will be used to react to changes against
+         * the proposal providers extension point.
+         */
+        private final ProposalProviderRegistryListener proposalProviderRegistryListener = new ProposalProviderRegistryListener();
+
+        /**
+         * Creates an instance.
+         */
+        public Implementation() {
+            plugin = this;
+        }
+
+        @Override
+        public void start(BundleContext context) throws Exception {
+            super.start(context);
+            initExtensionRegistries();
+            new DynamicPackageRegistryReader().readRegistry();
+        }
+
+        /**
+         * Initializes the extension registries and their listeners for this
+         * plugin.
+         */
+        private void initExtensionRegistries() {
+            IExtensionRegistry registry = Platform.getExtensionRegistry();
+
+            registry.addRegistryChangeListener(editingDomainFactoryRegistryListener, EditingDomainFactoryRegistryListener.EDITING_DOMAIN_FACTORY_EXTENSION_POINT);
+            editingDomainFactoryRegistryListener.parseInitialContributions();
+
+            registry.addListener(proposalProviderRegistryListener, ProposalProviderRegistryListener.PROPOSAL_PROVIDER_EXTENSION_POINT);
+            proposalProviderRegistryListener.parseInitialContributions();
+        }
+
+        @Override
+        public void stop(final BundleContext context) throws Exception {
+            super.stop(context);
+            clearExtensionRegistries();
+        }
+
+        /**
+         * Clears the extension registries for this plugin and remove their
+         * corresponding listeners.
+         */
+        private void clearExtensionRegistries() {
+            IExtensionRegistry registry = Platform.getExtensionRegistry();
+
+            registry.removeRegistryChangeListener(editingDomainFactoryRegistryListener);
+            EditingDomainFactoryRegistry.clearRegistry();
+
+            registry.removeListener(proposalProviderRegistryListener);
+            ProposalProviderRegistry.clearRegistry();
+        }
+
+        /**
+         * Logs the given message and throwable as an error.
+         * 
+         * @param message
+         *            the message.
+         * @param t
+         *            the exception.
+         */
+        public void error(String message, Throwable t) {
+            IStatus status = new Status(IStatus.ERROR, PLUGIN_ID, message, t);
+            this.getLog().log(status);
+        }
+
+        /**
+         * Logs the given message and throwable as a warning.
+         * 
+         * @param message
+         *            the message.
+         * @param t
+         *            the exception.
+         */
+        public void warning(String message, Throwable t) {
+            IStatus status = new Status(IStatus.WARNING, PLUGIN_ID, message, t);
+            this.getLog().log(status);
+        }
+
+        /**
+         * Logs the given message as an information.
+         * 
+         * @param message
+         *            the message.
+         */
+        public void info(String message) {
+            IStatus status = new Status(IStatus.INFO, PLUGIN_ID, message);
+            this.getLog().log(status);
+        }
+    }
 }

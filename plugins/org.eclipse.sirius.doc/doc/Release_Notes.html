@@ -86,6 +86,144 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>
+		<p>Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate &#171;language packs&#187; as OSGi fragments. Note that this does not concern the VSM editor&#8217;s UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.</p>
+		<p>Some API changes were required to enable this. While technically breaking changes if interpreting strictly the OSGi versioning rules, the major version number of the impacted bundles was not incremented as the changes only concern classes that should not impact the vast majority of users. Most breaking changes concern the plug-in/activator classes from each bundle. They are:</p>
+		<ul>
+			<li><span class="label label-success">Added</span>
+				<code>org.eclipse.sirius.diagram.layoutdata.LayoutDataPlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>LayoutDataPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-success">Added</span>
+				<code>org.eclipse.sirius.diagram.sequence.SequenceDiagramPlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>SequenceDiagramPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-success">Added</span>
+				<code>org.eclipse.sirius.common.xtext.internal.XtextIntegrationPlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>XtextIntegrationPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ext.base.BasePlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>BasePlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ext.draw2d.Draw2DExtPlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>Draw2DExtPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ext.e3.ui.Eclipse3UIExtPlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>Eclipse3UIExtPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ext.emf.EMFExtPlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>EMFExtPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.synchronizer.internal.SynchronizerPlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>SynchronizerPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.tree.tools.internal.TreePlugin</code>, a subclass of 
+				<code>org.eclipse.emf.common.EMFPlugin</code> has been added. The corresponding OSGi bundle activator is the internal class 
+				<code>TreePlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoMTLInterpreterIDEPlugin</code> is no longer an OSGi 
+				<code>BundleActivator</code>, and instead extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>AcceleoMTLInterpreterIDEPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Modified</span>  
+				<code>org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoMTLInterpreterPlugin</code> is no longer an OSGi 
+				<code>BundleActivator</code>, and instead extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>AcceleoMTLInterpreterPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.common.ocl.DslOclPlugin</code> is no longer a 
+				<code>org.eclipse.core.runtime.Plugin</code> (nor an OSGi 
+				<code>BundleActivator</code>), and instead extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>DslOclPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.common.tools.DslCommonPlugin</code> is no longer a 
+				<code>org.eclipse.core.runtime.Plugin</code> (nor an OSGi 
+				<code>BundleActivator</code>), and instead extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>DslCommonPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.diagram.DiagramPlugin</code> is no longer a 
+				<code>org.eclipse.core.runtime.Plugin</code> (nor an OSGi 
+				<code>BundleActivator</code>), and instead extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>DiagramPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin</code> is no longer a 
+				<code>org.eclipse.core.runtime.Plugin</code> (nor an OSGi 
+				<code>BundleActivator</code>), and instead extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>ExtenderPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.table.tools.internal.TablePlugin</code> is no longer a 
+				<code>org.eclipse.core.runtime.Plugin</code> (nor an OSGi 
+				<code>BundleActivator</code>), and instead extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>TablePlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Renamed, Modified</span> 
+				<code>org.eclipse.sirius.eef.adapters.Activator</code> has been renamed into 
+				<code>org.eclipse.sirius.eef.adapters.EEFAdapterPlugin</code> and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>EEFAdapterPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Renamed, Modified</span> 
+				<code>org.eclipse.sirius.common.acceleo.interpreter.Activator</code> has been renamed into 
+				<code>org.eclipse.sirius.common.acceleo.interpreter.InterpreterViewPlugin</code> and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>InterpreterViewPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Renamed, Modified</span> 
+				<code>org.eclipse.sirius.table.ui.ext.Activator</code> has been renamed into 
+				<code>org.eclipse.sirius.table.ui.ext.TableUIExtPlugin</code> and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>TableUIExtPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Renamed, Modified</span> 
+				<code>org.eclipse.sirius.ui.ext.Activator</code> has been renamed into 
+				<code>org.eclipse.sirius.ui.ext.SiriusUIExtPlugin</code> and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>SiriusUIExtPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Renamed, Modified</span> 
+				<code>org.eclipse.sirius.tree.ui.ext.Activator</code> has been renamed into 
+				<code>org.eclipse.sirius.tree.ui.ext.TreeUIExtPlugin</code> and is no longer an OSGi bundle activator (hence the name change, to avoid confusion). Instead it extends 
+				<code>org.eclipse.emf.common.EMFPlugin</code>. The actual bundle activator is the new internal class 
+				<code>TreeUIExtPlugin.Implementation</code>.
+			</li>
+			<li><span class="label label-info">Renamed</span> 
+				<code>org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramPlugin</code> has been renamed into 
+				<code>org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramUIPlugin</code> for consistency and to avoid potential name clashes with the new 
+				<code>org.eclipse.sirius.diagram.sequence.SequenceDiagramPlugin</code>.
+			</li>
+		</ul>
+		<p>Additional non-breaking changes:</p>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.ext.base.I18N</code> has been added. It provides common utility code to support internationalization. 
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gef">Changes in 
 			<code>org.eclipse.sirius.ext.gef</code>
 		</h4>

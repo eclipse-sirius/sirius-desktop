@@ -12,71 +12,73 @@ package org.eclipse.sirius.common.ocl;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.osgi.framework.BundleContext;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
  * The activator class controls the plug-in life cycle.
  * 
  * @author ymortier
  */
-public class DslOclPlugin extends Plugin {
+public class DslOclPlugin extends EMFPlugin {
 
     /** The plug-in ID. */
     public static final String PLUGIN_ID = "org.eclipse.sirius.common.ocl";
 
-    // The shared instance
-    private static DslOclPlugin plugin;
+    /**
+     * Keep track of the singleton.
+     */
+    public static final DslOclPlugin INSTANCE = new DslOclPlugin();
+
+    /**
+     * Keep track of the singleton.
+     */
+    private static Implementation plugin;
 
     /**
      * The constructor.
      */
     public DslOclPlugin() {
+        super(new ResourceLocator[0]);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
-     */
     @Override
-    public void start(final BundleContext context) throws Exception {
-        super.start(context);
-        plugin = this;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
-     */
-    @Override
-    public void stop(final BundleContext context) throws Exception {
-        plugin = null;
-        super.stop(context);
-    }
-
-    /**
-     * Returns the shared instance.
-     * 
-     * @return the shared instance
-     */
-    public static DslOclPlugin getDefault() {
+    public ResourceLocator getPluginResourceLocator() {
         return plugin;
     }
 
     /**
-     * Log a an error in the error log view.
+     * Returns the singleton instance of the Eclipse plugin.
      * 
-     * @param message
-     *            the message.
-     * @param t
-     *            the optional exception.
+     * @return the singleton instance.
      */
-    public void error(final String message, final Throwable t) {
-        final IStatus status = new Status(IStatus.ERROR, PLUGIN_ID, message, t);
-        Platform.getLog(this.getBundle()).log(status);
+    public static Implementation getPlugin() {
+        return plugin;
     }
 
+    /**
+     * The actual implementation of the Eclipse <b>Plugin</b>.
+     */
+    public static class Implementation extends EclipsePlugin {
+        /**
+         * Creates an instance.
+         */
+        public Implementation() {
+            plugin = this;
+        }
+        
+        /**
+         * Log a an error in the error log view.
+         * 
+         * @param message
+         *            the message.
+         * @param t
+         *            the optional exception.
+         */
+        public void error(final String message, final Throwable t) {
+            final IStatus status = new Status(IStatus.ERROR, PLUGIN_ID, message, t);
+            Platform.getLog(this.getBundle()).log(status);
+        }
+    }
 }

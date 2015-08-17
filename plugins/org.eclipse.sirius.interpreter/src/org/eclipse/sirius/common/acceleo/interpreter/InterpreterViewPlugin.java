@@ -8,9 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.acceleo.mtl.ide;
+package org.eclipse.sirius.common.acceleo.interpreter;
 
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
@@ -18,14 +19,14 @@ import org.eclipse.emf.common.util.ResourceLocator;
  * 
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
-public class AcceleoMTLInterpreterIDEPlugin extends EMFPlugin {
+public class InterpreterViewPlugin extends EMFPlugin {
     /** The plug-in ID. */
-    public static final String PLUGIN_ID = "org.eclipse.sirius.common.acceleo.mtl.ide"; //$NON-NLS-1$
+    public static final String PLUGIN_ID = "org.eclipse.sirius.common.acceleo.interpreter"; //$NON-NLS-1$
 
     /**
      * Keep track of the singleton.
      */
-    public static final AcceleoMTLInterpreterIDEPlugin INSTANCE = new AcceleoMTLInterpreterIDEPlugin();
+    public static final InterpreterViewPlugin INSTANCE = new InterpreterViewPlugin();
 
     /**
      * Keep track of the singleton.
@@ -35,7 +36,7 @@ public class AcceleoMTLInterpreterIDEPlugin extends EMFPlugin {
     /**
      * Create the instance.
      */
-    public AcceleoMTLInterpreterIDEPlugin() {
+    public InterpreterViewPlugin() {
         super(new ResourceLocator[0]);
     }
 
@@ -56,7 +57,7 @@ public class AcceleoMTLInterpreterIDEPlugin extends EMFPlugin {
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
-    public static class Implementation extends EclipsePlugin {
+    public static class Implementation extends EclipseUIPlugin {
         /**
          * Creates an instance.
          */

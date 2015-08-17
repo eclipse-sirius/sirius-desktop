@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.diagram.sequence.ui;singleton:=true
 Bundle-Version: 3.1.0.qualifier
-Bundle-Activator: org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramPlugin
+Bundle-Activator: org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Require-Bundle: com.google.guava;bundle-version="[11.0.2,16.0)",
  org.eclipse.sirius.common;bundle-version="2.0.0",
@@ -11,7 +11,8 @@ Require-Bundle: com.google.guava;bundle-version="[11.0.2,16.0)",
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.6.0",
  org.eclipse.ui.ide;bundle-version="3.8.2",
  org.eclipse.sirius.diagram.ui;bundle-version="2.0.0",
- org.eclipse.sirius.diagram.ui.ext;bundle-version="3.0.0"
+ org.eclipse.sirius.diagram.ui.ext;bundle-version="3.0.0",
+ org.eclipse.emf.common.ui;bundle-version="2.7.0"
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

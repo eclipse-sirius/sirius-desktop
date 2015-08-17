@@ -23,7 +23,7 @@ Export-Package: org.eclipse.sirius.common.tools;version="2.0.4",
  org.eclipse.sirius.common.tools.internal.editing;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.common.tools.internal.interpreter;x-internal:=true;version="3.0.0",
  org.eclipse.sirius.common.tools.internal.resource;x-internal:=true;version="2.0.4"
-Bundle-Activator: org.eclipse.sirius.common.tools.DslCommonPlugin
+Bundle-Activator: org.eclipse.sirius.common.tools.DslCommonPlugin$Implementation
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

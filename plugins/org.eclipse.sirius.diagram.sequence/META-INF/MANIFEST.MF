@@ -58,3 +58,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
  org.eclipse.sirius.ext.emf;version="2.0.0"
+Bundle-Activator: org.eclipse.sirius.diagram.sequence.SequenceDiagramPlugin$Implementation

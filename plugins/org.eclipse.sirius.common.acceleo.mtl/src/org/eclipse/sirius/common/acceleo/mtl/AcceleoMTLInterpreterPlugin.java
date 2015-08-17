@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.extension.AcceleoRegistryListener;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.extension.ImportHandlerRegistry;
-
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -22,58 +22,66 @@ import org.osgi.framework.BundleContext;
  * 
  * @author mporhel
  */
-public class AcceleoMTLInterpreterPlugin extends Plugin {
+public class AcceleoMTLInterpreterPlugin extends EMFPlugin {
     /** The plug-in ID. */
     public static final String PLUGIN_ID = "org.eclipse.sirius.common.acceleo.mtl"; //$NON-NLS-1$
 
-    /** This plug-in's shared instance. */
-    private static AcceleoMTLInterpreterPlugin plugin;
+    /** Keep track of the singleton.. */
+    public static final AcceleoMTLInterpreterPlugin INSTANCE = new AcceleoMTLInterpreterPlugin();
 
-    /**
-     * The registry listener that will be used for extensions to the acceleo
-     * interpreter.
-     */
-    private final AcceleoRegistryListener registryListener = new AcceleoRegistryListener();
+    /** This plug-in's shared instance. */
+    private static Implementation plugin;
 
     /**
      * Default constructor for the plugin.
      */
     public AcceleoMTLInterpreterPlugin() {
-        // Empty implementation
+        super(new ResourceLocator[0]);
     }
 
-    /**
-     * Returns the shared instance.
-     * 
-     * @return the shared instance
-     */
-    public static AcceleoMTLInterpreterPlugin getDefault() {
+    @Override
+    public ResourceLocator getPluginResourceLocator() {
         return plugin;
     }
 
     /**
-     * {@inheritDoc}
+     * Returns the singleton instance of the Eclipse plugin.
      * 
-     * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
+     * @return the singleton instance.
      */
-    @Override
-    public void start(final BundleContext context) throws Exception {
-        super.start(context);
-        plugin = this;
-        Platform.getExtensionRegistry().addListener(registryListener, AcceleoRegistryListener.IMPORT_HANDLER_EXTENSION_POINT);
-        registryListener.parseInitialContributions();
+    public static Implementation getDefault() {
+        return plugin;
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
+     * The actual implementation of the Eclipse <b>Plugin</b>.
      */
-    @Override
-    public void stop(final BundleContext context) throws Exception {
-        plugin = null;
-        super.stop(context);
-        Platform.getExtensionRegistry().removeListener(registryListener);
-        ImportHandlerRegistry.clearRegistry();
+    public static class Implementation extends EclipsePlugin {
+        /**
+         * The registry listener that will be used for extensions to the acceleo
+         * interpreter.
+         */
+        private final AcceleoRegistryListener registryListener = new AcceleoRegistryListener();
+
+        /**
+         * Creates an instance.
+         */
+        public Implementation() {
+            plugin = this;
+        }
+
+        @Override
+        public void start(final BundleContext context) throws Exception {
+            super.start(context);
+            Platform.getExtensionRegistry().addListener(registryListener, AcceleoRegistryListener.IMPORT_HANDLER_EXTENSION_POINT);
+            registryListener.parseInitialContributions();
+        }
+
+        @Override
+        public void stop(final BundleContext context) throws Exception {
+            super.stop(context);
+            Platform.getExtensionRegistry().removeListener(registryListener);
+            ImportHandlerRegistry.clearRegistry();
+        }
     }
 }

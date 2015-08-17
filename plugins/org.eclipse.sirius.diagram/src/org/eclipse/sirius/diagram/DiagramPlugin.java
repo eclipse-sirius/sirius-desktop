@@ -11,10 +11,10 @@
 package org.eclipse.sirius.diagram;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -22,13 +22,20 @@ import org.osgi.framework.BundleContext;
  * 
  * @was-generated
  */
-public class DiagramPlugin extends Plugin {
+public class DiagramPlugin extends EMFPlugin {
 
     /** The id. */
     public static final String ID = "org.eclipse.sirius.diagram"; //$NON-NLS-1$
 
-    /** The shared instance. */
-    private static DiagramPlugin defaultPlugin;
+    /**
+     * Keep track of the singleton.
+     */
+    public static final DiagramPlugin INSTANCE = new DiagramPlugin();
+
+    /**
+     * Keep track of the singleton.
+     */
+    private static Implementation plugin;
 
     /**
      * Creates a new plugin.
@@ -36,129 +43,143 @@ public class DiagramPlugin extends Plugin {
      * @was-generated
      */
     public DiagramPlugin() {
-        defaultPlugin = this;
-    }
-
-    /**
-     * Returns the shared instance.
-     * 
-     * @return the shared instance.
-     */
-    public static DiagramPlugin getDefault() {
-        return DiagramPlugin.defaultPlugin;
-    }
-
-    /**
-     * Returns string from plug-in's resource bundle.
-     * 
-     * @param key
-     *            the property name
-     * @return the corresponding property value
-     * @was-generated
-     */
-    public static String getString(String key) {
-        return Platform.getResourceString(getDefault().getBundle(), "%" + key); //$NON-NLS-1$
-    }
-
-    /**
-     * Logs an error.
-     * 
-     * @param error
-     *            the error message.
-     */
-    public void logError(String error) {
-        logError(error, null);
-    }
-
-    /**
-     * Logs an error.
-     * 
-     * @param error
-     *            the error message.
-     * @param throwable
-     *            the throwable.
-     */
-    public void logError(String error, Throwable throwable) {
-        logMessage(error, throwable, IStatus.ERROR);
-    }
-
-    /**
-     * Logs an info.
-     * 
-     * @param message
-     *            the info message.
-     */
-    public void logInfo(String message) {
-        logInfo(message, null);
-    }
-
-    /**
-     * Logs an info.
-     * 
-     * @param message
-     *            the info message.
-     * @param throwable
-     *            the throwable.
-     */
-    public void logInfo(String message, Throwable throwable) {
-        logMessage(message, throwable, IStatus.INFO);
-    }
-
-    /**
-     * Logs a warning.
-     * 
-     * @param message
-     *            the warning message.
-     */
-    public void logWarning(String message) {
-        logWarning(message, null);
-    }
-
-    /**
-     * Logs a warning.
-     * 
-     * @param message
-     *            the warning message.
-     * @param throwable
-     *            the throwable.
-     */
-    public void logWarning(String message, Throwable throwable) {
-        logMessage(message, throwable, IStatus.WARNING);
-    }
-
-    private void logMessage(String message, Throwable throwable, int code) {
-        String msg = message;
-        if (message == null && throwable != null) {
-            msg = throwable.getMessage();
-        }
-
-        getLog().log(new Status(code, DiagramPlugin.ID, IStatus.OK, msg, throwable));
-        debug(msg, throwable);
-    }
-
-    /**
-     * @was-generated
-     */
-    private void debug(String message, Throwable throwable) {
-        if (!isDebugging()) {
-            return;
-        }
-        // CHECKSTYLE:OFF
-        if (message != null) {
-            System.err.println(message);
-        }
-        if (throwable != null) {
-            throwable.printStackTrace();
-        }
-        // CHECKSTYLE:ON
+        super(new ResourceLocator[0]);
     }
 
     @Override
-    public void stop(BundleContext context) throws Exception {
-        try {
-            InstanceScope.INSTANCE.getNode(ID).flush();
-        } finally {
-            super.stop(context);
+    public ResourceLocator getPluginResourceLocator() {
+        return plugin;
+    }
+
+    /**
+     * Returns the singleton instance of the Eclipse plugin.
+     * 
+     * @return the singleton instance.
+     */
+    public static Implementation getPlugin() {
+        return plugin;
+    }
+
+    /**
+     * Returns the singleton instance of the Eclipse plugin.
+     * 
+     * @return the singleton instance.
+     */
+    public static Implementation getDefault() {
+        return plugin;
+    }
+
+    /**
+     * The actual implementation of the Eclipse <b>Plugin</b>.
+     */
+    public static class Implementation extends EclipsePlugin {
+        /**
+         * Creates an instance.
+         */
+        public Implementation() {
+            plugin = this;
+        }
+
+        /**
+         * Logs an error.
+         * 
+         * @param error
+         *            the error message.
+         */
+        public void logError(String error) {
+            logError(error, null);
+        }
+
+        /**
+         * Logs an error.
+         * 
+         * @param error
+         *            the error message.
+         * @param throwable
+         *            the throwable.
+         */
+        public void logError(String error, Throwable throwable) {
+            logMessage(error, throwable, IStatus.ERROR);
+        }
+
+        /**
+         * Logs an info.
+         * 
+         * @param message
+         *            the info message.
+         */
+        public void logInfo(String message) {
+            logInfo(message, null);
+        }
+
+        /**
+         * Logs an info.
+         * 
+         * @param message
+         *            the info message.
+         * @param throwable
+         *            the throwable.
+         */
+        public void logInfo(String message, Throwable throwable) {
+            logMessage(message, throwable, IStatus.INFO);
+        }
+
+        /**
+         * Logs a warning.
+         * 
+         * @param message
+         *            the warning message.
+         */
+        public void logWarning(String message) {
+            logWarning(message, null);
+        }
+
+        /**
+         * Logs a warning.
+         * 
+         * @param message
+         *            the warning message.
+         * @param throwable
+         *            the throwable.
+         */
+        public void logWarning(String message, Throwable throwable) {
+            logMessage(message, throwable, IStatus.WARNING);
+        }
+
+        private void logMessage(String message, Throwable throwable, int code) {
+            String msg = message;
+            if (message == null && throwable != null) {
+                msg = throwable.getMessage();
+            }
+
+            getLog().log(new Status(code, DiagramPlugin.ID, IStatus.OK, msg, throwable));
+            debug(msg, throwable);
+        }
+
+        /**
+         * @was-generated
+         */
+        private void debug(String message, Throwable throwable) {
+            if (!isDebugging()) {
+                return;
+            }
+            // CHECKSTYLE:OFF
+            if (message != null) {
+                System.err.println(message);
+            }
+            if (throwable != null) {
+                throwable.printStackTrace();
+            }
+            // CHECKSTYLE:ON
+        }
+
+        @Override
+        public void stop(BundleContext context) throws Exception {
+            try {
+                InstanceScope.INSTANCE.getNode(ID).flush();
+            } finally {
+                super.stop(context);
+            }
         }
     }
 }

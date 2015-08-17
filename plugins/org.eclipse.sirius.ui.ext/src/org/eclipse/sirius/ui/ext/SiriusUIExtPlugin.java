@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,22 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.table.tools.internal;
+package org.eclipse.sirius.ui.ext;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * Table plug-in.
+ * Plug-in class for <em>org.eclipse.sirius.ui.ext</em>.
  * 
- * @author mchauvin
+ * @author pcdavid
  */
-public class TablePlugin extends EMFPlugin {
+public class SiriusUIExtPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton.
      */
-    public static final TablePlugin INSTANCE = new TablePlugin();
+    public static final SiriusUIExtPlugin INSTANCE = new SiriusUIExtPlugin();
 
     /**
      * Keep track of the singleton.
@@ -35,7 +33,7 @@ public class TablePlugin extends EMFPlugin {
     /**
      * Create the instance.
      */
-    public TablePlugin() {
+    public SiriusUIExtPlugin() {
         super(new ResourceLocator[0]);
     }
 
@@ -61,33 +59,12 @@ public class TablePlugin extends EMFPlugin {
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
-    public static class Implementation extends EclipsePlugin {
+    public static class Implementation extends EclipseUIPlugin {
         /**
          * Creates an instance.
          */
         public Implementation() {
             plugin = this;
-        }
-
-        /**
-         * Logs an error in the error log.
-         * 
-         * @param message
-         *            the message to log (optional).
-         * @param e
-         *            the exception (optional).
-         */
-        public void error(final String message, final Exception e) {
-            String msgToDisplay = message;
-            if (message == null && e != null) {
-                msgToDisplay = e.getMessage();
-            }
-            if (e instanceof CoreException) {
-                this.getLog().log(((CoreException) e).getStatus());
-            } else {
-                final IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), msgToDisplay, e);
-                this.getLog().log(status);
-            }
         }
     }
 

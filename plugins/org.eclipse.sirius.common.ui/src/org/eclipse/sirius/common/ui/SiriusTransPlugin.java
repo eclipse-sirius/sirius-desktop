@@ -301,12 +301,6 @@ public final class SiriusTransPlugin extends EMFPlugin {
             getLog().log(status);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
-         * @generated-not
-         */
         @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);

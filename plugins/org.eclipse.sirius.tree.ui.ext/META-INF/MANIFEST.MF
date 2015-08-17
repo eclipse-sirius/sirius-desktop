@@ -8,6 +8,6 @@ Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius.tree.ui;bundle-version="3.0.0",
  org.eclipse.osgi;bundle-version="0.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.eclipse.sirius.tree.ui.ext.Activator
+Bundle-Activator: org.eclipse.sirius.tree.ui.ext.TreeUIExtPlugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.sirius.tree.ui.ext;version="3.0.0"

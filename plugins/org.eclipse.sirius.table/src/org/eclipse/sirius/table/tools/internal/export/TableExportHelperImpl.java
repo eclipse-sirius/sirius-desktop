@@ -55,16 +55,16 @@ public final class TableExportHelperImpl implements TableExportHelper {
             outputStream = new FileOutputStream(file);
             outputStream.write(content.getBytes());
         } catch (final FileNotFoundException exception) {
-            TablePlugin.getDefault().error(EXCEPTION_ON_SAVE_CONTENT, exception);
+            TablePlugin.getPlugin().error(EXCEPTION_ON_SAVE_CONTENT, exception);
         } catch (final IOException exception) {
-            TablePlugin.getDefault().error(EXCEPTION_ON_SAVE_CONTENT, exception);
+            TablePlugin.getPlugin().error(EXCEPTION_ON_SAVE_CONTENT, exception);
         } finally {
             try {
                 if (outputStream != null) {
                     outputStream.close();
                 }
             } catch (final IOException exception) {
-                TablePlugin.getDefault().error(EXCEPTION_ON_SAVE_CONTENT, exception);
+                TablePlugin.getPlugin().error(EXCEPTION_ON_SAVE_CONTENT, exception);
             }
         }
     }

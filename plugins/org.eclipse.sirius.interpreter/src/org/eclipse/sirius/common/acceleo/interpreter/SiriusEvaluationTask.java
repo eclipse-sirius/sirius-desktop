@@ -58,7 +58,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
 
         final String expression = context.getExpression();
         if (context.getTargetEObjects().isEmpty()) {
-            IStatus errorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, "No target for evaluation of " + expression);
+            IStatus errorStatus = new Status(IStatus.ERROR, InterpreterViewPlugin.PLUGIN_ID, "No target for evaluation of " + expression);
             return new EvaluationResult(errorStatus);
         }
 
@@ -90,7 +90,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             final IStatus status = createResultStatus(result);
             evaluationResult = new EvaluationResult(result, status);
         } catch (EvaluationException e) {
-            final IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(), e);
+            final IStatus status = new Status(IStatus.ERROR, InterpreterViewPlugin.PLUGIN_ID, e.getMessage(), e);
             evaluationResult = new EvaluationResult(status);
         }
 
@@ -110,7 +110,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
      */
     private IStatus createResultStatus(Object result) {
         if (result == null) {
-            return new Status(IStatus.OK, Activator.PLUGIN_ID, ""); //$NON-NLS-1$
+            return new Status(IStatus.OK, InterpreterViewPlugin.PLUGIN_ID, ""); //$NON-NLS-1$
         }
 
         final String type = result.getClass().getSimpleName();
@@ -127,7 +127,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             message += " and size " + size;
         }
 
-        return new Status(IStatus.OK, Activator.PLUGIN_ID, message);
+        return new Status(IStatus.OK, InterpreterViewPlugin.PLUGIN_ID, message);
     }
 
     /**

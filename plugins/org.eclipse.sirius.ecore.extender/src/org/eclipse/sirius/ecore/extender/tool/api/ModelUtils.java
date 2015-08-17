@@ -310,8 +310,8 @@ public final class ModelUtils {
         try {
             resource = resourceSet.getResource(resourceURI, true);
         } catch (WrappedException e) {
-            if (ExtenderPlugin.getInstance().isDebugging()) {
-                ExtenderPlugin.getInstance().getLog().log(new Status(IStatus.WARNING, ExtenderPlugin.ID, e.getMessage(), e));
+            if (ExtenderPlugin.getPlugin().isDebugging()) {
+                ExtenderPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, ExtenderPlugin.ID, e.getMessage(), e));
             }
             // Warning: as getResource has been called with loadOnDemand to
             // true, the resource is created with errors but is set on

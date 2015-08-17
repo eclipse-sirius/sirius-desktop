@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
@@ -21,7 +21,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IFilter;
-import org.eclipse.sirius.eef.adapters.Activator;
+import org.eclipse.sirius.eef.adapters.EEFAdapterPlugin;
 import org.eclipse.ui.views.properties.tabbed.AbstractSectionDescriptor;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.ui.views.properties.tabbed.ISectionDescriptor;
@@ -33,13 +33,13 @@ import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
  * {@link org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry}
  * when parameterized in a <code>sectionDescriptorProvider</code> attribute of a
  * <code>propertyContributor</code> entry.
- * 
+ *
  * <p>
  * This class is intended to be used with the <code></code> extension which
  * allows to list several section identifiers that have to be hidden from the
  * tabbed property sheet view.
  * </p>
- * 
+ *
  * @author jbrazeau
  */
 @SuppressWarnings("restriction")
@@ -53,20 +53,16 @@ public class SiriusFilteringSectionDescriptor implements ISectionDescriptorProvi
     /** The section descriptors */
     private ISectionDescriptor[] sectionDescriptors;
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISectionDescriptor[] getSectionDescriptors() {
         return sectionDescriptors;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setInitializationData(IConfigurationElement config, String propertyName, Object data) throws CoreException {
         propertyContributorId = config.getAttribute(SiriusFilteringSectionDescriptor.CONTRIBUTOR_ID);
         if (propertyContributorId == null) {
-            Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "The section filter must be associated to a property contributor id"));
+            EEFAdapterPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, EEFAdapterPlugin.PLUGIN_ID, "The section filter must be associated to a property contributor id"));
         } else {
             // Filters loading
             IExtensionPoint point = Platform.getExtensionRegistry().getExtensionPoint("org.eclipse.sirius.eef.adapters.sectionFilters");
@@ -101,7 +97,7 @@ public class SiriusFilteringSectionDescriptor implements ISectionDescriptorProvi
 
 /**
  * A section descriptor.
- * 
+ *
  * @author jbrazeau
  */
 class SectionDescriptor extends AbstractSectionDescriptor {
@@ -129,7 +125,7 @@ class SectionDescriptor extends AbstractSectionDescriptor {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param cfgElement
      *            the configuration element.
      */
@@ -145,8 +141,9 @@ class SectionDescriptor extends AbstractSectionDescriptor {
         if (cfgElement.getAttribute("enablesFor") != null) {
             try {
                 enablesFor = Integer.parseInt(cfgElement.getAttribute("enablesFor"));
-                if (enablesFor < 0)
+                if (enablesFor < 0) {
                     enablesFor = ISectionDescriptor.ENABLES_FOR_ANY;
+                }
             } catch (NumberFormatException e) {
                 enablesFor = ISectionDescriptor.ENABLES_FOR_ANY;
             }
@@ -156,69 +153,50 @@ class SectionDescriptor extends AbstractSectionDescriptor {
                 filter = (IFilter) cfgElement.createExecutableExtension("filter");
             }
             IConfigurationElement[] elements = cfgElement.getChildren("input");
-            for (int i = 0; i < elements.length; i++) {
-                IConfigurationElement element = elements[i];
+            for (IConfigurationElement element : elements) {
                 inputTypes.add(element.getAttribute("type"));
             }
         } catch (CoreException e) {
-            Activator.getDefault().getLog().log(e.getStatus());
+            EEFAdapterPlugin.getPlugin().getLog().log(e.getStatus());
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getId() {
         return id;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public IFilter getFilter() {
         return filter;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<String> getInputTypes() {
         return inputTypes;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISection getSectionClass() {
         ISection section = null;
         try {
             section = (ISection) configurationElement.createExecutableExtension("class");
         } catch (CoreException exception) {
-            Activator.getDefault().getLog().log(exception.getStatus());
+            EEFAdapterPlugin.getPlugin().getLog().log(exception.getStatus());
         }
         return section;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getTargetTab() {
         return targetTab;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int getEnablesFor() {
         return enablesFor;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getAfterSection() {
         return afterSection;

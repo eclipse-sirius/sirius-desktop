@@ -12,3 +12,5 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="2.1.1",
  org.eclipse.emf.transaction;bundle-version="1.4.0"
 Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.common.xtext.internal;x-internal:=true;version="2.0.4"
+Bundle-Activator: org.eclipse.sirius.common.xtext.internal.XtextIntegrationPlugin$Implementation
+Bundle-ActivationPolicy: lazy

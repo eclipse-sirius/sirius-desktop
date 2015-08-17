@@ -24,10 +24,6 @@ import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramIntern
  * @author mporhel
  */
 public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer {
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void initializeDefaultPreferences() {
         final IEclipsePreferences diagramCoreDefaultPreferences = DefaultScope.INSTANCE.getNode(DiagramPlugin.ID);
@@ -44,7 +40,7 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
     }
 
     private boolean getValue(final String key) {
-        final String value = DiagramPlugin.getString(key);
+        final String value = DiagramPlugin.getPlugin().getString(key);
         return Boolean.valueOf(value);
     }
 }

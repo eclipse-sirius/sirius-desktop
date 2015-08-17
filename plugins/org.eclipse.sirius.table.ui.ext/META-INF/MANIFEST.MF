@@ -6,8 +6,9 @@ Bundle-Version: 3.1.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius.table.ui;bundle-version="3.0.0",
- org.eclipse.osgi;bundle-version="0.0.0"
+ org.eclipse.osgi;bundle-version="0.0.0",
+ org.eclipse.emf.common.ui;bundle-version="2.7.0"
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.eclipse.sirius.table.ui.ext.Activator
+Bundle-Activator: org.eclipse.sirius.table.ui.ext.TableUIExtPlugin$Implementation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.sirius.table.ui.ext;version="3.0.0"

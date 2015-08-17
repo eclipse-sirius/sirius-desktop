@@ -13,6 +13,11 @@ package org.eclipse.sirius.common.acceleo.aql.business;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
+/**
+ * Plug-in class for <em>org.eclipse.sirius.common.acceleo.aql</em>.
+ * 
+ * @author pcdavid
+ */
 public final class AQLSiriusPlugin extends EMFPlugin {
     /**
      * Keep track of the singleton.

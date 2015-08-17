@@ -239,7 +239,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
             try {
                 result = new Integer((String) value);
             } catch (final NumberFormatException nfe) {
-                DslOclPlugin.getDefault().error("The value returned by the OCL evaluation is not a number", nfe);
+                DslOclPlugin.getPlugin().error("The value returned by the OCL evaluation is not a number", nfe);
             }
         }
         return result;

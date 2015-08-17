@@ -12,3 +12,6 @@ Export-Package: org.eclipse.sirius.ext.base;version="2.0.4",
  org.eclipse.sirius.ext.base.cache;version="2.0.4",
  org.eclipse.sirius.ext.base.collect;version="2.0.4",
  org.eclipse.sirius.ext.base.relations;version="2.0.4"
+Bundle-Activator: org.eclipse.sirius.ext.base.BasePlugin$Implementation
+Require-Bundle: org.eclipse.emf.common;bundle-version="2.8.0"
+Bundle-ActivationPolicy: lazy

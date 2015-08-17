@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,24 +8,30 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.table.tools.internal;
+package org.eclipse.sirius.diagram.sequence.ui;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
 /**
- * Table plug-in.
+ * The activator class controls the plug-in life cycle.
  * 
- * @author mchauvin
+ * @author pcdavid
  */
-public class TablePlugin extends EMFPlugin {
+public class SequenceDiagramUIPlugin extends EMFPlugin {
+    /**
+     * The plug-in ID.
+     */
+    public static final String PLUGIN_ID = "org.eclipse.sirius.diagram.sequence.ui";
+
     /**
      * Keep track of the singleton.
      */
-    public static final TablePlugin INSTANCE = new TablePlugin();
+    public static final SequenceDiagramUIPlugin INSTANCE = new SequenceDiagramUIPlugin();
 
     /**
      * Keep track of the singleton.
@@ -33,9 +39,9 @@ public class TablePlugin extends EMFPlugin {
     private static Implementation plugin;
 
     /**
-     * Create the instance.
+     * The constructor.
      */
-    public TablePlugin() {
+    public SequenceDiagramUIPlugin() {
         super(new ResourceLocator[0]);
     }
 
@@ -61,34 +67,41 @@ public class TablePlugin extends EMFPlugin {
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
-    public static class Implementation extends EclipsePlugin {
+    public static class Implementation extends EclipseUIPlugin {
         /**
          * Creates an instance.
          */
         public Implementation() {
+            super();
             plugin = this;
         }
 
         /**
-         * Logs an error in the error log.
+         * Logs a warning.
          * 
          * @param message
-         *            the message to log (optional).
+         *            the message.
          * @param e
-         *            the exception (optional).
+         *            the exception.
          */
-        public void error(final String message, final Exception e) {
-            String msgToDisplay = message;
-            if (message == null && e != null) {
-                msgToDisplay = e.getMessage();
-            }
-            if (e instanceof CoreException) {
-                this.getLog().log(((CoreException) e).getStatus());
-            } else {
-                final IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), msgToDisplay, e);
-                this.getLog().log(status);
-            }
+        public void warning(String message, EvaluationException e) {
+            IStatus status = new Status(IStatus.WARNING, PLUGIN_ID, message, e);
+            getLog().log(status);
         }
+
+        /**
+         * Logs an error.
+         * 
+         * @param message
+         *            the message.
+         * @param e
+         *            the exception.
+         */
+        public void error(String message, EvaluationException e) {
+            IStatus status = new Status(IStatus.ERROR, PLUGIN_ID, message, e);
+            getLog().log(status);
+        }
+
     }
 
 }
