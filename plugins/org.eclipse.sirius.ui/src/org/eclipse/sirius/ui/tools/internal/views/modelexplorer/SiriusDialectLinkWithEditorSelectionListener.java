@@ -119,7 +119,9 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
                     page.bringToTop(activeEditor);
                     DialectEditor dialectEditor = (DialectEditor) activeEditor;
                     List<DRepresentationElement> representationElements = getRepresentationElements(dialectEditor.getRepresentation(), ((IStructuredSelection) selection).toList());
-                    DialectUIManager.INSTANCE.setSelection(dialectEditor, representationElements);
+                    if (!representationElements.isEmpty()) {
+                        DialectUIManager.INSTANCE.setSelection(dialectEditor, representationElements);
+                    }
                 }
             } else {
                 Set<EObject> targets = getTargetsFromSelection((IStructuredSelection) selection);
