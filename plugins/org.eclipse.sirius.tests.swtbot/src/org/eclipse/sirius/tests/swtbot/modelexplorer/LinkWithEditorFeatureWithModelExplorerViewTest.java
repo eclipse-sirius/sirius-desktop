@@ -41,6 +41,7 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 	private static final String NEW_PACKAGE1 = "newPackage1";
 
 	private static final String NEW_PACKAGE2 = "newPackage2";
+	private static final String ECLASS1 = "NewEClass1";
 
 	private static final String SEMANTIC_RESOURCE_NAME = "VP-3832.ecore";
 
@@ -259,6 +260,19 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 			// We wait until it's actually selected in the model explorer view.
 			bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, NEW_PACKAGE2));
 
+			// Test with two graphical elements on the same semantic object.
+			selectNode(ECLASS1, modelExplorerView);
+			bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, ECLASS1));
+			assertEquals("The Tree should have two selected elements", 2, representation.selection().rowCount());
+			assertEquals("The first selected is not the one expected", ECLASS1, representation.selection().get(0, 0));
+			assertEquals("The second selected is not the one expected", ECLASS1 + "2",
+					representation.selection().get(1, 0));
+
+			representation.getTreeItem(ECLASS1).select();
+			bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, ECLASS1));
+
+			assertEquals("The Tree should have one selected elements", 1, representation.selection().rowCount());
+
 			// we deactivate the link with editor
 			modelExplorerView.toolbarToggleButton("Link with Editor").click();
 
@@ -267,13 +281,20 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 			SWTBotUtils.waitAllUiEvents();
 
 			// The NewPackage2 should still be selected.
-			bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, NEW_PACKAGE2));
+			bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, ECLASS1));
 
 		} finally {
 			if (linkWithEditorInitialStatus != modelExplorerView.toolbarToggleButton("Link with Editor").isChecked()) {
 				modelExplorerView.toolbarToggleButton("Link with Editor").click();
 			}
 		}
+	}
+
+	private void selectNode(String name, SWTBotView view) {
+		SWTBot projectExplorerBot = view.bot();
+		SWTBotTreeItem projectItem = projectExplorerBot.tree().expandNode(getProjectName());
+		SWTBotTreeItem fileNode = projectItem.expandNode(REPRESENTATIONS_RESOURCE_NAME).getNode(1).expand();
+		fileNode.getNode("root").select(ECLASS1);
 	}
 
 	private void openDiagram(String representationName) {

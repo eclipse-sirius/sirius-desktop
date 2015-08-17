@@ -38,7 +38,7 @@
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_iptsQDT9EeWob9ff_334oA" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_iptsQTT9EeWob9ff_334oA"/>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dT4aQGO5EeKAT86OkL5_zA" name="NewEClass1" tooltipText=".NewEClass1">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dT4aQGO5EeKAT86OkL5_zA" name="NewEClass1" tooltipText="root.NewEClass1">
         <target xmi:type="ecore:EClass" href="VP-3832.ecore#//NewEClass1"/>
         <semanticElements xmi:type="ecore:EClass" href="VP-3832.ecore#//NewEClass1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -129,6 +129,12 @@
         <semanticElements xmi:type="ecore:EPackage" href="VP-3832.ecore#//newPackage2"/>
         <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_cEQPxjXwEeWKWI3qJ9vddA"/>
         <actualMapping xmi:type="description_3:TreeItemMapping" href="tree.odesign#//@ownedViewpoints[name='tree']/@ownedRepresentations[name='Tree']/@subItemMappings[name='EPackage']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_NJ_EgETFEeW9NPfL0IWi9A" name="NewEClass12">
+        <target xmi:type="ecore:EClass" href="VP-3832.ecore#//NewEClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="VP-3832.ecore#//NewEClass1"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_NJ_EgUTFEeW9NPfL0IWi9A"/>
+        <actualMapping xmi:type="description_3:TreeItemMapping" href="tree.odesign#//@ownedViewpoints[name='tree']/@ownedRepresentations[name='Tree']/@subItemMappings[name='EClass2']"/>
       </ownedTreeItems>
       <description xmi:type="description_3:TreeDescription" href="tree.odesign#//@ownedViewpoints[name='tree']/@ownedRepresentations[name='Tree']"/>
     </ownedRepresentations>

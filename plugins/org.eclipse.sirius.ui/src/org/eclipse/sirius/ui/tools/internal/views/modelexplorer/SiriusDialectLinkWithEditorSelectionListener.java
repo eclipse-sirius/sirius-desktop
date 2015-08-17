@@ -116,11 +116,15 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
                 IWorkbenchPage page = EclipseUIUtil.getActivePage();
                 IEditorPart activeEditor = page.getActiveEditor();
                 if (activeEditor instanceof DialectEditor) {
-                    page.bringToTop(activeEditor);
                     DialectEditor dialectEditor = (DialectEditor) activeEditor;
-                    List<DRepresentationElement> representationElements = getRepresentationElements(dialectEditor.getRepresentation(), ((IStructuredSelection) selection).toList());
-                    if (!representationElements.isEmpty()) {
-                        DialectUIManager.INSTANCE.setSelection(dialectEditor, representationElements);
+                    // We validate that the navigator selection is not already
+                    // selected in the diagram. That avoids for instance to
+                    // select multiple representation elements (with the same
+                    // semantic target) if one of this element has already been
+                    // selected in the representation.
+                    if (isNotAlreadySelected((IStructuredSelection) selection, dialectEditor)) {
+                        page.bringToTop(dialectEditor);
+                        selectRepresentationElements(selection, dialectEditor);
                     }
                 }
             } else {
@@ -135,6 +139,33 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
                 }
             }
         }
+    }
+
+    private void selectRepresentationElements(ISelection selection, DialectEditor dialectEditor) {
+        List<DRepresentationElement> representationElements = getRepresentationElements(dialectEditor.getRepresentation(), ((IStructuredSelection) selection).toList());
+        if (!representationElements.isEmpty()) {
+            DialectUIManager.INSTANCE.setSelection(dialectEditor, representationElements);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private boolean isNotAlreadySelected(IStructuredSelection selection, DialectEditor dialectEditor) {
+        Set<EObject> selectedSemantics = getSelectedSemanticElementsInRepresentation(dialectEditor);
+        Set<EObject> navigatorSelection = new HashSet<EObject>(selection.toList());
+        return !selectedSemantics.equals(navigatorSelection);
+
+    }
+
+    private Set<EObject> getSelectedSemanticElementsInRepresentation(DialectEditor editor) {
+        Set<EObject> semanticElements = new HashSet<EObject>();
+        Collection<DSemanticDecorator> semanticDecorators = DialectUIManager.INSTANCE.getSelection(editor);
+        for (DSemanticDecorator decorator : semanticDecorators) {
+            EObject target = decorator.getTarget();
+            if (target != null) {
+                semanticElements.add(target);
+            }
+        }
+        return semanticElements;
     }
 
     private List<DRepresentationElement> getRepresentationElements(final DRepresentation representation, final List<?> selection) {
