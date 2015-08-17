@@ -72,6 +72,7 @@ Additional non-breaking changes:
 h4. Changes in @org.eclipse.sirius.common@
 
 * <span class="label label-success">Added</span> The new interface @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic@ has been added. It allows an interpreter to evaluate an expression and return not only the result of the evaluation but also a diagnostic.
+* <span class="label label-success">Added</span> The new class @org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement@ has been added. It allows interpreters to provide proposals for the code completion which can replace an existing part of the expression used. This behavior can be used if the user has started to type a value that would be returned by the code completion. For example, if the user types "aql:self.na" and if he selects the content proposal "name", it can replace the existing part of the expression "na" to write "aql:self.name" instead of just appending "name" to create "aql:self.naname".
 
 h4. Changes in @org.eclipse.sirius.ext.gef@
 

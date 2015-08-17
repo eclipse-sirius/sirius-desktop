@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.acceleo.interpreter;
 
 import org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -132,6 +133,10 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
                     proposal = new SiriusCompletionProposal(input.getProposal(), currentRange.x, currentRange.y, input.getCursorPosition(), original.getImage(), original.getDisplayString(),
                             original.getContextInformation(), original.getAdditionalProposalInfo());
                 }
+            } else if (input instanceof ContentProposalWithReplacement) {
+                ContentProposalWithReplacement contentProposal2 = (ContentProposalWithReplacement) input;
+                proposal = new SiriusCompletionProposal(contentProposal2.getProposal(), contentProposal2.getReplacementOffset(), contentProposal2.getReplacementLength(),
+                        contentProposal2.getCursorPosition(), null, contentProposal2.getDisplay(), null, contentProposal2.getInformation());
             } else {
                 proposal = new SiriusCompletionProposal(input.getProposal(), currentRange.x, currentRange.y, input.getCursorPosition(), null, input.getDisplay(), null, input.getInformation());
             }

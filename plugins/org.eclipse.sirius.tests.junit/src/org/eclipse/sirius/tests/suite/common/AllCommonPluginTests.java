@@ -66,6 +66,7 @@ import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
 import org.eclipse.sirius.tests.unit.common.ZombieViewpointsTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.CompoundInterpreterTestCase;
 import org.eclipse.sirius.tests.unit.common.interpreter.CreateCellToolInterpreterTest;
+import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.aql.AcceleoQueryLanguageCompletionTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTInterpreterOnPackageImportTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTLCompletionTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTLInterpreterTests;
@@ -257,6 +258,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(CreateCellToolInterpreterTest.class);
         suite.addTestSuite(AcceleoMTLInterpreterTests.class);
         suite.addTestSuite(AcceleoMTLCompletionTests.class);
+        suite.addTestSuite(AcceleoQueryLanguageCompletionTests.class);
         suite.addTestSuite(AcceleoCrossReferencerTest.class);
         suite.addTestSuite(AcceleoPackageRegistryTest.class);
         suite.addTestSuite(IInterpreterValidationExpressionTest.class);

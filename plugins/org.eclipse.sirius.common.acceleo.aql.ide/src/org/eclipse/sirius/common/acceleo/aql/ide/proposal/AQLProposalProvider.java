@@ -36,6 +36,7 @@ import org.eclipse.sirius.common.acceleo.aql.ide.Messages;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
@@ -105,8 +106,11 @@ public class AQLProposalProvider implements IProposalProvider {
         final Set<ICompletionProposal> proposal = Sets.newLinkedHashSet(completionResult.getProposals(QueryCompletion.createBasicFilter(completionResult)));
 
         for (ICompletionProposal propFromAQL : proposal) {
-            ContentProposal propForSirius = new ContentProposal(propFromAQL.getProposal(), propFromAQL.getProposal(), propFromAQL.getDescription(), propFromAQL.getCursorOffset());
-            proposals.add(propForSirius);
+            int offset = position - completionResult.getPrefix().length();
+            int length = completionResult.getPrefix().length() + completionResult.getRemaining().length();
+            
+            ContentProposal contentProposal = new ContentProposalWithReplacement(propFromAQL.getProposal(), propFromAQL.toString(), propFromAQL.getDescription(), propFromAQL.getCursorOffset(), offset, length);
+            proposals.add(contentProposal);
         }
         return proposals;
     }
