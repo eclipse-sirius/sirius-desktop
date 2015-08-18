@@ -149,16 +149,14 @@ public final class AbstractDiagramNodeEditPartOperation {
      */
     public static IBorderItemLocator createBorderItemLocator(final IAbstractDiagramNodeEditPart self, final IFigure figure, final DDiagramElement vpElementBorderItem) {
         final EObject semantic = self.resolveSemanticElement();
-        if (semantic != null) {
-            if (semantic instanceof DDiagramElement) {
-                final DDiagramElement element = (DDiagramElement) semantic;
-                final DiagramElementMapping mapping = element.getDiagramElementMapping();
+        if (semantic instanceof DDiagramElement) {
+            final DDiagramElement element = (DDiagramElement) semantic;
+            final DiagramElementMapping mapping = element.getDiagramElementMapping();
 
-                final Style style = ((DStylizable) semantic).getStyle();
-                final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(mapping, style);
-                final BorderItemLocatorProvider provider = styleConfiguration.getBorderItemLocatorProvider();
-                return provider.getBorderItemLocator(figure, (DDiagramElement) semantic, vpElementBorderItem);
-            }
+            final Style style = ((DStylizable) semantic).getStyle();
+            final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(mapping, style);
+            final BorderItemLocatorProvider provider = styleConfiguration.getBorderItemLocatorProvider();
+            return provider.getBorderItemLocator(figure, (DDiagramElement) semantic, vpElementBorderItem);
         }
         return null;
     }
