@@ -27,54 +27,54 @@ import com.google.common.collect.ImmutableMap;
  */
 public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
 
-    private static final String SIRIUS_DESCRIPTION_CONCERN_1_1_0 = "http://www.eclipse.org/sirius/description/concern/1.1.0";
+    private static final String SIRIUS_DESCRIPTION_CONCERN_1_1_0 = "http://www.eclipse.org/sirius/description/concern/1.1.0"; //$NON-NLS-1$
 
-    private static final String SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/concern/1.1.0";
+    private static final String SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/concern/1.1.0"; //$NON-NLS-1$
 
-    private static final String SIRIUS_DESCRIPTION_FILTER_1_1_0 = "http://www.eclipse.org/sirius/description/filter/1.1.0";
+    private static final String SIRIUS_DESCRIPTION_FILTER_1_1_0 = "http://www.eclipse.org/sirius/description/filter/1.1.0"; //$NON-NLS-1$
 
-    private static final String SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/filter/1.1.0";
+    private static final String SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/filter/1.1.0"; //$NON-NLS-1$
 
-    private static final String SIRIUS_DESCRIPTION_VALIDATION_1_1_0 = "http://www.eclipse.org/sirius/description/validation/1.1.0";
+    private static final String SIRIUS_DESCRIPTION_VALIDATION_1_1_0 = "http://www.eclipse.org/sirius/description/validation/1.1.0"; //$NON-NLS-1$
 
-    private static final String SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/validation/1.1.0";
+    private static final String SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/validation/1.1.0"; //$NON-NLS-1$
 
     /**
      * The version 7.0.0 corresponds to the file format of Sirius 0.9 (more
      * recent than the 6.9.0 file format released under the name "Viewpoint").
      */
-    private static final Version SIRIUS_0_9_VERSION = new Version("7.0.0");
+    private static final Version SIRIUS_0_9_VERSION = new Version("7.0.0"); //$NON-NLS-1$
 
     /**
      * The version 8.0.0 corresponds to the file format of Sirius 1.0.0 M5.
      */
-    private static final Version SIRIUS_1_0_0_M5_VERSION = new Version("8.0.0");
+    private static final Version SIRIUS_1_0_0_M5_VERSION = new Version("8.0.0"); //$NON-NLS-1$
 
     /**
      * The version 8.1.0 corresponds to the file format of Sirius 1.0.0 M6.
      */
-    private static final Version SIRIUS_1_0_0_M6_VERSION = new Version("8.1.0");
+    private static final Version SIRIUS_1_0_0_M6_VERSION = new Version("8.1.0"); //$NON-NLS-1$
 
     private static final Map<String, String> FROM_VIEWPOINT_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
-            .put("http://www.obeo.fr/dsl/viewpoint/description/contribution/1.0.0", "http://www.eclipse.org/sirius/description/contribution/1.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/1.1.0", "http://www.eclipse.org/sirius/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/description/1.1.0", "http://www.eclipse.org/sirius/description/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0", "http://www.eclipse.org/sirius/description/style/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0", "http://www.eclipse.org/sirius/description/tool/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/description/audit/1.1.0", "http://www.eclipse.org/sirius/description/audit/1.1.0")
-            .put("http://www.obeo.fr/dsl/layoutdata/1.1.0", "http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/2.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/tool/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/ordering/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/ordering/2.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/template/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/table/1.1.0", "http://www.eclipse.org/sirius/table/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0", "http://www.eclipse.org/sirius/table/description/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/tree/1.0.0", "http://www.eclipse.org/sirius/tree/1.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/tree/description/1.0.0", "http://www.eclipse.org/sirius/tree/description/1.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/description/concern/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0)
-            .put("http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0)
-            .put("http://www.obeo.fr/dsl/viewpoint/description/validation/1.1.0", SIRIUS_DESCRIPTION_VALIDATION_1_1_0).build();
+            .put("http://www.obeo.fr/dsl/viewpoint/description/contribution/1.0.0", "http://www.eclipse.org/sirius/description/contribution/1.0.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/1.1.0", "http://www.eclipse.org/sirius/1.1.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/description/1.1.0", "http://www.eclipse.org/sirius/description/1.1.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0", "http://www.eclipse.org/sirius/description/style/1.1.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0", "http://www.eclipse.org/sirius/description/tool/1.1.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/description/audit/1.1.0", "http://www.eclipse.org/sirius/description/audit/1.1.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/layoutdata/1.1.0", "http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/2.0.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/tool/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/ordering/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/ordering/2.0.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/template/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/table/1.1.0", "http://www.eclipse.org/sirius/table/1.1.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0", "http://www.eclipse.org/sirius/table/description/1.1.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/tree/1.0.0", "http://www.eclipse.org/sirius/tree/1.0.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/tree/description/1.0.0", "http://www.eclipse.org/sirius/tree/description/1.0.0") //$NON-NLS-1$ //$NON-NLS-2$
+            .put("http://www.obeo.fr/dsl/viewpoint/description/concern/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0) //$NON-NLS-1$
+            .put("http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0) //$NON-NLS-1$
+            .put("http://www.obeo.fr/dsl/viewpoint/description/validation/1.1.0", SIRIUS_DESCRIPTION_VALIDATION_1_1_0).build(); //$NON-NLS-1$
 
     private static final Map<String, String> FROM_SIRIUS_0_9_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder().put(SIRIUS_DESCRIPTION_CONCERN_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0)
             .put(SIRIUS_DESCRIPTION_FILTER_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0).build();

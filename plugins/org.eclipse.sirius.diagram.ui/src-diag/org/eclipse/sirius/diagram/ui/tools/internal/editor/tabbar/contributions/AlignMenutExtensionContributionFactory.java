@@ -27,7 +27,7 @@ public class AlignMenutExtensionContributionFactory extends SiriusTabbarExtensio
 
         super.createContributionItems(serviceLocator, additions);
         TabbarAlignMenuManager alignMenu = new TabbarAlignMenuManager();
-        alignMenu.setDefaultAction("org.eclipse.gef.align_left");
+        alignMenu.setDefaultAction("org.eclipse.gef.align_left"); //$NON-NLS-1$
 
         additions.addContributionItem(alignMenu, new DDiagramElementTabbarExpression());
     }

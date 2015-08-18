@@ -304,8 +304,8 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     }
 
     private boolean isAGMFDiagramOnAssociatedInstance(final EObject object, final EObject associatedInstance) {
-        if ("Diagram".equals(object.eClass().getName()) && object.eClass().getEPackage() != null && "notation".equals(object.eClass().getEPackage().getNsPrefix())) {
-            final EObject element = (EObject) object.eGet(object.eClass().getEStructuralFeature("element"));
+        if ("Diagram".equals(object.eClass().getName()) && object.eClass().getEPackage() != null && "notation".equals(object.eClass().getEPackage().getNsPrefix())) { //$NON-NLS-1$ //$NON-NLS-2$
+            final EObject element = (EObject) object.eGet(object.eClass().getEStructuralFeature("element")); //$NON-NLS-1$
             if (element != null && element == associatedInstance) {
                 return true;
             }

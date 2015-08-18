@@ -26,12 +26,12 @@ public interface IAssistContentProvider extends IContentProposalProvider, IConte
     /**
      * The ID.
      */
-    String ID = "org.eclipse.sirius.ui.assistContentProvider";
+    String ID = "org.eclipse.sirius.ui.assistContentProvider"; //$NON-NLS-1$
 
     /**
      * The class attribute.
      */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /**
      * The auto activation characters for completion proposal.

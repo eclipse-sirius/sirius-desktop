@@ -39,12 +39,12 @@ public final class EClassHelper {
 
     private static String getParentPath(EObject eClass) {
         EObject container = eClass.eContainer();
-        String name = "";
+        String name = ""; //$NON-NLS-1$
         if (eClass instanceof ENamedElement) {
             name = ((ENamedElement) eClass).getName();
         }
         if (container != null) {
-            return getParentPath(container) + "." + name;
+            return getParentPath(container) + "." + name; //$NON-NLS-1$
         }
         return name;
     }

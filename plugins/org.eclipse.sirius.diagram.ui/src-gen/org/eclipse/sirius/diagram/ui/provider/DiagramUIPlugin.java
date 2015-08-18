@@ -65,7 +65,7 @@ import org.osgi.framework.BundleContext;
  */
 public final class DiagramUIPlugin extends EMFPlugin {
 
-    private static final String DECORATOR_CHECK_PATH = "icons/full/decorator/active.gif";
+    private static final String DECORATOR_CHECK_PATH = "icons/full/decorator/active.gif"; //$NON-NLS-1$
 
     public static final String ID = "org.eclipse.sirius.diagram.ui"; //$NON-NLS-1$
 

@@ -28,7 +28,7 @@ public class AirDResouceQuery {
     /**
      * the annotation source.
      */
-    public static final String ANNOTATION_SOURCE = "Migration";
+    public static final String ANNOTATION_SOURCE = "Migration"; //$NON-NLS-1$
 
     private DAnalysis analysis;
 

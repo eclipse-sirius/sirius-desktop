@@ -26,12 +26,12 @@ public interface FeatureExtensionsManager extends FeatureExtensionServices {
     /**
      * FeatureExtension manager extension point ID.
      */
-    String ID = "org.eclipse.sirius.featureExtensions";
+    String ID = "org.eclipse.sirius.featureExtensions"; //$NON-NLS-1$
 
     /**
      * Extension point attribute for the feature extension class.
      */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /**
      * Enable a new feature extension.

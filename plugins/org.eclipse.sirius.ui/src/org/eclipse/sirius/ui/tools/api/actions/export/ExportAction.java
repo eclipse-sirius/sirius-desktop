@@ -199,8 +199,8 @@ public class ExportAction extends WorkspaceModifyOperation {
                     StringBuffer messageExceptionForDialog = new StringBuffer();
                     messageExceptionForDialog.append("One or more representations could not be exported because they are too large: ");
                     for (Throwable thr : messageException) {
-                        messageExceptionForDialog.append("\n");
-                        messageExceptionForDialog.append(" - ");
+                        messageExceptionForDialog.append("\n"); //$NON-NLS-1$
+                        messageExceptionForDialog.append(" - "); //$NON-NLS-1$
                         messageExceptionForDialog.append(thr.getMessage());
                     }
                     // Create a popup menu to inform user that representations

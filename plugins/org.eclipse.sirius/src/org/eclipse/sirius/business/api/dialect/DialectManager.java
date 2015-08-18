@@ -27,12 +27,12 @@ public interface DialectManager extends DialectServices {
     /**
      * Dialect manager extension point ID.
      */
-    String ID = "org.eclipse.sirius.dialect";
+    String ID = "org.eclipse.sirius.dialect"; //$NON-NLS-1$
 
     /**
      * Extension point attribute for the dialect class.
      */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /**
      * Enable a new dialect.

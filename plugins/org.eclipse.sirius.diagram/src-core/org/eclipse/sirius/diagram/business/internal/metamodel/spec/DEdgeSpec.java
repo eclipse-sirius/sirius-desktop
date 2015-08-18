@@ -95,7 +95,7 @@ public class DEdgeSpec extends DEdgeImpl {
     @Override
     public String toString() {
         if (getTargetNode() != null && getSourceNode() != null) {
-            return "Edge source:" + getSourceNode() + " | target:" + getTargetNode() + " on semantic" + getTarget();
+            return "Edge source:" + getSourceNode() + " | target:" + getTargetNode() + " on semantic" + getTarget(); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         } else {
             return super.toString();
         }

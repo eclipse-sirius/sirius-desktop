@@ -82,11 +82,6 @@ public class AttachSemanticResourcesJob extends Job {
         return Status.OK_STATUS;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.jobs.Job#belongsTo(java.lang.Object)
-     */
     @Override
     public boolean belongsTo(Object family) {
         return AbstractRepresentationsFileJob.FAMILY.equals(family);

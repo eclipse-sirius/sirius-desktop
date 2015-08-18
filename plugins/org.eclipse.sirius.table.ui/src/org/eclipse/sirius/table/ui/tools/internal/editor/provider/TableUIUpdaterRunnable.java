@@ -269,7 +269,7 @@ public class TableUIUpdaterRunnable implements Runnable {
     private void handleColumn(final TreeColumn treeColumn, boolean visible) {
         if (visible) {
             // Show column
-            final Integer restoredWith = (Integer) treeColumn.getData("restoredWidth");
+            final Integer restoredWith = (Integer) treeColumn.getData("restoredWidth"); //$NON-NLS-1$
             if (restoredWith != null) {
                 treeColumn.setWidth(restoredWith.intValue());
                 ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(restoredWith.intValue()));
@@ -279,7 +279,7 @@ public class TableUIUpdaterRunnable implements Runnable {
             }
         } else {
             // Hide column
-            treeColumn.setData("restoredWidth", Integer.valueOf(treeColumn.getWidth()));
+            treeColumn.setData("restoredWidth", Integer.valueOf(treeColumn.getWidth())); //$NON-NLS-1$
             treeColumn.setWidth(0);
             ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(0));
         }

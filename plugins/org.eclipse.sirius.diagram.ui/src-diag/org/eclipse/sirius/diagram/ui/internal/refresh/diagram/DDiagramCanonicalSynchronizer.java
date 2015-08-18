@@ -382,7 +382,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         final Iterator<Edge> edges = diagram.getEdges().iterator();
         while (edges.hasNext()) {
             final Edge currentEdge = edges.next();
-            if ("NoteAttachment".equals(currentEdge.getType())) {
+            if ("NoteAttachment".equals(currentEdge.getType())) { //$NON-NLS-1$
                 result.add(currentEdge);
             }
         }
@@ -402,7 +402,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         final Iterator<Edge> edges = diagram.getEdges().iterator();
         while (edges.hasNext()) {
             final Edge currentEdge = edges.next();
-            if ("line".equals(currentEdge.getType())) {
+            if ("line".equals(currentEdge.getType())) { //$NON-NLS-1$
                 result.add(currentEdge);
             }
         }

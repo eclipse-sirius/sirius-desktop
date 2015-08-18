@@ -23,7 +23,7 @@ public class TreeDialectUI implements DialectUI {
      * {@inheritDoc}
      */
     public String getName() {
-        return "tree";
+        return "tree"; //$NON-NLS-1$
     }
 
     /**

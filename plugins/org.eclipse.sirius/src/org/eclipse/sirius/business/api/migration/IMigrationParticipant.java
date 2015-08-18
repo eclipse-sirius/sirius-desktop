@@ -31,12 +31,12 @@ public interface IMigrationParticipant {
     /**
      * Identify participants to representations file (aird) migration.
      */
-    String REPRESENTATIONSFILE_KIND = "RepresentationsFile";
+    String REPRESENTATIONSFILE_KIND = "RepresentationsFile"; //$NON-NLS-1$
 
     /**
      * Identify participants to VSM (odesign) migration.
      */
-    String VSM_KIND = "VSM";
+    String VSM_KIND = "VSM"; //$NON-NLS-1$
 
     /**
      * Called during the parsing of XMIResources (at loading time). It allows to

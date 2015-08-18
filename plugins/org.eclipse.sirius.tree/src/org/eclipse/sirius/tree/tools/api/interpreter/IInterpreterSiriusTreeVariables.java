@@ -20,21 +20,21 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 public interface IInterpreterSiriusTreeVariables extends IInterpreterSiriusVariables {
 
     /** "diagram". */
-    String TREE = "tree";
+    String TREE = "tree"; //$NON-NLS-1$
 
     /**
      * the tree item element.
      */
-    String TREE_ITEM = "treeitem";
+    String TREE_ITEM = "treeitem"; //$NON-NLS-1$
 
     /**
      * the line semantic element.
      */
-    String TREE_ITEM_SEMANTIC = "treeitemSemantic";
+    String TREE_ITEM_SEMANTIC = "treeitemSemantic"; //$NON-NLS-1$
 
     /**
      * The preceding siblings in a Drag and Drop operation.
      */
-    String PRECEDING_SIBLINGS = "precedingSiblings";
+    String PRECEDING_SIBLINGS = "precedingSiblings"; //$NON-NLS-1$
 
 }

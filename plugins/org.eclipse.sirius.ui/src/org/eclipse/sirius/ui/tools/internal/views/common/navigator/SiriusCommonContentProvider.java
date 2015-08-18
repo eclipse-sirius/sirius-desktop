@@ -708,7 +708,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         if (myViewer != null) {
             Method method = null;
             try {
-                method = myViewer.getClass().getMethod("isBusy");
+                method = myViewer.getClass().getMethod("isBusy"); //$NON-NLS-1$
             } catch (SecurityException e) {
                 // No method, no data
             } catch (NoSuchMethodException e) {

@@ -41,9 +41,9 @@ public class FoldingToggleImageFigure extends ActionTriggerImageFigure {
      */
     protected static final int FOLD_ICON_HEIGHT = FOLD_ICON_WIDTH;
 
-    private static final Image MINUS_IMAGE = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor("/icons/collapse.gif"));
+    private static final Image MINUS_IMAGE = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor("/icons/collapse.gif")); //$NON-NLS-1$
 
-    private static final Image PLUS_IMAGE = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor("/icons/expand.gif"));
+    private static final Image PLUS_IMAGE = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor("/icons/expand.gif")); //$NON-NLS-1$
 
     private final IAbstractDiagramNodeEditPart part;
 

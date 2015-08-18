@@ -123,7 +123,7 @@ public abstract class AbstractEdgeSelectionFeedbackEditPolicy extends SelectionH
     protected List<Handle> createNameSelectionHandles() {
         final List<Handle> list = Lists.newArrayList();
         for (AbstractDiagramNameEditPart edgeNameEditPart : getEdgeNameEditPart()) {
-            if (edgeNameEditPart != null && edgeNameEditPart.getEditText() != null && !"".equals(edgeNameEditPart.getEditText())) {
+            if (edgeNameEditPart != null && edgeNameEditPart.getEditText() != null && !"".equals(edgeNameEditPart.getEditText())) { //$NON-NLS-1$
                 NonResizableHandleKit.addMoveHandle(edgeNameEditPart, list);
             }
         }

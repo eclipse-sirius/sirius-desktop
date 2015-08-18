@@ -107,7 +107,7 @@ public class DLineCandidate {
         parts[0] = (mapping == null) ? 0 : getMappingID();
         parts[1] = (semantic == null) ? 0 : getSemanticID();
         parts[2] = (viewContainer == null) ? 0 : getViewContainerID();
-        final String sep = "/";
+        final String sep = "/"; //$NON-NLS-1$
         return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1] + sep + parts[2]);
     }
 

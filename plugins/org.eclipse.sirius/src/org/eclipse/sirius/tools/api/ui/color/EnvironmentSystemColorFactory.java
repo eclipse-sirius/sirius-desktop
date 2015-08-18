@@ -54,7 +54,7 @@ public final class EnvironmentSystemColorFactory {
      * @return return the color description corresponding to the color name.
      */
     public SystemColor getSystemColorDescription(final String name) {
-        final String uri = SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors/@entries[name='" + name + "']";
+        final String uri = SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors/@entries[name='" + name + "']"; //$NON-NLS-1$ //$NON-NLS-2$
         final EObject color = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSystemColor());
         final URI colorURI = URI.createURI(uri);
         ((InternalEObject) color).eSetProxyURI(colorURI);

@@ -187,7 +187,7 @@ public final class EclipseUtil {
                                 if (keyAttributeName != null) {
                                     key = element.getAttribute(keyAttributeName);
                                 }
-                                key = Objects.firstNonNull(key, "");
+                                key = Objects.firstNonNull(key, ""); //$NON-NLS-1$
                                 Collection<T> val = contributors.get(key);
                                 if (val == null) {
                                     val = Lists.newArrayList();

@@ -92,10 +92,10 @@ public class NoteDescriptionItemProvider extends NodeStyleDescriptionItemProvide
     public String getText(Object object) {
 
         String color = new ColorQuery(((NoteDescription) object).getColor()).getLabel();
-        String label = getString("_UI_NoteDescription_type");
+        String label = getString("_UI_NoteDescription_type"); //$NON-NLS-1$
 
         if (color != null) {
-            return label + " " + color;
+            return label + " " + color; //$NON-NLS-1$
         } else {
             return label;
         }

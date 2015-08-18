@@ -85,7 +85,7 @@ public class SiriusRepairProcess {
     /**
      * Quote for messages.
      */
-    private static final String QUOTE = "\"";
+    private static final String QUOTE = "\""; //$NON-NLS-1$
 
     private List<IRepairParticipant> repairParticipants;
 
@@ -109,11 +109,11 @@ public class SiriusRepairProcess {
 
     private List<IRepairParticipant> getRepairParticipants() {
         List<IRepairParticipant> participants = new ArrayList<IRepairParticipant>();
-        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor("org.eclipse.sirius.repairParticipant");
+        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor("org.eclipse.sirius.repairParticipant"); //$NON-NLS-1$
         for (IConfigurationElement configurationElement : config) {
             try {
 
-                Object contribution = configurationElement.createExecutableExtension("class");
+                Object contribution = configurationElement.createExecutableExtension("class"); //$NON-NLS-1$
                 if (contribution instanceof IRepairParticipant) {
                     participants.add((IRepairParticipant) contribution);
                 }
@@ -162,7 +162,7 @@ public class SiriusRepairProcess {
         // List of couples <Original file, Backup file>
         Map<IFile, IFile> originalToBackupFiles = new HashMap<IFile, IFile>();
         try {
-            monitor.beginTask("", 4);
+            monitor.beginTask("", 4); //$NON-NLS-1$
             monitor.subTask("Loading model");
             session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new SubProgressMonitor(monitor, 1));
             session.setReloadingPolicy(new ReloadingPolicy() {
@@ -305,7 +305,7 @@ public class SiriusRepairProcess {
             MigrationCommandExecutor migrationCommandExecutor = new MigrationCommandExecutor();
 
             List<DView> ownedViews = dAnalysis.getOwnedViews();
-            monitor.beginTask("", 7 * ownedViews.size());
+            monitor.beginTask("", 7 * ownedViews.size()); //$NON-NLS-1$
             for (final DView view : ownedViews) {
                 for (IRepairParticipant participant : repairParticipants) {
                     participant.startRepairOnView(session, view);
@@ -385,7 +385,7 @@ public class SiriusRepairProcess {
                 revertBackupFile(originalToBackupFile.getKey(), originalToBackupFile.getValue(), migrationMonitor);
             }
         } catch (IOException e) {
-            SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, "", e));
+            SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, "", e)); //$NON-NLS-1$
         }
     }
 

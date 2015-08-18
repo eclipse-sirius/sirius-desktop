@@ -247,11 +247,11 @@ public class SelectMetamodelWizardPage extends WizardPage {
             index = bestType(index, nameForModel, 1);
             index = bestType(index, nameForModel, 2);
 
-            final String nameForRoot = "root";
+            final String nameForRoot = "root"; //$NON-NLS-1$
             index = bestType(index, nameForRoot, 0);
             index = bestType(index, nameForRoot, 1);
             index = bestType(index, nameForRoot, 2);
-            final String nameForPackage = "package";
+            final String nameForPackage = "package"; //$NON-NLS-1$
             index = bestType(index, nameForPackage, 0);
             index = bestType(index, nameForPackage, 1);
             index = bestType(index, nameForPackage, 2);

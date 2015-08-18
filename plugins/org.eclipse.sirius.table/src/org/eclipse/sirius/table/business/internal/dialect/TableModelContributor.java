@@ -98,7 +98,7 @@ public final class TableModelContributor extends IncrementalModelContributor {
     }
 
     private boolean isReuseReference(EReference re) {
-        return !re.isContainment() && re.getName().startsWith("reused");
+        return !re.isContainment() && re.getName().startsWith("reused"); //$NON-NLS-1$
     }
 
     private void removeContributions(EObject obj) {

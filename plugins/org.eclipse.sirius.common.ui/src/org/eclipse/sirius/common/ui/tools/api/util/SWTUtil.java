@@ -619,7 +619,7 @@ public final class SWTUtil {
                 Shell shell = new Shell(Display.getCurrent());
                 Label label = new Label(shell, SWT.NONE);
                 GC gc = new GC(label);
-                height = gc.textExtent("Some text").y;
+                height = gc.textExtent("Some text").y; //$NON-NLS-1$
                 gc.dispose();
                 label.dispose();
                 shell.dispose();
@@ -689,7 +689,7 @@ public final class SWTUtil {
                 if (currentWidth / nbLinesAvailable > maxWidth) {
                     int length = textValue.length() - 4;
                     while (length > 0 && result == null) {
-                        String newText = textValue.substring(0, length) + "...";
+                        String newText = textValue.substring(0, length) + "..."; //$NON-NLS-1$
                         currentWidth = gc.textExtent(newText).x;
                         // We remove 1 to the maxWidth because there is
                         // sometimes characters that takes less or more place.

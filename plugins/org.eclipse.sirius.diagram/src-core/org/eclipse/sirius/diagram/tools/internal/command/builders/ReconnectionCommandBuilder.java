@@ -173,11 +173,11 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     private String getReconnectionKindFeatureName() {
-        String featureName = "sourceNode";
+        String featureName = "sourceNode"; //$NON-NLS-1$
         if (tool.getReconnectionKind() == ReconnectionKind.RECONNECT_TARGET_LITERAL) {
-            featureName = "targetNode";
+            featureName = "targetNode"; //$NON-NLS-1$
         } else if (tool.getReconnectionKind() == ReconnectionKind.RECONNECT_BOTH_LITERAL && oldTarget == reconnectionSource) {
-            featureName = "targetNode";
+            featureName = "targetNode"; //$NON-NLS-1$
         }
         return featureName;
     }
@@ -288,7 +288,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     public static class OtherEndVariable extends ElementSelectVariableImpl implements SubVariable {
 
-        private static final String OTHER_END_VARIABLE_NAME = "otherEnd";
+        private static final String OTHER_END_VARIABLE_NAME = "otherEnd"; //$NON-NLS-1$
 
         /**
          * {@inheritDoc}

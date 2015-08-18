@@ -39,7 +39,7 @@ public class EObjectPaneBasedSelectionWizard extends Wizard {
     /** "Please select an element". */
     public static final String WIZARD_GENERIC_DIALOG_MESSAGE = "Please select an element";
 
-    private static final String EOBJECT_PANE_BASED_SELECTION_WIZARD_PAGE_NAME = "page";
+    private static final String EOBJECT_PANE_BASED_SELECTION_WIZARD_PAGE_NAME = "page"; //$NON-NLS-1$
 
     private EObjectPaneBasedSelectionWizardPage page;
 
@@ -99,11 +99,6 @@ public class EObjectPaneBasedSelectionWizard extends Wizard {
         page.init(objects, preSelectedObjects);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#performFinish()
-     */
     @Override
     public boolean performFinish() {
         return true;

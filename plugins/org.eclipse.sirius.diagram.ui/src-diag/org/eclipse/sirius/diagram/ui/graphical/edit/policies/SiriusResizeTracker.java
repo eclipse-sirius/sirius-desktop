@@ -31,7 +31,7 @@ public class SiriusResizeTracker extends ResizeTracker {
      * Constant passed to extended data of the request to keep the location of
      * the children of resized part fix.
      */
-    public static final String CHILDREN_MOVE_MODE_KEY = "keepSameAbsoluteLocation";
+    public static final String CHILDREN_MOVE_MODE_KEY = "keepSameAbsoluteLocation"; //$NON-NLS-1$
 
     /**
      * The default mode for {@link #childrenMoveMode}.

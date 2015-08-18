@@ -25,13 +25,13 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 public interface IDeleteHook {
 
     /** The extension point ID. */
-    String ID = "org.eclipse.sirius.deleteHook";
+    String ID = "org.eclipse.sirius.deleteHook"; //$NON-NLS-1$
 
     /** The class attribute. */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /** The class attribute. */
-    String ID_ATTRIBUTE = "id";
+    String ID_ATTRIBUTE = "id"; //$NON-NLS-1$
 
     /**
      * This method will be called before the deletion command execution. It is

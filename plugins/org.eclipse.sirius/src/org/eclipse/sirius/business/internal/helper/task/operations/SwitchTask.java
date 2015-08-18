@@ -110,7 +110,7 @@ public class SwitchTask extends AbstractOperationTask {
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
     public String getLabel() {
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
 }

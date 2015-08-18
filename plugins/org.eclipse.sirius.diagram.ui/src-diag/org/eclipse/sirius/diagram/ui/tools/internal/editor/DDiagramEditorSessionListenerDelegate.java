@@ -44,13 +44,13 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_ME_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation
-            .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif");
+            .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif"); //$NON-NLS-1$
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
-    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif");
+    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"); //$NON-NLS-1$
 
     /** The NO_WRITE_PERMISSION icon description icon descriptor. */
-    private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif");
+    private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif"); //$NON-NLS-1$
 
     private DDiagramEditorImpl dDiagramEditorImpl;
 
@@ -264,7 +264,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             List<Object> images = new ArrayList<Object>(2);
             images.add(refreshImage);
             Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin()
-                    .getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
+                    .getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif")); //$NON-NLS-1$
             images.add(lockByOtherOverlayImage);
             ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
             frozenRepresentationImage = DiagramUIPlugin.getPlugin().getImage(composedImageDescriptor);

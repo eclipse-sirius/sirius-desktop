@@ -70,7 +70,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
     /**
      * The VP version for this migration.
      */
-    public static final Version MIGRATION_VERSION = new Version("6.7.0.201302181200");
+    public static final Version MIGRATION_VERSION = new Version("6.7.0.201302181200"); //$NON-NLS-1$
 
     private Predicate<Node> isBorderedNode = new IsBorderedNodePredicate();
 

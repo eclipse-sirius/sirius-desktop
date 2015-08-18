@@ -60,7 +60,7 @@ public class LayerFilterExtensionContributionFactory extends SiriusTabbarExtensi
 
     private void addConcernItem(final DDiagram diagram, final DiagramDescription description, IContributionRoot additions) {
         if (description.getConcerns() != null && !description.getConcerns().getOwnedConcernDescriptions().isEmpty() && description.getConcerns().getOwnedConcernDescriptions().size() != 1) {
-            ConcernComboContributionItem item = new ConcernComboContributionItem(getPage(), "");
+            ConcernComboContributionItem item = new ConcernComboContributionItem(getPage(), ""); //$NON-NLS-1$
             if (diagram != null) {
                 item.setDiagram(diagram);
             }

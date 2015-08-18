@@ -68,7 +68,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      */
     public static final String JOB_LABEL = "Loading models";
 
-    private static final String QUOTE = "\"";
+    private static final String QUOTE = "\""; //$NON-NLS-1$
 
     /**
      * The list of representations files to load. This list is exclusive with
@@ -178,7 +178,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
 
                 SubProgressMonitor getRepresentationsFilesMonitor = new SubProgressMonitor(monitor, 1);
                 try {
-                    getRepresentationsFilesMonitor.beginTask("", modelingProjects.size());
+                    getRepresentationsFilesMonitor.beginTask("", modelingProjects.size()); //$NON-NLS-1$
                     for (ModelingProject modelingProject : modelingProjects) {
                         Option<URI> optionalMainSessionFileURI = modelingProject.getMainRepresentationsFileURI(new SubProgressMonitor(getRepresentationsFilesMonitor, 1), false, false);
                         if (optionalMainSessionFileURI.some()) {
@@ -193,7 +193,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
             }
             SubProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
             try {
-                subMonitor.beginTask("", 100 * representationsFilesURIs.size());
+                subMonitor.beginTask("", 100 * representationsFilesURIs.size()); //$NON-NLS-1$
                 for (URI representationsFileURI : representationsFilesURIs) {
                     // Clean existing marker if exists
                     IProject project = null;
@@ -261,7 +261,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      * @return The error message.
      */
     protected String logLoadingProblem(IProject project, URI representationsFileURI, Exception exception) {
-        String message = "";
+        String message = ""; //$NON-NLS-1$
         if (project != null) {
             boolean isModelingProject = ModelingProject.hasModelingProjectNature(project);
             if (isModelingProject) {

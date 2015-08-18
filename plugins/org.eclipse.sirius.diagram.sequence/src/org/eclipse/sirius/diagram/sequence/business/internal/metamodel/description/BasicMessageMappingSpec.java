@@ -148,6 +148,6 @@ public class BasicMessageMappingSpec extends BasicMessageMappingImpl {
      */
     @Override
     public String toString() {
-        return getClass().getName() + " " + getName();
+        return getClass().getName() + " " + getName(); //$NON-NLS-1$
     }
 }

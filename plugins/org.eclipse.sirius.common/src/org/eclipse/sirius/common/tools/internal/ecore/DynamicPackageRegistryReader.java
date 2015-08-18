@@ -35,13 +35,13 @@ import org.eclipse.sirius.common.tools.internal.ecore.DynamicEPackageService.EPa
  */
 public class DynamicPackageRegistryReader extends RegistryReader {
 
-    public static final String DYNAMIC_PACKAGE_PPID = "dynamic_package";
+    public static final String DYNAMIC_PACKAGE_PPID = "dynamic_package"; //$NON-NLS-1$
 
-    static final String TAG_RESOURCE = "resource";
+    static final String TAG_RESOURCE = "resource"; //$NON-NLS-1$
 
-    static final String ATT_URI = "uri";
+    static final String ATT_URI = "uri"; //$NON-NLS-1$
 
-    static final String ATT_LOCATION = "location";
+    static final String ATT_LOCATION = "location"; //$NON-NLS-1$
 
     public static class PluginClassDescriptor {
         protected IConfigurationElement element;

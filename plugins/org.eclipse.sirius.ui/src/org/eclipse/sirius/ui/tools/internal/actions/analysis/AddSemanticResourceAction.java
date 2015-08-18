@@ -55,7 +55,7 @@ public class AddSemanticResourceAction extends Action {
      */
     public AddSemanticResourceAction(final Collection<URI> sessionsURIs) {
         super("Add Model");
-        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/add.gif");
+        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/add.gif"); //$NON-NLS-1$
         setImageDescriptor(descriptor);
         this.sessionsURI = sessionsURIs;
     }

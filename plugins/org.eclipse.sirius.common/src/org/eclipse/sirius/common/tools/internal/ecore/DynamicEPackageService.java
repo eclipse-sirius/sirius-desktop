@@ -61,10 +61,10 @@ public class DynamicEPackageService {
                     if (location != null) {
                         URI locationURI = URI.createURI(location);
                         if (locationURI.isRelative()) {
-                            locationURI = URI.createPlatformPluginURI(element.getDeclaringExtension().getContributor().getName() + "/" + location, true);
+                            locationURI = URI.createPlatformPluginURI(element.getDeclaringExtension().getContributor().getName() + "/" + location, true); //$NON-NLS-1$
                         }
                         if (!locationURI.hasFragment()) {
-                            locationURI = locationURI.appendFragment("/");
+                            locationURI = locationURI.appendFragment("/"); //$NON-NLS-1$
                         }
                         return (EPackage) resourceSet.getEObject(locationURI, true);
                     } else {
@@ -85,7 +85,7 @@ public class DynamicEPackageService {
             //
             try {
                 Class<?> javaClass = Platform.getBundle(element.getDeclaringExtension().getContributor().getName()).loadClass(element.getAttribute(attributeName));
-                Field field = javaClass.getField("eINSTANCE");
+                Field field = javaClass.getField("eINSTANCE"); //$NON-NLS-1$
                 Object result = field.get(null);
                 return (EPackage) result;
             } catch (ClassNotFoundException e) {

@@ -46,7 +46,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
     /**
      * ID for concern contribution.
      */
-    public static final String CONCERN_CONTRIBUTION_ID = "ConcernContributionBehavior";
+    public static final String CONCERN_CONTRIBUTION_ID = "ConcernContributionBehavior"; //$NON-NLS-1$
 
     private final IPartService service;
 

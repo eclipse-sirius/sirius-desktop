@@ -36,7 +36,7 @@ public class OptionalLayersVSMMigrationParticipant extends AbstractVSMMigrationP
     /**
      * The VP version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("6.9.0.201308011200");
+    private static final Version MIGRATION_VERSION = new Version("6.9.0.201308011200"); //$NON-NLS-1$
 
     public Version getMigrationVersion() {
         return MIGRATION_VERSION;
@@ -46,7 +46,7 @@ public class OptionalLayersVSMMigrationParticipant extends AbstractVSMMigrationP
     public EClassifier getType(EPackage ePackage, String name, String loadedVersion) {
         if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0) {
             Set<String> descriptionsNsUri = Sets.newHashSet(DescriptionPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getNsURI());
-            if (ePackage != null && ePackage.getNsURI() != null && descriptionsNsUri.contains(ePackage.getNsURI()) && name.equals("OptionalLayer")) {
+            if (ePackage != null && ePackage.getNsURI() != null && descriptionsNsUri.contains(ePackage.getNsURI()) && name.equals("OptionalLayer")) { //$NON-NLS-1$
                 return DescriptionPackage.eINSTANCE.getAdditionalLayer();
             }
         }
@@ -56,7 +56,7 @@ public class OptionalLayersVSMMigrationParticipant extends AbstractVSMMigrationP
     @Override
     public EStructuralFeature getLocalElement(EClass eClass, String name, String loadedVersion) {
         if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0) {
-            if (DescriptionPackage.eINSTANCE.getDiagramDescription().isSuperTypeOf(eClass) && name.equals("optionalLayers")) {
+            if (DescriptionPackage.eINSTANCE.getDiagramDescription().isSuperTypeOf(eClass) && name.equals("optionalLayers")) { //$NON-NLS-1$
                 return DescriptionPackage.eINSTANCE.getDiagramDescription_AdditionalLayers();
             }
         }
@@ -65,8 +65,8 @@ public class OptionalLayersVSMMigrationParticipant extends AbstractVSMMigrationP
 
     @Override
     public Option<String> getNewFragment(String uriFragment) {
-        if (uriFragment.contains("@optionalLayers")) {
-            String newUriFragment = uriFragment.replaceAll("@optionalLayers", "@additionalLayers");
+        if (uriFragment.contains("@optionalLayers")) { //$NON-NLS-1$
+            String newUriFragment = uriFragment.replaceAll("@optionalLayers", "@additionalLayers"); //$NON-NLS-1$ //$NON-NLS-2$
             return Options.newSome(newUriFragment);
         } else {
             return super.getNewFragment(uriFragment);

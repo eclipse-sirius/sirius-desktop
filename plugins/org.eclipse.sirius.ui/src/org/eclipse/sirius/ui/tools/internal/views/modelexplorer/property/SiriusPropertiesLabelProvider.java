@@ -39,7 +39,7 @@ public class SiriusPropertiesLabelProvider extends DecoratingLabelProvider {
      * {@inheritDoc}
      */
     public String getText(Object element) {
-        String text = "";
+        String text = ""; //$NON-NLS-1$
         EObject selected = adapt(element);
         if (selected != null && selected.eResource() != null) {
             if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).getTarget() != null) {

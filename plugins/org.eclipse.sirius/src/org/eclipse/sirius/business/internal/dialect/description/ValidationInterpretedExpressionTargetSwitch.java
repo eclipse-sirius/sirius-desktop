@@ -157,7 +157,7 @@ public class ValidationInterpretedExpressionTargetSwitch extends ValidationSwitc
         case ValidationPackage.VIEW_VALIDATION_RULE__MESSAGE:
         case DO_NOT_CONSIDER_FEATURE:
             // Evaluation on DDiagramElement -> see history if it changes.
-            Collection<String> targetTypes = Lists.newArrayList("diagram.DDiagramElement");
+            Collection<String> targetTypes = Lists.newArrayList("diagram.DDiagramElement"); //$NON-NLS-1$
             result = Options.newSome(targetTypes);
             break;
         default:

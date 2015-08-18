@@ -38,9 +38,9 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
      */
     private static final Version MIGRATION_VERSION = DiagramRepresentationsFileMigrationParticipantV801.MIGRATION_VERSION;
 
-    private static final Version ALREADY_MIGRATED_VERSION = new Version("6.5.3");
+    private static final Version ALREADY_MIGRATED_VERSION = new Version("6.5.3"); //$NON-NLS-1$
 
-    private static final Version NOT_MIGRATED_VERSION = new Version("6.6.0");
+    private static final Version NOT_MIGRATED_VERSION = new Version("6.6.0"); //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

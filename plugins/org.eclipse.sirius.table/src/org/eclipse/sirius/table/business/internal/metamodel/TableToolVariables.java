@@ -90,10 +90,10 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
     @Override
     public Object caseTableCreationDescription(final TableCreationDescription object) {
         final ContainerViewVariable containerViewVariable = ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         object.setContainerViewVariable(containerViewVariable);
         final NameVariable tableNameVariable = ToolFactory.eINSTANCE.createNameVariable();
-        tableNameVariable.setName("tableName");
+        tableNameVariable.setName("tableName"); //$NON-NLS-1$
         object.setRepresentationNameVariable(tableNameVariable);
         final InitialOperation initialOperation = ToolFactory.eINSTANCE.createInitialOperation();
         object.setInitialOperation(initialOperation);
@@ -109,13 +109,13 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
     @Override
     public Object caseTableNavigationDescription(final TableNavigationDescription object) {
         final ContainerViewVariable containerViewVariable = ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         object.setContainerViewVariable(containerViewVariable);
         final ElementSelectVariable containerVariable = ToolFactory.eINSTANCE.createElementSelectVariable();
-        containerVariable.setName("container");
+        containerVariable.setName("container"); //$NON-NLS-1$
         object.setContainerVariable(containerVariable);
         final NameVariable tableNameVariable = ToolFactory.eINSTANCE.createNameVariable();
-        tableNameVariable.setName("tableName");
+        tableNameVariable.setName("tableName"); //$NON-NLS-1$
         object.setRepresentationNameVariable(tableNameVariable);
         return super.caseTableNavigationDescription(object);
     }

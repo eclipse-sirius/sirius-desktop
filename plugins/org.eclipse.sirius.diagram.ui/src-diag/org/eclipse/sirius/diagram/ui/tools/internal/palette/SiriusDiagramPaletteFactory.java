@@ -54,15 +54,15 @@ public class SiriusDiagramPaletteFactory extends Adapter {
         if (noteAttachmentNotationType == null) {
             try {
                 try {
-                    Class<?> diagramNotationTypeClass = Class.forName("org.eclipse.gmf.runtime.diagram.ui.internal.util.DiagramNotationType");
+                    Class<?> diagramNotationTypeClass = Class.forName("org.eclipse.gmf.runtime.diagram.ui.internal.util.DiagramNotationType"); //$NON-NLS-1$
                     // We are in eclipse 3.3
-                    final Field searchField = diagramNotationTypeClass.getField("NOTE_ATTACHMENT");
+                    final Field searchField = diagramNotationTypeClass.getField("NOTE_ATTACHMENT"); //$NON-NLS-1$
                     noteAttachmentNotationType = (INotationType) searchField.get(null);
                 } catch (final ClassNotFoundException cnfe) {
                     // We are in eclipse 3.5
                     try {
-                        Class<?> diagramNotationTypeClass = Class.forName("org.eclipse.gmf.runtime.diagram.ui.type.DiagramNotationType");
-                        final Field searchField = diagramNotationTypeClass.getField("NOTE_ATTACHMENT");
+                        Class<?> diagramNotationTypeClass = Class.forName("org.eclipse.gmf.runtime.diagram.ui.type.DiagramNotationType"); //$NON-NLS-1$
+                        final Field searchField = diagramNotationTypeClass.getField("NOTE_ATTACHMENT"); //$NON-NLS-1$
                         noteAttachmentNotationType = (INotationType) searchField.get(null);
                     } catch (final ClassNotFoundException cnfe2) {
                         // Do nothing

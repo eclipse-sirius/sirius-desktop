@@ -72,7 +72,7 @@ public class ContainerCompartmentNodeEditPolicy extends ContainerNodeEditPolicy 
     @Override
     public EditPart getTargetEditPart(Request request) {
         if (REQ_CONNECTION_START.equals(request.getType()) && request instanceof CreateConnectionViewRequest
-                && "NoteAttachment".equals(((CreateConnectionViewRequest) request).getConnectionViewDescriptor().getSemanticHint())) {
+                && "NoteAttachment".equals(((CreateConnectionViewRequest) request).getConnectionViewDescriptor().getSemanticHint())) { //$NON-NLS-1$
             // The note attachment requires a INodeEditPart as source.
             return getHost().getParent();
         } else {

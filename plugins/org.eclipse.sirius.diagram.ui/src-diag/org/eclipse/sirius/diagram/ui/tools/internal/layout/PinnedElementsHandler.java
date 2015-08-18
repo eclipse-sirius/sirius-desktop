@@ -873,36 +873,36 @@ public class PinnedElementsHandler {
 
     @SuppressWarnings("unused")
     private void printInitialState() {
-        debugMessage("===============================================================================");
-        debugMessage("Initial state (before #resolveOverlaps()");
-        debugMessage("----------------------------------------");
+        debugMessage("==============================================================================="); //$NON-NLS-1$
+        debugMessage("Initial state (before #resolveOverlaps()"); //$NON-NLS-1$
+        debugMessage("----------------------------------------"); //$NON-NLS-1$
         for (IGraphicalEditPart part : allEditParts) {
-            debugMessage("- " + part.getClass().getSimpleName() + " (semantic: " + part.resolveSemanticElement() + ")");
-            debugMessage("  Pinned: " + isPinned.apply(part));
-            debugMessage("  Intrinsic bounds (main figure):              " + part.getFigure().getBounds());
-            debugMessage("  Initial bounds (after previous layout pass): " + getInitialBounds(part));
+            debugMessage("- " + part.getClass().getSimpleName() + " (semantic: " + part.resolveSemanticElement() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            debugMessage("  Pinned: " + isPinned.apply(part)); //$NON-NLS-1$
+            debugMessage("  Intrinsic bounds (main figure):              " + part.getFigure().getBounds()); //$NON-NLS-1$
+            debugMessage("  Initial bounds (after previous layout pass): " + getInitialBounds(part)); //$NON-NLS-1$
         }
-        debugMessage("");
+        debugMessage(""); //$NON-NLS-1$
     }
 
     @SuppressWarnings("unused")
     private void printResolvedState() {
-        debugMessage("Solution (only moved elements)");
-        debugMessage("------------------------------");
+        debugMessage("Solution (only moved elements)"); //$NON-NLS-1$
+        debugMessage("------------------------------"); //$NON-NLS-1$
         for (IGraphicalEditPart part : currentBounds.keySet()) {
-            debugMessage("- " + part.getClass().getSimpleName() + " (semantic: " + part.resolveSemanticElement() + ")");
-            debugMessage("  Pinned: " + isPinned.apply(part));
-            debugMessage("  Intrinsic bounds (main figure):              " + part.getFigure().getBounds());
-            debugMessage("  Initial bounds (after previous layout pass): " + getInitialBounds(part));
-            debugMessage("  Computed bounds (after resolution):          " + getCurrentPosition(part));
+            debugMessage("- " + part.getClass().getSimpleName() + " (semantic: " + part.resolveSemanticElement() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            debugMessage("  Pinned: " + isPinned.apply(part)); //$NON-NLS-1$
+            debugMessage("  Intrinsic bounds (main figure):              " + part.getFigure().getBounds()); //$NON-NLS-1$
+            debugMessage("  Initial bounds (after previous layout pass): " + getInitialBounds(part)); //$NON-NLS-1$
+            debugMessage("  Computed bounds (after resolution):          " + getCurrentPosition(part)); //$NON-NLS-1$
         }
-        debugMessage("");
+        debugMessage(""); //$NON-NLS-1$
     }
 
     private void debugMessage(final String msg) {
         if (DEBUG) {
             // CHECKSTYLE:OFF
-            System.out.println("DEBUG: " + msg);
+            System.out.println("DEBUG: " + msg); //$NON-NLS-1$
             // CHECKSTYLE:ON
         }
     }

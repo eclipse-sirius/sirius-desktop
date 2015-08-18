@@ -225,7 +225,7 @@ public class PaletteManagerImpl implements PaletteManager {
         if (viewer != null) {
             paletteRoot = viewer.getPaletteRoot();
         } else {
-            paletteRoot = (PaletteRoot) ReflectionHelper.getFieldValueWithoutException(editDomain, "paletteRoot").get();
+            paletteRoot = (PaletteRoot) ReflectionHelper.getFieldValueWithoutException(editDomain, "paletteRoot").get(); //$NON-NLS-1$
         }
     }
 
@@ -394,7 +394,7 @@ public class PaletteManagerImpl implements PaletteManager {
      */
     private void replaceNoteAttachmentCreationToolIfNeeded() {
         // Get the container of the Note Attachment Creation Tool
-        String notesContainerLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteStack.Label");
+        String notesContainerLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteStack.Label"); //$NON-NLS-1$
         PaletteContainer notesContainer = getPaletteContainer(paletteRoot, notesContainerLabel);
         if (notesContainer != null) {
             // Get the current noteAttachment tool
@@ -416,7 +416,7 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private CreationToolEntry getNoteAttachementToolEntry(final PaletteContainer container) {
-        String noteAttachmentToolLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteAttachmentTool.Label");
+        String noteAttachmentToolLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteAttachmentTool.Label"); //$NON-NLS-1$
         for (Object child : container.getChildren()) {
             if (child instanceof CreationToolEntry) {
                 CreationToolEntry paletteToolEntry = (CreationToolEntry) child;
@@ -600,12 +600,12 @@ public class PaletteManagerImpl implements PaletteManager {
     private void addDefaultTools(final Diagram diagram) {
         final PaletteContainer container = paletteRoot.getDefaultEntry().getParent();
         for (Object entry : container.getChildren()) {
-            if (entry instanceof PaletteSeparator && "defaultTools".equals(((PaletteSeparator) entry).getId())) {
+            if (entry instanceof PaletteSeparator && "defaultTools".equals(((PaletteSeparator) entry).getId())) { //$NON-NLS-1$
                 // Default tools are already there. Nothing to do.
                 return;
             }
         }
-        final PaletteSeparator marker = new PaletteSeparator("defaultTools");
+        final PaletteSeparator marker = new PaletteSeparator("defaultTools"); //$NON-NLS-1$
         marker.setVisible(false);
         container.add(marker);
         for (final ToolEntry defaultEntry : PaletteManagerImpl.getDefaultTools(TransactionUtil.getEditingDomain(diagram).getResourceSet())) {
@@ -632,7 +632,7 @@ public class PaletteManagerImpl implements PaletteManager {
         final PaletteContainer paletteDrawner = new SectionPaletteDrawer(name);
         paletteDrawner.setId(PaletteManagerImpl.getToolSectionId(section));
         if (StringUtil.isEmpty(iconPath)) {
-            iconPath = "icons/obj16/ToolSection.gif";
+            iconPath = "icons/obj16/ToolSection.gif"; //$NON-NLS-1$
         }
         final ImageDescriptor descIcon = org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.Implementation.findImageDescriptor(iconPath);
         if (descIcon != null) {

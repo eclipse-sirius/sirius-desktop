@@ -87,7 +87,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      * '*' as feature name allows to skip the feature name validation for cell
      * creation.
      */
-    protected static final String SKIP_FEATURENAME_VALIDATION = "*";
+    protected static final String SKIP_FEATURENAME_VALIDATION = "*"; //$NON-NLS-1$
 
     private final ModelAccessor accessor;
 
@@ -482,7 +482,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                     if (!StringUtil.isEmpty(featureName)) {
                         cellNeeded = setLabelWithFeatureValue(cell, columnMapping, featureName);
                     } else {
-                        cell.setLabel("");
+                        cell.setLabel(""); //$NON-NLS-1$
                     }
                 }
             } else {
@@ -498,7 +498,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
 
     private boolean setLabelWithFeatureValue(final DCell cell, final ColumnMapping columnMapping, final String featureName) {
         boolean init = false;
-        String label = "";
+        String label = ""; //$NON-NLS-1$
         try {
             final Object featureObject = accessor.eGet(cell.getTarget(), featureName);
             if (featureObject != null) {

@@ -19,5 +19,5 @@ public interface ModelingMarker {
     /**
      * Defines the type of the marker for Modeling project.
      */
-    String MARKER_TYPE = "org.eclipse.sirius.modelingMarker";
+    String MARKER_TYPE = "org.eclipse.sirius.modelingMarker"; //$NON-NLS-1$
 }

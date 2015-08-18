@@ -129,7 +129,7 @@ public class AQLProposalProvider implements IProposalProvider {
                 queryEnvironment.registerEPackage(context.getCurrentSelected().eClass().getEPackage());
                 final Set<IType> potentialTypes = new LinkedHashSet<IType>(1);
                 potentialTypes.add(new EClassifierType(queryEnvironment, context.getCurrentSelected().eClass()));
-                variableTypes.put("self", potentialTypes);
+                variableTypes.put("self", potentialTypes); //$NON-NLS-1$
             }
 
             ExpressionTrimmer trimer = new ExpressionTrimmer(context.getTextSoFar());

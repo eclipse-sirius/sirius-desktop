@@ -249,7 +249,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         String viewpointsName = neededSirius.getName();
         while (iterator.hasNext()) {
             neededSirius = iterator.next();
-            viewpointsName += ", " + neededSirius.getName();
+            viewpointsName += ", " + neededSirius.getName(); //$NON-NLS-1$
         }
         final String description = viewpointsName;
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
@@ -556,7 +556,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     private IPath getRealPath(final IPath path, final boolean exportToHtml) {
         if (exportToHtml) {
-            return path.removeFileExtension().addFileExtension("html");
+            return path.removeFileExtension().addFileExtension("html"); //$NON-NLS-1$
         } else {
             return path;
         }
@@ -738,7 +738,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             if (feature != null && feature.equals(ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION)) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(toolTipText);
-                String cr = "\n . ";
+                String cr = "\n . "; //$NON-NLS-1$
                 sb.append(cr + IInterpreterSiriusVariables.SOURCE_VIEW_PRE + ": diagram.EdgeTarget | (edge only) the source view of the current potential edge.");
                 sb.append(cr + IInterpreterSiriusVariables.SOURCE_PRE + ": ecore.EObject | (edge only) the semantic element of $preSourceView.");
                 sb.append(cr + IInterpreterSiriusVariables.TARGET_VIEW_PRE + ": diagram.EdgeTarget | (edge only) the target view of the current potential edge.");

@@ -26,16 +26,16 @@ import org.eclipse.sirius.ext.base.Options;
 public class URIQuery {
 
     /** The {@link URI} scheme used for Sirius environment xmi resources. */
-    public static final String ENVIRONMENT_URI_SCHEME = "environment";
+    public static final String ENVIRONMENT_URI_SCHEME = "environment"; //$NON-NLS-1$
 
     /** The {@link URI} of Sirius core environment xmi resource. */
-    public static final URI VIEWPOINT_ENVIRONMENT_QUERY = URI.createURI(ENVIRONMENT_URI_SCHEME + ":/viewpoint");
+    public static final URI VIEWPOINT_ENVIRONMENT_QUERY = URI.createURI(ENVIRONMENT_URI_SCHEME + ":/viewpoint"); //$NON-NLS-1$
 
     /** The {@link URI} scheme used for InMemory URIs. */
-    public static final String INMEMORY_URI_SCHEME = "memory";
+    public static final String INMEMORY_URI_SCHEME = "memory"; //$NON-NLS-1$
 
     /** The {@link URI} scheme used for CDO URIs. */
-    public static final String CDO_URI_SCHEME = "cdo";
+    public static final String CDO_URI_SCHEME = "cdo"; //$NON-NLS-1$
 
     private URI uri;
 

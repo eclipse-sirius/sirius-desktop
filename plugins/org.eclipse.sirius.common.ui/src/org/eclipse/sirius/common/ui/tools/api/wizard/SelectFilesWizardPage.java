@@ -63,7 +63,7 @@ import com.google.common.collect.Lists;
  */
 public class SelectFilesWizardPage extends WizardPage {
 
-    private static final String JOKER = "*";
+    private static final String JOKER = "*"; //$NON-NLS-1$
 
     // Constants
     private static final int SELECTION_WIDGET_WIDTH = 400;

@@ -42,12 +42,12 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
      * Version number return when the representations file has never been loaded
      * since the rewrite of migration framework.
      */
-    public static final Version INITIAL_VERSION = Version.parseVersion("0.0.0");
+    public static final Version INITIAL_VERSION = Version.parseVersion("0.0.0"); //$NON-NLS-1$
 
     /**
      * Version 6.5.0 of Sirius.
      */
-    public static final Version VERSION_VP_6_5_0 = Version.parseVersion("6.5.0");
+    public static final Version VERSION_VP_6_5_0 = Version.parseVersion("6.5.0"); //$NON-NLS-1$
 
     @Override
     public EStructuralFeature getAttribute(EClass eClass, String name, String loadedVersion) {

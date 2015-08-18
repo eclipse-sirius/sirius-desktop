@@ -104,8 +104,8 @@ public class DFeatureColumnCandidate {
     private int computeHashCode() {
         final int[] parts = new int[2];
         parts[0] = (mapping == null) ? 0 : getMappingID();
-        parts[1] = Objects.firstNonNull(featureName, "").hashCode();
-        final String sep = "/";
+        parts[1] = Objects.firstNonNull(featureName, "").hashCode(); //$NON-NLS-1$
+        final String sep = "/"; //$NON-NLS-1$
         return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1]);
     }
 

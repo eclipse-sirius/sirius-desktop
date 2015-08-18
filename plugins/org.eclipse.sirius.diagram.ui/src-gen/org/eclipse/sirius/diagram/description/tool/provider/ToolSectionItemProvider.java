@@ -197,7 +197,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ToolSection) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ToolSection_type") : getString("_UI_ToolSection_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ToolSection_type") : getString("_UI_ToolSection_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

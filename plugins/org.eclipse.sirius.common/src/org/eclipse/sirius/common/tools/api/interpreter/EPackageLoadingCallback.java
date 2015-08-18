@@ -120,11 +120,11 @@ public interface EPackageLoadingCallback {
 
         @Override
         public String toString() {
-            String result = "";
+            String result = ""; //$NON-NLS-1$
             if (isBundle) {
-                result += "bundle :";
+                result += "bundle :"; //$NON-NLS-1$
             } else {
-                result += "project :";
+                result += "project :"; //$NON-NLS-1$
             }
             result += symbolicName;
             return result;

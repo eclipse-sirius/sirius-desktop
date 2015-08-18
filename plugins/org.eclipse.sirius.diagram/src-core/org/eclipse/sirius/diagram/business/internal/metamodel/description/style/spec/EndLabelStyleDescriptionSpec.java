@@ -28,7 +28,7 @@ public class EndLabelStyleDescriptionSpec extends EndLabelStyleDescriptionImpl {
      * @not-generated
      * @ordered
      */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = "";
+    protected static final String LABEL_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * Default constructor.

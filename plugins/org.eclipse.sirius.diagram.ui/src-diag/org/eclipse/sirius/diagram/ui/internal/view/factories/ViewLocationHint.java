@@ -33,13 +33,13 @@ public final class ViewLocationHint {
      * The key to use to store the anchor location for the source end of a
      * connection.
      */
-    public static final String SOURCE_ANCHOR_LOCATION = "sourceConnectionAnchorLocation";
+    public static final String SOURCE_ANCHOR_LOCATION = "sourceConnectionAnchorLocation"; //$NON-NLS-1$
 
     /**
      * The key to use to store the anchor location for the target end of a
      * connection.
      */
-    public static final String TARGET_ANCHOR_LOCATION = "targetConnectionAnchorLocation";
+    public static final String TARGET_ANCHOR_LOCATION = "targetConnectionAnchorLocation"; //$NON-NLS-1$
 
     /** the shared instance. */
     private static ViewLocationHint instance = new ViewLocationHint();

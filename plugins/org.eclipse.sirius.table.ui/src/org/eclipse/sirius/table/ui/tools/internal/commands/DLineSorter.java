@@ -42,7 +42,7 @@ public class DLineSorter extends DTableElementSorter<DLine> {
      * {@inheritDoc}
      */
     protected String getSortLabel(final DLine line) {
-        String result = "";
+        String result = ""; //$NON-NLS-1$
         if (dColumn == null) {
             // The sorted column is the header
             result = line.getLabel();

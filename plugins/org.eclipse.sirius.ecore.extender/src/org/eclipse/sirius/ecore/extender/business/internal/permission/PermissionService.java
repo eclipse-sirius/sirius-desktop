@@ -44,7 +44,7 @@ public final class PermissionService {
     private static final String EXTENDER_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.ecore.extender.PermissionProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
-    private static final String TAG_ENGINE = "permissionprovider";
+    private static final String TAG_ENGINE = "permissionprovider"; //$NON-NLS-1$
 
     private PermissionService() {
 
@@ -138,7 +138,7 @@ public final class PermissionService {
             return null;
         }
         String id = configElement.getDeclaringExtension().getUniqueIdentifier();
-        int priority = getPriorityValue(configElement.getAttribute("priority"));
+        int priority = getPriorityValue(configElement.getAttribute("priority")); //$NON-NLS-1$
         PermissionProviderDescriptor permissionProviderDescriptor = new EclipsePermissionProviderDescriptor(id, priority, configElement);
         return permissionProviderDescriptor;
     }

@@ -37,7 +37,7 @@ public final class SiriusCellEditorProviderCollector implements CellEditorProvid
     /**
      * Extension point ID.
      */
-    public static final String EXTENSION_POINT_ID = "org.eclipse.sirius.ui.siriuspropertiescelleditor";
+    public static final String EXTENSION_POINT_ID = "org.eclipse.sirius.ui.siriuspropertiescelleditor"; //$NON-NLS-1$
 
     /**
      * Singleton.
@@ -74,7 +74,7 @@ public final class SiriusCellEditorProviderCollector implements CellEditorProvid
         IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor(EXTENSION_POINT_ID);
         for (IConfigurationElement configurationElement : config) {
             try {
-                Object contribution = configurationElement.createExecutableExtension("class");
+                Object contribution = configurationElement.createExecutableExtension("class"); //$NON-NLS-1$
                 if (contribution instanceof ICellEditorProvider) {
                     cache.add((ICellEditorProvider) contribution);
                 }

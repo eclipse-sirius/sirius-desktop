@@ -158,7 +158,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
         if (isOldUIEnabled()) {
             toolBarManager.add(getActionRegistry().getAction(REFRESH_DIAGRAM));
             toolBarManager.add(new Separator());
-            toolBarManager.add(new ConcernComboContributionItem(getPage(), ""));
+            toolBarManager.add(new ConcernComboContributionItem(getPage(), "")); //$NON-NLS-1$
             toolBarManager.add(getActionRegistry().getAction(LAUNCH_BEHAVIOR));
             toolBarManager.add(new Separator());
             toolBarManager.add(new SiriusActionBarActionContributionItem(getActionRegistry().getAction(SetStyleToWorkspaceImageAction.SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID), getPage()));
@@ -235,7 +235,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ROUTER_TREE);
             } else {
                 Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
-                Version junoStart = Version.parseVersion("3.103");
+                Version junoStart = Version.parseVersion("3.103"); //$NON-NLS-1$
                 // Version keplerStart = Version.parseVersion("3.105");
 
                 if (uiWorkbenchBundle != null && uiWorkbenchBundle.getVersion().compareTo(junoStart) < 0) {

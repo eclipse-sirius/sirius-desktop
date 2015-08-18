@@ -42,7 +42,7 @@ public class IntrinsicPathIdentifier implements Function<EObject, String> {
             internalEObject = container;
         }
 
-        StringBuilder result = new StringBuilder("#//");
+        StringBuilder result = new StringBuilder("#//"); //$NON-NLS-1$
         for (int i = uriFragmentPath.size() - 1; i >= 0; --i) {
             result.append('/');
             result.append(uriFragmentPath.get(i));

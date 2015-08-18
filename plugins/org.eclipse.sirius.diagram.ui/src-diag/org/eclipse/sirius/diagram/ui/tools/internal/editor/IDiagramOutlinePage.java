@@ -27,9 +27,9 @@ public interface IDiagramOutlinePage {
     String OUTLINE_VIEW_OVERVIEW_TIP_TEXT = "Overview"; //$NON-NLS-1$
 
     /** The outline icon descriptor. */
-    ImageDescriptor DESC_OUTLINE = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/outline.gif");
+    ImageDescriptor DESC_OUTLINE = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/outline.gif"); //$NON-NLS-1$
 
     /** the overview icon descriptor. */
-    ImageDescriptor DESC_OVERVIEW = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/overview.gif");
+    ImageDescriptor DESC_OVERVIEW = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/overview.gif"); //$NON-NLS-1$
 
 }

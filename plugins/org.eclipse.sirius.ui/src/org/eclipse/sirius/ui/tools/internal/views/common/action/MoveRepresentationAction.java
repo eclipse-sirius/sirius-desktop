@@ -60,7 +60,7 @@ public class MoveRepresentationAction extends Action {
         this.session = session;
         this.representations = selection;
 
-        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif");
+        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"); //$NON-NLS-1$
         this.setImageDescriptor(descriptor);
 
         this.setText("move to " + targetAnalysis.eResource().getURI().toString());

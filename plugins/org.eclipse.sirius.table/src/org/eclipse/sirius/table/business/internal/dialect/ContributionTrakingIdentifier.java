@@ -60,7 +60,7 @@ public class ContributionTrakingIdentifier implements Function<EObject, Object> 
             ContributionPoint cp = findMostSpecificContributionPoint(from, edSupplier.get(), cpSupplier.get());
             if (cp != null) {
                 String parentURI = pathFunction.apply(cp.getContributed());
-                String relativeURI = currentURI.replace(parentURI, "");
+                String relativeURI = currentURI.replace(parentURI, ""); //$NON-NLS-1$
                 return cp.getOrigin() + relativeURI;
             } else {
                 throw new RuntimeException("Internal error: contributed element has no matching contribution data.");

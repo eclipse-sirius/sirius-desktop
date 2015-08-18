@@ -28,12 +28,12 @@ public class LayoutDataManagerDescriptor {
     /**
      * Name of the attribute corresponding to the contributed class's path.
      */
-    public static final String LAYOUT_DATA_MANAGER_PROVIDER_CLASS_NAME = "class";
+    public static final String LAYOUT_DATA_MANAGER_PROVIDER_CLASS_NAME = "class"; //$NON-NLS-1$
 
     /**
      * Name of the attribute corresponding to the contributed id.
      */
-    public static final String LAYOUT_DATA_MANAGER_PROVIDER_ID = "icon";
+    public static final String LAYOUT_DATA_MANAGER_PROVIDER_ID = "icon"; //$NON-NLS-1$
 
     /**
      * Configuration element of this descriptor .

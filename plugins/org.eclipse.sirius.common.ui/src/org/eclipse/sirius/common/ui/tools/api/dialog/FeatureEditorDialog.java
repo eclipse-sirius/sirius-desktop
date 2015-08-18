@@ -337,7 +337,7 @@ public class FeatureEditorDialog extends Dialog {
                         try {
                             Object value = EcoreUtil.createFromString((EDataType) eClassifier, choiceText.getText());
                             children.add(value);
-                            choiceText.setText("");
+                            choiceText.setText(""); //$NON-NLS-1$
                             featureTableViewer.refresh();
                             featureTableViewer.setSelection(new StructuredSelection(value));
                             event.doit = false;
@@ -345,7 +345,7 @@ public class FeatureEditorDialog extends Dialog {
                             // Ignore
                         }
                     } else if (event.character == '\33') {
-                        choiceText.setText("");
+                        choiceText.setText(""); //$NON-NLS-1$
                         event.doit = false;
                     }
                 }
@@ -399,7 +399,7 @@ public class FeatureEditorDialog extends Dialog {
                         Object value = EcoreUtil.createFromString((EDataType) eClassifier, choiceText.getText());
                         if (!unique || !children.contains(value)) {
                             children.add(value);
-                            choiceText.setText("");
+                            choiceText.setText(""); //$NON-NLS-1$
                         }
                         featureTableViewer.refresh();
                         featureTableViewer.setSelection(new StructuredSelection(value));

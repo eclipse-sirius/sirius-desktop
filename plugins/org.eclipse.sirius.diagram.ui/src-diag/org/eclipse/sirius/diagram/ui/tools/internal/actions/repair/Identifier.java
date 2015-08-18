@@ -41,13 +41,13 @@ public final class Identifier {
     public static final Identifier EMPTY_ID = new Identifier(StringUtil.EMPTY_STRING);
 
     /** The extension point ID. */
-    private static final String PROVIDERS_ID = "org.eclipse.sirius.diagram.ui.diagramIdentifierProvider";
+    private static final String PROVIDERS_ID = "org.eclipse.sirius.diagram.ui.diagramIdentifierProvider"; //$NON-NLS-1$
 
     /** The class attribute. */
-    private static final String PROVIDERS_ATTRIBUTE = "providerClass";
+    private static final String PROVIDERS_ATTRIBUTE = "providerClass"; //$NON-NLS-1$
 
     /** The string target. */
-    private static final String TARGET = "target";
+    private static final String TARGET = "target"; //$NON-NLS-1$
 
     /** All providers. */
     private static List<IDiagramIdentifierProvider> allProviders;
@@ -116,7 +116,7 @@ public final class Identifier {
                 Identifier.checkNotNull(edge.getTarget(), TARGET);
                 buffer.append(EcoreUtil.getURI(edge.getTarget()));
 
-                Identifier.checkNotNull(edge.getActualMapping(), "actualMapping");
+                Identifier.checkNotNull(edge.getActualMapping(), "actualMapping"); //$NON-NLS-1$
                 buffer.append(EcoreUtil.getURI(edge.getActualMapping()));
             }
         }
@@ -158,7 +158,7 @@ public final class Identifier {
                 Identifier.checkNotNull(node.getTarget(), TARGET);
                 buffer.append(EcoreUtil.getURI(node.getTarget()));
 
-                Identifier.checkNotNull(node.getMapping(), "mapping");
+                Identifier.checkNotNull(node.getMapping(), "mapping"); //$NON-NLS-1$
                 buffer.append(EcoreUtil.getURI(node.getMapping()));
             }
         }
@@ -178,7 +178,7 @@ public final class Identifier {
                 Identifier.checkNotNull(edge.getTarget(), TARGET);
                 buffer.append(EcoreUtil.getURI(edge.getTarget()));
 
-                Identifier.checkNotNull(edge.getMapping(), "mapping");
+                Identifier.checkNotNull(edge.getMapping(), "mapping"); //$NON-NLS-1$
                 buffer.append(EcoreUtil.getURI(edge.getMapping()));
             }
         }
@@ -204,7 +204,7 @@ public final class Identifier {
         }
         if (!(customizable.eContainer() instanceof DDiagramElement)) {
             EObject eContainer = customizable.eContainer();
-            sb.append("." + eContainer.eContainingFeature().getName() + ".");
+            sb.append("." + eContainer.eContainingFeature().getName() + "."); //$NON-NLS-1$ //$NON-NLS-2$
         }
         sb.append(customizable.eContainingFeature().getName());
         if (customizable.eContainingFeature().isMany()) {
@@ -212,7 +212,7 @@ public final class Identifier {
             if (list instanceof List<?>) {
                 @SuppressWarnings("unchecked")
                 List<?> values = (List<Object>) list;
-                sb.append("[" + values.indexOf(customizable) + "]");
+                sb.append("[" + values.indexOf(customizable) + "]"); //$NON-NLS-1$ //$NON-NLS-2$
             }
         }
         return new Identifier(sb);
@@ -305,7 +305,7 @@ public final class Identifier {
      */
     @Override
     public String toString() {
-        return "id: " + identifier;
+        return "id: " + identifier; //$NON-NLS-1$
     }
 
 }

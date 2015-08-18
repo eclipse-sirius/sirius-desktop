@@ -22,20 +22,20 @@ public interface IInterpreterSiriusTableVariables extends IInterpreterSiriusVari
     /**
      * the line element.
      */
-    String LINE = "line";
+    String LINE = "line"; //$NON-NLS-1$
 
     /**
      * The column element.
      */
-    String COLUMN = "column";
+    String COLUMN = "column"; //$NON-NLS-1$
 
     /**
      * the line semantic element.
      */
-    String LINE_SEMANTIC = "lineSemantic";
+    String LINE_SEMANTIC = "lineSemantic"; //$NON-NLS-1$
 
     /**
      * The column semantic element.
      */
-    String COLUMN_SEMANTIC = "columnSemantic";
+    String COLUMN_SEMANTIC = "columnSemantic"; //$NON-NLS-1$
 }

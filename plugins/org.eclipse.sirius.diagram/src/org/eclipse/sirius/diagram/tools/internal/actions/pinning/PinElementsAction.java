@@ -33,7 +33,7 @@ public class PinElementsAction implements IExternalJavaAction {
 
     @Override
     public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
-        final Object viewObj = parameters.get("view");
+        final Object viewObj = parameters.get("view"); //$NON-NLS-1$
         if (viewObj instanceof DDiagramElement) {
             DDiagramElement dDiagramElement = (DDiagramElement) viewObj;
             new PinHelper().markAsPinned(dDiagramElement);

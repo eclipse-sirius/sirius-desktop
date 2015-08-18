@@ -120,16 +120,16 @@ public final class TreeUIHelper {
      */
     public static String toHTML(final List<String> descriptor) {
         final StringBuffer result = new StringBuffer();
-        result.append("<table>\n");
+        result.append("<table>\n"); //$NON-NLS-1$
         for (String line : descriptor) {
-            result.append("<tr>");
-            result.append("<td>");
+            result.append("<tr>"); //$NON-NLS-1$
+            result.append("<td>"); //$NON-NLS-1$
             result.append(line);
-            result.append("</td>");
-            result.append("</tr>\n");
+            result.append("</td>"); //$NON-NLS-1$
+            result.append("</tr>\n"); //$NON-NLS-1$
 
         }
-        result.append("</table>");
+        result.append("</table>"); //$NON-NLS-1$
         return result.toString();
     }
 

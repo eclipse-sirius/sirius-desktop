@@ -24,7 +24,7 @@ public abstract class AbstractRepresentationsFileJob extends WorkspaceJob {
     /**
      * The family id for this kind of job.
      */
-    public static final String FAMILY = SiriusPlugin.ID + ".representationsFile";
+    public static final String FAMILY = SiriusPlugin.ID + ".representationsFile"; //$NON-NLS-1$
 
     /**
      * Default constructor.

@@ -119,7 +119,7 @@ public class TabbarFillerWithoutContributions extends AbstractTabbarFiller {
             if (diagram != null) {
                 DiagramDescription description = diagram.getDescription();
                 if (description != null && description.getConcerns() != null && description.getConcerns().getOwnedConcernDescriptions().size() > 1) {
-                    ConcernComboContributionItem item = new ConcernComboContributionItem(page, "");
+                    ConcernComboContributionItem item = new ConcernComboContributionItem(page, ""); //$NON-NLS-1$
                     item.setDiagram(diagram);
                     manager.add(item);
                 }

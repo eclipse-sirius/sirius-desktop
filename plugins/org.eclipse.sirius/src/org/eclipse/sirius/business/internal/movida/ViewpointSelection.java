@@ -196,10 +196,10 @@ public class ViewpointSelection {
         // CHECKSTYLE:OFF
         StringBuilder sb = new StringBuilder();
         if (conflicts != null && !conflicts.isEmpty()) {
-            sb.append("Conflicts with: " + Joiner.on(", ").join(Iterables.transform(conflicts, shortName))).append("\n");
+            sb.append("Conflicts with: " + Joiner.on(", ").join(Iterables.transform(conflicts, shortName))).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
         }
         if (unavailable != null && !unavailable.isEmpty()) {
-            sb.append("Missing: " + Joiner.on(", ").join(Iterables.transform(unavailable, shortName))).append("\n");
+            sb.append("Missing: " + Joiner.on(", ").join(Iterables.transform(unavailable, shortName))).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
         }
         // CHECKSTYLE:ON
         return sb.toString();
@@ -233,6 +233,6 @@ public class ViewpointSelection {
     public String toString() {
         List<URI> uris = Lists.newArrayList(logicalViewpoints);
         Collections.sort(uris, Ordering.usingToString());
-        return "Viewpoint Selection: " + Joiner.on(", ").join(uris);
+        return "Viewpoint Selection: " + Joiner.on(", ").join(uris); //$NON-NLS-2$
     }
 }

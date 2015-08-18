@@ -51,7 +51,7 @@ import com.google.common.collect.Multimap;
  */
 public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
-    private static final String SEPARATOR = ".";
+    private static final String SEPARATOR = "."; //$NON-NLS-1$
 
     private static PackageRegistryIndex platformIndex = new PackageRegistryIndex(EPackage.Registry.INSTANCE, Predicates.<EPackage> alwaysTrue());
 
@@ -69,7 +69,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
                 result = EcoreUtil.create(eClass);
             }
         }
-        if (result == null && name != null && name.indexOf("#") > 0) {
+        if (result == null && name != null && name.indexOf("#") > 0) { //$NON-NLS-1$
             final URI eClassURI = URI.createURI(name);
             final EObject eobj = new ResourceSetImpl().getEObject(eClassURI, true);
             if (eobj instanceof EClass) {
@@ -236,11 +236,11 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     @Override
     public boolean eInstanceOf(final EObject instance, final String name) {
-        if ("EObject".equals(name) && instance != null) {
+        if ("EObject".equals(name) && instance != null) { //$NON-NLS-1$
             return true;
         }
         boolean result = eInstanceOf(instance.eClass(), name);
-        if (!result && name != null && name.indexOf("#") > 0) {
+        if (!result && name != null && name.indexOf("#") > 0) { //$NON-NLS-1$
             try {
                 final URI eClassURI = URI.createURI(name);
                 final EObject eobj = new ResourceSetImpl().getEObject(eClassURI, true);

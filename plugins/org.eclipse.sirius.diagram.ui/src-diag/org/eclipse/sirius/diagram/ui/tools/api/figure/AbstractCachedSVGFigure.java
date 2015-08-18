@@ -40,7 +40,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
     /**
      * Key separator.
      */
-    protected static final String SEPARATOR = "|";
+    protected static final String SEPARATOR = "|"; //$NON-NLS-1$
 
     /**
      * Soft cache to store svg.
@@ -184,7 +184,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
     protected static String getImageNotFoundURI() {
         final String path = new StringBuffer(IMAGE_DIR).append(IMAGE_NOT_FOUND).append(IMAGE_EXT).toString();
         String pluginId = DiagramUIPlugin.getPlugin().getSymbolicName();
-        return "platform:/plugin/" + pluginId + "/" + path;
+        return "platform:/plugin/" + pluginId + "/" + path; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

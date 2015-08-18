@@ -64,7 +64,7 @@ public class DesignerModelingPerspective implements IPerspectiveFactory, Modelin
         layout.addView(IPageLayout.ID_OUTLINE, IPageLayout.BOTTOM, 0.50f, IModelExplorerView.ID);
 
         // Place problem, properties and advance views to bottom of editor area.
-        final IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, (float) 0.65, editorArea);
+        final IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, (float) 0.65, editorArea); //$NON-NLS-1$
         bottom.addView(IPageLayout.ID_PROP_SHEET);
         bottom.addView(IPageLayout.ID_PROBLEM_VIEW);
     }

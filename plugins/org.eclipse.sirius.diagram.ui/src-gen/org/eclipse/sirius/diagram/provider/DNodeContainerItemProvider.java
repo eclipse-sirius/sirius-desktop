@@ -125,7 +125,7 @@ public class DNodeContainerItemProvider extends DDiagramElementContainerItemProv
     @Override
     public String getText(Object object) {
         String label = ((DNodeContainer) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DNodeContainer_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_DNodeContainer_type") : label; //$NON-NLS-1$
     }
 
     /**

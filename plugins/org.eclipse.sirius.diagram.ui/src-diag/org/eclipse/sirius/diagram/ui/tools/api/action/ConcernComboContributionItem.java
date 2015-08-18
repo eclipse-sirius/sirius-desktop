@@ -55,7 +55,7 @@ public class ConcernComboContributionItem extends ContributionItem {
     /**
      * ID for concern contribution.
      */
-    public static final String CONCERN_CONTRIBUTION_ID = "ConcernContribution";
+    public static final String CONCERN_CONTRIBUTION_ID = "ConcernContribution"; //$NON-NLS-1$
 
     private boolean forceSetText;
 
@@ -187,7 +187,7 @@ public class ConcernComboContributionItem extends ContributionItem {
                 combo.setEnabled(true);
             }
         } catch (final SWTException exception) {
-            if (!"gtk".equals(SWT.getPlatform())) {
+            if (!"gtk".equals(SWT.getPlatform())) { //$NON-NLS-1$
                 throw exception;
             }
         }

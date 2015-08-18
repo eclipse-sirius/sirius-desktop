@@ -163,7 +163,7 @@ public class ContainerCreationDescriptionItemProvider extends MappingBasedToolDe
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ContainerCreationDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_ContainerCreationDescription_type") : getString("_UI_ContainerCreationDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_ContainerCreationDescription_type") : getString("_UI_ContainerCreationDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

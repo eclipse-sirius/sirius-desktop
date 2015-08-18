@@ -92,12 +92,12 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_ME_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation
-            .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif");
+            .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif"); //$NON-NLS-1$
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
-    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif");
+    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"); //$NON-NLS-1$
 
-    private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif");;
+    private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif");; //$NON-NLS-1$
 
     /**
      * This is the one adapter factory used for providing views of the model.
@@ -492,7 +492,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         // Removes the xmi id if the selected element and replace it with the
         // name of the tab.
         String title = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().getText();
-        final int end = title.lastIndexOf(".aird#");
+        final int end = title.lastIndexOf(".aird#"); //$NON-NLS-1$
         if (end > -1) {
             title = title.substring(0, end + 6) + this.getPartName() + " - Eclipse Platform";
             PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().setText(title);

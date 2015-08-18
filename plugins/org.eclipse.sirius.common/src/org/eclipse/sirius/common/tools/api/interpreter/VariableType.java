@@ -165,6 +165,6 @@ public final class VariableType {
 
     @Override
     public String toString() {
-        return "[" + Joiner.on(',').join(this.types) + "]";
+        return "[" + Joiner.on(',').join(this.types) + "]"; //$NON-NLS-1$ //$NON-NLS-2$
     }
 }

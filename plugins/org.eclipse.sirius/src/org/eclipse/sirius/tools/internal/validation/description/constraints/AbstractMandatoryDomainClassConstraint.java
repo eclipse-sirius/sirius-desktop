@@ -26,7 +26,7 @@ import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 public abstract class AbstractMandatoryDomainClassConstraint extends AbstractConstraint {
 
     /** The name of the DomainClass feature. */
-    private static final String DOMAIN_CLASS_FEATURE = "domainClass";
+    private static final String DOMAIN_CLASS_FEATURE = "domainClass"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

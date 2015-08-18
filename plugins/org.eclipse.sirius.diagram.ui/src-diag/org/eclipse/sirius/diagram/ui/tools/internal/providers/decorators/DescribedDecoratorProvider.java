@@ -31,7 +31,7 @@ public class DescribedDecoratorProvider extends AbstractProvider implements IDec
     /**
      * KEY for descriptors map.
      */
-    public static final String KEY = "describedDecorator";
+    public static final String KEY = "describedDecorator"; //$NON-NLS-1$
 
     /**
      * 

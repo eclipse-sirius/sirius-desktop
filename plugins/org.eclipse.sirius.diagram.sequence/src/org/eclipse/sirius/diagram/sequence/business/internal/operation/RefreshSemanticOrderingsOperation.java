@@ -56,7 +56,7 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
      * The name of the variable used to pass event ends to sort to
      * user-specified expressions.
      */
-    private static final String EVENT_ENDS_TO_SORT_VARIABLE = "eventEnds";
+    private static final String EVENT_ENDS_TO_SORT_VARIABLE = "eventEnds"; //$NON-NLS-1$
 
     private final SequenceDDiagram sequenceDDiagram;
 

@@ -71,7 +71,7 @@ public class ModelingProjectFileQuery {
     public boolean isPotentialSemanticResource() {
         boolean fileToIgnore = isRepresentationsModel(file) || isVsmModel(file);
         if (!fileToIgnore) {
-            fileToIgnore = file.isDerived(IResource.CHECK_ANCESTORS) || file.getFullPath().toString().contains("/.svn/") || isRepairBackupFile();
+            fileToIgnore = file.isDerived(IResource.CHECK_ANCESTORS) || file.getFullPath().toString().contains("/.svn/") || isRepairBackupFile(); //$NON-NLS-1$
         }
         return !fileToIgnore;
     }
@@ -81,7 +81,7 @@ public class ModelingProjectFileQuery {
      * vsm and representations resources.
      */
     private boolean isRepairBackupFile() {
-        if ("old".equals(file.getFileExtension())) {
+        if ("old".equals(file.getFileExtension())) { //$NON-NLS-1$
             IPath repairedPath = file.getFullPath().removeFileExtension();
             // If this is a repaired file, removing .old will make the old
             // extension to become the file extension.

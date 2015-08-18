@@ -482,7 +482,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((DiagramDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_DiagramDescription_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_DiagramDescription_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -668,7 +668,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
             // this case we could also put only the Feature text as the only
             // child type currently available for is Layer (see
             // collectNewChildDescriptors).
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(child), "Default", getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(child), "Default", getTypeText(owner) }); //$NON-NLS-1$
         }
         String createChildText = super.getCreateChildText(owner, feature, child, selection);
         if (child != null && isNormalEdgeMapping(child)) {

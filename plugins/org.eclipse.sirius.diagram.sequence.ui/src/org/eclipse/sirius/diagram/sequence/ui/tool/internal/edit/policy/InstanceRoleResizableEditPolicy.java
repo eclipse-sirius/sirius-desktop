@@ -193,7 +193,7 @@ public class InstanceRoleResizableEditPolicy extends AirResizableEditPolicy {
      *         is not needed
      */
     private ICommand getMoveViewCommands(TransactionalEditingDomain transactionalEditingDomain, Map<InstanceRole, Point> moveDeltas) {
-        CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(transactionalEditingDomain, "");
+        CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(transactionalEditingDomain, ""); //$NON-NLS-1$
 
         // handle move lost nodes
         Multimap<InstanceRole, LostMessageEnd> lostNodes = HashMultimap.create();
@@ -246,7 +246,7 @@ public class InstanceRoleResizableEditPolicy extends AirResizableEditPolicy {
      * @return composition of {@link ResizeViewOperation}
      */
     private ICommand getResizeViewCommands(TransactionalEditingDomain transactionalEditingDomain, Map<InstanceRole, Dimension> sizeDeltas) {
-        CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(transactionalEditingDomain, "");
+        CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(transactionalEditingDomain, ""); //$NON-NLS-1$
         // Resize Commands
         for (Entry<InstanceRole, Dimension> entry : sizeDeltas.entrySet()) {
             Dimension sizeDelta = entry.getValue();

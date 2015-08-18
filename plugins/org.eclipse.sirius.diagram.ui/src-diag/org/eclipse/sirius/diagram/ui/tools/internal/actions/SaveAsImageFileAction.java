@@ -39,7 +39,7 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
      * Default constructor.
      */
     public SaveAsImageFileAction() {
-        super("Export diagram as image", DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/screenshot.gif"));
+        super("Export diagram as image", DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/screenshot.gif")); //$NON-NLS-2$
 
         /* set the id */
         setId(ActionIds.COPY_TO_IMAGE);

@@ -86,7 +86,7 @@ public class ViewPropertiesSynchronizer {
         GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
     }
 
-    private static final String DEFAULT_FONT_STYLE = "Arial";
+    private static final String DEFAULT_FONT_STYLE = "Arial"; //$NON-NLS-1$
 
     /**
      * Update the specified GMF {@link View} properties according to Sirius

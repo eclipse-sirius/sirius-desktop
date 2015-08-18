@@ -31,7 +31,7 @@ public class EditModeDecoratorProvider extends AbstractProvider implements IDeco
     /**
      * KEY for descriptors map.
      */
-    public static final String KEY = "editModeDecorator";
+    public static final String KEY = "editModeDecorator"; //$NON-NLS-1$
 
     /**
      * 

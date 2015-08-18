@@ -105,7 +105,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
                 return optionImageURL.get();
             }
         }
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/AdditionalLayer"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/AdditionalLayer")); //$NON-NLS-1$
     }
 
     /**
@@ -117,7 +117,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((AdditionalLayer) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_AdditionalLayer_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_AdditionalLayer_type") : label; //$NON-NLS-1$
     }
 
     /**

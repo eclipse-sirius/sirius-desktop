@@ -69,7 +69,7 @@ public class DeleteFromDiagramAction extends RetargetAction implements IObjectAc
      * Constructor.
      */
     public DeleteFromDiagramAction() {
-        super("", "");
+        super("", ""); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

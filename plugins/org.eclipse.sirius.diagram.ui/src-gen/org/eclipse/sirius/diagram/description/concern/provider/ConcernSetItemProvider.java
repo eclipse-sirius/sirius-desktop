@@ -112,7 +112,7 @@ public class ConcernSetItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((ConcernSet) object).getDocumentation();
-        return label == null || label.length() == 0 ? getString("_UI_ConcernSet_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_ConcernSet_type") : label; //$NON-NLS-1$
     }
 
     /**

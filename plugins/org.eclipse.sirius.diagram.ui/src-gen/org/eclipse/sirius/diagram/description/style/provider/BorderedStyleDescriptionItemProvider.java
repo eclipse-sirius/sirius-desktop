@@ -194,7 +194,7 @@ IItemPropertySource {
         boolean qualify = feature == StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(child), getFeatureText(feature), getTypeText(owner) }); //$NON-NLS-1$
         }
 
         return super.getCreateChildText(owner, feature, child, selection);

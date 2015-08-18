@@ -81,13 +81,13 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     /**
      * The DTreeEditor ID.
      */
-    public static final String ID = "org.eclipse.sirius.tree.ui.EditorID";
+    public static final String ID = "org.eclipse.sirius.tree.ui.EditorID"; //$NON-NLS-1$
 
     /** The context ID. */
-    private static final String CONTEXT_ID = ID + ".treeContext";
+    private static final String CONTEXT_ID = ID + ".treeContext"; //$NON-NLS-1$
 
     /** Initial title image descriptor **/
-    private static final ImageDescriptor INITIAL_TITLE_IMAGE_DESCRIPTOR = TreeUIPlugin.getBundledImageDescriptor("icons/full/obj16/TreeDescription.gif");
+    private static final ImageDescriptor INITIAL_TITLE_IMAGE_DESCRIPTOR = TreeUIPlugin.getBundledImageDescriptor("icons/full/obj16/TreeDescription.gif"); //$NON-NLS-1$
 
     /** This DTree model */
     private DTree treeModel;
@@ -237,10 +237,10 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     @Override
     public Image getFrozenRepresentationImage() {
         if (frozenRepresentationImage == null || frozenRepresentationImage.isDisposed()) {
-            Image refreshImage = TreeUIPlugin.getImage(TreeUIPlugin.getBundledImageDescriptor("icons/" + DTreeViewerManager.REFRESH_IMG + ".gif"));
+            Image refreshImage = TreeUIPlugin.getImage(TreeUIPlugin.getBundledImageDescriptor("icons/" + DTreeViewerManager.REFRESH_IMG + ".gif")); //$NON-NLS-1$ //$NON-NLS-2$
             List<Object> images = new ArrayList<Object>(2);
             images.add(refreshImage);
-            Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
+            Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif")); //$NON-NLS-1$
             images.add(lockByOtherOverlayImage);
             ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
             frozenRepresentationImage = SiriusEditPlugin.getPlugin().getImage(composedImageDescriptor);

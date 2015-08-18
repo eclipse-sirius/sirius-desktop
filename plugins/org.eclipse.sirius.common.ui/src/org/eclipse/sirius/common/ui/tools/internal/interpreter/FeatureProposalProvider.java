@@ -39,22 +39,18 @@ import com.google.common.collect.Sets;
  */
 public class FeatureProposalProvider implements IProposalProvider {
 
-    private static final String SEPARATOR_1 = ":";
+    private static final String SEPARATOR_1 = ":"; //$NON-NLS-1$
 
-    private static final String SEPARATOR_2 = " - ";
+    private static final String SEPARATOR_2 = " - "; //$NON-NLS-1$
 
-    private static final String SEPARATOR_3 = "[0..*]";
+    private static final String SEPARATOR_3 = "[0..*]"; //$NON-NLS-1$
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ContentProposal getNewEmtpyExpression() {
         return new ContentProposal(FeatureInterpreter.PREFIX, FeatureInterpreter.PREFIX, "New feature access expression.", FeatureInterpreter.PREFIX.length());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof FeatureInterpreter)) {
@@ -84,9 +80,7 @@ public class FeatureProposalProvider implements IProposalProvider {
         return proposals;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof FeatureInterpreter)) {
@@ -141,7 +135,7 @@ public class FeatureProposalProvider implements IProposalProvider {
 
             String eAllContentsFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[2];
             if (eAllContentsFeatureName.startsWith(featureNamePrefix)) {
-                String displayedName = eAllContentsFeatureName + SEPARATOR_1 + "TreeIterator" + SEPARATOR_2 + eObjectName;
+                String displayedName = eAllContentsFeatureName + SEPARATOR_1 + "TreeIterator" + SEPARATOR_2 + eObjectName; //$NON-NLS-1$
                 proposals.add(new ContentProposal(eAllContentsFeatureName, displayedName, displayedName));
             }
 
@@ -161,9 +155,9 @@ public class FeatureProposalProvider implements IProposalProvider {
                 for (EStructuralFeature eStructuralFeature : currentElementType.getEAllStructuralFeatures()) {
                     if (eStructuralFeature.getName().startsWith(featureNamePrefix)) {
                         String displayedName = eStructuralFeature.getName()
-                                + (eStructuralFeature.isMany() ? "[" + eStructuralFeature.getLowerBound() + ".."
-                                        + (eStructuralFeature.getUpperBound() == -1 ? "*" : eStructuralFeature.getUpperBound()) + "]" : "")
-                                + (eStructuralFeature.getEType() != null ? SEPARATOR_1 + eStructuralFeature.getEType().getName() : "") + SEPARATOR_2
+                                + (eStructuralFeature.isMany() ? "[" + eStructuralFeature.getLowerBound() + ".."  //$NON-NLS-1$//$NON-NLS-2$
+                                        + (eStructuralFeature.getUpperBound() == -1 ? "*" : eStructuralFeature.getUpperBound()) + "]" : "") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                                + (eStructuralFeature.getEType() != null ? SEPARATOR_1 + eStructuralFeature.getEType().getName() : "") + SEPARATOR_2 //$NON-NLS-1$
                                 + eStructuralFeature.getEContainingClass().getName();
                         proposals.add(new ContentProposal(eStructuralFeature.getName(), displayedName, displayedName));
                     }

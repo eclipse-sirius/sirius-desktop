@@ -72,7 +72,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
      * (only use to not consider CDOResources as read-only, see
      * {@link ResourceSetSync#isReadOnly(Resource)}).
      */
-    public static final String CDO_URI_SCHEME = "cdo";
+    public static final String CDO_URI_SCHEME = "cdo"; //$NON-NLS-1$
 
     private static final String FILE_MODIFICATION_VALIDATION_STATUS = "File modification validation status"; //$NON-NLS-1$
 
@@ -451,7 +451,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
         final StringBuffer buff = new StringBuffer();
         for (final Entry<Resource, ResourceStatus> entry : statuses.entrySet()) {
             buff.append(entry.getKey().getURI());
-            buff.append(":");
+            buff.append(":"); //$NON-NLS-1$
             buff.append(entry.getValue());
         }
 
@@ -536,7 +536,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
             }
 
             if (status.getChildren().length == 0 || !status.isOK()) {
-                throw new InterruptedException(status.getPlugin() + ":" + status.getMessage());
+                throw new InterruptedException(status.getPlugin() + ":" + status.getMessage()); //$NON-NLS-1$
             }
         }
 

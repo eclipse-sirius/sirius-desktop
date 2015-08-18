@@ -105,7 +105,7 @@ public final class RangeHelper {
 
         @Override
         public String toString() {
-            return "lowerBound";
+            return "lowerBound"; //$NON-NLS-1$
         }
     }
 
@@ -121,7 +121,7 @@ public final class RangeHelper {
 
         @Override
         public String toString() {
-            return "upperBound";
+            return "upperBound"; //$NON-NLS-1$
         }
     }
 
@@ -137,7 +137,7 @@ public final class RangeHelper {
 
         @Override
         public String toString() {
-            return "width";
+            return "width"; //$NON-NLS-1$
         }
     }
 }

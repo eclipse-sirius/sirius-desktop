@@ -87,7 +87,7 @@ public class ViewpointQuery {
         if (vpResource != null && vpResource.getURI().isPlatform()) {
             URI resourceURI = vpResource.getURI();
             String pluginId = resourceURI.segment(1);
-            String uri = ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + vp.getName();
+            String uri = ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + vp.getName(); //$NON-NLS-1$ //$NON-NLS-2$
             return Options.newSome(URI.createURI(uri));
         }
         return Options.newNone();
@@ -131,7 +131,7 @@ public class ViewpointQuery {
             supportedExtensions = vp.getModelFileExtension().trim();
         }
 
-        for (String supported : supportedExtensions.split(" +")) {
+        for (String supported : supportedExtensions.split(" +")) { //$NON-NLS-1$
             if (matches(ext, supported.trim())) {
                 return true;
             }
@@ -143,7 +143,7 @@ public class ViewpointQuery {
         if (StringUtil.JOKER_STRING.equals(supportedExtension)) {
             return true;
         }
-        String semanticExtensionPattern = StringUtil.JOKER_STRING + "." + ext;
+        String semanticExtensionPattern = StringUtil.JOKER_STRING + "." + ext; //$NON-NLS-1$
         return ext.equals(supportedExtension) || semanticExtensionPattern.equals(supportedExtension);
     }
 }

@@ -193,9 +193,9 @@ public class ControlAction extends CommandActionHandler {
             final StringBuilder defaultURI = new StringBuilder();
             URI controledObjectResourceURI = controledObject.eResource().getURI();
             defaultURI.append(URI.decode(controledObjectResourceURI.trimFileExtension().toString()));
-            defaultURI.append("_");
+            defaultURI.append("_"); //$NON-NLS-1$
             defaultURI.append(EMFCoreUtil.getName(controledObject));
-            defaultURI.append(".");
+            defaultURI.append("."); //$NON-NLS-1$
             defaultURI.append(controledObjectResourceURI.fileExtension());
             this.uriField.setText(URI.encodeFragment(defaultURI.toString(), true));
             return control;

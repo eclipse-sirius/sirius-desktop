@@ -75,9 +75,9 @@ public class TabbarColorPropertyContributionItem extends ColorPropertyContributi
             rgb = FigureUtilities.integerToRGB(Integer.parseInt(color));
         }
 
-        TabbarColorPropertyContributionItem.setElement(this, new ColorMenuImageDescriptor(getBasicImageData(), rgb).createImage(), "overlyedImage");
+        TabbarColorPropertyContributionItem.setElement(this, new ColorMenuImageDescriptor(getBasicImageData(), rgb).createImage(), "overlyedImage"); //$NON-NLS-1$
         TabbarColorPropertyContributionItem.setElement(this,
-                new ColorMenuImageDescriptor((ImageData) TabbarColorPropertyContributionItem.getElement(this, "disabledBasicImageData"), rgb).createImage(), "disabledBasicImage");
+                new ColorMenuImageDescriptor((ImageData) TabbarColorPropertyContributionItem.getElement(this, "disabledBasicImageData"), rgb).createImage(), "disabledBasicImage"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

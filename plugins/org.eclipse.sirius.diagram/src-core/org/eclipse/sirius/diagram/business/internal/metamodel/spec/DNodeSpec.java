@@ -104,13 +104,13 @@ public class DNodeSpec extends DNodeImpl {
      */
     @Override
     public String toString() {
-        final StringBuffer result = new StringBuffer("Node");
+        final StringBuffer result = new StringBuffer("Node"); //$NON-NLS-1$
         if (getName() != null && getName().length() > 0) {
-            result.append(" ");
+            result.append(" "); //$NON-NLS-1$
             result.append(getName());
         }
         if (getTarget() != null) {
-            result.append(" --> ");
+            result.append(" --> "); //$NON-NLS-1$
             result.append(getTarget().toString());
         }
         return result.toString();

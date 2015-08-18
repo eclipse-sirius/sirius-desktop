@@ -23,11 +23,11 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
 public interface IEditingDomainFactory extends Factory {
 
     /** . */
-    String EXTENSION_POINT_ID = DslCommonPlugin.PLUGIN_ID + ".editingDomainFactory";
+    String EXTENSION_POINT_ID = DslCommonPlugin.PLUGIN_ID + ".editingDomainFactory"; //$NON-NLS-1$
 
     /** . */
-    String EXTENSION_POINT_ELEMENT = "editingDomainFactory";
+    String EXTENSION_POINT_ELEMENT = "editingDomainFactory"; //$NON-NLS-1$
 
     /** . */
-    String EXTENSION_POINT_CLASS_ATTRIBUTE = "class";
+    String EXTENSION_POINT_CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 }

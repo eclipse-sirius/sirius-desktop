@@ -21,47 +21,47 @@ public final class SiriusTasksKey {
     /**
      * DDiagram category.
      */
-    public static final String DIAGRAM_CAT = "DDiagram";
+    public static final String DIAGRAM_CAT = "DDiagram"; //$NON-NLS-1$
 
     /**
      * Acceleo category.
      */
-    public static final String ACCELEO_CAT = "Acceleo";
+    public static final String ACCELEO_CAT = "Acceleo"; //$NON-NLS-1$
 
     /**
      * Draw2D category.
      */
-    public static final String DRAW2D_CAT = "Draw2D";
+    public static final String DRAW2D_CAT = "Draw2D"; //$NON-NLS-1$
 
     /**
      * GEF category.
      */
-    public static final String GEF_CAT = "GEF";
+    public static final String GEF_CAT = "GEF"; //$NON-NLS-1$
 
     /**
      * GMF category.
      */
-    public static final String GMF_CAT = "GMF";
+    public static final String GMF_CAT = "GMF"; //$NON-NLS-1$
 
     /**
      * EMF category.
      */
-    public static final String EMF_CAT = "EMF";
+    public static final String EMF_CAT = "EMF"; //$NON-NLS-1$
 
     /**
      * SWT category.
      */
-    public static final String SWT_CAT = "SWT";
+    public static final String SWT_CAT = "SWT"; //$NON-NLS-1$
 
     /**
      * DTable category.
      */
-    public static final String TABLE_CAT = "DTable";
+    public static final String TABLE_CAT = "DTable"; //$NON-NLS-1$
 
     /**
      * DTree category.
      */
-    public static final String TREE_CAT = "DTree";
+    public static final String TREE_CAT = "DTree"; //$NON-NLS-1$
 
     /**
      * Metamodel extension category.

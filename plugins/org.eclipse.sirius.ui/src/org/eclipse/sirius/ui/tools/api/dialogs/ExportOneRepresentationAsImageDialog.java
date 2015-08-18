@@ -172,7 +172,7 @@ public class ExportOneRepresentationAsImageDialog extends AbstractExportRepresen
         IPath path = new Path(folder);
         if (isExistingFolder(path) || path.getFileExtension() == null) {
             path = path.addTrailingSeparator();
-            path = path.append(fileName.replaceAll("[/\\\\]", FILE_SEPARATOR_ALTERNATIVE));
+            path = path.append(fileName.replaceAll("[/\\\\]", FILE_SEPARATOR_ALTERNATIVE)); //$NON-NLS-1$
             String extension = imageFormat.getName().toLowerCase();
             path = path.addFileExtension(extension);
             String newExtensionFilePath = path.toFile().getPath();
@@ -310,7 +310,7 @@ public class ExportOneRepresentationAsImageDialog extends AbstractExportRepresen
                 setDialogErrorState(INVALID_PATH_MESSAGE);
             } else if (!directory.exists()) {
                 setDialogErrorState(FOLDER_NOT_EXIST_MESSAGE);
-            } else if (path.toString().endsWith("/") || path.toString().endsWith(CHARACTER_EXTENSION_FILE)) {
+            } else if (path.toString().endsWith("/") || path.toString().endsWith(CHARACTER_EXTENSION_FILE)) { //$NON-NLS-1$
                 setDialogErrorState(INVALID_PATH_MESSAGE);
             }
 
@@ -348,7 +348,7 @@ public class ExportOneRepresentationAsImageDialog extends AbstractExportRepresen
                         imageFormatCombo.setText(extension.getName());
                         isPresent = true;
                         break;
-                    } else if ("jpeg".equals(fileExtension.toLowerCase())) {
+                    } else if ("jpeg".equals(fileExtension.toLowerCase())) { //$NON-NLS-1$
                         imageFormatCombo.setText(imageFormat.JPG.getName());
                         isPresent = true;
                         break;

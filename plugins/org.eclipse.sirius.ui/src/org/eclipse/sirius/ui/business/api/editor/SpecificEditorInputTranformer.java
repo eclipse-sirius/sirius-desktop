@@ -65,9 +65,9 @@ import com.google.common.collect.Sets;
  */
 public class SpecificEditorInputTranformer {
 
-    private static final String SESSION_FILE_EXTENSION = "." + SiriusUtil.SESSION_RESOURCE_EXTENSION;
+    private static final String SESSION_FILE_EXTENSION = "." + SiriusUtil.SESSION_RESOURCE_EXTENSION; //$NON-NLS-1$
 
-    private static final String DEFAULT_FILE_NAME = "file";
+    private static final String DEFAULT_FILE_NAME = "file"; //$NON-NLS-1$
 
     /**
      * The specific session manager.

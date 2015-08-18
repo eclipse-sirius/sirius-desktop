@@ -68,7 +68,7 @@ public class MiscPropertySection extends AdvancedPropertySection implements IPro
                 if (next == null) {
                     next = "null object";
                 }
-                propertyDescriptors[i] = new PropertyDescriptor(next, i + "");
+                propertyDescriptors[i] = new PropertyDescriptor(next, i + ""); //$NON-NLS-1$
             }
             propSrc = new DefaultPropertySource(propertyDescriptors);
         } else if (object != null) {

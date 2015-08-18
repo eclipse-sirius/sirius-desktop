@@ -72,7 +72,7 @@ public class ModelExplorerView extends CommonNavigator implements IModelExplorer
 
     private CTabFolder tabFolder;
 
-    private String initialSelection = "";
+    private String initialSelection = ""; //$NON-NLS-1$
 
     private Map<CTabItem, TabInfo> tabItems = Maps.newLinkedHashMap();
 

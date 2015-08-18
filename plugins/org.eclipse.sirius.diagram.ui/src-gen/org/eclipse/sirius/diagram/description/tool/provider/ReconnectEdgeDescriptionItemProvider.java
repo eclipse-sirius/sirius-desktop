@@ -137,7 +137,7 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ReconnectEdgeDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_ReconnectEdgeDescription_type") : getString("_UI_ReconnectEdgeDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_ReconnectEdgeDescription_type") : getString("_UI_ReconnectEdgeDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

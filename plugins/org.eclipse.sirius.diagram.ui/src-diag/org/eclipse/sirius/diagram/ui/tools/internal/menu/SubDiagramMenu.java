@@ -49,9 +49,9 @@ import org.eclipse.ui.IWorkbenchPart;
  */
 public class SubDiagramMenu implements IContributionItemProvider {
 
-    private static final String CREATE_REPRESENTATION_GROUP_SEPARATOR = "createRepresentationGroup";
+    private static final String CREATE_REPRESENTATION_GROUP_SEPARATOR = "createRepresentationGroup"; //$NON-NLS-1$
 
-    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new";
+    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

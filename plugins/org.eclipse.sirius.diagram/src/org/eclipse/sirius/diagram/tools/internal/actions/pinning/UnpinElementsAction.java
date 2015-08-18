@@ -33,7 +33,7 @@ public class UnpinElementsAction implements IExternalJavaAction {
 
     @Override
     public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
-        Object viewObj = parameters.get("view");
+        Object viewObj = parameters.get("view"); //$NON-NLS-1$
         PinHelper pinHelper = new PinHelper();
         if (viewObj instanceof DDiagramElement) {
             DDiagramElement dDiagramElement = (DDiagramElement) viewObj;

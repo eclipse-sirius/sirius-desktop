@@ -45,7 +45,7 @@ import com.google.common.collect.Lists;
  */
 public class SemanticResourceDialog extends ResourceDialog {
 
-    private static final String SEPARATOR = "  ";
+    private static final String SEPARATOR = "  "; //$NON-NLS-1$
 
     /**
      * Default constructor.

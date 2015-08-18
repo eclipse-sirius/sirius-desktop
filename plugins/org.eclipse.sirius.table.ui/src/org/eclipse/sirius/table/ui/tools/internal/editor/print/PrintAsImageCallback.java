@@ -233,7 +233,7 @@ public class PrintAsImageCallback implements PrintCallback {
                 final Rectangle trim = printParameters.getTrim();
 
                 gc.drawLine(-trim.x, maxPageHeight + headerMargin + 1, maxPageWidth, maxPageHeight + headerMargin + 1);
-                gc.drawText("page " + page + "/" + numberOfPages(), -trim.x, maxPageHeight + headerMargin + 5);
+                gc.drawText("page " + page + "/" + numberOfPages(), -trim.x, maxPageHeight + headerMargin + 5); //$NON-NLS-2$
             }
 
         });

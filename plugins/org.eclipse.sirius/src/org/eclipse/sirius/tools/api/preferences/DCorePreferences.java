@@ -20,13 +20,13 @@ package org.eclipse.sirius.tools.api.preferences;
 public interface DCorePreferences {
 
     /** Key for color registry max size preference. */
-    String COLOR_REGISTRY_MAX_SIZE = "ColorRegistryMaxSize";
+    String COLOR_REGISTRY_MAX_SIZE = "ColorRegistryMaxSize"; //$NON-NLS-1$
 
     /** Default value for color registry max size preference. */
     int COLOR_REGISTRY_MAX_SIZE_DEFAULT_VALUE = 2048;
 
     /** Key for font registry max size preference. */
-    String FONT_REGISTRY_MAX_SIZE = "FontRegistryMaxSize";
+    String FONT_REGISTRY_MAX_SIZE = "FontRegistryMaxSize"; //$NON-NLS-1$
 
     /** Default value for font registry max size preference. */
     int FONT_REGISTRY_MAX_SIZE_DEFAULT_VALUE = 256;

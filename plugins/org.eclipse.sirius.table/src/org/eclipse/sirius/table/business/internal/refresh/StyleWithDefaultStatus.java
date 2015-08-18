@@ -89,7 +89,7 @@ public class StyleWithDefaultStatus {
      */
     @Override
     public String toString() {
-        return style.toString() + "--> isDefault=" + isDefaultStyle();
+        return style.toString() + "--> isDefault=" + isDefaultStyle(); //$NON-NLS-1$
     }
 
     /**

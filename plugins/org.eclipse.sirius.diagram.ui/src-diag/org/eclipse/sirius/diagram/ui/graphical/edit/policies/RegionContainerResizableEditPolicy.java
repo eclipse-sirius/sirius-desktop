@@ -52,7 +52,7 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
     /**
      * Key to store the part responsible for auto-size propagation.
      */
-    protected static final String REGION_AUTO_SIZE_PROPAGATOR = "region_auto-size_propagator";
+    protected static final String REGION_AUTO_SIZE_PROPAGATOR = "region_auto-size_propagator"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

@@ -387,7 +387,7 @@ public class Range {
     @Override
     public String toString() {
         if (!isEmpty()) {
-            return "[" + lower + ", " + upper + "]";
+            return "[" + lower + ", " + upper + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         } else {
             return "[<empty range>]";
         }

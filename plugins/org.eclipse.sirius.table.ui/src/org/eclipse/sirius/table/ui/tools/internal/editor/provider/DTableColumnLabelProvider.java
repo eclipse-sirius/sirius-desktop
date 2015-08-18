@@ -46,10 +46,10 @@ import org.eclipse.swt.graphics.Image;
  */
 public class DTableColumnLabelProvider extends ColumnLabelProvider implements IStyledLabelProvider {
     /** The key for the image which represents a checkbox checked. */
-    public static final String CHECKED_IMAGE = "table/checked";
+    public static final String CHECKED_IMAGE = "table/checked"; //$NON-NLS-1$
 
     /** The key for the image which represents a checkbox unchecked. */
-    public static final String UNCHECKED_IMAGE = "table/unchecked";
+    public static final String UNCHECKED_IMAGE = "table/unchecked"; //$NON-NLS-1$
 
     // The imageRegistry for the checkbox images
     private static ImageRegistry imageRegistry = new ImageRegistry();
@@ -174,7 +174,7 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider implements IS
                 line = (DLine) element;
             }
             final EClassifier eClassifier = TableHelper.getEClassifier(line, column);
-            if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) {
+            if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) { //$NON-NLS-1$ //$NON-NLS-2$
                 Option<DCell> optionalCell = TableHelper.getCell(line, column);
                 if (optionalCell.some()) {
                     return getImage(Boolean.parseBoolean(optionalCell.get().getLabel()));
@@ -243,7 +243,7 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider implements IS
         String text = getText(element);
         DefaultFontStyler styler = new DefaultFontStyler(getFont(element), getForeground(element), getBackground(element), getUnderline(element), getStrikeout(element));
         if (text == null) {
-            text = "";
+            text = ""; //$NON-NLS-1$
         }
         StyledString styledString = new StyledString(text, styler);
 

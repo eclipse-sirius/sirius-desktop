@@ -69,7 +69,7 @@ public class CopyRepresentationCommand extends RecordingCommand {
         if (representations.size() == 1) {
             return newName;
         } else {
-            return newName + " " + representation.getName();
+            return newName + " " + representation.getName(); //$NON-NLS-1$
         }
     }
 }

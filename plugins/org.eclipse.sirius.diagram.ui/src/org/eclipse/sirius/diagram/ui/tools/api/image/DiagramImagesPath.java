@@ -141,7 +141,7 @@ public interface DiagramImagesPath {
     String FOLD_DECORATOR = DEFAULT_DECORATOR_PATH + "fold"; //$NON-NLS-1$
 
     /** path to image not found. */
-    String IMAGE_NOT_FOUND = "/org.eclipse.sirius.common.ui/images/NotFound.png";
+    String IMAGE_NOT_FOUND = "/org.eclipse.sirius.common.ui/images/NotFound.png"; //$NON-NLS-1$
 
     /** path of the palette edge image. */
     String PALETTE_EDGE_PATH = "/org.eclipse.sirius.diagram.ui/icons/full/obj16/DEdge.gif"; //$NON-NLS-1$
@@ -152,18 +152,18 @@ public interface DiagramImagesPath {
     /**
      * Path of the action's image to distribute centers horizontally.
      */
-    String DISTRIBUTE_CENTERS_HORIZONTALLY = "icons/distributeCentersHorizontal.gif";
+    String DISTRIBUTE_CENTERS_HORIZONTALLY = "icons/distributeCentersHorizontal.gif"; //$NON-NLS-1$
 
     /**
      * Path of the action's image to distribute with uniform gaps horizontally.
      */
-    String DISTRIBUTE_WITH_UNIFORM_GAPS_HORIZONTALLY = "icons/distributeWithUniformGapHorizontal.gif";
+    String DISTRIBUTE_WITH_UNIFORM_GAPS_HORIZONTALLY = "icons/distributeWithUniformGapHorizontal.gif"; //$NON-NLS-1$
 
     /**
      * Path of the action's image to distribute middle vertically.
      */
-    String DISTRIBUTE_CENTERS_VERTICALLY = "icons/distributeCentersVertical.gif";
+    String DISTRIBUTE_CENTERS_VERTICALLY = "icons/distributeCentersVertical.gif"; //$NON-NLS-1$
 
     /** Path of the action's image to distribute with uniform gaps vertically. */
-    String DISTRIBUTE_WITH_UNIFORM_GAPS_VERTICALLY = "icons/distributeWithUniformGapVertical.gif";
+    String DISTRIBUTE_WITH_UNIFORM_GAPS_VERTICALLY = "icons/distributeWithUniformGapVertical.gif"; //$NON-NLS-1$
 }

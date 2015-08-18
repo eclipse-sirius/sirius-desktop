@@ -88,7 +88,7 @@ public final class AbstractDiagramNodeEditPartOperation {
         }
         if (notification.getEventType() == Notification.SET && notification.getFeature() instanceof EAttribute) {
             final EAttribute feature = (EAttribute) notification.getFeature();
-            if ("visible".equals(feature.getName())) {
+            if ("visible".equals(feature.getName())) { //$NON-NLS-1$
                 final EditPart parent = self.getParent();
                 if (parent != null) {
                     AbstractDiagramNodeEditPartOperation.safeRefresh(parent);

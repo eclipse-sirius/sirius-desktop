@@ -120,10 +120,10 @@ public class LozengeNodeDescriptionItemProvider extends NodeStyleDescriptionItem
     @Override
     public String getText(Object object) {
         String color = new ColorQuery(((LozengeNodeDescription) object).getColor()).getLabel();
-        String label = getString("_UI_LozengeNodeDescription_type");
+        String label = getString("_UI_LozengeNodeDescription_type"); //$NON-NLS-1$
 
         if (color != null) {
-            return label + " " + color;
+            return label + " " + color; //$NON-NLS-1$
         } else {
             return label;
         }

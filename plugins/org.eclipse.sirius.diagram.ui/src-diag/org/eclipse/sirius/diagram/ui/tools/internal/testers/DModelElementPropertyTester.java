@@ -42,7 +42,7 @@ public class DModelElementPropertyTester extends PropertyTester {
         if (receiver instanceof IGraphicalEditPart) {
             final IGraphicalEditPart part = (IGraphicalEditPart) receiver;
 
-            if ("isDModelElement".equals(property)) {
+            if ("isDModelElement".equals(property)) { //$NON-NLS-1$
                 final EObject model = part.resolveSemanticElement();
                 result = model instanceof DDiagram || model instanceof DDiagramElement;
                 if (!result && part.getParent() instanceof IGraphicalEditPart) {
@@ -53,10 +53,10 @@ public class DModelElementPropertyTester extends PropertyTester {
                     final EObject parentModel = ((IGraphicalEditPart) part.getParent()).resolveSemanticElement();
                     result = parentModel instanceof DDiagram || parentModel instanceof DDiagramElement;
                 }
-            } else if ("isDDiagram".equals(property)) {
+            } else if ("isDDiagram".equals(property)) { //$NON-NLS-1$
                 final EObject model = part.resolveSemanticElement();
                 result = model instanceof DDiagram;
-            } else if ("isDDiagramElement".equals(property)) {
+            } else if ("isDDiagramElement".equals(property)) { //$NON-NLS-1$
                 final EObject model = part.resolveSemanticElement();
                 result = model instanceof DDiagramElement;
             }

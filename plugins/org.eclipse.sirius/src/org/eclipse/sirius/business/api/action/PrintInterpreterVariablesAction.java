@@ -40,9 +40,9 @@ import com.google.common.collect.Ordering;
  * @author pcdavid
  */
 public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction {
-    private static final String TITLE_PARAM = "title";
+    private static final String TITLE_PARAM = "title"; //$NON-NLS-1$
 
-    private static final String ENABLED_PARAM = "enabled";
+    private static final String ENABLED_PARAM = "enabled"; //$NON-NLS-1$
 
     private static final String DEFAULT_TITLE = "<no title>";
 
@@ -75,7 +75,7 @@ public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction 
         IInterpreter interpreter = InterpreterUtil.getInterpreter(context);
         SortedMap<String, Object> allVariables = Maps.newTreeMap(Ordering.natural());
         allVariables.putAll(interpreter.getVariables());
-        allVariables.put("self", context);
+        allVariables.put("self", context); //$NON-NLS-1$
         return allVariables;
     }
 
@@ -94,11 +94,11 @@ public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction 
             System.out.println("[" + title + "] variables available:");
             int i = 1;
             for (Map.Entry<String, Object> variable : allVariables.entrySet()) {
-                System.out.print("  " + i++ + ". " + variable.getKey());
+                System.out.print("  " + i++ + ". " + variable.getKey()); //$NON-NLS-1$ //$NON-NLS-2$
                 for (int j = 0; j < (maxLength - variable.getKey().length()); j++) {
-                    System.out.print(" ");
+                    System.out.print(" "); //$NON-NLS-1$
                 }
-                System.out.println(": " + variable.getValue());
+                System.out.println(": " + variable.getValue()); //$NON-NLS-1$
             }
             System.out.println();
             // CHECKSTYLE:ON

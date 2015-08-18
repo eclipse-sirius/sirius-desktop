@@ -53,16 +53,16 @@ public class LockedInstanceException extends RuntimeException {
     }
 
     private static String getText(EObject[] eObjects) {
-        String text = "";
+        String text = ""; //$NON-NLS-1$
         if (eObjects != null) {
             ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
             AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
             for (int i = 0; i < eObjects.length; i++) {
                 EObject eObject = eObjects[i];
                 if (eObject != null) {
-                    text += adapterFactoryItemDelegator.getText(eObject) + " (" + eObject + ")";
+                    text += adapterFactoryItemDelegator.getText(eObject) + " (" + eObject + ")"; //$NON-NLS-1$ //$NON-NLS-2$
                     if (i != eObjects.length - 1) {
-                        text += ", ";
+                        text += ", "; //$NON-NLS-1$
                     }
                 }
             }

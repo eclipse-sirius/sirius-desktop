@@ -488,7 +488,7 @@ public final class EdgeMappingHelper {
                 final Session session = SessionManager.INSTANCE.getSession(model);
                 for (final Resource resource : session.getSemanticResources()) {
                     for (final EObject root : resource.getContents()) {
-                        semanticCandidates.addAll(extPackage.eAllContents(root, "EObject"));
+                        semanticCandidates.addAll(extPackage.eAllContents(root, "EObject")); //$NON-NLS-1$
                     }
                 }
             }

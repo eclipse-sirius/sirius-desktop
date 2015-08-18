@@ -44,7 +44,7 @@ public class ValidImageConstraint extends AbstractConstraint {
         // In the case of batch mode.
         if (ctx.getEventType() == EMFEventType.NULL) {
             EObject eObj = ctx.getTarget();
-            String path = "";
+            String path = ""; //$NON-NLS-1$
             ArrayList<IStatus> statuses = new ArrayList<IStatus>();
             ResourceSet rs = eObj.eResource().getResourceSet();
             EList<EAttribute> attrs = eObj.eClass().getEAllAttributes();

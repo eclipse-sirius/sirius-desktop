@@ -45,7 +45,7 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
      *             found
      */
     public static Viewpoint getViewpoint(final URI uri) throws ViewpointProtocolException {
-        if (uri.segmentCount() == 2 && "viewpoint".equals(uri.scheme())) {
+        if (uri.segmentCount() == 2 && "viewpoint".equals(uri.scheme())) { //$NON-NLS-1$
 
             final Set<Viewpoint> viewpoints = ViewpointRegistry.getInstance().getViewpoints();
             final String pluginName = URI.decode(uri.segment(0));
@@ -129,7 +129,7 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
         if (resourceSetURi != null && resourceSetURi.isPlatform()) {
             final String uriPluginID = ViewpointProtocolParser.extractPluginID(resourceSetURi);
             final String viewpointName = ViewpointProtocolParser.extractViewpointName(resourceSetURi);
-            final String computedURI = "viewpoint:/" + uriPluginID + "/" + viewpointName;
+            final String computedURI = "viewpoint:/" + uriPluginID + "/" + viewpointName; //$NON-NLS-1$ //$NON-NLS-2$
             result = URI.createURI(computedURI);
         }
         return result;
@@ -137,7 +137,7 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
 
     private static String extractViewpointName(final URI resourceSetURi) {
         final String fragment = resourceSetURi.fragment();
-        final String viewpointNameSeparator = "'";
+        final String viewpointNameSeparator = "'"; //$NON-NLS-1$
         if (fragment.contains(viewpointNameSeparator)) {
             String name = fragment.substring(fragment.indexOf(viewpointNameSeparator) + 1);
             name = name.substring(0, name.indexOf(viewpointNameSeparator));

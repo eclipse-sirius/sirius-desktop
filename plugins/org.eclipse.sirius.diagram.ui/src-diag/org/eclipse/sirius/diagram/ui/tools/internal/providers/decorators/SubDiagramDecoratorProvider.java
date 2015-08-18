@@ -46,7 +46,7 @@ import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
  */
 public class SubDiagramDecoratorProvider extends AbstractProvider implements IDecoratorProvider {
 
-    private static final String KEY = "subDiagramStatus";
+    private static final String KEY = "subDiagramStatus"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

@@ -34,7 +34,7 @@ public class ViewNodeContainerParallelogram extends ParallelogramFigure implemen
 
     private void createContents() {
         fContainerLabelFigure = new SiriusWrapLabel();
-        fContainerLabelFigure.setText("  ");
+        fContainerLabelFigure.setText("  "); //$NON-NLS-1$
         fContainerLabelFigure.setTextWrap(true);
         this.add(fContainerLabelFigure);
     }

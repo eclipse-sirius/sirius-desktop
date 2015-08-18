@@ -49,7 +49,7 @@ public class SessionFileCreationWizardPage extends SessionResourceCreationWizard
      * {@inheritDoc}
      */
     protected String getNoselectionFileName() {
-        return "representations";
+        return "representations"; //$NON-NLS-1$
     }
 
     /**

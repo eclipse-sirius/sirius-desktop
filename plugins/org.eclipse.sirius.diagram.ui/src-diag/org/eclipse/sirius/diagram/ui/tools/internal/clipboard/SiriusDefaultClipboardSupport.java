@@ -109,7 +109,7 @@ public final class SiriusDefaultClipboardSupport extends AbstractClipboardSuppor
             public String copy() throws Exception {
                 keepNotes();
                 if (getEObjects() == null || getEObjects().isEmpty())
-                    return "";
+                    return ""; //$NON-NLS-1$
                 return doCopy();
             }
 

@@ -237,15 +237,15 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
         if (nodeLabel.getFont() != null) {
             final String text = node.getName();
 
-            final float charHeight = FigureUtilities.getStringExtents("ABCDEF", nodeLabel.getFont()).height + 5f;
-            final float charWidth = FigureUtilities.getTextWidth("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", nodeLabel.getFont()) / 52f;
+            final float charHeight = FigureUtilities.getStringExtents("ABCDEF", nodeLabel.getFont()).height + 5f; //$NON-NLS-1$
+            final float charWidth = FigureUtilities.getTextWidth("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", nodeLabel.getFont()) / 52f; //$NON-NLS-1$
 
             final double ratio = charHeight / charWidth;
 
             final int nbLines = text != null ? (int) ((Math.sqrt(text.length()) / ratio)) + 1 : 0;
             int nbCols = text != null ? (int) ((Math.sqrt(text.length()) * ratio)) + 1 : 0;
 
-            final int longestWord = text != null ? this.getTheLongestWord(text.split("\\s")) : 0;
+            final int longestWord = text != null ? this.getTheLongestWord(text.split("\\s")) : 0; //$NON-NLS-1$
             nbCols = Math.max(nbCols, longestWord);
 
             final int hHeight = (int) (nbLines * charHeight);

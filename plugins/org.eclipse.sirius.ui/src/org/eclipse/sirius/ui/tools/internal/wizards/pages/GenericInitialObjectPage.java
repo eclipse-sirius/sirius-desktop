@@ -129,12 +129,12 @@ public class GenericInitialObjectPage extends WizardPage {
     protected Collection<String> getEncodings() {
         if (encodings == null) {
             encodings = new ArrayList<String>();
-            encodings.add("UTF-8");
-            encodings.add("ASCII");
-            encodings.add("UTF-16");
-            encodings.add("UTF-16BE");
-            encodings.add("UTF-16LE");
-            encodings.add("ISO-8859-1");
+            encodings.add("UTF-8"); //$NON-NLS-1$
+            encodings.add("ASCII"); //$NON-NLS-1$
+            encodings.add("UTF-16"); //$NON-NLS-1$
+            encodings.add("UTF-16BE"); //$NON-NLS-1$
+            encodings.add("UTF-16LE"); //$NON-NLS-1$
+            encodings.add("ISO-8859-1"); //$NON-NLS-1$
         }
         return encodings;
     }

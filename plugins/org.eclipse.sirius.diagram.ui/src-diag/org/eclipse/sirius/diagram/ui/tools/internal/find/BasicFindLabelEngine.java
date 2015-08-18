@@ -108,7 +108,7 @@ public class BasicFindLabelEngine extends AbstractFindLabelEngine {
     private String getText(final AbstractGraphicalEditPart label) {
         final IFigure figure = label.getFigure();
         final String text = getText(figure);
-        return text != null ? text : "";
+        return text != null ? text : ""; //$NON-NLS-1$
     }
 
     private String getText(final IFigure figure) {

@@ -113,7 +113,7 @@ public class CompositeFilterDescriptionItemProvider extends FilterDescriptionIte
         if (label != null) {
             return label;
         }
-        return getString("_UI_CompositeFilterDescription_type");
+        return getString("_UI_CompositeFilterDescription_type"); //$NON-NLS-1$
     }
 
     /**

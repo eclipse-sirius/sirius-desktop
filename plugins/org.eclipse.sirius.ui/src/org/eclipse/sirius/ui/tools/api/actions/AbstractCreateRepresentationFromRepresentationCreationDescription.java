@@ -109,7 +109,7 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
             if (desc.getRepresentationDescription() == null) {
                 isEnabled = false;
             } else {
-                final CreateRepresentationCommand command = commandFactory.buildCreateRepresentationFromDescription(desc, target, "");
+                final CreateRepresentationCommand command = commandFactory.buildCreateRepresentationFromDescription(desc, target, ""); //$NON-NLS-1$
                 return command.canExecute();
             }
         }

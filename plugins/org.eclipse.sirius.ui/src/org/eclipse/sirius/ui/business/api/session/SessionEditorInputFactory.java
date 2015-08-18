@@ -26,7 +26,7 @@ public class SessionEditorInputFactory extends URIEditorInputFactory {
     /**
      * ID of the factory.
      */
-    public static final String ID = "org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory";
+    public static final String ID = "org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory"; //$NON-NLS-1$
 
     /**
      * Create a new factory.
@@ -71,8 +71,8 @@ public class SessionEditorInputFactory extends URIEditorInputFactory {
              * the editor from the memento, it might lead to a lot of
              * StackOverflowError and NullPointerException.
              */
-            String bundleSymbolicName = memento.getString("bundle");
-            String className = memento.getString("class");
+            String bundleSymbolicName = memento.getString("bundle"); //$NON-NLS-1$
+            String className = memento.getString("class"); //$NON-NLS-1$
             if (SessionEditorInput.class.getName().equals(className) && SiriusEditPlugin.ID.equals(bundleSymbolicName)) {
                 element = null;
             }

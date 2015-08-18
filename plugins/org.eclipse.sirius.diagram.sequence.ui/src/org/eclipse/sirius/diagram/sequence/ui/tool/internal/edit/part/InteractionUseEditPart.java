@@ -126,7 +126,7 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
      * @return the center label expression
      */
     protected String computeCenterLabelExpression() {
-        String centeredLabelText = "";
+        String centeredLabelText = ""; //$NON-NLS-1$
         if (resolveSemanticElement() instanceof DNodeContainer) {
             DNodeContainer dNodeContainer = (DNodeContainer) resolveSemanticElement();
             if (dNodeContainer.eContainer() != null) {
@@ -154,7 +154,7 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
                 return interpreter.evaluateString(self, expression);
             }
         }
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
     /**

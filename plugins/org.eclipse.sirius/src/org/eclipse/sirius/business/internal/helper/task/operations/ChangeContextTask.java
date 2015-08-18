@@ -30,12 +30,12 @@ public class ChangeContextTask extends AbstractOperationTask {
     /** The operation that describes how to change the context. */
     private ChangeContext op;
 
-    /** the interpreter to evaluate expression with a */
+    /** The interpreter to evaluate expression with. */
     private RuntimeLoggerInterpreter safeInterpreter;
 
     /**
      * Create a new {@link ChangeContextTask}.
-     * 
+     *
      * @param context
      *            the stack of contexts.
      * @param extPackage
@@ -52,11 +52,7 @@ public class ChangeContextTask extends AbstractOperationTask {
         this.safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() {
         final EObject browseResult = safeInterpreter.evaluateEObject(context.getCurrentTarget(), op, ToolPackage.eINSTANCE.getChangeContext_BrowseExpression());
         if (browseResult != null) {

@@ -81,19 +81,19 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
      * Key for Sirius's Traceability Markers, representing the internal
      * representation used by editor (used only for diagrams).
      */
-    public static final String INTERNAL_REPRESENTATION_URI = "DIAGRAM_URI";
+    public static final String INTERNAL_REPRESENTATION_URI = "DIAGRAM_URI"; //$NON-NLS-1$
 
     /**
      * Key for Sirius's Traceability Markers, representing the ID of element
      * inside its representation.
      */
-    public static final String REPRESENTATION_ELEMENT_ID = "REPRESENTATION_ELEMENT_ID";
+    public static final String REPRESENTATION_ELEMENT_ID = "REPRESENTATION_ELEMENT_ID"; //$NON-NLS-1$
 
     /**
      * Key for Sirius's Traceability Markers, representing the URI of the
      * representation.
      */
-    public static final String REPRESENTATION_URI = "REPRESENTATION_URI";
+    public static final String REPRESENTATION_URI = "REPRESENTATION_URI"; //$NON-NLS-1$
 
     /**
      * Key indicating that standard Traceability mechanism can be applied to the
@@ -105,7 +105,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
      * Internal key for Sirius's Traceability Markers, indicating that this
      * marker is a ghost.
      */
-    private static final String TRACEABILITY_INTERNAL_ATTRIBUTE = "traceab_viewpoint_ghost";
+    private static final String TRACEABILITY_INTERNAL_ATTRIBUTE = "traceab_viewpoint_ghost"; //$NON-NLS-1$
 
     /**
      * The editor that have called this MarkerNavigationProvider. It's optional
@@ -147,7 +147,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
         if (foundSession != null) {
             this.currentSession = foundSession;
         } else {
-            String editorTitle = "";
+            String editorTitle = ""; //$NON-NLS-1$
             if (currentEditor.some()) {
                 editorTitle = currentEditor.get().getTitle();
             }
@@ -388,7 +388,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
             shadowMarker.setAttribute(TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, EcoreUtil.getURI(this.representationToFocus).toString());
             shadowMarker.setAttribute(REPRESENTATION_ELEMENT_ID, resource.getURIFragment(representationElementToSelect).toString());
             shadowMarker.setAttribute(REPRESENTATION_URI, EcoreUtil.getURI(this.representationToFocus).toString());
-            shadowMarker.setAttribute(TRACEABILITY_INTERNAL_ATTRIBUTE, "active");
+            shadowMarker.setAttribute(TRACEABILITY_INTERNAL_ATTRIBUTE, "active"); //$NON-NLS-1$
 
             // Step 2 : we sets the focus on the editor and call the goToMarker
             // method on it

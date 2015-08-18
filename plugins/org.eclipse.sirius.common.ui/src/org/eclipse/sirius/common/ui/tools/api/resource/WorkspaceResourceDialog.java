@@ -234,7 +234,7 @@ public class WorkspaceResourceDialog extends Dialog {
          */
         @Override
         public boolean select(final Viewer theViewer, final Object parentElement, final Object element) {
-            if (extensions == null || extensions.size() == 0 || extensions.contains("*")) {
+            if (extensions == null || extensions.size() == 0 || extensions.contains("*")) { //$NON-NLS-1$
                 return true;
             }
 

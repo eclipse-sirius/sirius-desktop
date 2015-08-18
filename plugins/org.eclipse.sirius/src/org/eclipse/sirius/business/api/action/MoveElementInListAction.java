@@ -47,21 +47,17 @@ import com.google.common.base.Preconditions;
  */
 public class MoveElementInListAction extends AbstractExternalJavaAction {
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canExecute(Collection<? extends EObject> selections) {
         return selections.size() == 1;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-        EObject element = getParameter(parameters, "element", EObject.class);
-        EObject owner = getParameter(parameters, "referenceOwner", EObject.class);
-        String refName = getParameter(parameters, "referenceName", String.class);
-        EObject pred = getOptionalParameter(parameters, "predecessor", EObject.class);
+        EObject element = getParameter(parameters, "element", EObject.class); //$NON-NLS-1$
+        EObject owner = getParameter(parameters, "referenceOwner", EObject.class); //$NON-NLS-1$
+        String refName = getParameter(parameters, "referenceName", String.class); //$NON-NLS-1$
+        EObject pred = getOptionalParameter(parameters, "predecessor", EObject.class); //$NON-NLS-1$
         if (pred != null) {
             Preconditions.checkArgument(element != pred, "'element' and 'predecessor' must be different.");
         }

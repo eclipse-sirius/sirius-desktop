@@ -148,10 +148,10 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     public String getText(Object object) {
 
         String color = new ColorQuery(((ShapeContainerStyleDescription) object).getBackgroundColor()).getLabel();
-        String label = getString("_UI_ShapeContainerStyleDescription_type");
+        String label = getString("_UI_ShapeContainerStyleDescription_type"); //$NON-NLS-1$
 
         if (color != null) {
-            return label + " " + color;
+            return label + " " + color; //$NON-NLS-1$
         } else {
             return label;
         }

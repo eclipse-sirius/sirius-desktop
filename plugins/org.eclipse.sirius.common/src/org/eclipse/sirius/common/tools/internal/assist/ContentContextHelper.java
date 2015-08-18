@@ -53,7 +53,7 @@ public class ContentContextHelper {
      * @return the proposal start.
      */
     public String getProposalStart() {
-        String proposalStart = "";
+        String proposalStart = ""; //$NON-NLS-1$
 
         // There are two cases considered here. In the first case there is no
         // selected interpreter, so the completion is done on interpreters

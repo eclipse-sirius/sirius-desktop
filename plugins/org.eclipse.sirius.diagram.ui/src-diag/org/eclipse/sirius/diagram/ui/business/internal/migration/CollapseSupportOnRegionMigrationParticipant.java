@@ -48,7 +48,7 @@ import com.google.common.collect.Sets;
  */
 public class CollapseSupportOnRegionMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
 
-    private static final Version MIGRATION_VERSION = new Version("10.0.0.201505131200");
+    private static final Version MIGRATION_VERSION = new Version("10.0.0.201505131200"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {

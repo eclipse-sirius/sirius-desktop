@@ -42,7 +42,7 @@ public class DModelElementWithLabelPropertyTester extends PropertyTester {
         if (receiver instanceof IGraphicalEditPart) {
             final IGraphicalEditPart part = (IGraphicalEditPart) receiver;
 
-            if ("isDModelElementWithLabel".equals(property)) {
+            if ("isDModelElementWithLabel".equals(property)) { //$NON-NLS-1$
                 final EObject model = part.resolveSemanticElement();
                 if (model instanceof DDiagramElement) {
                     result = new DDiagramElementQuery((DDiagramElement) model).canHideLabel();

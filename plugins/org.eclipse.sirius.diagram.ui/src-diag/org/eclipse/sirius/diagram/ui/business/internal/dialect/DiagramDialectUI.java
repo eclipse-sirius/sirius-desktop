@@ -27,7 +27,7 @@ public class DiagramDialectUI implements DialectUI {
      * {@inheritDoc}
      */
     public String getName() {
-        return "diagram";
+        return "diagram"; //$NON-NLS-1$
     }
 
     /**

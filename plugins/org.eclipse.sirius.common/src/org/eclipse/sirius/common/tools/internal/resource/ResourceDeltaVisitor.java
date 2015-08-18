@@ -113,7 +113,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
             URIConverter theURIConverter = workspaceBackend.getObservedSet().getURIConverter();
             URI normalizedURI = theURIConverter.normalize(uri);
             for (Resource resource : initialresources) {
-                URI resourceNormalizedURI = URI.createURI("");
+                URI resourceNormalizedURI = URI.createURI(""); //$NON-NLS-1$
                 try {
                     resourceNormalizedURI = workspaceBackend.getObservedSet().getURIConverter().normalize(resource.getURI());
                 } catch (IllegalStateException e) {

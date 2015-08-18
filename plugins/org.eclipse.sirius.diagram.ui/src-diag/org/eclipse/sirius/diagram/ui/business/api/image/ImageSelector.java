@@ -24,7 +24,7 @@ public interface ImageSelector {
      * The name of the CDOResource containing shared images at the top level of
      * the repo.
      */
-    String IMAGES_RESOURCE_NAME = "images";
+    String IMAGES_RESOURCE_NAME = "images"; //$NON-NLS-1$
 
     /**
      * Get a image.

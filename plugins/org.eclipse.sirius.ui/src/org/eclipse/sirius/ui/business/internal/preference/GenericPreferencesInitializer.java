@@ -36,17 +36,17 @@ public class GenericPreferencesInitializer extends AbstractPreferenceInitializer
         final IPreferenceStore uiPreferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
         final IEclipsePreferences defaultCorePreferences = DefaultScope.INSTANCE.getNode(SiriusPlugin.ID);
 
-        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), getValue("_Pref_RefreshOnRepresentationOpening"));
-        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), getValue("_Pref_ReloadOnLastEditorClose"));
-        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), getValue("_Pref_SaveWhenNoEditor"));
-        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name(), getValue("_Pref_ReactToPermissionIssuesByDisplayingPopup"));
-        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG.name(), getValue("_Pref_DisplayPermissionIssuesThroughDialog"));
+        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), getValue("_Pref_RefreshOnRepresentationOpening")); //$NON-NLS-1$
+        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), getValue("_Pref_ReloadOnLastEditorClose")); //$NON-NLS-1$
+        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), getValue("_Pref_SaveWhenNoEditor")); //$NON-NLS-1$
+        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name(), getValue("_Pref_ReactToPermissionIssuesByDisplayingPopup")); //$NON-NLS-1$
+        uiPreferenceStore.setDefault(SiriusUIPreferencesKeys.PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG.name(), getValue("_Pref_DisplayPermissionIssuesThroughDialog")); //$NON-NLS-1$
 
-        final boolean autoRefreshDefValue = getValue("_Pref_AutoRefresh");
+        final boolean autoRefreshDefValue = getValue("_Pref_AutoRefresh"); //$NON-NLS-1$
         defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
         uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
 
-        final boolean emptyAirdFragOnControl = getValue("_Pref_EmptyAirdFragmentOnControl");
+        final boolean emptyAirdFragOnControl = getValue("_Pref_EmptyAirdFragmentOnControl"); //$NON-NLS-1$
         defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
         uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
     }

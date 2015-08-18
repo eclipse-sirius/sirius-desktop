@@ -22,8 +22,8 @@ package org.eclipse.sirius.ui.tools.api.actions.export;
 public interface IExportRepresentationsAsImagesExtension {
 
     /** The extension point ID. */
-    String ID = "org.eclipse.sirius.ui.exportRepresentationsAsImagesExtension";
+    String ID = "org.eclipse.sirius.ui.exportRepresentationsAsImagesExtension"; //$NON-NLS-1$
 
     /** The class attribute. */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 }

@@ -124,7 +124,7 @@ public class ContainerMappingImportItemProvider extends ContainerMappingItemProv
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ContainerMappingImport) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ContainerMappingImport_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_ContainerMappingImport_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -176,7 +176,7 @@ public class ContainerMappingImportItemProvider extends ContainerMappingItemProv
                 || childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

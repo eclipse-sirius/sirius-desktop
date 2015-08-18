@@ -35,13 +35,13 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 public final class DiagramTypeDescriptorRegistry {
 
     /** Diagram type extension point ID. */
-    private static final String DIAGRAM_TYPE_EP_ID = "org.eclipse.sirius.diagram.diagramTypeProvider";
+    private static final String DIAGRAM_TYPE_EP_ID = "org.eclipse.sirius.diagram.diagramTypeProvider"; //$NON-NLS-1$
 
     /** The diagram description provider attribute. */
-    private static final String DIAGRAM_DESCRIPTION_PROVIDER_ATTR = "descriptionProvider";
+    private static final String DIAGRAM_DESCRIPTION_PROVIDER_ATTR = "descriptionProvider"; //$NON-NLS-1$
 
     /** The label attribute. */
-    private static final String LABEL_ATTRIBUTE = "label";
+    private static final String LABEL_ATTRIBUTE = "label"; //$NON-NLS-1$
 
     private static DiagramTypeDescriptorRegistry instance;
 

@@ -31,18 +31,18 @@ public class ModelExplorerTabDescriptor {
     /**
      * Name of the attribute corresponding to the contributed class's path.
      */
-    public static final String MODEL_EXPLORER_TAB_CLASS_NAME = "class";
+    public static final String MODEL_EXPLORER_TAB_CLASS_NAME = "class"; //$NON-NLS-1$
 
     /**
      * Name of the attribute corresponding to the contributed icon's relative
      * path.
      */
-    public static final String MODEL_EXPLORER_TAB_ICON = "icon";
+    public static final String MODEL_EXPLORER_TAB_ICON = "icon"; //$NON-NLS-1$
 
     /**
      * Name of the attribute corresponding to the contributed id.
      */
-    public static final String MODEL_EXPLORER_TAB_ID = "icon";
+    public static final String MODEL_EXPLORER_TAB_ID = "icon"; //$NON-NLS-1$
 
     /**
      * Configuration element of this descriptor .

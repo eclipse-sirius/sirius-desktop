@@ -131,7 +131,7 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((BehaviorTool) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_BehaviorTool_type") : getString("_UI_BehaviorTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_BehaviorTool_type") : getString("_UI_BehaviorTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

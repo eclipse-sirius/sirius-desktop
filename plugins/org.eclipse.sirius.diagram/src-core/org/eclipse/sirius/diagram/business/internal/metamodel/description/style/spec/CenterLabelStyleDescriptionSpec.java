@@ -29,7 +29,7 @@ public class CenterLabelStyleDescriptionSpec extends CenterLabelStyleDescription
      * @not-generated
      * @ordered
      */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = "";
+    protected static final String LABEL_EXPRESSION_EDEFAULT = ""; //$NON-NLS-1$
 
     /**
      * Default constructor.

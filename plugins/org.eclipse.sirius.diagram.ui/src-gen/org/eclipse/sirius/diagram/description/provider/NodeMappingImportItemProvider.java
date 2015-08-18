@@ -116,9 +116,9 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
     public Object getImage(Object object) {
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
-            return overlayImage(object, getResourceLocator().getImage("obj16/BorderedNodeMappingImport"));
+            return overlayImage(object, getResourceLocator().getImage("obj16/BorderedNodeMappingImport")); //$NON-NLS-1$
         }
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeMappingImport"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeMappingImport")); //$NON-NLS-1$
     }
 
     /**
@@ -134,7 +134,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
             return "Bordered " + label;
         }
-        return label == null || label.length() == 0 ? getString("_UI_NodeMappingImport_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_NodeMappingImport_type") : label; //$NON-NLS-1$
 
     }
 

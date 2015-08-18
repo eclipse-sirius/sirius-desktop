@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.TableColumn;
  */
 public final class FiltersTableViewer {
 
-    private static final String[] COLUMNS = { " ", "Filter" };
+    private static final String[] COLUMNS = { " ", "Filter" }; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.

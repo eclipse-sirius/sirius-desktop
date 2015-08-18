@@ -36,12 +36,12 @@ public final class ClassLoadingService {
     /**
      * ClassLoading service extension point ID.
      */
-    private static final String ID = "org.eclipse.sirius.common.classloading_override";
+    private static final String ID = "org.eclipse.sirius.common.classloading_override"; //$NON-NLS-1$
 
     /**
      * Extension point attribute to get the {@link ClassLoading} class.
      */
-    private static final String CLASS_ATTRIBUTE = "class";
+    private static final String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     private ClassLoadingService() {
 

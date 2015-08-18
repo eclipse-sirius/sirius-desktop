@@ -34,7 +34,7 @@ public final class GMFRuntimeCompatibility {
         Version gmfVersion1_2_0 = new Version(1, 2, 0);
         Version gmfVersion1_3_3 = new Version(1, 3, 3);
         Version version = null;
-        String stringVersion = Platform.getBundle("org.eclipse.gmf.runtime.diagram.ui").getHeaders().get(org.osgi.framework.Constants.BUNDLE_VERSION);
+        String stringVersion = Platform.getBundle("org.eclipse.gmf.runtime.diagram.ui").getHeaders().get(org.osgi.framework.Constants.BUNDLE_VERSION); //$NON-NLS-1$
         try {
             version = Version.parseVersion(stringVersion);
             if (compareTo(gmfVersion1_2_0, version) <= 0 && compareTo(gmfVersion1_3_3, version) >= 0) {

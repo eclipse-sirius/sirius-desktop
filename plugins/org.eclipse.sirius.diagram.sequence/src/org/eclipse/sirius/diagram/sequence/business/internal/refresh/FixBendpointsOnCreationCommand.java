@@ -176,7 +176,7 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
         }
 
         PrecisionPoint sourceRelativeLocation = getAnchorRelativeLocation(firstClick, sourceBounds);
-        sourceTerminal = "(" + sourceRelativeLocation.preciseX() + "," + sourceRelativeLocation.preciseY() + ")";
+        sourceTerminal = "(" + sourceRelativeLocation.preciseX() + "," + sourceRelativeLocation.preciseY() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
         Point secondClick = new Point(0, 0);
         Rectangle targetBounds = GMFHelper.getAbsoluteBounds((Node) target);
@@ -207,7 +207,7 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
         }
 
         PrecisionPoint targetRelativeLocation = getAnchorRelativeLocation(secondClick, targetBounds);
-        targetTerminal = "(" + targetRelativeLocation.preciseX() + "," + targetRelativeLocation.preciseY() + ")";
+        targetTerminal = "(" + targetRelativeLocation.preciseX() + "," + targetRelativeLocation.preciseY() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
         // Computes pointList
         PrecisionPoint sourceRelativeReference = SequenceSlidableAnchor.parseTerminalString(sourceTerminal);

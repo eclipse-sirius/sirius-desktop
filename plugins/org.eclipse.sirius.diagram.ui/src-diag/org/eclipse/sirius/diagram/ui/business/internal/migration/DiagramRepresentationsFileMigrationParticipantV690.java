@@ -46,7 +46,7 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
     /**
      * The VP version for this migration.
      */
-    public static final Version MIGRATION_VERSION = new Version("6.9.0.201309101020");
+    public static final Version MIGRATION_VERSION = new Version("6.9.0.201309101020"); //$NON-NLS-1$
 
     /**
      * Provides AdditionalLayer instead of OptionalLayer.
@@ -60,7 +60,7 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
      */
     public EClassifier getType(EPackage ePackage, String name) {
         Set<String> descriptionsNsUri = Sets.newHashSet(DescriptionPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getNsURI());
-        if (ePackage != null && ePackage.getNsURI() != null && descriptionsNsUri.contains(ePackage.getNsURI()) && name.equals("OptionalLayer")) {
+        if (ePackage != null && ePackage.getNsURI() != null && descriptionsNsUri.contains(ePackage.getNsURI()) && name.equals("OptionalLayer")) { //$NON-NLS-1$
             return DescriptionPackage.eINSTANCE.getAdditionalLayer();
         }
         return null;

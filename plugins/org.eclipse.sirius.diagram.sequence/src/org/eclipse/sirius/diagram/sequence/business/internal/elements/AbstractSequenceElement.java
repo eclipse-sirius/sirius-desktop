@@ -149,6 +149,6 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
      */
     @Override
     public String toString() {
-        return "#<" + getClass().getSimpleName() + ": " + view.getElement() + ">";
+        return "#<" + getClass().getSimpleName() + ": " + view.getElement() + ">"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 }

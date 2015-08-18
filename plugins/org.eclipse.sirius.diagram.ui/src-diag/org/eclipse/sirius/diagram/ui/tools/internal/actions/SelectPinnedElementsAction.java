@@ -82,7 +82,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
         }
     }
 
-    private static final String ACTION_ID = "selectPinnedElementsAction";
+    private static final String ACTION_ID = "selectPinnedElementsAction"; //$NON-NLS-1$
 
     private static final String TITLE = "Diagram elements pinning";
 
@@ -90,7 +90,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
 
     private static final String TOOLTIP = "Pin/Unpin";
 
-    private static final String ICON_PATH = "icons/pinWizard.gif";
+    private static final String ICON_PATH = "icons/pinWizard.gif"; //$NON-NLS-1$
 
     /** The pin icon descriptor. */
     private static final ImageDescriptor DESC_PIN = DiagramUIPlugin.Implementation.getBundledImageDescriptor(ICON_PATH);

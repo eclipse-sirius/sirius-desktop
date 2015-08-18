@@ -91,10 +91,10 @@ import org.eclipse.ui.part.FileEditorInput;
 public abstract class AbstractDTableEditor extends AbstractDTreeEditor implements DTableEditor {
 
     /** The contributor ID */
-    private static final String CONTRIBUTOR_ID = "org.eclipse.sirius.table.ui.EditorID";
+    private static final String CONTRIBUTOR_ID = "org.eclipse.sirius.table.ui.EditorID"; //$NON-NLS-1$
 
     /** the context ID. */
-    private static final String CONTEXT_ID = CONTRIBUTOR_ID + ".tableContext";
+    private static final String CONTEXT_ID = CONTRIBUTOR_ID + ".tableContext"; //$NON-NLS-1$
 
     /** This DTable model */
     private DTable tableModel;
@@ -277,10 +277,10 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     @Override
     public Image getFrozenRepresentationImage() {
         if (frozenRepresentationImage == null || frozenRepresentationImage.isDisposed()) {
-            Image refreshImage = TableUIPlugin.Implementation.getImage(TableUIPlugin.Implementation.getBundledImageDescriptor("icons/" + DTableViewerManager.REFRESH_IMG + ".gif"));
+            Image refreshImage = TableUIPlugin.Implementation.getImage(TableUIPlugin.Implementation.getBundledImageDescriptor("icons/" + DTableViewerManager.REFRESH_IMG + ".gif")); //$NON-NLS-1$ //$NON-NLS-2$
             List<Object> images = new ArrayList<Object>(2);
             images.add(refreshImage);
-            Image lockByOtherOverlayIamge = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
+            Image lockByOtherOverlayIamge = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif")); //$NON-NLS-1$
             images.add(lockByOtherOverlayIamge);
             ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
             frozenRepresentationImage = SiriusEditPlugin.getPlugin().getImage(composedImageDescriptor);

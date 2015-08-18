@@ -81,7 +81,7 @@ public abstract class AbstractSemanticLayoutDataKey implements LayoutDataKey, Co
      */
     @Override
     public String toString() {
-        return "Key ID: " + getId();
+        return "Key ID: " + getId(); //$NON-NLS-1$
     }
 
     /**

@@ -31,16 +31,12 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * @author Goulwen Le Fur
  */
 public class OpenPropertiesWizardAction extends AbstractExternalJavaAction {
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canExecute(Collection<? extends EObject> selections) {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
         if (selections.size() > 0) {
             try {

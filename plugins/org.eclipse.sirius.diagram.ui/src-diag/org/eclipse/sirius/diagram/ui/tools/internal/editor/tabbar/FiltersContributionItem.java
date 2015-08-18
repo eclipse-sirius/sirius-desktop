@@ -35,7 +35,7 @@ import org.eclipse.swt.graphics.Image;
 public class FiltersContributionItem extends AbstractMenuContributionItem {
 
     /** The filters icon descriptor. */
-    private static final ImageDescriptor DESC_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/filters.gif");
+    private static final ImageDescriptor DESC_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/filters.gif"); //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

@@ -25,7 +25,7 @@ public class RepresentationDescriptionWithoutRepresentationCommonFilter extends 
     /**
      * The ID of this filter (used in plugin.xml).
      */
-    public static final String ID = "org.eclipse.sirius.ui.commonFilter.representation.description";
+    public static final String ID = "org.eclipse.sirius.ui.commonFilter.representation.description"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

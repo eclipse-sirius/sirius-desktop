@@ -127,7 +127,7 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
         } else {
             // It means that the semantic element referenced by this edit part
             // is not editable, we return a "locked" image (red padlock)
-            return DiagramUIPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"));
+            return DiagramUIPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif")); //$NON-NLS-1$
         }
     }
 

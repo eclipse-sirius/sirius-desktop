@@ -34,7 +34,7 @@ public class ExistingDefaultLayerConstraint extends AbstractConstraint {
             if (DescriptionPackage.eINSTANCE.getDiagramDescription().isSuperTypeOf(eObj.eClass())) {
                 DiagramDescription diagram = (DiagramDescription) eObj;
                 if (diagram.getDefaultLayer() == null) {
-                    status = ctx.createFailureStatus(new Object[] { "'" + diagram.getName() + "'" });
+                    status = ctx.createFailureStatus(new Object[] { "'" + diagram.getName() + "'" }); //$NON-NLS-1$ //$NON-NLS-2$
                 }
             }
         }

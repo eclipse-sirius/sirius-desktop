@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 public class VSMVersionSAXParser extends AbstractVersionSAXParser {
 
     /* In VSM files, the Group element is versioned. */
-    private static final String VERSIONED_ELEMENT_QUALIFIED_NAME = DescriptionPackage.eINSTANCE.getNsPrefix() + ":" + DescriptionPackage.eINSTANCE.getGroup().getName();
+    private static final String VERSIONED_ELEMENT_QUALIFIED_NAME = DescriptionPackage.eINSTANCE.getNsPrefix() + ":" + DescriptionPackage.eINSTANCE.getGroup().getName(); //$NON-NLS-1$
 
     /**
      * Constructor.

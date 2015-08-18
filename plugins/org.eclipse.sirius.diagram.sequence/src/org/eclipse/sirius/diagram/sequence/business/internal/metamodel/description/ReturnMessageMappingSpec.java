@@ -148,7 +148,7 @@ public class ReturnMessageMappingSpec extends ReturnMessageMappingImpl {
      */
     @Override
     public String toString() {
-        return getClass().getName() + " " + getName();
+        return getClass().getName() + " " + getName(); //$NON-NLS-1$
     }
 
 }

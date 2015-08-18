@@ -61,10 +61,10 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_ME_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation
-            .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif");
+            .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif"); //$NON-NLS-1$
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
-    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif");
+    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"); //$NON-NLS-1$
 
     /**
      * The transparency of this shape in percent. Must be in [0, 100] range.
@@ -222,7 +222,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
     public static void createNotification(DiagramRootEditPart rootEditPart, LockStatus lockStatus) {
         final LayeredPane pane = (LayeredPane) rootEditPart.getLayer(LayerConstants.PRINTABLE_LAYERS);
 
-        final IFigure notificationFigure = new DiagramSemanticElementLockedNotificationFigure(rootEditPart, "", lockStatus);
+        final IFigure notificationFigure = new DiagramSemanticElementLockedNotificationFigure(rootEditPart, "", lockStatus); //$NON-NLS-1$
         removeNotification(rootEditPart);
         pane.add(notificationFigure);
     }

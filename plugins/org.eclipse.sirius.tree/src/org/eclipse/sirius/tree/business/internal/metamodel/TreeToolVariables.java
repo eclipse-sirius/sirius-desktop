@@ -138,10 +138,10 @@ public class TreeToolVariables extends DescriptionSwitch<Object> {
     @Override
     public Object caseTreeCreationDescription(final TreeCreationDescription object) {
         final ContainerViewVariable containerViewVariable = ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         object.setContainerViewVariable(containerViewVariable);
         final NameVariable treeNameVariable = ToolFactory.eINSTANCE.createNameVariable();
-        treeNameVariable.setName("treeName");
+        treeNameVariable.setName("treeName"); //$NON-NLS-1$
         object.setRepresentationNameVariable(treeNameVariable);
         final InitialOperation initialOperation = ToolFactory.eINSTANCE.createInitialOperation();
         object.setInitialOperation(initialOperation);
@@ -157,13 +157,13 @@ public class TreeToolVariables extends DescriptionSwitch<Object> {
     @Override
     public Object caseTreeNavigationDescription(final TreeNavigationDescription object) {
         final ContainerViewVariable containerViewVariable = ToolFactory.eINSTANCE.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
+        containerViewVariable.setName("containerView"); //$NON-NLS-1$
         object.setContainerViewVariable(containerViewVariable);
         final ElementSelectVariable containerVariable = ToolFactory.eINSTANCE.createElementSelectVariable();
-        containerVariable.setName("container");
+        containerVariable.setName("container"); //$NON-NLS-1$
         object.setContainerVariable(containerVariable);
         final NameVariable treeNameVariable = ToolFactory.eINSTANCE.createNameVariable();
-        treeNameVariable.setName("treeName");
+        treeNameVariable.setName("treeName"); //$NON-NLS-1$
         object.setRepresentationNameVariable(treeNameVariable);
         return super.caseTreeNavigationDescription(object);
     }

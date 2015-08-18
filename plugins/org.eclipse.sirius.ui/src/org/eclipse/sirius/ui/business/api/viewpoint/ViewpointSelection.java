@@ -102,9 +102,9 @@ public final class ViewpointSelection {
 
     private static final String VIEWPOINT_SELECTION_WIZARD_PAGE_TITLE = "Viewpoints selection";
 
-    private static final String VIEWPOINTS_SELECTION_WIZARD_PAGE_ID = "viewpointsSelection";
+    private static final String VIEWPOINTS_SELECTION_WIZARD_PAGE_ID = "viewpointsSelection"; //$NON-NLS-1$
 
-    private static final String[] COLUMNS = { " ", "icon", "Viewpoint" };
+    private static final String[] COLUMNS = { " ", "icon", "Viewpoint" }; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.
@@ -403,7 +403,7 @@ public final class ViewpointSelection {
                 String extended = extension.getViewpointURI();
                 Pattern pattern = Pattern.compile(extended);
                 if (!atLeastOneUriMatchesPattern(selectedURIs, pattern)) {
-                    result.put(viewpoint.getName(), extended.trim().replaceFirst("^viewpoint:/[^/]+/", ""));
+                    result.put(viewpoint.getName(), extended.trim().replaceFirst("^viewpoint:/[^/]+/", "")); //$NON-NLS-1$ //$NON-NLS-2$
                 }
             }
         }
@@ -665,7 +665,7 @@ public final class ViewpointSelection {
 
         private Image getEnhancedImage(final Image image, final Viewpoint viewpoint) {
             if (!ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
-                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/decorator/folder_close.gif"));
+                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/decorator/folder_close.gif")); //$NON-NLS-1$
             }
             return image;
         }
@@ -681,9 +681,9 @@ public final class ViewpointSelection {
             case 0:
                 if (element instanceof Viewpoint) {
                     final Viewpoint vp = (Viewpoint) element;
-                    image = SiriusEditPlugin.getPlugin().getBundledImage("/icons/full/others/checkbox_inactive.gif");
+                    image = SiriusEditPlugin.getPlugin().getBundledImage("/icons/full/others/checkbox_inactive.gif"); //$NON-NLS-1$
                     if (findViewpoint(vp)) {
-                        image = SiriusEditPlugin.getPlugin().getBundledImage("/icons/full/others/checkbox_active.gif");
+                        image = SiriusEditPlugin.getPlugin().getBundledImage("/icons/full/others/checkbox_active.gif"); //$NON-NLS-1$
                     }
                 }
                 break;
@@ -739,9 +739,9 @@ public final class ViewpointSelection {
                 }
                 if (viewpoint.getEndUserDocumentation() != null && viewpoint.getEndUserDocumentation().trim().length() > 0) {
                     if (toolTip != null) {
-                        toolTip += "\n\n";
+                        toolTip += "\n\n"; //$NON-NLS-1$
                     } else {
-                        toolTip = "";
+                        toolTip = ""; //$NON-NLS-1$
                     }
                     toolTip += viewpoint.getEndUserDocumentation();
                 }

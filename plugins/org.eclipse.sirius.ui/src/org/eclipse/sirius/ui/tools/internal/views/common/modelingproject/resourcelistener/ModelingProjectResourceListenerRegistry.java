@@ -30,9 +30,9 @@ import com.google.common.collect.Lists;
  */
 public final class ModelingProjectResourceListenerRegistry {
 
-    private static final String EXTENSION_POINT = "org.eclipse.sirius.ui.modelingprojectresourcelistener";
+    private static final String EXTENSION_POINT = "org.eclipse.sirius.ui.modelingprojectresourcelistener"; //$NON-NLS-1$
 
-    private static final Object TAG_EXTENSION = "resourcelistener";
+    private static final Object TAG_EXTENSION = "resourcelistener"; //$NON-NLS-1$
 
     /**
      * The list of all contributed {@link IModelingProjectResourceListener}s.

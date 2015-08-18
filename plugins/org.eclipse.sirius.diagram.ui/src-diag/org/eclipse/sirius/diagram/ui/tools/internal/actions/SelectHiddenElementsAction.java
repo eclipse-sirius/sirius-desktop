@@ -98,7 +98,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
 
     private static final String TOOLTIP = "Show/Hide";
 
-    private static final String ICON_PATH = "icons/categoryWizard.gif";
+    private static final String ICON_PATH = "icons/categoryWizard.gif"; //$NON-NLS-1$
 
     /** The hide icon descriptor. */
     private static final ImageDescriptor DESC_HIDE = DiagramUIPlugin.Implementation.getBundledImageDescriptor(ICON_PATH);

@@ -196,21 +196,21 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             result = labelProvider.getText(eObject);
         } else {
             result = eObject.eClass().getName();
-            final EStructuralFeature nameStructuralFeature = eObject.eClass().getEStructuralFeature("name");
+            final EStructuralFeature nameStructuralFeature = eObject.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
             if (nameStructuralFeature != null) {
                 final String name = (String) eObject.eGet(nameStructuralFeature);
                 if (name != null) {
-                    result = result + " " + name;
+                    result = result + " " + name; //$NON-NLS-1$
                 }
             }
         }
         if (result == null) {
-            result = "";
+            result = ""; //$NON-NLS-1$
         }
         String resultTmp = result;
         int i = 2;
         while (categoryNames.values().contains(resultTmp)) {
-            resultTmp = result + " " + i++;
+            resultTmp = result + " " + i++; //$NON-NLS-1$
         }
         result = resultTmp;
         categoryNames.put(eObject, result);

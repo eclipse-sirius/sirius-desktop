@@ -42,7 +42,7 @@ public final class RGBValues {
 
     // CHECKSTYLE:ON
 
-    private static final String SEPARATOR = ",";
+    private static final String SEPARATOR = ","; //$NON-NLS-1$
 
     private int red;
 

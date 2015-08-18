@@ -81,9 +81,7 @@ public class ServiceProposalProvider implements IProposalProvider {
         return proposals;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof ServiceInterpreter)) {
@@ -181,7 +179,7 @@ public class ServiceProposalProvider implements IProposalProvider {
                     // Add a "." to each proposal
                     for (ContentProposal contentProposal : variableProposals) {
                         proposals.add(new ContentProposal(contentProposal.getProposal() + ServiceInterpreter.RECEIVER_SEPARATOR, contentProposal.getProposal() + ServiceInterpreter.RECEIVER_SEPARATOR
-                                + ": " + contentProposal.getInformation(), contentProposal.getInformation(), contentProposal.getCursorPosition() + 1));
+                                + ": " + contentProposal.getInformation(), contentProposal.getInformation(), contentProposal.getCursorPosition() + 1)); //$NON-NLS-1$
                     }
                 }
             }
@@ -197,15 +195,15 @@ public class ServiceProposalProvider implements IProposalProvider {
             Iterator<String> iterator = parametersTypes.iterator();
             if (iterator.hasNext()) {
                 iterator.next();
-                serviceName += "(";
+                serviceName += "("; //$NON-NLS-1$
                 while (iterator.hasNext()) {
                     String parameter = iterator.next();
                     serviceName += parameter;
                     if (iterator.hasNext()) {
-                        serviceName += ", ";
+                        serviceName += ", "; //$NON-NLS-1$
                     }
                 }
-                serviceName += ")";
+                serviceName += ")"; //$NON-NLS-1$
             }
 
             serviceNames.add(serviceName);

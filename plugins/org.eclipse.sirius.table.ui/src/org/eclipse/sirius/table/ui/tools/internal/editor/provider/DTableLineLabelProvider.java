@@ -49,7 +49,7 @@ public class DTableLineLabelProvider extends DSemanticTargetBasedLabelProvider i
             final DLine line = (DLine) element;
             return line.getLabel();
         }
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
     /**

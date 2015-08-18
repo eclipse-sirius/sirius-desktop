@@ -76,7 +76,7 @@ public class VSMResolver {
             }
         });
         if (!missing.isEmpty()) {
-            String msg = MessageFormat.format("Some of the required logical Sirius URIs could not be resolved to physical resources: {0}.", Joiner.on(", ").join(missing));
+            String msg = MessageFormat.format("Some of the required logical Sirius URIs could not be resolved to physical resources: {0}.", Joiner.on(", ").join(missing)); //$NON-NLS-2$
             throw new IllegalArgumentException(msg);
         } else {
             return ImmutableSet.copyOf(Iterables.filter(allPhysical, Predicates.notNull()));

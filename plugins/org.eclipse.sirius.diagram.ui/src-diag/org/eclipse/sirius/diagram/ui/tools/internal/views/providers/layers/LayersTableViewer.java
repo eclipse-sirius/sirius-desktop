@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.TableColumn;
  */
 public final class LayersTableViewer {
 
-    private static final String[] COLUMNS = { " ", " ", "Layer" };
+    private static final String[] COLUMNS = { " ", " ", "Layer" }; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.

@@ -20,10 +20,10 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 public interface SessionManagerListener {
 
     /** The extension point ID. */
-    String ID = "org.eclipse.sirius.sessionManagerListener";
+    String ID = "org.eclipse.sirius.sessionManagerListener"; //$NON-NLS-1$
 
     /** The class attribute. */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /**
      * Called when a new session has been added in the manager.

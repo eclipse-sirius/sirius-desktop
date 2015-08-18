@@ -28,12 +28,12 @@ public interface RepresentationTemplateEditManager {
     /**
      * Representation Template edit manager extension point ID.
      */
-    String ID = "org.eclipse.sirius.ui.representationTemplateEdit";
+    String ID = "org.eclipse.sirius.ui.representationTemplateEdit"; //$NON-NLS-1$
 
     /**
      * Extension point attribute for the representation template class.
      */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /**
      * Singleton manager corresponding to a given Eclipse instance.

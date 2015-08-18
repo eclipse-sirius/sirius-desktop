@@ -62,7 +62,7 @@ public final class TypesUtil {
         if (selfTyping.size() == 0) {
             selfTyping.add(new ClassType(queryEnvironment, EObject.class));
         }
-        variableTypes.put("self", selfTyping);
+        variableTypes.put("self", selfTyping); //$NON-NLS-1$
 
         for (Entry<String, VariableType> varDef : context.getVariables().entrySet()) {
             VariableType typeName = varDef.getValue();

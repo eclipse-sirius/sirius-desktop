@@ -63,7 +63,7 @@ public class RepresentationsFileSaxParser {
      *            A progress monitor
      */
     public void analyze(final IProgressMonitor monitor) {
-        monitor.beginTask("", 1);
+        monitor.beginTask("", 1); //$NON-NLS-1$
         RepresentationsFileHandler sessionHandler = new RepresentationsFileHandler(getRepresentationsFileURI());
         InputStream inputStream = null;
         try {

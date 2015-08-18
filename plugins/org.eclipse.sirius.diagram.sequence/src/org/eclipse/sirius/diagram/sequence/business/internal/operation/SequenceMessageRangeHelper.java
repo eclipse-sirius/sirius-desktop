@@ -32,7 +32,7 @@ import com.google.common.collect.Iterables;
  * @author pcdavid
  */
 public class SequenceMessageRangeHelper {
-    private static final String TOP_CENTER_TERMINAL = "(0.5, 0.0)";
+    private static final String TOP_CENTER_TERMINAL = "(0.5, 0.0)"; //$NON-NLS-1$
 
     /**
      * Sets the range for a normal (non-reflective), horizontal message.

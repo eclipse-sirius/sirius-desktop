@@ -68,9 +68,7 @@ public class VariableProposalProvider implements IProposalProvider {
         return proposals;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof VariableInterpreter)) {
@@ -130,7 +128,7 @@ public class VariableProposalProvider implements IProposalProvider {
                     String variableName = entry.getKey();
                     String variableType = entry.getValue();
                     if (variableName.startsWith(variableNamePrefix)) {
-                        proposals.add(new ContentProposal(variableName, variableName + ": " + variableType, variableType));
+                        proposals.add(new ContentProposal(variableName, variableName + ": " + variableType, variableType)); //$NON-NLS-1$
                     }
                 }
             }

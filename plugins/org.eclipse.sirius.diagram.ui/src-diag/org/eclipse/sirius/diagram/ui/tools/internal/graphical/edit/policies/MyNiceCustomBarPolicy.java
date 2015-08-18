@@ -62,10 +62,10 @@ import com.google.common.collect.Iterables;
 public class MyNiceCustomBarPolicy extends DiagramAssistantEditPolicy implements LayerConstants {
 
     /** The layers icon descriptor. */
-    private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif");
+    private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif"); //$NON-NLS-1$
 
     /** The filters icon descriptor. */
-    private static final ImageDescriptor DESC_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/filters.gif");
+    private static final ImageDescriptor DESC_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/filters.gif"); //$NON-NLS-1$
 
     private static final ImageDescriptor DESC_ACTIVE_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.ACTIVE_LAYER_ICON);
 

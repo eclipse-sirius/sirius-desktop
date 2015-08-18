@@ -69,23 +69,17 @@ public class EclipseEditingDomainFactoryDescriptor implements EditingDomainFacto
         this.element = configuration;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getId() {
         return id;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getOverrideValue() {
         return overrideValue;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IEditingDomainFactory getEditingDomainFactory() {
         if (extension == null) {
             if (Platform.isRunning()) {

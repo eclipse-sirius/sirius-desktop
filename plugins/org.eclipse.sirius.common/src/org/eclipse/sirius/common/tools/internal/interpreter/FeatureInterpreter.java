@@ -41,43 +41,37 @@ import com.google.common.collect.Sets;
 public class FeatureInterpreter extends AbstractInterpreter implements org.eclipse.sirius.common.tools.api.interpreter.IInterpreter, IInterpreterProvider {
 
     /** The Feature interpreter prefix. */
-    public static final String PREFIX = "feature:";
+    public static final String PREFIX = "feature:"; //$NON-NLS-1$
 
     /** The eContainer feature name. */
-    public static final String E_CONTAINER_FEATURE_NAME = "eContainer";
+    public static final String E_CONTAINER_FEATURE_NAME = "eContainer"; //$NON-NLS-1$
 
     /** The eContents feature name. */
-    public static final String E_CONTENTS_FEATURE_NAME = "eContents";
+    public static final String E_CONTENTS_FEATURE_NAME = "eContents"; //$NON-NLS-1$
 
     /** The eAllContents feature name. */
-    public static final String E_ALL_CONTENTS_FEATURE_NAME = "eAllContents";
+    public static final String E_ALL_CONTENTS_FEATURE_NAME = "eAllContents"; //$NON-NLS-1$
 
     /** The eClass feature name. */
-    public static final String E_CLASS_FEATURE_NAME = "eClass";
+    public static final String E_CLASS_FEATURE_NAME = "eClass"; //$NON-NLS-1$
 
     /** The eCrossReferences pseudo-feature name. */
-    public static final String E_CROSS_REFERENCES_FEATURE_NAME = "eCrossReferences";
+    public static final String E_CROSS_REFERENCES_FEATURE_NAME = "eCrossReferences"; //$NON-NLS-1$
 
     /** The default feature names. */
     public static final String[] DEFAULT_FEATURE_NAMES = { E_CONTAINER_FEATURE_NAME, E_CONTENTS_FEATURE_NAME, E_ALL_CONTENTS_FEATURE_NAME, E_CLASS_FEATURE_NAME, E_CROSS_REFERENCES_FEATURE_NAME };
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IInterpreter createInterpreter() {
         return new FeatureInterpreter();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getPrefix() {
         return PREFIX;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object evaluate(EObject target, String expression) throws EvaluationException {
         Object result = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
@@ -102,17 +96,11 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean supportsValidation() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
         ValidationResult interpreterStatus = new ValidationResult();

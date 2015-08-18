@@ -70,7 +70,7 @@ public class TextContentProposalProvider implements IAssistContentProvider {
              * Get interpreter prefixes
              */
             List<ContentProposal> prefixes = CompoundInterpreter.INSTANCE.getAllNewEmtpyExpressions();
-            return new ContentProposalConverter("").convertToJFaceContentProposals(prefixes);
+            return new ContentProposalConverter("").convertToJFaceContentProposals(prefixes); //$NON-NLS-1$
         } else {
             /*
              * get interpreter proposal and viewpoint variables

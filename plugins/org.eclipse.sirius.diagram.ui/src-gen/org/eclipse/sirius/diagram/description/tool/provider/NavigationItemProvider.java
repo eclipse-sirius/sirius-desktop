@@ -111,9 +111,9 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
     public String getText(Object object) {
         Navigation navigation = (Navigation) object;
         if (navigation.getDiagramDescription() != null && navigation.getDiagramDescription().getName() != null) {
-            return getString("_UI_Navigation_type") + " to " + navigation.getDiagramDescription().getName();
+            return getString("_UI_Navigation_type") + " to " + navigation.getDiagramDescription().getName(); //$NON-NLS-1$
         } else {
-            return getString("_UI_Navigation_type") + " " + navigation.isCreateIfNotExistent();
+            return getString("_UI_Navigation_type") + " " + navigation.isCreateIfNotExistent(); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

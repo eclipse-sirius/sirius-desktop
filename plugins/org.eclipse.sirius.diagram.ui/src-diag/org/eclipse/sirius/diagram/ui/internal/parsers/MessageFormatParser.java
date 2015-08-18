@@ -204,7 +204,7 @@ public class MessageFormatParser extends AbstractParser {
                 final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element);
                 String result = DiagramElementMappingHelper.computeInputLabelOfDirectEditLabel(((DDiagramElement) element), ((DDiagramElement) element).getParentDiagram(), directEditLabelTool,
                         interpreter);
-                return result == null ? "" : result;
+                return result == null ? "" : result; //$NON-NLS-1$
             }
         }
         return getEditorProcessor().format(getValues(element), new StringBuffer(), new FieldPosition(0)).toString();

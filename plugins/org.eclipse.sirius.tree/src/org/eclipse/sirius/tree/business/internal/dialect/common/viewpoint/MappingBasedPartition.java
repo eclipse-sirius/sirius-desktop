@@ -39,7 +39,7 @@ import com.google.common.collect.Lists;
  */
 public class MappingBasedPartition implements SemanticPartition {
 
-    private static final String TREE = "tree";
+    private static final String TREE = "tree"; //$NON-NLS-1$
 
     private String domainClass;
 

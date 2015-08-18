@@ -72,7 +72,7 @@ public class RequestQuery {
         if (request instanceof CreateViewRequest) {
             CreateViewRequest cvr = (CreateViewRequest) request;
             for (ViewDescriptor viewDesc : Iterables.filter(cvr.getViewDescriptors(), ViewDescriptor.class)) {
-                if ("Note".equals(viewDesc.getSemanticHint())) {
+                if ("Note".equals(viewDesc.getSemanticHint())) { //$NON-NLS-1$
                     isNoteCreationRequest = true;
                     break;
                 }
@@ -92,7 +92,7 @@ public class RequestQuery {
         boolean isNoteAttachmentCreationRequest = false;
         if (request instanceof CreateConnectionViewRequest) {
             CreateConnectionViewRequest cvr = (CreateConnectionViewRequest) request;
-            isNoteAttachmentCreationRequest = "NoteAttachment".equals(cvr.getConnectionViewDescriptor().getSemanticHint());
+            isNoteAttachmentCreationRequest = "NoteAttachment".equals(cvr.getConnectionViewDescriptor().getSemanticHint()); //$NON-NLS-1$
         }
         return isNoteAttachmentCreationRequest;
     }
@@ -109,7 +109,7 @@ public class RequestQuery {
         if (request instanceof CreateViewRequest) {
             CreateViewRequest cvr = (CreateViewRequest) request;
             for (ViewDescriptor viewDesc : Iterables.filter(cvr.getViewDescriptors(), ViewDescriptor.class)) {
-                if ("Text".equals(viewDesc.getSemanticHint())) {
+                if ("Text".equals(viewDesc.getSemanticHint())) { //$NON-NLS-1$
                     isTextCreationRequest = true;
                     break;
                 }

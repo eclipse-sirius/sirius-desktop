@@ -398,7 +398,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             result = UnexecutableCommand.INSTANCE;
         } else {
             String label = baseCommand.getLabel();
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(thisEvent.getEditingDomain(), (label != null ? label : "<null>") + " and synchronize ordering");
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(thisEvent.getEditingDomain(), (label != null ? label : "<null>") + " and synchronize ordering"); //$NON-NLS-1$
             SequenceEditPartsOperations.appendFullRefresh(thisEvent, ctc);
 
             MoveType move = getMoveType(thisEvent, request, ends);
@@ -841,7 +841,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
         @Override
         public String toString() {
-            return "[fromTop:" + fromTop + ", compound:" + needsCompoundMove + "]";
+            return "[fromTop:" + fromTop + ", compound:" + needsCompoundMove + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
     }
 }

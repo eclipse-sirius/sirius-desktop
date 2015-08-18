@@ -965,7 +965,7 @@ public final class StyleHelper {
     private Integer computeExpressions(EObject target, SizeComputationContainerStyleDescription description, EStructuralFeature feature) {
         Integer size = null;
         Object expression = description.eGet(feature);
-        if (expression instanceof String && !StringUtil.isEmpty((String) expression) && !((String) expression).equals("-1")) {
+        if (expression instanceof String && !StringUtil.isEmpty((String) expression) && !((String) expression).equals("-1")) { //$NON-NLS-1$
             try {
                 size = interpreter.evaluateInteger(target, (String) expression);
                 if (size == null) {

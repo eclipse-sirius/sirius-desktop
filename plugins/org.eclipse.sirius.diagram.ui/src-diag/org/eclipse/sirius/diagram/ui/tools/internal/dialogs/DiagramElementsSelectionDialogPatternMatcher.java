@@ -46,16 +46,16 @@ public class DiagramElementsSelectionDialogPatternMatcher {
     public DiagramElementsSelectionDialogPatternMatcher(String expreg) {
         String computedExpreg = expreg;
         if (expreg == null) {
-            computedExpreg = "";
+            computedExpreg = ""; //$NON-NLS-1$
         }
         // If the regular expression ends with a space, we have to use the exact
         // value of the given expreg
-        if (computedExpreg.endsWith(" ")) {
+        if (computedExpreg.endsWith(" ")) { //$NON-NLS-1$
             computedExpreg = computedExpreg.substring(0, computedExpreg.lastIndexOf(' '));
         } else {
             // Otherwise, we add a star to make 'XYZ' recognized by the 'X'
             // expreg (as in quick outline for example)
-            computedExpreg = computedExpreg + "*";
+            computedExpreg = computedExpreg + "*"; //$NON-NLS-1$
         }
         this.stringMatcher = new StringMatcher(computedExpreg, true, false);
 

@@ -62,13 +62,13 @@ public class RepresentationsFileHandler extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_Models().getName())) {
             dAnalysisModels = true;
-            String hrefValue = attributes.getValue("href");
+            String hrefValue = attributes.getValue("href"); //$NON-NLS-1$
             if (hrefValue != null) {
                 usedModels.add(URI.createURI(hrefValue).resolve(sessionURI).trimFragment());
             }
         } else if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_ReferencedAnalysis().getName())) {
             dAnalysisReferencedAnalysis = true;
-            String hrefValue = attributes.getValue("href");
+            String hrefValue = attributes.getValue("href"); //$NON-NLS-1$
             if (hrefValue != null) {
                 referencedAnalysis.add(URI.createURI(hrefValue).resolve(sessionURI).trimFragment());
             }

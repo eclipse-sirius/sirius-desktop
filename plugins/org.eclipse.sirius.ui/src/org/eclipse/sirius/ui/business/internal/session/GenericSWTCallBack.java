@@ -22,14 +22,9 @@ import org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback;
  */
 public class GenericSWTCallBack extends AbstractSWTCallback {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback#getVariableNameForRepresentation()
-     */
     @Override
     protected String getVariableNameForRepresentation() {
-        return "Representation";
+        return "Representation"; //$NON-NLS-1$
     }
 
 }

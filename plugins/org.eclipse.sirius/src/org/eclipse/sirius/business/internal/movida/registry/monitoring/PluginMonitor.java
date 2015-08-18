@@ -42,7 +42,7 @@ public class PluginMonitor extends AbstractViewpointResourceMonitor {
     /**
      * The identifier for the extension point used to register VSMs.
      */
-    public static final String VSM_REGISTRATION_EXTENSION_POINT = "org.eclipse.sirius.viewpointSpecificationModel";
+    public static final String VSM_REGISTRATION_EXTENSION_POINT = "org.eclipse.sirius.viewpointSpecificationModel"; //$NON-NLS-1$
 
     /**
      * The bundle listener which detects VSMs registered in bundles which
@@ -166,13 +166,13 @@ public class PluginMonitor extends AbstractViewpointResourceMonitor {
         Set<URI> discovered = Sets.newLinkedHashSet();
         for (IConfigurationElement element : elements) {
             String contributingPlugin = element.getContributor().getName();
-            String localPath = element.getAttribute("path");
+            String localPath = element.getAttribute("path"); //$NON-NLS-1$
             if (localPath == null) {
                 reportWarning("Missing 'path' attribute for VSM definition in " + contributingPlugin + "; ignoring this definition.");
                 continue;
             }
             try {
-                URI uri = URI.createPlatformPluginURI("/" + contributingPlugin + "/" + localPath, true);
+                URI uri = URI.createPlatformPluginURI("/" + contributingPlugin + "/" + localPath, true); //$NON-NLS-1$ //$NON-NLS-2$
                 if (!pluginResourceExists(contributingPlugin, localPath)) {
                     reportWarning("Not resource found at specified location " + uri + " in " + contributingPlugin);
                     continue;

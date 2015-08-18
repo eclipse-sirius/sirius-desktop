@@ -29,7 +29,7 @@ public class SnapToAllDragEditPartsTracker extends DragEditPartsTrackerEx {
      * Constant passed to extended data of the request to keep the chosen mode
      * (with KEY {@link #SNAP_TO_ALL}.
      */
-    public static final String SNAP_TO_ALL_SHAPE_KEY = "snapToAllShape";
+    public static final String SNAP_TO_ALL_SHAPE_KEY = "snapToAllShape"; //$NON-NLS-1$
 
     /**
      * The default mode for {@link #snapToAllShape}.

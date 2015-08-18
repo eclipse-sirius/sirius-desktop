@@ -31,7 +31,7 @@ public class RGBValuesToDataTypeMigrationParticipant extends AbstractRepresentat
     /**
      * The VP version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("10.0.0.201502132000");
+    public static final Version MIGRATION_VERSION = new Version("10.0.0.201502132000"); //$NON-NLS-1$
 
     /**
      * 
@@ -64,9 +64,9 @@ public class RGBValuesToDataTypeMigrationParticipant extends AbstractRepresentat
                 int green = 0;
                 int blue = 0;
 
-                int redIndex = xmlAttributes.getIndex("red");
-                int greenIndex = xmlAttributes.getIndex("green");
-                int blueIndex = xmlAttributes.getIndex("blue");
+                int redIndex = xmlAttributes.getIndex("red"); //$NON-NLS-1$
+                int greenIndex = xmlAttributes.getIndex("green"); //$NON-NLS-1$
+                int blueIndex = xmlAttributes.getIndex("blue"); //$NON-NLS-1$
                 if (redIndex != -1) {
                     red = Integer.valueOf(xmlAttributes.getValue(redIndex));
                 }

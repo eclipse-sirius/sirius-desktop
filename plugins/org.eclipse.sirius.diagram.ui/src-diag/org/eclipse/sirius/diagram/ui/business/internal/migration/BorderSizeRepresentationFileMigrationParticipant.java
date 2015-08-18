@@ -35,7 +35,7 @@ public class BorderSizeRepresentationFileMigrationParticipant extends AbstractRe
     /**
      * The VP version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("10.1.0.201507101000");
+    private static final Version MIGRATION_VERSION = new Version("10.1.0.201507101000"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
@@ -54,8 +54,8 @@ public class BorderSizeRepresentationFileMigrationParticipant extends AbstractRe
                     for (DDiagramElementContainer diagramElement : dDiagram.getContainers()) {
                         if (diagramElement.getStyle() instanceof BorderedStyle) {
                             BorderedStyle containerBorderedStyle = (BorderedStyle) diagramElement.getStyle();
-                            if ("0".equals(containerBorderedStyle.getBorderSizeComputationExpression())) {
-                                containerBorderedStyle.setBorderSizeComputationExpression("1");
+                            if ("0".equals(containerBorderedStyle.getBorderSizeComputationExpression())) { //$NON-NLS-1$
+                                containerBorderedStyle.setBorderSizeComputationExpression("1"); //$NON-NLS-1$
                                 if (containerBorderedStyle.getBorderSize().intValue() == 0) {
                                     containerBorderedStyle.setBorderSize(1);
                                 }

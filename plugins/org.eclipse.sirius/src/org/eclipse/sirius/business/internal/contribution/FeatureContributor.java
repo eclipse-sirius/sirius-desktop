@@ -208,7 +208,7 @@ public class FeatureContributor {
     }
 
     private String featureString(EStructuralFeature feature) {
-        return feature.getContainerClass().getName() + "." + feature.getName();
+        return feature.getContainerClass().getName() + "." + feature.getName(); //$NON-NLS-1$
     }
 
     private void checkFeatureIsPresent(EObject obj, EStructuralFeature feature, String name) {

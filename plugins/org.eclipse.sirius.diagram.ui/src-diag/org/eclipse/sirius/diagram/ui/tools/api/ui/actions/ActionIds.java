@@ -27,22 +27,22 @@ public interface ActionIds {
     // CHECKSTYLE:ON
 
     /** Action contribution id for the copy layout. */
-    String COPY_LAYOUT = "copyLayoutAction";
+    String COPY_LAYOUT = "copyLayoutAction"; //$NON-NLS-1$
 
     /** Action contribution id for the paste layout. */
-    String PASTE_LAYOUT = "pasteLayoutAction";
+    String PASTE_LAYOUT = "pasteLayoutAction"; //$NON-NLS-1$
 
     /** Action id for pin elements action. */
-    String PIN_ELEMENTS = "pinElementsAction";
+    String PIN_ELEMENTS = "pinElementsAction"; //$NON-NLS-1$
 
     /** Action id for unpin elements action. */
-    String UNPIN_ELEMENTS = "unpinElementsAction";
+    String UNPIN_ELEMENTS = "unpinElementsAction"; //$NON-NLS-1$
 
     /** Action id for arrange bordered nodes action. */
-    String ARRANGE_BORDERED_NODES = "arrangeBorderedNodesAction";
+    String ARRANGE_BORDERED_NODES = "arrangeBorderedNodesAction"; //$NON-NLS-1$
 
     /** Action id for arrange bordered nodes action. */
-    String ARRANGE_BORDERED_NODES_TOOLBAR = "arrangeBorderedNodesActionToolBar";
+    String ARRANGE_BORDERED_NODES_TOOLBAR = "arrangeBorderedNodesActionToolBar"; //$NON-NLS-1$
 
     /** Action for copy (export) to an image action. */
     String COPY_TO_IMAGE = "newCopyToImageAction"; //$NON-NLS-1$
@@ -51,30 +51,30 @@ public interface ActionIds {
     String MENU_ARRANGE = "arrangeMenu"; //$NON-NLS-1$
 
     /** Action for show/hide elements. */
-    String SELECT_HIDDEN_ELEMENTS = "selectHiddenElementsAction";
+    String SELECT_HIDDEN_ELEMENTS = "selectHiddenElementsAction"; //$NON-NLS-1$
 
     /** Action for show/hide elements. */
-    String ROUTING_STYLE = "treeRoutingStyleAction";
+    String ROUTING_STYLE = "treeRoutingStyleAction"; //$NON-NLS-1$
 
     /** Action for Activating/Deactivating the Layouting mode. **/
-    String SWITCH_LAYOUTING_MODE = "switchLayoutingMode";
+    String SWITCH_LAYOUTING_MODE = "switchLayoutingMode"; //$NON-NLS-1$
 
     /** Action to deselect all elements (select diagram). **/
-    String DESELECT_ALL = "deselectAll";
+    String DESELECT_ALL = "deselectAll"; //$NON-NLS-1$
 
     /** Id of menu that groups distribute actions. **/
-    String MENU_DISTRIBUTE = "distributeMenu";
+    String MENU_DISTRIBUTE = "distributeMenu"; //$NON-NLS-1$
 
     /** Action's id to distribute centers horizontally. */
-    String DISTRIBUTE_CENTERS_HORIZONTALLY = RequestConstants.REQ_DISTRIBUTE + "CentersHorizontally";
+    String DISTRIBUTE_CENTERS_HORIZONTALLY = RequestConstants.REQ_DISTRIBUTE + "CentersHorizontally"; //$NON-NLS-1$
 
     /** Action's id to distribute horizontally with uniform gaps. */
-    String DISTRIBUTE_GAPS_HORIZONTALLY = RequestConstants.REQ_DISTRIBUTE + "GapsHorizontally";
+    String DISTRIBUTE_GAPS_HORIZONTALLY = RequestConstants.REQ_DISTRIBUTE + "GapsHorizontally"; //$NON-NLS-1$
 
     /** Action's id to distribute centers vertically. */
-    String DISTRIBUTE_CENTERS_VERTICALLY = RequestConstants.REQ_DISTRIBUTE + "CentersVertically";
+    String DISTRIBUTE_CENTERS_VERTICALLY = RequestConstants.REQ_DISTRIBUTE + "CentersVertically"; //$NON-NLS-1$
 
     /** Action's id to distribute vertically with uniform gaps. */
-    String DISTRIBUTE_GAPS_VERTICALLY = RequestConstants.REQ_DISTRIBUTE + "GapsVertically";
+    String DISTRIBUTE_GAPS_VERTICALLY = RequestConstants.REQ_DISTRIBUTE + "GapsVertically"; //$NON-NLS-1$
 
 }

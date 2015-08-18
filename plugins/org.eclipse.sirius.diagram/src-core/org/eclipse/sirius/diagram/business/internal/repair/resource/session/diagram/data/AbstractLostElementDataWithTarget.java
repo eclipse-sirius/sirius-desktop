@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 public abstract class AbstractLostElementDataWithTarget extends AbstractLostElementData implements ILostElementDataWithTarget {
 
     /** Separator for toString. */
-    protected static final String SEPARATOR = " |--| ";
+    protected static final String SEPARATOR = " |--| "; //$NON-NLS-1$
 
     private EObject target;
 
@@ -43,6 +43,6 @@ public abstract class AbstractLostElementDataWithTarget extends AbstractLostElem
      */
     @Override
     public String toString() {
-        return super.toString() + SEPARATOR + "Target: " + target;
+        return super.toString() + SEPARATOR + "Target: " + target; //$NON-NLS-1$
     }
 }

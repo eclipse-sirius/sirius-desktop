@@ -183,7 +183,7 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((DiagramElementMapping) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_DiagramElementMapping_type") : getString("_UI_DiagramElementMapping_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_DiagramElementMapping_type") : getString("_UI_DiagramElementMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

@@ -30,7 +30,7 @@ import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 public final class FileModificationValidatorProviderImpl implements FileModificationValidatorProvider {
 
     /** The extension point. */
-    private static final String VALIDATION_EXTENSION_POINT = DslCommonPlugin.PLUGIN_ID + ".fileModificationValidator";
+    private static final String VALIDATION_EXTENSION_POINT = DslCommonPlugin.PLUGIN_ID + ".fileModificationValidator"; //$NON-NLS-1$
 
     private Collection<FileModificationValidatorDescriptor> validationEditDescriptors = new HashSet<FileModificationValidatorDescriptor>();
 

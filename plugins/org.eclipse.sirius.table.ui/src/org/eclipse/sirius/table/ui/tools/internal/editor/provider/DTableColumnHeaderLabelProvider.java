@@ -45,7 +45,7 @@ public class DTableColumnHeaderLabelProvider extends DSemanticTargetBasedLabelPr
      */
     @Override
     public String getText(final Object element) {
-        String text = "";
+        String text = ""; //$NON-NLS-1$
         if (element instanceof DColumn) {
             DColumn dColumn = (DColumn) element;
             text = dColumn.getLabel();

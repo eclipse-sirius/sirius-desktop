@@ -104,25 +104,25 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
 
     private static final String NEW_REPRESENTATION_MENU = "New Representation";
 
-    private static final String NEW_REPRESENTATION_MENU_ID = "menu.viewpoint.new.representation";
+    private static final String NEW_REPRESENTATION_MENU_ID = "menu.viewpoint.new.representation"; //$NON-NLS-1$
 
-    private static final String SESSION_MANAGEMENT_SEPARATOR = "group.viewpoint.session";
+    private static final String SESSION_MANAGEMENT_SEPARATOR = "group.viewpoint.session"; //$NON-NLS-1$
 
-    private static final String REPRESENTATION_MANAGEMENT_SEPARATOR = "group.viewpoint.representation";
+    private static final String REPRESENTATION_MANAGEMENT_SEPARATOR = "group.viewpoint.representation"; //$NON-NLS-1$
 
-    private static final String SEMANTIC_MANAGEMENT_SEPARATOR = "group.viewpoint.semantic";
+    private static final String SEMANTIC_MANAGEMENT_SEPARATOR = "group.viewpoint.semantic"; //$NON-NLS-1$
 
-    private static final String SESSION_SEPARATOR = "group.viewpoint";
+    private static final String SESSION_SEPARATOR = "group.viewpoint"; //$NON-NLS-1$
 
-    private static final String GROUP_NEW = "group.new";
+    private static final String GROUP_NEW = "group.new"; //$NON-NLS-1$
 
-    private static final String GROUP_PORT = "group.port";
+    private static final String GROUP_PORT = "group.port"; //$NON-NLS-1$
 
-    private static final String GROUP_OPEN = "group.open";
+    private static final String GROUP_OPEN = "group.open"; //$NON-NLS-1$
 
-    private static final String GROUP_REORGANIZE = "group.reorganize";
+    private static final String GROUP_REORGANIZE = "group.reorganize"; //$NON-NLS-1$
 
-    private static final String GROUP_EDIT = "group.edit";
+    private static final String GROUP_EDIT = "group.edit"; //$NON-NLS-1$
 
     private ILabelProvider labelProvider;
 
@@ -561,12 +561,12 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     }
 
     private Action buildCreateRepresentationAction(final Session session) {
-        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/addRepresentation.gif");
+        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/addRepresentation.gif"); //$NON-NLS-1$
         return new CreateRepresentationFromSessionAction(session, descriptor);
     }
 
     private Action buildCloseSessionAction(final List<Session> selection) {
-        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/close.gif");
+        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/close.gif"); //$NON-NLS-1$
         CloseSessionsAction closeSessionsAction = new CloseSessionsAction("Close");
         closeSessionsAction.setImageDescriptor(descriptor);
         closeSessionsAction.selectionChanged(new StructuredSelection(selection));
@@ -574,7 +574,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     }
 
     private Action buildSaveSessionAction(final List<Session> selection) {
-        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/save.gif");
+        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/save.gif"); //$NON-NLS-1$
         return new Action("Save", descriptor) {
             @Override
             public void run() {

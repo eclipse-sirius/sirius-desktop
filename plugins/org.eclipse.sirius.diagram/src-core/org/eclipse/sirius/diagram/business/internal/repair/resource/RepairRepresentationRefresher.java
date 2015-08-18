@@ -97,7 +97,7 @@ public class RepairRepresentationRefresher {
                 final AnyType viewSettings = extension.get(view);
                 if (viewSettings != null) {
                     for (final FeatureMap.Entry feature : viewSettings.getMixed()) {
-                        if ("model".equals(feature.getEStructuralFeature().getName())) {
+                        if ("model".equals(feature.getEStructuralFeature().getName())) { //$NON-NLS-1$
                             ((DAnalysis) view.eContainer()).getModels().add(EcoreUtil.resolve((EObject) feature.getValue(), view.eResource().getResourceSet()));
                             hasAlreadyModel = true;
                         }

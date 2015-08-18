@@ -131,7 +131,7 @@ public class OpenSessionOnExpandListener implements ITreeViewerListener {
             if (viewer != null) {
                 Method method = null;
                 try {
-                    method = viewer.getClass().getMethod("isBusy");
+                    method = viewer.getClass().getMethod("isBusy"); //$NON-NLS-1$
                 } catch (SecurityException e) {
                     // No method, no data
                 } catch (NoSuchMethodException e) {

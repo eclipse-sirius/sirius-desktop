@@ -174,7 +174,7 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
                     if (cpvr.getValue() instanceof Integer) {
                         final RGB finalColor = FigureUtilities.integerToRGB((Integer) cpvr.getValue());
                         final UserFixedColor newColor = DescriptionFactory.eINSTANCE.createUserFixedColor();
-                        newColor.setName("<anonymous>");
+                        newColor.setName("<anonymous>"); //$NON-NLS-1$
                         newColor.setBlue(finalColor.blue);
                         newColor.setGreen(finalColor.green);
                         newColor.setRed(finalColor.red);

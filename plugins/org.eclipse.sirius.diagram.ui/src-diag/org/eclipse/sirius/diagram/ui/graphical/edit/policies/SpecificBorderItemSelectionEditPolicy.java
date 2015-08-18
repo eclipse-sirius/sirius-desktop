@@ -101,7 +101,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * corresponding to the move makes with the mouse. This allows to compute
      * correctly the new linked edges bendpoints to only move the last segment.
      */
-    public static final String BORDER_NODE_REAL_LOCATION_KEY = "borderNodesRealLocation";
+    public static final String BORDER_NODE_REAL_LOCATION_KEY = "borderNodesRealLocation"; //$NON-NLS-1$
 
     /**
      * Key for extended data of request. This key corresponds to feedback
@@ -109,7 +109,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * border nodes are move simultaneously. The last moved figure is not added
      * to this list (because there will be no further feedback after this one).
      */
-    private static final String BORDER_NODE_FEEDBACKS_KEY = "borderNodeFeedbacks";
+    private static final String BORDER_NODE_FEEDBACKS_KEY = "borderNodeFeedbacks"; //$NON-NLS-1$
 
     /**
      * We keep all created feedbacks to delete them at the end of the drag

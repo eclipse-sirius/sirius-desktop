@@ -36,7 +36,7 @@ import com.google.common.collect.Lists;
 public abstract class AbstractInterpreter implements IInterpreter, TypedValidation {
 
     /** The separator between EPackage name and EClass name for domain class. */
-    protected static final String SEPARATOR = ".";
+    protected static final String SEPARATOR = "."; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -75,9 +75,9 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
             result = ((Boolean) raw).booleanValue();
         } else {
             String toString = raw.toString();
-            if ("true".equalsIgnoreCase(toString)) {
+            if ("true".equalsIgnoreCase(toString)) { //$NON-NLS-1$
                 result = true;
-            } else if ("false".equalsIgnoreCase(toString)) {
+            } else if ("false".equalsIgnoreCase(toString)) { //$NON-NLS-1$
                 result = false;
             } else {
                 /*
@@ -112,7 +112,7 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
         if (raw != null) {
             return String.valueOf(raw);
         } else {
-            return "";
+            return ""; //$NON-NLS-1$
         }
     }
 
@@ -216,7 +216,7 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
      * {@inheritDoc}
      */
     public String getVariablePrefix() {
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
     /**

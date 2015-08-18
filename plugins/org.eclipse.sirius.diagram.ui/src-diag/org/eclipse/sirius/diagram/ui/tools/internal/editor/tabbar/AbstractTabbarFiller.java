@@ -112,7 +112,7 @@ public abstract class AbstractTabbarFiller implements TabbarFiller {
         // Get the menu service corresponding to the current site (and not the
         // current workbench window).
         IMenuService menuService = (IMenuService) part.getSite().getService(IMenuService.class);
-        menuService.populateContributionManager(manager, "toolbar:" + Tabbar.TABBAR_ID);
+        menuService.populateContributionManager(manager, "toolbar:" + Tabbar.TABBAR_ID); //$NON-NLS-1$
 
         IToolBarContextService.INSTANCE.dispose();
     }

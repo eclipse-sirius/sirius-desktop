@@ -40,7 +40,7 @@ public class OpenHelpSectionAction extends AbstractExternalJavaAction {
      * {@inheritDoc}
      */
     public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-        String href = getParameter(parameters, "href", String.class);
+        String href = getParameter(parameters, "href", String.class); //$NON-NLS-1$
         PlatformUI.getWorkbench().getHelpSystem().displayHelpResource(href);
     }
 }

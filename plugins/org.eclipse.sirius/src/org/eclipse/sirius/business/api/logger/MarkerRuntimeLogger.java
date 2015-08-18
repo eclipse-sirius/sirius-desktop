@@ -22,10 +22,10 @@ public interface MarkerRuntimeLogger {
     /**
      * Defines the type of the marker for Sirius.
      */
-    String MARKER_TYPE = "org.eclipse.sirius.viewpointMarker";
+    String MARKER_TYPE = "org.eclipse.sirius.viewpointMarker"; //$NON-NLS-1$
 
     /**
      * Defines the URI of the marker attribute.
      */
-    String URI_MARKER_ATTRIBUTE = "viewpointURIMarker";
+    String URI_MARKER_ATTRIBUTE = "viewpointURIMarker"; //$NON-NLS-1$
 }

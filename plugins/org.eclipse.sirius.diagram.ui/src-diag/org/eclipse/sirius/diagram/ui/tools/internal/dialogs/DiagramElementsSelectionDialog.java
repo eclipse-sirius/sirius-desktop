@@ -185,7 +185,7 @@ public class DiagramElementsSelectionDialog {
 
         private CustomTreeSelectionDialog(Shell parent, ILabelProvider labelProvider, ITreeContentProvider contentProvider) {
             super(parent, labelProvider, contentProvider);
-            patternMatcher = new DiagramElementsSelectionDialogPatternMatcher("");
+            patternMatcher = new DiagramElementsSelectionDialogPatternMatcher(""); //$NON-NLS-1$
         }
 
         @Override
@@ -774,7 +774,7 @@ public class DiagramElementsSelectionDialog {
         String msg = message;
         if (!Predicates.alwaysFalse().equals(isGrayed)) {
             StringBuilder sb = new StringBuilder(message);
-            sb.append("\n");
+            sb.append("\n"); //$NON-NLS-1$
             sb.append("The wizard will have no effect on grayed elements.");
             msg = sb.toString();
         }

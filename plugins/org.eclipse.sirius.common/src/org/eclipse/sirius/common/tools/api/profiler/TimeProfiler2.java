@@ -99,16 +99,16 @@ public class TimeProfiler2 extends TimeProfiler {
             final Iterator<Entry<ProfilerTask, Long>> it = timeSet.iterator();
             while (it.hasNext()) {
                 final Entry<ProfilerTask, Long> entry = it.next();
-                final StringBuffer line = new StringBuffer("\n  " + entry.getKey() + "  :");
+                final StringBuffer line = new StringBuffer("\n  " + entry.getKey() + "  :"); //$NON-NLS-1$ //$NON-NLS-2$
                 final CompositeTask compositeTask = getCompositeTask(entry.getKey());
                 if (compositeTask != null) {
                     line.append(compositeTask.getOccurences());
-                    line.append(" occurences for ");
+                    line.append(" occurences for "); //$NON-NLS-1$
                 }
                 line.append(getMissingSpacesForAlignment(line.toString(), TimeProfiler.ALIGNMENT_LINE_SIZE));
                 line.append(entry.getValue().toString());
                 line.append(getMissingSpacesForAlignment(line.toString(), TimeProfiler.ALIGNMENT_LINE_SIZE + 10));
-                line.append(" ms");
+                line.append(" ms"); //$NON-NLS-1$
                 result.append(line);
             }
         }

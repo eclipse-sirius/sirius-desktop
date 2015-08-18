@@ -27,7 +27,7 @@ public class RemoveOldMigrationAnnotations extends AbstractVSMMigrationParticipa
     /**
      * The VP version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("6.5.0.201210011230");
+    private static final Version MIGRATION_VERSION = new Version("6.5.0.201210011230"); //$NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -43,7 +43,7 @@ public class RemoveOldMigrationAnnotations extends AbstractVSMMigrationParticipa
         Iterator<DAnnotation> iterator = group.getEAnnotations().iterator();
         while (iterator.hasNext()) {
             DAnnotation entry = iterator.next();
-            if (entry.getSource().equals("Migration")) {
+            if (entry.getSource().equals("Migration")) { //$NON-NLS-1$
                 iterator.remove();
             }
         }

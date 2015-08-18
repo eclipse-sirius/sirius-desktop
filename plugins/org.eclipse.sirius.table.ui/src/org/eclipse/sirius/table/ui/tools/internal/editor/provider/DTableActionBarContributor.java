@@ -37,7 +37,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 public class DTableActionBarContributor extends EditingDomainActionBarContributor {
 
     /* ISharedImages.IMG_ETOOL_PRINT_EDIT only since 3.4 */
-    private static final String IMG_ETOOL_PRINT_EDIT = "IMG_ETOOL_PRINT_EDIT";
+    private static final String IMG_ETOOL_PRINT_EDIT = "IMG_ETOOL_PRINT_EDIT"; //$NON-NLS-1$
 
     private PrintAction printAction;
 

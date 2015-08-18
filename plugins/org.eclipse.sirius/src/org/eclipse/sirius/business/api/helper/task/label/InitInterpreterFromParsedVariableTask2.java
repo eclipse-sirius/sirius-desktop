@@ -25,7 +25,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
  * @author lredor
  */
 public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask {
-    private static final String DEFAULT_MESSAGE_MASK = "{0}";
+    private static final String DEFAULT_MESSAGE_MASK = "{0}"; //$NON-NLS-1$
 
     private IInterpreter interpreter;
 
@@ -56,7 +56,7 @@ public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask 
      */
     public void execute() {
         if (message == null || (message instanceof String && ((String) message).length() == 0)) {
-            setVariable(Integer.valueOf(0), "");
+            setVariable(Integer.valueOf(0), ""); //$NON-NLS-1$
         } else if (DEFAULT_MESSAGE_MASK.equals(messageMask) && !(message instanceof String)) {
             setVariable(Integer.valueOf(0), message);
         } else {
@@ -81,7 +81,7 @@ public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask 
      */
     private void setVariable(Integer i, Object value) {
         interpreter.setVariable(i.toString(), value);
-        interpreter.setVariable("arg" + i.toString(), value);
+        interpreter.setVariable("arg" + i.toString(), value); //$NON-NLS-1$
     }
 
     /**

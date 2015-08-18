@@ -152,7 +152,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((AbstractNodeMapping) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_AbstractNodeMapping_type") : getString("_UI_AbstractNodeMapping_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_AbstractNodeMapping_type") : getString("_UI_AbstractNodeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -191,7 +191,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         NodeMapping createNodeMapping = DescriptionFactory.eINSTANCE.createNodeMapping();
-        createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents");
+        createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, createNodeMapping));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
@@ -213,7 +213,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
         boolean qualify = childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }
@@ -229,11 +229,11 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
         String featureKey;
         if (feature instanceof EStructuralFeature) {
             EStructuralFeature eFeature = (EStructuralFeature) feature;
-            featureKey = eFeature.getEContainingClass().getName() + "_" + eFeature.getName();
+            featureKey = eFeature.getEContainingClass().getName() + "_" + eFeature.getName(); //$NON-NLS-1$
         } else {
             featureKey = "Unknown";
         }
-        return getResourceLocator().getString("_UI_" + featureKey + "_feature_prefix");
+        return getResourceLocator().getString("_UI_" + featureKey + "_feature_prefix"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
 }

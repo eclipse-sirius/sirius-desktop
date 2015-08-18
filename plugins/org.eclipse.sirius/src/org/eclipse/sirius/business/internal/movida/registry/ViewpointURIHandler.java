@@ -44,7 +44,7 @@ public class ViewpointURIHandler extends URIHandlerImpl.PlatformSchemeAware {
      */
     @Override
     public URI deresolve(URI uri) {
-        if (!baseURI.isPlatform() && "viewpoint".equals(baseURI.scheme())) {
+        if (!baseURI.isPlatform() && "viewpoint".equals(baseURI.scheme())) { //$NON-NLS-1$
             baseURI = resourceSet.getURIConverter().normalize(baseURI);
         }
         if (Movida.isEnabled()) {

@@ -44,7 +44,7 @@ import com.google.common.collect.Iterables;
 public class LayersContribution extends AbstractMenuContributionItem {
 
     /** The layers icon descriptor. */
-    private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif");
+    private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif"); //$NON-NLS-1$
 
     private LayersActivationAdapter adapter;
 

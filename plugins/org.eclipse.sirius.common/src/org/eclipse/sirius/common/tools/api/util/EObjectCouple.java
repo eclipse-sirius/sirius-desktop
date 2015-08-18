@@ -56,21 +56,11 @@ public class EObjectCouple {
         this.int2 = ids.getOrCreateID(obj2);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode() {
         return int1 + int2;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(final Object obj) {
 

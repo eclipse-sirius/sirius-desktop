@@ -81,9 +81,9 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
     /** The id of the over view. 1 */
     protected static final int ID_OVERVIEW = 1;
 
-    private static final String SIRIUS_DIAGRAM_OUTLINE_SHOW_OUTLINE = "sirius.diagram.outline.show.outline";
+    private static final String SIRIUS_DIAGRAM_OUTLINE_SHOW_OUTLINE = "sirius.diagram.outline.show.outline"; //$NON-NLS-1$
 
-    private static final String SIRIUS_DIAGRAM_OUTLINE_SHOW_OVERVIEW = "sirius.diagram.outline.show.overview";
+    private static final String SIRIUS_DIAGRAM_OUTLINE_SHOW_OVERVIEW = "sirius.diagram.outline.show.overview"; //$NON-NLS-1$
 
     /** The diagram workbench part. */
     protected IDiagramWorkbenchPart diagramWorkbenchPart;

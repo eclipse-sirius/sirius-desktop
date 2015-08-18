@@ -51,7 +51,7 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
     public static final String ACTION_NAME = "Reset style properties to default values";
 
     /** The action id. */
-    public static final String ID = "RESET_STYLE_PROPERTIES_TO_DEFAULT_VALUES_ACTION_ID";
+    public static final String ID = "RESET_STYLE_PROPERTIES_TO_DEFAULT_VALUES_ACTION_ID"; //$NON-NLS-1$
 
     private IWorkbenchPage page;
 

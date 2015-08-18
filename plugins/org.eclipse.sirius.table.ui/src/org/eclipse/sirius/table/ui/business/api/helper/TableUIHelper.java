@@ -61,7 +61,7 @@ public final class TableUIHelper {
         final List<List<String>> expected = new ArrayList<List<String>>();
         if (!inverse) {
             final List<String> header = new ArrayList<String>();
-            header.add("");
+            header.add(""); //$NON-NLS-1$
             for (final DColumn column : table.getColumns()) {
                 if (column.isVisible()) {
                     header.add(filler.getContent(column));
@@ -219,15 +219,15 @@ public final class TableUIHelper {
         }
 
         final StringBuffer result = new StringBuffer();
-        result.append("<table>\n");
+        result.append("<table>\n"); //$NON-NLS-1$
         for (int i = 0; i < descriptor.size(); i++) {
             final List<String> line = descriptor.get(i);
-            result.append("<tr>");
+            result.append("<tr>"); //$NON-NLS-1$
             for (String column : line) {
                 if (i == 0) {
-                    result.append("<th>");
+                    result.append("<th>"); //$NON-NLS-1$
                 } else {
-                    result.append("<td>");
+                    result.append("<td>"); //$NON-NLS-1$
                 }
                 final StringBuffer textToAppend = new StringBuffer();
                 final int charsToAdd = columnMaxSize[line.indexOf(column)] - column.length();
@@ -237,15 +237,15 @@ public final class TableUIHelper {
                 result.append(column);
                 result.append(textToAppend);
                 if (i == 0) {
-                    result.append("</th>");
+                    result.append("</th>"); //$NON-NLS-1$
                 } else {
-                    result.append("</td>");
+                    result.append("</td>"); //$NON-NLS-1$
                 }
             }
-            result.append("</tr>\n");
+            result.append("</tr>\n"); //$NON-NLS-1$
 
         }
-        result.append("</table>");
+        result.append("</table>"); //$NON-NLS-1$
         return result.toString();
     }
 
@@ -463,7 +463,7 @@ public final class TableUIHelper {
  * @author lredor
  */
 class TableFiller {
-    protected static final String BLANK_MARKER = "_";
+    protected static final String BLANK_MARKER = "_"; //$NON-NLS-1$
 
     public String getContent(final DLine line) {
         return line.getLabel();

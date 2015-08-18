@@ -58,7 +58,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     /**
      * The VP version for this migration.
      */
-    public static final Version MIGRATION_VERSION = new Version("6.5.0.201209041254");
+    public static final Version MIGRATION_VERSION = new Version("6.5.0.201209041254"); //$NON-NLS-1$
 
     /**
      * Predicate that checks that :

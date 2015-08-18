@@ -20,6 +20,6 @@ public interface ModelingPerspective {
     /**
      * Perspective ID.
      */
-    String ID = "org.eclipse.sirius.ui.tools.perspective.modeling";
+    String ID = "org.eclipse.sirius.ui.tools.perspective.modeling"; //$NON-NLS-1$
 
 }

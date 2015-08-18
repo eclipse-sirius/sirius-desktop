@@ -69,17 +69,17 @@ import org.eclipse.ui.IWorkbenchActionConstants;
  */
 public class DTreeMenuListener implements IMenuListener {
 
-    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.navigate";
+    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.navigate"; //$NON-NLS-1$
 
-    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new";
+    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new"; //$NON-NLS-1$
 
-    private static final String NEW_REPRESENTATION_GROUP_SEPARATOR = "newRepresentation";
+    private static final String NEW_REPRESENTATION_GROUP_SEPARATOR = "newRepresentation"; //$NON-NLS-1$
 
-    private static final String EXISTING_REPRESENTATION_GROUP_SEPARATOR = "existingRepresentation";
+    private static final String EXISTING_REPRESENTATION_GROUP_SEPARATOR = "existingRepresentation"; //$NON-NLS-1$
 
-    private static final String PROPERTIES_SEPARATOR = "properties";
+    private static final String PROPERTIES_SEPARATOR = "properties"; //$NON-NLS-1$
 
-    private static final String LOCK_SEPARATOR = "lockGroup";
+    private static final String LOCK_SEPARATOR = "lockGroup"; //$NON-NLS-1$
 
     private final AdapterFactory adapterFactory;
 

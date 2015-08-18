@@ -378,7 +378,7 @@ public class ExtendedPropertySource implements IPropertySource {
                     text = e.getMessage();
                 }
             } else if (element instanceof Collection) {
-                final StringBuffer sb = new StringBuffer("[");
+                final StringBuffer sb = new StringBuffer("["); //$NON-NLS-1$
                 boolean first = true;
                 final Iterator<?> iterCollection = ((Collection<?>) element).iterator();
                 while (iterCollection.hasNext()) {
@@ -386,7 +386,7 @@ public class ExtendedPropertySource implements IPropertySource {
                     if (first) {
                         first = false;
                     } else {
-                        sb.append(", ");
+                        sb.append(", "); //$NON-NLS-1$
                     }
                     if (next instanceof EObject) {
                         sb.append(EMFCoreUtil.getQualifiedName((EObject) next, true));
@@ -396,10 +396,10 @@ public class ExtendedPropertySource implements IPropertySource {
                         sb.append(String.valueOf(next));
                     }
                 }
-                sb.append("]");
+                sb.append("]"); //$NON-NLS-1$
                 text = sb.toString();
             } else if (element == null) {
-                text = "";
+                text = ""; //$NON-NLS-1$
             } else if (element instanceof EEnumLiteral) {
                 text = ((EEnumLiteral) element).getLiteral();
             } else {

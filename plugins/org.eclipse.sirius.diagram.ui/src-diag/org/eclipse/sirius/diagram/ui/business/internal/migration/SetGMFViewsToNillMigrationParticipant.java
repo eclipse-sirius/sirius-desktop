@@ -44,7 +44,7 @@ public class SetGMFViewsToNillMigrationParticipant extends AbstractRepresentatio
     /**
      * The VP version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("6.9.0.201309101020");
+    public static final Version MIGRATION_VERSION = new Version("6.9.0.201309101020"); //$NON-NLS-1$
 
     /**
      * 

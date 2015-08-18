@@ -42,7 +42,7 @@ public class DiagramRepresentationsFileMigrationParticipantV680 {
     /**
      * The VP version for this migration.
      */
-    public static final Version MIGRATION_VERSION = new Version("6.8.0.201307151200");
+    public static final Version MIGRATION_VERSION = new Version("6.8.0.201307151200"); //$NON-NLS-1$
 
     /**
      * Removes layout constraints from compartments.

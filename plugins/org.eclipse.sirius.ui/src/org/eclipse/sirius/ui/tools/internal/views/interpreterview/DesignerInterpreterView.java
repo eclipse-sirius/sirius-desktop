@@ -98,9 +98,9 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
 
     ITreeContentProvider contentProvider;
 
-    private String contentAssistBinding = "org.eclipse.ui.edit.text.contentAssist.proposals";
+    private String contentAssistBinding = "org.eclipse.ui.edit.text.contentAssist.proposals"; //$NON-NLS-1$
 
-    private String variableTag = "$";
+    private String variableTag = "$"; //$NON-NLS-1$
 
     /* user interface */
     private Composite top;
@@ -441,7 +441,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
                 final Resource resource = current.eResource();
                 if (resource != null) {
                     final String path = resource.getURI().toPlatformString(true);
-                    interpreter.setProperty("file", path);
+                    interpreter.setProperty("file", path); //$NON-NLS-1$
                 }
 
                 final long now = new Date().getTime();
@@ -449,7 +449,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
                 final Object result = interpreter.evaluate(current, acceleoExpression.getText());
                 final long ellapseTime = new Date().getTime() - now;
                 final int numberOfResults = handleExpressionResult(result);
-                final DecimalFormat decimalFormat = new DecimalFormat("###,###,###.###");
+                final DecimalFormat decimalFormat = new DecimalFormat("###,###,###.###"); //$NON-NLS-1$
                 this.interpreterForm.setMessage("Evaluation successful. Number of returned elements : " + numberOfResults + ". Time to evaluate : " + decimalFormat.format(ellapseTime / (double) 1000)
                         + " second(s)", IMessageProvider.INFORMATION);
             } catch (final EvaluationException e) {

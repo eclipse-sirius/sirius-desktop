@@ -139,11 +139,6 @@ public class ModelElementChooserDialog extends Dialog {
         return buttonBar;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#close()
-     */
     @Override
     public boolean close() {
         this.myEditingDomain.dispose();
@@ -205,11 +200,7 @@ public class ModelElementChooserDialog extends Dialog {
 
         private ITreeContentProvider myWorkbenchContentProvider = new WorkbenchContentProvider();
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-         */
+        @Override
         public Object[] getChildren(final Object parentElement) {
             Object[] result = myWorkbenchContentProvider.getChildren(parentElement);
             if (result == null || result.length <= 0) {
@@ -226,11 +217,7 @@ public class ModelElementChooserDialog extends Dialog {
             return result;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-         */
+        @Override
         public Object getParent(final Object element) {
             Object parent = myWorkbenchContentProvider.getParent(element);
 

@@ -33,7 +33,7 @@ public class DeleteFromModelAction extends Action {
      * Constructor only for tests.
      */
     public DeleteFromModelAction() {
-        super("");
+        super(""); //$NON-NLS-1$
     }
 
     /**

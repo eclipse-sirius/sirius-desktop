@@ -55,7 +55,7 @@ public class ExtractRepresentationAction extends Action {
         this.session = session;
         this.representations = selection;
 
-        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/export.gif");
+        final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/export.gif"); //$NON-NLS-1$
         this.setImageDescriptor(descriptor);
 
         this.setText("Extract to ." + SiriusUtil.SESSION_RESOURCE_EXTENSION + " file ...");

@@ -151,7 +151,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
      * @generated
      * @ordered
      */
-    protected static final String WINDOW_TITLE_EDEFAULT = "Selection Wizard";
+    protected static final String WINDOW_TITLE_EDEFAULT = "Selection Wizard"; //$NON-NLS-1$
 
     /**
      * The cached value of the '{@link #getWindowTitle() <em>Window Title</em>}'

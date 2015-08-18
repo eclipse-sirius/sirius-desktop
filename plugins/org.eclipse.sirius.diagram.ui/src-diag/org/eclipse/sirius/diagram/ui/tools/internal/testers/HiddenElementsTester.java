@@ -32,7 +32,7 @@ public class HiddenElementsTester extends PropertyTester {
     public boolean test(final Object receiver, final String property, final Object[] args, final Object expectedValue) {
         boolean result = false;
 
-        if ("diagramHasHiddenElements".equals(property) && receiver instanceof IStructuredSelection) {
+        if ("diagramHasHiddenElements".equals(property) && receiver instanceof IStructuredSelection) { //$NON-NLS-1$
             final Iterator<?> iterator = ((IStructuredSelection) receiver).iterator();
 
             while (iterator.hasNext()) {

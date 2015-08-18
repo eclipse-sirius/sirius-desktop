@@ -30,14 +30,14 @@ public final class DAnalysisSelectorService {
     /**
      * analysis selector extension point ID.
      */
-    public static final String ID = "org.eclipse.sirius.analysisSelectorProvider";
+    public static final String ID = "org.eclipse.sirius.analysisSelectorProvider"; //$NON-NLS-1$
 
     /**
      * Extension point attribute for the analysis selector provider class.
      */
-    public static final String CLASS_ATTRIBUTE = "providerClass";
+    public static final String CLASS_ATTRIBUTE = "providerClass"; //$NON-NLS-1$
 
-    private static final String DEFAULT_PROVIDER_ID = "org.eclipse.sirius.analysisSelectorProvider.default";
+    private static final String DEFAULT_PROVIDER_ID = "org.eclipse.sirius.analysisSelectorProvider.default"; //$NON-NLS-1$
 
     private static DAnalysisSelectorProvider defaultSiriusProvider;
 
@@ -97,7 +97,7 @@ public final class DAnalysisSelectorService {
      * Initialize the customer providers and the Sirius default provider.
      */
     private static void initializeProviders() {
-        Map<String, Collection<DAnalysisSelectorProvider>> providers = EclipseUtil.getExtensionPluginsByKey(DAnalysisSelectorProvider.class, ID, CLASS_ATTRIBUTE, "id");
+        Map<String, Collection<DAnalysisSelectorProvider>> providers = EclipseUtil.getExtensionPluginsByKey(DAnalysisSelectorProvider.class, ID, CLASS_ATTRIBUTE, "id"); //$NON-NLS-1$
         Collection<DAnalysisSelectorProvider> defaults = providers.get(DAnalysisSelectorService.DEFAULT_PROVIDER_ID);
         if (defaults == null || defaults.isEmpty()) {
             SiriusPlugin.getDefault().warning(String.format("No default analysis selector provider found at extension point \"%s\", using the DefaultAnalysisSelectorProvider instead.", ID), null);

@@ -58,7 +58,7 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
             /*
              * First we need to init the mask variables.
              */
-            String messageFormat = "$0";
+            String messageFormat = "$0"; //$NON-NLS-1$
             if (directEditTool.getMask() != null) {
                 messageFormat = directEditTool.getMask().getMask();
             }

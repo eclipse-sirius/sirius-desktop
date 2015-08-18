@@ -177,7 +177,7 @@ public final class SiriusUtil {
     public static boolean isFromSirius(final Object ep) {
         if (ep != null) {
             final String packageName = ep.getClass().getPackage().getName();
-            return packageName.startsWith("org.eclipse.sirius");
+            return packageName.startsWith("org.eclipse.sirius"); //$NON-NLS-1$
         }
         return false;
     }

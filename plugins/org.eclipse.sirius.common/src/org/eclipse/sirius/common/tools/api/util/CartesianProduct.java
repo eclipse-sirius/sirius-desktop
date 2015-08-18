@@ -97,7 +97,7 @@ public class CartesianProduct implements Iterable<EObjectCouple>, Iterator<EObje
      */
     @Override
     public String toString() {
-        return "ProductIterator";
+        return "ProductIterator"; //$NON-NLS-1$
     }
 
     /**

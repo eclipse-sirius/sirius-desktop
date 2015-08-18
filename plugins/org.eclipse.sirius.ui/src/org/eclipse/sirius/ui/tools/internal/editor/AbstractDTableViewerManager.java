@@ -42,12 +42,12 @@ public abstract class AbstractDTableViewerManager {
     /**
      * Boolean for OS.
      */
-    public static final boolean IS_GTK_OS = "gtk".equals(SWT.getPlatform());
+    public static final boolean IS_GTK_OS = "gtk".equals(SWT.getPlatform()); //$NON-NLS-1$
 
     /**
      * Use to store the semantic column in SWT column.
      */
-    public static final String TABLE_COLUMN_DATA = "org.eclipse.sirius.table.ui.dTableColumn";
+    public static final String TABLE_COLUMN_DATA = "org.eclipse.sirius.table.ui.dTableColumn"; //$NON-NLS-1$
 
     /**
      * The imageRegistry for the action images.
@@ -87,7 +87,7 @@ public abstract class AbstractDTableViewerManager {
     /**
      * Menu manager.
      */
-    protected final MenuManager mgr = new MenuManager("#PopupMenu");
+    protected final MenuManager mgr = new MenuManager("#PopupMenu"); //$NON-NLS-1$
 
     /**
      * Indicates whether the odesign file has changed since the last load of the

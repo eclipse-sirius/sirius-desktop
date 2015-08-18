@@ -245,7 +245,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
                 return dialect.getServices().getEditorName(representation);
             }
         }
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
     /**

@@ -66,7 +66,7 @@ import com.google.common.collect.Sets;
 public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     /** The old Viewpoint nature id. */
-    private static final String VIEWPOINT_MODELING_PROJECT_NATURE_ID = "fr.obeo.dsl.viewpoint.nature.modelingproject";
+    private static final String VIEWPOINT_MODELING_PROJECT_NATURE_ID = "fr.obeo.dsl.viewpoint.nature.modelingproject"; //$NON-NLS-1$
 
     private final SessionManagerListener sessionManagerListener = new SessionManagerListener.Stub() {
         /**

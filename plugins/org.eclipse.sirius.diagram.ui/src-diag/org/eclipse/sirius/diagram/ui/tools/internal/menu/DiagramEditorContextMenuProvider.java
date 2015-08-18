@@ -48,11 +48,11 @@ import org.eclipse.ui.IWorkbenchPart;
  */
 public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider {
 
-    private static final String DELETE_FROM_GROUP = "deleteFromGroup";
+    private static final String DELETE_FROM_GROUP = "deleteFromGroup"; //$NON-NLS-1$
 
-    private static final String PIN_GROUP = "pinGroup";
+    private static final String PIN_GROUP = "pinGroup"; //$NON-NLS-1$
 
-    private static final String FILTER_FORMAT_GROUP = "filterFormatGroup";
+    private static final String FILTER_FORMAT_GROUP = "filterFormatGroup"; //$NON-NLS-1$
 
     private static final String ARRANGE_MENU_ERROR = "Arrange menu is not renamed in Layout";
 
@@ -314,7 +314,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     private void updateArrangeMenuName(final IMenuManager arrangeMenu) {
         try {
             Class<? extends IMenuManager> arrangeMenuClass = arrangeMenu.getClass();
-            Field field = arrangeMenuClass.getDeclaredField("realMenuManager");
+            Field field = arrangeMenuClass.getDeclaredField("realMenuManager"); //$NON-NLS-1$
             field.setAccessible(true);
             Object realMenuManager = field.get(arrangeMenu);
             if (realMenuManager instanceof ActionMenuManager) {

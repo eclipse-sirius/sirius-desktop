@@ -76,7 +76,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     public static boolean canExportToHtml() {
         if (canExportToHtml == null) {
             try {
-                exportToHtmlClass = Class.forName("org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToHTMLImageUtil");
+                exportToHtmlClass = Class.forName("org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToHTMLImageUtil"); //$NON-NLS-1$
                 canExportToHtml = true;
             } catch (ClassNotFoundException e) {
                 canExportToHtml = false;
@@ -159,7 +159,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         List<?> editParts = diagramEP.getPrimaryEditParts();
         org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
         // Define max size in properties file.
-        int maxSize = Integer.parseInt(DiagramUIPlugin.INSTANCE.getString("_Pref_DiagramExportSizeMax"));
+        int maxSize = Integer.parseInt(DiagramUIPlugin.INSTANCE.getString("_Pref_DiagramExportSizeMax")); //$NON-NLS-1$
         if (imageRect.height * imageRect.width > maxSize && format != ImageFileFormat.SVG) {
             String representationName = ((DSemanticDiagram) ((Diagram) diagramEP.getModel()).getElement()).getName();
             throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representationName));

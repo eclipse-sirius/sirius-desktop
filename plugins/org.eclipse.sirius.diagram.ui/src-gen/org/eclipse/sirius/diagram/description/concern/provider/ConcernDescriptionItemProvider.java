@@ -156,7 +156,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ConcernDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ConcernDescription_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_ConcernDescription_type") : label; //$NON-NLS-1$
     }
 
     /**

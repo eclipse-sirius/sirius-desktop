@@ -63,10 +63,10 @@ public class GroupingContentProvider implements ITreeContentProvider {
 
         Configuration(IPreferenceStore store) {
             super(store);
-            bindInt(CommonPreferencesConstants.PREF_GROUP_SIZE, "groupSize");
-            bindInt(CommonPreferencesConstants.PREF_GROUP_TRIGGER, "groupTrigger");
-            bindBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE, "groupEnabled");
-            bindBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, "groupByContainingFeature");
+            bindInt(CommonPreferencesConstants.PREF_GROUP_SIZE, "groupSize"); //$NON-NLS-1$
+            bindInt(CommonPreferencesConstants.PREF_GROUP_TRIGGER, "groupTrigger"); //$NON-NLS-1$
+            bindBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE, "groupEnabled"); //$NON-NLS-1$
+            bindBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, "groupByContainingFeature"); //$NON-NLS-1$
         }
     }
 
@@ -217,7 +217,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
                         for (List<Object> partItem : partition) {
                             GroupingItem currentGroup;
                             if (structuralFeature instanceof EStructuralFeature) {
-                                currentGroup = new GroupingItem(currentOffset, parent, new ArrayList<Object>(partItem), " " + ((EStructuralFeature) structuralFeature).getName());
+                                currentGroup = new GroupingItem(currentOffset, parent, new ArrayList<Object>(partItem), " " + ((EStructuralFeature) structuralFeature).getName()); //$NON-NLS-1$
                             } else {
                                 currentGroup = new GroupingItem(currentOffset, parent, new ArrayList<Object>(partItem));
                             }

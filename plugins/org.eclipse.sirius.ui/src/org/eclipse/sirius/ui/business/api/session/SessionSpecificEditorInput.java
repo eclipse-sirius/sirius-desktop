@@ -35,11 +35,11 @@ import org.eclipse.ui.IMemento;
  */
 public class SessionSpecificEditorInput extends SessionEditorInput {
 
-    private static final String VIEWPOINT_URI = "VIEWPOINT_URI";
+    private static final String VIEWPOINT_URI = "VIEWPOINT_URI"; //$NON-NLS-1$
 
-    private static final String REPRESENTATION_DESCRIPTION_NAME = "REPRESENTATION_DESCRIPTION_NAME";
+    private static final String REPRESENTATION_DESCRIPTION_NAME = "REPRESENTATION_DESCRIPTION_NAME"; //$NON-NLS-1$
 
-    private static final String SEMANTIC_MODEL_PATH = "SEMANTIC_MODEL_PATH";
+    private static final String SEMANTIC_MODEL_PATH = "SEMANTIC_MODEL_PATH"; //$NON-NLS-1$
 
     private IPath mySemanticModelPath;
 

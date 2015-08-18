@@ -45,7 +45,7 @@ public class CenterEdgeLayoutCommand extends AbstractTransactionalCommand {
      *            the graphical edit part layouted.
      */
     public CenterEdgeLayoutCommand(GraphicalEditPart graphicalEditPart) {
-        super(graphicalEditPart.getEditingDomain(), "", null);
+        super(graphicalEditPart.getEditingDomain(), "", null); //$NON-NLS-1$
         editPart = graphicalEditPart;
     }
 

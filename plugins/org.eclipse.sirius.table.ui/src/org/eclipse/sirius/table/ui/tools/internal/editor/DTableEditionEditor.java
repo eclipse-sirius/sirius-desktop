@@ -24,10 +24,10 @@ public class DTableEditionEditor extends AbstractDTableEditor {
     /**
      * The editor ID.
      */
-    public static final String ID = "org.eclipse.sirius.table.ui.EditionTableEditorID";
+    public static final String ID = "org.eclipse.sirius.table.ui.EditionTableEditorID"; //$NON-NLS-1$
 
     /** Initial title image descriptor **/
-    private static final ImageDescriptor INITIAL_TITLE_IMAGE_DESCRIPTOR = TableUIPlugin.Implementation.getBundledImageDescriptor("icons/full/obj16/EditionTableDescription.gif");
+    private static final ImageDescriptor INITIAL_TITLE_IMAGE_DESCRIPTOR = TableUIPlugin.Implementation.getBundledImageDescriptor("icons/full/obj16/EditionTableDescription.gif"); //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

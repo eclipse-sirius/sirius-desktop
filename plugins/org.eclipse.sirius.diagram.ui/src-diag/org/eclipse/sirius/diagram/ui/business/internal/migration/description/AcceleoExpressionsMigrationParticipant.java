@@ -27,12 +27,12 @@ import org.osgi.framework.Version;
  */
 public class AcceleoExpressionsMigrationParticipant extends AbstractVSMMigrationParticipant {
 
-    private static final String OLD_EXPRESSION_DEFAULT_VALUE = "[eContents()->size()/]";
+    private static final String OLD_EXPRESSION_DEFAULT_VALUE = "[eContents()->size()/]"; //$NON-NLS-1$
 
     /**
      * The Sirius version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("10.0.0.201411061000");
+    private static final Version MIGRATION_VERSION = new Version("10.0.0.201411061000"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {

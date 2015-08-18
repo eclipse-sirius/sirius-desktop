@@ -29,7 +29,7 @@ public class ISaveDialogExtensionDescriptor {
     /**
      * Name of the attribute corresponding to the contributed class's path.
      */
-    public static final String SAVE_DIALOG_EXTENSION_CONTRIBUTED_CLASS_NAME = "class";
+    public static final String SAVE_DIALOG_EXTENSION_CONTRIBUTED_CLASS_NAME = "class"; //$NON-NLS-1$
 
     /**
      * Configuration element of this descriptor .

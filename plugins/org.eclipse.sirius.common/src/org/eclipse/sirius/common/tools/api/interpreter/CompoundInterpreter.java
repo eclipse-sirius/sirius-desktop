@@ -57,13 +57,13 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      * Name of the extension point attribute that contains our qualified class
      * name.
      */
-    private static final String ENGINE_ATTRIBUTE_CLASS = "interpreterProviderClass";
+    private static final String ENGINE_ATTRIBUTE_CLASS = "interpreterProviderClass"; //$NON-NLS-1$
 
     /** The extension point. */
-    private static final String INTERPRETER_EXTENSION_POINT = "org.eclipse.sirius.common.expressionInterpreter";
+    private static final String INTERPRETER_EXTENSION_POINT = "org.eclipse.sirius.common.expressionInterpreter"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
-    private static final String TAG_ENGINE = "expressionInterpreterProvider";
+    private static final String TAG_ENGINE = "expressionInterpreterProvider"; //$NON-NLS-1$
 
     /** The registered interpreters. */
     private final Map<IInterpreterProvider, IInterpreter> providers;

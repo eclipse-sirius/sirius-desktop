@@ -52,7 +52,7 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
      */
     public void execute() {
         if (message != null && message.length() == 0) {
-            setVariable(Integer.valueOf(0), "");
+            setVariable(Integer.valueOf(0), ""); //$NON-NLS-1$
         } else {
             final MessageFormat parser = new MessageFormat(messageMask);
             try {
@@ -74,7 +74,7 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
      */
     private void setVariable(Integer i, Object value) {
         interpreter.setVariable(i.toString(), value);
-        interpreter.setVariable("arg" + i.toString(), value);
+        interpreter.setVariable("arg" + i.toString(), value); //$NON-NLS-1$
     }
 
     /**

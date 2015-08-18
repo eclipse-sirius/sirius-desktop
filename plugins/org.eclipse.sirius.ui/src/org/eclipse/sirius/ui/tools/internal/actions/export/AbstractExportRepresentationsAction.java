@@ -167,7 +167,7 @@ public abstract class AbstractExportRepresentationsAction extends Action {
         } else if (uriQuery.isInMemoryURI()) {
             String opaquePart = mainSessionResourceURI.opaquePart();
             if (!StringUtil.isEmpty(opaquePart)) {
-                String[] segments = opaquePart.split(Pattern.quote("/"));
+                String[] segments = opaquePart.split(Pattern.quote("/")); //$NON-NLS-1$
                 if (segments != null && segments.length > 0) {
                     String projectName = segments[0];
                     IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);

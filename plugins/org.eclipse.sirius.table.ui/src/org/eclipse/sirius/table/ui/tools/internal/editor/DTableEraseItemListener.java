@@ -30,7 +30,7 @@ import org.eclipse.ui.PlatformUI;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class DTableEraseItemListener implements Listener {
-    private static final boolean IS_WINDOWS_OS = "win32".equals(SWT.getPlatform());
+    private static final boolean IS_WINDOWS_OS = "win32".equals(SWT.getPlatform()); //$NON-NLS-1$
 
     private static final Color COLOR_LIST_SELECTED = PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_LIST_SELECTION);
 

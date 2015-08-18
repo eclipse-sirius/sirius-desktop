@@ -148,7 +148,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
             final DCommand cmd = createEnclosingCommand();
             cmd.getTasks().add(new DeleteEObjectTask(diagramElement, modelAccessor));
 
-            final List<EObject> contents = Lists.newArrayList(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget"));
+            final List<EObject> contents = Lists.newArrayList(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget")); //$NON-NLS-1$
             contents.add(diagramElement);
             for (final EObject element : contents) {
                 if (element instanceof EdgeTarget) {

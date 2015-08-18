@@ -47,7 +47,7 @@ import org.eclipse.ui.model.WorkbenchLabelProvider;
  */
 public class SelectAnalysisFilePage extends WizardPage {
 
-    private static final String SEPARATOR = "/";
+    private static final String SEPARATOR = "/"; //$NON-NLS-1$
 
     /**
      * the tree viewer.

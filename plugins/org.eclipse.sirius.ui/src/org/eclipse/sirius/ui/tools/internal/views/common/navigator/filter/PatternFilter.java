@@ -60,7 +60,7 @@ public class PatternFilter extends ViewerFilter {
      * The pattern filter declared in plugin.xml that must be used by the
      * CommonFilteredTree.
      */
-    public static final String ID = "org.eclipse.sirius.ui.commonFilter.pattern";
+    public static final String ID = "org.eclipse.sirius.ui.commonFilter.pattern"; //$NON-NLS-1$
 
     private static final Object[] EMPTY = new Object[0];
 

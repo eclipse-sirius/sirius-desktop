@@ -69,7 +69,7 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
      * Constant used to store the location in draw2d absolute coordinates of the
      * click on the {@link EdgeTarget} source.
      */
-    protected static final String DRAW2D_EDGE_LOCATION_SOURCE = "edge.absolute.location.source";
+    protected static final String DRAW2D_EDGE_LOCATION_SOURCE = "edge.absolute.location.source"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

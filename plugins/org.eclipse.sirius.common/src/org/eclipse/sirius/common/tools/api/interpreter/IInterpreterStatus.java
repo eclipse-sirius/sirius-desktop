@@ -24,12 +24,12 @@ public interface IInterpreterStatus {
     /**
      * Status severity : warning.
      */
-    String WARNING = "warning";
+    String WARNING = "warning"; //$NON-NLS-1$
 
     /**
      * Status severity : error.
      */
-    String ERROR = "error";
+    String ERROR = "error"; //$NON-NLS-1$
 
     /**
      * Returns the names of all possible types for the target of the evaluated

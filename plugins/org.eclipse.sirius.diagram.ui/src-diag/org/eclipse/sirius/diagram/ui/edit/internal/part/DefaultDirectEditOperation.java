@@ -282,7 +282,7 @@ public final class DefaultDirectEditOperation {
                 text = getParser().getPrintString(new EObjectAdapter(parserElement), getParserOptions().intValue());
             }
             if (text == null || text.length() == 0) {
-                text = "";
+                text = ""; //$NON-NLS-1$
             }
             return text;
         }

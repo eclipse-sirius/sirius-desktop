@@ -27,7 +27,7 @@ public class RemoveOldMigrationAnnotations extends AbstractRepresentationsFileMi
     /**
      * The VP version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("6.5.0.201210011230");
+    private static final Version MIGRATION_VERSION = new Version("6.5.0.201210011230"); //$NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -43,7 +43,7 @@ public class RemoveOldMigrationAnnotations extends AbstractRepresentationsFileMi
         Iterator<DAnnotationEntry> iterator = dAnalysis.getEAnnotations().iterator();
         while (iterator.hasNext()) {
             DAnnotationEntry entry = iterator.next();
-            if (entry.getSource().equals("Migration")) {
+            if (entry.getSource().equals("Migration")) { //$NON-NLS-1$
                 iterator.remove();
             }
         }

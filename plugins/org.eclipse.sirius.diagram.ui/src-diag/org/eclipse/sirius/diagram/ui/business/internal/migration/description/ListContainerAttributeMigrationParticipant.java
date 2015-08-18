@@ -30,7 +30,7 @@ public class ListContainerAttributeMigrationParticipant extends AbstractVSMMigra
     /**
      * The VP version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("6.7.0.201302071200");
+    private static final Version MIGRATION_VERSION = new Version("6.7.0.201302071200"); //$NON-NLS-1$
 
     public Version getMigrationVersion() {
         return MIGRATION_VERSION;
@@ -42,7 +42,7 @@ public class ListContainerAttributeMigrationParticipant extends AbstractVSMMigra
     @Override
     protected void handleFeature(EObject owner, EStructuralFeature unkownFeature, Object valueOfUnknownFeature) {
         super.handleFeature(owner, unkownFeature, valueOfUnknownFeature);
-        if (owner instanceof ContainerMapping && "listContainer".equals(unkownFeature.getName())) {
+        if (owner instanceof ContainerMapping && "listContainer".equals(unkownFeature.getName())) { //$NON-NLS-1$
             ContainerMapping mapping = (ContainerMapping) owner;
             if (valueOfUnknownFeature instanceof String && Boolean.parseBoolean((String) valueOfUnknownFeature)) {
                 mapping.setChildrenPresentation(ContainerLayout.LIST);

@@ -67,7 +67,7 @@ import org.eclipse.ui.IWorkbenchPart;
  */
 public class OpenMenuContribution implements IContributionItemProvider {
 
-    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.open";
+    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.open"; //$NON-NLS-1$
 
     private AdapterFactory adapterFactory;
 
@@ -108,10 +108,10 @@ public class OpenMenuContribution implements IContributionItemProvider {
                 // Remove Open action in navigate menu which is not used in
                 // Sirius and avoid to have a gray "Open" item menu in Navigate
                 // menu
-                final IMenuManager navigateManager = (IMenuManager) menu.find("navigateMenu");
+                final IMenuManager navigateManager = (IMenuManager) menu.find("navigateMenu"); //$NON-NLS-1$
                 // if the navigate menu is changed or deleted a NPE is avoided
                 if (navigateManager != null) {
-                    navigateManager.remove("open");
+                    navigateManager.remove("open"); //$NON-NLS-1$
                 }
                 // Add menus to open existing representations
                 final MenuManager openMenuManager = new MenuManager("Open", MENU_OPEN_REPRESENTATION_ID);

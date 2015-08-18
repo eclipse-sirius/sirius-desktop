@@ -154,25 +154,16 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
      * Viewpoint table content provider.
      */
     private final class TableContentProvider implements IStructuredContentProvider {
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
             // Ignore.
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void dispose() {
             // Ignore.
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Object[] getElements(Object inputElement) {
             if (inputElement instanceof List<?> && Iterables.all((List<?>) inputElement, Predicates.instanceOf(Item.class))) {
@@ -189,10 +180,6 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
      * Viewpoint table label provider
      */
     private final class TableLabelProvider extends ColumnLabelProvider {
-
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Image getImage(final Object element) {
             Item item = (Item) element;
@@ -212,29 +199,23 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
             
             // Add decorator if the viewpoint comes from workspace
             if (!ViewpointRegistry.getInstance().isFromPlugin(vp)) {
-                final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/folder_close.gif");
+                final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/folder_close.gif"); //$NON-NLS-1$
                 viewpointImage = SiriusEditPlugin.getPlugin().getImage(new DecorationOverlayIcon(viewpointImage, decoratorDescriptor, IDecoration.BOTTOM_LEFT));
             }
             return viewpointImage;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public String getText(final Object element) {
             Item item = (Item) element;
             return item.getLabel();
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public String getToolTipText(Object element) {
             Item item = (Item) element;
 
-            String toolTip = ""; // no null
+            String toolTip = ""; // no null //$NON-NLS-1$
             Viewpoint viewpoint = item.getViewpoint();
             final Resource resource = viewpoint.eResource();
             if (resource != null) {
@@ -245,7 +226,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
                 String doc = viewpoint.getEndUserDocumentation().trim();
                 if (!doc.isEmpty()) {
                     if (!toolTip.isEmpty()) {
-                        toolTip += "\n\n";
+                        toolTip += "\n\n"; //$NON-NLS-1$
                     }
 
                     toolTip += doc;
@@ -255,25 +236,16 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
             return toolTip;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Point getToolTipShift(final Object object) {
             return new Point(5, 5);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public int getToolTipDisplayDelayTime(final Object object) {
             return 200;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public int getToolTipStyle(final Object object) {
             return SWT.SHADOW_OUT;
@@ -284,9 +256,6 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
      * Viewpoint table check state listener
      */
     private final class TableCheckStateListener implements ICheckStateListener {
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void checkStateChanged(CheckStateChangedEvent event) {
             if (event.getElement() instanceof Item) {
@@ -367,9 +336,6 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         }));
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Control createContents(Composite parent) {
         Control contents = super.createContents(parent);
@@ -381,9 +347,6 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         return contents;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Control createDialogArea(Composite parent) {
         Composite composite = (Composite) super.createDialogArea(parent);
@@ -432,7 +395,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
                         }
                     }
                 })) {
-                    result.put(viewpoint.getName(), extended.trim().replaceFirst("^viewpoint:/[^/]+/", ""));
+                    result.put(viewpoint.getName(), extended.trim().replaceFirst("^viewpoint:/[^/]+/", "")); //$NON-NLS-1$ //$NON-NLS-2$
                 }
             }
         }
@@ -447,10 +410,10 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
      * @return error message
      */
     private static String getMissingDependenciesErrorMessage(Map<String, Collection<String>> missingDependencies) {
-        return Joiner.on("\n").withKeyValueSeparator(" requires: ").join(Maps.transformValues(missingDependencies, new Function<Collection<String>, String>() {
+        return Joiner.on("\n").withKeyValueSeparator(" requires: ").join(Maps.transformValues(missingDependencies, new Function<Collection<String>, String>() { //$NON-NLS-1$
             @Override
             public String apply(Collection<String> from) {
-                return Joiner.on(", ").join(from);
+                return Joiner.on(", ").join(from); //$NON-NLS-1$
             }
         }));
     }

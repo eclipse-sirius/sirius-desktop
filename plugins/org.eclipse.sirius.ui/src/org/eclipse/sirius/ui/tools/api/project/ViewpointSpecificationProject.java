@@ -96,7 +96,7 @@ public final class ViewpointSpecificationProject {
     /**
      * The line separator to use on the running platform.
      */
-    private static final String NL = System.getProperty("line.separator");
+    private static final String NL = System.getProperty("line.separator"); //$NON-NLS-1$
 
     /**
      * This caches an instance of the model package.
@@ -114,7 +114,7 @@ public final class ViewpointSpecificationProject {
      */
     private static final String DEFAULT_PACKAGE_NAME = "defaultpackage"; //$NON-NLS-1$
 
-    private static final String UNAUTHORIZED_CHARACTER = "[^a-zA-Z0-9_\\.-]";
+    private static final String UNAUTHORIZED_CHARACTER = "[^a-zA-Z0-9_\\.-]"; //$NON-NLS-1$
 
     /**
      * Default constructor.
@@ -179,7 +179,7 @@ public final class ViewpointSpecificationProject {
                     project.open(monitor);
 
                     ViewpointSpecificationProject.createFolder(project, monitor, "src"); //$NON-NLS-1$
-                    ViewpointSpecificationProject.createFolder(project, monitor, "description");
+                    ViewpointSpecificationProject.createFolder(project, monitor, "description"); //$NON-NLS-1$
 
                     IFile modelFile;
                     try {
@@ -254,7 +254,7 @@ public final class ViewpointSpecificationProject {
                     final EObject rootObject = ViewpointSpecificationProject.createInitialModel(modelInitialObjectName);
                     if (rootObject != null) {
                         if (rootObject instanceof Group) {
-                            ((Group) rootObject).setName(modelName.replaceAll("." + VIEWPOINT_MODEL_EXTENSION, ""));
+                            ((Group) rootObject).setName(modelName.replaceAll("." + VIEWPOINT_MODEL_EXTENSION, "")); //$NON-NLS-1$ //$NON-NLS-2$
                         }
                         resource.getContents().add(rootObject);
                     }
@@ -325,12 +325,12 @@ public final class ViewpointSpecificationProject {
      *            is the monitor
      */
     private static void convert(final IProject prj, final String modelName, final IProgressMonitor monitor) {
-        final String modelNameWithoutExtension = modelName.replaceAll("\\." + VIEWPOINT_MODEL_EXTENSION + "$", "");
+        final String modelNameWithoutExtension = modelName.replaceAll("\\." + VIEWPOINT_MODEL_EXTENSION + "$", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
         // WARNING: variable names should not share any common prefix.
         // applyReplacements() does not deal with this case.
         final Map<String, String> replacements = new HashMap<String, String>();
-        final String projectName = prj.getName().replaceAll(UNAUTHORIZED_CHARACTER, "_");
+        final String projectName = prj.getName().replaceAll(UNAUTHORIZED_CHARACTER, "_"); //$NON-NLS-1$
 
         final String packageName;
         if (SourceVersion.isName(prj.getName())) {
@@ -344,14 +344,14 @@ public final class ViewpointSpecificationProject {
         replacements.put("pluginId", projectName); //$NON-NLS-1$
         replacements.put("projectName", projectName); //$NON-NLS-1$
         replacements.put("modelName", modelNameWithoutExtension); //$NON-NLS-1$
-        replacements.put("packageName", packageName);
+        replacements.put("packageName", packageName); //$NON-NLS-1$
 
-        ViewpointSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
-        ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll("\\.", "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor);
-        ViewpointSpecificationProject.createFileFromTemplate(prj, ".classpath", "resources/classpath.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
-        ViewpointSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
-        ViewpointSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
-        ViewpointSpecificationProject.createFileFromTemplate(prj, "plugin.xml", "resources/plugin.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll("\\.", "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, ".classpath", "resources/classpath.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "plugin.xml", "resources/plugin.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
 
         addAcceleoNature(prj);
     }
@@ -359,7 +359,7 @@ public final class ViewpointSpecificationProject {
     private static void addAcceleoNature(IProject projet) {
         ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
         IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
-        Command addAcceleoNatureCommand = commandService.getCommand("org.eclipse.sirius.common.acceleo.mtl.ide.internal.convert");
+        Command addAcceleoNatureCommand = commandService.getCommand("org.eclipse.sirius.common.acceleo.mtl.ide.internal.convert"); //$NON-NLS-1$
 
         // If the acceleo interpreter is not present, do not configure.
         // the acceleo conversion command is not API yet, so, it
@@ -454,7 +454,7 @@ public final class ViewpointSpecificationProject {
     private static String applyReplacements(final String text, final Map<String, String> replacements) {
         String result = text;
         for (Entry<String, String> replacement : replacements.entrySet()) {
-            result = result.replaceAll("%" + replacement.getKey(), replacement.getValue());
+            result = result.replaceAll("%" + replacement.getKey(), replacement.getValue()); //$NON-NLS-1$
         }
         return result;
     }
@@ -512,7 +512,7 @@ public final class ViewpointSpecificationProject {
     }
 
     private static IFile getModelFile(final IProject project, final String modelName) {
-        return ResourcesPlugin.getWorkspace().getRoot().getFile(project.getFullPath().append("description/" + modelName));
+        return ResourcesPlugin.getWorkspace().getRoot().getFile(project.getFullPath().append("description/" + modelName)); //$NON-NLS-1$
     }
 
     /**

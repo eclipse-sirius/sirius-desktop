@@ -28,7 +28,7 @@ public class StyleCustomizationsRepresentationsFileMigrationParticipant extends 
     /**
      * The VP version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("6.5.0.201209191025");
+    private static final Version MIGRATION_VERSION = new Version("6.5.0.201209191025"); //$NON-NLS-1$
 
     /**
      * Overridden to migrate the custom feature of Style.
@@ -40,7 +40,7 @@ public class StyleCustomizationsRepresentationsFileMigrationParticipant extends 
         super.handleFeature(owner, unkownFeature, valueOfUnknownFeature);
         if (owner instanceof Style) {
             Style style = (Style) owner;
-            if ("custom".equals(unkownFeature.getName()) && valueOfUnknownFeature instanceof String && Boolean.parseBoolean((String) valueOfUnknownFeature)) {
+            if ("custom".equals(unkownFeature.getName()) && valueOfUnknownFeature instanceof String && Boolean.parseBoolean((String) valueOfUnknownFeature)) { //$NON-NLS-1$
                 style.getCustomFeatures().addAll(new CustomizableQuery(style).getCustomizableFeatureNames());
                 TreeIterator<EObject> eAllContents = style.eAllContents();
                 while (eAllContents.hasNext()) {

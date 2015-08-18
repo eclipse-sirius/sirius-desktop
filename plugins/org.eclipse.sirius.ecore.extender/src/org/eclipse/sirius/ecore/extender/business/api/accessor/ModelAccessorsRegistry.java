@@ -151,7 +151,7 @@ public class ModelAccessorsRegistry {
     }
 
     private String getMapKeyFromResource(final ResourceSet resourceSet) {
-        String uri = "";
+        String uri = ""; //$NON-NLS-1$
         final Resource airResource = getDiscriminantResource(resourceSet);
         if (airResource != null && airResource.getURI() != null) {
             uri = airResource.getURI().toString();

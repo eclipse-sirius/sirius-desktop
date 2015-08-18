@@ -120,7 +120,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class Lifeline2ExecutionMapping extends AbstractRule<TLifelineMapping, ExecutionMapping> {
 
-        private static final String SELF = "var:self";
+        private static final String SELF = "var:self"; //$NON-NLS-1$
 
         public Lifeline2ExecutionMapping(ModelGeneratedMaker marker) {
             super(marker);
@@ -152,7 +152,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class Lifeline2EndOfLifeMapping extends AbstractRule<TLifelineMapping, EndOfLifeMapping> {
 
-        private static final String SELF = "var:self";
+        private static final String SELF = "var:self"; //$NON-NLS-1$
 
         public Lifeline2EndOfLifeMapping(ModelGeneratedMaker marker) {
             super(marker);
@@ -160,7 +160,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
         public EndOfLifeMapping apply(TLifelineMapping from) {
             EndOfLifeMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getEndOfLifeMapping());
-            to.setName(from.getName() + " EOL");
+            to.setName(from.getName() + " EOL"); //$NON-NLS-1$
             to.setSemanticCandidatesExpression(SELF);
             to.setSemanticElements(SELF);
             to.setDomainClass(from.getDomainClass());
@@ -343,7 +343,7 @@ public class TemplateToDiagramDescriptionTransformer {
             to.setLineStyle(from.getLineStyle());
             to.setSourceArrow(from.getSourceArrow());
             to.setStrokeColor(from.getStrokeColor());
-            to.setSizeComputationExpression("2");
+            to.setSizeComputationExpression("2"); //$NON-NLS-1$
             to.setTargetArrow(from.getTargetArrow());
             return to;
         }
@@ -428,7 +428,7 @@ public class TemplateToDiagramDescriptionTransformer {
             to.setBorderSizeComputationExpression(from.getBorderSizeComputationExpression());
             to.setResizeKind(ResizeKind.NORTH_SOUTH_LITERAL);
             to.setShowIcon(false);
-            to.setLabelExpression("[''/]");
+            to.setLabelExpression("[''/]"); //$NON-NLS-1$
             to.setWidth(2);
             to.setHeight(3);
             return to;

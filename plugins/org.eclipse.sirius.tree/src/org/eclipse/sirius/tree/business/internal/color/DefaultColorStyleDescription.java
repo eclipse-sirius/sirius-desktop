@@ -24,9 +24,9 @@ import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
  */
 public class DefaultColorStyleDescription extends DescriptionSwitch<EObject> {
 
-    private static final String BLACK = "black";
+    private static final String BLACK = "black"; //$NON-NLS-1$
 
-    private static final String WHITE = "white";
+    private static final String WHITE = "white"; //$NON-NLS-1$
 
     /**
      * Set the default color descriptions on the given EObject.

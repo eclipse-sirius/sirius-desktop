@@ -103,7 +103,7 @@ public class FilterDescriptionItemProvider extends DocumentedElementItemProvider
         if (label != null) {
             return label;
         }
-        return getString("_UI_FilterDescription_type");
+        return getString("_UI_FilterDescription_type"); //$NON-NLS-1$
     }
 
     /**

@@ -24,10 +24,10 @@ public class DTableCrossEditor extends AbstractDTableEditor {
     /**
      * The editor ID.
      */
-    public static final String ID = "org.eclipse.sirius.table.ui.CrossTableEditorID";
+    public static final String ID = "org.eclipse.sirius.table.ui.CrossTableEditorID"; //$NON-NLS-1$
 
     /** Initial title image descriptor **/
-    private static final ImageDescriptor INITIAL_TITLE_IMAGE_DESCRIPTOR = TableUIPlugin.Implementation.getBundledImageDescriptor("icons/full/obj16/CrossTableDescription.gif");
+    private static final ImageDescriptor INITIAL_TITLE_IMAGE_DESCRIPTOR = TableUIPlugin.Implementation.getBundledImageDescriptor("icons/full/obj16/CrossTableDescription.gif"); //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

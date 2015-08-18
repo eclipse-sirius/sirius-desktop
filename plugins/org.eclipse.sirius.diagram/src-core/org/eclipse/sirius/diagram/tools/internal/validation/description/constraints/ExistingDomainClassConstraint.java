@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 public class ExistingDomainClassConstraint extends AbstractConstraint {
 
     /** The name of the DomainClass feature. */
-    private static final String DOMAIN_CLASS_FEATURE = "domainClass";
+    private static final String DOMAIN_CLASS_FEATURE = "domainClass"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

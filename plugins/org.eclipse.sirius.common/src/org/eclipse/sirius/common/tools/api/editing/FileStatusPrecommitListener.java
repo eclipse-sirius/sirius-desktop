@@ -78,7 +78,7 @@ public class FileStatusPrecommitListener extends ResourceSetListenerImpl {
      */
     @Override
     public Command transactionAboutToCommit(final ResourceSetChangeEvent event) throws RollbackException {
-        final boolean defensiveEditValidation = Platform.getPreferencesService().getBoolean("org.eclipse.sirius.common.ui", CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true, null);
+        final boolean defensiveEditValidation = Platform.getPreferencesService().getBoolean("org.eclipse.sirius.common.ui", CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true, null); //$NON-NLS-1$
         final Command cmd = super.transactionAboutToCommit(event);
         if (defensiveEditValidation) {
             final Set<Resource> changedRes = Sets.newLinkedHashSet();

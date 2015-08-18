@@ -210,7 +210,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         @Override
         public String toString() {
             if (parent != null) {
-                return parent.toString() + " > " + this.getLabel();
+                return parent.toString() + " > " + this.getLabel(); //$NON-NLS-1$
             } else {
                 return this.getLabel();
             }
@@ -384,7 +384,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
             public void update(ViewerCell cell) {
                 Item item = (Item) cell.getElement();
                 cell.setText(item.getLabel());
-                cell.setImage(SiriusEditPlugin.getPlugin().getBundledImage("icons/full/obj16/Viewpoint.gif"));
+                cell.setImage(SiriusEditPlugin.getPlugin().getBundledImage("icons/full/obj16/Viewpoint.gif")); //$NON-NLS-1$
             }
 
             @Override
@@ -425,10 +425,10 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
                     if (item != null && item.viewpoint != null) {
                         description.setText(item.viewpoint.getEndUserDocumentation());
                     } else {
-                        description.setText("");
+                        description.setText(""); //$NON-NLS-1$
                     }
                 } else {
-                    description.setText("");
+                    description.setText(""); //$NON-NLS-1$
                 }
             }
         });

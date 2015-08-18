@@ -34,9 +34,9 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
 public class ResourceSetFactory {
 
     /** The extension point. */
-    private static final String FACTORY_EXTENSION_POINT = DslCommonPlugin.PLUGIN_ID + ".resourceSetFactory";
+    private static final String FACTORY_EXTENSION_POINT = DslCommonPlugin.PLUGIN_ID + ".resourceSetFactory"; //$NON-NLS-1$
 
-    private static final String CLASS_ATTRIBUTE = "class";
+    private static final String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /**
      * One should use the static method to instanciate the class.

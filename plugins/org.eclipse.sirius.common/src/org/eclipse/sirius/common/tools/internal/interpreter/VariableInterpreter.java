@@ -32,10 +32,10 @@ import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 public class VariableInterpreter extends AbstractInterpreter implements org.eclipse.sirius.common.tools.api.interpreter.IInterpreter, IInterpreterProvider {
 
     /** The Variable interpreter prefix. */
-    public static final String PREFIX = "var:";
+    public static final String PREFIX = "var:"; //$NON-NLS-1$
 
     /** The self variable name. */
-    public static final String SELF_VARIABLE_NAME = "self";
+    public static final String SELF_VARIABLE_NAME = "self"; //$NON-NLS-1$
 
     /** The variables manager. */
     private final VariableManager variablesManager;
@@ -75,9 +75,7 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
         return variablesManager.getVariables();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object evaluate(EObject target, String expression) throws EvaluationException {
         Object result = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {

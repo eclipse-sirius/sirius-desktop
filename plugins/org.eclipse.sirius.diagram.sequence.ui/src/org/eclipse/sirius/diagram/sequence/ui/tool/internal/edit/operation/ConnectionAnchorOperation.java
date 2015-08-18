@@ -65,7 +65,7 @@ public final class ConnectionAnchorOperation {
      *         face.
      */
     public static ConnectionAnchor getHorizontallyCenteredAndTopAnchor(ConnectionAnchor anchor) {
-        return getCorrectedAnchor(anchor, "(0.5,0)", 0.5);
+        return getCorrectedAnchor(anchor, "(0.5,0)", 0.5); //$NON-NLS-1$
     }
 
     /**
@@ -78,7 +78,7 @@ public final class ConnectionAnchorOperation {
      *         face.
      */
     public static ConnectionAnchor getHorizontallyCenteredAndBottomAnchor(ConnectionAnchor anchor) {
-        return getCorrectedAnchor(anchor, "(0.5,1)", 0.5);
+        return getCorrectedAnchor(anchor, "(0.5,1)", 0.5); //$NON-NLS-1$
     }
 
     private static ConnectionAnchor getCorrectedAnchor(ConnectionAnchor anchor, String defaultId, double preciseX) {

@@ -33,7 +33,10 @@ import org.osgi.framework.BundleContext;
 public class DslCommonPlugin extends EMFPlugin {
 
     /** The plugin id. */
-    public static final String PLUGIN_ID = "org.eclipse.sirius.common";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.common"; //$NON-NLS-1$
+    
+    /** Keep track of the singleton.. */
+    public static final DslCommonPlugin INSTANCE = new DslCommonPlugin();
 
     /** The profiler. */
     public static final TimeProfiler PROFILER = new TimeProfiler2();

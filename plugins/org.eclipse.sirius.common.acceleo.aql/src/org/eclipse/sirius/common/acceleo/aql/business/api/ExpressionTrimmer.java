@@ -22,13 +22,13 @@ public class ExpressionTrimmer {
      * This represents the prefix of an Acceleo 3 expression.
      * 
      */
-    private static final String ACCELEO_EXPRESSION_PREFIX = "[";
+    private static final String ACCELEO_EXPRESSION_PREFIX = "["; //$NON-NLS-1$
 
     /**
      * This represents the suffix of an Acceleo 3 expression.
      * 
      */
-    private static final String ACCELEO_EXPRESSION_SUFFIX = "/]";
+    private static final String ACCELEO_EXPRESSION_SUFFIX = "/]"; //$NON-NLS-1$
 
     private int removedFromStart;
 

@@ -142,7 +142,7 @@ public class NewModelingProjectCreationWizardPage extends WizardNewProjectCreati
     }
 
     private static boolean isMacOrWindowsOS() {
-        return System.getProperty("os.name").contains("Windows") || System.getProperty("os.name").contains("Mac");
+        return System.getProperty("os.name").contains("Windows") || System.getProperty("os.name").contains("Mac"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         // return false;
     }
 }

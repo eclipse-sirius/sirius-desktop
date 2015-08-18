@@ -36,7 +36,7 @@ public interface Session {
     /**
      * ID for dangling, broken or invalid sessions.
      */
-    String INVALID_SESSION = "INVALID SESSION";
+    String INVALID_SESSION = "INVALID SESSION"; //$NON-NLS-1$
 
     /**
      * Open the session and add it to the {@link SessionManager}. Initialize a

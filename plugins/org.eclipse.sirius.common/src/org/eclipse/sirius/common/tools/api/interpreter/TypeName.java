@@ -35,14 +35,14 @@ public final class TypeName {
     /**
      * A singleton TypeName for any java.lang.Object.
      */
-    public static final TypeName ANY_TYPENAME = new TypeName("ecore.EJavaObject");
+    public static final TypeName ANY_TYPENAME = new TypeName("ecore.EJavaObject"); //$NON-NLS-1$
 
     /**
      * A singleton TypeName for any EObject.
      */
-    public static final TypeName EOBJECT_TYPENAME = new TypeName("ecore.EObject");
+    public static final TypeName EOBJECT_TYPENAME = new TypeName("ecore.EObject"); //$NON-NLS-1$
 
-    private static final String SEPARATOR = ".";
+    private static final String SEPARATOR = "."; //$NON-NLS-1$
 
     private final String typeName;
 
@@ -135,9 +135,9 @@ public final class TypeName {
     public static TypeName fromString(String typeName) {
         TypeName result = ANY_TYPENAME;
         if (!StringUtil.isEmpty(typeName)) {
-            if ("ecore.EJavaObject".equals(typeName) || "EJavaObject".equals(typeName)) {
+            if ("ecore.EJavaObject".equals(typeName) || "EJavaObject".equals(typeName)) { //$NON-NLS-1$ //$NON-NLS-2$
                 result = ANY_TYPENAME;
-            } else if ("ecore.EObject".equals(typeName) || "EObject".equals(typeName)) {
+            } else if ("ecore.EObject".equals(typeName) || "EObject".equals(typeName)) { //$NON-NLS-1$ //$NON-NLS-2$
                 result = EOBJECT_TYPENAME;
             } else {
                 result = new TypeName(typeName.trim());

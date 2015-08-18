@@ -97,7 +97,7 @@ public class ModelingProjectWizard extends Wizard implements INewWizard {
      */
     public void init(final IWorkbench wkbch, final IStructuredSelection sel) {
         setWindowTitle("New Modeling Project");
-        setDefaultPageImageDescriptor(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/wizban/banner_modeling_project.gif"));
+        setDefaultPageImageDescriptor(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/wizban/banner_modeling_project.gif")); //$NON-NLS-1$
     }
 
     /**
@@ -119,7 +119,7 @@ public class ModelingProjectWizard extends Wizard implements INewWizard {
     @Override
     public void addPages() {
         newProjectPage = new NewModelingProjectCreationWizardPage(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
-        newProjectPage.setInitialProjectName("");
+        newProjectPage.setInitialProjectName(""); //$NON-NLS-1$
         newProjectPage.setTitle(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
         newProjectPage.setDescription(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_description")); //$NON-NLS-1$        
         addPage(newProjectPage);

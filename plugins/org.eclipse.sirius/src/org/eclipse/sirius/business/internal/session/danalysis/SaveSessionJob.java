@@ -28,7 +28,7 @@ public class SaveSessionJob extends Job {
     /**
      * The family id for this kind of job.
      */
-    public static final String FAMILY = SiriusPlugin.ID + ".saveSessionJob";
+    public static final String FAMILY = SiriusPlugin.ID + ".saveSessionJob"; //$NON-NLS-1$
 
     private static final String ACTION_NAME = "Session saving";
 

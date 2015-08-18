@@ -30,7 +30,7 @@ public class ReplaceModelsBySemanticResources extends AbstractRepresentationsFil
     /**
      * The VP version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("10.0.0.201505191300");
+    public static final Version MIGRATION_VERSION = new Version("10.0.0.201505191300"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {

@@ -85,11 +85,11 @@ public final class DiagramCreationUtil {
     }
 
     private PreferencesHint getPreferencesHint() {
-        return new PreferencesHint("org.eclipse.sirius.diagram");
+        return new PreferencesHint("org.eclipse.sirius.diagram"); //$NON-NLS-1$
     }
 
     private String getDiagramKind() {
-        return "Sirius";
+        return "Sirius"; //$NON-NLS-1$
     }
 
 }

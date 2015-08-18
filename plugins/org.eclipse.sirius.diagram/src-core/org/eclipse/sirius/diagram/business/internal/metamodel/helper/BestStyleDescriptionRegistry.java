@@ -53,7 +53,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
      * The key of the annotation containing the cache of computed
      * {@link StyleDescription}.
      */
-    public static final String DANNOTATION_CUSTOMIZATION_KEY = "DANNOTATION_CUSTOMIZATION_KEY";
+    public static final String DANNOTATION_CUSTOMIZATION_KEY = "DANNOTATION_CUSTOMIZATION_KEY"; //$NON-NLS-1$
 
     private static final long serialVersionUID = 1L;
 

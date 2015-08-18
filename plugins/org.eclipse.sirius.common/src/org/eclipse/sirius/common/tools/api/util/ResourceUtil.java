@@ -27,7 +27,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
  */
 public final class ResourceUtil {
 
-    private static final String FILE_SEPARATOR = "/";
+    private static final String FILE_SEPARATOR = "/"; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.
@@ -50,15 +50,15 @@ public final class ResourceUtil {
     public static IFile createBackupFile(final IFile file, final IProgressMonitor monitor) throws CoreException {
         monitor.beginTask("Backup and refresh workspace", 2);
         // computes a timestamp.
-        final String timestamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
+        final String timestamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date()); //$NON-NLS-1$
 
         // Computes a candidate name.
         final int lastDotIndex = file.getName().lastIndexOf('.');
         final String name;
         if (lastDotIndex > 0) {
-            name = file.getName().substring(0, lastDotIndex) + "-" + timestamp + "." + file.getName().substring(lastDotIndex + ".".length()) + ".old";
+            name = file.getName().substring(0, lastDotIndex) + "-" + timestamp + "." + file.getName().substring(lastDotIndex + ".".length()) + ".old"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         } else {
-            name = file.getName() + "-" + timestamp + ".old";
+            name = file.getName() + "-" + timestamp + ".old"; //$NON-NLS-1$ //$NON-NLS-2$
         }
 
         // find the backup file.

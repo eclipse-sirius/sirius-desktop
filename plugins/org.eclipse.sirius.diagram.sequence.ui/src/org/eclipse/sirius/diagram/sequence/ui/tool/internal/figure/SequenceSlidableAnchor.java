@@ -81,7 +81,7 @@ public class SequenceSlidableAnchor extends SlidableAnchor {
     public String getTerminal() {
         String terminal = super.getTerminal();
         if (custom) {
-            terminal = terminal + " custom";
+            terminal = terminal + " custom"; //$NON-NLS-1$
         }
         return terminal;
     }
@@ -93,7 +93,7 @@ public class SequenceSlidableAnchor extends SlidableAnchor {
      *            an anchor terminal id.
      */
     public void updateCustomStatus(String terminal) {
-        if (terminal.contains("custom")) {
+        if (terminal.contains("custom")) { //$NON-NLS-1$
             custom = true;
         }
     }

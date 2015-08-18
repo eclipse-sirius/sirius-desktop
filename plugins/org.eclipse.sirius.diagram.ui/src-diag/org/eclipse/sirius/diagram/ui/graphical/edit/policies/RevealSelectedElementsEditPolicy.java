@@ -30,7 +30,7 @@ public class RevealSelectedElementsEditPolicy extends AbstractRevealElementEditP
     /**
      * Key where to find selected elements to reveal.
      */
-    public static final String SELECTED_ELEMENTS_KEY = "selectedElements";
+    public static final String SELECTED_ELEMENTS_KEY = "selectedElements"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}

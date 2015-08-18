@@ -33,7 +33,7 @@ public class ViewpointURIQuery {
     /**
      * THe URI scheme used for Sirius URIs.
      */
-    public static final String VIEWPOINT_URI_SCHEME = "viewpoint";
+    public static final String VIEWPOINT_URI_SCHEME = "viewpoint"; //$NON-NLS-1$
 
     /**
      * The URI to query.
@@ -94,13 +94,13 @@ public class ViewpointURIQuery {
                 String pluginId = uri.segment(1);
                 if (target instanceof Viewpoint) {
                     String viewpointName = ((Viewpoint) target).getName();
-                    URI logicalViewpointUri = URI.createURI(ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName);
+                    URI logicalViewpointUri = URI.createURI(ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName); //$NON-NLS-1$ //$NON-NLS-2$
                     result = Options.newSome(logicalViewpointUri);
                 } else {
                     Option<EObject> viewpointContext = new EObjectQuery(target).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getViewpoint());
                     if (viewpointContext.some()) {
                         String viewpointName = ((Viewpoint) viewpointContext.get()).getName();
-                        URI logicalViewpointUri = URI.createURI(ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName);
+                        URI logicalViewpointUri = URI.createURI(ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName); //$NON-NLS-1$ //$NON-NLS-2$
                         result = Options.newSome(logicalViewpointUri.appendFragment(uri.fragment()));
                     }
                 }

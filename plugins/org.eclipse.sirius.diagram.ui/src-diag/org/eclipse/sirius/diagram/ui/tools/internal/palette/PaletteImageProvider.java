@@ -42,7 +42,7 @@ import org.eclipse.swt.graphics.Image;
  */
 public class PaletteImageProvider {
 
-    private static final String ICON_PATH = "iconPath";
+    private static final String ICON_PATH = "iconPath"; //$NON-NLS-1$
 
     /**
      * Returns the image descriptor from corresponding to the tool description

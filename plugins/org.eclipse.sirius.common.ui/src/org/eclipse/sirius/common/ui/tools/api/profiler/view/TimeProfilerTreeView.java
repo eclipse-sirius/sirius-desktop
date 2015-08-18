@@ -170,30 +170,17 @@ public class TimeProfilerTreeView extends ViewPart implements ProfilerListener {
         viewer.setInput(TreeItemWrapper.ROOT_ITEM);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
-     */
     @Override
     public void setFocus() {
         viewer.getControl().setFocus();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.profiler.ProfilerListener#taskStarted(org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent)
-     */
+    @Override
     public void taskStarted(final ProfilerEvent event) {
         // do nothing.
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.profiler.ProfilerListener#taskStopped(org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent)
-     */
+    @Override
     public void taskStopped(final ProfilerEvent event) {
         // do nothing.
     }
@@ -226,7 +213,7 @@ public class TimeProfilerTreeView extends ViewPart implements ProfilerListener {
      * Create the context menu.
      */
     private void createContextMenu() {
-        final MenuManager menuManager = new MenuManager("#PopupMenu");
+        final MenuManager menuManager = new MenuManager("#PopupMenu"); //$NON-NLS-1$
         menuManager.setRemoveAllWhenShown(true);
         menuManager.addMenuListener(new IMenuListener() {
             public void menuAboutToShow(final IMenuManager manager) {
@@ -254,11 +241,7 @@ public class TimeProfilerTreeView extends ViewPart implements ProfilerListener {
         getViewSite().getActionBars().getToolBarManager().add(this.printAction);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.profiler.ProfilerListener#profilerReinited(org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent)
-     */
+    @Override
     public void profilerReinited(final ProfilerEvent event) {
         this.viewer.refresh();
     }

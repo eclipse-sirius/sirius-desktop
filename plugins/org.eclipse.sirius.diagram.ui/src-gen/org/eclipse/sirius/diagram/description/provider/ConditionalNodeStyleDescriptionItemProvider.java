@@ -169,7 +169,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_NODE_STYLE_DESCRIPTION__STYLE, StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
 
         WorkspaceImageDescription wkpImageDescription = StyleFactory.eINSTANCE.createWorkspaceImageDescription();
-        wkpImageDescription.setSizeComputationExpression("-1");
+        wkpImageDescription.setSizeComputationExpression("-1"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_NODE_STYLE_DESCRIPTION__STYLE, wkpImageDescription));
 
         // Set by default all elements resizable and their label position on

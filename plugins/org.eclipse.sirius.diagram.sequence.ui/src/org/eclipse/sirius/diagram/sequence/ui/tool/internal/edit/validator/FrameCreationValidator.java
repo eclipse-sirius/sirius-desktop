@@ -62,9 +62,9 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
      * The key used in request's extended data map to identify the original
      * target edit part of a request which was redirected to us.
      */
-    public static final String ORIGINAL_TARGET = "original.target";
+    public static final String ORIGINAL_TARGET = "original.target"; //$NON-NLS-1$
 
-    private static final String VALIDATOR = "org.eclipse.sirius.sequence.frame.creation.validator";
+    private static final String VALIDATOR = "org.eclipse.sirius.sequence.frame.creation.validator"; //$NON-NLS-1$
 
     private SequenceDiagram sequenceDiagram;
 

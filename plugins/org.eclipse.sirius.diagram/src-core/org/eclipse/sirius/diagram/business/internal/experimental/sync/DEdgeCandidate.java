@@ -167,7 +167,7 @@ public class DEdgeCandidate {
         parts[1] = (semantic == null) ? 0 : getSemanticURI().hashCode();
         parts[2] = (sourceView == null) ? 0 : getSourceViewURI();
         parts[3] = (targetView == null) ? 0 : getTargetViewURI();
-        final String sep = "/";
+        final String sep = "/"; //$NON-NLS-1$
         return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1] + sep + parts[2] + sep + parts[3]);
     }
 

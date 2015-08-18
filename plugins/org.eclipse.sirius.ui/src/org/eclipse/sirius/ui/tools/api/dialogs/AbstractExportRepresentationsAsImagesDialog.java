@@ -49,7 +49,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     /**
      * The file separator alternative.
      */
-    public static final String FILE_SEPARATOR_ALTERNATIVE = "_";
+    public static final String FILE_SEPARATOR_ALTERNATIVE = "_"; //$NON-NLS-1$
 
     /**
      * Default extension image.
@@ -59,7 +59,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     /**
      * The character extension file (".").
      */
-    protected static final String CHARACTER_EXTENSION_FILE = ".";
+    protected static final String CHARACTER_EXTENSION_FILE = "."; //$NON-NLS-1$
 
     /**
      * The list of values for this enumerated type.

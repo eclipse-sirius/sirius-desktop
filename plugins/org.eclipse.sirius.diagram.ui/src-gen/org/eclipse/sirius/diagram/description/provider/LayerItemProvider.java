@@ -245,7 +245,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
             }
         }
 
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/Layer"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Layer")); //$NON-NLS-1$
     }
 
     /**
@@ -257,7 +257,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((Layer) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_Layer_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_Layer_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -316,11 +316,11 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
         EdgeStyleDescription edgeDomainStyle = StyleFactory.eINSTANCE.createEdgeStyleDescription();
 
         // Add the center label style to edge style description
-        edgeStyle.setSizeComputationExpression("2");
+        edgeStyle.setSizeComputationExpression("2"); //$NON-NLS-1$
         edgeStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
         // Add the center label style to edge style description for edge with
         // domain element
-        edgeDomainStyle.setSizeComputationExpression("2");
+        edgeDomainStyle.setSizeComputationExpression("2"); //$NON-NLS-1$
         edgeDomainStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
 
         // Add the edge style description to edge mapping

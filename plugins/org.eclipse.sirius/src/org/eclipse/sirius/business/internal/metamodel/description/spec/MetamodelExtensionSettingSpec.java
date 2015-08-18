@@ -30,7 +30,7 @@ public class MetamodelExtensionSettingSpec extends MetamodelExtensionSettingImpl
      * @see org.eclipse.sirius.description.impl.SiriusOperationImpl#updateAnalysis(org.eclipse.sirius.viewpoint.DRepresentationContainer)
      */
     public void updateAnalysis(final DRepresentationContainer analysis) {
-        if (getExtensionGroup() != null && SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(analysis).eInstanceOf(getExtensionGroup(), "ExtensionGroup")) {
+        if (getExtensionGroup() != null && SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(analysis).eInstanceOf(getExtensionGroup(), "ExtensionGroup")) { //$NON-NLS-1$
             final EObject group = getExtensionGroup();
             final MetaModelExtension extension = ViewpointFactory.eINSTANCE.createMetaModelExtension();
             extension.setExtensionGroup(group);

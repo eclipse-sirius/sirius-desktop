@@ -72,7 +72,7 @@ public class ResourceMissingDocumentProvider {
         if (errorDiagram == null) {
             errorResourceSet = new ResourceSetImpl();
             final TransactionalEditingDomain domain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain(errorResourceSet);
-            errorResource = new GMFResourceFactory().createResource(URI.createURI("error://diagram"));
+            errorResource = new GMFResourceFactory().createResource(URI.createURI("error://diagram")); //$NON-NLS-1$
             errorResourceSet.getResources().add(errorResource);
             errorDiagram = NotationFactory.eINSTANCE.createDiagram();
             domain.getCommandStack().execute(new AddErrorCommand(domain, errorDiagram, errorResource, noteMessage));

@@ -28,7 +28,7 @@ public class TableDialectUI implements DialectUI {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUI#getName()
      */
     public String getName() {
-        return "table";
+        return "table"; //$NON-NLS-1$
     }
 
     /**

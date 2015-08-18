@@ -159,7 +159,7 @@ public class OperandMappingSpec extends OperandMappingImpl implements IContainer
      */
     @Override
     public String toString() {
-        return new StringBuffer(getClass().getName()).append(" ").append(getName()).toString();
+        return new StringBuffer(getClass().getName()).append(" ").append(getName()).toString(); //$NON-NLS-1$
     }
 
     /**

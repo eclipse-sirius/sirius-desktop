@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  */
 public class TreeItemMappingExpression {
 
-    private static final String TREE = "tree";
+    private static final String TREE = "tree"; //$NON-NLS-1$
 
     private GlobalContext ctx;
 

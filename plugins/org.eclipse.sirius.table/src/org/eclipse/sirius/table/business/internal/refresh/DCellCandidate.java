@@ -116,7 +116,7 @@ public class DCellCandidate {
         parts[1] = (semantic == null) ? 0 : getSemanticID();
         parts[2] = (line == null) ? 0 : getLineID();
         parts[3] = (column == null) ? 0 : getColumnID();
-        final String sep = "/";
+        final String sep = "/"; //$NON-NLS-1$
         return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1] + sep + parts[2] + sep + parts[3]);
     }
 

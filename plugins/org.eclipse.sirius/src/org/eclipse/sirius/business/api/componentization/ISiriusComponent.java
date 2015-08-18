@@ -23,10 +23,10 @@ import org.eclipse.core.runtime.Plugin;
 public interface ISiriusComponent {
 
     /** The extension point ID. */
-    String ID = "org.eclipse.sirius.componentization";
+    String ID = "org.eclipse.sirius.componentization"; //$NON-NLS-1$
 
     /** The class attribute. */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /** The class. */
     Class<Plugin> CLASS_TO_EXTEND = Plugin.class;

@@ -136,8 +136,8 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         // (both have 3.8 as version on the org.eclipse.core.runtime plugin).
         Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
         if (uiWorkbenchBundle != null) {
-            Version junoStart = Version.parseVersion("3.103");
-            Version lunaStart = Version.parseVersion("3.106");
+            Version junoStart = Version.parseVersion("3.103"); //$NON-NLS-1$
+            Version lunaStart = Version.parseVersion("3.106"); //$NON-NLS-1$
             Version currentVersion = uiWorkbenchBundle.getVersion();
 
             // Range must not be in [3.103..3.106)

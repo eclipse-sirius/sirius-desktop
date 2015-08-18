@@ -20,7 +20,7 @@ public final class AQLConstants {
     /**
      * A suffix to explicit the use of the AQL evaluation engine.
      */
-    public static final String AQL_PREFIX = "aql:";
+    public static final String AQL_PREFIX = "aql:"; //$NON-NLS-1$
 
     /**
      * This class should not be instantiated as it only contains constants.

@@ -57,7 +57,7 @@ import com.google.common.collect.Sets;
  */
 public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidator {
 
-    private static final String VALIDATOR = "org.eclipse.sirius.sequence.move.validator";
+    private static final String VALIDATOR = "org.eclipse.sirius.sequence.move.validator"; //$NON-NLS-1$
 
     /** List of top levels events of the current move. */
     protected final Set<ISequenceEvent> topLevelElements = new HashSet<ISequenceEvent>();

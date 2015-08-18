@@ -216,7 +216,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                             result = result.toString();
                         }
                     } else {
-                        result = "";
+                        result = ""; //$NON-NLS-1$
                     }
                 }
             } catch (final FeatureNotFoundException e) {
@@ -256,7 +256,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                 try {
                     if (eClassifier instanceof EDataType) {
                         tempValue = eClassifier.getEPackage().getEFactoryInstance().createFromString((EDataType) eClassifier, (String) value);
-                    } else if ("UnlimitedNatural".equals(eClassifier.getName())) {
+                    } else if ("UnlimitedNatural".equals(eClassifier.getName())) { //$NON-NLS-1$
                         tempValue = Integer.valueOf((String) value);
                     }
                 } catch (final NumberFormatException e) {
@@ -367,7 +367,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                 }
             } else {
                 if (eClassifier != null) {
-                    if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) {
+                    if (eClassifier instanceof EDataType && ("Boolean".equals(((EDataType) eClassifier).getName()) || "EBoolean".equals(((EDataType) eClassifier).getName()))) { //$NON-NLS-1$ //$NON-NLS-2$
                         result = new CheckboxCellEditor(tree);
                     } else if (eClassifier instanceof EEnum) {
                         final Object genericFeature = iItemPropertyDescriptor.getFeature(element);

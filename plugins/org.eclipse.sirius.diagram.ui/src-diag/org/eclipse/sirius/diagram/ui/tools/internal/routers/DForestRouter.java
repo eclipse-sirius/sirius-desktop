@@ -78,7 +78,7 @@ public class DForestRouter extends BendpointConnectionRouter implements Orthogon
         DTreeRouter connectionRouter = connections.get(connectionKey);
         if (connectionRouter == null) {
             DTreeRouter oldConnectionRouter = null;
-            if (!"base".equals(hint)) {
+            if (!"base".equals(hint)) { //$NON-NLS-1$
                 // Search only with hint (if the targetAnchor has been moved but
                 // the target is the same)
                 oldConnectionRouter = getSubRouterWithHint(hint);

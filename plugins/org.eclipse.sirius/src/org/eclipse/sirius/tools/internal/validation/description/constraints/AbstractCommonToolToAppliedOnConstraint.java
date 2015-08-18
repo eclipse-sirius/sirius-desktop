@@ -35,10 +35,10 @@ public abstract class AbstractCommonToolToAppliedOnConstraint extends AbstractMo
         String text = getLabel(element);
         EObject container = element.eContainer();
         while (container != null) {
-            text = getLabel(container) + " > " + text;
+            text = getLabel(container) + " > " + text; //$NON-NLS-1$
             container = container.eContainer();
         }
-        return "\"" + text + "\"";
+        return "\"" + text + "\""; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**

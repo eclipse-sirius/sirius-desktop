@@ -36,7 +36,7 @@ public class CanHideElementTester extends PropertyTester {
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
         boolean result = false;
 
-        if ("canHideElement".equals(property)) {
+        if ("canHideElement".equals(property)) { //$NON-NLS-1$
             if (receiver instanceof IStructuredSelection) {
                 result = testStructuredSelection((IStructuredSelection) receiver);
             } else if (receiver instanceof IDiagramElementEditPart) {

@@ -387,10 +387,10 @@ public class LayoutData extends AbstractLayoutData {
     public String toString() {
         String toString = getTarget().toString();
         if (getLocation() != null) {
-            toString += ", " + getLocation().toString();
+            toString += ", " + getLocation().toString(); //$NON-NLS-1$
         }
         if (getSize() != null) {
-            toString += ", " + getSize().toString();
+            toString += ", " + getSize().toString(); //$NON-NLS-1$
         }
         return toString;
     }

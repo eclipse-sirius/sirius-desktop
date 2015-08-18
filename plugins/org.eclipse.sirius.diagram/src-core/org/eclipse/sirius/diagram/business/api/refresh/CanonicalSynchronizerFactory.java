@@ -27,12 +27,12 @@ public interface CanonicalSynchronizerFactory {
     /**
      * The extension point ID.
      */
-    String ID = "org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride";
+    String ID = "org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride"; //$NON-NLS-1$
 
     /**
      * Extension point attribute for the factory class.
      */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     
     /**

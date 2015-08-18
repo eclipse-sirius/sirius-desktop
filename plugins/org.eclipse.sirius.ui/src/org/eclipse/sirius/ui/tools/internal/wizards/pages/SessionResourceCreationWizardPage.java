@@ -113,7 +113,7 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
     @Override
     public void createControl(final Composite parent) {
         super.createControl(parent);
-        setFileName(getDefaultFileName() + "." + getExtension());
+        setFileName(getDefaultFileName() + "." + getExtension()); //$NON-NLS-1$
         setPageComplete(validatePage());
     }
 
@@ -130,7 +130,7 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
         }
         // Validate that entered extension is the expected one.
         final String extension = getExtension();
-        if (extension != null && !getFilePath().toString().endsWith("." + extension)) {
+        if (extension != null && !getFilePath().toString().endsWith("." + extension)) { //$NON-NLS-1$
             setErrorMessage("The file extension is wrong. It should be " + extension);
             result = false;
         }

@@ -138,9 +138,9 @@ public abstract class AbstractSWTCallback implements UICallBack {
             description = Messages.createRepresentationInputDialog_RepresentationDescriptionLabel + representationDescription;
         }
         if (description == null) {
-            description = "";
+            description = ""; //$NON-NLS-1$
         } else {
-            description += "\n\n";
+            description += "\n\n"; //$NON-NLS-1$
         }
         description += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
         final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), Messages.createRepresentationInputDialog_Title, description, defaultName, new IInputValidator() {
@@ -303,7 +303,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
      * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#getSessionDisplayed(org.eclipse.sirius.business.api.session.Session)
      */
     public String getSessionNameToDisplayWhileSaving(Session session) {
-        String name = "";
+        String name = ""; //$NON-NLS-1$
         if (session != null) {
             String projectName = null;
             Resource representationsFileResource = session.getSessionResource();

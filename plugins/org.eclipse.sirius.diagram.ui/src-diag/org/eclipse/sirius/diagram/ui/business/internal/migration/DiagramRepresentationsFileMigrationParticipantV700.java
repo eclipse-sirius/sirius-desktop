@@ -29,7 +29,7 @@ public class DiagramRepresentationsFileMigrationParticipantV700 {
     /**
      * The VP version for this migration.
      */
-    public static final Version MIGRATION_VERSION = new Version("7.0.0");
+    public static final Version MIGRATION_VERSION = new Version("7.0.0"); //$NON-NLS-1$
 
     /**
      * Return "Sirius" instead of "Viewpoint" for the type of
@@ -44,7 +44,7 @@ public class DiagramRepresentationsFileMigrationParticipantV700 {
      * @return a new value if has to be changed otherwise null.
      */
     public Object getValue(EObject object, EStructuralFeature feature, Object value) {
-        if (NotationPackage.eINSTANCE.getView_Type().equals(feature) && NotationPackage.eINSTANCE.getDiagram().isInstance(object) && "Viewpoint".equals(value)) {
+        if (NotationPackage.eINSTANCE.getView_Type().equals(feature) && NotationPackage.eINSTANCE.getDiagram().isInstance(object) && "Viewpoint".equals(value)) { //$NON-NLS-1$
             return DDiagramEditPart.MODEL_ID;
         }
         return null;

@@ -30,11 +30,11 @@ import com.google.common.collect.Lists;
  */
 public class FontFormatMigrationParticipant extends AbstractMigrationParticipant {
 
-    private static final Version MIGRATION_VERSION = new Version("10.0.0.201505222000");
+    private static final Version MIGRATION_VERSION = new Version("10.0.0.201505222000"); //$NON-NLS-1$
 
-    private static final String ITALIC = "italic";
+    private static final String ITALIC = "italic"; //$NON-NLS-1$
 
-    private static final String BOLD = "bold";
+    private static final String BOLD = "bold"; //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
@@ -60,7 +60,7 @@ public class FontFormatMigrationParticipant extends AbstractMigrationParticipant
                 if (oldFontFormat.contains(BOLD)) {
                     FontFormatHelper.setFontFormat(labelFormat, FontFormat.BOLD_LITERAL);
                 }
-                return labelFormat.toString().replaceAll(",", "").replace("[", "").replace("]", "");
+                return labelFormat.toString().replaceAll(",", "").replace("[", "").replace("]", ""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
             }
         }
         return null;

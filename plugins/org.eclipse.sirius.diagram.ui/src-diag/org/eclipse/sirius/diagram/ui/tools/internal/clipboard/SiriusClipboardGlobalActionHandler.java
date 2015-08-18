@@ -158,7 +158,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
             // CreateViewRequest is internal in 3.3 and api in 3.5
             Method method = null;
             try {
-                method = pasteReq.getClass().getMethod("getData");
+                method = pasteReq.getClass().getMethod("getData"); //$NON-NLS-1$
             } catch (SecurityException e) {
                 // No method, no data
             } catch (NoSuchMethodException e) {

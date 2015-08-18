@@ -106,9 +106,6 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
         this(domain, fullRefresh, monitor, Lists.newArrayList(representationsToRefresh));
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void doExecute() {
         if (representations.size() == 0) {
@@ -134,11 +131,6 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
         return safeRefresh;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.common.command.AbstractCommand#canExecute()
-     */
     @Override
     public boolean canExecute() {
         return representations.size() != 0;

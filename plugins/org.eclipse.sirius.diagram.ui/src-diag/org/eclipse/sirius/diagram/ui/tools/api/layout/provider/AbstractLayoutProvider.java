@@ -157,7 +157,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
         Command command = null;
         final AbstractLayoutEditPartProvider layoutProvider = diagramLayoutProvider.getLayoutNodeProvider(diagramEditPart);
         try {
-            final Method method = layoutProvider.getClass().getMethod("layoutEditParts", new Class[] { GraphicalEditPart.class, IAdaptable.class });
+            final Method method = layoutProvider.getClass().getMethod("layoutEditParts", new Class[] { GraphicalEditPart.class, IAdaptable.class }); //$NON-NLS-1$
             Assert.isNotNull(method);
             /* this code seems to avoid an infinite loop */
             if (method.getDeclaringClass() != AbstractLayoutProvider.class) {

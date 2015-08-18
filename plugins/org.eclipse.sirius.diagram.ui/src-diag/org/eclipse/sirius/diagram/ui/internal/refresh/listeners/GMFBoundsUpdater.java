@@ -123,7 +123,7 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
             }
         }
         isWorkspaceImageStyleResized = dDiagramElement.getStyle().getDescription() instanceof WorkspaceImageDescription
-                && ((WorkspaceImageDescription) dDiagramElement.getStyle().getDescription()).getSizeComputationExpression().equals("-1") && differentPath;
+                && ((WorkspaceImageDescription) dDiagramElement.getStyle().getDescription()).getSizeComputationExpression().equals("-1") && differentPath; //$NON-NLS-1$
         return isWorkspaceImageStyleResized;
     }
 

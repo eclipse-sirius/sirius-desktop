@@ -28,7 +28,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 public class ResourceSyncClientNotifier extends Job {
 
     /** The family id for this kind of job. */
-    public static final String FAMILY = DslCommonPlugin.PLUGIN_ID + ".ResourceSyncClientNotification";
+    public static final String FAMILY = DslCommonPlugin.PLUGIN_ID + ".ResourceSyncClientNotification"; //$NON-NLS-1$
 
     private static final String ACTION_NAME = "ResourceSyncClient notification";
 

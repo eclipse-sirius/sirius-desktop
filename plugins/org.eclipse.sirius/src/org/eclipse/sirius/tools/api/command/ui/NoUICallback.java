@@ -141,7 +141,7 @@ public class NoUICallback implements UICallBack {
      * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#getSessionDisplayed(org.eclipse.sirius.business.api.session.Session)
      */
     public String getSessionNameToDisplayWhileSaving(Session session) {
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
     /**

@@ -25,7 +25,7 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
  */
 public class EditorCreateTargetColumnMenuAction extends AbstractEditorCreateMenuAction<CreateTargetColumnAction> {
     /** The Id of this action. */
-    public static final String ID = "CreateTargetColumnMenu";
+    public static final String ID = "CreateTargetColumnMenu"; //$NON-NLS-1$
 
     /**
      * This default constructor will instantiate an action given the

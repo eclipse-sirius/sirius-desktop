@@ -359,7 +359,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         if (viewpoint != null) {
             final String doc = viewpoint.getEndUserDocumentation();
             if (!StringUtil.isEmpty(doc))
-                return doc.startsWith("<html>");
+                return doc.startsWith("<html>"); //$NON-NLS-1$
         }
         return false;
     }
@@ -375,11 +375,11 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     }
 
     private void extractUrlToRewrite(String document, Set<String> urlToRewrite) {
-        String imgSrcPattern = "img src=\"";
+        String imgSrcPattern = "img src=\""; //$NON-NLS-1$
         int patternStartIndex = document.indexOf(imgSrcPattern);
         if (patternStartIndex != -1) {
             int imgSrcStartIndex = patternStartIndex + imgSrcPattern.length();
-            int imgSrcStopIndex = document.indexOf("\"", imgSrcStartIndex);
+            int imgSrcStopIndex = document.indexOf("\"", imgSrcStartIndex); //$NON-NLS-1$
             if (imgSrcStopIndex != -1) {
                 String newToRewrite = document.substring(imgSrcStartIndex, imgSrcStopIndex);
                 urlToRewrite.add(newToRewrite);
@@ -398,7 +398,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
         StringBuilder css = new StringBuilder();
         appendCss(css);
-        String headClose = "</head>";
+        String headClose = "</head>"; //$NON-NLS-1$
         newDocument = newDocument.replace(headClose, css.append(headClose));
 
         return newDocument;
@@ -408,7 +408,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         final URI uri = viewpoint.eResource().getURI();
         String pluginId = uri.segment(1);
 
-        String rewrittenURL = "";
+        String rewrittenURL = ""; //$NON-NLS-1$
 
         if (uri.isPlatformPlugin()) {
             Bundle bundle = Platform.getBundle(pluginId);
@@ -425,7 +425,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
         } else {
             final IWorkspace workspace = ResourcesPlugin.getWorkspace();
-            final IPath path = new Path("/" + pluginId + url);
+            final IPath path = new Path("/" + pluginId + url); //$NON-NLS-1$
             if (workspace.getRoot().exists(path)) {
                 IResource resource = workspace.getRoot().findMember(path);
                 rewrittenURL = resource.getLocation().toFile().toURI().toString();
@@ -441,19 +441,19 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     }
 
     private ViewpointsSelectionWizardPage begin(StringBuilder content) {
-        content.append("<html>");
+        content.append("<html>"); //$NON-NLS-1$
         return this;
     }
 
     private ViewpointsSelectionWizardPage head(StringBuilder content) {
-        content.append("<head>");
+        content.append("<head>"); //$NON-NLS-1$
         appendCss(content);
-        content.append("</head>");
+        content.append("</head>"); //$NON-NLS-1$
         return this;
     }
 
     private ViewpointsSelectionWizardPage body(StringBuilder content, Viewpoint viewpoint) {
-        content.append("<body>");
+        content.append("<body>"); //$NON-NLS-1$
 
         if (viewpoint == null) {
             content.append("<br><br><center><b>Documentation</b></center>");
@@ -464,7 +464,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
             else
                 content.append("no documentation for this viewpoint");
         }
-        content.append("</body>");
+        content.append("</body>"); //$NON-NLS-1$
         return this;
     }
 
@@ -473,15 +473,15 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         FontData data = currentFont.getFontData()[0];
         String fontName = data.getName();
         int fontHeight = data.getHeight() + 3;
-        content.append("<style type=\"text/css\">");
-        content.append("body{font-family:" + fontName + ",Arial, sans-serif;}");
-        content.append("body{font-size:" + fontHeight + "px;}");
-        content.append("</style>");
+        content.append("<style type=\"text/css\">"); //$NON-NLS-1$
+        content.append("body{font-family:" + fontName + ",Arial, sans-serif;}"); //$NON-NLS-1$ //$NON-NLS-2$
+        content.append("body{font-size:" + fontHeight + "px;}"); //$NON-NLS-1$ //$NON-NLS-2$
+        content.append("</style>"); //$NON-NLS-1$
         return content;
     }
 
     private String end(StringBuilder content) {
-        content.append("</html>");
+        content.append("</html>"); //$NON-NLS-1$
         return content.toString();
     }
 
@@ -539,7 +539,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         private Image getEnhancedImage(final Image image, final Viewpoint viewpoint) {
             // Add decorator if the viewpoint comes from workspace
             if (!ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
-                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/decorator/folder_close.gif"));
+                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/decorator/folder_close.gif")); //$NON-NLS-1$
             }
             return image;
         }

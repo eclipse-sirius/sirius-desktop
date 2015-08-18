@@ -25,9 +25,9 @@ import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
  */
 public class DefaultColorStyleDescription extends TemplateSwitch<EObject> {
 
-    private static final String BLACK = "black";
+    private static final String BLACK = "black"; //$NON-NLS-1$
 
-    private static final String GRAY = "gray";
+    private static final String GRAY = "gray"; //$NON-NLS-1$
 
     /**
      * Set the default color descriptions on the given EObject.

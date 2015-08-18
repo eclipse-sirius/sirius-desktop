@@ -37,52 +37,52 @@ public class ContainerMappingChildrenPresentationConstraints extends AbstractCon
     /**
      * Compartment containment rule ID.
      */
-    public static final String COMPARTMENT_CONTAINMENT_RULE_ID = "org.eclipse.sirius.diagram.constraints.CompartmentContainmentConstraint";
+    public static final String COMPARTMENT_CONTAINMENT_RULE_ID = "org.eclipse.sirius.diagram.constraints.CompartmentContainmentConstraint"; //$NON-NLS-1$
 
     /**
      * Reuse containers in ContainerList rule ID.
      */
-    public static final String REUSE_CONTAINERS_IN_CONTAINER_LIST_RULE_ID = "org.eclipse.sirius.diagram.constraints.ReuseContainersInContainerListConstraint";
+    public static final String REUSE_CONTAINERS_IN_CONTAINER_LIST_RULE_ID = "org.eclipse.sirius.diagram.constraints.ReuseContainersInContainerListConstraint"; //$NON-NLS-1$
 
     /**
      * Containers in ContainerList rule ID.
      */
-    public static final String CONTAINERS_IN_CONTAINER_LIST_RULE_ID = "org.eclipse.sirius.diagram.constraints.ContainersInContainerListConstraint";
+    public static final String CONTAINERS_IN_CONTAINER_LIST_RULE_ID = "org.eclipse.sirius.diagram.constraints.ContainersInContainerListConstraint"; //$NON-NLS-1$
 
     /**
      * Reused Nodes in RegionContainer rule ID.
      */
-    public static final String REUSE_NODES_IN_REGION_CONTAINER_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoReusedNodesInRegionContainerConstraint";
+    public static final String REUSE_NODES_IN_REGION_CONTAINER_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoReusedNodesInRegionContainerConstraint"; //$NON-NLS-1$
 
     /**
      * Reused BorderedNodes in Region rule ID.
      */
-    public static final String REUSE_BORDERED_NODES_IN_REGION_CONTAINER_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoReusedBorderedNodesInRegion";
+    public static final String REUSE_BORDERED_NODES_IN_REGION_CONTAINER_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoReusedBorderedNodesInRegion"; //$NON-NLS-1$
 
     /**
      * Nodes in RegionContainer rule ID.
      */
-    public static final String NODES_IN_REGION_CONTAINER_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoSubNodesInRegionContainerConstraint";
+    public static final String NODES_IN_REGION_CONTAINER_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoSubNodesInRegionContainerConstraint"; //$NON-NLS-1$
 
     /**
      * BorderedNodes in RegionContainer rule ID.
      */
-    public static final String BORDERED_NODES_IN_REGION_CONTAINER_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoBorderedNodesInRegion";
+    public static final String BORDERED_NODES_IN_REGION_CONTAINER_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoBorderedNodesInRegion"; //$NON-NLS-1$
 
     /**
      * Mapping filter on region mapping rule ID.
      */
-    public static final String MAPPING_FILTER_ON_REGION_MAPPING_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoMappingFilterOnRegionsConstraint";
+    public static final String MAPPING_FILTER_ON_REGION_MAPPING_RULE_ID = "org.eclipse.sirius.diagram.constraints.NoMappingFilterOnRegionsConstraint"; //$NON-NLS-1$
 
     /**
      * Style hierarchy rule ID.
      */
-    public static final String REGION_REGION_CONTAINER_MAPPING_STYLE_RULE_ID = "org.eclipse.sirius.diagram.constraints.RegionStyleConstraint";
+    public static final String REGION_REGION_CONTAINER_MAPPING_STYLE_RULE_ID = "org.eclipse.sirius.diagram.constraints.RegionStyleConstraint"; //$NON-NLS-1$
 
     /**
      * Region mapping cardinality rule ID.
      */
-    public static final String REGION_MAPPING_CARDINALITY_RULE_ID = "org.eclipse.sirius.diagram.constraints.RegionMappingCardinalityConstraint";
+    public static final String REGION_MAPPING_CARDINALITY_RULE_ID = "org.eclipse.sirius.diagram.constraints.RegionMappingCardinalityConstraint"; //$NON-NLS-1$
 
     @Override
     public IStatus validate(IValidationContext ctx) {

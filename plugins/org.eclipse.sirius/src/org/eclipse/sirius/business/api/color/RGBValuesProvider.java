@@ -43,7 +43,7 @@ public class RGBValuesProvider {
      */
     private static final Predicate<ColorStep> WELL_DEFINED_STEP = new Predicate<ColorStep>() {
         public boolean apply(ColorStep input) {
-            return input.getAssociatedColor() != null && input.getAssociatedValue() != null && !"".equals(input.getAssociatedValue());
+            return input.getAssociatedColor() != null && input.getAssociatedValue() != null && !"".equals(input.getAssociatedValue()); //$NON-NLS-1$
         }
 
     };

@@ -31,7 +31,7 @@ public class DesignerResolutionGenerator implements IMarkerResolutionGenerator {
      * {@inheritDoc}
      */
     public IMarkerResolution[] getResolutions(IMarker marker) {
-        final String validationRuleURI = marker.getAttribute("rule", null);
+        final String validationRuleURI = marker.getAttribute("rule", null); //$NON-NLS-1$
         if (validationRuleURI != null) {
             final ValidationRule rule = fetchRuleFromURI(validationRuleURI);
             if (rule != null) {

@@ -172,6 +172,6 @@ public class DNodeListSpec extends DNodeListImpl {
      */
     @Override
     public String toString() {
-        return "NodeList " + getName();
+        return "NodeList " + getName(); //$NON-NLS-1$
     }
 }

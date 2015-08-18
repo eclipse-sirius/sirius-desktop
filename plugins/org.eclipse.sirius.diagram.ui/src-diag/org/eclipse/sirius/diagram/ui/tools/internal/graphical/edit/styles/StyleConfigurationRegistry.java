@@ -63,7 +63,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     private static final String STYLE_CONFIGURATION_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.ui.styleConfigurationProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
-    private static final String TAG_ENGINE = "styleConfigurationProvider";
+    private static final String TAG_ENGINE = "styleConfigurationProvider"; //$NON-NLS-1$
 
     static {
         StyleConfigurationRegistry.parseExtensionMetadata();
@@ -97,7 +97,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
                 for (IConfigurationElement configElement : configElements) {
                     if (configElement.getName().equals(TAG_ENGINE)) {
                         try {
-                            final IStyleConfigurationProvider styleConfigurationProvider = (IStyleConfigurationProvider) configElement.createExecutableExtension("providerClass");
+                            final IStyleConfigurationProvider styleConfigurationProvider = (IStyleConfigurationProvider) configElement.createExecutableExtension("providerClass"); //$NON-NLS-1$
                             StyleConfigurationRegistry.styleConfigurationProviders.add(styleConfigurationProvider);
                         } catch (final CoreException e) {
                             DiagramPlugin.getDefault().logError("Impossible to load the style configuration provider : " + configElement.getName(), e);

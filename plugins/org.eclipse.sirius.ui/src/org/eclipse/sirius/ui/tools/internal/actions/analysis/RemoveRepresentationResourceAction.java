@@ -55,7 +55,7 @@ public class RemoveRepresentationResourceAction extends Action {
      *            current session.
      */
     public RemoveRepresentationResourceAction(final Collection<Resource> diagramResources, final Session session) {
-        super("Remove from representations file", AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/remove.gif"));
+        super("Remove from representations file", AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/remove.gif")); //$NON-NLS-2$
         this.diagramResources = Sets.newHashSet(diagramResources);
         this.session = session;
 

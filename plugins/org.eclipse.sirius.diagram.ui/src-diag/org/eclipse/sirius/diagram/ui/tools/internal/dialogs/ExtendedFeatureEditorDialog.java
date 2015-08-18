@@ -297,7 +297,7 @@ public class ExtendedFeatureEditorDialog extends Dialog {
         choiceComposite.setLayout(layout);
 
         final Label choiceLabel = new Label(choiceComposite, SWT.NONE);
-        choiceLabel.setText(this.choices == null ? EMFEditUIPlugin.INSTANCE.getString("_UI_Value_label") : EMFEditUIPlugin.INSTANCE.getString("_UI_Choices_label"));
+        choiceLabel.setText(this.choices == null ? EMFEditUIPlugin.INSTANCE.getString("_UI_Value_label") : EMFEditUIPlugin.INSTANCE.getString("_UI_Choices_label")); //$NON-NLS-1$ //$NON-NLS-2$
         final GridData choiceLabelGridData = new GridData();
         choiceLabelGridData.verticalAlignment = SWT.FILL;
         choiceLabelGridData.horizontalAlignment = SWT.FILL;
@@ -345,7 +345,7 @@ public class ExtendedFeatureEditorDialog extends Dialog {
 
     private Button createAddButton(final Composite controlButtons) {
         final Button addButton = new Button(controlButtons, SWT.PUSH);
-        addButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label"));
+        addButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label")); //$NON-NLS-1$
         final GridData addButtonGridData = new GridData();
         addButtonGridData.verticalAlignment = SWT.FILL;
         addButtonGridData.horizontalAlignment = SWT.FILL;
@@ -355,7 +355,7 @@ public class ExtendedFeatureEditorDialog extends Dialog {
 
     private Button createRemoveButton(final Composite controlButtons) {
         final Button removeButton = new Button(controlButtons, SWT.PUSH);
-        removeButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Remove_label"));
+        removeButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Remove_label")); //$NON-NLS-1$
         final GridData removeButtonGridData = new GridData();
         removeButtonGridData.verticalAlignment = SWT.FILL;
         removeButtonGridData.horizontalAlignment = SWT.FILL;
@@ -365,7 +365,7 @@ public class ExtendedFeatureEditorDialog extends Dialog {
 
     private Button createUpButton(final Composite controlButtons) {
         final Button upButton = new Button(controlButtons, SWT.PUSH);
-        upButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Up_label"));
+        upButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Up_label")); //$NON-NLS-1$
         final GridData upButtonGridData = new GridData();
         upButtonGridData.verticalAlignment = SWT.FILL;
         upButtonGridData.horizontalAlignment = SWT.FILL;
@@ -375,7 +375,7 @@ public class ExtendedFeatureEditorDialog extends Dialog {
 
     private Button createDownButton(final Composite controlButtons) {
         final Button downButton = new Button(controlButtons, SWT.PUSH);
-        downButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Down_label"));
+        downButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Down_label")); //$NON-NLS-1$
         final GridData downButtonGridData = new GridData();
         downButtonGridData.verticalAlignment = SWT.FILL;
         downButtonGridData.horizontalAlignment = SWT.FILL;

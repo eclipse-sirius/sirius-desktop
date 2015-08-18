@@ -131,7 +131,7 @@ public class ModelingModelProvider extends ModelProvider {
             IProject project = iterator.next();
             result.append(project.getName());
             if (iterator.hasNext()) {
-                result.append(", ");
+                result.append(", "); //$NON-NLS-1$
             }
         }
         return result.toString();
@@ -152,7 +152,7 @@ public class ModelingModelProvider extends ModelProvider {
             IFile file = iterator.next();
             result.append(file.getProject().getName());
             if (iterator.hasNext()) {
-                result.append(", ");
+                result.append(", "); //$NON-NLS-1$
             }
         }
         return result.toString();

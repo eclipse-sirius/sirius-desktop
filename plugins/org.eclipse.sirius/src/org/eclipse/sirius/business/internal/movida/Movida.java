@@ -17,7 +17,7 @@ package org.eclipse.sirius.business.internal.movida;
  * @author pierre-charles.david@obeo.fr
  */
 public final class Movida {
-    private static final boolean ENABLED = Boolean.valueOf(System.getProperty("movida"));
+    private static final boolean ENABLED = Boolean.valueOf(System.getProperty("movida")); //$NON-NLS-1$
 
     private Movida() {
         // Prevents instantiation.

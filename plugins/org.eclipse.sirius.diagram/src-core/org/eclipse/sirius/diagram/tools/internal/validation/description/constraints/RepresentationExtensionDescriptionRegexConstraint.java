@@ -45,7 +45,7 @@ public class RepresentationExtensionDescriptionRegexConstraint extends AbstractM
      * Pattern used to detect if a String is a Regex. For that, we watching the
      * following characters : * [ ] ( ) ?
      */
-    private static final Pattern REGEX_PATTERN = Pattern.compile("[^\\?\\*\\[\\]\\(\\)]*");
+    private static final Pattern REGEX_PATTERN = Pattern.compile("[^\\?\\*\\[\\]\\(\\)]*"); //$NON-NLS-1$
 
     @Override
     public IStatus validate(IValidationContext ctx) {

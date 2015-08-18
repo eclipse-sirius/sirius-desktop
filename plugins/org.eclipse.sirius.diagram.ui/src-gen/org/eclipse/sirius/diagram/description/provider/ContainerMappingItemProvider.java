@@ -214,7 +214,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ContainerMapping) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ContainerMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_ContainerMapping_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -261,25 +261,25 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         NodeMapping createNodeMapping = DescriptionFactory.eINSTANCE.createNodeMapping();
-        createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents");
+        createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, createNodeMapping));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createNodeMappingImport()));
 
         ContainerMapping createContainerMapping = DescriptionFactory.eINSTANCE.createContainerMapping();
-        createContainerMapping.setSemanticCandidatesExpression("feature:eAllContents");
+        createContainerMapping.setSemanticCandidatesExpression("feature:eAllContents"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS, createContainerMapping));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createContainerMappingImport()));
 
         FlatContainerStyleDescription flatContainerStyleDescription = StyleFactory.eINSTANCE.createFlatContainerStyleDescription();
-        flatContainerStyleDescription.setBorderSizeComputationExpression("1");
+        flatContainerStyleDescription.setBorderSizeComputationExpression("1"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE, flatContainerStyleDescription));
 
         ShapeContainerStyleDescription shapeContainerStyleDescription = StyleFactory.eINSTANCE.createShapeContainerStyleDescription();
-        shapeContainerStyleDescription.setBorderSizeComputationExpression("1");
+        shapeContainerStyleDescription.setBorderSizeComputationExpression("1"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE, shapeContainerStyleDescription));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__STYLE,
@@ -305,7 +305,7 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
                 || childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) });
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) }); //$NON-NLS-1$
         }
         return super.getCreateChildText(owner, feature, child, selection);
     }

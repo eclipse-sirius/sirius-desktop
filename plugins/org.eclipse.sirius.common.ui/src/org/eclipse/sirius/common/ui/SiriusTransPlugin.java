@@ -57,7 +57,7 @@ public final class SiriusTransPlugin extends EMFPlugin {
      * @generated
      */
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.eclipse.sirius.common.ui";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.common.ui"; //$NON-NLS-1$
 
     /**
      * Singleton instance.

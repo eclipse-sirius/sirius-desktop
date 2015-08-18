@@ -111,7 +111,7 @@ public abstract class AbstractVersionSAXParser {
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
             if (qName.equals(getVersionedElementQualifiedName())) {
-                version = attributes.getValue("version");
+                version = attributes.getValue("version"); //$NON-NLS-1$
                 throw new SiriusSaxParserNormalAbortException("All needed informations have been reached. Stop the parsing.");
             }
         }

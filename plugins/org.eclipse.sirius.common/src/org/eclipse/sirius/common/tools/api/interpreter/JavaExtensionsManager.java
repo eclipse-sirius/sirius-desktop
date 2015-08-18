@@ -53,7 +53,7 @@ import com.google.common.collect.Sets;
  */
 public final class JavaExtensionsManager {
 
-    private static final String WORKSPACE_SEPARATOR = "/";
+    private static final String WORKSPACE_SEPARATOR = "/"; //$NON-NLS-1$
 
     private static final Set<String> JAVA_SERVICES_BUNDLES_WHITE_LIST = Sets.newHashSet(DslCommonPlugin.PLUGIN_ID);
 
@@ -347,7 +347,7 @@ public final class JavaExtensionsManager {
          * regarding target platforms introduced in EMF 2.9.
          */
         try {
-            Method computePlatformURIMap = EcorePlugin.class.getMethod("computePlatformURIMap", Boolean.TYPE);
+            Method computePlatformURIMap = EcorePlugin.class.getMethod("computePlatformURIMap", Boolean.TYPE); //$NON-NLS-1$
             result = (Map<URI, URI>) computePlatformURIMap.invoke(null, true);
         } catch (NoSuchMethodException e) {
             /*
@@ -385,11 +385,11 @@ public final class JavaExtensionsManager {
                  * supposed to be the root element.
                  */
                 if (!genModelURI.hasFragment()) {
-                    genModelURI = genModelURI.appendFragment("/");
+                    genModelURI = genModelURI.appendFragment("/"); //$NON-NLS-1$
                 }
                 EObject genModel = set.getEObject(genModelURI, true);
-                if (genModel != null && genModel.eClass().getEPackage() != null && "GenModel".equals(genModel.eClass().getName()) && "genmodel".equals(genModel.eClass().getEPackage().getName())) {
-                    Collection<EObject> genPackages = (Collection<EObject>) genModel.eGet(genModel.eClass().getEStructuralFeature("genPackages"));
+                if (genModel != null && genModel.eClass().getEPackage() != null && "GenModel".equals(genModel.eClass().getName()) && "genmodel".equals(genModel.eClass().getEPackage().getName())) { //$NON-NLS-1$ //$NON-NLS-2$
+                    Collection<EObject> genPackages = (Collection<EObject>) genModel.eGet(genModel.eClass().getEStructuralFeature("genPackages")); //$NON-NLS-1$
                     collectEPackages(ecorePackages, genPackages);
                 }
 
@@ -399,11 +399,11 @@ public final class JavaExtensionsManager {
 
     private void collectEPackages(Map<String, EPackage> ecorePackages, Collection<EObject> genPackages) {
         for (EObject genPackage : genPackages) {
-            Object ePak = genPackage.eGet(genPackage.eClass().getEStructuralFeature("ecorePackage"));
+            Object ePak = genPackage.eGet(genPackage.eClass().getEStructuralFeature("ecorePackage")); //$NON-NLS-1$
             if (ePak instanceof EPackage && !StringUtil.isEmpty(((EPackage) ePak).getNsURI())) {
                 ecorePackages.put(((EPackage) ePak).getNsURI(), (EPackage) ePak);
             }
-            Collection<EObject> subGenPackages = (Collection<EObject>) genPackage.eGet(genPackage.eClass().getEStructuralFeature("nestedGenPackages"));
+            Collection<EObject> subGenPackages = (Collection<EObject>) genPackage.eGet(genPackage.eClass().getEStructuralFeature("nestedGenPackages")); //$NON-NLS-1$
             collectEPackages(ecorePackages, subGenPackages);
         }
     }
@@ -448,7 +448,7 @@ public final class JavaExtensionsManager {
      *            Extension.
      */
     public void addImport(String classQualifiedName) {
-        if (classQualifiedName != null && classQualifiedName.contains(".")) {
+        if (classQualifiedName != null && classQualifiedName.contains(".")) { //$NON-NLS-1$
             this.imports.add(classQualifiedName);
             this.shouldLoadServices = true;
         }

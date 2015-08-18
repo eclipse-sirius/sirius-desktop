@@ -85,7 +85,7 @@ public class ModelingProjectQuery {
     public URI computeMainRepresentationsFileURI(IProgressMonitor monitor) throws IllegalArgumentException {
         URI result = null;
         List<IFile> sessionFiles = getRepresentationFiles();
-        monitor.beginTask("", sessionFiles.size() + 1);
+        monitor.beginTask("", sessionFiles.size() + 1); //$NON-NLS-1$
         Map<URI, Set<URI>> references = new HashMap<URI, Set<URI>>(sessionFiles.size());
         for (IFile sessionFile : sessionFiles) {
             final RepresentationsFileSaxParser sessionSaxParser = new RepresentationsFileSaxParser(sessionFile);
@@ -140,7 +140,7 @@ public class ModelingProjectQuery {
             }
             result.append(uri.lastSegment());
             if (iterator.hasNext()) {
-                result.append(", ");
+                result.append(", "); //$NON-NLS-1$
             }
         }
         return result.toString();

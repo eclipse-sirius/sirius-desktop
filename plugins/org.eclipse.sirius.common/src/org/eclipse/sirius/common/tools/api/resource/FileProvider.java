@@ -110,7 +110,7 @@ public class FileProvider {
      * @return the file
      */
     public File getFile(final String pluginId, final String fullName, final String extension) {
-        final IPath fullPath = new Path(fullName.replaceAll("\\.", "/")).addFileExtension(extension);
+        final IPath fullPath = new Path(fullName.replaceAll("\\.", "/")).addFileExtension(extension); //$NON-NLS-1$ //$NON-NLS-2$
         return getFile(pluginId, fullPath);
     }
 
@@ -188,7 +188,7 @@ public class FileProvider {
 
         if (bundle != null) {
             URL url = bundle.getEntry(relativePath.toString());
-            if (url == null && "mt".equals(relativePath.getFileExtension()) && relativePath.segmentCount() > 1) {
+            if (url == null && "mt".equals(relativePath.getFileExtension()) && relativePath.segmentCount() > 1) { //$NON-NLS-1$
                 url = bundle.getEntry(relativePath.removeFirstSegments(1).toString());
                 if (url == null) {
                     url = getRuntimeModeURL(bundle, relativePath);
@@ -215,7 +215,7 @@ public class FileProvider {
                 file2plugin.put(file, pluginId);
                 file2path.put(file, relativePath.toString());
                 // Copy the properties in the bundle area
-                final Enumeration<?> allProperties = bundle.findEntries(relativePath.removeLastSegments(1).toString(), "*.properties", true);
+                final Enumeration<?> allProperties = bundle.findEntries(relativePath.removeLastSegments(1).toString(), "*.properties", true); //$NON-NLS-1$
                 while (allProperties != null && allProperties.hasMoreElements()) {
                     final URL propertyFileURL = (URL) allProperties.nextElement();
                     if (propertyFileURL != null) {
@@ -235,7 +235,7 @@ public class FileProvider {
 
         final String requiredBundles = bundle.getHeaders().get(Constants.REQUIRE_BUNDLE);
         if (requiredBundles != null) {
-            final StringTokenizer st = new StringTokenizer(requiredBundles, ",");
+            final StringTokenizer st = new StringTokenizer(requiredBundles, ","); //$NON-NLS-1$
             while (st.hasMoreTokens()) {
                 String id = st.nextToken().trim();
                 final int iDot = id.indexOf(';');
@@ -258,7 +258,7 @@ public class FileProvider {
         if (mtName2mtURLs == null) {
             mtName2mtURLs = new HashMap<String, List<URL>>();
             bundleName2mtPaths.put(bundle.getSymbolicName(), mtName2mtURLs);
-            final Enumeration<?> entries = bundle.findEntries("/", "*.mt", true);
+            final Enumeration<?> entries = bundle.findEntries("/", "*.mt", true); //$NON-NLS-1$ //$NON-NLS-2$
             if (entries != null) {
                 while (entries.hasMoreElements()) {
                     final URL entry = (URL) entries.nextElement();

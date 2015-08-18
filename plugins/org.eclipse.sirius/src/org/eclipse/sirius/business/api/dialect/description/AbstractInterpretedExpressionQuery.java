@@ -72,7 +72,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * The source tag used in the meta-model for all EAnnotations concerning the
      * variables available to interpreted expressions.
      */
-    protected static final String VARIABLES_ANNOTATION_SOURCE = "http://www.eclipse.org/sirius/interpreted/expression/variables";
+    protected static final String VARIABLES_ANNOTATION_SOURCE = "http://www.eclipse.org/sirius/interpreted/expression/variables"; //$NON-NLS-1$
 
     /**
      * The character used in the documentation annotation of variables to
@@ -86,7 +86,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * The key used in {@link #VARIABLES_ANNOTATION_SOURCE} annotations of
      * variable to specify the type of that variable.
      */
-    protected static final String VARIABLE_TYPE_KEY = "type";
+    protected static final String VARIABLE_TYPE_KEY = "type"; //$NON-NLS-1$
 
     /**
      * The target containing the InterpretedExpression (NodeMapping,
@@ -283,7 +283,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
                  * the containerView variable is accessible in any Model
                  * operation which is a child of the ToolDescription.
                  */
-                availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator"));
+                availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator")); //$NON-NLS-1$ //$NON-NLS-2$
             }
             addVariablesFromToolContext(operationContext);
         }
@@ -293,7 +293,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
              * the containerView variable is accessible in the "precondition"
              * feature of the ToolDescription. See GenericToolCommandBuilder.
              */
-            availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator"));
+            availableVariables.put("containerView", VariableType.fromString("viewpoint.DSemanticDecorator")); //$NON-NLS-1$ //$NON-NLS-2$
         }
 
         if (ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__ELEMENTS_TO_SELECT.equals(feature)) {
@@ -617,16 +617,16 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      *            the set of variables definition to which to append.
      */
     protected void appendEditMaskVariables(EditMaskVariables mask, Map<String, Collection<VariableType>> definitions) {
-        Pattern p = Pattern.compile("\\{\\d\\}");
+        Pattern p = Pattern.compile("\\{\\d\\}"); //$NON-NLS-1$
         Matcher m = p.matcher(mask.getMask());
         while (m.find()) {
             String group = m.group();
             String index = group.substring(1, group.length() - 1);
             // Old Acceleo 2-style variables.
-            addDefinition(definitions, index, "String");
+            addDefinition(definitions, index, "String"); //$NON-NLS-1$
             // New variable names which should be legal in all query
             // languages, including Acceleo 3.
-            addDefinition(definitions, "arg" + index, "String");
+            addDefinition(definitions, "arg" + index, "String"); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

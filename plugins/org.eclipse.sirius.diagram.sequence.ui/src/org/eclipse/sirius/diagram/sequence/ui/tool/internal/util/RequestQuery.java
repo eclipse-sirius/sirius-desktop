@@ -50,7 +50,7 @@ public class RequestQuery extends org.eclipse.sirius.diagram.ui.business.interna
     /**
      * Constaint to check if request if from another indirect request.
      */
-    public static final String IS_MOVED_BY_PARENT_EXECUTION = "isMovedByParentExecution";
+    public static final String IS_MOVED_BY_PARENT_EXECUTION = "isMovedByParentExecution"; //$NON-NLS-1$
 
     /**
      * Constructor.

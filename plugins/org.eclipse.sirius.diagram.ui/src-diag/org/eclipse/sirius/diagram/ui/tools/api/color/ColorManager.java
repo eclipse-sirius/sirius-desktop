@@ -68,13 +68,13 @@ public class ColorManager {
     }
 
     private String getKey(RGBValues color) {
-        StringBuilder sb = new StringBuilder("Color");
+        StringBuilder sb = new StringBuilder("Color"); //$NON-NLS-1$
         if (color != null) {
-            sb.append("_r:");
+            sb.append("_r:"); //$NON-NLS-1$
             sb.append(color.getRed());
-            sb.append("_g:");
+            sb.append("_g:"); //$NON-NLS-1$
             sb.append(color.getGreen());
-            sb.append("_b:");
+            sb.append("_b:"); //$NON-NLS-1$
             sb.append(color.getBlue());
         }
         return sb.toString();

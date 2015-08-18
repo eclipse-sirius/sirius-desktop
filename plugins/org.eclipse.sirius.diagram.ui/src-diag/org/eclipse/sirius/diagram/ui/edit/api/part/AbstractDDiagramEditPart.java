@@ -174,7 +174,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         if (NotationPackage.eINSTANCE.getDiagram_PersistedEdges().equals(notification.getFeature()) || NotationPackage.eINSTANCE.getDiagram_TransientEdges().equals(notification.getFeature())) {
             if (notification.getOldValue() instanceof Edge) {
                 final Edge oldValue = (Edge) notification.getOldValue();
-                if ("NoteAttachment".equals(oldValue.getType())) {
+                if ("NoteAttachment".equals(oldValue.getType())) { //$NON-NLS-1$
                     refresh();
                 }
             }

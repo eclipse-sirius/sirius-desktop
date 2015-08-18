@@ -48,12 +48,12 @@ public class InitializeCreationToolElementsToSelectExpressionParticipant extends
     /**
      * The Sirius version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("10.1.0.201507271600");
+    public static final Version MIGRATION_VERSION = new Version("10.1.0.201507271600"); //$NON-NLS-1$
 
     /**
      * Expression used to initialize expression.
      */
-    public static final String ELEMENTS_TO_SELECT_EXPRESSION = "service:stdEmptyCollection";
+    public static final String ELEMENTS_TO_SELECT_EXPRESSION = "service:stdEmptyCollection"; //$NON-NLS-1$
 
     private static final String JAVA_EXTENSION_QUALIFIED_NAME = StandardServices.class.getName();
 

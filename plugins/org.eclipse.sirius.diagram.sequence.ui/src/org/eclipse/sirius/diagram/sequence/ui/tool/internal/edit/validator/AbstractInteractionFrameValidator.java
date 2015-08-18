@@ -45,7 +45,7 @@ import com.google.common.collect.Sets;
  * @author mporhel
  */
 public abstract class AbstractInteractionFrameValidator {
-    private static final String FRAME_RESIZE_VALIDATOR = "org.eclipse.sirius.sequence.resize.frame.validator";
+    private static final String FRAME_RESIZE_VALIDATOR = "org.eclipse.sirius.sequence.resize.frame.validator"; //$NON-NLS-1$
 
     /**
      * Expansion zone.

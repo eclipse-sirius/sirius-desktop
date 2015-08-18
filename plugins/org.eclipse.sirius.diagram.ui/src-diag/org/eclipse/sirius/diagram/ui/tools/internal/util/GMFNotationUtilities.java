@@ -180,7 +180,7 @@ public final class GMFNotationUtilities {
      * @return the string terminal used in {@link IdentityAnchor}
      */
     public static String getTerminalString(double xPercentage, double yPercentage) {
-        return "(" + String.valueOf(xPercentage) + "," + String.valueOf(yPercentage) + ")";
+        return "(" + String.valueOf(xPercentage) + "," + String.valueOf(yPercentage) + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

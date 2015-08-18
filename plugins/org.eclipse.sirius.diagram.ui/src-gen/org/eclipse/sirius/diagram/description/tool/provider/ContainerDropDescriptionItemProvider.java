@@ -165,7 +165,7 @@ public class ContainerDropDescriptionItemProvider extends MappingBasedToolDescri
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((ContainerDropDescription) object).getLabel();
-        return StringUtil.isEmpty(label) ? getString("_UI_ContainerDropDescription_type") : getString("_UI_ContainerDropDescription_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_ContainerDropDescription_type") : getString("_UI_ContainerDropDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

@@ -27,7 +27,7 @@ import com.google.common.collect.Multimap;
  * @author pcdavid
  */
 public class PackageRegistryIndex {
-    private static final String SEPARATOR = ".";
+    private static final String SEPARATOR = "."; //$NON-NLS-1$
 
     private final EPackage.Registry runtimeTypeRegistry;
 
@@ -52,7 +52,7 @@ public class PackageRegistryIndex {
         this.runtimeTypeRegistry = registry;
         this.packageFilter = packageFilter;
         indexTypesFromRegistry(false);
-        if (!Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false"))) {
+        if (!Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false"))) { //$NON-NLS-1$ //$NON-NLS-2$
             indexTypesFromRegistry(true);
         }
     }
@@ -96,7 +96,7 @@ public class PackageRegistryIndex {
      */
     public Collection<EClass> getEClassesFromName(String name) {
         Collection<EClass> result = index.get(name);
-        if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false")) && result.isEmpty() && !initializedDescriptors) {
+        if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false")) && result.isEmpty() && !initializedDescriptors) { //$NON-NLS-1$ //$NON-NLS-2$
             indexTypesFromRegistry(true);
             initializedDescriptors = true;
             result = index.get(name);

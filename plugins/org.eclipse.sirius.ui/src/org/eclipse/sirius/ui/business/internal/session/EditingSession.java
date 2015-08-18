@@ -366,11 +366,11 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
      * @return a key with the editor input.
      */
     private String keyFromInput(final IEditorInput input) {
-        final String separator = "/";
+        final String separator = "/"; //$NON-NLS-1$
         String result = null;
         if (input instanceof URIEditorInput) {
             final URI uri = ((URIEditorInput) input).getURI();
-            final URI deresolved = uri.deresolve(URI.createURI("platform:/resource/"));
+            final URI deresolved = uri.deresolve(URI.createURI("platform:/resource/")); //$NON-NLS-1$
             final String workspacePAth = separator + deresolved.path();
             final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(workspacePAth));
             if (file != null && file.isAccessible() && file.exists()) {

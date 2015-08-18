@@ -32,42 +32,42 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
     /**
      * The stroke tag in the SVG file.
      */
-    private static final String SVG_STROKE = "stroke";
+    private static final String SVG_STROKE = "stroke"; //$NON-NLS-1$
 
     /**
      * The fill tag in the SVG file.
      */
-    private static final String SVG_FILL = "fill";
+    private static final String SVG_FILL = "fill"; //$NON-NLS-1$
 
     /**
      * The stop-color tag in the SVG file.
      */
-    private static final String SVG_STOP_COLOR = "stop-color";
+    private static final String SVG_STOP_COLOR = "stop-color"; //$NON-NLS-1$
 
     /**
      * The name of the style attribute in the SVG file.
      */
-    private static final String SVG_STYLE_ATTRIBUTE_NAME = "style";
+    private static final String SVG_STYLE_ATTRIBUTE_NAME = "style"; //$NON-NLS-1$
 
     /**
      * The id of the lighter stop color of the gradient in the SVG file.
      */
-    private static final String SVG_STOP_LIGHTER_ID = "stop1";
+    private static final String SVG_STOP_LIGHTER_ID = "stop1"; //$NON-NLS-1$
 
     /**
      * The id of the main stop color of the gradient in the SVG file.
      */
-    private static final String SVG_STOP_MAIN_ID = "stop2";
+    private static final String SVG_STOP_MAIN_ID = "stop2"; //$NON-NLS-1$
 
     /**
      * The id of the gradient element in the SVG file.
      */
-    private static final String SVG_GRADIENT_ELEMENT_ID = "elementWithGradient";
+    private static final String SVG_GRADIENT_ELEMENT_ID = "elementWithGradient"; //$NON-NLS-1$
 
     /**
      * The id of the shadow element in the SVG file.
      */
-    private static final String SVG_SHADOW_ELEMENT_ID = "shadow";
+    private static final String SVG_SHADOW_ELEMENT_ID = "shadow"; //$NON-NLS-1$
 
     private static final String IMAGE_DIR = "images/"; //$NON-NLS-1$
 
@@ -236,7 +236,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
     private static String getImageFileURI(String shapeName) {
         final String path = new StringBuffer(IMAGE_DIR).append(shapeName).append(IMAGE_EXT).toString();
         String pluginId = DiagramUIPlugin.getPlugin().getSymbolicName();
-        return "platform:/plugin/" + pluginId + "/" + path;
+        return "platform:/plugin/" + pluginId + "/" + path; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     /**
@@ -245,7 +245,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * @return The hexa representation of the color.
      */
     private static String getRGBValuesColorToHexa(final RGBValues color) {
-        String blankDigit = "0";
+        String blankDigit = "0"; //$NON-NLS-1$
         StringBuffer colorInHexa = new StringBuffer();
         String hexaColor = Integer.toHexString(color.getRed());
         if (hexaColor.length() == 1) {
@@ -271,7 +271,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * @return The hexa representation of the color.
      */
     private String getColorToHexa(Color color) {
-        String blankDigit = "0";
+        String blankDigit = "0"; //$NON-NLS-1$
         StringBuffer colorInHexa = new StringBuffer();
         String hexaColor = Integer.toHexString(color.getRed());
         if (hexaColor.length() == 1) {
@@ -295,7 +295,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
         int indexOfColorAttribute = actualStyle.indexOf(colorAttribute);
         String newStyle = actualStyle.substring(0, indexOfColorAttribute + colorAttribute.length() + 2);
         newStyle = newStyle.concat(newColor);
-        newStyle = newStyle.concat(actualStyle.substring(actualStyle.indexOf(";", indexOfColorAttribute), actualStyle.length()));
+        newStyle = newStyle.concat(actualStyle.substring(actualStyle.indexOf(";", indexOfColorAttribute), actualStyle.length())); //$NON-NLS-1$
         return newStyle;
     }
 

@@ -476,7 +476,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // when gotoMarker() method will be called
         if (input instanceof FileEditorInput) {
             IFile file = ((FileEditorInput) input).getFile();
-            URI analysisURI = URI.createPlatformResourceURI("/" + file.getProject().getName() + "/" + file.getProjectRelativePath(), true);
+            URI analysisURI = URI.createPlatformResourceURI("/" + file.getProject().getName() + "/" + file.getProjectRelativePath(), true); //$NON-NLS-1$ //$NON-NLS-2$
             return new SessionEditorInputFactory().create(analysisURI);
         }
         return input;

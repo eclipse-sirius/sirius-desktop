@@ -105,7 +105,7 @@ public class ExecutionSemanticEditPolicy extends DNode2ItemSemanticEditPolicy {
                 // adding an EndOfLifeEditPart will resize the RootExecution
                 // to
                 // keep the same global size on the lifeline
-                String label = superCommand != null ? superCommand.getLabel() : "";
+                String label = superCommand != null ? superCommand.getLabel() : ""; //$NON-NLS-1$
                 CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(getEditingDomain(), label);
 
                 if (superCommand != null) {

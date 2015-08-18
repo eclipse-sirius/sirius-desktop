@@ -88,7 +88,7 @@ public class Pair<T> {
      */
     @Override
     public String toString() {
-        return "<" + String.valueOf(first) + ", " + String.valueOf(second) + ">";
+        return "<" + String.valueOf(first) + ", " + String.valueOf(second) + ">"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
 }

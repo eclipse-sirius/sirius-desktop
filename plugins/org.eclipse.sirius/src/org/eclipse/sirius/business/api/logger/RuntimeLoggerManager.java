@@ -29,12 +29,12 @@ public interface RuntimeLoggerManager extends RuntimeLogger {
     /**
      * Extension point ID.
      */
-    String ID = "org.eclipse.sirius.runtimeLogger";
+    String ID = "org.eclipse.sirius.runtimeLogger"; //$NON-NLS-1$
 
     /**
      * What need to be extended.
      */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /**
      * Decorate an existing interpreter to provide safe (without exceptions)

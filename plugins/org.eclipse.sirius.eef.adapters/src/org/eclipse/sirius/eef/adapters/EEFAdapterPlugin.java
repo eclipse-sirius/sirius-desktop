@@ -24,7 +24,7 @@ public class EEFAdapterPlugin extends EMFPlugin {
     /**
      * The plug-in ID.
      */
-    public static final String PLUGIN_ID = "org.eclipse.sirius.eef.adapters";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.eef.adapters"; //$NON-NLS-1$
 
     /**
      * Keep track of the singleton.

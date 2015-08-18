@@ -38,9 +38,9 @@ import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
  */
 public class DiagramDefaultColorStyleDescription extends StyleSwitch<EObject> {
 
-    private static final String BLACK = "black";
+    private static final String BLACK = "black"; //$NON-NLS-1$
 
-    private static final String GRAY = "gray";
+    private static final String GRAY = "gray"; //$NON-NLS-1$
 
     /**
      * Set the default color descriptions on the given EObject.
@@ -129,7 +129,7 @@ public class DiagramDefaultColorStyleDescription extends StyleSwitch<EObject> {
      */
     @Override
     public EObject caseNoteDescription(final NoteDescription object) {
-        object.setColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("yellow"));
+        object.setColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("yellow")); //$NON-NLS-1$
         return super.caseNoteDescription(object);
     }
 
@@ -147,8 +147,8 @@ public class DiagramDefaultColorStyleDescription extends StyleSwitch<EObject> {
      */
     @Override
     public EObject caseFlatContainerStyleDescription(final FlatContainerStyleDescription object) {
-        object.setForegroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("light_gray"));
-        object.setBackgroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("white"));
+        object.setForegroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("light_gray")); //$NON-NLS-1$
+        object.setBackgroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("white")); //$NON-NLS-1$
         return super.caseFlatContainerStyleDescription(object);
     }
 
@@ -157,7 +157,7 @@ public class DiagramDefaultColorStyleDescription extends StyleSwitch<EObject> {
      */
     @Override
     public EObject caseShapeContainerStyleDescription(final ShapeContainerStyleDescription object) {
-        object.setBackgroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("light_gray"));
+        object.setBackgroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("light_gray")); //$NON-NLS-1$
         return super.caseShapeContainerStyleDescription(object);
     }
 
@@ -176,7 +176,7 @@ public class DiagramDefaultColorStyleDescription extends StyleSwitch<EObject> {
     @Override
     public EObject caseGaugeSectionDescription(final GaugeSectionDescription object) {
         object.setBackgroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription(BLACK));
-        object.setForegroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("green"));
+        object.setForegroundColor(EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("green")); //$NON-NLS-1$
         return super.caseGaugeSectionDescription(object);
     }
 

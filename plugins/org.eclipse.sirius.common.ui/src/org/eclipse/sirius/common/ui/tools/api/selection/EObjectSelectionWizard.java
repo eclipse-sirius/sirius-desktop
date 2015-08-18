@@ -33,7 +33,7 @@ public class EObjectSelectionWizard extends Wizard {
     /** "Please select an element". */
     public static final String WIZARD_GENERIC_DIALOG_MESSAGE = "Please select an element";
 
-    private static final String EOBJECT_SELECTION_WIZARD_PAGE_NAME = "page";
+    private static final String EOBJECT_SELECTION_WIZARD_PAGE_NAME = "page"; //$NON-NLS-1$
 
     private EObjectSelectionWizardPage page;
 

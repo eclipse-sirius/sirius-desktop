@@ -98,7 +98,7 @@ public class TabbarAlignMenuManager extends AlignMenuManager {
     private void setHandler(final IAction defaultAction) {
         Method method;
         try {
-            method = MenuCreatorAction.class.getDeclaredMethod("setActionHandler", IAction.class);
+            method = MenuCreatorAction.class.getDeclaredMethod("setActionHandler", IAction.class); //$NON-NLS-1$
             method.setAccessible(true);
             method.invoke(super.action, defaultAction);
         } catch (SecurityException e) {

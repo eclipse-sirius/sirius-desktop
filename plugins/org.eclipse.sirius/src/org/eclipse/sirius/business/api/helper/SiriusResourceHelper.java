@@ -132,7 +132,7 @@ public final class SiriusResourceHelper {
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         for (final Iterator<Resource> iterator = domain.getResourceSet().getResources().iterator(); iterator.hasNext() && editingDomainViewpoint == null; /**/) {
             final Resource editingDomainResource = iterator.next();
-            if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false"))
+            if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false")) //$NON-NLS-1$ //$NON-NLS-2$
                     && !SiriusUtil.DESCRIPTION_MODEL_EXTENSION.equals(editingDomainResource.getURI().fileExtension())) {
                 continue;
             }

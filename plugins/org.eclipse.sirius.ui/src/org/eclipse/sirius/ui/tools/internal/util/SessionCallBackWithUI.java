@@ -23,6 +23,6 @@ public class SessionCallBackWithUI extends AbstractSWTCallback {
 
     @Override
     protected String getVariableNameForRepresentation() {
-        return "";
+        return ""; //$NON-NLS-1$
     }
 }

@@ -47,7 +47,7 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
     /**
      * ID for the view.
      */
-    public static final String ID = "org.eclipse.sirius.common.ui.view.timeProfiler";
+    public static final String ID = "org.eclipse.sirius.common.ui.view.timeProfiler"; //$NON-NLS-1$
 
     /** The tree viewer. */
     private TreeViewer viewer;
@@ -289,7 +289,7 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
      * Create the context menu.
      */
     private void createContextMenu() {
-        final MenuManager menuManager = new MenuManager("#PopupMenu");
+        final MenuManager menuManager = new MenuManager("#PopupMenu"); //$NON-NLS-1$
         menuManager.setRemoveAllWhenShown(true);
         menuManager.addMenuListener(new IMenuListener() {
             public void menuAboutToShow(final IMenuManager manager) {

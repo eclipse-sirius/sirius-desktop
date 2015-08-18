@@ -21,6 +21,6 @@ public interface InterpreterView {
     /**
      * View ID.
      */
-    String ID = "org.eclipse.sirius.ui.tools.views.interpreterview";
+    String ID = "org.eclipse.sirius.ui.tools.views.interpreterview"; //$NON-NLS-1$
 
 }

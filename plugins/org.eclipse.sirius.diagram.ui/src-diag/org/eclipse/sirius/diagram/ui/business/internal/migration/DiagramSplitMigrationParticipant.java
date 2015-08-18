@@ -29,12 +29,12 @@ public class DiagramSplitMigrationParticipant extends AbstractMigrationParticipa
     /**
      * The version 8.0.0 corresponds to the file format of Sirius 1.0.0 M5.
      */
-    private static final Version SIRIUS_1_0_0_M5_VERSION = new Version("8.0.0");
+    private static final Version SIRIUS_1_0_0_M5_VERSION = new Version("8.0.0"); //$NON-NLS-1$
 
     /**
      * The version 8.1.0 corresponds to the file format of Sirius 1.0.0 M6.
      */
-    private static final Version SIRIUS_1_0_0_M6_VERSION = new Version("8.1.0");
+    private static final Version SIRIUS_1_0_0_M6_VERSION = new Version("8.1.0"); //$NON-NLS-1$
 
     public Version getMigrationVersion() {
         return SIRIUS_1_0_0_M6_VERSION;

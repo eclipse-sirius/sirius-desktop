@@ -48,12 +48,6 @@ public class EObjectSelectionFilter extends ViewerFilter {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-     *      java.lang.Object, java.lang.Object)
-     */
     @Override
     public boolean select(final Viewer viewer, final Object parentElement, final Object element) {
 
@@ -103,16 +97,16 @@ public class EObjectSelectionFilter extends ViewerFilter {
     private StringMatcher getStringMatcher() {
         String computedRegExp = regExp;
         if (regExp == null) {
-            computedRegExp = "";
+            computedRegExp = ""; //$NON-NLS-1$
         }
         // If the regular expression ends with a space, we have to use the exact
         // value of the given expreg
-        if (computedRegExp.endsWith(" ")) {
+        if (computedRegExp.endsWith(" ")) { //$NON-NLS-1$
             computedRegExp = computedRegExp.substring(0, computedRegExp.lastIndexOf(' '));
         }
         // At the end we add a star to make 'XYZ' recognized by the 'X'
         // expreg (as in quick outline for example)
-        computedRegExp = computedRegExp + "*";
+        computedRegExp = computedRegExp + "*"; //$NON-NLS-1$
 
         return new StringMatcher(computedRegExp, true, false);
     }

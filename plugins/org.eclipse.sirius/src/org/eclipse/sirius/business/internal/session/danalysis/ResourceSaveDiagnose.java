@@ -70,7 +70,7 @@ public class ResourceSaveDiagnose {
         // CHECKSTYLE:OFF : code coming from
         // ResourceImpl.saveOnlyIfChangedWithFileBuffer
         resourcetoSave.eSetDeliver(false);
-        final File temporaryFile = File.createTempFile("ResourceSaveHelper", null);
+        final File temporaryFile = File.createTempFile("ResourceSaveHelper", null); //$NON-NLS-1$
         boolean equal = true;
         try {
             final URI temporaryFileURI = URI.createFileURI(temporaryFile.getPath());

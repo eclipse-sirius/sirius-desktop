@@ -150,7 +150,7 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery(((ToolGroup) object)).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_ToolGroup_type") : getString("_UI_ToolGroup_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_ToolGroup_type") : getString("_UI_ToolGroup_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**

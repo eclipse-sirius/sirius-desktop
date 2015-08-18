@@ -162,13 +162,13 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     /**
      * Name of the GMF View feature to ignore in the remove dangling references.
      */
-    private static final String NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE = "element";
+    private static final String NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE = "element"; //$NON-NLS-1$
 
     /**
      * Container name of the GMF View feature to ignore in the remove dangling
      * references.
      */
-    private static final String NOTATION_VIEW_ELEMENT_REFERENCE_CONTAINER_TO_IGNORE = "org.eclipse.gmf.runtime.notation.View";
+    private static final String NOTATION_VIEW_ELEMENT_REFERENCE_CONTAINER_TO_IGNORE = "org.eclipse.gmf.runtime.notation.View"; //$NON-NLS-1$
 
     private Session session;
 

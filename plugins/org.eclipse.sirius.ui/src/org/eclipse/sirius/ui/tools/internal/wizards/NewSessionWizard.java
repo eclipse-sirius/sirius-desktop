@@ -130,7 +130,7 @@ public class NewSessionWizard extends Wizard implements INewWizard {
         this.workbench = w;
         setWindowTitle("New Representations File");
         setNeedsProgressMonitor(true);
-        setDefaultPageImageDescriptor(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/wizban/banner_aird.gif"));
+        setDefaultPageImageDescriptor(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/wizban/banner_aird.gif")); //$NON-NLS-1$
     }
 
     /**

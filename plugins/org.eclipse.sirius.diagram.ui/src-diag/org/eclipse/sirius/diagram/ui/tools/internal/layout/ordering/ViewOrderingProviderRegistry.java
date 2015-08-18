@@ -37,7 +37,7 @@ public final class ViewOrderingProviderRegistry {
     private static final String VIEW_ORDERING_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.ui.viewOrderingProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
-    private static final String TAG_ENGINE = "viewOrderingProvider";
+    private static final String TAG_ENGINE = "viewOrderingProvider"; //$NON-NLS-1$
 
     /** The providers. */
     private Collection<ViewOrderingProvider> viewOrderingProviders;
@@ -62,7 +62,7 @@ public final class ViewOrderingProviderRegistry {
                 for (IConfigurationElement configElement : configElements) {
                     if (configElement.getName().equals(TAG_ENGINE)) {
                         try {
-                            final ViewOrderingProvider viewOrderingProvider = (ViewOrderingProvider) configElement.createExecutableExtension("providerClass");
+                            final ViewOrderingProvider viewOrderingProvider = (ViewOrderingProvider) configElement.createExecutableExtension("providerClass"); //$NON-NLS-1$
                             this.viewOrderingProviders.add(viewOrderingProvider);
                         } catch (final CoreException e) {
                             DiagramPlugin.getDefault().logError("Impossible to load the view ordering provider : " + configElement.getName(), e);

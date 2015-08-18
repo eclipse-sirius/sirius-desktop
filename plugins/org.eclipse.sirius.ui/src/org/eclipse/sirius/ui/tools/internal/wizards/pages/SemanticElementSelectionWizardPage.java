@@ -244,7 +244,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
              * enabled it also makes the tree pre-select the first matching
              * node, saving the user a manual selection in many cases.
              */
-            tree.getFilterControl().setText("*");
+            tree.getFilterControl().setText("*"); //$NON-NLS-1$
         }
     }
 

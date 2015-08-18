@@ -47,7 +47,7 @@ public class SequenceMessageEditPart extends DEdgeEditPart implements ISequenceE
     /**
      * id for extended meta data.
      */
-    public static final String MSG_TO_SELF_TOP_MOVE = "messageToSelfTopMove";
+    public static final String MSG_TO_SELF_TOP_MOVE = "messageToSelfTopMove"; //$NON-NLS-1$
 
     /**
      * The global router for all the messages.

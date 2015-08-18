@@ -35,7 +35,7 @@ public class HiddenLabelTester extends PropertyTester {
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
         boolean result = false;
 
-        if ("isLabelHidden".equals(property)) {
+        if ("isLabelHidden".equals(property)) { //$NON-NLS-1$
             if (receiver instanceof IStructuredSelection) {
                 result = testStructuredSelection((IStructuredSelection) receiver);
             } else if (receiver instanceof IDiagramElementEditPart) {

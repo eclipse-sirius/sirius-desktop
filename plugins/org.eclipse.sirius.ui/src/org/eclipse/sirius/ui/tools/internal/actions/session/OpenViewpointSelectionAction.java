@@ -49,7 +49,7 @@ public class OpenViewpointSelectionAction extends Action {
      *            should be changed
      */
     public OpenViewpointSelectionAction(URI sessionURI) {
-        super(VIEWPOINTS_SELECTION_ACTION_TEXT, SiriusEditPlugin.INSTANCE.getImageDescriptor("full/obj16/Viewpoint.gif"));
+        super(VIEWPOINTS_SELECTION_ACTION_TEXT, SiriusEditPlugin.INSTANCE.getImageDescriptor("full/obj16/Viewpoint.gif")); //$NON-NLS-1$
         this.sessionURI = sessionURI;
     }
 

@@ -109,10 +109,10 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
 
         String color = new ColorQuery(((BundledImageDescription) object).getColor()).getLabel();
         String shape = ((BundledImageDescription) object).getShape().getName();
-        String label = getString("_UI_BundledImageDescription_type");
+        String label = getString("_UI_BundledImageDescription_type"); //$NON-NLS-1$
 
         if (shape != null && color != null) {
-            return label + " " + color + " " + shape;
+            return label + " " + color + " " + shape; //$NON-NLS-1$ //$NON-NLS-2$
         } else {
             return label;
         }

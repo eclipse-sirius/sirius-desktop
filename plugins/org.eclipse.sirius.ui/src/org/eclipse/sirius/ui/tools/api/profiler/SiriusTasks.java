@@ -26,32 +26,32 @@ public final class SiriusTasks {
     /**
      * The Acceleo category image path.
      */
-    public static final String IMAGES_ACCELEO_GIF = "/images/acceleo.gif";
+    public static final String IMAGES_ACCELEO_GIF = "/images/acceleo.gif"; //$NON-NLS-1$
 
     /**
      * The GEF category image path.
      */
-    public static final String IMAGES_GEF_GIF = "/images/gef.gif";
+    public static final String IMAGES_GEF_GIF = "/images/gef.gif"; //$NON-NLS-1$
 
     /**
      * The GMF category image path.
      */
-    public static final String IMAGES_GMF_GIF = "/images/gmf.gif";
+    public static final String IMAGES_GMF_GIF = "/images/gmf.gif"; //$NON-NLS-1$
 
     /**
      * Image used to represent the viewpoint category.
      */
-    public static final String IMAGES_VIEWPOINT = "/images/viewpoint.gif";
+    public static final String IMAGES_VIEWPOINT = "/images/viewpoint.gif"; //$NON-NLS-1$
 
     /**
      * Image used to represent the generic modeler category.
      */
-    public static final String IMAGES_MODELER = "/images/modeler.gif";
+    public static final String IMAGES_MODELER = "/images/modeler.gif"; //$NON-NLS-1$
 
     /**
      * The SWT category image path.
      */
-    public static final String IMAGES_SWT = "/images/swt.gif";
+    public static final String IMAGES_SWT = "/images/swt.gif"; //$NON-NLS-1$
 
     /**
      * Task singleton.
@@ -173,7 +173,7 @@ public final class SiriusTasks {
     /**
      * Task singleton.
      */
-    public static final ProfilerTask INSTANCE_OF = new ProfilerTask(SiriusTasksKey.MM_EXTENSION_CAT, SiriusTasksKey.INSTANCE_OF_KEY, getImagePath("/images/mmext.gif"));
+    public static final ProfilerTask INSTANCE_OF = new ProfilerTask(SiriusTasksKey.MM_EXTENSION_CAT, SiriusTasksKey.INSTANCE_OF_KEY, getImagePath("/images/mmext.gif")); //$NON-NLS-1$
 
     /**
      * Task singleton.
@@ -377,7 +377,7 @@ public final class SiriusTasks {
     }
 
     private static String getImagePath(String key) {
-        return "/" + SiriusEditPlugin.ID + key;
+        return "/" + SiriusEditPlugin.ID + key; //$NON-NLS-1$
     }
 
     // CHECKSTYLE:OFF

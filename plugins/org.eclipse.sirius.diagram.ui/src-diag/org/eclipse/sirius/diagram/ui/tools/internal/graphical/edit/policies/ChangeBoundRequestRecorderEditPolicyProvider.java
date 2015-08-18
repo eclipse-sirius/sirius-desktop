@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalV
 public class ChangeBoundRequestRecorderEditPolicyProvider implements IEditPolicyProvider {
 
     /** The role of the request. */
-    private static final String RECORD_REQUEST_ROLE = "RecordRequest";
+    private static final String RECORD_REQUEST_ROLE = "RecordRequest"; //$NON-NLS-1$
 
     /** the property change support. */
     private final List<IProviderChangeListener> listeners;

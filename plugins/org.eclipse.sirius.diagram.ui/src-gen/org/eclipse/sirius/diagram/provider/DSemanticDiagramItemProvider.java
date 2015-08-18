@@ -88,7 +88,7 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DSemanticDiagram) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DSemanticDiagram_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_DSemanticDiagram_type") : label; //$NON-NLS-1$
     }
 
     /**

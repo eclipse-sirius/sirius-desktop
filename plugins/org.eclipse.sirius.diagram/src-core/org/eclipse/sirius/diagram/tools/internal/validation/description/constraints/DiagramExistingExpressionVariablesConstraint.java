@@ -556,7 +556,7 @@ public class DiagramExistingExpressionVariablesConstraint extends AbstractConstr
                 final MessageFormat parser = new MessageFormat(maskVariables.getMask());
                 for (int i = 0; i < parser.getFormats().length; i++) {
                     result.add(Integer.valueOf(i).toString());
-                    result.add("arg" + Integer.valueOf(i).toString());
+                    result.add("arg" + Integer.valueOf(i).toString()); //$NON-NLS-1$
                 }
             }
         }

@@ -31,7 +31,7 @@ import com.google.common.base.Preconditions;
  * @author pierre-charles.david@obeo.fr
  */
 public class SiriusReferenceResolver implements ReferenceResolver {
-    private static final String SOURCES_VARIABLE_NAME = "sources";
+    private static final String SOURCES_VARIABLE_NAME = "sources"; //$NON-NLS-1$
 
     /**
      * The interpreter to use for computed expressions.
@@ -77,10 +77,10 @@ public class SiriusReferenceResolver implements ReferenceResolver {
     private EObject resolveComputedReference(ComputedEObjectReference computedRef, Map<String, Object> context) {
         EObject result = null;
         String expr = computedRef.getValueExpression();
-        if (expr != null && interpreter.provides(expr) && context.get("self") instanceof EObject) {
+        if (expr != null && interpreter.provides(expr) && context.get("self") instanceof EObject) { //$NON-NLS-1$
             try {
                 interpreter.setVariable(SOURCES_VARIABLE_NAME, context.get(SOURCES_VARIABLE_NAME));
-                result = interpreter.evaluateEObject((EObject) context.get("self"), expr);
+                result = interpreter.evaluateEObject((EObject) context.get("self"), expr); //$NON-NLS-1$
             } catch (EvaluationException e) {
                 // TODO Log warning
             } finally {

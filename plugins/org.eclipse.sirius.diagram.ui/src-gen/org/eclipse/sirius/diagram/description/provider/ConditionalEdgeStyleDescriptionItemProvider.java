@@ -151,12 +151,12 @@ public class ConditionalEdgeStyleDescriptionItemProvider extends ConditionalStyl
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         EdgeStyleDescription esd = StyleFactory.eINSTANCE.createEdgeStyleDescription();
-        esd.setSizeComputationExpression("2");
+        esd.setSizeComputationExpression("2"); //$NON-NLS-1$
         esd.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, esd));
 
         BracketEdgeStyleDescription bsd = StyleFactory.eINSTANCE.createBracketEdgeStyleDescription();
-        bsd.setSizeComputationExpression("2");
+        bsd.setSizeComputationExpression("2"); //$NON-NLS-1$
         bsd.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_EDGE_STYLE_DESCRIPTION__STYLE, bsd));
     }

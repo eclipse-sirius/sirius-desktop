@@ -152,11 +152,11 @@ public class ConditionalContainerStyleDescriptionItemProvider extends Conditiona
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         FlatContainerStyleDescription flatContainerStyleDescription = StyleFactory.eINSTANCE.createFlatContainerStyleDescription();
-        flatContainerStyleDescription.setBorderSizeComputationExpression("1");
+        flatContainerStyleDescription.setBorderSizeComputationExpression("1"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE, flatContainerStyleDescription));
 
         ShapeContainerStyleDescription shapeContainerStyleDescription = StyleFactory.eINSTANCE.createShapeContainerStyleDescription();
-        shapeContainerStyleDescription.setBorderSizeComputationExpression("1");
+        shapeContainerStyleDescription.setBorderSizeComputationExpression("1"); //$NON-NLS-1$
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE, shapeContainerStyleDescription));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONDITIONAL_CONTAINER_STYLE_DESCRIPTION__STYLE, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));

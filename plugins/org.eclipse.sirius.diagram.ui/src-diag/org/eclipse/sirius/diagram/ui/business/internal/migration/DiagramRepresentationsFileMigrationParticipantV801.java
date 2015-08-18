@@ -34,7 +34,7 @@ public class DiagramRepresentationsFileMigrationParticipantV801 {
     /**
      * The VP version for this migration.
      */
-    public static final Version MIGRATION_VERSION = new Version("8.0.1");
+    public static final Version MIGRATION_VERSION = new Version("8.0.1"); //$NON-NLS-1$
 
     /**
      * We detected a case (see #426439) where a border node label is hidden (The

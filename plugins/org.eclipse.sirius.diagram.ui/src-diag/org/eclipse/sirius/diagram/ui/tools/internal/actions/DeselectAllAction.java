@@ -41,7 +41,7 @@ public class DeselectAllAction extends Action implements IObjectActionDelegate {
     public DeselectAllAction() {
         super();
         setId(ActionIds.DESELECT_ALL);
-        setActionDefinitionId("org.eclipse.sirius.diagram.ui.command.deselectAll");
+        setActionDefinitionId("org.eclipse.sirius.diagram.ui.command.deselectAll"); //$NON-NLS-1$
         setAccelerator(SWT.ESC);
         setText("Deselect All");
         setToolTipText("Deselect all selected diagram elements.");

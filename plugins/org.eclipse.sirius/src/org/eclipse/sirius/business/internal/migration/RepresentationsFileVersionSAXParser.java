@@ -22,7 +22,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class RepresentationsFileVersionSAXParser extends AbstractVersionSAXParser {
 
     /* In Representations files, the DAnalysis element is versioned. */
-    private static final String VERSIONED_ELEMENT_QUALIFIED_NAME = ViewpointPackage.eINSTANCE.getNsPrefix() + ":" + ViewpointPackage.eINSTANCE.getDAnalysis().getName();
+    private static final String VERSIONED_ELEMENT_QUALIFIED_NAME = ViewpointPackage.eINSTANCE.getNsPrefix() + ":" + ViewpointPackage.eINSTANCE.getDAnalysis().getName(); //$NON-NLS-1$
 
     /**
      * Constructor.

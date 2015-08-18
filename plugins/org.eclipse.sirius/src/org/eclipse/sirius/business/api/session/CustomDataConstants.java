@@ -19,21 +19,21 @@ public interface CustomDataConstants {
     /**
      * custom data key for representations.
      */
-    String DREPRESENTATION = "DREPRESENTATION";
+    String DREPRESENTATION = "DREPRESENTATION"; //$NON-NLS-1$
 
     /**
      * custom data key for GMF diagrams instances.
      */
-    String GMF_DIAGRAMS = "GMF_DIAGRAMS";
+    String GMF_DIAGRAMS = "GMF_DIAGRAMS"; //$NON-NLS-1$
 
     /**
      * custom data key for feature extensions..
      */
-    String DFEATUREEXTENSION = "DFEATUREEXTENSION";
+    String DFEATUREEXTENSION = "DFEATUREEXTENSION"; //$NON-NLS-1$
 
     /**
      * custom data key for representations from description. This key should be
      * used only to get data, it's a virtual key.
      */
-    String DREPRESENTATION_FROM_DESCRIPTION = "DREPRESENTATION_FROM_DESCRIPTION";
+    String DREPRESENTATION_FROM_DESCRIPTION = "DREPRESENTATION_FROM_DESCRIPTION"; //$NON-NLS-1$
 }

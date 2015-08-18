@@ -299,7 +299,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
                 label = "Relation Based Edge";
             }
         }
-        return label == null || label.length() == 0 ? getString("_UI_EdgeMapping_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_EdgeMapping_type") : label; //$NON-NLS-1$
     }
 
     /**
@@ -394,7 +394,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      *            the edge style.
      */
     private void edgeStyleInit(EdgeStyleDescription edgeStyle) {
-        edgeStyle.setSizeComputationExpression("2");
+        edgeStyle.setSizeComputationExpression("2"); //$NON-NLS-1$
         edgeStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
     }
 

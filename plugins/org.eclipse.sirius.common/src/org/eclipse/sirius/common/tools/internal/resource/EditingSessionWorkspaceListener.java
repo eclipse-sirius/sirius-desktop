@@ -44,9 +44,7 @@ public class EditingSessionWorkspaceListener implements IResourceChangeListener 
         this.workspaceBackend = workspaceBackend;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void resourceChanged(final IResourceChangeEvent event) {
         final IResourceDelta delta = event.getDelta();
         try {

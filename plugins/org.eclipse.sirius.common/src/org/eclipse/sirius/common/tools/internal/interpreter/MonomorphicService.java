@@ -46,9 +46,7 @@ class MonomorphicService implements IMonomorphicService {
         return serviceMethod.getName();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean appliesTo(Object[] target) {
         boolean apply = true;
         Class<?>[] parameters = serviceMethod.getParameterTypes();
@@ -85,12 +83,10 @@ class MonomorphicService implements IMonomorphicService {
 
     @Override
     public String toString() {
-        return serviceInstance.getClass().getCanonicalName() + "." + serviceMethod.getName() + "(" + serviceMethod.getParameterTypes()[0].getCanonicalName() + ")";
+        return serviceInstance.getClass().getCanonicalName() + "." + serviceMethod.getName() + "(" + serviceMethod.getParameterTypes()[0].getCanonicalName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<String> getParametersTypes() {
         List<String> parametersTypes = new ArrayList<String>();
         for (Class<?> type : serviceMethod.getParameterTypes()) {

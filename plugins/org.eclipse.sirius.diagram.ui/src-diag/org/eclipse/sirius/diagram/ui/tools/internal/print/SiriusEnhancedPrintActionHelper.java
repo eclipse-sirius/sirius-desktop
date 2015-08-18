@@ -122,7 +122,7 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
                 Resource resource = diagram.eResource();
                 if (resource != null) {
                     URI resourceURI = resource.getURI();
-                    diagramName = resourceURI.toString() + "#" + diagramName;
+                    diagramName = resourceURI.toString() + "#" + diagramName; //$NON-NLS-1$
                 }
                 diagramName = makeNameUnique(diagramName, diagramMap.keySet());
                 diagramMap.put(diagramName, diagram);
@@ -164,7 +164,7 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
      * @return A unique name.
      */
     private String makeNameUnique(String name, Set<String> existingNames, int nbIteration) {
-        String result = name + " (" + nbIteration + ")";
+        String result = name + " (" + nbIteration + ")"; //$NON-NLS-1$ //$NON-NLS-2$
         if (existingNames.contains(result)) {
             result = makeNameUnique(name, existingNames, nbIteration + 1);
         }

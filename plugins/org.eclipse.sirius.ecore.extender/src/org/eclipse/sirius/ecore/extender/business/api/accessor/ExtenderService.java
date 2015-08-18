@@ -39,7 +39,7 @@ public final class ExtenderService {
     private static final String EXTENDER_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.ecore.extender.ExtenderProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
-    private static final String TAG_ENGINE = "extenderprovider";
+    private static final String TAG_ENGINE = "extenderprovider"; //$NON-NLS-1$
 
     private ExtenderService() {
 

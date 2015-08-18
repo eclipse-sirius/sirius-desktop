@@ -692,7 +692,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             if (AbstractDiagramEdgeEditPart.this.getTarget() != null) {
                 return AbstractDiagramEdgeEditPart.this.getTarget().toString();
             } else {
-                return "base";
+                return "base"; //$NON-NLS-1$
             }
         }
 

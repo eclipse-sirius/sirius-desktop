@@ -35,7 +35,7 @@ import org.osgi.framework.Version;
 public class ComputedStyleDescriptionCachePackingFileMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
 
     /** The VP version for which this migration is added. */
-    public static final Version MIGRATION_VERSION = new Version("10.0.0.201502231700");
+    public static final Version MIGRATION_VERSION = new Version("10.0.0.201502231700"); //$NON-NLS-1$
 
     @Override
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {

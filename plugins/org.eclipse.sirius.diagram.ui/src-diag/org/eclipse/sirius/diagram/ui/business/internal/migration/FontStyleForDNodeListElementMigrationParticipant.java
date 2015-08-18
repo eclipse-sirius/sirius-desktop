@@ -41,7 +41,7 @@ import com.google.common.collect.Sets;
  */
 public class FontStyleForDNodeListElementMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
 
-    private static final Version MIGRATION_VERSION = new Version("10.0.0.201412231738");
+    private static final Version MIGRATION_VERSION = new Version("10.0.0.201412231738"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {

@@ -46,7 +46,7 @@ public class DColumnSorter extends DTableElementSorter<DColumn> {
         if (optionalCell.some()) {
             return optionalCell.get().getLabel();
         } else {
-            return "";
+            return ""; //$NON-NLS-1$
         }
     }
 

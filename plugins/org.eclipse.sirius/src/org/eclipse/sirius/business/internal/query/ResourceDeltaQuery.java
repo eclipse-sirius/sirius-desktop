@@ -61,11 +61,11 @@ public class ResourceDeltaQuery {
     }
     
     private Option<IProjectDescription> getOldProjectDescription() {
-        return getProjectDescription(ReflectionHelper.getFieldValueWithoutException(resourceDelta, "oldInfo"));
+        return getProjectDescription(ReflectionHelper.getFieldValueWithoutException(resourceDelta, "oldInfo")); //$NON-NLS-1$
     }
 
     private Option<IProjectDescription> getNewProjectDescription() {
-        return getProjectDescription(ReflectionHelper.getFieldValueWithoutException(resourceDelta, "newInfo"));
+        return getProjectDescription(ReflectionHelper.getFieldValueWithoutException(resourceDelta, "newInfo")); //$NON-NLS-1$
     }
 
     @SuppressWarnings("restriction")

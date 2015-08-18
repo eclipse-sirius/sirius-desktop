@@ -180,7 +180,7 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
         String bgColor = new ColorQuery(((FlatContainerStyleDescription) object).getBackgroundColor()).getLabel();
         String fgColor = new ColorQuery(((FlatContainerStyleDescription) object).getForegroundColor()).getLabel();
 
-        String label = getString("_UI_FlatContainerStyleDescription_type");
+        String label = getString("_UI_FlatContainerStyleDescription_type"); //$NON-NLS-1$
 
         if (fgColor != null & bgColor != null) {
             return label + " " + bgColor + " to " + fgColor;

@@ -19,7 +19,7 @@ public interface IModelExplorerView {
     /**
      * View ID.
      */
-    String ID = "org.eclipse.sirius.ui.tools.views.model.explorer";
+    String ID = "org.eclipse.sirius.ui.tools.views.model.explorer"; //$NON-NLS-1$
 
 
 }

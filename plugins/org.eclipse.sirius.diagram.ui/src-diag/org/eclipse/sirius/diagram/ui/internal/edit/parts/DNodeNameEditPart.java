@@ -161,7 +161,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
          * @was-generated
          */
         public ViewNodeNameFigureDesc() {
-            this.setText("<...>");
+            this.setText("<...>"); //$NON-NLS-1$
         }
     }
 }

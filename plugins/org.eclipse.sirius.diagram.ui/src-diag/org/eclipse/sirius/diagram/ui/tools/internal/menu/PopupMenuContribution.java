@@ -378,7 +378,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
         IAction result = null;
         if (menuItemDescription instanceof ExternalJavaAction) {
             final ExternalJavaAction javaAction = (ExternalJavaAction) menuItemDescription;
-            if (javaAction.getId() != null && !"".equalsIgnoreCase(javaAction.getId())) {
+            if (javaAction.getId() != null && !"".equalsIgnoreCase(javaAction.getId())) { //$NON-NLS-1$
                 result = buildJavaAction(javaAction, selectedViews, domain, emfCommandFactory, interpreter, currentMouseLocation);
             }
         } else if (menuItemDescription instanceof OperationAction) {
@@ -414,7 +414,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
             final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(selectedViews.iterator().next());
             final GMFCommandWrapper gefCommandWrapper = new GMFCommandWrapper(transactionalEditingDomain, command);
             if (command.canExecute()) {
-                if (javaActionMenuItem.getIcon() != null && !"".equals(javaActionMenuItem.getIcon())) {
+                if (javaActionMenuItem.getIcon() != null && !"".equals(javaActionMenuItem.getIcon())) { //$NON-NLS-1$
                     imageDescriptor = DiagramUIPlugin.Implementation.findImageDescriptor(javaActionMenuItem.getIcon());
                 }
                 result = new Action(new IdentifiedElementQuery(javaActionMenuItem).getLabel(), imageDescriptor) {
@@ -457,7 +457,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
         });
         cc.add(new ICommandProxy(new GMFCommandWrapper(transactionalEditingDomain, command)));
         ImageDescriptor imageDescriptor = null;
-        if (operationAction.getIcon() != null && !"".equals(operationAction.getIcon()))
+        if (operationAction.getIcon() != null && !"".equals(operationAction.getIcon())) //$NON-NLS-1$
             imageDescriptor = DiagramUIPlugin.Implementation.findImageDescriptor(operationAction.getIcon());
         return new Action(new IdentifiedElementQuery(operationAction).getLabel(), imageDescriptor) {
             public void run() {

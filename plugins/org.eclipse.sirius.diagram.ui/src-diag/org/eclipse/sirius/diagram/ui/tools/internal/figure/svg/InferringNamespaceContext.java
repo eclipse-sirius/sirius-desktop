@@ -48,17 +48,17 @@ public class InferringNamespaceContext implements NamespaceContext {
         int type;
         while ((null != parent) && (null == namespace) && (((type = parent.getNodeType()) == Node.ELEMENT_NODE) || (type == Node.ENTITY_REFERENCE_NODE))) {
             if (type == Node.ELEMENT_NODE) {
-                if (parent.getNodeName().indexOf(prefix + ":") == 0) {
+                if (parent.getNodeName().indexOf(prefix + ":") == 0) { //$NON-NLS-1$
                     return parent.getNamespaceURI();
                 }
                 NamedNodeMap nnm = parent.getAttributes();
                 for (int i = 0; i < nnm.getLength(); i++) {
                     Node attr = nnm.item(i);
                     String aname = attr.getNodeName();
-                    boolean isPrefix = aname.startsWith("xmlns:");
-                    if (isPrefix || aname.equals("xmlns")) {
+                    boolean isPrefix = aname.startsWith("xmlns:"); //$NON-NLS-1$
+                    if (isPrefix || aname.equals("xmlns")) { //$NON-NLS-1$
                         int index = aname.indexOf(':');
-                        String p = isPrefix ? aname.substring(index + 1) : "";
+                        String p = isPrefix ? aname.substring(index + 1) : ""; //$NON-NLS-1$
                         if (p.equals(prefix)) {
                             namespace = attr.getNodeValue();
                             break;

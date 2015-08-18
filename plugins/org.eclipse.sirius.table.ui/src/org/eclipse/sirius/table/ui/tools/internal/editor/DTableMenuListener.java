@@ -93,23 +93,23 @@ import com.google.common.collect.Lists;
  * 
  */
 public class DTableMenuListener implements IMenuListener {
-    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.open";
+    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.open"; //$NON-NLS-1$
 
-    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new";
+    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new"; //$NON-NLS-1$
 
-    private static final String MENU_HIDEREVEAL_ID = "popup.hidereveal";
+    private static final String MENU_HIDEREVEAL_ID = "popup.hidereveal"; //$NON-NLS-1$
 
-    private static final String MENU_EXPORT_ID = "popup.export";
+    private static final String MENU_EXPORT_ID = "popup.export"; //$NON-NLS-1$
 
-    private static final String NEW_REPRESENTATION_GROUP_SEPARATOR = "newRepresentation";
+    private static final String NEW_REPRESENTATION_GROUP_SEPARATOR = "newRepresentation"; //$NON-NLS-1$
 
-    private static final String EXISTING_REPRESENTATION_GROUP_SEPARATOR = "existingRepresentation";
+    private static final String EXISTING_REPRESENTATION_GROUP_SEPARATOR = "existingRepresentation"; //$NON-NLS-1$
 
-    private static final String VIEWPOINT_GROUP_SEPARATOR = "viewpoint";
+    private static final String VIEWPOINT_GROUP_SEPARATOR = "viewpoint"; //$NON-NLS-1$
 
-    private static final String PROPERTIES_SEPARATOR = "properties";
+    private static final String PROPERTIES_SEPARATOR = "properties"; //$NON-NLS-1$
 
-    private static final String HIDE_SEPARATOR = "hideGroup";
+    private static final String HIDE_SEPARATOR = "hideGroup"; //$NON-NLS-1$
 
     private final AdapterFactory adapterFactory;
 
@@ -435,7 +435,7 @@ public class DTableMenuListener implements IMenuListener {
         menuItem.setVisible(true);
         manager.add(menuItem);
         exportMenuManager.add(new Separator(DTableMenuListener.VIEWPOINT_GROUP_SEPARATOR));
-        final IAction action = new Action("CSV", DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.EXPORT_IMG)) {
+        final IAction action = new Action("CSV", DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.EXPORT_IMG)) { //$NON-NLS-1$
 
             /**
              * {@inheritDoc}

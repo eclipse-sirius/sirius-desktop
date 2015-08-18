@@ -449,7 +449,7 @@ public final class LayoutUtils {
 
             if (gmfDiag != null) {
                 final DiagramEditPartService tool = new DiagramEditPartService();
-                final DiagramEditPart diagramEditPart = tool.createDiagramEditPart(gmfDiag, shell, new PreferencesHint("DView"));
+                final DiagramEditPart diagramEditPart = tool.createDiagramEditPart(gmfDiag, shell, new PreferencesHint("DView")); //$NON-NLS-1$
                 diagramEditPart.refresh();
 
                 // performs an arrange all for canonical views.

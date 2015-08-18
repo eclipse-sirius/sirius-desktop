@@ -108,7 +108,7 @@ public class DTargetColumnEditingSupport extends EditingSupport {
                 result = optionalEditedCell.get().getLabel();
             }
             if (result == null) {
-                result = "";
+                result = ""; //$NON-NLS-1$
             }
         }
         return result;

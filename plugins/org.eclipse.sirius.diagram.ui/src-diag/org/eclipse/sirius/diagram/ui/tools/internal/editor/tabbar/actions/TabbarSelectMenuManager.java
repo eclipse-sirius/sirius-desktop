@@ -95,7 +95,7 @@ public class TabbarSelectMenuManager extends SelectMenuManager {
     private void setHandler(final IAction defaultAction) {
         Method method;
         try {
-            method = MenuCreatorAction.class.getDeclaredMethod("setActionHandler", IAction.class);
+            method = MenuCreatorAction.class.getDeclaredMethod("setActionHandler", IAction.class); //$NON-NLS-1$
             method.setAccessible(true);
             method.invoke(super.action, defaultAction);
         } catch (SecurityException e) {
@@ -120,7 +120,7 @@ public class TabbarSelectMenuManager extends SelectMenuManager {
                 add(SelectAllAction.createToolbarSelectAllAction(page));
                 add(SelectAllAction.createToolbarSelectAllConnectionsAction(page));
                 add(SelectAllAction.createToolbarSelectAllShapesAction(page));
-                setDefaultAction("toolbarSelectAllAction");
+                setDefaultAction("toolbarSelectAllAction"); //$NON-NLS-1$
             }
         }
     }

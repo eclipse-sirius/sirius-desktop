@@ -174,7 +174,7 @@ IItemPropertySource {
         String bgColor = new ColorQuery(((GaugeSectionDescription) object).getBackgroundColor()).getLabel();
         String fgColor = new ColorQuery(((GaugeSectionDescription) object).getForegroundColor()).getLabel();
 
-        String label = getString("_UI_GaugeSectionDescription_type");
+        String label = getString("_UI_GaugeSectionDescription_type"); //$NON-NLS-1$
 
         if (fgColor != null & bgColor != null) {
             return label + " " + bgColor + " to " + fgColor;

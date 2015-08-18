@@ -37,10 +37,10 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 public class ModelingProject implements IProjectNature, IModelingElement {
 
     /** The nature id. */
-    public static final String NATURE_ID = "org.eclipse.sirius.nature.modelingproject";
+    public static final String NATURE_ID = "org.eclipse.sirius.nature.modelingproject"; //$NON-NLS-1$
 
     /** The default name for the representations file of a modeling project. */
-    public static final String DEFAULT_REPRESENTATIONS_FILE_NAME = "representations.aird";
+    public static final String DEFAULT_REPRESENTATIONS_FILE_NAME = "representations.aird"; //$NON-NLS-1$
 
     /** the project on which the nature is applied. */
     private IProject project;

@@ -47,11 +47,11 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 public final class MigrationUtil {
 
     /** The modeler description file extension for designer v3. */
-    public static final String MODELER_DESCRIPTION_FILE_EXTENSION_V3 = "air";
+    public static final String MODELER_DESCRIPTION_FILE_EXTENSION_V3 = "air"; //$NON-NLS-1$
 
-    private static final String UTF_8 = "UTF-8";
+    private static final String UTF_8 = "UTF-8"; //$NON-NLS-1$
 
-    private static final String DOT = ".";
+    private static final String DOT = "."; //$NON-NLS-1$
 
     private MigrationUtil() {
     }
@@ -191,7 +191,7 @@ public final class MigrationUtil {
             }
         }
         monitor.worked(1);
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
     /**

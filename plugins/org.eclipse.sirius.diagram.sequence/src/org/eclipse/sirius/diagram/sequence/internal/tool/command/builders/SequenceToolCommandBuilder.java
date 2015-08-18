@@ -15,5 +15,5 @@ public interface SequenceToolCommandBuilder {
     /**
      * End before variable for single click tools.
      */
-    String END_BEFORE_VARIABLE = "endBefore";
+    String END_BEFORE_VARIABLE = "endBefore"; //$NON-NLS-1$
 }

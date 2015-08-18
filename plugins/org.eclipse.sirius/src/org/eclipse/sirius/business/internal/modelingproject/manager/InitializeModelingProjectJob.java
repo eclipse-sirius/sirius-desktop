@@ -55,7 +55,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
     /**
      * The family id for this kind of job.
      */
-    private static final String JOB_FAMILY_ID = SiriusPlugin.ID + ".initializemodelingprojects";
+    private static final String JOB_FAMILY_ID = SiriusPlugin.ID + ".initializemodelingprojects"; //$NON-NLS-1$
 
     /**
      * The projects concerned by this job. If null, all projects of the
@@ -129,7 +129,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
             } else {
                 projectsTable = ResourcesPlugin.getWorkspace().getRoot().getProjects();
             }
-            monitor.beginTask("", projectsTable.length);
+            monitor.beginTask("", projectsTable.length); //$NON-NLS-1$
             for (int i = 0; i < projectsTable.length; i++) {
                 Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(projectsTable[i]);
                 if (optionalModelingProject.some()) {
@@ -143,7 +143,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
                         optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), forceInit, true);
                     } catch (IllegalArgumentException e) {
                         // Add the problem to the result status of this job
-                        errorStatus.add(new Status(IStatus.ERROR, SiriusPlugin.ID, IStatus.OK, e.getMessage(), null)); //$NON-NLS-1$)
+                        errorStatus.add(new Status(IStatus.ERROR, SiriusPlugin.ID, IStatus.OK, e.getMessage(), null));
                     }
                 } else {
                     monitor.worked(1);

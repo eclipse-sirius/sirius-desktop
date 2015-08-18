@@ -125,7 +125,7 @@ public class GaugeCompositeStyleDescriptionItemProvider extends NodeStyleDescrip
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_GaugeCompositeStyleDescription_type");
+        return getString("_UI_GaugeCompositeStyleDescription_type"); //$NON-NLS-1$
     }
 
     /**

@@ -90,13 +90,13 @@ import com.google.common.collect.Lists;
 public class DTreeViewerManager extends AbstractDTableViewerManager {
 
     /** The key for the image which represents a delete action. */
-    public static final String REFRESH_IMG = "tree/refresh";
+    public static final String REFRESH_IMG = "tree/refresh"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String DELETE_IMG = "tree/delete";
+    public static final String DELETE_IMG = "tree/delete"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String CREATE_TREE_ITEM_IMG = "tree/newTreeItem";
+    public static final String CREATE_TREE_ITEM_IMG = "tree/newTreeItem"; //$NON-NLS-1$
 
     static {
         imageRegistry.put(REFRESH_IMG, ImageDescriptor.createFromURL((URL) TreeUIPlugin.INSTANCE.getImage(REFRESH_IMG)));
@@ -277,7 +277,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         Class<?> columnViewerClass = ColumnViewer.class;
         Method method;
         try {
-            method = columnViewerClass.getDeclaredMethod("getViewerColumn", Integer.TYPE);
+            method = columnViewerClass.getDeclaredMethod("getViewerColumn", Integer.TYPE); //$NON-NLS-1$
             method.setAccessible(true);
             Object invoke = method.invoke(treeViewer, 0);
             if (invoke instanceof ViewerColumn) {

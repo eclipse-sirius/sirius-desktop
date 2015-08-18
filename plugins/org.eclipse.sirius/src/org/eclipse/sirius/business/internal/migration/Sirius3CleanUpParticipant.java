@@ -39,7 +39,7 @@ public class Sirius3CleanUpParticipant extends AbstractRepresentationsFileMigrat
     /**
      * The VP version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("10.0.0.201504010000");
+    private static final Version MIGRATION_VERSION = new Version("10.0.0.201504010000"); //$NON-NLS-1$
 
     private Map<DView, EStructuralFeature> initializedFeature = new HashMap<DView, EStructuralFeature>();
 
@@ -68,7 +68,7 @@ public class Sirius3CleanUpParticipant extends AbstractRepresentationsFileMigrat
 
     @Override
     protected void handleFeature(EObject owner, EStructuralFeature unkownFeature, Object valueOfUnknownFeature) {
-        if (owner instanceof DView && unkownFeature.getName().equals("initialized")) {
+        if (owner instanceof DView && unkownFeature.getName().equals("initialized")) { //$NON-NLS-1$
             Resource eResource = owner.eResource();
             if (eResource != null) {
                 AnyType anyType = ((XMLResource) eResource).getEObjectToExtensionMap().get(owner);

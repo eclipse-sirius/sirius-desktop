@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch;
  */
 public class DefaultColorStyleDescription extends StyleSwitch<EObject> {
 
-    private static final String BLACK = "black";
+    private static final String BLACK = "black"; //$NON-NLS-1$
 
     /**
      * Set the default color descriptions on the given EObject.

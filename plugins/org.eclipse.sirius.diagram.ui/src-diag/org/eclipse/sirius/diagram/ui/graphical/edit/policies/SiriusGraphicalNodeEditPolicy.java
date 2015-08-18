@@ -140,29 +140,29 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * Constant used to store a {@link EdgeCreationDescription} in a
      * Request.getExtendedData().
      */
-    protected static final String GMF_EDGE_CREATION_DESCRIPTION = "edge.creation.description";
+    protected static final String GMF_EDGE_CREATION_DESCRIPTION = "edge.creation.description"; //$NON-NLS-1$
 
     /**
      * Constant used to store the {@link EdgeTarget} source.
      */
-    protected static final String GMF_EDGE_TARGET_SOURCE = "edgeTarget.source";
+    protected static final String GMF_EDGE_TARGET_SOURCE = "edgeTarget.source"; //$NON-NLS-1$
 
     /**
      * Constant used to store the location in GMF relative coordinates of the
      * click on the {@link EdgeTarget} source.
      */
-    protected static final String GMF_EDGE_LOCATION_SOURCE = "edge.location.source";
+    protected static final String GMF_EDGE_LOCATION_SOURCE = "edge.location.source"; //$NON-NLS-1$
 
     /**
      * Constant use to store source terminal.
      */
-    protected static final String GMF_EDGE_SOURCE_TERMINAL = "edge.newSourceTerminal";
+    protected static final String GMF_EDGE_SOURCE_TERMINAL = "edge.newSourceTerminal"; //$NON-NLS-1$
 
     /**
      * Constant use to store the feedback figure. This feedback figure is used
      * only when necessary (detection of potential straightened edge feedback).
      */
-    protected static final String GMF_EDGE_FEEDBACK = "edge.feedback.figure";
+    protected static final String GMF_EDGE_FEEDBACK = "edge.feedback.figure"; //$NON-NLS-1$
 
     /**
      * Extra width edge for this feedback.
@@ -803,8 +803,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         final LayoutData targetLayoutData = new RootLayoutData(targetEditPart, targetLocation.getCopy(), null);
         EdgeLayoutData edgeLayoutData = new EdgeLayoutData(sourceLayoutData, targetLayoutData);
 
-        edgeLayoutData.setSourceTerminal("" + newSourceTerminal);
-        edgeLayoutData.setTargetTerminal("" + newTargetTerminal);
+        edgeLayoutData.setSourceTerminal("" + newSourceTerminal); //$NON-NLS-1$
+        edgeLayoutData.setTargetTerminal("" + newTargetTerminal); //$NON-NLS-1$
 
         edgeLayoutData.setPointList(pointList.getCopy());
         edgeLayoutData.setSourceRefPoint(sourceRefPoint.getCopy());
@@ -878,12 +878,12 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         PrecisionPoint sourceTerminalPosition = new PrecisionPoint((double) sourceLocationSnapIn100Percent.x / absoluteSourceBoundsIn100Percent.width,
                 (double) sourceLocationSnapIn100Percent.y / absoluteSourceBoundsIn100Percent.height);
         String sourceTerminal = new SlidableAnchor(null, sourceTerminalPosition).getTerminal();
-        edgeLayoutData.setSourceTerminal("" + sourceTerminal);
+        edgeLayoutData.setSourceTerminal("" + sourceTerminal); //$NON-NLS-1$
         // Compute the new target terminal anchor
         PrecisionPoint targetTerminalPosition = new PrecisionPoint((double) targetLocationSnapIn100Percent.x / absoluteTargetBoundsIn100Percent.width,
                 (double) targetLocationSnapIn100Percent.y / absoluteTargetBoundsIn100Percent.height);
         String targetTerminal = new SlidableAnchor(null, targetTerminalPosition).getTerminal();
-        edgeLayoutData.setTargetTerminal("" + targetTerminal);
+        edgeLayoutData.setTargetTerminal("" + targetTerminal); //$NON-NLS-1$
         // Applied the zoom of the current diagram to set the pointList, the
         // source reference point and the target reference point.
         PrecisionPoint absoluteSourceLocationSnap = new PrecisionPoint(absoluteSourceLocationSnapIn100Percent);

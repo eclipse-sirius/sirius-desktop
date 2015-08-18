@@ -284,9 +284,9 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
                 EClass variable = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getAbstractVariable();
                 if (variable.isSuperTypeOf(k)) {
                     AbstractVariable var = (AbstractVariable) k.getEPackage().getEFactoryInstance().create(k);
-                    EAnnotation annotation = ref.getEAnnotation("toolVariable");
+                    EAnnotation annotation = ref.getEAnnotation("toolVariable"); //$NON-NLS-1$
                     if (annotation != null) {
-                        var.setName(annotation.getDetails().get("name"));
+                        var.setName(annotation.getDetails().get("name")); //$NON-NLS-1$
                     } else {
                         var.setName(ref.getName());
                     }
@@ -436,14 +436,14 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         StringBuilder sb = new StringBuilder();
         if (!StringUtil.isEmpty(toolTipText)) {
-            sb.append(toolTipText + "\n");
-            sb.append("\n");
+            sb.append(toolTipText + "\n"); //$NON-NLS-1$
+            sb.append("\n"); //$NON-NLS-1$
         }
 
         sb.append("Additional available variable for Sequence Diagram:");
         sb.append("\n . ");
-        sb.append("endBefore");
-        sb.append(": ");
+        sb.append("endBefore"); //$NON-NLS-1$
+        sb.append(": "); //$NON-NLS-1$
         sb.append("an EventEnd referencing the semantic event end ");
 
         return sb.toString();

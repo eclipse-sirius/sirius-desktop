@@ -30,12 +30,12 @@ public interface MetamodelDescriptorManager {
     /**
      * Metamodel manager extension point ID.
      */
-    String ID = "org.eclipse.sirius.mmdescriptor";
+    String ID = "org.eclipse.sirius.mmdescriptor"; //$NON-NLS-1$
 
     /**
      * Extension point attribute for the dialect class.
      */
-    String CLASS_ATTRIBUTE = "class";
+    String CLASS_ATTRIBUTE = "class"; //$NON-NLS-1$
 
     /**
      * Return the list of provided MetamodelDescriptors from the selected

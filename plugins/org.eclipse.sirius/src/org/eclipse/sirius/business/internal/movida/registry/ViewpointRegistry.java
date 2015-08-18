@@ -99,15 +99,15 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
         public String toString() {
             StringBuilder sb = new StringBuilder();
             // CHECKSTYLE:OFF
-            sb.append("Removed:\n\t").append(Joiner.on("\n\t").join(removed)).append("\n");
-            sb.append("Added:\n\t").append(Joiner.on("\n\t").join(added)).append("\n");
-            sb.append("Changed:\n\t").append(Joiner.on("\n\t").join(changed)).append("\n");
+            sb.append("Removed:\n\t").append(Joiner.on("\n\t").join(removed)).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
+            sb.append("Added:\n\t").append(Joiner.on("\n\t").join(added)).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
+            sb.append("Changed:\n\t").append(Joiner.on("\n\t").join(changed)).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
             // CHECKSTYLE:ON
             return sb.toString();
         }
     }
 
-    private static final String VIEWPOINT_RESOURCE_TYPE_EXTENSION_POINT = "org.eclipse.sirius.viewpointResourceType";
+    private static final String VIEWPOINT_RESOURCE_TYPE_EXTENSION_POINT = "org.eclipse.sirius.viewpointResourceType"; //$NON-NLS-1$
 
     /**
      * The monitors from which we find the VSMs.
@@ -168,24 +168,24 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
         monitors.setListener(this);
         legacyMonitor = new LegacyPluginMonitor(this);
         configureResourceHandler();
-        monitors.addMonitor("Legacy Plugins", legacyMonitor);
-        monitors.addMonitor("Plugins", new PluginMonitor(Platform.getExtensionRegistry(), compositeResourceHandler));
-        monitors.addMonitor("Workspace", new WorkspaceMonitor(ResourcesPlugin.getWorkspace(), compositeResourceHandler));
+        monitors.addMonitor("Legacy Plugins", legacyMonitor); //$NON-NLS-1$
+        monitors.addMonitor("Plugins", new PluginMonitor(Platform.getExtensionRegistry(), compositeResourceHandler)); //$NON-NLS-1$
+        monitors.addMonitor("Workspace", new WorkspaceMonitor(ResourcesPlugin.getWorkspace(), compositeResourceHandler)); //$NON-NLS-1$
     }
 
     private void configureResourceHandler() {
         compositeResourceHandler.addResourceType(new DefaultViewpointResourceHandler());
         IConfigurationElement[] elements = EclipseUtil.getConfigurationElementsFor(VIEWPOINT_RESOURCE_TYPE_EXTENSION_POINT);
         for (IConfigurationElement element : elements) {
-            if ("handler".equals(element.getName())) {
+            if ("handler".equals(element.getName())) { //$NON-NLS-1$
                 Object handler;
                 try {
-                    handler = element.createExecutableExtension("class");
+                    handler = element.createExecutableExtension("class"); //$NON-NLS-1$
                     if (handler instanceof ViewpointResourceHandler) {
                         compositeResourceHandler.addResourceType((ViewpointResourceHandler) handler);
                     }
                 } catch (CoreException e) {
-                    reportWarning("Could not instantiate contributed Sirius Resource Type handler " + element.getAttribute("class"));
+                    reportWarning("Could not instantiate contributed Sirius Resource Type handler " + element.getAttribute("class")); //$NON-NLS-2$
                 }
             }
         }
@@ -516,41 +516,41 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     // CHECKSTYLE:OFF
     private void warning(String message, Throwable th) {
         if (th == null) {
-            System.out.println("WARN: " + message);
+            System.out.println("WARN: " + message); //$NON-NLS-1$
         } else {
-            System.out.println("WARN: " + message + "(" + th.toString() + ")");
+            System.out.println("WARN: " + message + "(" + th.toString() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
         System.out.flush();
     }
 
     public void dumpStatus(StringBuilder out) {
-        out.append("Entries:\n");
+        out.append("Entries:\n"); //$NON-NLS-1$
         for (URI uri : Ordering.usingToString().sortedCopy(entries.keySet())) {
             Entry entry = entries.get(uri);
-            out.append(" - ").append(uri).append(" => ").append(entry.getResource().getURI()).append("\n");
+            out.append(" - ").append(uri).append(" => ").append(entry.getResource().getURI()).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
 
-        out.append("\n");
-        out.append("ResourceSet:\n");
+        out.append("\n"); //$NON-NLS-1$
+        out.append("ResourceSet:\n"); //$NON-NLS-1$
         for (Resource res : resourceSet.getResources()) {
-            out.append(" - ").append(res.getURI()).append(" [loaded=").append(String.valueOf(res.isLoaded())).append("]").append("\n");
-            out.append("\tResolved dependencies:\n\t\t").append(Joiner.on("\n\t\t").join(new ResourceQuery(res).getResolvedDependencies())).append("\n");
-            out.append("\tUnresolved dependencies:\n\t\t").append(Joiner.on("\n\t\t").join(new ResourceQuery(res).getUnresolvedDependencies())).append("\n");
+            out.append(" - ").append(res.getURI()).append(" [loaded=").append(String.valueOf(res.isLoaded())).append("]").append("\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+            out.append("\tResolved dependencies:\n\t\t").append(Joiner.on("\n\t\t").join(new ResourceQuery(res).getResolvedDependencies())).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            out.append("\tUnresolved dependencies:\n\t\t").append(Joiner.on("\n\t\t").join(new ResourceQuery(res).getUnresolvedDependencies())).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         }
 
-        out.append("\n");
-        out.append("Transitive dependencies:\n");
+        out.append("\n"); //$NON-NLS-1$
+        out.append("Transitive dependencies:\n"); //$NON-NLS-1$
         ViewpointDependenciesTracker tracker = new ViewpointDependenciesTracker(this);
         for (URI uri : Sets.newHashSet(entries.keySet())) {
-            if (uri.toString().startsWith("viewpoint:/t/")) {
+            if (uri.toString().startsWith("viewpoint:/t/")) { //$NON-NLS-1$
                 tracker.add(uri);
             }
         }
         for (URI uri : tracker.getTrackedElements()) {
-            out.append(uri).append("\n");
-            out.append(" - direct:  ").append(Joiner.on(", ").join(tracker.getDependencies(uri))).append("\n");
-            out.append(" - reverse: ").append(Joiner.on(", ").join(tracker.getReverseDependencies(uri))).append("\n");
-            out.append("\n");
+            out.append(uri).append("\n"); //$NON-NLS-1$
+            out.append(" - direct:  ").append(Joiner.on(", ").join(tracker.getDependencies(uri))).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            out.append(" - reverse: ").append(Joiner.on(", ").join(tracker.getReverseDependencies(uri))).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            out.append("\n"); //$NON-NLS-1$
         }
         tracker.dispose();
     }

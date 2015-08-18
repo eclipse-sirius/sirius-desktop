@@ -166,13 +166,13 @@ public class SiriusConnectionEndPointEditPolicy extends ConnectionEndpointEditPo
             try {
                 // Unfortunately, the vectors (stored as dimensions) and weight
                 // of Draw2D RelativeBendpoint is not accessible
-                Field dimension1Field = RelativeBendpoint.class.getDeclaredField("d1");
+                Field dimension1Field = RelativeBendpoint.class.getDeclaredField("d1"); //$NON-NLS-1$
                 boolean dim1Accessibility = dimension1Field.isAccessible();
                 dimension1Field.setAccessible(true);
-                Field dimension2Field = RelativeBendpoint.class.getDeclaredField("d2");
+                Field dimension2Field = RelativeBendpoint.class.getDeclaredField("d2"); //$NON-NLS-1$
                 boolean dim2Accessibility = dimension1Field.isAccessible();
                 dimension2Field.setAccessible(true);
-                Field weightField = RelativeBendpoint.class.getDeclaredField("weight");
+                Field weightField = RelativeBendpoint.class.getDeclaredField("weight"); //$NON-NLS-1$
                 boolean weightAccessibility = dimension1Field.isAccessible();
                 weightField.setAccessible(true);
                 for (int i = 0; i < originListBendpoint.size(); i++) {

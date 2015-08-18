@@ -107,7 +107,7 @@ public class MaskingPolicy {
 
         @Override
         public String toString() {
-            return logicalURI.toString() + " (" + provider.getURI().toString() + ")";
+            return logicalURI.toString() + " (" + provider.getURI().toString() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

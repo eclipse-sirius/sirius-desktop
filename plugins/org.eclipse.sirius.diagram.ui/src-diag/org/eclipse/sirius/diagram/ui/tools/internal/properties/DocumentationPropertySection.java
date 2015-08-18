@@ -103,7 +103,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
         nameLabel = getWidgetFactory().createCLabel(composite, getLabelText(), SWT.TOP);
         nameLabel.setLayoutData(new GridData(SWT.NULL, SWT.TOP, false, true));
 
-        CLabel help = getWidgetFactory().createCLabel(composite, "");
+        CLabel help = getWidgetFactory().createCLabel(composite, ""); //$NON-NLS-1$
         help.setImage(getHelpIcon());
         help.setLayoutData(new GridData(SWT.NULL, SWT.TOP, false, true));
         help.setToolTipText(getToolTipText());
@@ -218,7 +218,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
      * @return The value of the default feature as text.
      */
     protected String getDefaultFeatureAsText() {
-        String value = "";
+        String value = ""; //$NON-NLS-1$
         if (eObject != null && eObject.eGet(getFeature()) != null) {
             value = eObject.eGet(getFeature()).toString();
         }

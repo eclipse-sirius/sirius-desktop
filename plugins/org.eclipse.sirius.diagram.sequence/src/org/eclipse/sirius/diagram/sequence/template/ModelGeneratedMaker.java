@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  */
 public class ModelGeneratedMaker {
 
-    private static final String GENERATED = "@generated";
+    private static final String GENERATED = "@generated"; //$NON-NLS-1$
 
     private boolean isGenerated(EObject eObj) {
         // FIXME : change to real check once the mared elements are handled.

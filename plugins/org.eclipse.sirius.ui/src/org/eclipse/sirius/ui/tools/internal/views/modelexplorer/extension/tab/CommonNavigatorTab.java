@@ -38,11 +38,11 @@ import com.google.common.collect.Sets;
 public class CommonNavigatorTab implements IModelExplorerTabExtension {
 
     /** the id of the tab. */
-    public static final String TAB_ID = "navigator";
+    public static final String TAB_ID = "navigator"; //$NON-NLS-1$
 
     private static final String MODEL_EXPLORER_STRUCTURE_TAB_NAME = "Navigator";
 
-    private static final String MODEL_EXPLORER_STRUCTURE_TAB_ICON = "icons/full/others/structure.gif";
+    private static final String MODEL_EXPLORER_STRUCTURE_TAB_ICON = "icons/full/others/structure.gif"; //$NON-NLS-1$
 
     private ModelExplorerView view;
 

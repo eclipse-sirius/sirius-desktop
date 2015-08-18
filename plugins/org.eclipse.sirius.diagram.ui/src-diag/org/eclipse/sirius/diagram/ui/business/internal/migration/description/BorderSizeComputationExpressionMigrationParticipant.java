@@ -38,7 +38,7 @@ public class BorderSizeComputationExpressionMigrationParticipant extends Abstrac
     /**
      * The version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("10.1.0.201507101000");
+    private static final Version MIGRATION_VERSION = new Version("10.1.0.201507101000"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
@@ -79,8 +79,8 @@ public class BorderSizeComputationExpressionMigrationParticipant extends Abstrac
     }
 
     private void migrateStyleOfContainerMapping(ContainerStyleDescription styleDescription) {
-        if (styleDescription != null && "0".equals(styleDescription.getBorderSizeComputationExpression())) {
-            styleDescription.setBorderSizeComputationExpression("1");
+        if (styleDescription != null && "0".equals(styleDescription.getBorderSizeComputationExpression())) { //$NON-NLS-1$
+            styleDescription.setBorderSizeComputationExpression("1"); //$NON-NLS-1$
         }
     }
 }

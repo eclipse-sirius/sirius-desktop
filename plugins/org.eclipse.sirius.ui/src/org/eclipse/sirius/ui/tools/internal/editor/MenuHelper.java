@@ -51,7 +51,7 @@ public final class MenuHelper {
     /**
      * The separator name for navigate representation menu.
      */
-    public static final String OPEN_REPRESENTATION_GROUP_SEPARATOR = "openRepresentationGroup";
+    public static final String OPEN_REPRESENTATION_GROUP_SEPARATOR = "openRepresentationGroup"; //$NON-NLS-1$
 
     /**
      * Private default constructor to avoid instantiation.
@@ -146,7 +146,7 @@ public final class MenuHelper {
             representationName = "(unnamed)";
             RepresentationDescription representationDescription = DialectManager.INSTANCE.getDescription(representation);
             if (representationDescription != null) {
-                representationName += " " + new IdentifiedElementQuery(representationDescription).getLabel();
+                representationName += " " + new IdentifiedElementQuery(representationDescription).getLabel(); //$NON-NLS-1$
             }
         }
         return buildOpenRepresentationAction(session, representation, representationName, adapterFactory);

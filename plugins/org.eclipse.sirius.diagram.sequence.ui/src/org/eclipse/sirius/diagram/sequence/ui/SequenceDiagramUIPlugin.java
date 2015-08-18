@@ -26,7 +26,7 @@ public class SequenceDiagramUIPlugin extends EMFPlugin {
     /**
      * The plug-in ID.
      */
-    public static final String PLUGIN_ID = "org.eclipse.sirius.diagram.sequence.ui";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.diagram.sequence.ui"; //$NON-NLS-1$
 
     /**
      * Keep track of the singleton.

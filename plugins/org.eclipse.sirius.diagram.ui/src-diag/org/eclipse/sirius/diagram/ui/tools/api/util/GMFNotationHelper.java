@@ -126,7 +126,7 @@ public final class GMFNotationHelper {
                 return ((ShapeStyle) obj).getDescription();
             }
         }
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
     /**

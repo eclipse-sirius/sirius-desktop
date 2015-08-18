@@ -25,7 +25,7 @@ public class TreeDialect implements Dialect {
      * {@inheritDoc}
      */
     public String getName() {
-        return "tree";
+        return "tree"; //$NON-NLS-1$
     }
 
     /**

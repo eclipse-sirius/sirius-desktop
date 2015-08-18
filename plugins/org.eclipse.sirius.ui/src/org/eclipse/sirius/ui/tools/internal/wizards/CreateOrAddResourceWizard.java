@@ -193,10 +193,10 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
         selectionPage = new CreateOrAddResourceWizardPage("selectionPage"); //$NON-NLS-1$
         selectionPage.setTitle(WIZARD_TITLE);
         addPage(selectionPage);
-        metamodelPage = new SelectMetamodelWizardPage("metamodelPage", new String[] { "ecore" }, false); //$NON-NLS-1$ $NON-NLS-2$
+        metamodelPage = new SelectMetamodelWizardPage("metamodelPage", new String[] { "ecore" }, false); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
         metamodelPage.setTitle(WIZARD_TITLE);
         addPage(metamodelPage);
-        initialObjectPage = new GenericInitialObjectPage("initialObjectPage");
+        initialObjectPage = new GenericInitialObjectPage("initialObjectPage"); //$NON-NLS-1$
         initialObjectPage.setTitle(WIZARD_TITLE);
         initialObjectPage.setDescription("Select the root instance type and the file encoding");
         addPage(initialObjectPage);
@@ -244,7 +244,7 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
                 @Override
                 protected void execute(final IProgressMonitor monitor) {
                     try {
-                        monitor.beginTask("", 1);
+                        monitor.beginTask("", 1); //$NON-NLS-1$
                         /* Create a resource set */
                         final ResourceSet resourceSet = new ResourceSetImpl();
 

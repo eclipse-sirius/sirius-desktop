@@ -101,42 +101,42 @@ import com.google.common.collect.Maps;
 public class DTableViewerManager extends AbstractDTableViewerManager {
 
     /** The key for the image which represents an export action. */
-    public static final String EXPORT_IMG = "table/export";
+    public static final String EXPORT_IMG = "table/export"; //$NON-NLS-1$
 
     /** The key for the image which represents a hide action. */
-    public static final String HIDE_IMG = "table/hide";
+    public static final String HIDE_IMG = "table/hide"; //$NON-NLS-1$
 
     /** The key for the image which represents a reveal action. */
-    public static final String REVEAL_IMG = "table/reveal";
+    public static final String REVEAL_IMG = "table/reveal"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String DELETE_IMG = "table/delete";
+    public static final String DELETE_IMG = "table/delete"; //$NON-NLS-1$
 
     /** The key for the image which represents a createLine action. */
-    public static final String CREATE_LINE = "table/newLine";
+    public static final String CREATE_LINE = "table/newLine"; //$NON-NLS-1$
 
     /** The key for the image which represents a createColumn action. */
-    public static final String CREATE_COLUMN = "table/newColumn";
+    public static final String CREATE_COLUMN = "table/newColumn"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String REFRESH_IMG = "table/refresh";
+    public static final String REFRESH_IMG = "table/refresh"; //$NON-NLS-1$
 
     /** The key for the image which represents a delete action. */
-    public static final String SHOW_PROPERTIES_VIEW = "table/prop_ps";
+    public static final String SHOW_PROPERTIES_VIEW = "table/prop_ps"; //$NON-NLS-1$
 
     /** The key for the image which represents a sortByLine action. */
-    public static final String SORT_BY_LINE = "table/sortByLine";
+    public static final String SORT_BY_LINE = "table/sortByLine"; //$NON-NLS-1$
 
     /** The key for the image which represents a sortByColumn action. */
-    public static final String SORT_BY_COLUMN = "table/sortByColumn";
+    public static final String SORT_BY_COLUMN = "table/sortByColumn"; //$NON-NLS-1$
 
     /** The key for the image which represents a hide/reveal action. */
-    public static final String HIDE_REVEAL_IMG = "table/hideReveal";
+    public static final String HIDE_REVEAL_IMG = "table/hideReveal"; //$NON-NLS-1$
 
     /**
      * Use to store the semantic column in SWT column.
      */
-    public static final String TABLE_COLUMN_DATA = "org.eclipse.sirius.table.ui.dTableColumn";
+    public static final String TABLE_COLUMN_DATA = "org.eclipse.sirius.table.ui.dTableColumn"; //$NON-NLS-1$
 
     // The imageRegistry for the action images
     private static ImageRegistry imageRegistry = new ImageRegistry();
@@ -283,7 +283,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
         final TreeViewerColumn headerTreeColumn = new TreeViewerColumn(treeViewer, SWT.CENTER, 0);
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
-        headerTreeColumn.getColumn().setText("");
+        headerTreeColumn.getColumn().setText(""); //$NON-NLS-1$
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
 
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();

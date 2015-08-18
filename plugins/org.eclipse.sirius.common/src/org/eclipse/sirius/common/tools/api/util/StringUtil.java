@@ -18,10 +18,10 @@ package org.eclipse.sirius.common.tools.api.util;
 public final class StringUtil {
 
     /** "". */
-    public static final String EMPTY_STRING = ""; // $NON-NLS$
+    public static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
     /** "*". */
-    public static final String JOKER_STRING = "*"; // $NON-NLS$
+    public static final String JOKER_STRING = "*"; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.

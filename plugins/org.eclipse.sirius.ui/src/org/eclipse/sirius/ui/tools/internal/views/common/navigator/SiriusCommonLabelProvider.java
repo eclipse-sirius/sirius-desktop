@@ -69,7 +69,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
      */
     public static final ImageDescriptor SIRIUS_MODELING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/ovr16/SessionDecorator.gif"); //$NON-NLS-1$;
 
-    private static final String DIRTY = "*";
+    private static final String DIRTY = "*"; //$NON-NLS-1$
 
     private ILabelProvider sessionLabelProvider;
 

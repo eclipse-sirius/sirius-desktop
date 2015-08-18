@@ -50,11 +50,11 @@ public abstract class AbstractSiriusMigrationService implements IMigrationPartic
      * The value can be null if the resource was created before the current
      * migration mechanism.
      */
-    public static final String OPTION_RESOURCE_MIGRATION_LOADEDVERSION = "RESOURCE_MIGRATION_LOADEDVERSION";
+    public static final String OPTION_RESOURCE_MIGRATION_LOADEDVERSION = "RESOURCE_MIGRATION_LOADEDVERSION"; //$NON-NLS-1$
 
     // This migration way was introduced with 6.5.0.201208161001 version
     // for both VSM and representations files.
-    private static final Version FIRST_VERSION = new Version("6.5.0.201208161001");
+    private static final Version FIRST_VERSION = new Version("6.5.0.201208161001"); //$NON-NLS-1$
 
     /**
      * loaded delegates contributions.
@@ -73,12 +73,12 @@ public abstract class AbstractSiriusMigrationService implements IMigrationPartic
      */
     protected void loadContributions() {
         delegatesParticipants.clear();
-        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor("org.eclipse.sirius.migrationParticipant");
+        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor("org.eclipse.sirius.migrationParticipant"); //$NON-NLS-1$
         for (IConfigurationElement configurationElement : config) {
             try {
-                String kind = configurationElement.getAttribute("kind");
+                String kind = configurationElement.getAttribute("kind"); //$NON-NLS-1$
                 if (kind.equals(getKind())) {
-                    Object contribution = configurationElement.createExecutableExtension("class");
+                    Object contribution = configurationElement.createExecutableExtension("class"); //$NON-NLS-1$
                     if (contribution instanceof IMigrationParticipant) {
                         delegatesParticipants.add((IMigrationParticipant) contribution);
                     }

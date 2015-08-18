@@ -65,16 +65,16 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
     /**
      * Sequence Message flag reset migration version.
      */
-    public static final Version MESSAGE_FLAG_MIGRATION_VERSION = new Version("8.1.1");
+    public static final Version MESSAGE_FLAG_MIGRATION_VERSION = new Version("8.1.1"); //$NON-NLS-1$
 
     /**
      * Sequence GMF bounds migration version.
      */
-    public static final Version GMF_BOUNDS_MIGRATION_VERSION = new Version("6.7.0.201302181200");
+    public static final Version GMF_BOUNDS_MIGRATION_VERSION = new Version("6.7.0.201302181200"); //$NON-NLS-1$
 
-    private static final Version GMF_BOUNDS_ALREADY_MIGRATED_VERSION = new Version("6.5.3");
+    private static final Version GMF_BOUNDS_ALREADY_MIGRATED_VERSION = new Version("6.5.3"); //$NON-NLS-1$
 
-    private static final Version GMF_BOUNDS_NOT_MIGRATED_VERSION = new Version("6.6.0");
+    private static final Version GMF_BOUNDS_NOT_MIGRATED_VERSION = new Version("6.6.0"); //$NON-NLS-1$
 
     /**
      * The latest VP version for this participant.

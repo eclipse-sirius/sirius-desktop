@@ -101,7 +101,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             marker = file.createMarker(MARKER_TYPE);
             marker.setAttribute(IMarker.MESSAGE, message);
             marker.setAttribute(IMarker.LOCATION, location);
-            marker.setAttribute("rule", EcoreUtil.getURI(validationRule).toString());
+            marker.setAttribute("rule", EcoreUtil.getURI(validationRule).toString()); //$NON-NLS-1$
             marker.setAttribute(org.eclipse.gmf.runtime.common.ui.resources.IMarker.ELEMENT_ID, elementId);
             int markerSeverity = IMarker.SEVERITY_INFO;
             if (statusSeverity == IStatus.WARNING) {

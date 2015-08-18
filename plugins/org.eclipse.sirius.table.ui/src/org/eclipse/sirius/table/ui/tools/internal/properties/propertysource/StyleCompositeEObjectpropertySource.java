@@ -45,7 +45,7 @@ public class StyleCompositeEObjectpropertySource extends TableCompositeEObjectPr
             if (getCategoryNames().containsKey(eObject)) {
                 getCategoryNames().remove(eObject);
             }
-            result += " (" + eObject.eContainingFeature().getName() + ")";
+            result += " (" + eObject.eContainingFeature().getName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
             getCategoryNames().put(eObject, result);
         }
         return result;

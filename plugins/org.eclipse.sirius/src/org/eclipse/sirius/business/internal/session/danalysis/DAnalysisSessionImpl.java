@@ -608,7 +608,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     private void notifyNewMetamodels(final Resource newResource) {
-        if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false"))) {
+        if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false"))) { //$NON-NLS-1$ //$NON-NLS-2$
             return;
         }
         final Collection<EPackage> collectedMetamodels = collectMetamodels(newResource.getAllContents());

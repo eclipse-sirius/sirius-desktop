@@ -240,7 +240,7 @@ public class DiagramHeaderComposite extends Composite {
 
             if (isRulerVisible) {
                 // Add a blank label for the space take by the ruler.
-                createLabelInHeaderSection("", DiagramHeaderComposite.LEFT_RULER_WIDTH, VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR),
+                createLabelInHeaderSection("", DiagramHeaderComposite.LEFT_RULER_WIDTH, VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR), //$NON-NLS-1$
                         VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_LABEL_COLOR));
             }
             int previousXLocation = 0;
@@ -257,7 +257,7 @@ public class DiagramHeaderComposite extends Composite {
                     }
                     int blankWidth = xLocation - (previousXLocation + previousWidth);
                     if (blankWidth > 0) {
-                        createLabelInHeaderSection("", blankWidth, VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR), VisualBindingManager
+                        createLabelInHeaderSection("", blankWidth, VisualBindingManager.getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_SEPARATOR_BACKGROUND_COLOR), VisualBindingManager //$NON-NLS-1$
                                 .getDefault().getLabelColorFromRGBValues(HeaderData.DEFAULT_LABEL_COLOR));
                     }
                     Color backgroundColor;

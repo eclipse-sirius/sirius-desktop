@@ -126,7 +126,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
                 // CDO Repository
                 if (relativePath != null && root != null) {
                     try {
-                        if (!"".equals(relativePath) && root.findMember(relativePath) != null) {
+                        if (!"".equals(relativePath) && root.findMember(relativePath) != null) { //$NON-NLS-1$
                             final IMarker[] markers = root.findMember(relativePath).findMarkers(MarkerRuntimeLogger.MARKER_TYPE, false, IResource.DEPTH_ZERO);
                             for (final IMarker marker : markers) {
                                 marker.delete();

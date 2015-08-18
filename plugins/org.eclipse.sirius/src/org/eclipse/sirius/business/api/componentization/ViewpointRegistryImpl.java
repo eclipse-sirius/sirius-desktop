@@ -537,7 +537,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     private List<IFile> collectFilesContainingViewpoints() {
-        return EclipseUtil.getFilesFromWorkspace(null, "." + SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
+        return EclipseUtil.getFilesFromWorkspace(null, "." + SiriusUtil.DESCRIPTION_MODEL_EXTENSION); //$NON-NLS-1$
     }
 
     private void mapToSiriusProtocol(Collection<Viewpoint> viewpoints) {

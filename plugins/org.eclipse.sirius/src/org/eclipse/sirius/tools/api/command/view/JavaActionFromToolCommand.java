@@ -54,7 +54,7 @@ public final class JavaActionFromToolCommand extends RecordingCommand {
      *            the container views
      */
     public JavaActionFromToolCommand(TransactionalEditingDomain domain, IExternalJavaAction javaAction, ExternalJavaAction tool, Collection<DSemanticDecorator> containerViews) {
-        super(domain, "Java action from tool: " + (javaAction != null ? javaAction.getClass().getSimpleName() : ""));
+        super(domain, "Java action from tool: " + (javaAction != null ? javaAction.getClass().getSimpleName() : "")); //$NON-NLS-2$
         this.action = javaAction;
         this.tool = tool;
         this.containerViews = containerViews;

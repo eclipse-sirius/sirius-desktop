@@ -39,7 +39,7 @@ public class SessionEditorInput extends URIEditorInput {
      * use the URI that is already store in the URIEditorInput because it can be
      * different in case of fragmentation.
      */
-    private static final String SESSION_RESOURCE_URI = "SESSION_RESOURCE_URI";
+    private static final String SESSION_RESOURCE_URI = "SESSION_RESOURCE_URI"; //$NON-NLS-1$
 
     /**
      * Default editor name
@@ -291,7 +291,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     @Override
     public String getToolTipText() {
-        return getURI().trimFragment().toString() + "/" + getName();
+        return getURI().trimFragment().toString() + "/" + getName(); //$NON-NLS-1$
     }
 
     /**

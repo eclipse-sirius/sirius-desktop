@@ -168,7 +168,7 @@ public class DNodeListElementItemProvider extends DDiagramElementItemProvider {
     @Override
     public String getText(Object object) {
         String label = ((DNodeListElement) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DNodeListElement_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_DNodeListElement_type") : label; //$NON-NLS-1$
     }
 
     /**

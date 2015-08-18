@@ -258,11 +258,11 @@ public class TimeProfiler {
             final Iterator<ProfilerTask> it = times.keySet().iterator();
             while (it.hasNext()) {
                 final ProfilerTask name = it.next();
-                String line = "\n  " + name + "  :";
+                String line = "\n  " + name + "  :"; //$NON-NLS-1$ //$NON-NLS-2$
                 line += getMissingSpacesForAlignment(line, TimeProfiler.ALIGNMENT_LINE_SIZE);
                 line += times.get(name).toString();
                 line += getMissingSpacesForAlignment(line, TimeProfiler.ALIGNMENT_LINE_SIZE + 10);
-                line += " ms";
+                line += " ms"; //$NON-NLS-1$
                 result.append(line);
             }
         }

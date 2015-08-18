@@ -121,10 +121,10 @@ public class EllipseNodeDescriptionItemProvider extends NodeStyleDescriptionItem
     public String getText(Object object) {
 
         String color = new ColorQuery(((EllipseNodeDescription) object).getColor()).getLabel();
-        String label = getString("_UI_EllipseNodeDescription_type");
+        String label = getString("_UI_EllipseNodeDescription_type"); //$NON-NLS-1$
 
         if (color != null) {
-            return label + " " + color;
+            return label + " " + color; //$NON-NLS-1$
         } else {
             return label;
         }

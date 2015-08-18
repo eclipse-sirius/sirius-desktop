@@ -107,7 +107,7 @@ public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
     }
 
     public Image getImage() {
-        return SiriusEditPlugin.getPlugin().getBundledImage("icons/obj16/ProjectDependencies.gif");
+        return SiriusEditPlugin.getPlugin().getBundledImage("icons/obj16/ProjectDependencies.gif"); //$NON-NLS-1$
     }
 
     /**

@@ -94,12 +94,12 @@ public class PaperClipsPrintHelper implements PrintHelper {
              */
             grid.addColumn(new GridColumn(col.getAlignment(), SWT.DEFAULT, 0));
 
-            final Print cell = createCell("", col.getImage(), col.getText(), SWT.CENTER);
+            final Print cell = createCell("", col.getImage(), col.getText(), SWT.CENTER); //$NON-NLS-1$
             grid.addHeader(cell);
         }
 
         /* Add content rows */
-        createTreeItemRows("", grid, tree.getItems(), columns);
+        createTreeItemRows("", grid, tree.getItems(), columns); //$NON-NLS-1$
         return new ScalePrint(grid);
 
     }
@@ -124,7 +124,7 @@ public class PaperClipsPrintHelper implements PrintHelper {
         for (int i = 0; i < columns.length; i++) {
             grid.add(createCell(offset, item.getImage(i), item.getText(i), columns[i].getAlignment()));
         }
-        final String newOffset = offset + "   ";
+        final String newOffset = offset + "   "; //$NON-NLS-1$
         createTreeItemRows(newOffset, grid, item.getItems(), columns);
     }
 
@@ -133,7 +133,7 @@ public class PaperClipsPrintHelper implements PrintHelper {
             return new TextPrint(text, align);
         }
 
-        final GridPrint grid = new GridPrint("p, p, d");
+        final GridPrint grid = new GridPrint("p, p, d"); //$NON-NLS-1$
         grid.add(new TextPrint(offset));
         grid.add(new ImagePrint(image.getImageData(), image.getDevice().getDPI()));
         grid.add(new TextPrint(text, align));
@@ -141,7 +141,7 @@ public class PaperClipsPrintHelper implements PrintHelper {
     }
 
     private PageDecoration getHeader(final String name) {
-        final GridPrint headerGrid = new GridPrint("d:g");
+        final GridPrint headerGrid = new GridPrint("d:g"); //$NON-NLS-1$
         headerGrid.add(new TextPrint(name));
         headerGrid.add(new LinePrint(SWT.HORIZONTAL), GridPrint.REMAINDER);
         return new SimplePageDecoration(headerGrid);

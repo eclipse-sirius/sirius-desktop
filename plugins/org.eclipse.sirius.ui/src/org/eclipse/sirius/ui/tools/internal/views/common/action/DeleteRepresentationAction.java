@@ -63,7 +63,7 @@ public class DeleteRepresentationAction extends Action {
      *            the representations to delete
      */
     public DeleteRepresentationAction(Collection<DRepresentation> representations) {
-        super("Delete", AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/delete.gif"));
+        super("Delete", AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/delete.gif")); //$NON-NLS-2$
         this.selectedRepresentations = representations;
 
         // Disable the action if the selection is not valid

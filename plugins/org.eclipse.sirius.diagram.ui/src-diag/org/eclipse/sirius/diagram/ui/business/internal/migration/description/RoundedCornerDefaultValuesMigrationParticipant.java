@@ -30,7 +30,7 @@ public class RoundedCornerDefaultValuesMigrationParticipant extends AbstractVSMM
     /**
      * The Sirius version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("10.0.0.201504091800");
+    private static final Version MIGRATION_VERSION = new Version("10.0.0.201504091800"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {

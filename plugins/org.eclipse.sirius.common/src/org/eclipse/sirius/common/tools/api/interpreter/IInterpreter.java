@@ -31,7 +31,7 @@ public interface IInterpreter {
      * 
      * @since 0.9.0
      * */
-    String FILES = "files";
+    String FILES = "files"; //$NON-NLS-1$
 
     /**
      * Returns <code>true</code> if this interpreter is able to evaluate the

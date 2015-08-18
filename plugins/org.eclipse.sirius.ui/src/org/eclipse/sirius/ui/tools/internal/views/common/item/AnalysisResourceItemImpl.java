@@ -33,7 +33,7 @@ import com.google.common.collect.Lists;
  */
 public class AnalysisResourceItemImpl implements AnalysisResourceItem {
 
-    private static final String SESSION_IMAGE = "icons/obj16/SiriusFile.gif";
+    private static final String SESSION_IMAGE = "icons/obj16/SiriusFile.gif"; //$NON-NLS-1$
 
     private final Session session;
 

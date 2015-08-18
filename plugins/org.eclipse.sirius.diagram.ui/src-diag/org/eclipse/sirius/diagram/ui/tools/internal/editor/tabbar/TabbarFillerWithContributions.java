@@ -20,27 +20,27 @@ import org.eclipse.ui.IWorkbenchPage;
  */
 public class TabbarFillerWithContributions extends AbstractTabbarFiller {
 
-    private static final String ARRANGE_SELECTION = "org.eclipse.sirius.diagram.ui.tabbar.arrangeselection";
+    private static final String ARRANGE_SELECTION = "org.eclipse.sirius.diagram.ui.tabbar.arrangeselection"; //$NON-NLS-1$
 
-    private static final String REFRESH = "org.eclipse.sirius.diagram.ui.tabbar.refresh";
+    private static final String REFRESH = "org.eclipse.sirius.diagram.ui.tabbar.refresh"; //$NON-NLS-1$
 
-    private static final String LAYER_FILTER = "org.eclipse.sirius.diagram.ui.tabbar.layerfilter";
+    private static final String LAYER_FILTER = "org.eclipse.sirius.diagram.ui.tabbar.layerfilter"; //$NON-NLS-1$
 
-    private static final String HIDE_PIN = "org.eclipse.sirius.diagram.ui.tabbar.hidepin";
+    private static final String HIDE_PIN = "org.eclipse.sirius.diagram.ui.tabbar.hidepin"; //$NON-NLS-1$
 
-    private static final String PAST = "org.eclipse.sirius.diagram.ui.tabbar.past";
+    private static final String PAST = "org.eclipse.sirius.diagram.ui.tabbar.past"; //$NON-NLS-1$
 
-    private static final String HIDE_DELETE = "org.eclipse.sirius.diagram.ui.tabbar.hidedelete";
+    private static final String HIDE_DELETE = "org.eclipse.sirius.diagram.ui.tabbar.hidedelete"; //$NON-NLS-1$
 
-    private static final String ZOOM = "org.eclipse.sirius.diagram.ui.tabbar.zoom";
+    private static final String ZOOM = "org.eclipse.sirius.diagram.ui.tabbar.zoom"; //$NON-NLS-1$
 
-    private static final String EXPORT = "org.eclipse.sirius.diagram.ui.tabbar.export";
+    private static final String EXPORT = "org.eclipse.sirius.diagram.ui.tabbar.export"; //$NON-NLS-1$
 
-    private static final String FONT = "org.eclipse.sirius.diagram.ui.tabbar.font";
+    private static final String FONT = "org.eclipse.sirius.diagram.ui.tabbar.font"; //$NON-NLS-1$
 
-    private static final String STYLE = "org.eclipse.sirius.diagram.ui.tabbar.style";
+    private static final String STYLE = "org.eclipse.sirius.diagram.ui.tabbar.style"; //$NON-NLS-1$
 
-    private static final String SIZE = "org.eclipse.sirius.diagram.ui.tabbar.size";
+    private static final String SIZE = "org.eclipse.sirius.diagram.ui.tabbar.size"; //$NON-NLS-1$
 
     /**
      * Construct a new instance.

@@ -78,13 +78,13 @@ public class DTablePropertySheetpage extends TabbedPropertySheetPage {
         boolean isCurrentTabNull = true;
         try {
             try {
-                Class.forName("org.eclipse.ui.internal.views.properties.tabbed.view.Tab");
+                Class.forName("org.eclipse.ui.internal.views.properties.tabbed.view.Tab"); //$NON-NLS-1$
                 // We are in eclipse 3.3
-                final Method searchMethod = this.getClass().getMethod("getCurrentTab", (Class<?>[]) null);
+                final Method searchMethod = this.getClass().getMethod("getCurrentTab", (Class<?>[]) null); //$NON-NLS-1$
                 isCurrentTabNull = searchMethod.invoke(this) == null;
             } catch (final ClassNotFoundException cnfe) {
                 // We are in eclipse 3.4
-                final Method searchMethod = this.getClass().getMethod("getCurrentTab", (Class<?>[]) null);
+                final Method searchMethod = this.getClass().getMethod("getCurrentTab", (Class<?>[]) null); //$NON-NLS-1$
                 isCurrentTabNull = searchMethod.invoke(this) == null;
             }
         } catch (final SecurityException e) {

@@ -59,7 +59,7 @@ public class GroupingItem implements CommonItem, ItemDecorator {
      *            Children
      */
     public GroupingItem(int offset, Object parent, Collection<Object> children) {
-        this(offset, parent, children, "");
+        this(offset, parent, children, ""); //$NON-NLS-1$
     }
 
     /**
@@ -109,7 +109,7 @@ public class GroupingItem implements CommonItem, ItemDecorator {
         if (children != null && children.size() > 0) {
             childrenSize = children.size() - 1;
         }
-        return "[" + fOffset + ".." + (fOffset + childrenSize) + "]" + labelSuffix;
+        return "[" + fOffset + ".." + (fOffset + childrenSize) + "]" + labelSuffix; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
@@ -119,7 +119,7 @@ public class GroupingItem implements CommonItem, ItemDecorator {
      */
     public Image getImage() {
         if (imageCache == null) {
-            imageCache = SiriusTransPlugin.INSTANCE.getBundledImage(SiriusTransPlugin.PLUGIN_ID + "/icons/ArrayPartition.gif");
+            imageCache = SiriusTransPlugin.INSTANCE.getBundledImage(SiriusTransPlugin.PLUGIN_ID + "/icons/ArrayPartition.gif"); //$NON-NLS-1$
         }
         return imageCache;
     }

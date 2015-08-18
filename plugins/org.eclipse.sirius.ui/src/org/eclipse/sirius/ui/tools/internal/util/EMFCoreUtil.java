@@ -35,7 +35,7 @@ import org.eclipse.sirius.ext.base.Options;
  */
 public final class EMFCoreUtil {
 
-    private static final String EMPTY_STRING = "";
+    private static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
     /**
      * Avoid instantiation

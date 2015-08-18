@@ -173,7 +173,7 @@ public class DNodeContainerSpec extends DNodeContainerImpl {
      */
     @Override
     public String toString() {
-        return getName() != null ? getName() : "";
+        return getName() != null ? getName() : ""; //$NON-NLS-1$
     }
 
 }

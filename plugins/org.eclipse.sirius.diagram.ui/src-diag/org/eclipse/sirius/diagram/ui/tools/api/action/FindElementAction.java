@@ -30,7 +30,7 @@ public class FindElementAction implements IObjectActionDelegate {
     /**
      * The action ID.
      */
-    public static final String ID = "org.eclipse.sirius.transversal.find.ui.binding.FindElementAction";
+    public static final String ID = "org.eclipse.sirius.transversal.find.ui.binding.FindElementAction"; //$NON-NLS-1$
 
     private DiagramEditor currentPart;
 

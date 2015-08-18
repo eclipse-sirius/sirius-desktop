@@ -80,7 +80,7 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
      */
     protected void createContents() {
         fLabelFigure = new SiriusWrapLabel();
-        fLabelFigure.setText("  ");
+        fLabelFigure.setText("  "); //$NON-NLS-1$
         fLabelFigure.setTextWrap(true);
         this.add(fLabelFigure);
     }

@@ -291,9 +291,9 @@ public class SiriusControlHandler extends AbstractHandler {
         final StringBuilder uri = new StringBuilder();
         URI objResourceURI = obj.eResource().getURI();
         uri.append(URI.decode(objResourceURI.trimFileExtension().toString()));
-        uri.append("_");
+        uri.append("_"); //$NON-NLS-1$
         uri.append(EMFCoreUtil.getName(obj));
-        uri.append(".");
+        uri.append("."); //$NON-NLS-1$
         uri.append(objResourceURI.fileExtension());
         return uri.toString();
     }

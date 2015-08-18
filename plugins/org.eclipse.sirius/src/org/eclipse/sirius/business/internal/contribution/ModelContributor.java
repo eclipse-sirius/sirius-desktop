@@ -126,8 +126,8 @@ public class ModelContributor {
         List<ResolvedContribution> result = Lists.newArrayList();
         for (Contribution contribution : contributions) {
             HashMap<String, Object> context = Maps.newHashMap();
-            context.put("self", contribution);
-            context.put("sources", roots);
+            context.put("self", contribution); //$NON-NLS-1$
+            context.put("sources", roots); //$NON-NLS-1$
             Option<EObject> source = resolver.resolve(contribution.getSource(), context);
             Option<EObject> target = resolver.resolve(contribution.getTarget(), context);
             if (source.some() && target.some()) {

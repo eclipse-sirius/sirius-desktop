@@ -30,7 +30,7 @@ import org.eclipse.swt.graphics.Image;
  */
 public class HierarchyLabelTableProvider extends LabelProvider {
 
-    private static final String DELIMITER = " > ";
+    private static final String DELIMITER = " > "; //$NON-NLS-1$
 
     private ILabelProvider wrappedProvider;
 

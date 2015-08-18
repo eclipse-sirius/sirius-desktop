@@ -180,7 +180,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         this.javaExtensions.reloadIfNeeded();
         String expression = new ExpressionTrimmer(fullExpression).getExpression();
         Map<String, Object> variables = getVariables();
-        variables.put("self", target);
+        variables.put("self", target); //$NON-NLS-1$
         AstResult build;
         try {
             build = parsedExpressions.get(expression);
@@ -242,7 +242,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                     if (eClassifierType.getType() != null && eClassifierType.getType().getName() != null) {
                         String typeName = eClassifierType.getType().getName();
                         if (eClassifierType.getType().getEPackage() != null && eClassifierType.getType().getEPackage().getName() != null) {
-                            typeName = eClassifierType.getType().getEPackage().getName() + "." + typeName;
+                            typeName = eClassifierType.getType().getEPackage().getName() + "." + typeName; //$NON-NLS-1$
                         }
                         classifierNames.add(typeName);
                     }

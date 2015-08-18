@@ -127,7 +127,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
                 result = wordMatches(labelText);
             }
             String filterText = filteredTree.getFilterControl().getText();
-            if (!filterText.equals("") && !filterText.equals("*")) {
+            if (!filterText.equals("") && !filterText.equals("*")) { //$NON-NLS-1$ //$NON-NLS-2$
                 EObject eObj = (EObject) element;
                 boolean match;
                 for (EAttribute attribute : eObj.eClass().getEAllAttributes()) {

@@ -19,8 +19,8 @@ package org.eclipse.sirius.common.tools.api.util;
 public final class FileUtil {
 
     /** reserved filename and folders on win systems. */
-    private static final String[] WINDOWS_RESERVED_FILE_AND_FOLDER_NAME = { "com1", "com2", "com3", "com4", "com5", "com6", "com7", "com8", "com9", "lpt1", "lpt2", "lpt3", "lpt4", "lpt5", "lpt6",
-            "lpt7", "lpt8", "lpt9", "con", "nul", "prn", };
+    private static final String[] WINDOWS_RESERVED_FILE_AND_FOLDER_NAME = { "com1", "com2", "com3", "com4", "com5", "com6", "com7", "com8", "com9", "lpt1", "lpt2", "lpt3", "lpt4", "lpt5", "lpt6", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$ //$NON-NLS-12$ //$NON-NLS-13$ //$NON-NLS-14$ //$NON-NLS-15$
+            "lpt7", "lpt8", "lpt9", "con", "nul", "prn", }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
 
     /** max length for file name on windows. */
     private static final int WINDOWS_FILENAME_MAX_LENGTH = 255;
@@ -111,7 +111,7 @@ public final class FileUtil {
         String newFilename = removeIllegalCharacters();
 
         while (isAReservedFilename(newFilename)) {
-            newFilename = newFilename.concat("-");
+            newFilename = newFilename.concat("-"); //$NON-NLS-1$
         }
         while (exceedMaxLength(newFilename)) {
             newFilename = newFilename.substring(0, newFilename.length() - 2);

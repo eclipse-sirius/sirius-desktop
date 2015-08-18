@@ -23,14 +23,14 @@ public final class NavigationMarkerConstants {
      * The URI is like this :
      * platform:/resource/projectName/folderPath/fileName#id
      */
-    public static final String DIAGRAM_URI = "DIAGRAM_URI";
+    public static final String DIAGRAM_URI = "DIAGRAM_URI"; //$NON-NLS-1$
 
     /**
      * The key for record the semantic element URI.<BR>
      * The URI is like this :
      * platform:/resource/projectName/folderPath/fileName#id
      */
-    public static final String SEMANTIC_URI = "SEMANTIC_URI";
+    public static final String SEMANTIC_URI = "SEMANTIC_URI"; //$NON-NLS-1$
 
     /**
      * Default constructor.

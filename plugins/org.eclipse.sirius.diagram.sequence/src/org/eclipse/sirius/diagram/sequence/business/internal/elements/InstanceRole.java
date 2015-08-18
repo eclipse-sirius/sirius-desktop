@@ -152,7 +152,7 @@ public class InstanceRole extends AbstractSequenceNode {
         if (targetElement instanceof DRepresentationElement) {
             return ((DRepresentationElement) targetElement).getName();
         }
-        return "";
+        return ""; //$NON-NLS-1$
     }
 
     /**

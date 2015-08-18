@@ -42,16 +42,16 @@ import com.google.common.collect.Multimap;
 public class ServiceInterpreter extends VariableInterpreter implements org.eclipse.sirius.common.tools.api.interpreter.IInterpreter, IInterpreterProvider {
 
     /** The Service interpreter prefix. */
-    public static final String PREFIX = "service:";
+    public static final String PREFIX = "service:"; //$NON-NLS-1$
 
     /**
      * The character used to separate receiver and service.
      */
-    public static final String RECEIVER_SEPARATOR = ".";
+    public static final String RECEIVER_SEPARATOR = "."; //$NON-NLS-1$
 
     private static final String EOBJECT_CLASS_NAME = EObject.class.getCanonicalName();
 
-    private static final Pattern SPLIT_PATTERN = Pattern.compile("[(,)]");
+    private static final Pattern SPLIT_PATTERN = Pattern.compile("[(,)]"); //$NON-NLS-1$
 
     private final Map<Object, Object> properties = Maps.newHashMap();
 
@@ -137,7 +137,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
                     throw new EvaluationException("The receiver of the service call " + serviceCall + " is not an EObject.");
                 }
             }
-            int indexOfParenthesis = serviceCall.indexOf("(");
+            int indexOfParenthesis = serviceCall.indexOf("("); //$NON-NLS-1$
             serviceName = serviceCall.substring(0, indexOfParenthesis == -1 ? serviceCall.length() : indexOfParenthesis);
 
             Object[] parameters = new Object[] { receiver };

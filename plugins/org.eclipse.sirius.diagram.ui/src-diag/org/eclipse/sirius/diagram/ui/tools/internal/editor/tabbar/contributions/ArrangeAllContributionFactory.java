@@ -34,7 +34,7 @@ public class ArrangeAllContributionFactory extends SiriusTabbarExtensionContribu
         additions.addContributionItem(arrangeMenu, new DDiagramAndDDiagramElementTabbarExpression());
 
         TabbarSelectMenuManager selectMenu = new TabbarSelectMenuManager();
-        selectMenu.setDefaultAction("toolbarSelectAllAction");
+        selectMenu.setDefaultAction("toolbarSelectAllAction"); //$NON-NLS-1$
 
         additions.addContributionItem(selectMenu, new DDiagramTabbarExpression());
 

@@ -150,7 +150,7 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider im
         String text = getText(element);
         DefaultFontStyler styler = new DefaultFontStyler(getFont(element), getForeground(element), getBackground(element), getUnderline(element), getStrikeout(element));
         if (text == null) {
-            text = "";
+            text = ""; //$NON-NLS-1$
         }
         StyledString styledString = new StyledString(text, styler);
 

@@ -48,7 +48,7 @@ public class BundleClassLoading implements ClassLoading {
      * The extension point id used to contribute generated EPackages to the EMF
      * runtime.
      */
-    protected static final String EMF_GENERATED_PACKAGE_EXTENSIONPOINT = "org.eclipse.emf.ecore.generated_package";
+    protected static final String EMF_GENERATED_PACKAGE_EXTENSIONPOINT = "org.eclipse.emf.ecore.generated_package"; //$NON-NLS-1$
 
     @Override
     public void setClasspathChangeCallback(ClasspathChangeCallback listener) {
@@ -137,9 +137,9 @@ public class BundleClassLoading implements ClassLoading {
                 if (bundles.contains(contributorName)) {
                     for (IConfigurationElement element : ce) {
 
-                        String nsURI = element.getAttribute("uri");
-                        String className = element.getAttribute("class");
-                        String genModel = element.getAttribute("genModel");
+                        String nsURI = element.getAttribute("uri"); //$NON-NLS-1$
+                        String className = element.getAttribute("class"); //$NON-NLS-1$
+                        String genModel = element.getAttribute("genModel"); //$NON-NLS-1$
 
                         if (nsURI != null && className != null) {
                             contributions.put(contributorName, new EPackageDeclaration(nsURI, className, genModel));

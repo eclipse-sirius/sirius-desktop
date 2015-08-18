@@ -74,7 +74,7 @@ public class SessionSaveable extends Saveable {
      */
     @Override
     public ImageDescriptor getImageDescriptor() {
-        return SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/obj16/SessionResourceFile.gif");
+        return SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/obj16/SessionResourceFile.gif"); //$NON-NLS-1$
     }
 
     /**
