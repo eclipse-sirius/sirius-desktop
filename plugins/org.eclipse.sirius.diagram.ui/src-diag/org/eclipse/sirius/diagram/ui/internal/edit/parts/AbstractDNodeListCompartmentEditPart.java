@@ -211,7 +211,10 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         @SuppressWarnings("unchecked")
         List<View> modelChildren = Lists.newArrayList(super.getModelChildren());
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        new DNodeListElementComparisonHelper((DNodeList) resolveSemanticElement()).sort(modelChildren);
+        EObject semanticElement = resolveSemanticElement();
+        if (semanticElement instanceof DNodeList) {
+            new DNodeListElementComparisonHelper((DNodeList) semanticElement).sort(modelChildren);
+        }
         return modelChildren;
     }
 
