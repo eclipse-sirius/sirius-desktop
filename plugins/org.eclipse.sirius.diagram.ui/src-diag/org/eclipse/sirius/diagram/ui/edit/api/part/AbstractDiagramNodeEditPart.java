@@ -98,9 +98,6 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         super(view);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void handleNotificationEvent(final Notification notification) {
         final EditPart styleEditPart = getStyleEditPart();
@@ -120,18 +117,12 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         AbstractDiagramNodeEditPartOperation.createDefaultEditPolicies(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void refresh() {
         super.refresh();
@@ -143,9 +134,6 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     @SuppressWarnings("unchecked")
     protected List getModelChildren() {
@@ -261,8 +249,8 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
                                 break;
                             }
                         }
-                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()), new Rectangle(position,
-                                dimension));
+                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()),
+                                new Rectangle(position, dimension));
                         cmd = new ICommandProxy(setBoundsCommand);
                     }
                 }
@@ -271,16 +259,14 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         return cmd;
     }
 
-    /**
-     * Refreshes the figure of the node.
-     */
+    @Override
     public void refreshFigure() {
-        DiagramNodeEditPartOperation.refreshFigure(this);
+        IStyleEditPart styleEditPart = getStyleEditPart();
+        if (styleEditPart != null) {
+            DiagramNodeEditPartOperation.refreshFigure(styleEditPart);
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void setBackgroundColor(final Color color) {
         if (bgColor != color) {
@@ -289,27 +275,18 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         DiagramNodeEditPartOperation.refreshVisuals(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void refreshFont() {
         super.refreshFont();
         DiagramNodeEditPartOperation.refreshFont(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void performDirectEditRequest(final Request request) {
         if (this.getChildren().isEmpty() || !(this.getChildren().get(0) instanceof IDiagramNameEditPart && this.getNodeLabel() != null)) {
@@ -319,9 +296,6 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void performRequest(final Request request) {
         if (request instanceof DirectEditRequest || RequestConstants.REQ_DIRECT_EDIT.equals(request.getType())) {
@@ -331,16 +305,13 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ConnectionAnchor getSourceConnectionAnchor(final Request request) {
         ConnectionAnchor result = null;
         if (request instanceof CreateConnectionRequest && getMainFigure() instanceof AirDefaultSizeNodeFigure) {
             final CreateConnectionRequest createConnectionRequest = (CreateConnectionRequest) request;
-            final StyleConfiguration configuration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(this.resolveDiagramElement().getDiagramElementMapping(), this.resolveDiagramElement()
-                    .getStyle());
+            final StyleConfiguration configuration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(this.resolveDiagramElement().getDiagramElementMapping(),
+                    this.resolveDiagramElement().getStyle());
             if (configuration != null && createConnectionRequest.getLocation() != null) {
                 final AnchorProvider anchorProvider = configuration.getAnchorProvider();
                 if (anchorProvider != null) {
@@ -368,16 +339,13 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ConnectionAnchor getTargetConnectionAnchor(final Request request) {
         ConnectionAnchor result = null;
         if (request instanceof CreateConnectionRequest && getMainFigure() instanceof AirDefaultSizeNodeFigure && !(((CreateConnectionRequest) request).getSourceEditPart() instanceof NoteEditPart)) {
             final CreateConnectionRequest createConnectionRequest = (CreateConnectionRequest) request;
-            final StyleConfiguration configuration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(this.resolveDiagramElement().getDiagramElementMapping(), this.resolveDiagramElement()
-                    .getStyle());
+            final StyleConfiguration configuration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(this.resolveDiagramElement().getDiagramElementMapping(),
+                    this.resolveDiagramElement().getStyle());
             if (configuration != null && createConnectionRequest.getLocation() != null) {
                 final AnchorProvider anchorProvider = configuration.getAnchorProvider();
                 if (anchorProvider != null) {
@@ -405,9 +373,6 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Command getCommand(final Request request) {
         Command result = null;
@@ -439,11 +404,6 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getDragTracker(org.eclipse.gef.Request)
-     */
     @Override
     public DragTracker getDragTracker(Request request) {
         return new NoCopyDragEditPartsTrackerEx(this);

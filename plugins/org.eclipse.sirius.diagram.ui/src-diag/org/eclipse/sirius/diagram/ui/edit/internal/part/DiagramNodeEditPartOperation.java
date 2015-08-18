@@ -18,11 +18,13 @@ import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BorderedStyle;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.LineStyle;
@@ -34,6 +36,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -108,41 +111,45 @@ public final class DiagramNodeEditPartOperation {
     }
 
     /**
-     * Refreshes the figure of the node.
+     * Refreshes the figure of the styleEditPart.
      * 
-     * @param self
-     *            the node edit part.
+     * @param styleEditPart
+     *            the styleEditPart.
      */
-    public static void refreshFigure(final IDiagramNodeEditPart self) {
-        final StyledFigure styledFigure = DiagramElementEditPartOperation.getStyledFigure(self.getFigure());
-        if (self.resolveDiagramElement() instanceof DNode) {
-            final DNode viewNode = (DNode) self.resolveDiagramElement();
-            if (styledFigure != null) {
-                if (((NodeStyle) viewNode.getStyle()).getLabelPosition() != null && ((NodeStyle) viewNode.getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL
-                        && !styledFigure.getChildren().contains(self.getNodeLabel())) {
-                    styledFigure.add(self.getNodeLabel());
-                }
-                if (((NodeStyle) viewNode.getStyle()).getLabelPosition() != null && ((NodeStyle) viewNode.getStyle()).getLabelPosition() == LabelPosition.BORDER_LITERAL
-                        && styledFigure.getChildren().contains(self.getNodeLabel())) {
-                    styledFigure.remove(self.getNodeLabel());
-                }
-                if (styledFigure.getChildren().contains(self.getNodeLabel())) {
-                    DiagramElementEditPartOperation.refreshFont(self, viewNode, self.getNodeLabel());
-                    self.getNodeLabel().setText(viewNode.getName());
-                    final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(viewNode.getDiagramElementMapping(), viewNode.getStyle());
-                    self.getNodeLabel().setIcon(new StyleConfigurationQuery(styleConfiguration).getLabelIcon(self.resolveDiagramElement(), self));
-                    if (styleConfiguration != null) {
+    public static void refreshFigure(final IStyleEditPart styleEditPart) {
+        IFigure figure = styleEditPart.getContentPane();
+        if (figure instanceof StyledFigure) {
+            StyledFigure styledFigure = (StyledFigure) figure;
+            EditPart parent = styleEditPart.getParent();
+            if (parent instanceof IAbstractDiagramNodeEditPart) {
+                IAbstractDiagramNodeEditPart self = (IAbstractDiagramNodeEditPart) parent;
+                DDiagramElement dDiagramElement = self.resolveDiagramElement();
+                if (dDiagramElement instanceof DNode) {
+                    DNode viewNode = (DNode) dDiagramElement;
+                    if (((NodeStyle) viewNode.getStyle()).getLabelPosition() != null && ((NodeStyle) viewNode.getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL
+                            && !styledFigure.getChildren().contains(self.getNodeLabel())) {
+                        styledFigure.add(self.getNodeLabel());
+                    }
+                    if (((NodeStyle) viewNode.getStyle()).getLabelPosition() != null && ((NodeStyle) viewNode.getStyle()).getLabelPosition() == LabelPosition.BORDER_LITERAL
+                            && styledFigure.getChildren().contains(self.getNodeLabel())) {
+                        styledFigure.remove(self.getNodeLabel());
+                    }
+                    if (styledFigure.getChildren().contains(self.getNodeLabel())) {
+                        DiagramElementEditPartOperation.refreshFont(self, viewNode, self.getNodeLabel());
+                        self.getNodeLabel().setText(viewNode.getName());
+                        StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(viewNode.getDiagramElementMapping(), viewNode.getStyle());
+                        self.getNodeLabel().setIcon(new StyleConfigurationQuery(styleConfiguration).getLabelIcon(self.resolveDiagramElement(), self));
                         styleConfiguration.adaptNodeLabel(viewNode, self.getNodeLabel());
                     }
-                }
 
-                if (viewNode.getStyle() instanceof BorderedStyle) {
-                    BorderedStyle borderedStyle = (BorderedStyle) viewNode.getStyle();
-                    DiagramNodeEditPartOperation.refreshBorderFigure(borderedStyle, styledFigure);
-                }
+                    if (viewNode.getStyle() instanceof BorderedStyle) {
+                        BorderedStyle borderedStyle = (BorderedStyle) viewNode.getStyle();
+                        DiagramNodeEditPartOperation.refreshBorderFigure(borderedStyle, styledFigure);
+                    }
 
-                self.setTooltipText(viewNode.getTooltipText());
-                self.getNodeLabel().revalidate();
+                    self.setTooltipText(viewNode.getTooltipText());
+                    self.getNodeLabel().revalidate();
+                }
             }
         }
     }

@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNod
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
@@ -66,6 +67,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         // No default policies.
     }
@@ -111,6 +113,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
      * 
      * @not-generated XY Layout.
      */
+    @Override
     protected NodeFigure createNodeFigure() {
         final NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new XYLayout());
@@ -135,6 +138,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -146,6 +150,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
      * @not-generated
      * @see ShapeEditPart#refreshVisuals()
      */
+    @Override
     protected void refreshVisuals() {
         final Node node = (Node) this.getModel();
         final EObject element = node.getElement();
@@ -164,7 +169,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
             }
             figure.setAlignment(gaugeCompositeStyle.getAlignment());
         }
-
+        DiagramNodeEditPartOperation.refreshFigure(this);
         super.refreshVisuals();
         if (this.getParent() instanceof GraphicalEditPart) {
             // refresh parent visual - workaround : the label disappear when the
@@ -208,6 +213,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
      * 
      * @not-generated
      */
+    @Override
     public DragTracker getDragTracker(final Request request) {
         return getParent().getDragTracker(request);
     }

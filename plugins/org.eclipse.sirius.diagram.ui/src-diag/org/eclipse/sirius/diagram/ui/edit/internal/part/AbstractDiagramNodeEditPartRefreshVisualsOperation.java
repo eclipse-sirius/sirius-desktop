@@ -31,8 +31,6 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
@@ -53,6 +51,7 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
     /**
      * The editPart to refresh.
      */
+
     protected IAbstractDiagramNodeEditPart editPart;
 
     /**
@@ -188,23 +187,13 @@ public class AbstractDiagramNodeEditPartRefreshVisualsOperation {
         if (node.getStyle() != null && ((NodeStyle) node.getStyle()).getLabelPosition().getValue() == LabelPosition.NODE) {
             // The label is in the graphical element. We must adapt the
             // size.
-            final SiriusWrapLabel nodeLabel = getNodeLabel();
+            final SiriusWrapLabel nodeLabel = editPart.getNodeLabel();
             if (nodeLabel != null) {
                 final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(node.getDiagramElementMapping(), node.getStyle());
                 width = styleConfiguration.adaptViewNodeSizeWithLabel(node, nodeLabel, width);
             }
         }
         return width;
-    }
-
-    private SiriusWrapLabel getNodeLabel() {
-        SiriusWrapLabel wrapLabel = null;
-        if (editPart instanceof IDiagramNodeEditPart) {
-            wrapLabel = ((IDiagramNodeEditPart) editPart).getNodeLabel();
-        } else if (editPart instanceof IDiagramBorderNodeEditPart) {
-            wrapLabel = ((IDiagramBorderNodeEditPart) editPart).getNodeLabel();
-        }
-        return wrapLabel;
     }
 
     private int computeHeight(final int width) {

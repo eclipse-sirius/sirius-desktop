@@ -42,6 +42,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart#refreshVisuals()
      * @not-generated
      */
+    @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         if (this.resolveSemanticElement() instanceof org.eclipse.sirius.diagram.Ellipse) {
@@ -51,6 +52,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
                 borderSize = ellipse.getBorderSize().intValue();
             }
             this.getPrimaryShape().setLineWidth(borderSize);
+            DiagramNodeEditPartOperation.refreshFigure(this);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(this.getPrimaryShape(), ellipse);
         }
     }
@@ -59,6 +61,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      * @not-generated
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshBackgroundColor()
      */
+    @Override
     protected void refreshBackgroundColor() {
         if (getMetamodelType().isInstance(resolveSemanticElement())) {
             org.eclipse.sirius.diagram.Ellipse ellipse = (org.eclipse.sirius.diagram.Ellipse) this.resolveSemanticElement();
@@ -72,6 +75,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      * @not-generated
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshForegroundColor()
      */
+    @Override
     protected void refreshForegroundColor() {
         if (getMetamodelType().isInstance(resolveSemanticElement())) {
             org.eclipse.sirius.diagram.Ellipse ellipse = (org.eclipse.sirius.diagram.Ellipse) this.resolveSemanticElement();
@@ -106,6 +110,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
     /**
      * @not-generated : prevent drag of elements
      */
+    @Override
     public DragTracker getDragTracker(Request request) {
         return getParent().getDragTracker(request);
     }
@@ -113,6 +118,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
     /**
      * @not-generated no edit policies brings better editing :)
      */
+    @Override
     protected void createDefaultEditPolicies() {
         // Do nothing.
     }
@@ -154,6 +160,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
     /**
      * @was-generated
      */
+    @Override
     public EditPolicy getPrimaryDragEditPolicy() {
         EditPolicy result = super.getPrimaryDragEditPolicy();
         if (result instanceof ResizableEditPolicy) {
@@ -171,6 +178,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      * 
      * @was-generated
      */
+    @Override
     protected NodeFigure createNodeFigure() {
         NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -195,6 +203,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;

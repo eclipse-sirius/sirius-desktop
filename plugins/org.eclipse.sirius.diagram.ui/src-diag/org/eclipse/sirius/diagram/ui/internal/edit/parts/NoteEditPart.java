@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNod
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirNoteFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -45,6 +46,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
     /**
      * @not-generated : prevent drag of elements
      */
+    @Override
     public DragTracker getDragTracker(Request request) {
         return getParent().getDragTracker(request);
     }
@@ -74,6 +76,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         // Do nothing.
     }
@@ -125,6 +128,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
      * 
      * @was-generated
      */
+    @Override
     protected NodeFigure createNodeFigure() {
         NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -149,6 +153,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -172,6 +177,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshBackgroundColor()
      */
+    @Override
     protected void refreshBackgroundColor() {
         FillStyle style = (FillStyle) getPrimaryView().getStyle(NotationPackage.Literals.FILL_STYLE);
         if (style != null) {
@@ -193,6 +199,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
             if (figure.getLayoutManager() instanceof ConstrainedToolbarLayout) {
                 ((ConstrainedToolbarLayout) figure.getLayoutManager()).setMinorAlignment(LabelAlignmentHelper.getAsCTLMinorAlignment(alignment));
             }
+            DiagramNodeEditPartOperation.refreshFigure(this);
 
             // if (element instanceof Dot) {
             // Dot dot = (Dot) element;

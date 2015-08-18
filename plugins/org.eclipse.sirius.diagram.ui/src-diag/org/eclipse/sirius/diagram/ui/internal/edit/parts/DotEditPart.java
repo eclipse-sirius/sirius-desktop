@@ -44,6 +44,7 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
     /**
      * @no-generated : prevent drag of elements
      */
+    @Override
     public DragTracker getDragTracker(Request request) {
         return getParent().getDragTracker(request);
     }
@@ -74,6 +75,7 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
      * @not-generated
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshBackgroundColor()
      */
+    @Override
     protected void refreshBackgroundColor() {
         super.refreshBackgroundColor();
         final EObject element = this.resolveSemanticElement();
@@ -102,6 +104,7 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
                 }
                 this.getPrimaryShape().setLineWidth(borderSize);
             }
+            DiagramNodeEditPartOperation.refreshFigure(this);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(getPrimaryShape(), (LabelStyle) element);
         }
     }
@@ -110,6 +113,7 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
      * @not-generated
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshForegroundColor()
      */
+    @Override
     protected void refreshForegroundColor() {
         if (getMetamodelType().isInstance(resolveSemanticElement())) {
             Dot dot = (Dot) this.resolveSemanticElement();
@@ -122,6 +126,7 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
     /**
      * @not-generated no edit policies brings better editing :)
      */
+    @Override
     protected void createDefaultEditPolicies() {
         // Do nothing.
     }
@@ -164,6 +169,7 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
     /**
      * @was-generated
      */
+    @Override
     public EditPolicy getPrimaryDragEditPolicy() {
         EditPolicy result = super.getPrimaryDragEditPolicy();
         if (result instanceof ResizableEditPolicy) {
@@ -181,6 +187,7 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
      * 
      * @was-generated
      */
+    @Override
     protected NodeFigure createNodeFigure() {
         NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -205,6 +212,7 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;

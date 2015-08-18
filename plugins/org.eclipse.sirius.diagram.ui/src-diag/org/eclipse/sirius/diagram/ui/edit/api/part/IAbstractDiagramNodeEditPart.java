@@ -15,6 +15,7 @@ import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 /**
  * This type regroups all nodes of the Diagram (DNodes, DContainer, DList).
@@ -22,6 +23,14 @@ import org.eclipse.sirius.diagram.DDiagramElement;
  * @author ymortier
  */
 public interface IAbstractDiagramNodeEditPart extends IDiagramElementEditPart, IBorderedShapeEditPart {
+
+    /**
+     * Returns the label of the node.
+     * 
+     * @return the label of the node.
+     * @since 3.1
+     */
+    SiriusWrapLabel getNodeLabel();
 
     /**
      * Create a {@link IBorderItemLocator} for the specified figure.

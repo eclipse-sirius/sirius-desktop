@@ -37,7 +37,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolic
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 
 /**
@@ -48,6 +47,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
     /**
      * @not-generated : prevent drag of elements
      */
+    @Override
     public DragTracker getDragTracker(final Request request) {
         return getParent().getDragTracker(request);
     }
@@ -78,6 +78,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart#refreshVisuals()
      * @not-generated : refresh the figure.
      */
+    @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         final BundledImageFigure figure = this.getPrimaryShape();
@@ -85,6 +86,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
         if (element instanceof BundledImage) {
             final BundledImage bundledImage = (BundledImage) element;
             figure.refreshFigure(bundledImage);
+            DiagramNodeEditPartOperation.refreshFigure(this);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(figure, bundledImage);
             ((GraphicalEditPart) this.getParent()).setLayoutConstraint(this, this.getFigure(), new Rectangle(0, 0, figure.getPreferredSize().width, figure.getPreferredSize().height));
         }
@@ -93,6 +95,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         // Do nothing.
     }
@@ -146,6 +149,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
     /**
      * @was-generated
      */
+    @Override
     public EditPolicy getPrimaryDragEditPolicy() {
         final EditPolicy result = super.getPrimaryDragEditPolicy();
         if (result instanceof ResizableEditPolicy) {
@@ -163,6 +167,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
      * 
      * @not-generated
      */
+    @Override
     protected NodeFigure createNodeFigure() {
         final NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -187,6 +192,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;

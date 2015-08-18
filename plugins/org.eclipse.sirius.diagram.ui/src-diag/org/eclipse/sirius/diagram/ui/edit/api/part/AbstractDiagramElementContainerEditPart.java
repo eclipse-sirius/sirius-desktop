@@ -167,6 +167,15 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     @Override
+    public SiriusWrapLabel getNodeLabel() {
+        SiriusWrapLabel nodeLabel = null;
+        if (primaryShape instanceof ViewNodeContainerFigureDesc) {
+            nodeLabel = ((ViewNodeContainerFigureDesc) primaryShape).getLabelFigure();
+        }
+        return nodeLabel;
+    }
+
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         // CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
@@ -228,21 +237,12 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         return modelChildren;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramListEditPart#getBackgroundFigure()
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramContainerEditPart#getBackgroundFigure()
-     */
     public IFigure getBackgroundFigure() {
         return this.backgroundFigure;
     }
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramListEditPart#createBackgroundFigure()
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramContainerEditPart#createBackgroundFigure()
      */
     public void createBackgroundFigure() {
         this.backgroundFigure = DiagramContainerEditPartOperation.createBackgroundFigure(this);
@@ -681,7 +681,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * {@inheritDoc}
+     * Force figure auto size.
      */
     public void forceFigureAutosize() {
         final int width = -1;
@@ -694,7 +694,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * {@inheritDoc}
+     * Get auto sized dimensions.
+     * 
+     * @return auto sized dimensions
      */
     public Rectangle getAutosizedDimensions() {
         ((GraphicalEditPart) getParent()).getFigure().validate();

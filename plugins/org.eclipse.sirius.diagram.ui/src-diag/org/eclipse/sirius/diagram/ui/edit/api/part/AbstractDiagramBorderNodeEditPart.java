@@ -98,33 +98,18 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         super(view);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#registerModel()
-     */
     @Override
     protected void registerModel() {
         super.registerModel();
         DiagramElementEditPartOperation.registerModel(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#unregisterModel()
-     */
     @Override
     protected void unregisterModel() {
         super.unregisterModel();
         DiagramElementEditPartOperation.unregisterModel(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart#handleNotificationEvent(org.eclipse.emf.common.notify.Notification)
-     */
     @Override
     protected void handleNotificationEvent(final Notification notification) {
         EditPart styleEditPart = getStyleEditPart();
@@ -144,22 +129,13 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         DiagramBorderNodeEditPartOperation.handleNotificationEvent(this, notification);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart#createDefaultEditPolicies()
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         AbstractDiagramNodeEditPartOperation.createDefaultEditPolicies(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterDiagramElement()
-     */
+    @Override
     public NotificationListener getEAdapterDiagramElement() {
         if (this.adapterDiagramElement == null) {
             this.adapterDiagramElement = DiagramElementEditPartOperation.createEApdaterDiagramElement(this);
@@ -167,63 +143,36 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         return this.adapterDiagramElement;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public NotificationListener getEditModeListener() {
         return this.editModeListener;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getStyleEditPart()
-     */
+    @Override
     public IStyleEditPart getStyleEditPart() {
         return DiagramElementEditPartOperation.getStyleEditPart(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveAllSemanticElements()
-     */
+    @Override
     public List<EObject> resolveAllSemanticElements() {
         return DiagramElementEditPartOperation.resolveAllSemanticElements(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveDiagramElement()
-     */
+    @Override
     public DDiagramElement resolveDiagramElement() {
         return DiagramElementEditPartOperation.resolveDiagramElement(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#resolveTargetSemanticElement()
-     */
+    @Override
     public EObject resolveTargetSemanticElement() {
         return DiagramElementEditPartOperation.resolveTargetSemanticElement(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEditPartAuthorityListener()
-     */
+    @Override
     public EditPartAuthorityListener getEditPartAuthorityListener() {
         return this.authListener;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#activate()
-     */
     @Override
     public void activate() {
         if (!isActive()) {
@@ -235,11 +184,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         this.getEditPartAuthorityListener().refreshEditMode();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#enableEditMode()
-     */
     @Override
     public void enableEditMode() {
         /*
@@ -251,11 +195,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#deactivate()
-     */
     @Override
     public void deactivate() {
         DiagramElementEditPartOperation.deactivate(this);
@@ -266,11 +205,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refresh()
-     */
     @Override
     public void refresh() {
         super.refresh();
@@ -281,9 +215,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void refreshChildren() {
         super.refreshChildren();
@@ -295,11 +226,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         refreshVisuals();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getModelChildren()
-     */
     @Override
     protected List<?> getModelChildren() {
         // create a new view to avoid to change the super.getModelChildren list.
@@ -316,11 +242,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         return modelChildren;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart#getModelSourceConnections()
-     */
     @Override
     protected List<?> getModelSourceConnections() {
         // create a new view to avoid to change the
@@ -330,11 +251,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         return modelChildren;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart#getModelTargetConnections()
-     */
     @Override
     protected List<View> getModelTargetConnections() {
         // create a new view to avoid to change the
@@ -344,12 +260,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         return modelChildren;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#createBorderItemLocator(IFigure,
-     *      DDiagramElement)
-     */
+    @Override
     public IBorderItemLocator createBorderItemLocator(final IFigure figure, final DDiagramElement vpElementBorderItem) {
         return AbstractDiagramNodeEditPartOperation.createBorderItemLocator(this, figure, vpElementBorderItem);
     }
@@ -397,7 +308,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
      */
     public Command getResizeBorderItemCommand(final ChangeBoundsRequest request) {
         Command cmd = UnexecutableCommand.INSTANCE;
-        EObject element = this.resolveSemanticElement();
         boolean valid = true;
         ResizeValidator resizeValidator = new ResizeValidator(request);
         valid = resizeValidator.validate();
@@ -422,47 +332,31 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         return cmd;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getLabelIcon()
-     */
+    @Override
     public Image getLabelIcon() {
         return DiagramElementEditPartOperation.getLabelIcon(this);
     }
 
-    /**
-     * Refreshes the figure of the node.
-     */
+    @Override
     public void refreshFigure() {
-        DiagramBorderNodeEditPartOperation.refreshFigure(this);
+        IStyleEditPart styleEditPart = getStyleEditPart();
+        if (styleEditPart != null) {
+            DiagramNodeEditPartOperation.refreshFigure(styleEditPart);
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart#refreshVisuals()
-     */
     @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         DiagramBorderNodeEditPartOperation.refreshVisuals(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void refreshFont() {
         super.refreshFont();
         DiagramBorderNodeEditPartOperation.refreshFont(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @not-generated
-     */
     @Override
     public EditPolicy getPrimaryDragEditPolicy() {
         final ResizableEditPolicy result = new SpecificBorderItemSelectionEditPolicy();
@@ -484,15 +378,11 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
      *            the tooltip's text.
      * @since 0.9.0
      */
+    @Override
     public void setTooltipText(final String text) {
         AbstractDiagramNodeEditPartOperation.setTooltipText(this, text);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getCommand(org.eclipse.gef.Request)
-     */
     @Override
     public Command getCommand(final Request request) {
         Command result = UnexecutableCommand.INSTANCE;
@@ -504,11 +394,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#getZoomManager()
-     */
+    @Override
     public ZoomManager getZoomManager() {
         return AbstractDiagramNodeEditPartOperation.getZoomManager(this);
     }
@@ -557,11 +443,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         return super.getTargetConnectionAnchor(request);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart#getDragTracker(org.eclipse.gef.Request)
-     */
     @Override
     public DragTracker getDragTracker(final Request request) {
         DragTracker result;
@@ -573,9 +454,6 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void performDirectEditRequest(final Request request) {
         if (this.getChildren().isEmpty() || !(this.getChildren().get(0) instanceof IDiagramNameEditPart && this.getNodeLabel() != null)) {

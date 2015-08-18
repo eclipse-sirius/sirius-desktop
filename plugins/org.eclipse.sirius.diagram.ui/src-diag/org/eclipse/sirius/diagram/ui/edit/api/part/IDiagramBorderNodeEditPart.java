@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 /**
  * Top level edit part for nodes that on the border of another node.
@@ -19,13 +18,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
  * @author ymortier
  */
 public interface IDiagramBorderNodeEditPart extends IAbstractDiagramNodeEditPart {
-
-    /**
-     * Returns the label of the node.
-     * 
-     * @return the label of the node.
-     */
-    SiriusWrapLabel getNodeLabel();
 
     /**
      * Returns the primary figure.

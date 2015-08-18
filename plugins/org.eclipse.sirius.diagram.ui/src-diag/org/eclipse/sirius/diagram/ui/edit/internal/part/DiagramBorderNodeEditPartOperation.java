@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
-import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -34,13 +32,10 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.LabelPosition;
-import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
@@ -48,10 +43,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
-import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 
 /**
  * Common operations for nodes that are on the border of other nodes.
@@ -216,76 +208,6 @@ public final class DiagramBorderNodeEditPartOperation {
             ep.setResizeDirections(PositionConstants.NONE);
         } else {
             DiagramNodeEditPartOperation.updateResizeKind(ep, node);
-        }
-    }
-
-    /**
-     * Refreshes the figure of the node.
-     * 
-     * @param self
-     *            the node edit part.
-     */
-    public static void refreshFigure(final IDiagramBorderNodeEditPart self) {
-        final StyledFigure styledFigure = DiagramElementEditPartOperation.getStyledFigure(self.getFigure());
-        if (self.resolveDiagramElement() instanceof DNode) {
-            final DNode viewNode = (DNode) self.resolveDiagramElement();
-            if (styledFigure != null) {
-                if (((NodeStyle) viewNode.getStyle()).getLabelPosition() != null && ((NodeStyle) viewNode.getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL
-                        && !styledFigure.getChildren().contains(self.getNodeLabel())) {
-                    styledFigure.add(self.getNodeLabel());
-                }
-                if (((NodeStyle) viewNode.getStyle()).getLabelPosition() != null && ((NodeStyle) viewNode.getStyle()).getLabelPosition() == LabelPosition.BORDER_LITERAL
-                        && styledFigure.getChildren().contains(self.getNodeLabel())) {
-                    styledFigure.remove(self.getNodeLabel());
-                }
-                if (styledFigure.getChildren().contains(self.getNodeLabel())) {
-                    DiagramElementEditPartOperation.refreshFont(self, viewNode, self.getNodeLabel());
-                    self.getNodeLabel().setText(viewNode.getName());
-                    self.getNodeLabel().setIcon(self.getLabelIcon());
-                    final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(viewNode.getDiagramElementMapping(), viewNode.getStyle());
-                    if (styleConfiguration != null) {
-                        styleConfiguration.adaptNodeLabel(viewNode, self.getNodeLabel());
-                    }
-                }
-
-                if (viewNode.getStyle() instanceof BorderedStyle) {
-                    BorderedStyle borderedStyle = (BorderedStyle) viewNode.getStyle();
-                    DiagramBorderNodeEditPartOperation.refreshBorderedStyle(styledFigure, borderedStyle);
-                }
-
-                self.setTooltipText(viewNode.getTooltipText());
-                self.getNodeLabel().revalidate();
-            }
-        }
-    }
-
-    private static void refreshBorderedStyle(final StyledFigure styledFigure, final BorderedStyle borderedStyle) {
-        if (borderedStyle.getBorderSize().intValue() == 0) {
-            styledFigure.setBorder(null);
-        } else {
-            LineBorder lineBorder = null;
-            if (styledFigure.getBorder() instanceof LineBorder) {
-                lineBorder = (LineBorder) styledFigure.getBorder();
-            } else {
-                lineBorder = new LineBorder();
-                styledFigure.setBorder(lineBorder);
-            }
-
-            if (styledFigure instanceof Shape) {
-                ((Shape) styledFigure).setLineWidth(0);
-            }
-            int borderSize = 0;
-            if (borderedStyle.getBorderSize() != null) {
-                borderSize = borderedStyle.getBorderSize().intValue();
-            }
-            lineBorder.setWidth(borderSize);
-            if (borderedStyle.getBorderColor() != null) {
-                lineBorder.setColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderedStyle.getBorderColor()));
-            }
-
-            if (borderSize == 0) {
-                styledFigure.setBorder(null);
-            }
         }
     }
 

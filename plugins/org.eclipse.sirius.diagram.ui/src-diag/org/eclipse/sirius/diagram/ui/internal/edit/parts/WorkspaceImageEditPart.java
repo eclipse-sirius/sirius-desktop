@@ -25,7 +25,6 @@ import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
@@ -49,6 +48,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
     /**
      * @not-generated : prevent drag of elements
      */
+    @Override
     public DragTracker getDragTracker(Request request) {
         return getParent().getDragTracker(request);
     }
@@ -78,6 +78,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
     /**
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         // Do nothing.
     }
@@ -85,6 +86,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
     /**
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart#refreshVisuals()
      */
+    @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         IWorkspaceImageFigure figure = this.getPrimaryShape();
@@ -92,6 +94,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
         if (element instanceof WorkspaceImage && figure != null) {
             WorkspaceImage bundledImage = (WorkspaceImage) element;
             figure.refreshFigure(bundledImage);
+            DiagramNodeEditPartOperation.refreshFigure(this);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(figure, bundledImage);
             ((GraphicalEditPart) this.getParent()).setLayoutConstraint(this, this.getFigure(), new Rectangle(0, 0, figure.getPreferredSize().width, figure.getPreferredSize().height));
         }
@@ -145,6 +148,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
     /**
      * @was-generated
      */
+    @Override
     public EditPolicy getPrimaryDragEditPolicy() {
         EditPolicy result = super.getPrimaryDragEditPolicy();
         if (result instanceof ResizableEditPolicy) {
@@ -162,6 +166,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
      * 
      * @not-generated
      */
+    @Override
     protected NodeFigure createNodeFigure() {
         NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -186,6 +191,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;

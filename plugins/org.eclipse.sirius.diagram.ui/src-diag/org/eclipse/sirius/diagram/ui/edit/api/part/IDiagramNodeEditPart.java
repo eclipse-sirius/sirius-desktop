@@ -16,7 +16,6 @@ import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 /**
  * The edit part for all <code>DiagramNode</code>s.
@@ -24,13 +23,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
  * @author ymortier
  */
 public interface IDiagramNodeEditPart extends IAbstractDiagramNodeEditPart, INodeEditPart, IPrimaryEditPart, NotificationListener, IBorderedShapeEditPart, IAdaptableSelection {
-
-    /**
-     * Returns the label of the node.
-     * 
-     * @return the label of the node.
-     */
-    SiriusWrapLabel getNodeLabel();
 
     /**
      * Returns the primary figure.
