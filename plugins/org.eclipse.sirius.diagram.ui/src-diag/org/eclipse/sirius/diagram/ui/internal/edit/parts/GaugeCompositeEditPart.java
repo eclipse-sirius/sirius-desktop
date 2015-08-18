@@ -30,12 +30,14 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNod
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeSectionFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.LabelStyle;
 
 /**
  * @was-generated
@@ -170,6 +172,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
             figure.setAlignment(gaugeCompositeStyle.getAlignment());
         }
         DiagramNodeEditPartOperation.refreshFigure(this);
+        DiagramElementEditPartOperation.refreshLabelAlignment(((GraphicalEditPart) getParent()).getContentPane(), (LabelStyle) element);
         super.refreshVisuals();
         if (this.getParent() instanceof GraphicalEditPart) {
             // refresh parent visual - workaround : the label disappear when the

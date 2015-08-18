@@ -30,7 +30,6 @@ import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
-import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
@@ -39,13 +38,10 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.LabelAlignment;
-import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
@@ -226,24 +222,6 @@ public final class DiagramNodeEditPartOperation {
         }
         if (label != null) {
             modelChildren.remove(label);
-        }
-    }
-
-    /**
-     * Updates the alignment of the main label of a Node edit-part.
-     * 
-     * @param figure
-     *            the primary shape of the node edit-part.
-     * @param style
-     *            the style of the edit-part.
-     */
-    public static void refreshNodeLabelAlignment(final IFigure figure, final LabelStyle style) {
-        if (figure != null && figure.getChildren().size() > 0) {
-            final IFigure firstChild = (IFigure) figure.getChildren().get(0);
-            if (firstChild instanceof SiriusWrapLabel) {
-                final LabelAlignment alignment = style.getLabelAlignment();
-                ((SiriusWrapLabel) firstChild).setLabelAlignment(LabelAlignmentHelper.getAsPositionConstant(alignment));
-            }
         }
     }
 

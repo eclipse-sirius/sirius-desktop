@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LayoutManager;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.emf.common.notify.Notification;
@@ -26,7 +27,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
-import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
@@ -47,6 +48,7 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
@@ -56,10 +58,12 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
@@ -396,13 +400,6 @@ public final class DiagramElementEditPartOperation {
         }
     }
 
-    private static void removeListener(final DiagramEventBroker broker, final EObject listened, final NotificationPreCommitListener listener) {
-        final boolean oldDeliver = listened.eDeliver();
-        listened.eSetDeliver(true);
-        broker.removeNotificationListener(listened, listener);
-        listened.eSetDeliver(oldDeliver);
-    }
-
     private static void removeListener(final DiagramEventBroker broker, final EObject listened, final NotificationListener listener) {
         final boolean oldDeliver = listened.eDeliver();
         listened.eSetDeliver(true);
@@ -642,6 +639,30 @@ public final class DiagramElementEditPartOperation {
             break;
         default:
             break;
+        }
+    }
+
+    /**
+     * Refresh the draw2d label alignment.
+     * 
+     * @param figure
+     *            the primary shape of the edit-part.
+     * @param style
+     *            the {@link LabelStyle}.
+     */
+    public static void refreshLabelAlignment(final IFigure figure, final LabelStyle style) {
+        LabelAlignment alignment = style.getLabelAlignment();
+        if (figure instanceof ViewNodeFigure) {
+            SiriusWrapLabel nodeLabel = ((ViewNodeFigure) figure).getNodeLabel();
+            if (nodeLabel != null) {
+                nodeLabel.setLabelAlignment(LabelAlignmentHelper.getAsPositionConstant(alignment));
+            }
+        } else {
+            LayoutManager layoutManager = figure.getLayoutManager();
+            if (layoutManager instanceof ConstrainedToolbarLayout) {
+                ConstrainedToolbarLayout ctl = (ConstrainedToolbarLayout) layoutManager;
+                ctl.setMinorAlignment(LabelAlignmentHelper.getAsCTLMinorAlignment(alignment));
+            }
         }
     }
 }

@@ -23,7 +23,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.BackgroundStyle;
@@ -36,7 +35,6 @@ import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
@@ -54,7 +52,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradient
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
 
@@ -162,11 +159,11 @@ public final class DiagramContainerEditPartOperation {
             if (primaryShape instanceof RoundedRectangle) {
                 refreshCorners(self, diagElement, (RoundedRectangle) primaryShape);
             }
+            DiagramElementEditPartOperation.refreshLabelAlignment(self.getContentPane(), ddec.getOwnedStyle());
         }
 
         if (diagElement != null) {
             self.setTooltipText(diagElement.getTooltipText());
-            refreshLabelAlignment(self, diagElement);
         }
     }
 
@@ -348,23 +345,6 @@ public final class DiagramContainerEditPartOperation {
             }
         }
         return result;
-    }
-
-    private static void refreshLabelAlignment(final AbstractDiagramElementContainerEditPart self, final DDiagramElement diagElement) {
-        final LabelAlignment alignment = LabelAlignmentHelper.getLabelAlignementFor(diagElement);
-        if (alignment != null) {
-            final IFigure fig = self.getFigure();
-            if (fig.getChildren().size() > 0) {
-                final IFigure firstChild = (IFigure) fig.getChildren().get(0);
-                if (firstChild != null && firstChild.getChildren().size() > 0) {
-                    final IFigure firstGrandChild = (IFigure) firstChild.getChildren().get(0);
-                    if (firstGrandChild != null && firstGrandChild.getLayoutManager() instanceof ConstrainedToolbarLayout) {
-                        final ConstrainedToolbarLayout ctl = (ConstrainedToolbarLayout) firstGrandChild.getLayoutManager();
-                        ctl.setMinorAlignment(LabelAlignmentHelper.getAsCTLMinorAlignment(alignment));
-                    }
-                }
-            }
-        }
     }
 
     /**

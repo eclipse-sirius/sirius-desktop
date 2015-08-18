@@ -12,9 +12,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.edit.helpers;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.ToolbarLayout;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
-import org.eclipse.sirius.viewpoint.LabelStyle;
 
 /**
  * Utility class to retrieve diagram elements' {@link LabelAlignment} and
@@ -25,24 +23,6 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 public final class LabelAlignmentHelper {
     private LabelAlignmentHelper() {
         // Prevent instantiation.
-    }
-
-    /**
-     * Returns the {@link LabelAlignment} to use for a given
-     * {@link DDiagramElement}.
-     * 
-     * @param diagElement
-     *            a non-<code>null</code> {@link DDiagramElement}
-     * @return the {@link LabelAlignment} associated to the diagram element
-     *         through its style, or <code>null</code> if there is none.
-     */
-    public static LabelAlignment getLabelAlignementFor(final DDiagramElement diagElement) {
-        if (diagElement.getStyle() instanceof LabelStyle) {
-            final LabelStyle style = (LabelStyle) diagElement.getStyle();
-            return style.getLabelAlignment();
-        } else {
-            return null;
-        }
     }
 
     /**

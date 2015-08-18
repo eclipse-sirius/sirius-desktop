@@ -18,23 +18,22 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.FillStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.Note;
-import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirNoteFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
@@ -192,20 +191,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
     @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
-        final EObject element = this.resolveSemanticElement();
-        if (element instanceof LabelStyle) {
-            IFigure figure = getPrimaryShape();
-            LabelAlignment alignment = ((LabelStyle) element).getLabelAlignment();
-            if (figure.getLayoutManager() instanceof ConstrainedToolbarLayout) {
-                ((ConstrainedToolbarLayout) figure.getLayoutManager()).setMinorAlignment(LabelAlignmentHelper.getAsCTLMinorAlignment(alignment));
-            }
-            DiagramNodeEditPartOperation.refreshFigure(this);
-
-            // if (element instanceof Dot) {
-            // Dot dot = (Dot) element;
-            // int borderSize = dot.getBorderSize().intValue();
-            // this.getPrimaryShape().setLineWidth(borderSize);
-            // }
-        }
+        DiagramNodeEditPartOperation.refreshFigure(this);
+        DiagramElementEditPartOperation.refreshLabelAlignment(((GraphicalEditPart) getParent()).getContentPane(), (LabelStyle) resolveSemanticElement());
     }
 }

@@ -22,12 +22,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
@@ -41,7 +39,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListe
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelStyle;
 
 /**
  * @was-generated
@@ -134,13 +132,9 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
 
     private void refreshLabelAlignment() {
         final DDiagramElement diagElement = resolveDiagramElement();
-        if (diagElement != null) {
-            final IFigure parentFigure = getFigure().getParent();
-            if (parentFigure != null && parentFigure.getLayoutManager() instanceof ConstrainedToolbarLayout) {
-                final ConstrainedToolbarLayout ctl = (ConstrainedToolbarLayout) parentFigure.getLayoutManager();
-                final LabelAlignment alignment = LabelAlignmentHelper.getLabelAlignementFor(diagElement);
-                ctl.setMinorAlignment(LabelAlignmentHelper.getAsCTLMinorAlignment(alignment));
-            }
+        if (diagElement != null && diagElement.getStyle() instanceof LabelStyle) {
+            LabelStyle style = (LabelStyle) diagElement.getStyle();
+            DiagramElementEditPartOperation.refreshLabelAlignment(getFigure().getParent(), style);
         }
     }
 
