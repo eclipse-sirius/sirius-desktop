@@ -285,6 +285,7 @@ public class DDiagramSynchronizer {
 
     private Collection<Layer> getAllInitialyActiveLayers() {
         final Predicate<Layer> isActiveByDefault = new Predicate<Layer>() {
+            @Override
             public boolean apply(final Layer layer) {
                 return (layer instanceof AdditionalLayer) && (((AdditionalLayer) layer).isActiveByDefault() || !((AdditionalLayer) layer).isOptional());
             }
@@ -326,6 +327,7 @@ public class DDiagramSynchronizer {
      */
     private Collection<Layer> getAllMandatoriesAdditionalLayers() {
         final Predicate<Layer> isMandatory = new Predicate<Layer>() {
+            @Override
             public boolean apply(final Layer layer) {
                 return (layer instanceof AdditionalLayer) && !((AdditionalLayer) layer).isOptional();
             }
@@ -463,6 +465,7 @@ public class DDiagramSynchronizer {
         final IsMappingOfCurrentDiagramDescription isMappingOfCurrentDiagramDescription = new IsMappingOfCurrentDiagramDescription(description);
 
         Predicate<EdgeMapping> edgeMappingWithoutEdgeAsSourceOrTarget = new Predicate<EdgeMapping>() {
+            @Override
             public boolean apply(EdgeMapping input) {
                 // Valid if source mapping and target mapping are not
                 // EdgeMappings
@@ -473,6 +476,7 @@ public class DDiagramSynchronizer {
         };
 
         final Predicate<EdgeMapping> refreshedEdgeMapping = new Predicate<EdgeMapping>() {
+            @Override
             public boolean apply(EdgeMapping input) {
                 // Valid if edge mapping has been refreshed or is not in the
                 // activated layers
@@ -482,6 +486,7 @@ public class DDiagramSynchronizer {
         };
 
         Predicate<EdgeMapping> unrefreshedEdgeMappingWithRefreshedEdgeAsSourceOrTarget = new Predicate<EdgeMapping>() {
+            @Override
             public boolean apply(EdgeMapping input) {
                 // Valid if the EdgeMapping is not refresh and the source or
                 // target EdgeMapping has been refreshed
@@ -709,7 +714,14 @@ public class DDiagramSynchronizer {
         final Collection<Setting> settings = session.getSemanticCrossReferencer().getInverseReferences(node);
         for (final Setting setting : settings) {
             final EObject referencer = setting.getEObject();
-            referencer.eSet(setting.getEStructuralFeature(), newNode);
+            if (setting.getEStructuralFeature().isMany()) {
+                List values = Lists.newArrayList((List) setting.get(false));
+                values.remove(referencer);
+                values.add(newNode);
+                setting.set(values);
+            }  else {
+               setting.set(newNode);
+            }
 
             convertType(referencer);
 
