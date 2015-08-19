@@ -164,6 +164,7 @@ public final class DiagramElementEditPartOperation {
     public static NotificationListener createEApdaterDiagramElement(final IDiagramElementEditPart self) {
         return new NotificationListener() {
 
+            @Override
             public void notifyChanged(Notification msg) {
                 DiagramElementEditPartOperation.diagramElementChanged(self, msg);
             }
@@ -555,8 +556,10 @@ public final class DiagramElementEditPartOperation {
      *            the figure to update
      * @param lineStyle
      *            the {@link LineStyle} to set.
+     * @param useCustomDashStyle
+     *            true to use the custom dash style (history behavior for edges).
      */
-    public static void setLineStyle(Shape figure, final LineStyle lineStyle) {
+    public static void setLineStyle(Shape figure, LineStyle lineStyle, boolean useCustomDashStyle) {
         // Line style.
         final int lineStyleValue = lineStyle.getValue();
         switch (lineStyleValue) {
@@ -567,8 +570,12 @@ public final class DiagramElementEditPartOperation {
             figure.setLineStyle(SWT.LINE_DOT);
             break;
         case LineStyle.DASH:
-            figure.setLineDash(DASH_STYLE);
-            figure.setLineStyle(SWT.LINE_CUSTOM);
+            if (useCustomDashStyle) {
+                figure.setLineDash(DASH_STYLE);
+                figure.setLineStyle(SWT.LINE_CUSTOM);
+            } else {
+                figure.setLineStyle(SWT.LINE_DASH);
+            }
             break;
         case LineStyle.DASH_DOT:
             figure.setLineStyle(SWT.LINE_DASHDOT);

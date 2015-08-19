@@ -113,6 +113,7 @@ public final class DiagramEdgeEditPartOperation {
     public static NotificationPreCommitListener createEAdapterRoutingStyle(final IDiagramEdgeEditPart self) {
         return new NotificationPreCommitListener() {
 
+            @Override
             public Command transactionAboutToCommit(final Notification msg) {
                 return new EdgeRoutingStyleChangedCommand(self.getEditingDomain(), self, msg);
             }
@@ -322,7 +323,7 @@ public final class DiagramEdgeEditPartOperation {
             final DEdge edge = (DEdge) semanticElement;
             if (edge.getOwnedStyle() != null) {
                 final EdgeStyle style = edge.getOwnedStyle();
-                DiagramElementEditPartOperation.setLineStyle(polylineConnectionFigure, style.getLineStyle());
+                DiagramElementEditPartOperation.setLineStyle(polylineConnectionFigure, style.getLineStyle(), true);
             }
             // We don't change the line width to keep the selected effect.
             if (!DiagramEdgeEditPartOperation.isSelected(self) && !DiagramEdgeEditPartOperation.isLabelSelected(self)) {

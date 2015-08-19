@@ -157,7 +157,7 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
 
     private void doTestLineStyleUpdateAfterLayerActivation(String layerName, LineStyle expectedLineStyle) {
         ICondition done = new OperationDoneCondition();
-        editor.click(0,0);
+        editor.click(0, 0);
         editor.changeLayerActivation(layerName);
         bot.waitUntil(done);
         SWTBotUtils.waitAllUiEvents();
@@ -211,19 +211,19 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
 
         if (border instanceof LineBorder) {
             int borderStyle = ((LineBorder) border).getStyle();
-            checkLineStyle(eltId, expectedBorderLineStyle, borderStyle);
+            checkLineStyle(eltId, expectedBorderLineStyle, borderStyle, false);
         }
 
         if (figure instanceof Shape) {
             int figureLineStyle = ((Shape) figure).getLineStyle();
-            checkLineStyle(eltId, expectedBorderLineStyle, figureLineStyle);
+            checkLineStyle(eltId, expectedBorderLineStyle, figureLineStyle, part instanceof IDiagramEdgeEditPart);
         } else if (figure instanceof NodeFigure) {
             int figureLineStyle = ((NodeFigure) figure).getLineStyle();
-            checkLineStyle(eltId, expectedBorderLineStyle, figureLineStyle);
+            checkLineStyle(eltId, expectedBorderLineStyle, figureLineStyle, false);
         }
     }
 
-    private void checkLineStyle(String eltId, LineStyle expectedBorderLineStyle, int borderStyle) {
+    private void checkLineStyle(String eltId, LineStyle expectedBorderLineStyle, int borderStyle, boolean edge) {
         switch (expectedBorderLineStyle.getValue()) {
         case LineStyle.SOLID:
             assertEquals("Wrong line style for " + eltId, SWT.LINE_SOLID, borderStyle);
@@ -232,7 +232,7 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("Wrong line style for " + eltId, SWT.LINE_DOT, borderStyle);
             break;
         case LineStyle.DASH:
-            assertTrue("Wrong line style for " + eltId, borderStyle == SWT.LINE_DASH || borderStyle == SWT.LINE_CUSTOM);
+            assertEquals("Wrong line style for " + eltId, edge ? SWT.LINE_CUSTOM : SWT.LINE_DASH, borderStyle);
             break;
         case LineStyle.DASH_DOT:
             assertEquals("Wrong line style for " + eltId, SWT.LINE_DASHDOT, borderStyle);

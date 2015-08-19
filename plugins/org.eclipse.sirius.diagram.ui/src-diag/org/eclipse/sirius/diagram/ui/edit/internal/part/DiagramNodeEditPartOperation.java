@@ -188,7 +188,7 @@ public final class DiagramNodeEditPartOperation {
     private static void refreshBorderLineStyle(final BorderedStyle borderedStyle, final StyledFigure styledFigure, LineBorder lineBorder) {
         final LineStyle borderLineStyle = borderedStyle.getBorderLineStyle();
         if (styledFigure instanceof Shape) {
-            DiagramElementEditPartOperation.setLineStyle((Shape) styledFigure, borderLineStyle);
+            DiagramElementEditPartOperation.setLineStyle((Shape) styledFigure, borderLineStyle, false);
         } else if (styledFigure instanceof NodeFigure) {
             DiagramElementEditPartOperation.setLineStyle((NodeFigure) styledFigure, borderLineStyle);
         }

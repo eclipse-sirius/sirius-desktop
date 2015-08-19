@@ -262,7 +262,7 @@ public final class DiagramContainerEditPartOperation {
             Shape shape = (Shape) primaryShape;
             shape.setLineWidth(borderSize);
             shape.setOutline(borderSize > 0);
-            DiagramElementEditPartOperation.setLineStyle(shape, borderLineStyle);
+            DiagramElementEditPartOperation.setLineStyle(shape, borderLineStyle, false);
         } else if (primaryShape instanceof NodeFigure) {
             NodeFigure nodeFigure = (NodeFigure) primaryShape;
             nodeFigure.setLineWidth(borderSize);
