@@ -32,6 +32,7 @@ import org.eclipse.sirius.common.acceleo.aql.business.api.AQLConstants;
 import org.eclipse.sirius.common.acceleo.aql.business.api.ExpressionTrimmer;
 import org.eclipse.sirius.common.acceleo.aql.business.api.TypesUtil;
 import org.eclipse.sirius.common.acceleo.aql.business.internal.AQLSiriusInterpreter;
+import org.eclipse.sirius.common.acceleo.aql.ide.Messages;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
@@ -52,18 +53,12 @@ import com.google.common.collect.Sets;
  */
 public class AQLProposalProvider implements IProposalProvider {
 
-    /**
-     * {@inheritDoc}
-     * 
-     */
+    @Override
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(AQLConstants.AQL_PREFIX, AQLConstants.AQL_PREFIX, "New acceleo query language expression.", AQLConstants.AQL_PREFIX.length());
+        return new ContentProposal(AQLConstants.AQL_PREFIX, AQLConstants.AQL_PREFIX, Messages.AQL_newExpression, AQLConstants.AQL_PREFIX.length());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
         if (interpreter instanceof AQLSiriusInterpreter) {
             /*
@@ -116,10 +111,7 @@ public class AQLProposalProvider implements IProposalProvider {
         return proposals;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         if (interpreter instanceof AQLSiriusInterpreter) {
             IQueryEnvironment queryEnvironment = ((AQLSiriusInterpreter) interpreter).getQueryEnvironment();
