@@ -32,11 +32,11 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
- * Action that arranges all bordered nodes of a diagram.
+ * Action that arranges all border nodes of a diagram.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
+public class ArrangeBorderNodesAction extends AbstractDiagramAction {
 
     /**
      * Constructs a new diagram action.
@@ -44,20 +44,20 @@ public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
      * @param workbenchPage
      *            The workbench page associated with this action
      */
-    protected ArrangeBorderedNodesAction(final IWorkbenchPage workbenchPage) {
+    protected ArrangeBorderNodesAction(final IWorkbenchPage workbenchPage) {
         super(workbenchPage);
     }
 
     /**
      * This constructor is provided just in case a derived class needs to
-     * support both the construction of a diagram action with a workbenchpart.
+     * support both the construction of a diagram action with a workbench part.
      * Typically this is only when the diagram declares its own action in
-     * additional to the one registered with the action serivce.
+     * additional to the one registered with the action service.
      * 
      * @param workbenchpart
      *            The workbench part associated with this action
      */
-    protected ArrangeBorderedNodesAction(final IWorkbenchPart workbenchpart) {
+    protected ArrangeBorderNodesAction(final IWorkbenchPart workbenchpart) {
         super(workbenchpart);
     }
 
@@ -72,48 +72,25 @@ public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
     protected void initAction(final String id, final String text) {
         setId(id);
         setText(text);
-        setToolTipText("Arrange all the linked bordered nodes of the diagram.");
-
+        setToolTipText("Arrange all the linked border nodes of the diagram.");
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.ARRANGE_BORDERED_NODES_ICON));
-        // setDisabledImageDescriptor(DiagramUIActionsPluginImages.DESC_ARRANGE_ALL_DISABLED);
-        // setHoverImageDescriptor(DiagramUIActionsPluginImages.DESC_ARRANGE_ALL);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#createTargetRequest()
-     */
     @Override
     protected Request createTargetRequest() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#isSelectionListener()
-     */
     @Override
     protected boolean isSelectionListener() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#doRun(org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     protected void doRun(final IProgressMonitor progressMonitor) {
         super.doRun(progressMonitor);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#calculateEnabled()
-     */
     @Override
     protected boolean calculateEnabled() {
         // Do not call super.calculateEnabled(), it would break client that use
@@ -126,11 +103,6 @@ public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
         return getSelectedObjects().size() > 0 && super.canEditInstance();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommand()
-     */
     @Override
     protected Command getCommand() {
         Command command = UnexecutableCommand.INSTANCE;
@@ -149,39 +121,34 @@ public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
         return command;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommandLabel()
-     */
     @Override
     protected String getCommandLabel() {
-        return "Arrange Linked Bordered Nodes ";
+        return "Arrange Linked Border Nodes ";
     }
 
     /**
-     * Creates the Arrange Bordered Nodes action.
+     * Creates the Arrange Border Nodes action.
      * 
      * @param workbenchPage
      *            The workbench page associated with this action
-     * @return A new arrange bordered nodes action
+     * @return A new arrange border nodes action
      */
-    public static ArrangeBorderedNodesAction createArrangeBorderedNodesAction(final IWorkbenchPage workbenchPage) {
-        final ArrangeBorderedNodesAction action = new ArrangeBorderedNodesAction(workbenchPage);
-        action.initAction(ActionIds.ARRANGE_BORDERED_NODES, "Linked Bordered Nodes");
+    public static ArrangeBorderNodesAction createArrangeBorderNodesAction(final IWorkbenchPage workbenchPage) {
+        final ArrangeBorderNodesAction action = new ArrangeBorderNodesAction(workbenchPage);
+        action.initAction(ActionIds.ARRANGE_BORDER_NODES, "Linked Border Nodes");
         return action;
     }
 
     /**
-     * Creates the Arrange Bordered Nodes action for the toolbar menu.
+     * Creates the Arrange Border Nodes action for the toolbar menu.
      * 
      * @param workbenchPage
      *            The workbench page associated with this action
-     * @return A new arrange bordered nodes action
+     * @return A new arrange border nodes action
      */
-    public static ArrangeBorderedNodesAction createToolBarArrangeBorderedNodesAction(final IWorkbenchPage workbenchPage) {
-        final ArrangeBorderedNodesAction action = new ArrangeBorderedNodesAction(workbenchPage);
-        action.initAction(ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR, "Arrange Linked Bordered Nodes");
+    public static ArrangeBorderNodesAction createToolBarArrangeBorderNodesAction(final IWorkbenchPage workbenchPage) {
+        final ArrangeBorderNodesAction action = new ArrangeBorderNodesAction(workbenchPage);
+        action.initAction(ActionIds.ARRANGE_BORDER_NODES_TOOLBAR, "Arrange Linked Border Nodes");
         return action;
     }
 

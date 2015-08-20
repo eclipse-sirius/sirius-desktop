@@ -38,11 +38,28 @@ public interface ActionIds {
     /** Action id for unpin elements action. */
     String UNPIN_ELEMENTS = "unpinElementsAction"; //$NON-NLS-1$
 
-    /** Action id for arrange bordered nodes action. */
-    String ARRANGE_BORDERED_NODES = "arrangeBorderedNodesAction"; //$NON-NLS-1$
+    /** Action id for arrange border nodes action. */
+    String ARRANGE_BORDER_NODES = "arrangeBorderNodesAction"; //$NON-NLS-1$
 
-    /** Action id for arrange bordered nodes action. */
-    String ARRANGE_BORDERED_NODES_TOOLBAR = "arrangeBorderedNodesActionToolBar"; //$NON-NLS-1$
+    /** Action id for arrange border nodes action. */
+    String ARRANGE_BORDER_NODES_TOOLBAR = "arrangeBorderNodesActionToolBar"; //$NON-NLS-1$
+
+    /**
+     * Action id for arrange border nodes action.
+     * 
+     * @deprecated use {@link ActionIds#ARRANGE_BORDER_NODES} instead
+     */
+    @Deprecated
+    String ARRANGE_BORDERED_NODES = "arrangeBorderNodesAction";
+    // $NON-NLS-1$
+
+    /**
+     * Action id for arrange bordered nodes action.
+     * 
+     * @deprecated use {@link ActionIds#ARRANGE_BORDER_NODES_TOOLBAR} instead
+     */
+    @Deprecated
+    String ARRANGE_BORDERED_NODES_TOOLBAR = "arrangeBorderNodesActionToolBar"; //$NON-NLS-1$
 
     /** Action for copy (export) to an image action. */
     String COPY_TO_IMAGE = "newCopyToImageAction"; //$NON-NLS-1$

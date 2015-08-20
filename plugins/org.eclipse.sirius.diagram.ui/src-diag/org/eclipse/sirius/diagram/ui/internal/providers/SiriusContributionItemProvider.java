@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileActio
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderedNodesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsEclipseAction;
@@ -55,10 +55,10 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = new PinElementsEclipseAction();
         } else if (ActionIds.UNPIN_ELEMENTS.equals(actionId)) {
             result = new UnpinElementsEclipseAction();
-        } else if (ActionIds.ARRANGE_BORDERED_NODES.equals(actionId)) {
-            result = ArrangeBorderedNodesAction.createArrangeBorderedNodesAction(workbenchPage);
-        } else if (ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR.equals(actionId)) {
-            result = ArrangeBorderedNodesAction.createToolBarArrangeBorderedNodesAction(workbenchPage);
+        } else if (ActionIds.ARRANGE_BORDER_NODES.equals(actionId)) {
+            result = ArrangeBorderNodesAction.createArrangeBorderNodesAction(workbenchPage);
+        } else if (ActionIds.ARRANGE_BORDER_NODES_TOOLBAR.equals(actionId)) {
+            result = ArrangeBorderNodesAction.createToolBarArrangeBorderNodesAction(workbenchPage);
         } else if (ActionIds.COPY_TO_IMAGE.equals(actionId)) {
             result = new SaveAsImageFileAction();
         } else if (ActionIds.SELECT_HIDDEN_ELEMENTS.equals(actionId)) {

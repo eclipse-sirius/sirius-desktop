@@ -101,9 +101,6 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         // Disable refresh on opening
@@ -113,12 +110,9 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     }
 
     private void arrangeLinkedBorderedNodes() {
-        editor.clickContextMenu("Linked Bordered Nodes");
+        editor.clickContextMenu("Linked Border Nodes");
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -132,9 +126,9 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase1() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC1, REPRESENTATION_INSTANCE_NAME_UC1, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void testArrangeLinkedBorderNodesCase1() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC1, REPRESENTATION_INSTANCE_NAME_UC1, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
         editor.clickContextMenu("Arrange All");
         // Validate the positions of the bordered nodes.
         // We don't check the edges crossing because the label on the border
@@ -149,11 +143,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase2() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC2, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void testArrangeLinkedBorderNodesCase2() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC2, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
         editor.clickContextMenu("Arrange All");
-        // Validate the positions of the bordered nodes.
+        // Validate the positions of the border nodes.
         validatePositions(false);
     }
 
@@ -163,11 +157,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase3() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC3, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void testArrangeLinkedBorderNodesCase3() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC3, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
         editor.clickContextMenu("Arrange All");
-        // Validate the positions of the bordered nodes.
+        // Validate the positions of the border nodes.
         validatePositions(true);
     }
 
@@ -186,11 +180,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void failedTestArrangeLinkedBorderedNodesCase4() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC4, REPRESENTATION_INSTANCE_NAME_UC4, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void failedTestArrangeLinkedBorderNodesCase4() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC4, REPRESENTATION_INSTANCE_NAME_UC4, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
         editor.clickContextMenu("Arrange All");
-        // Validate the positions of the bordered nodes.
+        // Validate the positions of the border nodes.
         validatePositions(true);
     }
 
@@ -200,9 +194,64 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase5_1() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_1, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void testArrangeLinkedBorderNodesCase5_1() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_1, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionsOfUseCase5();
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase5_2() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_2, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionsOfUseCase5();
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase5_3() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_3, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionsOfUseCase5();
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase5_4() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_4, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionsOfUseCase5();
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase5_5() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_5, DDiagram.class);
         arrangeLinkedBorderedNodes();
         // Validate the positions of the bordered nodes.
         validatePositionsOfUseCase5();
@@ -214,11 +263,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase5_2() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_2, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void testArrangeLinkedBorderNodesCase5_6() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_6, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
-        // Validate the positions of the bordered nodes.
+        // Validate the positions of the border nodes.
         validatePositionsOfUseCase5();
     }
 
@@ -228,11 +277,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase5_3() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_3, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void testArrangeLinkedBorderNodesCase5_7() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_7, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
-        // Validate the positions of the bordered nodes.
+        // Validate the positions of the border nodes.
         validatePositionsOfUseCase5();
     }
 
@@ -242,11 +291,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase5_4() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_4, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void testArrangeLinkedBorderNodesCase5_8() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_8, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
-        // Validate the positions of the bordered nodes.
+        // Validate the positions of the border nodes.
         validatePositionsOfUseCase5();
     }
 
@@ -256,66 +305,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase5_5() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_5, DDiagram.class);
+    public void testArrangeLinkedBorderNodesCase6() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
-        // Validate the positions of the bordered nodes.
-        validatePositionsOfUseCase5();
-    }
-
-    /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
-     */
-    public void testArrangeLinkedBorderedNodesCase5_6() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_6, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the bordered nodes.
-        validatePositionsOfUseCase5();
-    }
-
-    /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
-     */
-    public void testArrangeLinkedBorderedNodesCase5_7() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_7, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the bordered nodes.
-        validatePositionsOfUseCase5();
-    }
-
-    /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
-     */
-    public void testArrangeLinkedBorderedNodesCase5_8() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_8, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the bordered nodes.
-        validatePositionsOfUseCase5();
-    }
-
-    /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
-     */
-    public void testArrangeLinkedBorderedNodesCase6() throws Exception {
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class);
-        // activate the "Arrange Linked Bordered Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the bordered nodes.
+        // Validate the positions of the border nodes.
         validatePositions(true);
     }
 
@@ -515,7 +509,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         // boolean validatePositionOfPortOnContainer =
         // validatePositionOfPortOnContainer(containerEP, portEP, position);
         //
-        // assertTrue("The port "+portName+" is not in the expected position relatively to the container "+containerName,
+        // assertTrue("The port "+portName+" is not in the expected position
+        // relatively to the container "+containerName,
         // validatePositionOfPortOnContainer);
     }
 
@@ -617,7 +612,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         ArrayList<AbstractDiagramEdgeEditPart> linkedPorts = new ArrayList<AbstractDiagramEdgeEditPart>();
         Iterator<?> targetIterator = portEP.getTargetConnections().iterator();
         while (targetIterator.hasNext()) {
-            Object object = (Object) targetIterator.next();
+            Object object = targetIterator.next();
             if (object instanceof AbstractDiagramEdgeEditPart) {
                 AbstractDiagramEdgeEditPart edgeEP = (AbstractDiagramEdgeEditPart) object;
                 linkedPorts.add(edgeEP);
@@ -626,7 +621,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
 
         Iterator<?> sourceIterator = portEP.getSourceConnections().iterator();
         while (sourceIterator.hasNext()) {
-            Object object = (Object) sourceIterator.next();
+            Object object = sourceIterator.next();
             if (object instanceof AbstractDiagramEdgeEditPart) {
                 AbstractDiagramEdgeEditPart edgeEP = (AbstractDiagramEdgeEditPart) object;
                 linkedPorts.add(edgeEP);
@@ -662,7 +657,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     private AbstractDiagramBorderNodeEditPart findPortInContainer(AbstractBorderedShapeEditPart containerEP, String portName) {
         Iterator<?> iterator = containerEP.getChildren().iterator();
         while (iterator.hasNext()) {
-            Object object = (Object) iterator.next();
+            Object object = iterator.next();
             if (object instanceof AbstractDiagramBorderNodeEditPart) {
                 AbstractDiagramBorderNodeEditPart portEP = (AbstractDiagramBorderNodeEditPart) object;
                 Object portModel = portEP.getModel();
@@ -673,7 +668,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
                         DDiagramElement portDDiagramElement = (DDiagramElement) portElement;
                         Iterator<EObject> semanticElementsIterator = portDDiagramElement.getSemanticElements().iterator();
                         while (semanticElementsIterator.hasNext()) {
-                            EObject eObject = (EObject) semanticElementsIterator.next();
+                            EObject eObject = semanticElementsIterator.next();
                             if (eObject instanceof ENamedElement) {
                                 ENamedElement ref = (ENamedElement) eObject;
                                 if (ref.getName().equals(portName)) {

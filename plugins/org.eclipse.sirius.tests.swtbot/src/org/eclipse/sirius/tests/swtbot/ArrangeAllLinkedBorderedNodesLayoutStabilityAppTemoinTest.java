@@ -53,8 +53,6 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
 
     private static final String REPRESENTATION_NAME_ENTITIES2 = "Entities2";
 
-    private static final String VIEWPOINT_NAME = "Test case for ticket #1957";
-
     private static final String MODEL = "APP_TEMOIN.ecore";
 
     private static final String SESSION_FILE = "APP_TEMOIN.aird";
@@ -76,23 +74,17 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
      */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES2, REPRESENTATION_INSTANCE_NAME_ENTITIES2, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES2, REPRESENTATION_INSTANCE_NAME_ENTITIES2, DDiagram.class);
         bot.viewById("org.eclipse.ui.views.ContentOutline").close();
         SWTBotUtils.waitAllUiEvents();
     }
@@ -110,8 +102,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase1() throws Exception {
-        // activate the "Arrange Linked Bordered Nodes" action
+    public void testArrangeLinkedBorderNodesCase1() throws Exception {
+        // activate the "Arrange Linked Border Nodes" action
         editor.clickContextMenu("Arrange All");
 
         validatePositions();
@@ -123,9 +115,9 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase1Zoom200() throws Exception {
+    public void testArrangeLinkedBorderNodesCase1Zoom200() throws Exception {
         editor.zoom(ZoomLevel.ZOOM_200);
-        // activate the "Arrange Linked Bordered Nodes" action
+        // activate the "Arrange Linked Border Nodes" action
         editor.clickContextMenu("Arrange All");
         validatePositions();
         editor.zoom(ZoomLevel.ZOOM_100);
@@ -137,9 +129,9 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase1Zoom50() throws Exception {
+    public void testArrangeLinkedBorderNodesCase1Zoom50() throws Exception {
         editor.zoom(ZoomLevel.ZOOM_50);
-        // activate the "Arrange Linked Bordered Nodes" action
+        // activate the "Arrange Linked Border Nodes" action
         editor.clickContextMenu("Arrange All");
         validatePositions();
         editor.zoom(ZoomLevel.ZOOM_100);
@@ -152,15 +144,15 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase1Pinned() throws Exception {
+    public void testArrangeLinkedBorderNodesCase1Pinned() throws Exception {
         // Select another diagram
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES2, REPRESENTATION_INSTANCE_NAME_ENTITIES_PINNED, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES2, REPRESENTATION_INSTANCE_NAME_ENTITIES_PINNED, DDiagram.class);
         // validate position before Arrange
         validatePositions(false);
         editor.clickContextMenu("Arrange All");
         // validate position after Arrange
         validatePositions(false);
-        // activate the "Arrange Linked Bordered Nodes" action
+        // activate the "Arrange Linked Border Nodes" action
         // editor.clickContextMenu("Arrange All");
     }
 
@@ -170,11 +162,11 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
      * @throws Exception
      *             Test error.
      */
-    public void testArrangeLinkedBorderedNodesCase2() throws Exception {
+    public void testArrangeLinkedBorderNodesCase2() throws Exception {
         // Select another diagram
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES, REPRESENTATION_INSTANCE_NAME_ENTITIES, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES, REPRESENTATION_INSTANCE_NAME_ENTITIES, DDiagram.class);
 
-        // activate the "Arrange Linked Bordered Nodes" action
+        // activate the "Arrange Linked Border Nodes" action
         editor.clickContextMenu("Arrange All");
 
         validatePositions();
@@ -342,7 +334,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
         // boolean validatePositionOfPortOnContainer =
         // validatePositionOfPortOnContainer(containerEP, portEP, position);
         //
-        // assertTrue("The port "+portName+" is not in the expected position relatively to the container "+containerName,
+        // assertTrue("The port "+portName+" is not in the expected position
+        // relatively to the container "+containerName,
         // validatePositionOfPortOnContainer);
     }
 
@@ -445,7 +438,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
         ArrayList<AbstractDiagramEdgeEditPart> linkedPorts = new ArrayList<AbstractDiagramEdgeEditPart>();
         Iterator<?> targetIterator = portEP.getTargetConnections().iterator();
         while (targetIterator.hasNext()) {
-            Object object = (Object) targetIterator.next();
+            Object object = targetIterator.next();
             if (object instanceof AbstractDiagramEdgeEditPart) {
                 AbstractDiagramEdgeEditPart edgeEP = (AbstractDiagramEdgeEditPart) object;
                 linkedPorts.add(edgeEP);
@@ -454,7 +447,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
 
         Iterator<?> sourceIterator = portEP.getSourceConnections().iterator();
         while (sourceIterator.hasNext()) {
-            Object object = (Object) sourceIterator.next();
+            Object object = sourceIterator.next();
             if (object instanceof AbstractDiagramEdgeEditPart) {
                 AbstractDiagramEdgeEditPart edgeEP = (AbstractDiagramEdgeEditPart) object;
                 linkedPorts.add(edgeEP);
@@ -490,7 +483,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
     private AbstractDiagramBorderNodeEditPart findPortInContainer(AbstractBorderedShapeEditPart containerEP, String portName) {
         Iterator<?> iterator = containerEP.getChildren().iterator();
         while (iterator.hasNext()) {
-            Object object = (Object) iterator.next();
+            Object object = iterator.next();
             if (object instanceof AbstractDiagramBorderNodeEditPart) {
                 AbstractDiagramBorderNodeEditPart portEP = (AbstractDiagramBorderNodeEditPart) object;
                 Object portModel = portEP.getModel();
@@ -501,7 +494,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
                         DDiagramElement portDDiagramElement = (DDiagramElement) portElement;
                         Iterator<EObject> semanticElementsIterator = portDDiagramElement.getSemanticElements().iterator();
                         while (semanticElementsIterator.hasNext()) {
-                            EObject eObject = (EObject) semanticElementsIterator.next();
+                            EObject eObject = semanticElementsIterator.next();
                             if (eObject instanceof ENamedElement) {
                                 ENamedElement ref = (ENamedElement) eObject;
                                 if (ref.getName().equals(portName)) {

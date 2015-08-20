@@ -30,7 +30,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderedNodesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeAllOnlyLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 import org.eclipse.ui.ISelectionListener;
@@ -174,15 +174,15 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
                 setDefaultAction(toolbarArrangeSelectionAction.getId());
             }
         } else {
-            if (!isArrangeAllAndBorderedNodes()) {
+            if (!isArrangeAllAndBorderNodes()) {
                 // change to Arrange All / Arrange Bordered Nodes
                 removeArrangeActions();
 
                 ArrangeAction toolbarArrangeAllAction = ArrangeAction.createToolbarArrangeAllAction(page);
                 add(toolbarArrangeAllAction);
 
-                ArrangeBorderedNodesAction toolBarArrangeBorderedNodesAction = ArrangeBorderedNodesAction.createToolBarArrangeBorderedNodesAction(page);
-                add(toolBarArrangeBorderedNodesAction);
+                ArrangeBorderNodesAction toolBarArrangeBorderNodesAction = ArrangeBorderNodesAction.createToolBarArrangeBorderNodesAction(page);
+                add(toolBarArrangeBorderNodesAction);
 
                 setDefaultAction(toolbarArrangeAllAction.getId());
             }
@@ -214,12 +214,12 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
 
     /**
      * Remove all "Arrange" actions: - Arrange Selection - Arrange All - Arrange
-     * Linked Bordered Nodes
+     * Linked Border Nodes
      */
     private void removeArrangeActions() {
         remove(ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION);
         remove(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL);
-        remove(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR);
+        remove(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR);
     }
 
     /**
@@ -238,8 +238,8 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
      * @return true id there are only two arrange actions when the diagram is
      *         selected
      */
-    private boolean isArrangeAllAndBorderedNodes() {
-        return find(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL) != null && find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR) != null;
+    private boolean isArrangeAllAndBorderNodes() {
+        return find(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL) != null && find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR) != null;
     }
 
     /**

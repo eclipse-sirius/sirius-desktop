@@ -17,7 +17,7 @@ import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 /**
- * Test class to validate "Arrange Linked Bordered Nodes" does not throw NPE
+ * Test class to validate "Arrange Linked Border Nodes" does not throw NPE
  * anymore. Validate ticket #2232
  * 
  * @author smonnier
@@ -25,8 +25,8 @@ import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 public class SequenceArrangeLinkedBorderedNodesTest extends AbstractDefaultModelSequenceTests {
 
     /**
-     * Test method to validate "Arrange Linked Bordered Nodes" does not throw
-     * NPE anymore. Validate ticket #2232
+     * Test method to validate "Arrange Linked Border Nodes" does not throw NPE
+     * anymore. Validate ticket #2232
      * 
      * @throws Exception
      *             Test error.
@@ -54,14 +54,14 @@ public class SequenceArrangeLinkedBorderedNodesTest extends AbstractDefaultModel
             // Creation of an async call
             createMessage(InteractionsConstants.SYNC_CALL_TOOL_ID, lifelineBPosition, 230, lifelineCPosition, 230);
 
-            editor.clickContextMenu("Linked Bordered Nodes");
+            editor.clickContextMenu("Linked Border Nodes");
             final long oldTimeout = SWTBotPreferences.TIMEOUT;
             try {
                 // Depending on the configuration, a pop up appear when
                 // "Arrange Linked Bordered Nodes" fail
                 SWTBotPreferences.TIMEOUT = 1000;
-                bot.waitUntil(Conditions.shellIsActive("Linked Bordered Nodes"));
-                fail(TimeoutException.class + " expected for shell \"Linked Bordered Nodes\"");
+                bot.waitUntil(Conditions.shellIsActive("Linked Border Nodes"));
+                fail(TimeoutException.class + " expected for shell \"Linked Border Nodes\"");
             } catch (final TimeoutException e) {
                 // Expected, the shell must not be found
             } finally {

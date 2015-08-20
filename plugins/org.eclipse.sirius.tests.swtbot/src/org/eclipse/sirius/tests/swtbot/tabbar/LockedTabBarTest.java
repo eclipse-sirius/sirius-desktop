@@ -77,7 +77,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String ARRANGE_SELECTION = "Arrange Selection";
 
-    private static final String ARRANGE_LINKED_BORDERED_NODES = "Arrange Linked Bordered Nodes";
+    private static final String ARRANGE_LINKED_BORDER_NODES = "Arrange Linked Border Nodes";
 
     private static final String PIN_SELECTION = "Pin selected elements";
 
@@ -226,7 +226,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
         // "Arrange All" drop down button
         SWTBotToolbarDropDownButton arrangeAllMenu = bot.toolbarDropDownButtonWithTooltip(ARRANGE_ALL);
-        for (SWTBotMenu item : arrangeAllMenu.menuItems(new AllItemsExcept(ARRANGE_LINKED_BORDERED_NODES))) {
+        for (SWTBotMenu item : arrangeAllMenu.menuItems(new AllItemsExcept(ARRANGE_LINKED_BORDER_NODES))) {
             assertEnabled(item, enabled);
         }
         arrangeAllMenu.pressShortcut(Keystrokes.ESC);

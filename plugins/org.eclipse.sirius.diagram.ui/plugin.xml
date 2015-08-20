@@ -131,9 +131,9 @@
            <partMenuGroup menubarPath="/edit/" id="copyLayoutGroup" separator="true" />
            <partAction menubarPath="/edit/copyLayoutGroup" id="copyLayoutAction" />
            <partAction menubarPath="/edit/copyLayoutGroup" id="pasteLayoutAction" />
-           <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesAction"/>
+           <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
            <!--partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/-->
-           <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesActionToolBar"/>
+           <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderNodesActionToolBar"/>
            <!-- Add the DeselectAll action after selectAll action-->
            <partAction menubarPath="/edit/selectAll" id="deselectAll"/>
            <!-- Add distribute action in new group -->
@@ -156,7 +156,7 @@
             <popupMenuGroup path="/formatMenu/" id="pinGroup" />
             <popupAction path="/formatMenu/pinGroup" id="pinElementsAction" />
             <popupAction path="/formatMenu/pinGroup" id="unpinElementsAction" />
-            <popupAction path="/formatMenu/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesAction"/>
+            <popupAction path="/formatMenu/arrangeMenu/arrangeGroup" id="arrangeBorderNodesAction"/>
             <!-- Add distribute action in new distribute group -->
             <popupMenu path="/formatMenu/alignMenu" id="distributeMenu"/>
             <popupMenuGroup path="/formatMenu/distributeMenu/" id="distributeHorizontalGroup"/>
@@ -467,7 +467,7 @@
               objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
         </popupStructuredContributionCriteria>
         <popupAction
-              id="arrangeBorderedNodesAction">
+              id="arrangeBorderNodesAction">
         </popupAction>
      </popupContribution>
   </contributionItemProvider>
@@ -1394,8 +1394,8 @@
             style="push">
       </command>
       <command
-            commandId="org.eclipse.sirius.diagram.ui.arrangeLinkedBorderedNodes"
-            label="Arrange Linked Bordered Nodes"
+            commandId="org.eclipse.sirius.diagram.ui.arrangeLinkedBorderNodes"
+            label="Arrange Linked Border Nodes"
             style="push">
       </command>
    </menuContribution>-->   

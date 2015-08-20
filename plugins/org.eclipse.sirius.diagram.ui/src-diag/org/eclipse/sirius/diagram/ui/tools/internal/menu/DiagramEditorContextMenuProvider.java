@@ -103,6 +103,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
         try {
             TransactionUtil.getEditingDomain((EObject) getViewer().getContents().getModel()).runExclusive(new Runnable() {
 
+                @Override
                 public void run() {
                     ContributionItemService.getInstance().contributeToPopupMenu(DiagramEditorContextMenuProvider.this, part);
                     menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
@@ -126,10 +127,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                         manager.remove(GlobalActionId.PASTE);
                     }
 
-                    // Add the arrangeBorderedNodesActionToolBar just after the
+                    // Add the arrangeBorderNodesActionToolBar just after the
                     // toolbarArrangeAllAction (Arrange All action of GMF)
                     // This is needed just in case of diagram selection.
-                    final IContributionItem item1 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES);
+                    final IContributionItem item1 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES);
                     if (item1 != null) {
                         menu.remove(item1);
                         final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
