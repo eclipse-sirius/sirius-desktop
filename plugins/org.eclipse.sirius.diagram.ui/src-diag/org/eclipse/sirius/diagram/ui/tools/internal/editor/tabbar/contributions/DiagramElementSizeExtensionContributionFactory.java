@@ -11,8 +11,8 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AutoSizeAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.internal.SizeBothAction;
 import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;

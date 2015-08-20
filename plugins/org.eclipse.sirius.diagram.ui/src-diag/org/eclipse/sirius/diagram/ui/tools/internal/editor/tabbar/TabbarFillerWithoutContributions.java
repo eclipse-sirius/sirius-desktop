@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 import org.eclipse.gef.ui.actions.ZoomComboContributionItem;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AutoSizeAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.CopyAppearancePropertiesAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.internal.SizeBothAction;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.jface.action.Separator;
@@ -25,6 +24,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionIt
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectPinnedElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
@@ -64,6 +64,7 @@ public class TabbarFillerWithoutContributions extends AbstractTabbarFiller {
      * 
      * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractTabbarFiller#doFill()
      */
+    @Override
     protected void doFill() {
         createSelectArrangeAlignActions();
 

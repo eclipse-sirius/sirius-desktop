@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderNodesAction;
@@ -39,6 +40,7 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
     /**
      * @was-generated NOT
      */
+    @Override
     protected IAction createAction(final String actionId, final IWorkbenchPartDescriptor partDescriptor) {
         IAction result;
         final IWorkbenchPage workbenchPage = partDescriptor.getPartPage();
@@ -75,6 +77,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = DistributeAction.createDistributeVerticallyWithUniformGapsAction(workbenchPage, false);
         } else if (ActionIds.DISTRIBUTE_CENTERS_VERTICALLY.equals(actionId)) {
             result = DistributeAction.createDistributeCentersVerticallyAction(workbenchPage, false);
+        } else if (org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds.ACTION_MAKE_SAME_SIZE_BOTH.equals(actionId)) {
+            result = new SizeBothAction(workbenchPage);
         } else {
             result = super.createAction(actionId, partDescriptor);
         }

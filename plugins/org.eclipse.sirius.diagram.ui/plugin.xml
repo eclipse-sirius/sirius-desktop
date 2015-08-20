@@ -113,16 +113,6 @@
      <contributionItemProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider" checkPluginLoaded="false">
         <Priority name="Low">
         </Priority>
-        <partContribution id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
-           <partAction menubarPath="/diagramMenu/sizeGroup" toolbarPath="/toolbarFormatGroup" id="makeSameSizeBothAction">
-           </partAction>
-        </partContribution>
-        <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
-           <popupAction
-                 id="makeSameSizeBothAction"
-                 path="/formatMenu/sizeGroup">
-           </popupAction>
-        </popupContribution>
      </contributionItemProvider>
       <?gmfgen generated="true"?>
       <contributionItemProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusContributionItemProvider">
@@ -144,6 +134,11 @@
            <partAction menubarPath="/diagramMenu/distributeMenu/distributeHorizontalGroup" id="distributeCentersHorizontally"/>
            <partAction menubarPath="/diagramMenu/distributeMenu/distributeVerticalGroup" id="distributeGapsVertically"/>
            <partAction menubarPath="/diagramMenu/distributeMenu/distributeVerticalGroup" id="distributeCentersVertically"/>
+           <partAction
+                 id="makeSameSizeBothAction"
+                 menubarPath="/diagramMenu/sizeGroup"
+                 toolbarPath="/toolbarFormatGroup">
+           </partAction>
          </partContribution>
 
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
@@ -165,6 +160,10 @@
             <popupAction path="/formatMenu/distributeMenu/distributeHorizontalGroup" id="distributeCentersHorizontally"/>
             <popupAction path="/formatMenu/distributeMenu/distributeVerticalGroup" id="distributeGapsVertically"/>
             <popupAction path="/formatMenu/distributeMenu/distributeVerticalGroup" id="distributeCentersVertically"/>
+            <popupAction
+                  id="makeSameSizeBothAction"
+                  path="/formatMenu/sizeGroup">
+            </popupAction>
          </popupContribution>
          <popupContribution
                class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
