@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="simpleCase">
+    <eSubpackages name="package1">
+      <eClassifiers xsi:type="ecore:EClass" name="eClass2">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//simpleCase/package4/package2/eClass4"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="package4">
+      <eSubpackages name="package2">
+        <eClassifiers xsi:type="ecore:EClass" name="eClass4"/>
+        <eClassifiers xsi:type="ecore:EClass" name="eClass1"/>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="complexeCase">
+    <eSubpackages name="Package1">
+      <eClassifiers xsi:type="ecore:EClass" name="eClass2">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//complexeCase/Package4/Package2/eClass4"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="eClass3"/>
+      <eClassifiers xsi:type="ecore:EClass" name="eClass4">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//complexeCase/Package4/Package2/eClass1"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="Package4">
+      <eSubpackages name="Package2">
+        <eClassifiers xsi:type="ecore:EClass" name="eClass4"/>
+        <eClassifiers xsi:type="ecore:EClass" name="eClass1"/>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

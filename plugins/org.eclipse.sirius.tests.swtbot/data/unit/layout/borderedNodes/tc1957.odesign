@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/diagram/description/validation/1.1.0" name="Ticket #1957" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="Ticket #1957" version="10.1.0.201507271600">
   <ownedViewpoints name="Test case for ticket #1957" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC1957" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -18,7 +18,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957']/@defaultLayer/@nodeMappings[name='NodePackage']/@borderedNodeMappings[name='BorderClass']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957']/@defaultLayer/@nodeMappings[name='NodePackage']/@borderedNodeMappings[name='BorderClass']" targetFinderExpression="&lt;%eReferenceType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style routingStyle="manhattan">
+          <style sizeComputationExpression="[eContents()->size()/]" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -66,7 +66,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_withoutLabel']/@defaultLayer/@nodeMappings[name='NodePackage']/@borderedNodeMappings[name='BorderClass']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_withoutLabel']/@defaultLayer/@nodeMappings[name='NodePackage']/@borderedNodeMappings[name='BorderClass']" targetFinderExpression="&lt;%eReferenceType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style>
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -105,7 +105,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC1957_Container" domainClass="EPackage">
       <defaultLayer name="Default">
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_Container']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_Container']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetFinderExpression="&lt;%eReferenceType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style>
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -120,7 +120,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -189,14 +189,14 @@
       </validationSet>
       <defaultLayer name="Default">
         <edgeMappings name="EC_EReference" labelDirectEdit="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='EReference%20Name']" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[!eOpposite]%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='EC_ReferenceOut2']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='EC_ReferenceIn2']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="1">
+          <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%name%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;%containment%>">
-            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%name%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -204,7 +204,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%derived%>">
-            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="/&lt;%name%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -213,14 +213,14 @@
           </conditionnalStyles>
         </edgeMappings>
         <edgeMappings name="EC ESupertypes" deletionDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="manhattan">
+          <style targetArrow="InputClosedArrow" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;%$target.filter(&quot;EClass&quot;)[interface]%>">
-            <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="manhattan">
+            <style lineStyle="dash" targetArrow="InputClosedArrow" routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <centerLabelStyleDescription showIcon="false">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -243,15 +243,16 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%abstract%>">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -266,7 +267,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -274,7 +275,7 @@
           </style>
         </containerMappings>
         <containerMappings name="EC EDataType" labelDirectEdit="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EDataType&quot;)[eClass.name == &quot;EDataType&quot;]%>" domainClass="EDataType" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -444,7 +445,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -452,7 +453,7 @@
           </style>
         </containerMappings>
         <containerMappings name="Dropped Package" detailDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" semanticCandidatesExpression="feature:eAllContents" createElements="false" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
-          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
@@ -541,14 +542,14 @@
           </style>
         </nodeMappings>
         <edgeMappings name="EC_EReference" labelDirectEdit="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities2']/@defaultLayer/@toolSections.0/@ownedTools[name='EReference%20Name']" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[!eOpposite]%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities2']/@defaultLayer/@nodeMappings[name='EC2_EClass']/@borderedNodeMappings[name='EC2_ReferenceOut2']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities2']/@defaultLayer/@nodeMappings[name='EC2_EClass']/@borderedNodeMappings[name='EC2_ReferenceIn2']" targetFinderExpression="var:self" sourceFinderExpression="&lt;%self.eContainer.getReferencesForName(self.getName())%>" domainClass="EReference" useDomainElement="true">
-          <style sizeComputationExpression="1">
+          <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%name%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;%containment%>">
-            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%name%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -556,7 +557,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%derived%>">
-            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="/&lt;%name%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -572,7 +573,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -580,7 +581,7 @@
           </style>
         </containerMappings>
         <containerMappings name="EC EDataType" labelDirectEdit="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities2']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EDataType&quot;)[eClass.name == &quot;EDataType&quot;]%>" domainClass="EDataType" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -629,7 +630,7 @@
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EEnum" referenceName="eClassifiers"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="External EClass from treeview" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="External EClass from treeview" forceRefresh="true" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -706,7 +707,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -714,7 +715,7 @@
           </style>
         </containerMappings>
         <containerMappings name="Dropped Package" detailDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities2']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" semanticCandidatesExpression="feature:eAllContents" createElements="false" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities2']/@defaultLayer/@nodeMappings[name='EC2_EClass']">
-          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
@@ -753,7 +754,7 @@
       <layout xsi:type="description_1:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Default">
         <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_Container_LeftRight']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='TC1957_Container_LeftRight']/@defaultLayer/@containerMappings[name='ContainerPackage']/@borderedNodeMappings[name='BorderClass2']" targetFinderExpression="&lt;%eReferenceType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
-          <style>
+          <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -768,7 +769,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -800,6 +801,78 @@
         <toolSections name="Action">
           <ownedTools xsi:type="tool_1:PopupMenu" name="Test arrange">
             <menuItemDescription xsi:type="tool_1:ExternalJavaAction" name="Arrange Port" forceRefresh="true" id="ArrangePortAction"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="testReconnect" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="reference" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@containerMappings[name='ePackage']/@borderedNodeMappings[name='eClass']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@containerMappings[name='ePackage']/@borderedNodeMappings[name='eClass']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@toolSections.0/@ownedTools[name='reconnectTarget']">
+          <style sizeComputationExpression="2" endsCentering="Target">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ePackage" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@containerMappings[name='ePackage']">
+          <borderedNodeMappings name="eClass" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createEPackage" containerMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@containerMappings[name='ePackage']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Package"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="eClass" nodeMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@containerMappings[name='ePackage']/@borderedNodeMappings[name='eClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="eClass"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="createRef" edgeMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@edgeMappings[name='reference']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ref"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="reconnectTarget">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,12 +23,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
+import org.eclipse.gmf.runtime.notation.Bendpoints;
+import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -56,6 +60,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
 
     private static final String REPRESENTATION_NAME_UC4 = "TC1957_Container_LeftRight";
 
+    private static final String REPRESENTATION_NAME_UC5 = "testReconnect";
+
     private static final String REPRESENTATION_INSTANCE_NAME_UC1 = "UseCase1";
 
     private static final String REPRESENTATION_INSTANCE_NAME_UC2 = "UseCase2";
@@ -82,7 +88,17 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
 
     private static final String REPRESENTATION_INSTANCE_NAME_UC6 = "UseCase6";
 
+    private static final String REPRESENTATION_INSTANCE_NAME_UC7 = "new testReconnect";
+
+    private static final String REPRESENTATION_INSTANCE_NAME_UC8 = "simpleCase";
+
+    private static final String REPRESENTATION_INSTANCE_NAME_UC9 = "simpleCase2";
+
+    private static final String REPRESENTATION_INSTANCE_NAME_UC10 = "complexeCase";
+
     private static final String MODEL = "tc1957.ecore";
+
+    private static final String MODEL2 = "testReconnect.ecore";
 
     private static final String SESSION_FILE = "tc1957.aird";
 
@@ -106,7 +122,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         // Disable refresh on opening
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
 
-        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, MODEL2, SESSION_FILE, VSM_FILE);
     }
 
     private void arrangeLinkedBorderedNodes() {
@@ -116,7 +132,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
-        localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+        localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
     }
 
     /**
@@ -314,6 +330,142 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     }
 
     /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase7() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionOfPortOnContainer("package2", "eClass4");
+        validatePositionOfPortOnContainer("package1", "eClass2");
+        validatePositionOfPortOnContainer("Package1", "eClass2");
+        validatePositionOfPortOnContainer("Package1", "eClass4");
+        validatePositionOfPortOnContainer("Package2", "eClass4");
+        validatePositionOfPortOnContainer("Package2", "eClass1");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase7WithZoom() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class);
+        editor.zoom(ZoomLevel.ZOOM_200);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionOfPortOnContainer("package2", "eClass4");
+        validatePositionOfPortOnContainer("package1", "eClass2");
+        validatePositionOfPortOnContainer("Package1", "eClass2");
+        validatePositionOfPortOnContainer("Package1", "eClass4");
+        validatePositionOfPortOnContainer("Package2", "eClass4");
+        validatePositionOfPortOnContainer("Package2", "eClass1");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase8() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionOfPortOnContainer("package1", "eClass2");
+        validatePositionOfPortOnContainer("package2", "eClass4");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase8WithZoom() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class);
+        editor.zoom(ZoomLevel.ZOOM_200);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionOfPortOnContainer("package1", "eClass2");
+        validatePositionOfPortOnContainer("package2", "eClass4");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase9() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionOfPortOnContainer("package1", "eClass2");
+        validatePositionOfPortOnContainer("package2", "eClass4");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase9WithZoom() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class);
+        editor.zoom(ZoomLevel.ZOOM_200);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionOfPortOnContainer("package1", "eClass2");
+        validatePositionOfPortOnContainer("package2", "eClass4");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase10() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionOfPortOnContainer("Package1", "eClass2");
+        validatePositionOfPortOnContainer("Package1", "eClass4");
+        validatePositionOfPortOnContainer("Package2", "eClass1");
+        validatePositionOfPortOnContainer("Package2", "eClass4");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testArrangeLinkedBorderNodesCase10WithZoom() throws Exception {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class);
+        editor.zoom(ZoomLevel.ZOOM_200);
+        // activate the "Arrange Linked Border Nodes" action
+        arrangeLinkedBorderedNodes();
+        // Validate the positions of the border nodes.
+        validatePositionOfPortOnContainer("Package1", "eClass2");
+        validatePositionOfPortOnContainer("Package1", "eClass4");
+        validatePositionOfPortOnContainer("Package2", "eClass1");
+        validatePositionOfPortOnContainer("Package2", "eClass4");
+    }
+
+    /**
      * Validate the positions of all bordered nodes.
      * 
      * @param isDiagramWithRecursivePackage
@@ -505,6 +657,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
 
         boolean edgeFromPortCrossParentContainer = validateEdgeFromPortCrossParentContainer(containerEP, portEP);
         assertFalse("The port " + portName + " has an edge that cross the parent container " + containerName, edgeFromPortCrossParentContainer);
+        boolean validateEdgeFromPortHaveBendpointsReset = validateEdgeFromPortHaveBendpointsReset(containerEP, portEP);
+        assertTrue("The port " + portName + " has an edge that don't have its bendpoints reset " + containerName, validateEdgeFromPortHaveBendpointsReset);
 
         // boolean validatePositionOfPortOnContainer =
         // validatePositionOfPortOnContainer(containerEP, portEP, position);
@@ -549,9 +703,10 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
     }
 
     private boolean validateEdgeFromPortCrossParentContainer(final AbstractBorderedShapeEditPart containerEP, final AbstractDiagramBorderNodeEditPart portEP) {
-        Rectangle containerBounds = containerEP.getFigure().getBounds();
+        Rectangle containerBounds = containerEP.getFigure().getBounds().getCopy();
+        containerEP.getFigure().translateToAbsolute(containerBounds);
         List<AbstractDiagramEdgeEditPart> edgesEP = listEdgesConnectedToPort(portEP);
-        if (!edgesEP.isEmpty()) {
+        if (edgesEP.size() == 1) {
             for (AbstractDiagramEdgeEditPart edgeEP : edgesEP) {
                 int north = findNorth(edgeEP);
                 int south = findSouth(edgeEP);
@@ -562,6 +717,19 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
             }
         }
         return false;
+    }
+
+    private boolean validateEdgeFromPortHaveBendpointsReset(final AbstractBorderedShapeEditPart containerEP, final AbstractDiagramBorderNodeEditPart portEP) {
+        List<AbstractDiagramEdgeEditPart> edgesEP = listEdgesConnectedToPort(portEP);
+        if (!edgesEP.isEmpty()) {
+            for (AbstractDiagramEdgeEditPart edgeEP : edgesEP) {
+                Bendpoints bendpoints = ((Edge) edgeEP.getNotationView()).getBendpoints();
+                if (bendpoints instanceof RelativeBendpoints && ((RelativeBendpoints) bendpoints).getPoints().size() != 2) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private int findNorth(final AbstractDiagramEdgeEditPart edgeEP) {

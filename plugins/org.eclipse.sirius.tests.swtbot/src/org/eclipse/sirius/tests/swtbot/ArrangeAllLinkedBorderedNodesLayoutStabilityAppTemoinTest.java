@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -330,6 +330,8 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
 
         boolean validateEdgeFromPortDoesNotCrossParentContainer = validateEdgeFromPortDoesNotCrossParentContainer(containerEP, portEP);
         assertTrue("The port " + portName + " has an edge that cross the parent container " + containerName, validateEdgeFromPortDoesNotCrossParentContainer);
+        boolean validateEdgeFromPortHaveBendpointsReset = validateEdgeFromPortHaveBendpointsReset(containerEP, portEP);
+        assertTrue("The port " + portName + " has an edge that don't have its bendpoints reset " + containerName, validateEdgeFromPortHaveBendpointsReset);
 
         // boolean validatePositionOfPortOnContainer =
         // validatePositionOfPortOnContainer(containerEP, portEP, position);
@@ -385,6 +387,18 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
                 Rectangle edgeBounds = new Rectangle(north, west, south - north, east - west);
                 if (edgeBounds.intersects(containerBounds))
                     return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean validateEdgeFromPortHaveBendpointsReset(final AbstractBorderedShapeEditPart containerEP, final AbstractDiagramBorderNodeEditPart portEP) {
+        List<AbstractDiagramEdgeEditPart> edgesEP = listEdgesConnectedToPort(portEP);
+        if (!edgesEP.isEmpty()) {
+            for (AbstractDiagramEdgeEditPart edgeEP : edgesEP) {
+                if (edgeEP.getPolylineConnectionFigure().getPoints().size() != 2) {
+                    return false;
+                }
             }
         }
         return true;
