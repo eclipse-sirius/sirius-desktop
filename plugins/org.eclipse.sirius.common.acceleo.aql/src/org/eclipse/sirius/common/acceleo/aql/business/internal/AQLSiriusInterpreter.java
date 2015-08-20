@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.aql.business.internal;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.acceleo.aql.business.AQLSiriusPlugin;
+import org.eclipse.sirius.common.acceleo.aql.business.Messages;
 import org.eclipse.sirius.common.acceleo.aql.business.api.AQLConstants;
 import org.eclipse.sirius.common.acceleo.aql.business.api.ExpressionTrimmer;
 import org.eclipse.sirius.common.acceleo.aql.business.api.TypesUtil;
@@ -88,7 +90,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
                 return siriusXref.getInverseReferences(self);
 
             } else {
-                return Collections.EMPTY_SET;
+                return Collections.emptySet();
             }
         }
     };
@@ -100,15 +102,15 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             try {
                 queryEnvironment.registerServicePackage(clazz);
             } catch (InvalidAcceleoPackageException e) {
-                AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), "Error loading Java extension class " + qualifiedName + " :" + e.getMessage(), e));
+                AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), MessageFormat.format(Messages.AQLInterpreter_errorLoadingJavaClass, qualifiedName,
+                        e.getMessage()), e));
             }
 
         }
 
         @Override
         public void notFound(String qualifiedName) {
-            AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), "Could not find Java extension class " + qualifiedName));
-
+            AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), MessageFormat.format(Messages.AQLInterpreter_javaClassNotFound, qualifiedName)));
         }
 
         @Override
@@ -223,7 +225,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
     @Override
     public ValidationResult analyzeExpression(IInterpreterContext context, String fullExpression) {
         this.javaExtensions.reloadIfNeeded();
-        
+
         String trimmedExpression = new ExpressionTrimmer(fullExpression).getExpression();
         ValidationResult result = new ValidationResult();
 
@@ -294,7 +296,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
          * and imports.
          */
         this.javaExtensions.reloadIfNeeded();
-        
+
         return this.queryEnvironment;
     }
 }
