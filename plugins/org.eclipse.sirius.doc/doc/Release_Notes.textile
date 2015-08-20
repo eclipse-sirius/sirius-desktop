@@ -51,6 +51,7 @@ Additional non-breaking changes:
 * <span class="label label-success">Added</span> The translation keys (and default values) have been added to all the concerned bundles, in their @plugin.properties@ file. These (translated) messages are available at runtime as static fields of new @Messages@ classes, added to all concerned bundles (always in the same package as their plug-in/activator class). The concerned bundles are:
 ** @org.eclipse.sirius.ext.base@
 ** @org.eclipse.sirius.ecore.extender@
+** @org.eclipse.sirius.synchronizer@
 
 h4. Changes in @org.eclipse.sirius.ext.gef@
 

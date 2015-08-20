@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.synchronizer.internal.Messages;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -39,7 +40,6 @@ public class ModelToModelSynchronizer {
     private SignatureProvider signatureProvider;
 
     public ModelToModelSynchronizer(SemanticPartitionInvalidator evaluator, MappingHiearchyTable table, PreRefreshStatus pre, SignatureProvider signProvider) {
-        super();
         this.evaluator = evaluator;
         this.table = table;
         this.pre = pre;
@@ -64,7 +64,7 @@ public class ModelToModelSynchronizer {
                 if (childSupport.some()) {
                     nbSteps += descriptorsToCreate.size() * 2 + descriptorsToDelete.size() + descriptorsToRefresh.size();
                 }
-                monitor.beginTask("Synchronization", nbSteps);
+                monitor.beginTask(Messages.ModelToModelSynchronizer_synchronizationTask, nbSteps);
                 if (childSupport.some()) {
                     ChildCreationSupport containerChildSupport = childSupport.get();
                     for (CreatedOutput outDesc : descriptorsToDelete) {
@@ -115,7 +115,7 @@ public class ModelToModelSynchronizer {
                     monitor.worked(1);
                 }
             } else {
-                monitor.beginTask("Synchronization", 1);
+                monitor.beginTask(Messages.ModelToModelSynchronizer_synchronizationTask, 1);
                 if (childSupport.some()) {
                     EObject createdElement = container.getCreatedElement();
                     if (createdElement != null && descriptorsToRefresh.isEmpty() && !descriptorsToCreate.isEmpty()) {
