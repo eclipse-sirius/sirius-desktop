@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.sirius.eef.adapters.EEFAdapterPlugin;
+import org.eclipse.sirius.eef.adapters.Messages;
 import org.eclipse.ui.views.properties.tabbed.AbstractSectionDescriptor;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.ui.views.properties.tabbed.ISectionDescriptor;
@@ -62,7 +63,7 @@ public class SiriusFilteringSectionDescriptor implements ISectionDescriptorProvi
     public void setInitializationData(IConfigurationElement config, String propertyName, Object data) throws CoreException {
         propertyContributorId = config.getAttribute(SiriusFilteringSectionDescriptor.CONTRIBUTOR_ID);
         if (propertyContributorId == null) {
-            EEFAdapterPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, EEFAdapterPlugin.PLUGIN_ID, "The section filter must be associated to a property contributor id"));
+            EEFAdapterPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, EEFAdapterPlugin.PLUGIN_ID, Messages.SiriusFilteringSectionDescriptor_missingContributorIdInSectionFilter));
         } else {
             // Filters loading
             IExtensionPoint point = Platform.getExtensionRegistry().getExtensionPoint("org.eclipse.sirius.eef.adapters.sectionFilters"); //$NON-NLS-1$

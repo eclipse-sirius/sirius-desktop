@@ -21,6 +21,7 @@ import org.eclipse.emf.eef.runtime.impl.operation.WizardEditingOperation;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.action.AbstractExternalJavaAction;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.eef.adapters.Messages;
 import org.eclipse.sirius.eef.util.VPDecoratorHelper;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -51,9 +52,8 @@ public class OpenPropertiesWizardAction extends AbstractExternalJavaAction {
                     propertiesEditionContext.dispose();
                 }
             } catch (ExecutionException e) {
-                SiriusPlugin.getDefault().error("Error while trying to open properties wizard.", e);
+                SiriusPlugin.getDefault().error(Messages.OpenPropertiesWizardAction_errorOpeningWizard, e);
             }
         }
     }
-
 }
