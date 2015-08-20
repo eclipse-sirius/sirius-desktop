@@ -451,14 +451,14 @@
                   id="org.eclipse.sirius.diagram.constraints.CompartmentContainmentConstraint"
                   lang="Java"
                   mode="Batch"
-                  name="%constraint.compartmentRecusrion.name"
-                  severity="ERROR"
+                  name="%constraint.compartmentRecursion.name"
+                  severity="WARNING"
                   statusCode="1">
                <message>
-                  %constraint.compartmentRecusrion.message
+                  %constraint.compartmentRecursion.message
                </message>
                <description>
-                  %constraint.compartmentRecusrion.description
+                  %constraint.compartmentRecursion.description
                </description>
             </constraint>
             <constraint

@@ -20,78 +20,114 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
  * A section for the childrenPresentation property of a ContainerMapping object.
  * 
- * It expose only the FreeForm and List capabilities but not the experimental
- * region support.
+ * It is able to mark as experimental or disable the compartment capabilities to
+ * help the user to produce a valid VSM.
  */
 public class ContainerMappingChildrenPresentationPropertySectionSpec extends ContainerMappingChildrenPresentationPropertySection {
-
-    @Override
-    public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
-        super.createControls(parent, tabbedPropertySheetPage);
-
-        String hStackButtonText = getText(ContainerLayout.HORIZONTAL_STACK);
-        String vStackButtonText = getText(ContainerLayout.VERTICAL_STACK);
-        for (Button b : button) {
-            if (hStackButtonText.equals(b.getText()) || vStackButtonText.equals(b.getText())) {
-                b.setToolTipText("Experimental");
-                Font f = b.getFont();
-                if (f != null && f.getFontData().length > 0) {
-                    FontData fontData = f.getFontData()[0];
-                    Font italic = SiriusEditor.getFontRegistry().getItalic(fontData.getName());
-                    if (italic != null) {
-                        b.setFont(italic);
-                    }
-                }
-            }
-        }
-    }
 
     @Override
     protected void makeWrittable() {
         super.makeWrittable();
 
         if (button != null && eObject instanceof ContainerMapping) {
-            Option<String> stackButtonDisabled = shouldDisableCompartiments((ContainerMapping) eObject);
+            ContainerMapping containerMapping = (ContainerMapping) eObject;
+            Option<String> experimentalStackButtons = shouldMarkCompartmentsExperimental(containerMapping);
+            Option<String> disabledStackButtons = shouldDisableCompartments(containerMapping);
 
-            String hStackButtonText = getText(ContainerLayout.HORIZONTAL_STACK);
-            String vStackButtonText = getText(ContainerLayout.VERTICAL_STACK);
-            for (Button b : button) {
-                if (hStackButtonText.equals(b.getText()) || vStackButtonText.equals(b.getText())) {
-                    b.setEnabled(!stackButtonDisabled.some());
-                }
-            }
-
-            if (group != null) {
-                if (stackButtonDisabled.some()) {
-                    group.setToolTipText(stackButtonDisabled.get());
-                } else {
-                    group.setToolTipText(null);
-                }
-            }
+            updateControls(experimentalStackButtons, disabledStackButtons);
         }
     }
 
-    private Option<String> shouldDisableCompartiments(ContainerMapping containerMapping) {
-        ContainerMappingQuery query = new ContainerMappingQuery(containerMapping);
+    private Option<String> shouldMarkCompartmentsExperimental(ContainerMapping containerMapping) {
+        boolean experimental = false;
+        StringBuilder message = new StringBuilder("Experimental");
+        experimental = new ContainerMappingQuery(containerMapping).isRegion();
+        if (experimental) {
+            message.append(" - the mapping will produce containers which will be Region and RegionContainer");
+        }
 
-        String message = query.isRegion() ?  "A Region mapping cannot be a RegionContainer mapping.": null;
-        if (message == null) {
-            for (ContainerMapping subContainer : containerMapping.getAllContainerMappings()) {
-                ContainerMappingQuery subQuery = new ContainerMappingQuery(subContainer);
-                if (message == null && subQuery.isRegionContainer()) {
-                message = "The mapping contains RegionContainer sub mappings, they cannot be Region and RegionContainer.";
-                }
+        for (ContainerMapping subContainerMapping : containerMapping.getAllContainerMappings()) {
+            experimental = experimental || new ContainerMappingQuery(subContainerMapping).isRegionContainer();
+
+            if (experimental) {
+                message.append(" - the children mapping will produce containers which will be Region and RegionContainer");
+                break;
             }
         }
-        if (message == null && !containerMapping.getAllNodeMappings().isEmpty()) {
+        message.append(".");
+        return experimental ? Options.newSome(message.toString()) : Options.<String> newNone();
+    }
+
+    private Option<String> shouldDisableCompartments(ContainerMapping containerMapping) {
+        String message = null;
+        if (!containerMapping.getAllNodeMappings().isEmpty()) {
             message = "The mapping contains node mappings, it cannot be a RegionContainer mapping.";
         }
         return Options.newSome(message);
+    }
+
+    private void updateControls(Option<String> experimentalStackButtons, Option<String> disabledStackButtons) {
+        String hStackButtonText = getText(ContainerLayout.HORIZONTAL_STACK);
+        String vStackButtonText = getText(ContainerLayout.VERTICAL_STACK);
+
+        // Update buttons
+        boolean needsLayout = false;
+        for (Button b : button) {
+            if (hStackButtonText.equals(b.getText()) || vStackButtonText.equals(b.getText())) {
+                needsLayout = updateButton(b, experimentalStackButtons, disabledStackButtons) || needsLayout;
+            }
+        }
+
+        // Update group
+        updateGroup(disabledStackButtons);
+
+        // If the section has been created with italic buttons, it might require
+        // layout be able to display the buttons with normal font.
+        if (needsLayout) {
+            composite.layout();
+        }
+    }
+
+    private boolean updateButton(Button b, Option<String> experimentalStackButtons, Option<String> disabledStackButtons) {
+        boolean needsLayout = false;
+        if (experimentalStackButtons.some()) {
+            b.setToolTipText(experimentalStackButtons.get());
+            Font f = b.getFont();
+            if (f != null && f.getFontData().length > 0) {
+                FontData fontData = f.getFontData()[0];
+                Font italic = SiriusEditor.getFontRegistry().getItalic(fontData.getName());
+                if (italic != null) {
+                    b.setFont(italic);
+                }
+            }
+        } else {
+            b.setToolTipText(null);
+            Font f = b.getFont();
+            if (f != null && f.getFontData().length > 0) {
+                FontData fontData = f.getFontData()[0];
+                Font normal = SiriusEditor.getFontRegistry().get(fontData.getName());
+                if (normal != null) {
+                    b.setFont(normal);
+                    needsLayout = true;
+                }
+            }
+        }
+
+        b.setEnabled(!disabledStackButtons.some());
+        return needsLayout;
+    }
+
+    private void updateGroup(Option<String> disabledStackButtons) {
+        if (group != null) {
+            if (disabledStackButtons.some()) {
+                group.setToolTipText(disabledStackButtons.get());
+            } else {
+                group.setToolTipText(null);
+            }
+        }
     }
 }

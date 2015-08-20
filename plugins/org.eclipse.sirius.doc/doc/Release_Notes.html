@@ -98,6 +98,22 @@
 				<code>BorderSizeComputationExpression</code> for new style is now 1, except for 
 				<em>Worskpace Image</em> where the value is 0.
 			</li>
+			<li><span class="label label-info">Modified</span> The support for containers with vertical or horizontal 
+				<em>compartments</em> on diagrams was introduced in Sirius 3.0.0 as an experimental feature. Several improvements and corrections have been done around the behaviors of this feature which is now ready to have its experimental state removed. Validation rules and tooltips in the VSM editor are here to help the specifier create a consistent mapping structure.
+			</li>
+			<li><span class="label label-info">Modified</span> <span class="label label-info">Experimental</span> New, experimental support for recursive 
+				<em>compartments</em> on diagrams: the 
+				<em>children presentation</em> property of a 
+				<em>Container Mapping</em>, which is defined as a 
+				<em>compartment</em> (its parent 
+				<em>ContainerMapping</em> has a 
+				<em>VerticalStack</em> or 
+				<em>HorizontalStack</em> 
+				<em>children presentation</em>), can now also be set to 
+				<em>Vertical Stack</em> and 
+				<em>Horizontal Stack</em>. It allows to define complex stacks of 
+				<em>compartments</em> mixing both stack directions. While working reliably, this support is marked experimental in Sirius 3.1.0 as there are still some behaviors which do not behave as expected. If you make use of this feature, be aware that some details may still change in future releases, including 3.1.x maintenance releases.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>

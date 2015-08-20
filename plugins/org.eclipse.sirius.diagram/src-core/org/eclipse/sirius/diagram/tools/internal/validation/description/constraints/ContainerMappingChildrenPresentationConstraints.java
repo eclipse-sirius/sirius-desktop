@@ -18,13 +18,15 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Container children presentation related validation rules.
@@ -220,8 +222,8 @@ public class ContainerMappingChildrenPresentationConstraints extends AbstractCon
      * Mapping filter nodes on Regions validation rules.
      */
     private IStatus validateMappingFilterOnRegions(IValidationContext ctx, MappingFilter filter) {
-        for (DiagramElementMapping mapping : filter.getMappings()) {
-            if (mapping instanceof ContainerMapping && new ContainerMappingQuery((ContainerMapping) mapping.eContainer()).isRegionContainer()) {
+        for (ContainerMapping mapping : Iterables.filter(filter.getMappings(), ContainerMapping.class)) {
+            if (new ContainerMappingQuery(mapping).isRegion()) {
                 return ctx.createFailureStatus(new Object[] { filter });
             }
         }
@@ -229,14 +231,15 @@ public class ContainerMappingChildrenPresentationConstraints extends AbstractCon
     }
 
     /**
-     * RegionContainer and Region mappings only support the Gradient style.
+     * RegionContainer and Region mappings only support the Gradient and Image styles.
      */
     private IStatus validateStyle(IValidationContext ctx, ContainerStyleDescription style, ContainerMapping containerMapping) {
         ContainerMappingQuery query = new ContainerMappingQuery(containerMapping);
-        if (!(style instanceof FlatContainerStyleDescription) && (query.isRegionContainer() || query.isRegion())) {
-            return ctx.createFailureStatus(new Object[] { style, containerMapping });
+        if (query.isRegionContainer() || query.isRegion()) {
+            if (!(style instanceof FlatContainerStyleDescription || style instanceof WorkspaceImageDescription)) {
+                return ctx.createFailureStatus(new Object[] { style, containerMapping });
+            }
         }
         return ctx.createSuccessStatus();
     }
-
 }

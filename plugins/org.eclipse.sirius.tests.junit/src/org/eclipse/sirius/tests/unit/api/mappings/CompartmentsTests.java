@@ -113,14 +113,28 @@ public class CompartmentsTests extends SiriusDiagramTestCase {
         changeChildrenPresentation(regionMapping, ContainerLayout.VERTICAL_STACK);
 
         diagnostic = diagnostician.validate(representation.getDescription());
-        assertEquals("The VSM is not valid, a region container mapping should not contain another region container mapping", Diagnostic.ERROR, diagnostic.getSeverity());
+        checkDiagnostic(diagnostic);
+
         undo();
 
         // set mapping to be a horizontal stack container mapping
         changeChildrenPresentation(regionMapping, ContainerLayout.HORIZONTAL_STACK);
         diagnostic = diagnostician.validate(representation.getDescription());
-        assertEquals("The VSM is not valid, a region container mapping should not contain another region container mapping", Diagnostic.ERROR, diagnostic.getSeverity());
+        checkDiagnostic(diagnostic);
+    }
 
+    private void checkDiagnostic(Diagnostic diagnostic) {
+        assertEquals("The VSM is not valid, there should be 2 errors and 1 warning.", Diagnostic.ERROR, diagnostic.getSeverity());
+        int errors = 0;
+        int warnings = 0;
+        for (Diagnostic d : diagnostic.getChildren()) {
+            if (Diagnostic.ERROR == d.getSeverity()) {
+                errors++;
+            } else if (Diagnostic.WARNING == d.getSeverity()) {
+                warnings++;
+            }
+        }
+        assertTrue("The VSM is not valid, a region container mapping can now contains other regions containers but user must be warned.", errors == 2 && warnings == 1);
     }
 
     /**
