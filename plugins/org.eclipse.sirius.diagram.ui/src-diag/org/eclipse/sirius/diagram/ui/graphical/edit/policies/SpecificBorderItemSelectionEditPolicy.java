@@ -55,13 +55,11 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
-import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.AbstractDNodeQuery;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
@@ -124,12 +122,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     private Map<IFigure, Rectangle> correspondingExpandedCoordinate = new HashMap<IFigure, Rectangle>();
 
     /**
-     * Keep the collapsed node bounds to restore them when the drag action is
-     * over. Only used in the scenario where we drag a collapsed node.
-     */
-    private Rectangle collapsedRectangle;
-
-    /**
      * The edit part where feedbacks are activated.
      */
     private EditPart feedbacksActivated;
@@ -145,6 +137,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * null or not (private field).
      */
     private boolean feedbackFigureDisplayed;
+
+    private BorderNodeCollapseManager borderNodeCollapseManager;
 
     /**
      * {@inheritDoc}
@@ -219,10 +213,17 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         }
         feedbacks.clear();
         correspondingExpandedCoordinate.clear();
-        // feedbacksActivated = false;
         feedbacksActivated = null;
-        // isBorderedNodeDropping = false;
-        collapsedRectangle = null;
+        if (borderNodeCollapseManager != null) {
+            borderNodeCollapseManager.dispose();
+        }
+    }
+
+    private BorderNodeCollapseManager getOrCreateBorderNodeCollapseManager() {
+        if (borderNodeCollapseManager == null) {
+            borderNodeCollapseManager = new BorderNodeCollapseManager();
+        }
+        return borderNodeCollapseManager;
     }
 
     /**
@@ -250,6 +251,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * @param request
      *            the request
      */
+    @SuppressWarnings("unchecked")
     @Override
     protected void showChangeBoundsFeedback(final ChangeBoundsRequest request) {
         // Get the figure of the target edit part
@@ -275,7 +277,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 activateProhibitedFeedbacks(targetAbstractGraphicalEditPart, request);
 
                 DBorderItemLocator borderItemLocator = new FeedbackDBorderItemLocator(targetFigure);
-                if (isCollapsed(borderItemEP)) {
+                if (getOrCreateBorderNodeCollapseManager().isCollapsed(borderItemEP)) {
                     borderItemLocator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
                 } else {
                     borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
@@ -296,8 +298,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 }
                 // if the bordered node is collapsed, we extend the feedback to
                 // consider his extended bounds
-                if (hostEditPart instanceof IGraphicalEditPart && isCollapsed((IGraphicalEditPart) hostEditPart)) {
-                    Dimension initialDim = getInitialDimension((IGraphicalEditPart) hostEditPart);
+                if (hostEditPart instanceof IGraphicalEditPart && getOrCreateBorderNodeCollapseManager().isCollapsed((IGraphicalEditPart) hostEditPart)) {
+                    Dimension initialDim = getOrCreateBorderNodeCollapseManager().getInitialDimension((IGraphicalEditPart) hostEditPart);
                     Rectangle newBoundsAbsolute = PortLayoutHelper.getUncollapseCandidateLocation(initialDim, rect, null);
                     borderItemLocator.setConstraint(newBoundsAbsolute);
                     borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
@@ -313,7 +315,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 // Add the real location in request (this location is used in
                 // SiriusContainerDropPolicy)
                 Map<DDiagramElement, Point> locationsForDDiagramElement = getLocationsForDDiagramElement(request);
-                if (isCollapsed(borderItemEP)) {
+                if (getOrCreateBorderNodeCollapseManager().isCollapsed(borderItemEP)) {
                     realLocation = PortLayoutHelper.getCollapseCandidateLocation(borderItemEP.getFigure().getSize(), realLocation, targetFigure.getBounds());
                 }
                 locationsForDDiagramElement.put((DDiagramElement) borderItemEP.resolveSemanticElement(), realLocation.getLocation());
@@ -325,7 +327,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 if (borderItemLocator != null) {
 
                     getHostFigure().translateToRelative(rect);
-                    Rectangle newRect = expandsCollapsedNodeBounds(borderItemEP, rect);
+                    Rectangle newRect = getOrCreateBorderNodeCollapseManager().expandCollapsedNodeBounds(borderItemEP, rect);
                     if (newRect != null) {
                         rect.setBounds(newRect);
                     }
@@ -337,8 +339,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                     } else {
                         realLocation = borderItemLocator.getValidLocation(rect.getCopy(), borderItemEP.getFigure());
                     }
-                    if (collapsedRectangle != null) {
-                        restoreCollapsedNode(borderItemEP);
+                    if (getOrCreateBorderNodeCollapseManager().hasBeenExpanded()) {
+                        getOrCreateBorderNodeCollapseManager().restoreCollapsedNode(borderItemEP);
                     }
                     getHostFigure().translateToAbsolute(realLocation);
 
@@ -375,68 +377,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         }
     }
 
-    private void restoreCollapsedNode(IBorderItemEditPart borderItemEP) {
-        IBorderItemLocator borderItemLocator = borderItemEP.getBorderItemLocator();
-        if (borderItemLocator instanceof DBorderItemLocator) {
-            borderItemLocator.setConstraint(collapsedRectangle.getCopy());
-            ((DBorderItemLocator) borderItemLocator).setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
-        }
-    }
-
-    /**
-     * We expand the given rect bounds to avoid conflicts. Old bounds are saved
-     * in collapsedRectangle attribute to be able to restore them once the drag
-     * and drop is over.
-     * 
-     * @param hostEditPart
-     *            the collapsed figure edit part. The new expands constraints
-     *            will be apply to the figure until the restoreCollapsedNode
-     *            method is called.
-     * @param rect
-     *            the bounds to expand.
-     * @return the expanded bounds.
-     */
-    private Rectangle expandsCollapsedNodeBounds(IBorderItemEditPart hostEditPart, final PrecisionRectangle rect) {
-        if (isCollapsed(hostEditPart)) {
-            IBorderItemLocator borderItemLocator = hostEditPart.getBorderItemLocator();
-            if (borderItemLocator instanceof DBorderItemLocator) {
-                if (collapsedRectangle == null) {
-                    collapsedRectangle = ((DBorderItemLocator) borderItemLocator).getCurrentConstraint();
-                }
-                EditPart parentEditPart = hostEditPart.getParent();
-                Rectangle parentBounds = null;
-                if (parentEditPart instanceof IGraphicalEditPart) {
-                    IFigure parentFigure = ((IGraphicalEditPart) parentEditPart).getFigure();
-                    parentBounds = parentFigure.getBounds().getCopy();
-                    if (parentFigure instanceof NodeFigure) {
-                        parentBounds = ((NodeFigure) parentFigure).getHandleBounds().getCopy();
-                    }
-
-                    Dimension initialDim = getInitialDimension(hostEditPart);
-                    Rectangle newBoundsAbsolute = PortLayoutHelper.getUncollapseCandidateLocation(initialDim, rect, parentBounds);
-
-                    Rectangle newBoundsFromFigure = PortLayoutHelper.getUncollapseCandidateLocation(initialDim, collapsedRectangle, null);
-
-                    borderItemLocator.setConstraint(newBoundsFromFigure);
-                    ((DBorderItemLocator) borderItemLocator).setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
-
-                    return newBoundsAbsolute;
-                }
-            }
-        }
-        return null;
-
-    }
-
-    private boolean isCollapsed(IGraphicalEditPart editPart) {
-        EObject element = editPart.resolveSemanticElement();
-        if (element instanceof DDiagramElement) {
-            DDiagramElementQuery query = new DDiagramElementQuery((DDiagramElement) element);
-            return query.isIndirectlyCollapsed();
-        }
-        return false;
-    }
-
     /**
      * Activates feedbacks for all collapsed node to avoid to place an other
      * node in their forbidden area.
@@ -460,7 +400,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         for (Object child : targetEditPart.getChildren()) {
             if (!request.getEditParts().contains(child) && child instanceof AbstractDiagramBorderNodeEditPart) {
                 AbstractDiagramBorderNodeEditPart borderNodeEditPart = (AbstractDiagramBorderNodeEditPart) child;
-                if (isCollapsed(borderNodeEditPart)) {
+                if (getOrCreateBorderNodeCollapseManager().isCollapsed(borderNodeEditPart)) {
                     configureFeedback(borderNodeEditPart, getBorderNodeFeedbacks(request));
                 }
             }
@@ -507,7 +447,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         EditPart parentEditPart = borderNodeEditPart.getParent();
         // we don't create feedbacks if there are already activated.
         if (!isFeedbacksActivatedForEditPart(borderNodeEditPart.getParent())) {
-            Dimension initialDim = getInitialDimension(borderNodeEditPart);
+            Dimension initialDim = getOrCreateBorderNodeCollapseManager().getInitialDimension(borderNodeEditPart);
             Rectangle bounds = figure.getBounds().getCopy();
             Rectangle parentBounds = null;
             if (parentEditPart instanceof IGraphicalEditPart) {
@@ -586,15 +526,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
         }
         return realNewBounds;
-    }
-
-    private Dimension getInitialDimension(IGraphicalEditPart editPart) {
-        Object node = editPart.getModel();
-        if (node instanceof Node) {
-            NodeQuery query = new NodeQuery((Node) node);
-            return query.getOriginalDimensionBeforeCollapse();
-        }
-        return new Dimension(0, 0);
     }
 
     /**
@@ -730,20 +661,20 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
                 // if the bordered node is collapsed, we compute his expanded
                 // bounds
-                Rectangle newBounds = expandsCollapsedNodeBounds(borderItemEP, rect);
+                Rectangle newBounds = getOrCreateBorderNodeCollapseManager().expandCollapsedNodeBounds(borderItemEP, rect);
                 if (newBounds != null) {
                     rect.setBounds(newBounds);
                 }
 
                 realLocation = ((DBorderItemLocator) borderItemLocator).getValidLocation(rect, borderItemEP.getFigure(), figuresToIgnore, getBorderNodeFeedbacks(request));
-                if (collapsedRectangle != null) {
-                    restoreCollapsedNode(borderItemEP);
+                if (getOrCreateBorderNodeCollapseManager().hasBeenExpanded()) {
+                    getOrCreateBorderNodeCollapseManager().restoreCollapsedNode(borderItemEP);
                     IFigure parentFigure = ((DBorderItemLocator) borderItemLocator).getParentFigure();
                     Rectangle parentBounds = parentFigure.getBounds().getCopy();
                     if (parentFigure instanceof NodeFigure) {
                         parentBounds = ((NodeFigure) parentFigure).getHandleBounds().getCopy();
                     }
-                    Rectangle collapsedBounds = PortLayoutHelper.getCollapseCandidateLocation(collapsedRectangle.getSize(), realLocation, parentBounds);
+                    Rectangle collapsedBounds = PortLayoutHelper.getCollapseCandidateLocation(getOrCreateBorderNodeCollapseManager().getCollapsedRectangle().getSize(), realLocation, parentBounds);
                     realLocation.setBounds(collapsedBounds);
                 }
                 ((DBorderItemLocator) borderItemLocator).setFiguresToIgnoresDuringNextRelocate(figuresToIgnore);
