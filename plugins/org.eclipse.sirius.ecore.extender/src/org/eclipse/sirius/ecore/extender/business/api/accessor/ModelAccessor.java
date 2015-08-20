@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.api.accessor;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaCla
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionService;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
@@ -314,7 +316,7 @@ public class ModelAccessor {
         if (result != null) {
             return result.booleanValue();
         }
-        throw new FeatureNotFoundException(featureName + " on " + instance);
+        throw new FeatureNotFoundException(MessageFormat.format(Messages.ModelAccessor_error_featureNotFound, featureName, instance));
     }
 
     /**

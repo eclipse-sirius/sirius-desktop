@@ -18,6 +18,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 
 /**
  * Registry keeping track of the model accessors.
@@ -79,7 +80,7 @@ public class ModelAccessorsRegistry {
                 result = root2ExPackage.values().iterator().next();
             } else {
                 // here we really can't manage something
-                throw new RuntimeException("No resource to get the ExtendedPackage");
+                throw new RuntimeException(Messages.ModelAccessorsRegistry_noResourceFound);
             }
         } else {
             result = getModelAccessor(modelElementResource.getResourceSet());

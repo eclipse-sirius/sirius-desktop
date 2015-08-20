@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 
 /**
  * Registry for all the permission authorities.
@@ -56,7 +57,7 @@ public class PermissionAuthorityRegistryImpl implements IPermissionAuthorityRegi
                     authority = resourceSetToAuthority.values().iterator().next();
                 } else {
                     // here we really can't manage something
-                    throw new RuntimeException("No resource to get the ExtendedPackage");
+                    throw new RuntimeException(Messages.PermissionAuthorityRegistryImpl_noResourceMessage);
                 }
             } else {
                 authority = getPermissionAuthority(modelElementResource.getResourceSet());

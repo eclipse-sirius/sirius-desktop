@@ -21,14 +21,14 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 /**
  * Class responsible for resolving some references.
@@ -69,7 +69,7 @@ public class ReferencesResolver {
     public void resolve(IProgressMonitor monitor) {
         final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(set);
         final List<Resource> cachedIdsResources = ReferencesResolver.prepareResolveAll(set, authority);
-        monitor.beginTask("Resolving non contained references", set.getResources().size());
+        monitor.beginTask(Messages.ReferencesResolver_resolveNonContainedReferencesTask, set.getResources().size());
         for (Resource res : Lists.newArrayList(set.getResources())) {
             doResolveAll(res);
             monitor.worked(1);

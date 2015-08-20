@@ -12,9 +12,9 @@ package org.eclipse.sirius.ecore.extender.business.internal.common;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.eclipse.sirius.ecore.extender.business.api.accessor.IExtenderProvider;
 import org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 
 /**
  * This Descriptor is used to keep track of the ExtenderProvider engines.
@@ -46,7 +46,7 @@ public class ExtenderProviderDescriptor extends AbstractProviderDescriptor {
                 provider = (IExtenderProvider) element.createExecutableExtension("providerClass"); //$NON-NLS-1$
             } catch (final CoreException e) {
                 /* log an error */
-                ExtenderPlugin.getPlugin().logError("An extender provider could not be loaded", e);
+                ExtenderPlugin.getPlugin().logError(Messages.ExtenderProviderDescriptor_errorLoadingExtenderProvider, e);
             }
         }
         return provider;

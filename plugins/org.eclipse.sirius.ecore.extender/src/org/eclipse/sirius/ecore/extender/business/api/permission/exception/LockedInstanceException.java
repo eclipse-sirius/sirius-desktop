@@ -13,6 +13,7 @@ package org.eclipse.sirius.ecore.extender.business.api.permission.exception;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 
 /**
  * {@link Exception} thrown when an instance nobody should be able to change
@@ -23,7 +24,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 public class LockedInstanceException extends RuntimeException {
 
     /** The default permission issue message. */
-    public static final String PERMISSION_ISSUE_MESSAGE = "An instance is locked and should not be modified among : ";
+    public static final String PERMISSION_ISSUE_MESSAGE = Messages.LockedInstanceException_message;
 
     private static final long serialVersionUID = 1L;
 

@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.api.accessor.exception;
 
+import java.text.MessageFormat;
+
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
+
 /**
  * Exception launched when a feature is not found on a given
  * {@link org.eclipse.emf.ecore.EObject} instance.
@@ -81,7 +85,7 @@ public class FeatureNotFoundException extends Exception {
      *            type name.
      */
     public FeatureNotFoundException(final String featureName, final String typeName) {
-        this("feature " + featureName + " for the type " + typeName + " doesn't exist.");
+        this(MessageFormat.format(Messages.FeatureNotFoundException_message, featureName, typeName));
     }
 
     /**
@@ -95,7 +99,7 @@ public class FeatureNotFoundException extends Exception {
      *            source error.
      */
     public FeatureNotFoundException(final String featureName, final String typeName, final Throwable cause) {
-        this("feature " + featureName + " for the type " + typeName + " doesn't exist.", cause);
+        this(MessageFormat.format(Messages.FeatureNotFoundException_message, featureName, typeName), cause);
     }
 
 }

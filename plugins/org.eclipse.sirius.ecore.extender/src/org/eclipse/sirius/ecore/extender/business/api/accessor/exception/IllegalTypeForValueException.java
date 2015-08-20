@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.api.accessor.exception;
 
+import java.text.MessageFormat;
+
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
+
 /**
  * Exception launched when a type is illegal as a value for a feature on a given
  * {@link org.eclipse.emf.ecore.EObject} instance.
@@ -83,7 +87,7 @@ public class IllegalTypeForValueException extends Exception {
      *            type name.
      */
     public IllegalTypeForValueException(final String featureName, final String actualTypeName, final String exceptedTypeName) {
-        this("value type of  " + featureName + " is  illegal. Actual " + actualTypeName + ". Excepted :");
+        this(MessageFormat.format(Messages.IllegalTypeForValueException_message, featureName, actualTypeName));
     }
 
     /**
@@ -99,7 +103,7 @@ public class IllegalTypeForValueException extends Exception {
      *            source error.
      */
     public IllegalTypeForValueException(final String featureName, final String actualTypeName, final String exceptedTypeName, final Throwable cause) {
-        this("value type of  " + featureName + " is  illegal. Actual " + actualTypeName + ". Excepted :", cause);
+        this(MessageFormat.format(Messages.IllegalTypeForValueException_message, featureName, actualTypeName), cause);
     }
 
 }

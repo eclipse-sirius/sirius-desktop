@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.internal.common;
 
-import org.eclipse.core.runtime.IConfigurationElement;
+import java.text.MessageFormat;
 
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants;
+import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionService;
 
 /**
@@ -68,7 +70,7 @@ public abstract class AbstractProviderDescriptor implements Comparable<AbstractP
         if (defaultValue != null) {
             return defaultValue;
         }
-        throw new IllegalArgumentException("The " + name + " attribute is missing"); //$NON-NLS-1$
+        throw new IllegalArgumentException(MessageFormat.format(Messages.AbstractProviderDescriptor_attributeMissing, name));
     }
 
     public int getPriority() {
