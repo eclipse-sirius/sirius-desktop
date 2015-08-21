@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,11 +15,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.Connection;
@@ -704,6 +705,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         }
         // Keep only first and last points of edges linked to at least one of
         // moved border nodes.
+        Set<Edge> resetEdges = new HashSet<Edge>();
         for (Entry<View, List<Request>> requestByView : getViewsToChangeBoundsRequest().entrySet()) {
             View view = requestByView.getKey();
             // Get corresponding edit part
@@ -714,12 +716,20 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                 List<Request> requests = requestByView.getValue();
                 if (!(view.getSourceEdges().isEmpty() && view.getTargetEdges().isEmpty())) {
                     // For each edge starting from this view
-                    for (Iterator<Edge> iterator = Iterables.filter(view.getSourceEdges(), Edge.class).iterator(); iterator.hasNext(); /* */) {
-                        resetBendpoints(iterator.next(), cc, borderItemEditPart, requests, true);
+                    for (Object obj : view.getSourceEdges()) {
+                        if (!resetEdges.contains(obj) && obj instanceof Edge) {
+                            Edge sourceEdge = (Edge) obj;
+                            resetBendpoints(sourceEdge, cc, borderItemEditPart, requests, true);
+                            resetEdges.add(sourceEdge);
+                        }
                     }
                     // For each edge ending to this view
-                    for (Iterator<Edge> iterator = Iterables.filter(view.getTargetEdges(), Edge.class).iterator(); iterator.hasNext(); /* */) {
-                        resetBendpoints(iterator.next(), cc, borderItemEditPart, requests, false);
+                    for (Object obj : view.getTargetEdges()) {
+                        if (!resetEdges.contains(obj) && obj instanceof Edge) {
+                            Edge targetEdge = (Edge) obj;
+                            resetBendpoints(targetEdge, cc, borderItemEditPart, requests, false);
+                            resetEdges.add(targetEdge);
+                        }
                     }
                 }
             }
