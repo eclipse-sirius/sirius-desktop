@@ -741,6 +741,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         if (!file.exists()) {
             removeViewpointsNotPersistedInAFile();
             unloadInExistingSessions(file, true);
+            unloadAndRemove(file);
         } else {
             /* remove affected viewpoints */
             final EObject descRoot = load(file, resourceSet);
