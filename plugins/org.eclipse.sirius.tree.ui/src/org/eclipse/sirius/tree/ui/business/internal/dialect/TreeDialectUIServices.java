@@ -78,6 +78,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
+    @Override
     public boolean canHandle(DRepresentation representation) {
         return representation instanceof DTree;
     }
@@ -88,6 +89,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      *      )
      */
+    @Override
     public boolean canHandle(final RepresentationDescription representation) {
         return representation instanceof TreeDescription;
     }
@@ -98,6 +100,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
      *      )
      */
+    @Override
     public boolean canHandle(final RepresentationExtensionDescription description) {
         return false;
     }
@@ -107,6 +110,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean canHandleEditor(IEditorPart editorPart) {
         return editorPart instanceof DTreeEditor;
     }
@@ -114,6 +118,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor) {
         IEditorPart editorPart = null;
         try {
@@ -125,6 +130,7 @@ public class TreeDialectUIServices implements DialectUIServices {
                 monitor.worked(2);
                 monitor.subTask("tree opening : " + dRepresentation.getName());
                 RunnableWithResult<IEditorPart> runnable = new RunnableWithResult.Impl<IEditorPart>() {
+                    @Override
                     public void run() {
                         final IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                         try {
@@ -153,6 +159,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.viewpoint.DRepresentation)
      */
+    @Override
     public String getEditorName(DRepresentation representation) {
         String editorName = representation.getName();
         if (StringUtil.isEmpty(editorName)) {
@@ -164,6 +171,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean closeEditor(IEditorPart editorPart, boolean save) {
         boolean result = false;
         if (canHandleEditor(editorPart)) {
@@ -185,6 +193,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean isRepresentationManagedByEditor(DRepresentation representation, IEditorPart editorPart) {
         boolean isRepresentationManagedByEditor = false;
         if (canHandleEditor(editorPart)) {
@@ -200,6 +209,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean isRepresentationDescriptionManagedByEditor(RepresentationDescription representationDescription, IEditorPart editorPart) {
         if (canHandleEditor(editorPart)) {
             DTreeEditor dtreeEditor = (DTreeEditor) editorPart;
@@ -214,6 +224,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#createAdapterFactory()
      */
+    @Override
     public AdapterFactory createAdapterFactory() {
         final ComposedAdapterFactory factory = new ComposedAdapterFactory();
         factory.addAdapterFactory(new DescriptionItemProviderAdapterFactory());
@@ -226,6 +237,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canExport(org.eclipse.sirius.ui.business.api.dialect.ExportFormat)
      */
+    @Override
     public boolean canExport(ExportFormat format) {
         return false;
     }
@@ -239,6 +251,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      *      org.eclipse.sirius.ui.business.api.dialect.ExportFormat,
      *      org.eclipse.core.runtime.IProgressMonitor)
      */
+    @Override
     public void export(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) {
         // Nothing to do for trees.
     }
@@ -248,6 +261,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideNewChildDescriptors()
      */
+    @Override
     public Collection<CommandParameter> provideNewChildDescriptors() {
         Collection<CommandParameter> newChilds = Lists.newArrayList();
         TreeDescription treeDescription = org.eclipse.sirius.tree.description.DescriptionFactory.eINSTANCE.createTreeDescription();
@@ -260,6 +274,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideRepresentationCreationToolDescriptors(java.lang.Object)
      */
+    @Override
     public Collection<CommandParameter> provideRepresentationCreationToolDescriptors(Object feature) {
         Collection<CommandParameter> newChilds = Lists.newArrayList();
         TreeCreationDescription treeCreationDescription = DescriptionFactory.eINSTANCE.createTreeCreationDescription();
@@ -273,6 +288,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideRepresentationNavigationToolDescriptors(java.lang.Object)
      */
+    @Override
     public Collection<CommandParameter> provideRepresentationNavigationToolDescriptors(Object feature) {
         Collection<CommandParameter> newChilds = Lists.newArrayList();
         TreeNavigationDescription treeNavigationDescription = DescriptionFactory.eINSTANCE.createTreeNavigationDescription();
@@ -286,6 +302,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideTools(org.eclipse.emf.ecore.EObject)
      */
+    @Override
     public Collection<CommandParameter> provideTools(EObject object) {
         return Collections.emptyList();
     }
@@ -295,6 +312,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#provideAdditionalMappings(org.eclipse.emf.ecore.EObject)
      */
+    @Override
     public Collection<CommandParameter> provideAdditionalMappings(EObject object) {
         return Collections.emptyList();
     }
@@ -304,6 +322,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getHierarchyLabelProvider(ILabelProvider)
      */
+    @Override
     public ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider) {
         return new HierarchyLabelTreeProvider(currentLabelProvider);
     }
@@ -311,6 +330,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
         if (dialectEditor instanceof DTreeEditor) {
             Viewer viewer = ((DTreeEditor) dialectEditor).getViewer();
@@ -321,11 +341,17 @@ public class TreeDialectUIServices implements DialectUIServices {
         }
     }
 
+    @Override
+    public void selectAndReveal(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
+        setSelection(dialectEditor, selection);
+    }
+
     /**
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getSelection(org.eclipse.sirius.ui.business.api.dialect.DialectEditor)
      */
+    @Override
     public Collection<DSemanticDecorator> getSelection(DialectEditor editor) {
         Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
         if (editor instanceof DTreeEditor) {
@@ -346,6 +372,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
      *      EObject, EStructuralFeature)
      */
+    @Override
     public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         return toolTipText;
     }
@@ -361,6 +388,8 @@ public class TreeDialectUIServices implements DialectUIServices {
      *             .TreeDialectUIServices.completeToolTipText(String, EObject,
      *             EStructuralFeature)
      */
+    @Deprecated
+    @Override
     public String completeToolTipText(String toolTipText, EObject eObject) {
         return toolTipText;
     }

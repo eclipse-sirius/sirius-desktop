@@ -113,6 +113,17 @@ public interface DialectUIServices {
     void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection);
 
     /**
+     * Sets the given {@link DRepresentationElement}s as current selection for
+     * the editor and reveal the selection if needed.
+     * 
+     * @param dialectEditor
+     *            the editor which needs a selection update.
+     * @param selection
+     *            the selection to set.
+     */
+    void selectAndReveal(DialectEditor dialectEditor, List<DRepresentationElement> selection);
+
+    /**
      * Asks for the selection of the given editor.
      * 
      * @param editor
@@ -290,5 +301,6 @@ public interface DialectUIServices {
      *             DialectUIServices.completeToolTipText(String, EObject,
      *             EStructuralFeature)
      */
+    @Deprecated
     String completeToolTipText(String toolTipText, EObject eObject);
 }

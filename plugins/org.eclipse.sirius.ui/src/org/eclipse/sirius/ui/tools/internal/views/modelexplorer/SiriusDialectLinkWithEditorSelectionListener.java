@@ -144,7 +144,7 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
     private void selectRepresentationElements(ISelection selection, DialectEditor dialectEditor) {
         List<DRepresentationElement> representationElements = getRepresentationElements(dialectEditor.getRepresentation(), ((IStructuredSelection) selection).toList());
         if (!representationElements.isEmpty()) {
-            DialectUIManager.INSTANCE.setSelection(dialectEditor, representationElements);
+            DialectUIManager.INSTANCE.selectAndReveal(dialectEditor, representationElements);
         }
     }
 

@@ -256,8 +256,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
             @Override
             public void run() {
-                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Viewpoints selection", "The current diagram requires some viewpoints selected (" + description
-                        + "), because some activated layers are contributed by these viewpoints");
+                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Viewpoints selection",
+                        "The current diagram requires some viewpoints selected (" + description + "), because some activated layers are contributed by these viewpoints");
             }
 
         });
@@ -643,6 +643,16 @@ public class DiagramDialectUIServices implements DialectUIServices {
      */
     @Override
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
+        setSelection(dialectEditor, selection, false);
+    }
+
+    @Override
+    public void selectAndReveal(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
+        setSelection(dialectEditor, selection, true);
+
+    }
+
+    private void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection, boolean reveal) {
         if (dialectEditor instanceof DiagramEditor && selection != null) {
             DiagramEditor diagramEditor = (DiagramEditor) dialectEditor;
             List<EditPart> selectedParts = Lists.newArrayList();
@@ -660,6 +670,9 @@ public class DiagramDialectUIServices implements DialectUIServices {
             }
             if (graphicalViewer != null) {
                 graphicalViewer.setSelection(new StructuredSelection(selectedParts));
+                if (reveal && !selectedParts.isEmpty()) {
+                    graphicalViewer.reveal(selectedParts.get(0));
+                }
             }
         }
     }
@@ -752,8 +765,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
         if (parentDiagramDescription.some()) {
             parentPackage = parentDiagramDescription.get().eClass().getEPackage();
         } else {
-            Option<EObject> parentDiagramExtensionDescription = new EObjectQuery(eObject).getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
-                    .getDiagramExtensionDescription());
+            Option<EObject> parentDiagramExtensionDescription = new EObjectQuery(eObject)
+                    .getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramExtensionDescription());
             if (parentDiagramExtensionDescription.some()) {
                 parentPackage = parentDiagramExtensionDescription.get().eClass().getEPackage();
             }

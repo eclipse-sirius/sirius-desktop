@@ -85,6 +85,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor) {
         IEditorPart editorPart = null;
         try {
@@ -109,6 +110,7 @@ public class TableDialectUIServices implements DialectUIServices {
                     monitor.subTask("table opening : " + dRepresentation.getName());
                     RunnableWithResult<IEditorPart> runnable = new RunnableWithResult.Impl<IEditorPart>() {
 
+                        @Override
                         public void run() {
                             final IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                             try {
@@ -136,6 +138,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideNewChildDescriptors() {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
         newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createEditionTableDescription()));
@@ -147,6 +150,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideRepresentationCreationToolDescriptors(final Object feature) {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
         TableCreationDescription tableCreationDescription = DescriptionFactory.eINSTANCE.createTableCreationDescription();
@@ -159,6 +163,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideRepresentationNavigationToolDescriptors(final Object feature) {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
         TableNavigationDescription tableNavigationDescription = DescriptionFactory.eINSTANCE.createTableNavigationDescription();
@@ -171,6 +176,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * 
      * {@inheritDoc}
      */
+    @Override
     public AdapterFactory createAdapterFactory() {
         final ComposedAdapterFactory factory = new ComposedAdapterFactory();
         factory.addAdapterFactory(new DescriptionItemProviderAdapterFactory());
@@ -183,6 +189,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean canHandleEditor(final IEditorPart editorPart) {
         return editorPart instanceof AbstractDTableEditor;
     }
@@ -193,6 +200,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#closeEditor(org.eclipse.ui.IEditorPart,
      *      boolean)
      */
+    @Override
     public boolean closeEditor(final IEditorPart editorPart, final boolean save) {
         final boolean result = true;
         if (editorPart instanceof AbstractDTableEditor) {
@@ -200,6 +208,7 @@ public class TableDialectUIServices implements DialectUIServices {
             // WorkspaceSynchronizer
             final Display display = editorPart.getSite().getShell().getDisplay();
             display.asyncExec(new Runnable() {
+                @Override
                 public void run() {
                     PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeEditor(editorPart, save);
                 }
@@ -214,6 +223,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean isRepresentationManagedByEditor(final DRepresentation representation, final IEditorPart editorPart) {
         boolean isRepresentationManagedByEditor = false;
         if (editorPart instanceof AbstractDTableEditor) {
@@ -231,6 +241,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean isRepresentationDescriptionManagedByEditor(final RepresentationDescription representationDescription, final IEditorPart editor) {
         if (editor instanceof AbstractDTableEditor) {
             final AbstractDTableEditor tableEditor = (AbstractDTableEditor) editor;
@@ -244,6 +255,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
+    @Override
     public boolean canHandle(final DRepresentation representation) {
         return representation instanceof DTable;
     }
@@ -254,6 +266,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      *      )
      */
+    @Override
     public boolean canHandle(final RepresentationDescription representation) {
         return representation instanceof TableDescription;
     }
@@ -264,6 +277,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
      *      )
      */
+    @Override
     public boolean canHandle(final RepresentationExtensionDescription description) {
         return false;
     }
@@ -271,6 +285,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canExport(ExportFormat format) {
         return format.getDocumentFormat().equals(ExportDocumentFormat.CSV);
     }
@@ -281,6 +296,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor) {
         String content = null;
         if (exportFormat.getDocumentFormat().equals(ExportDocumentFormat.CSV)) {
@@ -294,6 +310,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getEditorName(DRepresentation representation) {
         String editorName = representation.getName();
         if (StringUtil.isEmpty(editorName)) {
@@ -305,6 +322,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideTools(EObject context) {
         return Lists.newArrayList();
     }
@@ -312,6 +330,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideAdditionalMappings(EObject object) {
         return Lists.newArrayList();
     }
@@ -321,6 +340,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getHierarchyLabelProvider(ILabelProvider)
      */
+    @Override
     public ILabelProvider getHierarchyLabelProvider(ILabelProvider labelProvider) {
         return new HierarchyLabelTableProvider(labelProvider);
 
@@ -329,6 +349,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
         if (dialectEditor instanceof DTableEditor && dialectEditor instanceof IViewerProvider) {
             Viewer viewer = ((IViewerProvider) dialectEditor).getViewer();
@@ -339,11 +360,17 @@ public class TableDialectUIServices implements DialectUIServices {
         }
     }
 
+    @Override
+    public void selectAndReveal(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
+        setSelection(dialectEditor, selection);
+    }
+
     /**
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getSelection(org.eclipse.sirius.ui.business.api.dialect.DialectEditor)
      */
+    @Override
     public Collection<DSemanticDecorator> getSelection(DialectEditor editor) {
         Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
         if (editor instanceof DTableEditor) {
@@ -364,6 +391,7 @@ public class TableDialectUIServices implements DialectUIServices {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
      *      EObject, EStructuralFeature)
      */
+    @Override
     public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         return toolTipText;
     }
@@ -379,6 +407,8 @@ public class TableDialectUIServices implements DialectUIServices {
      *             .TableDialectUIServices.completeToolTipText(String, EObject,
      *             EStructuralFeature)
      */
+    @Deprecated
+    @Override
     public String completeToolTipText(String toolTipText, EObject eObject) {
         return toolTipText;
     }

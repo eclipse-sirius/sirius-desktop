@@ -83,6 +83,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public void disableDialectUI(final DialectUI dialect) {
         dialects.remove(dialect.getName());
     }
@@ -91,6 +92,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public void enableDialectUI(final DialectUI dialect) {
         dialects.put(dialect.getName(), dialect);
     }
@@ -98,6 +100,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor) {
         for (final DialectUI dialect : dialects.values()) {
             final IEditorPart editor = dialect.getServices().openEditor(session, dRepresentation, monitor);
@@ -112,6 +115,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideNewChildDescriptors() {
         final Collection<CommandParameter> result = new ArrayList<CommandParameter>();
         for (final DialectUI dialect : dialects.values()) {
@@ -124,6 +128,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideRepresentationCreationToolDescriptors(final Object feature) {
         final Collection<CommandParameter> result = new ArrayList<CommandParameter>();
         for (final DialectUI dialect : dialects.values()) {
@@ -136,6 +141,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideRepresentationNavigationToolDescriptors(final Object feature) {
         final Collection<CommandParameter> result = new ArrayList<CommandParameter>();
         for (final DialectUI dialect : dialects.values()) {
@@ -147,6 +153,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideAdditionalMappings(EObject object) {
         final Collection<CommandParameter> result = new ArrayList<CommandParameter>();
         for (final DialectUI dialect : dialects.values()) {
@@ -159,6 +166,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public AdapterFactory createAdapterFactory() {
         final ComposedAdapterFactory composed = new ComposedAdapterFactory();
 
@@ -180,6 +188,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean canHandleEditor(final IEditorPart editorPart) {
         boolean result = false;
         for (final DialectUI dialect : dialects.values()) {
@@ -194,6 +203,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#closeEditor(org.eclipse.ui.IEditorPart,
      *      boolean)
      */
+    @Override
     public boolean closeEditor(final IEditorPart editorPart, final boolean save) {
         boolean result = false;
         for (final DialectUI dialect : dialects.values()) {
@@ -210,6 +220,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean isRepresentationManagedByEditor(final DRepresentation representation, final IEditorPart editorPart) {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().isRepresentationManagedByEditor(representation, editorPart)) {
@@ -225,6 +236,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public boolean isRepresentationDescriptionManagedByEditor(final RepresentationDescription representationDescription, final IEditorPart editor) {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().isRepresentationDescriptionManagedByEditor(representationDescription, editor)) {
@@ -239,6 +251,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.viewpoint.DRepresentation)
      */
+    @Override
     public String getEditorName(final DRepresentation representation) {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation)) {
@@ -253,6 +266,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
+    @Override
     public boolean canHandle(final DRepresentation representation) {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation)) {
@@ -267,6 +281,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
+    @Override
     public boolean canHandle(final RepresentationDescription description) {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(description)) {
@@ -281,6 +296,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
      */
+    @Override
     public boolean canHandle(final RepresentationExtensionDescription description) {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(description)) {
@@ -293,6 +309,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canExport(ExportFormat format) {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canExport(format)) {
@@ -308,6 +325,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation)) {
@@ -325,15 +343,24 @@ public class DialectUIManagerImpl implements DialectUIManager {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
         for (final DialectUI dialect : dialects.values()) {
             dialect.getServices().setSelection(dialectEditor, selection);
         }
     }
 
+    @Override
+    public void selectAndReveal(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
+        for (final DialectUI dialect : dialects.values()) {
+            dialect.getServices().selectAndReveal(dialectEditor, selection);
+        }
+    }
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<DSemanticDecorator> getSelection(DialectEditor editor) {
         for (final DialectUI dialect : dialects.values()) {
             Collection<DSemanticDecorator> selection = dialect.getServices().getSelection(editor);
@@ -347,6 +374,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<CommandParameter> provideTools(EObject cur) {
         final Collection<CommandParameter> result = new ArrayList<CommandParameter>();
         for (final DialectUI dialect : dialects.values()) {
@@ -360,6 +388,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getHierarchyLabelProvider(ILabelProvider)
      */
+    @Override
     public ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider) {
         ILabelProvider result = currentLabelProvider;
         for (final DialectUI dialect : dialects.values()) {
@@ -423,6 +452,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIManager#isRefreshActivatedOnRepresentationOpening()
      */
+    @Override
     public boolean isRefreshActivatedOnRepresentationOpening() {
         return SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
     }
