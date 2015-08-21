@@ -126,6 +126,9 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         if (concernRegion()) {
             Option<ChangeBoundsRequest> siblingRequest = getConstrainedSiblingRequest(request);
             if (siblingRequest.some() && siblingRequest.get().getEditParts() != null && siblingRequest.get().getEditParts().size() == 1) {
+                if (siblingRequest.get().getTransformedRectangle(new Rectangle()).equals(new Rectangle())) {
+                    return;
+                }
                 EditPart siblingPart = (EditPart) siblingRequest.get().getEditParts().get(0);
                 siblingPart.showSourceFeedback(siblingRequest.get());
             }
@@ -139,6 +142,9 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         if (concernRegion()) {
             Option<ChangeBoundsRequest> siblingRequest = getConstrainedSiblingRequest(request);
             if (siblingRequest.some() && siblingRequest.get().getEditParts() != null && siblingRequest.get().getEditParts().size() == 1) {
+                if (siblingRequest.get().getTransformedRectangle(new Rectangle()).equals(new Rectangle())) {
+                    return;
+                }
                 EditPart siblingPart = (EditPart) siblingRequest.get().getEditParts().get(0);
                 siblingPart.eraseSourceFeedback(siblingRequest.get());
             }
@@ -279,6 +285,11 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
                     req.setResizeDirection(request.getResizeDirection());
                     req.setSizeDelta(new Dimension(0, sizeDelta.height));
                     constrainedRequest = req;
+                    // Handle F3 for regions in region to allow manual layout.
+                    // Allow manual resize of the region container to reduce
+                    // empty space due to VSM specified size or recursive
+                    // regions.
+                    constrainedRequest = handleEmptySpaceInContainerOnLastRegionResize(request, constrainedRequest);
                 }
             } else {
                 Option<AbstractDiagramElementContainerEditPart> follo = getFollowingRegion();
@@ -315,6 +326,24 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         return constrainedRequest;
     }
 
+    private ChangeBoundsRequest handleEmptySpaceInContainerOnLastRegionResize(ChangeBoundsRequest initialRequest, ChangeBoundsRequest constrainedRequest) {
+        ChangeBoundsRequest result = constrainedRequest;
+        Object object = initialRequest.getExtendedData().get(SiriusResizeTracker.CHILDREN_MOVE_MODE_KEY);
+        boolean keepSameAbsoluteLocation = (object == null && SiriusResizeTracker.DEFAULT_CHILDREN_MOVE_MODE) || (object != null && ((Boolean) object).booleanValue());
+        if (!initialRequest.isConstrainedResize() && !keepSameAbsoluteLocation) {
+            result.setMoveDelta(new Point(0, 0));
+            result.setSizeDelta(new Dimension(0, 0));
+
+            IFigure hostFigure = getHostFigure();
+            IFigure parentFigure = hostFigure.getParent();
+            // Restrict the move to the parent bounds.
+            if (!parentFigure.getBounds().contains(new RequestQuery(initialRequest).getLogicalTransformedRectangle(hostFigure.getBounds()).getBottomRight())) {
+                result = null;
+            }
+        }
+        return result;
+    }
+
     private ChangeBoundsRequest getHStackConstrainedSiblingRequest(ChangeBoundsRequest request, RequestQuery query, Dimension sizeDelta) {
         ChangeBoundsRequest constrainedRequest = null;
         ChangeBoundsRequest req = initSiblingRequest(request);
@@ -348,6 +377,11 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
                     req.setResizeDirection(request.getResizeDirection());
                     req.setSizeDelta(new Dimension(sizeDelta.width, 0));
                     constrainedRequest = req;
+                    // Handle F3 for regions in region to allow manual layout.
+                    // Allow manual resize of the region container to reduce
+                    // empty space due to VSM specified size or recursive
+                    // regions.
+                    constrainedRequest = handleEmptySpaceInContainerOnLastRegionResize(request, constrainedRequest);
                 }
             } else {
                 Option<AbstractDiagramElementContainerEditPart> follo = getFollowingRegion();
