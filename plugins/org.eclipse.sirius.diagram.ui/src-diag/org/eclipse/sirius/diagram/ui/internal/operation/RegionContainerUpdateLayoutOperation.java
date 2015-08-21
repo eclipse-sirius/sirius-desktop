@@ -152,8 +152,14 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             Size size = (Size) layoutConstraint;
             if (vertical) {
                 size.setHeight(-1);
+                if (size.getWidth() != -1 && size.getWidth() < commonWidth) {
+                    size.setWidth(-1);
+                }
             } else {
                 size.setWidth(-1);
+                if (size.getHeight() != -1 && size.getHeight() < commonHeight) {
+                    size.setHeight(-1);
+                }
             }
         }
 
