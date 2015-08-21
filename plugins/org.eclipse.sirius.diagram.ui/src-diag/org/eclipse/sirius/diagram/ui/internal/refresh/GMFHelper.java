@@ -42,8 +42,10 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
@@ -53,6 +55,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerC
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.ui.IEditorPart;
@@ -147,7 +150,7 @@ public final class GMFHelper {
 
                 // RegionContainer do not have containers insets
                 if (ddec instanceof DNodeContainer) {
-                    if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer()) {
+                    if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
                         locationToTranslate.translate(0, CONTAINER_INSETS.y);
                         locationToTranslate.translate(0, getLabelSize(parentNode)).translate(0, AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
                     } else {
@@ -166,6 +169,14 @@ public final class GMFHelper {
             }
         }
 
+    }
+
+    private static boolean hasFullLabelBorder(DDiagramElementContainer ddec) {
+        if (ddec.getStyle() instanceof FlatContainerStyle && ddec.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
+            FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ddec.getStyle().getDescription();
+            return fcsd.getLabelBorderStyle() != null && LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(fcsd.getLabelBorderStyle().getId());
+        }
+        return false;
     }
 
     private static int getLabelSize(Node parentNode) {
