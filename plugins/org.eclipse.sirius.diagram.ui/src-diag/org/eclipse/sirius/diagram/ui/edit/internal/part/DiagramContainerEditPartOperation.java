@@ -159,7 +159,7 @@ public final class DiagramContainerEditPartOperation {
             if (primaryShape instanceof RoundedRectangle) {
                 refreshCorners(self, diagElement, (RoundedRectangle) primaryShape);
             }
-            DiagramElementEditPartOperation.refreshLabelAlignment(self.getContentPane(), ddec.getOwnedStyle());
+            DiagramElementEditPartOperation.refreshLabelAlignment(self.getContentPane(), style);
         }
 
         if (diagElement != null) {

@@ -554,7 +554,8 @@ public final class DiagramElementEditPartOperation {
      * @param lineStyle
      *            the {@link LineStyle} to set.
      * @param useCustomDashStyle
-     *            true to use the custom dash style (history behavior for edges).
+     *            true to use the custom dash style (history behavior for
+     *            edges).
      */
     public static void setLineStyle(Shape figure, LineStyle lineStyle, boolean useCustomDashStyle) {
         // Line style.
@@ -651,17 +652,19 @@ public final class DiagramElementEditPartOperation {
      *            the {@link LabelStyle}.
      */
     public static void refreshLabelAlignment(final IFigure figure, final LabelStyle style) {
-        LabelAlignment alignment = style.getLabelAlignment();
-        if (figure instanceof ViewNodeFigure) {
-            SiriusWrapLabel nodeLabel = ((ViewNodeFigure) figure).getNodeLabel();
-            if (nodeLabel != null) {
-                nodeLabel.setLabelAlignment(LabelAlignmentHelper.getAsPositionConstant(alignment));
-            }
-        } else {
-            LayoutManager layoutManager = figure.getLayoutManager();
-            if (layoutManager instanceof ConstrainedToolbarLayout) {
-                ConstrainedToolbarLayout ctl = (ConstrainedToolbarLayout) layoutManager;
-                ctl.setMinorAlignment(LabelAlignmentHelper.getAsCTLMinorAlignment(alignment));
+        if (style != null) {
+            LabelAlignment alignment = style.getLabelAlignment();
+            if (figure instanceof ViewNodeFigure) {
+                SiriusWrapLabel nodeLabel = ((ViewNodeFigure) figure).getNodeLabel();
+                if (nodeLabel != null) {
+                    nodeLabel.setLabelAlignment(LabelAlignmentHelper.getAsPositionConstant(alignment));
+                }
+            } else {
+                LayoutManager layoutManager = figure.getLayoutManager();
+                if (layoutManager instanceof ConstrainedToolbarLayout) {
+                    ConstrainedToolbarLayout ctl = (ConstrainedToolbarLayout) layoutManager;
+                    ctl.setMinorAlignment(LabelAlignmentHelper.getAsCTLMinorAlignment(alignment));
+                }
             }
         }
     }
