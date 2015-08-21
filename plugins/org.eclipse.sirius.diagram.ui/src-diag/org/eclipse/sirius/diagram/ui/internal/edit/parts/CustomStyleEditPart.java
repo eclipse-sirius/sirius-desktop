@@ -13,9 +13,11 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.StackLayout;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
@@ -33,6 +35,8 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNod
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.StyleItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
@@ -69,6 +73,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
     /**
      * @not-generated : prevent drag of elements
      */
+    @Override
     public DragTracker getDragTracker(final Request request) {
         return getParent().getDragTracker(request);
     }
@@ -76,6 +81,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
     /**
      * @was-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new StyleItemSemanticEditPolicy());
@@ -88,6 +94,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
     protected LayoutEditPolicy createLayoutEditPolicy() {
         final LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
 
+            @Override
             protected EditPolicy createChildEditPolicy(final EditPart child) {
                 EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
                 if (result == null) {
@@ -96,10 +103,12 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
                 return result;
             }
 
+            @Override
             protected Command getMoveChildrenCommand(final Request request) {
                 return null;
             }
 
+            @Override
             protected Command getCreateCommand(final CreateRequest request) {
                 return null;
             }
@@ -120,6 +129,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
     }
 
     private static BundledImage bundledImage = DiagramFactory.eINSTANCE.createBundledImage();
+
     static {
         bundledImage.setColor(VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.GREEN_LITERAL));
         bundledImage.setBorderColor(VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.GREEN_LITERAL));
@@ -144,6 +154,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
     /**
      * @was-generated
      */
+    @Override
     public EditPolicy getPrimaryDragEditPolicy() {
         final EditPolicy result = super.getPrimaryDragEditPolicy();
         if (result instanceof ResizableEditPolicy) {
@@ -161,6 +172,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
      * 
      * @was-generated
      */
+    @Override
     protected NodeFigure createNodeFigure() {
         final NodeFigure figure = createNodePlate();
         figure.setLayoutManager(new StackLayout());
@@ -185,6 +197,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
     /**
      * @was-generated
      */
+    @Override
     public IFigure getContentPane() {
         if (contentPane != null) {
             return contentPane;
@@ -194,6 +207,16 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
 
     protected Class<?> getMetamodelType() {
         return CustomStyle.class;
+    }
+
+    @Override
+    protected void refreshVisuals() {
+        super.refreshVisuals();
+        DiagramNodeEditPartOperation.refreshFigure(this);
+        EObject element = this.resolveSemanticElement();
+        if (element instanceof CustomStyle) {
+            DiagramElementEditPartOperation.refreshLabelAlignment(((GraphicalEditPart) getParent()).getContentPane(), (CustomStyle) element);
+        }
     }
 
 }
