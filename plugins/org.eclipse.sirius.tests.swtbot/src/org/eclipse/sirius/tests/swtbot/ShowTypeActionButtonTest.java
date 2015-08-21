@@ -10,12 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import java.io.FileNotFoundException;
-
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 
 /**
@@ -46,56 +43,27 @@ public class ShowTypeActionButtonTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String HIDE_TYPE = "Hide Types";
 
+    @Override
+    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, new String[] { VSM_FILE });
+    }
+
     /**
      * Test show type action on VSM and hide type action.
      */
-    public void testShowHideTypeAction() throws FileNotFoundException {
-        openVSM();
-        SWTBotEditor activeEditor = bot.activeEditor();
-        activeEditor.setFocus();
-        
-        //Active the 
-        SWTBotMenu contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(GROUP).expandNode(VIEWPOINT_NAME)
-                .expandNode(REPRESENTATION_NAME).contextMenu(SHOW_TYPE);
-        contextualMenu.click();
-        contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(TYPED_GROUP).expandNode(TYPED_VIEWPOINT_NAME)
-                .expandNode(TYPED_REPRESENTATION_NAME).contextMenu(HIDE_TYPE);
-        contextualMenu.click();
-        contextualMenu = activeEditor.bot().tree().expandNode("platform:/resource/" + getProjectName() + "/" + VSM_FILE).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(REPRESENTATION_NAME)
-                .contextMenu(SHOW_TYPE);
-    }
-
-    /**
-     * Open the VSM
-     */
-    private void openVSM() {
+    public void testShowHideTypeAction() {
         SWTBotView projectExplorer = bot.viewByTitle("Model Explorer");
         projectExplorer.setFocus();
-        SWTBot projectExplorerBot = projectExplorer.bot();
-        projectExplorerBot.tree().expandNode(getProjectName()).expandNode(VSM_FILE).doubleClick();
-    }
+        projectExplorer.bot().tree().expandNode(getProjectName()).expandNode(VSM_FILE).doubleClick();
+        SWTBotEditor activeEditor = bot.activeEditor();
+        activeEditor.setFocus();
 
-    /**
-     * Return files used in the current test.
-     */
-    String[] getFilesUsedForTest() {
-        return new String[] { VSM_FILE };
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
-        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, getFilesUsedForTest());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        super.onSetUpAfterOpeningDesignerPerspective();
+        String nodeLabel = "platform:/resource/" + getProjectName() + "/" + VSM_FILE;
+        SWTBotMenu contextualMenu = activeEditor.bot().tree().expandNode(nodeLabel).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(REPRESENTATION_NAME).contextMenu(SHOW_TYPE);
+        contextualMenu.click();
+        contextualMenu = activeEditor.bot().tree().expandNode(nodeLabel).expandNode(TYPED_GROUP).expandNode(TYPED_VIEWPOINT_NAME).expandNode(TYPED_REPRESENTATION_NAME).contextMenu(HIDE_TYPE);
+        contextualMenu.click();
+        contextualMenu = activeEditor.bot().tree().expandNode(nodeLabel).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(REPRESENTATION_NAME).contextMenu(SHOW_TYPE);
     }
 
 }

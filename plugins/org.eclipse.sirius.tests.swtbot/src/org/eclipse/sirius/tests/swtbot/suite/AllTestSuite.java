@@ -134,6 +134,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CellEditorExtensionTest.class);
         suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
         suite.addTestSuite(EdgeReconnectionTests.class);
+        suite.addTestSuite(ShowTypeActionButtonTest.class);
         suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
         suite.addTestSuite(LineStyleTest.class);
     }
