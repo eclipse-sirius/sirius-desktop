@@ -149,10 +149,9 @@ public final class DiagramContainerEditPartOperation {
             if (primaryShape instanceof GradientRoundedRectangle) {
                 refreshGradient(style, (GradientRoundedRectangle) primaryShape);
             }
-            if (primaryShape instanceof RoundedRectangle) {
-                refreshCorners(self, diagElement, (RoundedRectangle) primaryShape);
-            }
-            DiagramElementEditPartOperation.refreshLabelAlignment(self.getContentPane(), style);
+
+            refreshCorners(self, diagElement, primaryShape);
+            DiagramElementEditPartOperation.refreshLabelAlignment(self.getContentPane(), ddec.getOwnedStyle());
         }
 
         if (diagElement != null) {
@@ -191,7 +190,7 @@ public final class DiagramContainerEditPartOperation {
         }
     }
 
-    private static void refreshCorners(final AbstractDiagramElementContainerEditPart self, DDiagramElement diagElement, RoundedRectangle gradientRoundedShape) {
+    private static void refreshCorners(final AbstractDiagramElementContainerEditPart self, DDiagramElement diagElement, ViewNodeContainerFigureDesc primaryShape) {
         Dimension cornerDimension = getCornerDimension(self);
         Dimension specificDimension = cornerDimension;
         BitSet specificCornerPosition = new BitSet(PositionConstants.NSEW);
@@ -232,9 +231,11 @@ public final class DiagramContainerEditPartOperation {
         }
 
         // Update the corner dimension.
-        gradientRoundedShape.setCornerDimensions(cornerDimension);
-        if (gradientRoundedShape instanceof RegionRoundedGradientRectangle) {
-            ((RegionRoundedGradientRectangle) gradientRoundedShape).setAdditionalCornerDimensions(specificDimension, specificCornerPosition);
+        if (primaryShape instanceof RoundedRectangle) {
+            ((RoundedRectangle) primaryShape).setCornerDimensions(cornerDimension);
+            if (primaryShape instanceof RegionRoundedGradientRectangle) {
+                ((RegionRoundedGradientRectangle) primaryShape).setAdditionalCornerDimensions(specificDimension, specificCornerPosition);
+            }
         }
     }
 
