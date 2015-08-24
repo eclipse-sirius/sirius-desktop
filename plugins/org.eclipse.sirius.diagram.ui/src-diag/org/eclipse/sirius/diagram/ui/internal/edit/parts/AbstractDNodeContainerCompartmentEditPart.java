@@ -52,6 +52,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -157,9 +158,9 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         EObject eObj = resolveSemanticElement();
         if (eObj instanceof DNodeContainer) {
             DNodeContainer container = (DNodeContainer) eObj;
-            if (container.getOwnedStyle() != null && container.getOwnedStyle() instanceof FlatContainerStyle) {
+            if (container.getOwnedStyle() != null) {
                 /* color */
-                FlatContainerStyle ownedStyle = (FlatContainerStyle) container.getOwnedStyle();
+                ContainerStyle ownedStyle = container.getOwnedStyle();
                 final RGBValues borderColor = ownedStyle.getBorderColor();
                 if (borderColor != null) {
                     getFigure().setForegroundColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderColor));
