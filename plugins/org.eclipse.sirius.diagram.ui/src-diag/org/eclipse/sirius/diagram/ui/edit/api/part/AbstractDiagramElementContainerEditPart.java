@@ -407,16 +407,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                     configureBorder(primaryShape);
                 }
             }
-            /* Update background for containers */
-            final DDiagramElement diagElement = this.resolveDiagramElement();
-            if (diagElement instanceof DNodeContainer) {
-                final DNodeContainer container = (DNodeContainer) diagElement;
-                if (primaryShape instanceof GradientRoundedRectangle && container.getOwnedStyle() instanceof FlatContainerStyle) {
-                    if (((GradientRoundedRectangle) primaryShape).getBackgroundStyle() != ((FlatContainerStyle) container.getOwnedStyle()).getBackgroundStyle()) {
-                        reInitFigure();
-                    }
-                }
-            }
         }
 
         super.refreshVisuals();

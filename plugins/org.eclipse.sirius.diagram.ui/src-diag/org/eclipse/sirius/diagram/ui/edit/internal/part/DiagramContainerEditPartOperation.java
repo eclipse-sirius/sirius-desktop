@@ -140,19 +140,12 @@ public final class DiagramContainerEditPartOperation {
         final DDiagramElement diagElement = self.resolveDiagramElement();
         if (diagElement instanceof DDiagramElementContainer) {
             final DDiagramElementContainer ddec = (DDiagramElementContainer) diagElement;
-
-            /* The background figure */
-            if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && ddec.getOwnedStyle() != null) {
-                ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(ddec.getOwnedStyle());
-            }
-
+            final ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
             final ContainerStyle style = ddec.getOwnedStyle();
-            if (DiagramContainerEditPartOperation.isPrimaryShapeChanging(self, style)) {
-                self.reInitFigure();
-            }
-            ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
 
+            refreshBackgroundFigure(self, ddec, primaryShape, style);
             refreshBorder(self, primaryShape, style);
+
             if (primaryShape instanceof GradientRoundedRectangle) {
                 refreshGradient(style, (GradientRoundedRectangle) primaryShape);
             }
@@ -164,6 +157,27 @@ public final class DiagramContainerEditPartOperation {
 
         if (diagElement != null) {
             self.setTooltipText(diagElement.getTooltipText());
+        }
+    }
+
+    private static void refreshBackgroundFigure(final AbstractDiagramElementContainerEditPart self, final DDiagramElementContainer ddec, final ViewNodeContainerFigureDesc primaryShape,
+            final ContainerStyle style) {
+
+        // Update the background figure when the workspace image path changes.
+        if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && ddec.getOwnedStyle() != null) {
+            ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(ddec.getOwnedStyle());
+        }
+
+        // Update the background figure when the background gradient style
+        if (primaryShape instanceof GradientRoundedRectangle && style instanceof FlatContainerStyle) {
+            if (((GradientRoundedRectangle) primaryShape).getBackgroundStyle() != ((FlatContainerStyle) style).getBackgroundStyle()) {
+                self.reInitFigure();
+            }
+        }
+
+        // Update background figure when the primary shape should change.
+        if (isPrimaryShapeChanging(self, style)) {
+            self.reInitFigure();
         }
     }
 
@@ -184,7 +198,6 @@ public final class DiagramContainerEditPartOperation {
         if (self.isRegion()) {
             // If the current stack is a Region, check and avoid overlap of the
             // region container border.
-
             DNodeContainer regionContainer = (DNodeContainer) diagElement.eContainer();
             Dimension regionContainerCornerDimension = getCornerDimension(regionContainer);
             if (!regionContainerCornerDimension.getShrinked(cornerDimension).isEmpty()) {
@@ -339,10 +352,14 @@ public final class DiagramContainerEditPartOperation {
         if (!result) {
             // Test changed from FlatContainerStyle
             result = self.getPrimaryShape() instanceof GradientRoundedRectangle && (style instanceof ShapeContainerStyle || style instanceof WorkspaceImage);
-            if (!result) {
-                // Test changed from WorkspaceImage
-                result = self.getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc && (style instanceof FlatContainerStyle || style instanceof ShapeContainerStyle);
-            }
+        }
+        if (!result) {
+            // Test changed from WorkspaceImage
+            result = self.getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc && (style instanceof FlatContainerStyle || style instanceof ShapeContainerStyle);
+        }
+        if (!result) {
+            // Test changed from WorkspaceImage.workspacePath
+            result = style instanceof WorkspaceImage && (self.getBackgroundFigure() == null ^ StringUtil.isEmpty(((WorkspaceImage) style).getWorkspacePath()));
         }
         return result;
     }
