@@ -37,6 +37,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
+import com.google.common.base.Function;
+
 /**
  * This class is complementary to {@link BendpointsStabilityOnMovesTest} but
  * with specific cases detected after.
@@ -58,6 +60,91 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
     boolean isOutlineViewOpened;
 
     boolean isPropertiesViewOpened;
+
+    /**
+     * Function to check if a point is at the expected location. The
+     * {@link #setData(Point, Point, Rectangle)} method must be called before
+     * calling {@link #apply(Point)} method.<BR>
+     * If the {@link #apply(Point)} method return false, the method
+     * {@link #getErrorMessage()} can be called to display the corresponding
+     * error message.<BR>
+     * The methods {@link #apply(Point)}, {@link #getErrorMessage()}, and/or
+     * {@link #getExpectedPoint()} can be override to handle specific cases.
+     * 
+     * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
+     */
+    public class AssertPointLocationFunction implements Function<Point, Boolean> {
+        /** Original point from which to find the expected one. */
+        protected Point originalPoint;
+
+        /** The delta of the move. */
+        protected Point moveDelta;
+
+        /**
+         * Another point (3rd for first point and n-3 for the last point) to
+         * retrieve other axis in case of segment merge.
+         */
+        protected Point previousMergedPoint;
+
+        /** The bounds of the moved node (before move). */
+        protected Rectangle movedNodeBounds;
+
+        /** Store the last input to use it in the {@link #getErrorMessage()}. */
+        protected Point lastInputUsedForThisFunction;
+
+        /**
+         * Default constructor.
+         * 
+         * @param moveDelta
+         *            The delta of the move.
+         */
+        public AssertPointLocationFunction(Point moveDelta) {
+            this.moveDelta = moveDelta;
+        }
+
+        /**
+         * 
+         * @param originalPoint
+         *            Original point from which to find the expected one.
+         * @param previousMergedPoint
+         *            Another point (3rd for first point and n-3 for the last
+         *            point) to retrieve other axis in case of segment merge.
+         * @param movedNodeBounds
+         *            The bounds of the moved node (before move)
+         */
+        public void setData(Point originalPoint, Point previousMergedPoint, Rectangle movedNodeBounds) {
+            this.originalPoint = originalPoint;
+            this.previousMergedPoint = previousMergedPoint;
+            this.movedNodeBounds = movedNodeBounds;
+        }
+
+        @Override
+        public Boolean apply(Point input) {
+            if (originalPoint != null && previousMergedPoint != null) {
+                lastInputUsedForThisFunction = input;
+                return lastInputUsedForThisFunction.equals(getExpectedPoint());
+            } else {
+                return false;
+            }
+        }
+
+        /**
+         * @return The expected point according to data.
+         */
+        public Point getExpectedPoint() {
+            return originalPoint.getTranslated(moveDelta);
+        }
+
+        /**
+         * Must be called only in case of failing of {@link #apply(Point)}
+         * method. This method returns the message to display.
+         * 
+         * @return the message to display.
+         */
+        public String getErrorMessage() {
+            return "Point should have moved at the expected location. Expected:<" + getExpectedPoint() + "> but was:<" + lastInputUsedForThisFunction + ">";
+        }
+    }
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -119,7 +206,9 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * points are consistency.
      */
     public void testFirstPointConsistency() {
-        testFirstPointConsistency(new Point(20, 20), false, false);
+        final Point moveDelta = new Point(20, 20);
+        AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta);
+        testFirstPointConsistency(moveDelta, 0, assertPointLocationFunction);
     }
 
     /**
@@ -128,7 +217,28 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * the second one.
      */
     public void testFirstPointConsistencyWithMergeSegment() {
-        testFirstPointConsistency(new Point(0, 99), true, false);
+        final Point moveDelta = new Point(0, 99);
+        AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
+            Point otherExpectedPoint;
+
+            @Override
+            public Boolean apply(Point input) {
+                if (originalPoint != null && previousMergedPoint != null) {
+                    Point lastInputUsedForThisFunction = input;
+                    Point expectedPoint = originalPoint.getTranslated(moveDelta);
+                    otherExpectedPoint = new Point(expectedPoint.x, previousMergedPoint.y);
+                    return lastInputUsedForThisFunction.equals(expectedPoint) || lastInputUsedForThisFunction.equals(otherExpectedPoint);
+                } else {
+                    return false;
+                }
+            }
+
+            @Override
+            public String getErrorMessage() {
+                return "First point should have moved at the expected location. Expected:<" + getExpectedPoint() + "or " + otherExpectedPoint + "> but was:<" + lastInputUsedForThisFunction + ">";
+            }
+        };
+        testFirstPointConsistency(moveDelta, -2, assertPointLocationFunction);
     }
 
     /**
@@ -136,7 +246,29 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * points are consistency (when the first segment is removed).
      */
     public void testFirstPointConsistencyWithFirstSegmentRemoval() {
-        testFirstPointConsistency(new Point(60, 20), false, true);
+        final Point moveDelta = new Point(60, 20);
+        AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
+            @Override
+            public Point getExpectedPoint() {
+                return new Point(previousMergedPoint.x, movedNodeBounds.getTranslated(moveDelta).getBottom().y);
+            }
+        };
+        testFirstPointConsistency(moveDelta, -1, assertPointLocationFunction);
+    }
+
+    /**
+     * Test that first point is moved has expected and that draw2d and GMF last
+     * points are consistency (when the first segment is inverted).
+     */
+    public void testFirstPointConsistencyWithFirstSegmentInverted() {
+        final Point moveDelta = new Point(340, 0);
+        AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
+            @Override
+            public Point getExpectedPoint() {
+                return originalPoint.getTranslated(moveDelta).getTranslated(new Point(-movedNodeBounds.width(), 0));
+            }
+        };
+        testFirstPointConsistency(moveDelta, 0, assertPointLocationFunction);
     }
 
     /**
@@ -144,7 +276,9 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * points are consistency.
      */
     public void testLastPointConsistency() {
-        testLastPointConsistency(new Point(-20, 50), false, false);
+        Point moveDelta = new Point(-20, 50);
+        AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta);
+        testLastPointConsistency(moveDelta, 0, assertPointLocationFunction);
     }
 
     /**
@@ -153,7 +287,28 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * previous one.
      */
     public void testLastPointConsistencyWithMergeSegment() {
-        testLastPointConsistency(new Point(0, -139), true, false);
+        Point moveDelta = new Point(0, -139);
+        AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
+            Point otherExpectedPoint;
+
+            @Override
+            public Boolean apply(Point input) {
+                if (originalPoint != null && previousMergedPoint != null) {
+                    Point lastInputUsedForThisFunction = input;
+                    Point expectedPoint = originalPoint.getTranslated(moveDelta);
+                    otherExpectedPoint = new Point(expectedPoint.x, previousMergedPoint.y);
+                    return lastInputUsedForThisFunction.equals(expectedPoint) || lastInputUsedForThisFunction.equals(otherExpectedPoint);
+                } else {
+                    return false;
+                }
+            }
+
+            @Override
+            public String getErrorMessage() {
+                return "Last point should have moved at the expected location. Expected:<" + getExpectedPoint() + "or " + otherExpectedPoint + "> but was:<" + lastInputUsedForThisFunction + ">";
+            }
+        };
+        testLastPointConsistency(moveDelta, -2, assertPointLocationFunction);
     }
 
     /**
@@ -161,7 +316,29 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * points are consistency (when the last segment is removed).
      */
     public void testLastPointConsistencyWithLastSegmentRemoval() {
-        testLastPointConsistency(new Point(-120, 50), false, true);
+        final Point moveDelta = new Point(-120, 50);
+        AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
+            @Override
+            public Point getExpectedPoint() {
+                return new Point(previousMergedPoint.x, movedNodeBounds.getTranslated(moveDelta).y);
+            }
+        };
+        testLastPointConsistency(moveDelta, -1, assertPointLocationFunction);
+    }
+
+    /**
+     * Test that last point is moved has expected and that draw2d and GMF last
+     * points are consistency (when the last segment is inverted).
+     */
+    public void testLastPointConsistencyWithLastSegmentInverted() {
+        final Point moveDelta = new Point(-340, 0);
+        AssertPointLocationFunction assertPointLocationFunction = new AssertPointLocationFunction(moveDelta) {
+            @Override
+            public Point getExpectedPoint() {
+                return originalPoint.getTranslated(moveDelta).getTranslated(new Point(movedNodeBounds.width(), 0));
+            }
+        };
+        testLastPointConsistency(moveDelta, 0, assertPointLocationFunction);
     }
 
     /**
@@ -170,15 +347,14 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * 
      * @param moveDelta
      *            The delta from which the source node will be moved
-     * @param segmentMerged
-     *            true if the corresponding segment is merged with the next one
-     *            (2 points less and segments normalize and straight), false
-     *            otherwise. Exclusive with segmentRemoved.
-     * @param segmentRemoved
-     *            true if the corresponding segment is removed (absorbed by the
-     *            moved node), false otherwise. Exclusive with segmentMerged.
+     * @param nbGMFPointsDelta
+     *            Number of GMF points that are added (or removed) after the
+     *            move.
+     * @param assertPointLocationFunction
+     *            the function to use to check the expected last point location
+     *            after move
      */
-    protected void testLastPointConsistency(Point moveDelta, boolean segmentMerged, boolean segmentRemoved) {
+    private void testLastPointConsistency(Point moveDelta, int nbGMFPointsDelta, AssertPointLocationFunction assertPointLocationFunction) {
         String nodeToMoveName = "C2";
         editor.reveal(nodeToMoveName);
         // Step 2: store the previous bendpoints
@@ -195,7 +371,8 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
         bot.waitUntil(editPartMovedCondition);
         assertEquals("Drag as failed: selection should be the same before and after drag.", editPartToMove, editor.selectedEditParts().get(0));
         // Step 4: Check bendpoints
-        compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, nodeBounds, false, segmentMerged, segmentRemoved);
+        assertPointLocationFunction.setData(previousPoints.getLastPoint(), previousPoints.getPoint(previousPoints.size() - 3), nodeBounds);
+        compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, nodeBounds, false, nbGMFPointsDelta, assertPointLocationFunction);
     }
 
     /**
@@ -204,15 +381,14 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
      * 
      * @param moveDelta
      *            The delta from which the source node will be moved
-     * @param segmentMerged
-     *            true if the corresponding segment is merged with the next one
-     *            (2 points less and segments normalize and straight), false
-     *            otherwise. Exclusive with segmentRemoved.
-     * @param segmentRemoved
-     *            true if the corresponding segment is removed (absorbed by the
-     *            moved node), false otherwise. Exclusive with segmentMerged.
+     * @param nbGMFPointsDelta
+     *            Number of GMF points that are added (or removed) after the
+     *            move.
+     * @param assertPointLocationFunction
+     *            the function to use to check the expected last point location
+     *            after move
      */
-    protected void testFirstPointConsistency(Point moveDelta, boolean segmentMerged, boolean segmentRemoved) {
+    private void testFirstPointConsistency(Point moveDelta, int nbGMFPointsDelta, AssertPointLocationFunction assertPointLocationFunction) {
         String nodeToMoveName = "C1";
         editor.reveal(nodeToMoveName);
         // Step 2: store the previous bendpoints
@@ -229,53 +405,37 @@ public class BendpointsStabilityOnMovesSpecificCasesTest extends AbstractSiriusS
         bot.waitUntil(editPartMovedCondition);
         assertEquals("Drag as failed: selection should be the same before and after drag.", editPartToMove, editor.selectedEditParts().get(0));
         // Step 4: Check bendpoints
-        compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, nodeBounds, true, segmentMerged, segmentRemoved);
+        assertPointLocationFunction.setData(previousPoints.getFirstPoint(), previousPoints.getPoint(2), nodeBounds);
+        compareActualBendpointsWithExpected(editor, connectionEditPart, previousPoints, moveDelta, nodeBounds, true, nbGMFPointsDelta, assertPointLocationFunction);
     }
 
     // Check the first or last bendpoint of the connection.
     private void compareActualBendpointsWithExpected(SWTBotSiriusDiagramEditor diagramEditor, SWTBotGefConnectionEditPart connectionEditPart, PointList previousPoints, Point moveDelta,
-            Rectangle movedNodeBounds, boolean firstPoint, boolean segmentMerged, boolean segmentRemoved) {
+            Rectangle movedNodeBounds, boolean firstPoint, int nbGMFPointsDelta, AssertPointLocationFunction assertPointLocationFunction) {
         List<Point> newGMFBendpointsFromSource = GMFHelper.getPointsFromSource(connectionEditPart.part());
         String messagePrefix = "First";
         if (!firstPoint) {
             messagePrefix = "Last";
         }
-        if (segmentMerged) {
-            assertEquals(messagePrefix + " segment must me merged. We should have 2 GMF points less.", previousPoints.size() - 2, newGMFBendpointsFromSource.size());
-        } else if (segmentRemoved) {
-            assertEquals(messagePrefix + " segment must me removed. We should have 1 GMF point less.", previousPoints.size() - 1, newGMFBendpointsFromSource.size());
-        }
+        assertEquals("We should have a delta of " + nbGMFPointsDelta + " GMF points.", previousPoints.size() + nbGMFPointsDelta, newGMFBendpointsFromSource.size());
+
         Point previousDraw2dPoint;
-        Point previousMergedPoint;
         Point currentDraw2dPoint;
         Point currentGmfPoint;
-        int yNodeBorder;
         PointList actualBendPoints = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
         if (firstPoint) {
             previousDraw2dPoint = previousPoints.getFirstPoint();
-            previousMergedPoint = previousPoints.getPoint(2);
             currentDraw2dPoint = actualBendPoints.getFirstPoint();
             currentGmfPoint = newGMFBendpointsFromSource.get(0);
-            yNodeBorder = movedNodeBounds.getTranslated(moveDelta).getBottom().y;
         } else {
             previousDraw2dPoint = previousPoints.getLastPoint();
-            previousMergedPoint = previousPoints.getPoint(previousPoints.size() - 3);
             currentDraw2dPoint = actualBendPoints.getLastPoint();
             currentGmfPoint = newGMFBendpointsFromSource.get(newGMFBendpointsFromSource.size() - 1);
-            yNodeBorder = movedNodeBounds.getTranslated(moveDelta).y;
         }
         // The first (or last) bendpoint should have moved.
         assertNotEquals(messagePrefix + " point should have moved", previousDraw2dPoint, currentDraw2dPoint);
-        if (segmentMerged) {
-            Point expectedPoint = previousDraw2dPoint.getTranslated(moveDelta);
-            Point otherExpectedPoint = new Point(expectedPoint.x, previousMergedPoint.y);
-            assertTrue(messagePrefix + " point should have moved at the expected location. expected:<" + expectedPoint + "or " + otherExpectedPoint + "> but was:<" + currentDraw2dPoint + ">",
-                    expectedPoint.equals(currentDraw2dPoint) || otherExpectedPoint.equals(currentDraw2dPoint));
-        } else if (segmentRemoved) {
-            Point otherExpectedPoint = new Point(previousMergedPoint.x, yNodeBorder);
-            assertEquals(messagePrefix + " point should have moved at the expected location", otherExpectedPoint, currentDraw2dPoint);
-        } else {
-            assertEquals(messagePrefix + " point should have moved at the expected location", previousDraw2dPoint.getTranslated(moveDelta), currentDraw2dPoint);
+        if (!assertPointLocationFunction.apply(currentDraw2dPoint)) {
+            fail(assertPointLocationFunction.getErrorMessage());
         }
         // The draw2d and GMF point should be the same.
         assertEquals(messagePrefix + " draw2d and GMF points should be the same", currentDraw2dPoint, currentGmfPoint);

@@ -299,9 +299,9 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
             for (int i = 0; i < newLine.size() && sourcePointList.polygonContainsPoint(newLine.getPoint(i).x, newLine.getPoint(i).y); i++) {
                 nbIncludedPoints++;
             }
-            // Do nothing if there is only one point inside. This is the first
-            // point that is on the border.
-            if (nbIncludedPoints > 1) {
+            // Do nothing if there is only one point inside and no other
+            // intersection. This is the first point that is on the border.
+            if (nbIncludedPoints > 1 || (nbIncludedPoints == 1 && newLine.size() > 1 && isAnotherIntersection(newLine.getFirstPoint(), newLine.getPoint(1), sourcePointList))) {
                 for (int i = 0; i < nbIncludedPoints; i++) {
                     lastRemovedFromSource = newLine.removePoint(0);
                 }
@@ -320,9 +320,9 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
             for (int i = newLine.size() - 1; i > 0 && targetPointList.polygonContainsPoint(newLine.getPoint(i).x, newLine.getPoint(i).y); i--) {
                 nbIncludedPoints++;
             }
-            // Do nothing if there is only one point inside. This is the last
-            // point that is on the border.
-            if (nbIncludedPoints > 1) {
+            // Do nothing if there is only one point inside and no other
+            // intersection. This is the last point that is on the border.
+            if (nbIncludedPoints > 1 || (nbIncludedPoints == 1 && newLine.size() > 1 && isAnotherIntersection(newLine.getLastPoint(), newLine.getPoint(newLine.size() - 2), targetPointList))) {
                 for (int i = 0; i < nbIncludedPoints; i++) {
                     lastRemovedFromTarget = newLine.removePoint(newLine.size() - 1);
                 }
@@ -332,9 +332,9 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
         /*
          * Handle the special case of all points removed from polyline.
          */
+        Dimension tolerance = new Dimension(1, 0);
+        int toleranceValue = tolerance.width;
         if (newLine.size() == 0) {
-            Dimension tolerance = new Dimension(1, 0);
-            int toleranceValue = tolerance.width;
             if (lastRemovedFromSource == null) {
                 lastRemovedFromSource = start;
             }
@@ -369,17 +369,67 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
             // Add necessary point to complete the first (or last) segment if
             // points have been removed from source (or target).
             if (lastRemovedFromSource != null) {
-                Option<Point> optionalIntersection = GraphicalHelper.getIntersection(lastRemovedFromSource, newLine.getFirstPoint(), source, true);
+                Option<Point> optionalIntersection = getComplementaryPoint(newLine, source, lastRemovedFromSource, newLine.getFirstPoint(), toleranceValue);
                 if (optionalIntersection.some()) {
                     newLine.insertPoint(optionalIntersection.get(), 0);
                 }
-            } else if (lastRemovedFromTarget != null) {
-                Option<Point> optionalIntersection = GraphicalHelper.getIntersection(lastRemovedFromTarget, newLine.getLastPoint(), target, false);
+            }
+            if (lastRemovedFromTarget != null) {
+                Option<Point> optionalIntersection = getComplementaryPoint(newLine, target, lastRemovedFromTarget, newLine.getLastPoint(), toleranceValue);
                 if (optionalIntersection.some()) {
                     newLine.addPoint(optionalIntersection.get());
                 }
             }
         }
+    }
+
+    /**
+     * Get a complementary point to go from the <code>otherPointExtremity</code>
+     * to the <code>nodeBouds</code> through <code>lastRemoved</code> point.
+     * 
+     * @param pointsList
+     *            Current points of the edge
+     * @param nodeBouds
+     *            Bounds of the node to connect
+     * @param lastRemoved
+     *            Last removed point from the points list of the edge
+     * @param otherPointExtremity
+     *            First/Last point from the points list of the edge (on the same
+     *            side as <code>lastRemoved</code>)
+     * @param toleranceValue
+     *            A tolerance.
+     * @return An optional point corresponding to the intersection between a
+     *         line from <code>otherPointExtremity</code> to
+     *         <code>lastRemoved</code> and <code>nodeBouds</code>.
+     */
+    private static Option<Point> getComplementaryPoint(PointList pointsList, PrecisionRectangle nodeBouds, Point lastRemoved, Point otherPointExtremity, int toleranceValue) {
+        Option<Point> optionalIntersection;
+        if (Math.abs(lastRemoved.x - otherPointExtremity.x) < toleranceValue) {
+            // Vertical
+            if (lastRemoved.preciseY() < otherPointExtremity.preciseY()) {
+                optionalIntersection = GraphicalHelper.getIntersection(lastRemoved, otherPointExtremity, nodeBouds, false);
+            } else {
+                optionalIntersection = GraphicalHelper.getIntersection(otherPointExtremity, lastRemoved, nodeBouds, true);
+            }
+        } else {
+            // Horizontal
+            if (lastRemoved.preciseX() < otherPointExtremity.preciseX()) {
+                optionalIntersection = GraphicalHelper.getIntersection(lastRemoved, otherPointExtremity, nodeBouds, false);
+            } else {
+                optionalIntersection = GraphicalHelper.getIntersection(otherPointExtremity, lastRemoved, nodeBouds, true);
+            }
+        }
+        return optionalIntersection;
+    }
+
+    private static boolean isAnotherIntersection(Point origin, Point terminus, PointList pointList) {
+        PointList line = new PointList();
+        line.addPoint(origin);
+        line.addPoint(terminus);
+        PointList distances = new PointList();
+        PointList intersections = new PointList();
+        PointListUtilities.findIntersections(line, pointList, intersections, distances);
+        return intersections.size() > 1;
     }
 
     /**
