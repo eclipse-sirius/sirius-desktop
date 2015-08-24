@@ -63,6 +63,7 @@ import org.eclipse.sirius.tests.unit.common.SiriusCrossReferenceAdapterTests;
 import org.eclipse.sirius.tests.unit.common.SubMenusPrioritiesTest;
 import org.eclipse.sirius.tests.unit.common.TransientSessionTests;
 import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
+import org.eclipse.sirius.tests.unit.common.ZombieViewpointsTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.CompoundInterpreterTestCase;
 import org.eclipse.sirius.tests.unit.common.interpreter.CreateCellToolInterpreterTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTInterpreterOnPackageImportTests;
@@ -284,6 +285,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(OpenSessionTest.class);
 
         suite.addTestSuite(SubMenusPrioritiesTest.class);
+        suite.addTestSuite(ZombieViewpointsTest.class);
     }
 
     /**
