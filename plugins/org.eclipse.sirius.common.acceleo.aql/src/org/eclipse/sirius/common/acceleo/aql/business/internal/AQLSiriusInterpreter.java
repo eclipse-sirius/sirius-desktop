@@ -102,8 +102,8 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             try {
                 queryEnvironment.registerServicePackage(clazz);
             } catch (InvalidAcceleoPackageException e) {
-                AQLSiriusPlugin.INSTANCE.log(new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), MessageFormat.format(Messages.AQLInterpreter_errorLoadingJavaClass, qualifiedName,
-                        e.getMessage()), e));
+                AQLSiriusPlugin.INSTANCE.log(
+                        new Status(IStatus.WARNING, AQLSiriusPlugin.INSTANCE.getSymbolicName(), MessageFormat.format(Messages.AQLInterpreter_errorLoadingJavaClass, qualifiedName, e.getMessage()), e));
             }
 
         }
@@ -141,6 +141,12 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         };
         this.javaExtensions.addClassLoadingCallBack(callback);
         this.javaExtensions.addEPackageCallBack(ePackageCallBack);
+        this.queryEnvironment.registerEPackage(EcorePackage.eINSTANCE);
+        this.queryEnvironment.registerCustomClassMapping(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class);
+        initExpressionsCache();
+    }
+
+    private void initExpressionsCache() {
         final IQueryBuilderEngine builder = QueryParsing.newBuilder(queryEnvironment);
         this.parsedExpressions = CacheBuilder.newBuilder().maximumSize(500).build(new CacheLoader<String, AstResult>() {
 
@@ -150,8 +156,6 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             }
 
         });
-        this.queryEnvironment.registerEPackage(EcorePackage.eINSTANCE);
-        this.queryEnvironment.registerCustomClassMapping(EcorePackage.eINSTANCE.getEStringToStringMapEntry(), EStringToStringMapEntryImpl.class);
     }
 
     @Override
@@ -167,6 +171,9 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
         }
         for (EPackage ePackage : additionalEPackages) {
             this.queryEnvironment.registerEPackage(ePackage);
+        }
+        if (additionalEPackages.size() > 0) {
+            this.initExpressionsCache();
         }
     }
 
