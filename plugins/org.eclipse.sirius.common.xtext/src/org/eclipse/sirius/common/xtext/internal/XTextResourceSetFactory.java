@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.util.JdtClasspathUriResolver;
+import org.osgi.framework.Constants;
 
 /**
  * Class overriding the default {@link ResourceSet} factory to correctly setup
@@ -89,7 +90,7 @@ public class XTextResourceSetFactory extends org.eclipse.sirius.common.tools.api
             IClasspathEntry[] classpath = javaProject.getResolvedClasspath(true);
             for (IClasspathEntry classPathEntry : classpath) {
                 IPath path = classPathEntry.getPath();
-                if (path != null && "jar".equals(path.getFileExtension())) {
+                if (path != null && "jar".equals(path.getFileExtension())) { //$NON-NLS-1$
                     try {
                         final File file = path.toFile();
                         if (file != null && file.exists()) {
@@ -111,16 +112,16 @@ public class XTextResourceSetFactory extends org.eclipse.sirius.common.tools.api
     }
 
     private void handleManifest(HashMap<URI, URI> hashMap, final File file, Manifest manifest) {
-        String name = manifest.getMainAttributes().getValue("Bundle-SymbolicName");
+        String name = manifest.getMainAttributes().getValue(Constants.BUNDLE_SYMBOLICNAME_ATTRIBUTE);
         if (name != null) {
             final int indexOf = name.indexOf(';');
             if (indexOf > 0)
                 name = name.substring(0, indexOf);
             if (!EcorePlugin.getPlatformResourceMap().containsKey(name)) {
-                String p = "archive:" + file.toURI() + "!/";
+                String p = "archive:" + file.toURI() + "!/"; //$NON-NLS-1$ //$NON-NLS-2$
                 URI uri = URI.createURI(p);
-                final URI platformResourceKey = URI.createPlatformResourceURI(name + "/", false);
-                final URI platformPluginKey = URI.createPlatformPluginURI(name + "/", false);
+                final URI platformResourceKey = URI.createPlatformResourceURI(name + "/", false); //$NON-NLS-1$
+                final URI platformPluginKey = URI.createPlatformPluginURI(name + "/", false); //$NON-NLS-1$
                 hashMap.put(platformResourceKey, uri);
                 hashMap.put(platformPluginKey, uri);
             }
