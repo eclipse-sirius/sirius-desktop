@@ -14,9 +14,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * An actions opening a dialog allowing to change the {@link ViewpointSelection}
@@ -59,7 +59,7 @@ public class OpenViewpointSelectionAction extends Action {
     @Override
     public void run() {
         final Session session = SessionManager.INSTANCE.getExistingSession(sessionURI);
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
             public void run() {
                 ViewpointSelection.openViewpointsSelectionDialog(session);
             }

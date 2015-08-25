@@ -23,11 +23,11 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -101,7 +101,7 @@ public class VisibilityPostCommitListener extends ResourceSetListenerImpl {
                 parts.add(elementParts.get());
             }
         }
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
             public void run() {
                 for (DEdgeEditPart edgePart : Iterables.filter(parts, DEdgeEditPart.class)) {
                     Edge edge = (Edge) edgePart.getNotationView();

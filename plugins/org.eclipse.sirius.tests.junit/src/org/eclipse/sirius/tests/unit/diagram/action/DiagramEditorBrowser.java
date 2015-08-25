@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.business.internal.browser;
+package org.eclipse.sirius.tests.unit.diagram.action;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
@@ -99,7 +99,7 @@ public class DiagramEditorBrowser {
      */
     public void arrangeAll() throws InterruptedException {
 
-        synchronizationWithUIThread();
+        EclipseUIUtil.synchronizeWithUIThread();
 
         final ArrangeRequest request = new ArrangeRequest(ActionIds.ACTION_ARRANGE_ALL);
         request.setPartsToArrange(Lists.newArrayList(editor.getDiagramEditPart()));
@@ -108,18 +108,9 @@ public class DiagramEditorBrowser {
         editor.getEditingDomain().getCommandStack().flush();
         editor.getDiagramEditPart().getRoot().getViewer().flush();
 
-        synchronizationWithUIThread();
+        EclipseUIUtil.synchronizeWithUIThread();
         Thread.sleep(30000);
-        synchronizationWithUIThread();
-    }
-
-    private void synchronizationWithUIThread() {
-        while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
-            /*
-             * We'll just wait for the UI thread to process all the events
-             * needed to refresh the diagram.
-             */
-        }
+        EclipseUIUtil.synchronizeWithUIThread();
     }
 
 }

@@ -36,7 +36,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * A specific editor you may extend, which includes a session. The session
@@ -68,7 +67,7 @@ public abstract class AbstractSpecificDDiagramEditor extends DDiagramEditorImpl 
             });
             domain.getCommandStack().execute(new CreateAndStoreGMFDiagramCommand(session, (DSemanticDiagram) diagram));
 
-            PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+            EclipseUIUtil.displayAsyncExec(new Runnable() {
                 public void run() {
                     final IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
                     if (activeEditor != null) {

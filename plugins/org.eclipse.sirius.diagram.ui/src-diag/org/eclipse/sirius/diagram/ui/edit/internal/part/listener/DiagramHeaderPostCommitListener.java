@@ -15,10 +15,10 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.header.DiagramHeaderComposite;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * A ResourceSet listener to refresh the diagram header after changes on :
@@ -81,7 +81,7 @@ public class DiagramHeaderPostCommitListener extends ResourceSetListenerImpl {
      * Refresh the diagram header composite.
      */
     private void refreshDiagramHeader() {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
             public void run() {
                 if (diagramHeader != null && !diagramHeader.isDisposed()) {
                     diagramHeader.rebuildHeaderSection();

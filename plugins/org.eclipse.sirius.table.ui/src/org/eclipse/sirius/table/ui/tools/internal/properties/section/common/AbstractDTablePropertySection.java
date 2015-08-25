@@ -31,13 +31,13 @@ import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -325,7 +325,7 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
 
             if (notifier instanceof EObject && contentPage != null && contentPage.getControl() != null) {
                 final Control control = contentPage.getControl();
-                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                EclipseUIUtil.displayAsyncExec(new Runnable() {
                     public void run() {
                         if (!control.isDisposed() && control.isVisible()) {
                             refresh();

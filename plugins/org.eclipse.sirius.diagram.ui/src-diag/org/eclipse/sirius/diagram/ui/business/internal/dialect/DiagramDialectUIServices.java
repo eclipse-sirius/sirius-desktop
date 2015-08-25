@@ -63,6 +63,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -212,7 +213,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             }
 
         };
-        PlatformUI.getWorkbench().getDisplay().syncExec(runnable);
+        EclipseUIUtil.displaySyncExec(runnable);
         monitor.worked(10);
         if (runnable.getResult() != null) {
             dialectEditor = runnable.getResult();
@@ -252,7 +253,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             viewpointsName += ", " + neededSirius.getName(); //$NON-NLS-1$
         }
         final String description = viewpointsName;
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
 
             @Override
             public void run() {

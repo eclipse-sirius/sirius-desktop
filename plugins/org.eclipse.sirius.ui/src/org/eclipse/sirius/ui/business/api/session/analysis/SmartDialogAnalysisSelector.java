@@ -19,6 +19,7 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -100,7 +101,7 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
             }
         };
         /* synch execution as the user need to choose before we can get further */
-        PlatformUI.getWorkbench().getDisplay().syncExec(runnable);
+        EclipseUIUtil.displaySyncExec(runnable);
         if (runnable.getResult() instanceof DAnalysis) {
             return (DAnalysis) runnable.getResult();
         }

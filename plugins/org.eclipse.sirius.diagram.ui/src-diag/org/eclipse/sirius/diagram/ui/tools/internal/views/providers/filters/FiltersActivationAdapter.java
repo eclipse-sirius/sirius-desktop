@@ -16,10 +16,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * An adapter to listen layer activation change.
@@ -44,7 +44,7 @@ public class FiltersActivationAdapter extends AdapterImpl {
     }
 
     private void update(final DDiagram diagram, final FilterDescription filter, final boolean activate) {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
             public void run() {
                 if (viewer != null) {
                     viewer.update(filter, null);
@@ -54,7 +54,7 @@ public class FiltersActivationAdapter extends AdapterImpl {
     }
 
     private void update(final DDiagram notifier, final Collection<FilterDescription> filters, final boolean b) {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
             public void run() {
                 if (viewer != null && filters != null) {
                     for (FilterDescription filter : filters) {

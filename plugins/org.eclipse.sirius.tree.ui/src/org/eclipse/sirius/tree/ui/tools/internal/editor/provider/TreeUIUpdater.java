@@ -21,6 +21,7 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DRepresentationNotificationFilter;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
-import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Sets;
 
@@ -167,7 +167,7 @@ public class TreeUIUpdater extends ResourceSetListenerImpl {
         if (!toRefreshInViewer.isEmpty() || !toUpdateInViewer.isEmpty() || !toCollapses.isEmpty() || !toExpands.isEmpty()) {
             final Object[] objectsToUpdateInViewer = Sets.difference(toUpdateInViewer, toRefreshInViewer).toArray(new Object[0]);
             Runnable runnable = new TreeUIUpdaterRunnable(dTreeViewer, toRefreshInViewer, objectsToUpdateInViewer, toExpands, toCollapses);
-            PlatformUI.getWorkbench().getDisplay().asyncExec(runnable);
+            EclipseUIUtil.displayAsyncExec(runnable);
         }
     }
 

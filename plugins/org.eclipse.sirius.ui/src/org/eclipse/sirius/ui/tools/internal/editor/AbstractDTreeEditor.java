@@ -39,6 +39,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -663,7 +664,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     public void notify(final int changeKind) {
         AbstractDTreeEditorSessionListenerDelegate abstractDTreeEditorSessionListenerDelegate = new AbstractDTreeEditorSessionListenerDelegate(this, changeKind);
         if (Display.getCurrent() == null) {
-            PlatformUI.getWorkbench().getDisplay().asyncExec(abstractDTreeEditorSessionListenerDelegate);
+            EclipseUIUtil.displayAsyncExec(abstractDTreeEditorSessionListenerDelegate);
         } else {
             abstractDTreeEditorSessionListenerDelegate.run();
         }

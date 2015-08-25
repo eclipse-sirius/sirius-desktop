@@ -34,7 +34,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
@@ -131,7 +130,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                 // Set the selection in async exec: for some dialect, ui could
                 // be refresh by another post commit triggered after this one
                 // and doing some UI refresh in sync exec.
-                PlatformUI.getWorkbench().getDisplay().asyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
+                EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
             }
         }
     }

@@ -222,6 +222,7 @@ h4. Changes in @org.eclipse.sirius.common@
 h4. Changes in @org.eclipse.sirius.common.ui@
 
 * <span class="label label-success">Added</span> Classes from @org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline@ packages are available in API to allow editor to provide quick outline feature easily.
+* <span class="label label-success">Added</span> The methods @displaySyncExec(Runnable)@ , @displayAsyncExec(Runnable)@ and @synchronizeWithUIThread()@ have been added in class @org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil@ to encapsulate accesses to the current @Display@ instance.
 * <span class="label label-info">Moved</span> Extensions in @plugin.xml@ that provide UI functionalities have been moved to @org.eclipse.sirius.common.ui.ext@.
 
 h4. Changes in @org.eclipse.sirius@

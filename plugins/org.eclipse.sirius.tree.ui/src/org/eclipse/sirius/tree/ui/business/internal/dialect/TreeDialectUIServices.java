@@ -34,6 +34,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -140,7 +141,7 @@ public class TreeDialectUIServices implements DialectUIServices {
                         }
                     }
                 };
-                PlatformUI.getWorkbench().getDisplay().syncExec(runnable);
+                EclipseUIUtil.displaySyncExec(runnable);
                 monitor.worked(8);
                 IEditorPart result = runnable.getResult();
                 if (canHandleEditor(result)) {

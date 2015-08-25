@@ -21,6 +21,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -42,7 +43,6 @@ import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * A ControlContribution that uses a {@link org.eclipse.swt.widgets.Combo} as
@@ -136,7 +136,7 @@ public class ConcernComboContributionItem extends ContributionItem {
 
     private void diagramChanged() {
         if (Display.getCurrent() == null) {
-            PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+            EclipseUIUtil.displayAsyncExec(new Runnable() {
                 public void run() {
                     refresh(false);
                 }

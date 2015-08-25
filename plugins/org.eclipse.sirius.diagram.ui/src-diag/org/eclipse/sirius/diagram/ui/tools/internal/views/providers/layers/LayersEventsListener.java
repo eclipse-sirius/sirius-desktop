@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 
 /**
  * A listener to update the viewer.
@@ -55,7 +55,7 @@ public class LayersEventsListener implements SessionListener {
     }
 
     private void updateViewer() {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
             public void run() {
                 if (viewer != null && !viewer.getControl().isDisposed()) {
                     viewer.refresh();

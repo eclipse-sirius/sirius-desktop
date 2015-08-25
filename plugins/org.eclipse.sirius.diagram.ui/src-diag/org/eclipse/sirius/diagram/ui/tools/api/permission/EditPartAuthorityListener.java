@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * Listener disabling /enabling edit parts when their locking status is
@@ -129,7 +129,7 @@ public class EditPartAuthorityListener implements IAuthorityListener {
                 doRefreshEditMode(enableEditMode, diagramEditor, semanticElement);
             } else {
                 // Otherwise, we launch it asynchronously
-                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                EclipseUIUtil.displayAsyncExec(new Runnable() {
 
                     @Override
                     public void run() {

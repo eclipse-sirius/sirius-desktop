@@ -25,11 +25,11 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.jface.util.TransferDropTargetListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusPaletteToolDropTargetListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * {@link org.eclipse.gef.GraphicalViewer} used for the
@@ -173,7 +173,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
          */
         @Override
         protected void sendUpdateRequest() {
-            PlatformUI.getWorkbench().getDisplay().asyncExec(new UpdateRequest());
+            EclipseUIUtil.displayAsyncExec(new UpdateRequest());
         }
 
         /**

@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.refresh.RefreshLayoutCommand;
@@ -50,7 +51,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -156,14 +156,14 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
                     public void propertyChange(org.eclipse.jface.util.PropertyChangeEvent event) {
                         if (event.getNewValue() instanceof Boolean && ((Boolean) event.getNewValue()).booleanValue()) {
                             if (WorkspaceViewerProperties.SNAPTOGEOMETRY.equals(event.getProperty())) {
-                                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                                EclipseUIUtil.displayAsyncExec(new Runnable() {
                                     @Override
                                     public void run() {
                                         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, Boolean.FALSE);
                                     }
                                 });
                             } else if (WorkspaceViewerProperties.SNAPTOGRID.equals(event.getProperty())) {
-                                PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+                                EclipseUIUtil.displayAsyncExec(new Runnable() {
                                     @Override
                                     public void run() {
                                         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGRID, Boolean.FALSE);

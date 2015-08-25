@@ -26,6 +26,7 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DRepresentationNotificationFilter;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DCellStyle;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -38,7 +39,6 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.DTableTreeViewer;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Sets;
 
@@ -263,7 +263,7 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
             Runnable tableUIUpdaterRunnable = new TableUIUpdaterRunnable(dTableViewerManager, dTableTreeViewer, toExpands, toCollapses, toRefreshInViewerWithUpdateLabels,
                     launchGlobalRefreshWithoutUpdateLabels, launchGlobalRefreshWithUpdateLabels, objectsToUpdateInViewer, dColumnsToUpdateDirectly, dColumnsWidthToUpdate, dColumnsToRemove,
                     dColumnsToAdd, dColumnsToVisibilityChanged, updateHeaderColumnWidth);
-            PlatformUI.getWorkbench().getDisplay().asyncExec(tableUIUpdaterRunnable);
+            EclipseUIUtil.displayAsyncExec(tableUIUpdaterRunnable);
         }
     }
 

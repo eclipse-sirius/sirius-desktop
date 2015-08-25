@@ -20,6 +20,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.dialogs.RepresentationsSelectionDialog;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -144,7 +145,7 @@ public final class SessionHelper {
         if (candidates.size() == 1) {
             selection.addAll(candidates);
         } else if (candidates.size() > 1) {
-            PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+            EclipseUIUtil.displaySyncExec(new Runnable() {
                 public void run() {
                     final Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
                     final RepresentationsSelectionDialog dlg = new RepresentationsSelectionDialog(shell, candidates);

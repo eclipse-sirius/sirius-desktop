@@ -45,6 +45,7 @@ import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.selection.EMFMessageDialog;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.resource.LoadEMFResourceRunnableWithProgress;
@@ -278,7 +279,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
                     setResult(MessageDialog.openQuestion(getActiveShell(), title, message));
                 }
             };
-            PlatformUI.getWorkbench().getDisplay().syncExec(reload);
+            EclipseUIUtil.displaySyncExec(reload);
             return reload.getResult();
         }
     }

@@ -96,6 +96,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -1106,7 +1107,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     public void notify(final int changeKind) {
         DDiagramEditorSessionListenerDelegate dDiagramEditorSessionListenerDelegate = new DDiagramEditorSessionListenerDelegate(this, toolFilterWhenRepresentationIsLocked, changeKind);
         if (Display.getCurrent() == null) {
-            PlatformUI.getWorkbench().getDisplay().asyncExec(dDiagramEditorSessionListenerDelegate);
+            EclipseUIUtil.displayAsyncExec(dDiagramEditorSessionListenerDelegate);
         } else {
             dDiagramEditorSessionListenerDelegate.run();
         }
@@ -1144,7 +1145,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             }
         };
         if (Display.getCurrent() == null) {
-            PlatformUI.getWorkbench().getDisplay().asyncExec(runnable);
+            EclipseUIUtil.displayAsyncExec(runnable);
         } else {
             runnable.run();
         }

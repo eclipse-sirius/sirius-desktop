@@ -294,4 +294,56 @@ public final class EclipseUIUtil {
             }
         }
     }
+
+    /**
+     * Post a runnable to be invoked by the user-interface thread at the next
+     * reasonable opportunity.
+     * 
+     * If a workbench is started its Display instance will be used, otherwhise
+     * Display.getDefault() will be used.
+     * 
+     * @param r
+     *            the runnable to execute.
+     */
+    public static void displayAsyncExec(Runnable r) {
+        getCurrentDisplay().asyncExec(r);
+    }
+
+    private static Display getCurrentDisplay() {
+        Display d;
+        if (PlatformUI.isWorkbenchRunning()) {
+            d = PlatformUI.getWorkbench().getDisplay();
+        } else {
+            d = Display.getDefault();
+        }
+        return d;
+    }
+
+    /**
+     * Post a runnable to be invoked by the user-interface thread at the next
+     * reasonable opportunity. The thread which calls this method is suspended
+     * until the runnable completes.
+     * 
+     * If a workbench is started its Display instance will be used, otherwhise
+     * Display.getDefault() will be used.
+     * 
+     * @param r
+     *            the runnable to execute.
+     */
+    public static void displaySyncExec(Runnable r) {
+        getCurrentDisplay().syncExec(r);
+    }
+
+    /**
+     * Process any event or runnables waiting in the user-interface queue.
+     */
+    public static void synchronizeWithUIThread() {
+        Display d = getCurrentDisplay();
+        while (d.readAndDispatch()) {
+            /*
+             * We wait for the UI thread to process all remaining events.
+             */
+        }
+    }
+
 }

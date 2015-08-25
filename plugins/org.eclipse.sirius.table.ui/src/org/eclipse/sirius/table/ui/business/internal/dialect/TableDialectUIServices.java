@@ -35,6 +35,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
@@ -120,7 +121,7 @@ public class TableDialectUIServices implements DialectUIServices {
                             }
                         }
                     };
-                    PlatformUI.getWorkbench().getDisplay().syncExec(runnable);
+                    EclipseUIUtil.displaySyncExec(runnable);
                     monitor.worked(8);
                     if (runnable.getResult() instanceof AbstractDTableEditor) {
                         editorPart = runnable.getResult();

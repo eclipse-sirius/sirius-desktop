@@ -14,11 +14,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * An adapter to listen layer activation change.
@@ -56,7 +56,7 @@ public class LayersActivationAdapter extends AdapterImpl {
     }
 
     private void update(final DDiagram diagram, final Layer layer, final boolean activate) {
-        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+        EclipseUIUtil.displayAsyncExec(new Runnable() {
             public void run() {
                 if (viewer != null) {
                     viewer.update(layer, null);
