@@ -15,12 +15,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.Connection;
@@ -705,7 +703,6 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         }
         // Keep only first and last points of edges linked to at least one of
         // moved border nodes.
-        Set<Edge> resetEdges = new HashSet<Edge>();
         for (Entry<View, List<Request>> requestByView : getViewsToChangeBoundsRequest().entrySet()) {
             View view = requestByView.getKey();
             // Get corresponding edit part
@@ -717,18 +714,16 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                 if (!(view.getSourceEdges().isEmpty() && view.getTargetEdges().isEmpty())) {
                     // For each edge starting from this view
                     for (Object obj : view.getSourceEdges()) {
-                        if (!resetEdges.contains(obj) && obj instanceof Edge) {
+                        if (obj instanceof Edge) {
                             Edge sourceEdge = (Edge) obj;
                             resetBendpoints(sourceEdge, cc, borderItemEditPart, requests, true);
-                            resetEdges.add(sourceEdge);
                         }
                     }
                     // For each edge ending to this view
                     for (Object obj : view.getTargetEdges()) {
-                        if (!resetEdges.contains(obj) && obj instanceof Edge) {
+                        if (obj instanceof Edge) {
                             Edge targetEdge = (Edge) obj;
                             resetBendpoints(targetEdge, cc, borderItemEditPart, requests, false);
-                            resetEdges.add(targetEdge);
                         }
                     }
                 }
