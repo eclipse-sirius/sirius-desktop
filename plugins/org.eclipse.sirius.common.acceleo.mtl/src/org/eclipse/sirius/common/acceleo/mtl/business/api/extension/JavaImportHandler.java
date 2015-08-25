@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.api.extension;
 
-import com.google.common.collect.Lists;
-
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -23,6 +21,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.osgi.framework.Bundle;
 
+import com.google.common.collect.Lists;
+
 /**
  * This import handler will try and import a dependency as a Java class
  * accessible from the classpath.
@@ -30,6 +30,7 @@ import org.osgi.framework.Bundle;
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
 public class JavaImportHandler extends AbstractImportHandler {
+    
     /**
      * This will be used to "remember" the last bundle in which we found the
      * import sought by a call to {@link #canImport(Set, Set, String)} so that
@@ -84,9 +85,9 @@ public class JavaImportHandler extends AbstractImportHandler {
         // - add arrays to signature
         if (type.isArray()) {
             Class enclosingContainer = type.getComponentType();
-            String arrays = "[]";
+            String arrays = "[]"; //$NON-NLS-1$
             while (enclosingContainer.isArray()) {
-                arrays += "[]";
+                arrays += "[]"; //$NON-NLS-1$
                 enclosingContainer = enclosingContainer.getComponentType();
             }
             typeName = getTypeName(enclosingContainer) + arrays;

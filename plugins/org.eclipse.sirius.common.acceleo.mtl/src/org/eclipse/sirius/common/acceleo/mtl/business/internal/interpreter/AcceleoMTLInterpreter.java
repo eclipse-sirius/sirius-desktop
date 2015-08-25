@@ -13,6 +13,7 @@ package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.CodeSource;
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -61,6 +62,7 @@ import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.util.Bag;
 import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
+import org.eclipse.sirius.common.acceleo.mtl.Messages;
 import org.eclipse.sirius.common.acceleo.mtl.business.api.ResourceFinder;
 import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.extension.ImportHandlerRegistry;
@@ -410,6 +412,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#activateMetamodels(java.util.Collection)
      */
+    @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
         Set<EPackage> additionalEPackages = Sets.newLinkedHashSet();
         for (MetamodelDescriptor descriptor : metamodels) {
@@ -432,6 +435,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      *            the form <em>my.package.MyClass</em>.
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addImport(java.lang.String)
      */
+    @Override
     public void addImport(String dependency) {
         if (dependency != null && dependency.length() > 0) {
             boolean added = addExtendedImport(dependency);
@@ -449,6 +453,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
      */
+    @Override
     public void addVariableStatusListener(IVariableStatusListener newListener) {
         variableStatusListeners.add(newListener);
     }
@@ -458,6 +463,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearImports()
      */
+    @Override
     public void clearImports() {
         mtlDependencies.clear();
         extendedDependencies.clear();
@@ -470,6 +476,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearVariables()
      */
+    @Override
     public void clearVariables() {
         variables.clear();
         variableNsURIs.clear();
@@ -559,6 +566,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#dispose()
      */
+    @Override
     public void dispose() {
         mtlDependencies.clear();
         extendedDependencies.clear();
@@ -582,6 +590,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluate(org.eclipse.emf.ecore.EObject,
      *      java.lang.String)
      */
+    @Override
     public Object evaluate(EObject target, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(target, expression);
         // Ignore potential problems for now
@@ -594,6 +603,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateBoolean(org.eclipse.emf.ecore.EObject,
      *      java.lang.String)
      */
+    @Override
     public boolean evaluateBoolean(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         // Ignore potential problems for now
@@ -618,6 +628,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateCollection(org.eclipse.emf.ecore.EObject,
      *      java.lang.String)
      */
+    @Override
     public Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         Object result = evaluationResult.getEvaluationResult();
@@ -643,6 +654,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateEObject(org.eclipse.emf.ecore.EObject,
      *      java.lang.String)
      */
+    @Override
     public EObject evaluateEObject(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         // Ignore potential problems for now
@@ -659,6 +671,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateInteger(org.eclipse.emf.ecore.EObject,
      *      java.lang.String)
      */
+    @Override
     public Integer evaluateInteger(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         // Ignore potential problems for now
@@ -675,6 +688,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateString(org.eclipse.emf.ecore.EObject,
      *      java.lang.String)
      */
+    @Override
     public String evaluateString(EObject context, String expression) throws EvaluationException {
         EvaluationResult evaluationResult = internalEvaluate(context, expression);
         // Ignore potential problems for now
@@ -691,6 +705,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getImports()
      */
+    @Override
     public Collection<String> getImports() {
         Set<String> extendedImports = Sets.newLinkedHashSet();
         for (ModuleDescriptor moduleDescriptor : extendedDependencies) {
@@ -715,6 +730,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getPrefix()
      */
+    @Override
     public String getPrefix() {
         return ACCELEO_EXPRESSION_PREFIX;
     }
@@ -724,6 +740,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariable(java.lang.String)
      */
+    @Override
     public Object getVariable(String name) {
         if (variables.containsKey(name)) {
             final List<Object> values = variables.get(name);
@@ -739,6 +756,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariablePrefix()
      */
+    @Override
     public String getVariablePrefix() {
         return null;
     }
@@ -748,6 +766,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariables()
      */
+    @Override
     public Map<String, ?> getVariables() {
         return variables.asMap();
     }
@@ -757,6 +776,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#provides(java.lang.String)
      */
+    @Override
     public boolean provides(String expression) {
         if (expression != null) {
             return expression.startsWith(ACCELEO_EXPRESSION_PREFIX) && expression.endsWith(ACCELEO_EXPRESSION_SUFFIX);
@@ -769,6 +789,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeImport(java.lang.String)
      */
+    @Override
     public void removeImport(String dependency) {
         boolean removed = false;
         if (mtlDependencies.containsKey(dependency)) {
@@ -789,6 +810,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
      */
+    @Override
     public void removeVariableStatusListener(IVariableStatusListener listener) {
         variableStatusListeners.remove(listener);
     }
@@ -798,6 +820,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setCrossReferencer(org.eclipse.emf.ecore.util.ECrossReferenceAdapter)
      */
+    @Override
     public void setCrossReferencer(ECrossReferenceAdapter crossReferencer) {
         if (adapterFactory == null) {
             adapterFactory = new CrossReferencerProviderAdapterFactory(crossReferencer);
@@ -810,6 +833,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setModelAccessor(org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor)
      */
+    @Override
     public void setModelAccessor(ModelAccessor modelAccessor) {
         // Nothing to do
     }
@@ -820,6 +844,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setProperty(java.lang.Object,
      *      java.lang.Object)
      */
+    @Override
     public void setProperty(Object key, Object value) {
         /*
          * This is called by the framework with the FILES key in order to pass
@@ -849,6 +874,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setVariable(java.lang.String,
      *      java.lang.Object)
      */
+    @Override
     public void setVariable(String name, Object value) {
         variables.put(name, value);
         variableNsURIs.clear();
@@ -860,6 +886,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#supportsValidation()
      */
+    @Override
     public boolean supportsValidation() {
         return true;
     }
@@ -869,6 +896,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#unSetVariable(java.lang.String)
      */
+    @Override
     public void unSetVariable(String name) {
         if (variables.containsKey(name)) {
             final List<Object> values = variables.get(name);
@@ -889,6 +917,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#validateExpression(org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext,
      *      java.lang.String)
      */
+    @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
         return analyzeExpression(context, expression).getStatuses();
     }
@@ -1170,7 +1199,7 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
                 new EcoreResourceFactoryImpl());
         registry.getContentTypeToFactoryMap().put(IAcceleoConstants.BINARY_CONTENT_TYPE, new EMtlBinaryResourceFactoryImpl());
         registry.getContentTypeToFactoryMap().put(IAcceleoConstants.XMI_CONTENT_TYPE, new EMtlResourceFactoryImpl());
-        registry.getExtensionToFactoryMap().put("emtl", new EMtlResourceFactoryImpl());
+        registry.getExtensionToFactoryMap().put(IAcceleoConstants.EMTL_FILE_EXTENSION, new EMtlResourceFactoryImpl());
     }
 
     private static EPackage getOCLStdLibPackage() {
@@ -1185,14 +1214,14 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         CodeSource acceleoModel = MtlPackage.class.getProtectionDomain().getCodeSource();
         if (acceleoModel != null) {
             String libraryLocation = acceleoModel.getLocation().toString();
-            if (libraryLocation.endsWith(".jar")) {
-                libraryLocation = "jar:" + libraryLocation + '!';
+            if (libraryLocation.endsWith(".jar")) { //$NON-NLS-1$
+                libraryLocation = "jar:" + libraryLocation + '!'; //$NON-NLS-1$
             }
 
-            URIConverter.URI_MAP.put(URI.createURI("http://www.eclipse.org/acceleo/mtl/3.0/mtlstdlib.ecore"), URI.createURI(libraryLocation + "/model/mtlstdlib.ecore"));
-            URIConverter.URI_MAP.put(URI.createURI("http://www.eclipse.org/acceleo/mtl/3.0/mtlnonstdlib.ecore"), URI.createURI(libraryLocation + "/model/mtlnonstdlib.ecore"));
+            URIConverter.URI_MAP.put(URI.createURI("http://www.eclipse.org/acceleo/mtl/3.0/mtlstdlib.ecore"), URI.createURI(libraryLocation + "/model/mtlstdlib.ecore")); //$NON-NLS-1$//$NON-NLS-2$
+            URIConverter.URI_MAP.put(URI.createURI("http://www.eclipse.org/acceleo/mtl/3.0/mtlnonstdlib.ecore"), URI.createURI(libraryLocation + "/model/mtlnonstdlib.ecore")); //$NON-NLS-1$ //$NON-NLS-2$
         } else {
-            throw new RuntimeException("Coudln't retrieve location of plugin 'org.eclipse.acceleo.model'.");
+            throw new RuntimeException(Messages.AcceleoMTLInterpreter_acceleoModelPluginNotFound);
         }
     }
 
@@ -1228,8 +1257,8 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
 
             VariableType candidateType = context.getTargetType();
             if (!candidateType.hasDefinition()) {
-                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context.getTargetType(), context.getField(), IInterpreterStatus.WARNING, "Cannot find Domain Class for " //$NON-NLS-1$
-                        + context.getField().getName() + " - Expression cannot be validated.")); //$NON-NLS-1$
+                String message = MessageFormat.format(Messages.AcceleoMTLInterpreter_domainClassNotFound, context.getField().getName());
+                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context.getTargetType(), context.getField(), IInterpreterStatus.WARNING, message));
             } else {
                 for (TypeName candidateTargetType : candidateType.getPossibleTypes()) {
                     final String expressionType = candidateTargetType.getCompleteName(IAcceleoConstants.NAMESPACE_SEPARATOR);
@@ -1241,5 +1270,4 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         }
         return result;
     }
-
 }

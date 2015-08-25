@@ -56,6 +56,7 @@ import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.ocl.types.OCLStandardLibrary;
 import org.eclipse.ocl.util.Bag;
 import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
+import org.eclipse.sirius.common.acceleo.mtl.Messages;
 import org.eclipse.sirius.ext.base.cache.LRUCache;
 
 import com.google.common.base.Objects;
@@ -798,7 +799,6 @@ public class DynamicAcceleoModule {
      *            The expression which triggered a compilation error.
      */
     private static void log(CompilationResult result, String expression) {
-        final String format = "Compilation error for expression {0} : {1}";
         final String errorMessage;
         final Throwable cause;
         if (result.getStatus() instanceof MultiStatus && ((MultiStatus) result.getStatus()).getChildren().length > 0) {
@@ -811,7 +811,7 @@ public class DynamicAcceleoModule {
             cause = result.getStatus().getException();
         }
 
-        final String formattedMessage = MessageFormat.format(format, expression, errorMessage);
+        final String formattedMessage = MessageFormat.format(Messages.DynamicAcceleoModule_compilationError, expression, errorMessage);
         final IStatus logStatus = new Status(result.getStatus().getSeverity(), result.getStatus().getPlugin(), formattedMessage, cause);
         AcceleoMTLInterpreterPlugin.getDefault().getLog().log(logStatus);
     }
