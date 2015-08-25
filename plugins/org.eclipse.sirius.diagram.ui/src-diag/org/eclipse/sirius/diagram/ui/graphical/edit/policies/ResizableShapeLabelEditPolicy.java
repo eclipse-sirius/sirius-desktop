@@ -34,11 +34,12 @@ import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelQuery;
 
 /**
  * Edit policy which supports TARGET and SOURCE label connections for feedback
  * on the edge.
- * 
+ *
  * @author nlepine
  */
 public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
@@ -47,7 +48,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
 
     /**
      * Get the referenced point used as target point of tether feedback.
-     * 
+     *
      * @return the referenced point used as target point of tether feedback
      */
     protected Point getReferencePoint() {
@@ -63,7 +64,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
     /**
      * Get the location among {@link LabelViewConstants} constants where to
      * relocate the label figure.
-     * 
+     *
      * @return the location among {@link LabelViewConstants} constants
      */
     private int getLocation() {
@@ -87,7 +88,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#eraseChangeBoundsFeedback(org.eclipse.gef.requests.ChangeBoundsRequest)
      */
     @Override
@@ -101,7 +102,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy#createDragSourceFeedbackFigure()
      */
     @Override
@@ -116,7 +117,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.editpolicies.ResizableEditPolicy#getResizeCommand(org.eclipse.gef.requests.ChangeBoundsRequest)
      */
     @Override
@@ -131,7 +132,13 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 
         Point refPoint = getReferencePoint();
-        Point normalPoint = LabelHelper.offsetFromRelativeCoordinate(getHostFigure(), rect, refPoint);
+        Point normalPoint;
+        if (getHost().getParent() instanceof AbstractConnectionEditPart) {
+            PointList ptList = ((AbstractConnectionEditPart) getHost().getParent()).getConnectionFigure().getPoints();
+            normalPoint = EdgeLabelQuery.offsetFromRelativeCoordinate(getHostFigure().getBounds().getCenter().getCopy(), ptList, refPoint);
+        } else {
+            normalPoint = LabelHelper.offsetFromRelativeCoordinate(getHostFigure(), rect, refPoint);
+        }
 
         ICommand resizeCommand = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(editingDomain, DiagramUIMessages.SetLocationCommand_Label_Resize, new EObjectAdapter(shapeView),
                 new Rectangle(normalPoint, rect.getSize()));
@@ -140,7 +147,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.editpolicies.NonResizableEditPolicy#getMoveCommand(org.eclipse.gef.requests.ChangeBoundsRequest)
      */
     @Override
@@ -155,12 +162,18 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
         getHostFigure().translateToRelative(rect);
         adjustRect(rect);
 
-        Point normalPoint = LabelHelper.offsetFromRelativeCoordinate(getHostFigure(), rect, refPoint);
+        Point normalPoint;
+        if (getHost().getParent() instanceof AbstractConnectionEditPart) {
+            PointList ptList = ((AbstractConnectionEditPart) getHost().getParent()).getConnectionFigure().getPoints();
+            normalPoint = EdgeLabelQuery.offsetFromRelativeCoordinate(rect.getCenter(), ptList, refPoint);
+        } else {
+            normalPoint = LabelHelper.offsetFromRelativeCoordinate(getHostFigure(), rect, refPoint);
+        }
 
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 
-        ICommand moveCommand = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(editingDomain, DiagramUIMessages.MoveLabelCommand_Label_Location, new EObjectAdapter((View) getHost()
-                .getModel()), normalPoint);
+        ICommand moveCommand = new org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand(editingDomain, DiagramUIMessages.MoveLabelCommand_Label_Location,
+                new EObjectAdapter((View) getHost().getModel()), normalPoint);
         return new ICommandProxy(moveCommand);
     }
 
@@ -168,7 +181,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
      * adjust the rectangle used for the move command; the default
      * implementation assumes no behavior, clients can override this function to
      * change this behavior.
-     * 
+     *
      * @param rect
      *            Rect to adjust
      */
@@ -178,7 +191,7 @@ public class ResizableShapeLabelEditPolicy extends ResizableShapeEditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableEditPolicyEx#showChangeBoundsFeedback(org.eclipse.gef.requests.ChangeBoundsRequest)
      */
     @Override

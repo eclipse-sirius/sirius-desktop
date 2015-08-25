@@ -29,8 +29,9 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelsComputationUtil;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelQuery;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -153,8 +154,8 @@ public class SetConnectionBendpointsAndLabelCommmand extends SetConnectionBendpo
             LayoutConstraint layoutConstraint = labelNodeToUpdate.getLayoutConstraint();
             if (layoutConstraint instanceof Bounds) {
                 Bounds bounds = (Bounds) layoutConstraint;
-                newLabelOffset = new EdgeLabelsComputationUtil(oldBendpoints, newBendPointsList, isEdgeWithObliqueRoutingStyle, new Point(bounds.getX(), bounds.getY()),
-                        labelEditPartToUpdate.getKeyPoint()).calculateGMFLabelOffset();
+                newLabelOffset = new EdgeLabelQuery(oldBendpoints, newBendPointsList, isEdgeWithObliqueRoutingStyle, new Point(bounds.getX(), bounds.getY()),
+                        labelEditPartToUpdate.getKeyPoint(), connectionEditPart instanceof BracketEdgeEditPart).calculateGMFLabelOffset();
             }
         }
 

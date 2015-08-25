@@ -20,6 +20,7 @@ import org.eclipse.draw2d.geometry.Vector;
 import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.locators.BracketResizableLabelLocator;
 
 /**
  * Specific {@link LabelLocator} for edge labels to reflect the real label
@@ -111,7 +112,7 @@ public class EdgeLabelLocator extends LabelLocator {
             offSet = new Point((int) computedOffSet.x, (int) computedOffSet.y);
         }
 
-        Point centerLocation = EdgeLabelsComputationUtil.relativeCenterCoordinateFromOffset(((Connection) parent).getPoints(), getReferencePoint(), offSet);
+        Point centerLocation = EdgeLabelQuery.relativeCenterCoordinateFromOffset(((Connection) parent).getPoints(), getReferencePoint(), offSet);
         target.setLocation(centerLocation.getTranslated(-1 * size.width / 2, -1 * size.height / 2));
     }
 
@@ -119,7 +120,8 @@ public class EdgeLabelLocator extends LabelLocator {
      * Compute offset taking current figure bendpoints as newBendPoints.
      */
     private Vector computeOffSet() {
-        EdgeLabelsComputationUtil edgeLabelsComputationUtil = new EdgeLabelsComputationUtil(oldPointList, getPointList(), isEdgeWithObliqueRoutingStyle, oldLabelOffset.toPoint(), getAlignment());
+        EdgeLabelQuery edgeLabelsComputationUtil = new EdgeLabelQuery(oldPointList, getPointList(), isEdgeWithObliqueRoutingStyle, oldLabelOffset.toPoint(), getAlignment(),
+                this instanceof BracketResizableLabelLocator);
         Point newMethodPoint = edgeLabelsComputationUtil.calculateGMFLabelOffset();
         return new Vector(newMethodPoint.x, newMethodPoint.y);
     }

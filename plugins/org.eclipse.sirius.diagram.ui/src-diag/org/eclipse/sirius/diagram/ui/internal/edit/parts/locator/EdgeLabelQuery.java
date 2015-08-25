@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.locators.BracketLabelLocator;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
@@ -39,9 +40,18 @@ import com.google.common.base.Preconditions;
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class EdgeLabelsComputationUtil {
+public class EdgeLabelQuery {
 
     private final static double DISTANCE_TOLERANCE = 0.001;
+
+    /** Status for {@link #getSameLineStatus(Vector, LineSeg)} method. */
+    private static final int NOT_ON_SAME_LINE = 0;
+
+    /** Status for {@link #getSameLineStatus(Vector, LineSeg)} method. */
+    private static final int ON_SAME_LINE_SAME_DIRECTION = 1;
+
+    /** Status for {@link #getSameLineStatus(Vector, LineSeg)} method. */
+    private static final int ON_SAME_LINE_OPPOSITE_DIRECTION = 2;
 
     /** BendPoint list before the edge modification. */
     private PointList oldBendPointList;
@@ -65,6 +75,12 @@ public class EdgeLabelsComputationUtil {
     private List<LineSeg> oldEdgeSegments;
 
     private List<LineSeg> newEdgeSegments;
+
+    /**
+     * True if the label is the center label of a bracketEdge (with specific
+     * locator), false otherwise.
+     */
+    private boolean isCenterOnBracketEdge;
 
     /**
      * Return the default snap back position according to the keyPoint of the
@@ -168,9 +184,13 @@ public class EdgeLabelsComputationUtil {
      *            The keyPoint of the label (
      *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
      *            )
+     * @param isCenterOnBracketEdge
+     *            True if the label is the center label of a bracketEdge (with
+     *            specific locator), false otherwise.
      */
-    @SuppressWarnings("unchecked")
-    public EdgeLabelsComputationUtil(PointList oldBendPointList, PointList newBendPointList, boolean isEdgeWithObliqueRoutingStyle, Point oldLabelOffset, Integer keyPoint) {
+    // @SuppressWarnings("unchecked")
+    public EdgeLabelQuery(PointList oldBendPointList, PointList newBendPointList, boolean isEdgeWithObliqueRoutingStyle, Point oldLabelOffset, Integer keyPoint,
+            boolean isCenterOnBracketEdge) {
         this.isEdgeWithObliqueRoutingStyle = isEdgeWithObliqueRoutingStyle;
 
         this.oldBendPointList = oldBendPointList;
@@ -178,6 +198,7 @@ public class EdgeLabelsComputationUtil {
         this.newBendPointList = newBendPointList;
         this.oldLabelOffset = oldLabelOffset;
         this.keyPoint = keyPoint;
+        this.isCenterOnBracketEdge = isCenterOnBracketEdge;
 
         // compute lineSegments from bendPoints
         oldEdgeSegments = PointListUtilities.getLineSegments(oldBendPointList);
@@ -205,13 +226,21 @@ public class EdgeLabelsComputationUtil {
             return oldLabelOffset;
         } else {
             int anchorPointRatio = getLocation(keyPoint);
-            Point oldAnchorPoint = PointListUtilities.calculatePointRelativeToLine(oldBendPointList, 0, anchorPointRatio, true);
+            Point oldAnchorPoint = getAnchorPoint(oldBendPointList, anchorPointRatio);
             Point oldLabelCenter = relativeCenterCoordinateFromOffset(oldBendPointList, oldAnchorPoint, oldLabelOffset);
 
-            Point newAnchorPoint = PointListUtilities.calculatePointRelativeToLine(newBendPointList, 0, anchorPointRatio, true);
+            Point newAnchorPoint = getAnchorPoint(newBendPointList, anchorPointRatio);
 
             Point newLabelCenter = calculateNewCenterLocation(oldLabelCenter, getStandardLabelCenterLocation(newBendPointList, keyPoint));
             return offsetFromRelativeCoordinate(newLabelCenter, newBendPointList, newAnchorPoint);
+        }
+    }
+
+    private Point getAnchorPoint(PointList pointList, int anchorPointRatio) {
+        if (isCenterOnBracketEdge) {
+            return BracketLabelLocator.getReferencePoint(pointList);
+        } else {
+            return PointListUtilities.calculatePointRelativeToLine(pointList, 0, anchorPointRatio, true);
         }
     }
 
@@ -376,25 +405,30 @@ public class EdgeLabelsComputationUtil {
         Option<Vector> result = Options.newNone();
         LineSeg newSegmentOnSameLineWithSameDirection = null;
         LineSeg newSegmentOnSameLineWithOppositeDirection = null;
-        Vector oldRefVector = new Vector(oldRefSeg.getTerminus().x - oldRefSeg.getOrigin().x, oldRefSeg.getTerminus().y - oldRefSeg.getOrigin().y);
-        for (LineSeg newSeg : newEdgeSegments) {
-            if (newSeg.length() != 0) {
-                Vector newSegVector = new Vector(newSeg.getTerminus().x - newSeg.getOrigin().x, newSeg.getTerminus().y - newSeg.getOrigin().y);
-                double angle = oldRefVector.getAngle(newSegVector);
-                if (angle == 0 || angle == 180) {
-                    double distToInfiniteLine = java.awt.geom.Line2D.ptLineDist(newSeg.getOrigin().x, newSeg.getOrigin().y, newSeg.getTerminus().x, newSeg.getTerminus().y, oldRefSeg.getOrigin().x,
-                            oldRefSeg.getOrigin().y);
-                    if (distToInfiniteLine < DISTANCE_TOLERANCE) {
-                        if (angle == 180) {
-                            newSegmentOnSameLineWithOppositeDirection = newSeg;
-                            // Continue to search a potential segment in the
-                            // same
-                            // direction.
-                        } else {
-                            newSegmentOnSameLineWithSameDirection = newSeg;
-                            break;
-                        }
-                    }
+        // Firstly, for points lists with same nb of segments, search if the
+        // vector, at
+        // the same index, is on the same line
+        int sameLineStatus = NOT_ON_SAME_LINE;
+        if (newEdgeSegments.size() == oldEdgeSegments.size()) {
+            LineSeg newSegAtSameIndex = newEdgeSegments.get(oldEdgeSegments.indexOf(oldRefSeg));
+            sameLineStatus = getSameLineStatus(oldRefSeg, newSegAtSameIndex);
+            if (ON_SAME_LINE_SAME_DIRECTION == sameLineStatus) {
+                newSegmentOnSameLineWithSameDirection = newSegAtSameIndex;
+            } else if (ON_SAME_LINE_OPPOSITE_DIRECTION == sameLineStatus) {
+                newSegmentOnSameLineWithOppositeDirection = newSegAtSameIndex;
+            }
+        }
+        if (NOT_ON_SAME_LINE == sameLineStatus) {
+            // If this is not the case search on all new segments.
+            for (LineSeg newSeg : newEdgeSegments) {
+                sameLineStatus = getSameLineStatus(oldRefSeg, newSeg);
+                if (ON_SAME_LINE_SAME_DIRECTION == sameLineStatus) {
+                    newSegmentOnSameLineWithSameDirection = newSeg;
+                    break;
+                } else if (ON_SAME_LINE_OPPOSITE_DIRECTION == sameLineStatus) {
+                    newSegmentOnSameLineWithOppositeDirection = newSeg;
+                    // Continue to search a potential segment in the same
+                    // direction.
                 }
             }
         }
@@ -411,13 +445,38 @@ public class EdgeLabelsComputationUtil {
     }
 
     /**
-     * @param oldRefSeg
-     * @param oldRefPoint
-     * @param oldCenterLabel
-     * @param newSegmentOnSameLineWithOppositeDirection
-     * @param newRefSeg
-     * @return
+     * Check if the <code>segment</code> is on the same line as the
+     * <code>referenceSegment</code> and if it is in the same direction or not.
+     *
+     * @param referenceSegment
+     *            The reference segment.
+     * @param segment
+     *            The segment to test
+     * @return one of these statuses {@link #NOT_ON_SAME_LINE},
+     *         {@link #ON_SAME_LINE_SAME_DIRECTION} or
+     *         {@link #ON_SAME_LINE_OPPOSITE_DIRECTION}.
      */
+    private int getSameLineStatus(LineSeg referenceSegment, LineSeg segment) {
+        int result = NOT_ON_SAME_LINE;
+        if (segment.length() != 0) {
+            Vector referenceVector = new Vector(referenceSegment.getTerminus().x - referenceSegment.getOrigin().x, referenceSegment.getTerminus().y - referenceSegment.getOrigin().y);
+            Vector vector = new Vector(segment.getTerminus().x - segment.getOrigin().x, segment.getTerminus().y - segment.getOrigin().y);
+            double angle = referenceVector.getAngle(vector);
+            if (angle == 0 || angle == 180) {
+                double distToInfiniteLine = java.awt.geom.Line2D.ptLineDist(segment.getOrigin().x, segment.getOrigin().y, segment.getTerminus().x, segment.getTerminus().y,
+                        referenceSegment.getOrigin().x, referenceSegment.getOrigin().y);
+                if (distToInfiniteLine < DISTANCE_TOLERANCE) {
+                    if (angle == 180) {
+                        result = ON_SAME_LINE_OPPOSITE_DIRECTION;
+                    } else {
+                        result = ON_SAME_LINE_SAME_DIRECTION;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
     private Vector applyOldRatioOnNewSegment(LineSeg oldRefSeg, Point oldRefPoint, Point oldCenterLabel, LineSeg newRefSeg, boolean oppositeDirection, boolean sameLine) {
         Vector result;
         double newRatio = newRefSeg.projection(oldCenterLabel.x, oldCenterLabel.y);
@@ -520,9 +579,9 @@ public class EdgeLabelsComputationUtil {
      * @return The center of the label {@link Bounds} if this label is located
      *         by default.
      */
-    private static Point getStandardLabelCenterLocation(PointList pointsList, Integer keyPoint) {
+    private Point getStandardLabelCenterLocation(PointList pointsList, Integer keyPoint) {
         int percentage = getLocation(keyPoint);
-        Point newAnchorPoint = PointListUtilities.calculatePointRelativeToLine(pointsList, 0, percentage, true);
+        Point newAnchorPoint = getAnchorPoint(pointsList, percentage);
         Point snapBackPosition = getSnapBackPosition(keyPoint);
         Point standardLabelCenter = newAnchorPoint.getTranslated(snapBackPosition);
         return standardLabelCenter;

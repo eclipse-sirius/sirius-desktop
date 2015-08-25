@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,11 @@ import org.eclipse.gef.handles.BendpointHandle;
 import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnectionQuery;
@@ -40,6 +44,8 @@ import org.eclipse.sirius.diagram.ui.business.internal.bracket.DirectionUtil;
 import org.eclipse.sirius.diagram.ui.business.internal.bracket.handles.BendpointMoveHandle;
 import org.eclipse.sirius.diagram.ui.business.internal.bracket.handles.BendpointRotateHandle;
 import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -49,7 +55,7 @@ import org.eclipse.swt.graphics.Cursor;
 /**
  * A specific {@link BendpointEditPolicy} to manage move/rotate and their
  * feedback of Dimension figure.
- * 
+ *
  * @author <a href="mailto:mariot.chauvin@obeo.fr">Mariot Chauvin</a>
  */
 public class BracketBendpointEditPolicy extends BendpointEditPolicy {
@@ -71,7 +77,7 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param bracketEdgeEditPart
      *            the host {@link BracketEdgeEditPart}
      */
@@ -94,7 +100,7 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
     /**
      * Get the {@link Cursor}.
-     * 
+     *
      * @return the {@link Cursor}
      */
     private Cursor getCursor() {
@@ -122,7 +128,7 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.editpolicies.BendpointEditPolicy#getCommand(org.eclipse.gef.Request)
      */
     @Override
@@ -143,52 +149,45 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
     /**
      * Get a {@link Command} to manage the move request for Dimension figure.
-     * 
+     *
      * @param request
      *            the {@link BendpointRequest}
      * @return a {@link Command} to manage the move request
      */
+    @Override
     protected Command getMoveBendpointCommand(BendpointRequest request) {
-        final org.eclipse.emf.common.command.Command result = getUpdateGMFBendpointsCommand(request);
         CompoundCommand compoundCommand = new CompoundCommand(MOVE_COMMAND_LABEL);
-        compoundCommand.append(result);
+        appendUpdateGMFBendpointsCommand(compoundCommand, request);
         return new ICommandProxy(new GMFCommandWrapper(bracketEdgeEditPart.getEditingDomain(), compoundCommand));
 
     }
 
     /**
      * Get a {@link Command} to manage the rotate request for Dimension figure.
-     * 
+     *
      * @param request
      *            the {@link BendpointRequest}
      * @return a {@link Command} to manage the rotate request
      */
     protected Command getRotateBendpointCommand(BendpointRequest request) {
-        final org.eclipse.emf.common.command.Command result = getUpdateGMFBendpointsCommand(request);
         CompoundCommand compoundCommand = new CompoundCommand(ROTATE_COMMAND_LABEL);
-        compoundCommand.append(result);
+        appendUpdateGMFBendpointsCommand(compoundCommand, request);
         return new ICommandProxy(new GMFCommandWrapper(bracketEdgeEditPart.getEditingDomain(), compoundCommand));
     }
 
     /**
      * Constructs a GEF {@link Command} for move/rotate request.
-     * 
+     *
+     * @param compoundCommand
+     *            The command to complete with the update GMF bendpoints
+     *            command.
      * @param request
      *            {@link BendpointRequest} move/rotate request
      * @return EMF {@link Command} to update the GMF {@link RelativeBendpoint}.
      */
-    private org.eclipse.emf.common.command.Command getUpdateGMFBendpointsCommand(BendpointRequest request) {
+    private void appendUpdateGMFBendpointsCommand(CompoundCommand compoundCommand, BendpointRequest request) {
         final BracketConnectionQuery bracketFigureQuery = new BracketConnectionQuery(request, getConnection());
         final PointList newPointList = bracketFigureQuery.getNewPointList();
-
-        // final PointList feedbackScreenList = new
-        // PointList(newPointList.size());
-        // double zoom = GraphicalHelper.getZoom(bracketEdgeEditPart);
-        // for (int i = 0; i < newPointList.size(); i++) {
-        // Point point = newPointList.getPoint(i);
-        // point.performScale(zoom);
-        // feedbackScreenList.addPoint(point);
-        // }
 
         final TransactionalEditingDomain domain = bracketEdgeEditPart.getEditingDomain();
 
@@ -198,8 +197,45 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
         final org.eclipse.emf.common.command.Command updateGMFBendpointsCmd = SetCommand.create(domain, edge.getBendpoints(), NotationPackage.Literals.RELATIVE_BENDPOINTS__POINTS,
                 gmfRelativeBendpointsFromPointList);
+        compoundCommand.append(updateGMFBendpointsCmd);
+        appendUpdateGMFLabelsOffsetCommand(compoundCommand, domain, getConnection().getPoints(), newPointList);
+    }
 
-        return updateGMFBendpointsCmd;
+    /**
+     * Constructs EMF {@link Command}s to move labels of this edge.
+     *
+     * @param compoundCommand
+     *            The command to complete with the update GMF labels offset
+     *            command.
+     * @param domain
+     *            Current editing domain
+     * @param oldPointList
+     *            Old points list of the edge
+     * @param newPointList
+     *            New points list of the edge
+     * @return The commands to move the label of this edge.
+     */
+    private void appendUpdateGMFLabelsOffsetCommand(CompoundCommand compoundCommand, TransactionalEditingDomain domain, PointList oldPointList, PointList newPointList) {
+        // For each label, compute the new offset
+        List<?> children = bracketEdgeEditPart.getChildren();
+        for (Object child : children) {
+            if (child instanceof AbstractDEdgeNameEditPart) {
+                AbstractDEdgeNameEditPart labelEditPartToUpdate = (AbstractDEdgeNameEditPart) child;
+                Node labelNodeToUpdate = (Node) labelEditPartToUpdate.getModel();
+                LayoutConstraint layoutConstraint = labelNodeToUpdate.getLayoutConstraint();
+                if (layoutConstraint instanceof Bounds) {
+                    Bounds bounds = (Bounds) layoutConstraint;
+                    Point newLabelOffset = new EdgeLabelQuery(oldPointList, newPointList, false, new Point(bounds.getX(), bounds.getY()), labelEditPartToUpdate.getKeyPoint(), true)
+                            .calculateGMFLabelOffset();
+                    Bounds labelBounds = NotationFactory.eINSTANCE.createBounds();
+                    labelBounds.setX(newLabelOffset.x);
+                    labelBounds.setY(newLabelOffset.y);
+                    labelBounds.setWidth(bounds.getWidth());
+                    labelBounds.setHeight(bounds.getHeight());
+                    compoundCommand.append(SetCommand.create(domain, labelNodeToUpdate, NotationPackage.Literals.NODE__LAYOUT_CONSTRAINT, labelBounds));
+                }
+            }
+        }
     }
 
     /**
@@ -235,7 +271,7 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
     /**
      * Shows feedback when a line segment is being moved.
-     * 
+     *
      * @param request
      *            the {@link BendpointRequest} to use for feedback
      */
@@ -245,7 +281,7 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
     /**
      * Shows feedback when a line segment is being rotated.
-     * 
+     *
      * @param request
      *            the {@link BendpointRequest} to use for feedback
      */
@@ -255,7 +291,7 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
     /**
      * Shows feedback when a line segment is being moved/rotated.
-     * 
+     *
      * @param request
      *            the {@link BendpointRequest} to use for feedback
      */
@@ -294,7 +330,7 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
     /**
      * Add the specified <code>Figure</code> from the
      * LayerConstants#FEEDBACK_LAYER.
-     * 
+     *
      * @param figure
      *            the feedback to add
      */
