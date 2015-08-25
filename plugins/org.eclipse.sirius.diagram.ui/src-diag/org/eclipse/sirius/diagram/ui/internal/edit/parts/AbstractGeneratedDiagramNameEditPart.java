@@ -37,7 +37,6 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.TextDirectEditManager;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ISemanticParser;
-import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
@@ -93,7 +92,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
-    protected String getLabelText() {
+    public String getLabelText() {
         String text = null;
         final EObject parserElement = getParserElement();
         if (parserElement != null && getParser() != null) {

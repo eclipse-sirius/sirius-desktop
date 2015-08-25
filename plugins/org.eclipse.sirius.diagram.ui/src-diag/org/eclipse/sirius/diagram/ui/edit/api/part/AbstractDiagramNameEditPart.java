@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOp
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LabelDeletionEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LabelSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ToolBasedLabelDirectEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.refresh.LabelAndIconRefresher;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.viewpoint.DMappingBased;
@@ -48,6 +49,8 @@ import org.eclipse.swt.graphics.Image;
  */
 public abstract class AbstractDiagramNameEditPart extends LabelEditPart implements IDiagramNameEditPart {
 
+    private LabelAndIconRefresher labelAndIconRefresher;
+
     /**
      * Creates a new <code>AbstractDiagramNameEditPart</code>.
      * 
@@ -56,6 +59,12 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
      */
     public AbstractDiagramNameEditPart(final View view) {
         super(view);
+    }
+
+    @Override
+    public void activate() {
+        super.activate();
+        labelAndIconRefresher = new LabelAndIconRefresher(this);
     }
 
     /**
@@ -310,6 +319,13 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
             // (and the nullity of the returned adapter is checked).
             return null;
         }
+    }
+
+    @Override
+    public void deactivate() {
+        labelAndIconRefresher.dispose();
+        labelAndIconRefresher = null;
+        super.deactivate();
     }
 
 }

@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.refresh.LabelAndIconRefresher;
 
 /**
  * <p>
@@ -28,6 +29,8 @@ import org.eclipse.gmf.runtime.notation.View;
 // Select Object not clearly update
 public abstract class AbstractNotSelectableShapeNodeEditPart extends ShapeNodeEditPart {
 
+    private LabelAndIconRefresher labelAndIconRefresher;
+
     /**
      * Creates a new AbstractUnselectableShapeNodeEditPart.
      * 
@@ -38,14 +41,23 @@ public abstract class AbstractNotSelectableShapeNodeEditPart extends ShapeNodeEd
         super(view);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
+    public void activate() {
+        super.activate();
+        labelAndIconRefresher = new LabelAndIconRefresher(this);
+    }
+
     @Override
     public boolean isSelectable() {
         // We simply always return false so that this EditPart cannot be
         // selected manually or automatically
         return false;
+    }
+
+    @Override
+    public void deactivate() {
+        labelAndIconRefresher.dispose();
+        labelAndIconRefresher = null;
+        super.deactivate();
     }
 }

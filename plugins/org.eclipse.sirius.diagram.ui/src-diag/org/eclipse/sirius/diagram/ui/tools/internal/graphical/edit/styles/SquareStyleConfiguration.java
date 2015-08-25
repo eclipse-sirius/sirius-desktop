@@ -14,6 +14,7 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ResizeKind;
@@ -66,7 +67,11 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
             final int height = (int) (origin.height - (origin.height * Y1 / 100 + origin.height * Y2 / 100));
             final Rectangle bounds = new Rectangle(x, y, width, height);
             nodeLabel.setBounds(bounds);
-            nodeLabel.getParent().setConstraint(nodeLabel, bounds);
+            // Don't set a Rectangle as constraint for BorderItemContainerFigure
+            // as a IBorderItemLocator is expected for constraint consumer
+            if (!(nodeLabel.getParent() instanceof BorderItemContainerFigure)) {
+                nodeLabel.getParent().setConstraint(nodeLabel, bounds);
+            }
         }
     }
 
@@ -123,6 +128,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
          * @see org.eclipse.sirius.transversal.figure.anchor.AnchorProvider#createAnchor(org.eclipse.sirius.diagram.ui.tools.api.figure.common.ui.tool.api.graphical.figure.AirDefaultSizeNodeFigure,
          *      org.eclipse.draw2d.geometry.PrecisionPoint)
          */
+        @Override
         public ConnectionAnchor createAnchor(final AirDefaultSizeNodeFigure figure, final PrecisionPoint p) {
             if (p == null) {
                 return createDefaultAnchor(figure);
@@ -133,6 +139,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
         /**
          * @see org.eclipse.sirius.transversal.figure.anchor.AnchorProvider#createDefaultAnchor(org.eclipse.sirius.diagram.ui.tools.api.figure.common.ui.tool.api.graphical.figure.AirDefaultSizeNodeFigure)
          */
+        @Override
         public ConnectionAnchor createDefaultAnchor(final AirDefaultSizeNodeFigure figure) {
             return new SquareStyleSlidableAnchor(figure);
         }

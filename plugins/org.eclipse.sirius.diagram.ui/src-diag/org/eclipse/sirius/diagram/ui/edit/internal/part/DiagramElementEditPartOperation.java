@@ -52,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignme
 import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractGeneratedDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -666,6 +667,35 @@ public final class DiagramElementEditPartOperation {
                     ConstrainedToolbarLayout ctl = (ConstrainedToolbarLayout) layoutManager;
                     ctl.setMinorAlignment(LabelAlignmentHelper.getAsCTLMinorAlignment(alignment));
                 }
+            }
+        }
+    }
+
+    /**
+     * Refresh the label and icon.
+     * 
+     * @param diagramElementEditPart
+     *            the {@link IDiagramElementEditPart}
+     * @param dDiagramElement
+     *            the {@link DDiagramElement} having style definition
+     * @param siriusWrapLabel
+     *            the figure owning label and icon to refresh
+     */
+    public static void refreshLabelAndIcon(IDiagramElementEditPart diagramElementEditPart, DDiagramElement dDiagramElement, SiriusWrapLabel siriusWrapLabel) {
+        if (siriusWrapLabel != null && siriusWrapLabel.getParent() != null && dDiagramElement != null) {
+            DiagramElementEditPartOperation.refreshFont(diagramElementEditPart, dDiagramElement, siriusWrapLabel);
+            StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(dDiagramElement.getDiagramElementMapping(), dDiagramElement.getStyle());
+            Image labelIcon = new StyleConfigurationQuery(styleConfiguration).getLabelIcon(dDiagramElement, diagramElementEditPart);
+            String label = null;
+            if (diagramElementEditPart instanceof AbstractGeneratedDiagramNameEditPart) {
+                label = ((AbstractGeneratedDiagramNameEditPart) diagramElementEditPart).getLabelText();
+            } else {
+                label = dDiagramElement.getName();
+            }
+            siriusWrapLabel.setText(label);
+            siriusWrapLabel.setIcon(labelIcon);
+            if (dDiagramElement instanceof DNode) {
+                styleConfiguration.adaptNodeLabel((DNode) dDiagramElement, siriusWrapLabel);
             }
         }
     }
