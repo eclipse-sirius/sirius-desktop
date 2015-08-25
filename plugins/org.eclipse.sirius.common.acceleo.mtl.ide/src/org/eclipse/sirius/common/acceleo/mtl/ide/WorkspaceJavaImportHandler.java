@@ -10,15 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.ide;
 
-import org.eclipse.sirius.common.acceleo.mtl.business.api.ResourceFinder;
-import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
-import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.DynamicJavaModuleCreator;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -44,6 +35,14 @@ import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.Signature;
 import org.eclipse.jface.text.IDocumentExtension4;
+import org.eclipse.sirius.common.acceleo.mtl.business.api.ResourceFinder;
+import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
+import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.DynamicJavaModuleCreator;
+
+import com.google.common.base.Joiner;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * This import handler will try and import a dependency as a Java class
@@ -188,7 +187,7 @@ public class WorkspaceJavaImportHandler extends AbstractImportHandler {
      */
     private static String resolveSourceType(IType context, String sourceType) {
         try {
-            final String wildcard = "? extends ";
+            final String wildcard = "? extends ";  //$NON-NLS-1$
             final String[][] erasure;
             if (sourceType.contains(wildcard)) {
                 erasure = context.resolveType(sourceType.substring(sourceType.indexOf(wildcard) + wildcard.length()));
@@ -366,6 +365,7 @@ public class WorkspaceJavaImportHandler extends AbstractImportHandler {
          * 
          * @see com.google.common.base.Predicate#apply(java.lang.Object)
          */
+        @Override
         public boolean apply(IProject input) {
             return input.isAccessible() && input.isOpen() && !input.isDerived();
         }

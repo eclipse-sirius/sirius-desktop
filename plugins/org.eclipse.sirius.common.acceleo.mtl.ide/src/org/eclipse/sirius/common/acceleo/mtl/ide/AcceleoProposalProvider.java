@@ -60,9 +60,10 @@ public class AcceleoProposalProvider implements IProposalProvider {
      * 
      * @see org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider#getNewEmtpyExpression()
      */
+    @Override
     public ContentProposal getNewEmtpyExpression() {
         final String emptyAcceleoExpression = ACCELEO_EXPRESSION_PREFIX + ACCELEO_EXPRESSION_SUFFIX;
-        return new ContentProposal(emptyAcceleoExpression, emptyAcceleoExpression, "New Acceleo 3 expression.", 1);
+        return new ContentProposal(emptyAcceleoExpression, emptyAcceleoExpression, Messages.AcceleoProposalProvider_MTL_newExpression, 1);
     }
 
     /**
@@ -71,6 +72,7 @@ public class AcceleoProposalProvider implements IProposalProvider {
      * @see org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider#getProposals(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter,
      *      org.eclipse.sirius.common.tools.api.contentassist.ContentContext)
      */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof AcceleoMTLInterpreter)) {
@@ -125,6 +127,7 @@ public class AcceleoProposalProvider implements IProposalProvider {
      * @see org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider#getProposals(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter,
      *      org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext)
      */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof AcceleoMTLInterpreter) || context.getCurrentSelected() == null) {
