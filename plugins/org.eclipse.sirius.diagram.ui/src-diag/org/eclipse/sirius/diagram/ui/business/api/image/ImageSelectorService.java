@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,15 +31,20 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptor;
@@ -203,12 +208,36 @@ public class ImageSelectorService {
         Style newWorkspaceImageStyle = null;
         WorkspaceImageDescription workspaceImageDescription = StyleFactory.eINSTANCE.createWorkspaceImageDescription();
         workspaceImageDescription.setWorkspacePath(workspacePath);
-        newWorkspaceImageStyle = createAndAffectWorkspaceImageCustomized((DDiagramElement) basicLabelStyle.eContainer(), workspaceImageDescription);
+        DDiagramElement dde = (DDiagramElement) basicLabelStyle.eContainer();
+        newWorkspaceImageStyle = createAndAffectWorkspaceImageCustomized(dde, workspaceImageDescription);
         if (basicLabelStyle != null && newWorkspaceImageStyle instanceof LabelStyle) {
-            copyProperties(basicLabelStyle, newWorkspaceImageStyle);
+            copyCustomizedProperties(basicLabelStyle, newWorkspaceImageStyle);
+        }
+
+        if (basicLabelStyle instanceof BorderedStyle && newWorkspaceImageStyle instanceof WorkspaceImage) {
+            copyBorderProperties(dde, (BorderedStyle) basicLabelStyle, (WorkspaceImage) newWorkspaceImageStyle, workspaceImageDescription);
         }
         newWorkspaceImageStyle.setDescription(((Style) basicLabelStyle).getDescription());
         return newWorkspaceImageStyle;
+    }
+
+    private void copyBorderProperties(DDiagramElement dde, BorderedStyle oldStyle, WorkspaceImage workspaceImage, WorkspaceImageDescription workspaceImageDescription) {
+
+        // Copy the border properties for Region and RegionContainer only.
+        if ((dde instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) dde).isRegionContainer())
+                || (dde instanceof DDiagramElementContainer && new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde).isRegion())) {
+
+            workspaceImage.setBorderColor(oldStyle.getBorderColor());
+            workspaceImage.setBorderLineStyle(oldStyle.getBorderLineStyle());
+            workspaceImage.setBorderSize(oldStyle.getBorderSize());
+
+            if (oldStyle.getDescription() instanceof BorderedStyleDescription) {
+                BorderedStyleDescription oldDesc = (BorderedStyleDescription) oldStyle.getDescription();
+                workspaceImageDescription.setBorderColor(oldDesc.getBorderColor());
+                workspaceImageDescription.setBorderLineStyle(oldDesc.getBorderLineStyle());
+                workspaceImageDescription.setBorderSizeComputationExpression(oldDesc.getBorderSizeComputationExpression());
+            }
+        }
     }
 
     private Style createAndAffectWorkspaceImageCustomized(final DDiagramElement dde, final WorkspaceImageDescription wid) {
@@ -234,7 +263,7 @@ public class ImageSelectorService {
         return myStyle;
     }
 
-    private void copyProperties(final Customizable source, final Customizable target) {
+    private void copyCustomizedProperties(final Customizable source, final Customizable target) {
         Collection<String> targetCustomizableFeatureNames = new CustomizableQuery(target).getCustomizableFeatureNames();
         Collection<String> sourceCustomizableFeatureNames = new CustomizableQuery(source).getCustomizableFeatureNames();
         for (EStructuralFeature sourceEStructuralFeature : source.eClass().getEAllStructuralFeatures()) {
@@ -271,7 +300,7 @@ public class ImageSelectorService {
                         if (targetValue instanceof Customizable) {
                             Customizable targetEObjectValue = (Customizable) targetValue;
                             if (sourceEObjectValue.eClass() == targetEObjectValue.eClass()) {
-                                copyProperties(sourceEObjectValue, targetEObjectValue);
+                                copyCustomizedProperties(sourceEObjectValue, targetEObjectValue);
                             }
                         }
                     }
