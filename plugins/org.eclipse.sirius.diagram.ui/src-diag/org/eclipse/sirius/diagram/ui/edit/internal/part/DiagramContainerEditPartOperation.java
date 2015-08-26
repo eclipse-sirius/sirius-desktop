@@ -140,10 +140,12 @@ public final class DiagramContainerEditPartOperation {
         final DDiagramElement diagElement = self.resolveDiagramElement();
         if (diagElement instanceof DDiagramElementContainer) {
             final DDiagramElementContainer ddec = (DDiagramElementContainer) diagElement;
-            final ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
             final ContainerStyle style = ddec.getOwnedStyle();
 
-            refreshBackgroundFigure(self, ddec, primaryShape, style);
+            // Change the primary shape if needed.
+            refreshBackgroundFigure(self, ddec, style);
+
+            final ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
             refreshBorder(self, primaryShape, style);
 
             if (primaryShape instanceof GradientRoundedRectangle) {
@@ -159,8 +161,11 @@ public final class DiagramContainerEditPartOperation {
         }
     }
 
-    private static void refreshBackgroundFigure(final AbstractDiagramElementContainerEditPart self, final DDiagramElementContainer ddec, final ViewNodeContainerFigureDesc primaryShape,
-            final ContainerStyle style) {
+    /**
+     * This method might refresh the background figure, or change it regarding
+     * how the style has evolved.
+     */
+    private static void refreshBackgroundFigure(final AbstractDiagramElementContainerEditPart self, final DDiagramElementContainer ddec, final ContainerStyle style) {
 
         // Update the background figure when the workspace image path changes.
         if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && ddec.getOwnedStyle() != null) {
@@ -168,6 +173,7 @@ public final class DiagramContainerEditPartOperation {
         }
 
         // Update the background figure when the background gradient style
+        ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
         if (primaryShape instanceof GradientRoundedRectangle && style instanceof FlatContainerStyle) {
             if (((GradientRoundedRectangle) primaryShape).getBackgroundStyle() != ((FlatContainerStyle) style).getBackgroundStyle()) {
                 self.reInitFigure();
@@ -261,6 +267,8 @@ public final class DiagramContainerEditPartOperation {
     }
 
     private static ViewNodeContainerFigureDesc refreshBorder(final AbstractDiagramElementContainerEditPart self, final ViewNodeContainerFigureDesc primaryShape, final ContainerStyle style) {
+        final int parentStackDirection = self.getParentStackDirection();
+
         LineStyle borderLineStyle = LineStyle.SOLID_LITERAL;
         int borderSize = 0;
         if (style != null) {
@@ -269,10 +277,14 @@ public final class DiagramContainerEditPartOperation {
                 borderSize = style.getBorderSize().intValue();
             }
         }
+
+        // Refresh border size and style of the primary shape.
         if (primaryShape instanceof Shape) {
             Shape shape = (Shape) primaryShape;
             shape.setLineWidth(borderSize);
-            shape.setOutline(borderSize > 0);
+            // Deactivate the outline of the shape if there is no border or if
+            // this is a region.
+            shape.setOutline(borderSize > 0 && parentStackDirection == PositionConstants.NONE);
             DiagramElementEditPartOperation.setLineStyle(shape, borderLineStyle, false);
         } else if (primaryShape instanceof NodeFigure) {
             NodeFigure nodeFigure = (NodeFigure) primaryShape;
@@ -287,6 +299,7 @@ public final class DiagramContainerEditPartOperation {
             labelOffset = 0;
         }
 
+        // Handle border line style, corner dimension and/or margin
         if (primaryShape != null && primaryShape.getBorder() instanceof LineBorder) {
             LineBorder lineBorder = (LineBorder) primaryShape.getBorder();
             lineBorder.setWidth(borderSize);
@@ -300,7 +313,7 @@ public final class DiagramContainerEditPartOperation {
         } else if (primaryShape != null && primaryShape.getBorder() instanceof MarginBorder) {
             MarginBorder margin = null;
             int borderMagin = borderSize;
-            switch (self.getParentStackDirection()) {
+            switch (parentStackDirection) {
             case PositionConstants.NORTH_SOUTH:
                 borderMagin = isFirstRegionPart(self) ? 0 : Math.max(0, borderSize - 1);
                 margin = new MarginBorder(borderMagin + labelOffset, 0, 0, 0);

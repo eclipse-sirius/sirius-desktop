@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
  * outline corresponding to a standard RoundedCorner with the same corner
  * dimension.
  * 
- * outlineShape(Graphics) will never be call as setOutline will do nothing and
+ * outlineShape(Graphics) will never be called as setOutline will do nothing and
  * the outline is set to false
  * 
  * @author mporhel
