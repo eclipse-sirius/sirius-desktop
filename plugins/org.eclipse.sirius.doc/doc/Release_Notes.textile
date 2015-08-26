@@ -141,6 +141,7 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int)@, and so @SWTBotSiriusGefViewer.dragWithKey@ and @SWTBotSiriusFigureCanvas.mouseDragWithKey@), has an additional parameter, compared to @drag(int, int, int, int)@ method, to precise the key code to press during the drag'n'drop. It is possible to call this method with SWT.None to retrieve the standard behavior of @drag@ method. This method also has a correct behavior for the move of bendpoints of edges.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.TopCondition@: New condition to wait that top of the edit part is on the expected location.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.BendpointLocationCondition@: New condition to wait that a bendpoint is on the expected x or y location.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.CheckBoundsCondition@: This condition now also checks the bounds location if the checkWidth or checkHeight (or both) is false.
 
 h2(#sirius3.0.0). Changes in Sirius 3.0.0
 

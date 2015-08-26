@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,10 +88,16 @@ public class CheckBoundsCondition extends DefaultCondition {
         if (editPartToWaitForSelection != null) {
             if (checkHeight && checkWidth) {
                 result = getCurrentAbsoluteBounds().equals(expectedBounds);
-            } else if (checkWidth) {
-                result = getCurrentAbsoluteBounds().width == expectedBounds.width;
-            } else if (checkHeight) {
-                result = getCurrentAbsoluteBounds().height == expectedBounds.height;
+            } else {
+                Rectangle currentBounds = getCurrentAbsoluteBounds();
+                if (checkWidth) {
+                    result = currentBounds.width == expectedBounds.width;
+                } else if (checkHeight) {
+                    result = currentBounds.height == expectedBounds.height;
+                } else {
+                    result = true;
+                }
+                result = result && currentBounds.getLocation().equals(expectedBounds.getLocation());
             }
         }
         return result;

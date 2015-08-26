@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler">
+  <representations xsi:type="migrationmodeler:Diagram" name="diagram1">
+    <containers id="container2">
+      <elements xsi:type="migrationmodeler:Bordered" id="bn8"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn7"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn10"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
+    </containers>
+    <containers id="container1">
+      <elements xsi:type="migrationmodeler:Bordered" id="bn5"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn6"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn3"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn2"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
+    </containers>
+    <containers id="container3">
+      <elements xsi:type="migrationmodeler:Bordered" id="bn4"/>
+      <elements xsi:type="migrationmodeler:Bordered"/>
+    </containers>
+    <containers id="container4">
+      <elements xsi:type="migrationmodeler:Bordered"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="bn9"/>
+    </containers>
+    <containers>
+      <elements xsi:type="migrationmodeler:Container">
+        <elements xsi:type="migrationmodeler:Container">
+          <elements xsi:type="migrationmodeler:Bordered"/>
+          <elements xsi:type="migrationmodeler:Bordered" id="bn1"/>
+          <elements xsi:type="migrationmodeler:Bordered"/>
+          <elements xsi:type="migrationmodeler:Bordered"/>
+        </elements>
+      </elements>
+    </containers>
+    <containers/>
+    <nodes id="node1"/>
+    <nodes id="node2"/>
+    <nodes id="node3"/>
+    <nodes id="node4"/>
+    <edges id="edge7" source="//@representations.0/@nodes.2" target="//@representations.0/@nodes.3"/>
+    <edges id="edge4" source="//@representations.0/@containers.0/@elements.0" target="//@representations.0/@containers.1/@elements.1"/>
+    <edges id="edge3" source="//@representations.0/@containers.0/@elements.1" target="//@representations.0/@containers.1/@elements.0"/>
+    <edges id="edge2" source="//@representations.0/@containers.1/@elements.2" target="//@representations.0/@containers.2/@elements.0"/>
+    <edges id="newEdge" source="//@representations.0/@containers.4/@elements.0/@elements.0/@elements.2" target="//@representations.0/@containers.4/@elements.0/@elements.0"/>
+    <edges id="edge1" source="//@representations.0/@containers.1/@elements.3" target="//@representations.0/@containers.4/@elements.0/@elements.0/@elements.1"/>
+    <edges id="edge5" source="//@representations.0/@containers.3/@elements.1" target="//@representations.0/@containers.0/@elements.2"/>
+    <edges id="edge6" source="//@representations.0/@containers.0" target="//@representations.0/@containers.3"/>
+  </representations>
+</migrationmodeler:TestCase>
