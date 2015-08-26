@@ -1,0 +1,325 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationControltheedgelabellocationafterthemoveofitsedge">Sirius Evolution Specification: Control the edge label location after the move of its edge</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: Control the edge label location after the move of its edge.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2015-04-27</td>
+				<td>lredor</td>
+				<td>Initial version.</td>
+			</tr>
+			<tr>
+				<td>v0.2</td>
+				<td>DRAFT</td>
+				<td>2015-04-29</td>
+				<td>lredor</td>
+				<td>Update after team review.</td>
+			</tr>
+			<tr>
+				<td>v0.3</td>
+				<td>PROPOSAL</td>
+				<td>2015-04-30</td>
+				<td>lredor</td>
+				<td>Update after team review.</td>
+			</tr>
+			<tr>
+				<td>v0.3</td>
+				<td>ACCEPTED</td>
+				<td>2015-08-05</td>
+				<td>lredor</td>
+				<td>Update spec, as the sequence pack layout does not reset the label location.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em> :
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=465328">Bug 465328 &#8211; Control the edge label location after the move of its edge</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>In some conditions, the new location of an edge label after the move of its edge is not natural. The goal of this issue is to always have a new location as natural as possible.. For that, this specification will list all possible cases of edge move, and also explain what is a &#171;natural new location according to its edge move&#187;.  </p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>As a reminder, there are 3 possible labels on an edge (begin label, center label and end label). The rules will be the same for all of these.</p>
+		<h3 id="Currentbehavior">Current behavior</h3>
+		<p>Even if in some conditions, the label move is not natural, the label location is based on a specific algorithm. This chapter explains the current logic.</p>
+		<p>The label location is conditioned by 2 constraints:</p>
+		<ul>
+			<li>The reference point on the edge:
+				<ul>
+					<li>start: The reference point is at 15% of the edge length</li>
+					<li>middle: The reference point is at 50% of the edge length</li>
+					<li>end: The reference point is at 85% of the edge length</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/referencePoints.png"/>
+		</p>
+		<p>This values can be found in 
+			<code>org.eclipse.draw2d.ConnectionLocator</code> and 
+			<code>org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants</code>. This value is fixed by the EditPart that handles this figure (
+			<code>org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart.getKeyPoint()</code>, 
+			<code>org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart.getKeyPoint()</code> or 
+			<code>org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart.getKeyPoint()</code>).
+		</p>
+		<ul>
+			<li>Its offset (the 
+				<code>layoutConstraint</code> of the label in the GMF model): Corresponds to the blue arrow in the below screenshot. This value is modified when the user moves the label. It is interpreted differently according to the orientation, vertical or horizontal, of the segment where the reference point is. 
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/offset.png"/>
+			<br/>The only difference between the 2 edges, above and below is that the third segment has been moved upward. The middle of the edge (the reference point represented by a red cross) has been indirectly moved. It is on a segment which have changed of orientation. The effect is that the offset is considered differently and is rotated of -90°. For end user, the new label location is not natural. 
+			<br/>
+			<img border="0" src="images/offsetAfterMove.png"/>
+		</p>
+		<h3 id="Movecases">Move cases</h3>
+		<p>There are several ways to move an edge. All kind of move have, as result, to also move the label. All these kind of moves are listed here to be sure to handle all cases:</p>
+		<ul>
+			<li>Edge changes:
+				<ul>
+					<li>Move a segment: click on a point of a segment and move it. A horizontal segment can be moved upward or downward. A vertical segment can be moved leftward or rightward.</li>
+					<li>Move a bendpoint: click on a bendpoint and move it. This moves 2 segments of an edge simultaneously.
+						<ul>
+							<li>A sub-case is when this move change the number of segments.</li>
+						</ul>
+					</li>
+					<li>Move the first bendpoint: click on the first bendpoint and move it on the source node.</li>
+					<li>Move the last bendpoint: click on the last bendpoint and move it on the target node.</li>
+				</ul>
+			</li>
+			<li>Node changes:
+				<ul>
+					<li>Move the source node: click on the source node and move it.
+						<ul>
+							<li>A sub-case is when this move change the number of segments.</li>
+						</ul>
+					</li>
+					<li>Move the target node: click on the target node and move it.
+						<ul>
+							<li>A sub-case is when this move change the number of segments.</li>
+						</ul>
+					</li>
+					<li>Resize the source node: click on a border of the source node and resize it.
+						<ul>
+							<li>A sub-case is when this resize change the number of segments.</li>
+						</ul>
+					</li>
+					<li>Resize the target node: click on a border of the target node and resize it.
+						<ul>
+							<li>A sub-case is when this resize change the number of segments.</li>
+						</ul>
+					</li>
+					<li>All above operations but on a container that contains the source node (border or not) and the target node. The resize/move of the container must move the source or the target to be interesting.</li>
+				</ul>
+			</li>
+		</ul>
+		<h3 id="Newlogic">New logic</h3>
+		<p>
+			<img border="0" src="images/newLogic.png"/>
+		</p>
+		<p>1- Consider the center of the label: the red cross on the screenshot
+			<br/>2- Found the point, on the edge that is the closest from the center of the label: the blue cross on the screenshot. This point is considered as the new reference point (and no longer the start, middle or end point). If there are several closest points (same distance), the firstly found is used.
+			<br/>3- The vector, the green arrow, between this reference point and the center of the label must keep the same, if possible.
+		</p>
+		<p>The step 3 is &#171;simple&#187; to explain, but there are several cases, that need more details, explained below.</p>
+		<h4 id="Possiblecasesforrectilinearrouting">Possible cases for rectilinear routing</h4>
+		<p>This chapter list different cases of edges moves, with the expected result on the label location for edge with rectilinear routing.</p>
+		<ul>
+			<li>A- The reference point is on a segment that is not impacted by the move --&gt; The label does not move.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/rectilinear-1.jpg"/>
+		</p>
+		<ul>
+			<li>B- The reference point is on a segment that is moved (not resized) --&gt; The label is moved with the same delta (to keep the same vector).</li>
+		</ul>
+		<p>
+			<img border="0" src="images/rectilinear-2.jpg"/>
+		</p>
+		<ul>
+			<li>B'- The reference point is on a segment that is moved (and resized) --&gt; The label is moved with the same delta (to keep the same vector).</li>
+		</ul>
+		<p>
+			<img border="0" src="images/rectilinear-2-bis.jpg"/>
+		</p>
+		<ul>
+			<li>C- The reference point is on a segment that is resized: enlarged and the reference point is always on the segment --&gt; The label does not move.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/rectilinear-3.jpg"/>
+		</p>
+		<ul>
+			<li>D- The reference point is on a segment that is resized: reduced and the reference point is always on the segment --&gt; The label does not move.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/rectilinear-4.jpg"/>
+		</p>
+		<ul>
+			<li>E- The reference point is on a segment that is resized: reduced (and perhaps moved) and the reference point is no longer on the segment --&gt; A new reference point is computed by keeping the same ratio of the original reference point according to the length of the segment.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/rectilinear-5.jpg"/>
+		</p>
+		<ul>
+			<li>F- The reference point is on a segment that is removed --&gt; Compute a new location according to the default reference point (start, middle, end).</li>
+		</ul>
+		<p>
+			<img border="0" src="images/rectilinear-6.jpg"/>
+		</p>
+		<ul>
+			<li>G &#8211; The reference point is on a segment that is removed but merged with another one --&gt; The label is moved with the same delta (to keep the same vector).</li>
+		</ul>
+		<p>
+			<img border="0" src="images/rectilinear-7.jpg"/>
+		</p>
+		<h4 id="Treerouting">Tree routing</h4>
+		<p>Tree routing is similar to rectilinear routing. The behavior of label on edges with tree routing is out of scope for this spec. Even, if it will probably enhanced by this feature.
+			<br/>Only some manual tests will be done to evaluate remaining problems on tree routing cases.
+		</p>
+		<h4 id="Possiblecasesforobliquerouting">Possible cases for oblique routing</h4>
+		<p>This chapter list different cases of edges moves, with the expected result on the label location for edge with oblique routing.</p>
+		<ul>
+			<li>A- The reference point is on a segment that is not impacted by the move --&gt; The label does not move.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/oblique-1.jpg"/>
+		</p>
+		<ul>
+			<li>B- The reference point is on a segment that is moved (the starting or ending point of the segment is moved) --&gt; The label is moved to keep the same vector between reference point and label center.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/oblique-2.jpg"/>
+		</p>
+		<ul>
+			<li>C- The reference point is on a segment that is resized: enlarged and the reference point is always on the segment --&gt; The label does not move. This case is difficult to have with the oblique routing. The case B will be more frequent.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/oblique-3.jpg"/>
+		</p>
+		<ul>
+			<li>D- The reference point is on a segment that is resized: reduced and the reference point is always on the segment --&gt; The label does not move. This case is difficult to have with the oblique routing. The case B will be more frequent.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/oblique-4.jpg"/>
+		</p>
+		<ul>
+			<li>E- The reference point is on a segment that is resized: reduced and the reference point is no longer on the segment --&gt; A new reference point is computed by keeping the same ratio of the original reference point according to the length of the segment.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/oblique-5.jpg"/>
+		</p>
+		<ul>
+			<li>F- The reference point is on a segment that is removed --&gt; Compute a new location according to the default reference point (start, middle, end). The example is here with an oblique edge. All corresponding cases with a rectilinear edge match the above case that is better.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/oblique-6.jpg"/>
+		</p>
+		<ul>
+			<li>G &#8211; The reference point is on a segment that is splitted into two segments --&gt; Compute a new location according to the default reference point (start, middle, end).</li>
+		</ul>
+		<p>
+			<img border="0" src="images/oblique-7.jpg"/>
+		</p>
+		<h4 id="Specificsequencediagramcase">Specific sequence diagram case</h4>
+		<h5 id="SequenceMessageLabelLocator">SequenceMessageLabelLocator</h5>
+		<p>The sequence diagrams have a specific LabelLocator for sequence message (
+			<code>org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceMessageLabelLocator</code>). This label locator inverses the offset of the label according to the direction of the message.
+			<br/>So this particular case must be checked.
+		</p>
+		<h4 id="Bracketedge">Bracket edge</h4>
+		<p>The bracket edges have a specific router, 
+			<code>org.eclipse.sirius.diagram.ui.tools.internal.routers.BracketConnectionRouter</code>. But the rules should be the same as edge with rectilinear router.
+			<br/>Only tests on these specific edges should be done to ensure it is OK.
+		</p>
+		<h4 id="Technicaldetailsaboutnewimplementation">Technical details about new implementation</h4>
+		<p>There are 2 approaches:</p>
+		<ol>
+			<li>Recompute the offset stored in the GMF notation model in each policy implied in the move of an edge</li>
+			<li>Recompute the offset in pre-commit listener by detecting the changes (bendpoints, source anchor, target anchor, ...)</li>
+		</ol>
+		<p>First approach:</p>
+		<ul>
+			<li>advantages
+				<ul>
+					<li>Direct access to the query and all associated data (delta of move, ...)</li>
+					<li>Direct access to the implied edit parts of so figures</li>
+				</ul>
+			</li>
+			<li>disadvantages
+				<ul>
+					<li>Multiple entry points</li>
+				</ul>
+			</li>
+		</ul>
+		<p>Second approach:</p>
+		<ul>
+			<li>advantages
+				<ul>
+					<li>Only one entry point</li>
+				</ul>
+			</li>
+			<li>disadvantages
+				<ul>
+					<li>Detecting of &#171;interesting&#187; notifications can be costly (precommit called at each command execution)</li>
+					<li>Retrieving of data potentially difficult from list of notifications</li>
+					<li>Potential errors of computing due to lack of information in GMF model
+						<ul>
+							<li>Specificity of router only known by Draw2D</li>
+							<li>Bad computation of source node or target node in auto-size, implying bad computation of bendpoints.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>The first approach has been retained. Indeed, the only disadvantage is to be exhaustive in all possible actions, and so on policies, that can move an edge. But this is more reliable, that the second, in which it is possible to have unexpected result.</p>
+		<p>List of actions considered as potentially impacting for edge:</p>
+		<ul>
+			<li>Move source/target node (manual move, align actions, distribute actions)</li>
+			<li>Resize source/target node (manual resize, auto-size action, make same size action)</li>
+			<li>Move container of the source/target node</li>
+			<li>Resize source/target node (with or without F3 shortcut)</li>
+			<li>Move a segment of an edge</li>
+			<li>Move the first/last bendpoint of an edge</li>
+			<li>Move the intermediate bendpoint of an edge</li>
+			<li>Create a new intermediate bendpoint</li>
+			<li>Delete an intermediate bendpoint</li>
+			<li>Arrange all/selection</li>
+			<li>Remove bendpoints action on an edge</li>
+		</ul>
+		<p>All these actions will be handled for this feature (potential missed actions not listed here, will not be handled). The corresponding policies are not listed here. This will be done during the implementation phase.</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<h3 id="MetamodelChanges">Metamodel Changes</h3>
+		<p>There is no change in metamodel for this evolution. It only modifies the existing policies.</p>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>No user interface change.</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>This new behavior should be added in the New and Noteworthy documentation. There is no need to document this elsewhere because it will be the default behavior.</p>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>All cases described for rectilinear router and oblique router must be tested.
+			<br/>Also all actions tested in &#171;Technical details&#187; chapter must be tested.
+		</p>
+		<p>As often for graphical feature, the cases of different zoom level, and diagram and container with scroll must be tested.</p>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+		<p>There is another possible feature link to this one: Action to reset a label to its default location (as just after creation). This action is out of scope for this feature.</p>
+		<p>The original chapter &#171;Pack Layout&#187; has been removed from the specification as, even before this enhancement, the labels are not reset to their original locations during a sequence pack layout.</p>
+	</body>
+</html>

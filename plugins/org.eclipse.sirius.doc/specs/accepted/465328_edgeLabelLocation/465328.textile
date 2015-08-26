@@ -8,6 +8,7 @@ _Summary_: Control the edge label location after the move of its edge.
 | v0.1        | DRAFT    | 2015-04-27 | lredor    | Initial version. |
 | v0.2        | DRAFT    | 2015-04-29 | lredor    | Update after team review. |
 | v0.3        | PROPOSAL    | 2015-04-30 | lredor    | Update after team review. |
+| v0.3        | ACCEPTED    | 2015-08-05 | lredor    | Update spec, as the sequence pack layout does not reset the label location. |
 
 _Relevant tickets_ :
 * "Bug 465328 - Control the edge label location after the move of its edge":https://bugs.eclipse.org/bugs/show_bug.cgi?id=465328
@@ -133,10 +134,6 @@ h5. SequenceMessageLabelLocator
 The sequence diagrams have a specific LabelLocator for sequence message (@org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceMessageLabelLocator@). This label locator inverses the offset of the label according to the direction of the message.
 So this particular case must be checked.
 
-h5. Pack Layout
-
-There is a pack capability on sequence diagram, second parameter of @org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation.SynchronizeGraphicalOrderingOperation(Diagram, boolean)@.  It this context, the label should be reset to its original location (as if it had just been created).
-
 h4. Bracket edge
 
 The bracket edges have a specific router, @org.eclipse.sirius.diagram.ui.tools.internal.routers.BracketConnectionRouter@. But the rules should be the same as edge with rectilinear router.
@@ -206,3 +203,6 @@ As often for graphical feature, the cases of different zoom level, and diagram a
 h2. Implementation choices and tradeoffs
 
 There is another possible feature link to this one: Action to reset a label to its default location (as just after creation). This action is out of scope for this feature.
+
+The original chapter "Pack Layout" has been removed from the specification as, even before this enhancement, the labels are not reset to their original locations during a sequence pack layout.
+
