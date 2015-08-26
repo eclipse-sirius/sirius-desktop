@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,8 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
@@ -503,7 +505,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         }
 
         assertNotNull(resetStylePropertiesToDefaultValuesButton);
-        assertTrue(resetStylePropertiesToDefaultValuesButton.isEnabled());
+        assertTrue("Reset style button should be enabled.", resetStylePropertiesToDefaultValuesButton.isEnabled());
 
         checkCustom(part, true);
 
@@ -514,22 +516,24 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         Dimension newGMFSize = getSize((Node) part.getNotationView());
         Dimension newD2DSize = getSize(part.getFigure());
 
-        assertEquals(-1, newGMFSize.height);
-        assertEquals(oldGMFSize.width, newGMFSize.width);
+        assertEquals("The GMF height should be set to -1.", -1, newGMFSize.height);
+        assertEquals("The GMF width should be kept.", oldGMFSize.width, newGMFSize.width);
 
         if (part instanceof IDiagramContainerEditPart || part instanceof IDiagramListEditPart) {
             // Auto-sized container are resized on set wkp image to get the
             // image size.
-            assertEquals(-1, oldGMFSize.width);
-            assertEquals(image.getBounds().width, newD2DSize.width, 2);
-            assertEquals(image.getBounds().height, newD2DSize.height, 2);
-            assertTrue(((AbstractDiagramElementContainerEditPart) part).getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc);
-            assertTrue(((AbstractDiagramElementContainerEditPart) part).getBackgroundFigure() instanceof IWorkspaceImageFigure);
+            assertEquals("The GMF width was and stays -1.", -1, oldGMFSize.width);
+            assertEquals("The figure size should correspond to the image width.", image.getBounds().width, newD2DSize.width, 2);
+            assertEquals("The figure size should correspond to the image width.", image.getBounds().height, newD2DSize.height, 2);
+            assertTrue("The primary shape should be a ViewNodeContainerRectangleFigureDesc.",
+                    ((AbstractDiagramElementContainerEditPart) part).getPrimaryShape() instanceof ViewNodeContainerRectangleFigureDesc);
+            assertTrue("The background figure should be a IWorkspaceImageFigure.", ((AbstractDiagramElementContainerEditPart) part).getBackgroundFigure() instanceof IWorkspaceImageFigure);
+            assertNull("The image figure should not have a drop shadow border.", ((AbstractDiagramElementContainerEditPart) part).getMainFigure().getBorder());
         } else {
             // Nodes keep their size and the height is modified to keep the
             // image ratio
-            assertEquals(oldD2DSize.width, newD2DSize.width);
-            assertEquals(newHeight, newD2DSize.height, 2);
+            assertEquals("The node GMF width should not be impacted.", oldD2DSize.width, newD2DSize.width);
+            assertEquals("The node figure should have the same ratio than the image.", newHeight, newD2DSize.height, 2);
         }
 
         click(resetStylePropertiesToDefaultValuesButton);
@@ -551,6 +555,13 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
 
         assertEquals(oldGMFSize.width, newGMFSize2.width);
         // assertEquals(oldGMFSize.height, newGMFSize2.height);
+
+        if (part instanceof IDiagramContainerEditPart || part instanceof IDiagramListEditPart) {
+            assertTrue("The primary shape should be a GradientRoundedRectangle.", ((AbstractDiagramElementContainerEditPart) part).getPrimaryShape() instanceof GradientRoundedRectangle);
+            assertNull("The background figure should be null for a gradient style.", ((AbstractDiagramElementContainerEditPart) part).getBackgroundFigure());
+            // Alpha drop shadow has been recreated.
+            assertTrue("The drop shadow border should have been recreated.", ((AbstractDiagramElementContainerEditPart) part).getMainFigure().getBorder() instanceof AlphaDropShadowBorder);
+        }
     }
 
     private Dimension getSize(Node gmfNode) {

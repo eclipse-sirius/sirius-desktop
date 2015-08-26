@@ -389,7 +389,7 @@ public final class DiagramContainerEditPartOperation {
         final EObject eObj = self.resolveSemanticElement();
         if (eObj instanceof DDiagramElementContainer) {
             final DDiagramElementContainer container = (DDiagramElementContainer) eObj;
-            if ((container.getOwnedStyle() != null) && (container.getOwnedStyle() instanceof WorkspaceImage)) {
+            if (container.getOwnedStyle() instanceof WorkspaceImage) {
                 final WorkspaceImage img = (WorkspaceImage) container.getOwnedStyle();
                 return createWkpImageFigure(img);
             }

@@ -898,5 +898,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         if (containerCompartment != null) {
             mainFigure.add(containerCompartment);
         }
+        
+        // Update drop shadow.
+        mainFigure.setBorder(tmpFigure.getBorder());
     }
 }
