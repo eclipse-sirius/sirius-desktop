@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_tests_canary" sequenceNumber="1433770156">
+<target name="sirius_tests_canary" sequenceNumber="1440598180">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
       <repository id="Eclipse-Shared-License" location="http://download.eclipse.org/cbi/updates/license"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform.ide" version="4.5.0.I20150603-2000"/>
-      <unit id="org.eclipse.platform.sdk" version="4.5.0.I20150603-2000"/>
-      <unit id="org.eclipse.sdk.ide" version="4.5.0.I20150603-2000"/>
-      <repository id="Eclipse-Mars-Integration" location="http://download.eclipse.org/eclipse/updates/4.5-I-builds"/>
+      <unit id="org.eclipse.platform.ide" version="4.6.0.I20150825-0800"/>
+      <unit id="org.eclipse.platform.sdk" version="4.6.0.I20150825-0800"/>
+      <unit id="org.eclipse.sdk.ide" version="4.6.0.I20150825-0800"/>
+      <repository id="Eclipse-Neon-Integration" location="http://download.eclipse.org/eclipse/updates/4.6-I-builds"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>
@@ -26,7 +26,7 @@
       <unit id="org.eclipse.draw2d.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
-      <repository id="GEF-LastSuccessful" location="https://hudson.eclipse.org/hudson/job/gef-master/lastSuccessfulBuild/artifact/update-site/"/>
+      <repository id="GEF-LastSuccessful" location="https://hudson.eclipse.org/gef/job/gef-master/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.eclipse.feature.group" version="0.0.0"/>
@@ -111,7 +111,7 @@
       <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
-      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/latest/luna"/>
+      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon"/>
     </location>
   </locations>
 </target>

@@ -4,7 +4,7 @@ include "modules/shared-license.tpd"
 
 with source, requirements
 
-location Eclipse-Mars-Integration "http://download.eclipse.org/eclipse/updates/4.5-I-builds" {
+location Eclipse-Neon-Integration "http://download.eclipse.org/eclipse/updates/4.6-I-builds" {
 	org.eclipse.platform.ide 4.4.0
 	org.eclipse.platform.sdk 4.4.0
 	org.eclipse.sdk.ide 4.4.0
@@ -19,7 +19,7 @@ location Orbit-Recommended "http://download.eclipse.org/modeling/emf/cdo/orbit/l
 	org.easymock lazy
 }
 
-location GEF-LastSuccessful "https://hudson.eclipse.org/hudson/job/gef-master/lastSuccessfulBuild/artifact/update-site/" {
+location GEF-LastSuccessful "https://hudson.eclipse.org/gef/job/gef-master/lastSuccessfulBuild/artifact/update-site/" {
 	org.eclipse.draw2d.sdk.feature.group lazy
 	org.eclipse.gef.feature.group lazy
 	org.eclipse.gef.sdk.feature.group lazy
