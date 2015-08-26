@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ public class DesignerResolutionGenerator implements IMarkerResolutionGenerator {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IMarkerResolution[] getResolutions(IMarker marker) {
         final String validationRuleURI = marker.getAttribute("rule", null); //$NON-NLS-1$
         if (validationRuleURI != null) {
@@ -48,7 +49,7 @@ public class DesignerResolutionGenerator implements IMarkerResolutionGenerator {
     private ValidationRule fetchRuleFromURI(String validationRuleURI) {
         ResourceSet set = new ResourceSetImpl();
         EObject rule = set.getEObject(URI.createURI(validationRuleURI), true);
-        if (rule != null && rule instanceof ValidationRule) {
+        if (rule instanceof ValidationRule) {
             return (ValidationRule) rule;
         }
         return null;

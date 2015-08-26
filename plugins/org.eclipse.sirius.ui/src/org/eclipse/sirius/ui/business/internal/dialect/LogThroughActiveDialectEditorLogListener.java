@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,6 +62,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
      * 
      * @see org.eclipse.core.runtime.ILogListener#logging(org.eclipse.core.runtime.IStatus, java.lang.String)
      */
+    @Override
     public void logging(IStatus status, String plugin) {
         boolean hasBeenLoggedThroughDialect = false;
         // Always consider final cause of exception
@@ -73,7 +74,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
             // possible and required
             if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG.name())) {
                 IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
-                if ((activeEditor != null) && (activeEditor instanceof DialectEditor)) {
+                if (activeEditor instanceof DialectEditor) {
                     if (shouldBeLoggedThroughDialect((DialectEditor) activeEditor, exception)) {
                         ((DialectEditor) activeEditor).getDialogFactory().informUserOfEvent(IStatus.ERROR, getErrorMessage(exception));
                         hasBeenLoggedThroughDialect = true;
@@ -86,6 +87,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
             // starting (can be confusing for end-user)
             if (!hasBeenLoggedThroughDialect && shouldBeLoggedThroughPopup(exception) && PlatformUI.isWorkbenchRunning() && !PlatformUI.getWorkbench().isStarting()) {
                 Display.getDefault().asyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Permission Issue", getErrorMessage(exception));
                     }
@@ -126,6 +128,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
                 }
                 Iterable<Setting> representationsElementsReferencingLockedElement = Iterables.filter(session.getSemanticCrossReferencer().getInverseReferences(lockedElement),
                         new Predicate<Setting>() {
+                            @Override
                             public boolean apply(Setting input) {
                                 if (input.getEObject() instanceof DSemanticDecorator) {
                                     DRepresentation concernedRepresentation = null;

@@ -1131,9 +1131,13 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             @Override
             public void run() {
                 if (notificationKind == PROP_TITLE) {
-                    if ((getDiagram() != null) && (getDiagram().getElement() != null) && (getDiagram().getElement() instanceof DSemanticDiagram)) {
-                        final String editorName = DialectUIManager.INSTANCE.getEditorName((DSemanticDiagram) getDiagram().getElement());
-                        setPartName(editorName);
+                    Diagram diagram = getDiagram();
+                    if (diagram != null) {
+                        EObject element = diagram.getElement();
+                        if (element instanceof DSemanticDiagram) {
+                            final String editorName = DialectUIManager.INSTANCE.getEditorName((DSemanticDiagram) element);
+                            setPartName(editorName);
+                        }
                     }
                 }
                 firePropertyChange(notificationKind);

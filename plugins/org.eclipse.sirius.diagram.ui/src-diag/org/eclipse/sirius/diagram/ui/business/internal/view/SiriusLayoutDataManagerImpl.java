@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -352,11 +352,11 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         // Virtual consumption as this edge has no port.
         if (result == null) {
             final EdgeTarget sourceNode = edge.getSourceNode();
-            if ((sourceNode != null) && sourceNode instanceof AbstractDNode) {
+            if (sourceNode instanceof AbstractDNode) {
                 getData((AbstractDNode) sourceNode);
             }
             final EdgeTarget targetNode = edge.getTargetNode();
-            if ((targetNode != null) && targetNode instanceof AbstractDNode) {
+            if (targetNode instanceof AbstractDNode) {
                 getData((AbstractDNode) targetNode);
             }
         }
@@ -840,7 +840,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         while (li.hasNext()) {
             IGraphicalEditPart ep = (IGraphicalEditPart) li.next();
             View view = ep.getNotationView();
-            if (view != null && view instanceof Node) {
+            if (view instanceof Node) {
                 Rectangle bounds = ep.getFigure().getBounds();
                 nodes.add(new LayoutNode((Node) view, bounds.width, bounds.height));
             }

@@ -137,7 +137,7 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
             while (li.hasNext()) {
                 IGraphicalEditPart ep = (IGraphicalEditPart) li.next();
                 View view = ep.getNotationView();
-                if (ep.isActive() && view != null && view instanceof Node) {
+                if (ep.isActive() && view instanceof Node) {
                     Rectangle bounds = ep.getFigure().getBounds();
                     nodes.add(new LayoutNode((Node) view, bounds.width, bounds.height));
                 }
@@ -171,7 +171,8 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
             if (layoutRun instanceof IInternalLayoutRunnable) {
                 ctc.add(new CommandProxy(((IInternalLayoutRunnable) layoutRun).getCommand()));
             } else {
-                ctc.add(new AbstractTransactionalCommand(editingDomain, StringStatics.BLANK, null) {//$NON-NLS-1$
+                ctc.add(new AbstractTransactionalCommand(editingDomain, StringStatics.BLANK, null) {
+                    @Override
                     protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {
                         layoutRun.run();
                         return CommandResult.newOKCommandResult();

@@ -212,7 +212,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
         ImportPackageSpecification[] importedPkgs = desc.getImportPackages();
         for (int i = 0; i < importedPkgs.length; i++) {
             BaseDescription bd = importedPkgs[i].getSupplier();
-            if (bd != null && bd instanceof ExportPackageDescription) {
+            if (bd instanceof ExportPackageDescription) {
                 BundleDescription exporter = ((ExportPackageDescription) bd).getExporter();
                 if (exporter != null) {
                     Object obj = dependencies.get(exporter);
@@ -353,6 +353,7 @@ public class WorkspaceClassLoading extends BundleClassLoading {
         return existing;
     }
 
+    @Override
     protected Collection<EPackageLoadingCallback.EPackageDeclarationSource> getEPackagesDeclaredInBundles(Collection<String> bundles) {
         Collection<EPackageLoadingCallback.EPackageDeclarationSource> result = Lists.newArrayList();
         IWorkspaceRoot root = EcorePlugin.getWorkspaceRoot();
