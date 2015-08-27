@@ -56,10 +56,12 @@ public class AlphaDropShadowBorder extends AbstractBackground implements DropSha
         this.shape = shape;
     }
 
+    @Override
     public void setShouldDrawDropShadow(boolean drawDropShadow) {
         shouldDrawShadow = drawDropShadow;
     }
 
+    @Override
     public boolean shouldDrawDropShadow() {
         return shouldDrawShadow;
     }
@@ -81,6 +83,7 @@ public class AlphaDropShadowBorder extends AbstractBackground implements DropSha
         return insetsNew;
     }
 
+    @Override
     public Insets getTransparentInsets(IFigure figure) {
         Insets insetsNew = new Insets();
         insetsNew.top = 0;
@@ -92,7 +95,7 @@ public class AlphaDropShadowBorder extends AbstractBackground implements DropSha
 
     @Override
     public void paintBackground(IFigure figure, Graphics graphics, Insets insets) {
-        if (shouldDrawDropShadow()) {
+        if (shouldDrawDropShadow() && shape != null && shape.getParent() != null) {
             int ORIGINALALPHA = graphics.getAlpha();
             graphics.pushState();
             graphics.setBackgroundColor(SHADOW_COLOR);
@@ -121,7 +124,6 @@ public class AlphaDropShadowBorder extends AbstractBackground implements DropSha
             }
             graphics.setAlpha(ORIGINALALPHA);
             graphics.popState();
-
         }
     }
 }
