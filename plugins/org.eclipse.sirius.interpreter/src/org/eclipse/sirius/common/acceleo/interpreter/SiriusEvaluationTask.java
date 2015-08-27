@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -42,6 +43,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  */
 public class SiriusEvaluationTask implements Callable<EvaluationResult> {
+
     /** Context of this evaluation as passed from the interpreter. */
     private EvaluationContext context;
 
@@ -66,7 +68,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
 
         final String expression = context.getExpression();
         if (context.getTargetEObjects().isEmpty()) {
-            IStatus errorStatus = new Status(IStatus.ERROR, InterpreterViewPlugin.PLUGIN_ID, "No target for evaluation of " + expression);
+            IStatus errorStatus = new Status(IStatus.ERROR, InterpreterViewPlugin.PLUGIN_ID, MessageFormat.format(Messages.SiriusEvaluationTask_status_noEvaluationTarget, expression));
             return new EvaluationResult(errorStatus);
         }
 
@@ -235,9 +237,11 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             type = ePackage.getName() + "::" + eClass.getName(); //$NON-NLS-1$
         }
 
-        String message = "Result of type " + type;
-        if (size != null) {
-            message += " and size " + size;
+        String message;
+        if (size == null) {
+            message = MessageFormat.format(Messages.SiriusEvaluationTask_status_resultMessage, type);
+        } else {
+            message = MessageFormat.format(Messages.SiriusEvaluationTask_status_sizedResultMessage, type, size);
         }
         return message;
     }
