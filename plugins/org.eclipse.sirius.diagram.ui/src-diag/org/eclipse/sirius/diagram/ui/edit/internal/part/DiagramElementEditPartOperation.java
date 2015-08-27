@@ -515,7 +515,7 @@ public final class DiagramElementEditPartOperation {
 
                 RGBValues labelRGBColor = lStyle.getLabelColor();
                 Color labelColor = VisualBindingManager.getDefault().getLabelColorFromRGBValues(labelRGBColor);
-                if (!figure.getForegroundColor().equals(labelColor)) {
+                if (!(figure.getForegroundColor() != null && figure.getForegroundColor().equals(labelColor))) {
                     figure.setForegroundColor(labelColor);
                 }
             }
@@ -659,7 +659,7 @@ public final class DiagramElementEditPartOperation {
                 if (nodeLabel != null) {
                     nodeLabel.setLabelAlignment(LabelAlignmentHelper.getAsPositionConstant(alignment));
                 }
-            } else {
+            } else if (figure != null) {
                 LayoutManager layoutManager = figure.getLayoutManager();
                 if (layoutManager instanceof ConstrainedToolbarLayout) {
                     ConstrainedToolbarLayout ctl = (ConstrainedToolbarLayout) layoutManager;

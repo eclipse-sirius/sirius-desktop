@@ -114,7 +114,7 @@ public final class DiagramNameEditPartOperation {
 
         RGBValues labelRGBColor = lStyle.getLabelColor();
         Color labelColor = VisualBindingManager.getDefault().getLabelColorFromRGBValues(labelRGBColor);
-        if (!figure.getForegroundColor().equals(labelColor)) {
+        if (!(figure.getForegroundColor() != null && figure.getForegroundColor().equals(labelColor))) {
             figure.setForegroundColor(labelColor);
         }
         if (self instanceof IBorderItemEditPart) {
