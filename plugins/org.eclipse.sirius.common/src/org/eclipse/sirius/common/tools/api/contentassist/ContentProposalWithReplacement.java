@@ -18,6 +18,18 @@ package org.eclipse.sirius.common.tools.api.contentassist;
  */
 public class ContentProposalWithReplacement extends ContentProposal {
     /**
+     * The kind of image supported for the proposal.
+     * 
+     * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
+     */
+    public static enum ImageKind {
+        /**
+         * A SWT image.
+         */
+        SWT_IMAGE
+    }
+    
+    /**
      * The replacement offset.
      */
     private int replacementOffset;
@@ -26,6 +38,16 @@ public class ContentProposalWithReplacement extends ContentProposal {
      * The replacement length.
      */
     private int replacementLength;
+
+    /**
+     * The image.
+     */
+    private Object image;
+
+    /**
+     * The kind of image.
+     */
+    private ImageKind imageKind;
 
     /**
      * The constructor.
@@ -48,6 +70,36 @@ public class ContentProposalWithReplacement extends ContentProposal {
         this.replacementOffset = offset;
         this.replacementLength = length;
     }
+    
+    /**
+     * The constructor.
+     * 
+     * @param proposal
+     *            The proposal
+     * @param display
+     *            The text to display to the user
+     * @param information
+     *            The documentation of the proposal
+     * @param cursor
+     *            The cursor position after this proposal has been applied
+     * @param offset
+     *            The replacement offset
+     * @param length
+     *            The replacement length
+     * @param image
+     *            The image
+     * @param imageKind
+     *            The kind of image provided by the proposal
+     */
+    //CHECKSTYLE:OFF
+    public ContentProposalWithReplacement(String proposal, String display, String information, int cursor, int offset, int length, Object image, ImageKind imageKind) {
+      //CHECKSTYLE:ON
+        super(proposal, display, information, cursor);
+        this.replacementOffset = offset;
+        this.replacementLength = length;
+        this.image = image;
+        this.imageKind = imageKind;
+    }
 
     /**
      * Returns the length of the part of the expression to replace.
@@ -66,6 +118,14 @@ public class ContentProposalWithReplacement extends ContentProposal {
      */
     public int getReplacementOffset() {
         return this.replacementOffset;
+    }
+    
+    public Object getImage() {
+        return image;
+    }
+    
+    public ImageKind getImageKind() {
+        return imageKind;
     }
 
 }

@@ -1,6 +1,6 @@
 target "sirius_juno"
 
-include "modules/acceleo-3.4.tpd"
+include "modules/acceleo-nightly.tpd"
 include "modules/eef-1.5.tpd"
 include "modules/emf-compare-2.1.tpd"
 include "modules/orbit.tpd"

@@ -10,19 +10,19 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
 
-import org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement.ImageKind;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 
-import org.eclipse.acceleo.internal.ide.ui.editors.template.AcceleoCompletionProposal;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 
 /**
@@ -117,26 +117,18 @@ public class SiriusContentAssistProcessor implements IContentAssistProcessor {
 
         public ICompletionProposal apply(ContentProposal input) {
             final ICompletionProposal proposal;
-            if (input instanceof AcceleoContentProposal) {
-                final ICompletionProposal original = ((AcceleoContentProposal) input).getOriginal();
-                if (original instanceof AcceleoCompletionProposal) {
-                    /*
-                     * Acceleo proposals are made so that they can replace
-                     * everything up till the last "dot" or "arrow" in order to
-                     * avoid case issues.
-                     */
-                    final int start = currentRange.x - ((AcceleoCompletionProposal) original).getReplacementLength();
-                    final int length = ((AcceleoCompletionProposal) original).getReplacementLength() + currentRange.y;
-                    proposal = new SiriusCompletionProposal(((AcceleoCompletionProposal) original).getReplacementString(), start, length, input.getCursorPosition(), original.getImage(),
-                            original.getDisplayString(), original.getContextInformation(), original.getAdditionalProposalInfo());
-                } else {
-                    proposal = new SiriusCompletionProposal(input.getProposal(), currentRange.x, currentRange.y, input.getCursorPosition(), original.getImage(), original.getDisplayString(),
-                            original.getContextInformation(), original.getAdditionalProposalInfo());
+            if (input instanceof ContentProposalWithReplacement) {
+                ContentProposalWithReplacement proposalWithReplacement = (ContentProposalWithReplacement) input;
+                
+                Image image = null;
+                
+                if (ImageKind.SWT_IMAGE.equals(proposalWithReplacement.getImageKind()) && proposalWithReplacement.getImage() instanceof Image) {
+                    // We have a SWT image already loaded, we can reuse it directly
+                    image = (Image) proposalWithReplacement.getImage();
                 }
-            } else if (input instanceof ContentProposalWithReplacement) {
-                ContentProposalWithReplacement contentProposal2 = (ContentProposalWithReplacement) input;
-                proposal = new SiriusCompletionProposal(contentProposal2.getProposal(), contentProposal2.getReplacementOffset(), contentProposal2.getReplacementLength(),
-                        contentProposal2.getCursorPosition(), null, contentProposal2.getDisplay(), null, contentProposal2.getInformation());
+                
+                proposal = new SiriusCompletionProposal(proposalWithReplacement.getProposal(), proposalWithReplacement.getReplacementOffset(), proposalWithReplacement.getReplacementLength(),
+                        proposalWithReplacement.getCursorPosition(), image, proposalWithReplacement.getDisplay(), null, proposalWithReplacement.getInformation());
             } else {
                 proposal = new SiriusCompletionProposal(input.getProposal(), currentRange.x, currentRange.y, input.getCursorPosition(), null, input.getDisplay(), null, input.getInformation());
             }

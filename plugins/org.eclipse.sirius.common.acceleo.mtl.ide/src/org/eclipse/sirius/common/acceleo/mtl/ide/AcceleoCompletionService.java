@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,8 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.DynamicAcceleoModule;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement.ImageKind;
 
 /**
  * Service to provide completion for the Acceleo MTL interpreter.
@@ -126,17 +128,31 @@ public class AcceleoCompletionService {
                 String displayString = prop.getDisplayString();
                 if (!(displayString.contains("(") && ignoreList.contains(displayString.substring(0, displayString.indexOf("("))))) { //$NON-NLS-1$ //$NON-NLS-2$
                     if (prop instanceof AcceleoCompletionProposal) {
-                        proposals.add(new AcceleoContentProposal(getCleanedProposalText(((AcceleoCompletionProposal) prop).getReplacementString()), prop.getDisplayString(),
-                                getCleanedAdditionalText(prop.getAdditionalProposalInfo()), prop));
+                        AcceleoCompletionProposal acceleoCompletionProposal = (AcceleoCompletionProposal) prop;
+
+                        String proposalText = getCleanedProposalText(acceleoCompletionProposal.getReplacementString());
+                        String information = getCleanedAdditionalText(prop.getAdditionalProposalInfo());
+
+                        final int offset = acceleoCompletionProposal.getReplacementOffset() - position + cursorPosition;
+                        final int length = acceleoCompletionProposal.getReplacementLength();
+
+                        ContentProposal proposal = ContentProposalBuilder.proposal(proposalText, prop.getDisplayString(), information).withReplacement(offset, length)
+                                .withImage(acceleoCompletionProposal.getImage(), ImageKind.SWT_IMAGE).build();
+
+                        proposals.add(proposal);
                     } else {
                         IDocument doc = new Document(moduleContent);
                         String end = doc.get().substring(position, moduleContent.indexOf(']', position) + 1);
                         prop.apply(doc);
 
                         final String completedText = doc.get();
-                        final String proposal = completedText.substring(position, completedText.indexOf(end, position));
-                        ContentProposal cp = new AcceleoContentProposal(getCleanedProposalText(proposal), displayString, getCleanedAdditionalText(prop.getAdditionalProposalInfo()), prop);
-                        proposals.add(cp);
+                        final String proposalText = this.getCleanedProposalText(completedText.substring(position, completedText.indexOf(end, position)));
+                        final String information = getCleanedAdditionalText(prop.getAdditionalProposalInfo());
+
+                        ContentProposal proposal = ContentProposalBuilder.proposal(proposalText, displayString, information).withReplacement(cursorPosition, 0)
+                                .withImage(prop.getImage(), ImageKind.SWT_IMAGE).build();
+
+                        proposals.add(proposal);
                     }
                 }
             }

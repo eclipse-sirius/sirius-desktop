@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_juno" sequenceNumber="1439195062">
+<target name="sirius_juno" sequenceNumber="1441014653">
   <locations>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
-      <unit id="org.eclipse.acceleo.examples.feature.group" version="3.4.1.201309031307"/>
-      <unit id="org.eclipse.acceleo.feature.group" version="3.4.1.201309031307"/>
-      <unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.1.201309031307"/>
-      <unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.1.201309031307"/>
-      <unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.1.201309031307"/>
-      <repository id="Acceleo-3_4" location="http://download.eclipse.org/acceleo/updates/releases/3.4/"/>
-    </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.0.201505291308"/>
       <repository id="EEF-1.5rc3" location="http://download.eclipse.org/modeling/emft/eef/updates/milestones/1.5/S201505291308/"/>
@@ -40,6 +31,8 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
       <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
+      <unit id="org.eclipse.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.ide.ui" version="0.0.0"/>
       <repository id="Acceleo-Nightly" location="http://download.eclipse.org/acceleo/updates/nightly/latest"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
