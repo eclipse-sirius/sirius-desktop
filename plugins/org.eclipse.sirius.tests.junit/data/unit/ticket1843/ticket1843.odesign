@@ -3,7 +3,7 @@
   <ownedViewpoints name="Ticket_1843" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Fixture" domainClass="EPackage">
       <defaultLayer name="Default">
-        <edgeMappings name="EM_AssociationClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_DataType']" targetMapping="//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_DataType']" targetFinderExpression="&lt;%eAllAttributes[name == &quot;target&quot;].eType%>" sourceFinderExpression="&lt;%eAllAttributes[name == &quot;source&quot;].eType%>" domainClass="EClass" useDomainElement="true">
+        <edgeMappings name="EM_AssociationClass" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_DataType']" targetMapping="//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_DataType']" targetFinderExpression="aql:self.eAllAttributes->select( e | e.name = 'target').eType" sourceFinderExpression="aql:self.eAllAttributes->select( e | e.name = 'source').eType" domainClass="EClass" useDomainElement="true">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -33,7 +33,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Package&lt;%ancestor.filter(&quot;EPackage&quot;).nLast.eAllContents(&quot;EPackage&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Package' + self.ancestors()->filter(ecore::EPackage)->last().eAllContents(ecore::EPackage)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -46,18 +46,18 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EDataType" referenceName="eClassifiers" variableName="sourceType">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="DT&lt;%ancestor.filter(&quot;EPackage&quot;).nLast.eAllContents(&quot;EDataType&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'DT' + self.ancestors()->filter(ecore::EPackage)->last().eAllContents(ecore::EDataType)->size()"/>
                   <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_DataType']" containerViewExpression="var:sourceView"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EDataType" referenceName="eClassifiers" variableName="targetType">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="DT&lt;%ancestor.filter(&quot;EPackage&quot;).nLast.eAllContents(&quot;EDataType&quot;).nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'DT' + self.ancestors()->filter(ecore::EPackage)->last().eAllContents(ecore::EDataType)->size()"/>
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_DataType']" containerViewExpression="var:targetView"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%($source.ancestor &amp;&amp; $target.ancestor).nFirst%>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="klass">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Class&lt;%ancestor.filter(&quot;EPackage&quot;).nLast.eAllContents(&quot;EClass&quot;).nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Class' + self.ancestors()->filter(ecore::EPackage)->last().eAllContents(ecore::EClass)->size()"/>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="source"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:sourceType"/>

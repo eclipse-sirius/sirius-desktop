@@ -46,7 +46,7 @@
     <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Trace Table" domainClass="EPackage">
       <ownedLineMappings domainClass="EPackage">
         <ownedSubLines domainClass="EClass">
-          <ownedSubLines domainClass="EReference" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EReference&quot;)%>">
+          <ownedSubLines domainClass="EReference" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EReference)">
             <ownedSubLines domainClass="EAnnotation" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAnnotation&quot;)%>"/>
           </ownedSubLines>
         </ownedSubLines>
@@ -56,18 +56,18 @@
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Trace CrossTable" domainClass="EPackage">
       <ownedLineMappings name="EPackage" domainClass="EPackage">
         <ownedSubLines name="EClass" domainClass="EClass">
-          <ownedSubLines name="EAttribute" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAttribute&quot;)%>"/>
+          <ownedSubLines name="EAttribute" domainClass="EAttribute" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)"/>
         </ownedSubLines>
       </ownedLineMappings>
       <ownedColumnMappings name="EPackage" domainClass="EPackage"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:TreeDescription" name="Trace Tree" domainClass="EPackage">
-      <subItemMappings name="EPackage" domainClass="EPackage" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EPackage&quot;)%>">
+      <subItemMappings name="EPackage" domainClass="EPackage" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EPackage)">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
-        <subItemMappings name="EClass" domainClass="EClass" semanticCandidatesExpression="&lt;%self.eClassifiers.filter(&quot;EClass&quot;)%>">
+        <subItemMappings name="EClass" domainClass="EClass" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)">
           <defaultStyle>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

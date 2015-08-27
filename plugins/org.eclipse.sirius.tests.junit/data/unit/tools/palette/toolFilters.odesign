@@ -5,7 +5,7 @@
       <defaultLayer name="L1">
         <toolSections name="section1">
           <ownedTools xsi:type="tool:ToolDescription" documentation="always hidden" name="tool1">
-            <filters precondition="aql:true" elementsToListen="&lt;%">
+            <filters precondition="aql:true" elementsToListen="unparseable">
               <listeners domainClass="EObject" featureName=""/>
             </filters>
             <element name="element"/>
@@ -26,7 +26,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="toolFiltersWithoutLayers" domainClass="EPackage">
       <toolSection name="section0">
         <ownedTools xsi:type="tool:ToolDescription" documentation="always hidden" name="tool1">
-          <filters precondition="aql:true" elementsToListen="&lt;%%>">
+          <filters precondition="aql:true" elementsToListen="aql:OrderedSet{}">
             <listeners domainClass="EObject" featureName="eContainer"/>
           </filters>
           <element name="element"/>

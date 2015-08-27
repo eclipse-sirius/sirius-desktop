@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Interaction" version="10.0.0.201505222000">
   <ownedViewpoints endUserDocumentation="Provides diagrams to model interactions between Ecore elements." name="Interactions" label="Interactions" modelFileExtension="interactions">
-    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" endUserDocumentation="Sequence diagram for Ecore interactions." name="Sequence Diagram on Interaction" label="Sequence Diagram on Interaction" titleExpression="aql'Sequence Diagram on ' + self.name" domainClass="interactions.Interaction" endsOrdering="&lt;%ends &amp;&amp; $eventEnds%>">
+    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" endUserDocumentation="Sequence diagram for Ecore interactions." name="Sequence Diagram on Interaction" label="Sequence Diagram on Interaction" titleExpression="aql'Sequence Diagram on ' + self.name" domainClass="interactions.Interaction" endsOrdering="aql:self.ends->size() > 0  and  eventEnds->size() > 0">
       <filters xsi:type="filter:CompositeFilterDescription" name="CollapseExec" label="Collapse Executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
       </filters>
       <defaultLayer name="Default">
         <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="Participant" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Participant']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Participant']" semanticCandidatesExpression="aql:self.participants" semanticElements="var:self" synchronizationLock="true" domainClass="interactions.Participant">
           <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" semanticElements="var:self" synchronizationLock="true" domainClass="interactions.Participant" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
-            <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Execution']" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
+            <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Execution']" semanticCandidatesExpression="aql:currentParticipant().getDirectEventsOn(self)" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" resizeKind="NORTH_SOUTH" width="2" height="5" color="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Interpolated%20blue%20for%20Executions']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings xsi:type="description_1:StateMapping" name="State" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.4/@ownedTools[name='Delete%20State']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20State']" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.State" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
+            <borderedNodeMappings xsi:type="description_1:StateMapping" name="State" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.4/@ownedTools[name='Delete%20State']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20State']" semanticCandidatesExpression="aql:currentParticipant().getDirectEventsOn(self)" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.State" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
               <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Skyblue']/@entries[name='Midnight_Skyblue']" labelSize="15" showIcon="false" labelColor="//@userColorsPalettes[name='Greens']/@entries[name='Watery%20Green']" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Skyblue']/@entries[name='High_Skyblue']" horizontalDiameterComputationExpression="12" verticalDiameterComputationExpression="3"/>
               <conditionnalStyles predicateExpression="aql:self.start = self.end">
                 <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Skyblue']/@entries[name='Midnight_Skyblue']" labelSize="15" showIcon="false" labelColor="//@userColorsPalettes[name='Greens']/@entries[name='Flabber%20Green']" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Lavonne']" horizontalDiameterComputationExpression="12" verticalDiameterComputationExpression="3"/>
@@ -46,7 +46,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Lost Message End" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="&lt;%messages[sendingEnd == null &amp;&amp; receivingEnd != null  || sendingEnd !=null &amp;&amp; receivingEnd == null ]%>" domainClass="interactions.Message">
+        <nodeMappings name="Lost Message End" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages->select( e | e.sendingEnd = null  and  e.receivingEnd &lt;> null   or  e.sendingEnd &lt;>null  and  e.receivingEnd = null )" domainClass="interactions.Message">
           <style xsi:type="style:DotDescription" labelExpression="" tooltipExpression="Lost end" sizeComputationExpression="1" resizeKind="NSEW" strokeSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -93,7 +93,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings xsi:type="description_1:ReturnMessageMapping" name="Return Message" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages" semanticElements="aql:self->asOrderedSet()->including(self.sendingEnd)->including(self.receivingEnd)->including(self.getSendingContext())->including(self.getReceivingContext())" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="aql:self.getReceivingContext()" sourceFinderExpression="aql:self.getSendingContext()" domainClass="interactions.ReturnMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="&lt;%self.invocationMessage%>">
+        <edgeMappings xsi:type="description_1:ReturnMessageMapping" name="Return Message" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages" semanticElements="aql:self->asOrderedSet()->including(self.sendingEnd)->including(self.receivingEnd)->including(self.getSendingContext())->including(self.getReceivingContext())" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="aql:self.getReceivingContext()" sourceFinderExpression="aql:self.getSendingContext()" domainClass="interactions.ReturnMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="aql:self.invocationMessage">
           <style lineStyle="dot" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -101,7 +101,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings xsi:type="description_1:InteractionUseMapping" name="Interaction Use" preconditionExpression="aql:self.coveredParticipants->size()" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Delete%20Interaction%20Use']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Edit%20IU%20Label']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%self + interaction%>" synchronizationLock="true" domainClass="interactions.InteractionUse" startingEndFinderExpression="aql:self.startingEnd" finishingEndFinderExpression="aql:self.finishingEnd" coveredLifelinesExpression="aql:self.coveredParticipants" centerLabelExpression="aql:'call(' + self.interaction.name + ')'">
+        <containerMappings xsi:type="description_1:InteractionUseMapping" name="Interaction Use" preconditionExpression="aql:self.coveredParticipants->size()" deletionDescription="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Delete%20Interaction%20Use']" labelDirectEdit="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.6/@ownedTools[name='Edit%20IU%20Label']" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:Sequence{self} + Sequence{self.interaction}" synchronizationLock="true" domainClass="interactions.InteractionUse" startingEndFinderExpression="aql:self.startingEnd" finishingEndFinderExpression="aql:self.finishingEnd" coveredLifelinesExpression="aql:self.coveredParticipants" centerLabelExpression="aql:'call(' + self.interaction.name + ')'">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:self.type" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -176,7 +176,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CombinedFragment" referenceName="combinedFragments" variableName="newCF">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operator" valueExpression="alt.&lt;%eContainer.eContents.filter(&quot;CombinedFragment&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operator" valueExpression="aql:'alt.' + self.eContainer().eContents()->filter(interactions::CombinedFragment)->size()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredParticipants" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Operand" referenceName="ownedOperands" variableName="newOperand">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="condition1"/>
@@ -234,9 +234,9 @@
                   <parameters name="title" value="Operand Creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;CombinedFragment&quot;)%>">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interactions::CombinedFragment)">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Operand" referenceName="ownedOperands" variableName="newOperand">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="condition.&lt;%eContainer.ownedOperands.nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'condition.' + self.eContainer().ownedOperands->size()"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.OperandEnd" referenceName="ends" variableName="newOpEnd">
@@ -256,7 +256,7 @@
                   <parameters name="referenceOwner" value="aql:newOperand.eContainer()"/>
                   <parameters name="referenceName" value="ownedOperands"/>
                   <parameters name="element" value="var:newOperand"/>
-                  <parameters name="predecessor" value="&lt;%(($newOperand.start.precedingSibling.nReverse.filter(&quot;OperandEnd&quot;) &amp;&amp; $newOperand.eContainer.ownedOperands.start).nFirst).owner%>"/>
+                  <parameters name="predecessor" value="aql:((newOperand.start.precedingSiblings()->reverse()->filter(interactions::OperandEnd)->asSet()->intersection(newOperand.eContainer().ownedOperands.start)->first())).owner"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -319,7 +319,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Participant" referenceName="participants">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newParticipant&lt;%eContainer(&quot;Interaction&quot;).participants.nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newParticipant' + self.eContainerOrSelf(interactions::Interaction).participants->size()"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -990,12 +990,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.sendingEnd">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.execution == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.execution = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.receivingEnd">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.execution == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.execution = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -1012,12 +1012,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.start">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.message == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.message = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.end">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.message == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.message = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -1079,7 +1079,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="executions"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.ExecutionEnd&quot;)[current.execution.start == current].nLast.execution%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::ExecutionEnd)->select(current | current.execution.start = current)->last().execution"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(State)">
@@ -1099,7 +1099,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="states"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.StateEnd&quot;)[current.state.start == current].nLast.state%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::StateEnd)->select(current | current.state.start = current)->last().state"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Message)">
@@ -1123,7 +1123,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="messages"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.sendingEnd.precedingSibling.filter(&quot;interactions.MessageEnd&quot;)[current.message.receivingEnd == current].nLast.message%>"/>
+                    <parameters name="predecessor" value="aql:self.sendingEnd.precedingSiblings()->filter(interactions::MessageEnd)->select(current | current.message.receivingEnd = current)->last().message"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(InteractionUse)">
@@ -1143,7 +1143,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="interactionUses"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.InteractionUseEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::InteractionUseEnd)->select(current| current.owner.start = current)->last().owner"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(CombinedFragment)">
@@ -1163,7 +1163,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="combinedFragments"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.CombinedFragmentEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::CombinedFragmentEnd)->select(current | current.owner.start = current)->last().owner"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Operand)">
@@ -1177,7 +1177,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainer(CombinedFragment)"/>
                     <parameters name="referenceName" value="ownedOperands"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.OperandEnd&quot;)[current.owner.start == current &amp;&amp; current(1).eContainer(&quot;interactions.CombinedFragment&quot;) == current().owner.eContainer(&quot;interactions.CombinedFragment&quot;)].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::OperandEnd)->select(op | op.owner.start = op and self.eContainerOrSelf(interactions::CombinedFragment) = op.owner.eContainerOrSelf(interactions::CombinedFragment))->last().owner)"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -1249,7 +1249,7 @@
       </defaultLayer>
       <additionalLayers name="Lost+Found" label="Lost and found messages creation">
         <toolSections name="Lost Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1284,7 +1284,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1317,7 +1317,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1351,7 +1351,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Lost Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1386,7 +1386,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1422,7 +1422,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1460,7 +1460,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Found Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Sync Call" precondition="&lt;%$container.filter(&quot;interactions.Participant&quot;)[$containerView.eContainer.filter(&quot;DNode&quot;)]  + $container.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Sync Call" precondition="aql:(container.oclIsKindOf(interactions::Participant) and containerView.eContainer().oclIsKindOf(diagram::DNode)) or container.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
@@ -1470,7 +1470,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$container.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1533,7 +1533,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found ASync Call" precondition="&lt;%$container.filter(&quot;interactions.Participant&quot;)[$containerView.eContainer.filter(&quot;DNode&quot;)]  + $container.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found ASync Call" precondition="aql:(container.oclIsKindOf(interactions::Participant) and containerView.eContainer().oclIsKindOf(diagram::DNode)) or container.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
@@ -1543,7 +1543,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$container.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -1593,7 +1593,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Create" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;) &amp;&amp; $elementView.eContainer.filter(&quot;DNode&quot;) &amp;&amp; $elementView.eContainer.eContainer.filter(&quot;DDiagram&quot;) &amp;&amp; $element.canCreate($endBefore)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Create" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementview.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContainer().eContainer().oclIsKindOf(diagram::DDiagram) and element.canCreate(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1626,7 +1626,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;) &amp;&amp; $elementView.eContainer.filter(&quot;DNode&quot;) &amp;&amp; $elementView.eContainer.eContainer.filter(&quot;DDiagram&quot;) &amp;&amp; $element.canDestroy($endBefore)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContaienr().eContainer().oclIsKindOf(diagram::DDiagram) and element.canDestroy(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1660,7 +1660,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Found Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1695,7 +1695,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1731,7 +1731,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -1774,20 +1774,20 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.sample.interactions.services.helpers"/>
   </ownedViewpoints>
   <ownedViewpoints endUserDocumentation="Provides diagrams to model interactions between Ecore elements." name="Interactions_Copy1" label="Interactions_Copy1" modelFileExtension="interactions">
-    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" endUserDocumentation="Sequence diagram for Ecore interactions." name="Sequence Diagram on Interaction" label="Sequence Diagram on Interaction" titleExpression="aql'Sequence Diagram on ' + self.name" domainClass="interactions.Interaction" endsOrdering="&lt;%ends &amp;&amp; $eventEnds%>">
+    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" endUserDocumentation="Sequence diagram for Ecore interactions." name="Sequence Diagram on Interaction" label="Sequence Diagram on Interaction" titleExpression="aql'Sequence Diagram on ' + self.name" domainClass="interactions.Interaction" endsOrdering="aql:self.ends->size() > 0  and  eventEnds->size() > 0">
       <filters xsi:type="filter:CompositeFilterDescription" name="CollapseExec" label="Collapse Executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
       </filters>
       <defaultLayer name="Default">
         <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="Participant" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20Participant']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.2/@ownedTools[name='Edit%20Participant']" semanticCandidatesExpression="aql:self.participants" semanticElements="var:self" synchronizationLock="true" domainClass="interactions.Participant">
           <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" semanticElements="var:self" synchronizationLock="true" domainClass="interactions.Participant" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
-            <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.4/@ownedTools[name='Delete%20Execution']" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
+            <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.4/@ownedTools[name='Delete%20Execution']" semanticCandidatesExpression="aql:currentParticipant().getDirectEventsOn(self)" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" resizeKind="NORTH_SOUTH" width="2" height="5" color="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Interpolated%20blue%20for%20Executions']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings xsi:type="description_1:StateMapping" name="State" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.5/@ownedTools[name='Delete%20State']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.5/@ownedTools[name='Edit%20State']" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.State" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
+            <borderedNodeMappings xsi:type="description_1:StateMapping" name="State" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.5/@ownedTools[name='Delete%20State']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.5/@ownedTools[name='Edit%20State']" semanticCandidatesExpression="aql:currentParticipant().getDirectEventsOn(self)" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.State" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
               <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Skyblue']/@entries[name='Midnight_Skyblue']" labelSize="15" showIcon="false" labelColor="//@userColorsPalettes[name='Greens']/@entries[name='Watery%20Green']" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Skyblue']/@entries[name='High_Skyblue']" horizontalDiameterComputationExpression="12" verticalDiameterComputationExpression="3"/>
               <conditionnalStyles predicateExpression="aql:self.start = self.end">
                 <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Skyblue']/@entries[name='Midnight_Skyblue']" labelSize="15" showIcon="false" labelColor="//@userColorsPalettes[name='Greens']/@entries[name='Flabber%20Green']" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Lavonne']" horizontalDiameterComputationExpression="12" verticalDiameterComputationExpression="3"/>
@@ -1819,7 +1819,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Lost Message End" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="&lt;%messages[sendingEnd == null &amp;&amp; receivingEnd != null  || sendingEnd !=null &amp;&amp; receivingEnd == null ]%>" domainClass="interactions.Message">
+        <nodeMappings name="Lost Message End" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages->select( e | e.sendingEnd = null  and  e.receivingEnd &lt;> null   or  e.sendingEnd &lt;>null  and  e.receivingEnd = null )" domainClass="interactions.Message">
           <style xsi:type="style:DotDescription" labelExpression="" tooltipExpression="Lost end" sizeComputationExpression="1" resizeKind="NSEW" strokeSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1866,7 +1866,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings xsi:type="description_1:ReturnMessageMapping" name="Return Message" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages" semanticElements="aql:self->asOrderedSet()->including(self.sendingEnd)->including(self.receivingEnd)->including(self.getSendingContext())->including(self.getReceivingContext())" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="aql:self.getReceivingContext()" sourceFinderExpression="aql:self.getSendingContext()" domainClass="interactions.ReturnMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="&lt;%self.invocationMessage%>">
+        <edgeMappings xsi:type="description_1:ReturnMessageMapping" name="Return Message" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages" semanticElements="aql:self->asOrderedSet()->including(self.sendingEnd)->including(self.receivingEnd)->including(self.getSendingContext())->including(self.getReceivingContext())" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="aql:self.getReceivingContext()" sourceFinderExpression="aql:self.getSendingContext()" domainClass="interactions.ReturnMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="aql:self.invocationMessage">
           <style lineStyle="dot" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -1874,7 +1874,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings xsi:type="description_1:InteractionUseMapping" name="Interaction Use" preconditionExpression="aql:self.coveredParticipants->size()" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Delete%20Interaction%20Use']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Edit%20IU%20Label']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%self + interaction%>" synchronizationLock="true" domainClass="interactions.InteractionUse" startingEndFinderExpression="aql:self.startingEnd" finishingEndFinderExpression="aql:self.finishingEnd" coveredLifelinesExpression="aql:self.coveredParticipants" centerLabelExpression="aql:'call(' + self.interaction.name + ')'">
+        <containerMappings xsi:type="description_1:InteractionUseMapping" name="Interaction Use" preconditionExpression="aql:self.coveredParticipants->size()" deletionDescription="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Delete%20Interaction%20Use']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy1']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Edit%20IU%20Label']" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:Sequence{self} + Sequence{self.interaction}" synchronizationLock="true" domainClass="interactions.InteractionUse" startingEndFinderExpression="aql:self.startingEnd" finishingEndFinderExpression="aql:self.finishingEnd" coveredLifelinesExpression="aql:self.coveredParticipants" centerLabelExpression="aql:'call(' + self.interaction.name + ')'">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:self.type" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1898,7 +1898,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Participant" referenceName="participants">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newParticipant&lt;%eContainer(&quot;Interaction&quot;).participants.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newParticipant' + self.eContainerOrSelf(interactions::Interaction).participants->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2604,7 +2604,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CombinedFragment" referenceName="combinedFragments" variableName="newCF">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operator" valueExpression="alt.&lt;%eContainer.eContents.filter(&quot;CombinedFragment&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operator" valueExpression="aql:'alt.' + self.eContainer().eContents()->filter(interactions::CombinedFragment)->size()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredParticipants" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Operand" referenceName="ownedOperands" variableName="newOperand">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="condition1"/>
@@ -2662,9 +2662,9 @@
                   <parameters name="title" value="Operand Creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;CombinedFragment&quot;)%>">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interactions::CombinedFragment)">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Operand" referenceName="ownedOperands" variableName="newOperand">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="condition.&lt;%eContainer.ownedOperands.nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'condition.' + self.eContainer().ownedOperands->size()"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.OperandEnd" referenceName="ends" variableName="newOpEnd">
@@ -2684,7 +2684,7 @@
                   <parameters name="referenceOwner" value="aql:newOperand.eContainer()"/>
                   <parameters name="referenceName" value="ownedOperands"/>
                   <parameters name="element" value="var:newOperand"/>
-                  <parameters name="predecessor" value="&lt;%(($newOperand.start.precedingSibling.nReverse.filter(&quot;OperandEnd&quot;) &amp;&amp; $newOperand.eContainer.ownedOperands.start).nFirst).owner%>"/>
+                  <parameters name="predecessor" value="aql:((newOperand.start.precedingSiblings()->reverse()->filter(interactions::OperandEnd)->asSet()->intersection(newOperand.eContainer().ownedOperands.start)->first())).owner"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2763,12 +2763,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.sendingEnd">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.execution == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.execution = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.receivingEnd">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.execution == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.execution = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -2785,12 +2785,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.start">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.message == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.message = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.end">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.message == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.message = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -2852,7 +2852,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="executions"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.ExecutionEnd&quot;)[current.execution.start == current].nLast.execution%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::ExecutionEnd)->select(current | current.execution.start = current)->last().execution"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(State)">
@@ -2872,7 +2872,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="states"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.StateEnd&quot;)[current.state.start == current].nLast.state%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::StateEnd)->select(current | current.state.start = current)->last().state"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Message)">
@@ -2896,7 +2896,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="messages"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.sendingEnd.precedingSibling.filter(&quot;interactions.MessageEnd&quot;)[current.message.receivingEnd == current].nLast.message%>"/>
+                    <parameters name="predecessor" value="aql:self.sendingEnd.precedingSiblings()->filter(interactions::MessageEnd)->select(current | current.message.receivingEnd = current)->last().message"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(InteractionUse)">
@@ -2916,7 +2916,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="interactionUses"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.InteractionUseEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::InteractionUseEnd)->select(current| current.owner.start = current)->last().owner"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(CombinedFragment)">
@@ -2936,7 +2936,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="combinedFragments"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.CombinedFragmentEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::CombinedFragmentEnd)->select(current | current.owner.start = current)->last().owner"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Operand)">
@@ -2950,7 +2950,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainer(CombinedFragment)"/>
                     <parameters name="referenceName" value="ownedOperands"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.OperandEnd&quot;)[current.owner.start == current &amp;&amp; current(1).eContainer(&quot;interactions.CombinedFragment&quot;) == current().owner.eContainer(&quot;interactions.CombinedFragment&quot;)].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::OperandEnd)->select(op | op.owner.start = op and self.eContainerOrSelf(interactions::CombinedFragment) = op.owner.eContainerOrSelf(interactions::CombinedFragment))->last().owner)"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -3022,7 +3022,7 @@
       </defaultLayer>
       <additionalLayers name="Lost Found" label="Lost and found messages creation">
         <toolSections name="Lost Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3057,7 +3057,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3090,7 +3090,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3124,7 +3124,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Lost Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3159,7 +3159,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3195,7 +3195,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3233,7 +3233,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Found Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Sync Call" precondition="&lt;%$container.filter(&quot;interactions.Participant&quot;)[$containerView.eContainer.filter(&quot;DNode&quot;)]  + $container.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Sync Call" precondition="aql:(container.oclIsKindOf(interactions::Participant) and containerView.eContainer().oclIsKindOf(diagram::DNode)) or container.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
@@ -3243,7 +3243,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$container.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -3306,7 +3306,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found ASync Call" precondition="&lt;%$container.filter(&quot;interactions.Participant&quot;)[$containerView.eContainer.filter(&quot;DNode&quot;)]  + $container.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found ASync Call" precondition="aql:(container.oclIsKindOf(interactions::Participant) and containerView.eContainer().oclIsKindOf(diagram::DNode)) or container.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
@@ -3316,7 +3316,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$container.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -3366,7 +3366,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Create" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;) &amp;&amp; $elementView.eContainer.filter(&quot;DNode&quot;) &amp;&amp; $elementView.eContainer.eContainer.filter(&quot;DDiagram&quot;) &amp;&amp; $element.canCreate($endBefore)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Create" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementview.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContainer().eContainer().oclIsKindOf(diagram::DDiagram) and element.canCreate(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3399,7 +3399,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;) &amp;&amp; $elementView.eContainer.filter(&quot;DNode&quot;) &amp;&amp; $elementView.eContainer.eContainer.filter(&quot;DDiagram&quot;) &amp;&amp; $element.canDestroy($endBefore)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContaienr().eContainer().oclIsKindOf(diagram::DDiagram) and element.canDestroy(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -3433,7 +3433,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Found Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3468,7 +3468,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3504,7 +3504,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -3547,20 +3547,20 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.sample.interactions.services.helpers"/>
   </ownedViewpoints>
   <ownedViewpoints endUserDocumentation="Provides diagrams to model interactions between Ecore elements." name="Interactions_Copy2" label="Interactions_Copy2" modelFileExtension="interactions">
-    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" endUserDocumentation="Sequence diagram for Ecore interactions." name="Sequence Diagram on Interaction" label="Sequence Diagram on Interaction" titleExpression="aql'Sequence Diagram on ' + self.name" domainClass="interactions.Interaction" endsOrdering="&lt;%ends &amp;&amp; $eventEnds%>">
+    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" endUserDocumentation="Sequence diagram for Ecore interactions." name="Sequence Diagram on Interaction" label="Sequence Diagram on Interaction" titleExpression="aql'Sequence Diagram on ' + self.name" domainClass="interactions.Interaction" endsOrdering="aql:self.ends->size() > 0  and  eventEnds->size() > 0">
       <filters xsi:type="filter:CompositeFilterDescription" name="CollapseExec" label="Collapse Executions">
         <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
       </filters>
       <defaultLayer name="Default">
         <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="Participant" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20Participant']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.2/@ownedTools[name='Edit%20Participant']" semanticCandidatesExpression="aql:self.participants" semanticElements="var:self" synchronizationLock="true" domainClass="interactions.Participant">
           <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" semanticElements="var:self" synchronizationLock="true" domainClass="interactions.Participant" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
-            <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.4/@ownedTools[name='Delete%20Execution']" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
+            <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Execution" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.4/@ownedTools[name='Delete%20Execution']" semanticCandidatesExpression="aql:currentParticipant().getDirectEventsOn(self)" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" resizeKind="NORTH_SOUTH" width="2" height="5" color="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Interpolated%20blue%20for%20Executions']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings xsi:type="description_1:StateMapping" name="State" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.5/@ownedTools[name='Delete%20State']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.5/@ownedTools[name='Edit%20State']" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.State" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
+            <borderedNodeMappings xsi:type="description_1:StateMapping" name="State" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.5/@ownedTools[name='Delete%20State']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.5/@ownedTools[name='Edit%20State']" semanticCandidatesExpression="aql:currentParticipant().getDirectEventsOn(self)" semanticElements="aql:OrderedSet{self}->including(self.start)->including(self.end)->including(self.currentParticipant())" synchronizationLock="true" domainClass="interactions.State" startingEndFinderExpression="aql:self.start" finishingEndFinderExpression="aql:self.end">
               <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Skyblue']/@entries[name='Midnight_Skyblue']" labelSize="15" showIcon="false" labelColor="//@userColorsPalettes[name='Greens']/@entries[name='Watery%20Green']" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Skyblue']/@entries[name='High_Skyblue']" horizontalDiameterComputationExpression="12" verticalDiameterComputationExpression="3"/>
               <conditionnalStyles predicateExpression="aql:self.start = self.end">
                 <style xsi:type="style:EllipseNodeDescription" borderColor="//@userColorsPalettes[name='Skyblue']/@entries[name='Midnight_Skyblue']" labelSize="15" showIcon="false" labelColor="//@userColorsPalettes[name='Greens']/@entries[name='Flabber%20Green']" labelPosition="node" resizeKind="NSEW" color="//@userColorsPalettes[name='Dutch%20Seas']/@entries[name='Lavonne']" horizontalDiameterComputationExpression="12" verticalDiameterComputationExpression="3"/>
@@ -3592,7 +3592,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Lost Message End" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="&lt;%messages[sendingEnd == null &amp;&amp; receivingEnd != null  || sendingEnd !=null &amp;&amp; receivingEnd == null ]%>" domainClass="interactions.Message">
+        <nodeMappings name="Lost Message End" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages->select( e | e.sendingEnd = null  and  e.receivingEnd &lt;> null   or  e.sendingEnd &lt;>null  and  e.receivingEnd = null )" domainClass="interactions.Message">
           <style xsi:type="style:DotDescription" labelExpression="" tooltipExpression="Lost end" sizeComputationExpression="1" resizeKind="NSEW" strokeSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3639,7 +3639,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings xsi:type="description_1:ReturnMessageMapping" name="Return Message" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages" semanticElements="aql:self->asOrderedSet()->including(self.sendingEnd)->including(self.receivingEnd)->including(self.getSendingContext())->including(self.getReceivingContext())" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="aql:self.getReceivingContext()" sourceFinderExpression="aql:self.getSendingContext()" domainClass="interactions.ReturnMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="&lt;%self.invocationMessage%>">
+        <edgeMappings xsi:type="description_1:ReturnMessageMapping" name="Return Message" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.3/@ownedTools[name='Delete%20Message']" semanticCandidatesExpression="aql:self.messages" semanticElements="aql:self->asOrderedSet()->including(self.sendingEnd)->including(self.receivingEnd)->including(self.getSendingContext())->including(self.getReceivingContext())" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetMapping="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution'] //@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Lost%20Message%20End']" targetFinderExpression="aql:self.getReceivingContext()" sourceFinderExpression="aql:self.getSendingContext()" domainClass="interactions.ReturnMessage" useDomainElement="true" sendingEndFinderExpression="aql:self.sendingEnd" receivingEndFinderExpression="aql:self.receivingEnd" invocationMessageFinderExpression="aql:self.invocationMessage">
           <style lineStyle="dot" sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -3647,7 +3647,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings xsi:type="description_1:InteractionUseMapping" name="Interaction Use" preconditionExpression="aql:self.coveredParticipants->size()" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Delete%20Interaction%20Use']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Edit%20IU%20Label']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%self + interaction%>" synchronizationLock="true" domainClass="interactions.InteractionUse" startingEndFinderExpression="aql:self.startingEnd" finishingEndFinderExpression="aql:self.finishingEnd" coveredLifelinesExpression="aql:self.coveredParticipants" centerLabelExpression="aql:'call(' + self.interaction.name + ')'">
+        <containerMappings xsi:type="description_1:InteractionUseMapping" name="Interaction Use" preconditionExpression="aql:self.coveredParticipants->size()" deletionDescription="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Delete%20Interaction%20Use']" labelDirectEdit="//@ownedViewpoints[name='Interactions_Copy2']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@toolSections.7/@ownedTools[name='Edit%20IU%20Label']" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:Sequence{self} + Sequence{self.interaction}" synchronizationLock="true" domainClass="interactions.InteractionUse" startingEndFinderExpression="aql:self.startingEnd" finishingEndFinderExpression="aql:self.finishingEnd" coveredLifelinesExpression="aql:self.coveredParticipants" centerLabelExpression="aql:'call(' + self.interaction.name + ')'">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:self.type" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3671,7 +3671,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Participant" referenceName="participants">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newParticipant&lt;%eContainer(&quot;Interaction&quot;).participants.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newParticipant' + self.eContainerOrSelf(interactions::Interaction).participants->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -4377,7 +4377,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CombinedFragment" referenceName="combinedFragments" variableName="newCF">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operator" valueExpression="alt.&lt;%eContainer.eContents.filter(&quot;CombinedFragment&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operator" valueExpression="aql:'alt.' + self.eContainer().eContents()->filter(interactions::CombinedFragment)->size()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredParticipants" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Operand" referenceName="ownedOperands" variableName="newOperand">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="condition1"/>
@@ -4435,9 +4435,9 @@
                   <parameters name="title" value="Operand Creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;CombinedFragment&quot;)%>">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainerOrSelf(interactions::CombinedFragment)">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.Operand" referenceName="ownedOperands" variableName="newOperand">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="condition.&lt;%eContainer.ownedOperands.nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'condition.' + self.eContainer().ownedOperands->size()"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.OperandEnd" referenceName="ends" variableName="newOpEnd">
@@ -4457,7 +4457,7 @@
                   <parameters name="referenceOwner" value="aql:newOperand.eContainer()"/>
                   <parameters name="referenceName" value="ownedOperands"/>
                   <parameters name="element" value="var:newOperand"/>
-                  <parameters name="predecessor" value="&lt;%(($newOperand.start.precedingSibling.nReverse.filter(&quot;OperandEnd&quot;) &amp;&amp; $newOperand.eContainer.ownedOperands.start).nFirst).owner%>"/>
+                  <parameters name="predecessor" value="aql:((newOperand.start.precedingSiblings()->reverse()->filter(interactions::OperandEnd)->asSet()->intersection(newOperand.eContainer().ownedOperands.start)->first())).owner"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -4536,12 +4536,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.sendingEnd">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.execution == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.execution = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.receivingEnd">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.execution == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.execution = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -4558,12 +4558,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.start">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.message == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.message = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.end">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%filter(&quot;MixEnd&quot;).nSize == 0 ||filter(&quot;MixEnd&quot;).nSize != 0 &amp;&amp; current.message == null%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:not self.oclIsKindOf(interactions::MixEnd) or (self.oclIsKindOf(interactions::MixEnd) and self.message = null)">
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -4625,7 +4625,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="executions"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.ExecutionEnd&quot;)[current.execution.start == current].nLast.execution%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::ExecutionEnd)->select(current | current.execution.start = current)->last().execution"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(State)">
@@ -4645,7 +4645,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="states"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.StateEnd&quot;)[current.state.start == current].nLast.state%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::StateEnd)->select(current | current.state.start = current)->last().state"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Message)">
@@ -4669,7 +4669,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="messages"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.sendingEnd.precedingSibling.filter(&quot;interactions.MessageEnd&quot;)[current.message.receivingEnd == current].nLast.message%>"/>
+                    <parameters name="predecessor" value="aql:self.sendingEnd.precedingSiblings()->filter(interactions::MessageEnd)->select(current | current.message.receivingEnd = current)->last().message"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(InteractionUse)">
@@ -4689,7 +4689,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="interactionUses"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.InteractionUseEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::InteractionUseEnd)->select(current| current.owner.start = current)->last().owner"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(CombinedFragment)">
@@ -4709,7 +4709,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
                     <parameters name="referenceName" value="combinedFragments"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.CombinedFragmentEnd&quot;)[current.owner.start == current].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::CombinedFragmentEnd)->select(current | current.owner.start = current)->last().owner"/>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Operand)">
@@ -4723,7 +4723,7 @@
                     <parameters name="referenceOwner" value="aql:self.eContainer(CombinedFragment)"/>
                     <parameters name="referenceName" value="ownedOperands"/>
                     <parameters name="element" value="var:self"/>
-                    <parameters name="predecessor" value="&lt;%self.start.precedingSibling.filter(&quot;interactions.OperandEnd&quot;)[current.owner.start == current &amp;&amp; current(1).eContainer(&quot;interactions.CombinedFragment&quot;) == current().owner.eContainer(&quot;interactions.CombinedFragment&quot;)].nLast.owner%>"/>
+                    <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::OperandEnd)->select(op | op.owner.start = op and self.eContainerOrSelf(interactions::CombinedFragment) = op.owner.eContainerOrSelf(interactions::CombinedFragment))->last().owner)"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -4795,7 +4795,7 @@
       </defaultLayer>
       <additionalLayers name="Lost Found" label="Lost and found messages creation">
         <toolSections name="Lost Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Sync/ASync Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -4830,7 +4830,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Create" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -4863,7 +4863,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Lost Destroy" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -4897,7 +4897,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Lost Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4932,7 +4932,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -4968,7 +4968,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Lost Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -5006,7 +5006,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Found Messages">
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Sync Call" precondition="&lt;%$container.filter(&quot;interactions.Participant&quot;)[$containerView.eContainer.filter(&quot;DNode&quot;)]  + $container.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Sync Call" precondition="aql:(container.oclIsKindOf(interactions::Participant) and containerView.eContainer().oclIsKindOf(diagram::DNode)) or container.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
@@ -5016,7 +5016,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$container.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -5079,7 +5079,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found ASync Call" precondition="&lt;%$container.filter(&quot;interactions.Participant&quot;)[$containerView.eContainer.filter(&quot;DNode&quot;)]  + $container.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found ASync Call" precondition="aql:(container.oclIsKindOf(interactions::Participant) and containerView.eContainer().oclIsKindOf(diagram::DNode)) or container.oclIsKindOf(interactions::Execution)" forceRefresh="true">
             <element name="container"/>
             <elementView name="containerView"/>
             <initialOperation>
@@ -5089,7 +5089,7 @@
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.CallMessage" referenceName="messages" variableName="callMsg">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="&lt;%$container.currentParticipant.type.eOperations.nFirst%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operation" valueExpression="aql:container.currentParticipant().type.eOperations->first()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:callMsg">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'m' + self.eContainerOrSelf(interactions::Interaction).messages->size()"/>
@@ -5139,7 +5139,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Create" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;) &amp;&amp; $elementView.eContainer.filter(&quot;DNode&quot;) &amp;&amp; $elementView.eContainer.eContainer.filter(&quot;DDiagram&quot;) &amp;&amp; $element.canCreate($endBefore)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Create" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementview.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContainer().eContainer().oclIsKindOf(diagram::DDiagram) and element.canCreate(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -5172,7 +5172,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;) &amp;&amp; $elementView.eContainer.filter(&quot;DNode&quot;) &amp;&amp; $elementView.eContainer.eContainer.filter(&quot;DDiagram&quot;) &amp;&amp; $element.canDestroy($endBefore)%>" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Found Destroy" precondition="aql:element.oclIsKindOf(interactions::Participant) and elementView.eContainer().oclIsKindOf(diagram::DNode) and elementView.eContaienr().eContainer().oclIsKindOf(diagram::DDiagram) and element.canDestroy(endBefore)" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -5206,7 +5206,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_2:ToolGroup" name="Found Messages">
-            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Read" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -5241,7 +5241,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Write" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -5277,7 +5277,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="&lt;%$element.filter(&quot;interactions.Participant&quot;)[$elementView.eContainer.filter(&quot;DNode&quot;)]  + $element.filter(&quot;interactions.Execution&quot;)%>" forceRefresh="true">
+            <tools xsi:type="tool_1:ToolDescription" name="Found Call" precondition="aql:(element.oclIsKindOf(interactions::Participant) and elementView.eContaienr().oclIsKindOf(diagram::DNode)) or element.oclIsKindOf(interactions::Execution)" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>

@@ -3,14 +3,14 @@
   <ownedViewpoints name="Documentation" label="Documentation">
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/Design" representationName="Entities">
       <layers name="Documentation">
-        <nodeMappings name="EC Doc Annotation" labelDirectEdit="//@ownedViewpoints[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@toolSections.0/@ownedTools[name='Edit%20Detail']" semanticCandidatesExpression="&lt;%(eClassifiers.eAnnotations+ eAnnotations).details.filter(&quot;EStringToStringMapEntry&quot;)[key == &quot;documentation&quot;]%>" domainClass="EStringToStringMapEntry">
+        <nodeMappings name="EC Doc Annotation" labelDirectEdit="//@ownedViewpoints[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@toolSections.0/@ownedTools[name='Edit%20Detail']" semanticCandidatesExpression="aql:(self.eClassifiers.eAnnotations+ eAnnotations).details->filter(ecore::EStringToStringMapEntry)->select( e | e.key = 'documentation')" domainClass="EStringToStringMapEntry">
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.value" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="EC Doc Assignment" sourceMapping="//@ownedViewpoints[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@nodeMappings[name='EC%20Doc%20Annotation']" targetFinderExpression="&lt;%eContainer(&quot;EClass&quot;)%>">
+        <edgeMappings name="EC Doc Assignment" sourceMapping="//@ownedViewpoints[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@nodeMappings[name='EC%20Doc%20Annotation']" targetFinderExpression="aql:self.eContainerOrSelf(ecore::EClass)">
           <targetMapping xsi:type="description_1:NodeMapping" href="applicability.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='ClassNode']"/>
         </edgeMappings>
         <toolSections name="Documentation Tools">
@@ -19,18 +19,18 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!eAnnotations[source ==&quot;http://www.eclipse.org/emf/2002/GenModel&quot;]%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.eAnnotations->select( e | e.source ='http://www.eclipse.org/emf/2002/GenModel')->size() = 0">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="http://www.eclipse.org/emf/2002/GenModel"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%eAnnotations[source == &quot;http://www.eclipse.org/emf/2002/GenModel&quot;].nFirst%>">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!details[key==&quot;documentation&quot;]%>">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eAnnotations->select( e | e.source = 'http://www.eclipse.org/emf/2002/GenModel')->first()">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.details->select( e | e.key='documentation')->size() = 0">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EStringToStringMapEntry" referenceName="details">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="key" valueExpression="documentation"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%details[key==&quot;documentation&quot;].nFirst%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.details->select( e | e.key='documentation')->first()">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="New documentation note"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -49,7 +49,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;EAnnotation&quot;)%>">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainerOrSelf(ecore::EAnnotation)">
                 <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="eAnnotations"/>
               </firstModelOperations>
             </initialOperation>

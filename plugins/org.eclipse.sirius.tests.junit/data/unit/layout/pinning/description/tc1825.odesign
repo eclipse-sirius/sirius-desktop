@@ -40,7 +40,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Class&lt;%eContainer.eContents.filter(&quot;EClass&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Class' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

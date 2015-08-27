@@ -48,7 +48,7 @@
       <colorSteps>
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
-      <colorSteps associatedValue="&lt;%5%>" associatedColor="//@userColorsPalettes[name=null]/@entries[name='jaune']"/>
+      <colorSteps associatedValue="5" associatedColor="//@userColorsPalettes[name=null]/@entries[name='jaune']"/>
       <colorSteps>
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
@@ -74,7 +74,7 @@
       <colorSteps>
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>
-      <colorSteps associatedValue="&lt;%5%>" associatedColor="//@userColorsPalettes[name=null]/@entries[name='jaune']"/>
+      <colorSteps associatedValue="5" associatedColor="//@userColorsPalettes[name=null]/@entries[name='jaune']"/>
       <colorSteps>
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
       </colorSteps>

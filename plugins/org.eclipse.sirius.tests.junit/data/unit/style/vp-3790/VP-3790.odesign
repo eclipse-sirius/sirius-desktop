@@ -9,7 +9,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%name == &quot;force base style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name = 'force base style'">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -24,7 +24,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%name == &quot;force base style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name = 'force base style'">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription labelExpression="[name/]">
@@ -40,7 +40,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%name == &quot;force base style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name = 'force base style'">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription labelExpression="superType">
@@ -56,7 +56,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%name == &quot;force base style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name = 'force base style'">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -85,7 +85,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%name == &quot;force level 1 style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name = 'force level 1 style'">
             <style xsi:type="style:SquareDescription" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -94,7 +94,7 @@
           </conditionnalStyles>
         </nodeMappings>
         <edgeMappingImports name="ref_import_1" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@edgeMappings[name='refs']">
-          <conditionnalStyles predicateExpression="&lt;%name == &quot;force level 1 style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name = 'force level 1 style'">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <centerLabelStyleDescription labelExpression="[name/]">
@@ -102,7 +102,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%name != &quot;force base style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name &lt;> 'force base style'">
             <style lineStyle="dash" sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <beginLabelStyleDescription showIcon="false" labelExpression="dash">
@@ -115,7 +115,7 @@
           </conditionnalStyles>
         </edgeMappingImports>
         <edgeMappingImports name="st_import_1" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@edgeMappings[name='superTypes']">
-          <conditionnalStyles predicateExpression="&lt;%name == &quot;force level 1 style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name = 'force level 1 style'">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <centerLabelStyleDescription labelExpression="superType">
@@ -123,7 +123,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%name != &quot;force base style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name &lt;> 'force base style'">
             <style lineStyle="dash" sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <beginLabelStyleDescription labelExpression="dash">
@@ -142,7 +142,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%name == &quot;force level 1 style&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.name = 'force level 1 style'">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

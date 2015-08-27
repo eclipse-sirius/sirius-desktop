@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Validation" initialisation="true" domainClass="EPackage">
       <defaultLayer name="Default">
         <containerMappings name="V_EClass" semanticCandidatesExpression="feature:eContents" documentation="&lt;%eContents.filter(&quot;EClass&quot;)[.~.filter(&quot;EReference&quot;).nMinimize().nSize() > 0]%>" domainClass="EClass">
-          <subNodeMappings name="V_Reference" semanticCandidatesExpression="&lt;%eAllReferences.eReferenceType%>" domainClass="EClass">
+          <subNodeMappings name="V_Reference" semanticCandidatesExpression="aql:self.eAllReferences.eReferenceType" domainClass="EClass">
             <style xsi:type="style:SquareDescription">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -21,17 +21,17 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Breakdown" domainClass="EPackage">
       <validationSet name="Test">
-        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="The &lt;%name%> element is KO -> Semantic rule OK" targetClass="EPackage">
-          <audits auditExpression="&lt;%name.startsWith(&quot;p&quot;)%>"/>
+        <ownedRules xsi:type="validation:SemanticValidationRule" level="ERROR" message="aql:'The ' + self.name + ' element is KO -> Semantic rule OK'" targetClass="EPackage">
+          <audits auditExpression="aql:self.name.startsWith('p')"/>
         </ownedRules>
-        <ownedRules xsi:type="validation:ViewValidationRule" level="ERROR" message="Graphic - The &lt;%name%> element is KO -> View rule OK" targets="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']">
-          <audits auditExpression="&lt;%target.name.startsWith(&quot;p&quot;)%>"/>
+        <ownedRules xsi:type="validation:ViewValidationRule" level="ERROR" message="aql:'Graphic - The ' + self.name + ' element is KO -> View rule OK'" targets="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']">
+          <audits auditExpression="aql:self.target.name.startsWith('p')"/>
         </ownedRules>
       </validationSet>
       <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="aql:self.eSubpackages" nodeMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']"/>
       <defaultLayer name="Default">
-        <nodeMappings name="Package" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
-          <style xsi:type="style:SquareDescription" labelExpression="container_&lt;%name%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+        <nodeMappings name="Package" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EPackage)" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:'container_' + self.name" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
@@ -40,7 +40,7 @@
         <edgeMappings name="Containers" sourceMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="feature:eContainer">
           <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <centerLabelStyleDescription labelExpression="relation_edge_&lt;%name%>">
+            <centerLabelStyleDescription labelExpression="aql:'relation_edge_' + self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             </centerLabelStyleDescription>
           </style>
@@ -48,7 +48,7 @@
         <edgeMappings name="p2self" sourceMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']" targetMapping="//@ownedViewpoints[name='Ticket%201666']/@ownedRepresentations[name='Breakdown']/@defaultLayer/@nodeMappings[name='Package']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EPackage" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="element_edge_&lt;%name%>">
+            <centerLabelStyleDescription labelExpression="aql:'element_edge_' + self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -71,7 +71,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%eContainer.name%>&lt;%eContainer.eSubpackages.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.eContainer().name + self.eContainer().eSubpackages->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

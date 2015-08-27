@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="EdgeLabelRefreshPb" domainClass="EPackage">
       <defaultLayer name="Default">
         <nodeMappings name="EClassWithLabelInside" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:Sequence{self} + self.eReferences" domainClass="EClass">
-          <style xsi:type="style:SquareDescription" labelExpression="defaultStyle&lt;%eReferences.nFirst.name%>" labelPosition="node" width="10" height="3">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:'defaultStyle' + self.eReferences->first().name" labelPosition="node" width="10" height="3">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
@@ -16,8 +16,8 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%eReferences.nFirst.name != &quot;r1&quot;%>">
-            <style xsi:type="style:SquareDescription" labelExpression="condStyle&lt;%eReferences.nFirst.name%>" labelPosition="node">
+          <conditionnalStyles predicateExpression="aql:self.eReferences->first().name &lt;> 'r1'">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:'condStyle' + self.eReferences->first().name" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
@@ -25,7 +25,7 @@
           </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="EClassWithLabelOutside" semanticCandidatesExpression="feature:eAllContents" semanticElements="aql:Sequence{self} + self.eReferences" domainClass="EClass">
-          <style xsi:type="style:SquareDescription" labelExpression="defaultStyle&lt;%eReferences.nFirst.name%>">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:'defaultStyle' + self.eReferences->first().name">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -37,8 +37,8 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%eReferences.nFirst.name != &quot;r1&quot;%>">
-            <style xsi:type="style:SquareDescription" labelExpression="condStyle&lt;%eReferences.nFirst.name%>" labelPosition="node">
+          <conditionnalStyles predicateExpression="aql:self.eReferences->first().name &lt;> 'r1'">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:'condStyle' + self.eReferences->first().name" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
@@ -48,7 +48,7 @@
         <edgeMappings name="edge" semanticElements="aql:Sequence{self} + self.eReferences" sourceMapping="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='EClassWithLabelInside']" targetMapping="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='EClassWithLabelOutside']" targetFinderExpression="var:self">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="defaultStyle&lt;%eReferences.nFirst.name%>">
+            <centerLabelStyleDescription labelExpression="aql:'defaultStyle' + self.eReferences->first().name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -60,10 +60,10 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%eReferences.nFirst.name != &quot;r1&quot;%>">
+          <conditionnalStyles predicateExpression="aql:self.eReferences->first().name &lt;> 'r1'">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <centerLabelStyleDescription labelExpression="condStyle&lt;%eReferences.nFirst.name%>">
+              <centerLabelStyleDescription labelExpression="aql:'condStyle' + self.eReferences->first().name">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>

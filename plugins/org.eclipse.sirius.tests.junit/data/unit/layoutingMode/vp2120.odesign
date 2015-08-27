@@ -73,7 +73,7 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%name%>_RENAMMED"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.name + '_RENAMMED'"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

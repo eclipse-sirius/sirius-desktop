@@ -3,7 +3,7 @@
   <ownedViewpoints name="Design tc1945" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities" titleExpression="aql:self.name + ' package entities'" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="EC Just from A" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EClass&quot;)[name == &quot;A&quot;]%>" createElements="false" sourceMapping="//@ownedViewpoints[name='Design%20tc1945']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='PortJustFromAIn']" targetMapping="//@ownedViewpoints[name='Design%20tc1945']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='PortJustFromAOut']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EClass" useDomainElement="true">
+        <edgeMappings name="EC Just from A" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EClass)->select( e | e.name = 'A')" createElements="false" sourceMapping="//@ownedViewpoints[name='Design%20tc1945']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='PortJustFromAIn']" targetMapping="//@ownedViewpoints[name='Design%20tc1945']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@borderedNodeMappings[name='PortJustFromAOut']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EClass" useDomainElement="true">
           <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="Just from A">
@@ -19,8 +19,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EC EClass" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
-          <borderedNodeMappings name="PortJustFromAIn" semanticCandidatesExpression="&lt;%self[name == &quot;A&quot;]%>" createElements="false" domainClass="EClass">
+        <containerMappings name="EC EClass" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EClass)" domainClass="EClass">
+          <borderedNodeMappings name="PortJustFromAIn" semanticCandidatesExpression="aql:Sequence{self}->select( e | e.name = 'A')" createElements="false" domainClass="EClass">
             <style xsi:type="style:SquareDescription" labelExpression="" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

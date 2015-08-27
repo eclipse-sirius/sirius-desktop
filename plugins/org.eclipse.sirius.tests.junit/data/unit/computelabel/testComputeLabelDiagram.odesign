@@ -73,7 +73,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="package">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new EPackage&lt;%eContainer().eContents().filter(&quot;EPackage&quot;).nSize%>"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new EPackage' + self.eContainer().eContents()->filter(ecore::EPackage)->size()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.cleanInterpreter()"/>
                 </firstModelOperations>
@@ -105,7 +105,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newEReference&lt;%eContainer(&quot;EClassifier&quot;).eAllContents(&quot;EReference&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newEReference' + self.eContainerOrSelf(ecore::EClassifier).eAllContents(ecore::EReference)->size()"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.cleanInterpreter()"/>
               </firstModelOperations>

@@ -25,7 +25,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
-          <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAttribute&quot;)%>">
+          <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)">
             <defaultStyle>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -75,7 +75,7 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.ecore.design.service.EcoreService"/>
   </ownedViewpoints>
   <ownedViewpoints endUserDocumentation="Provides representation to document and review Ecore models." name="Review" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_2:CrossTableDescription" endUserDocumentation="Document the concepts in a package." name="Documentation" titleExpression="Documentation for &lt;%name%> package" domainClass="EPackage">
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" endUserDocumentation="Document the concepts in a package." name="Documentation" titleExpression="aql:'Documentation for ' + self.name + ' package'" domainClass="EPackage">
       <ownedLineMappings name="Doc EClassifiers" semanticElements="var:self" domainClass="EClassifier" semanticCandidatesExpression="feature:eContents" headerLabelExpression="aql:self.eClass().name+ ' : ' + self.name">
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -110,13 +110,13 @@
               </subModelOperations>
             </subModelOperations>
             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.eAnnotations[source==&quot;http://www.eclipse.org/emf/2002/GenModel&quot;]%>">
-              <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.details[key==&quot;documentation&quot;].nSize == 0%>">
+              <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.details->select( e | e.key='documentation')->size() = 0">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="EStringToStringMapEntry" referenceName="details" variableName="newDetail">
                   <subModelOperations xsi:type="tool:SetValue" featureName="key" valueExpression="documentation"/>
                 </subModelOperations>
               </subModelOperations>
             </subModelOperations>
-            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.eAnnotations[source==&quot;http://www.eclipse.org/emf/2002/GenModel&quot;].details[key==&quot;documentation&quot;]%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:lineSemantic.eAnnotations->select( e | e.source='http://www.eclipse.org/emf/2002/GenModel'].details[key='documentation')">
               <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="var:arg0"/>
             </subModelOperations>
           </firstModelOperation>

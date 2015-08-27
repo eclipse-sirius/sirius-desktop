@@ -12,19 +12,19 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@containerMappings[name='M3']"/>
       </filters>
       <defaultLayer name="DL">
-        <nodeMappings name="M1" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;)]%>" domainClass="EClass">
+        <nodeMappings name="M1" semanticCandidatesExpression="aql:self.eAllContents(ecore::EClass)->select( e | e.name.startsWith('n'))" domainClass="EClass">
           <style xsi:type="style:SquareDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="M2" sourceMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']" targetMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']" targetFinderExpression="&lt;%eStructuralFeatures.eType.nMinimize%>">
+        <edgeMappings name="M2" sourceMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']" targetMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']" targetFinderExpression="aql:self.eStructuralFeatures.eType->asSet()">
           <style sizeComputationExpression="[eContents()->size()/]">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </edgeMappings>
-        <containerMappings name="M3" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;)]%>" domainClass="EClass">
+        <containerMappings name="M3" semanticCandidatesExpression="aql:self.eAllContents(ecore::EClass)->select( e | e.name.startsWith('c'))" domainClass="EClass">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -34,7 +34,7 @@
         </containerMappings>
       </defaultLayer>
       <additionalLayers name="OL1">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="MI1" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;)]%>" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="MI1" semanticCandidatesExpression="aql:self.eAllContents(ecore::EClass)->select( e | e.name.startsWith('n'))" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']">
           <style xsi:type="style:SquareDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -48,7 +48,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="MI3" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;)]%>" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@containerMappings[name='M3']">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="MI3" semanticCandidatesExpression="aql:self.eAllContents(ecore::EClass)->select( e | e.name.startsWith('c'))" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@containerMappings[name='M3']">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -60,7 +60,7 @@
     </ownedRepresentations>
     <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DE1" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/trac1926" representationName="D1">
       <layers name="OL2">
-        <nodeMappings xsi:type="description_1:NodeMappingImport" name="MIE1" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;)]%>" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="MIE1" semanticCandidatesExpression="aql:self.eAllContents(ecore::EClass)->select( e | e.name.startsWith('n'))" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']">
           <style xsi:type="style:SquareDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -74,7 +74,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="MIE3" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;)]%>" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@containerMappings[name='M3']">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="MIE3" semanticCandidatesExpression="aql:self.eAllContents(ecore::EClass)->select( e | e.name.startsWith('c'))" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@containerMappings[name='M3']">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

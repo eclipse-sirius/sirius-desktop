@@ -812,7 +812,7 @@
             </endLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="[container.oclAsType(EPackage).nsURI = 'bracket'/]">
-            <style xsi:type="style:BracketEdgeStyleDescription" lineStyle="dash" sourceArrow="InputArrow" targetArrow="InputClosedArrow" sizeComputationExpression="&lt;%eContents().nSize + 1%>">
+            <style xsi:type="style:BracketEdgeStyleDescription" lineStyle="dash" sourceArrow="InputArrow" targetArrow="InputClosedArrow" sizeComputationExpression="aql:self.eContents()->size() + 1">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <beginLabelStyleDescription labelSize="6" labelExpression="['beginSuperType'+name/]" iconPath="/DesignerTestProject/image.bmp">
                 <labelFormat>italic</labelFormat>
@@ -866,7 +866,7 @@
             </endLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="[container.oclAsType(EPackage).nsURI = 'bracket'/]">
-            <style xsi:type="style:BracketEdgeStyleDescription" lineStyle="dash" sourceArrow="InputArrow" targetArrow="InputClosedArrow" sizeComputationExpression="&lt;%eContents().nSize + 1%>">
+            <style xsi:type="style:BracketEdgeStyleDescription" lineStyle="dash" sourceArrow="InputArrow" targetArrow="InputClosedArrow" sizeComputationExpression="aql:self.eContents()->size() + 1">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <beginLabelStyleDescription labelSize="6" labelExpression="['beginSuperType'+name/]" iconPath="/DesignerTestProject/image.bmp">
                 <labelFormat>italic</labelFormat>

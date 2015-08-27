@@ -11,7 +11,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Contain for STD012" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)->select(e| e.eOpposite = null)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetFinderExpression="&lt;%~eSubpackages%>" sourceFinderExpression="feature:eContainer" domainClass="EReference">
+        <edgeMappings name="Contain for STD012" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)->select(e| e.eOpposite = null)" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetFinderExpression="aql:self.eInverse('eSubpackages')" sourceFinderExpression="feature:eContainer" domainClass="EReference">
           <style sizeComputationExpression="2" routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -43,8 +43,8 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source.eSubpackages.nContains($target)%>">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target.eContainer().eContainer()%>">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source.eSubpackages->includes(target)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:target.eContainer().eContainer()">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="eSubpackages" valueExpression="var:target"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -57,7 +57,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="package">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="P_&lt;%eContainer().eContents.filter(&quot;EPackage&quot;).nSize%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'P_' + self.eContainer().eContents()->filter(ecore::EPackage)->size()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

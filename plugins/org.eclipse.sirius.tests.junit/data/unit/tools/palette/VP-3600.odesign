@@ -35,7 +35,7 @@
         </containerMappings>
         <toolSections name="TestSection">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
-            <filters precondition="&lt;%self.ownedDiagramElements.nSize()==0%>" elementsToListen="var:self">
+            <filters precondition="aql:self.ownedDiagramElements->size()=0" elementsToListen="var:self">
               <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
             </filters>
             <variable name="container"/>
@@ -71,7 +71,7 @@
       <additionalLayers name="ConflictingLayer">
         <toolSections name="TestSection">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
-            <filters precondition="&lt;%self.ownedDiagramElements.nSize()==0%>" elementsToListen="var:self">
+            <filters precondition="aql:self.ownedDiagramElements->size()=0" elementsToListen="var:self">
               <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
             </filters>
             <variable name="container"/>
@@ -134,7 +134,7 @@
       </containerMappings>
       <toolSection name="TestSection">
         <ownedTools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithoutLayer']/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
-          <filters precondition="&lt;%self.ownedDiagramElements.nSize()==0%>" elementsToListen="var:self">
+          <filters precondition="aql:self.ownedDiagramElements->size()=0" elementsToListen="var:self">
             <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
           </filters>
           <variable name="container"/>
@@ -213,7 +213,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="ToolGroupTest">
             <tools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithToolGroups']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
-              <filters precondition="&lt;%self.ownedDiagramElements.nSize()==0%>" elementsToListen="var:self">
+              <filters precondition="aql:self.ownedDiagramElements->size()=0" elementsToListen="var:self">
                 <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
               </filters>
               <variable name="container"/>

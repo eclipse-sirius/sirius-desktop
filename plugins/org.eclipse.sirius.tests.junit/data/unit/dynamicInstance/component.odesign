@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ComponentDiagramWithPrefix" domainClass="component.Application">
       <metamodel href="component.ecore#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="ConnectionMapping" semanticCandidatesExpression="&lt;%connections%>" sourceMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetFinderExpression="&lt;%outputPorts%>" sourceFinderExpression="&lt;%inputPorts%>" domainClass="component.Connection" useDomainElement="true">
+        <edgeMappings name="ConnectionMapping" semanticCandidatesExpression="aql:self.connections" sourceMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetFinderExpression="aql:self.outputPorts" sourceFinderExpression="aql:self.inputPorts" domainClass="component.Connection" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription labelExpression="input">
@@ -18,16 +18,16 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ComponentMapping" semanticCandidatesExpression="&lt;%components%>" domainClass="component.Component">
-          <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="&lt;%ports%>" domainClass="component.Port">
+        <containerMappings name="ComponentMapping" semanticCandidatesExpression="aql:self.components" domainClass="component.Component">
+          <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="aql:self.ports" domainClass="component.Port">
             <style xsi:type="style:DotDescription" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="SubComponentMapping" semanticCandidatesExpression="&lt;%subComponents%>" domainClass="component.Component" reusedContainerMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']">
-            <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="&lt;%ports%>" domainClass="component.Port">
+          <subContainerMappings name="SubComponentMapping" semanticCandidatesExpression="aql:self.subComponents" domainClass="component.Component" reusedContainerMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']">
+            <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="aql:self.ports" domainClass="component.Port">
               <style xsi:type="style:DotDescription" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -63,7 +63,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:Switch">
-                <cases conditionExpression="&lt;%$container.eClass.name == &quot;Application&quot;%>">
+                <cases conditionExpression="aql:container.eClass().name = 'Application'">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="component.Component" referenceName="components">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="component"/>
@@ -97,7 +97,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ComponentDiagramWithoutPrefix" domainClass="Application">
       <metamodel href="component.ecore#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="ConnectionMapping" semanticCandidatesExpression="&lt;%connections%>" sourceMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetFinderExpression="&lt;%outputPorts%>" sourceFinderExpression="&lt;%inputPorts%>" domainClass="Connection" useDomainElement="true">
+        <edgeMappings name="ConnectionMapping" semanticCandidatesExpression="aql:self.connections" sourceMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetFinderExpression="aql:self.outputPorts" sourceFinderExpression="aql:self.inputPorts" domainClass="Connection" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription labelExpression="input">
@@ -111,16 +111,16 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ComponentMapping" semanticCandidatesExpression="&lt;%components%>" domainClass="Component">
-          <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="&lt;%ports%>" domainClass="Port">
+        <containerMappings name="ComponentMapping" semanticCandidatesExpression="aql:self.components" domainClass="Component">
+          <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="aql:self.ports" domainClass="Port">
             <style xsi:type="style:DotDescription" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="SubComponentMapping" semanticCandidatesExpression="&lt;%subComponents%>" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']">
-            <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="&lt;%ports%>" domainClass="Port">
+          <subContainerMappings name="SubComponentMapping" semanticCandidatesExpression="aql:self.subComponents" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']">
+            <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="aql:self.ports" domainClass="Port">
               <style xsi:type="style:DotDescription" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -156,7 +156,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:Switch">
-                <cases conditionExpression="&lt;%$container.eClass.name == &quot;Application&quot;%>">
+                <cases conditionExpression="aql:container.eClass().name = 'Application'">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Component" referenceName="components">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="component">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="component"/>

@@ -24,7 +24,7 @@
           </style>
         </containerMappings>
         <toolSections name="1">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="paneSelectionTest1" precondition="true" message="message" candidatesExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eAllContents.filter(&quot;EPackage&quot;)%>" rootExpression="" childrenExpression="" preSelectedCandidatesExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eContents.filter(&quot;EPackage&quot;)[name==&quot;testPackage&quot;]%>">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="paneSelectionTest1" precondition="true" message="message" candidatesExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram).target.eAllContents()->filter(ecore::EPackage)" rootExpression="" childrenExpression="" preSelectedCandidatesExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram).target.eContents()->filter(ecore::EPackage)->select( e | e.name='testPackage')">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -34,7 +34,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="paneSelectionTest2" precondition="false" message="message" candidatesExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eAllContents%>" tree="true" rootExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eContents%>" childrenExpression="feature:eContents" preSelectedCandidatesExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eContents.filter(&quot;EPackage&quot;)[name==&quot;testPackage&quot;]%>">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="paneSelectionTest2" precondition="false" message="message" candidatesExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eAllContents%>" tree="true" rootExpression="aql:containerView.eContainerOrSelf(DDiagram).target.eContents" childrenExpression="feature:eContents" preSelectedCandidatesExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram).target.eContents()->filter(ecore::EPackage)->select( e | e.name='testPackage')">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -44,7 +44,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="paneSelectionTest3" precondition="true" message="message" candidatesExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eAllContents.filter(&quot;EPackage&quot;)%>" tree="true" rootExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eContents%>" childrenExpression="feature:eContents" preSelectedCandidatesExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eContents.filter(&quot;EPackage&quot;)[name==&quot;testPackage&quot;]%>">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="paneSelectionTest3" precondition="true" message="message" candidatesExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram).target.eAllContents()->filter(ecore::EPackage)" tree="true" rootExpression="aql:containerView.eContainerOrSelf(DDiagram).target.eContents" childrenExpression="feature:eContents" preSelectedCandidatesExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram).target.eContents()->filter(ecore::EPackage)->select( e | e.name='testPackage')">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -54,7 +54,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="paneSelectionTest4" precondition="true" message="message" candidatesExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eAllContents.filter(&quot;EPackage&quot;)%>" tree="true" rootExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;).target.eContents%>" childrenExpression="feature:eContents" preSelectedCandidatesExpression="&lt;%$container.eContainer(&quot;EPackage&quot;)%>">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="paneSelectionTest4" precondition="true" message="message" candidatesExpression="aql:containerView.eContainerOrSelf(diagram::DDiagram).target.eAllContents()->filter(ecore::EPackage)" tree="true" rootExpression="aql:containerView.eContainerOrSelf(DDiagram).target.eContents" childrenExpression="feature:eContents" preSelectedCandidatesExpression="aql:container.eContainerOrSelf(ecore::EPackage)">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>

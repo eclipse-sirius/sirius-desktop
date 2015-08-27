@@ -105,7 +105,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagType6" titleExpression="aql:'DiagType6 of ' + self.name" domainClass="EPackage">
       <nodeMappings name="DT6_Class" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-        <borderedNodeMappings name="DT6_ClassInRelation" semanticCandidatesExpression="&lt;%eReferences.eReferenceType%>" domainClass="EClass">
+        <borderedNodeMappings name="DT6_ClassInRelation" semanticCandidatesExpression="aql:self.eReferences.eReferenceType" domainClass="EClass">
           <style xsi:type="style:SquareDescription" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

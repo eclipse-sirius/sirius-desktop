@@ -22,7 +22,7 @@
         <toolSections name="s1">
           <ownedTools xsi:type="tool:ToolGroup" name="myGroup">
             <tools xsi:type="tool_1:ToolDescription" name="t0">
-              <filters precondition="&lt;%activatedLayers.nSize() > 1%>" elementsToListen="var:self">
+              <filters precondition="aql:self.activatedLayers->size() > 1" elementsToListen="var:self">
                 <listeners domainClass="DDiagram" featureName="activatedLayers"/>
               </filters>
               <element name="element"/>
@@ -30,7 +30,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@containerMappings[name='class']" containerViewExpression="&lt;%$elementView.eContainer(&quot;DDiagram&quot;)%>"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@containerMappings[name='class']" containerViewExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -47,7 +47,7 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@containerMappings[name='class']" containerViewExpression="&lt;%$elementView.eContainer(&quot;DDiagram&quot;)%>"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@containerMappings[name='class']" containerViewExpression="aql:elementView.eContainerOrSelf(diagram::DDiagram)"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>

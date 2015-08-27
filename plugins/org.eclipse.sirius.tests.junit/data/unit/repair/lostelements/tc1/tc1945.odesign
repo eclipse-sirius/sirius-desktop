@@ -21,7 +21,7 @@
           <conditionnalStyles predicateExpression="aql:self.derived">
             <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="/&lt;%getEReferenceName()%>">
+              <centerLabelStyleDescription showIcon="false" labelExpression="aql:'/' + self.getEReferenceName()">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
@@ -34,7 +34,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%$target.filter(&quot;EClass&quot;)[interface]%>">
+          <conditionnalStyles predicateExpression="aql:target->filter(ecore::EClass)->select( e | e.interface)">
             <style lineStyle="dash" targetArrow="InputClosedArrow" routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <centerLabelStyleDescription showIcon="false">
@@ -115,7 +115,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Interface &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Interface ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="interface" valueExpression="true"/>
                 </firstModelOperations>
               </initialOperation>
@@ -227,7 +227,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newEReference&lt;%eContainer(&quot;EClassifier&quot;).eAllContents(&quot;EReference&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newEReference' + self.eContainerOrSelf(ecore::EClassifier).eAllContents(ecore::EReference)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

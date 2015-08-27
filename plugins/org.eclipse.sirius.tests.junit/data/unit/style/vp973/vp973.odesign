@@ -11,76 +11,76 @@
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Lozenge" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Lozenge_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+          <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Lozenge_' + self.name" sizeComputationExpression="20" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Ellipse" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Ellipse_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Ellipse_' + self.name" sizeComputationExpression="20" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Bundled Image Square" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Bundle_Image_Square_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Bundle_Image_Square_' + self.name" sizeComputationExpression="20" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Bundled Image Stroke" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Bundle_Image_Stroke_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" shape="stroke">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Bundle_Image_Stroke_' + self.name" sizeComputationExpression="20" resizeKind="NSEW" shape="stroke">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Bundled Image Triangle" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Bundle_Image_Triangle_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" shape="triangle">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Bundle_Image_Triangle_' + self.name" sizeComputationExpression="20" resizeKind="NSEW" shape="triangle">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Bundled Image Dot" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Bundle_Image_Dot_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" shape="dot">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Bundle_Image_Dot_' + self.name" sizeComputationExpression="20" resizeKind="NSEW" shape="dot">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Bundled Image Ring" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Bundle_Image_Ring_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" shape="ring">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Bundle_Image_Ring_' + self.name" sizeComputationExpression="20" resizeKind="NSEW" shape="ring">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Note" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:NoteDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Note_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+          <style xsi:type="style:NoteDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Note_' + self.name" sizeComputationExpression="20" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Dot" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:DotDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Dot_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" strokeSizeComputationExpression="1">
+          <style xsi:type="style:DotDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Dot_' + self.name" sizeComputationExpression="20" resizeKind="NSEW" strokeSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Gauge" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:GaugeCompositeStyleDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Gauge_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+          <style xsi:type="style:GaugeCompositeStyleDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Gauge_' + self.name" sizeComputationExpression="20" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="ClassMapping Workspace Image" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="Workspace_Image_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:self.eContainer().eContents()->size()" labelExpression="aql:'Workspace_Image_' + self.name" sizeComputationExpression="20" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>

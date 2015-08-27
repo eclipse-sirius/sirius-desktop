@@ -10,7 +10,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%containment &amp;&amp; derived%>">
+          <conditionnalStyles predicateExpression="aql:self.containment  and  self.derived">
             <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="aql:if self.derived then '/' else '' + self.getEReferenceName()">
@@ -19,7 +19,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%!containment &amp;&amp; derived%>">
+          <conditionnalStyles predicateExpression="aql:not self.containment  and  self.derived">
             <style>
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="aql:if self.derived then '/' else '' + self.getEReferenceName()">

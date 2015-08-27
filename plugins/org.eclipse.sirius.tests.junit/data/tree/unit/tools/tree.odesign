@@ -25,7 +25,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
-          <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAttribute&quot;)%>">
+          <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)">
             <defaultStyle>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -90,7 +90,7 @@
       </ownedRepresentationCreationDescriptions>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:TreeDescription" name="Tree on Class" domainClass="EClass">
-      <subItemMappings name="Attr2" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAttribute&quot;)%>">
+      <subItemMappings name="Attr2" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EAttribute)">
         <defaultStyle>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

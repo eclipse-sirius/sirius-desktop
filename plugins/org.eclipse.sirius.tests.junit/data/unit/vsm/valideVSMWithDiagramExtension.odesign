@@ -122,7 +122,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingTer" preconditionExpression="&lt;%eContainer != null %>" semanticCandidatesExpression="&lt;%eSubpackages()%>" domainClass="EPackage" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@containerMappings[name='EPackageMappingBis']">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingTer" preconditionExpression="&lt;%eContainer != null %>" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages" domainClass="EPackage" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@containerMappings[name='EPackageMappingBis']">
           <style xsi:type="style:ShapeContainerStyleDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

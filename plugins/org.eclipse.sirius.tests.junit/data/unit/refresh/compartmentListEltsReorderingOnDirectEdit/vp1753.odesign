@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ecore Editing Workbench V4.6Modif" version="10.0.0.201505222000">
   <ownedViewpoints endUserDocumentation="Provides graphical and tabular modelers to design an Ecore model." name="DesignModifItemList" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="EntitiesModif" titleExpression="&lt;%name%> package entities modif" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="EntitiesModif" titleExpression="aql:self.name + ' package entities modif'" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
         <edgeMappings name="EC_EReference" preconditionExpression="aql:self.eOpposite = null" labelDirectEdit="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.4/@ownedTools[name='EReference%20Name']" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
           <style>
@@ -10,7 +10,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%containment &amp;&amp; derived%>">
+          <conditionnalStyles predicateExpression="aql:self.containment  and  self.derived">
             <style sourceArrow="FillDiamond" targetArrow="NoDecoration">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.render()">
@@ -19,7 +19,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%!containment &amp;&amp; derived%>">
+          <conditionnalStyles predicateExpression="aql:not self.containment  and  self.derived">
             <style>
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.render()">
@@ -44,7 +44,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%$view.targetNode.filter(&quot;EClass&quot;)[interface]%>">
+          <conditionnalStyles predicateExpression="aql:view.targetNode->filter(ecore::EClass)->select( e | e.interface)->size() > 0">
             <style lineStyle="dash" targetArrow="InputClosedArrow" routingStyle="tree">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <centerLabelStyleDescription showIcon="false">
@@ -99,7 +99,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC EDataType" labelDirectEdit="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EDataType&quot;)[eClass.name == &quot;EDataType&quot;]%>" domainClass="EDataType" childrenPresentation="List">
+        <containerMappings name="EC EDataType" labelDirectEdit="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EDataType)->select( e | e.self.eClass().name = 'ecore::EDataType')" domainClass="EDataType" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -133,7 +133,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Interface &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new Interface ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="interface" valueExpression="true"/>
                 </firstModelOperations>
               </initialOperation>
@@ -229,7 +229,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newEReference&lt;%eContainer(&quot;EClassifier&quot;).eAllContents(&quot;EReference&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newEReference' + self.eContainerOrSelf(ecore::EClassifier).eAllContents(ecore::EReference)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
