@@ -14,11 +14,9 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.DragTracker;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.SelectionRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
@@ -172,14 +170,6 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
      */
     @Override
     protected void handleNotificationEvent(Notification notification) {
-        final EditPart styleEditPart = getStyleEditPart();
-        // Refreshes edit part.
-        if (styleEditPart != null) {
-            final EObject element = ((IGraphicalEditPart) styleEditPart).resolveSemanticElement();
-            if (element != null && element.eResource() != null) {
-                styleEditPart.refresh();
-            }
-        }
         final EObject element = resolveSemanticElement();
         if (element != null && element.eResource() != null && getParent() != null) {
             refresh();
@@ -191,8 +181,11 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
         }
         super.handleNotificationEvent(notification);
 
-        if (notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET || notification.getEventType() == Notification.ADD)
-            refresh();
+        if (notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET || notification.getEventType() == Notification.ADD) {
+            if (isActive()) {
+                refresh();
+            }
+        }
     }
 
     /**
