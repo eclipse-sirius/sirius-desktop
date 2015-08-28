@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspace;
@@ -85,6 +86,8 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     private Collection<Resource> savedResources = Sets.newLinkedHashSet();
 
     private final ArrayList<IFileModificationValidator> fileModificationValidators;
+    
+    private final AtomicBoolean notificationInProgress = new AtomicBoolean(false);
 
     /**
      * The {@link ResourceStatus} represents the in memory status of a resource
@@ -361,9 +364,15 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     private void notifyClientsInBatch(Collection<ResourceStatusChange> changes) {
-        if (notificationIsRequired && changes.size() > 0) {
-            for (final ResourceSyncClient client : Lists.newArrayList(clients)) {
-                client.statusesChanged(changes);
+        if (notificationInProgress.compareAndSet(false, true)) {
+            try {
+                if (notificationIsRequired && changes.size() > 0) {
+                    for (final ResourceSyncClient client : Lists.newArrayList(clients)) {
+                        client.statusesChanged(changes);
+                    }
+                }
+            } finally {
+                notificationInProgress.set(false);
             }
         }
     }
