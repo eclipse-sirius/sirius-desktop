@@ -650,15 +650,16 @@
 			<img border="0" src="images/styles/Containers_with_compartments.png"/>
 		</p>
 		<p>
-			<em>Warning:</em> The compartment feature is new but experimental in Sirius 3.0.0. While working reliably, it has some limitations but you can rely on the improved VSM validation to ensure you are using it in supported modes. Known limitations:
+			<em>Warning:</em> The compartment feature has been introduced in Sirius 3.0.0. While working reliably, it has some limitations but you can rely on the improved VSM validation to ensure you are using it in supported modes. Known limitations:
 		</p>
 		<ul>
-			<li>Some formatting or layout-related actions might produce unexpected result (Make same size, width or height, Set style to workspace image). The limitations only concerns the visual aspects, there is no risk of corrupting the underlying models.</li>
-			<li>Only the gradient style is supported for Region container and Region mappings.</li>
+			<li>Only the gradient and image style are supported for Region container and Region mappings.</li>
 			<li>The Show/Hide, Hide filter features are disabled on regions (hide filter can be created to the compartment content but not the compartment). The Show/Hide label feature is supported.</li>
-			<li>The figure default and minimum size might change in future versions.</li>
 			<li>The move and drag and drop of regions are disabled. Reordering regions can be done by reordering their semantic elements.</li>
 			<li>The resize of compartments might evolve in future versions. The current behavior is to redistribute space between adjacent regions and to resize the first/last region when the region container is resized from top/bottom for a vertical stack and left/right for an horizontal one.</li>
+			<li>The capability to define complex or recursive stack of regions mixing both stack directions has been introduced in Sirius 3.1.0 as an 
+				<em>experimental</em> configuration. Some layout-related actions might produce unexpected result. The limitations only concerns the visual aspects, there is no risk of corrupting the underlying models.
+			</li>
 		</ul>
 		<h4 id="container_styles">Container Styles</h4>
 		<p>See the 

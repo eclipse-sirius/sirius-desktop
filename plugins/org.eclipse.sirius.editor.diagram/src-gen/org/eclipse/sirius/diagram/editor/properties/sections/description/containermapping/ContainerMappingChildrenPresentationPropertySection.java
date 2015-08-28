@@ -34,6 +34,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getDefaultLabelText()
      */
+    @Override
     protected String getDefaultLabelText() {
         return "ChildrenPresentation"; //$NON-NLS-1$
     }
@@ -41,6 +42,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getLabelText()
      */
+    @Override
     protected String getLabelText() {
         String labelText;
         labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
@@ -53,6 +55,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getFeature()
      */
+    @Override
     protected EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getContainerMapping_ChildrenPresentation();
     }
@@ -60,6 +63,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getFeatureValue(int)
      */
+    @Override
     protected Object getFeatureValue(int index) {
         return getChoiceOfValues().get(index);
     }
@@ -67,6 +71,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#isEqual(int)
      */
+    @Override
     protected boolean isEqual(int index) {
         return getChoiceOfValues().get(index).equals(eObject.eGet(getFeature()));
     }
@@ -74,6 +79,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
     /**
      * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getEnumerationFeatureValues()
      */
+    @Override
     protected List<?> getChoiceOfValues() {
         return ContainerLayout.VALUES;
     }
@@ -81,10 +87,11 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
     /**
      * {@inheritDoc}
      */
+    @Override
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
 
-        nameLabel.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions (experimental).");
+        nameLabel.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions.");
 
         CLabel help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -92,7 +99,7 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
         help.setImage(getHelpIcon());
-        help.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions (experimental).");
+        help.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
 
     }
