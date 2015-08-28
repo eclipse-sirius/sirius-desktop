@@ -267,7 +267,7 @@ public class MoveEdgeGroupManager {
                 moveDelta.setY(((Dimension) delta).height());
             }
 
-            if (direction == PositionConstants.NORTH_SOUTH) {
+            if (direction == PositionConstants.VERTICAL) {
                 moveDelta.setX(0);
             } else {
                 moveDelta.setY(0);
