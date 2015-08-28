@@ -38,6 +38,7 @@ import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -206,6 +207,14 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
             IQueryEvaluationEngine evaluationEngine = QueryEvaluation.newEngine(queryEnvironment);
             final EvaluationResult evalResult = evaluationEngine.eval(build, variables);
 
+            final BasicDiagnostic diagnostic = new BasicDiagnostic();
+            if (Diagnostic.OK != build.getDiagnostic().getSeverity()) {
+                diagnostic.merge(build.getDiagnostic());
+            }
+            if (Diagnostic.OK != evalResult.getDiagnostic().getSeverity()) {
+                diagnostic.merge(evalResult.getDiagnostic());
+            }
+
             return new IEvaluationResult() {
 
                 @Override
@@ -215,7 +224,7 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter {
 
                 @Override
                 public Diagnostic getDiagnostic() {
-                    return evalResult.getDiagnostic();
+                    return diagnostic;
                 }
             };
         } catch (ExecutionException e) {
