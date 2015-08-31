@@ -142,6 +142,7 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 
 			// we deactivate the link with editor
 			modelExplorerView.toolbarToggleButton("Link with Editor").click();
+			bot.waitUntil(new LinkWithEditorStateCondition(modelExplorerView, false));
 
 			// We next select the "newPackage1" package.
 			editor.click(NEW_PACKAGE1);
@@ -215,6 +216,7 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 
 			// we deactivate the link with editor
 			modelExplorerView.toolbarToggleButton("Link with Editor").click();
+			bot.waitUntil(new LinkWithEditorStateCondition(modelExplorerView, false));
 
 			// We next select the "newPackage1" package.
 			representation.getTreeItem(NEW_PACKAGE1).select();
@@ -275,12 +277,13 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 
 			// we deactivate the link with editor
 			modelExplorerView.toolbarToggleButton("Link with Editor").click();
+			bot.waitUntil(new LinkWithEditorStateCondition(modelExplorerView, false));
 
 			// We next select the "newPackage1" package.
 			representation.getTreeItem(NEW_PACKAGE1).select();
 			SWTBotUtils.waitAllUiEvents();
 
-			// The NewPackage2 should still be selected.
+			// The ECLASS1 should still be selected.
 			bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, ECLASS1));
 
 		} finally {
@@ -345,6 +348,34 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 		@Override
 		public String getFailureMessage() {
 			return "The " + this.name + " should be selected in the Model Explorer View";
+		}
+	}
+
+	/**
+	 * Condition to make sure the link with editor is in the expected state.
+	 * 
+	 * @author fbarbin
+	 *
+	 */
+	private class LinkWithEditorStateCondition extends DefaultCondition {
+
+		private SWTBotView modelExplorerView;
+		private boolean activated;
+
+		public LinkWithEditorStateCondition(SWTBotView modelExplorerView, boolean activated) {
+			this.modelExplorerView = modelExplorerView;
+			this.activated = activated;
+		}
+
+		@Override
+		public boolean test() throws Exception {
+			ModelExplorerView explorerView = (ModelExplorerView) modelExplorerView.getViewReference().getView(false);
+			return this.activated == explorerView.getCommonViewer().getCommonNavigator().isLinkingEnabled();
+		}
+
+		@Override
+		public String getFailureMessage() {
+			return "The link with editor state should be " + this.activated;
 		}
 	}
 
