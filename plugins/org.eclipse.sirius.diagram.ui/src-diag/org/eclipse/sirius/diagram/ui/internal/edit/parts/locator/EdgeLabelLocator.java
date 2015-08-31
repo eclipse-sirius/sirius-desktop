@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts.locator;
 
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -19,12 +20,11 @@ import org.eclipse.draw2d.geometry.Vector;
 import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator;
-import org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper;
 
 /**
  * Specific {@link LabelLocator} for edge labels to reflect the real label
  * location during the feedback.
- * 
+ *
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
@@ -41,7 +41,7 @@ public class EdgeLabelLocator extends LabelLocator {
 
     /**
      * Constructor for figure who are located and sized.
-     * 
+     *
      * @param parent
      *            the parent figure
      * @param bounds
@@ -62,7 +62,7 @@ public class EdgeLabelLocator extends LabelLocator {
      * dynamically and draw the label feedback correctly.<BR>
      * The method {@link #eraseFeedbackData()} must be called when edge feedback
      * is erase.
-     * 
+     *
      * @param oldPointList
      *            The points list of the edge before to start to move it.
      * @param oldLabelOffset
@@ -95,10 +95,12 @@ public class EdgeLabelLocator extends LabelLocator {
         LabelLocator currentConstraint = (LabelLocator) target.getParent().getLayoutManager().getConstraint(target);
         Dimension currentExtent = currentConstraint.getSize();
         Dimension size = new Dimension(currentExtent);
-        if (currentExtent.width == -1)
+        if (currentExtent.width == -1) {
             size.width = preferredSize.width;
-        if (currentExtent.height == -1)
+        }
+        if (currentExtent.height == -1) {
             size.height = preferredSize.height;
+        }
         target.setSize(size);
         Point offSet = getOffset();
         if (oldPointList != null) {
@@ -108,8 +110,9 @@ public class EdgeLabelLocator extends LabelLocator {
             Vector computedOffSet = computeOffSet();
             offSet = new Point((int) computedOffSet.x, (int) computedOffSet.y);
         }
-        Point location = LabelHelper.relativeCoordinateFromOffset(target, getReferencePoint(), offSet);
-        target.setLocation(location);
+
+        Point centerLocation = EdgeLabelsComputationUtil.relativeCenterCoordinateFromOffset(((Connection) parent).getPoints(), getReferencePoint(), offSet);
+        target.setLocation(centerLocation.getTranslated(-1 * size.width / 2, -1 * size.height / 2));
     }
 
     /**

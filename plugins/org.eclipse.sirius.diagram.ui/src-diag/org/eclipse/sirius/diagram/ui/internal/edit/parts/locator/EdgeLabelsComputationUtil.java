@@ -10,16 +10,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts.locator;
 
+import java.awt.geom.AffineTransform;
 import java.util.List;
 
+import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Vector;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper;
+import org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
+import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -58,6 +65,92 @@ public class EdgeLabelsComputationUtil {
     private List<LineSeg> oldEdgeSegments;
 
     private List<LineSeg> newEdgeSegments;
+
+    /**
+     * Return the default snap back position according to the keyPoint of the
+     * label.
+     *
+     * @param keyPoint
+     *            The keyPoint of the label (
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
+     *            ).
+     * @return the default snap back position according to the keyPoint.
+     */
+    public static Point getSnapBackPosition(Integer keyPoint) {
+        int percentage = getLocation(keyPoint);
+        Point snapBackPosition;
+        if (LabelViewConstants.SOURCE_LOCATION == percentage) {
+            snapBackPosition = LabelEditPart.getSnapBackPosition(SiriusVisualIDRegistry.getType(DEdgeBeginNameEditPart.VISUAL_ID));
+        } else if (LabelViewConstants.TARGET_LOCATION == percentage) {
+            snapBackPosition = LabelEditPart.getSnapBackPosition(SiriusVisualIDRegistry.getType(DEdgeEndNameEditPart.VISUAL_ID));
+        } else {
+            snapBackPosition = LabelEditPart.getSnapBackPosition(SiriusVisualIDRegistry.getType(DEdgeNameEditPart.VISUAL_ID));
+        }
+        return snapBackPosition;
+    }
+
+    /**
+     * Calculates the label offset from the reference point given the label
+     * center and a points list.<BR>
+     * This is another implementation of
+     * {@link org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper#offsetFromRelativeCoordinate(org.eclipse.draw2d.IFigure, org.eclipse.draw2d.geometry.Rectangle, Point)}
+     *
+     * @param labelCenter
+     *            the label center for the <code>IFigure</code> to calculate the
+     *            offset for
+     * @param points
+     *            the <code>PointList</code> of the edge that contains the
+     *            label. The label offset is relative to this
+     *            <code>PointList</code>.
+     * @param ref
+     *            the <code>Point</code> that is the reference point that the
+     *            offset is based on.
+     * @return a <code>Point</code> which represents a value offset from the
+     *         <code>ref</code> point oriented based on the nearest line
+     *         segment.
+     */
+    public static Point offsetFromRelativeCoordinate(Point labelCenter, PointList points, Point ref) {
+        Vector fromAnchorToLabelCenterPointVector = new Vector(labelCenter.x - ref.x, labelCenter.y - ref.y);
+        @SuppressWarnings("rawtypes")
+        List lineSegments = PointListUtilities.getLineSegments(points);
+        LineSeg segmentContainingLabelAnchor = PointListUtilities.getNearestSegment(lineSegments, ref.x, ref.y);
+        Vector rotatedVector = getRotatedVector(fromAnchorToLabelCenterPointVector, segmentContainingLabelAnchor, false);
+
+        return new PrecisionPoint(rotatedVector.x, rotatedVector.y);
+    }
+
+    /**
+     * Calculates the relative coordinate that is equivalent to the offset from
+     * the reference point, that can be used to set the label center location.
+     * <BR>
+     *
+     * This is another implementation of
+     * {@link org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper#relativeCoordinateFromOffset(org.eclipse.draw2d.IFigure, Point, Point)}
+     * . See bugzilla 476305 for more detail.
+     *
+     * @param points
+     *            the <code>PointList</code> of the edge that contains the
+     *            label. The label offset is relative to this
+     *            <code>PointList</code>.
+     * @param ref
+     *            a <code>Point</code> located on the parent which the offset
+     *            value is relative to.
+     * @param offset
+     *            a <code>Point</code> which represents a value offset from the
+     *            <code>ref</code> point oriented based on the nearest line
+     *            segment.
+     * @return a <code>Point</code> that is the relative coordinate of the label
+     *         that can be used to set it's center location.
+     */
+    public static Point relativeCenterCoordinateFromOffset(PointList points, Point ref, Point offset) {
+        Vector fromAnchorToLabelCenterPointVector = new Vector(offset.x, offset.y);
+        @SuppressWarnings("rawtypes")
+        List lineSegments = PointListUtilities.getLineSegments(points);
+        LineSeg segmentContainingLabelAnchor = PointListUtilities.getNearestSegment(lineSegments, ref.x, ref.y);
+        Vector rotatedVector = getRotatedVector(fromAnchorToLabelCenterPointVector, segmentContainingLabelAnchor, true);
+
+        return new PrecisionPoint(ref.x + rotatedVector.x, ref.y + rotatedVector.y);
+    }
 
     /**
      * Default constructor.
@@ -111,14 +204,14 @@ public class EdgeLabelsComputationUtil {
         if (areBendpointsIdentical() && areSegmentsValid()) {
             return oldLabelOffset;
         } else {
-            int anchorPointRatio = LabelHelper2.getLocation(keyPoint);
+            int anchorPointRatio = getLocation(keyPoint);
             Point oldAnchorPoint = PointListUtilities.calculatePointRelativeToLine(oldBendPointList, 0, anchorPointRatio, true);
-            Point oldLabelCenter = LabelHelper2.relativeCenterCoordinateFromOffset(oldBendPointList, oldAnchorPoint, oldLabelOffset);
+            Point oldLabelCenter = relativeCenterCoordinateFromOffset(oldBendPointList, oldAnchorPoint, oldLabelOffset);
 
             Point newAnchorPoint = PointListUtilities.calculatePointRelativeToLine(newBendPointList, 0, anchorPointRatio, true);
 
-            Point newLabelCenter = calculateNewCenterLocation(oldLabelCenter, LabelHelper2.getStandardLabelCenterLocation(newBendPointList, keyPoint));
-            return LabelHelper2.offsetFromRelativeCoordinate(newLabelCenter, newBendPointList, newAnchorPoint);
+            Point newLabelCenter = calculateNewCenterLocation(oldLabelCenter, getStandardLabelCenterLocation(newBendPointList, keyPoint));
+            return offsetFromRelativeCoordinate(newLabelCenter, newBendPointList, newAnchorPoint);
         }
     }
 
@@ -372,114 +465,28 @@ public class EdgeLabelsComputationUtil {
     }
 
     /**
-     * Logic extracted from
-     * {@link LabelHelper#calculatePointRelativeToPointOnLine}. Returns a point
-     * located relative to the line by the given offset.
+     * Get the rotated vector according to the segment orientation.
      *
-     * @param ptLst
-     *            the point
-     * @param ptOnLine
-     * @param offset
-     * @return the relative point given the line angle
+     * @param vector
+     *            vector to be rotated
+     * @param segment
+     *            reference segment
+     * @param inverseRotation
+     *            if true, inverse rotation
+     * @return the rotated Vector
      */
-    private Point getVectorAccordingToSegmentOrientation(LineSeg segment, Point offset) {
-        Point relativeOffset = null;
-        if (segment != null) {
-            if (segment.isHorizontal()) {
-                if (segment.getOrigin().x > segment.getTerminus().x) {
-                    relativeOffset = offset.getNegated();
-                    return relativeOffset;
-                } else {
-                    relativeOffset = offset;
-                    return relativeOffset;
-                }
-            } else if (segment.isVertical()) {
-                if (segment.getOrigin().y > segment.getTerminus().y) {
-                    relativeOffset = offset.getCopy().scale(-1, 1).transpose();
-                    return relativeOffset;
-                } else {
-                    relativeOffset = offset.getCopy().scale(1, -1).transpose();
-                    return relativeOffset;
-                }
-            } else {
-                double slope = segment.slope();
-                double theta = Math.atan(slope);
-                Point normalizedOffset = new Point(offset);
-                Point calculatedOffset = new Point();
-                if (segment.getOrigin().x > segment.getTerminus().x) {
-                    normalizedOffset = offset.getCopy().scale(-1, -1);
-                }
+    private static Vector getRotatedVector(Vector vector, LineSeg segment, boolean inverseRotation) {
+        Vector result = new Vector(vector.x, vector.y);
+        if (vector.x != 0 || vector.y != 0) {
+            java.awt.Point rotatedPoint = new java.awt.Point();
+            PrecisionPoint newLabelOffsetToPoint = vector.toPoint();
+            double angle = angleBetween2Lines(new LineSeg(new Point(0, 0), new Point(1, 0)), segment) * (inverseRotation ? -1 : 1);
+            AffineTransform.getRotateInstance(angle, 0, 0).transform(new java.awt.Point(newLabelOffsetToPoint.x, newLabelOffsetToPoint.y), rotatedPoint);
 
-                calculatedOffset = new Point(normalizedOffset.x * Math.cos(theta) - normalizedOffset.y * Math.sin(theta), normalizedOffset.x * Math.sin(theta) + normalizedOffset.y * Math.cos(theta));
-                relativeOffset = calculatedOffset;
-                return relativeOffset;
-            }
+            result.x = rotatedPoint.x;
+            result.y = rotatedPoint.y;
         }
-        return null;
-    }
-
-    /**
-     * Logic extracted from
-     * {@link LabelHelper#normalizeRelativePointToPointOnLine} Calculates the
-     * normalized offset from a point on a <code>Connection</code>'s point list
-     * to an point.
-     *
-     * @param ptLst
-     * @param ptOnLine
-     * @param offset
-     * @return the normalized offset
-     */
-    private static Point normalizeRelativePointToPointOnLine(LineSeg segment, Point offset, Point ptOnLine) {
-        Point normalOffset = null;
-        if (segment != null) {
-            if (segment.isHorizontal()) {
-                if (segment.getOrigin().x > segment.getTerminus().x) {
-                    normalOffset = offset.getNegated();
-                    return normalOffset;
-                } else {
-                    normalOffset = offset;
-                    return normalOffset;
-                }
-            } else if (segment.isVertical()) {
-                if (segment.getOrigin().y < segment.getTerminus().y) {
-                    normalOffset = offset.scale(-1, 1).transpose();
-                    return normalOffset;
-                } else {
-                    normalOffset = offset.scale(1, -1).transpose();
-                    return normalOffset;
-                }
-            } else {
-                Point p = ptOnLine.getTranslated(offset);
-                normalOffset = getOrthogonalDistances(segment, ptOnLine, p);
-                return normalOffset;
-            }
-        }
-        return null;
-
-    }
-
-    /**
-     * Calculates distances from a <code>Point</code> on a <code>LineSeg</code>
-     * to another <code>Point</code>. The sign of the distances indicate
-     * direction.
-     *
-     * @param lineSeg
-     * @param ptOnLine
-     * @param refPoint
-     * @return the distance from <code>Point</code> on a <code>LineSeg</code> to
-     *         another <code>Point</code>
-     */
-    private static Point getOrthogonalDistances(LineSeg lineSeg, Point ptOnLine, Point refPoint) {
-        LineSeg parallelSeg = lineSeg.getParallelLineSegThroughPoint(refPoint);
-        Point p1 = parallelSeg.perpIntersect(ptOnLine.x, ptOnLine.y);
-        double dx = p1.getDistance(refPoint) * ((p1.x > refPoint.x) ? -1 : 1);
-        double dy = p1.getDistance(ptOnLine) * ((p1.y < ptOnLine.y) ? -1 : 1);
-        Point orth = new Point(dx, dy);
-        // Reflection in the y axis
-        if (lineSeg.getOrigin().x > lineSeg.getTerminus().x) {
-            orth = orth.scale(-1, -1);
-        }
-        return orth;
+        return result;
     }
 
     /**
@@ -487,14 +494,62 @@ public class EdgeLabelsComputationUtil {
      *
      * @param line1
      * @param line2
-     * @return the signed angle in radian
+     * @return the signed angle in radian.
      */
-    private double angleBetween2Lines(LineSeg line1, LineSeg line2) {
+    private static double angleBetween2Lines(LineSeg line1, LineSeg line2) {
         if (line1 == null || line2 == null) {
             return 0;
         }
         double angle1 = Math.atan2(line1.getOrigin().y - line1.getTerminus().y, line1.getOrigin().x - line1.getTerminus().x);
         double angle2 = Math.atan2(line2.getOrigin().y - line2.getTerminus().y, line2.getOrigin().x - line2.getTerminus().x);
         return angle1 - angle2;
+    }
+
+    /**
+     * Get the standard center location according to the label keyPoint (
+     * {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
+     * ) and the default snap back position (
+     * {@link LabelEditPart#getSnapBackPosition(String)}
+     *
+     * @param pointsList
+     *            The points of the edge of the label.
+     * @param keyPoint
+     *            The keyPoint of the label (
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
+     *            ).
+     * @return The center of the label {@link Bounds} if this label is located
+     *         by default.
+     */
+    private static Point getStandardLabelCenterLocation(PointList pointsList, Integer keyPoint) {
+        int percentage = getLocation(keyPoint);
+        Point newAnchorPoint = PointListUtilities.calculatePointRelativeToLine(pointsList, 0, percentage, true);
+        Point snapBackPosition = getSnapBackPosition(keyPoint);
+        Point standardLabelCenter = newAnchorPoint.getTranslated(snapBackPosition);
+        return standardLabelCenter;
+    }
+
+    /**
+     * Get the location among {@link LabelViewConstants} constants where to
+     * relocate the label figure.
+     *
+     * @return the location among {@link LabelViewConstants} constants
+     */
+    private static int getLocation(Integer keyPoint) {
+        int location = LabelViewConstants.MIDDLE_LOCATION;
+        switch (keyPoint) {
+        case ConnectionLocator.SOURCE:
+            location = LabelViewConstants.TARGET_LOCATION;
+            break;
+        case ConnectionLocator.TARGET:
+            location = LabelViewConstants.SOURCE_LOCATION;
+            break;
+        case ConnectionLocator.MIDDLE:
+            location = LabelViewConstants.MIDDLE_LOCATION;
+            break;
+        default:
+            location = LabelViewConstants.MIDDLE_LOCATION;
+            break;
+        }
+        return location;
     }
 }

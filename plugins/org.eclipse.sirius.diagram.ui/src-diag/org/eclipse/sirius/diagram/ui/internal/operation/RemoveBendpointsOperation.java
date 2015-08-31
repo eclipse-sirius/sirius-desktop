@@ -30,7 +30,7 @@ import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.LabelHelper2;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelsComputationUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -117,7 +117,7 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
                     LayoutConstraint layoutConstraint = labelNodeToUpdate.getLayoutConstraint();
                     if (layoutConstraint instanceof Bounds) {
                         Bounds bounds = (Bounds) layoutConstraint;
-                        Point snapBackPosition = LabelHelper2.getSnapBackPosition(labelEditPartToUpdate.getKeyPoint());
+                        Point snapBackPosition = EdgeLabelsComputationUtil.getSnapBackPosition(labelEditPartToUpdate.getKeyPoint());
                         Bounds labelBounds = NotationFactory.eINSTANCE.createBounds();
                         labelBounds.setX(snapBackPosition.x);
                         labelBounds.setY(snapBackPosition.y);
