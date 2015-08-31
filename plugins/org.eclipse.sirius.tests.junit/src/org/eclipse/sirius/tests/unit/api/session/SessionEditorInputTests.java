@@ -30,9 +30,12 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -40,6 +43,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 
 import junit.framework.TestCase;
@@ -95,7 +99,7 @@ public class SessionEditorInputTests extends TestCase {
 
     /**
      * Test that opening a {@link DRepresentation} whose {@link URI} has changed
-     * to be same a already opened {@link DRepresentation} doesn't open the
+     * to be same as an already opened {@link DRepresentation} doesn't open the
      * already opened {@link DRepresentation} but a new editor for the requested
      * {@link DRepresentation}.
      */
@@ -120,6 +124,19 @@ public class SessionEditorInputTests extends TestCase {
         IEditorPart newEditor = DialectUIManager.INSTANCE.openEditor(session, dRepresentation1, new NullProgressMonitor());
         assertNotSame(editor1, newEditor);
         assertEquals("Editor for representation1 should be opened", 2, EclipseUIUtil.getActivePage().getEditorReferences().length);
+        IEditorInput newEditorInput = newEditor.getEditorInput();
+        IEditorInput editor2Input = editor2.getEditorInput();
+        assertTrue(newEditorInput instanceof SessionEditorInput);
+        assertTrue(editor2Input instanceof SessionEditorInput);
+        SessionEditorInput sessionNewEditorInput = (SessionEditorInput) newEditor.getEditorInput();
+        SessionEditorInput sessionEditor2Input = (SessionEditorInput) editor2.getEditorInput();
+        URI representation1GMFDiagramURI = EcoreUtil.getURI(new DDiagramGraphicalQuery((DDiagram) dRepresentation1).getAssociatedGMFDiagram().get());
+        URI representation2GMFDiagramURI = EcoreUtil.getURI(new DDiagramGraphicalQuery((DDiagram) dRepresentation2).getAssociatedGMFDiagram().get());
+        assertEquals(representation1GMFDiagramURI, sessionNewEditorInput.getURI());
+        assertEquals(representation2GMFDiagramURI, sessionEditor2Input.getURI());
+        assertEquals(new SessionEditorInput(representation1GMFDiagramURI, dRepresentation1.getName(), session), sessionNewEditorInput);
+        assertEquals(new SessionEditorInput(representation2GMFDiagramURI, dRepresentation2.getName(), session), sessionEditor2Input);
+
         DialectUIManager.INSTANCE.closeEditor(editor1, false);
         DialectUIManager.INSTANCE.closeEditor(editor2, false);
         TestsUtil.synchronizationWithUIThread();

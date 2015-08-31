@@ -21,6 +21,7 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
@@ -310,6 +311,15 @@ public class SessionEditorInput extends URIEditorInput {
     public void dispose() {
     }
 
+    @Override
+    public URI getURI() {
+        EObject input = inputRef != null ? inputRef.get() : null;
+        if (input != null) {
+            return EcoreUtil.getURI(input);
+        }
+        return super.getURI();
+    }
+
     /**
      * Overridden to test input existence in a generic way.
      * 
@@ -355,7 +365,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     @Override
     public boolean equals(Object o) {
-        boolean equals = super.equals(o);
+        boolean equals = this == o || o instanceof SessionEditorInput && getURI().equals(((SessionEditorInput) o).getURI());
         if (equals && o instanceof SessionEditorInput) {
             EObject input = getInput(false);
             if (input != null) {
