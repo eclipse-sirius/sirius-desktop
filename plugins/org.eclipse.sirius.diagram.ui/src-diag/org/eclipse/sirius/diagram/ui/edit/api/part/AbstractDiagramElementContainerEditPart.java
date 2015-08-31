@@ -86,6 +86,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangle
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -149,6 +150,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
         handleDefaultSizeNotification(notification);
 
+        if (NotationPackage.eINSTANCE.getDrawerStyle_Collapsed() == notification.getFeature()) {
+            refreshBounds();
+        }
         if (isRegion() && getParent() != null && new NotificationQuery(notification).isNotationLayoutChange()) {
             EditPart regionContainer = getParent().getParent();
             if (regionContainer instanceof AbstractDiagramContainerEditPart && shouldRefreshRegionContainerBounds(regionContainer)) {
@@ -337,10 +341,17 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * Return the direction of the parent stack. The method will return
-     * {@link PositionConstants.None} if the parent is not a Region Container.
+     * Return the direction of the parent stack.
      * 
-     * None if the parent is a FreeForm container.
+     * The method will return:
+     * <ul>
+     * <li> {@link PositionConstants.None} if the parent is not a Region
+     * Container.</li>
+     * <li> {@link PositionConstants.NORTH_SOUTH} if the parent is a vertical
+     * stack Region Container.</li>
+     * <li> {@link PositionConstants.EAST_WEST} if the parent is a horizontal
+     * stack Region Container.</li>
+     * </ul>
      * 
      * @return the direction of the parent stack.
      */
@@ -396,27 +407,43 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         DiagramContainerEditPartOperation.refreshFont(this);
     }
 
+    @Override
+    protected void refreshBounds() {
+        if (isRegion()) {
+            Dimension defaultSize = getDefaultDimension(resolveDiagramElement()).getCopy();
+            IFigure mainFigure = ((BorderedNodeFigure) getFigure()).getMainFigure();
+            if (mainFigure instanceof DefaultSizeNodeFigure) {
+                ((DefaultSizeNodeFigure) mainFigure).setDefaultSize(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
+            }
+        }
+
+        super.refreshBounds();
+    }
+
+    private Dimension getDefaultDimension(DDiagramElement dde) {
+        Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
+        if (dde instanceof DNodeContainer) {
+            defaultSize = new DNodeContainerQuery((DNodeContainer) dde).getDefaultDimension();
+        }
+
+        if (new EditPartQuery(this).isCollapsed() && getParentStackDirection() == PositionConstants.NORTH_SOUTH) {
+            defaultSize = defaultSize.getCopy().setHeight(LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT);
+        }
+        return defaultSize;
+    }
+
     /**
      * Creates a figure for this edit part, depending on the label style.
      * 
      * @return a figure for this edit part.
      */
     protected NodeFigure createNodePlate() {
-        Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
-        final EObject eObj = resolveSemanticElement();
-        if (eObj instanceof DNodeContainer) {
-            defaultSize = new DNodeContainerQuery((DNodeContainer) eObj).getDefaultDimension();
-        }
-
         NodeFigure result;
-        if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
-            final DStylizable viewNode = (DStylizable) eObj;
-            Option<LabelBorderStyleDescription> getLabelBorderStyle = getLabelBorderStyle(viewNode);
-            if (getLabelBorderStyle.some()) {
-                result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), viewNode, getLabelBorderStyle.get());
-            } else {
-                result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
-            }
+        DDiagramElement dde = resolveDiagramElement();
+        Dimension defaultSize = getDefaultDimension(dde);
+        Option<LabelBorderStyleDescription> getLabelBorderStyle = getLabelBorderStyle(dde);
+        if (getLabelBorderStyle.some()) {
+            result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), dde, getLabelBorderStyle.get());
         } else {
             result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
         }
@@ -425,7 +452,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     private Option<LabelBorderStyleDescription> getLabelBorderStyle(DStylizable viewNode) {
-        if (viewNode.getStyle() instanceof FlatContainerStyle && viewNode.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
+        if (viewNode != null && viewNode.getStyle() instanceof FlatContainerStyle && viewNode.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
             FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) viewNode.getStyle().getDescription();
             if (fcsd.getLabelBorderStyle() != null) {
                 return Options.newSome(fcsd.getLabelBorderStyle());

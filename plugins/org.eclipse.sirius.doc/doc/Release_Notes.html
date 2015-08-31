@@ -441,7 +441,10 @@
 				<code>org.eclipse.sirius.diagram.ui.graphical.edit.policies.RegionRegionContainerResizableEditPolicy</code> has been added to handle 
 				<code>DNodeContainer</code> which are both 
 				<code>Region</code> and 
-				<code>RegionContainer</code>: during resize they might have to propagate the resize to their children and/or parents.  
+				<code>RegionContainer</code>: during resize they might have to propagate the resize to their children and/or parents.
+			</li>
+			<li><span class="label label-success">Added</span> The constant 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT</code> has been added to centralize the minimum height of a collapsed Region from a Region Container with a vertical stack children presentation.
 			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart/IDiagramBorderNodeEditPart.getNodeLabel()</code> methods has been moved up to 
@@ -1566,7 +1569,7 @@
 				<a href="specifier/diagrams/Diagrams.html#edges_styles">Edges Styles &gt; Edge Centering</a> in the specifier manual for more details.
 			</li>
 			<li>When creating a new Viewpoint Specification Project using the supplied wizard: 
-				<em>New &gt; Viewpoint Specification Project</em>, the VSM name is now given according to the project name. If the project name is suffixed with &#8220;design&#8221;, the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.
+				<em>New &gt; Viewpoint Specification Project</em>, the VSM name is now given according to the project name. If the project name is suffixed with &#171;design&#187;, the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.
 			</li>
 			<li>&#8220;Lozenge&#8221; is replaced by &#8220;Diamond&#8221; in diagram style.</li>
 		</ul>

@@ -124,7 +124,8 @@ h4. Changes in @org.eclipse.sirius.ui@
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
-* <span class="label label-success">Added</span> The class @org.eclipse.sirius.diagram.ui.graphical.edit.policies.RegionRegionContainerResizableEditPolicy@ has been added to handle @DNodeContainer@ which are both @Region@ and @RegionContainer@: during resize they might have to propagate the resize to their children and/or parents.  
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.diagram.ui.graphical.edit.policies.RegionRegionContainerResizableEditPolicy@ has been added to handle @DNodeContainer@ which are both @Region@ and @RegionContainer@: during resize they might have to propagate the resize to their children and/or parents.
+* <span class="label label-success">Added</span> The constant @org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT@ has been added to centralize the minimum height of a collapsed Region from a Region Container with a vertical stack children presentation.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart/IDiagramBorderNodeEditPart.getNodeLabel()@ methods has been moved up to @org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart.getNodeLabel()@ as both @IDiagramNodeEditPart@ and @IDiagramBorderNodeEditPart@ inherits of @IAbstractDiagramNodeEditPart@.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES@ added to replace @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR@ which is deprecated  
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR@ added to replace @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES@ which is deprecated 

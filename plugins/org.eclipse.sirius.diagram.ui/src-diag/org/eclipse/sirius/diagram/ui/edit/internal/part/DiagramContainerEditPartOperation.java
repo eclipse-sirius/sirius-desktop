@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
@@ -51,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -158,7 +160,17 @@ public final class DiagramContainerEditPartOperation {
         }
 
         if (diagElement != null) {
-            self.setTooltipText(diagElement.getTooltipText());
+            if (new EditPartQuery(self).isCollapsed() && new DDiagramElementQuery((DDiagramElement) diagElement).isLabelHidden() && !StringUtil.isEmpty(diagElement.getName())) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(diagElement.getName());
+                if (!StringUtil.isEmpty(diagElement.getTooltipText())) {
+                    stringBuilder.append("-"); //$NON-NLS-1$
+                    stringBuilder.append(diagElement.getTooltipText());
+                }
+                self.setTooltipText(stringBuilder.toString());
+            } else {
+                self.setTooltipText(diagElement.getTooltipText());
+            }
         }
     }
 

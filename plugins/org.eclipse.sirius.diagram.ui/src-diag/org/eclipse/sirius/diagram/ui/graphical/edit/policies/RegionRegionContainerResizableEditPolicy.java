@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
+import java.util.List;
+
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -53,5 +55,11 @@ public class RegionRegionContainerResizableEditPolicy extends RegionResizableEdi
         Command autoSizeCommand = super.getAutoSizeCommand(request);
         autoSizeCommand = regionContainerPolicy.getRegionContainerAutoSizeCommand(request, autoSizeCommand);
         return autoSizeCommand;
+    }
+
+    @Override
+    protected void addCollapseHandle(List createSelectionHandles) {
+        // Do nothing as the collapse is not supported yet for recursive
+        // regions.
     }
 }

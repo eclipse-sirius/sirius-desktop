@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,10 +32,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.gmf.runtime.notation.DrawerStyle;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 
@@ -614,5 +617,34 @@ public class EditPartQuery {
         }
         Ordering<IBorderItemEditPart> ordering = Ordering.natural().onResultOf(getValueToCompareFunction);
         return ImmutableSortedSet.orderedBy(ordering).addAll(nodes).build();
+    }
+
+    /**
+     * Test if the current is collapsed. Collapse is enabled only on List
+     * Regions in vertical stacks.
+     * 
+     * @return true if the part is collapsed.
+     */
+    public boolean isCollapsed() {
+        DrawerStyle drawerStyle = getDrawerStyle();
+        return drawerStyle != null && drawerStyle.isCollapsed();
+    }
+
+    /**
+     * Return the drawer style when collapse is enabled on the current part.
+     * Collapse is enabled only on List Regions in vertical stacks.
+     * 
+     * @return the drawer style when collapse is enabled on the current part.
+     */
+    public DrawerStyle getDrawerStyle() {
+        if (part instanceof AbstractDiagramElementContainerEditPart && part.getNotationView() != null && ((AbstractDiagramElementContainerEditPart) part).isRegion()) {
+            for (Node child : Iterables.filter(part.getNotationView().getChildren(), Node.class)) {
+                DrawerStyle drawerStyle = (DrawerStyle) child.getStyle(NotationPackage.eINSTANCE.getDrawerStyle());
+                if (drawerStyle != null) {
+                    return drawerStyle;
+                }
+            }
+        }
+        return null;
     }
 }

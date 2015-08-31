@@ -39,14 +39,18 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.CreationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.figures.NestedResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.OneLineBorder;
+import org.eclipse.gmf.runtime.notation.DrawerStyle;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
@@ -55,6 +59,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolic
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListViewNodeListCompartmentItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.RegionCollapseAwarePropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.ComparisonHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
@@ -115,6 +120,7 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new SiriusContainerDropPolicy());
         installEditPolicy(EditPolicy.CONTAINER_ROLE, new NodeCreationEditPolicy());
         installEditPolicy(RequestConstants.REQ_LAUNCH_TOOL, new LaunchToolEditPolicy());
+        installEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE, new RegionCollapseAwarePropertyHandlerEditPolicy());
     }
 
     @Override
@@ -136,6 +142,14 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     @Override
     public IFigure createFigure() {
         ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
+        if (new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) resolveSemanticElement()).isRegion()) {
+            // Use a NestableResizableCompartmentFigure to have collapsed Region
+            // to have only the label area visible
+            ResizableCompartmentFigure nrcf = new NestedResizableCompartmentFigure(getMapMode());
+            nrcf.getContentPane().setLayoutManager(result.getLayoutManager());
+            result = nrcf;
+        }
+
         result.setTitleVisibility(false);
         result.setToolTip((IFigure) null);
 
@@ -155,14 +169,19 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     }
 
     private void configureBorder(ResizableCompartmentFigure rcf) {
-        if (hasLabelBorderStyle() || isLabelHidden()) {
-            if (rcf.getBorder() instanceof LineBorder) {
+        if (hasLabelBorderStyle() || isLabelHidden() || isCollapsed()) {
+            if (rcf.getBorder() instanceof LineBorder || rcf.getBorder() == null) {
                 // Do not draw the top line border for free form containers.
                 rcf.setBorder(new MarginBorder(getMapMode().DPtoLP(1), 0, 0, 0));
             }
-        } else if (rcf.getBorder() instanceof MarginBorder) {
+        } else if (rcf.getBorder() instanceof MarginBorder || rcf.getBorder() == null) {
             rcf.setBorder(new OneLineBorder(getMapMode().DPtoLP(1), PositionConstants.TOP));
         }
+    }
+
+    private boolean isCollapsed() {
+        DrawerStyle style = (DrawerStyle) ((View) getModel()).getStyle(NotationPackage.eINSTANCE.getDrawerStyle());
+        return style == null ? false : style.isCollapsed();
     }
 
     private boolean isLabelHidden() {
@@ -302,5 +321,11 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
             return UnexecutableCommand.INSTANCE;
         }
         return super.getCommand(_request);
+    }
+    
+    @Override
+    protected void setCollapsed(boolean collapsed, boolean animate) {
+        //Always disable the animation.
+        super.setCollapsed(collapsed, false);
     }
 }

@@ -14,10 +14,12 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Locator;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -26,17 +28,31 @@ import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IResizableCompartmentEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.handles.CompartmentCollapseHandle;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
+import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -58,7 +74,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         super.setHost(host);
 
         if (concernRegion()) {
-            setResizeDirections(getStackDirection());
+            setResizeDirections(getParentStackDirection());
             setDragAllowed(false);
         }
     }
@@ -73,6 +89,53 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         if (!concernRegion() || (getResizeDirections() & direction) == direction) {
             super.createResizeHandle(handles, direction);
         }
+    }
+
+    @Override
+    protected List createSelectionHandles() {
+        List createSelectionHandles = super.createSelectionHandles();
+
+        addCollapseHandle(createSelectionHandles);
+        return createSelectionHandles;
+    }
+
+    /**
+     * Add the collapse handle of the region.
+     * 
+     * @param selectionHandles
+     *            selection handles
+     */
+    protected void addCollapseHandle(List selectionHandles) {
+        EditPart regionContainerPart = getRegionContainerPart();
+
+        // DisableCollapse for Regions whose the RegionContainer is itself a
+        // Region.
+        if (concernRegion() && regionContainerPart instanceof AbstractDiagramElementContainerEditPart && !((AbstractDiagramElementContainerEditPart) regionContainerPart).isRegion()) {
+            AbstractDiagramElementContainerEditPart hostPart = (AbstractDiagramElementContainerEditPart) getHost();
+            LabelAlignment textAlignment = getTextAlignment(hostPart);
+            Iterable<IResizableCompartmentEditPart> compartmentParts = Iterables.filter(hostPart.getChildren(), IResizableCompartmentEditPart.class);
+            if (new EditPartQuery(hostPart).getDrawerStyle() != null && !Iterables.isEmpty(compartmentParts)) {
+                selectionHandles.add(new RegionCollapseHandle(compartmentParts.iterator().next(), textAlignment, hostPart));
+            }
+        }
+    }
+
+    private LabelAlignment getTextAlignment(AbstractDiagramElementContainerEditPart hostPart) {
+        LabelAlignment alignment = (LabelAlignment) ViewpointPackage.eINSTANCE.getLabelStyle_LabelAlignment().getDefaultValue();
+
+        DDiagramElement dde = hostPart.resolveDiagramElement();
+        Style style = dde.getStyle();
+        boolean hiddenLabel = new DDiagramElementQuery(dde).isLabelHidden();
+        if (style instanceof LabelStyle && !hiddenLabel) {
+            alignment = ((LabelStyle) style).getLabelAlignment();
+        }
+        if (hiddenLabel && dde instanceof DNodeList) {
+            List<DNodeListElement> ownedElements = ((DNodeList) dde).getOwnedElements();
+            if (!ownedElements.isEmpty() && ownedElements.get(0).getStyle() instanceof LabelStyle) {
+                alignment = ((LabelStyle) ownedElements.get(0).getStyle()).getLabelAlignment();
+            }
+        }
+        return alignment;
     }
 
     @Override
@@ -108,7 +171,8 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
 
                 Command regionContainerAutoSizeCommand = regionContainerPart.getCommand(req);
                 if (getHost() instanceof IDiagramElementEditPart && regionContainerAutoSizeCommand != null) {
-                    CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((IDiagramElementEditPart) getHost()).getEditingDomain(), Messages.RegionResizableEditPolicy_regionAutoSizeCommandLabel);
+                    CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((IDiagramElementEditPart) getHost()).getEditingDomain(),
+                            Messages.RegionResizableEditPolicy_regionAutoSizeCommandLabel);
                     ctc.add(new CommandProxy(autoSizeCommand));
                     ctc.add(new CommandProxy(regionContainerAutoSizeCommand));
                     autoSizeCommand = new ICommandProxy(ctc);
@@ -152,10 +216,26 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
 
     @Override
     protected Command getResizeCommand(ChangeBoundsRequest request) {
+        EditPart host = getHost();
+        RequestQuery query = new RequestQuery(request);
+
+        if (host instanceof IGraphicalEditPart && new EditPartQuery((IGraphicalEditPart) host).isCollapsed()) {
+            // Disable resize in the collapsed direction.
+            boolean forbiddenCollapseResize = false;
+            if (getParentStackDirection() == PositionConstants.NORTH_SOUTH) {
+                forbiddenCollapseResize = (query.isResizeFromTop() || query.isResizeFromBottom()) && request.getSizeDelta().height() != 0;
+            } else if (getParentStackDirection() == PositionConstants.EAST_WEST) {
+                forbiddenCollapseResize = (query.isResizeFromLeft() || query.isResizeFromRight()) && request.getSizeDelta().width() != 0;
+            }
+            if (forbiddenCollapseResize) {
+                return UnexecutableCommand.INSTANCE;
+            }
+        }
+
         if (isFirstRegionPart()) {
             request.getMoveDelta().setX(0);
             request.getMoveDelta().setY(0);
-        } else if (getStackDirection() == PositionConstants.EAST_WEST) {
+        } else if (getParentStackDirection() == PositionConstants.EAST_WEST) {
             request.getMoveDelta().setY(0);
         }
         return super.getResizeCommand(request);
@@ -203,7 +283,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         RequestQuery requestQuery = new RequestQuery(request);
         if (request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) == getRegionContainerPart()) {
             Object object = request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_INITIAL_REQUEST);
-            int stackDirection = getStackDirection();
+            int stackDirection = getParentStackDirection();
             boolean needsAdjust = false;
             if (stackDirection == PositionConstants.NORTH_SOUTH) {
                 needsAdjust = requestQuery.isResizeFromLeft() || requestQuery.isResizeFromRight() || requestQuery.isResizeFromTop() && isFirstRegionPart();
@@ -245,7 +325,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         EditPart regionContainer = getRegionContainerPart();
         boolean allowedRegionContainerPropagation = !request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer;
 
-        int stackDirection = getStackDirection();
+        int stackDirection = getParentStackDirection();
         if (stackDirection == PositionConstants.NORTH_SOUTH) {
             constrainedRequest = Options.newSome(getVStackConstrainedSiblingRequest(request, query, sizeDelta, allowedRegionContainerPropagation, regionContainer));
         } else if (stackDirection == PositionConstants.EAST_WEST) {
@@ -443,7 +523,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         return regionImpacted;
     }
 
-    private int getStackDirection() {
+    private int getParentStackDirection() {
         int direction = PositionConstants.NONE;
         EditPart hostPart = getHost();
         if (hostPart instanceof AbstractDiagramElementContainerEditPart) {
@@ -469,5 +549,80 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         Iterable<AbstractDiagramElementContainerEditPart> regionParts = getSiblingRegionParts();
         return !Iterables.isEmpty(regionParts) && Iterables.getLast(regionParts, null) == getHost();
 
+    }
+
+    /**
+     * Specific {@link CompartmentCollapseHandle} for Regions: it locates the
+     * handle on the Region label area and not in its content pane, it takes the
+     * label alignment of the Region into account.
+     */
+    private static class RegionCollapseHandle extends CompartmentCollapseHandle {
+
+        private AbstractDiagramElementContainerEditPart regionPart;
+
+        /**
+         * Constructor.
+         * 
+         * @param owner
+         *            the compartment part to collapse (the part whose GMF node
+         *            has the drawer style)
+         * @param alignment
+         *            the label alignment to take into account to correctly
+         *            locate the handle.
+         * @param regionPart
+         *            the region part to notify when drawer syle is expanded or
+         *            collapsed.
+         */
+        public RegionCollapseHandle(IGraphicalEditPart owner, LabelAlignment alignment, AbstractDiagramElementContainerEditPart regionPart) {
+            super(owner);
+            this.regionPart = regionPart;
+            setLocator(new RegionCollapseHandleLocator(alignment));
+        }
+
+        @Override
+        public void notifyChanged(Notification notification) {
+            super.notifyChanged(notification);
+
+            // Redirect the collapse notification to the Region part.
+            if (NotationPackage.eINSTANCE.getDrawerStyle_Collapsed() == notification.getFeature()) {
+                regionPart.notifyChanged(notification);
+            }
+        }
+
+        private class RegionCollapseHandleLocator implements Locator {
+            private boolean isRegionTextLeftAligned;
+
+            public RegionCollapseHandleLocator(LabelAlignment alignment) {
+                this.isRegionTextLeftAligned = LabelAlignment.LEFT.equals(alignment);
+            }
+
+            @Override
+            public void relocate(IFigure target) {
+                IFigure handleOwner = getOwnerFigure();
+                if (handleOwner.getParent() != null) {
+                    handleOwner = handleOwner.getParent();
+                }
+
+                Rectangle theBounds = handleOwner.getClientArea().getCopy();
+                handleOwner.translateToAbsolute(theBounds);
+                target.translateToRelative(theBounds);
+
+                // Display the handle at the same y location
+                // regarding the figure topology (list/container,
+                // label style choices)
+                int leftOffset = 5;
+                int topOffset = 0;
+                if (handleOwner instanceof DefaultSizeNodeFigure) {
+                    topOffset = IContainerLabelOffsets.LABEL_OFFSET;
+                } else if (handleOwner.getBorder() != null && handleOwner.getBorder().getInsets(null) != null) {
+                    topOffset = IContainerLabelOffsets.LABEL_OFFSET - handleOwner.getBorder().getInsets(null).top;
+                }
+                if (isRegionTextLeftAligned) {
+                    target.setLocation(theBounds.getTopRight().getTranslated(-getBounds().width(), topOffset));
+                } else {
+                    target.setLocation(theBounds.getLocation().getTranslated(leftOffset, topOffset));
+                }
+            }
+        }
     }
 }

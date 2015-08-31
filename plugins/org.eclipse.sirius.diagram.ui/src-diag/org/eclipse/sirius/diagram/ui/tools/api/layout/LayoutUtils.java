@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -89,6 +89,13 @@ public final class LayoutUtils {
      * The default container dimension (since 4.0).
      */
     public static final Dimension NEW_DEFAULT_CONTAINER_DIMENSION = new Dimension(40, 40);
+
+    /**
+     * The default minimum collapsed vertical Region height. The resulting
+     * collapsed size might be different as it depends on the label area size:
+     * the border size, the insets, the label font and size.
+     */
+    public static final int COLLAPSED_VERTICAL_REGION_HEIGHT = 28;
 
     /**
      * Default width.
@@ -269,6 +276,7 @@ public final class LayoutUtils {
         }
 
         Display.getCurrent().asyncExec(new Runnable() {
+            @Override
             public void run() {
                 shell.dispose();
             }

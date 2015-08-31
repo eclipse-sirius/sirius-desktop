@@ -714,6 +714,15 @@ public final class Messages {
     public static String RefreshRunnableWithProgress_taskName;
 
     @TranslatableMessage
+    public static String RegionCollapseAwarePropertyHandlerEditPolicy_gmfSizeUpdateCommandLabel;
+
+    @TranslatableMessage
+    public static String RegionCollapseAwarePropertyHandlerEditPolicy_expandRegionCommandLabel;
+
+    @TranslatableMessage
+    public static String RegionCollapseAwarePropertyHandlerEditPolicy_collapseRegionCommandLabel;
+
+    @TranslatableMessage
     public static String RegionContainerResizableEditPolicy_regionContainerAutoSizeCommandLabel;
 
     @TranslatableMessage
