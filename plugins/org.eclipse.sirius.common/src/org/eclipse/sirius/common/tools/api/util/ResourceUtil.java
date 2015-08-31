@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.sirius.common.tools.Messages;
 
 /**
  * Useful operations for the type {@link IResource}.
@@ -48,7 +49,7 @@ public final class ResourceUtil {
      *             in case of while saving file error.
      */
     public static IFile createBackupFile(final IFile file, final IProgressMonitor monitor) throws CoreException {
-        monitor.beginTask("Backup and refresh workspace", 2);
+        monitor.beginTask(Messages.ResourceUtil_backupFileTask, 2);
         // computes a timestamp.
         final String timestamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date()); //$NON-NLS-1$
 
@@ -72,7 +73,7 @@ public final class ResourceUtil {
             }
             backup = file.getParent().getFile(new Path(FILE_SEPARATOR + name + i));
         }
-        assert !backup.exists() : "the file already exists";
+        assert !backup.exists() : Messages.ResourceUtil_backupFileAlreadyExists;
 
         // creates the backup
         file.copy(backup.getFullPath(), IResource.FORCE, new SubProgressMonitor(monitor, 1));

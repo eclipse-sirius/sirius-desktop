@@ -10,10 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.resource;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 
 /**
@@ -45,9 +47,9 @@ public class FileModificationValidatorDescriptor {
         try {
             return (IFileModificationValidator) element.createExecutableExtension(CLASS_ATTRIBUTE);
         } catch (final CoreException e) {
-            DslCommonPlugin.getDefault().error("Impossible to create the validator " + element.getAttribute(CLASS_ATTRIBUTE), e);
+            DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.FileModificationValidatorDescriptor_creationError, element.getAttribute(CLASS_ATTRIBUTE)), e);
         } catch (final ClassCastException e) {
-            DslCommonPlugin.getDefault().error("Impossible to create the validator " + element.getAttribute(CLASS_ATTRIBUTE), e);
+            DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.FileModificationValidatorDescriptor_creationError, element.getAttribute(CLASS_ATTRIBUTE)), e);
         }
         return null;
     }

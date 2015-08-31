@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.profiler;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -65,9 +67,9 @@ public class ProfilerTaskRegistry {
      */
     public void put(String key, ProfilerTask value) throws IllegalArgumentException {
         if (getTable().get(key) != null) {
-            throw new IllegalArgumentException("ProfilerTaskRegistry key already in use: " + key); //$NON-NLS-1$            
+            throw new IllegalArgumentException(MessageFormat.format(Messages.ProfilerTaskRegistry_keyConflict, key));            
         } else if (getTable().values().contains(value)) {
-            throw new IllegalArgumentException("ProfilerTaskRegistry already contains value : " + key); //$NON-NLS-1$
+            throw new IllegalArgumentException(MessageFormat.format(Messages.ProfilerTaskRegistry_valueConflict, value));
         } else {
             getTable().put(key, value);
         }

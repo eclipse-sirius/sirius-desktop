@@ -12,9 +12,11 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
 import com.google.common.base.Preconditions;
@@ -78,12 +80,12 @@ class MonomorphicService implements IMonomorphicService {
     }
 
     private void fail(Exception e) throws EvaluationException {
-        throw new EvaluationException("Exception while calling service " + this + ".", e);
+        throw new EvaluationException(MessageFormat.format(Messages.MonomorphicService_serviceError, this), e);
     }
 
     @Override
     public String toString() {
-        return serviceInstance.getClass().getCanonicalName() + "." + serviceMethod.getName() + "(" + serviceMethod.getParameterTypes()[0].getCanonicalName() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        return MessageFormat.format("{0}.{1}({2})", serviceInstance.getClass().getCanonicalName(), serviceMethod.getName(), serviceMethod.getParameterTypes()[0].getCanonicalName()); //$NON-NLS-1$
     }
 
     @Override

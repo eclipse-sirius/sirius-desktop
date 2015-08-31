@@ -16,15 +16,16 @@
  */
 package org.eclipse.sirius.common.tools.internal.ecore;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.plugin.RegistryReader;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.internal.ecore.DynamicEPackageService.EPackageDescriptor;
 
 //CHECKSTYLE:OFF
@@ -78,10 +79,8 @@ public class DynamicPackageRegistryReader extends RegistryReader {
                 Object previous = EPackage.Registry.INSTANCE.put(packageURI, new EPackageDescriptor.Dynamic(element, ATT_LOCATION));
                 if (previous instanceof PluginClassDescriptor) {
                     PluginClassDescriptor descriptor = (PluginClassDescriptor) previous;
-                    EcorePlugin.INSTANCE.log("Both '" + descriptor.element.getContributor().getName() + "' and '" + element.getContributor().getName() + "' register a package for '" + packageURI
-                            + "'");
+                    DslCommonPlugin.INSTANCE.log(MessageFormat.format(Messages.DynamicPackageRegistryReader_packageConflict, descriptor.element.getContributor().getName(), element.getContributor().getName(), packageURI));
                 }
-
                 return true;
             } else {
                 EPackage.Registry.INSTANCE.remove(packageURI);

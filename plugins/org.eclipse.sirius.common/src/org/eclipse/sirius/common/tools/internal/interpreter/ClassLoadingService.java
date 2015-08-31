@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
+import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.ClassLoading;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 
@@ -60,8 +62,7 @@ public final class ClassLoadingService {
             if (picked == null) {
                 picked = it.next();
             } else {
-                final IStatus status = new Status(IStatus.WARNING, DslCommonPlugin.PLUGIN_ID, "Several overrides are contributed for the class loading override,  " + it.next().getClass().getName()
-                        + " will be ignored");
+                final IStatus status = new Status(IStatus.WARNING, DslCommonPlugin.PLUGIN_ID, MessageFormat.format(Messages.ClassLoadingService_multipleOverridesDetected, it.next().getClass().getName()));
                 DslCommonPlugin.getDefault().getLog().log(status);
             }
         }

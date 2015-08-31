@@ -29,17 +29,17 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
+import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
+import org.eclipse.sirius.common.tools.api.resource.FileModificationValidatorProvider;
+import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
-import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
-import org.eclipse.sirius.common.tools.api.resource.FileModificationValidatorProvider;
-import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 
 /**
  * ResourceSetListener responsible for asking for file edit validation before
@@ -50,8 +50,6 @@ import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
  * @since 0.9.0
  */
 public class FileStatusPrecommitListener extends ResourceSetListenerImpl {
-
-    private static final String FILE_MODIFICATION_VALIDATION_STATUS = "File modification validation status"; //$NON-NLS-1$
 
     private final ArrayList<IFileModificationValidator> fileModificationValidators;
 
@@ -104,8 +102,8 @@ public class FileStatusPrecommitListener extends ResourceSetListenerImpl {
             }
 
             if (!files2Validate.isEmpty()) {
-                final RollbackException cancelException = new RollbackException(new Status(IStatus.CANCEL, DslCommonPlugin.PLUGIN_ID, FILE_MODIFICATION_VALIDATION_STATUS));
-                final MultiStatus status = new MultiStatus(DslCommonPlugin.PLUGIN_ID, IStatus.ERROR, FILE_MODIFICATION_VALIDATION_STATUS, cancelException);
+                final RollbackException cancelException = new RollbackException(new Status(IStatus.CANCEL, DslCommonPlugin.PLUGIN_ID, Messages.FileStatusPrecommitListener_fileModificationValidationStatus));
+                final MultiStatus status = new MultiStatus(DslCommonPlugin.PLUGIN_ID, IStatus.ERROR, Messages.FileStatusPrecommitListener_fileModificationValidationStatus, cancelException);
                 if (fileModificationValidators.isEmpty()) {
                     // No extension found, use the default process.
                     status.add(ResourcesPlugin.getWorkspace().validateEdit(files2Validate.keySet().toArray(new IFile[files2Validate.size()]), IWorkspace.VALIDATE_PROMPT));

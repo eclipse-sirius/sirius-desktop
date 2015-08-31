@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
+import java.text.MessageFormat;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
@@ -104,37 +106,29 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
             } else if (variablesManager.getVariables().containsKey(variableName)) {
                 result = variablesManager.getVariable(variableName);
             } else {
-                throw new EvaluationException("Unknown variable \"" + variableName + "\".");
+                throw new EvaluationException(MessageFormat.format(Messages.VariableInterpreter_unknownVariable, variableName));
             }
         }
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IInterpreter createInterpreter() {
         return new VariableInterpreter();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean supportsValidation() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ValidationResult analyzeExpression(IInterpreterContext context, String expression) {
         ValidationResult result = new ValidationResult();
         if (expression != null && context != null && expression.startsWith(PREFIX)) {
             String variableName = expression.substring(PREFIX.length());
             if (!context.getVariables().containsKey(variableName) && !SELF_VARIABLE_NAME.equals(variableName)) {
-                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, "The current context does not contains variable named : " + variableName));
+                result.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, MessageFormat.format(Messages.VariableInterpreter_unkownVariable, variableName)));
             }
 
             if (SELF_VARIABLE_NAME.equals(variableName)) {

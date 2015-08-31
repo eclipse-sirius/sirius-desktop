@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.resource;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -20,8 +22,8 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 
 /**
  * 
@@ -64,16 +66,14 @@ public class ResourceSetFactory {
                         if (result == null) {
                             result = contributed;
                         } else {
-                            final IStatus status = new Status(IStatus.WARNING, DslCommonPlugin.PLUGIN_ID, "Several overrides are contributed for the resource factory,  "
-                                    + configElement.getAttribute(CLASS_ATTRIBUTE) + " will be ignored");
+                            final IStatus status = new Status(IStatus.WARNING, DslCommonPlugin.PLUGIN_ID, MessageFormat.format(Messages.ResourceSetFactory_ignoredOverrides, configElement.getAttribute(CLASS_ATTRIBUTE)));
                             DslCommonPlugin.getDefault().getLog().log(status);
                         }
                     } catch (final CoreException e) {
-                        DslCommonPlugin.getDefault().error("Impossible to create the resource factory " + configElement.getAttribute(CLASS_ATTRIBUTE), e);
+                        DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.ResourceSetFactory_creationError, configElement.getAttribute(CLASS_ATTRIBUTE)), e);
                     } catch (final ClassCastException e) {
-                        DslCommonPlugin.getDefault().error("Impossible to create the resource factory " + configElement.getAttribute(CLASS_ATTRIBUTE), e);
+                        DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.ResourceSetFactory_creationError, configElement.getAttribute(CLASS_ATTRIBUTE)), e);
                     }
-
                 }
             }
         }

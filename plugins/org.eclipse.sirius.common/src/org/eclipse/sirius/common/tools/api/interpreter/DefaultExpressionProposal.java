@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.interpreter;
 
+import org.eclipse.sirius.common.tools.Messages;
+
 /**
  * Default implementation of {@link IExpressionProposal}.
  * 
@@ -44,7 +46,7 @@ public class DefaultExpressionProposal implements IExpressionProposal {
      */
     public DefaultExpressionProposal(final String proposal, final String description) {
         if (proposal == null) {
-            throw new IllegalArgumentException("The proposal must not be null");
+            throw new IllegalArgumentException(Messages.DefaultExpressionProposal_nullProposal);
         }
         this.proposal = proposal;
         this.description = description;

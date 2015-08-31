@@ -63,6 +63,7 @@ Additional non-breaking changes:
 ** @org.eclipse.sirius.ext.base@
 ** @org.eclipse.sirius.ecore.extender@
 ** @org.eclipse.sirius.synchronizer@
+** @org.eclipse.sirius.common@
 ** @org.eclipse.sirius.common.acceleo.aql@
 ** @org.eclipse.sirius.common.acceleo.aql.ide@
 ** @org.eclipse.sirius.common.acceleo.mtl@

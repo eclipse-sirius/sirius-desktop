@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.tools.api.util;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.Messages;
 
 /**
  * Class useful to use as a key for a cache needing two objects.
@@ -45,10 +46,10 @@ public class EObjectCouple {
      */
     public EObjectCouple(final EObject obj1, final EObject obj2, RefreshIdsHolder ids) {
         if (obj1 == null) {
-            throw new IllegalArgumentException("the first eObject is null");
+            throw new IllegalArgumentException(Messages.EObjectCouple_firstNull);
         }
         if (obj2 == null) {
-            throw new IllegalArgumentException("the second eObject is null");
+            throw new IllegalArgumentException(Messages.EObjectCouple_secondNull);
         }
         this.obj1 = obj1;
         this.obj2 = obj2;

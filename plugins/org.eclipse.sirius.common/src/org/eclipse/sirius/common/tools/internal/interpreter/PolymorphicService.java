@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
 import com.google.common.base.Preconditions;
@@ -55,7 +57,7 @@ class PolymorphicService implements IPolymorphicService {
         if (!candidates.isEmpty()) {
             return candidates.get(0).call(target);
         } else {
-            throw new EvaluationException("No compatible implementation of service " + getName() + " found for " + target);
+            throw new EvaluationException(MessageFormat.format(Messages.PolymorphicService_noCompatibleImplem, getName(), target));
         }
     }
 
@@ -70,7 +72,7 @@ class PolymorphicService implements IPolymorphicService {
 
     @Override
     public String toString() {
-        return "Polymorphic service " + getName() + " (" + implementers.size() + " implementations).";
+        return MessageFormat.format(Messages.PolymorphicService_toString, getName(), implementers.size());
     }
 
     public Set<IMonomorphicService> getImplementers() {

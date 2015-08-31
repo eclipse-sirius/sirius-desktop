@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
@@ -59,7 +60,7 @@ public class EditingSessionWorkspaceListener implements IResourceChangeListener 
                 }
             }
         } catch (final CoreException exception) {
-            DslCommonPlugin.getDefault().error("Error while refreshing resource", exception);
+            DslCommonPlugin.getDefault().error(Messages.EditingSessionWorkspaceListener_resourceRefreshError, exception);
         }
     }
 

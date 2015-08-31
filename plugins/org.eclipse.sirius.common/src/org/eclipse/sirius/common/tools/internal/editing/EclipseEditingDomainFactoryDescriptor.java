@@ -10,13 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.editing;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryDescriptor;
 import org.eclipse.sirius.common.tools.api.editing.IEditingDomainFactory;
 
@@ -86,8 +88,11 @@ public class EclipseEditingDomainFactoryDescriptor implements EditingDomainFacto
                 try {
                     extension = (IEditingDomainFactory) element.createExecutableExtension(EDITING_DOMAIN_FACTORY_CLASS_ATTRIBUTE);
                 } catch (CoreException e) {
-                    DslCommonPlugin.getDefault().getLog()
-                            .log(new Status(IStatus.ERROR, DslCommonPlugin.PLUGIN_ID, "Error while loading the extension " + element.getDeclaringExtension().getUniqueIdentifier(), e));
+                    DslCommonPlugin
+                            .getDefault()
+                            .getLog()
+                            .log(new Status(IStatus.ERROR, DslCommonPlugin.PLUGIN_ID, MessageFormat.format(Messages.EclipseEditingDomainFactoryDescriptor_errorLoadingExtension, element
+                                    .getDeclaringExtension().getUniqueIdentifier()), e));
                 }
             }
         }

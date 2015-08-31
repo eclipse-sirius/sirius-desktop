@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.interpreter;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -30,6 +31,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
@@ -411,7 +413,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
         try {
             desc = (IInterpreterProvider) configElement.createExecutableExtension(ENGINE_ATTRIBUTE_CLASS);
         } catch (final CoreException e) {
-            DslCommonPlugin.getDefault().error("Impossible to create the interpreter " + configElement.getAttribute(ENGINE_ATTRIBUTE_CLASS), e);
+            DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.CompoundInterpreter_impossibleToCreateInterpreter, configElement.getAttribute(ENGINE_ATTRIBUTE_CLASS)), e);
         }
         return desc;
     }

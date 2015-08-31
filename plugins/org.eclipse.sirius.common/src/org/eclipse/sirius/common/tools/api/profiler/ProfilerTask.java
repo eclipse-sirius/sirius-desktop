@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.profiler;
 
+import org.eclipse.sirius.common.tools.Messages;
+
 /**
  * Represents a task.
  * 
@@ -17,9 +19,9 @@ package org.eclipse.sirius.common.tools.api.profiler;
  */
 public class ProfilerTask {
 
-    private static final String THE_NAME_IS_NULL = "the name is null";
+    private static final String THE_NAME_IS_NULL = Messages.ProfilerTask_nullName;
 
-    private static final String THE_CATEGORY_IS_NULL = "the category is null";
+    private static final String THE_CATEGORY_IS_NULL = Messages.ProfilerTask_nullCategory;
 
     /** The category. */
     private String category;
@@ -126,21 +128,11 @@ public class ProfilerTask {
         return name;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         return new StringBuffer(category.length() + name.length() + 2).append('[').append(category).append(']').append(name).toString();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode() {
         return category.hashCode() ^ name.hashCode();

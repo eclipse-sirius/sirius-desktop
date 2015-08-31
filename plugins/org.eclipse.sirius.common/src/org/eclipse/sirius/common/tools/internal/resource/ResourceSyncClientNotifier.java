@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 
 /**
@@ -30,7 +31,7 @@ public class ResourceSyncClientNotifier extends Job {
     /** The family id for this kind of job. */
     public static final String FAMILY = DslCommonPlugin.PLUGIN_ID + ".ResourceSyncClientNotification"; //$NON-NLS-1$
 
-    private static final String ACTION_NAME = "ResourceSyncClient notification";
+    private static final String ACTION_NAME = Messages.ResourceSyncClientNotifier_actionName;
 
     /**
      * Scheduling rule to prevent concurrent ResourceSyncClientNotifier

@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.plugin.RegistryReader.PluginClassDescriptor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.common.tools.Messages;
 
 /**
  * A class to fork EMF for dynamic registry.
@@ -68,7 +69,7 @@ public class DynamicEPackageService {
                         }
                         return (EPackage) resourceSet.getEObject(locationURI, true);
                     } else {
-                        throw new RuntimeException("No location attribute was specified.");
+                        throw new RuntimeException(Messages.DynamicEPackageService_missingLocationAttribute);
                     }
                 } catch (Exception e) {
                     throw new WrappedException(e);

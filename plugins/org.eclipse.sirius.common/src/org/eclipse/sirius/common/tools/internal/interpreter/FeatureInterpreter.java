@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
+import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
@@ -90,7 +92,7 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
             } else if (E_CROSS_REFERENCES_FEATURE_NAME.equals(featureName)) {
                 result = target.eCrossReferences();
             } else {
-                throw new EvaluationException("Unknown feature name " + featureName + ".");
+                throw new EvaluationException(MessageFormat.format(Messages.FeatureInterpreter_unknownFeature, featureName));
             }
         }
         return result;
@@ -117,8 +119,8 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
                         foundAtLeastOneValid = hasFeatureNameAndCollectReturnTypes(cur, featureName, possibleReturnTypes);
                     }
                     if (!foundAtLeastOneValid) {
-                        interpreterStatus.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR, "The current element " + typeName.getCompleteName("::")
-                                + " does not have the feature named : " + featureName));
+                        interpreterStatus.addStatus(InterpreterStatusFactory.createInterpreterStatus(context, IInterpreterStatus.ERROR,
+                                MessageFormat.format(Messages.FeatureInterpreter_invalidFeature, typeName.getCompleteName("::"), featureName))); //$NON-NLS-1$
                     }
                 }
                 if (possibleReturnTypes.size() > 0) {

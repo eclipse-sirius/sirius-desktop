@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +20,7 @@ import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.ClassLoadingCallback;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -77,7 +79,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
 
         @Override
         public void notFound(String qualifiedName) {
-            DslCommonPlugin.getDefault().warning("Could not find Java extension class " + qualifiedName, new RuntimeException());
+            DslCommonPlugin.getDefault().warning(MessageFormat.format(Messages.ServiceInterpreter_javaClassNotFound, qualifiedName), new RuntimeException());
         }
 
         @Override
@@ -134,7 +136,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
                 if (objectReceiver instanceof EObject) {
                     receiver = (EObject) objectReceiver;
                 } else {
-                    throw new EvaluationException("The receiver of the service call " + serviceCall + " is not an EObject.");
+                    throw new EvaluationException(MessageFormat.format(Messages.ServiceInterpreter_invalidReceiver, serviceCall, objectReceiver != null ? objectReceiver.getClass().getName() : "null")); //$NON-NLS-1$
                 }
             }
             int indexOfParenthesis = serviceCall.indexOf("("); //$NON-NLS-1$
@@ -160,7 +162,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
             IService service = services.get(serviceName);
             return service.call(target);
         } else {
-            throw new EvaluationException("Unknown service \"" + serviceName + "\"");
+            throw new EvaluationException(MessageFormat.format(Messages.ServiceInterpreter_unknownService, serviceName));
         }
     }
 

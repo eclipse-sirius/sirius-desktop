@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.ext.base.Option;
 
 /**
@@ -319,7 +320,7 @@ public class TimeProfiler {
      */
     public void addProfilerListener(final ProfilerListener listener) throws IllegalArgumentException {
         if (listener == null) {
-            throw new IllegalArgumentException("listener is null");
+            throw new IllegalArgumentException(Messages.TimeProfiler_nullListener);
         }
         this.listeners.add(listener);
     }

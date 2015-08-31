@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
@@ -21,6 +22,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.ClassLoading;
 import org.eclipse.sirius.common.tools.api.interpreter.ClasspathChangeCallback;
 import org.eclipse.sirius.common.tools.api.interpreter.EPackageLoadingCallback;
@@ -144,8 +146,7 @@ public class BundleClassLoading implements ClassLoading {
                         if (nsURI != null && className != null) {
                             contributions.put(contributorName, new EPackageDeclaration(nsURI, className, genModel));
                         } else {
-                            DslCommonPlugin.getDefault().warning("An EPackage declaration in project " + contributorName + " has been ignored because of missing informations.",
-                                    new IllegalArgumentException());
+                            DslCommonPlugin.getDefault().warning(MessageFormat.format(Messages.BundleClassLoading_ignoredEPackageDeclaration, contributorName), new IllegalArgumentException());
                         }
                     }
 

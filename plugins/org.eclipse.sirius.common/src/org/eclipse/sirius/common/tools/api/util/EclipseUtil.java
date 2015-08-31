@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.util;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -28,6 +29,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.Messages;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
@@ -138,7 +140,7 @@ public final class EclipseUtil {
                                 contributors.add(clazz.cast(obj));
                             }
                         } catch (final CoreException e) {
-                            DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);
+                            DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.EclipseUtil_extensionLoadError, ext.getLabel()), e);
                             DslCommonPlugin.getDefault().getLog().log(e.getStatus());
                         }
                     }
@@ -196,7 +198,7 @@ public final class EclipseUtil {
                                 val.add(clazz.cast(obj));
                             }
                         } catch (final CoreException e) {
-                            DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);
+                            DslCommonPlugin.getDefault().error(MessageFormat.format(Messages.EclipseUtil_extensionLoadError, ext.getLabel()), e);
                             DslCommonPlugin.getDefault().getLog().log(e.getStatus());
                         }
                     }
