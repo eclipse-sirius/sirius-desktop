@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.TreeVariable;
 import org.eclipse.sirius.tree.description.util.DescriptionSwitch;
 import org.eclipse.sirius.tree.tools.api.interpreter.IInterpreterSiriusTreeVariables;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
@@ -53,36 +54,21 @@ public class TreeToolVariables extends DescriptionSwitch<Object> {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.description.util.DescriptionSwitch#caseTreeItemDeletionTool(org.eclipse.sirius.tree.description.TreeItemDeletionTool)
-     */
     @Override
     public Object caseTreeItemDeletionTool(TreeItemDeletionTool object) {
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, "The currently edited element.");
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, "The semantic element corresponding to the current tree.");
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, Messages.TreeToolVariables_root);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, Messages.TreeToolVariables_element);
         return super.caseTreeItemDeletionTool(object);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public Object caseTreeItemCreationTool(final TreeItemCreationTool object) {
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, "The semantic element of the tree.");
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, "The semantic currently edited element.");
-        addVariableDescriptor(object, IInterpreterSiriusVariables.CONTAINER, "The semantic element corresponding to the view container.");
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, Messages.TreeToolVariables_root);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, Messages.TreeToolVariables_element);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.CONTAINER, Messages.TreeToolVariables_container);
         return super.caseTreeItemCreationTool(object);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.description.util.DescriptionSwitch#caseTreeItemEditionTool(org.eclipse.sirius.tree.description.TreeItemEditionTool)
-     */
     @Override
     public Object caseTreeItemEditionTool(final TreeItemEditionTool object) {
         object.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
@@ -97,12 +83,6 @@ public class TreeToolVariables extends DescriptionSwitch<Object> {
         return super.caseTreeItemEditionTool(object);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.description.util.DescriptionSwitch#caseTreeItemContainerDropTool(org.eclipse.sirius.tree.description.TreeItemContainerDropTool)
-     */
     @Override
     public Object caseTreeItemContainerDropTool(final TreeItemContainerDropTool object) {
         DropContainerVariable oldContainerVariable = ToolFactory.eINSTANCE.createDropContainerVariable();
@@ -123,18 +103,12 @@ public class TreeToolVariables extends DescriptionSwitch<Object> {
 
         PrecedingSiblingsVariables precedingSiblings = DescriptionFactory.eINSTANCE.createPrecedingSiblingsVariables();
         precedingSiblings.setName(IInterpreterSiriusTreeVariables.PRECEDING_SIBLINGS);
-        precedingSiblings.setDocumentation("The list of all the preceding siblings in a Drag and Drop operation");
+        precedingSiblings.setDocumentation(Messages.TreeToolVariables_precedingSiblings);
         object.setPrecedingSiblings(precedingSiblings);
 
         return super.caseTreeItemContainerDropTool(object);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.description.util.DescriptionSwitch#caseTreeCreationDescription(org.eclipse.sirius.tree.description.TreeCreationDescription)
-     */
     @Override
     public Object caseTreeCreationDescription(final TreeCreationDescription object) {
         final ContainerViewVariable containerViewVariable = ToolFactory.eINSTANCE.createContainerViewVariable();
@@ -148,12 +122,6 @@ public class TreeToolVariables extends DescriptionSwitch<Object> {
         return super.caseTreeCreationDescription(object);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.description.util.DescriptionSwitch#caseTreeNavigationDescription(org.eclipse.sirius.tree.description.TreeNavigationDescription)
-     */
     @Override
     public Object caseTreeNavigationDescription(final TreeNavigationDescription object) {
         final ContainerViewVariable containerViewVariable = ToolFactory.eINSTANCE.createContainerViewVariable();

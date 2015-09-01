@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.api.command;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -17,6 +19,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 
 /**
  * EMF Command to expand/collapse a {@link DTreeItem}.
@@ -47,7 +50,7 @@ public class DTreeItemExpansionChangeCommand extends RecordingCommand {
      *            true to expand, false to collapse
      */
     public DTreeItemExpansionChangeCommand(GlobalContext globalContext, TransactionalEditingDomain domain, DTreeItem dTreeItem, boolean expand) {
-        super(domain, (expand ? "Expand" : "Collapse") + " \"" + dTreeItem.getName() + "\" tree item");
+        super(domain, MessageFormat.format(expand ? Messages.DTreeItemExpansionChangeCommand_expandItem : Messages.DTreeItemExpansionChangeCommand_collapseItem, dTreeItem.getName()));
         this.globalContext = globalContext;
         this.dTreeItem = dTreeItem;
         this.expand = expand;
@@ -70,7 +73,7 @@ public class DTreeItemExpansionChangeCommand extends RecordingCommand {
      *            a {@link IProgressMonitor} to give progression
      */
     public DTreeItemExpansionChangeCommand(GlobalContext globalContext, TransactionalEditingDomain domain, DTreeItem dTreeItem, IProgressMonitor monitor, boolean expand) {
-        super(domain, (expand ? "Expand" : "Collapse") + " \"" + dTreeItem.getName() + "\" tree item");
+        super(domain, MessageFormat.format(expand ? Messages.DTreeItemExpansionChangeCommand_expandItem : Messages.DTreeItemExpansionChangeCommand_collapseItem, dTreeItem.getName()));
         this.globalContext = globalContext;
         this.dTreeItem = dTreeItem;
         this.expand = expand;

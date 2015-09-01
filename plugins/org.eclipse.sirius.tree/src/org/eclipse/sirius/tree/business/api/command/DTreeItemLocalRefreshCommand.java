@@ -16,6 +16,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 
 /**
  * EMF Command to do a local refresh of a set of {@link DTreeItem}.
@@ -44,7 +45,7 @@ public class DTreeItemLocalRefreshCommand extends RecordingCommand {
      *            children recursively
      */
     public DTreeItemLocalRefreshCommand(TransactionalEditingDomain domain, GlobalContext globalContext, Collection<DTreeItem> dTreeItems, boolean fullRefresh) {
-        super(domain, "Refresh locally tree");
+        super(domain, Messages.DTreeItemLocalRefreshCommand_refreshLocally);
         this.globalContext = globalContext;
         this.dTreeItems = dTreeItems;
         this.fullRefresh = fullRefresh;

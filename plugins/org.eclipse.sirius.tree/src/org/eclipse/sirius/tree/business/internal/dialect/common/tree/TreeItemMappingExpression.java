@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
+
+import java.text.MessageFormat;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -21,6 +23,7 @@ import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -72,7 +75,7 @@ public class TreeItemMappingExpression {
             try {
                 result = interpreter.evaluateBoolean(semantic, mapping.getPreconditionExpression());
             } catch (final EvaluationException e) {
-                SiriusPlugin.getDefault().warning("the following Tree Item mapping precondition could not be correctly evaluated : " + mapping.getPreconditionExpression(), e);
+                SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.TreeItemMappingExpression_preconditionEvaluationError, mapping.getPreconditionExpression()), e);
             }
             interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
             interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER_VIEW);

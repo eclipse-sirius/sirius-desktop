@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.tree.business.api.query.DTreeItemQuery;
 import org.eclipse.sirius.tree.business.api.query.TreeDescriptionQuery;
 import org.eclipse.sirius.tree.business.internal.dialect.common.tree.DTreeRefresh;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 
 /**
  * Class allowing to synchronizer a {@link DTreeItem} model according to its
@@ -73,7 +74,7 @@ public class DTreeItemUserInteraction {
      */
     public void expandAll(IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Tree item expandion", item.getOwnedTreeItems().size() + 1);
+            monitor.beginTask(Messages.DTreeItemUserInteraction_treeItemExpanding, item.getOwnedTreeItems().size() + 1);
             expand(new SubProgressMonitor(monitor, 1));
             for (DTreeItem child : item.getOwnedTreeItems()) {
                 new DTreeItemUserInteraction(child, ctx).expandAll(new SubProgressMonitor(monitor, 1));

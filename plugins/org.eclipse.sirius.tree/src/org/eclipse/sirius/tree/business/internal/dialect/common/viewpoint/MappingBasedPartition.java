@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.synchronizer.OutputDescriptor;
 import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.eclipse.sirius.synchronizer.SemanticPartitions;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
@@ -76,7 +77,7 @@ public class MappingBasedPartition implements SemanticPartition {
             try {
                 elements = ctx.getInterpreter().evaluateCollection(root, semanticCandidate.get()).iterator();
             } catch (EvaluationException e) {
-                ctx.getSpecifierFeedBack().warning("Error while evaluating semantic candidate expression", e, specificationAttachment);
+                ctx.getSpecifierFeedBack().warning(Messages.MappingBasedPartition_semanticCandidateEvaluationError, e, specificationAttachment);
             }
         } else {
             elements = allEObjectsOfTheSession();
@@ -84,6 +85,7 @@ public class MappingBasedPartition implements SemanticPartition {
         unSetTreeElementVariables();
         return SemanticPartitions.eObjectList(ImmutableList.copyOf(Iterators.filter(elements, new Predicate<EObject>() {
 
+            @Override
             public boolean apply(EObject input) {
                 return ctx.getModelAccessor().eInstanceOf(input, domainClass);
             }

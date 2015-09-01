@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.tools.internal.command;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,6 +62,7 @@ import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -303,13 +305,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         return command;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildDoExecuteDetailsOperation(org.eclipse.sirius.viewpoint.DSemanticDecorator,
-     *      org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
-     *      java.lang.String)
-     */
     @Override
     public AbstractCommand buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {
         final SiriusCommand cmd = new SiriusCommand(domain);
@@ -323,16 +318,9 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         return cmd;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildDirectEditLabelFromTool(org.eclipse.sirius.tree.DTreeItem,
-     *      org.eclipse.sirius.tree.description.TreeItemEditionTool,
-     *      java.lang.String)
-     */
     @Override
     public Command buildDirectEditLabelFromTool(final DTreeItem editedTreeItem, TreeItemEditionTool directEditTool, String newValue) {
-        SiriusCommand result = new SiriusCommand(domain, "Direct Edit on " + editedTreeItem.getName());
+        SiriusCommand result = new SiriusCommand(domain, MessageFormat.format(Messages.TreeCommandFactory_directEdit, editedTreeItem.getName()));
         if (!getPermissionAuthority().canEditInstance(editedTreeItem)) {
             result = new InvalidPermissionCommand(domain, editedTreeItem);
         } else {
@@ -370,16 +358,9 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildDragAndDropItemFromTool(org.eclipse.sirius.tree.DTreeItem,
-     *      org.eclipse.sirius.tree.DTreeItem,
-     *      org.eclipse.sirius.tree.description.TreeItemDragTool)
-     */
     @Override
     public Command buildDropItemFromTool(EObject dropped, DTreeItemContainer dropTarget, Collection<DTreeItem> precedingSiblings, TreeItemContainerDropTool dropTool) {
-        final SiriusCommand result = new SiriusCommand(domain, "Drop the item " + dropped);
+        final SiriusCommand result = new SiriusCommand(domain, MessageFormat.format(Messages.TreeCommandFactory_dropItem, dropped));
 
         EObject dropSem = dropped;
         DSemanticDecorator dropDec = null;
@@ -438,15 +419,9 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         return oldContainer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildOperationActionFromTool(org.eclipse.sirius.viewpoint.description.tool.OperationAction,
-     *      org.eclipse.sirius.tree.DTreeItem)
-     */
     @Override
     public Command buildOperationActionFromTool(OperationAction operationAction, final DTreeItem selectedItem) {
-        final SiriusCommand result = new SiriusCommand(domain, operationAction.getName() + " on " + selectedItem.getName());
+        final SiriusCommand result = new SiriusCommand(domain, MessageFormat.format(Messages.TreeCommandFactory_operationAction, operationAction.getName(), selectedItem.getName()));
         // Step 1 : variables initialization
         final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
         EObject interpreterContext = selectedItem.getTarget();
@@ -471,13 +446,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         });
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildJavaActionFromTool(org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction,
-     *      org.eclipse.sirius.tree.DTreeItem,
-     *      org.eclipse.sirius.tools.api.ui.IExternalJavaAction)
-     */
     @Override
     public Command buildJavaActionFromTool(ExternalJavaAction javaActionItem, DTreeItem selectedItem, IExternalJavaAction javaAction) {
         final CompoundCommand compoundCommand = new CompoundCommand();

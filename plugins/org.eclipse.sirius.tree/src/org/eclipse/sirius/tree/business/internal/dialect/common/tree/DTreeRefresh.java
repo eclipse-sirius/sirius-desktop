@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -52,6 +53,7 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Mappin
 import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 import com.google.common.base.Function;
@@ -124,7 +126,7 @@ public class DTreeRefresh {
      */
     public void refresh(boolean fullRefresh, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh tree", 8);
+            monitor.beginTask(Messages.DTreeUserInteraction_treeRefresh, 8);
             if (ctx.getModelAccessor().getPermissionAuthority().canEditInstance(container)) {
                 MappingHiearchyTable hierarchy = new MappingHiearchyTable();
                 SignatureProvider signProvider = new TreeSignatureProvider(hierarchy);
@@ -133,6 +135,7 @@ public class DTreeRefresh {
                 final TreeMappingProvider provider = new TreeMappingProvider(semProvider);
                 Iterable<Mapping> providedMappings = Iterables.transform(mappings, new Function<TreeItemMapping, Mapping>() {
 
+                    @Override
                     public Mapping apply(TreeItemMapping from) {
                         return provider.getOrCreate(from);
                     }
@@ -177,7 +180,7 @@ public class DTreeRefresh {
             CreatedTreeItem created = new CreatedTreeItem(ctx, item, descriptor);
             return created;
         }
-        throw new RuntimeException("Unkown representation container instance");
+        throw new RuntimeException(Messages.DTreeRefresh_unknownRepresentationContainer);
     }
 }
 
@@ -195,6 +198,7 @@ class DTreePreRefreshStatus implements PreRefreshStatus {
         this.ctx = ctx;
     }
 
+    @Override
     public Iterable<CreatedOutput> getExistingOutputs() {
         if (computedOutputs.some()) {
             return computedOutputs.get();
@@ -202,6 +206,7 @@ class DTreePreRefreshStatus implements PreRefreshStatus {
         return Lists.newArrayList();
     }
 
+    @Override
     public void computeStatus(CreatedOutput container, Collection<? extends Mapping> childMappings) {
         List<CreatedOutput> result = Lists.newArrayList();
         int i = 0;
@@ -283,10 +288,12 @@ class RTreeMapping implements Mapping {
         this.semPartition = SemanticPartitions.eAllContents(description.getDomainClass());
     }
 
+    @Override
     public Option<Mapping> getSuper() {
         return Options.newNone();
     }
 
+    @Override
     public SemanticPartition getSemanticPartition() {
         return semPartition;
     }
@@ -300,10 +307,12 @@ class RTreeMapping implements Mapping {
         return result;
     }
 
+    @Override
     public boolean isEnabled() {
         return true;
     }
 
+    @Override
     public Option<AutomaticCreator> getCreator() {
         return Options.newNone();
     }
@@ -327,41 +336,49 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
         this.newIndex = descriptor.getIndex();
     }
 
+    @Override
     public OutputTreeItemDescriptor getDescriptor() {
         return descriptor;
     }
 
+    @Override
     public void setNewIndex(int nextIndex) {
         this.newIndex = nextIndex;
     }
 
+    @Override
     public int getNewIndex() {
         return this.newIndex;
     }
 
+    @Override
     public EObject getCreatedElement() {
         return tItem;
     }
 
+    @Override
     public void updateMapping() {
         if (newMapping.some()) {
             tItem.setActualMapping(((RTreeItemMapping) newMapping.get()).getDescription());
         } else {
-            throw new RuntimeException("no mapping to set");
+            throw new RuntimeException(Messages.DTreeRefresh_noMapping);
         }
 
     }
 
+    @Override
     public void refresh() {
         DTreeElementSynchronizerSpec sync = new DTreeElementSynchronizerSpec(getGlobalContext().getInterpreter(), getGlobalContext().getModelAccessor());
         sync.refresh(tItem);
     }
 
+    @Override
     public void setNewMapping(Mapping map) {
         newMapping = Options.newSome(map);
 
     }
 
+    @Override
     public Option<? extends ChildCreationSupport> getChildSupport() {
         return Options.newSome(new TreeItemContainerChildSupport(getGlobalContext(), tItem));
     }
@@ -370,10 +387,12 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
      * Synchronize direct children only if the current {@link DTreeItem} is
      * expanded.
      */
+    @Override
     public boolean synchronizeChildren() {
         return tItem.isExpanded();
     }
 
+    @Override
     public List<Mapping> getChildMappings() {
         return getDescriptor().getMapping().getChildMappings();
     }
@@ -390,6 +409,7 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
         this.ctx = ctx;
     }
 
+    @Override
     public void reorderChilds(Iterable<CreatedOutput> outDesc) {
         final Multiset<TreeItemMapping> subMappings = LinkedHashMultiset.create();
         Set<TreeItemMapping> mappings = new HashSet<TreeItemMapping>();
@@ -421,6 +441,7 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
 
             Function<DTreeItem, Integer> getNewIndex = new Function<DTreeItem, Integer>() {
 
+                @Override
                 public Integer apply(DTreeItem from) {
                     // init with element count : elements with unknown mapping
                     // will
@@ -444,6 +465,7 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
         }
     }
 
+    @Override
     public void deleteChild(CreatedOutput outDesc) {
         /*
          * The cross referencer is actually optional for the eDelete method of
@@ -453,6 +475,7 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
         ctx.getModelAccessor().eDelete(outDesc.getCreatedElement(), xRef);
     }
 
+    @Override
     public CreatedOutput createChild(OutputDescriptor outDesc) {
         OutputTreeItemDescriptor descriptor = (OutputTreeItemDescriptor) outDesc;
         DTreeItem dTreeItem = TreeFactory.eINSTANCE.createDTreeItem();
@@ -486,8 +509,6 @@ abstract class AbstractCreatedDTreeItemContainer implements CreatedOutput {
 
 class CreatedDTree extends AbstractCreatedDTreeItemContainer {
 
-    private static final String ILLEGAL_ARGUMENT_MESSAGE = "It has no sense";
-
     private DTree dnode;
 
     private OutputDescriptor descriptor;
@@ -501,23 +522,28 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
         this.newIndex = descriptor.getIndex();
     }
 
+    @Override
     public OutputDescriptor getDescriptor() {
         return descriptor;
     }
 
+    @Override
     public void setNewIndex(int nextIndex) {
-        throw new IllegalArgumentException(ILLEGAL_ARGUMENT_MESSAGE);
+        throw new IllegalArgumentException(Messages.DTreeRefresh_nonsense);
     }
 
+    @Override
     public EObject getCreatedElement() {
         return dnode;
     }
 
+    @Override
     public void updateMapping() {
-        throw new IllegalArgumentException(ILLEGAL_ARGUMENT_MESSAGE);
+        throw new IllegalArgumentException(Messages.DTreeRefresh_nonsense);
 
     }
 
+    @Override
     public void refresh() {
         /*
          * here we should update any DTree info computed from semantic elements.
@@ -525,10 +551,12 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
          */
     }
 
+    @Override
     public void setNewMapping(Mapping map) {
-        throw new IllegalArgumentException(ILLEGAL_ARGUMENT_MESSAGE);
+        throw new IllegalArgumentException(Messages.DTreeRefresh_nonsense);
     }
 
+    @Override
     public Option<? extends ChildCreationSupport> getChildSupport() {
         return Options.newSome(new TreeItemContainerChildSupport(getGlobalContext(), dnode));
     }
@@ -537,14 +565,17 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
      * Always synchronize direct children of a {@link DTree} as it has not the
      * capability of collapse as {@link fr.obeo.dsl.viewpoint.tree.DTreeItem}.
      */
+    @Override
     public boolean synchronizeChildren() {
         return true;
     }
 
+    @Override
     public List<Mapping> getChildMappings() {
         return ((RTreeMapping) getDescriptor().getMapping()).getChildMappings();
     }
 
+    @Override
     public int getNewIndex() {
         return newIndex;
     }
@@ -561,10 +592,12 @@ class TreeItemCreator implements AutomaticCreator {
         this.provider = provider;
     }
 
+    @Override
     public Collection<? extends OutputDescriptor> computeDescriptors(final CreatedOutput context, Iterator<EObject> it) {
         final AbstractCreatedDTreeItemContainer castedContext = (AbstractCreatedDTreeItemContainer) context;
         Predicate<OutputTreeItemDescriptor> filterPredicates = new Predicate<OutputTreeItemDescriptor>() {
 
+            @Override
             public boolean apply(OutputTreeItemDescriptor input) {
                 return new TreeItemMappingExpression(castedContext.getGlobalContext(), input.getMapping().getDescription()).checkPrecondition(input.getSourceElement(), input.getViewContainer());
             }
@@ -595,6 +628,7 @@ class RTreeItemMapping implements Mapping {
         this.creator = new TreeItemCreator(nm, provider);
     }
 
+    @Override
     public Option<? extends Mapping> getSuper() {
         if (nm.getSpecialize() != null) {
             return Options.newSome(provider.getOrCreate(nm.getSpecialize()));
@@ -602,6 +636,7 @@ class RTreeItemMapping implements Mapping {
         return Options.newNone();
     }
 
+    @Override
     public SemanticPartition getSemanticPartition() {
         return provider.getSemanticProvider().getSemanticPartition(nm);
     }
@@ -610,6 +645,7 @@ class RTreeItemMapping implements Mapping {
         List<Mapping> result = Lists.newArrayList();
         result.addAll(Collections2.transform(nm.getAllSubMappings(), new Function<TreeItemMapping, RTreeItemMapping>() {
 
+            @Override
             public RTreeItemMapping apply(TreeItemMapping from) {
                 return provider.getOrCreate(from);
             }
@@ -617,6 +653,7 @@ class RTreeItemMapping implements Mapping {
         return result;
     }
 
+    @Override
     public boolean isEnabled() {
         return true;
     }
@@ -625,6 +662,7 @@ class RTreeItemMapping implements Mapping {
         return nm;
     }
 
+    @Override
     public Option<AutomaticCreator> getCreator() {
         return Options.newSome(creator);
     }
@@ -640,18 +678,19 @@ class TreeSignatureProvider implements SignatureProvider {
         this.hierarchyTable = hierarchyTable;
     }
 
+    @Override
     public Signature getSignature(OutputDescriptor descriptor) {
         if (descriptor instanceof OutputTreeItemDescriptor) {
             return doGetSignature((OutputTreeItemDescriptor) descriptor);
         } else if (descriptor instanceof OutputDTreeDescriptor) {
             return doGetSignature((OutputDTreeDescriptor) descriptor);
         }
-        throw new RuntimeException("Unkown descriptor:" + descriptor);
+        throw new RuntimeException(MessageFormat.format(Messages.DTreeRefresh_unknownDescriptor, descriptor));
 
     }
 
     private Signature doGetSignature(OutputDTreeDescriptor desc) {
-        return getOrCreate("tree " + getURI(desc.getSourceElement()) + desc.getMapping().toString());
+        return getOrCreate("tree " + getURI(desc.getSourceElement()) + desc.getMapping().toString()); //$NON-NLS-1$
     }
 
     private Signature getOrCreate(String string) {
@@ -691,14 +730,17 @@ class OutputDTreeDescriptor implements OutputDescriptor {
 
     }
 
+    @Override
     public int getIndex() {
         return 0;
     }
 
+    @Override
     public EObject getSourceElement() {
         return from;
     }
 
+    @Override
     public Mapping getMapping() {
         return provider.getOrCreate(mapping);
     }
@@ -735,14 +777,17 @@ class OutputTreeItemDescriptor implements OutputDescriptor {
         return container;
     }
 
+    @Override
     public int getIndex() {
         return position;
     }
 
+    @Override
     public EObject getSourceElement() {
         return from;
     }
 
+    @Override
     public RTreeItemMapping getMapping() {
         return provider.getOrCreate(mapping);
     }

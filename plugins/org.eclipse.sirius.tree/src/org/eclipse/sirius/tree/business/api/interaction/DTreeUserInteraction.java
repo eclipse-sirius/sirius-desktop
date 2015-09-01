@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.query.TreeDescriptionQuery;
 import org.eclipse.sirius.tree.business.internal.dialect.common.tree.DTreeRefresh;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 
 /**
  * This class is responsible for providing an entry point to all the user
@@ -74,7 +75,7 @@ public class DTreeUserInteraction {
      */
     public DTreeUserInteraction refreshContent(boolean fullRefresh, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh tree", 1);
+            monitor.beginTask(Messages.DTreeUserInteraction_treeRefresh, 1);
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_TREE_KEY);
             SemanticPartitionInvalidator invalidator = new SemanticPartitionInvalidator();
             DTreeRefresh refresher = new DTreeRefresh(tree, new TreeDescriptionQuery(tree.getDescription()).getAllDescendantMappings(), invalidator, ctx);
@@ -105,7 +106,7 @@ public class DTreeUserInteraction {
      */
     public DTreeUserInteraction expandAll(IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Tree item expandion", tree.getOwnedTreeItems().size());
+            monitor.beginTask(Messages.DTreeItemUserInteraction_treeItemExpanding, tree.getOwnedTreeItems().size());
             for (DTreeItem child : tree.getOwnedTreeItems()) {
                 new DTreeItemUserInteraction(child, ctx).expandAll(new SubProgressMonitor(monitor, 1));
             }
@@ -135,7 +136,7 @@ public class DTreeUserInteraction {
      */
     public DTreeUserInteraction expand(IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Tree item expanding", tree.getOwnedTreeItems().size());
+            monitor.beginTask(Messages.DTreeItemUserInteraction_treeItemExpanding, tree.getOwnedTreeItems().size());
             for (DTreeItem child : tree.getOwnedTreeItems()) {
                 if (!child.isExpanded()) {
                     new DTreeItemUserInteraction(child, ctx).expand(new SubProgressMonitor(monitor, 1));

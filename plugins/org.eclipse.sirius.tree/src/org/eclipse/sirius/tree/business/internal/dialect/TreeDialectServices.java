@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Set;
 
@@ -48,6 +49,7 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Global
 import org.eclipse.sirius.tree.business.internal.dialect.description.TreeInterpretedExpressionQuery;
 import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
 import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.tree.tools.internal.command.TreeCommandFactory;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -65,30 +67,22 @@ import com.google.common.collect.Sets;
  * @author pcdavid
  */
 public class TreeDialectServices extends AbstractRepresentationDialectServices {
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isSupported(RepresentationDescription description) {
         return description instanceof TreeDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isSupported(DRepresentation representation) {
         return representation instanceof DTree;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public DRepresentation createRepresentation(String name, EObject semantic, RepresentationDescription description, IProgressMonitor monitor) {
         DTree tree = null;
         try {
-            monitor.beginTask("Create tree : " + name, 11);
-            monitor.subTask("Create tree : " + name);
+            monitor.beginTask(MessageFormat.format(Messages.TreeDialectServices_createTree, name), 11);
+            monitor.subTask(MessageFormat.format(Messages.TreeDialectServices_createTree, name));
             final Session session = SessionManager.INSTANCE.getSession(semantic);
             final EditingDomain domain = session.getTransactionalEditingDomain();
             /*
@@ -125,16 +119,12 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         super.initRepresentations(semantic, vp, TreeDescription.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void initRepresentations(Viewpoint vp, EObject semantic, IProgressMonitor monitor) {
         super.initRepresentations(semantic, vp, TreeDescription.class, monitor);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     protected <T extends RepresentationDescription> void initRepresentationForElement(T representationDescription, EObject semanticElement, IProgressMonitor monitor) {
         if (representationDescription instanceof TreeDescription) {
             TreeDescription treeDescription = (TreeDescription) representationDescription;
@@ -154,7 +144,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
                     }
                     if (canCreate) {
                         try {
-                            monitor.beginTask("Initialize tree of type " + new IdentifiedElementQuery(representationDescription).getLabel(), 1);
+                            monitor.beginTask(MessageFormat.format(Messages.TreeDialectServices_initializeTree, new IdentifiedElementQuery(representationDescription).getLabel()), 1);
                             final TreeCommandFactory treeCommandFactory = new TreeCommandFactory(domain);
                             treeCommandFactory.setModelAccessor(modelAccessor);
                             DCommand command = treeCommandFactory.buildCreateTreeFromDescription(treeDescription, semanticElement, new SubProgressMonitor(monitor, 1));
@@ -168,9 +158,6 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
         DRepresentation newRepresentation = super.copyRepresentation(representation, name, session, monitor);
@@ -193,12 +180,10 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         // TODO
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void refresh(DRepresentation representation, boolean fullRefresh, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Tree refresh", 1);
+            monitor.beginTask(Messages.TreeDialectServices_treeRefresh, 1);
             if (canRefresh(representation)) {
                 refreshTree((DTree) representation, fullRefresh, monitor);
             }
@@ -207,9 +192,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public RepresentationDescription getDescription(DRepresentation representation) {
         if (isSupported(representation)) {
             return ((DTree) representation).getDescription();
@@ -229,9 +212,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canCreate(EObject semantic, RepresentationDescription desc) {
         boolean result = false;
         if (semantic != null && isSupported(desc)) {
@@ -245,32 +226,16 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#createInterpretedExpressionQuery(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EStructuralFeature)
-     */
+    @Override
     public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         return new TreeInterpretedExpressionQuery(target, feature);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
-     */
     @Override
     public boolean handles(RepresentationDescription representationDescription) {
         return representationDescription instanceof TreeDescription;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
-     */
     @Override
     public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
         return false;
@@ -279,7 +244,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     @Override
     public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh tree", 10);
+            monitor.beginTask(Messages.DTreeUserInteraction_treeRefresh, 10);
             DTree tree = (DTree) representation;
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(tree.getTarget());
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
@@ -289,7 +254,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
             DTreeElementSynchronizer synchronizer = new DTreeElementSynchronizerSpec(interpreter, accessor);
             IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
             try {
-                subMonitor.beginTask("Refresh impacted elements", dTreeElements.size());
+                subMonitor.beginTask(Messages.TreeDialectServices_refreshImpactedElements, dTreeElements.size());
                 for (DTreeElement dTreeElement : dTreeElements) {
                     if (dTreeElement instanceof DTreeItem) {
                         synchronizer.refresh((DTreeItem) dTreeElement);

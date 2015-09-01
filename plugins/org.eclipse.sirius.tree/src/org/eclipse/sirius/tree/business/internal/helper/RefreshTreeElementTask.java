@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
+import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -117,6 +118,6 @@ public class RefreshTreeElementTask extends AbstractCommandTask {
 
     @Override
     public String getLabel() {
-        return "Refresh element task";
+        return Messages.RefreshTreeElementTask_label;
     }
 }
