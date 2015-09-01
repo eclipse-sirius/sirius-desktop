@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +42,7 @@ import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.description.TreeDragSource;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -60,12 +62,6 @@ import com.google.common.collect.Sets;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public class DTreeItemDropListener extends ViewerDropAdapter implements DropTargetListener {
-    /**
-     * Start of the error message when more than one drop description
-     * corresponds to a drop element.
-     */
-    private static final String MORE_THAN_ONE_DROP_DESCRIPTION_ERROR_MSG = "There are more than one drop description that match the dropped element";
-
     private TransactionalEditingDomain domain;
 
     private ModelAccessor accessor;
@@ -366,7 +362,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     }
 
     private CompoundCommand buildCommand() {
-        CompoundCommand dndCommand = new CompoundCommand("Drag And Drop");
+        CompoundCommand dndCommand = new CompoundCommand(Messages.DTreeItemDropListener_dragAndDropCommand);
         if (!droppedData.isEmpty()) {
             for (DSemanticDecorator semDec : droppedData) {
                 EObject droppedElement = semDec.getTarget();
@@ -469,7 +465,8 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
                     bestDropDescription = dropTool;
                 } else {
                     SiriusPlugin.getDefault().warning(
-                            MORE_THAN_ONE_DROP_DESCRIPTION_ERROR_MSG + " : " + droppedElement + " (" + bestDropDescription.getName() + " and " + dropTool.getName() + ").", new RuntimeException());
+                            MessageFormat.format(Messages.DTreeItemDropListener_ambigousDropWarning, droppedElement, bestDropDescription.getName(), dropTool.getName()),
+                            new RuntimeException());
                     break;
                 }
             }
@@ -499,6 +496,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
 
     private Iterable<TreeItemContainerDropTool> getDropTools(final TreeDragSource dragSource) {
         Predicate<TreeItemContainerDropTool> checkedDragSource = new Predicate<TreeItemContainerDropTool>() {
+            @Override
             public boolean apply(TreeItemContainerDropTool input) {
                 return input.getDragSource() == TreeDragSource.BOTH || input.getDragSource() == dragSource;
             }

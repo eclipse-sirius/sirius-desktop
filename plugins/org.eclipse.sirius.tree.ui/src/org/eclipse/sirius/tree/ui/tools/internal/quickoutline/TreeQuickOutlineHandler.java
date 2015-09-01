@@ -20,6 +20,7 @@ import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.QuickOutlineDe
 import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.QuickOutlinePageDescriptor;
 import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.SiriusInformationPresenter;
 import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.SiriusInformationPresenterFactory;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
@@ -54,7 +55,7 @@ public class TreeQuickOutlineHandler extends AbstractHandler {
         ComposedAdapterFactory caf = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
         QuickOutlineAdapterFactoryLabelProvider labelProvider = new DTreeQuickOutlineLabelProvider(caf);
         TreeOutlineCallback callBack = new TreeOutlineCallback(editor);
-        QuickOutlinePageDescriptor page1 = new QuickOutlinePageDescriptor(callBack, labelProvider, new DTreeQuickOutlineContentProvider(), "Quick Outline");
+        QuickOutlinePageDescriptor page1 = new QuickOutlinePageDescriptor(callBack, labelProvider, new DTreeQuickOutlineContentProvider(), Messages.TreeQuickOutlineHandler_quickOutline);
         QuickOutlineDescriptor descriptor = new QuickOutlineDescriptor();
         descriptor.addPage(page1);
         return descriptor;

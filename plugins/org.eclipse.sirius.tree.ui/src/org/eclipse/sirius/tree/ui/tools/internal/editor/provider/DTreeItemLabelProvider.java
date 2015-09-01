@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.text.MessageFormat;
 import java.util.List;
 
 import org.eclipse.core.runtime.Path;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreeItemStyle;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.provider.DSemanticTargetBasedLabelProvider;
@@ -126,7 +128,7 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider im
             }
 
             if (descriptor == null) {
-                SiriusPlugin.getDefault().warning("Icon file \"" + iconPath + "\" not found", null);
+                SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DTreeItemLabelProvider_iconFileNotFound, iconPath), null);
                 descriptor = ImageDescriptor.getMissingImageDescriptor();
             }
 

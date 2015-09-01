@@ -10,6 +10,7 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -18,6 +19,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreePackage;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.tools.internal.editor.ChangeExpandeStateRunnable;
 import org.eclipse.swt.SWT;
@@ -71,6 +73,7 @@ public class TreeItemExpansionManager implements Listener {
      * 
      * {@inheritDoc}
      */
+    @Override
     public void handleEvent(Event event) {
         switch (event.type) {
         case SWT.Collapse:
@@ -99,7 +102,7 @@ public class TreeItemExpansionManager implements Listener {
             if (data instanceof DTreeItem) {
                 DTreeItem dTreeItem = (DTreeItem) data;
                 if (isEventForDTreeItemExpandable(event)) {
-                    treeExpandingCollapsingAction(treeItem, dTreeItem, false, "collapsing the tree.");
+                    treeExpandingCollapsingAction(treeItem, dTreeItem, false, Messages.TreeItemExpansionManager_treeCollapsing);
                 } else {
                     Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, true));
                 }
@@ -123,7 +126,7 @@ public class TreeItemExpansionManager implements Listener {
             if (data instanceof DTreeItem) {
                 DTreeItem dTreeItem = (DTreeItem) data;
                 if (isEventForDTreeItemExpandable(event)) {
-                    treeExpandingCollapsingAction(treeItem, dTreeItem, true, "expanding the tree.");
+                    treeExpandingCollapsingAction(treeItem, dTreeItem, true, Messages.TreeItemExpansionManager_treeExpanding);
                 } else {
                     Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, false));
                 }
@@ -179,7 +182,7 @@ public class TreeItemExpansionManager implements Listener {
                     try {
                         ps.busyCursorWhile(new ExpandDTreeItemRunnableWithProgress(session, dTreeItem, expand));
                     } catch (InvocationTargetException e) {
-                        TreeUIPlugin.INSTANCE.log(new Status(IStatus.ERROR, TreeUIPlugin.ID, "Error while " + errorMessage, e));
+                        TreeUIPlugin.INSTANCE.log(new Status(IStatus.ERROR, TreeUIPlugin.ID, MessageFormat.format(Messages.TreeItemExpansionManager_expandOrCollaseError, errorMessage), e));
                     } catch (InterruptedException e) {
                         Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, !expand));
                     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.description.TreeMapping;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.AbstractToolAction;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.AbstractToolItemAction;
@@ -131,11 +132,7 @@ public class DTreeMenuListener implements IMenuListener {
         refreshAction = new RefreshAction((DTreeEditor) treeViewManager.getEditor());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.IMenuListener#menuAboutToShow(org.eclipse.jface.action.IMenuManager)
-     */
+    @Override
     public void menuAboutToShow(final IMenuManager manager) {
         // Refresh the cached actions if needed
         treeViewManager.fillMenu();
@@ -186,7 +183,7 @@ public class DTreeMenuListener implements IMenuListener {
      */
     private void addOpenRepresentationMenu(final IMenuManager manager) {
         // Create a new sub-menu manager
-        final MenuManager openMenuManager = new MenuManager("Open", DTreeMenuListener.MENU_OPEN_REPRESENTATION_ID);
+        final MenuManager openMenuManager = new MenuManager(Messages.DTreeMenuListener_open, DTreeMenuListener.MENU_OPEN_REPRESENTATION_ID);
         // Create the item to add to the main manager
         final SubContributionItem openMenuItem = new SubContributionItem(openMenuManager);
         manager.add(openMenuItem);
@@ -217,7 +214,7 @@ public class DTreeMenuListener implements IMenuListener {
      */
     private void addNewRepresentationMenu(final IMenuManager manager) {
         // Create a new sub-menu manager
-        final MenuManager newMenuManager = new MenuManager("New", DTreeMenuListener.MENU_NEW_REPRESENTATION_ID);
+        final MenuManager newMenuManager = new MenuManager(Messages.DTreeMenuListener_new, DTreeMenuListener.MENU_NEW_REPRESENTATION_ID);
         // Create the item to add to the main manager
         final SubContributionItem newMenuItem = new SubContributionItem(newMenuManager);
         manager.add(newMenuItem);
@@ -235,10 +232,6 @@ public class DTreeMenuListener implements IMenuListener {
         }
     }
 
-    /**
-     * @param openMenuItem
-     * @param semanticElement
-     */
     private void createOpenAction(final SubContributionItem openItem, final DSemanticDecorator decorator) {
         final EObject semanticElement = decorator.getTarget();
         final Session session = SessionManager.INSTANCE.getSession(semanticElement);
@@ -371,8 +364,8 @@ public class DTreeMenuListener implements IMenuListener {
                     }
                     if (append) {
                         newMenuItem.setVisible(true);
-                        ((IMenuManager) newMenuItem.getInnerItem()).appendToGroup(NEW_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc,
-                                currentElement, treeViewManager.getEditingDomain(), treeViewManager.getTreeCommandFactory()));
+                        ((IMenuManager) newMenuItem.getInnerItem()).appendToGroup(NEW_REPRESENTATION_GROUP_SEPARATOR,
+                                new CreateRepresentationFromRepresentationCreationDescription(desc, currentElement, treeViewManager.getEditingDomain(), treeViewManager.getTreeCommandFactory()));
                     }
                 }
             }

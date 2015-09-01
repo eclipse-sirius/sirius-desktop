@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -43,21 +44,11 @@ public class HierarchyLabelTreeProvider extends LabelProvider {
         this.wrappedProvider = wrappedLabelProvider;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.LabelProvider#getImage(java.lang.Object)
-     */
     @Override
     public Image getImage(final Object element) {
         return wrappedProvider != null ? wrappedProvider.getImage(element) : super.getImage(element);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
-     */
     @Override
     public String getText(final Object element) {
         if (element instanceof TreeMapping || element instanceof TreeDescription || element instanceof TreeNavigationDescription) {
@@ -82,7 +73,7 @@ public class HierarchyLabelTreeProvider extends LabelProvider {
         } else if (eObject instanceof RepresentationExtensionDescription) {
             label = ((RepresentationExtensionDescription) eObject).getName();
         }
-        return label != null ? label : "Element whithout name";
+        return label != null ? label : Messages.HierarchyLabelTreeProvider_elementWithoutName;
     }
 
 }

@@ -71,6 +71,7 @@ Additional non-breaking changes:
 ** @org.eclipse.sirius.common.ui@
 ** @org.eclipse.sirius.eef.adapters@
 ** @org.eclipse.sirius.interpreter@
+** @org.eclipse.sirius.tree.ui@
 
 h4. Changes in @org.eclipse.sirius.common@
 

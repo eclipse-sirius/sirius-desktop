@@ -43,6 +43,7 @@ import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactoryProvider;
 import org.eclipse.sirius.tree.business.api.command.TreeCommandFactoryService;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
@@ -193,7 +194,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         if (getTreeModel() == null) {
             /* eclipse was closed with an editor opened and not saved */
             final Label errorLabel = new Label(parent, SWT.CENTER);
-            errorLabel.setText("This tree was not saved. You can close the editor");
+            errorLabel.setText(Messages.DTreeEditor_treeModelUnsaved);
             return;
         }
         treeViewerManager = new DTreeViewerManager(parent, getTreeModel(), getEditingDomain(), accessor, emfCommandFactory, this);
@@ -449,7 +450,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         });
 
     }
-    
+
     @Override
     public Image getInitialImage() {
         if (initialTitleImage == null || initialTitleImage.isDisposed()) {

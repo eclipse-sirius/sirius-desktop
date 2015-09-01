@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -17,19 +19,19 @@ import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.widgets.Tree;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.swt.widgets.Tree;
 
 /**
  * Support for editing DTreeItems of a DTree.
@@ -81,11 +83,6 @@ public class DTreeItemEditingSupport extends EditingSupport {
         this.treeEditor = abstractDTreeEditor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.EditingSupport#canEdit(java.lang.Object)
-     */
     @Override
     protected boolean canEdit(final Object element) {
 
@@ -117,8 +114,8 @@ public class DTreeItemEditingSupport extends EditingSupport {
                     try {
                         canEdit = interpreter.evaluateBoolean(item.getTarget(), precondition);
                     } catch (final EvaluationException e) {
-                        RuntimeLoggerManager.INSTANCE.error(item.getUpdater().getDirectEdit(), org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(),
-                                e);
+                        RuntimeLoggerManager.INSTANCE.error(item.getUpdater().getDirectEdit(),
+                                org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
                     }
 
                 }
@@ -130,11 +127,6 @@ public class DTreeItemEditingSupport extends EditingSupport {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.EditingSupport#getCellEditor(java.lang.Object)
-     */
     @Override
     protected CellEditor getCellEditor(final Object element) {
         if (element instanceof DTreeItem) {
@@ -145,11 +137,6 @@ public class DTreeItemEditingSupport extends EditingSupport {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.EditingSupport#getValue(java.lang.Object)
-     */
     @Override
     protected Object getValue(final Object element) {
         Object result = null;
@@ -159,12 +146,6 @@ public class DTreeItemEditingSupport extends EditingSupport {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.EditingSupport#setValue(java.lang.Object,
-     *      java.lang.Object)
-     */
     @Override
     protected void setValue(final Object element, final Object value) {
         if (element instanceof DTreeItem) {
@@ -197,7 +178,8 @@ public class DTreeItemEditingSupport extends EditingSupport {
         // We simply change the name of the given itemToSet
         final DTreeItem treeItem = itemToSet;
         if (value instanceof String) {
-            getEditingDomain().getCommandStack().execute(new StandardSetValueRecordingCommand(getEditingDomain(), "Direct Edit on " + itemToSet.getName(), treeItem, value));
+            getEditingDomain().getCommandStack().execute(
+                    new StandardSetValueRecordingCommand(getEditingDomain(), MessageFormat.format(Messages.DTreeItemEditingSupport_directEditCommand, itemToSet.getName()), treeItem, value));
         }
     }
 

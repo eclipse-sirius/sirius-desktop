@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.DTreeItemLocalRefreshCommand;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
 import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
@@ -52,8 +53,6 @@ import com.google.common.collect.Lists;
  */
 public class RefreshAction extends Action implements IObjectActionDelegate {
 
-    private static final String DEFAULT_NAME = "Refresh Tree Element";
-
     private DTreeEditor treeEditor;
 
     private ISelection selection;
@@ -67,7 +66,7 @@ public class RefreshAction extends Action implements IObjectActionDelegate {
      *            the tree editor
      */
     public RefreshAction(final DTreeEditor treeEditor) {
-        super(DEFAULT_NAME, DTreeViewerManager.getImageRegistry().getDescriptor(DTreeViewerManager.REFRESH_IMG));
+        super(Messages.RefreshAction_refreshTreeElement, DTreeViewerManager.getImageRegistry().getDescriptor(DTreeViewerManager.REFRESH_IMG));
         this.treeEditor = treeEditor;
         minimizedSelection = new LinkedList<Object>();
     }
@@ -96,6 +95,7 @@ public class RefreshAction extends Action implements IObjectActionDelegate {
         IRunnableWithProgress op = null;
         if (minimizedSelection.isEmpty()) {
             op = new IRunnableWithProgress() {
+                @Override
                 public void run(final IProgressMonitor monitor) {
                     TransactionalEditingDomain domain = treeEditor.getEditingDomain();
                     domain.getCommandStack().execute(new RefreshRepresentationsCommand(domain, monitor, treeEditor.getTreeModel()));
@@ -107,6 +107,7 @@ public class RefreshAction extends Action implements IObjectActionDelegate {
             final Collection<DTreeItem> dTreeItems = Lists.newArrayList(elements);
             if (!dTreeItems.isEmpty()) {
                 op = new IRunnableWithProgress() {
+                    @Override
                     public void run(final IProgressMonitor monitor) {
                         Session session = new EObjectQuery(treeEditor.getRepresentation()).getSession();
                         if (session != null) {
@@ -138,10 +139,10 @@ public class RefreshAction extends Action implements IObjectActionDelegate {
             treeEditor.enablePropertiesUpdate(false);
             monitorDialog.run(true, false, op);
         } catch (final InvocationTargetException e) {
-            MessageDialog.openError(activeShell, "Error", e.getTargetException().getMessage());
-            SiriusPlugin.getDefault().error("Error while refreshing tree", e);
+            MessageDialog.openError(activeShell, Messages.EditorRefreshAction_error, e.getTargetException().getMessage());
+            SiriusPlugin.getDefault().error(Messages.EditorRefreshAction_treeRefreshError, e);
         } catch (final InterruptedException e) {
-            MessageDialog.openInformation(activeShell, "Cancelled", e.getMessage());
+            MessageDialog.openInformation(activeShell, Messages.EditorRefreshAction_refreshCancelled, e.getMessage());
         } finally {
             treeEditor.enablePropertiesUpdate(true);
         }

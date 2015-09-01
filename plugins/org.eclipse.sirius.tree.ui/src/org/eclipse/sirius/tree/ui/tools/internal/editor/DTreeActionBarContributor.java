@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,8 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor;
 
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.ui.IWorkbenchActionConstants;
-
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.EditorCreateTreeItemMenuAction;
+import org.eclipse.ui.IWorkbenchActionConstants;
 
 /**
  * This is a contributor for a DTree editor.
@@ -22,14 +21,6 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.EditorCreateTree
  * @author cbrun
  */
 public class DTreeActionBarContributor extends EditingDomainActionBarContributor {
-
-    /**
-     * Constructor.
-     */
-    public DTreeActionBarContributor() {
-
-    }
-
     /**
      * Add the create tree item menu to the toolbar.
      * 
@@ -39,7 +30,7 @@ public class DTreeActionBarContributor extends EditingDomainActionBarContributor
     public void addCreateTreeItemMenu(final EditorCreateTreeItemMenuAction editorCreateLineMenuAction) {
         final IToolBarManager toolBarManager = getActionBars().getToolBarManager();
         toolBarManager.remove(EditorCreateTreeItemMenuAction.ID);
-        toolBarManager.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, editorCreateLineMenuAction); //$NON-NLS-1$
+        toolBarManager.appendToGroup(IWorkbenchActionConstants.MB_ADDITIONS, editorCreateLineMenuAction);
         toolBarManager.update(true);
     }
 

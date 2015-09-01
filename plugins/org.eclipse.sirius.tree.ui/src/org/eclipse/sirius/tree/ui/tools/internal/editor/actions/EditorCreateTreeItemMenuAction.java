@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MenuAdapter;
@@ -36,12 +37,7 @@ import org.eclipse.swt.widgets.MenuItem;
  */
 public class EditorCreateTreeItemMenuAction extends Action implements IMenuCreator {
     /** The Id of this action. */
-    public static final String ID = "CreateTreeItemMenu";
-
-    /**
-     * The default name of the action menu.
-     */
-    private static final String DEFAULT_NAME = "Create root tree items";
+    public static final String ID = "CreateTreeItemMenu"; //$NON-NLS-1$
 
     /** Menu manager for this action. */
     private final MenuManager menuManager = new MenuManager();
@@ -82,17 +78,12 @@ public class EditorCreateTreeItemMenuAction extends Action implements IMenuCreat
      * {@link #BUNDLE bundle} resources prefixed by &quot;action.save&quot;.
      */
     public EditorCreateTreeItemMenuAction() {
-        super(DEFAULT_NAME, DTreeViewerManager.getImageRegistry().getDescriptor(DTreeViewerManager.CREATE_TREE_ITEM_IMG));
+        super(Messages.EditorCreateTreeItemMenuAction_name, DTreeViewerManager.getImageRegistry().getDescriptor(DTreeViewerManager.CREATE_TREE_ITEM_IMG));
         setId(ID);
         setMenuCreator(this);
         setEnabled(false);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         if (lastCreateTreeItemAction != null && lastCreateTreeItemAction.isEnabled()) {
@@ -111,11 +102,6 @@ public class EditorCreateTreeItemMenuAction extends Action implements IMenuCreat
         menuManager.add(contribution);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.IMenuCreator#dispose()
-     */
     @Override
     public void dispose() {
         if (menuManager.getMenu() != null) {
@@ -132,11 +118,6 @@ public class EditorCreateTreeItemMenuAction extends Action implements IMenuCreat
         menuManager.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.IMenuCreator#getMenu(org.eclipse.swt.widgets.Control)
-     */
     @Override
     public Menu getMenu(final Control parent) {
         // Creates the menu if needed, or removes all elements except for the
@@ -155,11 +136,6 @@ public class EditorCreateTreeItemMenuAction extends Action implements IMenuCreat
         return menuManager.getMenu();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.IMenuCreator#getMenu(org.eclipse.swt.widgets.Menu)
-     */
     @Override
     public Menu getMenu(final Menu parent) {
         return null;
@@ -196,7 +172,7 @@ public class EditorCreateTreeItemMenuAction extends Action implements IMenuCreat
         setEnabled(!createTreeItemActionsForTree.isEmpty());
 
         if (createTreeItemActionsForTree.isEmpty()) {
-            this.setText(DEFAULT_NAME);
+            this.setText(Messages.EditorCreateTreeItemMenuAction_name);
         } else {
             // Add all create line tool on the table
             for (final CreateToolItemAction createAction : createTreeItemActionsForTree) {

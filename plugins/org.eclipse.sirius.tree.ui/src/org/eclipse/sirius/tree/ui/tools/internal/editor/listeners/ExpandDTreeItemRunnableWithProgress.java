@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
+import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -67,14 +69,15 @@ public class ExpandDTreeItemRunnableWithProgress implements IRunnableWithProgres
      * @throws InterruptedException
      *             Interrupted Exception
      */
+    @Override
     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
         try {
             TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
             CommandStack commandStack = domain.getCommandStack();
             GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
             if (expand) {
-                monitor.beginTask("Tree item expanding", 1);
-                CompoundCommand expandDTreeItemCmd = new CompoundCommand("Expand " + dTreeItem.getName() + " tree item");
+                monitor.beginTask(Messages.ExpandDTreeItemRunnableWithProgress_treeItemExpanding, 1);
+                CompoundCommand expandDTreeItemCmd = new CompoundCommand(MessageFormat.format(Messages.ExpandDTreeItemRunnableWithProgress_expandTreeItem, dTreeItem.getName()));
                 expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, monitor, true));
                 if (!Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
                     SiriusCommand result = new SiriusCommand(domain);
@@ -90,7 +93,7 @@ public class ExpandDTreeItemRunnableWithProgress implements IRunnableWithProgres
                     throw new InterruptedException();
                 }
             } else {
-                monitor.beginTask("Tree item collapsing", 1);
+                monitor.beginTask(Messages.ExpandDTreeItemRunnableWithProgress_treeItemCollapsing, 1);
                 Command collapseDTreeItemCmd = new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, monitor, false);
                 commandStack.execute(collapseDTreeItemCmd);
             }
