@@ -47,7 +47,7 @@
 				<code>AnchorProvider getAnchorProvider()</code>
 			</li>
 			<li>
-				<code>Image getLabelIcon(DDiagramElement : element)</code>
+				<code>Image getLabelIcon(DDiagramElement element)</code>
 			</li>
 			<li>
 				<code>Dimension fitToText(DNode node, WrapLabel nodeLabel, DefaultSizeNodeFigure defaultSizeNodeFigure)</code>
@@ -59,10 +59,10 @@
 			<li>Parameters
 				<ul>
 					<li>
-						<code>viewNode</code> : The node representation.
+						<code>viewNode</code>: The node representation.
 					</li>
 					<li>
-						<code>nodeLabel</code> : Label of the node.
+						<code>nodeLabel</code>: Label of the node.
 					</li>
 				</ul>
 			</li>
@@ -77,10 +77,10 @@
 			<li>Parameters
 				<ul>
 					<li>
-						<code>node</code> : The node representation.
+						<code>node</code>: The node representation.
 					</li>
 					<li>
-						<code>mainFigure</code> : The Draw2D figure representing the node.
+						<code>mainFigure</code>: The Draw2D figure representing the node.
 					</li>
 				</ul>
 			</li>
@@ -91,13 +91,13 @@
 			<li>Parameters
 				<ul>
 					<li>
-						<code>viewNode</code> : The node representation.
+						<code>viewNode</code>: The node representation.
 					</li>
 					<li>
-						<code>nodeLabel</code> : Label of the node.
+						<code>nodeLabel</code>: Label of the node.
 					</li>
 					<li>
-						<code>nodeWidth</code> : Current width of the node.
+						<code>nodeWidth</code>: Current width of the node.
 					</li>
 				</ul>
 			</li>
@@ -110,7 +110,7 @@
 			<li>Parameters
 				<ul>
 					<li>
-						<code>vpElement</code> : The element for which we need an icon.
+						<code>vpElement</code>: The element for which we need an icon.
 					</li>
 				</ul>
 			</li>
@@ -121,13 +121,13 @@
 			<li>Parameters
 				<ul>
 					<li>
-						<code>node</code> : The node representation.
+						<code>node</code>: The node representation.
 					</li>
 					<li>
-						<code>nodeLabel</code> : Label of the node.
+						<code>nodeLabel</code>: Label of the node.
 					</li>
 					<li>
-						<code>defaultSizeNodeFigure</code> : The draw2d representation of the node.
+						<code>defaultSizeNodeFigure</code>: The draw2d representation of the node.
 					</li>
 				</ul>
 			</li>
@@ -156,14 +156,14 @@
 		<h4 id="ProvidersofStyleConfiguration">Providers of StyleConfiguration</h4>
 		<p>Installing your own configurations can be done through the 
 			<code>org.eclipse.sirius.diagram.styleConfigurationProvider</code> extension
-			<br/>point. This extension point requires only one attribute : the qualified name of the provider class.
+			<br/>point. This extension point requires only one attribute: the qualified name of the provider class.
 		</p>
 		<pre><code>&lt;extension point="org.eclipse.sirius.diagram.styleConfigurationProvider"&gt;
    &lt;styleConfigurationProvider providerClass="com.example.diagseq.style.DiagSeqStyleConfigurationProvider" /&gt;
 &lt;/extension&gt;
 
 </code></pre>
-		<p>Here is a sample of the extension tab of the PDE editor when filling in this extension point :</p>
+		<p>Here is a sample of the extension tab of the PDE editor when filling in this extension point:</p>
 		<p>
 			<img border="0" src="./images/style/styleConfigurationProviderExt.png"/>
 		</p>
@@ -172,7 +172,7 @@
 			<br/>
 			<code>IStyleConfigrationProvider</code> interface.
 		</p>
-		<p>The latter interface defines two methods :</p>
+		<p>The latter interface defines two methods:</p>
 		<p>
 			<strong>
 				<code>boolean provides(DiagramElementMapping mapping, Style style)</code>
@@ -183,10 +183,10 @@
 			<li>Parameters
 				<ul>
 					<li>
-						<code>mapping</code> : The mapping of the node.
+						<code>mapping</code>: The mapping of the node.
 					</li>
 					<li>
-						<code>style</code> : Style of the node.
+						<code>style</code>: Style of the node.
 					</li>
 				</ul>
 			</li>
@@ -201,15 +201,15 @@
 			<li>Parameters
 				<ul>
 					<li>
-						<code>mapping</code> : Mapping of the node.
+						<code>mapping</code>: Mapping of the node.
 					</li>
 					<li>
-						<code>style</code> : Style of the node.
+						<code>style</code>: Style of the node.
 					</li>
 				</ul>
 			</li>
 		</ul>
-		<p>Here is an example of a provider :</p>
+		<p>Here is an example of a provider:</p>
 		<pre><code>public class DiagSeqStyleConfigurationProvider implements IStyleConfigurationProvider {
     public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
         if (mapping instanceof NodeMapping) {
@@ -398,7 +398,7 @@
 			<strong>EditPart</strong> API. The base type of this API is 
 			<code>IGraphicalEditPart</code> (in package
 			<br/>
-			<code>org.eclipse.gmf.runtime.diagram.ui.editparts</code>). Here are the main methods this interface defines :
+			<code>org.eclipse.gmf.runtime.diagram.ui.editparts</code>). Here are the main methods this interface defines:
 		</p>
 		<ul>
 			<li>
@@ -413,13 +413,14 @@
 			</li>
 		</ul>
 		<p>All Custom Style Edit Part must implement the 
-			<code>IStyleEditPart</code> interface. Semanticly, a Style Edit Part should not be selectable : it is selected when the Shape or Connector that contains  it is selected. Therefore, 
+			<code>IStyleEditPart</code> interface. Semantically, a Style Edit Part should not be selectable: it is selected when the Shape or Connector that contains  it is selected. Therefore, 
 			<strong>all Custom Style Edit Part should override the 
 				<code>isSelectable()</code> method and return false
-			</strong>. If you can, inherit from the abstrac class 
-			<code>AbstractNotSelectableShapeNodeEditPart</code> that already overrides correctly this method.
+			</strong>. If you can, inherit from the abstract class 
+			<code>AbstractNotSelectableShapeNodeEditPart</code> that already overrides correctly this method. You should also override the 
+			<code>createDefaultEditPolicies</code> to do nothing if you want to let Sirius control your custom node as it is done in the provided Sirius style edit parts: the style part is responsible for the style/figure aspects while its parent part will mainly control the behavior by its policies. Otherwise you will need to properly add policies to override the default GMF policies, add your own specific policies or the Sirius ones.
 		</p>
-		<p>Here is a sample of a Custom Style Edit Part :</p>
+		<p>Here is a sample of a Custom Style Edit Part:</p>
 		<pre><code>public class InstanceRoleStyleEditPart extends AbstractNotSelectableShapeNodeEditPart implements IStyleEditPart {
 
     /**
@@ -533,7 +534,7 @@
 			<br/>
 			<code>org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProvider</code>. Our custom Edit part will be
 			<br/>provided by overriding 
-			<code>getNodeEditPartClass</code>. Here is how this class looks like :
+			<code>getNodeEditPartClass</code>. Here is how this class looks like:
 		</p>
 		<pre><code>public class DiagSeqEditPartProvider extends AbstractEditPartProvider {
     @Override
@@ -663,7 +664,7 @@ public class AirNoteAttachmentEditPolicyProvider implements IEditPolicyProvider 
 }
 
 </code></pre>
-		<p>More flexibility can be achieved by writing an abstract provider :</p>
+		<p>More flexibility can be achieved by writing an abstract provider:</p>
 		<pre><code>public abstract class AbstractEditPolicyProvider implements IEditPolicyProvider {
 
     /** All listeners. */
