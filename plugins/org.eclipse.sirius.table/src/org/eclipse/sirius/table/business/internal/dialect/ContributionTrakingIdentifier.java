@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.table.business.internal.dialect;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.description.contribution.ContributionPoint;
+import org.eclipse.sirius.table.tools.internal.Messages;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
@@ -22,7 +23,7 @@ import com.google.common.base.Supplier;
  * A function which identifies elements from a representation's effective
  * description according to the VSM origin of the elements, as recorded in the
  * table's contribution points.
- * 
+ *
  * @author pierre-charles.david@obeo.fr
  */
 public class ContributionTrakingIdentifier implements Function<EObject, Object> {
@@ -34,13 +35,13 @@ public class ContributionTrakingIdentifier implements Function<EObject, Object> 
 
     /**
      * Constructor.
-     * 
+     *
      * @param edSupplier
      *            a supplier for the effective representations description to
      *            use.
      * @param cpSupplier
      *            a supplier for the contribution points to use.
-     * 
+     *
      * @param pathFunction
      *            the function to use to get the intrinsic identifiers of the
      *            elements.
@@ -54,6 +55,7 @@ public class ContributionTrakingIdentifier implements Function<EObject, Object> 
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object apply(EObject from) {
         String currentURI = pathFunction.apply(from);
         if (isInContributionScope(from)) {
@@ -63,7 +65,7 @@ public class ContributionTrakingIdentifier implements Function<EObject, Object> 
                 String relativeURI = currentURI.replace(parentURI, ""); //$NON-NLS-1$
                 return cp.getOrigin() + relativeURI;
             } else {
-                throw new RuntimeException("Internal error: contributed element has no matching contribution data.");
+                throw new RuntimeException(Messages.ContributionTrakingIdentifier_ElementWithoutMatchingData);
             }
         } else {
             return currentURI;

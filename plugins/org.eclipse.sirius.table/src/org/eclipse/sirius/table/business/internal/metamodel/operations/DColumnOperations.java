@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,17 +15,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
+import org.eclipse.sirius.table.tools.internal.Messages;
+
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 
 /**
  * Common operations for DColumn subclasses.
- * 
+ *
  * @author cbrun
  */
 public final class DColumnOperations {
@@ -36,7 +37,7 @@ public final class DColumnOperations {
 
     /**
      * Sort the column cells considering their index and return them.
-     * 
+     *
      * @param column
      *            column.
      * @return a sorted set of cells.
@@ -45,6 +46,7 @@ public final class DColumnOperations {
         final Map<DLine, Integer> lineIndices = Maps.newHashMap();
         fillIndices(column.getTable(), lineIndices, 0);
         Ordering<DCell> ordering = Ordering.from(new Comparator<DCell>() {
+            @Override
             public int compare(DCell a, DCell b) {
                 int result = 0;
                 DLine lineA = a.getLine();
@@ -57,7 +59,7 @@ public final class DColumnOperations {
                     Integer aIndex = lineIndices.get(lineA);
                     Integer bIndex = lineIndices.get(lineB);
                     if (aIndex == null || bIndex == null) {
-                        throw new RuntimeException("Should not happen.");
+                        throw new RuntimeException(Messages.Table_UnexpectedExceptionMessage);
                     }
                     return aIndex - bIndex;
                 }

@@ -22,6 +22,7 @@ import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.impl.DLineImpl;
+import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 import com.google.common.collect.Maps;
@@ -29,7 +30,7 @@ import com.google.common.collect.Ordering;
 
 /**
  * Specialization of DLine.
- * 
+ *
  * @author cbrun
  */
 public class DLineSpec extends DLineImpl {
@@ -60,7 +61,7 @@ public class DLineSpec extends DLineImpl {
                     Integer aIndex = columnIndices.get(columnA);
                     Integer bIndex = columnIndices.get(columnB);
                     if (aIndex == null || bIndex == null) {
-                        throw new RuntimeException("Should not happen.");
+                        throw new RuntimeException(Messages.Table_UnexpectedExceptionMessage);
                     }
                     return aIndex - bIndex;
                 }

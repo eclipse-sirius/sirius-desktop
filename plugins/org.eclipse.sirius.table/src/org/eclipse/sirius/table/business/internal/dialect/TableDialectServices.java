@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.dialect;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +58,7 @@ import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
+import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.table.tools.internal.command.TableCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -76,7 +78,7 @@ import com.google.common.collect.Sets;
 
 /**
  * Services for the table dialect.
- * 
+ *
  * @author cbrun
  */
 public class TableDialectServices extends AbstractRepresentationDialectServices {
@@ -85,12 +87,12 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
      * Tests whether a representation should be handled by the Movida-specific
      * code which handles contributions and effective representation
      * descriptions.
-     * 
+     *
      * @param representation
      *            the representation to test.
      * @return <code>true</code> if it should be handled by Movida-specific
      *         logic.
-     * 
+     *
      */
     public static boolean isHandledByMovida(DRepresentation representation) {
         return Movida.isEnabled() && (representation instanceof DTable) && (((DTable) representation).getDescription() instanceof EditionTableDescription);
@@ -124,8 +126,8 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     public DRepresentation createRepresentation(String name, EObject semantic, RepresentationDescription description, IProgressMonitor monitor) {
         DTable table = null;
         try {
-            monitor.beginTask("Create table : " + name, 11);
-            monitor.subTask("Create table : " + name);
+            monitor.beginTask(MessageFormat.format(Messages.TableDialectServices_CreateTable, name), 11);
+            monitor.subTask(MessageFormat.format(Messages.TableDialectServices_CreateTable, name));
             table = TableFactory.eINSTANCE.createDTable();
             table.setName(name);
             table.setTarget(semantic);
@@ -171,11 +173,13 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         imc.apply(table.getDescription(), new RepresentationExtensionsFinder(table.getDescription()).findAllRelevantViewpoints(session));
 
         Supplier<EObject> efSupplier = new Supplier<EObject>() {
+            @Override
             public EObject get() {
                 return null;
             }
         };
         Supplier<EList<ContributionPoint>> cpSupplier = new Supplier<EList<ContributionPoint>>() {
+            @Override
             public EList<ContributionPoint> get() {
                 return null;
             }
@@ -193,11 +197,13 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
 
     private IncrementalModelContributor createModelContributor(Session session, final DTable table) {
         Supplier<EObject> efSupplier = new Supplier<EObject>() {
+            @Override
             public EObject get() {
                 return null;
             }
         };
         Supplier<Iterable<ContributionPoint>> cpSupplier = new Supplier<Iterable<ContributionPoint>>() {
+            @Override
             public Iterable<ContributionPoint> get() {
                 return null;
             }
@@ -230,17 +236,19 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
 
     /**
      * The <code>fullRefresh</code> is not taken into account for table dialect.
-     * 
+     *
      * {@inheritDoc}
      */
+    @Override
     public void refresh(final DRepresentation representation, final boolean fullRefresh, final IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh table", 1);
+            monitor.beginTask(Messages.TableDialectServices_RefreshTable, 1);
             DTable table = (DTable) representation;
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
 
             Supplier<EObject> efSupplier = new Supplier<EObject>() {
+                @Override
                 public EObject get() {
                     // return table.getEffectiveDescription();
                     return null;
@@ -263,7 +271,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     @Override
     public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh table", 10);
+            monitor.beginTask(Messages.TableDialectServices_RefreshTable, 10);
             DTable table = (DTable) representation;
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
@@ -273,7 +281,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             DTableElementSynchronizerSpec synchronizer = new DTableElementSynchronizerSpec(accessor, interpreter);
             IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
             try {
-                subMonitor.beginTask("Refresh impacted elements", dTableElements.size());
+                subMonitor.beginTask(Messages.TableDialectServices_RefreshImpactedElements, dTableElements.size());
                 for (DTableElement dTableElement : dTableElements) {
                     if (dTableElement instanceof DCell) {
                         synchronizer.refresh((DCell) dTableElement);
@@ -335,6 +343,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     /**
      * {@inheritDoc}
      */
+    @Override
     public RepresentationDescription getDescription(DRepresentation representation) {
         if (isSupported(representation)) {
             return ((DTable) representation).getDescription();
@@ -368,7 +377,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
                     }
                     if (canCreate) {
                         try {
-                            monitor.beginTask("Initialize table of type " + new IdentifiedElementQuery(representationDescription).getLabel(), 1);
+                            monitor.beginTask(MessageFormat.format(Messages.TableDialectServices_InitializeTable, new IdentifiedElementQuery(representationDescription).getLabel()), 1);
                             final TableCommandFactory tableCommandFactory = new TableCommandFactory(domain);
                             tableCommandFactory.setModelAccessor(modelAccessor);
                             DCommand command = tableCommandFactory.buildCreateTableFromDescription(tableDescription, semanticElement, new SubProgressMonitor(monitor, 1));

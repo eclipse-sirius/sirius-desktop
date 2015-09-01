@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
+import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -33,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 /**
  * This processing switch will add the needed variable description in the table
  * tools.
- * 
+ *
  * @author cbrun
  */
 public class TableToolVariables extends DescriptionSwitch<Object> {
@@ -42,9 +43,9 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
      */
     @Override
     public Object caseCreateCellTool(CreateCellTool object) {
-        addVariableDescriptor(object, IInterpreterSiriusTableVariables.LINE_SEMANTIC, "The semantic element corresponding to the line.");
-        addVariableDescriptor(object, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, "The semantic element corresponding to the column.");
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, "The semantic root element of the table.");
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.TableToolVariables_SemanticLineElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, Messages.TableToolVariables_SemanticColumnElement);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, Messages.TableToolVariables_SemanticRootElement);
         return super.caseCreateCellTool(object);
     }
 
@@ -53,9 +54,9 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
      */
     @Override
     public Object caseCreateTool(CreateTool object) {
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, "The semantic element of the table.");
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, "The semantic currently edited element.");
-        addVariableDescriptor(object, IInterpreterSiriusVariables.CONTAINER, "The semantic element corresponding to the view container.");
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, Messages.TableToolVariables_SemanticRootElement);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, Messages.TableToolVariables_CurrentSemanticElement);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.CONTAINER, Messages.TableToolVariables_SemanticElementOfContainerView);
         return super.caseCreateTool(object);
     }
 
@@ -64,10 +65,10 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
      */
     @Override
     public Object caseLabelEditTool(LabelEditTool object) {
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, "The currently edited element.");
-        addVariableDescriptor(object, IInterpreterSiriusTableVariables.LINE_SEMANTIC, "The semantic element corresponding to the line.");
-        addVariableDescriptor(object, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, "The semantic element corresponding to the column.");
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, "The semantic element of the table.");
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, Messages.TableToolVariables_CurrentSemanticElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.TableToolVariables_SemanticLineElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.COLUMN_SEMANTIC, Messages.TableToolVariables_SemanticColumnElement);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, Messages.TableToolVariables_SemanticRootElement);
         return super.caseLabelEditTool(object);
     }
 
@@ -76,15 +77,15 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
      */
     @Override
     public Object caseDeleteTool(DeleteTool object) {
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, "The currently edited element.");
-        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, "The semantic element corresponding to the current table.");
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, Messages.TableToolVariables_CurrentSemanticElement);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, Messages.TableToolVariables_SemanticRootElement);
         return super.caseDeleteTool(object);
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseTableCreationDescription(org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription)
      */
     @Override
@@ -101,9 +102,9 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseTableNavigationDescription(org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription)
      */
     @Override

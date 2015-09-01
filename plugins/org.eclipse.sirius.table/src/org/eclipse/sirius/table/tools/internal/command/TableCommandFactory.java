@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.tools.internal.command;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +58,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
+import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.InvalidPermissionCommand;
@@ -75,7 +77,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * A command factory that creates commands that can be undone.
- * 
+ *
  * @author lredor
  */
 public class TableCommandFactory extends AbstractCommandFactory implements ITableCommandFactory {
@@ -83,7 +85,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Create a new Factory. the autoRefresh is by default deactivated
-     * 
+     *
      * @param domain
      *            : current editing domain.
      */
@@ -93,7 +95,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Create a new Factory. the autoRefresh is by default deactivated
-     * 
+     *
      * @param domain
      *            : current editing domain.
      * @param modelAccessor
@@ -109,7 +111,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Returns a command that can delete the specified element.
-     * 
+     *
      * @param element
      *            the element to delete (a {@link DLine} or a
      *            {@link DTargetColumn}).
@@ -146,7 +148,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Create a command that creates a line.
-     * 
+     *
      * @param lineContainer
      *            container element in which the command should put the created
      *            line.
@@ -176,7 +178,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Create a command that creates a column.
-     * 
+     *
      * @param containerView
      *            container element in which the command should put the created
      *            line.
@@ -250,7 +252,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * Build a command that covers all the model operations corresponding to a
      * the semantic container and a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}.
-     * 
+     *
      * @param semanticCurrentElement
      *            the semantic current Element.
      * @param tool
@@ -316,7 +318,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * directEdit tool} or
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
      * createCell tool}.
-     * 
+     *
      * @param currentCell
      *            the current edited cell.
      * @param tool
@@ -326,7 +328,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command able to execute the direct Edit Tool.
      */
     private SiriusCommand buildCommandFromCell(final DCell currentCell, final TableTool tool, final Object newValue) {
-        SiriusCommand result = new SiriusCommand(domain, "Set cell content");
+        SiriusCommand result = new SiriusCommand(domain, Messages.TableCommandFactory_setCellContent);
         if (!getPermissionAuthority().canEditInstance(currentCell)) {
             result = new InvalidPermissionCommand(domain, currentCell);
         } else {
@@ -377,7 +379,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
      * createCell tool} for the current {@link DLine line} and
      * {@link org.eclipse.sirius.table.metamodel.table.DColumn column}.
-     * 
+     *
      * @param currentLine
      *            the line corresponding to the intersection that need a
      *            creation of a new cell.
@@ -391,7 +393,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @return a command able to execute the create Tool.
      */
     private SiriusCommand buildCommandFromIntersection(final DLine currentLine, final DTargetColumn currentColumn, final CreateCellTool tool, final Object newValue) {
-        SiriusCommand result = new SiriusCommand(domain, "Set cell content");
+        SiriusCommand result = new SiriusCommand(domain, Messages.TableCommandFactory_setCellContent);
         if (!getPermissionAuthority().canEditInstance(currentLine)) {
             result = new InvalidPermissionCommand(domain, currentLine);
         } else {
@@ -423,7 +425,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Return the commandTaskHelper.
-     * 
+     *
      * @return the commandTaskHelper
      */
     public TaskHelper getCommandTaskHelper() {
@@ -439,7 +441,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Set the model accessor.
-     * 
+     *
      * @param modelAccessor
      *            the modelAccessor to set
      */
@@ -451,7 +453,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Create a command that set the content of a crossTable cell.
-     * 
+     *
      * @param editedCell
      *            The cell to set
      * @param newValue
@@ -480,7 +482,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildCreateCellFromTool(org.eclipse.sirius.table.metamodel.table.DLine,
      *      org.eclipse.sirius.table.metamodel.table.DTargetColumn,
      *      java.lang.Object)
@@ -499,8 +501,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                     result = buildCommandFromIntersection(line, column, optionalCreateCellTool.get(), newValue);
                     addRefreshTask(TableHelper.getTable(line), (SiriusCommand) result, optionalCreateCellTool.get());
                     Option<DRepresentation> dRepresentation = new EObjectQuery(line).getRepresentation();
-                    ((SiriusCommand) result).getTasks().add(
-                            new ElementsToSelectTask(optionalCreateCellTool.get(), InterpreterUtil.getInterpreter(line.getTarget()), line.getTarget(), dRepresentation.get()));
+                    ((SiriusCommand) result).getTasks()
+                            .add(new ElementsToSelectTask(optionalCreateCellTool.get(), InterpreterUtil.getInterpreter(line.getTarget()), line.getTarget(), dRepresentation.get()));
                 }
             }
         }
@@ -509,7 +511,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Create a command that is able to create a table.
-     * 
+     *
      * @param description
      *            the tool that describes how to create the table.
      * @param semanticElement
@@ -524,7 +526,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             /**
              * Creation of a table must not be undoable ! <BR>
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.emf.transaction.RecordingCommand#canUndo()
              */
             @Override
@@ -540,7 +542,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildSetValue(org.eclipse.emf.ecore.EObject,
      *      java.lang.String, java.lang.Object)
      */
@@ -554,7 +556,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
                 @Override
                 public String getLabel() {
-                    return "Set " + name + " value";
+                    return MessageFormat.format(Messages.TableCommandFactory_setValue, name);
                 }
 
                 @Override
@@ -579,7 +581,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildAddValue(org.eclipse.emf.ecore.EObject,
      *      java.lang.String, java.lang.Object)
      */
@@ -591,7 +593,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
                 @Override
                 public String getLabel() {
-                    return "Add " + name + " value";
+                    return MessageFormat.format(Messages.TableCommandFactory_addValue, name);
                 }
 
                 @Override
@@ -613,7 +615,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildClearValue(org.eclipse.emf.ecore.EObject,
      *      java.lang.String, java.lang.Object)
      */
@@ -626,7 +628,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
                 @Override
                 public String getLabel() {
-                    return "Clear " + name;
+                    return MessageFormat.format(Messages.TableCommandFactory_clearValue, name);
                 }
 
                 @Override
@@ -646,7 +648,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildDoExecuteDetailsOperation(org.eclipse.sirius.viewpoint.DSemanticDecorator,
      *      org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
      *      java.lang.String)

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
+import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
@@ -37,9 +38,9 @@ import com.google.common.base.Preconditions;
 /**
  * A class aggregating all the queries (read-only!) having a {@link DCell} as a
  * starting point.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
+ *
  */
 public class DCellQuery {
 
@@ -50,7 +51,7 @@ public class DCellQuery {
 
     /**
      * Creates a new query.
-     * 
+     *
      * @param cell
      *            the cell to query.
      */
@@ -69,7 +70,7 @@ public class DCellQuery {
      * Otherwise, we use the default cell style if it exists Otherwise, we use
      * the default line style if it exists <BR>
      * Otherwise, we use the default column style if it exists.
-     * 
+     *
      * @return an optional DTableElementStyle to use for the foreground of this
      *         cell (one of cell, line or column).
      */
@@ -180,7 +181,7 @@ public class DCellQuery {
      * Otherwise, we use the default cell style if it exists Otherwise, we use
      * the default line style if it exists <BR>
      * Otherwise, we use the default column style if it exists.
-     * 
+     *
      * @return an optional DTableElementStyle to use for the foreground of this
      *         cell (one of cell, line or column).
      */
@@ -260,7 +261,7 @@ public class DCellQuery {
      * Check if the <code>style</code> ({@link ForegroundStyleDescription} or
      * {@link BackgroundStyleDescription}) is the style of the
      * intersectionMapping of the current <code>cell</code>.
-     * 
+     *
      * @param style
      *            The style to check ({@link ForegroundStyleDescription} or
      *            {@link BackgroundStyleDescription})
@@ -269,7 +270,7 @@ public class DCellQuery {
      */
     public boolean isStyleDescriptionInIntersectionMapping(EObject style) {
         if (!(style instanceof ForegroundStyleDescription || style instanceof BackgroundStyleDescription)) {
-            throw new IllegalArgumentException("The style attribute must be a ForegroundStyleDescription or a BackgroundStyleDescription.");
+            throw new IllegalArgumentException(Messages.Table_WrongStyleAttribute);
         }
         if (cell.getIntersectionMapping() != null) {
             if (cell.getIntersectionMapping().equals(style.eContainer()) || (style.eContainer() != null && cell.getIntersectionMapping().equals(style.eContainer().eContainer()))) {
@@ -281,7 +282,7 @@ public class DCellQuery {
 
     /**
      * Return the column index of this cell in the table.
-     * 
+     *
      * @return the column index of this cell in the table.
      */
     public int getColumnIndex() {
@@ -296,9 +297,9 @@ public class DCellQuery {
      * .convert(EDataType, Object) crops the obtained value at the first found
      * char on which Character.isISOControl return true, the "..." is added to
      * the label.
-     * 
+     *
      * This method return the label value before the crop.
-     * 
+     *
      * @return the complete label of the cell.
      */
     public String getExportableLabel() {

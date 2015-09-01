@@ -61,6 +61,7 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
+import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
@@ -69,7 +70,7 @@ import com.google.common.collect.Sets;
 
 /**
  * The synchronizer for tables.
- * 
+ *
  * @author cbrun
  */
 public class DTableSynchronizerImpl implements DTableSynchronizer {
@@ -90,7 +91,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Create a new {@link DTableSynchronizer} for an EditionTable.
-     * 
+     *
      * @param description
      *            EditionTable description.
      * @param accessor
@@ -108,15 +109,16 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
+    @Override
     public void refresh(final IProgressMonitor monitor) {
         try {
             if (description instanceof CrossTableDescription) {
-                monitor.beginTask("Refresh cross table", 3);
+                monitor.beginTask(Messages.DTableSynchronizerImpl_refreshCrossTabel, 3);
             } else {
-                monitor.beginTask("Refresh edition table", 2);
+                monitor.beginTask(Messages.DTableSynchronizerImpl_refreshEditionTabel, 2);
             }
             KeyCache.DEFAULT.clear();
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_TABLE_KEY);
@@ -143,7 +145,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             if (description != null) {
                 lMappings = description.getAllLineMappings();
             }
-            monitor.beginTask("Refresh line mapping", lMappings.size());
+            monitor.beginTask(Messages.DTableSynchronizerImpl_refreshLineMapping, lMappings.size());
 
             int currentLineIndex = 0;
             for (final LineMapping lMapping : lMappings) {
@@ -171,7 +173,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             } else if (description instanceof CrossTableDescription) {
                 cMappings = ((CrossTableDescription) description).getOwnedColumnMappings();
             }
-            monitor.beginTask("Refresh column mapping", cMappings.size());
+            monitor.beginTask(Messages.DTableSynchronizerImpl_refreshColumnMapping, cMappings.size());
 
             int currentColumnIndex = 0;
             for (final ColumnMapping cMapping : cMappings) {
@@ -212,11 +214,12 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     /**
      * Refresh all the cells of a crossTable :
      * <UL>
-     * <LI>Remove the cells that have no corresponding intersection mapping,</LI>
+     * <LI>Remove the cells that have no corresponding intersection mapping,
+     * </LI>
      * <LI>Refresh the existing one</LI>
      * <LI>Create the new one</LI>
      * <UL>
-     * 
+     *
      * @param monitor
      *            The progress monitor
      * @param mappingToElements
@@ -227,7 +230,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
      */
     private void refreshCellsOfCrossTable(final IProgressMonitor monitor, final Map<TableMapping, Collection<DTableElement>> mappingToElements, ECrossReferenceAdapter xref) {
         try {
-            monitor.beginTask("Refresh intersection mapping", ((CrossTableDescription) description).getIntersection().size());
+            monitor.beginTask(Messages.DTableSynchronizerImpl_refreshIntersectionMapping, ((CrossTableDescription) description).getIntersection().size());
             if (((CrossTableDescription) description).getIntersection().isEmpty()) {
                 // If there is no intersection mapping we must clean all the
                 // invalid
@@ -389,7 +392,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Refresh a column mapping adding the columns.
-     * 
+     *
      * @param mapping
      *            mapping to refresh.
      * @param mappingToElements
@@ -575,7 +578,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * ; Refresh a line mapping for a given container.
-     * 
+     *
      * @param container
      *            the line container.
      * @param mapping
@@ -658,7 +661,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Refresh all cells corresponding to the <code>iMapping</code>.
-     * 
+     *
      * @param iMapping
      *            The intersection mapping for which we want to refresh the
      *            corresponding cells.
@@ -678,7 +681,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Refresh all cells corresponding to the <code>iMapping</code>.
-     * 
+     *
      * @param iMapping
      *            The intersection mapping with domain class for which we want
      *            to refresh the corresponding cells.
@@ -774,7 +777,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Creates the new cells, update the kept ones and remove the old ones.
-     * 
+     *
      * @param iMapping
      *            the intersection mapping that is being refreshed
      * @param cellsToUpdate
@@ -838,7 +841,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Refresh all cells corresponding to the <code>iMapping</code>.
-     * 
+     *
      * @param iMapping
      *            The intersection mapping without domain class for which we
      *            want to refresh the corresponding cells.
@@ -921,7 +924,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Put or add the given nodes in the Map.
-     * 
+     *
      * @param map
      *            the map to update.
      * @param mapping
@@ -941,7 +944,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Create a new line corresponding to the mapping.
-     * 
+     *
      * @param mapping
      *            the line mapping.
      * @param semantic
@@ -957,7 +960,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Create a new column corresponding to the mapping.
-     * 
+     *
      * @param mapping
      *            the column mapping.
      * @param featureName
@@ -973,7 +976,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Create a new column corresponding to the mapping.
-     * 
+     *
      * @param mapping
      *            the column mapping.
      * @param semantic
@@ -990,7 +993,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     /**
      * Deletes the given lines, the contained subLines and cells and removes all
      * references to deleted elements.
-     * 
+     *
      * @param lineToDelete
      *            the line to delete
      * @param xref
@@ -1017,7 +1020,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     /**
      * Deletes the given column, and the contained cells and removes all
      * references to deleted elements.
-     * 
+     *
      * @param columnToDelete
      *            the column to delete
      * @param xref
@@ -1039,7 +1042,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
 
     /**
      * Deletes the given cell, and removes all references to deleted elements.
-     * 
+     *
      * @param cell
      *            the cell to delete
      * @param xref
@@ -1055,7 +1058,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     /**
      * Compute the current status of a given line container for a given
      * LineMapping.
-     * 
+     *
      * @param container
      *            current line container.
      * @param mapping
@@ -1120,18 +1123,20 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
+    @Override
     public void setTable(final DTable newTable) {
         this.table = newTable;
         this.ids = RefreshIdsHolder.getOrCreateHolder(table);
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
+    @Override
     public DTable getTable() {
         return table;
     }
