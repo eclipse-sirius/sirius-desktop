@@ -25,6 +25,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
+import org.eclipse.sirius.common.ui.Messages;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterators;
@@ -38,16 +39,12 @@ import com.google.common.collect.Maps;
  */
 public class VariableProposalProvider implements IProposalProvider {
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX, "New variable access expression.", VariableInterpreter.PREFIX.length());
+        return new ContentProposal(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX, Messages.VariableProposalProvider_newVariableExpression, VariableInterpreter.PREFIX.length());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof VariableInterpreter)) {

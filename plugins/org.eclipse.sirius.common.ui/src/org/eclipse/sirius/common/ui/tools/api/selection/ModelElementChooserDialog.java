@@ -46,6 +46,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
@@ -114,24 +115,14 @@ public class ModelElementChooserDialog extends Dialog {
         this.fileExtensions = extensions;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Control createDialogArea(final Composite parent) {
         final Composite composite = (Composite) super.createDialogArea(parent);
-        getShell().setText("Select a model element");
+        getShell().setText(Messages.ModelElementChooserDialog_title);
         createModelBrowser(composite);
         return composite;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#createButtonBar(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Control createButtonBar(final Composite parent) {
         final Control buttonBar = super.createButtonBar(parent);

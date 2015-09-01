@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 
 /**
@@ -52,8 +52,8 @@ public class NewFileDialog extends FolderSelectionDialog {
      *            is the default name of the file to create
      */
     public NewFileDialog(final String defaultName) {
-        super("Select the folder"); //$NON-NLS-1$
-        setTitle("File Name"); //$NON-NLS-1$
+        super(Messages.NewFileDialog_message);
+        setTitle(Messages.NewFileDialog_title);
         newFileName = (defaultName != null) ? defaultName : ""; //$NON-NLS-1$
     }
 
@@ -66,11 +66,6 @@ public class NewFileDialog extends FolderSelectionDialog {
         return newFileName;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.ui.tools.api.dialog.FolderSelectionDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Control createDialogArea(final Composite parent) {
         final Control result = super.createDialogArea(parent);
@@ -83,7 +78,7 @@ public class NewFileDialog extends FolderSelectionDialog {
         composite.setLayout(layout);
         composite.setLayoutData(new GridData(GridData.FILL_BOTH));
         final Label label = new Label(composite, SWT.NULL);
-        label.setText("File"); //$NON-NLS-1$
+        label.setText(Messages.NewFileDialog_fileLabel);
         newFileNameText = new Text(composite, SWT.BORDER);
         final GridData data = new GridData(GridData.GRAB_HORIZONTAL | GridData.GRAB_VERTICAL);
         data.heightHint = newFileNameText.getLineHeight();
@@ -98,16 +93,11 @@ public class NewFileDialog extends FolderSelectionDialog {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.dialogs.ElementTreeSelectionDialog#updateOKStatus()
-     */
     @Override
     protected void updateOKStatus() {
         if (newFileNameText == null || newFileNameText.getText() == null || newFileNameText.getText().trim().length() == 0) {
             newFileName = ""; //$NON-NLS-1$
-            updateStatus(new Status(IStatus.ERROR, SiriusTransPlugin.PLUGIN_ID, IStatus.ERROR, "Select a file", null)); //$NON-NLS-1$
+            updateStatus(new Status(IStatus.ERROR, SiriusTransPlugin.PLUGIN_ID, IStatus.ERROR, Messages.NewFileDialog_selectFileStatus, null));
         } else {
             newFileName = newFileNameText.getText();
             super.updateOKStatus();

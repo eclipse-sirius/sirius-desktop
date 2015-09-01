@@ -40,6 +40,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.OpenEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
@@ -107,7 +108,7 @@ public class SelectFilesWizardPage extends WizardPage {
     public SelectFilesWizardPage(final String pageName, final int lower, final int upper, final String[] extensions) {
         super(pageName);
         setTitle(pageName);
-        setDescription("This page is used to select file(s) in the workspace."); //$NON-NLS-1$
+        setDescription(Messages.SelectFilesWizardPage_title);
         this.lower = lower;
         this.upper = upper;
         this.extensions = extensions;
@@ -120,11 +121,7 @@ public class SelectFilesWizardPage extends WizardPage {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
         final Composite container = new Composite(parent, SWT.NULL);
         final GridLayout containerLayout = new GridLayout();
@@ -303,10 +300,10 @@ public class SelectFilesWizardPage extends WizardPage {
     private void dialogChanged() {
         final List<IPath> items = getAllCheckedListItems();
         if (items.size() < lower) {
-            updateStatus("Not enough files were selected."); //$NON-NLS-1$
+            updateStatus(Messages.SelectFilesWizardPage_notEnoughFiles);
             return;
         } else if (items.size() > upper && upper != -1) {
-            updateStatus("Too many files were selected."); //$NON-NLS-1$
+            updateStatus(Messages.SelectFilesWizardPage_tooManyFiles);
             return;
         }
         updateStatus(null);

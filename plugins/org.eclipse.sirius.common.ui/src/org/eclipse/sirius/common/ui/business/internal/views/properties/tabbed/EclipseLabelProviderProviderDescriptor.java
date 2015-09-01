@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.ILabelProviderProvider;
 
@@ -36,22 +38,19 @@ public class EclipseLabelProviderProviderDescriptor extends AbstractLabelProvide
      *            Configuration element from which to create this descriptor.
      */
     public EclipseLabelProviderProviderDescriptor(IConfigurationElement configuration) {
-        super();
         this.id = configuration.getDeclaringExtension().getUniqueIdentifier();
         this.element = configuration;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ILabelProviderProvider getLabelProviderProvider() {
         if (labelProviderProvider == null) {
             if (Platform.isRunning()) {
                 try {
                     labelProviderProvider = (ILabelProviderProvider) element.createExecutableExtension(LABEL_PROVIDER_PROVIDER_CLASS_ATTRIBUTE);
                 } catch (CoreException e) {
-                    SiriusTransPlugin.getPlugin().getLog()
-                            .log(new Status(IStatus.ERROR, SiriusTransPlugin.PLUGIN_ID, "Error while loading the extension " + element.getDeclaringExtension().getUniqueIdentifier(), e));
+                    String message = MessageFormat.format(Messages.EclipseLabelProviderProviderDescriptor_errorLoadingExtension, element.getDeclaringExtension().getUniqueIdentifier());
+                    SiriusTransPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusTransPlugin.PLUGIN_ID, message, e));
                 }
             }
         }

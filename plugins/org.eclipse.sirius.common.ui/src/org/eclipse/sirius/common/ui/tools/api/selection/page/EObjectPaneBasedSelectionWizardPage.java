@@ -27,6 +27,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -417,14 +418,14 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
         label.setLayoutData(labelGridData);
 
         addButton = new Button(pane, SWT.PUSH);
-        addButton.setText("Add");
+        addButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label")); //$NON-NLS-1$
         final GridData addButtonGridData = new GridData();
         addButtonGridData.verticalAlignment = SWT.FILL;
         addButtonGridData.horizontalAlignment = SWT.FILL;
         addButton.setLayoutData(addButtonGridData);
 
         removeButton = new Button(pane, SWT.PUSH);
-        removeButton.setText("Remove");
+        removeButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Remove_label")); //$NON-NLS-1$
         final GridData removeButtonGridData = new GridData();
         removeButtonGridData.verticalAlignment = SWT.FILL;
         removeButtonGridData.horizontalAlignment = SWT.FILL;
@@ -436,14 +437,14 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
         spaceLabel.setLayoutData(spaceLabelGridData);
 
         upButton = new Button(pane, SWT.PUSH);
-        upButton.setText("Up");
+        upButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Up_label")); //$NON-NLS-1$
         final GridData upButtonGridData = new GridData();
         upButtonGridData.verticalAlignment = SWT.FILL;
         upButtonGridData.horizontalAlignment = SWT.FILL;
         upButton.setLayoutData(upButtonGridData);
 
         downButton = new Button(pane, SWT.PUSH);
-        downButton.setText("Down");
+        downButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Down_label")); //$NON-NLS-1$
         final GridData downButtonGridData = new GridData();
         downButtonGridData.verticalAlignment = SWT.FILL;
         downButtonGridData.horizontalAlignment = SWT.FILL;

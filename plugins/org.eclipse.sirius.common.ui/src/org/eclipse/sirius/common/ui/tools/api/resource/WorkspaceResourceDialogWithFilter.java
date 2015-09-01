@@ -71,7 +71,7 @@ public class WorkspaceResourceDialogWithFilter extends org.eclipse.emf.common.ui
     public static IContainer[] openFolderSelection(Shell parent, String title, String message, boolean allowMultipleSelection, Object[] initialSelection, List<ViewerFilter> viewerFilters) {
         WorkspaceResourceDialogWithFilter dialog = new WorkspaceResourceDialogWithFilter(parent, new WorkbenchLabelProvider(), new WorkbenchContentProvider());
         dialog.setAllowMultiple(allowMultipleSelection);
-        dialog.setTitle(title != null ? title : CommonUIPlugin.INSTANCE.getString("_UI_FolderSelection_title"));
+        dialog.setTitle(title != null ? title : CommonUIPlugin.INSTANCE.getString("_UI_FolderSelection_title")); //$NON-NLS-1$
         dialog.setMessage(message);
         dialog.setShowNewFolderControl(true);
 
@@ -111,7 +111,7 @@ public class WorkspaceResourceDialogWithFilter extends org.eclipse.emf.common.ui
     public static IFile[] openFileSelection(Shell parent, String title, String message, boolean allowMultipleSelection, Object[] initialSelection, List<ViewerFilter> viewerFilters) {
         WorkspaceResourceDialogWithFilter dialog = new WorkspaceResourceDialogWithFilter(parent, new WorkbenchLabelProvider(), new WorkbenchContentProvider());
         dialog.setAllowMultiple(allowMultipleSelection);
-        dialog.setTitle(title != null ? title : CommonUIPlugin.INSTANCE.getString("_UI_FileSelection_title"));
+        dialog.setTitle(title != null ? title : CommonUIPlugin.INSTANCE.getString("_UI_FileSelection_title")); //$NON-NLS-1$
         dialog.setMessage(message);
 
         dialog.addFilter(dialog.createDefaultViewerFilter(true));

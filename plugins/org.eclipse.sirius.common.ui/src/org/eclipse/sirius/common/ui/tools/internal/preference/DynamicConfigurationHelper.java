@@ -11,11 +11,13 @@
 package org.eclipse.sirius.common.ui.tools.internal.preference;
 
 import java.lang.reflect.Field;
+import java.text.MessageFormat;
 import java.util.Map;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.sirius.common.ui.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
@@ -173,7 +175,7 @@ public class DynamicConfigurationHelper implements IPropertyChangeListener {
         if (result != null) {
             return result;
         } else {
-            throw new IllegalArgumentException("No field named " + fieldName + " could be found in class " + klass.getName());
+            throw new IllegalArgumentException(MessageFormat.format(Messages.DynamicConfigurationHelper_unknownField, fieldName, klass.getName()));
         }
     }
 }

@@ -16,8 +16,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.wizard.Wizard;
-
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectSelectionWizardPage;
 
 /**
@@ -28,10 +28,10 @@ import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectSelectionWiz
 public class EObjectSelectionWizard extends Wizard {
 
     /** "Selection Wizard". */
-    public static final String WIZARD_GENERIC_DIALOG_TITLE = "Selection Wizard";
+    public static final String WIZARD_GENERIC_DIALOG_TITLE = Messages.EObjectSelectionWizard_title;
 
     /** "Please select an element". */
-    public static final String WIZARD_GENERIC_DIALOG_MESSAGE = "Please select an element";
+    public static final String WIZARD_GENERIC_DIALOG_MESSAGE = Messages.EObjectSelectionWizard_message;
 
     private static final String EOBJECT_SELECTION_WIZARD_PAGE_NAME = "page"; //$NON-NLS-1$
 
@@ -87,11 +87,6 @@ public class EObjectSelectionWizard extends Wizard {
         addPage(page);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#performFinish()
-     */
     @Override
     public boolean performFinish() {
         return true;

@@ -29,6 +29,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.e3.ui.dialogs.FilteredTree;
 import org.eclipse.sirius.ext.e3.ui.dialogs.PatternFilter;
@@ -198,9 +199,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
         super(parentShell, shellStyle, true, true, true, true, false, null, null);
         this.descriptor = descriptor;
         org.eclipse.sirius.ext.base.Option<QuickOutlinePageDescriptor> firstPage = this.descriptor.getFirstPage();
-
-        Preconditions.checkArgument(firstPage.some(), "The descriptor has no page");
-
+        Preconditions.checkArgument(firstPage.some(), Messages.QuickOutlineControl_errorNoPage);
         this.currentPage = firstPage.get();
         create();
     }

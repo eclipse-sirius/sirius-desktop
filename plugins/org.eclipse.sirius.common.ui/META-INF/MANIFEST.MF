@@ -41,6 +41,6 @@ Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
-Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
+Import-Package: org.eclipse.sirius.ext.base;version="2.1.0",
  org.eclipse.sirius.ext.base.cache;version="2.0.0",
  org.eclipse.sirius.ext.e3.ui.dialogs;version="3.0.0"

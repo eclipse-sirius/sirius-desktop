@@ -17,7 +17,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.MessageDialogWithToggle;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.window.Window;
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.tools.api.dialog.SiriusMessageDialogWithToggle;
 import org.eclipse.sirius.common.ui.tools.internal.util.ISaveDialogExtensionDescriptor;
 import org.eclipse.sirius.common.ui.tools.internal.util.ISaveDialogExtensionRegistry;
@@ -50,13 +50,6 @@ import com.google.common.collect.Maps;
  * @author Mariot Chauvin (mchauvin)
  */
 public final class SWTUtil {
-
-    private static final String SAVE_CHANGES_QUESTION = "{0} have been modified{1}. Save changes{2}?";
-
-    private static final String OPEN_ELSEWHERE_MESSAGE = ", but are still open elsewhere with identical changes. Closing this will not lose those changes";
-
-    private static final String OPEN_ELSEWHERE_QUESTION = " now anyway";
-
     /**
      * avoid instantiation
      */
@@ -446,11 +439,6 @@ public final class SWTUtil {
         return temporaryResult;
     }
 
-    /**
-     * @see org.eclipse.internal.SaveablesList#promptForSaving(List,
-     *      org.eclipse.jface.window.IShellProvider,
-     *      org.eclipse.jface.operation.IRunnableContext, boolean, boolean)
-     */
     private static int openSaveDialog(String label, final boolean canCancel, Map<String, Integer> buttons, boolean stillOpenElsewhere) {
         int choice = ISaveablePart2.YES;
 
@@ -508,15 +496,14 @@ public final class SWTUtil {
 
         // Provide a dialog allowing the user to change the
         // preference if several editors are opened
-        Object[] bindings = null;
+        final String message;
         if (stillOpenElsewhere) {
-            bindings = new Object[] { label, OPEN_ELSEWHERE_MESSAGE, OPEN_ELSEWHERE_QUESTION };
+            message = Messages.SWTUtil_askToSaveChanges;
         } else {
-            bindings = new Object[] { label, "", "" };
+            message = Messages.SWTUtil_askToSaveChanges_openElseWhere;
         }
-        final String message = NLS.bind(SAVE_CHANGES_QUESTION, bindings);
-        dialog = new SiriusMessageDialogWithToggle(window.getShell(), "Save", null, message, MessageDialog.QUESTION, buttons, 0, WorkbenchMessages.EditorManager_closeWithoutPromptingOption, false,
-                stillOpenElsewhere) {
+        dialog = new SiriusMessageDialogWithToggle(window.getShell(), Messages.SWTUtil_saveDialog_title, null, message, MessageDialog.QUESTION, buttons, 0,
+                WorkbenchMessages.EditorManager_closeWithoutPromptingOption, false, stillOpenElsewhere) {
             protected int getShellStyle() {
                 return getSaveDialogStyle(canCancel);
             }

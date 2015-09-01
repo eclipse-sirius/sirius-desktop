@@ -23,6 +23,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -75,7 +76,7 @@ public abstract class AbstractFolderSelectionDialog extends ElementTreeSelection
         getTreeViewer().addSelectionChangedListener(this);
         getTreeViewer().expandToLevel(2);
         fNewFolderButton = new Button(result, SWT.PUSH);
-        fNewFolderButton.setText("New Folder");
+        fNewFolderButton.setText(Messages.AbstractFolderSelectionDialog_newFolder);
         fNewFolderButton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(final SelectionEvent event) {

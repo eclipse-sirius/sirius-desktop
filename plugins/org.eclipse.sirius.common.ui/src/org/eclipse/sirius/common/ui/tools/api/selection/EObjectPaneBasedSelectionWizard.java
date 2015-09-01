@@ -16,8 +16,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.wizard.Wizard;
-
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectPaneBasedSelectionWizardPage;
 
 /**
@@ -28,16 +28,16 @@ import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectPaneBasedSel
 public class EObjectPaneBasedSelectionWizard extends Wizard {
 
     /** "Selection Wizard". */
-    public static final String WIZARD_GENERIC_DIALOG_TITLE = "Selection Wizard";
+    public static final String WIZARD_GENERIC_DIALOG_TITLE = Messages.EObjectPaneBasedSelectionWizard_title;
 
     /** "Choice of values". */
-    public static final String WIZARD_GENERIC_CHOICE_OF_VALUES_MESSAGE = "Choice of values";
+    public static final String WIZARD_GENERIC_CHOICE_OF_VALUES_MESSAGE = Messages.EObjectPaneBasedSelectionWizard_choiceMessage;
 
     /** "Selected". */
-    public static final String WIZARD_GENERIC_SELECTED_VALUES_MESSAGE = "Selected values";
+    public static final String WIZARD_GENERIC_SELECTED_VALUES_MESSAGE = Messages.EObjectPaneBasedSelectionWizard_selectedMessage;
 
     /** "Please select an element". */
-    public static final String WIZARD_GENERIC_DIALOG_MESSAGE = "Please select an element";
+    public static final String WIZARD_GENERIC_DIALOG_MESSAGE = Messages.EObjectPaneBasedSelectionWizard_askSelect;
 
     private static final String EOBJECT_PANE_BASED_SELECTION_WIZARD_PAGE_NAME = "page"; //$NON-NLS-1$
 

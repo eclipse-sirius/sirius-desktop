@@ -26,6 +26,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
+import org.eclipse.sirius.common.ui.Messages;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -47,7 +48,7 @@ public class FeatureProposalProvider implements IProposalProvider {
 
     @Override
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(FeatureInterpreter.PREFIX, FeatureInterpreter.PREFIX, "New feature access expression.", FeatureInterpreter.PREFIX.length());
+        return new ContentProposal(FeatureInterpreter.PREFIX, FeatureInterpreter.PREFIX, Messages.FeatureProposalProvider_newFeatureExpression, FeatureInterpreter.PREFIX.length());
     }
 
     @Override

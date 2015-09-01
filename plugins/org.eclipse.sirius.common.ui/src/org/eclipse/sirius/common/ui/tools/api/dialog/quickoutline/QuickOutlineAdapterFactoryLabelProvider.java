@@ -13,6 +13,7 @@ package org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.sirius.common.ui.Messages;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultimap;
@@ -42,10 +43,9 @@ public class QuickOutlineAdapterFactoryLabelProvider extends AdapterFactoryLabel
     public String getText(Object element) {
         StringBuilder sb = new StringBuilder(super.getText(element));
         if (multimap.containsKey(element)) {
-            sb.append(" (found in ");
-            Joiner joiner = Joiner.on(", ");
-            sb.append(joiner.join(multimap.get(element).toArray()));
-            sb.append(")");
+            sb.append(" (").append(Messages.QuickOutlineAdapterFactoryLabelProvider_foundIn).append(" "); //$NON-NLS-1$ //$NON-NLS-2$
+            sb.append(Joiner.on(", ").join(multimap.get(element).toArray())); //$NON-NLS-1$
+            sb.append(")"); //$NON-NLS-1$
         }
         return sb.toString();
     }

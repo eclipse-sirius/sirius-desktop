@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.util;
 
+import java.text.MessageFormat;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.transaction.RunnableWithResult;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget;
 import org.eclipse.swt.widgets.Display;
@@ -110,7 +112,7 @@ public final class EclipseUIUtil {
             try {
                 return page.showView(viewId);
             } catch (final PartInitException e) {
-                SiriusTransPlugin.getPlugin().error("the view with id " + viewId + "could not be initialized", e);
+                SiriusTransPlugin.getPlugin().error(MessageFormat.format(Messages.EclipseUIUtil_showView_error, viewId), e);
             }
         }
         return null;

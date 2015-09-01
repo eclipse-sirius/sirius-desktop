@@ -18,6 +18,7 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -94,7 +95,7 @@ public class RenameDialog extends SelectionStatusDialog {
      */
     public RenameDialog(final Shell shell, final boolean isCaseSensitive, final String[] names, final String oldName) {
         super(shell);
-        setTitle("Rename representation");
+        setTitle(Messages.RenameDialog_title);
         this.isCaseSensitive = isCaseSensitive;
         initialize();
         if (names != null) {
@@ -155,11 +156,6 @@ public class RenameDialog extends SelectionStatusDialog {
         this.newName = value;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Control createDialogArea(final Composite parent) {
         final Composite container = new Composite(parent, SWT.NULL);
@@ -179,13 +175,11 @@ public class RenameDialog extends SelectionStatusDialog {
         if (!StringUtil.isEmpty(getMessage())) {
             labelText = getMessage();
         } else {
-            labelText = "Enter new name (";
             if (isCaseSensitive) {
-                labelText += "case sensitive";
+                labelText = Messages.RenameDialog_askNewName_caseSensitive;
             } else {
-                labelText += "case insensitive";
+                labelText = Messages.RenameDialog_askNewName_caseInsensitive;
             }
-            labelText += "):";
         }
         label.setText(labelText);
 
@@ -207,12 +201,6 @@ public class RenameDialog extends SelectionStatusDialog {
         return container;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.window.Window#open()
-     */
     @Override
     public int open() {
         // Validate the name to enable or not the OK button.
@@ -235,7 +223,7 @@ public class RenameDialog extends SelectionStatusDialog {
         }
         for (int i = 0; i < oldNames.size(); i++) {
             if ((isCaseSensitive && newText.equals(oldNames.get(i))) || (!isCaseSensitive && newText.equalsIgnoreCase(oldNames.get(i).toString()))) {
-                status = new Status(IStatus.ERROR, SiriusTransPlugin.PLUGIN_ID, IStatus.ERROR, "New name must be different", null);
+                status = new Status(IStatus.ERROR, SiriusTransPlugin.PLUGIN_ID, IStatus.ERROR, Messages.RenameDialog_errorNameClash, null);
                 updateStatus(status);
                 okButton.setEnabled(false);
                 break;
@@ -256,22 +244,12 @@ public class RenameDialog extends SelectionStatusDialog {
         return newName;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.dialogs.SelectionStatusDialog#okPressed()
-     */
     @Override
     protected void okPressed() {
         newName = text.getText().trim();
         super.okPressed();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.dialogs.SelectionStatusDialog#computeResult()
-     */
     @Override
     protected void computeResult() {
     }

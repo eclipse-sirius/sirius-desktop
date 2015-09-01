@@ -114,7 +114,7 @@ public class FeatureEditorDialog extends Dialog {
     @Override
     protected void configureShell(Shell shell) {
         super.configureShell(shell);
-        shell.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title", new Object[] { displayName, labelProvider.getText(object) }));
+        shell.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title", new Object[] { displayName, labelProvider.getText(object) })); //$NON-NLS-1$
         shell.setImage(labelProvider.getImage(object));
     }
 
@@ -133,12 +133,12 @@ public class FeatureEditorDialog extends Dialog {
 
         if (choiceOfValues != null) {
             Group filterGroupComposite = new Group(contents, SWT.NONE);
-            filterGroupComposite.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Choices_pattern_group"));
+            filterGroupComposite.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Choices_pattern_group")); //$NON-NLS-1$
             filterGroupComposite.setLayout(new GridLayout(2, false));
             filterGroupComposite.setLayoutData(new GridData(SWT.FILL, SWT.DEFAULT, true, false, 3, 1));
 
             Label label = new Label(filterGroupComposite, SWT.NONE);
-            label.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Choices_pattern_label"));
+            label.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Choices_pattern_label")); //$NON-NLS-1$
 
             patternText = new Text(filterGroupComposite, SWT.BORDER);
             patternText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -159,7 +159,7 @@ public class FeatureEditorDialog extends Dialog {
         }
 
         Label choiceLabel = new Label(choiceComposite, SWT.NONE);
-        choiceLabel.setText(choiceOfValues == null ? EMFEditUIPlugin.INSTANCE.getString("_UI_Value_label") : EMFEditUIPlugin.INSTANCE.getString("_UI_Choices_label"));
+        choiceLabel.setText(choiceOfValues == null ? EMFEditUIPlugin.INSTANCE.getString("_UI_Value_label") : EMFEditUIPlugin.INSTANCE.getString("_UI_Choices_label")); //$NON-NLS-1$ //$NON-NLS-2$
         GridData choiceLabelGridData = new GridData();
         choiceLabelGridData.verticalAlignment = SWT.FILL;
         choiceLabelGridData.horizontalAlignment = SWT.FILL;
@@ -238,14 +238,14 @@ public class FeatureEditorDialog extends Dialog {
         new Label(controlButtons, SWT.NONE);
 
         final Button addButton = new Button(controlButtons, SWT.PUSH);
-        addButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label"));
+        addButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Add_label")); //$NON-NLS-1$
         GridData addButtonGridData = new GridData();
         addButtonGridData.verticalAlignment = SWT.FILL;
         addButtonGridData.horizontalAlignment = SWT.FILL;
         addButton.setLayoutData(addButtonGridData);
 
         final Button removeButton = new Button(controlButtons, SWT.PUSH);
-        removeButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Remove_label"));
+        removeButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Remove_label")); //$NON-NLS-1$
         GridData removeButtonGridData = new GridData();
         removeButtonGridData.verticalAlignment = SWT.FILL;
         removeButtonGridData.horizontalAlignment = SWT.FILL;
@@ -257,14 +257,14 @@ public class FeatureEditorDialog extends Dialog {
         spaceLabel.setLayoutData(spaceLabelGridData);
 
         final Button upButton = new Button(controlButtons, SWT.PUSH);
-        upButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Up_label"));
+        upButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Up_label")); //$NON-NLS-1$
         GridData upButtonGridData = new GridData();
         upButtonGridData.verticalAlignment = SWT.FILL;
         upButtonGridData.horizontalAlignment = SWT.FILL;
         upButton.setLayoutData(upButtonGridData);
 
         final Button downButton = new Button(controlButtons, SWT.PUSH);
-        downButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Down_label"));
+        downButton.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Down_label")); //$NON-NLS-1$
         GridData downButtonGridData = new GridData();
         downButtonGridData.verticalAlignment = SWT.FILL;
         downButtonGridData.horizontalAlignment = SWT.FILL;
@@ -285,7 +285,7 @@ public class FeatureEditorDialog extends Dialog {
         }
 
         Label featureLabel = new Label(featureComposite, SWT.NONE);
-        featureLabel.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Feature_label"));
+        featureLabel.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Feature_label")); //$NON-NLS-1$
         GridData featureLabelGridData = new GridData();
         featureLabelGridData.horizontalSpan = 2;
         featureLabelGridData.horizontalAlignment = SWT.FILL;

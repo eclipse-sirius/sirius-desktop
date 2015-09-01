@@ -21,6 +21,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.PlatformUI;
@@ -45,16 +46,11 @@ public class FolderSelectionDialog extends AbstractFolderSelectionDialog {
         super(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider(), FolderSelectionDialog.getContentProvider(IResource.PROJECT
                 | IResource.FOLDER));
         setAllowMultiple(false);
-        setTitle("Select a folder"); //$NON-NLS-1$
+        setTitle(Messages.FolderSelectionDialog_title);
         setMessage((message != null) ? message : ""); //$NON-NLS-1$
         setInput(ResourcesPlugin.getWorkspace().getRoot());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.ui.tools.api.dialog.AbstractFolderSelectionDialog#createDialogArea(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Control createDialogArea(final Composite parent) {
         final Control result = super.createDialogArea(parent);

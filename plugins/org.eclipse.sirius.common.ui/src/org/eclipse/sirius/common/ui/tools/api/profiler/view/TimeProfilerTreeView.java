@@ -22,18 +22,18 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent;
+import org.eclipse.sirius.common.tools.api.profiler.ProfilerListener;
+import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.Messages;
+import org.eclipse.sirius.common.ui.tools.api.profiler.InitProfilerAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent;
-import org.eclipse.sirius.common.tools.api.profiler.ProfilerListener;
-import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.common.ui.tools.api.profiler.InitProfilerAction;
 
 /**
  * This view displays informations in a tree of the
@@ -132,17 +132,13 @@ public class TimeProfilerTreeView extends ViewPart implements ProfilerListener {
         DslCommonPlugin.PROFILER.addProfilerListener(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     public void createPartControl(final Composite parent) {
         viewer = new TreeViewer(parent, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL);
         viewer.getTree().setLinesVisible(true);
         viewer.getTree().setHeaderVisible(true);
-        final String[] columnNames = { "Task Category", "Task Name", "Time", "Occurences" };
+        final String[] columnNames = {
+                Messages.TimeProfiler_column_category, Messages.TimeProfiler_column_task, Messages.TimeProfiler_column_time, Messages.TimeProfiler_column_occ, };
         final int[] columnWidths = { 100, 100, 100, 100 };
         final int[] columnAlignments = { SWT.LEFT, SWT.LEFT, SWT.RIGHT, SWT.RIGHT };
         for (int i = 0; i < columnNames.length; i++) {
@@ -190,14 +186,14 @@ public class TimeProfilerTreeView extends ViewPart implements ProfilerListener {
      */
     private void createActions() {
         initProfilerAction = new InitProfilerAction(viewer);
-        initProfilerAction.setText("Reinit profiler");
+        initProfilerAction.setText(Messages.TimeProfiler_action_reinit);
         refreshAction = new Action() {
             @Override
             public void run() {
                 viewer.refresh();
             }
         };
-        refreshAction.setText("Refresh View");
+        refreshAction.setText(Messages.TimeProfiler_action_refresh);
         printAction = new Action() {
             @Override
             public void run() {
@@ -206,7 +202,7 @@ public class TimeProfilerTreeView extends ViewPart implements ProfilerListener {
                 // CHECKSTYLE:ON
             }
         };
-        printAction.setText("Print to console");
+        printAction.setText(Messages.TimeProfiler_action_print);
     }
 
     /**

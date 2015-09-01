@@ -21,6 +21,13 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent;
+import org.eclipse.sirius.common.tools.api.profiler.ProfilerListener;
+import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2;
+import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2.CompositeTask;
+import org.eclipse.sirius.common.ui.Messages;
+import org.eclipse.sirius.common.ui.tools.api.profiler.InitProfilerAction;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -28,13 +35,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent;
-import org.eclipse.sirius.common.tools.api.profiler.ProfilerListener;
-import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2;
-import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2.CompositeTask;
-import org.eclipse.sirius.common.ui.tools.api.profiler.InitProfilerAction;
 
 /**
  * This view displays informations of the
@@ -62,12 +62,6 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
     private IAction printAction;
 
     private ViewerSorter categorySorter = new ViewerSorter() {
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
         @Override
         public int compare(final Viewer v, final Object e1, final Object e2) {
 
@@ -123,12 +117,6 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
     };
 
     private ViewerSorter timeSorter = new ViewerSorter() {
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
         @Override
         public int compare(final Viewer v, final Object e1, final Object e2) {
             int comparison;
@@ -217,7 +205,8 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
         viewer.getTree().setHeaderVisible(true);
         viewer.setLabelProvider(new TimeProfiler2ViewLabelProvider());
         viewer.setContentProvider(new TimeProfiler2TreeViewContentProvider());
-        final String[] columnNames = { "Task Category", "Task Name", "Time (ms)", "Occurences", "Minimum", "Maximum", "Average" };
+        final String[] columnNames = { Messages.TimeProfiler_column_category, Messages.TimeProfiler_column_task, Messages.TimeProfiler_column_time, Messages.TimeProfiler_column_occ,
+                Messages.TimeProfiler_column_min, Messages.TimeProfiler_column_max, Messages.TimeProfiler_column_avg, };
         final int[] columnWidths = { 100, 100, 100, 100, 100, 100, 100 };
         final int[] columnAlignments = { SWT.LEFT, SWT.LEFT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT };
         for (int i = 0; i < columnNames.length; i++) {
@@ -266,14 +255,14 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
      */
     private void createActions() {
         initProfilerAction = new InitProfilerAction(viewer);
-        initProfilerAction.setText("Reinit profiler");
+        initProfilerAction.setText(Messages.TimeProfiler_action_reinit);
         refreshAction = new Action() {
             @Override
             public void run() {
                 viewer.refresh();
             }
         };
-        refreshAction.setText("Refresh View");
+        refreshAction.setText(Messages.TimeProfiler_action_refresh);
         printAction = new Action() {
             @Override
             public void run() {
@@ -282,7 +271,7 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
                 // CHECKSTYLE:ON
             }
         };
-        printAction.setText("Print to console");
+        printAction.setText(Messages.TimeProfiler_action_print);
     }
 
     /**

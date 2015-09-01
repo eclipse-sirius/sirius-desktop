@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.selection.page;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -50,6 +51,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -136,11 +138,7 @@ public class SelectModelElementWizardPage extends WizardPage {
         this.selectedFile = selectedFile;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
 
         initializeDialogUnits(parent);
@@ -296,7 +294,7 @@ public class SelectModelElementWizardPage extends WizardPage {
 
                 } catch (final WrappedException exception) {
                     // file seems to be not valid => log it as a warning
-                    SiriusTransPlugin.getPlugin().error("following file is not valid" + resourcePath.toString(), exception);
+                    SiriusTransPlugin.getPlugin().error(MessageFormat.format(Messages.SelectModelElementWizardPage_invalidFile, resourcePath.toString()), exception);
                 }
                 if (modelResource == null) {
                     children = Collections.EMPTY_LIST.toArray();
@@ -310,11 +308,7 @@ public class SelectModelElementWizardPage extends WizardPage {
             return children;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-         */
+        @Override
         public Object getParent(final Object element) {
             Object parent = myWorkbenchContentProvider.getParent(element);
             if (parent != null) {
@@ -337,11 +331,7 @@ public class SelectModelElementWizardPage extends WizardPage {
             return parent;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-         */
+        @Override
         public boolean hasChildren(final Object element) {
             if (element instanceof IFile) {
                 return isValidModelFile((IFile) element);
@@ -354,32 +344,19 @@ public class SelectModelElementWizardPage extends WizardPage {
             return hasChildren;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
-         */
+        @Override
         public Object[] getElements(final Object inputElement) {
             final Object[] elements = myWorkbenchContentProvider.getElements(inputElement);
             return elements;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-         */
+        @Override
         public void dispose() {
             myWorkbenchContentProvider.dispose();
             myAdapterFactoryContentProvider.dispose();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
+        @Override
         public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
             myWorkbenchContentProvider.inputChanged(viewer, oldInput, newInput);
             myAdapterFactoryContentProvider.inputChanged(viewer, oldInput, newInput);
@@ -396,62 +373,37 @@ public class SelectModelElementWizardPage extends WizardPage {
 
         private WorkbenchLabelProvider myWorkbenchLabelProvider = new WorkbenchLabelProvider();
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
-         */
+        @Override
         public Image getImage(final Object element) {
             final Image result = myWorkbenchLabelProvider.getImage(element);
             return result != null ? result : myAdapterFactoryLabelProvider.getImage(element);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
-         */
+        @Override
         public String getText(final Object element) {
 
             final String result = myWorkbenchLabelProvider.getText(element);
             return result != null && result.length() > 0 ? result : myAdapterFactoryLabelProvider.getText(element);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IBaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
-         */
+        @Override
         public void addListener(final ILabelProviderListener listener) {
             myWorkbenchLabelProvider.addListener(listener);
             myAdapterFactoryLabelProvider.addListener(listener);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IBaseLabelProvider#dispose()
-         */
+        @Override
         public void dispose() {
             myWorkbenchLabelProvider.dispose();
             myAdapterFactoryLabelProvider.dispose();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IBaseLabelProvider#isLabelProperty(java.lang.Object,
-         *      java.lang.String)
-         */
+        @Override
         public boolean isLabelProperty(final Object element, final String property) {
             return myWorkbenchLabelProvider.isLabelProperty(element, property) || myAdapterFactoryLabelProvider.isLabelProperty(element, property);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IBaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
-         */
+        @Override
         public void removeListener(final ILabelProviderListener listener) {
             myWorkbenchLabelProvider.removeListener(listener);
             myAdapterFactoryLabelProvider.removeListener(listener);
@@ -463,11 +415,7 @@ public class SelectModelElementWizardPage extends WizardPage {
         final Collection<Boolean> result = new ArrayList<Boolean>();
         final IResourceVisitor visitor = new IResourceVisitor() {
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.eclipse.core.resources.IResourceVisitor#visit(org.eclipse.core.resources.IResource)
-             */
+            @Override
             public boolean visit(final IResource resource) throws CoreException {
                 if (resource instanceof IFile) {
                     if (isValidModelFile((IFile) resource)) {
@@ -491,13 +439,6 @@ public class SelectModelElementWizardPage extends WizardPage {
      * @author mchauvin
      */
     private class ModelFilesFilter extends ViewerFilter {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
         @Override
         public boolean select(final Viewer viewer, final Object parentElement, final Object element) {
 

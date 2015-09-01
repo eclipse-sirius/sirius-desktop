@@ -20,8 +20,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.TreeItem;
-
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
@@ -33,9 +33,9 @@ import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
  */
 public abstract class AbstractSelectionWizardPage extends WizardPage {
 
-    private static final String MESSAGE_FILTER_ELEMENTS = "Filter elements";
+    private static final String MESSAGE_FILTER_ELEMENTS = Messages.AbstractSelectionWizardPage_message;
 
-    private static final String LABEL_FILTER = "Enter prefix or pattern (? = any character, * = any String): ";
+    private static final String LABEL_FILTER = Messages.AbstractSelectionWizardPage_label;
 
     /** The filter of the list. */
     protected final EObjectSelectionFilter myViewerfilter;

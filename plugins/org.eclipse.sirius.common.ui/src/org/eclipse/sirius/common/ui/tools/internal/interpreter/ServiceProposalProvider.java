@@ -32,6 +32,7 @@ import org.eclipse.sirius.common.tools.internal.interpreter.IPolymorphicService;
 import org.eclipse.sirius.common.tools.internal.interpreter.IService;
 import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
+import org.eclipse.sirius.common.ui.Messages;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Lists;
@@ -44,16 +45,12 @@ import com.google.common.collect.Lists;
  */
 public class ServiceProposalProvider implements IProposalProvider {
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(ServiceInterpreter.PREFIX, ServiceInterpreter.PREFIX, "New service calls expression.", ServiceInterpreter.PREFIX.length());
+        return new ContentProposal(ServiceInterpreter.PREFIX, ServiceInterpreter.PREFIX, Messages.ServiceProposalProvider_newVariableExpression, ServiceInterpreter.PREFIX.length());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
         final List<ContentProposal> proposals;
         if (context == null || !(interpreter instanceof ServiceInterpreter)) {
@@ -159,7 +156,7 @@ public class ServiceProposalProvider implements IProposalProvider {
      */
     private List<ContentProposal> getVariableProposals(String writtenExpression, Object context) {
         if (!(context instanceof ContentContext) && !(context instanceof ContentInstanceContext)) {
-            throw new IllegalArgumentException("The context parameter should be a ContentContext or a ContentInstanceContext");
+            throw new IllegalArgumentException(Messages.ServiceProposalProvider_invalidContext);
         }
         List<ContentProposal> proposals = new ArrayList<ContentProposal>();
         Option<String> receiverVariableName = ServiceInterpreter.getReceiverVariableName(writtenExpression);
