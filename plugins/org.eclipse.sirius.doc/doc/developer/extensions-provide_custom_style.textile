@@ -25,7 +25,7 @@ This interface defines a set of methods that need be implemented in order for th
 * @IBorderItemLocator getNameBorderItemLocator(DNode node, IFigure mainFigure)@
 * @int adaptViewNodeSizeWithLabel(DNode viewNode, WrapLabel nodeLabel, int nodeWidth)@
 * @AnchorProvider getAnchorProvider()@
-* @Image getLabelIcon(DDiagramElement : element)@
+* @Image getLabelIcon(DDiagramElement element)@
 * @Dimension fitToText(DNode node, WrapLabel nodeLabel, DefaultSizeNodeFigure defaultSizeNodeFigure)@
 
 h4. adaptNodeLabel
@@ -33,8 +33,8 @@ h4. adaptNodeLabel
 This method can be used to alter the size and location of a given label according to a given node.
 
 * Parameters
-** @viewNode@ : The node representation.
-** @nodeLabel@ : Label of the node.
+** @viewNode@: The node representation.
+** @nodeLabel@: Label of the node.
 
 h4. getBorderItemLocatorProvider
 
@@ -45,17 +45,17 @@ h4. getNameBorderItemLocator
 This method returns the item locator for the label of the node. This method is meaningless if the position of the label isn't @BORDER@.
 
 * Parameters
-** @node@ : The node representation.
-** @mainFigure@ : The Draw2D figure representing the node.
+** @node@: The node representation.
+** @mainFigure@: The Draw2D figure representing the node.
 
 h4. adaptViewNodeSizeWithLabel
 
 This method returns the minimum width a node needs to be correctly displayed with its label.
 
 * Parameters
-** @viewNode@ : The node representation.
-** @nodeLabel@ : Label of the node.
-** @nodeWidth@ : Current width of the node.
+** @viewNode@: The node representation.
+** @nodeLabel@: Label of the node.
+** @nodeWidth@: Current width of the node.
 
 
 h4. getAnchorProvider
@@ -68,7 +68,7 @@ h4. getLabelIcon
 This method returns the icon that will displayed for this element's representations.
 
 * Parameters
-** @vpElement@ : The element for which we need an icon.
+** @vpElement@: The element for which we need an icon.
 
 
 h4. fitToText
@@ -76,9 +76,9 @@ h4. fitToText
 This method returns the optimal dimension of the node.
 
 * Parameters
-** @node@ : The node representation.
-** @nodeLabel@ : Label of the node.
-** @defaultSizeNodeFigure@ : The draw2d representation of the node.
+** @node@: The node representation.
+** @nodeLabel@: Label of the node.
+** @defaultSizeNodeFigure@: The draw2d representation of the node.
 
 
 h3. Providing custom StyleConfiguration
@@ -100,39 +100,39 @@ This is the minimal configuration for nodes with a @Square@ style.
 h4. Providers of StyleConfiguration
 
 Installing your own configurations can be done through the @org.eclipse.sirius.diagram.styleConfigurationProvider@ extension
-point. This extension point requires only one attribute : the qualified name of the provider class.
+point. This extension point requires only one attribute: the qualified name of the provider class.
 
 bc.. 
 <extension point="org.eclipse.sirius.diagram.styleConfigurationProvider">
    <styleConfigurationProvider providerClass="com.example.diagseq.style.DiagSeqStyleConfigurationProvider" />
 </extension>
 
-p. Here is a sample of the extension tab of the PDE editor when filling in this extension point :
+p. Here is a sample of the extension tab of the PDE editor when filling in this extension point:
 
 !./images/style/styleConfigurationProviderExt.png!
 
 This example records the @DiagSeqStyleConfigurationProvider@ as a configuration provider. This class must implement the
 @IStyleConfigrationProvider@ interface.
 
-The latter interface defines two methods :
+The latter interface defines two methods:
 
 *@boolean provides(DiagramElementMapping mapping, Style style)@*
 
 This method returns true if the provider provides a configuration for the given mapping and style.
 
 * Parameters
-** @mapping@ : The mapping of the node.
-** @style@ : Style of the node.
+** @mapping@: The mapping of the node.
+** @style@: Style of the node.
 
 *@StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style)@*
 
 This method creates a StyleConfiguration for the specified mapping and style.
 
 * Parameters
-** @mapping@ : Mapping of the node.
-** @style@ : Style of the node.
+** @mapping@: Mapping of the node.
+** @style@: Style of the node.
 
-p. Here is an example of a provider :
+p. Here is an example of a provider:
 
 bc.. 
 public class DiagSeqStyleConfigurationProvider implements IStyleConfigurationProvider {
@@ -313,13 +313,13 @@ Next step is to create and record an @EditPart@ to define the way this style wil
 
 An @EditPart@ is a GEF class. It references both a model element and the shape that represents it. GMF adds a layer to GEF
 and exposes its own *EditPart* API. The base type of this API is @IGraphicalEditPart@ (in package
-@org.eclipse.gmf.runtime.diagram.ui.editparts@). Here are the main methods this interface defines :
+@org.eclipse.gmf.runtime.diagram.ui.editparts@). Here are the main methods this interface defines:
 * @EObject resolveSemanticElement()@: This method returns the semantic element of the edit part. The type of this semantic element is a type contained by the Sirius package (see @SiriusPackage@). For instance, if we were to write an @EditPart@ for our @CustomStyle@, the semantic element would be the said @CustomStyle@. It is possible to get the ViewNode with it and, then, the target element.
 * @View getNotationView()@: This method returns the GMF View of the edit part. This is the view that will be saved into the GMF Diagram.
 
-All Custom Style Edit Part must implement the @IStyleEditPart@ interface. Semanticly, a Style Edit Part should not be selectable : it is selected when the Shape or Connector that contains  it is selected. Therefore, *all Custom Style Edit Part should override the @isSelectable()@ method and return false*. If you can, inherit from the abstrac class @AbstractNotSelectableShapeNodeEditPart@ that already overrides correctly this method.
+All Custom Style Edit Part must implement the @IStyleEditPart@ interface. Semantically, a Style Edit Part should not be selectable: it is selected when the Shape or Connector that contains  it is selected. Therefore, *all Custom Style Edit Part should override the @isSelectable()@ method and return false*. If you can, inherit from the abstract class @AbstractNotSelectableShapeNodeEditPart@ that already overrides correctly this method. You should also override the @createDefaultEditPolicies@ to do nothing if you want to let Sirius control your custom node as it is done in the provided Sirius style edit parts: the style part is responsible for the style/figure aspects while its parent part will mainly control the behavior by its policies. Otherwise you will need to properly add policies to override the default GMF policies, add your own specific policies or the Sirius ones.
 
-Here is a sample of a Custom Style Edit Part :
+Here is a sample of a Custom Style Edit Part:
 
 bc.. 
 public class InstanceRoleStyleEditPart extends AbstractNotSelectableShapeNodeEditPart implements IStyleEditPart {
@@ -430,7 +430,7 @@ bc..
 
 p. The provider class (@com.example.diagseq.provider.DiagSeqEditPartProvider@) extends the GMF class
 @org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProvider@. Our custom Edit part will be
-provided by overriding @getNodeEditPartClass@. Here is how this class looks like :
+provided by overriding @getNodeEditPartClass@. Here is how this class looks like:
 
 bc.. 
 public class DiagSeqEditPartProvider extends AbstractEditPartProvider {
@@ -553,7 +553,7 @@ public class AirNoteAttachmentEditPolicyProvider implements IEditPolicyProvider 
 
 }
 
-p. More flexibility can be achieved by writing an abstract provider :
+p. More flexibility can be achieved by writing an abstract provider:
 
 bc.. 
 public abstract class AbstractEditPolicyProvider implements IEditPolicyProvider {
