@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,19 +59,11 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
         super(decoratorTarget);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator#activate()
-     */
+    @Override
     public void activate() {
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator#refresh()
-     */
+    @Override
     public void refresh() {
         removeDecorations();
         final View view = (View) getDecoratorTarget().getAdapter(View.class);
@@ -88,13 +80,26 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
 
             Image decorationImage = getDecorationImage(editPart);
             if (null != decorationImage) {
+                boolean isVolatile = !shouldBeVisibleAtPrint();
                 if (editPart instanceof AbstractConnectionEditPart) {
-                    addDecoration(getDecoratorTarget().addConnectionDecoration(decorationImage, 50, false));
+                    addDecoration(getDecoratorTarget().addConnectionDecoration(decorationImage, 50, isVolatile));
                 } else {
-                    addDecoration(getDecoratorTarget().addShapeDecoration(decorationImage, getDirection(editPart), margin, false));
+                    addDecoration(getDecoratorTarget().addShapeDecoration(decorationImage, getDirection(editPart), margin, isVolatile));
                 }
             }
         }
+    }
+
+    /**
+     * Tells if the decoration added by this decorator should be visible at
+     * image export or print. By default true is returned to have decoration
+     * visible at image export and print. Override this method to change this
+     * behavior.
+     * 
+     * @return true to have decorations visible at image export and at print
+     */
+    protected boolean shouldBeVisibleAtPrint() {
+        return true;
     }
 
     /**
@@ -183,11 +188,6 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
         decorations = new ArrayList<IDecoration>();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator#deactivate()
-     */
     @Override
     public void deactivate() {
         removeDecorations();
