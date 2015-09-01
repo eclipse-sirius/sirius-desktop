@@ -109,63 +109,46 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
         ISelection selection = event.getSelection();
         if (selection instanceof IStructuredSelection) {
 
+            // If the selection event source is different from the active part,
+            // that means the selection change has not been triggered by a user
+            // action. In that case we do nothing to avoid loops.
+            if (event.getSource() != getActivePartSource()) {
+                return;
+            }
+
             // If the selection come from the navigator, we select the
             // corresponding representations elements.
             if (event.getSource().equals(navigator.getCommonViewer())) {
-
                 IWorkbenchPage page = EclipseUIUtil.getActivePage();
                 IEditorPart activeEditor = page.getActiveEditor();
                 if (activeEditor instanceof DialectEditor) {
                     DialectEditor dialectEditor = (DialectEditor) activeEditor;
-                    // We validate that the navigator selection is not already
-                    // selected in the diagram. That avoids for instance to
-                    // select multiple representation elements (with the same
-                    // semantic target) if one of this element has already been
-                    // selected in the representation.
-                    if (isNotAlreadySelected((IStructuredSelection) selection, dialectEditor)) {
-                        page.bringToTop(dialectEditor);
-                        selectRepresentationElements(selection, dialectEditor);
-                    }
+                    page.bringToTop(dialectEditor);
+                    selectRepresentationElements(selection, dialectEditor);
                 }
             } else {
                 Set<EObject> targets = getTargetsFromSelection((IStructuredSelection) selection);
                 if (!targets.isEmpty()) {
-                    Set<Object> currentSelection = getCurrentNavigatorSelection();
-                    // If the current navigator selection is the same than the
-                    // representation one, we do nothing to avoid loops.
-                    if (!targets.equals(currentSelection)) {
-                        navigator.selectReveal(new StructuredSelection(targets.toArray()));
-                    }
+                    navigator.selectReveal(new StructuredSelection(targets.toArray()));
                 }
             }
         }
     }
 
+    private Object getActivePartSource() {
+        IWorkbenchPart part = this.partService.getActivePart();
+        Object toReturn = part;
+        if (part instanceof DialectEditor) {
+            toReturn = ((DialectEditor) part).getEditorSite().getSelectionProvider();
+        } else if (part instanceof CommonNavigator) {
+            toReturn = ((CommonNavigator) part).getCommonViewer();
+        }
+        return toReturn;
+    }
+
     private void selectRepresentationElements(ISelection selection, DialectEditor dialectEditor) {
         List<DRepresentationElement> representationElements = getRepresentationElements(dialectEditor.getRepresentation(), ((IStructuredSelection) selection).toList());
-        if (!representationElements.isEmpty()) {
-            DialectUIManager.INSTANCE.selectAndReveal(dialectEditor, representationElements);
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private boolean isNotAlreadySelected(IStructuredSelection selection, DialectEditor dialectEditor) {
-        Set<EObject> selectedSemantics = getSelectedSemanticElementsInRepresentation(dialectEditor);
-        Set<EObject> navigatorSelection = new HashSet<EObject>(selection.toList());
-        return !selectedSemantics.equals(navigatorSelection);
-
-    }
-
-    private Set<EObject> getSelectedSemanticElementsInRepresentation(DialectEditor editor) {
-        Set<EObject> semanticElements = new HashSet<EObject>();
-        Collection<DSemanticDecorator> semanticDecorators = DialectUIManager.INSTANCE.getSelection(editor);
-        for (DSemanticDecorator decorator : semanticDecorators) {
-            EObject target = decorator.getTarget();
-            if (target != null) {
-                semanticElements.add(target);
-            }
-        }
-        return semanticElements;
+        DialectUIManager.INSTANCE.selectAndReveal(dialectEditor, representationElements);
     }
 
     private List<DRepresentationElement> getRepresentationElements(final DRepresentation representation, final List<?> selection) {
@@ -177,17 +160,6 @@ public class SiriusDialectLinkWithEditorSelectionListener implements ISelectionC
             }
         }
         return result;
-    }
-
-    @SuppressWarnings("unchecked")
-    private Set<Object> getCurrentNavigatorSelection() {
-
-        Set<Object> selection = new HashSet<Object>();
-        ISelection iSelection = navigator.getCommonViewer().getSelection();
-        if (iSelection instanceof IStructuredSelection) {
-            selection.addAll(((IStructuredSelection) iSelection).toList());
-        }
-        return selection;
     }
 
     /**

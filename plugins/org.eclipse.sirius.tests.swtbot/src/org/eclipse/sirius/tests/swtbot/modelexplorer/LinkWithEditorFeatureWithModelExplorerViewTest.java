@@ -23,6 +23,7 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -98,6 +99,7 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
         try {
             if (!linkWithEditorInitialStatus) {
                 modelExplorerView.toolbarToggleButton("Link with Editor").click();
+                bot.waitUntil(new LinkWithEditorStateCondition(modelExplorerView, true));
             }
             openDiagram(REPRESENTATION_NAME);
             assertEquals("The opened representation should be selected in model explorer view", representationTreeItemBot.isSelected(), true);
@@ -110,15 +112,48 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
     }
 
     /**
-     * Tests that the link with editor (editor toward model explorer) works
-     * properly when selecting a diagram element.
+     * Tests that when selecting an element which are not in the representation,
+     * this element is still selected. Deactivated because of unreliable.
      */
-    public void testLinkWithEditorWithDiagramElementSelection() {
+    public void _testLinkWithEditorWithElementsNotInTheRepresentation() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
         boolean linkWithEditorInitialStatus = modelExplorerView.toolbarToggleButton("Link with Editor").isChecked();
         try {
             if (!linkWithEditorInitialStatus) {
                 modelExplorerView.toolbarToggleButton("Link with Editor").click();
+                bot.waitUntil(new LinkWithEditorStateCondition(modelExplorerView, true));
+            }
+
+            // We open the representation...
+            openDiagram(REPRESENTATION_NAME);
+            SWTBotUtils.waitAllUiEvents();
+
+            selectNode(modelExplorerView, ECLASS1, "Tree");
+            SWTBotUtils.waitAllUiEvents();
+
+            // we check that the "tree" item is still selected.
+            bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, "Tree"));
+
+        } finally {
+            // Reset to previous environment
+            if (linkWithEditorInitialStatus != modelExplorerView.toolbarToggleButton("Link with Editor").isChecked()) {
+                modelExplorerView.toolbarToggleButton("Link with Editor").click();
+            }
+        }
+    }
+
+    /**
+     * Tests that the link with editor (editor toward model explorer) works
+     * properly when selecting a diagram element. Deactivated because of
+     * unreliable.
+     */
+    public void _testLinkWithEditorWithDiagramElementSelection() {
+        final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
+        boolean linkWithEditorInitialStatus = modelExplorerView.toolbarToggleButton("Link with Editor").isChecked();
+        try {
+            if (!linkWithEditorInitialStatus) {
+                modelExplorerView.toolbarToggleButton("Link with Editor").click();
+                bot.waitUntil(new LinkWithEditorStateCondition(modelExplorerView, true));
             }
 
             // We open the representation...
@@ -160,9 +195,10 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 
     /**
      * Tests that the link with editor (editor toward model explorer) is not
-     * activated when the action is not checked.
+     * activated when the action is not checked. Deactivated because of
+     * unreliable.
      */
-    public void testLinkWithEditorDeactivate() {
+    public void _testLinkWithEditorDeactivate() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
         boolean linkWithEditorChecked = modelExplorerView.toolbarToggleButton("Link with Editor").isChecked();
         assertFalse("The Link with Editor should be deactivated", linkWithEditorChecked);
@@ -185,14 +221,16 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 
     /**
      * Tests that the link with editor (editor toward model explorer) works
-     * properly when selecting a table element.
+     * properly when selecting a table element. Deactivated because of
+     * unreliable.
      */
-    public void testLinkWithEditorWithTableElementSelection() {
+    public void _testLinkWithEditorWithTableElementSelection() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
         boolean linkWithEditorInitialStatus = modelExplorerView.toolbarToggleButton("Link with Editor").isChecked();
         try {
             if (!linkWithEditorInitialStatus) {
                 modelExplorerView.toolbarToggleButton("Link with Editor").click();
+                bot.waitUntil(new LinkWithEditorStateCondition(modelExplorerView, true));
             }
 
             // We open the representation...
@@ -233,14 +271,16 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
 
     /**
      * Tests that the link with editor (editor toward model explorer) works
-     * properly when selecting a tree element.
+     * properly when selecting a tree element. Deactivated because of
+     * unreliable.
      */
-    public void testLinkWithEditorWithTreeElementSelection() {
+    public void _testLinkWithEditorWithTreeElementSelection() {
         final SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
         boolean linkWithEditorInitialStatus = modelExplorerView.toolbarToggleButton("Link with Editor").isChecked();
         try {
             if (!linkWithEditorInitialStatus) {
                 modelExplorerView.toolbarToggleButton("Link with Editor").click();
+                bot.waitUntil(new LinkWithEditorStateCondition(modelExplorerView, true));
             }
 
             // We open the representation...
@@ -262,7 +302,7 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
             bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, NEW_PACKAGE2));
 
             // Test with two graphical elements on the same semantic object.
-            selectNode(ECLASS1, modelExplorerView);
+            selectNode(modelExplorerView, ECLASS1);
             bot.waitUntil(new ModelExplorerSelectionCondition(modelExplorerView, ECLASS1));
             assertEquals("The Tree should have two selected elements", 2, representation.selection().rowCount());
             assertEquals("The first selected is not the one expected", ECLASS1, representation.selection().get(0, 0));
@@ -291,11 +331,11 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
         }
     }
 
-    private void selectNode(String name, SWTBotView view) {
+    private void selectNode(SWTBotView view, String... names) {
         SWTBot projectExplorerBot = view.bot();
         SWTBotTreeItem projectItem = projectExplorerBot.tree().expandNode(getProjectName());
         SWTBotTreeItem fileNode = projectItem.expandNode(REPRESENTATIONS_RESOURCE_NAME).getNode(1).expand();
-        fileNode.getNode("root").select(ECLASS1);
+        fileNode.getNode("root").select(names);
     }
 
     private void openDiagram(String representationName) {
@@ -337,7 +377,8 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
             ModelExplorerView explorerView = (ModelExplorerView) modelExplorerView.getViewReference().getView(false);
             IStructuredSelection selection = (IStructuredSelection) explorerView.getCommonViewer().getSelection();
             Object selectedElement = selection.getFirstElement();
-            return (selectedElement instanceof ENamedElement) && ((ENamedElement) selectedElement).getName().equals(this.name);
+            return ((selectedElement instanceof ENamedElement) && ((ENamedElement) selectedElement).getName().equals(this.name))
+                    || (selectedElement instanceof DRepresentation) && ((DRepresentation) selectedElement).getName().equals(this.name);
         }
 
         @Override
