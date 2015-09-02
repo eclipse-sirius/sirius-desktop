@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,6 +62,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.provider.ToolItemPro
 import org.eclipse.sirius.diagram.sequence.ordering.provider.OrderingItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.provider.SequenceItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.template.provider.TemplateItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceCollapseUpdater;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceToolInterpretedExpressionSwitch;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
@@ -83,6 +84,7 @@ import com.google.common.collect.Sets;
 public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider {
 
     private final Predicate<DSemanticDecorator> isSequenceSemanticDecorator = new Predicate<DSemanticDecorator>() {
+        @Override
         public boolean apply(DSemanticDecorator input) {
             boolean result = false;
             if (input instanceof DDiagram) {
@@ -95,6 +97,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     };
 
     private final Predicate<DDiagramElement> isSequenceDDiagramElement = new Predicate<DDiagramElement>() {
+        @Override
         public boolean apply(DDiagramElement input) {
             // check that input has a Sequence mapping or is a simple node
             // connected to a sequence message : a lost end.
@@ -110,6 +113,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     /**
      * {@inheritDoc}
      */
+    @Override
     public DiagramDescription createDiagramDescription() {
         return DescriptionFactory.eINSTANCE.createSequenceDiagramDescription();
     }
@@ -117,6 +121,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<? extends CommandParameter> collectToolCommands(EObject context) {
         Collection<CommandParameter> result = Lists.newArrayList();
         Collection<EReference> refs = Arrays.asList(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, ToolPackage.Literals.TOOL_GROUP__TOOLS);
@@ -139,6 +144,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<? extends CommandParameter> collectMappingsCommands() {
         Collection<CommandParameter> result = Lists.newArrayList();
         // Nodes
@@ -163,6 +169,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     /**
      * {@inheritDoc}
      */
+    @Override
     public AdapterFactory getAdapterFactory() {
         ComposedAdapterFactory composed = new ComposedAdapterFactory();
         composed.addAdapterFactory(new SequenceItemProviderAdapterFactory());
@@ -179,6 +186,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#handles(org.eclipse.emf.ecore.EPackage)
      */
+    @Override
     public boolean handles(EPackage ePackage) {
         return DescriptionPackage.eINSTANCE.getNsURI().equals(ePackage.getNsURI()) || org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage.eINSTANCE.getNsURI().equals(ePackage.getNsURI());
     }
@@ -190,6 +198,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#createInterpretedExpressionSwitch(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public IInterpretedExpressionTargetSwitch createInterpretedExpressionSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch parentSwitch) {
         return new SequenceGlobalInterpretedTargetSwitch(feature, parentSwitch);
     }
@@ -200,6 +209,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#allowsLayoutingModeActivation()
      */
+    @Override
     public boolean allowsLayoutingModeActivation() {
         return false;
     }
@@ -301,6 +311,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#supportHeader()
      */
+    @Override
     public boolean supportHeader() {
         return true;
     }
@@ -310,6 +321,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#getHeaderData()
      */
+    @Override
     public LinkedList<HeaderData> getHeaderData(DDiagram diagram) {
         LinkedList<HeaderData> result = Lists.newLinkedList();
         if (diagram instanceof SequenceDDiagram) {
@@ -377,6 +389,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
          * 
          * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
          */
+        @Override
         public Option<Collection<String>> doSwitch(EObject target, boolean considerFeature) {
             Collection<String> targetTypes = Sets.newLinkedHashSet();
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
@@ -414,6 +427,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider
      *      #getCollapseUpdater(DDiagram)
      */
+    @Override
     public Option<? extends ICollapseUpdater> getCollapseUpdater(DDiagram diagram) {
         if (diagram != null && diagram.getDescription() != null && handles(diagram.getDescription().eClass().getEPackage())) {
             return Options.newSome(new SequenceCollapseUpdater());
@@ -440,11 +454,11 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
             sb.append("\n"); //$NON-NLS-1$
         }
 
-        sb.append("Additional available variable for Sequence Diagram:");
-        sb.append("\n . ");
+        sb.append(Messages.SequenceDiagramTypeProvider_sequenceAdditionalVariablesTooltip);
+        sb.append("\n . "); //$NON-NLS-1$
         sb.append("endBefore"); //$NON-NLS-1$
         sb.append(": "); //$NON-NLS-1$
-        sb.append("an EventEnd referencing the semantic event end ");
+        sb.append(Messages.SequenceDiagramTypeProvider_endBeforeVariableDescription);
 
         return sb.toString();
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentCompartmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
@@ -66,8 +67,6 @@ import com.google.common.collect.Lists;
  * @author smonnier
  */
 public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableEditPolicy {
-
-    private static final String RESIZE = "Resize";
 
     /**
      * {@inheritDoc}
@@ -94,7 +93,7 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
 
     private CompositeTransactionalCommand buildNewMoveCommand(CombinedFragmentEditPart hostPart, ChangeBoundsRequest request, ISEComplexMoveValidator validator) {
         TransactionalEditingDomain editingDomain = hostPart.getEditingDomain();
-        ISEComplexMoveCommandBuilder builder = new ISEComplexMoveCommandBuilder(editingDomain, "Execution Move Composite Command", new RequestQuery(request), validator);
+        ISEComplexMoveCommandBuilder builder = new ISEComplexMoveCommandBuilder(editingDomain, Messages.CombinedFragmentResizableEditPolicy_moveCompositeCommand, new RequestQuery(request), validator);
         return builder.buildCommand();
     }
 
@@ -131,7 +130,7 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
     }
 
     private CompositeTransactionalCommand getRezizeCustomCommand(CombinedFragmentEditPart self, ChangeBoundsRequest request) {
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), "Combined Fragment Resize Composite Command");
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), Messages.CombinedFragmentResizableEditPolicy_resizeCompositeCommand);
         ctc.add(CombinedFragmentResizableEditPolicy.getResizeBorderItemTCommand(self, request));
         Option<CombinedFragment> combinedFragmentOption = ISequenceElementAccessor.getCombinedFragment(self.getNotationView());
         if (combinedFragmentOption.some() && !combinedFragmentOption.get().getOperands().isEmpty()) {
@@ -357,7 +356,7 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
             default:
                 break;
             }
-            return new SetBoundsCommand(part.getEditingDomain(), RESIZE, new EObjectAdapter(part.getNotationView()), new Rectangle(position, dimension));
+            return new SetBoundsCommand(part.getEditingDomain(), Messages.CombinedFragmentResizableEditPolicy_resizeSubCommand, new EObjectAdapter(part.getNotationView()), new Rectangle(position, dimension));
         }
         return null;
     }
@@ -374,7 +373,7 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
      * @return a command to resize an operand
      */
     private AbstractTransactionalCommand createOperandSetBoundsCommand(IGraphicalEditPart part, Point location, Dimension dimension) {
-        return new SetBoundsCommand(part.getEditingDomain(), RESIZE, new EObjectAdapter(part.getNotationView()), new Rectangle(location, dimension));
+        return new SetBoundsCommand(part.getEditingDomain(), Messages.CombinedFragmentResizableEditPolicy_resizeSubCommand, new EObjectAdapter(part.getNotationView()), new Rectangle(location, dimension));
     }
 
     private static Point getPositionFromView(IGraphicalEditPart part) {

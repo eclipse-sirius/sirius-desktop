@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHe
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.FinalParentHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
@@ -53,11 +54,6 @@ import com.google.common.collect.Lists;
  * 
  */
 public class AbstractNodeEventResizeSelectionValidator {
-
-    /**
-     * Key constant use for request on multiple selection.
-     */
-    public static final String GROUP_REQUEST_ALREADY_ANSWERED = "Already answered";
 
     private static final String EXECUTION_RESIZE_VALIDATOR = "org.eclipse.sirius.sequence.resize.execution.validator"; //$NON-NLS-1$
 
@@ -133,7 +129,7 @@ public class AbstractNodeEventResizeSelectionValidator {
      * the resize if it is valid, like for example avoid contact with siblings.
      */
     private void doValidation() {
-        Preconditions.checkNotNull(host, "validator must know on which executions check the request validation");
+        Preconditions.checkNotNull(host, Messages.AbstractNodeEventResizeSelectionValidator_nullExecution);
 
         FinalParentHelper finalParentHelper = new FinalParentHelper(host, requestQuery);
         finalParentHelper.computeFinalParent();
@@ -157,6 +153,7 @@ public class AbstractNodeEventResizeSelectionValidator {
      */
     protected boolean validateNewBoundsForAllTargets() {
         return Iterables.all(Iterables.filter(request.getEditParts(), ExecutionEditPart.class), new Predicate<ExecutionEditPart>() {
+            @Override
             public boolean apply(ExecutionEditPart input) {
                 return validateNewBounds(input);
             }
@@ -450,6 +447,7 @@ public class AbstractNodeEventResizeSelectionValidator {
             final Range finalRange = RangeHelper.verticalRange(newBounds);
             Function<ISequenceEvent, Range> futureRangeFunction = new Function<ISequenceEvent, Range>() {
 
+                @Override
                 public Range apply(ISequenceEvent from) {
                     Range verticalRange = from.getVerticalRange();
                     if (host.equals(from)) {

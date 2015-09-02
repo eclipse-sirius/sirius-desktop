@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,6 +57,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ShiftDescendantMessagesOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
@@ -126,7 +127,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
     private ICommand buildMoveCommand(ExecutionEditPart hostPart, ChangeBoundsRequest request, ISEComplexMoveValidator validator) {
         TransactionalEditingDomain editingDomain = hostPart.getEditingDomain();
         RequestQuery requestQuery = new RequestQuery(request);
-        ISEComplexMoveCommandBuilder builder = new ISEComplexMoveCommandBuilder(editingDomain, "Execution Move Composite Command", requestQuery, validator);
+        ISEComplexMoveCommandBuilder builder = new ISEComplexMoveCommandBuilder(editingDomain, Messages.ExecutionSelectionEditPolicy_moveCompositeCommand, requestQuery, validator);
         return postProcessCommand(builder.buildCommand(), hostPart, requestQuery);
     }
 
@@ -161,7 +162,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             validator.setExpansionZone(null);
         }
 
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(hostPart.getEditingDomain(), "Execution Resize Composite Command");
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(hostPart.getEditingDomain(), Messages.ExecutionSelectionEditPolicy_resizeCompositeCommand);
         if (needVerticalSpaceExpansion(validator, request)) {
             SequenceDiagramEditPart diagram = EditPartsHelper.getSequenceDiagramPart(hostPart);
             Collection<ISequenceEvent> eventToIgnore = Collections.singletonList((ISequenceEvent) self);
@@ -268,11 +269,13 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         final int movedBound = top ? oldRange.getLowerBound() : oldRange.getUpperBound();
         final EObject sem = self.getSemanticTargetElement().get();
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
+            @Override
             public boolean apply(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(sem);
             }
         };
         final Predicate<EventEnd> moved = new Predicate<EventEnd>() {
+            @Override
             public boolean apply(EventEnd input) {
                 return EventEndHelper.getSingleEventEnd(input, sem).isStart() == top;
             }
@@ -339,6 +342,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         boolean invalidCommand = false;
 
         Predicate<EventEnd> filterCompoundEventEnd = new Predicate<EventEnd>() {
+            @Override
             public boolean apply(EventEnd input) {
                 return input instanceof CompoundEventEnd;
             }

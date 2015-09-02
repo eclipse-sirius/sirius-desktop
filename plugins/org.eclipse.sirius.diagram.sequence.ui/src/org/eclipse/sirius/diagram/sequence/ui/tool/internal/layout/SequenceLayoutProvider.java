@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.command.DoNothingCommand;
@@ -71,7 +72,7 @@ public class SequenceLayoutProvider extends AbstractLayoutProvider {
         operations.add(new SynchronizeGraphicalOrderingOperation(sdep.getDiagramView(), true));
 
         ICommand cmd = CommandFactory.createICommand(transactionalEditingDomain, operations);
-        cmd.setLabel("Arrange all");
+        cmd.setLabel(Messages.SequenceLayoutProvider_arrangeAllCommand);
 
         return new ICommandProxy(cmd);
     }

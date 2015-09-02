@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ResizeViewOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
@@ -74,10 +75,6 @@ import com.google.common.collect.Multimap;
  * @author smonnier, edugueperoux
  */
 public class InstanceRoleResizableEditPolicy extends AirResizableEditPolicy {
-
-    private static final String INSTANCE_ROLE_MOVE_COMMAND_NAME = "InstanceRole move";
-
-    private static final String INSTANCE_ROLE_RESIZE_COMMAND_NAME = "InstanceRole resize";
 
     /**
      * Manage move requests.
@@ -117,7 +114,7 @@ public class InstanceRoleResizableEditPolicy extends AirResizableEditPolicy {
     private Command getMoveCommand(InstanceRoleMoveValidator validator, RequestQuery requestQuery) {
         GraphicalEditPart host = (GraphicalEditPart) getHost();
         TransactionalEditingDomain transactionalEditingDomain = host.getEditingDomain();
-        CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(transactionalEditingDomain, INSTANCE_ROLE_MOVE_COMMAND_NAME);
+        CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(transactionalEditingDomain, Messages.InstanceRoleResizableEditPolicy_moveCommand);
         ICommand moveCmds = getMoveViewCommands(transactionalEditingDomain, validator.getMoveDeltas());
         if (moveCmds != null && moveCmds.canExecute()) {
             compositeCommand.compose(moveCmds);
@@ -162,7 +159,7 @@ public class InstanceRoleResizableEditPolicy extends AirResizableEditPolicy {
         GraphicalEditPart host = (GraphicalEditPart) getHost();
         TransactionalEditingDomain transactionalEditingDomain = host.getEditingDomain();
 
-        CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(transactionalEditingDomain, INSTANCE_ROLE_RESIZE_COMMAND_NAME);
+        CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(transactionalEditingDomain, Messages.InstanceRoleResizableEditPolicy_resizeCommand);
         ICommand moveViewCmd = getMoveViewCommands(transactionalEditingDomain, validator.getMoveDeltas());
         if (moveViewCmd != null && moveViewCmd.canExecute()) {
             compositeCommand.compose(moveViewCmd);

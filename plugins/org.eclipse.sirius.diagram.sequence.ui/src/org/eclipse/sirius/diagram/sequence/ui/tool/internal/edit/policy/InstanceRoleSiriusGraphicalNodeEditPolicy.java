@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.EndOfLifeMoveOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.ShiftDirectSubExecutionsOperation;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ShiftDescendantMessagesOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
@@ -123,7 +124,7 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
             // TODO EDU : refactor this following with validators
             result = super.getConnectionCompleteCommand(request);
             if (result != null && result.canExecute() && validateIsConnectingCreateMessage(request)) {
-                CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(domain, "Move down lifeline/ add create participant message");
+                CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(domain, Messages.InstanceRoleSiriusGraphicalNodeEditPolicy_createParticipantMessageAndMoveDownLifelineCompositeCommand);
                 Point sourceLocation = ((Point) ViewLocationHint.getInstance().getData(org.eclipse.gef.RequestConstants.REQ_CONNECTION_START)).getCopy();
                 final LifelineEditPart lep = EditPartsHelper.getAllLifelines((IGraphicalEditPart) getHost()).get(0);
 
@@ -268,6 +269,7 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
         // to add a create message
         Predicate<ISequenceEvent> notParentCombinedFragment = new Predicate<ISequenceEvent>() {
 
+            @Override
             public boolean apply(ISequenceEvent input) {
                 if (input instanceof CombinedFragment) {
                     CombinedFragment combinedFragment = (CombinedFragment) input;

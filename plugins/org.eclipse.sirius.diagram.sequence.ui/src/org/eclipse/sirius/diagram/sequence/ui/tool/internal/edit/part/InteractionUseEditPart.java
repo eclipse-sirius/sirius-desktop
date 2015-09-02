@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,6 +59,7 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
      */
     private NotificationListener usedInteractionLabelUpdater = new NotificationListener() {
 
+        @Override
         public void notifyChanged(Notification notification) {
             if (!notification.isTouch()) {
                 refreshUsedInteractionLabel();
@@ -219,6 +220,7 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
     /**
      * {@inheritDoc}
      */
+    @Override
     public ISequenceEvent getISequenceEvent() {
         return ISequenceElementAccessor.getInteractionUse(getNotationView()).get();
     }

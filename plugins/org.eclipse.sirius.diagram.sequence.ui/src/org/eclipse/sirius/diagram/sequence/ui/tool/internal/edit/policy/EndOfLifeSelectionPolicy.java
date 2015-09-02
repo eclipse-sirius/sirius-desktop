@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.EndOfLifeOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ShiftDescendantMessagesOperation;
@@ -137,7 +138,7 @@ public class EndOfLifeSelectionPolicy extends SpecificBorderItemSelectionEditPol
     }
 
     private Command getLifelineMovesCommand(EndOfLifeEditPart self, ChangeBoundsRequest cbr) {
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), "Lifelines moves command from end of life");
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), Messages.EndOfLifeSelectionPolicy_lifelineMoveCommand);
         Option<EndOfLife> endOfLife = ISequenceElementAccessor.getEndOfLife(self.getNotationView());
         LifelineEditPart lep = self.getLifelineEditPart();
         boolean destroyed = endOfLife.some() && endOfLife.get().isExplicitelyDestroyed();

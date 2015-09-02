@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramUIPlugin;
 import org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype.SequenceDiagramTypeProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
@@ -59,13 +60,14 @@ public class VisibilityEventHandler extends ResourceSetListenerImpl {
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
         if (containsVisibilityEvent(event)) {
-            throw new RollbackException(new Status(IStatus.ERROR, SequenceDiagramUIPlugin.PLUGIN_ID, "Hide/Reveal is not supported in Sequence Diagrams"));
+            throw new RollbackException(new Status(IStatus.ERROR, SequenceDiagramUIPlugin.PLUGIN_ID, Messages.VisibilityEventHandler_nonSupportedHideRevealInSequenceDiagram));
         }
         return null;
     }
 
     private boolean containsVisibilityEvent(ResourceSetChangeEvent event) {
         Predicate<Notification> isVisibilityEvent = new Predicate<Notification>() {
+            @Override
             public boolean apply(Notification input) {
                 NotificationQuery nq = new NotificationQuery(input);
                 return nq.isViewBecomingInvisibleEvent() || nq.isHideFilterAddEvent();
@@ -73,6 +75,7 @@ public class VisibilityEventHandler extends ResourceSetListenerImpl {
         };
 
         Predicate<Notification> isAlwaysVisibleSequenceElement = new Predicate<Notification>() {
+            @Override
             public boolean apply(Notification input) {
                 Object notifier = input.getNotifier();
                 if (notifier instanceof DDiagramElement) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -62,6 +63,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.EndOfLifeOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ShiftDescendantMessagesOperation;
@@ -101,7 +103,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     /**
      * Key constant use for request from a BendpointRequest on Message.
      */
-    public static final String REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY = "Request a Execution resize from a BendpointRequest";
+    public static final String REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY = "org.eclipse.sirius.sequence.resize.execution.from.bendpoint.request"; //$NON-NLS-1$
 
     /**
      * The color top use for the horizontal feedback rules shown when moving a
@@ -230,6 +232,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         final Point location = request.getLocation().getCopy();
 
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
+            @Override
             public boolean apply(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(thisSemanticEvent);
             }
@@ -252,6 +255,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         final Point location = request.getLocation().getCopy();
 
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
+            @Override
             public boolean apply(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(thisSemanticEvent);
             }
@@ -398,7 +402,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             result = UnexecutableCommand.INSTANCE;
         } else {
             String label = baseCommand.getLabel();
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(thisEvent.getEditingDomain(), (label != null ? label : "<null>") + " and synchronize ordering"); //$NON-NLS-1$
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(thisEvent.getEditingDomain(), MessageFormat.format(Messages.SequenceMessageEditPolicy_synchronizeOrderingCompositeCommand, label != null ? label : "<null>")); //$NON-NLS-1$
             SequenceEditPartsOperations.appendFullRefresh(thisEvent, ctc);
 
             MoveType move = getMoveType(thisEvent, request, ends);
@@ -440,6 +444,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
     private Collection<Integer> checkGlobalPositions(final ISequenceEvent thisEvent, final Option<Range> finalRange) {
         Function<ISequenceEvent, Range> futureRangeFunction = new Function<ISequenceEvent, Range>() {
+            @Override
             public Range apply(ISequenceEvent from) {
                 Range verticalRange = from.getVerticalRange();
                 if (thisEvent.equals(from) && finalRange.some()) {
@@ -603,6 +608,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         final Point location = request.getLocation().getCopy();
 
         final Predicate<SingleEventEnd> toMove = new Predicate<SingleEventEnd>() {
+            @Override
             public boolean apply(SingleEventEnd input) {
                 return !input.getSemanticEvent().equals(thisSemanticEvent);
             }
@@ -663,7 +669,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
      *         command otherwise
      */
     private AbstractEMFOperation getMoveDestroyMessageCommand(BendpointRequest br, SequenceMessageEditPart smep, Command baseCommand) {
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(smep.getEditingDomain(), "Move create message");
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(smep.getEditingDomain(), Messages.SequenceMessageEditPolicy_moveCreateMessageCommand);
         if (smep.getSource() instanceof ISequenceEventEditPart) {
             ISequenceEventEditPart source = (ISequenceEventEditPart) smep.getSource();
             Range sourceRange = source.getISequenceEvent().getVerticalRange();
@@ -723,7 +729,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         InstanceRoleEditPart instanceRoleEditPart = (InstanceRoleEditPart) smep.getTarget();
         LifelineEditPart lifelineEditPart = Iterables.getOnlyElement(EditPartsHelper.getAllLifelines(instanceRoleEditPart));
 
-        CompositeTransactionalCommand cc = new CompositeTransactionalCommand(smep.getEditingDomain(), "Move create message");
+        CompositeTransactionalCommand cc = new CompositeTransactionalCommand(smep.getEditingDomain(), Messages.SequenceMessageEditPolicy_moveCreateMessageCommand);
 
         // limite the move to the first sequence event of the target
         int firstMessageInTargetInstanceRole = lifelineEditPart.getISequenceEvent().getVerticalRange().getUpperBound() - LayoutConstants.EXECUTION_CHILDREN_MARGIN;

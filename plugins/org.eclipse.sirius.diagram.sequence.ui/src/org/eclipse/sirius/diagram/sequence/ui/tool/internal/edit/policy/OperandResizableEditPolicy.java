@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.OperandResizeValidator;
@@ -53,8 +54,6 @@ import com.google.common.collect.Iterables;
  * @author smonnier
  */
 public class OperandResizableEditPolicy extends AirResizableEditPolicy {
-
-    private static final String RESIZE = "Resize";
 
     /**
      * Constructor.
@@ -137,13 +136,13 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
             default:
                 break;
             }
-            return new SetBoundsCommand(part.getEditingDomain(), RESIZE, new EObjectAdapter(part.getNotationView()), new Rectangle(position, dimension));
+            return new SetBoundsCommand(part.getEditingDomain(), Messages.OperandResizableEditPolicy_resizeSubCommand, new EObjectAdapter(part.getNotationView()), new Rectangle(position, dimension));
         }
         return null;
     }
 
     private Command getResizeCustomCommand(OperandEditPart self, ChangeBoundsRequest request) {
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), "Operand Resize Composite Command");
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), Messages.OperandResizableEditPolicy_resizeCompositeCommand);
         ctc.add(OperandResizableEditPolicy.getResizeBorderItemTCommand(self, request));
         Option<Operand> operandOption = ISequenceElementAccessor.getOperand(self.getNotationView());
         if (operandOption.some()) {
@@ -218,7 +217,7 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
      * @return a command to resize an operand
      */
     private AbstractTransactionalCommand createOperandSetBoundsCommand(IGraphicalEditPart part, Point location, Dimension dimension) {
-        return new SetBoundsCommand(part.getEditingDomain(), RESIZE, new EObjectAdapter(part.getNotationView()), new Rectangle(location, dimension));
+        return new SetBoundsCommand(part.getEditingDomain(), Messages.OperandResizableEditPolicy_resizeSubCommand, new EObjectAdapter(part.getNotationView()), new Rectangle(location, dimension));
     }
 
     /**

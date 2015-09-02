@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 import com.google.common.base.Preconditions;
@@ -92,7 +93,7 @@ public class ShiftMessagesOperation extends AbstractModelChangeOperation<Void> {
      *            sub messages will be shifted
      */
     public ShiftMessagesOperation(Collection<Message> messagesToShift, Collection<ISequenceEvent> movedElements, int deltaY, boolean revert, boolean move) {
-        this("Shift given message", deltaY, revert, move);
+        this(Messages.ShiftMessagesOperation_operationName, deltaY, revert, move);
         Preconditions.checkNotNull(messagesToShift);
         Preconditions.checkNotNull(movedElements);
         this.messagesToShift.addAll(messagesToShift);

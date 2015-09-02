@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
@@ -88,7 +89,7 @@ public class InteractionUseResizableEditPolicy extends AbstractFrameResizableEdi
         Command result = defaultCommand;
 
         if (result != null && result.canExecute()) {
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), "Interaction Use Move Composite Command");
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(self.getEditingDomain(), Messages.InteractionUseResizableEditPolicy_moveCompositeCommand);
             ctc.setLabel(String.valueOf(defaultCommand.getLabel()));
             ctc.compose(new CommandProxy(defaultCommand));
 

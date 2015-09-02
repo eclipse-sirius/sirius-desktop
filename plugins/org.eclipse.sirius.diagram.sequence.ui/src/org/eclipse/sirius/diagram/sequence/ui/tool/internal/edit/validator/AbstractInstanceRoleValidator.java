@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
@@ -60,7 +61,7 @@ public abstract class AbstractInstanceRoleValidator {
      * {@inheritDoc}
      */
     public boolean isValid(ChangeBoundsRequest request) {
-        Preconditions.checkNotNull(instanceRoles, "validator must know on which instanceRoles check the request validation");
+        Preconditions.checkNotNull(instanceRoles, Messages.AbstractInstanceRoleValidator_nullInstanceRoleList);
 
         return true;
     }

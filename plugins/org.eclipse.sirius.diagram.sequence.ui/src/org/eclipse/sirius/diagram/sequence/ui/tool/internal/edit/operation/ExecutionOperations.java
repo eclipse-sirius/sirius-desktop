@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;
+
+import java.text.MessageFormat;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.command.Command;
@@ -28,6 +30,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.ReparentExecutionOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetMessageRangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetVerticalRangeOperation;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LostMessageEndEditPart;
@@ -228,7 +231,7 @@ public final class ExecutionOperations {
             LostMessageEnd lostMessageEnd = ((LostMessageEndEditPart) source).getLostMessageEnd();
             sourceBounds = lostMessageEnd.getProperLogicalBounds().getCopy();
         } else {
-            throw new RuntimeException("The source of a message should always be an ISequenceEvent but was: " + String.valueOf(source));
+            throw new RuntimeException(MessageFormat.format(Messages.ExecutionOperations_invalidMessageSource, String.valueOf(source)));
         }
         smrc.setSource(source.getNotationView(), sourceBounds);
         // The target side is reconnected to the parent of the execution being

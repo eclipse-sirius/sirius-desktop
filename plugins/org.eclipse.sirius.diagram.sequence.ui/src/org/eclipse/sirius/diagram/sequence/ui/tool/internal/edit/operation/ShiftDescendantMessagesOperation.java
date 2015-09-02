@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -30,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ISequenceEventsTreeIterator;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
@@ -93,7 +95,7 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
      *            parentPart is resized.
      */
     public ShiftDescendantMessagesOperation(ISequenceEvent parent, int deltaY, boolean revert, boolean move, boolean fromTop) {
-        super("Shift sub-messages bendpoints by " + deltaY, deltaY, revert, move);
+        super(MessageFormat.format(Messages.ShifDescendantMessagesOperation_operationName, deltaY), deltaY, revert, move);
         this.parent = parent;
         this.fromTop = fromTop;
         this.oldParentRange = parent.getVerticalRange();
@@ -163,6 +165,7 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
         populate(descendants);
 
         final Predicate<Message> filterReflexiveMessage = new Predicate<Message>() {
+            @Override
             public boolean apply(final Message input) {
                 return !input.isReflective();
             }

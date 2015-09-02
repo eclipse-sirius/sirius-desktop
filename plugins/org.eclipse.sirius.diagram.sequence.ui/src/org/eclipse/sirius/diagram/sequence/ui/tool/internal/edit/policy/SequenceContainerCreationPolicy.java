@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,6 +49,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreation
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.command.SequenceDelegatingCommandFactory;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.FrameCreationValidator;
@@ -78,12 +79,6 @@ import com.google.common.collect.Lists;
  * @author pcdavid
  */
 public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy {
-
-    /** Label use for the Interaction Use creation. */
-    public static final String INTERACTION_USE_CREATION_CMD_LABEL = "Interaction Use creation";
-
-    /** Label use for the Combined Fragment creation. */
-    public static final String COMBINED_FRAGMENT_CREATION_CMD_LABEL = "Combined Fragment creation";
 
     /**
      * Additional figures for feedback.
@@ -160,9 +155,9 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
                 }
                 if (result != null) {
                     if (ccdTool instanceof InteractionUseCreationTool) {
-                        result.setLabel(INTERACTION_USE_CREATION_CMD_LABEL);
+                        result.setLabel(Messages.SequenceContainerCreationPolicy_interactionUseCreationCommand);
                     } else if (ccdTool instanceof CombinedFragmentCreationTool) {
-                        result.setLabel(COMBINED_FRAGMENT_CREATION_CMD_LABEL);
+                        result.setLabel(Messages.SequenceContainerCreationPolicy_combinedFragmentCreationCommand);
                     }
                 }
             } else {

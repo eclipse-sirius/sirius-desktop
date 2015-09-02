@@ -69,6 +69,7 @@ Additional non-breaking changes:
 ** @org.eclipse.sirius.common.acceleo.mtl@
 ** @org.eclipse.sirius.common.acceleo.mtl.ide@
 ** @org.eclipse.sirius.common.ui@
+** @org.eclipse.sirius.diagram.sequence.ui@
 ** @org.eclipse.sirius.eef.adapters@
 ** @org.eclipse.sirius.interpreter@
 ** @org.eclipse.sirius.table@
