@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.sirius.business.api.dialect.identifier.AbstractRepresentation
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.Messages;
 
 /**
  * Identifies a diagram.
@@ -44,7 +45,7 @@ public class DiagramIdentifier extends AbstractRepresentationElementIdentifier i
      */
     public DiagramIdentifier(final EObject semantic, final String descriptionName, final int index) {
         if (semantic == null || descriptionName == null) {
-            throw new IllegalArgumentException("semantic & descriptionName are mandatories");
+            throw new IllegalArgumentException(Messages.DiagramIdentifier_parametersErrorMsg);
         }
         this.semantic = semantic;
         this.descriptionName = descriptionName;

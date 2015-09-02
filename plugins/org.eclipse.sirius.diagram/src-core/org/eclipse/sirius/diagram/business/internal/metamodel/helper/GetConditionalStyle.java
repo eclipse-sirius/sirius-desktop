@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
@@ -181,7 +183,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
      */
     @Override
     public EList<? extends ConditionalStyleDescription> defaultCase(final EObject object) {
-        SiriusPlugin.getDefault().error("Impossible to get the conditional style descriptions for object : " + object, new RuntimeException());
+        SiriusPlugin.getDefault().error(MessageFormat.format(Messages.GetConditionalStyle_errorMsg, object), new RuntimeException());
         return EMPTY;
     }
 }

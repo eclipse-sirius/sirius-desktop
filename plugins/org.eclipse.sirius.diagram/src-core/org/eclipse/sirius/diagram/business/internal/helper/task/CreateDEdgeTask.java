@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
@@ -93,6 +94,7 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
 
         EObjectQuery eObjectQuery = new EObjectQuery(sourceView);
@@ -131,8 +133,9 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "create edge";
+        return Messages.CreateDEdgeTask_label;
     }
 
     private Collection<EObject> getAllSemantics() {
@@ -146,6 +149,7 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedRepresentationElements()
      */
+    @Override
     public Collection<DRepresentationElement> getCreatedRepresentationElements() {
         return new ArrayList<DRepresentationElement>(createdDEdges);
     }
@@ -155,6 +159,7 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedElements()
      */
+    @Override
     public Collection<EObject> getCreatedElements() {
         // not applicable
         return Collections.emptySet();
@@ -165,6 +170,7 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getAffectedElements()
      */
+    @Override
     public Collection<EObject> getAffectedElements() {
         // not applicable
         return Collections.emptySet();
@@ -175,6 +181,7 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getCreatedReferences()
      */
+    @Override
     public Collection<EObject> getCreatedReferences() {
         // not applicable
         return Collections.emptySet();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -273,7 +275,8 @@ public final class DiagramElementMappingHelper {
         if (edgeTarget instanceof DSemanticDecorator) {
             return ((DSemanticDecorator) edgeTarget).getTarget();
         } else if (edgeTarget != null) {
-            SiriusPlugin.getDefault().warning("The edge target " + String.valueOf(edgeTarget) + ISiriusMessages.IS_NOT_A_DECORATE_SEMANTIC_ELEMENT, null);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DiagramElementMappingHelper_edgeTargetMsg, String.valueOf(edgeTarget), ISiriusMessages.IS_NOT_A_DECORATE_SEMANTIC_ELEMENT),
+                    null);
         }
         return null;
     }

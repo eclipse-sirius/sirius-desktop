@@ -77,9 +77,9 @@ public class LostNodeData extends LostElementDataWithMapping implements ILostEle
     public String toString() {
         String result = super.toString() + SEPARATOR;
         if (parentData == null) {
-            result += "no parent data";
+            result += "no parent data"; //$NON-NLS-1$
         } else {
-            result += "Parent data: " + parentData.toString();
+            result += "Parent data: " + parentData.toString(); //$NON-NLS-1$
         }
         return result;
     }
@@ -105,6 +105,7 @@ public class LostNodeData extends LostElementDataWithMapping implements ILostEle
     /**
      * {@inheritDoc}
      */
+    @Override
     public LostElementDataState addDiagramElementInCorrespondingParentContainer(final DDiagram designerDiagram, final DDiagramElement createdElement) {
         LostElementDataState result = LostElementDataState.NOT_CREATED;
 

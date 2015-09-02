@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 
 import com.google.common.collect.Lists;
@@ -34,7 +35,7 @@ public class RevealAllElementsCommand extends RecordingCommand {
      * 
      * @since 0.9.0
      */
-    public static final String REVEAL_ALL_ELEMENTS_LABEL = "Reveal all elements";
+    public static final String REVEAL_ALL_ELEMENTS_LABEL = Messages.RevealAllElementsCommand_revealAllElementsLabel;
 
     /** The viewpoint. */
     private final DDiagram viewpoint;

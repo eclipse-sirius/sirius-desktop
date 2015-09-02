@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.diagramtype;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,6 +21,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -129,10 +131,10 @@ public final class DiagramTypeDescriptorRegistry {
                         final IDiagramTypeDescriptor descriptor = new PluginDiagramTypeDescriptor(label, (IDiagramDescriptionProvider) provider);
                         allProviders.add(descriptor);
                     } else {
-                        SiriusPlugin.getDefault().error("Error while loading the extension : " + extension.getLabel(), new ClassCastException());
+                        SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramTypeDescriptorRegistry_loadingErrorMsg, extension.getLabel()), new ClassCastException());
                     }
                 } catch (final CoreException e) {
-                    SiriusPlugin.getDefault().error("Error while loading the extension " + extension.getLabel(), e);
+                    SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramTypeDescriptorRegistry_loadingErrorMsg, extension.getLabel()), e);
                     SiriusPlugin.getDefault().getLog().log(e.getStatus());
                 }
             }
@@ -174,6 +176,7 @@ public final class DiagramTypeDescriptorRegistry {
          * 
          * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor#getDiagramDescriptionProvider()
          */
+        @Override
         public IDiagramDescriptionProvider getDiagramDescriptionProvider() {
             return this.diagramDescriptionProvider;
         }
@@ -183,6 +186,7 @@ public final class DiagramTypeDescriptorRegistry {
          * 
          * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor#getLabel()
          */
+        @Override
         public String getLabel() {
             return label;
         }

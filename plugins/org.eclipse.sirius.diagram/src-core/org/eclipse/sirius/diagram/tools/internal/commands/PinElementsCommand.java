@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 
 import com.google.common.collect.Lists;
@@ -38,7 +39,7 @@ public class PinElementsCommand extends RecordingCommand {
      *            the elements which must be marked as pinned.
      */
     public PinElementsCommand(final Collection<? extends DDiagramElement> targetElements) {
-        super(TransactionUtil.getEditingDomain(targetElements.iterator().next()), "Pin elements");
+        super(TransactionUtil.getEditingDomain(targetElements.iterator().next()), Messages.PinElementsCommand_commandLabel);
         this.targetElements = Lists.newArrayList(targetElements);
     }
 

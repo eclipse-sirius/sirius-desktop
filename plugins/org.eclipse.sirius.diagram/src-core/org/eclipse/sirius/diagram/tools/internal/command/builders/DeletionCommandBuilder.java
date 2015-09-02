@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -61,18 +62,6 @@ import com.google.common.collect.Sets;
  * @author mchauvin
  */
 public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
-
-    /** The default label for the enclosing command. */
-    protected static final String DELETE = "Delete";
-
-    /** The label for delete from diagram. */
-    protected static final String DELETE_FROM_DIAGRAM_LABEL = "Delete from diagram";
-
-    /** The label for delete from model without tool. */
-    protected static final String DELETE_FROM_MODEL = "Delete from model ";
-
-    /** The label for delete diagram. */
-    protected static final String DELETE_DIAGRAM_LABEL = "Delete diagram";
 
     /**
      * The diagram to delete.
@@ -356,14 +345,14 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
 
     @Override
     protected String getEnclosingCommandLabel() {
-        String commandLabel = DELETE;
+        String commandLabel = Messages.DeletionCommandBuilder_deleteLabel;
         if (diagram != null) {
-            commandLabel = DELETE_DIAGRAM_LABEL;
+            commandLabel = Messages.DeletionCommandBuilder_deleteDiagramLabel;
         } else if (diagramElement != null) {
             if (deleteFromDiagram) {
-                commandLabel = DELETE_FROM_DIAGRAM_LABEL;
+                commandLabel = Messages.DeletionCommandBuilder_deleteFromDiagramLabel;
             } else if (tool == null) {
-                commandLabel = DELETE_FROM_MODEL;
+                commandLabel = Messages.DeletionCommandBuilder_deleteFromModelLabel;
             } else {
                 commandLabel = new IdentifiedElementQuery(tool).getLabel();
             }

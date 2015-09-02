@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.tools.api.validation.constraint.RuleWrappingStatus;
@@ -56,7 +57,7 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
         if (typeEvenement == EMFEventType.NULL) {
             final Collection<ValidationRule> failures = getFailingRules(objectToValidate);
             if (failures.size() > 0) {
-                final MultiStatus parentStatus = new MultiStatus(SiriusPlugin.ID, getHighestStatusCode(failures), "Validation issues", null);
+                final MultiStatus parentStatus = new MultiStatus(SiriusPlugin.ID, getHighestStatusCode(failures), Messages.AbstractDDiagramConstraint_validationErrorMessage, null);
                 for (ValidationRule failedRule : failures) {
                     EObject target = objectToValidate;
 
@@ -205,7 +206,8 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
                 // be check twice (one for the edge.getTarget() that
                 // return the source.getTarget() and one for the source
                 // Node sourceNode.getTarget())
-                if (((DEdge) objectToValidate).getSourceNode() instanceof DSemanticDecorator && !semanticElement.equals(((DSemanticDecorator) ((DEdge) objectToValidate).getSourceNode()).getTarget())) {
+                if (((DEdge) objectToValidate).getSourceNode() instanceof DSemanticDecorator
+                        && !semanticElement.equals(((DSemanticDecorator) ((DEdge) objectToValidate).getSourceNode()).getTarget())) {
                     result = true;
                 }
             } else {

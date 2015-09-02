@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Set;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 
 /**
@@ -28,12 +29,12 @@ public class RevealDDiagramElementsLabel extends RecordingCommand {
     /**
      * Label for hide many labels.
      */
-    public static final String REVEAL_LABELS = "Reveal labels";
+    public static final String REVEAL_LABELS = Messages.RevealDDiagramElementsLabel_revealLabels;
 
     /**
      * Label for hide one label.
      */
-    public static final String REVEAL_LABEL = "Reveal label";
+    public static final String REVEAL_LABEL = Messages.RevealDDiagramElementsLabel_revealLabel;
 
     /** The viewpoint elements for which we want to reveal th label. */
     private final Set<DDiagramElement> diagramElements;

@@ -55,6 +55,7 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper;
@@ -225,7 +226,7 @@ public class DDiagramSynchronizer {
      */
     public void initDiagram(final String name, final EObject target, final IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Init diagram", 4);
+            monitor.beginTask(Messages.DDiagramSynchronizer_initDiagramMsg, 4);
             this.session = SessionManager.INSTANCE.getSession(target);
             this.diagram = createEmptyDiagram(name, target);
             monitor.worked(1);
@@ -384,7 +385,7 @@ public class DDiagramSynchronizer {
                 RefreshExtensionService.getInstance().beforeRefresh(this.diagram);
 
                 final int mappingNumbers = nodeMappings.size() + edgeMappings.size() + containerMappings.size();
-                monitor.beginTask("Refreshing mappings", mappingNumbers);
+                monitor.beginTask(Messages.DDiagramSynchronizer_refreshMappingsMsg, mappingNumbers);
 
                 /*
                  * compute a first time the cache with old mappings => updater
@@ -797,7 +798,7 @@ public class DDiagramSynchronizer {
         final SetIntersection<AbstractDNodeCandidate> status = computeCurrentStatus(viewContainer, mapping, semanticFilter);
         Collection<AbstractDNodeCandidate> newElements = status.getNewElements();
         try {
-            monitor.beginTask("Refresh containers", 3);
+            monitor.beginTask(Messages.DDiagramSynchronizer_refreshContainerMsg, 3);
 
             deleteCandidatesToRemove(status, new SubProgressMonitor(monitor, 1));
             // kept and created nodes
@@ -838,7 +839,7 @@ public class DDiagramSynchronizer {
     private void refreshMappingsInContainerMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets, final DDiagramElementContainer newNode, IProgressMonitor monitor) {
         if (this.accessor.getPermissionAuthority().canEditInstance(newNode)) {
             try {
-                monitor.beginTask("Refresh container childs", 1);
+                monitor.beginTask(Messages.DDiagramSynchronizer_refreshContainerChildsMsg, 1);
 
                 /* Refresh border node mappings */
                 refreshBorderNodeMapping(mappingsToEdgeTargets, newNode, null, new SubProgressMonitor(monitor, 1));
@@ -898,7 +899,7 @@ public class DDiagramSynchronizer {
         /* compute added/removed candidates. */
         final SetIntersection<AbstractDNodeCandidate> status = computeCurrentStatus(viewContainer, mapping, semanticFilter);
         try {
-            monitor.beginTask("Nodes refresh", 3);
+            monitor.beginTask(Messages.DDiagramSynchronizer_refreshNodeMsg, 3);
 
             deleteCandidatesToRemove(status, new SubProgressMonitor(monitor, 1));
 
@@ -941,7 +942,7 @@ public class DDiagramSynchronizer {
             final DragAndDropTarget newNodeDDT = (DragAndDropTarget) newNode;
             List<NodeMapping> borderedNodeMappings = diagramMappingsManager.getBorderedNodeMappings(newNode);
             try {
-                monitor.beginTask("BorderedNodes refresh", 4 * borderedNodeMappings.size());
+                monitor.beginTask(Messages.DDiagramSynchronizer_borderNodeRefreshMsg, 4 * borderedNodeMappings.size());
 
                 for (final NodeMapping bordermapping : borderedNodeMappings) {
                     final SetIntersection<AbstractDNodeCandidate> borderStatus = computeCurrentStatus(newNodeDDT, bordermapping, semanticFilter);
@@ -982,7 +983,7 @@ public class DDiagramSynchronizer {
     private void deleteCandidatesToRemove(final SetIntersection<AbstractDNodeCandidate> status, IProgressMonitor monitor) {
         try {
             final Iterable<AbstractDNodeCandidate> candidatesToRemove = status.getRemovedElements();
-            monitor.beginTask("Nodes deletion", Iterables.size(candidatesToRemove));
+            monitor.beginTask(Messages.DDiagramSynchronizer_deleteNodesMsg, Iterables.size(candidatesToRemove));
             for (final AbstractDNodeCandidate nodeToDelete : candidatesToRemove) {
                 if (nodeToDelete.comesFromDiagramElement()) {
                     this.accessor.eDelete(nodeToDelete.getOriginalElement(), session != null ? session.getSemanticCrossReferencer() : null);
@@ -1039,7 +1040,7 @@ public class DDiagramSynchronizer {
             IProgressMonitor monitor) {
         final Iterable<AbstractDNodeCandidate> keptNodeCandidates = status.getKeptElements();
         try {
-            monitor.beginTask("Refresh Nodes", Iterables.size(keptNodeCandidates));
+            monitor.beginTask(Messages.DDiagramSynchronizer_refreshNodesMsg, Iterables.size(keptNodeCandidates));
             for (final AbstractDNodeCandidate keptCandidate : keptNodeCandidates) {
                 handleKeptNode(viewContainer, keptCandidate, keptNodes, border, new SubProgressMonitor(monitor, 1));
             }
@@ -1053,7 +1054,7 @@ public class DDiagramSynchronizer {
         /* The element is already here. */
         AbstractDNode keptNode = keptCandidate.getOriginalElement();
         try {
-            monitor.beginTask("Node refresh", 3);
+            monitor.beginTask(Messages.DDiagramSynchronizer_nodeRefreshMsg, 3);
 
             final AbstractNodeMapping nodeMapping = (AbstractNodeMapping) keptNode.getDiagramElementMapping();
 
@@ -1258,7 +1259,7 @@ public class DDiagramSynchronizer {
     private List<AbstractDNode> createNewContent(final Collection<AbstractDNodeCandidate> candidatesToCreate, boolean force, final DragAndDropTarget container, final AbstractNodeMapping mapping,
             final boolean border, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Nodes creation", candidatesToCreate.size());
+            monitor.beginTask(Messages.DDiagramSynchronizer_nodeCreationMsg, candidatesToCreate.size());
             /* check first that there is candidates */
             if (!candidatesToCreate.isEmpty() && this.accessor.getPermissionAuthority().canCreateIn(container)
                     && (force || new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram))) {
@@ -1326,7 +1327,7 @@ public class DDiagramSynchronizer {
             if (new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram)) {
                 try {
                     Collection<DEdgeCandidate> newElements = status.getNewElements();
-                    monitor.beginTask("Refresh edges", newElements.size());
+                    monitor.beginTask(Messages.DDiagramSynchronizer_refreshEdgeMsg, newElements.size());
                     for (final DEdgeCandidate candidate : newElements) {
                         edgesDones.add(this.sync.createNewEdge(mappingManager, candidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration));
                         monitor.worked(1);

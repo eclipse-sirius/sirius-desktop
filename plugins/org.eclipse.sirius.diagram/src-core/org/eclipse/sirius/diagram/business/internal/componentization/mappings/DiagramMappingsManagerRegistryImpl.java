@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
@@ -82,9 +83,10 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry#getDiagramMappingsManager(Session,
      *      DDiagram)
      */
+    @Override
     public DiagramMappingsManager getDiagramMappingsManager(final Session session, final DDiagram diagram) {
         if (diagram == null) {
-            throw new IllegalArgumentException("Parameter \"diagram\" cannot be null");
+            throw new IllegalArgumentException(Messages.DiagramMappingsManagerRegistryImpl_diagramParamErrorMsg);
         }
         if (diagramMappingsManagers.containsKey(diagram)) {
             return diagramMappingsManagers.get(diagram);
@@ -170,6 +172,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
      *
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry#removeDiagramMappingsManagers(org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager)
      */
+    @Override
     public void removeDiagramMappingsManagers(DiagramMappingsManager manager) {
         final Set<DDiagram> toRemove = new LinkedHashSet<DDiagram>();
         for (final Map.Entry<DDiagram, DiagramMappingsManager> entry : diagramMappingsManagers.entrySet()) {

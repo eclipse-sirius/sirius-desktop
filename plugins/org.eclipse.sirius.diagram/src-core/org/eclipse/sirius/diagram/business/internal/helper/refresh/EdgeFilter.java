@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -69,7 +70,7 @@ public class EdgeFilter {
      */
     public EdgeFilter(final EObject source, final EObject target, final EObject semTarget, final EdgeTarget edgeSource, final EdgeTarget edgeTarget, final EdgeMapping edgeMapping) {
         if (source == null || target == null || edgeSource == null || edgeTarget == null) {
-            throw new IllegalArgumentException("source, target, edgeSource or edgeTarget is null");
+            throw new IllegalArgumentException(Messages.EdgeFilter_errorMsg);
         }
         this.source = source;
         this.target = target;
@@ -133,7 +134,7 @@ public class EdgeFilter {
         if (!result && obj instanceof EdgeFilter) {
             final EdgeFilter edgeFilter = (EdgeFilter) obj;
             if ((semTarget == null && edgeFilter.semTarget != null) || (semTarget != null && edgeFilter.semTarget == null)) {
-                SiriusPlugin.getDefault().error("One of the semTargets is null", null);
+                SiriusPlugin.getDefault().error(Messages.EdgeFilter_semanticIsNullErrorMsg, null);
             }
             result = getHashString(this).equals(getHashString(edgeFilter));
         }

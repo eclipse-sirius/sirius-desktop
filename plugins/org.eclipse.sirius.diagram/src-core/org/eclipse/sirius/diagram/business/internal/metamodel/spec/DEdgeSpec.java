@@ -17,6 +17,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
@@ -85,7 +86,7 @@ public class DEdgeSpec extends DEdgeImpl {
     @Override
     @Deprecated
     public boolean isRootFolding() {
-        throw new UnsupportedOperationException("Deprecated method.");
+        throw new UnsupportedOperationException(Messages.DEdgeSpec_deprecatedMsg);
     }
 
     /**

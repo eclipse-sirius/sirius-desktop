@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Set;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 
@@ -31,14 +32,14 @@ public class HideDDiagramElement extends RecordingCommand {
      * 
      * @since 0.9.0
      */
-    public static final String HIDE_ELEMENT_LABEL = "Hide element";
+    public static final String HIDE_ELEMENT_LABEL = Messages.HideDDiagramElement_hideElementLabel;
 
     /**
      * Label for hide many elements.
      * 
      * @since 0.9.0
      */
-    public static final String HIDE_ELEMENTS_LABEL = "Hide elements";
+    public static final String HIDE_ELEMENTS_LABEL = Messages.HideDDiagramElement_hideElementsLabel;
 
     /** The objects to hide. */
     private final Set<?> objectsToHide;

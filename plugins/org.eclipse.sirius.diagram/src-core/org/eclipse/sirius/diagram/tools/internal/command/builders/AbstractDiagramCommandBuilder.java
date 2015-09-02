@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.base.Option;
@@ -80,10 +81,12 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
             final Session session = SessionManager.INSTANCE.getSession(semanticElement);
             if (semanticElement != null && session != null) {
                 result.getTasks().add(new AbstractCommandTask() {
+                    @Override
                     public String getLabel() {
-                        return "Set RefreshEditorsPrecommitListener options";
+                        return Messages.AbstractDiagramCommandBuilder_refreshTaskLabel;
                     }
 
+                    @Override
                     public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
                         if (abstractToolDescription.isForceRefresh()) {
                             // Set the RefreshEditorsListener in forceRefresh
@@ -133,10 +136,12 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
         if (diag.some()) {
             command.getTasks().add(new AbstractCommandTask() {
 
+                @Override
                 public String getLabel() {
-                    return "Add diagram variable";
+                    return Messages.AbstractDiagramCommandBuilder_diagramVariableTaskLabel;
                 }
 
+                @Override
                 public void execute() {
                     interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag.get());
                 }

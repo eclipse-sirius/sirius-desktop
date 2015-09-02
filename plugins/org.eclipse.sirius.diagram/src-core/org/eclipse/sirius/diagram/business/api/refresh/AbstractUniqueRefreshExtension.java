@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.internal.helper.refresh.EdgeFilter;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -51,6 +52,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
      * 
      * @see org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension#beforeRefresh(DDiagram)
      */
+    @Override
     public void beforeRefresh(final DDiagram viewPoint) {
         // Do nothing.
     }
@@ -60,6 +62,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
      * 
      * @see org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension#postRefresh(DDiagram)
      */
+    @Override
     public void postRefresh(final DDiagram diagram) {
         final DiagramDescription desc = diagram.getDescription();
         if (desc != null) {
@@ -179,8 +182,6 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
      */
     private static class NodeFilter {
 
-        private static final String THE_NODE_MUST_NOT_BE_NULL = "The node must not be null";
-
         /** The targeted element. */
         private EObject targetedElement;
 
@@ -195,7 +196,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
          */
         public NodeFilter(final DNode viewNode) {
             if (viewNode == null) {
-                throw new IllegalArgumentException(THE_NODE_MUST_NOT_BE_NULL);
+                throw new IllegalArgumentException(Messages.NodeFilter_notNullErrorMsg);
             }
             this.targetedElement = viewNode.getTarget();
             this.semanticElements = viewNode.getSemanticElements();
@@ -209,7 +210,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
          */
         public NodeFilter(final DNodeListElement viewNodeListElement) {
             if (viewNodeListElement == null) {
-                throw new IllegalArgumentException(THE_NODE_MUST_NOT_BE_NULL);
+                throw new IllegalArgumentException(Messages.NodeFilter_notNullErrorMsg);
             }
             this.targetedElement = viewNodeListElement.getTarget();
             this.semanticElements = viewNodeListElement.getSemanticElements();
@@ -223,7 +224,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
          */
         public NodeFilter(final DNodeList viewNodeList) {
             if (viewNodeList == null) {
-                throw new IllegalArgumentException(THE_NODE_MUST_NOT_BE_NULL);
+                throw new IllegalArgumentException(Messages.NodeFilter_notNullErrorMsg);
             }
             this.targetedElement = viewNodeList.getTarget();
             this.semanticElements = viewNodeList.getSemanticElements();
@@ -237,7 +238,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
          */
         public NodeFilter(final DNodeContainer viewNodeContainer) {
             if (viewNodeContainer == null) {
-                throw new IllegalArgumentException(THE_NODE_MUST_NOT_BE_NULL);
+                throw new IllegalArgumentException(Messages.NodeFilter_notNullErrorMsg);
             }
             this.targetedElement = viewNodeContainer.getTarget();
             this.semanticElements = viewNodeContainer.getSemanticElements();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.operations;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -31,6 +32,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
@@ -56,12 +58,6 @@ import com.google.common.collect.Sets;
  * @author cbrun, mchauvin
  */
 public final class DDiagramElementContainerSpecOperations {
-
-    /**
-     * Start of the error message when more than one drop description
-     * corresponds to a drop element.
-     */
-    public static final String MORE_THAN_ONE_DROP_DESCRIPTION_ERROR_MSG = "There are more than one drop description that match the dropped element";
 
     /** Avoid instanciations */
     private DDiagramElementContainerSpecOperations() {
@@ -237,7 +233,9 @@ public final class DDiagramElementContainerSpecOperations {
             if (representedParent instanceof DSemanticDiagram) {
                 representedParentSemantic = DSemanticDiagramHelper.getRootContent((DSemanticDiagram) representedParent);
             }
-            if (!ContainerMappingHelper.getNodesCandidates((IContainerMappingExt) container.getActualMapping(), representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container).contains(mySemanticElement)) {
+            if (!ContainerMappingHelper
+                    .getNodesCandidates((IContainerMappingExt) container.getActualMapping(), representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container)
+                    .contains(mySemanticElement)) {
                 return false;
             }
         }
@@ -328,16 +326,17 @@ public final class DDiagramElementContainerSpecOperations {
             }
         }
 
-        /* if a candidate define a target mapping which matches he has priority */
+        /*
+         * if a candidate define a target mapping which matches he has priority
+         */
         for (final ContainerDropDescription dropTool : candidates) {
             if (dropTool.getBestMapping((DragAndDropTarget) newViewContainer, droppedElement) != null) {
                 if (bestDropDescription == null) {
                     bestDropDescription = dropTool;
                 } else {
-                    SiriusPlugin.getDefault()
-                            .warning(
-                                    DDiagramElementContainerSpecOperations.MORE_THAN_ONE_DROP_DESCRIPTION_ERROR_MSG + " : " + droppedElement + " (" + bestDropDescription.getName() + " and "
-                                            + dropTool + ").", new RuntimeException());
+                    SiriusPlugin.getDefault().warning(
+                            MessageFormat.format(Messages.DDiagramElementContainerSpecOperations_tooMuchDropDescErrorMsg, droppedElement, bestDropDescription.getName(), dropTool),
+                            new RuntimeException());
                 }
             }
         }

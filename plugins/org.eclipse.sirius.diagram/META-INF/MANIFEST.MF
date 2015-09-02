@@ -93,7 +93,7 @@ Export-Package: org.eclipse.sirius.diagram;version="3.0.0",
  org.eclipse.sirius.diagram.util;version="3.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
+Import-Package: org.eclipse.sirius.ext.base;version="2.1.0",
  org.eclipse.sirius.ext.base.cache;version="2.0.0",
  org.eclipse.sirius.ext.base.collect;version="2.0.0",
  org.eclipse.sirius.ext.emf;version="2.0.0"

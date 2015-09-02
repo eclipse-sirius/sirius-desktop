@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.identifier.AbstractRepresentationElementIdentifier;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.Messages;
 
 /**
  * An edge identifier.
@@ -58,7 +59,7 @@ public class EdgeIdentifier extends AbstractRepresentationElementIdentifier {
      */
     public EdgeIdentifier(final EObject semantic, final String mappingName, final NodeIdentifier source, final NodeIdentifier target) {
         if (semantic == null || mappingName == null || source == null || target == null) {
-            throw new IllegalArgumentException("semantic, mappingName, source and target are mandatories");
+            throw new IllegalArgumentException(Messages.EdgeIdentifier_parametersErrorMsg);
         }
         this.semantic = semantic;
         this.mappingName = mappingName;

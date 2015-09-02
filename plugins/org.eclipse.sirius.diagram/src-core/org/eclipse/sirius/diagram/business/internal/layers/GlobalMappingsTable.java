@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.layers;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.diagram.business.internal.componentization.mappings.table.CandidateMappingManager;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -172,7 +174,7 @@ public class GlobalMappingsTable {
         } else if (mapping instanceof EdgeMapping) {
             entry = edgeMappingsTable.searchMappingEntry((EdgeMapping) mapping);
         } else {
-            throw new IllegalArgumentException("Mapping (" + mapping.getClass() + ") is not a ContainerMapping, NodeMapping, EdgeMapping");
+            throw new IllegalArgumentException(MessageFormat.format(Messages.GlobalMappingsTable_mappingErrorMsg, mapping.getClass()));
         }
         return entry;
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
@@ -187,7 +188,7 @@ public final class ContainerMappingHelper {
                     }
                 }
             } else {
-                SiriusPlugin.getDefault().error("Error creating nodes : domain class is not defined on a mapping", new RuntimeException());
+                SiriusPlugin.getDefault().error(Messages.ContainerMappingHelper_nodeCreationErrorMsg, new RuntimeException());
             }
             self.getCandidatesCache().put(couple, result);
         }

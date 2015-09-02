@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
@@ -318,9 +319,9 @@ public final class DnDTasksOperations {
 
                     }
                 } catch (MetaClassNotFoundException e) {
-                    SiriusPlugin.getDefault().error("Error while modifying model", e);
+                    SiriusPlugin.getDefault().error(Messages.DnDTasksOperations_modelErrorMsg, e);
                 } catch (FeatureNotFoundException e) {
-                    SiriusPlugin.getDefault().error("Error while modifying model", e);
+                    SiriusPlugin.getDefault().error(Messages.DnDTasksOperations_modelErrorMsg, e);
                 }
             }
         }
@@ -373,6 +374,7 @@ public final class DnDTasksOperations {
 
         return new AbstractCommandTask() {
 
+            @Override
             public void execute() {
                 if (viewContainer instanceof DDiagram) {
                     ((DDiagram) viewContainer).getOwnedDiagramElements().remove(element);
@@ -397,6 +399,7 @@ public final class DnDTasksOperations {
                 }
             }
 
+            @Override
             public String getLabel() {
                 return null;
             }

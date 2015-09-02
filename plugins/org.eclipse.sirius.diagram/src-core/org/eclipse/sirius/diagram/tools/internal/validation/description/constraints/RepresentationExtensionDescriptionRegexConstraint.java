@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Customization;
@@ -39,7 +40,7 @@ public class RepresentationExtensionDescriptionRegexConstraint extends AbstractM
      * Error message for this constraint. The first argument is the name of the
      * representation extension description.
      */
-    private static final String ERROR_MESSAGE = "The representation extension description \"{0}\" uses a regular expression for viewpoint URI or for representation name, but it does not contain only style customizations.";
+    private static final String ERROR_MESSAGE = Messages.RepresentationExtensionDescriptionRegexConstraint_errorMsg;
 
     /**
      * Pattern used to detect if a String is a Regex. For that, we watching the

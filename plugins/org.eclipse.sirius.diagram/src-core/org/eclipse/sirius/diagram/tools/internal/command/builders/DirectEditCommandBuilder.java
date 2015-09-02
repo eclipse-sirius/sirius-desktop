@@ -17,6 +17,7 @@ import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromPars
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.ext.base.Option;
@@ -26,8 +27,6 @@ import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
-
-    private static final String EDIT_LABEL = "Edit label";
 
     private DRepresentationElement repElement;
 
@@ -107,7 +106,7 @@ public class DirectEditCommandBuilder extends AbstractDiagramCommandBuilder {
 
     @Override
     protected String getEnclosingCommandLabel() {
-        return EDIT_LABEL;
+        return Messages.DirectEditCommandBuilder_editLabel;
     }
 
     @Override

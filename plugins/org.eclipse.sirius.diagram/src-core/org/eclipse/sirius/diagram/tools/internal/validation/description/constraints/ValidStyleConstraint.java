@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.validation.description.constraints;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
@@ -77,10 +79,6 @@ public class ValidStyleConstraint extends AbstractModelConstraint {
     private static class ElementMappingSwitch extends DescriptionSwitch<Object> {
 
         public static final ElementMappingSwitch INSTANCE = new ElementMappingSwitch();
-
-        private static final String MESSAGE_CONDITION = "Conditional style ";
-
-        private static final String OF = " of ";
 
         /**
          * Switch object is valid.
@@ -158,21 +156,24 @@ public class ValidStyleConstraint extends AbstractModelConstraint {
 
         public IStatus caseConditionalEdgeStyleDescription(ConditionalEdgeStyleDescription object, IValidationContext ctx) {
             if (object.getStyle() == null) {
-                return ctx.createFailureStatus(new Object[] { MESSAGE_CONDITION + object.getPredicateExpression() + OF + ((EdgeMapping) object.eContainer()).getName() });
+                return ctx.createFailureStatus(
+                        new Object[] { MessageFormat.format(Messages.ValidStyleConstraint_validationErrorMsg, object.getPredicateExpression(), ((EdgeMapping) object.eContainer()).getName()) });
             }
             return null;
         }
 
         private IStatus caseConditionalNodeStyleDescription(ConditionalNodeStyleDescription object, IValidationContext ctx) {
             if (object.getStyle() == null) {
-                return ctx.createFailureStatus(new Object[] { MESSAGE_CONDITION + object.getPredicateExpression() + OF + ((NodeMapping) object.eContainer()).getName() });
+                return ctx.createFailureStatus(
+                        new Object[] { MessageFormat.format(Messages.ValidStyleConstraint_validationErrorMsg, object.getPredicateExpression(), ((NodeMapping) object.eContainer()).getName()) });
             }
             return null;
         }
 
         private IStatus caseConditionalContainerStyleDescription(ConditionalContainerStyleDescription object, IValidationContext ctx) {
             if (object.getStyle() == null) {
-                return ctx.createFailureStatus(new Object[] { MESSAGE_CONDITION + object.getPredicateExpression() + OF + ((ContainerMapping) object.eContainer()).getName() });
+                return ctx.createFailureStatus(
+                        new Object[] { MessageFormat.format(Messages.ValidStyleConstraint_validationErrorMsg, object.getPredicateExpression(), ((ContainerMapping) object.eContainer()).getName()) });
             }
             return null;
         }

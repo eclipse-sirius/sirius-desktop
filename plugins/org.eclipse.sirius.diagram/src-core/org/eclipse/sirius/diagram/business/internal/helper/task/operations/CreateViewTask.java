@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
@@ -101,7 +102,7 @@ public class CreateViewTask extends AbstractOperationTask {
 
     @Override
     public String getLabel() {
-        return "create a view";
+        return Messages.CreateViewTask_label;
     }
 
     @Override

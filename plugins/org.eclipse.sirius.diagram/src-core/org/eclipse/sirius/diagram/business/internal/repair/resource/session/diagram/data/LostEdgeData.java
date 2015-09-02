@@ -115,15 +115,15 @@ public class LostEdgeData extends LostElementDataWithMapping {
     public String toString() {
         String result = super.toString() + SEPARATOR;
         if (sourceData == null) {
-            result += "No source data";
+            result += "No source data"; //$NON-NLS-1$
         } else {
-            result += "Source data: " + sourceData.toString();
+            result += "Source data: " + sourceData.toString(); //$NON-NLS-1$
         }
 
         if (targetData == null) {
-            result += "No target data";
+            result += "No target data"; //$NON-NLS-1$
         } else {
-            result += "Target data: " + targetData.toString();
+            result += "Target data: " + targetData.toString(); //$NON-NLS-1$
         }
 
         return result;

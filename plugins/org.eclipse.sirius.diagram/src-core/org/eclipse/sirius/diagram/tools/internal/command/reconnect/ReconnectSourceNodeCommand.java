@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 
 /**
  * Specific command to change the source node and the semantic target of a
@@ -43,7 +44,7 @@ public final class ReconnectSourceNodeCommand extends RecordingCommand {
      *            the DEdge to update.
      */
     public ReconnectSourceNodeCommand(TransactionalEditingDomain domain, DEdge edge, EdgeTarget reconnectionTarget, EObject semanticTarget) {
-        super(domain, "Reconnect source node");
+        super(domain, Messages.ReconnectSourceNodeCommand_commandLabel);
         this.edge = edge;
         this.reconnectionTarget = reconnectionTarget;
         this.semanticTarget = semanticTarget;

@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -330,7 +331,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
             command.getTasks().add(new AbstractCommandTask() {
                 @Override
                 public String getLabel() {
-                    return "Add diagram variable";
+                    return Messages.UndoRedoCapableEMFCommandFactory_addDiagramVariableLabel;
                 }
 
                 @Override
@@ -418,7 +419,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      */
     @Override
     public Command buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {
-        final DCommand cmd = new SiriusCommand(domain, "Create new representation");
+        final DCommand cmd = new SiriusCommand(domain, Messages.UndoRedoCapableEMFCommandFactory_createRepresentationLabel);
         final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
         variables.put(desc.getContainerViewVariable(), target);
         final Map<AbstractVariable, String> stringVariables = new HashMap<AbstractVariable, String>();
@@ -607,7 +608,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      */
     @Override
     public DCommand buildCreateDiagramFromDescription(final DiagramDescription description, final EObject semanticElement, IProgressMonitor monitor) {
-        final DCommand command = new SiriusCommand(domain, "Create new diagram") {
+        final DCommand command = new SiriusCommand(domain, Messages.UndoRedoCapableEMFCommandFactory_createNewDiagramLabel) {
             /**
              * creation of a diagram must not be undoable ! {@inheritDoc}
              */
@@ -637,7 +638,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     @Override
     public Command buildQuickFixOperation(final ValidationFix fix, final EObject fixTarget, final DDiagram diagram) {
         if (fix.getInitialOperation() != null && fix.getInitialOperation().getFirstModelOperations() != null) {
-            final DCommand result = new SiriusCommand(domain, "Quick fix");
+            final DCommand result = new SiriusCommand(domain, Messages.UndoRedoCapableEMFCommandFactory_quickFixLabel);
             result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(diagram, fixTarget, fix.getInitialOperation().getFirstModelOperations()));
             return result;
         }

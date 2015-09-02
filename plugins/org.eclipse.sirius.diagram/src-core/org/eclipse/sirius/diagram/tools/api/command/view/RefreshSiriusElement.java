@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
@@ -53,7 +54,7 @@ public class RefreshSiriusElement extends RecordingCommand {
      *            the object to refresh.
      */
     public RefreshSiriusElement(final TransactionalEditingDomain domain, final DRefreshable objectToRefresh) {
-        super(domain, "Refresh representation");
+        super(domain, Messages.RefreshSiriusElement_refreshRepresentationMsg);
         this.uniqueRefreshable = objectToRefresh;
     }
 
@@ -68,7 +69,7 @@ public class RefreshSiriusElement extends RecordingCommand {
      *            the filters.
      */
     public RefreshSiriusElement(final TransactionalEditingDomain domain, final Collection<?> objectsToRefresh, final Collection<RefreshFilter> filters) {
-        super(domain, "Refresh representation");
+        super(domain, Messages.RefreshSiriusElement_refreshRepresentationMsg);
         this.refreshablesList = objectsToRefresh;
         this.filters = filters;
     }

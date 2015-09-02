@@ -84,6 +84,6 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
      */
     @Override
     public String toString() {
-        return "List element " + getName();
+        return "List element " + getName(); //$NON-NLS-1$
     }
 }

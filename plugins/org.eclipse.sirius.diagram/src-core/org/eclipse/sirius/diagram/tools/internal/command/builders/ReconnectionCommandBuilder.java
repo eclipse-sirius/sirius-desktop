@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -168,7 +169,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
         if (edgeMapping.getImportedMapping() instanceof EdgeMappingImport) {
             return getImportedMapping((EdgeMappingImport) edgeMapping.getImportedMapping());
         }
-        Assert.isTrue(edgeMapping.getImportedMapping() instanceof EdgeMapping, "This should not happen as IEdgeMapping is only extended by EdgeMappingImport and EdgeMapping");
+        Assert.isTrue(edgeMapping.getImportedMapping() instanceof EdgeMapping, Messages.ReconnectionCommandBuilder_mappingImportErrorMsg);
         return (EdgeMapping) edgeMapping.getImportedMapping();
     }
 
@@ -242,7 +243,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
         return new AbstractCommandTask() {
             @Override
             public String getLabel() {
-                return "Initializing Variables";
+                return Messages.ReconnectionCommandBuilder_initVariablesMsg;
             }
 
             @Override

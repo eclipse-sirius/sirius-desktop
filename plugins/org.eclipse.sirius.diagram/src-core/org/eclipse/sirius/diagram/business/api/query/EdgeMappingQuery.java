@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -21,6 +22,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DMappingBased;
@@ -106,7 +108,7 @@ public class EdgeMappingQuery extends DiagramElementMappingQuery {
             try {
                 result = interpreter.evaluateBoolean(semantic, mapping.getPreconditionExpression());
             } catch (final EvaluationException e) {
-                SiriusPlugin.getDefault().warning("the following edge mapping precondition could not be correctly evaluated : " + mapping.getPreconditionExpression(), e);
+                SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.EdgeMappingQuery_preconditionEvaluationErrorMsg, mapping.getPreconditionExpression()), e);
             }
             interpreter.unSetVariable(IInterpreterSiriusVariables.TARGET);
             interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE);
@@ -146,7 +148,7 @@ public class EdgeMappingQuery extends DiagramElementMappingQuery {
                 result.addAll(sourceSemantics);
             }
         } catch (final EvaluationException e) {
-            SiriusPlugin.getDefault().warning("the following edge mapping source finder expression could not be correctly evaluated : " + mapping.getSourceFinderExpression(), e);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.EdgeMappingQuery_sourceFinderEvaluationErrorMsg, mapping.getSourceFinderExpression()), e);
         } finally {
             interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
             interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
@@ -188,7 +190,7 @@ public class EdgeMappingQuery extends DiagramElementMappingQuery {
                 result.addAll(targetSemantics);
             }
         } catch (final EvaluationException e) {
-            SiriusPlugin.getDefault().warning("the following edge mapping target finder expression could not be correctly evaluated : " + mapping.getTargetFinderExpression(), e);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.EdgeMappingQuery_targetFinderEvaluationErrorMsg, mapping.getTargetFinderExpression()), e);
         } finally {
             interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
             interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);

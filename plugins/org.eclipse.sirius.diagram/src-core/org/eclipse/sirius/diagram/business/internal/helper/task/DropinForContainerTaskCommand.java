@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -76,7 +77,7 @@ public class DropinForContainerTaskCommand extends AbstractCommandTask {
 
     @Override
     public String getLabel() {
-        return "DropIn task for container";
+        return Messages.DropinForContainerTaskCommand_taskLabel;
     }
 
     @Override

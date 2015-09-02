@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.command;
+
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -20,6 +22,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.Layer;
 
@@ -50,7 +53,8 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
      *            activation changes
      */
     public ChangeLayerActivationCommand(TransactionalEditingDomain domain, DDiagram dDiagram, Layer layer, IProgressMonitor monitor) {
-        super(domain, dDiagram.getActivatedLayers().contains(layer) ? "Hide" : "Show" + " \"" + new IdentifiedElementQuery(layer).getLabel() + "\" layer");
+        super(domain, dDiagram.getActivatedLayers().contains(layer) ? Messages.ChangeLayerActivationCommand_hideLabel
+                : MessageFormat.format(Messages.ChangeLayerActivationCommand_showLabel, new IdentifiedElementQuery(layer).getLabel()));
         this.dDiagram = dDiagram;
         this.layer = layer;
         this.monitor = monitor;
@@ -62,7 +66,7 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
     @Override
     protected void doExecute() {
         try {
-            monitor.beginTask("Apply layer modifications...", 3);
+            monitor.beginTask(Messages.ChangeLayerActivationCommand_executeMsg, 3);
             boolean launchRefresh = !LayerHelper.containsOnlyTools(layer) || layer.getCustomization() != null;
             if (!launchRefresh) {
                 NotificationUtil.sendNotification(dDiagram, Notification.Kind.START, Notification.VISIBILITY);

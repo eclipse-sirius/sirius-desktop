@@ -29,6 +29,7 @@ public class LostElementDataWithMapping extends AbstractLostElementDataWithTarge
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setMapping(final RepresentationElementMapping mapping) {
         this.mapping = mapping;
     }
@@ -36,6 +37,7 @@ public class LostElementDataWithMapping extends AbstractLostElementDataWithTarge
     /**
      * {@inheritDoc}
      */
+    @Override
     public RepresentationElementMapping getMapping() {
         return mapping;
     }
@@ -82,12 +84,13 @@ public class LostElementDataWithMapping extends AbstractLostElementDataWithTarge
      */
     @Override
     public String toString() {
-        return super.toString() + SEPARATOR + "Mapping name: " + mapping.getName();
+        return super.toString() + SEPARATOR + "Mapping name: " + mapping.getName(); //$NON-NLS-1$
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public final boolean isSimilarTo(final DSemanticDecorator semanticDecorator) {
         boolean result;
         if (semanticDecorator instanceof DDiagramElement) {

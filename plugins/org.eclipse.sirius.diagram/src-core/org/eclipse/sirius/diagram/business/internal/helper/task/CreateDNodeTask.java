@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.ArrangeConstraint;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
@@ -90,6 +91,7 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
         if (containerView instanceof DSemanticDecorator) {
             DSemanticDecorator containerViewDSemanticDecorator = (DSemanticDecorator) containerView;
@@ -126,8 +128,9 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
         }
     }
 
+    @Override
     public String getLabel() {
-        return "create a node";
+        return Messages.CreateDNodeTask_label;
     }
 
     private boolean isAutoPinOnCreateEnabled() {
@@ -140,6 +143,7 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedElements()
      */
+    @Override
     public Collection<EObject> getCreatedElements() {
         // not applicable
         return Collections.emptySet();
@@ -151,6 +155,7 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getAffectedElements()
      */
+    @Override
     public Collection<EObject> getAffectedElements() {
         // not applicable
         return Collections.emptySet();
@@ -162,6 +167,7 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getCreatedReferences()
      */
+    @Override
     public Collection<EObject> getCreatedReferences() {
         // not applicable
         return Collections.emptySet();
@@ -172,6 +178,7 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedRepresentationElements()
      */
+    @Override
     public Collection<DRepresentationElement> getCreatedRepresentationElements() {
         return new ArrayList<DRepresentationElement>(createdAbstractDNodes);
     }

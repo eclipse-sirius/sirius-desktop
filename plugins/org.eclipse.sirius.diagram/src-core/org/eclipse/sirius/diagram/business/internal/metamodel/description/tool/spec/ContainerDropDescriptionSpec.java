@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -32,6 +33,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
@@ -74,8 +76,8 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
             }
 
-            final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(new DiagramComponentizationManager().getAllContainerMappings(
-                    session.getSelectedViewpoints(false), desc));
+            final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(
+                    new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedViewpoints(false), desc));
             allMappings.addAll(getAllMappingsWithSuperMappings(session, desc));
             allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedViewpoints(false), desc));
             iterCandidates = allMappings.iterator();
@@ -99,7 +101,7 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
             iterCandidates = allMappings.iterator();
         }
         if (iterCandidates == null) {
-            SiriusPlugin.getDefault().error("Unknown drag&drop target : " + targetContainer, new RuntimeException());
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ContainerDropDescriptionSpec_unknownTgtMsg, targetContainer), new RuntimeException());
             return null;
         }
         Session session = SessionManager.INSTANCE.getSession(droppedElement);

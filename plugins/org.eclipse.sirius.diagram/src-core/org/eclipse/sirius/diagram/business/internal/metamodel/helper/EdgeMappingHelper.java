@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -36,6 +37,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
@@ -91,7 +93,8 @@ public final class EdgeMappingHelper {
         if (edgeTarget instanceof DSemanticDecorator) {
             return ((DSemanticDecorator) edgeTarget).getTarget();
         }
-        SiriusPlugin.getDefault().warning("The edge target " + String.valueOf(edgeTarget) + ISiriusMessages.IS_NOT_A_DECORATE_SEMANTIC_ELEMENT, null);
+        SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DiagramElementMappingHelper_edgeTargetMsg, String.valueOf(edgeTarget), ISiriusMessages.IS_NOT_A_DECORATE_SEMANTIC_ELEMENT),
+                null);
         return null;
     }
 
@@ -407,9 +410,8 @@ public final class EdgeMappingHelper {
             if (edgeMappingOption.some() && dEdge.getSourceNode() instanceof DSemanticDecorator && dEdge.getTargetNode() instanceof DSemanticDecorator) {
                 EdgeMapping edgeMapping = edgeMappingOption.get();
                 EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(edgeMapping);
-                result = result
-                        && edgeMappingQuery.evaluatePrecondition(diagram, diagram, rootInterpreter, dEdge.getTarget(), (DSemanticDecorator) dEdge.getSourceNode(),
-                                (DSemanticDecorator) dEdge.getTargetNode());
+                result = result && edgeMappingQuery.evaluatePrecondition(diagram, diagram, rootInterpreter, dEdge.getTarget(), (DSemanticDecorator) dEdge.getSourceNode(),
+                        (DSemanticDecorator) dEdge.getTargetNode());
             }
         }
 

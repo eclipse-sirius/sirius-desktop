@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
@@ -85,6 +86,7 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
         EObjectQuery eObjectQuery = new EObjectQuery(containerView);
         Session session = eObjectQuery.getSession();
@@ -130,8 +132,9 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "create a container";
+        return Messages.CreateContainerTask_label;
     }
 
     /**
@@ -139,6 +142,7 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedElements()
      */
+    @Override
     public Collection<EObject> getCreatedElements() {
         // not applicable
         return Collections.emptySet();
@@ -147,6 +151,7 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<DRepresentationElement> getCreatedRepresentationElements() {
         return new ArrayList<DRepresentationElement>(createdAbstractDNodes);
     }
@@ -154,6 +159,7 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<EObject> getAffectedElements() {
         // not applicable
         return Collections.emptySet();
@@ -162,6 +168,7 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<EObject> getCreatedReferences() {
         // not applicable
         return Collections.emptySet();

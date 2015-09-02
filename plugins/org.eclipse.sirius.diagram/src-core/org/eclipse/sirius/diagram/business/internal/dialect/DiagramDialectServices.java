@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.dialect;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -44,6 +45,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
@@ -115,6 +117,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canCreate(final EObject semantic, final RepresentationDescription desc) {
         boolean result = false;
         if (semantic != null && isSupported(desc)) {
@@ -146,6 +149,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     /**
      * {@inheritDoc}
      */
+    @Override
     public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final IProgressMonitor monitor) {
         // TODO ensure that the given description is contained in the same
         // resource set as the given semantic element
@@ -165,8 +169,8 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session, final IProgressMonitor monitor) {
         DRepresentation diagram = null;
         try {
-            monitor.beginTask("Create diagram : " + name, 6);
-            monitor.subTask("Create diagram : " + name);
+            monitor.beginTask(MessageFormat.format(Messages.DiagramDialectServices_createDiagramMsg, name), 6);
+            monitor.subTask(MessageFormat.format(Messages.DiagramDialectServices_createDiagramMsg, name));
             diagram = createRepresentation(name, semantic, description, new SubProgressMonitor(monitor, 2));
             if (diagram != null) {
                 refresh(diagram, new SubProgressMonitor(monitor, 26));
@@ -236,9 +240,10 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
      * 
      * {@inheritDoc}
      */
+    @Override
     public void refresh(final DRepresentation representation, final boolean fullRefresh, final IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh diagram", 10);
+            monitor.beginTask(Messages.DiagramDialectServices_refreshDiagramMsg, 10);
             final DSemanticDiagram diagram = (DSemanticDiagram) representation;
             if (diagram.getDescription() != null) {
                 final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(representation);
@@ -274,6 +279,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     /**
      * {@inheritDoc}
      */
+    @Override
     public RepresentationDescription getDescription(final DRepresentation representation) {
         if (representation instanceof DDiagram) {
             return ((DDiagram) representation).getDescription();
@@ -291,6 +297,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     /**
      * {@inheritDoc}
      */
+    @Override
     public void initRepresentations(final Viewpoint vp, final EObject semantic, IProgressMonitor monitor) {
         super.initRepresentations(semantic, vp, DiagramDescription.class, monitor);
     }
@@ -298,6 +305,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     /**
      * {@inheritDoc}
      */
+    @Override
     protected <T extends RepresentationDescription> void initRepresentationForElement(T representationDescription, EObject semanticElement, IProgressMonitor monitor) {
         if (representationDescription instanceof DiagramDescription) {
             DiagramDescription diagramDescription = (DiagramDescription) representationDescription;
@@ -308,7 +316,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
 
                     if (transactionalEditingDomain != null) {
                         try {
-                            monitor.beginTask("Initialize diagram of type " + new IdentifiedElementQuery(representationDescription).getLabel(), 1);
+                            monitor.beginTask(MessageFormat.format(Messages.DiagramDialectServices_initializeDiagramMsg, new IdentifiedElementQuery(representationDescription).getLabel()), 1);
                             DCommand command = DiagramCommandFactoryService.getInstance().getNewProvider().getCommandFactory(transactionalEditingDomain)
                                     .buildCreateDiagramFromDescription(diagramDescription, semanticElement, new SubProgressMonitor(monitor, 1));
                             TransactionUtil.getEditingDomain(semanticElement).getCommandStack().execute(command);
@@ -441,6 +449,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#createInterpretedExpressionQuery(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         return new DiagramInterpretedExpressionQuery(target, feature);
     }
@@ -508,7 +517,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     @Override
     public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh diagram", 10);
+            monitor.beginTask(Messages.DiagramDialectServices_refreshDiagramMsg, 10);
             DSemanticDiagram diagram = (DSemanticDiagram) representation;
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(diagram.getTarget());
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
@@ -518,7 +527,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(diagram, interpreter, accessor);
             IProgressMonitor subMonitor = new SubProgressMonitor(monitor, 8);
             try {
-                subMonitor.beginTask("Refresh impacted elements", diagramElements.size());
+                subMonitor.beginTask(Messages.DiagramDialectServices_refreshImactedElementsMsg, diagramElements.size());
                 for (DDiagramElement diagramElement : diagramElements) {
                     sync.refresh(diagramElement);
                     subMonitor.worked(1);

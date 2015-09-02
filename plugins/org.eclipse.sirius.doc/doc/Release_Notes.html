@@ -299,6 +299,9 @@
 						<code>org.eclipse.sirius.diagram.sequence.ui</code>
 					</li>
 					<li>
+						<code>org.eclipse.sirius.diagram</code>
+					</li>
+					<li>
 						<code>org.eclipse.sirius.eef.adapters</code>
 					</li>
 					<li>
@@ -327,7 +330,7 @@
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic</code> has been added. It allows an interpreter to evaluate an expression and return not only the result of the evaluation but also a diagnostic.
 			</li>
 			<li><span class="label label-success">Added</span> The new class 
-				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement</code> has been added. It allows interpreters to provide proposals for the code completion which can replace an existing part of the expression used. This behavior can be used if the user has started to type a value that would be returned by the code completion. For example, if the user types &#171;aql:self.na&#187; and if he selects the content proposal &#171;name&#187;, it can replace the existing part of the expression &#171;na&#187; to write &#171;aql:self.name&#187; instead of just appending &#171;name&#187; to create &#171;aql:self.naname&#187;.
+				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement</code> has been added. It allows interpreters to provide proposals for the code completion which can replace an existing part of the expression used. This behavior can be used if the user has started to type a value that would be returned by the code completion. For example, if the user types &#8220;aql:self.na&#8221; and if he selects the content proposal &#8220;name&#8221;, it can replace the existing part of the expression &#8220;na&#8221; to write &#8220;aql:self.name&#8221; instead of just appending &#8220;name&#8221; to create &#8220;aql:self.naname&#8221;.
 			</li>
 			<li><span class="label label-success">Added</span> The new class 
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.

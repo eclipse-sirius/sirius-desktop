@@ -25,6 +25,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -190,7 +191,7 @@ public class PasteCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     @Override
     protected String getEnclosingCommandLabel() {
-        return tool != null ? new IdentifiedElementQuery(tool).getLabel() : "Paste";
+        return tool != null ? new IdentifiedElementQuery(tool).getLabel() : Messages.PasteCommandBuilder_pasteLabel;
     }
 
     /**

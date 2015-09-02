@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
@@ -57,7 +60,7 @@ public class GetStyleDescription extends DescriptionSwitch<StyleDescription> {
 
     @Override
     public StyleDescription defaultCase(final EObject object) {
-        SiriusPlugin.getDefault().error("Impossible to get the style description for object : " + object, new RuntimeException());
+        SiriusPlugin.getDefault().error(MessageFormat.format(Messages.GetStyleDescription_errorMsg, object), new RuntimeException());
         return null;
     }
 

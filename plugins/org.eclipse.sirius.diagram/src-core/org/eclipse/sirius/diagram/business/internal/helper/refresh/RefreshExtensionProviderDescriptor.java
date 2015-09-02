@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.business.internal.helper.refresh;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.sirius.business.internal.helper.refresh.AbstractProviderDescriptor;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtensionProvider;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -46,7 +47,7 @@ public class RefreshExtensionProviderDescriptor extends AbstractProviderDescript
             try {
                 this.extensionProvider = (IRefreshExtensionProvider) this.element.createExecutableExtension("providerClass"); //$NON-NLS-1$
             } catch (final CoreException e) {
-                SiriusPlugin.getDefault().error("Error while instantiating a provider", e);
+                SiriusPlugin.getDefault().error(Messages.RefreshExtensionProviderDescriptor_instantiatingErrorMsg, e);
             }
         }
         return this.extensionProvider;

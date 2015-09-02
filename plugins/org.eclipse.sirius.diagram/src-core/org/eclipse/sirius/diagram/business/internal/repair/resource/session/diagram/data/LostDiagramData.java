@@ -24,6 +24,7 @@ public class LostDiagramData extends AbstractLostElementDataWithTarget implement
     /**
      * {@inheritDoc}
      */
+    @Override
     public LostElementDataState addDiagramElementInCorrespondingParentContainer(final DDiagram diagram, final DDiagramElement diagramElement) {
         return diagram.getOwnedDiagramElements().add(diagramElement) ? LostElementDataState.CREATED : LostElementDataState.NOT_CREATED;
     }
@@ -33,12 +34,13 @@ public class LostDiagramData extends AbstractLostElementDataWithTarget implement
      */
     @Override
     public String toString() {
-        return super.toString() + " Diagram data";
+        return super.toString() + " Diagram data"; //$NON-NLS-1$
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isSimilarTo(final DSemanticDecorator semanticDecorator) {
         // Works for null values too
         return getTarget() == semanticDecorator.getTarget();

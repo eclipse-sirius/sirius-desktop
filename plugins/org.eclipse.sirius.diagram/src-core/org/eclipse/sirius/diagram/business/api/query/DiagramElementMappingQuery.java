@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -263,6 +265,7 @@ public class DiagramElementMappingQuery {
             this.mapping = mapping;
         }
 
+        @Override
         public Iterator<DiagramElementMapping> iterator() {
             return new SuperTypesIterator(mapping);
         }
@@ -282,10 +285,12 @@ public class DiagramElementMappingQuery {
             this.cur = map;
         }
 
+        @Override
         public boolean hasNext() {
             return doGetNext() != null;
         }
 
+        @Override
         public DiagramElementMapping next() {
             cur = doGetNext();
             if (cur == null) {
@@ -307,6 +312,7 @@ public class DiagramElementMappingQuery {
             return next;
         }
 
+        @Override
         public void remove() {
             throw new UnsupportedOperationException();
         }
@@ -442,7 +448,7 @@ public class DiagramElementMappingQuery {
             try {
                 candidates = interpreter.evaluateCollection(rootContent, mapping.getSemanticCandidatesExpression());
             } catch (final EvaluationException e) {
-                SiriusPlugin.getDefault().warning("the following mapping semantic candidates expression could not be correctly evaluated : " + mapping.getSemanticCandidatesExpression(), e);
+                SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DiagramElementMappingQuery_mappingCandidateExpressionEvaluationErrorMsg, mapping.getSemanticCandidatesExpression()), e);
             }
             if (candidates != null && !candidates.isEmpty()) {
                 semanticCandidatesEvaluation.addAll(candidates);
@@ -483,7 +489,8 @@ public class DiagramElementMappingQuery {
                 try {
                     computedRoot = interpreter.evaluateEObject(rootContent, diagram.getDescription().getRootExpression());
                 } catch (final EvaluationException e) {
-                    SiriusPlugin.getDefault().warning("the following diagram description root expression could not be correctly evaluated : " + diagram.getDescription().getRootExpression(), e);
+                    SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DiagramElementMappingQuery_diagramRootExpressionEvaluationErrorMsg, diagram.getDescription().getRootExpression()),
+                            e);
                 }
                 interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
                 interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);

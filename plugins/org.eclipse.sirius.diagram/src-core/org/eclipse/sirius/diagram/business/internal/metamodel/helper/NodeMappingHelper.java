@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
@@ -79,9 +80,7 @@ public final class NodeMappingHelper {
      * @return all semantic elements that are candidates for the mapping.
      */
     public static EList<EObject> getNodesCandidates(NodeMapping self, EObject semanticOrigin, EObject container) {
-        SiriusPlugin.getDefault().warning(
-                "[NodeMapping.getNodesCandidates(EObject semanticOrigin, EObject container)] This method must not be invoked. Use"
-                        + " [NodeMapping.getNodesCandidates(EObject semanticOrigin, EObject container, EObject containerView)] instead.", null);
+        SiriusPlugin.getDefault().warning(Messages.NodeMappingHelper_methodInvocationErrorMsg, null);
         return self.getNodesCandidates(semanticOrigin, container, null);
     }
 
@@ -128,7 +127,7 @@ public final class NodeMappingHelper {
                     }
                 }
             } else {
-                SiriusPlugin.getDefault().error("Error creating nodes : domain class is not defined on a mapping", new RuntimeException());
+                SiriusPlugin.getDefault().error(Messages.NodeMappingHelper_nodeCreationErrorMsg, new RuntimeException());
             }
             self.getCandidatesCache().put(couple, result);
         }

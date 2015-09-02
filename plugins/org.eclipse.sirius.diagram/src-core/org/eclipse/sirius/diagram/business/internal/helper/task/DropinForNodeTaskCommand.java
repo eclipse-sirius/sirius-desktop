@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -75,6 +76,7 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
         final DDiagram parentDiagram = DnDTasksOperations.getParentDiagram(target);
         if (target instanceof DNodeList) {
@@ -203,7 +205,8 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
         }
     }
 
+    @Override
     public String getLabel() {
-        return "DropIn task for node";
+        return Messages.DropinForNodeTaskCommand_taskLabel;
     }
 }

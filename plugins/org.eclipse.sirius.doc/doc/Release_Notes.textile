@@ -71,6 +71,7 @@ Additional non-breaking changes:
 ** @org.eclipse.sirius.common.ui@
 ** @org.eclipse.sirius.diagram.sequence@
 ** @org.eclipse.sirius.diagram.sequence.ui@
+** @org.eclipse.sirius.diagram@
 ** @org.eclipse.sirius.eef.adapters@
 ** @org.eclipse.sirius.interpreter@
 ** @org.eclipse.sirius.table@
