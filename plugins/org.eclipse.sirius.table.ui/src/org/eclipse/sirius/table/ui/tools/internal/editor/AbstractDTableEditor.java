@@ -236,7 +236,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
         if (getTableModel() == null) {
             /* eclipse was closed with an editor opened and not saved */
             final Label errorLabel = new Label(parent, SWT.CENTER);
-            errorLabel.setText("This table was not saved. You can close the editor");
+            errorLabel.setText(org.eclipse.sirius.table.metamodel.table.provider.Messages.AbstractDTableEditor_tableNotSaved);
             return;
         }
         treeViewerManager = new DTableViewerManager(parent, getTableModel(), getEditingDomain(), accessor, (ITableCommandFactory) emfCommandFactory, this);

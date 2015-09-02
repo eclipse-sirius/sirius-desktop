@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.table.business.api.query.DLineQuery;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 
@@ -30,14 +31,6 @@ import com.google.common.collect.Lists;
  * @author mporhel
  */
 public class DeleteLinesAction extends Action {
-
-    private static final String DELETE_LINE = "Delete line";
-
-    private static final String DELETE_LINES = DELETE_LINE + "s";
-
-    private static final String TOOLTIP_LINE = "Delete the target semantic element";
-
-    private static final String TOOLTIP_LINES = TOOLTIP_LINE + "s";
 
     private final TransactionalEditingDomain editingDomain;
 
@@ -57,7 +50,7 @@ public class DeleteLinesAction extends Action {
      * 
      */
     public DeleteLinesAction(final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory) {
-        super(DELETE_LINE, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.DELETE_IMG));
+        super(Messages.DeleteLinesAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.DELETE_IMG));
         this.editingDomain = editingDomain;
         this.tableCommandFactory = tableCommandFactory;
     }
@@ -89,8 +82,8 @@ public class DeleteLinesAction extends Action {
             lines.addAll(linesToDelete);
 
             if (linesToDelete.size() == 1) {
-                setText(DELETE_LINE);
-                setToolTipText(TOOLTIP_LINE);
+                setText(Messages.DeleteLinesAction_label);
+                setToolTipText(Messages.DeleteLinesAction_tooltip);
 
                 DeleteTool deleteTool = getDeleteTool(linesToDelete.iterator().next());
                 if (deleteTool != null) {
@@ -98,8 +91,8 @@ public class DeleteLinesAction extends Action {
                     setToolTipText(deleteTool.getDocumentation());
                 }
             } else if (linesToDelete.size() > 1) {
-                setText(DELETE_LINES);
-                setToolTipText(TOOLTIP_LINES);
+                setText(Messages.DeleteLinesAction_labelMany);
+                setToolTipText(Messages.DeleteLinesAction_tooltipMany);
             }
         }
     }

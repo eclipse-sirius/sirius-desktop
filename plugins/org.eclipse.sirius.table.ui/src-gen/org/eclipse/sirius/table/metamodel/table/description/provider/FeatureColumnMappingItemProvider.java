@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditiona
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
@@ -38,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
  * This is the item provider adapter for a
  * {@link org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider {
@@ -78,11 +79,11 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
      * @generated
      */
     protected void addCanEditPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_CellUpdater_canEdit_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_CellUpdater_canEdit_feature", "_UI_CellUpdater_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DescriptionPackage.Literals.CELL_UPDATER__CAN_EDIT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_CellUpdater_canEdit_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_CellUpdater_canEdit_feature", "_UI_CellUpdater_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.CELL_UPDATER__CAN_EDIT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -92,11 +93,11 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
      * @generated
      */
     protected void addFeatureNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureColumnMapping_featureName_feature"), //$NON-NLS-1$
-                getString("_UI_FeatureColumnMapping_featureName_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.FEATURE_COLUMN_MAPPING__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_FeatureColumnMapping_featureName_feature"), //$NON-NLS-1$
+                        getString("_UI_FeatureColumnMapping_featureName_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.FEATURE_COLUMN_MAPPING__FEATURE_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -106,22 +107,21 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
      * @generated
      */
     protected void addLabelExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureColumnMapping_labelExpression_feature"), //$NON-NLS-1$
-                getString("_UI_FeatureColumnMapping_labelExpression_description"), //$NON-NLS-1$
-                DescriptionPackage.Literals.FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
-                null));
+        itemPropertyDescriptors.add(
+                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_FeatureColumnMapping_labelExpression_feature"), //$NON-NLS-1$
+                        getString("_UI_FeatureColumnMapping_labelExpression_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
      * This adds a property descriptor for the Feature Parent Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFeatureParentExpressionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-                getResourceLocator(),
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_FeatureColumnMapping_featureParentExpression_feature"), //$NON-NLS-1$
                 getString("_UI_FeatureColumnMapping_featureParentExpression_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -136,7 +136,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in
      * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -154,7 +154,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
     /**
      * This returns FeatureColumnMapping.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -194,7 +194,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
      * update any cached children and by creating a viewer notification, which
      * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -255,9 +255,9 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
 
         LabelEditTool labelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
         labelEditTool.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, "The currently edited element.");
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, "The semantic element corresponding to the line.");
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ROOT, "The semantic element of the table.");
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CurrentSemanticElement);
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ROOT, Messages.Table_SemanticRootElement);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__DIRECT_EDIT, labelEditTool));
 

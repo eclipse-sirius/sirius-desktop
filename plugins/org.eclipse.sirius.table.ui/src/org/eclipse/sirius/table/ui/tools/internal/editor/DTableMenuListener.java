@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractLineAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractTargetColumnAction;
@@ -263,7 +264,7 @@ public class DTableMenuListener implements IMenuListener {
      */
     private void addOpenRepresentationMenu(final IMenuManager manager) {
         // Create a new sub-menu manager
-        final MenuManager openMenuManager = new MenuManager("Open", DTableMenuListener.MENU_OPEN_REPRESENTATION_ID);
+        final MenuManager openMenuManager = new MenuManager(Messages.DTableMenuListener_openMenuName, DTableMenuListener.MENU_OPEN_REPRESENTATION_ID);
         // Create the item to add to the main manager
         final SubContributionItem openMenuItem = new SubContributionItem(openMenuManager);
         manager.add(openMenuItem);
@@ -293,7 +294,7 @@ public class DTableMenuListener implements IMenuListener {
      */
     private void addNewRepresentationMenu(final IMenuManager manager) {
         // Create a new sub-menu manager
-        final MenuManager newMenuManager = new MenuManager("New", DTableMenuListener.MENU_NEW_REPRESENTATION_ID);
+        final MenuManager newMenuManager = new MenuManager(Messages.DTableMenuListener_newMenuName, DTableMenuListener.MENU_NEW_REPRESENTATION_ID);
         // Create the item to add to the main manager
         final SubContributionItem newMenuItem = new SubContributionItem(newMenuManager);
         manager.add(newMenuItem);
@@ -429,7 +430,7 @@ public class DTableMenuListener implements IMenuListener {
 
     private void addExportMenu(final IMenuManager manager) {
         // Create a new sub-menu manager
-        final MenuManager exportMenuManager = new MenuManager("Export", DTableMenuListener.MENU_EXPORT_ID);
+        final MenuManager exportMenuManager = new MenuManager(Messages.DTableMenuListener_exportMenuName, DTableMenuListener.MENU_EXPORT_ID);
         // Create the item to add to the main manager
         final SubContributionItem menuItem = new SubContributionItem(exportMenuManager);
         menuItem.setVisible(true);
@@ -448,7 +449,7 @@ public class DTableMenuListener implements IMenuListener {
                 try {
                     handlerService.executeCommand("org.eclipse.sirius.table.ui.exportToCsv", null); //$NON-NLS-1$
                 } catch (final CommandException ex) {
-                    throw new RuntimeException("export to csv command not found");
+                    throw new RuntimeException(Messages.DTableMenuListener_cvsExportException);
                 }
             }
         };
@@ -463,7 +464,7 @@ public class DTableMenuListener implements IMenuListener {
      */
     private void addHideRevealMenu(final IMenuManager manager) {
         // Create a new sub-menu manager
-        final MenuManager hideRevealMenuManager = new MenuManager("Show/Hide", DTableMenuListener.MENU_HIDEREVEAL_ID);
+        final MenuManager hideRevealMenuManager = new MenuManager(Messages.DTableMenuListener_showHideMenuName, DTableMenuListener.MENU_HIDEREVEAL_ID);
         // Create the item to add to the main manager
         final SubContributionItem viewpointMenuItem = new SubContributionItem(hideRevealMenuManager);
         viewpointMenuItem.setVisible(true);

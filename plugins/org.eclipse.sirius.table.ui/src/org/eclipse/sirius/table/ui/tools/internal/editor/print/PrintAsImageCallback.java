@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.print;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.transaction.RunnableWithResult;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
+import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -19,12 +24,10 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.description.SystemColors;
 
 /**
  * Callback to print a given displayed control as an image.
- * 
+ *
  * @author mchauvin
  */
 public class PrintAsImageCallback implements PrintCallback {
@@ -57,7 +60,7 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * Create a new callback to print a control as an image.
-     * 
+     *
      * @param pageSetup
      *            the page setup
      * @param control
@@ -72,15 +75,16 @@ public class PrintAsImageCallback implements PrintCallback {
     /**
      * Take a snapshot of a given control into an image. The returned image
      * should be disposed.
-     * 
+     *
      * @param control
      *            the control
      * @return the created snapshot image.
-     * 
+     *
      */
     private Image takeSnapshot(final Control control) {
         /* necessary to avoid blank shadow, but does not work all the time */
         display.syncExec(new Runnable() {
+            @Override
             public void run() {
                 synchronizationWithUIThread();
                 control.redraw();
@@ -95,6 +99,7 @@ public class PrintAsImageCallback implements PrintCallback {
         });
 
         RunnableWithResult<Image> runnable = new RunnableWithResult.Impl<Image>() {
+            @Override
             public void run() {
                 Point size = control.getSize();
                 Image snap = new Image(display, size.x, size.y);
@@ -110,9 +115,10 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.viewpoint.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#setParameters(org.eclipse.sirius.viewpoint.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintJobParameters)
      */
+    @Override
     public void setParameters(final PrintJobParameters parameters) {
         this.printParameters = parameters;
         this.imageData = imageToPrint.getImageData();
@@ -153,9 +159,10 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.viewpoint.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#numberOfPages()
      */
+    @Override
     public int numberOfPages() {
         /* return the entire division +1 */
         return (imageData.height / maxPageHeight) + 1;
@@ -163,7 +170,7 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * Compute the maximum height possible for a page.
-     * 
+     *
      * @return the maximum height possible
      */
     private void computeMaxPageHeightAndMargin() {
@@ -179,7 +186,7 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * Compute the maximum width possible for a page.
-     * 
+     *
      * @return the maximum width possible
      */
     private void computeMaxPageWidth() {
@@ -199,9 +206,10 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.viewpoint.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#printPage(int)
      */
+    @Override
     public void printPage(final int page) {
 
         final ImageHeightBoundsForPage bounds = this.heightBounds[page];
@@ -210,6 +218,7 @@ public class PrintAsImageCallback implements PrintCallback {
         final int destHeight = bounds.getSize();
 
         display.syncExec(new Runnable() {
+            @Override
             public void run() {
                 /* Get the ImageData and create a new printer Image from it */
                 final Image printImage = new Image(printParameters.getPrinter(), imageData);
@@ -233,7 +242,7 @@ public class PrintAsImageCallback implements PrintCallback {
                 final Rectangle trim = printParameters.getTrim();
 
                 gc.drawLine(-trim.x, maxPageHeight + headerMargin + 1, maxPageWidth, maxPageHeight + headerMargin + 1);
-                gc.drawText("page " + page + "/" + numberOfPages(), -trim.x, maxPageHeight + headerMargin + 5); //$NON-NLS-2$
+                gc.drawText(MessageFormat.format(Messages.PrintAsImageCallback_pageFooter, page, numberOfPages()), -trim.x, maxPageHeight + headerMargin + 5); // $NON-NLS-2$
             }
 
         });
@@ -249,7 +258,7 @@ public class PrintAsImageCallback implements PrintCallback {
 
     /**
      * Store height bounds of an image for a page.
-     * 
+     *
      * @author mchauvin
      */
     private static class ImageHeightBoundsForPage {
@@ -262,7 +271,7 @@ public class PrintAsImageCallback implements PrintCallback {
 
         /**
          * Create a new instance.
-         * 
+         *
          * @param src
          *            the source
          * @param dest
@@ -276,7 +285,7 @@ public class PrintAsImageCallback implements PrintCallback {
 
         /**
          * Get the source coordinate.
-         * 
+         *
          * @return the source coordinate
          */
         public int getScr() {
@@ -285,7 +294,7 @@ public class PrintAsImageCallback implements PrintCallback {
 
         /**
          * Get the destination coordinate.
-         * 
+         *
          * @return the destination coordinate
          */
         public int getDest() {
@@ -294,7 +303,7 @@ public class PrintAsImageCallback implements PrintCallback {
 
         /**
          * Get the size.
-         * 
+         *
          * @return the size the size
          */
         public int getSize() {

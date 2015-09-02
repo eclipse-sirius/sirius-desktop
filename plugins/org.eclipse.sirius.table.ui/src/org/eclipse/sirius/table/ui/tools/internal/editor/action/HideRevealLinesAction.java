@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,13 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.table.metamodel.table.DLine;
+import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
+import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
+import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
+import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableLineLabelProvider;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
 import org.eclipse.ui.dialogs.SelectionDialog;
@@ -28,25 +35,12 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.table.metamodel.table.DLine;
-import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.metamodel.table.TablePackage;
-import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
-import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableLineLabelProvider;
-
 /**
  * Hide/reveal lines action. It opens a selection dialog.
- * 
+ *
  * @author dlecan
  */
 public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
-
-    private static final String DIALOG_TITLE = "Hide/Show table lines";
-
-    private static final String DIALOG_MESSAGE = "Uncheck lines to hide them:";
-
-    private static final String ACTION_LABEL = "Hide/Show lines...";
 
     private final TreeViewer treeViewer;
 
@@ -58,6 +52,7 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
         /**
          * {inheritDoc}
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object[] getElements(final Object inputElement) {
             if (inputElement instanceof EList<?>) {
@@ -70,6 +65,7 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
         /**
          * {inheritDoc}
          */
+        @Override
         public void dispose() {
             // Nothing
         }
@@ -77,15 +73,17 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
         /**
          * {inheritDoc}
          */
+        @Override
         public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
             // Nothing
         }
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
          */
+        @Override
         public Object[] getChildren(final Object parentElement) {
             Object[] result = null;
             if (parentElement instanceof DLine) {
@@ -97,9 +95,10 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
          */
+        @Override
         public Object getParent(final Object element) {
             if (element instanceof DLine) {
                 final DLine line = (DLine) element;
@@ -110,9 +109,10 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
          */
+        @Override
         public boolean hasChildren(final Object element) {
             final Object[] children = getChildren(element);
             return children != null && children.length > 0;
@@ -121,7 +121,7 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param dTable
      *            {@link DTable} to use
      * @param editingDomain
@@ -132,7 +132,7 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
      *            Tree viewer of the current table.
      */
     public HideRevealLinesAction(final DTable dTable, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory, final TreeViewer treeViewer) {
-        super(dTable, ACTION_LABEL, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.HIDE_REVEAL_IMG), editingDomain, tableCommandFactory);
+        super(dTable, Messages.HideRevealLinesAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.HIDE_REVEAL_IMG), editingDomain, tableCommandFactory);
         this.treeViewer = treeViewer;
     }
 
@@ -176,6 +176,7 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
     protected Collection<DLine> getInitialVisibleElements() {
         return Collections2.filter(getAllElements(), new Predicate<DLine>() {
 
+            @Override
             public boolean apply(final DLine input) {
                 return input.isVisible();
             }
@@ -189,12 +190,12 @@ public class HideRevealLinesAction extends AbstractHideRevealAction<DLine> {
 
     @Override
     protected String getMessage() {
-        return DIALOG_MESSAGE;
+        return Messages.HideRevealLinesAction_dialogMsg;
     }
 
     @Override
     protected String getTitle() {
-        return DIALOG_TITLE;
+        return Messages.HideRevealLinesAction_dialogTitle;
     }
 
     @Override

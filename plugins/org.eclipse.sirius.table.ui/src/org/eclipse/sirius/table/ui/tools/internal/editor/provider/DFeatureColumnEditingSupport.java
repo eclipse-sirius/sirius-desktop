@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -60,6 +61,7 @@ import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableTreeViewer;
@@ -75,7 +77,7 @@ import org.eclipse.swt.widgets.Tree;
 /**
  * Support for the cells editing of a Edition DTable (with
  * {@link org.eclipse.sirius.table.metamodel.table.DFeatureColumn}).
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class DFeatureColumnEditingSupport extends EditingSupport {
@@ -94,7 +96,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * Constructor.
-     * 
+     *
      * @param viewer
      *            The columnViewer for this editingSupport
      * @param featureColumn
@@ -126,7 +128,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.viewers.EditingSupport#canEdit(java.lang.Object)
      */
     @Override
@@ -154,7 +156,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.viewers.EditingSupport#getCellEditor(java.lang.Object)
      */
     @Override
@@ -171,7 +173,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.viewers.EditingSupport#getValue(java.lang.Object)
      */
     @Override
@@ -220,7 +222,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                     }
                 }
             } catch (final FeatureNotFoundException e) {
-                SiriusPlugin.getDefault().error("Error while getting the property value", e);
+                SiriusPlugin.getDefault().error(Messages.DFeatureColumnEditingSupport_errorGettingPropertyValue, e);
             }
         }
         return result;
@@ -228,7 +230,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.viewers.EditingSupport#setValue(java.lang.Object,
      *      java.lang.Object)
      */
@@ -275,14 +277,14 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                     }
                 }
             } catch (final ClassCastException e) {
-                SiriusPlugin.getDefault().error("Error while setting the property value", e);
+                SiriusPlugin.getDefault().error(Messages.DFeatureColumnEditingSupport_errorSettingPropertyValue, e);
             }
         }
     }
 
     /**
      * Set the value by doing a standard eSet for the feature
-     * 
+     *
      * @param line
      *            The line containing the feature to set
      * @param value
@@ -291,18 +293,18 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
     private void standardSetValue(final DLine line, final Object value) {
         final Option<DCell> cell = TableHelper.getCell(line, featureColumn);
         if (cell.some()) {
-            getEditingDomain().getCommandStack().execute(new StandardSetValueRecordingCommand(getEditingDomain(), "Set " + getFeatureName() + " value", cell.get(), value));
+            getEditingDomain().getCommandStack().execute(new StandardSetValueRecordingCommand(getEditingDomain(), MessageFormat.format(Messages.Action_setValue, getFeatureName()), cell.get(), value));
         }
     }
 
     /**
      * Set the value by calling the user operations
-     * 
+     *
      * @param editedCell
      *            The cell to set
      * @param value
      *            the new value
-     * 
+     *
      */
     private void specificSetValue(final DCell editedCell, final Object value) {
         tableEditor.enablePropertiesUpdate(false);
@@ -316,7 +318,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * Chooses the best CellEditor depending on the type of value to edit
-     * 
+     *
      * @param element
      *            The current edited element
      * @param directEdit
@@ -390,7 +392,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                              * {@inheritDoc} We override the doSetFocus for
                              * clearing the selection for the direct edition of
                              * the cell.
-                             * 
+                             *
                              * @see org.eclipse.jface.viewers.TextCellEditor#doSetFocus()
                              */
                             @Override
@@ -427,7 +429,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             /**
              * {@inheritDoc} Override for problem when the feature name defines
              * in the odesign is not valid.
-             * 
+             *
              * @see org.eclipse.jface.viewers.TextCellEditor#doSetValue(java.lang.Object)
              */
             @Override
@@ -440,7 +442,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             /**
              * {@inheritDoc} We override the doSetFocus for clearing the
              * selection for the direct edition of the cell.
-             * 
+             *
              * @see org.eclipse.jface.viewers.TextCellEditor#doSetFocus()
              */
             @Override
@@ -455,12 +457,13 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             /**
              * {@inheritDoc} Override for problem when the feature name defines
              * in the odesign is not valid.
-             * 
+             *
              * @see org.eclipse.jface.viewers.ICellEditorValidator#isValid(java.lang.Object)
              */
+            @Override
             public String isValid(final Object value) {
                 if (value == null) {
-                    return "Null value is not a valid value for this cell.";
+                    return Messages.DFeatureColumnEditingSupport_notValidValue;
                 }
                 return null;
             }
@@ -472,7 +475,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * Calculate the list of labels for this enumeration
-     * 
+     *
      * @param enumeration
      *            The enumeration
      * @return A list of labels
@@ -489,7 +492,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
     /**
      * Get the classifier of the attribute corresponding the attribute with
      * featureName of the this element.
-     * 
+     *
      * @param element
      *            The current element
      * @return The eClassifier
@@ -506,7 +509,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * The feature name of the column associated with this editingSupport.
-     * 
+     *
      * @return A the feature name
      */
     protected String getFeatureName() {
@@ -533,7 +536,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * Return the transactional editing domain.
-     * 
+     *
      * @return the transactional editing domain
      */
     public TransactionalEditingDomain getEditingDomain() {
@@ -612,7 +615,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
     /**
      * Return the propertyDescriptor corresponding to the feature of this column
      * for the instance
-     * 
+     *
      * @param instance
      *            the instance.
      * @return the propertyDescriptor corresponding to the feature of this
@@ -640,7 +643,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.viewers.EditingSupport#initializeCellEditorValue(org.eclipse.jface.viewers.CellEditor,
      *      org.eclipse.jface.viewers.ViewerCell)
      */

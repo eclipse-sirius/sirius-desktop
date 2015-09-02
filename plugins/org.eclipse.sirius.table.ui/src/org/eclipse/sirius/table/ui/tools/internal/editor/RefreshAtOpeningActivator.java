@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
 import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthQuery;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -107,7 +108,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
 
     private void refreshDTableModelFromTreeColumnWidth() {
         if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
-            CompoundCommand refreshDTableAtOpeningCmd = new CompoundCommand("refresh table model at opening");
+            CompoundCommand refreshDTableAtOpeningCmd = new CompoundCommand(Messages.RefreshAtOpeningActivator_refreshTableCmdName);
 
             TreeColumn[] treeColumns = tree.getColumns();
 

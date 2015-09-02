@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.ui.dialogs.SelectionDialog;
 
@@ -26,7 +28,7 @@ import com.google.common.collect.Lists;
 
 /**
  * Common behaviors for hide/reveal actions. It opens a selection dialog.
- * 
+ *
  * @author dlecan
  * @param <T>
  *            Current type. May be
@@ -37,7 +39,7 @@ public abstract class AbstractHideRevealAction<T extends EObject> extends Abstra
 
     /**
      * Creates a new action with the given image.
-     * 
+     *
      * @param dTable
      *            {@link DTable} to use
      * @param text
@@ -50,7 +52,8 @@ public abstract class AbstractHideRevealAction<T extends EObject> extends Abstra
      * @param tableCommandFactory
      *            The EMF command factory
      */
-    public AbstractHideRevealAction(final DTable dTable, final String text, final ImageDescriptor image, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory) {
+    public AbstractHideRevealAction(final DTable dTable, final String text, final ImageDescriptor image, final TransactionalEditingDomain editingDomain,
+            final ITableCommandFactory tableCommandFactory) {
         super(dTable, text, image, editingDomain, tableCommandFactory);
     }
 
@@ -69,7 +72,7 @@ public abstract class AbstractHideRevealAction<T extends EObject> extends Abstra
         // User wants to continue his action
         if (Window.OK == dlg.getReturnCode() && dlg.getResult() != null) {
             List<Object> newVisibles = Lists.newArrayList(dlg.getResult());
-            CompoundCommand compoundCommand = new CompoundCommand("Set " + getSetVisibleMethodName() + " values");
+            CompoundCommand compoundCommand = new CompoundCommand(MessageFormat.format(Messages.Action_setValues, getSetVisibleMethodName()));
             for (T element : getAllElements()) {
                 boolean visible = newVisibles.contains(element);
                 // XOR operator
@@ -88,49 +91,49 @@ public abstract class AbstractHideRevealAction<T extends EObject> extends Abstra
 
     /**
      * Get the method name of "setVisible" method.
-     * 
+     *
      * @return The method name.
      */
     protected abstract String getSetVisibleMethodName();
 
     /**
      * Get initial visible elements.
-     * 
+     *
      * @return The initial visible elements.
      */
     protected abstract Collection<T> getInitialVisibleElements();
 
     /**
      * Get dialog title name.
-     * 
+     *
      * @return Elements name.
      */
     protected abstract String getTitle();
 
     /**
      * Get dialog message.
-     * 
+     *
      * @return Elements name.
      */
     protected abstract String getMessage();
 
     /**
      * Get all current elements.
-     * 
+     *
      * @return All current elements.
      */
     protected abstract List<T> getAllElements();
 
     /**
      * Create selection dialog.
-     * 
+     *
      * @return Selection dialog.
      */
     protected abstract SelectionDialog createSelectionDialog();
 
     /**
      * Check if an element is visible.
-     * 
+     *
      * @param element
      *            Element to check.
      * @return <code>true</code> if element is visible, <code>false</code>

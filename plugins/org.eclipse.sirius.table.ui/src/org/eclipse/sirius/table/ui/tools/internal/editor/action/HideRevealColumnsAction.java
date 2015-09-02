@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,12 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.table.metamodel.table.DColumn;
+import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
+import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
+import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ListSelectionDialog;
 import org.eclipse.ui.dialogs.SelectionDialog;
@@ -26,24 +32,12 @@ import org.eclipse.ui.dialogs.SelectionDialog;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
-import org.eclipse.sirius.table.metamodel.table.DColumn;
-import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.metamodel.table.TablePackage;
-import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
-import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-
 /**
  * Hide/reveal columns action.
- * 
+ *
  * @author dlecan
  */
 public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
-
-    private static final String ACTION_LABEL = "Hide/Show columns...";
-
-    private static final String DIALOG_TITLE = "Hide/Show table columns";
-
-    private static final String DIALOG_MESSAGE = "Uncheck columns to hide them:";
 
     /**
      * @author dlecan
@@ -71,6 +65,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
         /**
          * {inheritDoc}
          */
+        @Override
         public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
             // Nothing
         }
@@ -78,6 +73,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
         /**
          * {inheritDoc}
          */
+        @Override
         public void dispose() {
             // nothing
         }
@@ -85,6 +81,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
         /**
          * {inheritDoc}
          */
+        @Override
         @SuppressWarnings("unchecked")
         public Object[] getElements(final Object inputElement) {
             Object[] result = null;
@@ -100,7 +97,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param dTable
      *            {@link DTable} to use
      * @param editingDomain
@@ -109,7 +106,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
      *            table command factory.
      */
     public HideRevealColumnsAction(final DTable dTable, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory) {
-        super(dTable, ACTION_LABEL, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.HIDE_REVEAL_IMG), editingDomain, tableCommandFactory);
+        super(dTable, Messages.HideRevealColumnsAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.HIDE_REVEAL_IMG), editingDomain, tableCommandFactory);
     }
 
     private ILabelProvider getLabelProvider() {
@@ -127,6 +124,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
     protected Collection<DColumn> getInitialVisibleElements() {
         return Collections2.filter(getAllElements(), new Predicate<DColumn>() {
 
+            @Override
             public boolean apply(final DColumn input) {
                 return input.isVisible();
             }
@@ -162,7 +160,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
      */
     @Override
     protected String getMessage() {
-        return DIALOG_MESSAGE;
+        return Messages.HideRevealColumnsAction_dialogMsg;
     }
 
     /**
@@ -170,7 +168,7 @@ public class HideRevealColumnsAction extends AbstractHideRevealAction<DColumn> {
      */
     @Override
     protected String getTitle() {
-        return DIALOG_TITLE;
+        return Messages.HideRevealColumnsAction_dialogTitle;
     }
 
     /**

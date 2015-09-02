@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.listeners;
+
+import java.text.MessageFormat;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -24,6 +26,7 @@ import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
 import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthQuery;
@@ -36,7 +39,7 @@ import org.eclipse.swt.widgets.TreeColumn;
  * A {@link ITreeViewerListener} and {@link ControlListener} to update the
  * DTable model when a SWT TreeItem is collapsed/expanded and
  * {@link TreeColumn#getWidth()} change.
- * 
+ *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class DTableViewerListener implements ITreeViewerListener, ControlListener {
@@ -51,7 +54,7 @@ public class DTableViewerListener implements ITreeViewerListener, ControlListene
 
     /**
      * Default constructor.
-     * 
+     *
      * @param dTableViewerManager
      *            the table viewer manager.
      * @param modelAccessor
@@ -72,7 +75,7 @@ public class DTableViewerListener implements ITreeViewerListener, ControlListene
             DLine dLine = (DLine) event.getElement();
             if (dLine.isCollapsed()) {
                 CommandStack commandStack = domain.getCommandStack();
-                CompoundCommand cmd = new CompoundCommand("Expand " + dLine.getName() + " line");
+                CompoundCommand cmd = new CompoundCommand(MessageFormat.format(Messages.DTableViewerListener_expandLine, dLine.getName()));
                 Command expandDLineCmd = SetCommand.create(domain, dLine, TablePackage.Literals.DLINE__COLLAPSED, false);
                 cmd.append(expandDLineCmd);
                 commandStack.execute(cmd);
@@ -86,7 +89,7 @@ public class DTableViewerListener implements ITreeViewerListener, ControlListene
             DLine dLine = (DLine) event.getElement();
             if (!dLine.isCollapsed()) {
                 CommandStack commandStack = domain.getCommandStack();
-                CompoundCommand cmd = new CompoundCommand("Collapse " + dLine.getName() + " line");
+                CompoundCommand cmd = new CompoundCommand(MessageFormat.format(Messages.DTableViewerListener_collapseLine, dLine.getName()));
                 Command collapseDLineCmd = SetCommand.create(domain, dLine, TablePackage.Literals.DLINE__COLLAPSED, true);
                 cmd.append(collapseDLineCmd);
                 commandStack.execute(cmd);

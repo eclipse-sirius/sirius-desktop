@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,18 +18,19 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
+import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
+import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
-import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This action refresh the content of the table.
- * 
+ *
  * @author lredor
  */
 public class EditorRefreshAction implements IEditorActionDelegate {
@@ -41,22 +42,25 @@ public class EditorRefreshAction implements IEditorActionDelegate {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.IEditorActionDelegate#setActiveEditor(org.eclipse.jface.action.IAction,
      *      org.eclipse.ui.IEditorPart)
      */
+    @Override
     public void setActiveEditor(final IAction action, final IEditorPart targetEditor) {
         setActiveWorkbenchPart(targetEditor);
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
+    @Override
     public void run(final IAction action) {
         if (workbenchPart instanceof AbstractDTableEditor) {
             final IRunnableWithProgress op = new IRunnableWithProgress() {
+                @Override
                 public void run(final IProgressMonitor monitor) {
                     final AbstractDTableEditor tableEditor = (AbstractDTableEditor) workbenchPart;
                     tableEditor.enablePropertiesUpdate(false);
@@ -70,26 +74,27 @@ public class EditorRefreshAction implements IEditorActionDelegate {
             try {
                 monitorDialog.run(false, false, op);
             } catch (final InvocationTargetException e) {
-                MessageDialog.openError(activeShell, "Error", e.getTargetException().getMessage());
-                SiriusPlugin.getDefault().error("Error while refreshing table", e);
+                MessageDialog.openError(activeShell, Messages.Action_error, e.getTargetException().getMessage());
+                SiriusPlugin.getDefault().error(Messages.RefreshAction_errorDuringRefresh, e);
             } catch (final InterruptedException e) {
-                MessageDialog.openInformation(activeShell, "Cancelled", e.getMessage());
+                MessageDialog.openInformation(activeShell, Messages.Action_cancelled, e.getMessage());
             }
         }
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
      *      org.eclipse.jface.viewers.ISelection)
      */
+    @Override
     public void selectionChanged(final IAction action, final ISelection selection) {
     }
 
     /**
      * Set the workbench part.
-     * 
+     *
      * @param aWorkbenchPart
      *            the new workbench part
      */

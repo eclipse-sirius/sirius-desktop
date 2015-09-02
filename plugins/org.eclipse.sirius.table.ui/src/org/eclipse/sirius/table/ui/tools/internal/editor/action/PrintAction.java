@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import java.text.MessageFormat;
+
 import org.eclipse.jface.action.Action;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
+import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
+import org.eclipse.sirius.table.ui.tools.internal.editor.print.PaperClipsPrintHelper;
+import org.eclipse.sirius.table.ui.tools.internal.editor.print.PrintHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.printing.PrintDialog;
@@ -20,10 +26,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
-import org.eclipse.sirius.table.ui.tools.internal.editor.print.PaperClipsPrintHelper;
-import org.eclipse.sirius.table.ui.tools.internal.editor.print.PrintHelper;
 
 /**
  * An action to print tables.
@@ -53,7 +55,7 @@ public class PrintAction extends Action {
             if (controlToPrint != null) {
                 final Display display = controlToPrint.getDisplay();
                 final Shell shell = display.getActiveShell();
-                final String tableName = editorPart.getTitle() != null ? editorPart.getTitle() : "table without name";
+                final String tableName = editorPart.getTitle() != null ? editorPart.getTitle() : Messages.PrintAction_tableWithoutName;
                 try {
                     final PrinterData data = openPrintDialog(shell);
                     if (data == null) {
@@ -62,7 +64,7 @@ public class PrintAction extends Action {
                     launchPrintWithPaperclip(data, tableName);
                 } catch (final SWTError e) {
                     final MessageBox box = new MessageBox(shell, SWT.ICON_ERROR);
-                    box.setMessage("An error occurs during printing : " + e.getMessage());
+                    box.setMessage(MessageFormat.format(Messages.PrintAction_errorDuringPrinting, e.getMessage()));
                     box.open();
                 }
             }

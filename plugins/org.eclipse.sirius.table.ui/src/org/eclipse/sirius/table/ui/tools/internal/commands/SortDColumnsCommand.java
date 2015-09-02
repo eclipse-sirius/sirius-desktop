@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,11 +18,12 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.swt.SWT;
 
 /**
  * A Command to sort {@link DColumn}s order.
- * 
+ *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class SortDColumnsCommand extends RecordingCommand {
@@ -33,7 +34,7 @@ public class SortDColumnsCommand extends RecordingCommand {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param domain
      *            the {@link TransactionalEditingDomain} on which this command
      *            will be executed
@@ -45,7 +46,7 @@ public class SortDColumnsCommand extends RecordingCommand {
      *            the direction in which to sort. One of SWT.UP or SWT.DOWN.
      */
     public SortDColumnsCommand(TransactionalEditingDomain domain, DTable dTable, DLine dLine, int sortDirection) {
-        super(domain, (sortDirection == SWT.UP ? "Ascending " : "Descending ") + "columns sorting");
+        super(domain, sortDirection == SWT.UP ? Messages.SortDColumnsCommand_ascendingSorting : Messages.SortDColumnsCommand_descendingSorting);
         this.dTable = dTable;
         this.dColumnSorter = new DColumnSorter(dLine, sortDirection);
     }

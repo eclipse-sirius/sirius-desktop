@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,22 +13,21 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
-import org.eclipse.swt.SWT;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.ui.tools.internal.commands.SortDColumnsCommand;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
+import org.eclipse.swt.SWT;
 
 /**
  * Action to sort columns by line. This action is only for CrossTable.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class SortColumnsByLineAction extends Action {
-    private static final String DEFAULT_NAME = "Sort by";
-
     /**
      * The last Line use to sort
      */
@@ -51,18 +50,18 @@ public class SortColumnsByLineAction extends Action {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            The transactional editing domain
      */
     public SortColumnsByLineAction(final TransactionalEditingDomain domain) {
-        super(DEFAULT_NAME, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.SORT_BY_LINE));
+        super(Messages.SortColumnsByLineAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.SORT_BY_LINE));
         this.domain = domain;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.Action#run()
      */
     @Override
@@ -84,7 +83,7 @@ public class SortColumnsByLineAction extends Action {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.Action#isEnabled()
      */
     @Override
@@ -94,7 +93,7 @@ public class SortColumnsByLineAction extends Action {
 
     /**
      * Set the line on which this action applied.
-     * 
+     *
      * @param line
      *            the line to set
      */

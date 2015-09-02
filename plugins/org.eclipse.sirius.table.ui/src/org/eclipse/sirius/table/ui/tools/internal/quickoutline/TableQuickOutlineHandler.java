@@ -20,13 +20,14 @@ import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.QuickOutlineDe
 import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.QuickOutlinePageDescriptor;
 import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.SiriusInformationPresenter;
 import org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline.SiriusInformationPresenterFactory;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
 /**
  * Handler for the quick outline of the Table editor.
- * 
+ *
  * @author ymortier
  */
 public class TableQuickOutlineHandler extends AbstractHandler {
@@ -45,7 +46,7 @@ public class TableQuickOutlineHandler extends AbstractHandler {
 
     /**
      * Create the quick outline descriptor.
-     * 
+     *
      * @param editor
      *            the table editor.
      * @return the quick outline descriptor.
@@ -56,9 +57,9 @@ public class TableQuickOutlineHandler extends AbstractHandler {
 
         TableOutlineCallback callBack = new TableOutlineCallback(editor);
 
-        QuickOutlinePageDescriptor page = new QuickOutlinePageDescriptor(callBack, labelProvider, new DLineQuickOutlineContentProvider(), "select line");
+        QuickOutlinePageDescriptor page = new QuickOutlinePageDescriptor(callBack, labelProvider, new DLineQuickOutlineContentProvider(), Messages.TableQuickOutlineHandler_selectLine);
 
-        QuickOutlinePageDescriptor columnsPage = new QuickOutlinePageDescriptor(callBack, labelProvider, new DColumnOutlineContentProvider(), "select column");
+        QuickOutlinePageDescriptor columnsPage = new QuickOutlinePageDescriptor(callBack, labelProvider, new DColumnOutlineContentProvider(), Messages.TableQuickOutlineHandler_selectColumn);
 
         QuickOutlineDescriptor descriptor = new QuickOutlineDescriptor();
         descriptor.addPage(page);
@@ -69,7 +70,7 @@ public class TableQuickOutlineHandler extends AbstractHandler {
 
     /**
      * Returns the currently active editor if it's a {@link DTableEditor}.
-     * 
+     *
      * @return The currently active editor if it's a {@link DTableEditor},
      *         <code>null</code> otherwise.
      */

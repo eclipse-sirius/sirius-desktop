@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -83,7 +84,7 @@ public class HierarchyLabelTableProvider extends LabelProvider {
         } else if (eObject instanceof RepresentationExtensionDescription) {
             label = ((RepresentationExtensionDescription) eObject).getName();
         }
-        return label != null ? label : "Element whithout name";
+        return label != null ? label : Messages.HierarchyLabelTableProvider_elementWithoutName;
     }
 
 }

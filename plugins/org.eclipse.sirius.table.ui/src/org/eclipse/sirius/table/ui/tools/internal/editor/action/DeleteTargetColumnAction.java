@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -30,17 +31,15 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * This action delete the TargetColumn (the corresponding semantic element).<BR>
- * 
+ *
  * @author lredor
  */
 public class DeleteTargetColumnAction extends AbstractTargetColumnAction {
 
-    private static final String DEFAULT_NAME = "Delete column";
-
     /**
      * Constructor. The deleteTool can be null if there is nothing specific to
      * do.
-     * 
+     *
      * @param deleteTool
      *            The tool to do some other actions
      * @param editingDomain
@@ -49,8 +48,8 @@ public class DeleteTargetColumnAction extends AbstractTargetColumnAction {
      *            The EMF command factory
      */
     public DeleteTargetColumnAction(final DeleteTool deleteTool, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory) {
-        super(DEFAULT_NAME, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.DELETE_IMG), editingDomain, tableCommandFactory, deleteTool);
-        setToolTipText("Delete the target semantic element");
+        super(Messages.DeleteTargetColumnAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.DELETE_IMG), editingDomain, tableCommandFactory, deleteTool);
+        setToolTipText(Messages.DeleteTargetColumnAction_tooltip);
         if (getDeleteTool() != null) {
             setText(new IdentifiedElementQuery(getDeleteTool()).getLabel());
             setToolTipText(getDeleteTool().getDocumentation());
@@ -94,7 +93,7 @@ public class DeleteTargetColumnAction extends AbstractTargetColumnAction {
 
     /**
      * The tool of this action or null if there is no specific delete action.
-     * 
+     *
      * @return The tool of this action or null if there is no specific delete
      *         action
      */

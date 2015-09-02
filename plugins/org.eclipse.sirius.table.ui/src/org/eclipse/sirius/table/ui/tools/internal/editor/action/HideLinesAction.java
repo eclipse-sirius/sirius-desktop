@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -18,6 +19,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 
@@ -25,14 +27,10 @@ import com.google.common.collect.Lists;
 
 /**
  * Hide the line.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class HideLinesAction extends AbstractTransactionalTableAction {
-
-    private static final String HIDE_LINE = "Hide line";
-
-    private static final String HIDE_LINES = "Hide lines";
 
     /**
      * The line concerned with this action
@@ -41,7 +39,7 @@ public class HideLinesAction extends AbstractTransactionalTableAction {
 
     /**
      * Creates a new action.
-     * 
+     *
      * @param dTable
      *            {@link DTable} to use
      * @param editingDomain
@@ -50,13 +48,13 @@ public class HideLinesAction extends AbstractTransactionalTableAction {
      *            The EMF command factory
      */
     public HideLinesAction(final DTable dTable, final TransactionalEditingDomain editingDomain, final ITableCommandFactory tableCommandFactory) {
-        super(dTable, HIDE_LINE, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.HIDE_IMG), editingDomain, tableCommandFactory);
+        super(dTable, Messages.HideLinesAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.HIDE_IMG), editingDomain, tableCommandFactory);
         this.lines = Lists.newArrayList();
     }
 
     /**
      * Set the line on which the tool of this action applied.
-     * 
+     *
      * @param linesToHide
      *            the line to set.
      */
@@ -67,13 +65,13 @@ public class HideLinesAction extends AbstractTransactionalTableAction {
         }
 
         setEnabled(!this.lines.isEmpty());
-        setText(this.lines.size() <= 1 ? HIDE_LINE : HIDE_LINES);
+        setText(this.lines.size() <= 1 ? Messages.HideLinesAction_label : Messages.HideLinesAction_labelMany);
     }
 
     @Override
     public void run() {
         super.run();
-        String commandLabel = "Set " + TablePackage.eINSTANCE.getDLine_Visible().getName() + " value";
+        String commandLabel = MessageFormat.format(Messages.Action_setValue, TablePackage.eINSTANCE.getDLine_Visible().getName());
         String name = TablePackage.eINSTANCE.getDLine_Visible().getName();
         CompoundCommand compoundCommand = new CompoundCommand(commandLabel);
         for (EObject instance : lines) {

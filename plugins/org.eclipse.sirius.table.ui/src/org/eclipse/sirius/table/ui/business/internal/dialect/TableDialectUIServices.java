@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.business.internal.dialect;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -46,6 +47,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescrip
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.metamodel.table.provider.TableItemProviderAdapterFactory;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.tools.api.export.TableExportHelper;
@@ -79,7 +81,7 @@ import com.google.common.collect.Sets;
 
 /**
  * The table dialect ui services.
- * 
+ *
  * @author lredor
  */
 public class TableDialectUIServices implements DialectUIServices {
@@ -90,7 +92,7 @@ public class TableDialectUIServices implements DialectUIServices {
     public IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor) {
         IEditorPart editorPart = null;
         try {
-            monitor.beginTask("table opening", 10);
+            monitor.beginTask(Messages.TableDialectUIServices_tableOpening, 10);
             if (dRepresentation instanceof DTable) {
                 DTable dTable = (DTable) dRepresentation;
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_TABLE_KEY);
@@ -108,7 +110,7 @@ public class TableDialectUIServices implements DialectUIServices {
                     editorId = null;
                 }
                 if (editorId != null) {
-                    monitor.subTask("table opening : " + dRepresentation.getName());
+                    monitor.subTask(MessageFormat.format(Messages.TableDialectUIServices_tableOpeningVar, dRepresentation.getName()));
                     RunnableWithResult<IEditorPart> runnable = new RunnableWithResult.Impl<IEditorPart>() {
 
                         @Override
@@ -117,7 +119,7 @@ public class TableDialectUIServices implements DialectUIServices {
                             try {
                                 setResult(page.openEditor(editorInput, editorId));
                             } catch (final PartInitException e) {
-                                TableUIPlugin.getPlugin().log(new Status(IStatus.ERROR, TableUIPlugin.ID, "table editor opening error", e));
+                                TableUIPlugin.getPlugin().log(new Status(IStatus.ERROR, TableUIPlugin.ID, Messages.TableDialectUIServices_tableOpeningError, e));
                             }
                         }
                     };
@@ -136,7 +138,7 @@ public class TableDialectUIServices implements DialectUIServices {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -148,7 +150,7 @@ public class TableDialectUIServices implements DialectUIServices {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -161,7 +163,7 @@ public class TableDialectUIServices implements DialectUIServices {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -174,7 +176,7 @@ public class TableDialectUIServices implements DialectUIServices {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -187,7 +189,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
      */
     @Override
@@ -197,7 +199,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#closeEditor(org.eclipse.ui.IEditorPart,
      *      boolean)
      */
@@ -220,7 +222,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
@@ -238,7 +240,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
@@ -253,7 +255,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     @Override
@@ -263,7 +265,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      *      )
      */
@@ -274,7 +276,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
      *      )
      */
@@ -293,7 +295,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
@@ -315,7 +317,7 @@ public class TableDialectUIServices implements DialectUIServices {
     public String getEditorName(DRepresentation representation) {
         String editorName = representation.getName();
         if (StringUtil.isEmpty(editorName)) {
-            editorName = "New Table";
+            editorName = Messages.TableDialectUIServices_newTableName;
         }
         return editorName;
     }
@@ -338,7 +340,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getHierarchyLabelProvider(ILabelProvider)
      */
     @Override
@@ -368,7 +370,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getSelection(org.eclipse.sirius.ui.business.api.dialect.DialectEditor)
      */
     @Override
@@ -388,7 +390,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
      *      EObject, EStructuralFeature)
      */
@@ -399,7 +401,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
      *      EObject)
      * @deprecated this method has not access to the feature of eObject. This is

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.business.api.helper;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
@@ -35,9 +37,9 @@ import org.eclipse.swt.widgets.TreeItem;
 
 /**
  * Utility methods to handle Table models.
- * 
+ *
  * @author lredor
- * 
+ *
  */
 public final class TableUIHelper {
 
@@ -47,7 +49,7 @@ public final class TableUIHelper {
 
     /**
      * Transform a table to a table descriptor.
-     * 
+     *
      * @param table
      *            table to transform.
      * @param inverse
@@ -75,7 +77,7 @@ public final class TableUIHelper {
             }
         } else {
             final List<String> header = new ArrayList<String>();
-            header.add("");
+            header.add(""); //$NON-NLS-1$
             for (final DLine line : table.getLines()) {
                 if (line.isVisible()) {
                     header.add(filler.getContent(line));
@@ -105,7 +107,7 @@ public final class TableUIHelper {
 
     /**
      * Transform a graphical tree to a table descriptor.
-     * 
+     *
      * @param tree
      *            tree to transform.
      * @param filler
@@ -160,7 +162,7 @@ public final class TableUIHelper {
 
     /**
      * Export the given table to HTML format.
-     * 
+     *
      * @param table
      *            table to export.
      * @param inverse
@@ -173,7 +175,7 @@ public final class TableUIHelper {
 
     /**
      * Export the given tree to HTML format.
-     * 
+     *
      * @param tree
      *            tree to export.
      * @return a string with the HTML table.
@@ -184,7 +186,7 @@ public final class TableUIHelper {
 
     /**
      * Transform a table descriptor to an HTML representation.
-     * 
+     *
      * @param descriptor
      *            the table descriptor.
      * @return an HTML table.
@@ -251,7 +253,7 @@ public final class TableUIHelper {
 
     /**
      * Add a list of strings to a table descriptor.
-     * 
+     *
      * @param expected
      *            table descriptor to update.
      * @param strings
@@ -264,7 +266,7 @@ public final class TableUIHelper {
     /**
      * Export the given table to HTML format using the named color names as
      * table content.
-     * 
+     *
      * @param table
      *            table to export.
      * @param inverse
@@ -284,7 +286,7 @@ public final class TableUIHelper {
     /**
      * Export the given table to HTML format using the named color names as
      * table content.
-     * 
+     *
      * @param tree
      *            tree to export.
      * @return a string with the HTML table.
@@ -318,7 +320,7 @@ public final class TableUIHelper {
     /**
      * Export the given table to HTML format using the named color names as
      * table content.
-     * 
+     *
      * @param table
      *            table to export.
      * @param inverse
@@ -343,7 +345,7 @@ public final class TableUIHelper {
     /**
      * Export the given table to HTML format using the width of the column as
      * table content.
-     * 
+     *
      * @param tree
      *            tree to export.
      * @return a string with the HTML table.
@@ -367,7 +369,7 @@ public final class TableUIHelper {
     /**
      * Export the given table to HTML format using the width of the column as
      * table content.
-     * 
+     *
      * @param table
      *            table to export.
      * @param inverse
@@ -390,12 +392,12 @@ public final class TableUIHelper {
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.sirius.table.business.api.helper.TableFiller#getContent(org.eclipse.sirius.table.metamodel.table.DLine)
              */
             @Override
             public String getContent(DLine line) {
-                return "Undefined";
+                return Messages.TableUIHelper_undefinedContent;
                 // return
                 // Integer.toString(TableHelper.getTable(line).getLineHeaderWidth());
             }
@@ -406,7 +408,7 @@ public final class TableUIHelper {
     /**
      * Export the given table to HTML format using the named color names as
      * table content.
-     * 
+     *
      * @param tree
      *            tree to export.
      * @return a string with the HTML table.
@@ -448,7 +450,7 @@ public final class TableUIHelper {
         if (exactMatch) {
             return closest.getName();
         } else {
-            return "unsupported color : " + color;
+            return MessageFormat.format(Messages.TableUIHelper_unsupportedColor, color);
         }
     }
 
@@ -459,7 +461,7 @@ public final class TableUIHelper {
 
 /**
  * Fill a table with values.
- * 
+ *
  * @author lredor
  */
 class TableFiller {

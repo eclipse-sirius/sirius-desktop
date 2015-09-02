@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,21 +13,20 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
-import org.eclipse.swt.SWT;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.ui.tools.internal.commands.SortDLinesCommand;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
+import org.eclipse.swt.SWT;
 
 /**
  * Action to sort lines by column.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class SortLinesByColumnAction extends Action {
-
-    private static final String DEFAULT_NAME = "Sort by";
 
     /**
      * The last column use to sort
@@ -53,18 +52,18 @@ public class SortLinesByColumnAction extends Action {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param domain
      *            The transactional editing domain
      */
     public SortLinesByColumnAction(final TransactionalEditingDomain domain) {
-        super(DEFAULT_NAME, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.SORT_BY_COLUMN));
+        super(Messages.SortLinesByColumnAction_label, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.SORT_BY_COLUMN));
         this.domain = domain;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.Action#run()
      */
     @Override
@@ -83,7 +82,7 @@ public class SortLinesByColumnAction extends Action {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.Action#isEnabled()
      */
     @Override
@@ -93,7 +92,7 @@ public class SortLinesByColumnAction extends Action {
 
     /**
      * Set the column on which this action applied.
-     * 
+     *
      * @param column
      *            the column to set
      */
@@ -106,7 +105,7 @@ public class SortLinesByColumnAction extends Action {
 
     /**
      * Set the table on which this action applied.
-     * 
+     *
      * @param table
      *            the table to set
      */
