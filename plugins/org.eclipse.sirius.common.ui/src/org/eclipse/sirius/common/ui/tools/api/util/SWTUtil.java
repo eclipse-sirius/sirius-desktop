@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.util;
 
+import java.text.MessageFormat;
 import java.util.Map;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -498,9 +499,9 @@ public final class SWTUtil {
         // preference if several editors are opened
         final String message;
         if (stillOpenElsewhere) {
-            message = Messages.SWTUtil_askToSaveChanges;
+            message = MessageFormat.format(Messages.SWTUtil_askToSaveChanges, label);
         } else {
-            message = Messages.SWTUtil_askToSaveChanges_openElseWhere;
+            message = MessageFormat.format(Messages.SWTUtil_askToSaveChanges_openElseWhere, label);
         }
         dialog = new SiriusMessageDialogWithToggle(window.getShell(), Messages.SWTUtil_saveDialog_title, null, message, MessageDialog.QUESTION, buttons, 0,
                 WorkbenchMessages.EditorManager_closeWithoutPromptingOption, false, stillOpenElsewhere) {
