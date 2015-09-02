@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,6 +73,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public SequenceDiagramDescription apply(TSequenceDiagram from) {
             SequenceDiagramDescription to = getOrCreate(from, DescriptionPackage.eINSTANCE.getSequenceDiagramDescription());
             to.setName(from.getName());
@@ -98,9 +99,10 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public InstanceRoleMapping apply(TLifelineMapping from) {
             InstanceRoleMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getInstanceRoleMapping());
-            to.setName(from.getName() + " Instance Role");
+            to.setName(from.getName() + " Instance Role"); //$NON-NLS-1$
             to.setDomainClass(from.getDomainClass());
             to.setSemanticCandidatesExpression(from.getSemanticCandidatesExpression());
             marker.clearGenerateds(to.getBorderedNodeMappings());
@@ -126,9 +128,10 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public ExecutionMapping apply(TLifelineMapping from) {
             ExecutionMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getExecutionMapping());
-            to.setName(from.getName() + " Execution");
+            to.setName(from.getName() + " Execution"); //$NON-NLS-1$
             to.setDomainClass(from.getDomainClass());
             to.setSemanticCandidatesExpression(SELF);
             to.setStartingEndFinderExpression(SELF);
@@ -158,6 +161,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public EndOfLifeMapping apply(TLifelineMapping from) {
             EndOfLifeMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getEndOfLifeMapping());
             to.setName(from.getName() + " EOL"); //$NON-NLS-1$
@@ -180,6 +184,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public ExecutionMapping apply(TExecutionMapping from) {
             ExecutionMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getExecutionMapping());
             to.setName(from.getName());
@@ -210,12 +215,14 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public BasicMessageMapping apply(final TBasicMessageMapping from) {
             final BasicMessageMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getBasicMessageMapping());
 
             copyMappingData(from, to);
             postOp(new Runnable() {
 
+                @Override
                 public void run() {
                     Collection<EObject> sourceOutputs = AbstractRule.collectGeneratedElements(execution2ExecutionMaping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource());
                     sourceOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2ExecutionMapping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource()));
@@ -243,12 +250,14 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public CreationMessageMapping apply(final TCreationMessageMapping from) {
             final CreationMessageMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getCreationMessageMapping());
 
             copyMappingData(from, to);
             postOp(new Runnable() {
 
+                @Override
                 public void run() {
                     Collection<EObject> sourceOutputs = AbstractRule.collectGeneratedElements(execution2ExecutionMaping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource());
                     sourceOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2ExecutionMapping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource()));
@@ -277,12 +286,14 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public DestructionMessageMapping apply(final TDestructionMessageMapping from) {
             final DestructionMessageMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getDestructionMessageMapping());
 
             copyMappingData(from, to);
             postOp(new Runnable() {
 
+                @Override
                 public void run() {
                     Collection<EObject> sourceOutputs = AbstractRule.collectGeneratedElements(execution2ExecutionMaping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource());
                     sourceOutputs.addAll(AbstractRule.collectGeneratedElements(lifeline2ExecutionMapping, DescriptionPackage.eINSTANCE.getExecutionMapping(), from.getSource()));
@@ -310,6 +321,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public ReturnMessageMapping apply(TReturnMessageMapping from) {
             ReturnMessageMapping to = getOrCreate(from, DescriptionPackage.eINSTANCE.getReturnMessageMapping());
             to.setName(from.getName());
@@ -336,6 +348,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public EdgeStyleDescription apply(TMessageStyle from) {
             EdgeStyleDescription to = getOrCreate(from, StylePackage.eINSTANCE.getEdgeStyleDescription());
             to.setFoldingStyle(FoldingStyle.NONE_LITERAL);
@@ -358,6 +371,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public ConditionalEdgeStyleDescription apply(TConditionalMessageStyle from) {
             ConditionalEdgeStyleDescription to = getOrCreate(from, org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getConditionalEdgeStyleDescription());
             to.setPredicateExpression(from.getPredicateExpression());
@@ -376,6 +390,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public SquareDescription apply(TLifelineStyle from) {
             SquareDescription to = getOrCreate(from, StylePackage.eINSTANCE.getSquareDescription());
             to.setBorderColor(from.getLifelineColor());
@@ -398,6 +413,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public ConditionalNodeStyleDescription apply(TConditionalLifelineStyle from) {
             ConditionalNodeStyleDescription to = getOrCreate(from, org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getConditionalNodeStyleDescription());
             to.setPredicateExpression(from.getPredicateExpression());
@@ -417,6 +433,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public SquareDescription apply(TExecutionStyle from) {
             SquareDescription to = getOrCreate(from, StylePackage.eINSTANCE.getSquareDescription());
             if (from.getBackgroundColor() != null) {
@@ -443,6 +460,7 @@ public class TemplateToDiagramDescriptionTransformer {
             super(marker);
         }
 
+        @Override
         public ConditionalNodeStyleDescription apply(TConditionalExecutionStyle from) {
             ConditionalNodeStyleDescription to = getOrCreate(from, org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getConditionalNodeStyleDescription());
             to.setPredicateExpression(from.getPredicateExpression());

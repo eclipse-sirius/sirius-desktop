@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.text.MessageFormat;
+
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -45,14 +48,11 @@ public class ShiftDirectSubExecutionsOperation extends AbstractModelChangeOperat
      *            space).
      */
     public ShiftDirectSubExecutionsOperation(ISequenceEvent parent, int deltaY) {
-        super("Shift sub-executions' positions by " + deltaY);
+        super(MessageFormat.format(Messages.ShiftDirectSubExecutionsOperation_operationName, deltaY));
         this.parent = Preconditions.checkNotNull(parent);
         this.deltaY = deltaY;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
 

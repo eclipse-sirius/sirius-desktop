@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
@@ -26,8 +27,6 @@ import com.google.common.base.Objects;
  * @author pcdavid, smonnier
  */
 public class SetMessageRangeOperation extends AbstractModelChangeOperation<Void> {
-
-    private static final String LABEL = "Set Sequence Message Vertical Range";
 
     private Edge message;
 
@@ -64,7 +63,7 @@ public class SetMessageRangeOperation extends AbstractModelChangeOperation<Void>
      *            .
      */
     public SetMessageRangeOperation(Edge message, Range range, boolean copyEdge) {
-        super(LABEL);
+        super(Messages.SetMessageRangeOperation_operationName);
         this.message = message;
         this.range = range;
     }
@@ -95,9 +94,6 @@ public class SetMessageRangeOperation extends AbstractModelChangeOperation<Void>
         this.targetBounds = tgtBounds.getCopy();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         if (message.getElement() != null && message.getElement().eContainer() != null) {

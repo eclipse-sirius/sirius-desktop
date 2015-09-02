@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +21,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
@@ -52,6 +54,7 @@ public class Execution extends AbstractNodeEvent {
      * execution reparent.
      */
     public static final Predicate<ISequenceEvent> NO_REPARENTABLE_EVENTS = new Predicate<ISequenceEvent>() {
+        @Override
         public boolean apply(ISequenceEvent input) {
             return input instanceof AbstractFrame || input instanceof Operand || input instanceof Message;
         }
@@ -69,6 +72,7 @@ public class Execution extends AbstractNodeEvent {
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getExecutionMapping())
                     && !InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
@@ -83,7 +87,7 @@ public class Execution extends AbstractNodeEvent {
      */
     Execution(Node node) {
         super(node);
-        Preconditions.checkArgument(Execution.notationPredicate().apply(node), "The node does not represent an execution.");
+        Preconditions.checkArgument(Execution.notationPredicate().apply(node), Messages.Execution_nonExecutionNode);
     }
 
     /**
@@ -106,9 +110,6 @@ public class Execution extends AbstractNodeEvent {
         return SiriusElementPredicate.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<Message> getLinkedMessages() {
         List<Message> linkedMessages = Lists.newArrayList();
@@ -212,9 +213,6 @@ public class Execution extends AbstractNodeEvent {
         return startMessage.some() && startMessage.get().isReflective() && (!endMessage.some() || endMessage.get().isReflective());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ISequenceEvent getParentEvent() {
         ISequenceEvent parent = getHierarchicalParentEvent();
@@ -227,9 +225,6 @@ public class Execution extends AbstractNodeEvent {
         return parent;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ISequenceEvent getHierarchicalParentEvent() {
         EObject viewContainer = this.view.eContainer();
@@ -240,7 +235,7 @@ public class Execution extends AbstractNodeEvent {
                 return parentElement.get();
             }
         }
-        throw new RuntimeException("Invalid context for execution " + this);
+        throw new RuntimeException(MessageFormat.format(Messages.Execution_invalidExecutionContext, this));
     }
 
     /**
@@ -279,16 +274,12 @@ public class Execution extends AbstractNodeEvent {
         return new ParentOperandFinder(this).getParentOperand();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ISequenceEvent> getSubEvents() {
         return new SubEventsHelper(this).getSubEvents();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<ISequenceEvent> getEventsToMoveWith() {
         Set<ISequenceEvent> toMove = Sets.newLinkedHashSet();
         List<ISequenceEvent> subEvents = getSubEvents();
@@ -328,55 +319,37 @@ public class Execution extends AbstractNodeEvent {
         return coveredExecutions;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Range getVerticalRange() {
         return new SequenceNodeQuery(getNotationNode()).getVerticalRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isLogicallyInstantaneous() {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setVerticalRange(Range range) throws IllegalStateException {
         RangeSetter.setVerticalRange(this, range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Lifeline> getLifeline() {
         return getParentLifeline();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return new SubEventsHelper(this).canChildOccupy(child, range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         return new SubEventsHelper(this).canChildOccupy(child, range, eventsToIgnore, lifelines);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getOccupiedRange() {
         return new ISequenceEventQuery(this).getOccupiedRange();
     }
@@ -387,6 +360,7 @@ public class Execution extends AbstractNodeEvent {
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public Range getValidSubEventsRange() {
         Range range = getVerticalRange();
         if (range.width() > 2 * LayoutConstants.EXECUTION_CHILDREN_MARGIN) {

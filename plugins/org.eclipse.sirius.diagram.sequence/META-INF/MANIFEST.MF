@@ -6,10 +6,10 @@ Bundle-Version: 3.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.diagram.sequence;version="2.0.4",
+Export-Package: org.eclipse.sirius.diagram.sequence;version="2.1.0",
  org.eclipse.sirius.diagram.sequence.business.internal;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.business.internal.color;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.diagram.sequence.business.internal.elements;x-internal:=true;version="2.0.4",
+ org.eclipse.sirius.diagram.sequence.business.internal.elements;x-internal:=true;version="3.0.0",
  org.eclipse.sirius.diagram.sequence.business.internal.layout;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.business.internal.layout.flag;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal;x-internal:=true;version="2.0.4",
@@ -17,9 +17,9 @@ Export-Package: org.eclipse.sirius.diagram.sequence;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.business.internal.metamodel;x-internal:=true;version="3.0.0",
  org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description;x-internal:=true;version="2.0.4",
- org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.tool;x-internal:=true;version="3.0.0",
+ org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.tool;x-internal:=true;version="3.1.0",
  org.eclipse.sirius.diagram.sequence.business.internal.metamodel.ordering;x-internal:=true;version="3.0.0",
- org.eclipse.sirius.diagram.sequence.business.internal.operation;x-internal:=true;version="2.0.4",
+ org.eclipse.sirius.diagram.sequence.business.internal.operation;x-internal:=true;version="3.0.0",
  org.eclipse.sirius.diagram.sequence.business.internal.ordering;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.business.internal.query;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.business.internal.refresh;x-internal:=true;version="2.0.4",
@@ -27,12 +27,12 @@ Export-Package: org.eclipse.sirius.diagram.sequence;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.business.internal.util;x-internal:=true;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.description;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.description.impl;version="3.0.0",
- org.eclipse.sirius.diagram.sequence.description.tool;version="2.0.4",
- org.eclipse.sirius.diagram.sequence.description.tool.impl;version="3.0.0",
+ org.eclipse.sirius.diagram.sequence.description.tool;version="2.1.0",
+ org.eclipse.sirius.diagram.sequence.description.tool.impl;version="3.1.0",
  org.eclipse.sirius.diagram.sequence.description.tool.util;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.description.util;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.impl;version="2.0.4",
- org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;x-internal:=true;version="2.0.4",
+ org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;x-internal:=true;version="2.1.0",
  org.eclipse.sirius.diagram.sequence.ordering;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.ordering.impl;x-internal:=true;version="3.0.0",
  org.eclipse.sirius.diagram.sequence.ordering.util;version="2.0.4",
@@ -56,6 +56,6 @@ Require-Bundle: org.eclipse.sirius.common;bundle-version="2.0.0",
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.eclipse.sirius.ext.base;version="2.0.0",
+Import-Package: org.eclipse.sirius.ext.base;version="2.1.0",
  org.eclipse.sirius.ext.emf;version="2.0.0"
 Bundle-Activator: org.eclipse.sirius.diagram.sequence.SequenceDiagramPlugin$Implementation

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.ext.base.Option;
@@ -85,9 +86,6 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void doExecute() {
         super.doExecute();
@@ -213,6 +211,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
             this.createdObjects.addAll(createdObjects);
         }
 
+        @Override
         public Command getPostCommandToExecute(TransactionalEditingDomain domain, Collection<DRepresentation> refreshedRepresentations) {
             Command result = null;
             // Flag new elements of the clicked with tool diagram -> diagram
@@ -243,15 +242,12 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
         private final Diagram gmfDiag;
 
         public SequenceFlagAndSyncCommand(TransactionalEditingDomain domain, Diagram gmfDiag, Collection<EObject> mainSemantics, Collection<EObject> createdObjects) {
-            super(domain, "PostRefreshFlag");
+            super(domain, Messages.SequenceFlagAndSyncCommand_commandName);
             this.gmfDiag = gmfDiag;
             this.mainSemantics.addAll(mainSemantics);
             this.createdObjects.addAll(createdObjects);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected void doExecute() {
             Collection<DDiagramElement> flagPostRefresh = flagPostRefresh(mainSemantics, createdObjects);

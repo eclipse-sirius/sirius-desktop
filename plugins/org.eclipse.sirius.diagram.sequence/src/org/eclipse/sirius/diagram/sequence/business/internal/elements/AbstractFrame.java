@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -47,7 +48,7 @@ import com.google.common.collect.Sets;
  */
 public abstract class AbstractFrame extends AbstractSequenceNode implements ISequenceEvent {
 
-    private static final ProfilerTask COVERAGE = new ProfilerTask("Sequence", "Compute interaction use coverage", SiriusTasks.IMAGES_VIEWPOINT);
+    private static final ProfilerTask COVERAGE = new ProfilerTask(Messages.AbstractFrame_coverageProfilerTaskCategory, Messages.AbstractFrame_coverageProfilerTaskName, SiriusTasks.IMAGES_VIEWPOINT); 
 
     /**
      * Constructor.
@@ -73,6 +74,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      * 
      * @return proper logical bounds
      */
+    @Override
     public Rectangle getProperLogicalBounds() {
         /*
          * Combined Fragments are directly on the diagram itself, so we can use
@@ -160,69 +162,52 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public Option<Lifeline> getLifeline() {
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISequenceEvent getParentEvent() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isLogicallyInstantaneous() {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getOccupiedRange() {
         return Range.emptyRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getValidSubEventsRange() {
         return Range.emptyRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISequenceEvent getHierarchicalParentEvent() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Operand> getParentOperand() {
         return new ParentOperandFinder(this).getParentOperand();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<ISequenceEvent> getEventsToMoveWith() {
         return getSubEvents();
     }

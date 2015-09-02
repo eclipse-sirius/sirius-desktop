@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -52,11 +54,6 @@ import com.google.common.collect.Sets;
  * @author pcdavid, smonnier
  */
 public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractModelChangeOperation<Void> {
-    /**
-     * The name of the command.
-     */
-    public static final String COMMAND_NAME = "Synchronize semantic ordering";
-
     private final SequenceDDiagram sequenceDiagram;
 
     private final SequenceDiagram diagram;
@@ -75,7 +72,7 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
      *            order.
      */
     public SynchronizeInstanceRoleSemanticOrderingOperation(InstanceRole instanceRole) {
-        super(COMMAND_NAME);
+        super(Messages.SynchronizeInstanceRoleSemanticOrderingOperation_operationName);
         this.instanceRole = Preconditions.checkNotNull(instanceRole);
         this.diagram = instanceRole.getDiagram();
         this.sequenceDiagram = this.diagram.getSequenceDDiagram();
@@ -96,9 +93,6 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
         this.selection.addAll(selection);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         updateSemanticPositions();
@@ -157,7 +151,7 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
         if (element instanceof DDiagramElement) {
             return (DDiagramElement) element;
         }
-        throw new RuntimeException("Invalid context for InstanceRole " + instanceRoleToUpdate);
+        throw new RuntimeException(MessageFormat.format(Messages.SynchronizeInstanceRoleSemanticOrderingOperation_invalidInstanceRoleContext, instanceRoleToUpdate));
     }
 
     private EObject findEndPredecessor(EObject semanticElement, List<EObject> semanticInstanceRoles) {

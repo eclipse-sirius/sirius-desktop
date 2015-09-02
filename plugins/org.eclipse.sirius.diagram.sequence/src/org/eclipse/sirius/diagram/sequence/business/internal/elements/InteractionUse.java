@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -47,6 +48,7 @@ public class InteractionUse extends AbstractFrame {
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getInteractionUseMapping());
         }
@@ -61,7 +63,7 @@ public class InteractionUse extends AbstractFrame {
      */
     InteractionUse(Node node) {
         super(node);
-        Preconditions.checkArgument(InteractionUse.notationPredicate().apply(node), "The node does not represent an interaction use.");
+        Preconditions.checkArgument(InteractionUse.notationPredicate().apply(node), Messages.InteractionUse_nonInsteractionUseNode);
     }
 
     /**
@@ -84,38 +86,26 @@ public class InteractionUse extends AbstractFrame {
         return SiriusElementPredicate.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getVerticalRange() {
         return new SequenceNodeQuery(getNotationNode()).getVerticalRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setVerticalRange(Range range) throws IllegalStateException {
         RangeSetter.setVerticalRange(this, range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ISequenceEvent> getSubEvents() {
         return Collections.emptyList();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         return false;

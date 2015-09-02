@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
@@ -51,6 +53,7 @@ public class State extends AbstractNodeEvent {
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getStateMapping())
                     && !InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
@@ -65,7 +68,7 @@ public class State extends AbstractNodeEvent {
      */
     State(Node node) {
         super(node);
-        Preconditions.checkArgument(State.notationPredicate().apply(node), "The node does not represent an state.");
+        Preconditions.checkArgument(State.notationPredicate().apply(node), Messages.State_nonStaveNode);
     }
 
     /**
@@ -88,30 +91,21 @@ public class State extends AbstractNodeEvent {
         return SiriusElementPredicate.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<ISequenceEvent> getEventsToMoveWith() {
         return Collections.emptyList();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ISequenceEvent getHierarchicalParentEvent() {
         EObject viewContainer = this.view.eContainer();
@@ -122,19 +116,14 @@ public class State extends AbstractNodeEvent {
                 return parentElement.get();
             }
         }
-        throw new RuntimeException("Invalid context for state " + this);
+        throw new RuntimeException(MessageFormat.format(Messages.State_invalidStateContext, this));
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getOccupiedRange() {
         return Range.emptyRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ISequenceEvent getParentEvent() {
         ISequenceEvent parent = getHierarchicalParentEvent();
@@ -147,64 +136,42 @@ public class State extends AbstractNodeEvent {
         return parent;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Operand> getParentOperand() {
         return new ParentOperandFinder(this).getParentOperand();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ISequenceEvent> getSubEvents() {
         return Collections.emptyList();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getValidSubEventsRange() {
         return Range.emptyRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Range getVerticalRange() {
         return new SequenceNodeQuery(getNotationNode()).getVerticalRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isLogicallyInstantaneous() {
         List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(this);
         return ends.size() == 1 && EventEndHelper.PUNCTUAL_COMPOUND_EVENT_END.apply(ends.iterator().next());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void setVerticalRange(Range range) throws IllegalStateException {
         RangeSetter.setVerticalRange(this, range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Lifeline> getLifeline() {
         return getParentLifeline();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public List<Message> getLinkedMessages() {
         return Collections.emptyList();

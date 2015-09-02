@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -50,6 +51,7 @@ public class EndOfLife extends AbstractSequenceNode {
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getEndOfLifeMapping());
         }
@@ -63,7 +65,7 @@ public class EndOfLife extends AbstractSequenceNode {
      */
     EndOfLife(Node node) {
         super(node);
-        Preconditions.checkArgument(EndOfLife.notationPredicate().apply(node), "The node does not represent an end-of-life.");
+        Preconditions.checkArgument(EndOfLife.notationPredicate().apply(node), Messages.EndOfLife_nonEndOfLifeNode);
     }
 
     /**
@@ -86,9 +88,7 @@ public class EndOfLife extends AbstractSequenceNode {
         return SiriusElementPredicate.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Lifeline> getLifeline() {
         return getParentLifeline();
     }
@@ -109,9 +109,7 @@ public class EndOfLife extends AbstractSequenceNode {
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Rectangle getProperLogicalBounds() {
         if (getNotationNode().getLayoutConstraint() instanceof Bounds) {
             Bounds bounds = (Bounds) getNotationNode().getLayoutConstraint();

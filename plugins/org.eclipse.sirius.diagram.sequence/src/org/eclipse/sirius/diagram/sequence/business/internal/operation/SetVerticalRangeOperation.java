@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
@@ -35,15 +36,12 @@ public class SetVerticalRangeOperation extends AbstractModelChangeOperation<Void
      *            the new vertical range for the event.
      */
     public SetVerticalRangeOperation(ISequenceEvent ise, Range newRange) {
-        super("Set vertical range");
+        super(Messages.SetVerticalRangeOperation_operationName);
         this.ise = Preconditions.checkNotNull(ise);
         this.newRange = Preconditions.checkNotNull(newRange);
         Preconditions.checkArgument(!newRange.isEmpty());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         if (ise.getSemanticTargetElement().some()) {

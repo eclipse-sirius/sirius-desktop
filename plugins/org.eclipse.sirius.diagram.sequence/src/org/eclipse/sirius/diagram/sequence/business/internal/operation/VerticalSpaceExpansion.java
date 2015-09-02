@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
@@ -81,7 +83,7 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
      *            the new space.
      */
     public VerticalSpaceExpansion(SequenceDiagram diagram, Range shift, Integer move, Collection<ISequenceEvent> eventsToIgnore) {
-        super("Auto-expand of " + shift);
+        super(MessageFormat.format(Messages.VerticalSpaceExpansion_operationName, shift));
         this.sequenceDiagram = diagram;
         this.move = move;
         this.insertionPoint = shift.getLowerBound();
@@ -95,9 +97,6 @@ public class VerticalSpaceExpansion extends AbstractModelChangeOperation<Void> {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         categorizeSequenceNodes(findAllSequenceNodesToConsider());

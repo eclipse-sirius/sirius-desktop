@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.RefreshOrderingHelper;
@@ -67,13 +68,10 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
      *            the diagram whose semantic ordering should be refreshed.
      */
     public RefreshSemanticOrderingsOperation(SequenceDDiagram diagram) {
-        super("Refresh semantic ordering");
+        super(Messages.RefreshSemanticOrderingsOperation_operationName);
         this.sequenceDDiagram = Preconditions.checkNotNull(diagram);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Boolean execute() {
         boolean changed = false;
@@ -117,6 +115,7 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
         }
 
         Iterable<EObject> semanticEnds = Iterables.transform(allEnds, new Function<EventEnd, EObject>() {
+            @Override
             public EObject apply(EventEnd from) {
                 return from.getSemanticEnd();
             }

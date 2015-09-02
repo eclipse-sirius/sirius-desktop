@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.SequenceLayout;
@@ -45,14 +46,11 @@ public class SynchronizeGraphicalOrderingOperation extends AbstractModelChangeOp
      *            if <code>true</code> the diagram will be packed
      */
     public SynchronizeGraphicalOrderingOperation(Diagram sequenceDiagram, boolean pack) {
-        super("Synchronize graphical ordering");
+        super(Messages.SynchronizeGraphicalOrderingOperation_operationName);
         this.sequenceDiagram = Preconditions.checkNotNull(sequenceDiagram);
         this.pack = pack;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Boolean execute() {
         boolean result = false;

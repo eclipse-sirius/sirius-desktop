@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
@@ -58,6 +59,7 @@ public class CombinedFragment extends AbstractFrame {
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getCombinedFragmentMapping());
         }
@@ -71,7 +73,7 @@ public class CombinedFragment extends AbstractFrame {
      */
     CombinedFragment(Node node) {
         super(node);
-        Preconditions.checkArgument(CombinedFragment.notationPredicate().apply(node), "The node does not represent a combined fragment.");
+        Preconditions.checkArgument(CombinedFragment.notationPredicate().apply(node), Messages.CombinedFragment_nonCombinedFragmentNode);
     }
 
     /**
@@ -107,25 +109,19 @@ public class CombinedFragment extends AbstractFrame {
         return SiriusElementPredicate.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getVerticalRange() {
         // Rectangle logicalBounds = getProperLogicalBounds();
         // return new Range(logicalBounds.y, logicalBounds.bottom());
         return new SequenceNodeQuery(getNotationNode()).getVerticalRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setVerticalRange(Range range) throws IllegalStateException {
         RangeSetter.setVerticalRange(this, range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ISequenceEvent> getSubEvents() {
         return Lists.newArrayList(Iterables.filter(getOperands(), ISequenceEvent.class));
     }
@@ -139,6 +135,7 @@ public class CombinedFragment extends AbstractFrame {
         List<Operand> result = Lists.newArrayList();
         Predicate<View> compartementView = new Predicate<View>() {
 
+            @Override
             public boolean apply(View input) {
                 return input.getType().equals(Integer.toString(COMPARTMENT_VISUAL_ID));
             }

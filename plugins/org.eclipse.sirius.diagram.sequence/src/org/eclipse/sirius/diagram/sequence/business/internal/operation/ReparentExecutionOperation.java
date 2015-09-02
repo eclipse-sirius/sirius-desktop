@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
@@ -41,16 +42,13 @@ public class ReparentExecutionOperation extends AbstractModelChangeOperation<Voi
      *            the new parent event of the execution.
      */
     public ReparentExecutionOperation(AbstractNodeEvent execution, ISequenceEvent finalParent) {
-        super("Reparent execution");
+        super(Messages.ReparentExecutionOperation_operationName);
         this.execution = Preconditions.checkNotNull(execution);
         this.finalParent = Preconditions.checkNotNull(finalParent);
         Preconditions.checkArgument(execution.getNotationView().getElement() instanceof DNode);
         Preconditions.checkArgument(finalParent.getNotationView().getElement() instanceof AbstractDNode);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         DNode thisSem = (DNode) execution.getNotationView().getElement();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,12 +15,12 @@ import java.util.List;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
@@ -42,6 +42,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      * execution reparent.
      */
     public static final Predicate<ISequenceEvent> NO_REPARENTABLE_EVENTS = new Predicate<ISequenceEvent>() {
+        @Override
         public boolean apply(ISequenceEvent input) {
             return input instanceof AbstractFrame || input instanceof State || input instanceof Operand || input instanceof Message;
         }
@@ -62,6 +63,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             return (AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getExecutionMapping()) || AbstractSequenceElement.isSequenceDiagramElement(input,
                     DescriptionPackage.eINSTANCE.getStateMapping())) && !InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
@@ -76,7 +78,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      */
     AbstractNodeEvent(Node node) {
         super(node);
-        Preconditions.checkArgument(AbstractNodeEvent.notationPredicate().apply(node), "The node does not represent an AbstractNodeEvent.");
+        Preconditions.checkArgument(AbstractNodeEvent.notationPredicate().apply(node), Messages.AbstractNodeEvent_nonAbstractNodeEventNode);
     }
 
     /**
@@ -99,9 +101,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
         return SiriusElementPredicate.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISequenceEvent getParentEvent() {
         ISequenceEvent parent = getHierarchicalParentEvent();
 
@@ -111,21 +111,6 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
             parent = getParentOperand().get();
         }
         return parent;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public ISequenceEvent getHierarchicalParentEvent() {
-        EObject viewContainer = this.view.eContainer();
-        if (viewContainer instanceof View) {
-            View parentView = (View) viewContainer;
-            Option<ISequenceEvent> parentElement = ISequenceElementAccessor.getISequenceEvent(parentView);
-            if (parentElement.some()) {
-                return parentElement.get();
-            }
-        }
-        throw new RuntimeException("Invalid context for execution " + this);
     }
 
     /**
@@ -157,41 +142,32 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      * 
      * @return the deepest Operand container if existing
      */
+    @Override
     public Option<Operand> getParentOperand() {
         return new ParentOperandFinder(this).getParentOperand();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getVerticalRange() {
         return new SequenceNodeQuery(getNotationNode()).getVerticalRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isLogicallyInstantaneous() {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setVerticalRange(Range range) throws IllegalStateException {
         RangeSetter.setVerticalRange(this, range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Lifeline> getLifeline() {
         return getParentLifeline();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Rectangle getProperLogicalBounds() {
         if (getNotationNode().getLayoutConstraint() instanceof Bounds) {
             Bounds bounds = (Bounds) getNotationNode().getLayoutConstraint();

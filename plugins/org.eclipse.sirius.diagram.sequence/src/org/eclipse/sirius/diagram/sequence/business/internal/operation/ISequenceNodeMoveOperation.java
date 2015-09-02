@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
@@ -41,7 +42,7 @@ public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Voi
      *            the logical shift.
      */
     public ISequenceNodeMoveOperation(ISequenceNode node, int logicalShift) {
-        super("Move sequence node");
+        super(Messages.ISequenceNodeMoveOperation_operationName);
         this.seqNodes.add(Preconditions.checkNotNull(node));
         this.logicalShift = logicalShift;
     }
@@ -55,15 +56,12 @@ public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Voi
      *            the logical shift.
      */
     public ISequenceNodeMoveOperation(Collection<ISequenceNode> nodes, int logicalShift) {
-        super("Move sequence node");
+        super(Messages.ISequenceNodeMoveOperation_operationName);
         Preconditions.checkNotNull(nodes);
         this.seqNodes.addAll(nodes);
         this.logicalShift = logicalShift;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         for (ISequenceNode seqNode : seqNodes) {

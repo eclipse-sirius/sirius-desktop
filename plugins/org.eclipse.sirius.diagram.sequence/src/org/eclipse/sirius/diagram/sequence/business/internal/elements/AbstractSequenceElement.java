@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -72,34 +73,24 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public View getNotationView() {
         return view;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public SequenceDiagram getDiagram() {
         Diagram gmfDiagram = view.getDiagram();
         Option<SequenceDiagram> diagram = ISequenceElementAccessor.getSequenceDiagram(gmfDiagram);
-        assert diagram.some() : "The element is not part of a sequence diagram.";
+        assert diagram.some() : Messages.AbstractSequenceElement_invalidDiagram;
         return diagram.get();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int hashCode() {
         return view.hashCode();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
@@ -114,9 +105,7 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<EObject> getSemanticTargetElement() {
         if (view.getElement() instanceof DSemanticDecorator) {
             return Options.newSome(((DSemanticDecorator) view.getElement()).getTarget());
@@ -144,9 +133,6 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         return "#<" + getClass().getSimpleName() + ": " + view.getElement() + ">"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

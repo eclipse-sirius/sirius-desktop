@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.util.List;
 
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
@@ -35,13 +36,10 @@ public final class FixGraphicalOrderingOperation extends AbstractModelChangeOper
      *            the diagram whos graphical ordering to fix.
      */
     public FixGraphicalOrderingOperation(SequenceDDiagram diagram) {
-        super("Remove invalid ends from graphical ordering");
+        super(Messages.FixGraphicalOrderingOperation_operationName);
         this.diagram = diagram;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         EventEndsOrdering graphical = diagram.getGraphicalOrdering();

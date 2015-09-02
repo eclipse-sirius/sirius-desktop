@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.business.api.repair.IRepairParticipant;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -53,25 +54,17 @@ import com.google.common.collect.Iterables;
  */
 public class SequenceDiagramRepairParticipant implements IRepairParticipant {
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void repairStarted() {
         // nothing
-
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void repairCompeleted() {
         // nothing
-
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void restoreModelElementState(DView view, IProgressMonitor monitor) {
         Resource resource = view.eResource();
         TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(resource);
@@ -80,20 +73,14 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void postRefreshOperations(TransactionalEditingDomain domain, Resource resource) {
         // nothing
-
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void saveModelElementState(DView view, IProgressMonitor monitor) {
         // nothing
-
     }
 
     /**
@@ -107,7 +94,7 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
      *         in each {@link DRepresentationContainer}
      */
     private Command migrateModel(Resource model, TransactionalEditingDomain domain) {
-        CompoundCommand cc = new CompoundCommand("Repair Sequence Diagram");
+        CompoundCommand cc = new CompoundCommand(Messages.SequenceDiagramRepairParticipant_repairCommandName);
         EObject eObject = model.getContents().get(0);
         if (eObject instanceof DAnalysis) {
             DAnalysis dAnalysis = (DAnalysis) eObject;
@@ -134,7 +121,7 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
      * @return a {@link CompoundCommand} of sequence diagrams reparing commands
      */
     private CompoundCommand migrateRepresentationContainer(DRepresentationContainer container, TransactionalEditingDomain domain) {
-        CompoundCommand cc = new CompoundCommand("Repair Sequence Diagram");
+        CompoundCommand cc = new CompoundCommand(Messages.SequenceDiagramRepairParticipant_repairCommandName);
         for (SequenceDDiagram seqDDiag : Iterables.filter(container.getOwnedRepresentations(), SequenceDDiagram.class)) {
             final Diagram gmfDiagram = SiriusGMFHelper.getGmfDiagram(seqDDiag);
             Option<SequenceDiagram> iSequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(gmfDiagram);
@@ -146,15 +133,11 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
         return cc;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void endRepairOnView() {
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void startRepairOnView(Session session, DView view) {
     }
 
@@ -182,9 +165,6 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
             this.sequenceDiagram = sequenceDiagram;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected void doExecute() {
             fixInstanceRoleBounds();
@@ -226,15 +206,10 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
         SequenceDiagram diagram;
 
         public FlagSequenceEventsCommand(TransactionalEditingDomain domain, SequenceDiagram diagram) {
-            super(domain, "Remove hideNotification node");
+            super(domain, Messages.FlagSequenceEventsCommand_commandName);
             this.diagram = diagram;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.emf.transaction.RecordingCommand#doExecute()
-         */
         @Override
         protected void doExecute() {
             if (diagram != null) {
@@ -246,7 +221,6 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
     @Override
     public void removeElements(DView view, TransactionalEditingDomain domain, IProgressMonitor monitor) {
         // nothing
-
     }
 
     @Override

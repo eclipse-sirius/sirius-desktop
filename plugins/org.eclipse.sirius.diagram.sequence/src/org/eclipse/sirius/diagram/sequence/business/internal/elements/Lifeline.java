@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
@@ -56,6 +57,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getExecutionMapping())
                     && InstanceRole.viewpointElementPredicate().apply((DDiagramElement) input.eContainer());
@@ -70,7 +72,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
      */
     Lifeline(Node node) {
         super(node);
-        Preconditions.checkArgument(Lifeline.notationPredicate().apply(node), "The node does not represent a lifeline.");
+        Preconditions.checkArgument(Lifeline.notationPredicate().apply(node), Messages.Lifeline_nonLifelineNode);
     }
 
     /**
@@ -93,30 +95,21 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
         return SiriusElementPredicate.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public InstanceRole getInstanceRole() {
         return ISequenceElementAccessor.getInstanceRole((View) getNotationNode().eContainer()).get();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getVerticalRange() {
         return new SequenceNodeQuery(getNotationNode()).getVerticalRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isLogicallyInstantaneous() {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setVerticalRange(Range range) throws IllegalStateException {
         RangeSetter.setVerticalRange(this, range);
     }
@@ -138,16 +131,12 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Lifeline> getLifeline() {
         return Options.newSome(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Rectangle getProperLogicalBounds() {
         if (getNotationNode().getLayoutConstraint() instanceof Bounds) {
             Bounds bounds = (Bounds) getNotationNode().getLayoutConstraint();
@@ -165,48 +154,37 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public ISequenceEvent getParentEvent() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public List<ISequenceEvent> getSubEvents() {
         return new SubEventsHelper(this).getSubEvents();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<ISequenceEvent> getEventsToMoveWith() {
         return getSubEvents();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return new SubEventsHelper(this).canChildOccupy(child, range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         return new SubEventsHelper(this).canChildOccupy(child, range, eventsToIgnore, lifelines);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getOccupiedRange() {
         return new ISequenceEventQuery(this).getOccupiedRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getValidSubEventsRange() {
         Range result = getVerticalRange();
         if (result.width() > 2 * LayoutConstants.EXECUTION_CHILDREN_MARGIN) {
@@ -274,9 +252,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Operand> getParentOperand() {
         return getParentOperand(getVerticalRange());
     }
@@ -305,9 +281,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
         return new ParentOperandFinder(this).getParentOperand(range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISequenceEvent getHierarchicalParentEvent() {
         return null;
     }
@@ -320,6 +294,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     public Collection<InteractionUse> getAllCoveringInteractionUses() {
         Predicate<InteractionUse> interactionUseCoveringLifeline = new Predicate<InteractionUse>() {
 
+            @Override
             public boolean apply(InteractionUse input) {
                 return input.computeCoveredLifelines().contains(Lifeline.this);
             }

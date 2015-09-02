@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -51,6 +52,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             boolean result = AbstractSequenceElement.isSequenceDiagramElement(input, org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getNodeMapping());
             if (input instanceof EdgeTarget) {
@@ -78,7 +80,7 @@ public class LostMessageEnd extends AbstractSequenceNode {
      */
     LostMessageEnd(Node node) {
         super(node);
-        Preconditions.checkArgument(LostMessageEnd.notationPredicate().apply(node), "The node does not represent an lost message end.");
+        Preconditions.checkArgument(LostMessageEnd.notationPredicate().apply(node), Messages.LostMessage_nonLostMessageEndNode);
     }
 
     /**
@@ -124,16 +126,12 @@ public class LostMessageEnd extends AbstractSequenceNode {
         return Options.newSome(msg);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Lifeline> getLifeline() {
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Rectangle getProperLogicalBounds() {
         if (getNotationNode().getLayoutConstraint() instanceof Bounds) {
             Bounds bounds = (Bounds) getNotationNode().getLayoutConstraint();

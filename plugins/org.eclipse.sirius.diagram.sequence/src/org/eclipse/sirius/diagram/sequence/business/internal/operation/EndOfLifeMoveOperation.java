@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.util.Range;
@@ -37,14 +38,11 @@ public class EndOfLifeMoveOperation extends AbstractModelChangeOperation<Void> {
      *            the rangeDeltaWidth.
      */
     public EndOfLifeMoveOperation(Lifeline lifeline, int rangeDeltaWidth) {
-        super("Move EOL");
+        super(Messages.EndOfLifeMoveOperation_operationName);
         this.lifeline = Preconditions.checkNotNull(lifeline);
         this.rangeDeltaWidth = rangeDeltaWidth;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         Range movedRange = RangeHelper.verticalRange(lifeline.getProperLogicalBounds());

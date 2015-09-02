@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -62,11 +64,6 @@ import com.google.common.collect.Sets;
  * @author pcdavid, smonnier
  */
 public class SynchronizeISequenceEventsSemanticOrderingOperation extends AbstractModelChangeOperation<Void> {
-    /**
-     * The name of the command.
-     */
-    public static final String COMMAND_NAME = "Synchronize semantic ordering";
-
     private static final boolean STARTING_END = true;
 
     private static final boolean FINISHING_END = false;
@@ -90,7 +87,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
      *            the event to move to its new location in the semantic order.
      */
     public SynchronizeISequenceEventsSemanticOrderingOperation(ISequenceEvent event) {
-        super("Synchronize semantic ordering");
+        super(Messages.SynchronizeISequenceEventsSemanticOrderingOperation_operationName);
         this.event = Preconditions.checkNotNull(event);
         this.diagram = event.getDiagram();
         this.sequenceDiagram = this.diagram.getSequenceDDiagram();
@@ -110,9 +107,6 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
         this.selection.addAll(selection);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         if (event instanceof AbstractNodeEvent && event.getParentEvent() == null) {
@@ -198,12 +192,13 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
         if (element instanceof DDiagramElement) {
             return (DDiagramElement) element;
         }
-        throw new RuntimeException("Invalid context for ISequenceEvent " + eventToUpdate);
+        throw new RuntimeException(MessageFormat.format(Messages.SynchronizeISequenceEventsSemanticOrderingOperation_invalidISequenceEventContext, eventToUpdate));
     }
 
     private List<EventEnd> getCompoundEnds(ISequenceEvent eventToUpdate, List<EventEnd> ends) {
         List<ISequenceEvent> compoundEvents = EventEndHelper.getCompoundEvents(eventToUpdate);
         Predicate<ISequenceEvent> isLogicallyInstantaneousNonReorderedEvent = new Predicate<ISequenceEvent>() {
+            @Override
             public boolean apply(ISequenceEvent input) {
                 return input.isLogicallyInstantaneous() && !reordered.contains(input);
             };
@@ -267,6 +262,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
         final Iterable<ISequenceEvent> movedElements = Iterables.filter(allElementsToReorder, Predicates.not(Predicates.in(reordered)));
         final Set<EObject> semanticLinked = Sets.newHashSet(Iterables.filter(Iterables.transform(movedElements, ISequenceElement.SEMANTIC_TARGET), Predicates.notNull()));
         final Predicate<EObject> isLinkedSubEventEnd = new Predicate<EObject>() {
+            @Override
             public boolean apply(EObject input) {
                 return semanticLinked.contains(input);
             }
@@ -275,12 +271,14 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
         final Set<EObject> semanticDescendants = Sets.newHashSet(Iterables.filter(Iterables.transform(new ISequenceEventQuery(ise).getAllDescendants(), ISequenceElement.SEMANTIC_TARGET),
                 Predicates.notNull()));
         final Predicate<EObject> isSemanticSubEventEnd = new Predicate<EObject>() {
+            @Override
             public boolean apply(EObject input) {
                 return semanticDescendants.contains(input);
             }
         };
 
         Predicate<EventEnd> toIgnore = new Predicate<EventEnd>() {
+            @Override
             public boolean apply(EventEnd input) {
                 return !iseEnds.contains(input) && (Iterables.any(EventEndHelper.getSemanticEvents(input), Predicates.or(isSemanticSubEventEnd, isLinkedSubEventEnd)) || compoundEnds.contains(input));
             }

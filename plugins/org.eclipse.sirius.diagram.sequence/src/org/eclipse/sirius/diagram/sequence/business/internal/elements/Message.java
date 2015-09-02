@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
@@ -58,6 +59,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      * or target of a message reconnection.
      */
     public static final Predicate<ISequenceEvent> NO_RECONNECTABLE_EVENTS = new Predicate<ISequenceEvent>() {
+        @Override
         public boolean apply(ISequenceEvent input) {
             return input instanceof AbstractFrame || input instanceof Operand || input instanceof State;
         }
@@ -67,6 +69,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      * Function to get the Sirius DDiagramElement message kind.
      */
     public static final Function<DEdge, Kind> VIEWPOINT_MESSAGE_KIND = new Function<DEdge, Kind>() {
+        @Override
         public Kind apply(DEdge from) {
             Kind result = null;
             if (AbstractSequenceElement.isSequenceDiagramElement(from, DescriptionPackage.eINSTANCE.getBasicMessageMapping())) {
@@ -78,7 +81,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
             } else if (AbstractSequenceElement.isSequenceDiagramElement(from, DescriptionPackage.eINSTANCE.getDestructionMessageMapping())) {
                 result = Kind.DESTRUCTION;
             }
-            assert result != null : "Unsupported kind of message detected";
+            assert result != null : Messages.Message_unsupportedMessageKind;
             return result;
         }
     };
@@ -119,6 +122,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
+        @Override
         public boolean apply(DDiagramElement input) {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getMessageMapping());
         }
@@ -132,7 +136,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      */
     public Message(Edge edge) {
         super(edge);
-        Preconditions.checkArgument(Message.notationPredicate().apply(edge), "The edge does not represent a sequence message.");
+        Preconditions.checkArgument(Message.notationPredicate().apply(edge), Messages.Message_nonSequenceMessageEdge);
     }
 
     /**
@@ -191,30 +195,22 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         return ISequenceElementAccessor.getISequenceNode(getNotationEdge().getTarget()).get();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getVerticalRange() {
         return new SequenceMessageViewQuery(getNotationEdge()).getVerticalRange();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isLogicallyInstantaneous() {
         return !isReflective();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setVerticalRange(Range range) throws IllegalStateException {
         RangeSetter.setVerticalRange(this, range);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Lifeline> getLifeline() {
         if (isReflective()) {
             return getSourceLifeline();
@@ -287,9 +283,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         return !Iterables.isEmpty(Iterables.filter(getDiagram().findEnds(this), CompoundEventEnd.class));
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Rectangle getProperLogicalBounds() {
         Range range = getVerticalRange();
 
@@ -331,20 +325,17 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public List<ISequenceEvent> getSubEvents() {
         return Collections.emptyList();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<ISequenceEvent> getEventsToMoveWith() {
         return getSubEvents();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISequenceEvent getParentEvent() {
         ISequenceNode sourceElement = getSourceElement();
         if (sourceElement instanceof ISequenceEvent) {
@@ -353,16 +344,12 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISequenceEvent getHierarchicalParentEvent() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Range getOccupiedRange() {
         return new ISequenceEventQuery(this).getOccupiedRange();
     }
@@ -372,6 +359,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public Range getValidSubEventsRange() {
         return Range.emptyRange();
     }
@@ -381,6 +369,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return false;
     }
@@ -390,13 +379,12 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Operand> getParentOperand() {
         Option<Lifeline> sourceLifeline = getSourceLifeline();
         Option<Operand> sourceParentOperand = Options.newNone();
@@ -414,7 +402,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         boolean noOperand = !sourceParentOperand.some() && !targetParentOperand.some();
         boolean lostEnd = sourceLifeline.some() && !targetLifeline.some() || !sourceLifeline.some() && targetLifeline.some();
         boolean sameOperand = lostEnd || noOperand || sourceParentOperand.get().equals(targetParentOperand.get());
-        Preconditions.checkArgument(noOperand || sameOperand, "The source and target parent operand must be the same one or not existing.");
+        Preconditions.checkArgument(noOperand || sameOperand, Messages.Message_invalidOperand);
 
         Option<Operand> parentOperand = sourceParentOperand;
         if (!parentOperand.some()) {
@@ -444,6 +432,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         Collection<ISequenceEvent> events = getSurroundedSameLifelineEvents();
         final Range range = getVerticalRange();
         Predicate<ISequenceEvent> toConsider = new Predicate<ISequenceEvent>() {
+            @Override
             public boolean apply(ISequenceEvent input) {
                 boolean toConsider = range.includes(input.getVerticalRange());
                 if (input instanceof Message) {

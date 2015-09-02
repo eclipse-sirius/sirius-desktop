@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -53,13 +54,10 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
      *            the diagram whose graphical ordering should be refreshed.
      */
     public RefreshGraphicalOrderingOperation(SequenceDiagram sequenceDiagram) {
-        super("Refresh graphical ordering");
+        super(Messages.RefreshGraphicalOrderingOperation_operationName);
         this.sequenceDiagram = sequenceDiagram.getSequenceDDiagram();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Boolean execute() {
         EventEndsOrdering graphicalOrdering = sequenceDiagram.getGraphicalOrdering();
@@ -89,6 +87,7 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
     private boolean refreshGlobalOrdering(EventEndsOrdering graphicalOrdering, VerticalPositionFunction verticalPosition) {
         final LoadingCache<EventEnd, Integer> positions = CacheBuilder.newBuilder().build(CacheLoader.from(verticalPosition));
         Predicate<EventEnd> isValidEnd = new Predicate<EventEnd>() {
+            @Override
             public boolean apply(EventEnd input) {
                 try {
                     Integer pos = positions.get(input);
@@ -113,9 +112,10 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
     }
 
     /**
-     * Returns all the event ends of the current Sequence diagram. 
+     * Returns all the event ends of the current Sequence diagram.
      * 
-     * The default implementation does the computation on each call, subclasses may override this method to change this behavior.
+     * The default implementation does the computation on each call, subclasses
+     * may override this method to change this behavior.
      * 
      * @return an Iterable with all event ends.
      */
@@ -133,15 +133,12 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
     private static class CustomVerticalPositionFunction extends VerticalPositionFunction {
 
         /**
-         * {@inheritDoc}
+         * Constructor.
          */
         public CustomVerticalPositionFunction(SequenceDDiagram diagram) {
             super(diagram);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Integer apply(EventEnd end) {
             Integer customPos = super.apply(end);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.util;
 
+import java.text.MessageFormat;
+
+import org.eclipse.sirius.diagram.sequence.Messages;
+
 import com.google.common.base.Preconditions;
 
 /**
@@ -19,6 +23,7 @@ import com.google.common.base.Preconditions;
  * @author pcdavid
  */
 public class Range {
+
     /**
      * A sentinel object to represent the empty range. It is technically not
      * empty but this instance is treated specially.
@@ -381,15 +386,12 @@ public class Range {
         return getLowerBound() != other.getLowerBound() && getLowerBound() != other.getUpperBound() && getUpperBound() != other.getLowerBound() && getUpperBound() != other.getUpperBound();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toString() {
         if (!isEmpty()) {
-            return "[" + lower + ", " + upper + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            return MessageFormat.format("[{0}, {1}]", lower, upper); //$NON-NLS-1$
         } else {
-            return "[<empty range>]";
+            return MessageFormat.format("[<{0}>]", Messages.Range_emptyRange); //$NON-NLS-1$
         }
     }
 }

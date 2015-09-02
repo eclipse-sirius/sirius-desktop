@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -90,9 +91,6 @@ public class SequenceGenericToolCommandBuilder extends GenericToolCommandBuilder
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected DCommand createEnclosingCommand() {
         Option<DDiagram> parentDiagram = new EObjectQuery(containerView).getParentDiagram();
@@ -105,19 +103,55 @@ public class SequenceGenericToolCommandBuilder extends GenericToolCommandBuilder
         return cmd;
     };
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void addPreOperationTasks(DCommand command, final IInterpreter interpreter) {
         super.addPreOperationTasks(command, interpreter);
 
+        addSetEndBeforeVariableTask(command, interpreter, endBefore);
+    }
+
+    @Override
+    protected void addPostOperationTasks(DCommand command, final IInterpreter interpreter) {
+        super.addPostOperationTasks(command, interpreter);
+
+        addUnsetEndBeforeTask(command, interpreter);
+
+        if (gmfDiagram != null) {
+            command.getTasks().add(new AbstractCommandTask() {
+
+                @Override
+                public String getLabel() {
+                    return Messages.SequenceGenericToolCommandBuilder_canonicalSyncTask;
+                }
+
+                @Override
+                public void execute() {
+                    CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiagram);
+                    canonicalSynchronizer.synchronize();
+                }
+            });
+        }
+    }
+
+    /**
+     * Complete the given command with a task to set the endBefore variable.
+     * 
+     * @param command
+     *            the command to complete
+     * @param interpreter
+     *            the interpreter to updated in the command
+     * @param endBefore
+     *            the end before variable to set
+     */
+    public static void addSetEndBeforeVariableTask(DCommand command, final IInterpreter interpreter, final EventEnd endBefore) {
         command.getTasks().add(new AbstractCommandTask() {
 
+            @Override
             public String getLabel() {
-                return "Add end before variable";
+                return Messages.SequenceGenericToolCommandBuilder_setEndBeforeTask;
             }
 
+            @Override
             public void execute() {
                 interpreter.setVariable(END_BEFORE_VARIABLE, endBefore);
             }
@@ -125,35 +159,25 @@ public class SequenceGenericToolCommandBuilder extends GenericToolCommandBuilder
     }
 
     /**
-     * {@inheritDoc}
+     * Complete the given command with a task to unset the endBefore variable.
+     *
+     * @param command
+     *            the command to complete
+     * @param interpreter
+     *            the interpreter to updated in the command
      */
-    @Override
-    protected void addPostOperationTasks(DCommand command, final IInterpreter interpreter) {
-        super.addPostOperationTasks(command, interpreter);
-
+    public static void addUnsetEndBeforeTask(DCommand command, final IInterpreter interpreter) {
         command.getTasks().add(new AbstractCommandTask() {
 
+            @Override
             public String getLabel() {
-                return "Unset end before variable";
+                return Messages.SequenceGenericToolCommandBuilder_unsetEndBeforeTask;
             }
 
+            @Override
             public void execute() {
                 interpreter.unSetVariable(END_BEFORE_VARIABLE);
             }
         });
-
-        if (gmfDiagram != null) {
-            command.getTasks().add(new AbstractCommandTask() {
-
-                public String getLabel() {
-                    return "Unset end before variable";
-                }
-
-                public void execute() {
-                    CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiagram);
-                    canonicalSynchronizer.synchronize();
-                }
-            });
-        }
     }
 }

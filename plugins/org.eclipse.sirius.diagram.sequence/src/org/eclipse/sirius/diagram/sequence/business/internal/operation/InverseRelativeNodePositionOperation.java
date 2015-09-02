@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 import com.google.common.base.Preconditions;
@@ -33,13 +34,10 @@ public class InverseRelativeNodePositionOperation extends AbstractModelChangeOpe
      *            the node whose position to inverse.
      */
     public InverseRelativeNodePositionOperation(Node node) {
-        super("Inverse Relative Node Position");
+        super(Messages.InverseRelativeNodePositionOperation_operationName);
         this.node = Preconditions.checkNotNull(node);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Void execute() {
         if (node.getLayoutConstraint() instanceof Location) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -85,9 +84,6 @@ public class SequencePaneBasedSelectionWizardCommandBuilder extends PaneBasedSel
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected DCommand createEnclosingCommand() {
         Option<DDiagram> parentDiagram = getDDiagram();
@@ -100,41 +96,17 @@ public class SequencePaneBasedSelectionWizardCommandBuilder extends PaneBasedSel
         return cmd;
     };
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void addPreOperationTasks(DCommand command, final IInterpreter interpreter) {
         super.addPreOperationTasks(command, interpreter);
 
-        command.getTasks().add(new AbstractCommandTask() {
-
-            public String getLabel() {
-                return "Add end before variable";
-            }
-
-            public void execute() {
-                interpreter.setVariable(END_BEFORE_VARIABLE, endBefore);
-            }
-        });
+        SequenceGenericToolCommandBuilder.addSetEndBeforeVariableTask(command, interpreter, endBefore);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void addPostOperationTasks(DCommand command, final IInterpreter interpreter) {
         super.addPostOperationTasks(command, interpreter);
 
-        command.getTasks().add(new AbstractCommandTask() {
-
-            public String getLabel() {
-                return "Unset end before variable";
-            }
-
-            public void execute() {
-                interpreter.unSetVariable(END_BEFORE_VARIABLE);
-            }
-        });
+       SequenceGenericToolCommandBuilder.addUnsetEndBeforeTask(command, interpreter);
     }
 }

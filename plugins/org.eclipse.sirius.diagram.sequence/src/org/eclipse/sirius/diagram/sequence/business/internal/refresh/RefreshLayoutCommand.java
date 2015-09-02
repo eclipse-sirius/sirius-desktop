@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
+import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -33,7 +34,7 @@ import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
  */
 public class RefreshLayoutCommand extends RecordingCommand {
 
-    private static final ProfilerTask REFRESH_LAYOUT = new ProfilerTask("Sequence", "Refresh layout", SiriusTasks.IMAGES_VIEWPOINT);
+    private static final ProfilerTask REFRESH_LAYOUT = new ProfilerTask( Messages.RefreshLayoutCommand_profilerTaskCategory, Messages.RefreshLayoutCommand_profilerTaskName, SiriusTasks.IMAGES_VIEWPOINT); 
 
     private Diagram diagram;
 
@@ -52,7 +53,7 @@ public class RefreshLayoutCommand extends RecordingCommand {
      *            {@inheritDoc}
      */
     public RefreshLayoutCommand(TransactionalEditingDomain domain, Diagram diagram, boolean refreshDiagram) {
-        super(domain, "Refresh graphical layout");
+        super(domain, Messages.RefreshLayoutCommand_commandName);
         this.diagram = diagram;
         this.refreshDiagram = refreshDiagram;
     }
