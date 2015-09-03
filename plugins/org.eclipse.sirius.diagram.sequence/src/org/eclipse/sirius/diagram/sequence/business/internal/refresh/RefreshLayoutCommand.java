@@ -34,7 +34,8 @@ import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
  */
 public class RefreshLayoutCommand extends RecordingCommand {
 
-    private static final ProfilerTask REFRESH_LAYOUT = new ProfilerTask( Messages.RefreshLayoutCommand_profilerTaskCategory, Messages.RefreshLayoutCommand_profilerTaskName, SiriusTasks.IMAGES_VIEWPOINT); 
+    private static final ProfilerTask REFRESH_LAYOUT = new ProfilerTask(Messages.RefreshLayoutCommand_profilerTaskCategory, Messages.RefreshLayoutCommand_profilerTaskName,
+            SiriusTasks.IMAGES_VIEWPOINT);
 
     private Diagram diagram;
 
