@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -234,6 +229,11 @@ import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartme
 import org.eclipse.sirius.tests.unit.table.unit.migration.InitializeElementsToSelectExpressionForTableMigrationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.SelectionInTableAfterToolExecutionTest;
 
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 public class AllDiagramPluginsTests {
 
     /**
@@ -295,7 +295,6 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(org.eclipse.sirius.tests.unit.diagram.modeler.ecore.documentation.EntitiesDiagramLayersTests.class);
         suite.addTestSuite(StartupRepresentationsTests.class);
         suite.addTestSuite(SessionWorkspaceSyncTests.class);
-        suite.addTestSuite(TablesAndEntitiesDirtyTest.class);
         suite.addTestSuite(EntitiesDiagramDeleteFromDiagramTests.class);
         suite.addTestSuite(EntitiesDiagramCustomizationsTests.class);
         suite.addTestSuite(EntitiesDiagramDirectEditToolOnOperationTests.class);
@@ -528,6 +527,7 @@ public class AllDiagramPluginsTests {
             // This one is long (~9 minutes), so it is ignored when running
             suite.addTest(new JUnit4TestAdapter(SiriusLayoutDataManagerForSemanticElementsApplyWithPredefinedDataTest.class));
         }
+        suite.addTestSuite(TablesAndEntitiesDirtyTest.class);
     }
 
     /**
