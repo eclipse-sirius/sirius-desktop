@@ -30,9 +30,9 @@ import org.eclipse.swt.graphics.Image;
  * The {@link SVGWorkspaceImageFigure} is useful to load svg images using a
  * cache. The image can be in the workspace, or if it's not found in the
  * workspace it will be looked up in the plug-ins.
- * 
+ *
  * @author mporhel
- * 
+ *
  */
 public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements IWorkspaceImageFigure {
 
@@ -51,7 +51,7 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
     /**
      * Create the {@link SVGWorkspaceImageFigure} from a {@link WorkspaceImage}
      * instance.
-     * 
+     *
      * @param image
      *            {@link SVGWorkspaceImageFigure} specification.
      * @return new Figure.
@@ -65,7 +65,7 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
     /**
      * Create the {@link SVGWorkspaceImageFigure} from a {@link ContainerStyle}
      * instance.
-     * 
+     *
      * @param containerStyle
      *            {@link ContainerStyle} specification.
      * @return new Figure.
@@ -81,11 +81,6 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.draw2d.Figure#setSize(int, int)
-     */
     @Override
     public void setSize(final int w, final int h) {
         if (keepAspectRatio) {
@@ -96,31 +91,16 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.draw2d.Figure#setMaximumSize(org.eclipse.draw2d.geometry.Dimension)
-     */
     @Override
     public void setMaximumSize(final Dimension d) {
         super.setMaximumSize(this.getSize());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.draw2d.Figure#setMinimumSize(org.eclipse.draw2d.geometry.Dimension)
-     */
     @Override
     public void setMinimumSize(final Dimension d) {
         super.setMinimumSize(this.getSize());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.draw2d.Figure#setPreferredSize(org.eclipse.draw2d.geometry.Dimension)
-     */
     @Override
     public void setPreferredSize(final Dimension size) {
         super.setPreferredSize(this.getSize());
@@ -128,19 +108,21 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
 
     /**
      * Get the image aspect ratio.
-     * 
+     *
      * @return the image aspect ratio
      */
+    @Override
     public double getImageAspectRatio() {
         return imageAspectRatio;
     }
 
     /**
      * Refreshes the figure.
-     * 
+     *
      * @param containerStyle
      *            the style of the container
      */
+    @Override
     public void refreshFigure(final ContainerStyle containerStyle) {
         if (containerStyle instanceof FlatContainerStyle) {
             final FlatContainerStyle style = (FlatContainerStyle) containerStyle;
@@ -157,10 +139,11 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
 
     /**
      * refresh the figure.
-     * 
+     *
      * @param workspaceImage
      *            the image associated to the figure
      */
+    @Override
     public void refreshFigure(final WorkspaceImage workspaceImage) {
         if (workspaceImage != null) {
             boolean updated = this.updateImageURI(workspaceImage.getWorkspacePath());
@@ -187,11 +170,11 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
 
     private boolean updateImageURI(String workspacePath) {
         if (workspacePath != null) {
-            Option<String> existingImageUri = getImageUri(workspacePath, false);
+            Option<String> existingImageUri = SVGWorkspaceImageFigure.getImageUri(workspacePath, false);
             if (existingImageUri.some()) {
                 setURI(existingImageUri.get());
             } else {
-                setURI(getImageNotFoundURI());
+                setURI(AbstractCachedSVGFigure.getImageNotFoundURI());
             }
             return true;
         }
@@ -200,7 +183,7 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
 
     /**
      * Return an optional uri as used in the document key to read svg files.
-     * 
+     *
      * @param workspacePath
      *            the workspace path of the file.
      * @param force
@@ -225,23 +208,24 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
      * Compute a key for this {@link SVGWorkspaceImageFigure}. This key is used
      * to store in cache the corresponding
      * {@link org.eclipse.swt.graphics.Image}.
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @return The key corresponding to this SVGWorkspaceImageFigure.
      */
+    @Override
     protected String getKey() {
         StringBuffer result = new StringBuffer();
         result.append(getDocumentKey());
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         result.append(getSiriusAlpha());
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         return result.toString();
     }
 
     /**
      * Get an {@link Image} instance. The image will be stored in a cache.
-     * 
+     *
      * @param path
      *            the path is a "/project/file" path, if it's not found in the
      *            workspace, the class will look for the file in the plug-ins.
@@ -258,16 +242,16 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
      * Remove all entries whose key begins with the given key. Remove from the
      * document map, the entries with the given keys to force to re-read the
      * file.
-     * 
+     *
      * @param workspacePath
      *            the modified or deleted image file path.
      * @return an option with the document uri used as key for the svg file if a
      *         corresponding element was removed.
      */
     public static Option<String> removeFromCache(String workspacePath) {
-        Option<String> imageUri = getImageUri(workspacePath, true);
+        Option<String> imageUri = SVGWorkspaceImageFigure.getImageUri(workspacePath, true);
         if (imageUri.some()) {
-            if (doRemoveFromCache(imageUri.get())) {
+            if (AbstractCachedSVGFigure.doRemoveFromCache(imageUri.get())) {
                 return imageUri;
             }
         }

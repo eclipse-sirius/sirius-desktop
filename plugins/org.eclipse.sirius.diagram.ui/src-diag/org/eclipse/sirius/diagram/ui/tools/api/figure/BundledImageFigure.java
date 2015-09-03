@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
@@ -28,7 +30,7 @@ import org.w3c.dom.Element;
 /**
  * A {@link BundledImageFigure} is a Figure corresponding to an Image defined in
  * a plugin.
- * 
+ *
  * @author cbrun
  */
 public class BundledImageFigure extends AbstractCachedSVGFigure {
@@ -113,14 +115,10 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      */
     private static final String COLOR_IDENTIFIER = "colorIdentifier"; //$NON-NLS-1$
 
-    private static final String IMAGE_DIR = "images/"; //$NON-NLS-1$
-
-    private static final String IMAGE_EXT = ".svg"; //$NON-NLS-1$
-
     private BundledImageExtensionQuery bundledImageExtensionQuery;
 
     /**
-     * * The actual shapeName use to draw the SVG figure
+     * The actual shapeName use to draw the SVG figure
      */
     private String shapeName;
 
@@ -151,7 +149,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
 
     /**
      * Build a new {@link BundledImageFigure} from an Image instance.
-     * 
+     *
      */
     public BundledImageFigure() {
         this.setLayoutManager(new XYLayout());
@@ -160,7 +158,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
     /**
      * Create the {@link BundledImageFigure} from a {@link BundledImage}
      * instance.
-     * 
+     *
      * @param bundle
      *            {@link BundledImage} specification.
      * @return new Figure.
@@ -180,9 +178,6 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
         }
     }
 
-    /**
-     * @param bundle
-     */
     private boolean updateShape(BundledImage bundledImage) {
         boolean updated = false;
         if (bundledImage != null && bundledImage.getShape() != null) {
@@ -211,7 +206,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * @param bundledImage
      * @param force
      *            If the color must be force to refresh (in case of shape update
-     *            for sample)
+     *            for example)
      */
     private boolean updateColors(BundledImage bundledImage, boolean force) {
         boolean updated = updateColorFields(bundledImage);
@@ -240,9 +235,9 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
         Color newBorderLighterColor = ColorManager.getDefault().getLighterColor(borderColor);
 
         // Get Hexa values
-        String hexaColor = getRGBValuesColorToHexa(color);
+        String hexaColor = BundledImageFigure.getRGBValuesColorToHexa(color);
         String hexaLighterColor = getColorToHexa(newLighterColor);
-        String hexaBorderColor = getRGBValuesColorToHexa(borderColor);
+        String hexaBorderColor = BundledImageFigure.getRGBValuesColorToHexa(borderColor);
         String hexaLighterBorderColor = getColorToHexa(newBorderLighterColor);
 
         boolean updated = false;
@@ -293,7 +288,8 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
                 Element gradientStep1 = findElementInDocument(bundledImage, document, BundledImageFigure.COLOR_IDENTIFIER, BundledImageFigure.SVG_STOP_LIGHTER_ID);
                 if (gradientStep1 != null) {
                     String gradientStep1Style = getAttributeValue(gradientStep1, bundledImage, BundledImageFigure.COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
-                    gradientStep1.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, getNewStyle(gradientStep1Style, BundledImageFigure.SVG_STOP_COLOR, getLighterGradientColor()));
+                    gradientStep1.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME,
+                            BundledImageFigure.getNewStyle(gradientStep1Style, BundledImageFigure.SVG_STOP_COLOR, getLighterGradientColor()));
                     updated = true;
                 }
 
@@ -301,15 +297,16 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
                 Element gradientStep2 = document.getElementById(BundledImageFigure.SVG_STOP_MAIN_ID);
                 if (gradientStep2 != null) {
                     String gradientStep2Style = gradientStep2.getAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
-                    gradientStep2.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, getNewStyle(gradientStep2Style, BundledImageFigure.SVG_STOP_COLOR, getMainGradientColor()));
+                    gradientStep2.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME,
+                            BundledImageFigure.getNewStyle(gradientStep2Style, BundledImageFigure.SVG_STOP_COLOR, getMainGradientColor()));
                     updated = true;
                 }
 
                 /* Update the shadow border (if exists). */
-                Element shadow = document.getElementById(SVG_SHADOW_ELEMENT_ID);
+                Element shadow = document.getElementById(BundledImageFigure.SVG_SHADOW_ELEMENT_ID);
                 if (shadow != null) {
                     String shadowStyle = shadow.getAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
-                    shadow.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, getNewStyle(shadowStyle, SVG_FILL, getLighterBorderColor()));
+                    shadow.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, BundledImageFigure.getNewStyle(shadowStyle, BundledImageFigure.SVG_FILL, getLighterBorderColor()));
                     updated = true;
                 }
 
@@ -373,14 +370,8 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
         return this.bundledImageExtensionQuery;
     }
 
-    /**
-     * @param shapeName
-     * @return
-     */
     private static String getImageFileURI(String shapeName) {
-        final String path = new StringBuffer(IMAGE_DIR).append(shapeName).append(IMAGE_EXT).toString();
-        String pluginId = DiagramUIPlugin.getPlugin().getSymbolicName();
-        return "platform:/plugin/" + pluginId + "/" + path; //$NON-NLS-1$ //$NON-NLS-2$
+        return MessageFormat.format("platform:/plugin/{0}/images/{1}.svg", DiagramUIPlugin.getPlugin().getSymbolicName(), shapeName); //$NON-NLS-1$
     }
 
     /**
@@ -389,24 +380,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * @return The hexa representation of the color.
      */
     private static String getRGBValuesColorToHexa(final RGBValues color) {
-        String blankDigit = "0"; //$NON-NLS-1$
-        StringBuffer colorInHexa = new StringBuffer();
-        String hexaColor = Integer.toHexString(color.getRed());
-        if (hexaColor.length() == 1) {
-            colorInHexa.append(blankDigit);
-        }
-        colorInHexa.append(hexaColor);
-        hexaColor = Integer.toHexString(color.getGreen());
-        if (hexaColor.length() == 1) {
-            colorInHexa.append(blankDigit);
-        }
-        colorInHexa.append(hexaColor);
-        hexaColor = Integer.toHexString(color.getBlue());
-        if (hexaColor.length() == 1) {
-            colorInHexa.append(blankDigit);
-        }
-        colorInHexa.append(hexaColor);
-        return colorInHexa.toString();
+        return String.format("%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()); //$NON-NLS-1$
     }
 
     /**
@@ -414,25 +388,8 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      *            The color to transform in hexa value
      * @return The hexa representation of the color.
      */
-    private String getColorToHexa(Color color) {
-        String blankDigit = "0"; //$NON-NLS-1$
-        StringBuffer colorInHexa = new StringBuffer();
-        String hexaColor = Integer.toHexString(color.getRed());
-        if (hexaColor.length() == 1) {
-            colorInHexa.append(blankDigit);
-        }
-        colorInHexa.append(hexaColor);
-        hexaColor = Integer.toHexString(color.getGreen());
-        if (hexaColor.length() == 1) {
-            colorInHexa.append(blankDigit);
-        }
-        colorInHexa.append(hexaColor);
-        hexaColor = Integer.toHexString(color.getBlue());
-        if (hexaColor.length() == 1) {
-            colorInHexa.append(blankDigit);
-        }
-        colorInHexa.append(hexaColor);
-        return colorInHexa.toString();
+    private static String getColorToHexa(Color color) {
+        return String.format("%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()); //$NON-NLS-1$
     }
 
     private static String getNewStyle(String actualStyle, String colorAttribute, String newColor) {
@@ -451,7 +408,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
 
     /**
      * refresh the figure.
-     * 
+     *
      * @param bundledImage
      *            the image associated to the figure
      */
@@ -519,38 +476,38 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
     /**
      * Compute a key for this BundleImageFigure. This key is used to store in
      * cache the corresponding {@link org.eclipse.swt.graphics.Image}.
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @return The key corresponding to this BundleImageFigure.
      */
     @Override
     protected String getKey() {
         StringBuffer result = new StringBuffer();
         result.append(getDocumentKey());
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         result.append(getSiriusAlpha());
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         return result.toString();
     }
 
     /**
      * Compute a key for this BundleImageFigure. This key is used to store in
      * cache the corresponding {@link org.eclipse.swt.graphics.Image}.
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @return The key corresponding to this BundleImageFigure.
      */
     @Override
     protected String getDocumentKey() {
         StringBuffer result = new StringBuffer();
         result.append(super.getDocumentKey());
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         result.append(shapeName);
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         result.append(mainBorderColor);
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         result.append(mainGradientColor);
         result.append(SEPARATOR);
         result.append(mainBorderSize);

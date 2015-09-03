@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import java.awt.image.BufferedImage;
+import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.draw2d.Graphics;
@@ -34,7 +35,7 @@ import com.google.common.collect.Lists;
 /**
  * A {@link AbstractCachedSVGFigure} is a {@link SVGFigure} corresponding to a
  * svg image. {@link Image} are store in a map with soft values.
- * 
+ *
  * @author mporhel
  */
 public abstract class AbstractCachedSVGFigure extends SVGFigure implements StyledFigure, ITransparentFigure, ImageFigureWithAlpha {
@@ -43,6 +44,8 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
      */
     protected static final String SEPARATOR = "|"; //$NON-NLS-1$
 
+    private static final String IMAGE_NOT_FOUND_URI = MessageFormat.format("platform:/plugin/{0}/images/NotFound.svg", DiagramUIPlugin.getPlugin().getSymbolicName()); //$NON-NLS-1$
+    
     /**
      * Cache to store bitmaps of rendered SVGs.
      */
@@ -56,11 +59,6 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
         }
     }).build();
 
-    private static final String IMAGE_DIR = "images/"; //$NON-NLS-1$
-
-    private static final String IMAGE_EXT = ".svg"; //$NON-NLS-1$
-
-    private static final String IMAGE_NOT_FOUND = "NotFound"; //$NON-NLS-1$
 
     private int viewpointAlpha = DEFAULT_ALPHA;
 
@@ -68,46 +66,33 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
 
     /**
      * Build a new {@link AbstractCachedSVGFigure} from an Image instance.
-     * 
+     *
      */
     public AbstractCachedSVGFigure() {
         this.setLayoutManager(new XYLayout());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public int getSiriusAlpha() {
         return viewpointAlpha;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isTransparent() {
         return transparent;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setSiriusAlpha(int alpha) {
         this.viewpointAlpha = alpha;
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void setTransparent(boolean transparent) {
         this.transparent = transparent;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.figure.lite.svg.SVGFigure#paintFigure(org.eclipse.draw2d.Graphics)
-     */
     @Override
     protected void paintFigure(Graphics graphics) {
         TransparentFigureGraphicsModifier modifier = new TransparentFigureGraphicsModifier(this, graphics);
@@ -134,10 +119,10 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
 
         StringBuilder result = new StringBuilder();
         result.append(aaText);
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         Rectangle r = getClientArea();
         result.append(getSpecifyCanvasWidth() ? r.width : -1);
-        result.append(SEPARATOR);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
         result.append(getSpecifyCanvasHeight() ? r.height : -1);
 
         return result.toString();
@@ -145,7 +130,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
 
     /**
      * Get the image cached or create new one and cache it.
-     * 
+     *
      * @param key
      *            the key
      * @param clientArea
@@ -158,7 +143,6 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
 
         Image result = AbstractCachedSVGFigure.SVG_IMG_CACHE.getIfPresent(key);
         if (result == null) {
-
             /* Create the image if it does not exist */
             Document document = getDocument();
             if (document == null) {
@@ -180,29 +164,27 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
     /**
      * Compute a key for this figure. This key is used to store in cache the
      * corresponding {@link org.eclipse.swt.graphics.Image}.
-     * 
+     *
      * The key must begin by the document key.
-     * 
+     *
      * @return The key corresponding to this BundleImageFigure.
      */
     protected abstract String getKey();
 
     /**
      * The uri of the image to display when the file has not been found.
-     * 
+     *
      * @return The uri of the image to display when the file has not been found.
      */
     protected static String getImageNotFoundURI() {
-        final String path = new StringBuffer(IMAGE_DIR).append(IMAGE_NOT_FOUND).append(IMAGE_EXT).toString();
-        String pluginId = DiagramUIPlugin.getPlugin().getSymbolicName();
-        return "platform:/plugin/" + pluginId + "/" + path; //$NON-NLS-1$ //$NON-NLS-2$
+        return IMAGE_NOT_FOUND_URI;
     }
 
     /**
      * Remove all entries whose key begins with the given key. Remove from the
      * document map, the entries with the given keys to force to re-read the
      * file.
-     * 
+     *
      * @param documentKey
      *            the document key.
      * @return true of something was removed.
@@ -221,7 +203,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
                 AbstractCachedSVGFigure.SVG_IMG_CACHE.invalidate(toRemove);
                 remove = true;
             }
-            boolean removedFromDocumentsMap = documentsMap.remove(documentKey) != null;
+            boolean removedFromDocumentsMap = SVGFigure.documentsMap.remove(documentKey) != null;
             return remove || removedFromDocumentsMap;
         }
         return false;
@@ -267,7 +249,6 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
                 return result[0];
             }
         }
-
         return 255;
     }
 }
