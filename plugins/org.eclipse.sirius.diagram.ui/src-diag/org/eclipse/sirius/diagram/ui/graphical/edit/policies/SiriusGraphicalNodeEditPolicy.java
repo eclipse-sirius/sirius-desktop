@@ -130,7 +130,7 @@ import com.google.common.collect.Maps;
 
 /**
  * This class manages the reconnection of an edge.
- * 
+ *
  * @author ymortier
  */
 @SuppressWarnings("restriction")
@@ -230,13 +230,14 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * Same behavior has super.getReconnectSourceCommand but using a custom
      * SetConnectionAnchorsCommand because modification on reconnected edge are
      * now done in precommit.
-     * 
+     *
      * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectSourceCommand(org.eclipse.gef.requests.ReconnectRequest)
      */
     private Command getReconnectSourceCommandAfterTool(ReconnectRequest request) {
         INodeEditPart node = getConnectableEditPart();
-        if (node == null)
+        if (node == null) {
             return null;
+        }
 
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 
@@ -280,7 +281,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getSourceEdges(),
                 ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-        sbbCommand.setLabelsToUpdate(request.getConnectionEditPart());
+        if (request.getConnectionEditPart() instanceof org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) {
+            sbbCommand.setLabelsToUpdate((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) request.getConnectionEditPart());
+        }
 
         cc.compose(sbbCommand);
         return new ICommandProxy(cc);
@@ -338,8 +341,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     private Command getReconnectSourceOrTargetForObliqueOrRectilinearCommand(ReconnectRequest request, boolean source) {
         INodeEditPart node = getConnectableEditPart();
         INodeEditPart targetEP = getConnectionCompleteEditPart(request);
-        if (node == null || targetEP == null)
+        if (node == null || targetEP == null) {
             return null;
+        }
 
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 
@@ -381,7 +385,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         SetConnectionBendpointsAndLabelCommmand sbbCommand = new SetConnectionBendpointsAndLabelCommmand(editingDomain);
         sbbCommand.setEdgeAdapter(request.getConnectionEditPart());
         sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-        sbbCommand.setLabelsToUpdate(request.getConnectionEditPart(), InitialPointsOfRequestDataManager.getOriginalPoints(request));
+        if (request.getConnectionEditPart() instanceof org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) {
+            sbbCommand.setLabelsToUpdate((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) request.getConnectionEditPart(),
+                    InitialPointsOfRequestDataManager.getOriginalPoints(request));
+        }
         cc.compose(sbbCommand);
 
         return new ICommandProxy(cc);
@@ -410,13 +417,14 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * Same behavior has super.getReconnectTargetCommand but using a custom
      * SetConnectionAnchorsCommand because modification on reconnected edge are
      * now done in precommit.
-     * 
+     *
      * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectTargetCommand(org.eclipse.gef.requests.ReconnectRequest)
      */
     private Command getReconnectTargetCommandAfterTool(ReconnectRequest request) {
         INodeEditPart node = getConnectableEditPart();
-        if (node == null || getConnectionCompleteEditPart(request) == null)
+        if (node == null || getConnectionCompleteEditPart(request) == null) {
             return null;
+        }
 
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 
@@ -462,7 +470,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(pointList, sourceAnchor.getReferencePoint(), targetAnchor.getReferencePoint());
-            sbbCommand.setLabelsToUpdate(request.getConnectionEditPart());
+            if (request.getConnectionEditPart() instanceof org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) {
+                sbbCommand.setLabelsToUpdate((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) request.getConnectionEditPart());
+            }
             Command cmdBP = new ICommandProxy(sbbCommand);
             if (cmdBP != null) {
                 cmd = cmd == null ? cmdBP : cmd.chain(cmdBP);
@@ -488,7 +498,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             SetReconnectingConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-            sbbCommand.setLabelsToUpdate(request.getConnectionEditPart());
+            if (request.getConnectionEditPart() instanceof org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) {
+                sbbCommand.setLabelsToUpdate((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) request.getConnectionEditPart());
+            }
 
             Command cmdBP = new ICommandProxy(sbbCommand);
             if (cmdBP != null) {
@@ -505,7 +517,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * switch to another target candidate some bendpoints can be missing on
      * reconnection. The missing bendpoints are the result of the ObliqueRouter
      * that removes bendpoints over the target candidate.
-     * 
+     *
      * @param request
      *            current {@link ReconnectRequest}
      * @param connectionPointList
@@ -573,7 +585,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
      * Compute anchor location using its end bounds.
-     * 
+     *
      * @param untouchedEndBounds
      *            bounds of the element on which is the anchor
      * @param previousAnchor
@@ -789,7 +801,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
      * Create the edge layout data that will be used later after the refresh.
-     * 
+     *
      * @param request
      *            The original creation request
      * @param sourceEditPart
@@ -848,7 +860,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * This is not possible to do it earlier (in feedback for example) because
      * we should know source and target data to compute the new source and
      * target location.
-     * 
+     *
      * @param request
      *            The original creation request
      * @param sourceEditPart
@@ -931,7 +943,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     /**
      * * @param absoluteLocation The location in absolute coordinates (and in
      * 100%)
-     * 
+     *
      * @param absoluteParentBounds
      *            The parent bounds in absolute coordinates (and in 100%)
      * @param intersectionPoint
@@ -969,7 +981,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
      * Get a new location point relative to the parent.
-     * 
+     *
      * @param absoluteLocation
      *            The location in absolute coordinates (and in 100%)
      * @param absoluteParentBounds
@@ -1037,7 +1049,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
      * . @ param request .
-     * 
+     *
      * @param source
      *            .
      * @param target
@@ -1047,7 +1059,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * @param cmdFactoryProvider
      *            .
      * @return .
-     * 
+     *
      *         {@inheritDoc}
      */
     protected Command buildCreateEdgeCommand(final CreateConnectionRequest request, EdgeTarget source, EdgeTarget target, EdgeCreationDescription edgeCreationDescription,
@@ -1065,7 +1077,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
      * Add a command to store the edge layout data.
-     * 
+     *
      * @param result
      *            The compound command
      * @param edgeLayoutData
@@ -1087,7 +1099,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * points and with same x or same y).</li>
      * </ul>
      * .
-     * 
+     *
      * @param result
      *            The compound command
      * @param edgeLayoutData
@@ -1164,7 +1176,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * Overridden to be able to slide the target bendpoint of an edge when
      * targeting another edge. This is the same code as in the super super class
      * GraphicalNodeEditPolicy.
@@ -1175,8 +1187,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             ReconnectRequest reconnectRequest = (ReconnectRequest) request;
             if (reconnectRequest.getTarget() instanceof DEdgeEditPart && reconnectRequest.getConnectionEditPart() instanceof DEdgeEditPart) {
                 INodeEditPart node = getConnectableEditPart();
-                if (node != null)
+                if (node != null) {
                     return node.getTargetConnectionAnchor(request);
+                }
             }
         }
         return super.getConnectionTargetAnchor(request);
@@ -1184,7 +1197,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * Overridden to be able to slide the target bendpoint of an edge when
      * targeting another edge. This is the same code as in the super super class
      * GraphicalNodeEditPolicy.
@@ -1274,7 +1287,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * Check if this connectionEditPart has been described in the VSM with in a
      * diagram with orderedTreeLayout or with compositeLayout and that it does
      * not have another edge as extremity.
-     * 
+     *
      * @param connectionEditPart
      *            the edit part to check
      * @return true if a specific tree layout must be apply (to compute GMF
@@ -1296,7 +1309,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     /**
      * Check if the source or the target of this connection is another
      * connection.
-     * 
+     *
      * @param connectionEditPart
      *            the edit part to check
      * @return true if the source or the target of this connection is another
@@ -1323,7 +1336,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     /**
      * Check if this layout corresponds to tree so code must be call to modify
      * GMF edges according to draw2d points.
-     * 
+     *
      * @param layout
      *            The layout to check
      * @return true if this layout is an OrderedTreeLayout or a CompositeLayout,
@@ -1353,7 +1366,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * instead of the classical {@link SetConnectionAnchorsCommand}) to handle
      * with tree layout and setting correctly all the anchors of the edge of the
      * same tree.
-     * 
+     *
      * @param request
      *            The ReconnectRequest
      * @return a Command
@@ -1420,15 +1433,16 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * instead of the classical {@link SetConnectionAnchorsCommand}) to handle
      * with tree layout and setting correctly all the anchors of the edge of the
      * same tree.
-     * 
+     *
      * @param request
      *            The ReconnectRequest
      * @return a Command
      */
     private Command getReconnectSourceForTreeLayoutCommand(ReconnectRequest request) {
         INodeEditPart node = getConnectableEditPart();
-        if (node == null)
+        if (node == null) {
             return null;
+        }
 
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 

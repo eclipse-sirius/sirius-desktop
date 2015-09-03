@@ -51,27 +51,25 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     }
 
     @Override
-    public void setLabelsToUpdate(org.eclipse.gef.ConnectionEditPart connectionEditPart) {
+    public void setLabelsToUpdate(ConnectionEditPart connectionEditPart) {
         // Before setting the labels to update (and compute the new offset, we
         // must set the newPointList.
-        if (connectionEditPart instanceof ConnectionEditPart) {
-            ConnectionEditPart gmfConnectionEditPart = (ConnectionEditPart) connectionEditPart;
-            // Applied zoom on moveDelta, because moveDelta is only element in
-            // relative value
-            GraphicalHelper.appliedZoomOnRelativePoint(gmfConnectionEditPart, moveDelta);
-            Connection connection = gmfConnectionEditPart.getConnectionFigure();
+        ConnectionEditPart gmfConnectionEditPart = (ConnectionEditPart) connectionEditPart;
+        // Applied zoom on moveDelta, because moveDelta is only element in
+        // relative value
+        GraphicalHelper.appliedZoomOnRelativePoint(gmfConnectionEditPart, moveDelta);
+        Connection connection = gmfConnectionEditPart.getConnectionFigure();
 
-            Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
-            connection.translateToRelative(tempSourceRefPoint);
+        Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
+        connection.translateToRelative(tempSourceRefPoint);
 
-            Point tempTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
-            connection.translateToRelative(tempTargetRefPoint);
+        Point tempTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
+        connection.translateToRelative(tempTargetRefPoint);
 
-            PointList connectionPointList = connection.getPoints().getCopy();
-            adaptPointListAndRefPoints(sourceMove, moveDelta, connectionEditPart, tempSourceRefPoint, tempTargetRefPoint, connectionPointList);
-            setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-            super.setLabelsToUpdate(connectionEditPart);
-        }
+        PointList connectionPointList = connection.getPoints().getCopy();
+        adaptPointListAndRefPoints(sourceMove, moveDelta, connectionEditPart, tempSourceRefPoint, tempTargetRefPoint, connectionPointList);
+        setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+        super.setLabelsToUpdate(connectionEditPart);
     }
 
     /**

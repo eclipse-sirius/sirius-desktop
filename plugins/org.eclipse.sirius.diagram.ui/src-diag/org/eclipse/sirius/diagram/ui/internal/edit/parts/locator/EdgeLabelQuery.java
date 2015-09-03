@@ -77,10 +77,10 @@ public class EdgeLabelQuery {
     private List<LineSeg> newEdgeSegments;
 
     /**
-     * True if the label is the center label of a bracketEdge (with specific
-     * locator), false otherwise.
+     * True if the parent's label is a bracketEdge (specific locator for center
+     * label and possibility to rotate the middle segment), false otherwise.
      */
-    private boolean isCenterOnBracketEdge;
+    private boolean isOnBracketEdge;
 
     /**
      * Return the default snap back position according to the keyPoint of the
@@ -184,13 +184,13 @@ public class EdgeLabelQuery {
      *            The keyPoint of the label (
      *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
      *            )
-     * @param isCenterOnBracketEdge
-     *            True if the label is the center label of a bracketEdge (with
-     *            specific locator), false otherwise.
+     * @param isOnBracketEdge
+     *            True if the parent's label is a bracketEdge (specific locator
+     *            for center label and possibility to rotate the middle
+     *            segment), false otherwise.
      */
     // @SuppressWarnings("unchecked")
-    public EdgeLabelQuery(PointList oldBendPointList, PointList newBendPointList, boolean isEdgeWithObliqueRoutingStyle, Point oldLabelOffset, Integer keyPoint,
-            boolean isCenterOnBracketEdge) {
+    public EdgeLabelQuery(PointList oldBendPointList, PointList newBendPointList, boolean isEdgeWithObliqueRoutingStyle, Point oldLabelOffset, Integer keyPoint, boolean isOnBracketEdge) {
         this.isEdgeWithObliqueRoutingStyle = isEdgeWithObliqueRoutingStyle;
 
         this.oldBendPointList = oldBendPointList;
@@ -198,7 +198,7 @@ public class EdgeLabelQuery {
         this.newBendPointList = newBendPointList;
         this.oldLabelOffset = oldLabelOffset;
         this.keyPoint = keyPoint;
-        this.isCenterOnBracketEdge = isCenterOnBracketEdge;
+        this.isOnBracketEdge = isOnBracketEdge;
 
         // compute lineSegments from bendPoints
         oldEdgeSegments = PointListUtilities.getLineSegments(oldBendPointList);
@@ -237,7 +237,7 @@ public class EdgeLabelQuery {
     }
 
     private Point getAnchorPoint(PointList pointList, int anchorPointRatio) {
-        if (isCenterOnBracketEdge) {
+        if (isOnBracketEdge && LabelViewConstants.MIDDLE_LOCATION == anchorPointRatio) {
             return BracketLabelLocator.getReferencePoint(pointList);
         } else {
             return PointListUtilities.calculatePointRelativeToLine(pointList, 0, anchorPointRatio, true);

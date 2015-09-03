@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -35,6 +36,8 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCo
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnectionQuery;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAccordingToDraw2DCommand;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAccordingToExtremityMoveCommmand;
 import org.eclipse.sirius.ext.base.Option;
@@ -46,7 +49,7 @@ import com.google.common.collect.Lists;
 /**
  * This command avoids time consumption as long as it does not executed. The
  * "real" command is created during the execution.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand {
@@ -60,7 +63,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
 
     /**
      * Default constructor.
-     * 
+     *
      * @param movedPart
      *            the editPart that moves
      * @param moveDelta
@@ -75,7 +78,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
     /**
      * Constructor that allows to ignore the primary selection (the first
      * selected element).
-     * 
+     *
      * @param movedPart
      *            the editPart that moves
      * @param moveDelta
@@ -137,7 +140,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
      * Compute the command needed to adapt the bendpoints of these
      * <code>connectionEditParts</code> if needed and add it to the
      * <code>wrappedCommand</code>.
-     * 
+     *
      * @param connectionEditParts
      *            the connectionEditParts to deal with
      * @param moveDelta
@@ -197,7 +200,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
     /**
      * Compute the command needed to adapt the bendpoints of the
      * <code>connectionEditPart</code> if needed.
-     * 
+     *
      * @param transactionalEditingDomain
      *            the editing domain through which model changes are made
      * @param moveDelta
@@ -269,6 +272,20 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
                         setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
                         setConnectionBendpointsCommand.setLabelsToUpdate(connectionEditPart);
                         command.add(setConnectionBendpointsCommand);
+                        result = Options.newSome(command);
+                    }
+                }
+            } else if (connectionEditPart instanceof BracketEdgeEditPart) {
+                if (!allMovedEditParts.isEmpty()) {
+                    if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
+                        // Just update the label offset
+                        CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Update offset of labels");
+                        PointList currentPointList = connectionEditPart.getConnectionFigure().getPoints();
+                        PointList futurePointList = new BracketConnectionQuery(connectionEditPart.getConnectionFigure()).getPointListFromConstraintAndMove(moveDelta, sourceMove);
+                        SetLabelsOffsetCommmand setLabelsOffsetCommand = new SetLabelsOffsetCommmand(transactionalEditingDomain);
+                        setLabelsOffsetCommand.setNewPointList(futurePointList);
+                        setLabelsOffsetCommand.setLabelsToUpdate(connectionEditPart);
+                        command.add(setLabelsOffsetCommand);
                         result = Options.newSome(command);
                     }
                 }

@@ -199,16 +199,16 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
 
         // Move source node moves also the "middle segment"
         edgeLabelExpectedPosition.clear();
-        edgeLabelExpectedPosition.put("refToC1BBegin", new Dimension(50, 200));
+        edgeLabelExpectedPosition.put("refToC1BBegin", new Dimension(0, 200));
         edgeLabelExpectedPosition.put("refToC1BCenter", new Dimension(0, 200));
-        edgeLabelExpectedPosition.put("refToC1BEnd", new Dimension(0, 0));
+        edgeLabelExpectedPosition.put("refToC1BEnd", DELTA_TO_COMPUTE_FROM_INVERTED_RATIO);
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(diagramDescriptionName, diagramName, Lists.newArrayList(new Point(50, 200)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1A");
 
         // Move target node does not move the "middle segment"
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToC1BBegin", new Dimension(0, 0));
         edgeLabelExpectedPosition.put("refToC1BCenter", new Dimension(0, 0));
-        edgeLabelExpectedPosition.put("refToC1BEnd", new Dimension(50, -200));
+        edgeLabelExpectedPosition.put("refToC1BEnd", DELTA_TO_COMPUTE_FROM_RATIO);
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(diagramDescriptionName, diagramName, Lists.newArrayList(new Point(50, -200)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1B");
 
         if (!failures.isEmpty()) {
@@ -835,7 +835,8 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             Dimension expectedDelta = labelNameToDelta.getValue();
             if (DELTA_TO_COMPUTE_FROM_STANDARD.equals(expectedDelta)) {
                 expectedlLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(true));
-            } else if (!DELTA_TO_COMPUTE_FROM_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_INVERTED_RATIO.equals(expectedDelta)) {
+            } else if (!DELTA_TO_COMPUTE_FROM_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_INVERTED_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_ROTATED_RATIO.equals(expectedDelta)) {
+                // Normal case, translated by delta
                 Point expectedLabelPosition = initialLabelLocation.getTranslated(labelNameToDelta.getValue());
                 expectedlLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(expectedLabelPosition));
             } else {

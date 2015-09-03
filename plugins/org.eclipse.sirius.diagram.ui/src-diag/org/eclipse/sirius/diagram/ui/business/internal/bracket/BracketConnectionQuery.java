@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 /**
  * A Query to compute new {@link PointList} from a {@link BendpointRequest} or
  * from the DimensionConnectionRouter.
- * 
+ *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class BracketConnectionQuery {
@@ -88,7 +88,7 @@ public class BracketConnectionQuery {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param bendpointRequest
      *            the {@link BendpointRequest} to compute a new
      *            {@link PointList} * @param connection the {@link Connection}
@@ -101,7 +101,7 @@ public class BracketConnectionQuery {
 
     /**
      * Constructor used by Draw2d part BracketAnchor.
-     * 
+     *
      * @param connection
      *            the {@link Connection}
      */
@@ -112,7 +112,7 @@ public class BracketConnectionQuery {
     /**
      * Get the new computed {@link PointList} from the specified
      * {@link BendpointRequest}.
-     * 
+     *
      * @return the new computed {@link PointList}
      */
     public PointList getNewPointList() {
@@ -157,7 +157,7 @@ public class BracketConnectionQuery {
 
     /**
      * Add intermediate {@link Point} to the new {@link PointList}.
-     * 
+     *
      * @param newPointList
      *            the {@link PointList} to update
      * @param newDirection
@@ -206,13 +206,14 @@ public class BracketConnectionQuery {
     /**
      * Tells if we have default {@link PointList} for a dimension connection not
      * yet routed.
-     * 
+     *
      * @return true if we have default {@link PointList} for a dimension
      *         connection not yet routed, false else
      */
     public boolean isDefaultPointListAtCreation() {
-        if (currentPointList == null)
+        if (currentPointList == null) {
             return false;
+        }
 
         boolean isDefaultPointListAtCreation = currentPointList.size() == 0;
         if (!isDefaultPointListAtCreation && connection != null) {
@@ -228,7 +229,7 @@ public class BracketConnectionQuery {
     /**
      * Tells if we have default constraint for a dimension connection not yet
      * routed.
-     * 
+     *
      * @return true if we have default constraint for a dimension connection not
      *         yet routed, false else
      */
@@ -246,7 +247,7 @@ public class BracketConnectionQuery {
 
     /**
      * Tells if we must add origin and target point.
-     * 
+     *
      * @param location
      *            the request cursor location
      * @param firstPoint
@@ -276,7 +277,7 @@ public class BracketConnectionQuery {
     /**
      * Get the anchor location {@link Point} from the specified
      * {@link ConnectionAnchor} according to the specified {@link Direction}.
-     * 
+     *
      * @param connectionAnchor
      *            specified {@link ConnectionAnchor}
      * @param direction
@@ -325,14 +326,15 @@ public class BracketConnectionQuery {
 
     /**
      * Gets the connection anchor owner.
-     * 
+     *
      * @param connectionAnchorOwner
      *            the connection anchor
      * @return the connection bounds
      */
     private Rectangle getConnectionAnchorOwnerBounds(IFigure connectionAnchorOwner) {
-        if (connectionAnchorOwner == null)
+        if (connectionAnchorOwner == null) {
             return null;
+        }
         Rectangle connectionAnchorOwnerBounds = connectionAnchorOwner.getBounds().getCopy();
         if (connectionAnchorOwner instanceof Connection) {
             Connection connectionOwner = (Connection) connectionAnchorOwner;
@@ -351,7 +353,7 @@ public class BracketConnectionQuery {
     /**
      * Get a specific Direction from the current cursor location, a
      * {@link ConnectionAnchor} and a general {@link Direction}.
-     * 
+     *
      * @param location
      *            the current cursor location
      * @param connectionAnchorOwner
@@ -394,7 +396,7 @@ public class BracketConnectionQuery {
      * Computes the source and target
      * {@link ConnectionAnchor#getLocation(Point)} for Dimension connection
      * figure.
-     * 
+     *
      * @param location
      *            a relative {@link Point}
      * @param newDirection
@@ -430,7 +432,7 @@ public class BracketConnectionQuery {
 
     /**
      * Get the origin deco point.
-     * 
+     *
      * @param originPoint
      *            the origin {@link Point}
      * @return the origin deco point
@@ -442,7 +444,7 @@ public class BracketConnectionQuery {
 
     /**
      * Get the target deco point.
-     * 
+     *
      * @param targetPoint
      *            the target {@link Point}
      * @return the target deco point
@@ -454,7 +456,7 @@ public class BracketConnectionQuery {
 
     /**
      * Get a decoration point from a specific {@link Direction}.
-     * 
+     *
      * @param specificDirection
      *            the specific {@link Direction}
      * @param ownerBounds
@@ -507,12 +509,24 @@ public class BracketConnectionQuery {
     /**
      * Get a {@link PointList} from the list of {@link Bendpoint}, the
      * {@link Connection#getRoutingConstraint()}.
-     * 
+     *
+     * @return Get a {@link PointList} from the list of {@link Bendpoint}, i.e.
+     *         the routing constraint
+     */
+    public PointList getPointListFromConstraint() {
+        return getPointListFromConstraintAndMove(new Point(0, 0), true);
+    }
+
+    /**
+     * Get a {@link PointList} from the list of {@link Bendpoint}, the
+     * {@link Connection#getRoutingConstraint()}. The moveDelta allows to
+     * compute the point list as if the source (of target) has been moved.
+     *
      * @return Get a {@link PointList} from the list of {@link Bendpoint}, i.e.
      *         the routing constraint
      */
     // CHECKSTYLE:OFF
-    public PointList getPointListFromConstraint() {
+    public PointList getPointListFromConstraintAndMove(Point moveDelta, boolean sourceMove) {
         @SuppressWarnings("unchecked")
         final List<BracketRelativeBendpoint> bracketRelativeBendpoints = (List<BracketRelativeBendpoint>) connection.getRoutingConstraint();
 
@@ -545,6 +559,13 @@ public class BracketConnectionQuery {
             connection.translateToRelative(sourceBounds);
             targetBounds = getConnectionAnchorOwnerBounds(connection.getTargetAnchor().getOwner());
             connection.translateToRelative(targetBounds);
+            if (sourceMove) {
+                firstPoint.translate(moveDelta);
+                sourceBounds.translate(moveDelta);
+            } else {
+                targetBounds.translate(moveDelta);
+                targetReferencePoint.translate(moveDelta);
+            }
             // connection.getTargetAnchor().getOwner().translateToRelative(targetReferencePoint);
             Direction lastDirection = null;
             int lastOffset = 0;
@@ -559,6 +580,9 @@ public class BracketConnectionQuery {
                     lastDirection = Direction.RIGHT;
                 }
                 lastPoint = getAnchorLocation(connection.getTargetAnchor(), lastDirection);
+                if (!sourceMove) {
+                    lastPoint.translate(moveDelta);
+                }
                 lastOffset = originPoint.x - lastPoint.x;
                 break;
             case LEFT:
@@ -570,6 +594,9 @@ public class BracketConnectionQuery {
                     lastDirection = Direction.LEFT;
                 }
                 lastPoint = getAnchorLocation(connection.getTargetAnchor(), lastDirection);
+                if (!sourceMove) {
+                    lastPoint.translate(moveDelta);
+                }
                 lastOffset = originPoint.x - lastPoint.x;
                 break;
             case TOP:
@@ -581,6 +608,9 @@ public class BracketConnectionQuery {
                     lastDirection = Direction.BOTTOM;
                 }
                 lastPoint = getAnchorLocation(connection.getTargetAnchor(), lastDirection);
+                if (!sourceMove) {
+                    lastPoint.translate(moveDelta);
+                }
                 lastOffset = originPoint.y - lastPoint.y;
                 break;
             case BOTTOM:
@@ -592,6 +622,9 @@ public class BracketConnectionQuery {
                     lastDirection = Direction.BOTTOM;
                 }
                 lastPoint = getAnchorLocation(connection.getTargetAnchor(), lastDirection);
+                if (!sourceMove) {
+                    lastPoint.translate(moveDelta);
+                }
                 lastOffset = originPoint.y - lastPoint.y;
                 break;
             default:
@@ -653,7 +686,7 @@ public class BracketConnectionQuery {
 
     /**
      * Tells if the two specified direction indicate a vertical Direction.
-     * 
+     *
      * @param firstDirection
      *            the first {@link Direction}
      * @param lastDirection
@@ -668,7 +701,7 @@ public class BracketConnectionQuery {
 
     /**
      * Tells if the two specified direction indicate a horizontal Direction.
-     * 
+     *
      * @param firstDirection
      *            the first {@link Direction}
      * @param lastDirection
@@ -684,7 +717,7 @@ public class BracketConnectionQuery {
     /**
      * Get a {@link List} of gmf {@link RelativeBendpoint} from a two Direction
      * and two offset relative to dimension source/target.
-     * 
+     *
      * @param newPointList
      *            the {@link PointList} of the dimension {@link Connection}
      * @return a {@link List} of {@link RelativeBendpoint}
@@ -735,7 +768,7 @@ public class BracketConnectionQuery {
     /**
      * Get a {@link List} of gmf {@link RelativeBendpoint} from a two Direction
      * and two offset relative to dimension source/target.
-     * 
+     *
      * @param firstDirection
      *            the {@link Direction} relative to the dimension source
      * @param sourceDirection
@@ -754,7 +787,7 @@ public class BracketConnectionQuery {
     /**
      * Get Draw2d {@link BracketRelativeBendpoint}s from gmf
      * {@link RelativeBendpoint}s.
-     * 
+     *
      * @param gmfRelativeBendpoints
      *            gmf {@link RelativeBendpoint}s
      * @return Draw2d {@link BracketRelativeBendpoint}s
@@ -773,7 +806,7 @@ public class BracketConnectionQuery {
 
     /**
      * Get the general {@link Direction} of this bracket.
-     * 
+     *
      * @return the general {@link Direction}
      */
     public Direction getGeneralDirection() {
@@ -782,7 +815,7 @@ public class BracketConnectionQuery {
 
     /**
      * Get the {@link Rectangle} of the main bracket segment.
-     * 
+     *
      * @return the {@link Rectangle} of the main bracket segment
      */
     public Rectangle getBracketSegmentBounds() {

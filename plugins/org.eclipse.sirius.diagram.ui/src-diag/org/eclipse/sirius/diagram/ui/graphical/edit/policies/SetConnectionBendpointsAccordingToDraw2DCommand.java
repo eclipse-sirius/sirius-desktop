@@ -24,7 +24,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 // CHECKSTYLE:OFF
 /**
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
+ *
  */
 public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnectionBendpointsAndLabelCommmand {
 
@@ -41,116 +41,114 @@ public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnecti
     }
 
     @Override
-    public void setLabelsToUpdate(org.eclipse.gef.ConnectionEditPart connectionEditPart) {
-        if (connectionEditPart instanceof ConnectionEditPart) {
-            ConnectionEditPart gmfConnectionEditPart = (ConnectionEditPart) connectionEditPart;
-            // Apply inverse zoom on moveDelta, because moveDelta is only
-            // element in relative value
-            GraphicalHelper.applyInverseZoomOnPoint(gmfConnectionEditPart, moveDelta);
-            Connection connection = gmfConnectionEditPart.getConnectionFigure();
+    public void setLabelsToUpdate(ConnectionEditPart connectionEditPart) {
+        ConnectionEditPart gmfConnectionEditPart = (ConnectionEditPart) connectionEditPart;
+        // Apply inverse zoom on moveDelta, because moveDelta is only
+        // element in relative value
+        GraphicalHelper.applyInverseZoomOnPoint(gmfConnectionEditPart, moveDelta);
+        Connection connection = gmfConnectionEditPart.getConnectionFigure();
 
-            Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
-            connection.translateToRelative(tempSourceRefPoint);
+        Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
+        connection.translateToRelative(tempSourceRefPoint);
 
-            Point tempTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
-            connection.translateToRelative(tempTargetRefPoint);
+        Point tempTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
+        connection.translateToRelative(tempTargetRefPoint);
 
-            PointList connectionPointList = connection.getPoints().getCopy();
-            if (sourceMove) {
-                tempSourceRefPoint.performTranslate(moveDelta.x, moveDelta.y);
+        PointList connectionPointList = connection.getPoints().getCopy();
+        if (sourceMove) {
+            tempSourceRefPoint.performTranslate(moveDelta.x, moveDelta.y);
 
-                // Get the bounds of the source before and after move (to apply
-                // specific move on the first point of the edge)
-                IFigure sourceAnchorOnwer = connection.getSourceAnchor().getOwner();
-                Rectangle rBox = (sourceAnchorOnwer instanceof Connection) ? ((Connection) sourceAnchorOnwer).getPoints().getBounds() : sourceAnchorOnwer.getBounds();
-                PrecisionRectangle boxBeforeMove = new PrecisionRectangle(rBox);
-                sourceAnchorOnwer.translateToAbsolute(boxBeforeMove);
-                PrecisionRectangle boxAfterMove = new PrecisionRectangle(boxBeforeMove.getCopy());
-                boxAfterMove.translate(moveDelta);
-                boolean changeXDelta = boxBeforeMove.x != boxAfterMove.x;
+            // Get the bounds of the source before and after move (to apply
+            // specific move on the first point of the edge)
+            IFigure sourceAnchorOnwer = connection.getSourceAnchor().getOwner();
+            Rectangle rBox = (sourceAnchorOnwer instanceof Connection) ? ((Connection) sourceAnchorOnwer).getPoints().getBounds() : sourceAnchorOnwer.getBounds();
+            PrecisionRectangle boxBeforeMove = new PrecisionRectangle(rBox);
+            sourceAnchorOnwer.translateToAbsolute(boxBeforeMove);
+            PrecisionRectangle boxAfterMove = new PrecisionRectangle(boxBeforeMove.getCopy());
+            boxAfterMove.translate(moveDelta);
+            boolean changeXDelta = boxBeforeMove.x != boxAfterMove.x;
 
-                if (connectionPointList.getPoint(1).y < boxAfterMove.getCenter().y) {
-                    if (connectionPointList.getPoint(1).y < boxBeforeMove.getCenter().y) {
-                        // The source is below the horizontal trunk segment
-                        // before and after the move
-                        connectionPointList.setPoint(connectionPointList.getFirstPoint().translate(moveDelta), 0);
-                        if (changeXDelta) {
-                            connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
-                        }
-                    } else {
-                        // The source is above the horizontal trunk segment
-                        // before the move and below after the move
-                        connectionPointList.setPoint(connectionPointList.getFirstPoint().translate(moveDelta.x, moveDelta.y - boxBeforeMove.height), 0);
-                        if (changeXDelta) {
-                            connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
-                        }
+            if (connectionPointList.getPoint(1).y < boxAfterMove.getCenter().y) {
+                if (connectionPointList.getPoint(1).y < boxBeforeMove.getCenter().y) {
+                    // The source is below the horizontal trunk segment
+                    // before and after the move
+                    connectionPointList.setPoint(connectionPointList.getFirstPoint().translate(moveDelta), 0);
+                    if (changeXDelta) {
+                        connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
                     }
                 } else {
-                    if (connectionPointList.getPoint(1).y < boxBeforeMove.getCenter().y) {
-                        // The source is below the horizontal trunk segment
-                        // before and above after the move
-                        connectionPointList.setPoint(connectionPointList.getFirstPoint().translate(moveDelta.x, moveDelta.y + boxBeforeMove.height), 0);
-                        if (changeXDelta) {
-                            connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
-                        }
-                    } else {
-                        // The source is above the horizontal trunk segment
-                        // before and after the move
-                        connectionPointList.setPoint(connectionPointList.getFirstPoint().translate(moveDelta.x, moveDelta.y), 0);
-                        if (changeXDelta) {
-                            connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
-                        }
+                    // The source is above the horizontal trunk segment
+                    // before the move and below after the move
+                    connectionPointList.setPoint(connectionPointList.getFirstPoint().translate(moveDelta.x, moveDelta.y - boxBeforeMove.height), 0);
+                    if (changeXDelta) {
+                        connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
                     }
                 }
             } else {
-                tempTargetRefPoint.performTranslate(moveDelta.x, moveDelta.y);
-
-                // Get the bounds of the target before and after move (to apply
-                // specific move on the last point of the edge)
-                IFigure targetAnchorOnwer = connection.getTargetAnchor().getOwner();
-                Rectangle rBox = (targetAnchorOnwer instanceof Connection) ? ((Connection) targetAnchorOnwer).getPoints().getBounds() : targetAnchorOnwer.getBounds();
-                PrecisionRectangle boxBeforeMove = new PrecisionRectangle(rBox.getCopy());
-                targetAnchorOnwer.translateToAbsolute(boxBeforeMove.getCopy());
-                PrecisionRectangle boxAfterMove = new PrecisionRectangle(boxBeforeMove.getCopy());
-                boxAfterMove.translate(moveDelta);
-                boolean changeXDelta = boxBeforeMove.x != boxAfterMove.x;
-                if (connectionPointList.getPoint(1).y < boxAfterMove.getCenter().y) {
-                    if (connectionPointList.getPoint(1).y < boxBeforeMove.getCenter().y) {
-                        // The source is below the horizontal trunk segment
-                        // before and after the move
-                        connectionPointList.setPoint(connectionPointList.getLastPoint().translate(moveDelta), 3);
-                        if (changeXDelta) {
-                            connectionPointList.setPoint(connectionPointList.getPoint(2).translate(moveDelta.x, 0), 2);
-                        }
-                    } else {
-                        // The source is above the horizontal trunk segment
-                        // before the move and below after the move
-                        connectionPointList.setPoint(connectionPointList.getLastPoint().translate(moveDelta.x, moveDelta.y - boxBeforeMove.height), 3);
-                        if (changeXDelta) {
-                            connectionPointList.setPoint(connectionPointList.getPoint(2).translate(moveDelta.x, 0), 2);
-                        }
+                if (connectionPointList.getPoint(1).y < boxBeforeMove.getCenter().y) {
+                    // The source is below the horizontal trunk segment
+                    // before and above after the move
+                    connectionPointList.setPoint(connectionPointList.getFirstPoint().translate(moveDelta.x, moveDelta.y + boxBeforeMove.height), 0);
+                    if (changeXDelta) {
+                        connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
                     }
                 } else {
-                    if (connectionPointList.getPoint(1).y < boxBeforeMove.getCenter().y) {
-                        // The source is below the horizontal trunk segment
-                        // before and above after the move
-                        connectionPointList.setPoint(connectionPointList.getLastPoint().translate(moveDelta.x, moveDelta.y + boxBeforeMove.height), 3);
-                        if (changeXDelta) {
-                            connectionPointList.setPoint(connectionPointList.getPoint(2).translate(moveDelta.x, 0), 2);
-                        }
-                    } else {
-                        // The source is above the horizontal trunk segment
-                        // before and after the move
-                        connectionPointList.setPoint(connectionPointList.getLastPoint().translate(moveDelta.x, moveDelta.y), 3);
-                        if (changeXDelta) {
-                            connectionPointList.setPoint(connectionPointList.getPoint(2).translate(moveDelta.x, 0), 2);
-                        }
+                    // The source is above the horizontal trunk segment
+                    // before and after the move
+                    connectionPointList.setPoint(connectionPointList.getFirstPoint().translate(moveDelta.x, moveDelta.y), 0);
+                    if (changeXDelta) {
+                        connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
                     }
                 }
             }
-            setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-            super.setLabelsToUpdate(connectionEditPart);
+        } else {
+            tempTargetRefPoint.performTranslate(moveDelta.x, moveDelta.y);
+
+            // Get the bounds of the target before and after move (to apply
+            // specific move on the last point of the edge)
+            IFigure targetAnchorOnwer = connection.getTargetAnchor().getOwner();
+            Rectangle rBox = (targetAnchorOnwer instanceof Connection) ? ((Connection) targetAnchorOnwer).getPoints().getBounds() : targetAnchorOnwer.getBounds();
+            PrecisionRectangle boxBeforeMove = new PrecisionRectangle(rBox.getCopy());
+            targetAnchorOnwer.translateToAbsolute(boxBeforeMove.getCopy());
+            PrecisionRectangle boxAfterMove = new PrecisionRectangle(boxBeforeMove.getCopy());
+            boxAfterMove.translate(moveDelta);
+            boolean changeXDelta = boxBeforeMove.x != boxAfterMove.x;
+            if (connectionPointList.getPoint(1).y < boxAfterMove.getCenter().y) {
+                if (connectionPointList.getPoint(1).y < boxBeforeMove.getCenter().y) {
+                    // The source is below the horizontal trunk segment
+                    // before and after the move
+                    connectionPointList.setPoint(connectionPointList.getLastPoint().translate(moveDelta), 3);
+                    if (changeXDelta) {
+                        connectionPointList.setPoint(connectionPointList.getPoint(2).translate(moveDelta.x, 0), 2);
+                    }
+                } else {
+                    // The source is above the horizontal trunk segment
+                    // before the move and below after the move
+                    connectionPointList.setPoint(connectionPointList.getLastPoint().translate(moveDelta.x, moveDelta.y - boxBeforeMove.height), 3);
+                    if (changeXDelta) {
+                        connectionPointList.setPoint(connectionPointList.getPoint(2).translate(moveDelta.x, 0), 2);
+                    }
+                }
+            } else {
+                if (connectionPointList.getPoint(1).y < boxBeforeMove.getCenter().y) {
+                    // The source is below the horizontal trunk segment
+                    // before and above after the move
+                    connectionPointList.setPoint(connectionPointList.getLastPoint().translate(moveDelta.x, moveDelta.y + boxBeforeMove.height), 3);
+                    if (changeXDelta) {
+                        connectionPointList.setPoint(connectionPointList.getPoint(2).translate(moveDelta.x, 0), 2);
+                    }
+                } else {
+                    // The source is above the horizontal trunk segment
+                    // before and after the move
+                    connectionPointList.setPoint(connectionPointList.getLastPoint().translate(moveDelta.x, moveDelta.y), 3);
+                    if (changeXDelta) {
+                        connectionPointList.setPoint(connectionPointList.getPoint(2).translate(moveDelta.x, 0), 2);
+                    }
+                }
+            }
         }
+        setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+        super.setLabelsToUpdate(connectionEditPart);
     }
 
     /**
