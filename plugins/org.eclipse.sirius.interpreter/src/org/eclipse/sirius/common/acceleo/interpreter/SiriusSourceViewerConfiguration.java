@@ -10,15 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.interpreter;
 
-import org.eclipse.acceleo.internal.ide.ui.editors.template.hover.AcceleoHoverInformationControl;
 import org.eclipse.jface.text.IDocument;
-import org.eclipse.jface.text.IInformationControl;
-import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContentAssistant;
 import org.eclipse.jface.text.source.ISourceViewer;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.editors.text.TextSourceViewerConfiguration;
 
 /**
@@ -43,19 +39,5 @@ public class SiriusSourceViewerConfiguration extends TextSourceViewerConfigurati
         assistant.setProposalPopupOrientation(IContentAssistant.PROPOSAL_OVERLAY);
         assistant.setInformationControlCreator(getInformationControlCreator(sourceViewer));
         return assistant;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.text.source.SourceViewerConfiguration#getInformationControlCreator(org.eclipse.jface.text.source.ISourceViewer)
-     */
-    @Override
-    public IInformationControlCreator getInformationControlCreator(ISourceViewer sourceViewer) {
-        return new IInformationControlCreator() {
-            public IInformationControl createInformationControl(Shell parent) {
-                return new AcceleoHoverInformationControl(parent);
-            }
-        };
     }
 }
