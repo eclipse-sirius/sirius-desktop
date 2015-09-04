@@ -92,7 +92,7 @@ h3. Manage edges
 
 h4. Move bend-points
 
-It is possible to snap the bend-points to all shapes by pressing kdb>F4</kdb> shortcut key during the move. This feature is only available if the "Snap to shapes":#snap_to_shapes is already activated for the current diagram. As for _Snap to grid_, and unlike to snap for node, there is no guide drawn during the move.
+It is possible to snap the bend-points to all shapes by pressing <kdb>F4</kdb> shortcut key during the move. This feature is only available if the "Snap to shapes":#snap_to_shapes is already activated for the current diagram. As for _Snap to grid_, and unlike to snap for node, there is no guide drawn during the move.
 
 h4. Remove Bend-points
 
