@@ -24,7 +24,6 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.apache.batik.bridge.BridgeContext;
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
 import org.apache.batik.util.XMLResourceDescriptor;
 import org.eclipse.draw2d.Figure;
@@ -33,17 +32,14 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.InferringNamespaceContext;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 //CHECKSTYLE:OFF
@@ -171,26 +167,6 @@ public class SVGFigure extends Figure {
             }
         }
         return null;
-    }
-
-    /**
-     * Reads color value from the document.
-     */
-    protected Color getColor(Element element, String attributeName) {
-        if (getDocument() == null || getDocument() != element.getOwnerDocument()) {
-            return null;
-        }
-        Color color = null;
-        // Make sure that CSSEngine is available.
-        BridgeContext ctx = transcoder.initCSSEngine();
-        try {
-            color = SVGUtils.toSWTColor(element, attributeName);
-        } finally {
-            if (ctx != null) {
-                ctx.dispose();
-            }
-        }
-        return color;
     }
 
     @Override

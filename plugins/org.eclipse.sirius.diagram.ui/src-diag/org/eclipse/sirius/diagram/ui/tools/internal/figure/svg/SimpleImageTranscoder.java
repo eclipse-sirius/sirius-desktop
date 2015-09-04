@@ -17,8 +17,6 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
-import org.apache.batik.bridge.BridgeContext;
-import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.gvt.renderer.ImageRenderer;
 import org.apache.batik.gvt.renderer.StaticRenderer;
 import org.apache.batik.transcoder.SVGAbstractTranscoder;
@@ -97,30 +95,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
         canvasAOI = new Rectangle2D.Float();
         canvasAOI.setRect(value);
         contentChanged();
-    }
-
-    /**
-     * Call before querying for CSS properties. If document has CSS engine
-     * installed returns null. Client is responsible to dispose bridge context
-     * if it was returned by this method.
-     */
-    public BridgeContext initCSSEngine() {
-        if (this.document == null) {
-            return null;
-        }
-        SVGOMDocument sd = (SVGOMDocument) this.document;
-        if (sd.getCSSEngine() != null) {
-            return null;
-        }
-        class BridgeContextEx extends BridgeContext {
-
-            public BridgeContextEx() {
-                super(SimpleImageTranscoder.this.userAgent);
-                BridgeContextEx.this.setDocument(SimpleImageTranscoder.this.document);
-                BridgeContextEx.this.initializeDocument(SimpleImageTranscoder.this.document);
-            }
-        }
-        return new BridgeContextEx();
     }
 
     public void contentChanged() {
