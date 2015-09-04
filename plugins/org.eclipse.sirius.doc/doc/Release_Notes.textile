@@ -4,9 +4,20 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius3.0.1). Changes in Sirius 3.0.1
+
+h3. User-Visible Changes
+
 * <span class="label label-info">Modified</span> The _Snap to Grid_ and _Snap to Shapes_ are now automatically disabled on Sequence diagrams. As indicated in the user documentation, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. see "documentation":./user/sequences/Sequence%20Diagrams.html#introduction for details. Previously, the user has to explicitely disable the snap features.
+
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
 * <span class="label label-success">Added</span> The methods @isSnapToShape@ and @isSnapToGrid()@ have been added in class @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor@. They allow to know the state of the corresponding properties.
+
 h2(#sirius3.0.0). Changes in Sirius 3.0.0
+
 
 h3. User-Visible Changes
 
