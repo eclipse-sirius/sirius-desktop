@@ -23,6 +23,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.geometry.Transform;
 import org.eclipse.draw2d.geometry.Vector;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
@@ -83,7 +84,11 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
      * Constant use to indicate that the delta is not predictable and must be
      * computed from the initial location with a ratio respect (the segment is
      * rotated so the ratio must be applied specifically). This is possible only
-     * for bracket edge.
+     * for bracket edge.<BR>
+     * WARNING: Only the case of rotation to the right (from horizontal to
+     * vertical is handle in this test). The other computation is to complicated
+     * and implied to do the same as in
+     * EdgeLabelsComputationUtil.applyOldRatioOnNewOrthogonalSegment() method.
      */
     private static final Dimension DELTA_TO_COMPUTE_FROM_ROTATED_RATIO = new Dimension(-3000, -3000);
 
@@ -194,7 +199,6 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
         edgeLabelExpectedPosition.clear();
         edgeLabelExpectedPosition.put("refToC1BBegin", DELTA_TO_COMPUTE_FROM_ROTATED_RATIO);
         edgeLabelExpectedPosition.put("refToC1BCenter", DELTA_TO_COMPUTE_FROM_ROTATED_RATIO);
-        edgeLabelExpectedPosition.put("refToC1BEnd", DELTA_TO_COMPUTE_FROM_ROTATED_RATIO);
         doTestMoveSegment(diagramDescriptionName, diagramName, Lists.newArrayList(new Point(500, 0)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1A", "C1B", 2);
 
         // Move source node moves also the "middle segment"
@@ -390,8 +394,9 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensure that only the first or last bendpoint is moved when moving one of
-     * edge extremity in various configuration (zoom level, edge style, ...).
+     * Ensures that when moving a point of a rectilinear edge, the labels of
+     * this edges are correctly located in various configuration (zoom level,
+     * scrollbars, initial position of the label, node move style, ...).
      */
     public void testLabelStabilityWhenMovingPointOnRectilinearEdge() {
         // There are two nodes connected by an edge with 3 segments with
@@ -554,6 +559,11 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
         }
     }
 
+    /**
+     * Ensures that when moving a point of an oblique edge, the labels of this
+     * edges are correctly located in various configuration (zoom level,
+     * scrollbars, initial position of the label, node move style, ...).
+     */
     public void testLabelStabilityWhenMovingPointOnObliqueEdge() {
         // There are two nodes connected by an edge with 3 segments with
         // OBLIQUE STYLE
@@ -729,6 +739,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             diagramEditor.select(edgeEditPart);
             Connection figure = (Connection) edgeEditPart.part().getFigure();
             PointList pointList = figure.getPoints();
+            @SuppressWarnings("unchecked")
             List<LineSeg> edgeSegments = PointListUtilities.getLineSegments(pointList);
             LineSeg lineSegToMove = edgeSegments.get(segmentIndex);
             Point initialLocation = new Point();
@@ -827,21 +838,23 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
      * @return
      */
     private Map<String, LabelPositionData> computeExpectedLabelLocations(Map<String, Dimension> edgeLabelDeltas, Connection figure) {
-        Map<String, LabelPositionData> expectedlLabelPositions = Maps.newHashMap();
+        Map<String, LabelPositionData> expectedLabelPositions = Maps.newHashMap();
         for (Entry<String, Dimension> labelNameToDelta : edgeLabelDeltas.entrySet()) {
             SWTBotGefEditPart labelEditPart = diagramEditor.getEditPart(labelNameToDelta.getKey(), AbstractDEdgeNameEditPart.class);
             Rectangle labelBounds = ((AbstractGraphicalEditPart) labelEditPart.part()).getFigure().getBounds();
             Point initialLabelLocation = labelBounds.getLocation();
             Dimension expectedDelta = labelNameToDelta.getValue();
             if (DELTA_TO_COMPUTE_FROM_STANDARD.equals(expectedDelta)) {
-                expectedlLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(true));
-            } else if (!DELTA_TO_COMPUTE_FROM_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_INVERTED_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_ROTATED_RATIO.equals(expectedDelta)) {
+                expectedLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(true));
+            } else
+                if (!DELTA_TO_COMPUTE_FROM_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_INVERTED_RATIO.equals(expectedDelta) && !DELTA_TO_COMPUTE_FROM_ROTATED_RATIO.equals(expectedDelta)) {
                 // Normal case, translated by delta
                 Point expectedLabelPosition = initialLabelLocation.getTranslated(labelNameToDelta.getValue());
-                expectedlLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(expectedLabelPosition));
+                expectedLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(expectedLabelPosition));
             } else {
                 // Compute ratio of current reference point
                 Point labelCenter = labelBounds.getCenter();
+                @SuppressWarnings("rawtypes")
                 List segments = PointListUtilities.getLineSegments(figure.getPoints());
                 LineSeg nearestSegment = PointListUtilities.getNearestSegment(segments, labelCenter.x, labelCenter.y);
                 Point nearestPointOnSegment = nearestSegment.perpIntersect(labelCenter.x, labelCenter.y);
@@ -849,10 +862,24 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
                 // Compute vector from current reference point to current
                 // center of label
                 Vector vector = new Vector(new PrecisionPoint(nearestPointOnSegment), new PrecisionPoint(labelCenter));
-                expectedlLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(segments.indexOf(nearestSegment), ratio, vector));
+                if (DELTA_TO_COMPUTE_FROM_ROTATED_RATIO.equals(expectedDelta)) {
+                    // Rotate the vector according to the expected rotation.
+                    // WARNING: Only the case of rotation to the right (from
+                    // horizontal to vertical is handle in this test). The other
+                    // computation is to complicated and implied to do the same
+                    // as in
+                    // EdgeLabelsComputationUtil.applyOldRatioOnNewOrthogonalSegment()
+                    // method.
+                    Transform rotateTransform = new Transform();
+                    rotateTransform.setRotation(Math.toRadians(90));
+                    Point rotatedPoint = rotateTransform.getTransformed(vector.toPoint());
+                    rotatedPoint.translate((labelBounds.width - labelBounds.height) / 2, 0);
+                    vector = new Vector(rotatedPoint.x, rotatedPoint.y);
+                }
+                expectedLabelPositions.put(labelNameToDelta.getKey(), new LabelPositionData(segments.indexOf(nearestSegment), ratio, vector));
             }
         }
-        return expectedlLabelPositions;
+        return expectedLabelPositions;
     }
 
     /**
@@ -909,6 +936,14 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
             this.vector = vector;
         }
 
+        /**
+         * Constructor used when the expected label position should be at its
+         * standard location.
+         *
+         * @param standardLocationExpected
+         *            true if the standard location must be used, false
+         *            otherwise.
+         */
         public LabelPositionData(boolean standardLocationExpected) {
             this.standardLocationExpected = standardLocationExpected;
         }
@@ -961,6 +996,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
      *            true if the expected point can be imprecise (this is the case
      *            for oblique edges)
      */
+    @SuppressWarnings("restriction")
     private void doPerformMoveAndCheckEdgeLabels(SWTBotSiriusDiagramEditor diagramEditor, Point initialLocation, Point moveDelta, Map<String, LabelPositionData> expectedLabelLocations,
             String errorMessagePrefix, boolean isToleranceAccepted) {
         List<SWTBotGefEditPart> selectedEditParts = diagramEditor.selectedEditParts();
@@ -1004,6 +1040,7 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
                         expectedLabelPosition = expectedCenter.getTranslated(-(labelBounds.width / 2), -(labelBounds.height / 2));
                     } else {
                         // Retrieve expected segment
+                        @SuppressWarnings("rawtypes")
                         List segments = PointListUtilities.getLineSegments(((Connection) labelFigure.getParent()).getPoints());
                         LineSeg lineSeg = (LineSeg) segments.get(labelPositionData.segmentIndex);
                         // Retrieve expected reference point from ratio

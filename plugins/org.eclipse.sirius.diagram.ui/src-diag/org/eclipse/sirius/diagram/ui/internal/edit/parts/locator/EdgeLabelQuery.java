@@ -14,9 +14,11 @@ import java.awt.geom.AffineTransform;
 import java.util.List;
 
 import org.eclipse.draw2d.ConnectionLocator;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.Transform;
 import org.eclipse.draw2d.geometry.Vector;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants;
@@ -81,6 +83,9 @@ public class EdgeLabelQuery {
      * label and possibility to rotate the middle segment), false otherwise.
      */
     private boolean isOnBracketEdge;
+
+    /** The size of the label. */
+    private Dimension labelSize;
 
     /**
      * Return the default snap back position according to the keyPoint of the
@@ -180,6 +185,8 @@ public class EdgeLabelQuery {
      *            the bendpoints and from which to get the three labels
      * @param oldLabelOffset
      *            The old offset.
+     * @param labelSize
+     *            The size of the label
      * @param keyPoint
      *            The keyPoint of the label (
      *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
@@ -190,13 +197,15 @@ public class EdgeLabelQuery {
      *            segment), false otherwise.
      */
     // @SuppressWarnings("unchecked")
-    public EdgeLabelQuery(PointList oldBendPointList, PointList newBendPointList, boolean isEdgeWithObliqueRoutingStyle, Point oldLabelOffset, Integer keyPoint, boolean isOnBracketEdge) {
+    public EdgeLabelQuery(PointList oldBendPointList, PointList newBendPointList, boolean isEdgeWithObliqueRoutingStyle, Point oldLabelOffset, Dimension labelSize, Integer keyPoint,
+            boolean isOnBracketEdge) {
         this.isEdgeWithObliqueRoutingStyle = isEdgeWithObliqueRoutingStyle;
 
         this.oldBendPointList = oldBendPointList;
         Preconditions.checkState(newBendPointList.size() > 0);
         this.newBendPointList = newBendPointList;
         this.oldLabelOffset = oldLabelOffset;
+        this.labelSize = labelSize;
         this.keyPoint = keyPoint;
         this.isOnBracketEdge = isOnBracketEdge;
 
@@ -339,6 +348,12 @@ public class EdgeLabelQuery {
                 // Is there a new segment at the same index as old segment and
                 // with same axis? Case of rectilinear segment move.
                 fromOldToNewCenterVector = getVectorForSegmentMoveCase(oldNearestSeg, oldNearestPoint, oldCenterLabel);
+                if (fromOldToNewCenterVector == null && isOnBracketEdge) {
+                    // Is there a new segment at the same index as old segment
+                    // and with opposite axis? Case of change orientation of the
+                    // bracket edge
+                    fromOldToNewCenterVector = getVectorForBracketEdgeOrientationChangeCase(oldNearestSeg, oldNearestPoint, oldCenterLabel);
+                }
                 if (fromOldToNewCenterVector == null) {
                     for (LineSeg lineSeg : newEdgeSegments) {
                         PointList linesIntersections = oldRefVectorIntoSegment.getLinesIntersections(lineSeg);
@@ -379,13 +394,14 @@ public class EdgeLabelQuery {
     /**
      * Check if we are in case of a rectilinear segment move: there is a new
      * segment at the same index as old nearest segment and with the same axis.
-     * Return the corresponding vector in this case, null otherwise.
+     * Return the corresponding vector from old to new center in this case, null
+     * otherwise.
      *
      * @param oldNearestSeg
      *            The segment that is the nearest from the center of the label
      *            in the old points list.
-     * @return the corresponding vector in case of rectilinear segment move,
-     *         null otherwise.
+     * @return the corresponding vector from old to new center in case of
+     *         rectilinear segment move, null otherwise.
      */
     private Vector getVectorForSegmentMoveCase(LineSeg oldNearestSeg, Point oldNearestPoint, Point oldCenterLabel) {
         Vector fromOldToNewCenterVector = null;
@@ -396,6 +412,33 @@ public class EdgeLabelQuery {
                 Vector oldVector = new Vector(oldNearestSeg.getTerminus().x - oldNearestSeg.getOrigin().x, oldNearestSeg.getTerminus().y - oldNearestSeg.getOrigin().y);
                 Vector newVector = new Vector(newNearestSegment.getTerminus().x - newNearestSegment.getOrigin().x, newNearestSegment.getTerminus().y - newNearestSegment.getOrigin().y);
                 fromOldToNewCenterVector = applyOldRatioOnNewSegment(oldNearestSeg, oldNearestPoint, oldCenterLabel, newNearestSegment, oldVector.getAngle(newVector) == 180, false);
+            }
+        }
+        return fromOldToNewCenterVector;
+    }
+
+    /**
+     * Check if we are in case of a orientation segment change: there is a new
+     * segment at the same index as old nearest segment and with apposite axis.
+     * Return the corresponding vector from old to new center in this case, null
+     * otherwise.
+     *
+     * @param oldNearestSeg
+     *            The segment that is the nearest from the center of the label
+     *            in the old points list.
+     * @return the corresponding vector from old to new center in case of
+     *         orientation segment change, null otherwise.
+     */
+    private Vector getVectorForBracketEdgeOrientationChangeCase(LineSeg oldNearestSeg, Point oldNearestPoint, Point oldCenterLabel) {
+        Vector fromOldToNewCenterVector = null;
+        if (newEdgeSegments.size() == oldEdgeSegments.size()) {
+            int index = oldEdgeSegments.indexOf(oldNearestSeg);
+            LineSeg newNearestSegment = newEdgeSegments.get(index);
+            if (oldNearestSeg.isHorizontal() != newNearestSegment.isHorizontal()) {
+                Vector oldVector = new Vector(oldNearestSeg.getTerminus().x - oldNearestSeg.getOrigin().x, oldNearestSeg.getTerminus().y - oldNearestSeg.getOrigin().y);
+                Vector newVector = new Vector(newNearestSegment.getTerminus().x - newNearestSegment.getOrigin().x, newNearestSegment.getTerminus().y - newNearestSegment.getOrigin().y);
+                double angleInDegree = Math.toDegrees(angleBetween2Lines(oldVector, newVector));
+                fromOldToNewCenterVector = applyOldRatioOnNewOrthogonalSegment(oldNearestSeg, oldNearestPoint, oldCenterLabel, newNearestSegment, angleInDegree == 90 || angleInDegree == -270);
             }
         }
         return fromOldToNewCenterVector;
@@ -523,6 +566,105 @@ public class EdgeLabelQuery {
         return result;
     }
 
+    private Vector applyOldRatioOnNewOrthogonalSegment(LineSeg oldRefSeg, Point oldRefPoint, Point oldCenterLabel, LineSeg newRefSeg, boolean is90Angle) {
+        double oldRatio = oldRefSeg.projection(oldCenterLabel.x, oldCenterLabel.y);
+        Transform rotateTransform = new Transform();
+        // Get the new reference point and the rotation to apply
+        Point newRefPoint;
+        if (is90Angle) {
+            // As GMF coordinates system is reversed (y positive orientation is
+            // from top to bottom), we reverse the rotation to apply
+            rotateTransform.setRotation(Math.toRadians(-90));
+            if (0 <= oldRatio && oldRatio <= 1) {
+                // Apply same ratio on the new segment to compute the new
+                // reference point
+                newRefPoint = new PrecisionPoint(newRefSeg.getOrigin().x - oldRatio * (newRefSeg.getOrigin().x - newRefSeg.getTerminus().x),
+                        newRefSeg.getOrigin().y - oldRatio * (newRefSeg.getOrigin().y - newRefSeg.getTerminus().y));
+            } else if (oldRatio > 1) {
+                // Just apply the vector from old terminus to old reference
+                // point to the new terminus
+                Vector vectorFromOldTerminusToOldRefPoint = new Vector(oldRefPoint.x - oldRefSeg.getTerminus().x, oldRefPoint.y - oldRefSeg.getTerminus().y);
+                Point vectorFromNewTerminusToNewRefPoint = rotateTransform.getTransformed(vectorFromOldTerminusToOldRefPoint.toPoint());
+                newRefPoint = newRefSeg.getTerminus().getTranslated(vectorFromNewTerminusToNewRefPoint);
+            } else {
+                Vector vectorFromOldOriginToOldRefPoint = new Vector(oldRefPoint.x - oldRefSeg.getOrigin().x, oldRefPoint.y - oldRefSeg.getOrigin().y);
+                Point vectorFromNewOriginToNewRefPoint = rotateTransform.getTransformed(vectorFromOldOriginToOldRefPoint.toPoint());
+                newRefPoint = newRefSeg.getOrigin().getTranslated(vectorFromNewOriginToNewRefPoint);
+            }
+        } else {
+            // As GMF coordinates system is reversed (y positive orientation is
+            // from top to bottom), we reverse the rotation to apply
+            rotateTransform.setRotation(Math.toRadians(90));
+            if (0 <= oldRatio && oldRatio <= 1) {
+                // Apply same ratio on the new segment to compute the new
+                // reference point (but inverse the origin and the terminus)
+                newRefPoint = new PrecisionPoint(newRefSeg.getOrigin().x + oldRatio * (newRefSeg.getTerminus().x - newRefSeg.getOrigin().x),
+                        newRefSeg.getOrigin().y + oldRatio * (newRefSeg.getTerminus().y - newRefSeg.getOrigin().y));
+            } else if (oldRatio > 1) {
+                // Just apply the vector from old terminus to old reference
+                // point to the new terminus
+                Vector vectorFromOldTerminusToOldRefPoint = new Vector(oldRefPoint.x - oldRefSeg.getTerminus().x, oldRefPoint.y - oldRefSeg.getTerminus().y);
+                Point vectorFromNewTerminusToNewRefPoint = rotateTransform.getTransformed(vectorFromOldTerminusToOldRefPoint.toPoint());
+                newRefPoint = newRefSeg.getTerminus().getTranslated(vectorFromNewTerminusToNewRefPoint);
+            } else {
+                Vector vectorFromOldOriginToOldRefPoint = new Vector(oldRefPoint.x - oldRefSeg.getOrigin().x, oldRefPoint.y - oldRefSeg.getOrigin().y);
+                Point vectorFromNewOriginToNewRefPoint = rotateTransform.getTransformed(vectorFromOldOriginToOldRefPoint.toPoint());
+                newRefPoint = newRefSeg.getOrigin().getTranslated(vectorFromNewOriginToNewRefPoint);
+            }
+        }
+        Vector vectorFromOldRefPointToOldCenterLabel = new Vector(oldCenterLabel.x - oldRefPoint.x, oldCenterLabel.y - oldRefPoint.y);
+        Point fromNewRefPointToNewCenterLabel = rotateTransform.getTransformed(vectorFromOldRefPointToOldCenterLabel.toPoint());
+        // Adjust the vector to apply according to orientation change (width
+        // becomes height and conversely)
+        if (newRefSeg.isHorizontal()) {
+            if (0 <= oldRatio && oldRatio <= 1) {
+                int invertedWidthHeight = labelSize.width - labelSize.height;
+                if (newRefSeg.getOrigin().x > newRefSeg.getTerminus().x) {
+                    invertedWidthHeight = -invertedWidthHeight;
+                }
+                fromNewRefPointToNewCenterLabel.translate(0, invertedWidthHeight / 2);
+            } else if (oldRatio > 1) {
+                int invertedWidthHeight = labelSize.width - labelSize.height;
+                if (newRefSeg.getOrigin().x > newRefSeg.getTerminus().x) {
+                    invertedWidthHeight = -invertedWidthHeight;
+                }
+                fromNewRefPointToNewCenterLabel.translate(invertedWidthHeight / 2, 0);
+            } else {
+                fromNewRefPointToNewCenterLabel.translate(0, 0);
+                int invertedWidthHeight = labelSize.width - labelSize.height;
+                if (newRefSeg.getOrigin().x < newRefSeg.getTerminus().x) {
+                    invertedWidthHeight = -invertedWidthHeight;
+                }
+                fromNewRefPointToNewCenterLabel.translate(invertedWidthHeight / 2, 0);
+            }
+        } else {
+            if (0 <= oldRatio && oldRatio <= 1) {
+                int invertedWidthHeight = labelSize.width - labelSize.height;
+                if (newRefSeg.getOrigin().y > newRefSeg.getTerminus().y) {
+                    invertedWidthHeight = -invertedWidthHeight;
+                }
+                fromNewRefPointToNewCenterLabel.translate(invertedWidthHeight / 2, 0);
+            } else if (oldRatio > 1) {
+                int invertedWidthHeight = labelSize.height - labelSize.width;
+                if (newRefSeg.getOrigin().y > newRefSeg.getTerminus().y) {
+                    invertedWidthHeight = -invertedWidthHeight;
+                }
+                fromNewRefPointToNewCenterLabel.translate(0, invertedWidthHeight / 2);
+            } else {
+                int invertedWidthHeight = labelSize.height - labelSize.width;
+                if (newRefSeg.getOrigin().y < newRefSeg.getTerminus().y) {
+                    invertedWidthHeight = -invertedWidthHeight;
+                }
+                fromNewRefPointToNewCenterLabel.translate(0, invertedWidthHeight / 2);
+            }
+        }
+        // Apply the rotated vector on new reference point to have the new
+        // center
+        Point newCenterLabel = newRefPoint.getTranslated(fromNewRefPointToNewCenterLabel);
+        // Compute the vector from old center to new center
+        return new Vector(newCenterLabel.x - oldCenterLabel.x, newCenterLabel.y - oldCenterLabel.y);
+    }
+
     /**
      * Get the rotated vector according to the segment orientation.
      *
@@ -561,6 +703,24 @@ public class EdgeLabelQuery {
         }
         double angle1 = Math.atan2(line1.getOrigin().y - line1.getTerminus().y, line1.getOrigin().x - line1.getTerminus().x);
         double angle2 = Math.atan2(line2.getOrigin().y - line2.getTerminus().y, line2.getOrigin().x - line2.getTerminus().x);
+        return angle1 - angle2;
+    }
+
+    /**
+     * Get the signed angle between two vectors.
+     *
+     * @param vector1
+     *            The first vector
+     * @param vector2
+     *            The second vector
+     * @return the signed angle in radian.
+     */
+    private static double angleBetween2Lines(Vector vector1, Vector vector2) {
+        if (vector1 == null || vector2 == null) {
+            return 0;
+        }
+        double angle1 = Math.atan2(vector1.y, vector1.x);
+        double angle2 = Math.atan2(vector2.y, vector2.x);
         return angle1 - angle2;
     }
 

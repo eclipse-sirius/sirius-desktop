@@ -225,8 +225,8 @@ public class BracketBendpointEditPolicy extends BendpointEditPolicy {
                 LayoutConstraint layoutConstraint = labelNodeToUpdate.getLayoutConstraint();
                 if (layoutConstraint instanceof Bounds) {
                     Bounds bounds = (Bounds) layoutConstraint;
-                    Point newLabelOffset = new EdgeLabelQuery(oldPointList, newPointList, false, new Point(bounds.getX(), bounds.getY()), labelEditPartToUpdate.getKeyPoint(), true)
-                            .calculateGMFLabelOffset();
+                    Point newLabelOffset = new EdgeLabelQuery(oldPointList, newPointList, false, new Point(bounds.getX(), bounds.getY()), labelEditPartToUpdate.getFigure().getSize(),
+                            labelEditPartToUpdate.getKeyPoint(), true).calculateGMFLabelOffset();
                     Bounds labelBounds = NotationFactory.eINSTANCE.createBounds();
                     labelBounds.setX(newLabelOffset.x);
                     labelBounds.setY(newLabelOffset.y);

@@ -146,8 +146,8 @@ public class SetLabelsOffsetOperation {
             LayoutConstraint layoutConstraint = labelNodeToUpdate.getLayoutConstraint();
             if (layoutConstraint instanceof Bounds) {
                 Bounds bounds = (Bounds) layoutConstraint;
-                newLabelOffset = new EdgeLabelQuery(oldBendpoints, newPointList, isEdgeWithObliqueRoutingStyle, new Point(bounds.getX(), bounds.getY()), labelEditPartToUpdate.getKeyPoint(),
-                        connectionEditPart instanceof BracketEdgeEditPart).calculateGMFLabelOffset();
+                newLabelOffset = new EdgeLabelQuery(oldBendpoints, newPointList, isEdgeWithObliqueRoutingStyle, new Point(bounds.getX(), bounds.getY()), labelEditPartToUpdate.getFigure().getSize(),
+                        labelEditPartToUpdate.getKeyPoint(), connectionEditPart instanceof BracketEdgeEditPart).calculateGMFLabelOffset();
             }
         }
 

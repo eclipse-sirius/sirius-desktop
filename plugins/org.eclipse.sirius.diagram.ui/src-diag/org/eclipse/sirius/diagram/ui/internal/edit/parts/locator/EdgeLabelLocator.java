@@ -108,7 +108,7 @@ public class EdgeLabelLocator extends LabelLocator {
             // Compute the future offset only if the oldPointList, comes from
             // edge feedback during a move of an edge. In other case, the offset
             // to use is the stored one.
-            Vector computedOffSet = computeOffSet();
+            Vector computedOffSet = computeOffSet(size);
             offSet = new Point((int) computedOffSet.x, (int) computedOffSet.y);
         }
 
@@ -119,8 +119,8 @@ public class EdgeLabelLocator extends LabelLocator {
     /**
      * Compute offset taking current figure bendpoints as newBendPoints.
      */
-    private Vector computeOffSet() {
-        EdgeLabelQuery edgeLabelsComputationUtil = new EdgeLabelQuery(oldPointList, getPointList(), isEdgeWithObliqueRoutingStyle, oldLabelOffset.toPoint(), getAlignment(),
+    private Vector computeOffSet(Dimension size) {
+        EdgeLabelQuery edgeLabelsComputationUtil = new EdgeLabelQuery(oldPointList, getPointList(), isEdgeWithObliqueRoutingStyle, oldLabelOffset.toPoint(), size, getAlignment(),
                 this instanceof BracketResizableLabelLocator);
         Point newMethodPoint = edgeLabelsComputationUtil.calculateGMFLabelOffset();
         return new Vector(newMethodPoint.x, newMethodPoint.y);
