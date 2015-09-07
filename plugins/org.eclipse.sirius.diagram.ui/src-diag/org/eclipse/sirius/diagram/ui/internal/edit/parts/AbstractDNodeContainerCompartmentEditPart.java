@@ -442,11 +442,14 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
             // First step : compute freeform layout bounds and keep the common
             // known max width and minimum y.
             for (IFigure f : children) {
-                bounds = (Rectangle) getConstraint(f);
-                if (bounds == null)
+                Object constraint = getConstraint(f);
+                if (constraint instanceof Rectangle) {
+                    bounds = ((Rectangle) constraint).getCopy();
+                } else {
                     continue;
+                }
 
-                bounds = computeFreeFormLayoutExBounds(f, bounds.getCopy());
+                bounds = computeFreeFormLayoutExBounds(f, bounds);
 
                 regionsBounds.put(f, bounds);
                 maxWidth = Math.max(maxWidth, bounds.width);
