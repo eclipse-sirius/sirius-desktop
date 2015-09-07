@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.edit.internal.part;
 import java.util.BitSet;
 import java.util.Collection;
 
+import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
@@ -292,44 +293,59 @@ public final class DiagramContainerEditPartOperation {
             DiagramElementEditPartOperation.setLineStyle(nodeFigure, borderLineStyle);
         }
 
-        // Do not add the container label offset margin if there is no
-        // visible label.
-        int labelOffset = IContainerLabelOffsets.LABEL_OFFSET;
-        if (primaryShape.getLabelFigure() == null || !primaryShape.getLabelFigure().isVisible()) {
-            labelOffset = 0;
-        }
+        if (primaryShape != null) {
+            // We might need to reinit the kind of border : LineBorder will
+            // always display a 1 pix line even if we configure it with a 0 line
+            // width.
+            configureBorder(self, primaryShape, borderSize != 0);
 
-        // Handle border line style, corner dimension and/or margin
-        if (primaryShape != null && primaryShape.getBorder() instanceof LineBorder) {
-            LineBorder lineBorder = (LineBorder) primaryShape.getBorder();
-            lineBorder.setWidth(borderSize);
-            DiagramElementEditPartOperation.setLineStyle(lineBorder, borderLineStyle);
-            if (lineBorder instanceof OneLineMarginBorder) {
-                ((OneLineMarginBorder) lineBorder).setMargin(labelOffset, 0, 0, 0);
-                if (self.isRegion() && lineBorder instanceof RoundedCornerMarginBorder) {
-                    ((RoundedCornerMarginBorder) lineBorder).setCornerDimensions(getCornerDimension(self));
+            // Do not add the container label offset margin if there is no
+            // visible label.
+            int labelOffset = IContainerLabelOffsets.LABEL_OFFSET;
+            if (primaryShape.getLabelFigure() == null || !primaryShape.getLabelFigure().isVisible()) {
+                labelOffset = 0;
+            }
+
+            // Handle border line style, corner dimension and/or margin
+            if (primaryShape.getBorder() instanceof LineBorder) {
+                LineBorder lineBorder = (LineBorder) primaryShape.getBorder();
+                lineBorder.setWidth(borderSize);
+                DiagramElementEditPartOperation.setLineStyle(lineBorder, borderLineStyle);
+                if (lineBorder instanceof OneLineMarginBorder) {
+                    OneLineMarginBorder oneLineBorder = (OneLineMarginBorder) lineBorder;
+                    oneLineBorder.setMargin(labelOffset, 0, 0, 0);
+
+                    if (parentStackDirection == PositionConstants.NORTH_SOUTH) {
+                        oneLineBorder.setPosition(PositionConstants.TOP);
+                    } else if (parentStackDirection == PositionConstants.NORTH_SOUTH) {
+                        oneLineBorder.setPosition(PositionConstants.LEFT);
+                    }
+
+                    if (self.isRegion() && lineBorder instanceof RoundedCornerMarginBorder) {
+                        ((RoundedCornerMarginBorder) lineBorder).setCornerDimensions(getCornerDimension(self));
+                    }
                 }
+            } else if (primaryShape.getBorder() instanceof MarginBorder) {
+                MarginBorder margin = null;
+                int borderMagin = borderSize;
+                switch (parentStackDirection) {
+                case PositionConstants.NORTH_SOUTH:
+                    borderMagin = isFirstRegionPart(self) ? 0 : Math.max(0, borderSize - 1);
+                    margin = new MarginBorder(borderMagin + labelOffset, 0, 0, 0);
+                    break;
+                case PositionConstants.EAST_WEST:
+                    borderMagin = isFirstRegionPart(self) ? 0 : borderSize;
+                    margin = new MarginBorder(labelOffset, borderMagin, 0, 0);
+                    break;
+                case PositionConstants.NONE:
+                default:
+                    // Keep the old behavior : min margin size= 4
+                    // The current container is not a region, the figure has
+                    // been added to the content pane.
+                    margin = new MarginBorder(borderMagin + labelOffset - 1, borderMagin, borderMagin, borderMagin);
+                }
+                primaryShape.setBorder(margin);
             }
-        } else if (primaryShape != null && primaryShape.getBorder() instanceof MarginBorder) {
-            MarginBorder margin = null;
-            int borderMagin = borderSize;
-            switch (parentStackDirection) {
-            case PositionConstants.NORTH_SOUTH:
-                borderMagin = isFirstRegionPart(self) ? 0 : Math.max(0, borderSize - 1);
-                margin = new MarginBorder(borderMagin + labelOffset, 0, 0, 0);
-                break;
-            case PositionConstants.EAST_WEST:
-                borderMagin = isFirstRegionPart(self) ? 0 : borderSize;
-                margin = new MarginBorder(labelOffset, borderMagin, 0, 0);
-                break;
-            case PositionConstants.NONE:
-            default:
-                // Keep the old behavior : min margin size= 4
-                // The current container is not a region, the figure has
-                // been added to the content pane.
-                margin = new MarginBorder(borderMagin + labelOffset - 1, borderMagin, borderMagin, borderMagin);
-            }
-            primaryShape.setBorder(margin);
         }
         return primaryShape;
     }
@@ -454,5 +470,57 @@ public final class DiagramContainerEditPartOperation {
             }
         }
         return bgStyle;
+    }
+
+    /**
+     * Configure the border : set or replace the border when it needs to be
+     * changed. This can occurs for Regions when the region position changes or
+     * when the border size changes from 0 or to 0.
+     * 
+     * The refreshBorder method will then update all the border features during
+     * refreshVisual().
+     * 
+     * @param self
+     *            the current part
+     * @param shapeFigure
+     *            the shape to configure
+     */
+    public static void configureBorder(AbstractDiagramElementContainerEditPart self, IFigure shapeFigure) {
+        boolean border = true;
+        final DDiagramElement diagElement = self.resolveDiagramElement();
+        if (diagElement instanceof DDiagramElementContainer) {
+            final DDiagramElementContainer ddec = (DDiagramElementContainer) diagElement;
+            final ContainerStyle style = ddec.getOwnedStyle();
+            if (style != null && style.getBorderSize() != null) {
+                border = style.getBorderSize().intValue() != 0;
+            }
+        }
+        configureBorder(self, shapeFigure, border);
+    }
+
+    private static void configureBorder(AbstractDiagramElementContainerEditPart self, IFigure shapeFigure, boolean border) {
+        if (self.isRegion() && shapeFigure != null) {
+            Border newBorder = null;
+            if (isFirstRegionPart(self) || !border) {
+                if (!(shapeFigure.getBorder() instanceof MarginBorder)) {
+                    newBorder = new MarginBorder(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0);
+                }
+            } else if (!(shapeFigure.getBorder() instanceof RoundedCornerMarginBorder)) {
+                int position = PositionConstants.TOP;
+                if (self.getParentStackDirection() == PositionConstants.EAST_WEST) {
+                    position = PositionConstants.LEFT;
+                }
+
+                RoundedCornerMarginBorder oneLineBorder = new RoundedCornerMarginBorder(position);
+                oneLineBorder.setCornerDimensions(getCornerDimension(self));
+                oneLineBorder.setMargin(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0);
+
+                newBorder = oneLineBorder;
+            }
+
+            if (newBorder != null) {
+                shapeFigure.setBorder(newBorder);
+            }
+        }
     }
 }

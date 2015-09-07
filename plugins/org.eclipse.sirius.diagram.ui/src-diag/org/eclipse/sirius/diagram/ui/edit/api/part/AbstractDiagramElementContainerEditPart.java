@@ -16,8 +16,6 @@ import java.util.List;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.LineBorder;
-import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -72,7 +70,6 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPart
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
@@ -85,18 +82,15 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
-import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.RoundedCornerMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -338,28 +332,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      *            the figure which needs a border.
      */
     protected void configureBorder(IFigure shapeFigure) {
-        if (isRegion() && shapeFigure != null) {
-            if (isFirstRegionPart()) {
-                shapeFigure.setBorder(new MarginBorder(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0));
-            } else {
-                RoundedCornerMarginBorder oneLineBorder = new RoundedCornerMarginBorder(PositionConstants.TOP);
-                shapeFigure.setBorder(oneLineBorder);
-                oneLineBorder.setCornerDimensions(DiagramContainerEditPartOperation.getCornerDimension(this));
-                oneLineBorder.setMargin(IContainerLabelOffsets.LABEL_OFFSET, 0, 0, 0);
-                if (getParentStackDirection() == PositionConstants.EAST_WEST) {
-                    oneLineBorder.setPosition(PositionConstants.LEFT);
-                }
-            }
-        }
-    }
-
-    private boolean isFirstRegionPart() {
-        EditPart parent = getParent();
-        if (parent instanceof AbstractDNodeContainerCompartmentEditPart) {
-            Iterable<AbstractDiagramElementContainerEditPart> regionParts = Iterables.filter(parent.getChildren(), AbstractDiagramElementContainerEditPart.class);
-            return !Iterables.isEmpty(regionParts) && regionParts.iterator().next() == this;
-        }
-        return false;
+        DiagramContainerEditPartOperation.configureBorder(this, shapeFigure);
     }
 
     /**
@@ -400,15 +373,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
     @Override
     protected void refreshVisuals() {
-        if (primaryShape != null) {
-            if (isRegion()) {
-                final boolean firstRegion = isFirstRegionPart();
-                if (firstRegion && primaryShape.getBorder() instanceof LineBorder || !firstRegion && primaryShape.getBorder() instanceof MarginBorder) {
-                    configureBorder(primaryShape);
-                }
-            }
-        }
-
         super.refreshVisuals();
         DiagramContainerEditPartOperation.refreshVisuals(this);
     }

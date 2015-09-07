@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
@@ -37,7 +36,6 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ContainerStyle;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -199,8 +197,8 @@ public final class GMFHelper {
     private static boolean isFirstRegion(DDiagramElementContainer ddec) {
         EObject potentialRegionContainer = ddec.eContainer();
         if (potentialRegionContainer instanceof DNodeContainer) {
-            EList<DDiagramElement> regions = ((DNodeContainer) potentialRegionContainer).getOwnedDiagramElements();
-            return !regions.isEmpty() && ddec == regions.get(0);
+            Iterable<DDiagramElementContainer> regions = Iterables.filter(((DNodeContainer) potentialRegionContainer).getOwnedDiagramElements(), DDiagramElementContainer.class);
+            return !Iterables.isEmpty(regions) && ddec == Iterables.getFirst(regions, null);
         }
         return false;
     }
