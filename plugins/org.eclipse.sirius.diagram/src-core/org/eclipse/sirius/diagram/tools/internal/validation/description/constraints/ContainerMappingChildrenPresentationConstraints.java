@@ -155,7 +155,7 @@ public class ContainerMappingChildrenPresentationConstraints extends AbstractCon
     private IStatus validateReusedContainersInContainerList(IValidationContext ctx, ContainerMapping containerMapping) {
         if (new ContainerMappingQuery(containerMapping).isListContainer()) {
             if (!containerMapping.getReusedContainerMappings().isEmpty()) {
-                return ctx.createFailureStatus(containerMapping.getReusedContainerMappings());
+                return ctx.createFailureStatus(containerMapping, containerMapping.getReusedContainerMappings());
             }
         }
         return ctx.createSuccessStatus();
@@ -192,7 +192,7 @@ public class ContainerMappingChildrenPresentationConstraints extends AbstractCon
     private IStatus validateReusedBorderedNodesInRegion(IValidationContext ctx, ContainerMapping containerMapping) {
         if (new ContainerMappingQuery(containerMapping).isRegion()) {
             if (!containerMapping.getReusedBorderedNodeMappings().isEmpty()) {
-                return ctx.createFailureStatus(containerMapping.getReusedBorderedNodeMappings());
+                return ctx.createFailureStatus(containerMapping, containerMapping.getReusedBorderedNodeMappings());
             }
         }
         return ctx.createSuccessStatus();
