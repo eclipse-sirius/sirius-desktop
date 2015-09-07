@@ -315,7 +315,13 @@ public class SessionEditorInput extends URIEditorInput {
     public URI getURI() {
         EObject input = inputRef != null ? inputRef.get() : null;
         if (input != null) {
-            return EcoreUtil.getURI(input);
+            try {
+                return EcoreUtil.getURI(input);
+                // TODO: remove this try/catch WORK-AROUND when 392720 will be
+                // fixed
+            } catch (IllegalStateException e) {
+
+            }
         }
         return super.getURI();
     }
@@ -330,7 +336,7 @@ public class SessionEditorInput extends URIEditorInput {
         boolean exists = super.exists();
         if (!exists) {
             EObject input = getInput(false);
-            if (input != null) {
+            if (input != null && !input.eIsProxy()) {
                 Resource resource = input.eResource();
                 if (resource != null && resource.getResourceSet() != null) {
                     exists = resource.getResourceSet().getURIConverter().exists(resource.getURI(), null);
