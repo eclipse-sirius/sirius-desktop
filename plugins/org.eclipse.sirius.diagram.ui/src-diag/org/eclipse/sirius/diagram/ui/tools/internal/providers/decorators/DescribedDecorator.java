@@ -151,7 +151,7 @@ public class DescribedDecorator extends AbstractDecorator {
     private Image getImage(final Decoration decoration) {
         DecorationDescription description = decoration.getDescription();
         if (description != null) {
-            return WorkspaceImageFigure.flyWeightImage(description.getDecoratorPath());
+            return WorkspaceImageFigure.getImageInstanceFromPath(description.getDecoratorPath());
         } else {
             return null;
         }
