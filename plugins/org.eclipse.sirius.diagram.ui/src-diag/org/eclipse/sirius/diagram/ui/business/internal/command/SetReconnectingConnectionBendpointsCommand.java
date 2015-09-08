@@ -77,13 +77,15 @@ public class SetReconnectingConnectionBendpointsCommand extends SetConnectionBen
      */
     @Override
     public Point getSourceRefPoint() {
-        Edge edge = reconnectingEdgeHelper.getReconnectedEdge();
-        if (edge != null) {
-            Connection connection = (Connection) GMFHelper.getGraphicalEditPart(edge).get().getFigure();
+        if (reconnectingEdgeHelper.isReconnectingSource()) {
+            Edge edge = reconnectingEdgeHelper.getReconnectedEdge();
+            if (edge != null) {
+                Connection connection = (Connection) GMFHelper.getGraphicalEditPart(edge).get().getFigure();
 
-            Point sourceRefPoint = connection.getSourceAnchor().getReferencePoint();
-            connection.translateToRelative(sourceRefPoint);
-            return sourceRefPoint;
+                Point sourceRefPoint = connection.getSourceAnchor().getReferencePoint();
+                connection.translateToRelative(sourceRefPoint);
+                return sourceRefPoint;
+            }
         }
         return super.getSourceRefPoint();
     }
@@ -97,23 +99,26 @@ public class SetReconnectingConnectionBendpointsCommand extends SetConnectionBen
      */
     @Override
     public Point getTargetRefPoint() {
-        Edge edge = reconnectingEdgeHelper.getReconnectedEdge();
-        if (edge != null) {
-            Connection connection = (Connection) GMFHelper.getGraphicalEditPart(edge).get().getFigure();
+        if (reconnectingEdgeHelper.isReconnectingTarget()) {
+            Edge edge = reconnectingEdgeHelper.getReconnectedEdge();
+            if (edge != null) {
+                Connection connection = (Connection) GMFHelper.getGraphicalEditPart(edge).get().getFigure();
 
-            Point targetRefPoint = connection.getTargetAnchor().getReferencePoint();
-            connection.translateToRelative(targetRefPoint);
-            return targetRefPoint;
+                Point targetRefPoint = connection.getTargetAnchor().getReferencePoint();
+                connection.translateToRelative(targetRefPoint);
+                return targetRefPoint;
+            }
         }
         return super.getTargetRefPoint();
     }
 
     @Override
     protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {
-
         Assert.isNotNull(getNewPointList());
-        Assert.isNotNull(getSourceRefPoint());
-        Assert.isNotNull(getTargetRefPoint());
+        Point sourceRefPoint = getSourceRefPoint();
+        Assert.isNotNull(sourceRefPoint);
+        Point targetRefPoint = getTargetRefPoint();
+        Assert.isNotNull(targetRefPoint);
 
         // The edge recovery is the difference with the parent command
         Edge edge = reconnectingEdgeHelper.getReconnectedEdge();
@@ -126,8 +131,8 @@ public class SetReconnectingConnectionBendpointsCommand extends SetConnectionBen
                 // The sourceRefPoint and targetRefPoint will be recovered from
                 // the
                 // reconnected edge
-                Dimension s = getNewPointList().getPoint(i).getDifference(getSourceRefPoint());
-                Dimension t = getNewPointList().getPoint(i).getDifference(getTargetRefPoint());
+                Dimension s = getNewPointList().getPoint(i).getDifference(sourceRefPoint);
+                Dimension t = getNewPointList().getPoint(i).getDifference(targetRefPoint);
                 newBendpoints.add(new RelativeBendpoint(s.width, s.height, t.width, t.height));
             }
 

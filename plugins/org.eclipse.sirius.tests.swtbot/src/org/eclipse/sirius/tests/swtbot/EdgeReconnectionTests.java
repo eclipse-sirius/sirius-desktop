@@ -59,119 +59,158 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test reconnection of target edge end point from a container to another
-     * with oblique style routing.
+     * Test reconnection of source and target edge end point from a container to
+     * another with oblique style routing.
      */
     public void testSimpleEdgeSourceReconnectionWithObliqueStyleRouting() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION1_NAME, "new " + REPRESENTATION1_NAME, DDiagram.class, true);
-        SWTBotGefEditPart eClass1EditPartBot = editor.getEditPart("EClass1", AbstractDiagramContainerEditPart.class);
-        SWTBotGefEditPart eClass2EditPartBot = editor.getEditPart("EClass2", AbstractDiagramContainerEditPart.class);
-        SWTBotGefEditPart ref1EditPartBot = editor.getEditPart("ref1", AbstractDiagramContainerEditPart.class);
-        SWTBotGefEditPart ref2EditPartBot = editor.getEditPart("ref2", AbstractDiagramContainerEditPart.class);
-        SWTBotGefEditPart ref3EditPartBot = editor.getEditPart("ref3", AbstractDiagramContainerEditPart.class);
-        SWTBotGefEditPart ref4EditPartBot = editor.getEditPart("ref4", AbstractDiagramContainerEditPart.class);
-        SWTBotGefConnectionEditPart connection1EditPartBot = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).get(0);
-        SWTBotGefConnectionEditPart connection2EditPartBot = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).get(0);
+        editor.maximize();
+        try {
+            SWTBotGefEditPart eClass1EditPartBot = editor.getEditPart("EClass1", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart eClass2EditPartBot = editor.getEditPart("EClass2", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart ref1EditPartBot = editor.getEditPart("ref1", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart ref2EditPartBot = editor.getEditPart("ref2", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart ref3EditPartBot = editor.getEditPart("ref3", AbstractDiagramContainerEditPart.class);
+            SWTBotGefEditPart ref4EditPartBot = editor.getEditPart("ref4", AbstractDiagramContainerEditPart.class);
+            SWTBotGefConnectionEditPart connection1EditPartBot = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).get(0);
+            SWTBotGefConnectionEditPart connection2EditPartBot = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).get(0);
 
-        // Reconnect target of first connection
-        PointList connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
-        Point from = connection1Points.getLastPoint();
-        Point to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
-        connection1EditPartBot.select();
-        editor.drag(from, to);
-        // Check that reconnection is correct
-        assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
-        List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot);
-        assertEquals(1, newConnection1EditPartBotList.size());
-        SWTBotGefConnectionEditPart newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
-        PointList newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
-        assertEquals(2, newConnection1Points.size());
-        GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 0, 1);
-        GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 0, 1);
-        connection1EditPartBot = newConnection1EditPartBot;
+            // Reconnect target of first connection
+            PointList connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            Point from = connection1Points.getLastPoint();
+            Point to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
+            connection1EditPartBot.select();
+            editor.drag(from, to);
+            // Check that reconnection is correct
+            assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
+            List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot);
+            assertEquals(1, newConnection1EditPartBotList.size());
+            SWTBotGefConnectionEditPart newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
+            PointList newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
+            assertEquals(3, newConnection1Points.size());
+            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 0, 1);
+            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 0, 1);
+            connection1EditPartBot = newConnection1EditPartBot;
 
-        // Reconnect target of second connection
-        PointList connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
-        from = connection2Points.getLastPoint();
-        to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
-        connection2EditPartBot.select();
-        editor.drag(from, to);
-        // Check that reconnection is correct
-        assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
-        List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot);
-        assertEquals(1, newConnection2EditPartBotList.size());
-        SWTBotGefConnectionEditPart newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
-        PointList newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
-        assertEquals(2, newConnection2Points.size());
-        GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 0, 2);
-        GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 0, 2);
-        connection2EditPartBot = newConnection2EditPartBot;
+            // Reconnect target of second connection
+            PointList connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            from = connection2Points.getLastPoint();
+            to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
+            connection2EditPartBot.select();
+            editor.drag(from, to);
+            // Check that reconnection is correct
+            assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
+            List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot);
+            assertEquals(1, newConnection2EditPartBotList.size());
+            SWTBotGefConnectionEditPart newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
+            PointList newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
+            assertEquals(3, newConnection2Points.size());
+            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 0, 2);
+            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 0, 2);
+            connection2EditPartBot = newConnection2EditPartBot;
 
-        // Reconnect target of first connection as initially
-        connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
-        from = connection1Points.getLastPoint();
-        to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 2);
-        connection1EditPartBot.select();
-        editor.drag(from, to);
-        // Check that reconnection is correct
-        assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot).size());
-        newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot);
-        assertEquals(1, newConnection1EditPartBotList.size());
-        newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
-        newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
-        assertEquals(2, newConnection1Points.size());
-        GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 0, 1);
-        GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 0, 1);
-        connection1EditPartBot = newConnection1EditPartBot;
+            // Reconnect target of first connection as initially
+            connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            from = connection1Points.getLastPoint();
+            to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 20);
+            connection1EditPartBot.select();
+            editor.drag(from, to);
+            // Check that reconnection is correct
+            assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot).size());
+            newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot);
+            assertEquals(1, newConnection1EditPartBotList.size());
+            newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
+            newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
+            assertEquals(3, newConnection1Points.size());
+            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 1, 1);
+            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 1, 1);
+            connection1EditPartBot = newConnection1EditPartBot;
 
-        // Reconnect target of second connection as initially
-        connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
-        from = connection2Points.getLastPoint();
-        to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 2);
-        connection2EditPartBot.select();
-        editor.drag(from, to);
-        // Check that reconnection is correct
-        assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot).size());
-        newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
-        assertEquals(1, newConnection2EditPartBotList.size());
-        newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
-        newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
-        assertEquals(2, newConnection2Points.size());
-        GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 0, 2);
-        GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 0, 2);
-        connection2EditPartBot = newConnection2EditPartBot;
+            // Reconnect target of second connection as initially
+            connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            from = connection2Points.getLastPoint();
+            to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 20);
+            connection2EditPartBot.select();
+            editor.drag(from, to);
+            // Check that reconnection is correct
+            assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot).size());
+            newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
+            assertEquals(1, newConnection2EditPartBotList.size());
+            newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
+            newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
+            assertEquals(3, newConnection2Points.size());
+            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 1, 2);
+            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 1, 2);
+            connection2EditPartBot = newConnection2EditPartBot;
 
-        // Reconnect source of first connection
-        connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
-        from = connection1Points.getFirstPoint();
-        to = from.getCopy().setX(editor.getBounds(ref3EditPartBot).x);
-        connection1EditPartBot.select();
-        editor.drag(from, to);
-        // Check that reconnection is correct
-        assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
-        newConnection1EditPartBotList = editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot);
-        assertEquals(1, newConnection1EditPartBotList.size());
-        newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
-        newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
-        assertEquals(2, newConnection1Points.size());
-        GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 2);
-        connection1EditPartBot = newConnection1EditPartBot;
+            // Reconnect source of first connection
+            connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            from = connection1Points.getFirstPoint();
+            to = from.getCopy().setX(editor.getBounds(ref3EditPartBot).x);
+            connection1EditPartBot.select();
+            editor.drag(from, to);
+            // Check that reconnection is correct
+            assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
+            newConnection1EditPartBotList = editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot);
+            assertEquals(1, newConnection1EditPartBotList.size());
+            newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
+            newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
+            assertEquals(3, newConnection1Points.size());
+            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 2);
+            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 2);
+            connection1EditPartBot = newConnection1EditPartBot;
 
-        // Reconnect source of second connection
-        connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
-        from = connection2Points.getFirstPoint();
-        to = from.getCopy().setX(editor.getBounds(ref4EditPartBot).x);
-        connection2EditPartBot.select();
-        editor.drag(from, to);
-        // Check that reconnection is correct
-        assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
-        newConnection2EditPartBotList = editor.getConnectionEditPart(ref4EditPartBot, eClass1EditPartBot);
-        assertEquals(1, newConnection2EditPartBotList.size());
-        newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
-        newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
-        assertEquals(2, newConnection2Points.size());
-        GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 1);
-        connection2EditPartBot = newConnection2EditPartBot;
+            // Reconnect source of second connection
+            connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            from = connection2Points.getFirstPoint();
+            to = from.getCopy().setX(editor.getBounds(ref4EditPartBot).x);
+            connection2EditPartBot.select();
+            editor.drag(from, to);
+            // Check that reconnection is correct
+            assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
+            newConnection2EditPartBotList = editor.getConnectionEditPart(ref4EditPartBot, eClass1EditPartBot);
+            assertEquals(1, newConnection2EditPartBotList.size());
+            newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
+            newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
+            assertEquals(3, newConnection2Points.size());
+            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 2);
+            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection2Points.getLastPoint(), newConnection2Points.getLastPoint(), 0, 1);
+            connection2EditPartBot = newConnection2EditPartBot;
+
+            // Reconnect source of first connection as initially
+            connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            from = connection1Points.getFirstPoint();
+            to = from.getCopy().setX(editor.getBounds(ref1EditPartBot).getRight().x - 2);
+            connection1EditPartBot.select();
+            editor.drag(from, to);
+            // Check that reconnection is correct
+            assertEquals(0, editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot).size());
+            newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot);
+            assertEquals(1, newConnection1EditPartBotList.size());
+            newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
+            newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
+            assertEquals(3, newConnection1Points.size());
+            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 4);
+            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 1);
+
+            // Reconnect source of second connection as initially
+            connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
+            from = connection2Points.getFirstPoint();
+            to = from.getCopy().setX(editor.getBounds(ref2EditPartBot).getRight().x - 2);
+            connection2EditPartBot.select();
+            editor.drag(from, to);
+            // Check that reconnection is correct
+            assertEquals(0, editor.getConnectionEditPart(ref4EditPartBot, eClass2EditPartBot).size());
+            newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
+            assertEquals(1, newConnection2EditPartBotList.size());
+            newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
+            newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
+            assertEquals(3, newConnection2Points.size());
+            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 2);
+            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 2);
+        } finally {
+            editor.restore();
+        }
     }
 
     /**

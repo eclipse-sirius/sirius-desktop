@@ -246,6 +246,17 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         SiriusSetConnectionAnchorsCommand scaCommand = new SiriusSetConnectionAnchorsCommand(editingDomain, DiagramUIMessages.Commands_SetConnectionEndsCommand_Source, sourceView,
                 sourceView.getSourceEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         scaCommand.setNewSourceTerminal(node.mapConnectionAnchorToTerminal(sourceAnchor));
+
+        // We retrieve the current target anchor and set it in the
+        // SiriusSetConnectionAnchorsCommand. when reconnecting the edge, a new
+        // edge is created and the anchor is lost, we need to set it back.
+        Connection connection = (Connection) ((GraphicalEditPart) request.getConnectionEditPart()).getFigure();
+        ConnectionAnchor connectionAnchor = connection.getTargetAnchor();
+        if (connectionAnchor instanceof BaseSlidableAnchor) {
+            String targetTerminal = ((BaseSlidableAnchor) connectionAnchor).getTerminal();
+            scaCommand.setNewTargetTerminal(targetTerminal);
+        }
+
         CompositeCommand cc = new CompositeCommand(DiagramUIMessages.Commands_SetConnectionEndsCommand_Source);
         cc.compose(scaCommand);
 
@@ -254,7 +265,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         // previous edge under reconnection
 
         // Set points of Edge as they are graphically
-        Connection connection = (Connection) ((GraphicalEditPart) request.getConnectionEditPart()).getFigure();
         Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
         connection.translateToRelative(tempSourceRefPoint);
 
@@ -418,8 +428,20 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         SiriusSetConnectionAnchorsCommand scaCommand = new SiriusSetConnectionAnchorsCommand(editingDomain, DiagramUIMessages.Commands_SetConnectionEndsCommand_Target, targetView,
                 targetView.getTargetEdges(), ReconnectionKind.RECONNECT_TARGET_LITERAL);
         scaCommand.setNewTargetTerminal(targetEP.mapConnectionAnchorToTerminal(targetAnchor));
+
+        // We retrieve the current source anchor and set it in the
+        // SiriusSetConnectionAnchorsCommand. when reconnecting the edge, a new
+        // edge is created and the anchor is lost, we need to set it back.
+        ConnectionEditPart cep = request.getConnectionEditPart();
+        Connection connection = (Connection) cep.getFigure();
+        ConnectionAnchor connectionAnchor = connection.getSourceAnchor();
+        if (connectionAnchor instanceof BaseSlidableAnchor) {
+            String sourceTerminal = ((BaseSlidableAnchor) connectionAnchor).getTerminal();
+            scaCommand.setNewSourceTerminal(sourceTerminal);
+        }
+
         Command cmd = new ICommandProxy(scaCommand);
-        EditPart cep = request.getConnectionEditPart();
+
         RoutingStyle style = (RoutingStyle) ((View) cep.getModel()).getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
         Routing currentRouter = Routing.MANUAL_LITERAL;
         if (style != null) {
@@ -451,7 +473,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             // previous edge under reconnection
 
             // Set points of Edge as they are graphically
-            Connection connection = (Connection) ((GraphicalEditPart) request.getConnectionEditPart()).getFigure();
             Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
             connection.translateToRelative(tempSourceRefPoint);
 

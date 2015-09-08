@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,7 +66,8 @@ public class EdgeReconnectionHelper {
     public EdgeReconnectionHelper(View reconnectionTarget, List<Edge> reconnectionTargetEdges, ReconnectionKind reconnectionKind) {
         this.reconnectionTarget = reconnectionTarget;
         this.reconnectionTargetEdges = new ArrayList<Edge>(reconnectionTargetEdges);
-        assert reconnectionKind == ReconnectionKind.RECONNECT_SOURCE_LITERAL || reconnectionKind == ReconnectionKind.RECONNECT_TARGET_LITERAL : "reconnectionKind must be ReconnectionKind.RECONNECT_SOURCE or ReconnectionKind.RECONNECT_TARGET";
+        assert reconnectionKind == ReconnectionKind.RECONNECT_SOURCE_LITERAL
+                || reconnectionKind == ReconnectionKind.RECONNECT_TARGET_LITERAL : "reconnectionKind must be ReconnectionKind.RECONNECT_SOURCE or ReconnectionKind.RECONNECT_TARGET";
         this.reconnectionKind = reconnectionKind;
     }
 
@@ -82,6 +83,7 @@ public class EdgeReconnectionHelper {
             Iterables.removeAll(sourceEdges, reconnectionTargetEdges);
             Predicate<Edge> notToReconnectingEdge = new Predicate<Edge>() {
 
+                @Override
                 public boolean apply(Edge input) {
                     return !sourceEdges.contains(input.getTarget());
                 }
@@ -107,6 +109,7 @@ public class EdgeReconnectionHelper {
             Iterables.removeAll(targetEdges, reconnectionTargetEdges);
             Predicate<Edge> notFromReconnectingEdge = new Predicate<Edge>() {
 
+                @Override
                 public boolean apply(Edge input) {
                     return !targetEdges.contains(input.getSource());
                 }
@@ -129,6 +132,14 @@ public class EdgeReconnectionHelper {
             }
         }
         return edge;
+    }
+
+    public boolean isReconnectingSource() {
+        return reconnectionKind.equals(ReconnectionKind.RECONNECT_SOURCE_LITERAL);
+    }
+
+    public boolean isReconnectingTarget() {
+        return reconnectionKind.equals(ReconnectionKind.RECONNECT_TARGET_LITERAL);
     }
 
 }
