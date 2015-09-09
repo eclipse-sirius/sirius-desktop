@@ -285,5 +285,6 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     public void dispose() {
         super.dispose();
         this.javaExtensions.removeClassLoadingCallBack(callback);
+        this.javaExtensions.dispose();
     }
 }
