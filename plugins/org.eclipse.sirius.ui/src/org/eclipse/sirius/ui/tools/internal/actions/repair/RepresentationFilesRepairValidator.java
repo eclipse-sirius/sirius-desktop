@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.actions.repair;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
@@ -44,7 +46,7 @@ public class RepresentationFilesRepairValidator {
     /**
      * The name of the dialog which ask question.
      */
-    public static final String MESSAGE_TITLE = "Repair confirmation";
+    public static final String MESSAGE_TITLE = Messages.RepresentationFilesRepairValidator_confirmationDialogTitle;
 
     private static final int OPERATION_CANCELED = 0;
 
@@ -108,38 +110,32 @@ public class RepresentationFilesRepairValidator {
         }
 
         boolean saveSessions = false;
-        String repairActionLabel = SiriusEditPlugin.getPlugin().getString("repairActionLabel");
-        StringBuffer message = new StringBuffer("It's impossible to launch the \"" + repairActionLabel
-                + "\" action with opened representations file. So they will be closed before the repair process.");
+        String repairActionLabel = Messages.RepresentationFilesRepairValidator_repairActionLabel;
+        StringBuffer message = new StringBuffer(MessageFormat.format(Messages.RepresentationFilesRepairValidator_launchImpossibleRepresentationsOpened, repairActionLabel));
         if (dirtySessionsName.size() > 0) {
-            message.append(" The following representations file");
             if (dirtySessionsName.size() == 1) {
-                message.append(" has");
+                message.append(" ").append(Messages.RepresentationFilesRepairValidator_representationFileModified); //$NON-NLS-1$
             } else {
-                message.append("s have");
+                message.append(" ").append(Messages.RepresentationFilesRepairValidator_representationFilesModified); //$NON-NLS-1$
             }
-            message.append(" been modified : ");
             for (String dirtySessionName : dirtySessionsName) {
-                message.append("\n\t- '");
-                message.append(dirtySessionName);
-                message.append("'");
-                message.append(", ");
+                message.append(MessageFormat.format("\n\t- ''{0}'', ", dirtySessionName)); //$NON-NLS-1$
             }
             message.delete(message.length() - 2, message.length() - 1);
-            message.append("\n\nSave changes?");
+            message.append("\n\n").append(Messages.RepresentationFilesRepairValidator_askSave); //$NON-NLS-1$
             String[] buttons = new String[] { IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL, IDialogConstants.CANCEL_LABEL };
             final MessageDialog dialog = new MessageDialog(shell, MESSAGE_TITLE, null, message.toString(), MessageDialog.QUESTION, buttons, 0);
             int result = dialog.open();
             if (result == SWT.DEFAULT || buttons[result].equals(IDialogConstants.CANCEL_LABEL)) {
-                throw new CoreException(new Status(IStatus.CANCEL, SiriusEditPlugin.ID, RepresentationFilesRepairValidator.OPERATION_CANCELED, "Migration canceled by user.", null));
+                throw new CoreException(new Status(IStatus.CANCEL, SiriusEditPlugin.ID, RepresentationFilesRepairValidator.OPERATION_CANCELED, Messages.RepresentationFilesRepairValidator_migrationCanceled, null));
             }
             if (buttons[result].equals(IDialogConstants.YES_LABEL)) {
                 saveSessions = true;
             }
         } else {
-            message.append("\nDo you want to continue?");
+            message.append("\n").append(Messages.RepresentationFilesRepairValidator_askContinue); //$NON-NLS-1$
             if (!MessageDialog.openConfirm(shell, MESSAGE_TITLE, message.toString())) {
-                throw new CoreException(new Status(IStatus.CANCEL, SiriusEditPlugin.ID, RepresentationFilesRepairValidator.OPERATION_CANCELED, "Migration canceled by user.", null));
+                throw new CoreException(new Status(IStatus.CANCEL, SiriusEditPlugin.ID, RepresentationFilesRepairValidator.OPERATION_CANCELED, Messages.RepresentationFilesRepairValidator_migrationCanceled, null));
             }
         }
         return saveSessions;

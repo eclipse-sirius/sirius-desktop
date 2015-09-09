@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.session;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -36,12 +37,13 @@ import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
 
 /**
  * Marker able to restore the command stack to the last save point.
- * 
+ *
  * @author mporhel
  */
 public class RestoreToLastSavePointListener implements ResourceSyncClient, IOperationHistoryListener {
@@ -52,7 +54,7 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
 
     /**
      * Create a new instance.
-     * 
+     *
      * @param session
      *            the session to listen
      */
@@ -130,7 +132,7 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
             // If something went wrong, we reload the changed resources:
             reloadTheResources();
             String sessionLabel = SiriusEditPlugin.getPlugin().getUiCallback().getSessionNameToDisplayWhileSaving(session);
-            SiriusPlugin.getDefault().warning(sessionLabel + " modified resources were reloaded. An error occurs while attempting to cancel all modifications.", e);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.RestoreToLastSavePointListener_errorModifiedResourcesReloaded, sessionLabel), e);
         }
     }
 
@@ -200,7 +202,7 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
      * Returns whether we can perform the entire revert by undoing all
      * operations. In other words, if the undo history is strictly lower to the
      * max limit.
-     * 
+     *
      * @return true if we can perform the undo, false otherwise.
      */
     private boolean canPerformTheRevertFromOperationHistory() {
@@ -213,7 +215,7 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
     /**
      * Check the DesignerUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE
      * preference state.
-     * 
+     *
      * @return the preference value.
      */
     public boolean isAllowedToReturnToSyncState() {

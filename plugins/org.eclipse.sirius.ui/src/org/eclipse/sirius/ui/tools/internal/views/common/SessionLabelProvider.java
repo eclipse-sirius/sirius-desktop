@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common;
+
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -22,6 +24,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.PlatformUI;
@@ -30,14 +33,14 @@ import com.google.common.collect.Iterables;
 
 /**
  * Label provider used for the session .
- * 
+ *
  * @author cedric
- * 
+ *
  */
 public class SessionLabelProvider extends AdapterFactoryLabelProvider {
     /**
      * Create a new session label provider.
-     * 
+     *
      * @param adapterFactory
      *            the adapter factory to delegate to.
      */
@@ -45,9 +48,6 @@ public class SessionLabelProvider extends AdapterFactoryLabelProvider {
         super(adapterFactory);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getText(final Object object) {
         String text = null;
@@ -62,16 +62,15 @@ public class SessionLabelProvider extends AdapterFactoryLabelProvider {
             if (item instanceof Resource && safeResource((Resource) item)) {
                 Resource res = (Resource) item;
                 if (res.getURI() != null && res.getURI().lastSegment() != null) {
-                    return URI.decode(res.getURI().lastSegment()) + " - [" + URI.decode(res.getURI().toString()) + "]";
+                    return MessageFormat.format("{0} - [{1}]", URI.decode(res.getURI().lastSegment()), URI.decode(res.getURI().toString())); //$NON-NLS-1$
                 }
             } else {
                 // TODO remove this try/catch once the offline mode
-                // will
-                // be supported
+                // will be supported
                 try {
                     text = super.getText(item);
                 } catch (IllegalStateException e) {
-                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while reading to the model"));
+                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, Messages.SessionLabelProvider_errorReadingModel));
                 }
             }
         }
@@ -95,9 +94,6 @@ public class SessionLabelProvider extends AdapterFactoryLabelProvider {
         return safe;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Image getImage(final Object object) {
         Image image = null;

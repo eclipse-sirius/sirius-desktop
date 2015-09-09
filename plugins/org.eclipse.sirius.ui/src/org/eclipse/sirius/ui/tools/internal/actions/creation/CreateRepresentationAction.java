@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -144,7 +144,7 @@ public class CreateRepresentationAction extends Action {
                 @Override
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     try {
-                        monitor.beginTask("Representation creation", 5);
+                        monitor.beginTask(org.eclipse.sirius.viewpoint.provider.Messages.CreateRepresentationAction_creationTask, 5);
                         CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session, description, selection, representationName, new SubProgressMonitor(monitor,
                                 4));
 
@@ -164,7 +164,7 @@ public class CreateRepresentationAction extends Action {
                 @Override
                 public void run(final IProgressMonitor monitor) {
                     try {
-                        monitor.beginTask("Representation opening", 1);
+                        monitor.beginTask(org.eclipse.sirius.viewpoint.provider.Messages.CreateRepresentationAction_openingTask, 1);
                         DialectUIManager.INSTANCE.openEditor(session, createdDRepresentation, new SubProgressMonitor(monitor, 1));
                     } finally {
                         monitor.done();

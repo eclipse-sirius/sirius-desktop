@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -22,7 +23,7 @@ import org.eclipse.swt.widgets.Listener;
 
 /**
  * A wizard page to choose Session kind.
- * 
+ *
  * @author mchauvin
  */
 public class SessionKindSelectionWizardPage extends WizardPage {
@@ -33,7 +34,7 @@ public class SessionKindSelectionWizardPage extends WizardPage {
 
     /**
      * Create the page.
-     * 
+     *
      * @param pageName
      *            the page's name.
      * @param defaultToEmptyModel
@@ -42,16 +43,12 @@ public class SessionKindSelectionWizardPage extends WizardPage {
      */
     public SessionKindSelectionWizardPage(final String pageName, final boolean defaultToEmptyModel) {
         super(pageName);
-        setTitle("Representations File");
-        setDescription("Choose initialization kind");
+        setTitle(Messages.SessionKindSelectionWizardPage_title);
+        setDescription(Messages.SessionKindSelectionWizardPage_description);
         this.emptyModel = defaultToEmptyModel;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
 
         control = SWTUtil.createCompositeBothFill(parent, 1, false);
@@ -65,33 +62,29 @@ public class SessionKindSelectionWizardPage extends WizardPage {
 
         emptyButton.addListener(SWT.Selection, new Listener() {
 
+            @Override
             public void handleEvent(final Event event) {
                 final Button button = (Button) event.widget;
                 emptyModel = button.getSelection();
             }
         });
 
-        emptyButton.setText("Empty file");
+        emptyButton.setText(Messages.SessionKindSelectionWizardPage_emptyFile_label);
         final Label emptyLabel = new Label(control, SWT.NONE);
-        emptyLabel.setText("     Create a new empty representations file. You will be able after to associate this file with one or more semantic resources.");
+        emptyLabel.setText("     " + Messages.SessionKindSelectionWizardPage_emptyFile_details); //$NON-NLS-1$
 
         new Label(control, SWT.NONE);
         new Label(control, SWT.NONE);
 
         final Button resourceButton = new Button(control, SWT.RADIO);
-        resourceButton.setText("Initialization from a semantic resource");
+        resourceButton.setText(Messages.SessionKindSelectionWizardPage_initialization_label);
         resourceButton.setSelection(!emptyModel);
         final Label resourceLabel = new Label(control, SWT.NONE);
-        resourceLabel.setText("     Link the new representations file to a semantic resource. You will be able to associate this representations file with other semantic ressources.");
+        resourceLabel.setText("     " + Messages.SessionKindSelectionWizardPage_initialization_details); //$NON-NLS-1$
 
         setControl(control);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.WizardPage#getNextPage()
-     */
     @Override
     public IWizardPage getNextPage() {
         if (!emptyModel) {
@@ -103,7 +96,7 @@ public class SessionKindSelectionWizardPage extends WizardPage {
 
     /**
      * Return whether the selected session is an empty one.
-     * 
+     *
      * @return <code>true</code> if the selected session is an empty one,
      *         <code>false</code> otherwise
      */

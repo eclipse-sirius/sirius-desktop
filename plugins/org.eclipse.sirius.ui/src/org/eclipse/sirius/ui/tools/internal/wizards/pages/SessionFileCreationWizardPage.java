@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,17 +21,18 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 /**
  * Wizard page to create a new Session file.
- * 
+ *
  * @author mchauvin
  */
 public class SessionFileCreationWizardPage extends SessionResourceCreationWizardPage {
 
     /**
      * Constructor.
-     * 
+     *
      * @param pageName
      *            the page name.
      * @param selection
@@ -41,22 +42,15 @@ public class SessionFileCreationWizardPage extends SessionResourceCreationWizard
      */
     public SessionFileCreationWizardPage(final String pageName, final IStructuredSelection selection, final String fileExtension) {
         super(pageName, selection, fileExtension);
-        setTitle("Representations File");
-        setDescription("Create a new representations file resource");
+        setTitle(Messages.SessionFileCreationWizardPage_title);
+        setDescription(Messages.SessionFileCreationWizardPage_description);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     protected String getNoselectionFileName() {
-        return "representations"; //$NON-NLS-1$
+        return Messages.SessionFileCreationWizardPage_noSelectionFileName;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.dialogs.WizardNewFileCreationPage#validatePage()
-     */
     @Override
     protected boolean validatePage() {
         boolean result = true;
@@ -65,7 +59,7 @@ public class SessionFileCreationWizardPage extends SessionResourceCreationWizard
         boolean isValidForModelingProject = noSecondaryAirdCreationForModelingProject(getFilePath());
         if (!isValidForModelingProject) {
             result = false;
-            setErrorMessage("The selected Modeling Project already has its representations file");
+            setErrorMessage(Messages.SessionFileCreationWizardPage_errorMessage);
         } else {
             // 2. Normal file validation
             result = super.validatePage();

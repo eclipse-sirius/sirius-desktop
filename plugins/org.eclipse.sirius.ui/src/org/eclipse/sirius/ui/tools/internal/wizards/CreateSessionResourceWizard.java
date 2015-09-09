@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,13 +28,14 @@ import org.eclipse.sirius.business.api.session.SessionCreationOperation;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectSelectionWizardPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SessionResourceCreationWizardPage;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * Wizard to create a new DView from an Existing model.
- * 
+ *
  * @author ymortier
  */
 public class CreateSessionResourceWizard extends Wizard implements INewWizard {
@@ -66,7 +67,7 @@ public class CreateSessionResourceWizard extends Wizard implements INewWizard {
 
     /**
      * Constructor.
-     * 
+     *
      * @param initialSelection
      *            The initial selection
      */
@@ -80,7 +81,7 @@ public class CreateSessionResourceWizard extends Wizard implements INewWizard {
 
     /**
      * return the current selection.
-     * 
+     *
      * @return the current selection.
      */
     public IStructuredSelection getSelection() {
@@ -90,25 +91,14 @@ public class CreateSessionResourceWizard extends Wizard implements INewWizard {
         return selection;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
-     *      org.eclipse.jface.viewers.IStructuredSelection)
-     */
+    @Override
     public void init(final IWorkbench w, final IStructuredSelection s) {
         this.workbench = w;
         this.selection = s;
-        setWindowTitle("Create .aird file");
+        setWindowTitle(Messages.CreateSessionResourceWizard_title);
         setNeedsProgressMonitor(true);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#addPages()
-     */
     @Override
     public void addPages() {
         final Collection<String> extensions = new ArrayList<String>();
@@ -117,11 +107,6 @@ public class CreateSessionResourceWizard extends Wizard implements INewWizard {
         addPage(diagramModelFilePage);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#performFinish()
-     */
     @Override
     public boolean performFinish() {
         final IRunnableWithProgress op = new DiagramFileCreationOperation();
@@ -133,9 +118,9 @@ public class CreateSessionResourceWizard extends Wizard implements INewWizard {
             // return false;
         } catch (final InvocationTargetException e) {
             if (e.getTargetException() instanceof CoreException) {
-                ErrorDialog.openError(getContainer().getShell(), "Error creating resource", null, ((CoreException) e.getTargetException()).getStatus());
+                ErrorDialog.openError(getContainer().getShell(), Messages.CreateSessionResourceWizard_resourceCreationError, null, ((CoreException) e.getTargetException()).getStatus());
             } else {
-                SiriusTransPlugin.getPlugin().error("Error creating aird session data", e.getTargetException()); //$NON-NLS-1$
+                SiriusTransPlugin.getPlugin().error(Messages.CreateSessionResourceWizard_sessionDataCreationError, e.getTargetException());
             }
             // return false;
             errorCatch = true;
@@ -149,7 +134,7 @@ public class CreateSessionResourceWizard extends Wizard implements INewWizard {
 
     /**
      * return the newly created {@link Session}.
-     * 
+     *
      * @return the newly created {@link Session}.
      */
     public Session getCreatedSession() {

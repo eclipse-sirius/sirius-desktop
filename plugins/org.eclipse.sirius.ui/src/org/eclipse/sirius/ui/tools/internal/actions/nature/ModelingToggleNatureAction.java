@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.actions.nature;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -27,6 +28,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -35,18 +37,13 @@ import com.google.common.collect.Sets;
 
 /**
  * Enable toggle to modeling project.
- * 
+ *
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
- * 
+ *
  */
 @SuppressWarnings("restriction")
 public class ModelingToggleNatureAction extends AbstractHandler {
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
-     */
+    @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
         Set<IProject> selectedProjects = getSelectedProjects(event);
         for (IProject project : selectedProjects) {
@@ -75,7 +72,7 @@ public class ModelingToggleNatureAction extends AbstractHandler {
 
     /**
      * Toggles sample nature on a project.
-     * 
+     *
      * @param project
      *            to have sample nature added or removed
      */
@@ -83,6 +80,7 @@ public class ModelingToggleNatureAction extends AbstractHandler {
         try {
             PlatformUI.getWorkbench().getProgressService().run(true, false, new IRunnableWithProgress() {
 
+                @Override
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     try {
                         if (ModelingProject.hasModelingProjectNature(project)) {
@@ -93,7 +91,7 @@ public class ModelingToggleNatureAction extends AbstractHandler {
                     } catch (CoreException e) {
                         UICallBack uiCallback = SiriusEditPlugin.getPlugin().getUiCallback();
                         if (uiCallback != null) {
-                            uiCallback.openError("Convert Project to Modeling project", "Impossible to convert the project: " + e.getMessage());
+                            uiCallback.openError(Messages.ModelingToggleNatureAction_errorDialogTitle, MessageFormat.format(Messages.ModelingToggleNatureAction_errorDialogMessage, e.getMessage()));
                         }
                     }
                 }

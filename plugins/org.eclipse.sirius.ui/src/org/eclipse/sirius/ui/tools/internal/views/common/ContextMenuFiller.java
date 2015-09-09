@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,6 +81,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.ISaveablesSource;
 import org.eclipse.ui.IWorkbenchCommandConstants;
@@ -101,8 +102,6 @@ import com.google.common.collect.Sets;
  * 
  */
 public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
-
-    private static final String NEW_REPRESENTATION_MENU = "New Representation";
 
     private static final String NEW_REPRESENTATION_MENU_ID = "menu.viewpoint.new.representation"; //$NON-NLS-1$
 
@@ -230,7 +229,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
 
                     }
 
-                    addActionToMenu(menu, SEMANTIC_MANAGEMENT_SEPARATOR, new Action("Show in hierarchy") {
+                    addActionToMenu(menu, SEMANTIC_MANAGEMENT_SEPARATOR, new Action(Messages.ContextMenuFiller_showInHierarchy) {
                         @Override
                         public void run() {
                             modelViewer.setSelection(newSelection, true);
@@ -348,7 +347,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
                 /* New representations menu */
                 final Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false), firstSelected);
                 if (descriptions.size() > 0) {
-                    final MenuManager addNewRepresentation = new MenuManager(NEW_REPRESENTATION_MENU, NEW_REPRESENTATION_MENU_ID);
+                    final MenuManager addNewRepresentation = new MenuManager(Messages.ContextMenuFiller_newRepresentation, NEW_REPRESENTATION_MENU_ID);
                     for (final RepresentationDescription representationDescription : descriptions) {
                         if (DialectManager.INSTANCE.canCreate(firstSelected, representationDescription)) {
                             addNewRepresentation.add(buildCreateRepresentationAction(firstSelected, representationDescription, session));
@@ -479,7 +478,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
      * @param targetResources
      */
     private void computeMoveMenu(IMenuManager menu, final Session session, final Collection<DRepresentation> movableRepresentations, final Collection<Resource> targetResources) {
-        final MenuManager moveMenu = new MenuManager("Move", "1");
+        final MenuManager moveMenu = new MenuManager(Messages.ContextMenuFiller_move, "1"); //$NON-NLS-1$
         for (final Resource target : targetResources) {
             if (!target.getContents().isEmpty() && target.getContents().get(0) instanceof DAnalysis) {
                 moveMenu.add(buildMoveRepresentationsActions(session, movableRepresentations, (DAnalysis) target.getContents().get(0)));
@@ -567,7 +566,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
 
     private Action buildCloseSessionAction(final List<Session> selection) {
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/close.gif"); //$NON-NLS-1$
-        CloseSessionsAction closeSessionsAction = new CloseSessionsAction("Close");
+        CloseSessionsAction closeSessionsAction = new CloseSessionsAction(Messages.ContextMenuFiller_closeSession);
         closeSessionsAction.setImageDescriptor(descriptor);
         closeSessionsAction.selectionChanged(new StructuredSelection(selection));
         return closeSessionsAction;
@@ -575,7 +574,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
 
     private Action buildSaveSessionAction(final List<Session> selection) {
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/save.gif"); //$NON-NLS-1$
-        return new Action("Save", descriptor) {
+        return new Action(Messages.ContextMenuFiller_saveSession, descriptor) {
             @Override
             public void run() {
                 super.run();
@@ -593,7 +592,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
                                         try {
                                             saveable.doSave(monitor);
                                         } catch (CoreException e) {
-                                            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Error at session saving", e));
+                                            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, Messages.ContextMenuFiller_saveSessionError, e));
                                         }
                                     }
                                 } else {

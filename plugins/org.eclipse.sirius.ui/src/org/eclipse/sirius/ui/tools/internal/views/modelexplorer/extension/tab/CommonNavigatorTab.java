@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab;
 
-import java.util.Collection;
-
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -32,7 +31,7 @@ import com.google.common.collect.Sets;
 
 /**
  * TODO MCH comment here.
- * 
+ *
  * @author mchauvin
  */
 public class CommonNavigatorTab implements IModelExplorerTabExtension {
@@ -40,7 +39,7 @@ public class CommonNavigatorTab implements IModelExplorerTabExtension {
     /** the id of the tab. */
     public static final String TAB_ID = "navigator"; //$NON-NLS-1$
 
-    private static final String MODEL_EXPLORER_STRUCTURE_TAB_NAME = "Navigator";
+    private static final String MODEL_EXPLORER_STRUCTURE_TAB_NAME = Messages.CommonNavigatorTab_name;
 
     private static final String MODEL_EXPLORER_STRUCTURE_TAB_ICON = "icons/full/others/structure.gif"; //$NON-NLS-1$
 
@@ -51,7 +50,7 @@ public class CommonNavigatorTab implements IModelExplorerTabExtension {
     /**
      * Create a new instance, this is the single extension for which we will
      * have a constructor with a parameter.
-     * 
+     *
      * @param view
      *            the main view
      */
@@ -59,16 +58,12 @@ public class CommonNavigatorTab implements IModelExplorerTabExtension {
         this.view = view;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void init(IViewSite site) {
         /* do nothing */
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Control createTabControl(CTabFolder tabFolder) {
         view.createNavigatorControl(tabFolder);
         hookGlobalActions();
@@ -88,6 +83,7 @@ public class CommonNavigatorTab implements IModelExplorerTabExtension {
         bars.setGlobalActionHandler(ActionFactory.DELETE.getId(), deleteActionHandler);
 
         view.getCommonViewer().getControl().addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent event) {
                 if (event.character == SWT.DEL && event.stateMask == 0 && deleteActionHandler.isEnabled()) {
                     deleteActionHandler.run();
@@ -98,48 +94,26 @@ public class CommonNavigatorTab implements IModelExplorerTabExtension {
         bars.updateActionBars();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getToolTipText() {
-        return MODEL_EXPLORER_STRUCTURE_TAB_NAME;
+        return CommonNavigatorTab.MODEL_EXPLORER_STRUCTURE_TAB_NAME;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Iterable<IAction> getActions() {
-        Collection<IAction> actions = Sets.newLinkedHashSet();
-
-        // IAction testAction = new Action("Enable project mode",
-        // IAction.AS_CHECK_BOX) {
-        // public void run() {
-        // if
-        // (CommonNavigatorTab.MODE_MANAGER.getMode().equals(NavigatorMode.RESOURCE))
-        // CommonNavigatorTab.MODE_MANAGER.setMode(NavigatorMode.PROJECT);
-        // else
-        // CommonNavigatorTab.MODE_MANAGER.setMode(NavigatorMode.RESOURCE);
-        // view.refreshNavigatorInput();
-        // }
-        // };
-        // testAction.setImageDescriptor(SiriusEditPlugin.Implementation.getBundledImageDescriptor(PROJECT_MODE_ACTIVATION));
-        // actions.add(testAction);
-
-        return actions;
+        return Sets.<IAction>newLinkedHashSet();
     }
 
     /**
      * Get the associated image.
-     * 
+     *
      * @return the tab image
      */
     public Image getImage() {
-        return SiriusEditPlugin.getPlugin().getBundledImage(MODEL_EXPLORER_STRUCTURE_TAB_ICON);
+        return SiriusEditPlugin.getPlugin().getBundledImage(CommonNavigatorTab.MODEL_EXPLORER_STRUCTURE_TAB_ICON);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void dispose() {
         view = null;
     }

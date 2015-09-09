@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,12 +38,13 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 import com.google.common.collect.Lists;
 
 /**
  * Menus/actions common to all Sirius dialect editors.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public final class MenuHelper {
@@ -62,7 +63,7 @@ public final class MenuHelper {
     /**
      * Build the menus and corresponding actions for this <code>element</code>
      * and this navigation description <code>navDesc</code>.
-     * 
+     *
      * @param openMenu
      *            The menu manager in which to add the actions
      * @param interpreter
@@ -80,7 +81,7 @@ public final class MenuHelper {
     public static boolean buildOpenRepresentationActions(final IMenuManager openMenu, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc,
             final DRepresentationElement element, final Session session, final AdapterFactory adapterFactory) {
         boolean atLeastOneRepresentationActionsWasCreated = false;
-        Collection<EObject> candidates = findCandidates(element, navDesc, interpreter);
+        Collection<EObject> candidates = MenuHelper.findCandidates(element, navDesc, interpreter);
         for (EObject candidate : candidates) {
             Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(candidate, session);
             for (DRepresentation representation : representations) {
@@ -94,7 +95,7 @@ public final class MenuHelper {
                             RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
                         }
                     }
-                    openMenu.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, label, adapterFactory));
+                    openMenu.appendToGroup(MenuHelper.OPEN_REPRESENTATION_GROUP_SEPARATOR, MenuHelper.buildOpenRepresentationAction(session, representation, label, adapterFactory));
                     atLeastOneRepresentationActionsWasCreated = true;
                 }
             }
@@ -105,7 +106,7 @@ public final class MenuHelper {
     /**
      * Computes all the candidates for navigation from a starting element using
      * the specified navigation description.
-     * 
+     *
      * @param element
      *            the starting point.
      * @param navDesc
@@ -131,7 +132,7 @@ public final class MenuHelper {
 
     /**
      * Build an action to open this <code>representation</code>.
-     * 
+     *
      * @param session
      *            The current session.
      * @param representation
@@ -143,13 +144,13 @@ public final class MenuHelper {
     public static IAction buildOpenRepresentationAction(final Session session, final DRepresentation representation, final AdapterFactory adapterFactory) {
         String representationName = representation.getName();
         if (StringUtil.isEmpty(representationName)) {
-            representationName = "(unnamed)";
+            representationName = Messages.MenuHelper_anonymousRepresentation;
             RepresentationDescription representationDescription = DialectManager.INSTANCE.getDescription(representation);
             if (representationDescription != null) {
                 representationName += " " + new IdentifiedElementQuery(representationDescription).getLabel(); //$NON-NLS-1$
             }
         }
-        return buildOpenRepresentationAction(session, representation, representationName, adapterFactory);
+        return MenuHelper.buildOpenRepresentationAction(session, representation, representationName, adapterFactory);
     }
 
     private static IAction buildOpenRepresentationAction(final Session session, final DRepresentation representation, final String label, final AdapterFactory adapterFactory) {

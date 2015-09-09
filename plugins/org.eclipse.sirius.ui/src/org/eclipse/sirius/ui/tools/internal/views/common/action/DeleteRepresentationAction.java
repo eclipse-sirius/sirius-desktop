@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -63,7 +64,7 @@ public class DeleteRepresentationAction extends Action {
      *            the representations to delete
      */
     public DeleteRepresentationAction(Collection<DRepresentation> representations) {
-        super("Delete", AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/delete.gif")); //$NON-NLS-2$
+        super(Messages.DeleteRepresentationAction_name, AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/delete.gif")); //$NON-NLS-1$
         this.selectedRepresentations = representations;
 
         // Disable the action if the selection is not valid
@@ -76,11 +77,11 @@ public class DeleteRepresentationAction extends Action {
     public void run() {
         Map<DRepresentation, Session> dRepresentation2Session = getRepresentations();
         final Map<Session, Set<DRepresentation>> session2DRepresentations = getSession2DRepresentations(dRepresentation2Session);
-        String deleteRepresenationDialogTitle = "Delete representation";
-        String deletionMessage = "Are you sure you want to delete the selected representation?";
+        String deleteRepresenationDialogTitle = Messages.DeleteRepresentationAction_title;
+        String deletionMessage = Messages.DeleteRepresentationAction_message;
         if (dRepresentation2Session.size() >= 2) {
-            deleteRepresenationDialogTitle = "Delete representations";
-            deletionMessage = "Are you sure you want to delete the selected representations?";
+            deleteRepresenationDialogTitle = Messages.DeleteRepresentationAction_title_plural;
+            deletionMessage = Messages.DeleteRepresentationAction_message_plural;
         }
         try {
             Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
@@ -91,7 +92,7 @@ public class DeleteRepresentationAction extends Action {
                     @Override
                     public void run(final IProgressMonitor monitor) {
                         try {
-                            monitor.beginTask("Associated editor closing", 1);
+                            monitor.beginTask(Messages.DeleteRepresentationAction_closeEditorsTask, 1);
                             for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
                                 Session session = entry.getKey();
                                 Set<DRepresentation> dRepresentations = entry.getValue();
@@ -123,7 +124,8 @@ public class DeleteRepresentationAction extends Action {
                     @Override
                     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                         try {
-                            monitor.beginTask("Representation" + (session2DRepresentations.size() > 1 ? "s" : "") + " deletion", session2DRepresentations.size());
+                            String taskName = session2DRepresentations.size() > 1 ? Messages.DeleteRepresentationAction_deleteRepresentationTask_plural : Messages.DeleteRepresentationAction_deleteRepresentationTask;
+                            monitor.beginTask(taskName, session2DRepresentations.size());
                             for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
                                 Session session = entry.getKey();
                                 Set<DRepresentation> dRepresentations = entry.getValue();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionHelper;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SessionFileCreationWizardPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SessionKindSelectionWizardPage;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
@@ -51,9 +52,9 @@ import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 
 /**
  * Wizard to create a new Session.
- * 
+ *
  * Can be used in project without the modeling nature only.
- * 
+ *
  * @author mchauvin
  */
 public class NewSessionWizard extends Wizard implements INewWizard {
@@ -62,8 +63,6 @@ public class NewSessionWizard extends Wizard implements INewWizard {
      * Wizard id.
      */
     public static final String ID = "org.eclipse.sirius.ui.session.creation"; //$NON-NLS-1$
-
-    private static final String SESSION_CREATION_ERROR_MSG = "Error creating Representations File";
 
     /**
      * The selection.
@@ -99,7 +98,7 @@ public class NewSessionWizard extends Wizard implements INewWizard {
 
     /**
      * Constructor.
-     * 
+     *
      * @param initialSelection
      *            The initial selection
      */
@@ -109,7 +108,7 @@ public class NewSessionWizard extends Wizard implements INewWizard {
 
     /**
      * return the current selection.
-     * 
+     *
      * @return the current selection.
      */
     public IStructuredSelection getSelection() {
@@ -119,25 +118,15 @@ public class NewSessionWizard extends Wizard implements INewWizard {
         return selection;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
-     *      org.eclipse.jface.viewers.IStructuredSelection)
-     */
+    @Override
     public void init(final IWorkbench w, final IStructuredSelection s) {
         this.selection = s;
         this.workbench = w;
-        setWindowTitle("New Representations File");
+        setWindowTitle(Messages.NewSessionWizard_title);
         setNeedsProgressMonitor(true);
         setDefaultPageImageDescriptor(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/wizban/banner_aird.gif")); //$NON-NLS-1$
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#canFinish()
-     */
     @Override
     public boolean canFinish() {
         if (sessionKindWizardPage.emptySession()) {
@@ -147,19 +136,13 @@ public class NewSessionWizard extends Wizard implements INewWizard {
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#addPages()
-     */
     @Override
     public void addPages() {
         final boolean singleSemanticResourceSelected = selection.size() == 1 && selection.getFirstElement() instanceof IFile;
         final boolean defaultToEmptyModel = !singleSemanticResourceSelected;
-        sessionKindWizardPage = new SessionKindSelectionWizardPage("SessionKind", defaultToEmptyModel);
+        sessionKindWizardPage = new SessionKindSelectionWizardPage("SessionKind", defaultToEmptyModel); //$NON-NLS-1$
         addPage(sessionKindWizardPage);
-        modelSelectionPage = new SelectFilesWizardPage("Select model to analyse", 1, 1, new String[] { StringUtil.JOKER_STRING });
+        modelSelectionPage = new SelectFilesWizardPage(Messages.NewSessionWizard_selectModel, 1, 1, new String[] { StringUtil.JOKER_STRING });
         if (selection != null) {
             modelSelectionPage.setInitialSelection(selection);
         }
@@ -168,11 +151,6 @@ public class NewSessionWizard extends Wizard implements INewWizard {
         addPage(sessionFileCreationPage);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#performFinish()
-     */
     @Override
     public boolean performFinish() {
         boolean finished = true;
@@ -184,6 +162,7 @@ public class NewSessionWizard extends Wizard implements INewWizard {
             final Session session = sessionCreationOperation.getSession();
             getContainer().run(false, false, new IRunnableWithProgress() {
 
+                @Override
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     if (session != null && !semanticResourceURIs.isEmpty()) {
                         ViewpointSelection.openViewpointsSelectionDialog(session);
@@ -201,11 +180,11 @@ public class NewSessionWizard extends Wizard implements INewWizard {
             });
 
         } catch (final InterruptedException e) {
-            IStatus status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, SESSION_CREATION_ERROR_MSG, e);
+            IStatus status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, Messages.NewSessionWizard_representationFileCreationError, e);
             SiriusEditPlugin.getPlugin().getLog().log(status);
             finished = false;
         } catch (final InvocationTargetException e) {
-            IStatus status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, SESSION_CREATION_ERROR_MSG, e.getTargetException());
+            IStatus status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, Messages.NewSessionWizard_representationFileCreationError, e.getTargetException());
             SiriusEditPlugin.getPlugin().getLog().log(status);
             finished = false;
         }
@@ -241,7 +220,7 @@ public class NewSessionWizard extends Wizard implements INewWizard {
 
     /**
      * A local class to create a session.
-     * 
+     *
      * @author mchauvin
      */
     private static final class SessionCreationOperation extends WorkspaceModifyOperation {
@@ -265,11 +244,11 @@ public class NewSessionWizard extends Wizard implements INewWizard {
         @Override
         protected void execute(final IProgressMonitor monitor) throws CoreException, InterruptedException {
             try {
-                monitor.beginTask("Representations file creation", 1);
+                monitor.beginTask(Messages.NewSessionWizard_fileCreationTask, 1);
 
                 // Create a Session from the session model URI
-                org.eclipse.sirius.business.api.session.SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(sessionModelURI, new SubProgressMonitor(
-                        monitor, 1));
+                org.eclipse.sirius.business.api.session.SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(sessionModelURI,
+                        new SubProgressMonitor(monitor, 1));
                 sessionCreationOperation.execute();
                 session = sessionCreationOperation.getCreatedSession();
 

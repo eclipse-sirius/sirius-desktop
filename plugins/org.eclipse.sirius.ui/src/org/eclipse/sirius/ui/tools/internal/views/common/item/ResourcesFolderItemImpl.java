@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,21 +15,20 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 import com.google.common.collect.Lists;
 
 /**
  * Represents resource folder item in session view.
- * 
+ *
  * @author mchauvin
  */
 public class ResourcesFolderItemImpl extends AbstractFolderItem implements org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem {
 
-    private static final String FOLDER_LABEL = "Representations per resource";
-
     /**
      * Constructor.
-     * 
+     *
      * @param session
      *            Session
      * @param parent
@@ -39,20 +38,12 @@ public class ResourcesFolderItemImpl extends AbstractFolderItem implements org.e
         super(session, parent);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getText()
-     */
+    @Override
     public String getText() {
-        return FOLDER_LABEL;
+        return Messages.ResourcesFolderItemImpl_text;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
-     */
+    @Override
     public Collection<?> getChildren() {
         final Collection<AnalysisResourceItem> all = Lists.newArrayList();
         final Collection<Resource> resources = session.getAllSessionResources();

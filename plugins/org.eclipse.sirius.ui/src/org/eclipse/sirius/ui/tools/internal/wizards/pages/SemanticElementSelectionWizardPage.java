@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -36,16 +37,10 @@ import org.eclipse.ui.dialogs.PatternFilter;
 
 /**
  * Page to select the semantic element of the new representation.
- * 
+ *
  * @author nlepine
  */
 public class SemanticElementSelectionWizardPage extends WizardPage {
-
-    private static final String SELECT_SEMANTIC_ELEMENT = "Select a semantic element for the new representation";
-
-    /** The title of the page. */
-    private static final String PAGE_TITLE = "Create a new representation";
-
     /** The composite control of the page. */
     private Composite pageComposite;
 
@@ -62,22 +57,18 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
 
     /**
      * Create a new <code>SemanticElementSelectionWizardPage</code>.
-     * 
+     *
      * @param root
      *            the root object
      */
     public SemanticElementSelectionWizardPage(final Session root) {
-        super(PAGE_TITLE);
-        this.setTitle(PAGE_TITLE);
+        super(Messages.SemanticElementSelectionWizardPage_title);
+        this.setTitle(Messages.SemanticElementSelectionWizardPage_title);
         this.root = root;
-        setMessage(SELECT_SEMANTIC_ELEMENT);
+        setMessage(Messages.SemanticElementSelectionWizardPage_message);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
 
@@ -88,6 +79,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
         this.treeViewer = createTreeViewer(pageComposite);
         treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            @Override
             public void selectionChanged(SelectionChangedEvent event) {
                 setPageComplete(isPageComplete());
             }
@@ -99,7 +91,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
 
     /**
      * Create the table viewer.
-     * 
+     *
      * @param parent
      *            the parent composite.
      * @return the table viewer.
@@ -113,7 +105,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
          * slightly improved user experience by automatically selecting the
          * first element which matches the filter and is selectable.
          */
-        ReflectionHelper.invokeMethodWithoutException(tree, "setQuickSelectionMode", new Class[] { Boolean.TYPE }, new Object[] { true });
+        ReflectionHelper.invokeMethodWithoutException(tree, "setQuickSelectionMode", new Class[] { Boolean.TYPE }, new Object[] { true }); //$NON-NLS-1$
         final TreeViewer viewer = tree.getViewer();
 
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
@@ -127,7 +119,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
 
     /**
      * Return the selected element.
-     * 
+     *
      * @return all selected elements.
      */
     public EObject getSelectedElement() {
@@ -139,11 +131,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.WizardPage#isPageComplete()
-     */
+    @Override
     public boolean isPageComplete() {
         return getSelectedElement() != null;
     }
@@ -154,18 +142,14 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
 
         /**
          * Create a new <code>SemanticContentProvider</code>.
-         * 
+         *
          */
         public SessionContentProvider() {
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-         */
+        @Override
         public Object[] getChildren(final Object parentElement) {
-            Object[] children = empty;
+            Object[] children = SessionContentProvider.empty;
             if (parentElement instanceof Session) {
                 children = ((Session) parentElement).getSemanticResources().toArray();
             } else if (parentElement instanceof EObject) {
@@ -176,47 +160,26 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
             return children;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-         */
+        @Override
         public Object getParent(final Object element) {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-         */
+        @Override
         public boolean hasChildren(final Object element) {
             return getChildren(element).length > 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
-         */
+        @Override
         public Object[] getElements(final Object inputElement) {
             return getChildren(inputElement);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-         */
+        @Override
         public void dispose() {
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
+        @Override
         public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
             // empty
         }
@@ -224,7 +187,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
 
     /**
      * Set the representation.
-     * 
+     *
      * @param representation
      *            RepresentationDescription
      */
@@ -250,9 +213,9 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
 
     /**
      * Viewer filter for representation creation on EObject.
-     * 
+     *
      * @author nlepine
-     * 
+     *
      */
     private class EObjectFilter extends PatternFilter {
 

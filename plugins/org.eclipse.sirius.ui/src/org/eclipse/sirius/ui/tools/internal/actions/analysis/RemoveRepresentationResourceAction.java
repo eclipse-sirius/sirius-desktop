@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -34,11 +35,11 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import com.google.common.collect.Sets;
 
 /**
- * 
+ *
  * Action to remove a representation resource from a session.
- * 
+ *
  * @author cbrun
- * 
+ *
  */
 public class RemoveRepresentationResourceAction extends Action {
 
@@ -48,29 +49,26 @@ public class RemoveRepresentationResourceAction extends Action {
 
     /**
      * Create the action.
-     * 
+     *
      * @param diagramResources
      *            resource to remove.
      * @param session
      *            current session.
      */
     public RemoveRepresentationResourceAction(final Collection<Resource> diagramResources, final Session session) {
-        super("Remove from representations file", AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/remove.gif")); //$NON-NLS-2$
+        super(Messages.RemoveRepresentationResourceAction_name, AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/remove.gif")); //$NON-NLS-1$
         this.diagramResources = Sets.newHashSet(diagramResources);
         this.session = session;
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void run() {
         final IEditingSession ui = SessionUIManager.INSTANCE.getUISession(session);
         int choice = ISaveablePart2.YES;
         if (session.getStatus() == SessionStatus.DIRTY) {
             /* Show a dialog. */
-            choice = SWTUtil.showSaveDialog(session, "Save representations file before removing the resource ?", true);
+            choice = SWTUtil.showSaveDialog(session, Messages.RemoveRepresentationResourceAction_saveDialogTitle, true);
         }
         if (ui != null) {
             if (choice != ISaveablePart2.CANCEL) {
@@ -98,9 +96,6 @@ public class RemoveRepresentationResourceAction extends Action {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isEnabled() {
         boolean mainResDeletion = diagramResources.contains(session.getSessionResource());
@@ -110,7 +105,7 @@ public class RemoveRepresentationResourceAction extends Action {
 
     /**
      * Command to remove an analysis from the session.
-     * 
+     *
      * @author mporhel
      */
     private class RemoveRepresentationResourcesCommand extends RecordingCommand {

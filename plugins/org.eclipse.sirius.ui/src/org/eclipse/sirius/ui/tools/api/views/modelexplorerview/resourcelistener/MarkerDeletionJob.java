@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 /**
  * A {@link WorkspaceJob} to delete markers of a {@link IResource}.
- * 
+ *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class MarkerDeletionJob extends WorkspaceJob {
@@ -30,18 +31,16 @@ public class MarkerDeletionJob extends WorkspaceJob {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param resource
      *            the {@link IResource} for which to delete markers
      */
     public MarkerDeletionJob(IResource resource) {
-        super("Remove modeling marker");
+        super(Messages.MarkerDeletionJob_name);
         this.resource = resource;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException {
         try {
             resource.deleteMarkers(ModelingMarker.MARKER_TYPE, false, IResource.DEPTH_ZERO);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.dialect.marker;
 
+import java.text.MessageFormat;
 import java.util.Map;
 import java.util.Set;
 
@@ -42,6 +43,7 @@ import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
@@ -72,7 +74,7 @@ import com.google.common.collect.Sets;
  * it (ask the user if severals are found) and then reveal the element calling
  * goToMarker on it.</li>
  * </ul>
- * 
+ *
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
@@ -132,7 +134,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
 
     /**
      * Creates a new {@link TraceabilityMarkerNavigationProvider}.
-     * 
+     *
      * @param editor
      *            the editor to focus in priority - can be null
      */
@@ -151,14 +153,14 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
             if (currentEditor.some()) {
                 editorTitle = currentEditor.get().getTitle();
             }
-            throw new IllegalArgumentException("We can't find a session associated to the given editor \"" + editorTitle + "\"");
+            throw new IllegalArgumentException(MessageFormat.format(Messages.TraceabilityMarkerNavigationProvider_noSessionFoundError, editorTitle));
         }
     }
 
     /**
      * Create a new {@link TraceabilityMarkerNavigationProvider} without having
      * an editor.
-     * 
+     *
      * @param session
      *            session to open.
      */
@@ -168,15 +170,15 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
 
     /**
      * Indicates if the given marker is a Traceability marker.
-     * 
+     *
      * @param marker
      *            the marker to test
      * @return true if the given marker is a Traceability marker, false
      *         otherwise
      */
     public static boolean isTraceabilityMarker(final IMarker marker) {
-        String elementURI = marker.getAttribute(TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, null);
-        String internalAttribute = marker.getAttribute(TRACEABILITY_INTERNAL_ATTRIBUTE, null);
+        String elementURI = marker.getAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, null);
+        String internalAttribute = marker.getAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_INTERNAL_ATTRIBUTE, null);
         return (elementURI != null) && (internalAttribute == null);
     }
 
@@ -199,16 +201,18 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
      * referencer it can be done efficiently), open it (ask the user if severals
      * are found) and then reveal the element calling goToMarker on it.</li>
      * </ul>
-     * 
+     *
      * @param marker
      *            a marker containing at least an
      *            {@link EValidator#URI_ATTRIBUTE} containing the URI of the
      *            semantic element to go to
      */
+    @Override
     public void gotoMarker(final IMarker marker) {
         if (Display.getCurrent() == null) {
             /* we are not in a UI thread */
             Display.getDefault().asyncExec(new Runnable() {
+                @Override
                 public void run() {
                     gotoMarkerInUIThread(marker);
                 }
@@ -222,7 +226,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
 
     /**
      * Execute the goToMarker logic. <b>Must be executed in UIThread</b>
-     * 
+     *
      * @param marker
      *            a marker containing at least an
      *            {@link EValidator#URI_ATTRIBUTE} containing the URI of the
@@ -239,7 +243,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
             EditingDomain editingDomain = currentSession.getTransactionalEditingDomain();
             EObject semanticElement = null;
 
-            String traceabilityAttribute = marker.getAttribute(TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, null);
+            String traceabilityAttribute = marker.getAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, null);
             if (traceabilityAttribute != null) {
                 URI uri = URI.createURI(traceabilityAttribute);
                 semanticElement = editingDomain.getResourceSet().getEObject(uri, true);
@@ -284,7 +288,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
      * </p>
      * <b>The Master Editor is the first Dialect Editor returned by </b>
      * <code>PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getEditorReferences()</code>
-     * 
+     *
      * @return true if the caller editor is a MasterEditor, false otherwise
      */
     private boolean isMasterEditorCall() {
@@ -303,7 +307,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
     /**
      * Searches for any representation element contained in the given
      * {@link DialectEditor} that references the given semanticElement.
-     * 
+     *
      * @param editor
      *            the {@link DialectEditor} in which search the semanticElement
      * @param semanticElement
@@ -341,7 +345,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
     /**
      * Indicates if the given representation Element references the given
      * semantic element.
-     * 
+     *
      * @param representationElement
      *            the representation element to search into
      * @param semanticElement
@@ -356,7 +360,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
     /**
      * Sets the focus on the found editor and select the representation element
      * referencing the search opened element.
-     * 
+     *
      * @param marker
      *            the original marker
      */
@@ -385,10 +389,10 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
         IMarker shadowMarker = null;
         try {
             shadowMarker = res.createMarker(marker.getType());
-            shadowMarker.setAttribute(TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, EcoreUtil.getURI(this.representationToFocus).toString());
-            shadowMarker.setAttribute(REPRESENTATION_ELEMENT_ID, resource.getURIFragment(representationElementToSelect).toString());
-            shadowMarker.setAttribute(REPRESENTATION_URI, EcoreUtil.getURI(this.representationToFocus).toString());
-            shadowMarker.setAttribute(TRACEABILITY_INTERNAL_ATTRIBUTE, "active"); //$NON-NLS-1$
+            shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, EcoreUtil.getURI(this.representationToFocus).toString());
+            shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.REPRESENTATION_ELEMENT_ID, resource.getURIFragment(representationElementToSelect).toString());
+            shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.REPRESENTATION_URI, EcoreUtil.getURI(this.representationToFocus).toString());
+            shadowMarker.setAttribute(TraceabilityMarkerNavigationProvider.TRACEABILITY_INTERNAL_ATTRIBUTE, "active"); //$NON-NLS-1$
 
             // Step 2 : we sets the focus on the editor and call the goToMarker
             // method on it
@@ -415,7 +419,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
      * current active Session</li>
      * <li>that references the given semanticElement.</li>
      * </ul>
-     * 
+     *
      * @param semanticElement
      *            the searched semantic element
      * @return true if one of the opened {@link DialectEditor} that are part of
@@ -457,7 +461,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
      * <b>Note :</b> if several representations are found, a popup will ask to
      * end-user which one he would like to open.
      * </p>
-     * 
+     *
      * @param semanticElement
      *            the searched semantic element
      */
@@ -498,7 +502,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
 
     /**
      * Asks end-user to choose Representation(s) to open in an editor.
-     * 
+     *
      * @param candidateRepresentations
      *            all representations that matched the searched element
      * @param representationToElements
@@ -532,6 +536,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
                     final DRepresentation selectedRepresentation = (DRepresentation) selectedRepresentation2;
                     Display.getDefault().asyncExec(new Runnable() {
 
+                        @Override
                         public void run() {
                             // We create a new Dialect editor
                             final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(currentSession, selectedRepresentation, new NullProgressMonitor());
@@ -556,14 +561,14 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
     /**
      * TreeSelectionDialog used to allow user to select Representations he would
      * like to open.
-     * 
+     *
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      */
     private class RepresentationToOpenDialog extends CheckedTreeSelectionDialog {
 
         /**
          * Constructor.
-         * 
+         *
          * @param parent
          *            The shell to parent from.
          * @param candidateRepresentations
@@ -577,15 +582,15 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
                     candidateRepresentations, session));
             SessionLabelProvider labelProvider = new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory());
             String objectName = labelProvider.getText(semanticElement);
-            setTitle("Open representations referencing " + objectName);
-            setMessage("Select the Representations (referencing " + objectName + ") you would like to open.");
+            setTitle(MessageFormat.format(Messages.TraceabilityMarkerNavigationProvider_dialogTitle, objectName));
+            setMessage(MessageFormat.format(Messages.TraceabilityMarkerNavigationProvider_dialogMessage, objectName));
         }
 
     }
 
     /**
      * ContentProvider for {@link RepresentationToOpenDialog}.
-     * 
+     *
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      */
     private class CandidateRepresentationContentProvider implements ITreeContentProvider {
@@ -599,18 +604,22 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
             this.session = session;
         }
 
+        @Override
         public Object[] getElements(Object inputElement) {
             return candidateRepresentations.toArray();
         }
 
+        @Override
         public void dispose() {
 
         }
 
+        @Override
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 
         }
 
+        @Override
         public Object[] getChildren(Object parentElement) {
             if (parentElement instanceof Session) {
                 return candidateRepresentations.toArray();
@@ -618,10 +627,12 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
             return null;
         }
 
+        @Override
         public Object getParent(Object element) {
             return session;
         }
 
+        @Override
         public boolean hasChildren(Object element) {
             return element instanceof Session;
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizar
 import org.eclipse.sirius.ui.tools.internal.dialogs.SemanticResourceDialog;
 import org.eclipse.sirius.ui.tools.internal.operations.SemanticResourceAdditionOperation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -52,17 +53,12 @@ public class AddModelDependencyAction extends Action {
      *            the session for which we will add a model dependency
      */
     public AddModelDependencyAction(Session session) {
-        super("Add Model");
+        super(Messages.AddModelDependencyAction_title);
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/add.gif"); //$NON-NLS-1$
         setImageDescriptor(descriptor);
         this.session = session;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
@@ -82,7 +78,7 @@ public class AddModelDependencyAction extends Action {
     }
 
     private void createSemanticResourceDialog() {
-        final ResourceDialog resourceDialog = new SemanticResourceDialog(Display.getCurrent().getActiveShell(), "Select resources to add", SWT.OPEN | SWT.MULTI);
+        final ResourceDialog resourceDialog = new SemanticResourceDialog(Display.getCurrent().getActiveShell(), Messages.AddModelDependencyAction_resourceSelectionMessage, SWT.OPEN | SWT.MULTI);
 
         if (resourceDialog.open() == Window.OK) {
             List<URI> uris = resourceDialog.getURIs();
@@ -98,9 +94,9 @@ public class AddModelDependencyAction extends Action {
                         }
                     }
                 } catch (InvocationTargetException e) {
-                    SiriusPlugin.getDefault().error("Error adding model dependency", e);
+                    SiriusPlugin.getDefault().error(Messages.AddModelDependencyAction_error, e);
                 } catch (InterruptedException e) {
-                    SiriusPlugin.getDefault().error("Error adding model dependency", e);
+                    SiriusPlugin.getDefault().error(Messages.AddModelDependencyAction_error, e);
                 }
             }
         }

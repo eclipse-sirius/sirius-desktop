@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -33,9 +34,9 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * Dialog used by the export several diagrams to image files action to prompt
  * the user for a destination and image format.
- * 
+ *
  * @author jdupont
- * 
+ *
  */
 public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRepresentationsAsImagesDialog {
 
@@ -47,26 +48,26 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
     /**
      * the directory dialog message.
      */
-    private static final String DIRECTORY_DIALOG_MESSAGE = "Select the destination folder";
+    private static final String DIRECTORY_DIALOG_MESSAGE = Messages.ExportSeveralRepresentationsAsImagesDialog_dialogMessage;
 
     /**
      * the directory dialog text.
      */
-    private static final String DIRECTORY_DIALOG_TEXT = DIRECTORY_DIALOG_MESSAGE;
+    private static final String DIRECTORY_DIALOG_TEXT = ExportSeveralRepresentationsAsImagesDialog.DIRECTORY_DIALOG_MESSAGE;
 
     /**
      * Popup file field label.
      */
-    private static final String TO_DIRECTORY = "To directory";
+    private static final String TO_DIRECTORY = Messages.ExportSeveralRepresentationsAsImagesDialog_toDirectory;
 
     /**
      * the dialog window title.
      */
-    private static final String DIALOG_TITLE = "Export representations as image file";
+    private static final String DIALOG_TITLE = Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle;
 
     /**
      * Creates an instance of the copy to image dialog.
-     * 
+     *
      * @param shell
      *            the parent shell
      * @param path
@@ -77,17 +78,14 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
         initDialogSettings(path);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void handleBrowseButtonPressed() {
         final DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent().getActiveShell());
-        dialog.setMessage(DIRECTORY_DIALOG_MESSAGE);
-        dialog.setText(DIRECTORY_DIALOG_TEXT);
+        dialog.setMessage(ExportSeveralRepresentationsAsImagesDialog.DIRECTORY_DIALOG_MESSAGE);
+        dialog.setText(ExportSeveralRepresentationsAsImagesDialog.DIRECTORY_DIALOG_TEXT);
 
         final String dirName = folderText.getText();
-        if (!dirName.equals(EMPTY_STRING)) {
+        if (!dirName.equals(AbstractExportRepresentationsAsImagesDialog.EMPTY_STRING)) {
             final File path = new File(dirName);
             if (path.exists()) {
                 dialog.setFilterPath(new Path(dirName).toOSString());
@@ -100,13 +98,10 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void createFolderGroup(final Composite parent) {
         final Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 4, false);
-        SWTUtil.createLabel(composite, TO_DIRECTORY);
+        SWTUtil.createLabel(composite, ExportSeveralRepresentationsAsImagesDialog.TO_DIRECTORY);
 
         folderText = new Combo(composite, SWT.SINGLE | SWT.BORDER);
         restoreWidgetValues();
@@ -116,7 +111,7 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
         folderText.setLayoutData(gridData);
 
         final Button button = new Button(composite, SWT.PUSH);
-        button.setText(BROWSE_LABEL);
+        button.setText(AbstractExportRepresentationsAsImagesDialog.BROWSE_LABEL);
         button.setLayoutData(AbstractExportRepresentationsAsImagesDialog.makeButtonData(button));
         button.addSelectionListener(new SelectionAdapter() {
             @Override
@@ -126,16 +121,10 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
         });
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog#createImageFormatGroup(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected void createImageFormatGroup(final Composite parent) {
         final Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 3, false);
-        SWTUtil.createLabel(composite, IMAGE_FORMAT_LABEL);
+        SWTUtil.createLabel(composite, AbstractExportRepresentationsAsImagesDialog.IMAGE_FORMAT_LABEL);
 
         String[] imageSafeFormatItems = getImageSafeFormatItems();
 
@@ -152,7 +141,7 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
                 imageFormatControl = imageFormatCombo;
             }
         } else {
-            imageFormatControl = SWTUtil.createLabel(composite, DEFAULT_VALUE.getName());
+            imageFormatControl = SWTUtil.createLabel(composite, AbstractExportRepresentationsAsImagesDialog.DEFAULT_VALUE.getName());
         }
         final GridData gridData = new GridData(SWT.FILL, SWT.CENTER, true, true);
         imageFormatControl.setLayoutData(gridData);
@@ -162,26 +151,20 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
     /**
      * {@inheritDoc} Configures the shell in preparation for opening this window
      * in it.
-     * 
+     *
      * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
      */
     @Override
     protected void configureShell(final Shell shell) {
         super.configureShell(shell);
-        shell.setText(DIALOG_TITLE);
+        shell.setText(ExportSeveralRepresentationsAsImagesDialog.DIALOG_TITLE);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog#restoreWidgetValues()
-     */
     @Override
     protected void restoreWidgetValues() {
         IDialogSettings settings = getDialogSettings();
         if (settings != null) {
-            String[] directoryNames = settings.getArray(DIALOG_SETTINGS_FOLDER);
+            String[] directoryNames = settings.getArray(ExportSeveralRepresentationsAsImagesDialog.DIALOG_SETTINGS_FOLDER);
             if (directoryNames == null || directoryNames.length == 0) {
                 return; // ie.- no settings stored
             }
@@ -193,12 +176,6 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog#initDialogSettings(org.eclipse.core.runtime.IPath)
-     */
     @Override
     protected void initDialogSettings(final IPath path) {
         final IDialogSettings dialogSettings = getDialogSettings();
@@ -208,7 +185,7 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
         folder = "/"; //$NON-NLS-1$
 
         if (path == null) {
-            final String persistentFolder = dialogSettings.get(DIALOG_SETTINGS_FOLDER);
+            final String persistentFolder = dialogSettings.get(ExportSeveralRepresentationsAsImagesDialog.DIALOG_SETTINGS_FOLDER);
             if (persistentFolder != null) {
                 folder = persistentFolder;
             }
@@ -216,7 +193,7 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
             folder = path.toOSString();
         }
 
-        final String persistentImageFormat = dialogSettings.get(DIALOG_SETTINGS_IMAGE_FORMAT);
+        final String persistentImageFormat = dialogSettings.get(AbstractExportRepresentationsAsImagesDialog.DIALOG_SETTINGS_IMAGE_FORMAT);
         if (persistentImageFormat == null) {
             imageFormat = AbstractExportRepresentationsAsImagesDialog.getDefaultImageFormat();
         } else {
@@ -224,53 +201,37 @@ public class ExportSeveralRepresentationsAsImagesDialog extends AbstractExportRe
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog#saveDialogSettings()
-     */
     @Override
     protected void saveDialogSettings() {
         final IDialogSettings dialogSettings = getDialogSettings();
         if (dialogSettings != null) {
-            String[] directoryNames = dialogSettings.getArray(DIALOG_SETTINGS_FOLDER);
+            String[] directoryNames = dialogSettings.getArray(ExportSeveralRepresentationsAsImagesDialog.DIALOG_SETTINGS_FOLDER);
             if (directoryNames == null || directoryNames.length == 0) {
                 directoryNames = new String[1];
                 directoryNames[0] = folder;
             }
             directoryNames = addToHistory(directoryNames, folder);
-            dialogSettings.put(DIALOG_SETTINGS_FOLDER, directoryNames);
-            dialogSettings.put(DIALOG_SETTINGS_IMAGE_FORMAT, imageFormat.getName());
+            dialogSettings.put(ExportSeveralRepresentationsAsImagesDialog.DIALOG_SETTINGS_FOLDER, directoryNames);
+            dialogSettings.put(AbstractExportRepresentationsAsImagesDialog.DIALOG_SETTINGS_IMAGE_FORMAT, imageFormat.getName());
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog#validateFolderText()
-     */
     @Override
     protected void validateFolderText() {
         super.validateFolderText();
         final File file = new File(folderText.getText());
-        
+
         if (!file.exists()) {
-            setDialogErrorState(FOLDER_NOT_EXIST_MESSAGE);
+            setDialogErrorState(AbstractExportRepresentationsAsImagesDialog.FOLDER_NOT_EXIST_MESSAGE);
             return;
         }
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog#initListeners()
-     */
     @Override
     protected void initListeners() {
         folderText.addModifyListener(new ModifyListener() {
+            @Override
             public void modifyText(final ModifyEvent e) {
                 validateFolderText();
             }

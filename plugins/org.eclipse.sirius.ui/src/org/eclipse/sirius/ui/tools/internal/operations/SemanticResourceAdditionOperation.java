@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,12 +21,13 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 import com.google.common.collect.Sets;
 
 /**
  * Operation to add a semantic resource to a session.
- * 
+ *
  * @author mchauvin
  */
 public class SemanticResourceAdditionOperation implements IRunnableWithProgress {
@@ -39,7 +40,7 @@ public class SemanticResourceAdditionOperation implements IRunnableWithProgress 
 
     /**
      * Creates a new instance.
-     * 
+     *
      * @param sessions
      *            the sessions
      * @param uris
@@ -50,12 +51,10 @@ public class SemanticResourceAdditionOperation implements IRunnableWithProgress 
         this.uris = uris;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void run(IProgressMonitor monitor) throws java.lang.reflect.InvocationTargetException, InterruptedException {
         try {
-            monitor.beginTask("Semantic resource addition", uris.size() * sessions.size());
+            monitor.beginTask(Messages.SemanticResourceAdditionOperation_semanticResourceAdditionTask, uris.size() * sessions.size());
             results = Sets.newLinkedHashSet();
             for (Session session : sessions) {
                 TransactionalEditingDomain transDomain = session.getTransactionalEditingDomain();

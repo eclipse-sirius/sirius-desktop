@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -74,12 +75,12 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     /**
      * the image format label text.
      */
-    protected static final String IMAGE_FORMAT_LABEL = "&Image Format:";
+    protected static final String IMAGE_FORMAT_LABEL = Messages.AbstractExportRepresentationsAsImagesDialog_imageFormatLabel;
 
     /**
      * the browse button text.
      */
-    protected static final String BROWSE_LABEL = "&Browse...";
+    protected static final String BROWSE_LABEL = Messages.AbstractExportRepresentationsAsImagesDialog_browseLabel;
 
     /**
      * The id for the persistent image format setting for this dialog.
@@ -89,27 +90,12 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
     /**
      * an error access message.
      */
-    protected static final String ACCES_ERROR_MESSAGE = "Access to path is impossible";
+    protected static final String ACCES_ERROR_MESSAGE = Messages.AbstractExportRepresentationsAsImagesDialog_accessError;
 
     /**
      * an error folder not exist message.
      */
-    protected static final String FOLDER_NOT_EXIST_MESSAGE = "Folder does not exist";
-
-    /**
-     * the browse button text.
-     */
-    private static final String EXPORT_TO_HTML_LABEL = "Export to HTML";
-
-    /**
-     * an error message.
-     */
-    private static final String FOLDER_BLANK_MESSAGE = "Folder cannot be blank";
-
-    /**
-     * an error message.
-     */
-    private static final String FOLDER_INVALID_MESSAGE = "Folder is not a valid path";
+    protected static final String FOLDER_NOT_EXIST_MESSAGE = Messages.AbstractExportRepresentationsAsImagesDialog_folderDoesNotExist;
 
     /**
      * The id for the persistent settings for this dialog.
@@ -291,11 +277,6 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
      */
     protected abstract void saveDialogSettings();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#okPressed()
-     */
     @Override
     protected void okPressed() {
         super.okPressed();
@@ -315,13 +296,13 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
 
         if (folderText.getText().equals(EMPTY_STRING)) {
 
-            setDialogErrorState(FOLDER_BLANK_MESSAGE);
+            setDialogErrorState(Messages.AbstractExportRepresentationsAsImagesDialog_blankFolderError);
 
         } else {
 
             IPath path = new Path(EMPTY_STRING);
             if (!path.isValidPath(folderText.getText())) {
-                setDialogErrorState(FOLDER_INVALID_MESSAGE);
+                setDialogErrorState(Messages.AbstractExportRepresentationsAsImagesDialog_invalidFolderPathError);
                 return;
             }
 
@@ -371,11 +352,6 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         return items;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#createContents(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Control createContents(Composite parent) {
         Control result = super.createContents(parent);
@@ -383,12 +359,6 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
         return result;
     }
 
-    /**
-     * {@inheritDoc} Creates and returns the contents of the upper part of this
-     * dialog (above the button bar).
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     protected Control createDialogArea(final Composite parent) {
         final Composite composite = (Composite) super.createDialogArea(parent);
@@ -445,7 +415,7 @@ public abstract class AbstractExportRepresentationsAsImagesDialog extends Dialog
 
         Composite composite = SWTUtil.createCompositeHorizontalFill(parent, 1, false);
         exportToHTMLCheckbox = new Button(composite, SWT.CHECK | SWT.LEFT);
-        exportToHTMLCheckbox.setText(EXPORT_TO_HTML_LABEL);
+        exportToHTMLCheckbox.setText(Messages.AbstractExportRepresentationsAsImagesDialog_htmlExport);
         GridData data = new GridData(GridData.FILL_HORIZONTAL);
         exportToHTMLCheckbox.setLayoutData(data);
         exportToHTMLCheckbox.setSelection(exportToHTML);

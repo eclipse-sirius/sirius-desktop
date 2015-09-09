@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.NewModelingProjectCreationWizardPage;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.INewWizard;
@@ -32,7 +33,7 @@ import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
  * This Class is the wizard that creates a viewpoint modeling project. This will
  * creates a project with the viewpoint modeling nature and add a aird file
  * automatically named.
- * 
+ *
  * @author mchauvin
  */
 public class ModelingProjectWizard extends Wizard implements INewWizard {
@@ -57,7 +58,7 @@ public class ModelingProjectWizard extends Wizard implements INewWizard {
 
     /**
      * Creates the project, all the directories and files and open the .odesign.
-     * 
+     *
      * @return true if successful
      */
     @Override
@@ -68,6 +69,7 @@ public class ModelingProjectWizard extends Wizard implements INewWizard {
             final IPath locationPath = newProjectPage.getLocationPath();
             getContainer().run(true, false, new IRunnableWithProgress() {
 
+                @Override
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     try {
                         ModelingProjectManager.INSTANCE.createNewModelingProject(projectName, locationPath, true, monitor);
@@ -89,39 +91,24 @@ public class ModelingProjectWizard extends Wizard implements INewWizard {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
-     *      org.eclipse.jface.viewers.IStructuredSelection)
-     */
+    @Override
     public void init(final IWorkbench wkbch, final IStructuredSelection sel) {
-        setWindowTitle("New Modeling Project");
+        setWindowTitle(Messages.ModelingProjectWizard_title);
         setDefaultPageImageDescriptor(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/wizban/banner_modeling_project.gif")); //$NON-NLS-1$
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#createPageControls(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     public void createPageControls(final Composite pageContainer) {
         super.createPageControls(pageContainer);
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#addPages()
-     */
     @Override
     public void addPages() {
-        newProjectPage = new NewModelingProjectCreationWizardPage(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
+        newProjectPage = new NewModelingProjectCreationWizardPage(SiriusEditPlugin.INSTANCE.getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
         newProjectPage.setInitialProjectName(""); //$NON-NLS-1$
-        newProjectPage.setTitle(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
-        newProjectPage.setDescription(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_description")); //$NON-NLS-1$        
+        newProjectPage.setTitle(SiriusEditPlugin.INSTANCE.getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
+        newProjectPage.setDescription(SiriusEditPlugin.INSTANCE.getString("_UI_ModelingProjectWizard_description")); //$NON-NLS-1$
         addPage(newProjectPage);
         super.addPages();
     }

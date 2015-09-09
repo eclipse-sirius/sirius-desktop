@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.action;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -34,7 +36,7 @@ import com.google.common.collect.Iterables;
 
 /**
  * An action to move selected representations.
- * 
+ *
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  */
 public class MoveRepresentationAction extends Action {
@@ -46,7 +48,7 @@ public class MoveRepresentationAction extends Action {
 
     /**
      * Construct a new instance.
-     * 
+     *
      * @param session
      *            the current session
      * @param targetAnalysis
@@ -63,7 +65,7 @@ public class MoveRepresentationAction extends Action {
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"); //$NON-NLS-1$
         this.setImageDescriptor(descriptor);
 
-        this.setText("move to " + targetAnalysis.eResource().getURI().toString());
+        this.setText(MessageFormat.format(Messages.MoveRepresentationAction_text, targetAnalysis.eResource().getURI().toString()));
 
         // Disable the action if the selection is not valid
         if (!isValidSelection()) {
@@ -87,7 +89,7 @@ public class MoveRepresentationAction extends Action {
 
     /**
      * Test if the selection is valid.
-     * 
+     *
      * @return true if the selection is valid
      */
     private boolean isValidSelection() {

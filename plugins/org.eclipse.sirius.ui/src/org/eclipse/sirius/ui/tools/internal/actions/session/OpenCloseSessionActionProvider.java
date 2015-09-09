@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.actions.OpenWithMenu;
 import org.eclipse.ui.navigator.CommonActionProvider;
@@ -24,31 +25,19 @@ import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 
 /**
  * Provide the OpenCloseAnalysisAction on double click.
- * 
+ *
  * @author mporhel
  */
 public class OpenCloseSessionActionProvider extends CommonActionProvider {
 
     private ICommonViewerWorkbenchSite viewSite;
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
-     */
     @Override
     public void init(final ICommonActionExtensionSite aSite) {
         super.init(aSite);
         viewSite = (ICommonViewerWorkbenchSite) aSite.getViewSite();
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.ActionGroup#fillActionBars(org.eclipse.ui.IActionBars)
-     */
     @Override
     public void fillActionBars(final IActionBars actionBars) {
         super.fillActionBars(actionBars);
@@ -60,12 +49,6 @@ public class OpenCloseSessionActionProvider extends CommonActionProvider {
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
-     */
     @Override
     public void fillContextMenu(final IMenuManager menu) {
         super.fillContextMenu(menu);
@@ -79,7 +62,7 @@ public class OpenCloseSessionActionProvider extends CommonActionProvider {
         }
         if (selection.getFirstElement() instanceof IFile) {
             final IFile file = (IFile) selection.getFirstElement();
-            final IMenuManager submenu = new MenuManager("Open With", ICommonMenuConstants.GROUP_OPEN_WITH);
+            final IMenuManager submenu = new MenuManager(Messages.OpenCloseSessionActionProvider_openWithMenu, ICommonMenuConstants.GROUP_OPEN_WITH);
             submenu.add(new OpenWithMenu(viewSite.getPage(), file));
             if (submenu.getItems().length > 0 && submenu.isEnabled()) {
                 menu.appendToGroup(ICommonMenuConstants.GROUP_OPEN_WITH, submenu);
@@ -88,7 +71,8 @@ public class OpenCloseSessionActionProvider extends CommonActionProvider {
     }
 
     private OpenCloseSessionAction createOpenCloseAnalysisAction(IStructuredSelection selection) {
-        OpenCloseSessionAction openCloseSessionAction = new OpenCloseSessionAction("Open", "Close");
+        OpenCloseSessionAction openCloseSessionAction = new OpenCloseSessionAction(Messages.OpenCloseSessionActionProvider_openCloseAction_open,
+                Messages.OpenCloseSessionActionProvider_openCloseAction_close);
         openCloseSessionAction.selectionChanged(selection);
         return openCloseSessionAction;
 

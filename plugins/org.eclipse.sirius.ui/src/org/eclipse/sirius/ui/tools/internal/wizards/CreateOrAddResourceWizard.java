@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.eclipse.sirius.ui.tools.internal.wizards.pages.GenericInitialObjectPa
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.GenericModelCreationPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SelectMetamodelWizardPage;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -58,8 +59,6 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
  * @author mchauvin
  */
 public class CreateOrAddResourceWizard extends Wizard implements IAddModelDependencyWizard {
-
-    private static final String WIZARD_TITLE = "Add semantic resource";
 
     /**
      * The selection.
@@ -117,6 +116,7 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
      * @param availableSessions
      *            the available sessions
      */
+    @Override
     public void setSessions(final List<Session> availableSessions) {
         this.sessions = availableSessions;
     }
@@ -133,24 +133,14 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
         return selection;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
-     *      org.eclipse.jface.viewers.IStructuredSelection)
-     */
+    @Override
     public void init(final IWorkbench w, final IStructuredSelection s) {
         this.workbench = w;
         this.selection = s;
-        setWindowTitle(WIZARD_TITLE);
+        setWindowTitle(Messages.CreateOrAddResourceWizard_windowTitle);
         setNeedsProgressMonitor(true);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#canFinish()
-     */
     @Override
     public boolean canFinish() {
         if (!selectionPage.createResource()) {
@@ -160,11 +150,6 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#getNextPage(org.eclipse.jface.wizard.IWizardPage)
-     */
     @Override
     public IWizardPage getNextPage(final IWizardPage page) {
         if (page == selectionPage) {
@@ -182,35 +167,24 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
         return super.getNextPage(page);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#addPages()
-     */
     @Override
     public void addPages() {
         selectionPage = new CreateOrAddResourceWizardPage("selectionPage"); //$NON-NLS-1$
-        selectionPage.setTitle(WIZARD_TITLE);
+        selectionPage.setTitle(Messages.CreateOrAddResourceWizard_windowTitle);
         addPage(selectionPage);
-        metamodelPage = new SelectMetamodelWizardPage("metamodelPage", new String[] { "ecore" }, false); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
-        metamodelPage.setTitle(WIZARD_TITLE);
+        metamodelPage = new SelectMetamodelWizardPage("metamodelPage", new String[] { "ecore" }, false); //$NON-NLS-1$ //$NON-NLS-2$
+        metamodelPage.setTitle(Messages.CreateOrAddResourceWizard_windowTitle);
         addPage(metamodelPage);
         initialObjectPage = new GenericInitialObjectPage("initialObjectPage"); //$NON-NLS-1$
-        initialObjectPage.setTitle(WIZARD_TITLE);
-        initialObjectPage.setDescription("Select the root instance type and the file encoding");
+        initialObjectPage.setTitle(Messages.CreateOrAddResourceWizard_windowTitle);
+        initialObjectPage.setDescription(Messages.CreateOrAddResourceWizard_initialEObject);
         addPage(initialObjectPage);
         modelCreationPage = new GenericModelCreationPage("modelCreationPage", new StructuredSelection()); //$NON-NLS-1$
-        modelCreationPage.setTitle(WIZARD_TITLE);
-        modelCreationPage.setDescription("Enter the file name and choose the parent container");
+        modelCreationPage.setTitle(Messages.CreateOrAddResourceWizard_windowTitle);
+        modelCreationPage.setDescription(Messages.CreateOrAddResourceWizard_modelCreation);
         addPage(modelCreationPage);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#createPageControls(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     public void createPageControls(final Composite pageContainer) {
         selectionPage.createControl(pageContainer);
@@ -224,11 +198,6 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#performFinish()
-     */
     @Override
     public boolean performFinish() {
         boolean finished = true;
@@ -265,13 +234,15 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
                             resource.getContents().add(rootObject);
                         }
 
-                        /* Save the contents of the resource to the file system. */
+                        /*
+                         * Save the contents of the resource to the file system.
+                         */
                         final Map<Object, Object> options = new HashMap<Object, Object>();
                         options.put(XMLResource.OPTION_ENCODING, initialObjectPage.getEncoding());
                         resource.save(options);
                         uris.add(resource.getURI());
                     } catch (final IOException e) {
-                        SiriusPlugin.getDefault().error("the new resource was not created on disk", e);
+                        SiriusPlugin.getDefault().error(Messages.CreateOrAddResourceWizard_resourceNotCreatedError, e);
                     } finally {
                         monitor.done();
                     }
@@ -281,12 +252,12 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
             try {
                 getContainer().run(true, false, operation);
             } catch (final InvocationTargetException e) {
-                SiriusPlugin.getDefault().error("Error creating resource", e);
+                SiriusPlugin.getDefault().error(Messages.CreateOrAddResourceWizard_resourceCreationError, e);
             } catch (final InterruptedException e) {
-                SiriusPlugin.getDefault().error("Error creating resource", e);
+                SiriusPlugin.getDefault().error(Messages.CreateOrAddResourceWizard_resourceCreationError, e);
             }
         } else {
-            final ResourceDialog resourceDialog = new SemanticResourceDialog(Display.getCurrent().getActiveShell(), "Select resources to add", SWT.OPEN | SWT.MULTI);
+            final ResourceDialog resourceDialog = new SemanticResourceDialog(Display.getCurrent().getActiveShell(), Messages.CreateOrAddResourceWizard_selectResourceMessage, SWT.OPEN | SWT.MULTI);
             final int result = resourceDialog.open();
             if (result == Window.OK) {
                 uris.addAll(resourceDialog.getURIs());
@@ -304,33 +275,23 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
                     }
                 }
             } catch (final InterruptedException e) {
-                SiriusPlugin.getDefault().error("Error adding resource", e);
+                SiriusPlugin.getDefault().error(Messages.CreateOrAddResourceWizard_resourceAdditionError, e);
                 finished = false;
             } catch (final InvocationTargetException e) {
-                SiriusPlugin.getDefault().error("Error adding ressource", e.getTargetException());
+                SiriusPlugin.getDefault().error(Messages.CreateOrAddResourceWizard_resourceAdditionError, e.getTargetException());
                 finished = false;
             }
         }
         return finished;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard#canApply(java.util.Collection)
-     */
+    @Override
     public boolean canApply(Collection<Session> availableSessions) {
         return true;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard#getWizardTitle()
-     */
+    @Override
     public String getWizardTitle() {
-        return "Add Model Wizard";
+        return Messages.CreateOrAddResourceWizard_wizardTitle;
     }
 }

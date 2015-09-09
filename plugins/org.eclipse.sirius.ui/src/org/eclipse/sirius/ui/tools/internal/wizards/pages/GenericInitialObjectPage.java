@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -34,7 +35,7 @@ import org.eclipse.swt.widgets.Label;
 
 /**
  * A generic wizard page to select root object and encodings.
- * 
+ *
  * @author mchauvin
  */
 public class GenericInitialObjectPage extends WizardPage {
@@ -67,6 +68,7 @@ public class GenericInitialObjectPage extends WizardPage {
      * .
      */
     protected ModifyListener validator = new ModifyListener() {
+        @Override
         public void modifyText(final ModifyEvent e) {
             setPageComplete(validatePage());
         }
@@ -74,7 +76,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
     /**
      * Construct a new wizard page to select root object and encoding.
-     * 
+     *
      * @param pageId
      *            the page id
      */
@@ -84,7 +86,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
     /**
      * Set the package.
-     * 
+     *
      * @param ePackage
      *            the package to set
      */
@@ -102,7 +104,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
     /**
      * Returns the names of the types that can be created as the root object.
-     * 
+     *
      * @return the names of the types that can be created.
      */
     protected Collection<String> getInitialObjectNames() {
@@ -123,7 +125,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
     /**
      * Get all the available encodings.
-     * 
+     *
      * @return the available encodings
      */
     protected Collection<String> getEncodings() {
@@ -139,11 +141,7 @@ public class GenericInitialObjectPage extends WizardPage {
         return encodings;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
         final Composite composite = new Composite(parent, SWT.NONE);
 
@@ -160,7 +158,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
         final Label containerLabel = new Label(composite, SWT.LEFT);
 
-        containerLabel.setText("&Model Object");
+        containerLabel.setText(Messages.GenericInitialObjectPage_containerLabel);
 
         final GridData containerData = new GridData();
         containerData.horizontalAlignment = GridData.FILL;
@@ -178,10 +176,12 @@ public class GenericInitialObjectPage extends WizardPage {
         initialObjectField.addModifyListener(validator);
         // Workaround for https://bugs.eclipse.org/bugs/show_bug.cgi?id=294192
         initialObjectField.addSelectionListener(new SelectionListener() {
+            @Override
             public void widgetSelected(SelectionEvent e) {
                 setPageComplete(validatePage());
             }
 
+            @Override
             public void widgetDefaultSelected(SelectionEvent e) {
             }
         });
@@ -189,7 +189,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
         final Label encodingLabel = new Label(composite, SWT.LEFT);
 
-        encodingLabel.setText("&XML Encoding");
+        encodingLabel.setText(Messages.GenericInitialObjectPage_encodingLabel);
         final GridData encodingLabelData = new GridData();
         encodingLabelData.horizontalAlignment = GridData.FILL;
         encodingLabel.setLayoutData(encodingLabelData);
@@ -224,7 +224,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
     /**
      * Check if this page validates.
-     * 
+     *
      * @return <code>true</code> if this page validates, <code>false</code>
      *         otherwise
      */
@@ -232,11 +232,6 @@ public class GenericInitialObjectPage extends WizardPage {
         return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.DialogPage#setVisible(boolean)
-     */
     @Override
     public void setVisible(final boolean visible) {
         super.setVisible(visible);
@@ -253,7 +248,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
     /**
      * Get the root object name.
-     * 
+     *
      * @return the root object name.
      */
     public String getInitialObjectName() {
@@ -269,7 +264,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
     /**
      * Get the encoding.
-     * 
+     *
      * @return the encoding
      */
     public String getEncoding() {
@@ -278,7 +273,7 @@ public class GenericInitialObjectPage extends WizardPage {
 
     /**
      * Returns the label for the specified type name.
-     * 
+     *
      * @param typeName
      *            the type name
      * @return the label

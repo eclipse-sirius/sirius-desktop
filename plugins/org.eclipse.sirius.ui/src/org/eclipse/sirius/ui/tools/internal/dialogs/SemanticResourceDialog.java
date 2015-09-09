@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.dialogs;
 
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.query.FileQuery;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -35,13 +37,13 @@ import com.google.common.collect.Lists;
 /**
  * Specific resource dialog to avoid representation file selection. The browse
  * workspace dialog will not display those representation files.
- * 
+ *
  * The processResource method will check the selected value and open an error
  * dialog if representation files are detected. They will be removed from
  * selection.
- * 
+ *
  * @author mporhel
- * 
+ *
  */
 public class SemanticResourceDialog extends ResourceDialog {
 
@@ -49,16 +51,14 @@ public class SemanticResourceDialog extends ResourceDialog {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param parent
      *            the parent shell
      * @param title
      *            the dialog title
      * @param style
      *            the dialog style
-     * 
-     *            /** Default constructor.
-     * 
+     *
      * @see ResourceDialog
      */
     public SemanticResourceDialog(Shell parent, String title, int style) {
@@ -76,16 +76,16 @@ public class SemanticResourceDialog extends ResourceDialog {
         }
 
         if (!representationFiles.isEmpty()) {
-            String message = "Representation files can not be added as semantic resources";
-            Status status = new Status(IStatus.WARNING, SiriusEditPlugin.ID, message + ": " + representationFiles);
-            ErrorDialog.openError(getParentShell(), "Incorrect selection", message + ", they will be removed from the selection.", status);
+            Status status = new Status(IStatus.WARNING, SiriusEditPlugin.ID, MessageFormat.format(Messages.SemanticResourceDialog_representationFilesCantBeAdded_status, representationFiles));
+            ErrorDialog.openError(getParentShell(), Messages.SemanticResourceDialog_representationFilesCantBeAdded_title, Messages.SemanticResourceDialog_representationFilesCantBeAdded_message,
+                    status);
 
             Iterables.removeAll(urIs, representationFiles);
             if (uriField != null && !uriField.isDisposed() && !urIs.isEmpty()) {
                 StringBuilder sb = new StringBuilder();
                 for (URI uri : urIs) {
                     sb.append(uri);
-                    sb.append(SEPARATOR);
+                    sb.append(SemanticResourceDialog.SEPARATOR);
                 }
                 uriField.setText(sb.toString().trim());
             }
@@ -108,11 +108,11 @@ public class SemanticResourceDialog extends ResourceDialog {
                     StringBuffer uris = new StringBuffer();
 
                     IFile[] files = WorkspaceResourceDialog.openFileSelection(getShell(), null, null, true, null, filters);
-                    for (int i = 0, len = files.length; i < len; i++) {
-                        uris.append(URI.createPlatformResourceURI(files[i].getFullPath().toString(), true));
-                        uris.append(SEPARATOR);
+                    for (IFile file : files) {
+                        uris.append(URI.createPlatformResourceURI(file.getFullPath().toString(), true));
+                        uris.append(SemanticResourceDialog.SEPARATOR);
                     }
-                    uriField.setText((uriField.getText() + SEPARATOR + uris.toString()).trim());
+                    uriField.setText((uriField.getText() + SemanticResourceDialog.SEPARATOR + uris.toString()).trim());
                 } else {
                     IFile file = null;
 
@@ -135,16 +135,12 @@ public class SemanticResourceDialog extends ResourceDialog {
 
     /**
      * Exclude representation files.
-     * 
+     *
      * @see {@link FileQuery#isSessionResourceFile()}
      * @author mporhel
-     * 
+     *
      */
     private static class PotentialSemanticResourceFilter extends ViewerFilter {
-
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public boolean select(Viewer viewer, Object parentElement, Object element) {
             boolean isValid = true;

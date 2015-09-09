@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.action;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAutho
 import org.eclipse.sirius.ui.tools.internal.wizards.ExtractRepresentationsWizard;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -58,7 +60,7 @@ public class ExtractRepresentationAction extends Action {
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/export.gif"); //$NON-NLS-1$
         this.setImageDescriptor(descriptor);
 
-        this.setText("Extract to ." + SiriusUtil.SESSION_RESOURCE_EXTENSION + " file ...");
+        this.setText(MessageFormat.format(Messages.ExtractRepresentationAction_label, SiriusUtil.SESSION_RESOURCE_EXTENSION));
 
         // Disable the action if the selection is not valid
         if (!isValidSelection()) {
@@ -73,7 +75,7 @@ public class ExtractRepresentationAction extends Action {
         final Shell defaultShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
         final WizardDialog dialog = new WizardDialog(defaultShell, wizard);
         dialog.create();
-        dialog.getShell().setText("Extract Representation Wizard");
+        dialog.getShell().setText(Messages.ExtractRepresentationAction_dialogTitle);
         dialog.open();
     }
 
@@ -83,9 +85,7 @@ public class ExtractRepresentationAction extends Action {
      * @return true if the selection is valid
      */
     private boolean isValidSelection() {
-
         boolean anyInvalidExtract = Iterables.any(representations, new Predicate<DRepresentation>() {
-
             @Override
             public boolean apply(DRepresentation input) {
                 EObject container = input.eContainer();
@@ -98,7 +98,6 @@ public class ExtractRepresentationAction extends Action {
                 return false;
             }
         });
-
         return !anyInvalidExtract;
     }
 }

@@ -25,12 +25,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IMemento;
 
 /**
  * Specific URI editor input providing the session data.
- * 
+ *
  * @author cbrun
  */
 public class SessionEditorInput extends URIEditorInput {
@@ -41,13 +42,6 @@ public class SessionEditorInput extends URIEditorInput {
      * different in case of fragmentation.
      */
     private static final String SESSION_RESOURCE_URI = "SESSION_RESOURCE_URI"; //$NON-NLS-1$
-
-    /**
-     * Default editor name
-     * 
-     * @since 0.9.0
-     */
-    private static final String DEFAULT_EDITOR_NAME = "Default_Representation_Editor";
 
     private WeakReference<Session> sessionRef;
 
@@ -63,7 +57,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Create a new SessionEditorInput with the current session and ui session.
-     * 
+     *
      * @param uri
      *            element URI.
      * @param name
@@ -82,7 +76,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Create a new SessionEditorInput with a memento.
-     * 
+     *
      * @param memento
      *            a bit of information kept by the platform.
      * @since 0.9.0
@@ -93,7 +87,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * return the model editing session.
-     * 
+     *
      * @return the model editing session.
      */
     public Session getSession() {
@@ -102,7 +96,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Return the model editing session.
-     * 
+     *
      * @param restore
      *            true to restore the session if it is not instantiated or
      *            closed.
@@ -113,7 +107,7 @@ public class SessionEditorInput extends URIEditorInput {
         // Avoid to create a new session if the default editor name is used: we
         // do not known yet for which representation the input is, like
         // in the GotoMarker case for example.
-        if (session == null || (!session.isOpen() && !DEFAULT_EDITOR_NAME.equals(name))) {
+        if (session == null || (!session.isOpen() && !Messages.SessionEditorInput_defaultEditorName.equals(name))) {
             URI sessionModelURI = getURI().trimFragment();
             if (sessionResourceURI != null) {
                 sessionModelURI = sessionResourceURI;
@@ -128,7 +122,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Get the input of this editor input.
-     * 
+     *
      * @return the input of this editor input
      */
     public EObject getInput() {
@@ -137,7 +131,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Get the input of this editor input.
-     * 
+     *
      * @param restore
      *            true to restore the input and associated session if they are
      *            not instantiated
@@ -162,10 +156,6 @@ public class SessionEditorInput extends URIEditorInput {
         return name == null ? super.getName() : name;
     }
 
-    /**
-     * 
-     * @param string
-     */
     void setName(final String string) {
         this.name = string;
     }
@@ -173,18 +163,18 @@ public class SessionEditorInput extends URIEditorInput {
     @Override
     public void saveState(final IMemento memento) {
         super.saveState(memento);
-        memento.putString(NAME_TAG, getName());
-        memento.putString(CLASS_TAG, getClass().getName());
+        memento.putString(URIEditorInput.NAME_TAG, getName());
+        memento.putString(URIEditorInput.CLASS_TAG, getClass().getName());
         if (sessionResourceURI != null) {
-            memento.putString(SESSION_RESOURCE_URI, sessionResourceURI.toString());
+            memento.putString(SessionEditorInput.SESSION_RESOURCE_URI, sessionResourceURI.toString());
         }
     }
 
     @Override
     protected void loadState(final IMemento memento) {
         super.loadState(memento);
-        setName(memento.getString(NAME_TAG));
-        final String sessionResourceURIString = memento.getString(SESSION_RESOURCE_URI);
+        setName(memento.getString(URIEditorInput.NAME_TAG));
+        final String sessionResourceURIString = memento.getString(SessionEditorInput.SESSION_RESOURCE_URI);
         if (sessionResourceURIString != null) {
             sessionResourceURI = URI.createURI(sessionResourceURIString);
             Session newSession = getSession(sessionResourceURI);
@@ -196,11 +186,11 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Get the session.
-     * 
+     *
      * @param sessionModelURI
      *            the Session Resource URI
      * @return the session if it can be found, <code>null</code> otherwise
-     * 
+     *
      * @since 0.9.0
      */
     protected Session getSession(URI sessionModelURI) {
@@ -209,13 +199,13 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Get the session.
-     * 
+     *
      * @param sessionModelURI
      *            the Session Resource URI
      * @param restore
      *            true to restore the session if it is not instantiated
      * @return the session if it can be found, <code>null</code> otherwise
-     * 
+     *
      * @since 0.9.0
      */
     private Session getSession(URI sessionModelURI, boolean restore) {
@@ -273,11 +263,11 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Create a new input from an Analysis uri.
-     * 
+     *
      * @param sessionResourceURI
      *            a session Resource URI.
      * @return a new SessionEditorinput.
-     * 
+     *
      * @since 0.9.0
      */
     public static SessionEditorInput create(final URI sessionResourceURI) {
@@ -287,7 +277,7 @@ public class SessionEditorInput extends URIEditorInput {
         } catch (CoreException e) {
             return null;
         }
-        return new SessionEditorInput(sessionResourceURI, DEFAULT_EDITOR_NAME, session);
+        return new SessionEditorInput(sessionResourceURI, Messages.SessionEditorInput_defaultEditorName, session);
     }
 
     @Override
@@ -302,7 +292,7 @@ public class SessionEditorInput extends URIEditorInput {
      * org.eclipse.ui.internal.EditorHistory. This method must not be called by
      * client, it is automatically called by the dispose of
      * {@link DDiagramEditor}.
-     * 
+     *
      * @deprecated since a {@link org.eclipse.ui.IEditorInput} can be reused by
      *             several instances of {@link org.eclipse.ui.IEditorPart}
      *             through the navigation history view.
@@ -328,7 +318,7 @@ public class SessionEditorInput extends URIEditorInput {
 
     /**
      * Overridden to test input existence in a generic way.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override

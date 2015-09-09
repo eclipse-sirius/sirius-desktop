@@ -62,6 +62,7 @@ import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IMemento;
@@ -739,7 +740,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
     private void postAsyncUpdate(final Display display) {
         if (updateJob == null) {
-            updateJob = new UIJob(display, "Async viewer updates") {
+            updateJob = new UIJob(display, Messages.SiriusCommonContentProvider_asyncUpdateJob) {
                 @Override
                 public IStatus runInUIThread(IProgressMonitor monitor) {
                     if (isViewerBusy()) {

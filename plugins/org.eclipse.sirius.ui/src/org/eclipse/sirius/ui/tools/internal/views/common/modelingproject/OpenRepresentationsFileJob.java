@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.MessageFormat;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,6 +46,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionHelper;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
@@ -59,14 +61,14 @@ import com.google.common.collect.Lists;
  * the referenced resource). Warning before calling this job you must call
  * waitOtherJobs methods to ensure that there is no job of this kind currently
  * running.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
     /**
      * The default label for the job that open a representations file.
      */
-    public static final String JOB_LABEL = "Loading models";
+    public static final String JOB_LABEL = Messages.OpenRepresentationsFileJob_label;
 
     private static final String QUOTE = "\""; //$NON-NLS-1$
 
@@ -85,26 +87,26 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
 
     /**
      * Constructor to open only one representations file.
-     * 
+     *
      * @param representationsFileURI
      *            The URI of the representations file to open.
      */
     public OpenRepresentationsFileJob(final URI representationsFileURI) {
-        super(JOB_LABEL);
+        super(OpenRepresentationsFileJob.JOB_LABEL);
         this.representationsFilesURIs.add(representationsFileURI);
     }
 
     /**
      * Constructor to open several representations files.
-     * 
+     *
      * @param elements
      *            A list of URIs of the representations files to open or a list
      *            of the modeling projects to initialize and open.
      */
     public OpenRepresentationsFileJob(List<? extends Object> elements) {
-        super(JOB_LABEL);
+        super(OpenRepresentationsFileJob.JOB_LABEL);
         if (!(Iterators.all(elements.iterator(), Predicates.instanceOf(URI.class)) || Iterators.all(elements.iterator(), Predicates.instanceOf(ModelingProject.class)))) {
-            throw new IllegalArgumentException("This list must be a list of URI or a list of ModelingProject.");
+            throw new IllegalArgumentException(Messages.OpenRepresentationsFileJob_errorInvalidInputList);
         }
         Iterators.addAll(this.representationsFilesURIs, Iterators.filter(elements.iterator(), URI.class));
         Iterators.addAll(this.modelingProjects, Iterators.filter(elements.iterator(), ModelingProject.class));
@@ -112,7 +114,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
 
     /**
      * Launch this job when all other openRepresentationFile's job are finished.
-     * 
+     *
      * @param representationsFileURI
      *            The URI of the representations file to open.
      * @param user
@@ -132,7 +134,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
 
     /**
      * Launch this job when all other openRepresentationFile's job are finished.
-     * 
+     *
      * @param elements
      *            A list of URIs of the representations files to open or a list
      *            of the modeling projects to initialize and open.
@@ -142,7 +144,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      */
     public static void scheduleNewWhenPossible(List<? extends Object> elements, boolean user) {
         if (!(Iterators.all(elements.iterator(), Predicates.instanceOf(URI.class)) || Iterators.all(elements.iterator(), Predicates.instanceOf(ModelingProject.class)))) {
-            throw new IllegalArgumentException("This list must be a list of URI or a list of ModelingProject.");
+            throw new IllegalArgumentException(Messages.OpenRepresentationsFileJob_errorInvalidInputList);
         }
 
         // Just wait other job if some are already in progress
@@ -155,18 +157,13 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
         job.schedule();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.jobs.Job#run(org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     public IStatus runInWorkspace(IProgressMonitor monitor) {
         IStatus initializationStatus = Status.OK_STATUS;
         List<IStatus> openingStatuses = Lists.newArrayList();
         try {
-            monitor.beginTask("Loading models", 11);
-            monitor.subTask("Initialize modeling projects");
+            monitor.beginTask(Messages.OpenRepresentationsFileJob_loadingModelsTask, 11);
+            monitor.subTask(Messages.OpenRepresentationsFileJob_initModelingProjectsTask);
             if (!modelingProjects.isEmpty()) {
                 // Initialize the modeling projects before open the main
                 // representations files.
@@ -209,14 +206,14 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
                         SiriusPlugin.getDefault().getLog().log(e.getStatus());
                     }
 
-                    subMonitor.subTask("Loading representations file " + QUOTE + representationsFileURI.lastSegment() + QUOTE);
+                    subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadingRepresentationFileTask, representationsFileURI.lastSegment()));
                     final Set<Session> sessions = performOpenSession(representationsFileURI, new SubProgressMonitor(subMonitor, 90));
                     if (sessions.isEmpty()) {
                         subMonitor.worked(10);
                         String errorMessage = logLoadingProblem(project, representationsFileURI, null);
-                        openingStatuses.add(new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, errorMessage, null)); //$NON-NLS-1$)
+                        openingStatuses.add(new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, errorMessage, null));
                     } else {
-                        subMonitor.subTask("Opening the startup representations of " + QUOTE + representationsFileURI.lastSegment() + QUOTE);
+                        subMonitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_openingStartRepresentationTask, representationsFileURI.lastSegment()));
                         // Open the startup representations of each session
                         for (final Session session : sessions) {
                             SessionHelper.openStartupRepresentations(session, new SubProgressMonitor(subMonitor, 10 / sessions.size()));
@@ -242,7 +239,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
         if (allStatuses.size() == 1) {
             result = allStatuses.get(0);
         } else if (allStatuses.size() > 1) {
-            result = new MultiStatus(SiriusEditPlugin.ID, IStatus.ERROR, allStatuses.toArray(new IStatus[0]), "Several modeling projects are invalid or can not be opened.", null);
+            result = new MultiStatus(SiriusEditPlugin.ID, IStatus.ERROR, allStatuses.toArray(new IStatus[0]), Messages.OpenRepresentationsFileJob_invalidModelingProjectsError, null);
         }
 
         return result;
@@ -251,7 +248,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
     /**
      * Log loading problem (Add a marker on this project, change valid status of
      * this modeling project, clean the cache of the ModelingProjectManager).
-     * 
+     *
      * @param project
      *            The project concerned by this problem.
      * @param representationsFileURI
@@ -264,16 +261,16 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
         String message = ""; //$NON-NLS-1$
         if (project != null) {
             boolean isModelingProject = ModelingProject.hasModelingProjectNature(project);
-            if (isModelingProject) {
-                message += "The modeling project \"" + project.getName() + "\" is invalid: Problem during loading models";
-            } else {
-                message += "The representations file \"" + representationsFileURI.toPlatformString(true) + "\" is invalid: Problem during loading models";
-            }
-            // Add a marker on this project
+            final String errorDetail;
             if (exception != null) {
-                message += ": " + (exception.getCause() != null ? exception.getCause().getMessage() : exception.getMessage());
+                errorDetail = exception.getCause() != null ? exception.getCause().getMessage() : exception.getMessage();
             } else {
-                message += " (see Error Log for more details)";
+                errorDetail = Messages.OpenRepresentationsFileJob_loadingProblem_defaultErrorDetail;
+            }
+            if (isModelingProject) {
+                message = MessageFormat.format(Messages.OpenRepresentationsFileJob_loadingProblem_modelingProject, project.getName(), errorDetail);
+            } else {
+                message = MessageFormat.format(Messages.OpenRepresentationsFileJob_loadingProblem_representationFile, representationsFileURI.toPlatformString(true), errorDetail);
             }
 
             Option<IMarker> optionalMarker = MarkerUtil.addMarkerFor(project, message, IMarker.SEVERITY_ERROR, ModelingMarker.MARKER_TYPE);
@@ -293,7 +290,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
 
     /**
      * Open session.
-     * 
+     *
      * @param representationsFileURI
      *            The URI of the representations file corresponding to the
      *            session to opened.
@@ -302,14 +299,14 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      * @return Resource associated to session.
      */
     public Set<Session> performOpenSession(URI representationsFileURI, IProgressMonitor monitor) {
-        monitor.beginTask("Load representations and models", 16);
+        monitor.beginTask(Messages.OpenRepresentationsFileJob_loadRepresentationsTask, 16);
         Set<Session> openedSessions = new HashSet<Session>();
         if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(representationsFileURI.fileExtension())) {
             monitor.worked(1);
             Session session = SessionManager.INSTANCE.getSession(representationsFileURI, new SubProgressMonitor(monitor, 10));
             // Open the session if needed (load the referenced models by
             // a ResolveAll call)
-            monitor.subTask("Loading referenced models of " + QUOTE + representationsFileURI.lastSegment() + QUOTE);
+            monitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
             if (session != null) {
                 if (!session.isOpen()) {
                     session.open(new SubProgressMonitor(monitor, 4));
@@ -339,10 +336,11 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      * called from UI Thread.
      */
     public static void waitOtherJobs() {
-        if (shouldWaitOtherJobs()) {
+        if (OpenRepresentationsFileJob.shouldWaitOtherJobs()) {
             try {
                 if (Display.getCurrent() != null) {
                     PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
+                        @Override
                         public void run(IProgressMonitor monitor) throws InterruptedException {
                             Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, monitor);
                         }
@@ -351,7 +349,8 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
                     Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, new NullProgressMonitor());
                 }
             } catch (InvocationTargetException e) {
-                StatusManager.getManager().handle(new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, getLocalizedMessage(e), getCause(e)));
+                StatusManager.getManager()
+                        .handle(new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, OpenRepresentationsFileJob.getLocalizedMessage(e), OpenRepresentationsFileJob.getCause(e)));
             } catch (InterruptedException e) {
                 // Do nothing;
             }
@@ -361,7 +360,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
     /**
      * Check if other jobs of this kind are running. This method must be called
      * from UI Thread.
-     * 
+     *
      * @return true if other jobs of this kind are running.
      */
     public static boolean shouldWaitOtherJobs() {
@@ -373,7 +372,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      * Returns a localized message describing the given exception. If the given
      * exception does not have a localized message, this returns the string
      * "An error occurred".
-     * 
+     *
      * @param exception
      *            The exception to deal with
      * @return The message
@@ -389,7 +388,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
                 CoreException ce = (CoreException) exception;
                 return ce.getStatus().getMessage();
             } else {
-                message = "An unexpected exception was thrown.";
+                message = Messages.OpenRepresentationsFileJob_unexpectedException;
             }
         }
 
@@ -398,7 +397,7 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
 
     /**
      * Returns the cause of the given exception.
-     * 
+     *
      * @param exception
      *            The exception to deal with
      * @return the cause of the given exception.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -23,13 +24,14 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 
 /**
  * Adapter which update name of editors when diagram name change.
- * 
+ *
  * @author pdul
  */
 public class EditorNameAdapter extends AdapterImpl {
@@ -42,7 +44,7 @@ public class EditorNameAdapter extends AdapterImpl {
     /**
      * Create a new adapter to update the editor title when the diagram name
      * change.
-     * 
+     *
      * @param editingSession
      *            the associated session
      */
@@ -50,13 +52,8 @@ public class EditorNameAdapter extends AdapterImpl {
         this.editingSession = editingSession;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.ecore.util.EContentAdapter#notifyChanged(org.eclipse.emf.common.notify.Notification)
-     */
     @Override
-    public void notifyChanged(final org.eclipse.emf.common.notify.Notification n) {
+    public void notifyChanged(final Notification n) {
         Object notifier = n.getNotifier();
 
         if (notifier instanceof Adapter) {
@@ -88,7 +85,7 @@ public class EditorNameAdapter extends AdapterImpl {
 
     /**
      * Update the editor input name field
-     * 
+     *
      * @param editorInput
      *            the editor input
      * @param editor
@@ -96,6 +93,7 @@ public class EditorNameAdapter extends AdapterImpl {
      */
     private void updateEditorInputName(final SessionEditorInput editorInput, final IEditorPart editor) {
         EclipseUIUtil.displayAsyncExec(new Runnable() {
+            @Override
             public void run() {
                 editorInput.setName(editor.getTitle());
             }
@@ -104,7 +102,7 @@ public class EditorNameAdapter extends AdapterImpl {
 
     /**
      * Add this adapter to the DSemanticDiagram associated to the editor.
-     * 
+     *
      * @param editor
      *            the editor
      */
@@ -117,7 +115,7 @@ public class EditorNameAdapter extends AdapterImpl {
 
     /**
      * Remove this adapter to the DSemanticDiagram associated to the editor.
-     * 
+     *
      * @param editor
      *            the editor
      */
@@ -125,14 +123,11 @@ public class EditorNameAdapter extends AdapterImpl {
         final DRepresentation representation = editor.getRepresentation();
         if (representation != null) {
             if (representation.eAdapters().contains(this)) {
-                // TODO remove this try/catch once the offline mode
-                // will be supported
                 try {
                     representation.eAdapters().remove(this);
                 } catch (NullPointerException e) {
                     if (SiriusEditPlugin.getPlugin().isDebugging()) {
-                        SiriusEditPlugin.getPlugin().getLog().log(
-                                new Status(IStatus.WARNING, SiriusEditPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
+                        SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, SiriusEditPlugin.ID, Messages.EditorNameAdapter_representationClosingError));
                     }
                 }
             }

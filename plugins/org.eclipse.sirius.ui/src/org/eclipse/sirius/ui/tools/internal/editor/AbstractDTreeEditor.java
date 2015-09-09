@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -59,6 +60,7 @@ import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -143,11 +145,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      * SessionManagerListener.
      */
     protected final SessionManagerListener sessionManagerListener = new SessionManagerListener.Stub() {
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener.Stub#notifyAddSession(org.eclipse.sirius.business.api.session.Session)
-         */
         @Override
         public void notifyAddSession(final Session newSession) {
 
@@ -394,7 +391,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
     protected void getSession(final DSemanticDecorator rootElement) {
         session = SessionManager.INSTANCE.getSession(rootElement.getTarget());
         if (session == null) {
-            SiriusTransPlugin.getPlugin().error("a DSemanticDecorator must be owned by a Session" + rootElement, null);
+            SiriusTransPlugin.getPlugin().error(MessageFormat.format(Messages.AbstractDTreeEditor_noSessionError, rootElement), null);
         }
     }
 
@@ -495,7 +492,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         String title = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().getText();
         final int end = title.lastIndexOf(".aird#"); //$NON-NLS-1$
         if (end > -1) {
-            title = title.substring(0, end + 6) + this.getPartName() + " - Eclipse Platform";
+            title = MessageFormat.format(Messages.AbstractDTreeEditor_eclipseWindowTitle, title.substring(0, end + 6) + this.getPartName());
             PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().setText(title);
         }
     }
@@ -841,14 +838,12 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      */
     protected void modelerDescriptionFilesLoaded() {
         if (isAutoRefresh()) {
-            Job refreshJob = new Job("Refresh ") {
-
+            Job refreshJob = new Job(Messages.AbstractDTreeEditor_modelerDescriptionFilesLoadedJob) {
                 @Override
                 protected IStatus run(IProgressMonitor monitor) {
                     getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), monitor, getRepresentation()));
                     return Status.OK_STATUS;
                 }
-
             };
             refreshJob.schedule();
         }

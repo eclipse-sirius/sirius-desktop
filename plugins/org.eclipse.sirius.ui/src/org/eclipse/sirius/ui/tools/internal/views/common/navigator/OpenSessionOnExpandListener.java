@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.MessageFormat;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -28,6 +29,7 @@ import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.progress.UIJob;
 
 /**
@@ -35,25 +37,17 @@ import org.eclipse.ui.progress.UIJob;
  * When user expands a modeling project, the representations file is opened
  * "silently". And when user expands the representations file, if the "silently"
  * opening is not finished, it become blocker.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class OpenSessionOnExpandListener implements ITreeViewerListener {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeViewerListener#treeCollapsed(org.eclipse.jface.viewers.TreeExpansionEvent)
-     */
+    @Override
     public void treeCollapsed(TreeExpansionEvent event) {
         // Do nothing
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeViewerListener#treeExpanded(org.eclipse.jface.viewers.TreeExpansionEvent)
-     */
+    @Override
     public void treeExpanded(final TreeExpansionEvent event) {
         if (event.getElement() instanceof IProject) {
             IProject projectExpanded = (IProject) event.getElement();
@@ -90,9 +84,9 @@ public class OpenSessionOnExpandListener implements ITreeViewerListener {
 
     /**
      * {@link UIJob} to expand the loaded file
-     * 
+     *
      * @author mporhel
-     * 
+     *
      */
     private class ExpandAgainJob extends UIJob {
 
@@ -101,12 +95,12 @@ public class OpenSessionOnExpandListener implements ITreeViewerListener {
         private final Object itemToExpand;
 
         /**
-         * 
+         *
          * @param viewer
          * @param itemToExpand
          */
         public ExpandAgainJob(AbstractTreeViewer viewer, IFile itemToExpand) {
-            super("Expand " + itemToExpand.getName());
+            super(MessageFormat.format(Messages.OpenSessionOnExpandListener_expandJob, itemToExpand.getName()));
             this.viewer = viewer;
             this.itemToExpand = itemToExpand;
 

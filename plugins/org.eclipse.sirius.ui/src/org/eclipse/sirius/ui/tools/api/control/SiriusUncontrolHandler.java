@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IReusableEditor;
@@ -48,15 +49,13 @@ import org.eclipse.ui.handlers.HandlerUtil;
  * required parameters from the user and the invokes the properly configured
  * {@link org.eclipse.sirius.business.internal.command.control.UncontrolCommand}
  * .
- * 
+ *
  * @since 0.9.0
- * 
+ *
  * @author pcdavid
  */
 public class SiriusUncontrolHandler extends AbstractHandler {
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object execute(final ExecutionEvent event) throws ExecutionException {
         final EObject semanticRoot = getSelectedEObject(event);
         if (semanticRoot != null) {
@@ -66,7 +65,7 @@ public class SiriusUncontrolHandler extends AbstractHandler {
                     @Override
                     protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                         try {
-                            monitor.beginTask("Uncontrol resources", 1);
+                            monitor.beginTask(Messages.SiriusUncontrolHandler_uncontrolTask, 1);
                             performUncontrol(HandlerUtil.getActiveShell(event), semanticRoot, new SubProgressMonitor(monitor, 1));
                         } finally {
                             monitor.done();
@@ -85,7 +84,7 @@ public class SiriusUncontrolHandler extends AbstractHandler {
 
     /**
      * Performs the uncontrol operation.
-     * 
+     *
      * @param shell
      *            the shell to use to interact with users.
      * @param semanticRoot
@@ -119,13 +118,13 @@ public class SiriusUncontrolHandler extends AbstractHandler {
 
     /**
      * Show dialog to uncontrol or not the representations.
-     * 
+     *
      * @param shell
      *            the shell to use to interact with users.
      * @return if the representations are uncontrolled
      */
     protected boolean shouldUncontrolRepresentations(final Shell shell) {
-        return MessageDialog.openQuestion(shell, "Uncontrol representations?", "Do you want to uncontrol representations in addition to the semantic elements?");
+        return MessageDialog.openQuestion(shell, Messages.SiriusUncontrolHandler_uncontrolRepresentationsTitle, Messages.SiriusUncontrolHandler_uncontrolRepresentationsMessage);
     }
 
     private EObject getSelectedEObject(final ExecutionEvent event) {

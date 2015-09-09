@@ -79,6 +79,7 @@ Additional non-breaking changes:
 ** @org.eclipse.sirius.table.ui@
 ** @org.eclipse.sirius.tree@
 ** @org.eclipse.sirius.tree.ui@
+** @org.eclipse.sirius.ui@
 
 h4. Changes in @org.eclipse.sirius.common@
 

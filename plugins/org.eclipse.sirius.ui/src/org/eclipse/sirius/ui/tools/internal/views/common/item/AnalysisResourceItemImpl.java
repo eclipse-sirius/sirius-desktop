@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import com.google.common.collect.Lists;
 
 /**
  * Resource item wrapper class.
- * 
+ *
  * @author mchauvin
  */
 public class AnalysisResourceItemImpl implements AnalysisResourceItem {
@@ -47,7 +47,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
 
     /**
      * Construct a new resource item wrapper.
-     * 
+     *
      * @param session
      *            the current session
      * @param resource
@@ -61,33 +61,29 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
         this.parent = parent;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper#getWrappedObject()
-     */
+    @Override
     public Object getWrappedObject() {
         return resource;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getImage()
      */
     public Image getImage() {
-        return SiriusEditPlugin.getPlugin().getBundledImage(SESSION_IMAGE);
+        return SiriusEditPlugin.getPlugin().getBundledImage(AnalysisResourceItemImpl.SESSION_IMAGE);
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getText()
      */
     public String getText() {
         String result = StringUtil.EMPTY_STRING;
         if (resource.getResourceSet() != null && resource.getURI() != null && resource.getURI().lastSegment() != null) {
-            result = resource.getURI().lastSegment() + " - [" + resource.getURI() + "]";
+            result = resource.getURI().lastSegment() + " - [" + resource.getURI() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
         } else {
             if (resource.getResourceSet() != null && resource.getURI() != null) {
                 result = resource.getURI().toString();
@@ -96,18 +92,11 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
-     */
+    @Override
     public Option<Session> getSession() {
         return Options.newSome(session);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -117,9 +106,6 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
@@ -145,11 +131,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
-     */
+    @Override
     public Collection<?> getChildren() {
         final List<ViewpointItemImpl> all = Lists.newArrayList();
         if (resource != null) {
@@ -161,11 +143,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
         return all;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
-     */
+    @Override
     public Object getParent() {
         return parent;
     }
@@ -175,7 +153,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
      * a hierarchy. It will link all created
      * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem}
      * to its parent.
-     * 
+     *
      * @param linkChildrenToParent
      *            activate/deactivate the creator mode.
      */

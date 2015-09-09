@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.actions.session;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
@@ -23,6 +24,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.internal.commands.CloseUISessionCommand;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.SelectionListenerAction;
@@ -73,9 +75,6 @@ public class CloseSessionsAction extends SelectionListenerAction {
         return !sessionsToCloseURI.isEmpty();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void run() {
         super.run();
@@ -94,9 +93,9 @@ public class CloseSessionsAction extends SelectionListenerAction {
         try {
             new ProgressMonitorDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell()).run(true, false, operation);
         } catch (InvocationTargetException e) {
-            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "An error occured : ", e));
+            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, MessageFormat.format(Messages.CloseSessionsAction_error, e), e));
         } catch (InterruptedException e) {
-            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "An error occured : ", e));
+            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, MessageFormat.format(Messages.CloseSessionsAction_error, e), e));
         }
         if (session.isOpen()) {
             session.close(new NullProgressMonitor());

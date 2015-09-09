@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.FolderSelectionDialog;
 import org.eclipse.sirius.common.ui.tools.api.dialog.NewFileDialog;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -42,7 +43,7 @@ import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 /**
  * A wizard page to select a viewpoint analysis model file.
- * 
+ *
  * @author cbrun
  */
 public class SelectAnalysisFilePage extends WizardPage {
@@ -78,7 +79,7 @@ public class SelectAnalysisFilePage extends WizardPage {
 
     /**
      * Constructor.
-     * 
+     *
      * @param pageName
      *            the page name
      */
@@ -89,7 +90,7 @@ public class SelectAnalysisFilePage extends WizardPage {
 
     /**
      * Get the selected file.
-     * 
+     *
      * @return the file path the user selected in the form of
      *         "/project/folder/file.aird"
      */
@@ -97,14 +98,10 @@ public class SelectAnalysisFilePage extends WizardPage {
         return selectedFilePath;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
-        setDescription("Select the destination file for the views");
+        setDescription(Messages.SelectAnalysisFilePage_description);
         // top level group
         final Composite topLevel = new Composite(parent, SWT.NONE);
         topLevel.setFont(parent.getFont());
@@ -129,18 +126,20 @@ public class SelectAnalysisFilePage extends WizardPage {
     }
 
     private void createFolderExportGroup(final Composite parent) {
-        String groupLabel = "Extract in one distinct file per view";
-        String pickButtonLabel = "Folder";
+        String groupLabel = Messages.SelectAnalysisFilePage_folderExportGroup;
+        String pickButtonLabel = Messages.SelectAnalysisFilePage_folderExportGroup_button;
 
         exportFolderGroup = createExportGroup(parent, groupLabel);
 
         pickFolder = createPickButton(pickButtonLabel, exportFolderGroup);
         pickFolder.addSelectionListener(new SelectionListener() {
 
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
 
             }
 
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 /*
                  * new file panel
@@ -169,9 +168,11 @@ public class SelectAnalysisFilePage extends WizardPage {
         exportFolderBrowse = createBroweButton(exportFolderGroup);
         exportFolderBrowse.addSelectionListener(new SelectionListener() {
 
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
             }
 
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 browseForFolder();
 
@@ -185,26 +186,28 @@ public class SelectAnalysisFilePage extends WizardPage {
         gridData2.verticalAlignment = GridData.CENTER;
 
         Button browseButton = new Button(parentGroup, SWT.NONE);
-        browseButton.setText("Browse...");
+        browseButton.setText(Messages.SelectAnalysisFilePage_browseButton);
         browseButton.setLayoutData(gridData2);
         return browseButton;
     }
 
     /**
      * This method initializes the new file group
-     * 
+     *
      */
     private void createNewFileGroup(final Composite parent) {
-        String groupLabel = "Extract in one distinct file per view";
-        String pickButtonLabel = "New File";
+        String groupLabel = Messages.SelectAnalysisFilePage_newFileGroup;
+        String pickButtonLabel = Messages.SelectAnalysisFilePage_newFileGroup_button;
 
         newFileGroup = createExportGroup(parent, groupLabel);
 
         pickNewFile = createPickButton(pickButtonLabel, newFileGroup);
         pickNewFile.addSelectionListener(new SelectionListener() {
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
             }
 
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 /*
                  * my panel
@@ -230,9 +233,11 @@ public class SelectAnalysisFilePage extends WizardPage {
 
         newFileBrowse = createBroweButton(newFileGroup);
         newFileBrowse.addSelectionListener(new SelectionListener() {
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
             }
 
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 browseForNewFile();
             }
@@ -274,14 +279,15 @@ public class SelectAnalysisFilePage extends WizardPage {
     }
 
     private void browseForNewFile() {
-        final NewFileDialog dialog = new NewFileDialog("newfile." + SiriusUtil.SESSION_RESOURCE_EXTENSION);
+        final NewFileDialog dialog = new NewFileDialog(Messages.SelectAnalysisFilePage_defaultFileName + "." + SiriusUtil.SESSION_RESOURCE_EXTENSION); //$NON-NLS-1$
         if (dialog.open() == Window.OK && dialog.getFirstResult() instanceof IContainer) {
             final IContainer folder = (IContainer) dialog.getFirstResult();
             final String newFileName = dialog.getNewFileName();
             if (!StringUtil.isEmpty(folder.getProjectRelativePath().toOSString())) {
-                selectedFilePath = SEPARATOR + folder.getProject().getName() + SEPARATOR + folder.getProjectRelativePath() + SEPARATOR + newFileName;
+                selectedFilePath = SelectAnalysisFilePage.SEPARATOR + folder.getProject().getName() + SelectAnalysisFilePage.SEPARATOR + folder.getProjectRelativePath()
+                        + SelectAnalysisFilePage.SEPARATOR + newFileName;
             } else {
-                selectedFilePath = SEPARATOR + folder.getProject().getName() + SEPARATOR + newFileName;
+                selectedFilePath = SelectAnalysisFilePage.SEPARATOR + folder.getProject().getName() + SelectAnalysisFilePage.SEPARATOR + newFileName;
             }
             newFilePath.setText(selectedFilePath);
             validate();
@@ -289,13 +295,14 @@ public class SelectAnalysisFilePage extends WizardPage {
     }
 
     private void browseForFolder() {
-        final FolderSelectionDialog dialog = new FolderSelectionDialog("Please select a Folder");
+        final FolderSelectionDialog dialog = new FolderSelectionDialog(Messages.SelectAnalysisFilePage_folderSelectionDialogTitle);
         if (dialog.open() == Window.OK && dialog.getFirstResult() instanceof IContainer) {
             final IContainer folder = (IContainer) dialog.getFirstResult();
             if (!StringUtil.isEmpty(folder.getProjectRelativePath().toOSString())) {
-                selectedFilePath = SEPARATOR + folder.getProject().getName() + SEPARATOR + folder.getProjectRelativePath() + SEPARATOR;
+                selectedFilePath = SelectAnalysisFilePage.SEPARATOR + folder.getProject().getName() + SelectAnalysisFilePage.SEPARATOR + folder.getProjectRelativePath()
+                        + SelectAnalysisFilePage.SEPARATOR;
             } else {
-                selectedFilePath = SEPARATOR + folder.getProject().getName() + SEPARATOR;
+                selectedFilePath = SelectAnalysisFilePage.SEPARATOR + folder.getProject().getName() + SelectAnalysisFilePage.SEPARATOR;
             }
             exportFolderPath.setText(selectedFilePath);
         }
@@ -318,14 +325,16 @@ public class SelectAnalysisFilePage extends WizardPage {
         gridData1.verticalAlignment = GridData.FILL;
         existingFileGroup = new Group(parent, SWT.NONE);
         existingFileGroup.setLayout(new GridLayout());
-        existingFileGroup.setText("Extract in an existing file");
+        existingFileGroup.setText(Messages.SelectAnalysisFilePage_existingFileGroup);
         existingFileGroup.setLayoutData(gridData1);
         pickExistingFile = new Button(existingFileGroup, SWT.RADIO);
-        pickExistingFile.setText("Existing File");
+        pickExistingFile.setText(Messages.SelectAnalysisFilePage_existingFileGroup_button);
         pickExistingFile.addSelectionListener(new SelectionListener() {
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
             }
 
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 /*
                  * new file panel
@@ -347,7 +356,7 @@ public class SelectAnalysisFilePage extends WizardPage {
                 final Object element = ((StructuredSelection) workspaceViewer.getSelection()).getFirstElement();
                 if (element instanceof IFile) {
                     final IFile file = (IFile) element;
-                    selectedFilePath = SEPARATOR + file.getProject().getName() + SEPARATOR + file.getProjectRelativePath().toOSString();
+                    selectedFilePath = SelectAnalysisFilePage.SEPARATOR + file.getProject().getName() + SelectAnalysisFilePage.SEPARATOR + file.getProjectRelativePath().toOSString();
                 }
                 validate();
             }
@@ -387,13 +396,14 @@ public class SelectAnalysisFilePage extends WizardPage {
             }
         });
         workspaceViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+            @Override
             public void selectionChanged(final SelectionChangedEvent event) {
                 selectedFilePath = null;
                 if (event.getSelection() instanceof StructuredSelection) {
                     final Object element = ((StructuredSelection) event.getSelection()).getFirstElement();
                     if (element instanceof IFile) {
                         final IFile file = (IFile) element;
-                        selectedFilePath = SEPARATOR + file.getProject().getName() + SEPARATOR + file.getProjectRelativePath().toOSString();
+                        selectedFilePath = SelectAnalysisFilePage.SEPARATOR + file.getProject().getName() + SelectAnalysisFilePage.SEPARATOR + file.getProjectRelativePath().toOSString();
                     }
                 }
                 validate();

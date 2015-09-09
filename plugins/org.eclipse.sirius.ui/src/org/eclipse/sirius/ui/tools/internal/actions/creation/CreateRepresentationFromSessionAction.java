@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateRepresentationWizard;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -49,15 +50,10 @@ public class CreateRepresentationFromSessionAction extends Action {
      *            {@link ImageDescriptor}
      */
     public CreateRepresentationFromSessionAction(final URI sessionURI, ImageDescriptor descriptor) {
-        super("Create Representation", descriptor);
+        super(Messages.CreateRepresentationFromSessionAction_name, descriptor);
         this.sessionURI = sessionURI;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         super.run();
@@ -67,9 +63,8 @@ public class CreateRepresentationFromSessionAction extends Action {
             wizard.init();
             final WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), wizard);
             dialog.create();
-            dialog.getShell().setText("Create Representation Wizard");
+            dialog.getShell().setText(Messages.CreateRepresentationFromSessionAction_wizardTitle);
             dialog.open();
         }
     }
-
 }

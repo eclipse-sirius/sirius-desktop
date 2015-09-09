@@ -13,6 +13,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -28,6 +30,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.TooltipAwareNavigatorDecoratingLabelProvider;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.ACC;
@@ -76,9 +79,9 @@ import org.eclipse.ui.progress.WorkbenchJob;
  * A simple control that provides a text widget and a common viewer (the Tree
  * Viewer for the Common Navigator). The contents of the text widget are used to
  * drive a PatternFilter that is on the viewer.
- * 
+ *
  * This control is inspired from the FilteredTree control.
- * 
+ *
  * @see org.eclipse.ui.dialogs.FilteredTree
  * @see PatternFilter
  */
@@ -128,7 +131,7 @@ public class FilteredCommonTree extends Composite {
      * <p>
      * <strong>Note:</strong> This is only used if the new look is chosen.
      * </p>
-     * 
+     *
      * @since 0.9.0
      */
     protected Control clearButtonControl;
@@ -153,7 +156,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * The parent composite of the filtered tree.
-     * 
+     *
      * @since 0.9.0
      */
     protected Composite parent;
@@ -163,14 +166,14 @@ public class FilteredCommonTree extends Composite {
      * default is to show these controls. This can be overridden by providing a
      * setting in the product configuration file. The setting to add to not show
      * these controls is:
-     * 
+     *
      * org.eclipse.ui/SHOW_FILTERED_TEXTS=false
      */
     protected boolean showFilterControls;
 
     /**
      * The tree composite of this control.
-     * 
+     *
      * @since 0.9.0
      */
     protected Composite treeComposite;
@@ -194,7 +197,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Tells whether to use the pre 3.5 or the new look.
-     * 
+     *
      * @since 0.9.0
      */
     private boolean useNewLook;
@@ -209,17 +212,17 @@ public class FilteredCommonTree extends Composite {
     static {
         ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(PlatformUI.PLUGIN_ID, "$nl$/icons/full/etool16/clear_co.gif"); //$NON-NLS-1$
         if (descriptor != null) {
-            JFaceResources.getImageRegistry().put(CLEAR_ICON, descriptor);
+            JFaceResources.getImageRegistry().put(FilteredCommonTree.CLEAR_ICON, descriptor);
         }
         descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(PlatformUI.PLUGIN_ID, "$nl$/icons/full/dtool16/clear_co.gif"); //$NON-NLS-1$
         if (descriptor != null) {
-            JFaceResources.getImageRegistry().put(DISABLED_CLEAR_ICON, descriptor);
+            JFaceResources.getImageRegistry().put(FilteredCommonTree.DISABLED_CLEAR_ICON, descriptor);
         }
     }
 
     /**
      * Create a new instance of the receiver.
-     * 
+     *
      * @param viewerId
      *            An id tied to the extensions that is used to focus specific
      *            content to a particular instance of the Common Navigator
@@ -244,7 +247,7 @@ public class FilteredCommonTree extends Composite {
      * the default creation behavior may use this constructor, but must ensure
      * that the <code>init(composite, int, PatternFilter)</code> method is
      * called in the overriding constructor.
-     * 
+     *
      * @param viewerId
      *            An id tied to the extensions that is used to focus specific
      *            content to a particular instance of the Common Navigator
@@ -253,7 +256,7 @@ public class FilteredCommonTree extends Composite {
      * @param useNewLook
      *            <code>true</code> if the new 3.5 look should be used
      * @see #init(int, PatternFilter)
-     * 
+     *
      * @since 0.9.0
      */
     protected FilteredCommonTree(String viewerId, Composite parent, boolean useNewLook) {
@@ -264,12 +267,12 @@ public class FilteredCommonTree extends Composite {
     }
 
     private static boolean useNativeSearchField(Composite composite) {
-        if (useNativeSearchField == null) {
-            useNativeSearchField = Boolean.FALSE;
+        if (FilteredCommonTree.useNativeSearchField == null) {
+            FilteredCommonTree.useNativeSearchField = Boolean.FALSE;
             Text testText = null;
             try {
                 testText = new Text(composite, SWT.SEARCH | SWT.ICON_CANCEL);
-                useNativeSearchField = new Boolean((testText.getStyle() & SWT.ICON_CANCEL) != 0);
+                FilteredCommonTree.useNativeSearchField = new Boolean((testText.getStyle() & SWT.ICON_CANCEL) != 0);
             } finally {
                 if (testText != null) {
                     testText.dispose();
@@ -277,15 +280,15 @@ public class FilteredCommonTree extends Composite {
             }
 
         }
-        return useNativeSearchField.booleanValue();
+        return FilteredCommonTree.useNativeSearchField.booleanValue();
     }
 
     /**
      * Create the filtered tree.
-     * 
+     *
      * @param treeStyle
      *            the style bits for the <code>Tree</code>
-     * 
+     *
      * @since 0.9.0
      */
     protected void init(int treeStyle) {
@@ -299,7 +302,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Create the filtered tree's controls. Subclasses should override.
-     * 
+     *
      * @param aParent
      *            the parent composite
      * @param treeStyle
@@ -313,7 +316,7 @@ public class FilteredCommonTree extends Composite {
         setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         if (showFilterControls) {
-            if (!useNewLook || useNativeSearchField(aParent)) {
+            if (!useNewLook || FilteredCommonTree.useNativeSearchField(aParent)) {
                 filterComposite = new Composite(this, SWT.NONE);
             } else {
                 filterComposite = new Composite(this, SWT.BORDER);
@@ -345,17 +348,18 @@ public class FilteredCommonTree extends Composite {
      * Create the filter controls. By default, a text and corresponding tool bar
      * button that clears the contents of the text is created. Subclasses may
      * override.
-     * 
+     *
      * @param aParent
      *            parent <code>Composite</code> of the filter controls
      * @return the <code>Composite</code> that contains the filter controls
      */
     protected Composite createFilterControls(Composite aParent) {
         createFilterText(aParent);
-        if (useNewLook)
+        if (useNewLook) {
             createClearTextNew(aParent);
-        else
+        } else {
             createClearTextOld(aParent);
+        }
         if (clearButtonControl != null) {
             // initially there is no text to clear
             clearButtonControl.setVisible(false);
@@ -373,7 +377,7 @@ public class FilteredCommonTree extends Composite {
      * {@link #doCreateTreeViewer(Composite, int)} to create the tree viewer.
      * Subclasses should override {@link #doCreateTreeViewer(Composite, int)}
      * instead of overriding this method.
-     * 
+     *
      * @param aParent
      *            parent <code>Composite</code>
      * @param style
@@ -405,13 +409,13 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Creates the tree viewer. Subclasses may override.
-     * 
+     *
      * @param aParent
      *            the parent composite
      * @param style
      *            SWT style bits used to create the tree viewer
      * @return the tree viewer
-     * 
+     *
      * @since 0.9.0
      */
     protected CommonViewer doCreateCommonViewer(Composite aParent, int style) {
@@ -420,18 +424,18 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Return the first item in the tree that matches the filter pattern.
-     * 
+     *
      * @param items
      * @return the first matching TreeItem
      */
     private TreeItem getFirstMatchingItem(TreeItem[] items) {
         TreeItem result = null;
-        for (int i = 0; i < items.length; i++) {
-            if (patternFilter.isLeafMatch(commonTreeViewer, items[i].getData()) && patternFilter.isElementSelectable(items[i].getData())) {
-                result = items[i];
+        for (TreeItem item : items) {
+            if (patternFilter.isLeafMatch(commonTreeViewer, item.getData()) && patternFilter.isElementSelectable(item.getData())) {
+                result = item;
                 break;
             }
-            TreeItem treeItem = getFirstMatchingItem(items[i].getItems());
+            TreeItem treeItem = getFirstMatchingItem(item.getItems());
             if (treeItem != null) {
                 result = treeItem;
                 break;
@@ -442,7 +446,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Create the refresh job for the receiver.
-     * 
+     *
      */
     private void createRefreshJob() {
         refreshJob = doCreateRefreshJob();
@@ -452,14 +456,14 @@ public class FilteredCommonTree extends Composite {
     /**
      * Creates a workbench job that will refresh the tree based on the current
      * filter text. Subclasses may override.
-     * 
+     *
      * @return a workbench job that can be scheduled to refresh the tree
-     * 
+     *
      * @since 0.9.0
      */
     // CHECKSTYLE:OFF Original method
     protected WorkbenchJob doCreateRefreshJob() {
-        return new WorkbenchJob("Refresh Filter") { //$NON-NLS-1$
+        return new WorkbenchJob(Messages.FilteredCommonTree_refreshFilterJob) {
             @Override
             public IStatus runInUIThread(IProgressMonitor monitor) {
                 IStatus result = null;
@@ -489,8 +493,7 @@ public class FilteredCommonTree extends Composite {
                             if (!narrowingDown) {
                                 // collapse all
                                 TreeItem[] is = commonTreeViewer.getTree().getItems();
-                                for (int i = 0; i < is.length; i++) {
-                                    TreeItem item = is[i];
+                                for (TreeItem item : is) {
                                     if (item.getExpanded()) {
                                         commonTreeViewer.setExpandedState(item.getData(), false);
                                     }
@@ -509,7 +512,7 @@ public class FilteredCommonTree extends Composite {
                                 TreeItem[] items = getViewer().getTree().getItems();
                                 int treeHeight = getViewer().getTree().getBounds().height;
                                 int numVisibleItems = treeHeight / getViewer().getTree().getItemHeight();
-                                long stopTime = SOFT_MAX_EXPAND_TIME + System.currentTimeMillis();
+                                long stopTime = FilteredCommonTree.SOFT_MAX_EXPAND_TIME + System.currentTimeMillis();
                                 boolean cancel = false;
                                 if (items.length > 0 && recursiveExpand(items, monitor, stopTime, new int[] { numVisibleItems })) {
                                     cancel = true;
@@ -546,7 +549,7 @@ public class FilteredCommonTree extends Composite {
             /**
              * Returns true if the job should be canceled (because of timeout or
              * actual cancellation).
-             * 
+             *
              * @param items
              * @param monitor
              * @param cancelTime
@@ -585,7 +588,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Update the tool bar according to the new visible status.
-     * 
+     *
      * @param visible
      *            The new visible status.
      */
@@ -603,7 +606,7 @@ public class FilteredCommonTree extends Composite {
      * {@link #doCreateFilterText(Composite)} to create the text control.
      * Subclasses should override {@link #doCreateFilterText(Composite)} instead
      * of overriding this method.
-     * 
+     *
      * @param aParent
      *            <code>Composite</code> of the filter text
      */
@@ -623,29 +626,29 @@ public class FilteredCommonTree extends Composite {
 
             /**
              * Return the number of filtered items
-             * 
+             *
              * @return int
              */
             private int getFilteredItemsCount() {
                 int total = 0;
                 TreeItem[] items = getViewer().getTree().getItems();
-                for (int i = 0; i < items.length; i++) {
-                    total += itemCount(items[i]);
+                for (TreeItem item : items) {
+                    total += itemCount(item);
                 }
                 return total;
             }
 
             /**
              * Return the count of treeItem and it's children to infinite depth.
-             * 
+             *
              * @param treeItem
              * @return int
              */
             private int itemCount(TreeItem treeItem) {
                 int count = 1;
                 TreeItem[] children = treeItem.getItems();
-                for (int i = 0; i < children.length; i++) {
-                    count += itemCount(children[i]);
+                for (TreeItem element : children) {
+                    count += itemCount(element);
                 }
                 return count;
             }
@@ -728,10 +731,11 @@ public class FilteredCommonTree extends Composite {
                         if (hasFocus && textChanged && filterText.getText().trim().length() > 0) {
                             Tree tree = getViewer().getTree();
                             TreeItem item;
-                            if (tree.getSelectionCount() > 0)
+                            if (tree.getSelectionCount() > 0) {
                                 item = getFirstMatchingItem(tree.getSelection());
-                            else
+                            } else {
                                 item = getFirstMatchingItem(tree.getItems());
+                            }
                             if (item != null) {
                                 tree.setSelection(new TreeItem[] { item });
                                 ISelection sel = getViewer().getSelection();
@@ -757,8 +761,9 @@ public class FilteredCommonTree extends Composite {
             filterText.addSelectionListener(new SelectionAdapter() {
                 @Override
                 public void widgetDefaultSelected(SelectionEvent e) {
-                    if (e.detail == SWT.ICON_CANCEL)
+                    if (e.detail == SWT.ICON_CANCEL) {
                         clearText();
+                    }
                 }
             });
         }
@@ -769,8 +774,9 @@ public class FilteredCommonTree extends Composite {
         gridData.horizontalIndent = 2;
         // if the text widget supported cancel then it will have it's own
         // integrated button. We can take all of the space.
-        if ((filterText.getStyle() & SWT.ICON_CANCEL) != 0)
+        if ((filterText.getStyle() & SWT.ICON_CANCEL) != 0) {
             gridData.horizontalSpan = 2;
+        }
         filterText.setLayoutData(gridData);
     }
 
@@ -779,15 +785,15 @@ public class FilteredCommonTree extends Composite {
     /**
      * Creates the text control for entering the filter text. Subclasses may
      * override.
-     * 
+     *
      * @param aParent
      *            the parent composite
      * @return the text widget
-     * 
+     *
      * @since 0.9.0
      */
     protected Text doCreateFilterText(Composite aParent) {
-        if (!useNewLook || useNativeSearchField(aParent)) {
+        if (!useNewLook || FilteredCommonTree.useNativeSearchField(aParent)) {
             return new Text(aParent, SWT.SINGLE | SWT.BORDER | SWT.SEARCH | SWT.ICON_CANCEL);
         }
         return new Text(aParent, SWT.SINGLE);
@@ -807,9 +813,9 @@ public class FilteredCommonTree extends Composite {
     /**
      * Return the time delay that should be used when scheduling the filter
      * refresh job. Subclasses may override.
-     * 
+     *
      * @return a time delay in milliseconds before the job should run
-     * 
+     *
      * @since 0.9.0
      */
     protected long getRefreshJobDelay() {
@@ -818,14 +824,14 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Set the background for the widgets that support the filter text area.
-     * 
+     *
      * @param background
      *            background <code>Color</code> to set
      */
     @Override
     public void setBackground(Color background) {
         super.setBackground(background);
-        if (filterComposite != null && (!useNewLook || useNativeSearchField(filterComposite))) {
+        if (filterComposite != null && (!useNewLook || FilteredCommonTree.useNativeSearchField(filterComposite))) {
             filterComposite.setBackground(background);
         }
         if (filterToolBar != null && filterToolBar.getControl() != null) {
@@ -835,7 +841,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Create the button that clears the text.
-     * 
+     *
      * @param aParent
      *            parent <code>Composite</code> of toolbar button
      */
@@ -858,8 +864,8 @@ public class FilteredCommonTree extends Composite {
             };
 
             clearTextAction.setToolTipText(WorkbenchMessages.FilteredTree_ClearToolTip);
-            clearTextAction.setImageDescriptor(JFaceResources.getImageRegistry().getDescriptor(CLEAR_ICON));
-            clearTextAction.setDisabledImageDescriptor(JFaceResources.getImageRegistry().getDescriptor(DISABLED_CLEAR_ICON));
+            clearTextAction.setImageDescriptor(JFaceResources.getImageRegistry().getDescriptor(FilteredCommonTree.CLEAR_ICON));
+            clearTextAction.setDisabledImageDescriptor(JFaceResources.getImageRegistry().getDescriptor(FilteredCommonTree.DISABLED_CLEAR_ICON));
 
             filterToolBar.add(clearTextAction);
         }
@@ -867,7 +873,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Create the button that clears the text.
-     * 
+     *
      * @param aParent
      *            parent <code>Composite</code> of toolbar button
      */
@@ -875,8 +881,8 @@ public class FilteredCommonTree extends Composite {
         // only create the button if the text widget doesn't support one
         // natively
         if ((filterText.getStyle() & SWT.ICON_CANCEL) == 0) {
-            final Image inactiveImage = JFaceResources.getImageRegistry().getDescriptor(DISABLED_CLEAR_ICON).createImage();
-            final Image activeImage = JFaceResources.getImageRegistry().getDescriptor(CLEAR_ICON).createImage();
+            final Image inactiveImage = JFaceResources.getImageRegistry().getDescriptor(FilteredCommonTree.DISABLED_CLEAR_ICON).createImage();
+            final Image activeImage = JFaceResources.getImageRegistry().getDescriptor(FilteredCommonTree.CLEAR_ICON).createImage();
             final Image pressedImage = new Image(getDisplay(), activeImage, SWT.IMAGE_GRAY);
 
             final Label clearButton = new Label(aParent, SWT.NONE);
@@ -973,7 +979,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Set the text in the filter control.
-     * 
+     *
      * @param string
      *            The new filter text
      */
@@ -986,7 +992,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Returns the pattern filter used by this tree.
-     * 
+     *
      * @return The pattern filter; never <code>null</code>.
      */
     public final PatternFilter getPatternFilter() {
@@ -995,7 +1001,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Get the tree viewer of the receiver.
-     * 
+     *
      * @return the tree viewer
      */
     public CommonViewer getViewer() {
@@ -1005,7 +1011,7 @@ public class FilteredCommonTree extends Composite {
     /**
      * Get the filter text for the receiver, if it was created. Otherwise return
      * <code>null</code>.
-     * 
+     *
      * @return the filter Text, or null if it was not created
      */
     public Text getFilterControl() {
@@ -1015,7 +1021,7 @@ public class FilteredCommonTree extends Composite {
     /**
      * Convenience method to return the text of the filter control. If the text
      * widget is not created, then null is returned.
-     * 
+     *
      * @return String in the text, or null if the text does not exist
      */
     protected String getFilterString() {
@@ -1026,7 +1032,7 @@ public class FilteredCommonTree extends Composite {
      * Set the text that will be shown until the first focus. A default value is
      * provided, so this method only need be called if overriding the default
      * initial text is desired.
-     * 
+     *
      * @param text
      *            initial text to appear in text field
      */
@@ -1056,7 +1062,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Select all text in the filter text field.
-     * 
+     *
      */
     protected void selectAll() {
         if (filterText != null) {
@@ -1066,7 +1072,7 @@ public class FilteredCommonTree extends Composite {
 
     /**
      * Get the initial text for the receiver.
-     * 
+     *
      * @return String
      */
     protected String getInitialText() {
@@ -1077,14 +1083,14 @@ public class FilteredCommonTree extends Composite {
      * Return a bold font if the given element matches the given pattern.
      * Clients can opt to call this method from a Viewer's label provider to get
      * a bold font for which to highlight the given element in the tree.
-     * 
+     *
      * @param element
      *            element for which a match should be determined
      * @param tree
      *            FilteredTree in which the element resides
      * @param filter
      *            PatternFilter which determines a match
-     * 
+     *
      * @return bold font
      */
     public static Font getBoldFont(Object element, FilteredCommonTree tree, PatternFilter filter) {
@@ -1115,9 +1121,9 @@ public class FilteredCommonTree extends Composite {
     /**
      * Custom tree viewer subclass that clears the caches in patternFilter on
      * any change to the tree. See bug 187200.
-     * 
+     *
      * @since 0.9.0
-     * 
+     *
      */
     class NotifyingCommonViewer extends CommonViewer {
 
@@ -1133,16 +1139,16 @@ public class FilteredCommonTree extends Composite {
         /**
          * Initialize the pattern filter before calling the super.init() to
          * avoid NPE when accessing patterf filter. {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.ui.navigator.CommonViewer#init()
          */
         @Override
         protected void init() {
             // Search the pattern filter
             ViewerFilter[] visibleFilters = this.getNavigatorContentService().getFilterService().getVisibleFilters(false);
-            for (int i = 0; i < visibleFilters.length; i++) {
-                if (visibleFilters[i] instanceof PatternFilter) {
-                    patternFilter = (PatternFilter) visibleFilters[i];
+            for (ViewerFilter visibleFilter : visibleFilters) {
+                if (visibleFilter instanceof PatternFilter) {
+                    patternFilter = (PatternFilter) visibleFilter;
                     // Force activation
                     if (!this.getNavigatorContentService().getFilterService().isActive(PatternFilter.ID)) {
                         if (this.getNavigatorContentService().getFilterService() instanceof NavigatorFilterService) {
@@ -1153,8 +1159,11 @@ public class FilteredCommonTree extends Composite {
                 }
             }
             if (patternFilter == null) {
-                SiriusEditPlugin.getPlugin().getLog().log(
-                        new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Required filter " + PatternFilter.ID + " is not present. Filter support of Model Explorer view will not function correctly.")); //$NON-NLS-2$
+                SiriusEditPlugin
+                        .getPlugin()
+                        .getLog()
+                        .log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, MessageFormat.format(
+                                Messages.FilteredCommonTree_missingFilter, PatternFilter.ID)));
             }
             super.init();
             setLabelProvider(new TooltipAwareNavigatorDecoratingLabelProvider(getNavigatorContentService().createCommonLabelProvider()));

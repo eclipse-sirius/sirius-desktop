@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.viewpoint;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.regex.Matcher;
@@ -39,6 +41,7 @@ import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -67,11 +70,11 @@ import com.google.common.collect.Multimap;
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  */
 public class ViewpointSelectionDialog extends TitleAreaDialog {
-    private static final String VIEWPOINT_SELECTION_SHELL_TITLE = "Viewpoints Selection";
+    private static final String VIEWPOINT_SELECTION_SHELL_TITLE = Messages.ViewpointSelectionDialog_title;
 
-    private static final String VIEWPOINT_SELECTION_TITLE = "Selected viewpoints";
+    private static final String VIEWPOINT_SELECTION_TITLE = Messages.ViewpointSelectionDialog_dialogTitle;
 
-    private static final String VIEWPOINT_SELECTION_MESSAGE = "Change viewpoints selection status (see tooltip for details about each viewpoint)";
+    private static final String VIEWPOINT_SELECTION_MESSAGE = Messages.ViewpointSelectionDialog_selectionMessage;
 
     /**
      * Table item
@@ -410,10 +413,16 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
      * @return error message
      */
     private static String getMissingDependenciesErrorMessage(Map<String, Collection<String>> missingDependencies) {
-        return Joiner.on("\n").withKeyValueSeparator(" requires: ").join(Maps.transformValues(missingDependencies, new Function<Collection<String>, String>() { //$NON-NLS-1$
+        final Function<Collection<String>, String> toStringList = new Function<Collection<String>, String>() {
             @Override
-            public String apply(Collection<String> from) {
+            public String apply(java.util.Collection<String> from) {
                 return Joiner.on(", ").join(from); //$NON-NLS-1$
+            }
+        };
+        return Joiner.on("\n").join(Iterables.transform(missingDependencies.entrySet(), new Function<Map.Entry<String, Collection<String>>, String>() { //$NON-NLS-1$
+            @Override
+            public String apply(Entry<String, Collection<String>> entry) {
+                return MessageFormat.format(Messages.ViewpointSelection_missingDependencies_requirements, entry.getKey(), toStringList.apply(entry.getValue()));
             }
         }));
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -85,20 +86,12 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
-     */
+    @Override
     public Object getEditableValue() {
         return this.propertySources;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
-     */
+    @Override
     public IPropertyDescriptor[] getPropertyDescriptors() {
         final List<IPropertyDescriptor> propertyDescriptors = new LinkedList<IPropertyDescriptor>();
         final Iterator<Entry<EObjectIndexer, IPropertySource>> iterPropertySourcesEntries = this.propertySources.entrySet().iterator();
@@ -133,42 +126,25 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
         return descriptorsList;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
-     */
+    @Override
     public Object getPropertyValue(final Object id) {
         final Identifier identifier = (Identifier) id;
         return getPropertySource(identifier).getPropertyValue(identifier.getId());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
-     */
+    @Override
     public boolean isPropertySet(final Object id) {
         final Identifier identifier = (Identifier) id;
         return getPropertySource(identifier).isPropertySet(identifier.getId());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
-     */
+    @Override
     public void resetPropertyValue(final Object id) {
         final Identifier identifier = (Identifier) id;
         getPropertySource(identifier).resetPropertyValue(identifier.getId());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object,
-     *      java.lang.Object)
-     */
+    @Override
     public void setPropertyValue(final Object id, final Object value) {
         final Identifier identifier = (Identifier) id;
         getPropertySource(identifier).setPropertyValue(identifier.getId(), value);
@@ -261,23 +237,13 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
          */
         private Identifier identifier;
 
-        /**
-         * 
-         * @param decorated
-         * @param category
-         * @param eObject
-         */
         public PropertyDescriptorDecorator(final IPropertyDescriptor decorated, final String category, final EObject eObject) {
             this.category = category;
             this.decorated = decorated;
             this.identifier = new Identifier(eObject, this.decorated.getId());
         }
 
-        /**
-         * @param parent
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#createPropertyEditor(org.eclipse.swt.widgets.Composite)
-         */
+        @Override
         public CellEditor createPropertyEditor(final Composite parent) {
             CellEditor cellEditor = null;
             if (getPermissionAuthority().canEditInstance(identifier.getEObject())) {
@@ -291,67 +257,42 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             return accessor.getPermissionAuthority();
         }
 
-        /**
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#getCategory()
-         */
+        @Override
         public String getCategory() {
             return this.category;
         }
 
-        /**
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#getDescription()
-         */
+        @Override
         public String getDescription() {
             return decorated.getDescription();
         }
 
-        /**
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#getDisplayName()
-         */
+        @Override
         public String getDisplayName() {
             return decorated.getDisplayName();
         }
 
-        /**
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#getFilterFlags()
-         */
+        @Override
         public String[] getFilterFlags() {
             return decorated.getFilterFlags();
         }
 
-        /**
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#getHelpContextIds()
-         */
+        @Override
         public Object getHelpContextIds() {
             return decorated.getHelpContextIds();
         }
 
-        /**
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#getId()
-         */
+        @Override
         public Object getId() {
             return this.identifier;
         }
 
-        /**
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#getLabelProvider()
-         */
+        @Override
         public ILabelProvider getLabelProvider() {
             return decorated.getLabelProvider();
         }
 
-        /**
-         * @param anotherProperty
-         * @return
-         * @see org.eclipse.ui.views.properties.IPropertyDescriptor#isCompatibleWith(org.eclipse.ui.views.properties.IPropertyDescriptor)
-         */
+        @Override
         public boolean isCompatibleWith(final IPropertyDescriptor anotherProperty) {
             return decorated.isCompatibleWith(anotherProperty);
         }
@@ -378,10 +319,10 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
          */
         public Identifier(final EObject eObject, final Object id) {
             if (eObject == null) {
-                throw new IllegalArgumentException("eObject is null");
+                throw new IllegalArgumentException(Messages.AbstractCompositeEObjectPropertySource_missingEObject);
             }
             if (id == null) {
-                throw new IllegalArgumentException("id is null");
+                throw new IllegalArgumentException(Messages.AbstractCompositeEObjectPropertySource_missingId);
             }
             this.eObject = eObject;
             this.id = id;
@@ -405,11 +346,6 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             return id;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#equals(java.lang.Object)
-         */
         @Override
         public boolean equals(final Object obj) {
             if (obj instanceof Identifier) {
@@ -419,11 +355,6 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#hashCode()
-         */
         @Override
         public int hashCode() {
             return this.eObject.hashCode();
@@ -449,16 +380,12 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             this.propertySources.add(propertySource);
         }
 
-        /**
-         * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
-         */
+        @Override
         public Object getEditableValue() {
             return this.propertySources;
         }
 
-        /**
-         * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
-         */
+        @Override
         public IPropertyDescriptor[] getPropertyDescriptors() {
             final List<IPropertyDescriptor> propertyDescriptors = new LinkedList<IPropertyDescriptor>();
             final Iterator<IPropertySource> iterPropertySources = this.propertySources.iterator();
@@ -469,9 +396,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             return propertyDescriptors.toArray(new IPropertyDescriptor[propertyDescriptors.size()]);
         }
 
-        /**
-         * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
-         */
+        @Override
         public Object getPropertyValue(final Object id) {
             final IPropertySource propertySource = getPropertySourceFor(id);
             if (propertySource != null) {
@@ -480,9 +405,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             return null;
         }
 
-        /**
-         * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
-         */
+        @Override
         public boolean isPropertySet(final Object id) {
             final IPropertySource propertySource = getPropertySourceFor(id);
             if (propertySource != null) {
@@ -491,9 +414,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             return false;
         }
 
-        /**
-         * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
-         */
+        @Override
         public void resetPropertyValue(final Object id) {
             final IPropertySource propertySource = getPropertySourceFor(id);
             if (propertySource != null) {
@@ -501,10 +422,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             }
         }
 
-        /**
-         * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object,
-         *      java.lang.Object)
-         */
+        @Override
         public void setPropertyValue(final Object id, final Object value) {
             final IPropertySource propertySource = getPropertySourceFor(id);
             if (propertySource != null) {
@@ -560,31 +478,17 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
             this.eObject = eObject;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Comparable#compareTo(java.lang.Object)
-         */
+        @Override
         public int compareTo(final Object o) {
             final EObjectIndexer eObjectIndexer = (EObjectIndexer) o;
             return this.index - eObjectIndexer.index;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#hashCode()
-         */
         @Override
         public int hashCode() {
             return this.index;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#equals(java.lang.Object)
-         */
         @Override
         public boolean equals(final Object obj) {
             boolean result = false;

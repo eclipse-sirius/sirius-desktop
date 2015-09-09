@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -42,6 +43,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -58,9 +60,9 @@ import com.google.common.collect.Lists;
 
 /**
  * Sirius label provider for common navigator.
- * 
+ *
  * @author mporhel
- * 
+ *
  */
 public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorProvider {
 
@@ -80,9 +82,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         sessionLabelProvider = new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Image getImage(Object element) {
         Image img = null;
         if (!(element instanceof IResource) && sessionLabelProvider != null) {
@@ -97,7 +97,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 // type of representation.
                 if (img != null && isDanglingRepresentation(element)) {
                     DSemanticDecorator dSemanticDecorator = getDSemanticDecorator(element);
-                    String key = dSemanticDecorator.eClass().getName() + "_disabled";
+                    String key = MessageFormat.format(Messages.SiriusCommonLabelProvider_eClassDisabled, dSemanticDecorator.eClass().getName());
                     Image disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
                     if (disabledImage == null) {
                         ImageDescriptor desc = ImageDescriptor.createFromImage(img);
@@ -128,7 +128,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 String fileExtension = file.getFileExtension();
                 // Create a key to store/restore the image in image registry of
                 // SiriusEditPlugin
-                String imgKey = fileExtension + "Decorated";
+                String imgKey = fileExtension + "Decorated"; //$NON-NLS-1$
                 // Get the existing image (if any)
                 img = SiriusEditPlugin.getPlugin().getImageRegistry().get(imgKey);
                 // If the image has already been computed, use it.
@@ -142,7 +142,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                     if (imageDescriptor != null) {
                         // Add an overlay with the "Sirius Modeling" overlay
                         ImageDescriptor[] imageDescriptors = new ImageDescriptor[5];
-                        imageDescriptors[IDecoration.TOP_RIGHT] = SIRIUS_MODELING_OVERLAY_DESC;
+                        imageDescriptors[IDecoration.TOP_RIGHT] = SiriusCommonLabelProvider.SIRIUS_MODELING_OVERLAY_DESC;
                         img = new DecorationOverlayIcon(imageDescriptor.createImage(), imageDescriptors).createImage();
                         SiriusEditPlugin.getPlugin().getImageRegistry().put(imgKey, img);
                     }
@@ -170,16 +170,14 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         return semDec;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getText(Object element) {
         String text = null;
         if (element instanceof IProject) {
             IProject project = (IProject) element;
             Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(project);
-            if (modelingProject.some() && shoudlShowSessionDirtyStatus(modelingProject.get().getSession())) {
-                text = DIRTY + project.getName();
+            if (modelingProject.some() && SiriusCommonLabelProvider.shoudlShowSessionDirtyStatus(modelingProject.get().getSession())) {
+                text = SiriusCommonLabelProvider.DIRTY + project.getName();
             }
         } else if (element instanceof IFile) {
             text = doGetFileText((IFile) element);
@@ -212,8 +210,8 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                     List<Session> openedSessions = getOpenSessions(file);
                     if (openedSessions.size() == 1) {
                         // legacy case
-                        boolean dirty = shoudlShowSessionDirtyStatus(openedSessions.iterator().next());
-                        text = dirty ? DIRTY + file.getName() : file.getName();
+                        boolean dirty = SiriusCommonLabelProvider.shoudlShowSessionDirtyStatus(openedSessions.iterator().next());
+                        text = dirty ? SiriusCommonLabelProvider.DIRTY + file.getName() : file.getName();
                     }
                 }
 
@@ -221,8 +219,8 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 // Transient case
                 Iterable<Session> transientSessions = Iterables.filter(getOpenSessions(file), new SiriusCommonContentProvider.TransientSessionPredicate());
                 if (Iterables.size(transientSessions) == 1) {
-                    boolean dirty = shoudlShowSessionDirtyStatus(transientSessions.iterator().next());
-                    text = dirty ? DIRTY + file.getName() : file.getName();
+                    boolean dirty = SiriusCommonLabelProvider.shoudlShowSessionDirtyStatus(transientSessions.iterator().next());
+                    text = dirty ? SiriusCommonLabelProvider.DIRTY + file.getName() : file.getName();
                 }
             }
         }
@@ -238,6 +236,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
     private List<Session> getOpenSessions(IFile file) {
 
         return Lists.newArrayList(Iterables.filter(FileSessionFinder.getSelectedSessions(Collections.singletonList(file)), new Predicate<Session>() {
+            @Override
             public boolean apply(Session input) {
                 return input.isOpen();
             }
@@ -248,7 +247,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
      * Test if the "*" prefix should be displayed : the session should be dirty
      * and if the preference DesignerUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR
      * value is true, it should be displayed only when there is no editor.
-     * 
+     *
      * @param session
      *            the session to test.
      * @return true if the dirty decorator
@@ -271,34 +270,26 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void addListener(ILabelProviderListener listener) {
         if (sessionLabelProvider != null) {
             sessionLabelProvider.addListener(listener);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void removeListener(ILabelProviderListener listener) {
         if (sessionLabelProvider != null) {
             sessionLabelProvider.removeListener(listener);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isLabelProperty(Object element, String property) {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Color getForeground(final Object element) {
 
         Color foreground = null;
@@ -329,7 +320,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
 
     /**
      * Check that the given object is in a modeling project.
-     * 
+     *
      * @param object
      *            the object to check.
      * @return true if the object is in a modeling project.
@@ -356,16 +347,12 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Color getBackground(Object element) {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void dispose() {
         if (sessionLabelProvider != null) {
             sessionLabelProvider.dispose();
@@ -373,28 +360,20 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void saveState(IMemento aMemento) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void restoreState(IMemento aMemento) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getDescription(Object anElement) {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void init(ICommonContentExtensionSite aConfig) {
 
     }

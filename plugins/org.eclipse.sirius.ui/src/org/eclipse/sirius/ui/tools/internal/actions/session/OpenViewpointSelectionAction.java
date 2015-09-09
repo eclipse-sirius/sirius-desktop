@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,24 +16,23 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * An actions opening a dialog allowing to change the {@link ViewpointSelection}
  * .
- * 
+ *
  * @author alagarde
- * 
+ *
  */
 public class OpenViewpointSelectionAction extends Action {
-
-    private static final String VIEWPOINTS_SELECTION_ACTION_TEXT = "Viewpoints Selection";
 
     private URI sessionURI;
 
     /**
      * Constructor.
-     * 
+     *
      * @param session
      *            the session on which viewpoints selection should be changed
      */
@@ -43,23 +42,21 @@ public class OpenViewpointSelectionAction extends Action {
 
     /**
      * Constructor.
-     * 
+     *
      * @param sessionURI
      *            the {@link URI} of session on which viewpoints selection
      *            should be changed
      */
     public OpenViewpointSelectionAction(URI sessionURI) {
-        super(VIEWPOINTS_SELECTION_ACTION_TEXT, SiriusEditPlugin.INSTANCE.getImageDescriptor("full/obj16/Viewpoint.gif")); //$NON-NLS-1$
+        super(Messages.OpenViewpointSelectionAction_name, SiriusEditPlugin.INSTANCE.getImageDescriptor("full/obj16/Viewpoint.gif")); //$NON-NLS-1$
         this.sessionURI = sessionURI;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void run() {
         final Session session = SessionManager.INSTANCE.getExistingSession(sessionURI);
         EclipseUIUtil.displayAsyncExec(new Runnable() {
+            @Override
             public void run() {
                 ViewpointSelection.openViewpointsSelectionDialog(session);
             }

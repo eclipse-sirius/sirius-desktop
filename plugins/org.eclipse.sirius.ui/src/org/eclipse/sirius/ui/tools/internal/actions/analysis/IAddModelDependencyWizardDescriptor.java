@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,16 +19,16 @@ import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizar
  * Describes a extension as contributed to the
  * {@link IAddModelDependencyWizardRegistryListener#MODEL_DEPENDENCY_WIZARD_EXTENSION_POINT}
  * extension point.
- * 
+ *
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
+ *
  */
 public class IAddModelDependencyWizardDescriptor {
 
     /**
      * Name of the attribute corresponding to the contributed class's path.
      */
-    public static final String RESOURCE_WIZARD_EXTENSION_CONTRIBUTED_CLASS_NAME = "class";
+    public static final String RESOURCE_WIZARD_EXTENSION_CONTRIBUTED_CLASS_NAME = "class"; //$NON-NLS-1$
 
     /**
      * Configuration element of this descriptor .
@@ -47,25 +47,25 @@ public class IAddModelDependencyWizardDescriptor {
 
     /**
      * Instantiates a descriptor with all information.
-     * 
+     *
      * @param configuration
      *            Configuration element from which to create this descriptor.
      */
     public IAddModelDependencyWizardDescriptor(IConfigurationElement configuration) {
         element = configuration;
-        extensionClassName = configuration.getAttribute(RESOURCE_WIZARD_EXTENSION_CONTRIBUTED_CLASS_NAME);
+        extensionClassName = configuration.getAttribute(IAddModelDependencyWizardDescriptor.RESOURCE_WIZARD_EXTENSION_CONTRIBUTED_CLASS_NAME);
     }
 
     /**
      * Creates an instance of this descriptor's
      * {@link IAddModelDependencyWizard} .
-     * 
+     *
      * @return A new instance of this descriptor's
      *         {@link IAddModelDependencyWizard}.
      */
     public IAddModelDependencyWizard getWizard() {
         try {
-            extension = (IAddModelDependencyWizard) element.createExecutableExtension(RESOURCE_WIZARD_EXTENSION_CONTRIBUTED_CLASS_NAME);
+            extension = (IAddModelDependencyWizard) element.createExecutableExtension(IAddModelDependencyWizardDescriptor.RESOURCE_WIZARD_EXTENSION_CONTRIBUTED_CLASS_NAME);
         } catch (CoreException e) {
             SiriusTransPlugin.INSTANCE.error(e.getMessage(), e);
         }
@@ -74,7 +74,7 @@ public class IAddModelDependencyWizardDescriptor {
 
     /**
      * Returns the fully qualified name of the contributed class.
-     * 
+     *
      * @return the fully qualified name of the contributed class
      */
     public String getExtensionClassName() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.provider;
 
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -25,9 +26,11 @@ import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.LabelPr
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorPart;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 
 /**
@@ -53,11 +56,6 @@ public class DTableLabelProvider extends LabelProvider {
         labelProviderProviderService = new LabelProviderProviderService();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ILabelProvider#getImage(java.lang.Object)
-     */
     @Override
     public Image getImage(final Object object) {
         Image labelImage = null;
@@ -82,11 +80,6 @@ public class DTableLabelProvider extends LabelProvider {
         return labelImage;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
-     */
     @Override
     public String getText(final Object object) {
         String text = null;
@@ -103,7 +96,7 @@ public class DTableLabelProvider extends LabelProvider {
                     semanticSelection = extractSemanticSelection(((IStructuredSelection) object).toList());
                     selectionSize = semanticSelection.size();
                     if (containsDifferentTypes(semanticSelection)) {
-                        text = selectionSize + " items selected"; //$NON-NLS-1$
+                        text = MessageFormat.format(Messages.DTableLabelProvider_nbSelectedItems, selectionSize);
                     } else if (!semanticSelection.isEmpty()) {
                         tempObject = semanticSelection.iterator().next();
                     }
@@ -115,15 +108,11 @@ public class DTableLabelProvider extends LabelProvider {
             }
 
             if (selectionSize > 1) {
-                text = selectionSize + " [";
-                final Iterator<?> iterator = semanticSelection.iterator();
-                while (iterator.hasNext()) {
-                    text += getAdapterFactoryLabelProvider().getText(iterator.next());
-                    if (iterator.hasNext()) {
-                        text += ", ";
-                    }
+                List<String> labels = Lists.newArrayList();
+                for (Object selected : semanticSelection) {
+                    labels.add(getAdapterFactoryLabelProvider().getText(selected));
                 }
-                text += "] selected";
+                text = MessageFormat.format(Messages.DTableLabelProvider_selectedItemsList, selectionSize, Joiner.on(", ").join(labels)); //$NON-NLS-1$
             }
         }
         return text;

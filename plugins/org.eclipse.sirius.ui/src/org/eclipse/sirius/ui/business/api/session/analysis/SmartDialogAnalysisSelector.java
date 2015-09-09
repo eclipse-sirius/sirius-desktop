@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008-2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -32,7 +33,7 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
 /**
  * A dialog which select smartly analysis.
- * 
+ *
  * @author mchauvin
  */
 public class SmartDialogAnalysisSelector implements DAnalysisSelector {
@@ -49,7 +50,7 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
 
     /**
      * Asks the user to select the analysis.
-     * 
+     *
      * @param allAnalysis
      *            all available analysis
      * @return selected analysis
@@ -80,7 +81,7 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
 
                     /**
                      * do not allow cancel {@inheritDoc}
-                     * 
+                     *
                      * @see org.eclipse.ui.dialogs.SelectionDialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
                      */
                     @Override
@@ -90,8 +91,8 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
 
                 };
 
-                dialog.setTitle("Analysis selection");
-                dialog.setMessage("Select an Analysis :");
+                dialog.setTitle(Messages.SmartDialogAnalysisSelector_title);
+                dialog.setMessage(Messages.SmartDialogAnalysisSelector_message);
                 dialog.setElements(allAnalysis.toArray());
                 if (dialog.open() == Window.OK) {
                     if (dialog.getFirstResult() != null) {

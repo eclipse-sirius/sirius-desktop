@@ -1,7 +1,7 @@
 /**
  * <copyright> 
  *
- * Copyright (c) 2006-2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2015 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,7 +69,7 @@ public class ControlAction extends CommandActionHandler {
     protected boolean canceled = false;
 
     public ControlAction(EditingDomain domain) {
-        super(domain, EMFEditUIPlugin.INSTANCE.getString("_UI_Control_menu_item"));
+        super(domain, EMFEditUIPlugin.INSTANCE.getString("_UI_Control_menu_item")); //$NON-NLS-1$
     }
 
     public ControlAction() {
@@ -96,15 +96,15 @@ public class ControlAction extends CommandActionHandler {
         eObject = result ? (EObject) object : null;
 
         if (!AdapterFactoryEditingDomain.isControlled(object)) {
-            setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Control_menu_item"));
-            setDescription("_UI_Control_menu_item_description");
+            setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Control_menu_item")); //$NON-NLS-1$
+            setDescription(EMFEditUIPlugin.INSTANCE.getString("_UI_Control_menu_item_description")); //$NON-NLS-1$
             command = null;
         } else {
-            setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Uncontrol_menu_item"));
-            setDescription("_UI_Uncontrol_menu_item_description");
+            setText(EMFEditUIPlugin.INSTANCE.getString("_UI_Uncontrol_menu_item")); //$NON-NLS-1$
+            setDescription(EMFEditUIPlugin.INSTANCE.getString("_UI_Uncontrol_menu_item_description")); //$NON-NLS-1$
             if (result) {
                 command = new RemoveCommand(domain, eObject.eResource().getContents(), eObject);
-                command = new SelfAffectingCommand(EMFEditUIPlugin.INSTANCE.getString("_UI_UncontrolCommand_label"), command);
+                command = new SelfAffectingCommand(EMFEditUIPlugin.INSTANCE.getString("_UI_UncontrolCommand_label"), command); //$NON-NLS-1$
                 result = command.canExecute();
             }
         }
@@ -144,7 +144,7 @@ public class ControlAction extends CommandActionHandler {
             }
 
             command = new AddCommand(domain, resource.getContents(), eObject);
-            command = new SelfAffectingCommand(EMFEditUIPlugin.INSTANCE.getString("_UI_ControlCommand_label"), command);
+            command = new SelfAffectingCommand(EMFEditUIPlugin.INSTANCE.getString("_UI_ControlCommand_label"), command); //$NON-NLS-1$
         }
 
         // Ensure that all proxies are resolved so that references into the
@@ -181,7 +181,7 @@ public class ControlAction extends CommandActionHandler {
         protected EObject controledObject;
 
         public ControlResourceDialog(Shell parent, EditingDomain domain, Resource currentResource, final EObject controledObject) {
-            super(parent, EMFEditUIPlugin.INSTANCE.getString("_UI_ControlDialog_title"), SWT.SAVE);
+            super(parent, EMFEditUIPlugin.INSTANCE.getString("_UI_ControlDialog_title"), SWT.SAVE); //$NON-NLS-1$
             this.domain = domain;
             this.currentResource = currentResource;
             this.controledObject = controledObject;
@@ -221,11 +221,11 @@ public class ControlAction extends CommandActionHandler {
             boolean resourceInSet = resource != null;
 
             if (resource == currentResource) {
-                MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_AlreadyInResource"));
+                MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_AlreadyInResource")); //$NON-NLS-1$ //$NON-NLS-2$
                 return false;
             }
             if (domain.isReadOnly(resource)) {
-                MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_ReadOnlyResource"));
+                MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_ReadOnlyResource")); //$NON-NLS-1$ //$NON-NLS-2$
                 return false;
             }
 
@@ -244,7 +244,7 @@ public class ControlAction extends CommandActionHandler {
             if (!resourceInSet) {
                 resource = resourceSet.createResource(uri);
                 if (resource == null) {
-                    MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_CannotCreateResource"));
+                    MessageDialog.openError(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_InvalidURI_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_CannotCreateResource")); //$NON-NLS-1$ //$NON-NLS-2$
                     return false;
                 }
 
@@ -260,9 +260,9 @@ public class ControlAction extends CommandActionHandler {
 
             boolean result = true;
             if (resourceBad) {
-                result = MessageDialog.openQuestion(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_ExistingResource_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_ReplaceResource"));
+                result = MessageDialog.openQuestion(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_ExistingResource_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_ReplaceResource")); //$NON-NLS-1$ //$NON-NLS-2$
             } else if (resourceExists) {
-                result = MessageDialog.openQuestion(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_ExistingResource_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_AddToResource"));
+                result = MessageDialog.openQuestion(getShell(), EMFEditUIPlugin.INSTANCE.getString("_UI_ExistingResource_label"), EMFEditUIPlugin.INSTANCE.getString("_WARN_AddToResource")); //$NON-NLS-1$ //$NON-NLS-2$
             }
 
             if (!result && !resourceInSet && resource != null) {

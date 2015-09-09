@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
 import org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -47,27 +48,18 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 /**
  * An eclipse action to export all representations of representations file to
  * images.
- * 
+ *
  * @author mchauvin
  */
 public class ExportRepresentationsFromFileAction implements IObjectActionDelegate {
 
     private IFile sessionResourceFile;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
-     *      org.eclipse.ui.IWorkbenchPart)
-     */
+    @Override
     public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
-     */
+    @Override
     public void run(final IAction action) {
 
         final Shell shell = Display.getCurrent().getActiveShell();
@@ -94,7 +86,7 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                     Session session = null;
                     boolean isOpen = false;
                     try {
-                        monitor.beginTask("Export all representations to images", 10);
+                        monitor.beginTask(Messages.ExportRepresentationsFromFileAction_exportTask, 10);
                         session = SessionManager.INSTANCE.getSession(sessionResourceURI, new SubProgressMonitor(monitor, 1));
                         isOpen = session.isOpen();
                         if (!isOpen) {
@@ -118,26 +110,22 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
                 pmd.run(false, false, exportAllRepresentationsRunnable);
             } catch (final InvocationTargetException e) {
                 SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
-                MessageDialog.openError(shell, "Error", e.getTargetException().getMessage());
+                MessageDialog.openError(shell, Messages.ExportRepresentationsFromFileAction_errorDialog_title, e.getTargetException().getMessage());
             } catch (final InterruptedException e) {
                 SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
-                MessageDialog.openInformation(shell, "Cancelled", e.getMessage());
+                MessageDialog.openInformation(shell, Messages.ExportRepresentationsFromFileAction_interruptedDialog_title, e.getMessage());
             } finally {
                 pmd.close();
 
             }
         } else {
-            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Export representations", "The selected session do not contain any representation to export.");
+            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), Messages.ExportRepresentationsFromFileAction_noRepresentationsDialog_title,
+                    Messages.ExportRepresentationsFromFileAction_noRepresentationsDialog_message);
         }
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
-     *      org.eclipse.jface.viewers.ISelection)
-     */
+    @Override
     public void selectionChanged(final IAction action, final ISelection selection) {
         action.setEnabled(false);
         if (selection instanceof IStructuredSelection && !selection.isEmpty() && ((IStructuredSelection) selection).getFirstElement() instanceof IFile) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 
@@ -32,7 +33,7 @@ import com.google.common.collect.Sets;
 /**
  * Display the semantic models associated to the session but not in the current
  * project.
- * 
+ *
  * @author mchauvin
  */
 public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
@@ -44,7 +45,7 @@ public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
 
     /**
      * Construct a new instance.
-     * 
+     *
      * @param project
      *            the project
      */
@@ -54,9 +55,10 @@ public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
 
     /**
      * Get the children of this item.
-     * 
+     *
      * @return the children, never <code>null</code>
      */
+    @Override
     public Collection<?> getChildren() {
         Collection<Object> children = Sets.newLinkedHashSet();
 
@@ -102,17 +104,19 @@ public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
         return deps;
     }
 
+    @Override
     public String getText() {
-        return "Project Dependencies";
+        return Messages.ProjectDependenciesItemImpl_text;
     }
 
+    @Override
     public Image getImage() {
         return SiriusEditPlugin.getPlugin().getBundledImage("icons/obj16/ProjectDependencies.gif"); //$NON-NLS-1$
     }
 
     /**
      * Get the parent project.
-     * 
+     *
      * @return the parent project, could not be <code>null</code>
      */
     public IProject getProject() {
@@ -122,22 +126,20 @@ public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object getParent() {
         return getProject();
     }
 
     /**
      * Get the parent {@link ModelingProject} project.
-     * 
+     *
      * @return the parent project, could not be <code>null</code>
      */
     public ModelingProject getModelingProject() {
         return this.project;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -146,9 +148,6 @@ public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean equals(Object obj) {
         boolean equals = true;
@@ -161,8 +160,9 @@ public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
         } else {
             ProjectDependenciesItemImpl other = (ProjectDependenciesItemImpl) obj;
             if (project == null) {
-                if (other.project != null)
+                if (other.project != null) {
                     equals = false;
+                }
             } else if (!project.equals(other.project)) {
                 equals = false;
             }
@@ -172,9 +172,10 @@ public class ProjectDependenciesItemImpl implements ProjectDependenciesItem {
 
     /**
      * Return the session of the modeling project.
-     * 
+     *
      * @return the session of the modeling project
      */
+    @Override
     public Option<Session> getSession() {
         if (project != null) {
             return Options.newSome(project.getSession());

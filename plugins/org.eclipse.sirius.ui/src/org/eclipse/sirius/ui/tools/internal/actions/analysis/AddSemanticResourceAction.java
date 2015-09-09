@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateOrAddResourceWizard;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -54,7 +55,7 @@ public class AddSemanticResourceAction extends Action {
      *            the URI of each session on which to add a semantic resource
      */
     public AddSemanticResourceAction(final Collection<URI> sessionsURIs) {
-        super("Add Model");
+        super(Messages.AddSemanticResourceAction_title);
         final ImageDescriptor descriptor = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/add.gif"); //$NON-NLS-1$
         setImageDescriptor(descriptor);
         this.sessionsURI = sessionsURIs;

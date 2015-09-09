@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
@@ -33,21 +34,14 @@ import com.google.common.collect.Sets;
 /**
  * Asks the user for confirmation when de-selecting a viewpoint if there are
  * opened editors using this viewpoint.
- * 
+ *
  * <p>
  * All methods must be executed in transactional mode.
  * </p>
- * 
+ *
  * @author mchauvin
  */
 public class ViewpointSelectionCallbackWithConfimation extends ViewpointSelectionCallback {
-    private static final String TITLE = "Confirmation dialog";
-
-    private static final String QUESTION = "\nDisabling this viewpoint will close the concerned editors without saving. Continue?";
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void deselectViewpoint(Viewpoint deselectedViewpoint, Session session, IProgressMonitor monitor) {
         IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
@@ -67,13 +61,16 @@ public class ViewpointSelectionCallbackWithConfimation extends ViewpointSelectio
         StringBuilder builder = new StringBuilder();
         for (IEditorPart iEditorPart : openedEditors) {
             builder.append(iEditorPart.getTitle());
-            builder.append(",\n");
+            builder.append(",\n"); //$NON-NLS-1$
         }
-        final String message = MessageFormat.format("The viewpoint {0} is used by these opened editors:\n\n{1}{2}", new IdentifiedElementQuery(deselectedViewpoint).getLabel(), builder, QUESTION);
+        final String message = MessageFormat.format(Messages.ViewpointSelectionCallbackWithConfimation_viewpointUsedInOpenEditors_message, new IdentifiedElementQuery(deselectedViewpoint).getLabel(),
+                builder);
         final AtomicBoolean confirmation = new AtomicBoolean(false);
         Display.getDefault().syncExec(new Runnable() {
+            @Override
             public void run() {
-                confirmation.set(MessageDialog.openConfirm(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), TITLE, message));
+                confirmation.set(MessageDialog.openConfirm(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                        Messages.ViewpointSelectionCallbackWithConfimation_viewpointUsedInOpenEditors_title, message));
             }
         });
         return confirmation.get();

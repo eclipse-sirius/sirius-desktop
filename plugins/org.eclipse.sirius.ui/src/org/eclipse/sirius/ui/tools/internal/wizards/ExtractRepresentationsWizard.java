@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -43,9 +44,9 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 /**
  * This wizard ask the user for which viewpoints he wants to externalize and
  * create the new .aird files.
- * 
+ *
  * @author cbrun
- * 
+ *
  */
 public class ExtractRepresentationsWizard extends Wizard {
 
@@ -61,7 +62,7 @@ public class ExtractRepresentationsWizard extends Wizard {
 
     /**
      * Constructor.
-     * 
+     *
      * @param session
      *            origin session.
      * @param domain
@@ -77,22 +78,17 @@ public class ExtractRepresentationsWizard extends Wizard {
 
     /**
      * Initialize the wizard.
-     * 
+     *
      * @param workbench
      *            the workbench
      * @param selection
      *            the selection
      */
     public void init(final IWorkbench workbench, final IStructuredSelection selection) {
-        setWindowTitle("Extract views");
+        setWindowTitle(Messages.ExtractRepresentationsWizard_title);
         setNeedsProgressMonitor(true);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#performFinish()
-     */
     @Override
     public boolean performFinish() {
 
@@ -112,11 +108,9 @@ public class ExtractRepresentationsWizard extends Wizard {
         return true;
     }
 
-    /**
-     * @param slaveAnalysis
-     */
     private void moveRepresentations(final DAnalysis slaveAnalysis) {
         final IRunnableWithProgress moveReps = new IRunnableWithProgress() {
+            @Override
             public void run(final IProgressMonitor mon) {
                 domain.getCommandStack().execute(new MoveRepresentationCommand(session, slaveAnalysis, representations));
             }
@@ -124,39 +118,29 @@ public class ExtractRepresentationsWizard extends Wizard {
         try {
             getContainer().run(false, true, moveReps);
         } catch (final InterruptedException e) {
-            SiriusPlugin.getDefault().warning("the move representations action was interrupted", e);
+            SiriusPlugin.getDefault().warning(Messages.ExtractRepresentationsWizard_moveInterrupted, e);
         } catch (final InvocationTargetException e) {
-            SiriusPlugin.getDefault().error("the move representations encountered an exception", e);
+            SiriusPlugin.getDefault().error(Messages.ExtractRepresentationsWizard_moveFailed, e);
         }
     }
 
-    /**
-     * @param op
-     * @param errorCatch
-     * @return
-     */
     private boolean createAIRDFile(final IRunnableWithProgress op, final boolean error) {
         boolean errorCatch = error;
         try {
             getContainer().run(false, true, op);
         } catch (final InterruptedException e) {
             errorCatch = true;
-            // return false;
         } catch (final InvocationTargetException e) {
             if (e.getTargetException() instanceof CoreException) {
-                ErrorDialog.openError(getContainer().getShell(), "Error creating resource", null, ((CoreException) e.getTargetException()).getStatus());
+                ErrorDialog.openError(getContainer().getShell(), Messages.ExtractRepresentationsWizard_resourceCreationError, null, ((CoreException) e.getTargetException()).getStatus());
             } else {
-                SiriusTransPlugin.getPlugin().error("Error creating aird session data", e.getTargetException()); //$NON-NLS-1$
+                SiriusTransPlugin.getPlugin().error(Messages.ExtractRepresentationsWizard_airdCreationError, e.getTargetException());
             }
-            // return false;
             errorCatch = true;
         }
         return errorCatch;
     }
 
-    /**
-     * @return
-     */
     private DAnalysis prepareNewAnalysis() {
         final DAnalysis slaveAnalysis = ViewpointFactory.eINSTANCE.createDAnalysis();
         domain.getCommandStack().execute(new PrepareNewAnalysisCommand(domain, pickedResource, slaveAnalysis, session));
@@ -172,10 +156,6 @@ public class ExtractRepresentationsWizard extends Wizard {
         }
     }
 
-    /**
-     * @param uiSession
-     * @param representation
-     */
     private void closeOpenedEditor(final IEditingSession uiSession, final DRepresentation representation) {
         final IEditorPart editor = uiSession.getEditor(representation);
         if (editor != null) {
@@ -183,22 +163,17 @@ public class ExtractRepresentationsWizard extends Wizard {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.Wizard#addPages()
-     */
     @Override
     public void addPages() {
         final Collection<String> extensions = new ArrayList<String>();
         extensions.add(SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
-        sessionResourceFilePage = new SessionResourceCreationWizardPage("Representations file", new StructuredSelection(), SiriusUtil.SESSION_RESOURCE_EXTENSION); //$NON-NLS-1$
+        sessionResourceFilePage = new SessionResourceCreationWizardPage(Messages.ExtractRepresentationsWizard_pageName, new StructuredSelection(), SiriusUtil.SESSION_RESOURCE_EXTENSION);
         addPage(sessionResourceFilePage);
     }
 
     /**
      * return the newly created resource.
-     * 
+     *
      * @return the newly created resource.
      */
     public Resource getCreatedResource() {
@@ -213,7 +188,6 @@ public class ExtractRepresentationsWizard extends Wizard {
 
         @Override
         protected void execute(final IProgressMonitor monitor) throws CoreException, InterruptedException {
-
             final ResourceSet set = session.getTransactionalEditingDomain().getResourceSet();
             pickedResource = set.createResource(sessionResourceFilePage.getURI());
         }

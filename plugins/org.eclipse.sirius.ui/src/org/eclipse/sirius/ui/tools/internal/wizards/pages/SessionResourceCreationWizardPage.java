@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,17 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
 /**
  * Wizard to create a new Session resource file.
- * 
+ *
  * @author mchauvin
  */
 public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage {
@@ -31,7 +34,7 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
 
     /**
      * Default Constructor to the wizard for session resource creation.
-     * 
+     *
      * @param pageName
      *            the page name.
      * @param selection
@@ -49,7 +52,7 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
 
     /**
      * Get the file extension. Override to create files with this extension.
-     * 
+     *
      * @return the file extension
      */
     protected String getExtension() {
@@ -58,7 +61,7 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
 
     /**
      * Get the URI.
-     * 
+     *
      * @return the URI
      */
     public URI getURI() {
@@ -67,7 +70,7 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
 
     /**
      * Get the file path.
-     * 
+     *
      * @return the file path
      */
     protected IPath getFilePath() {
@@ -84,7 +87,7 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
 
     /**
      * Get the default file name.
-     * 
+     *
      * @return the default file name
      */
     public String getDefaultFileName() {
@@ -97,19 +100,13 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
 
     /**
      * Get the default file name to use when there is no selected file.
-     * 
+     *
      * @return the default file name to use when there is no selected file.
      */
     protected String getNoselectionFileName() {
-        return "newDiagrams";
+        return Messages.SessionResourceCreationWizardPage_noSelectionFileName;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.dialogs.WizardNewFileCreationPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     public void createControl(final Composite parent) {
         super.createControl(parent);
@@ -117,11 +114,6 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
         setPageComplete(validatePage());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.dialogs.WizardNewFileCreationPage#validatePage()
-     */
     @Override
     protected boolean validatePage() {
         boolean result = true;
@@ -131,7 +123,7 @@ public class SessionResourceCreationWizardPage extends WizardNewFileCreationPage
         // Validate that entered extension is the expected one.
         final String extension = getExtension();
         if (extension != null && !getFilePath().toString().endsWith("." + extension)) { //$NON-NLS-1$
-            setErrorMessage("The file extension is wrong. It should be " + extension);
+            setErrorMessage(MessageFormat.format(Messages.SessionResourceCreationWizardPage_wrongFileExtension, extension));
             result = false;
         }
         return result;

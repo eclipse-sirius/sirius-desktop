@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,15 +23,16 @@ import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * Specific command to close the given session.
- * 
+ *
  * @author mporhel
- * 
+ *
  */
 public class CloseUISessionCommand extends WorkspaceModifyOperation {
 
@@ -39,24 +40,17 @@ public class CloseUISessionCommand extends WorkspaceModifyOperation {
 
     /**
      * * Specific command to close the given session.
-     * 
+     *
      * @param session
      *            the session to close.
      */
     public CloseUISessionCommand(Session session) {
-        super();
         this.session = session;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.WorkspaceModifyOperation#execute(org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
-        monitor.beginTask("Close Representations file", IProgressMonitor.UNKNOWN);
+        monitor.beginTask(Messages.CloseUISessionCommand_closeRepresentationFileTask, IProgressMonitor.UNKNOWN);
         if (session == null) {
             return;
         }
@@ -69,7 +63,7 @@ public class CloseUISessionCommand extends WorkspaceModifyOperation {
                 int choice = ISaveablePart2.YES;
                 if (session.getStatus() == SessionStatus.DIRTY) {
                     /* Show a dialog. */
-                    choice = SWTUtil.showSaveDialog(session, "Representations file", false);
+                    choice = SWTUtil.showSaveDialog(session, Messages.CloseUISessionCommand_saveDialogTitle, false);
                     saveSession = choice == ISaveablePart2.YES;
                 }
                 if (choice == ISaveablePart2.CANCEL) {
@@ -80,7 +74,7 @@ public class CloseUISessionCommand extends WorkspaceModifyOperation {
                 // example)
                 // We may encounter an issue to connect to remote CDO server
                 // during close process
-                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while closing the session", e));
+                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, Messages.CloseUISessionCommand_closingError, e));
             }
 
             final IEditingSession ui = SessionUIManager.INSTANCE.getUISession(session);
@@ -99,7 +93,7 @@ public class CloseUISessionCommand extends WorkspaceModifyOperation {
                 try {
                     ui.close(saveSession);
                 } catch (IllegalStateException e) {
-                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while closing the session", e));
+                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, Messages.CloseUISessionCommand_closingError, e));
                 }
                 monitor.worked(1);
                 ui.close();

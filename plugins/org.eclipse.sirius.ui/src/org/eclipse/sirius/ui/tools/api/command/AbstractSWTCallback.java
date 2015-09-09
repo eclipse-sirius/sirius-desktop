@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.api.command;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -65,18 +66,12 @@ import com.google.common.collect.Iterables;
 
 /**
  * Implementation of the {@link UICallBack} interface using SWT.
- * 
+ *
  * @author mchauvin
  * @since 0.9.0
  */
 public abstract class AbstractSWTCallback implements UICallBack {
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForVariableValues(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable)
-     */
+    @Override
     public Collection<EObject> askForVariableValues(final EObject model, final SelectModelElementVariable variable) throws InterruptedException {
         Collection<EObject> variableValues = new ArrayList<EObject>();
         final TreeItemWrapper input = new TreeItemWrapper(null, null);
@@ -114,25 +109,17 @@ public abstract class AbstractSWTCallback implements UICallBack {
 
     /**
      * Get the interpreter variable name for representation.
-     * 
+     *
      * @return the variable interpreter name for representation
      */
     protected abstract String getVariableNameForRepresentation();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForDetailName(java.lang.String)
-     */
+    @Override
     public String askForDetailName(final String defaultName) throws InterruptedException {
         return askForDetailName(defaultName, null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForDetailName(java.lang.String)
-     */
+    @Override
     public String askForDetailName(final String defaultName, final String representationDescription) throws InterruptedException {
         String description = null;
         if (representationDescription != null && representationDescription.trim().length() > 0) {
@@ -146,6 +133,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
         description += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
         final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), Messages.createRepresentationInputDialog_Title, description, defaultName, new IInputValidator() {
 
+            @Override
             public String isValid(final String newText) {
                 return null;
             }
@@ -153,27 +141,20 @@ public abstract class AbstractSWTCallback implements UICallBack {
         if (askSiriusName.open() == Window.OK) {
             return askSiriusName.getValue();
         }
-        throw new InterruptedException("Cancel");
+        throw new InterruptedException(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_askForDetailName_canceled);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#openEObjectsDialogMessage(java.util.Collection,
-     *      java.lang.String, java.lang.String)
-     */
+    @Override
     public boolean openEObjectsDialogMessage(final Collection<EObject> objects, final String title, final String message) {
         return EMFMessageDialog.openQuestionWithEObjects(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), ViewHelper.INSTANCE.createAdapterFactory(), objects, title, message);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void openRepresentation(final Session openedSession, final DRepresentation representation) {
         try {
             new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(false, false, new IRunnableWithProgress() {
 
+                @Override
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     DialectUIManager.INSTANCE.openEditor(openedSession, representation, monitor);
                 }
@@ -185,26 +166,20 @@ public abstract class AbstractSWTCallback implements UICallBack {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Resource loadResource(final EditingDomain domain, final IFile file) {
         final LoadEMFResourceRunnableWithProgress operation = new LoadEMFResourceRunnableWithProgress(domain.getResourceSet(), file);
         try {
             operation.run(new NullProgressMonitor());
         } catch (final InvocationTargetException e) {
-            SiriusTransPlugin.INSTANCE.error("error loading EMF resource", e);
+            SiriusTransPlugin.INSTANCE.error(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_loadResourceError, e);
         } catch (final InterruptedException e) {
-            SiriusTransPlugin.INSTANCE.error("error loading EMF resource", e);
+            SiriusTransPlugin.INSTANCE.error(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_loadResourceError, e);
         }
         return operation.getLoadedResource();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws InterruptedException
-     */
+    @Override
     public Collection<EObject> askForEObjects(String message, TreeItemWrapper input, AdapterFactory factory) throws InterruptedException {
         final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, message, null, input, factory);
         wizard.setMany(true);
@@ -216,11 +191,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
         throw new InterruptedException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws InterruptedException
-     */
+    @Override
     public EObject askForEObject(String message, TreeItemWrapper input, AdapterFactory factory) throws InterruptedException {
         final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, message, null, input, factory);
         wizard.setMany(false);
@@ -232,37 +203,27 @@ public abstract class AbstractSWTCallback implements UICallBack {
         throw new InterruptedException();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#shouldReload(Resource)
-     */
+    @Override
     public boolean shouldReload(final Resource resource) {
-        return openQuestion("Reload the resource?", getCommonMessage(resource) + "externally changed, should we reload it?");
+        return openQuestion(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldReload_title,
+                MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldReload_message, resource.getURI()));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#shouldRemove(Resource)
-     */
+    @Override
     public boolean shouldRemove(final Resource resource) {
-        return openQuestion("Remove the resource?", getCommonMessage(resource) + "externally deleted, should we remove it and lose changes?");
+        return openQuestion(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldRemove_title,
+                MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldRemove_message, resource.getURI()));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#shouldClose(Session,
-     *      Resource)
-     */
+    @Override
     public boolean shouldClose(final Session session, final Resource resource) {
-        return openQuestion("Close the representations file?", getCommonMessage(resource) + "deleted and contains critical data, should we close it?");
+        return openQuestion(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldClose_title,
+                MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldClose_message, resource.getURI()));
     }
 
     /**
      * Convenience method to open a simple Yes/No question dialog.
-     * 
+     *
      * @param title
      *            the dialog's title, or <code>null</code> if none
      * @param message
@@ -275,6 +236,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
             return MessageDialog.openQuestion(getActiveShell(), title, message);
         } else {
             RunnableWithResult<Boolean> reload = new RunnableWithResult.Impl<Boolean>() {
+                @Override
                 public void run() {
                     setResult(MessageDialog.openQuestion(getActiveShell(), title, message));
                 }
@@ -300,11 +262,12 @@ public abstract class AbstractSWTCallback implements UICallBack {
      * </UL>
      * <BR>
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#getSessionDisplayed(org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public String getSessionNameToDisplayWhileSaving(Session session) {
-        String name = ""; //$NON-NLS-1$
+        String result = ""; //$NON-NLS-1$
         if (session != null) {
             String projectName = null;
             Resource representationsFileResource = session.getSessionResource();
@@ -312,26 +275,39 @@ public abstract class AbstractSWTCallback implements UICallBack {
             if (representationsFileURI.segments().length > 1) {
                 projectName = representationsFileURI.segment(1);
             }
-            if (ResourceSetSync.getStatus(representationsFileResource).equals(ResourceStatus.SYNC)) {
-                name = "Models";
-            } else {
-                if (semanticResourcesDirty(session)) {
-                    name = "Models and Representations";
-                } else {
-                    name = "Representations";
-                }
-            }
+
+            final String location;
+            final boolean inProject;
             URIQuery uriQuery = new URIQuery(representationsFileURI);
             if (projectName != null) {
-                name += " for project " + projectName;
-            } else if (uriQuery.isInMemoryURI()) {
-                name += " for \"" + uriQuery.toPlatformString() + "\"";
+                location = projectName;
+                inProject = true;
             } else {
-                name += " for \"" + representationsFileURI.toString() + "\"";
+                location = uriQuery.isInMemoryURI() ? uriQuery.toPlatformString() : representationsFileURI.toString();
+                inProject = false;
+            }
+
+            if (ResourceSetSync.getStatus(representationsFileResource).equals(ResourceStatus.SYNC)) {
+                if (inProject) {
+                    result = MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_modelsInProject, location);
+                } else {
+                    result = MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_models, location);
+                }
+            } else if (semanticResourcesDirty(session)) {
+                if (inProject) {
+                    result = MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_modelsAndRepresentationsInProject, location);
+                } else {
+                    result = MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_modelsAndRepresentations, location);
+                }
+            } else {
+                if (inProject) {
+                    result = MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_representationsInProject, location);
+                } else {
+                    result = MessageFormat.format(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_representations, location);
+                }
             }
         }
-
-        return name;
+        return result;
     }
 
     private boolean semanticResourcesDirty(Session session) {
@@ -350,10 +326,6 @@ public abstract class AbstractSWTCallback implements UICallBack {
         return session.getSemanticResources();
     }
 
-    private String getCommonMessage(final Resource resource) {
-        return "The " + resource.getURI() + " resource has been ";
-    }
-
     private boolean inUIThread() {
         return Display.getCurrent() != null;
     }
@@ -362,12 +334,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
         return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#openError(java.lang.String,
-     *      java.lang.String)
-     */
+    @Override
     public void openError(String title, String message) {
         if (inUIThread()) {
             MessageDialog.openError(getActiveShell(), title, message);

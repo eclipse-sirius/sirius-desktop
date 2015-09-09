@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -38,7 +39,7 @@ import com.google.common.collect.Lists;
  * <p>
  * Use {@link #setTitle(String)} and {@link #setMessage(String)} to customize
  * the dialog to your use case.
- * 
+ *
  * @author pcdavid
  */
 // TODO Could this be replaced by ListSelectionDialog or made more generic?
@@ -63,7 +64,7 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
     /**
      * Creates a new dialog to let the user choose a subset of existing
      * representations from a collection of candidates.
-     * 
+     *
      * @param parentShell
      *            the dialog's shell.
      * @param candidates
@@ -73,6 +74,7 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
         super(parentShell);
         this.candidateRepresentations = new ArrayList<DRepresentation>(candidates);
         Collections.sort(candidateRepresentations, new Comparator<DRepresentation>() {
+            @Override
             public int compare(final DRepresentation r1, final DRepresentation r2) {
                 return r1.getName().compareTo(r2.getName());
             }
@@ -83,7 +85,7 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
     /**
      * Returns the list of representations the user selected among the
      * candidates presented.
-     * 
+     *
      * @return the list of representations selected by the candidate. May be
      *         empty, but not <code>null</code>.
      */
@@ -93,7 +95,7 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
 
     /**
      * Create the selection list.
-     * 
+     *
      * @param parent
      *            the parent control
      * @return the dialog area's content
@@ -110,14 +112,17 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
         checkList.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
 
         checkList.setContentProvider(new IStructuredContentProvider() {
+            @Override
             public Object[] getElements(final Object inputElement) {
                 return candidateRepresentations.toArray();
             }
 
+            @Override
             public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
                 // Ignore.
             }
 
+            @Override
             public void dispose() {
                 // Ignore.
             }
@@ -131,10 +136,11 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
 
     /**
      * Update {@link #selectedRepresentations} according to the event.
-     * 
+     *
      * @param event
      *            an event indicate a state change in a check-box.
      */
+    @Override
     public void checkStateChanged(final CheckStateChangedEvent event) {
         if (event.getChecked()) {
             selectedRepresentations.add((DRepresentation) event.getElement());
@@ -143,13 +149,9 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
-     */
+    @Override
     protected void configureShell(Shell newShell) {
         super.configureShell(newShell);
-        newShell.setText("Startup representations");
+        newShell.setText(Messages.RepresentationsSelectionDialog_shellTitle);
     };
 }

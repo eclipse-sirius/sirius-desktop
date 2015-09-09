@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -50,17 +51,13 @@ import org.eclipse.ui.dialogs.ContainerCheckedTreeViewer;
 
 /**
  * Wizard to select representations from an Aird.
- * 
+ *
  * @author cbrun
  */
 public class RepresentationsSelectionWizardPage extends WizardPage {
 
-    private static final String SELECT_REPRESENTATIONS_TO_EXPORT = "Select Representations to export";
-
-    private static final String READ_ONLY_REPRESENTATION_CONTAINER = "The representation container is read only.\r\n Please select another representation.";
-
     /** The title of the page. */
-    private static final String PAGE_TITLE = "Selection of representations to export";
+    private static final String PAGE_TITLE = Messages.RepresentationsSelectionWizardPage_pageTitle;
 
     /** The page is completed. */
     private static final int CODE_OK = 0;
@@ -85,21 +82,21 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     /**
      * Create a new <code>DescDiagramSelectionWizardPage</code>.
-     * 
+     *
      * @param root
      *            the root object
      * @param representations
      *            the preselection.
      */
     public RepresentationsSelectionWizardPage(final Session root, final Collection<DRepresentation> representations) {
-        super(PAGE_TITLE);
-        this.setTitle(PAGE_TITLE);
+        super(RepresentationsSelectionWizardPage.PAGE_TITLE);
+        this.setTitle(RepresentationsSelectionWizardPage.PAGE_TITLE);
         this.root = root;
         this.preselection = representations;
         if (preselection.size() > 0) {
             setPageComplete(true);
         }
-        setMessage(SELECT_REPRESENTATIONS_TO_EXPORT, IMessageProvider.INFORMATION);
+        setMessage(Messages.RepresentationsSelectionWizardPage_message, IMessageProvider.INFORMATION);
     }
 
     @Override
@@ -125,7 +122,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     /**
      * Create the table viewer.
-     * 
+     *
      * @param parent
      *            the parent composite.
      * @return the table viewer.
@@ -146,7 +143,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     /**
      * Change the page according to the new state of the selection.
-     * 
+     *
      * @author cbrun
      */
     private class SiriusDiagramSelectionCheckStateListener implements ICheckStateListener {
@@ -156,15 +153,15 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
             switch (result) {
             case CODE_OK:
             case CODE_NO_SEL:
-                setMessage(SELECT_REPRESENTATIONS_TO_EXPORT, IMessageProvider.INFORMATION);
+                setMessage(Messages.RepresentationsSelectionWizardPage_message, IMessageProvider.INFORMATION);
                 setPageComplete(true);
                 break;
             case CODE_ERROR_READONLY:
-                setMessage(READ_ONLY_REPRESENTATION_CONTAINER, IMessageProvider.ERROR);
+                setMessage(Messages.RepresentationsSelectionWizardPage_readOnlyContainerError, IMessageProvider.ERROR);
                 setPageComplete(false);
                 break;
             default:
-                setMessage("Unknown code result", IMessageProvider.ERROR);
+                setMessage(Messages.RepresentationsSelectionWizardPage_unknownCodeError, IMessageProvider.ERROR);
                 setPageComplete(false);
                 break;
             }
@@ -172,9 +169,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
     }
 
     private int checkSelection(final Collection<DRepresentation> selectedRepresentations) {
-        int result = CODE_OK;
+        int result = RepresentationsSelectionWizardPage.CODE_OK;
         if (selectedRepresentations.isEmpty()) {
-            result = CODE_NO_SEL;
+            result = RepresentationsSelectionWizardPage.CODE_NO_SEL;
         } else {
             for (DRepresentation item : selectedRepresentations) {
                 // check permission authority
@@ -183,7 +180,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container);
                     if (permissionAuthority != null && !permissionAuthority.canDeleteInstance(item)) {
                         // Cannot remove representation from the container
-                        result = CODE_ERROR_READONLY;
+                        result = RepresentationsSelectionWizardPage.CODE_ERROR_READONLY;
                         break; // quit the while
                     }
                 }
@@ -194,14 +191,14 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     /**
      * Selects only diagrams.
-     * 
+     *
      * @author cbrun
      */
     private class DescDiagramSelectionTreeViewer extends ContainerCheckedTreeViewer {
 
         /**
          * Create a new <code>DescDiagramSelectionTreeViewer</code>.
-         * 
+         *
          * @param parent
          *            the parent composite.
          */
@@ -211,7 +208,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
         /**
          * Create a new <code>DescDiagramSelectionTreeViewer</code>.
-         * 
+         *
          * @param parent
          *            the parent composite.
          * @param style
@@ -223,7 +220,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
         /**
          * Create a new <code>DescDiagramSelectionTreeViewer</code>.
-         * 
+         *
          * @param tree
          *            the tree.
          */
@@ -273,7 +270,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
         /**
          * Updates the check state of all created children
-         * 
+         *
          * @return <code>true</code> if an element as been checked.
          */
         private boolean updateChildrenItems(final TreeItem parent, final boolean state) {
@@ -304,7 +301,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
     /**
      * Return all selected elements.
-     * 
+     *
      * @return all selected elements.
      */
     @SuppressWarnings("unchecked")
@@ -330,7 +327,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
         /**
          * Create a new <code>SemanticDViewContentProvider</code> with the
          * specified analysis.
-         * 
+         *
          * @param functionnalAnalysis
          *            the analysis to browse.
          */
@@ -342,7 +339,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
         @Override
         public Object[] getChildren(final Object parentElement) {
-            Object[] children = empty;
+            Object[] children = SessionContentProvider.empty;
             if (parentElement instanceof Session) {
                 children = ((Session) parentElement).getSemanticResources().toArray();
             } else if (parentElement instanceof Resource) {
@@ -415,7 +412,7 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
 
         /**
          * Return all the diagrams for the specified viewpoint.
-         * 
+         *
          * @param semanticElement
          *            the parent semantic element.
          * @return all the diagrams for the specified viewpoint.

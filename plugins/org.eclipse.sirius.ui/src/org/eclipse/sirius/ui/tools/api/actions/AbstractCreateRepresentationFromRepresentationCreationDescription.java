@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.actions;
+
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -40,6 +42,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
@@ -96,14 +99,8 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
         this.commandFactory = commandFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#isEnabled()
-     */
     @Override
     public boolean isEnabled() {
-
         boolean isEnabled = super.isEnabled();
         if (isEnabled) {
             if (desc.getRepresentationDescription() == null) {
@@ -116,22 +113,12 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
         return isEnabled;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public String getText() {
         final IdentifiedElementQuery query = new IdentifiedElementQuery(desc);
         return query.getLabel();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         doCreateRepresentation();
@@ -142,7 +129,7 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
         final IdentifiedElementQuery query = new IdentifiedElementQuery(desc);
 
         // default name
-        String name = "new " + query.getLabel();
+        String name = MessageFormat.format(Messages.AbstractCreateRepresentationFromRepresentationCreationDescription_defaultName, query.getLabel());
         final String computedName = computeName(target);
         if (computedName != null) {
             name = computedName;
@@ -159,7 +146,7 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
         if (target != null) {
             if (!optionalCreatedRepresentation.some()) {
                 final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-                MessageDialog.openWarning(shell, "Error creating the representation", "An error occured when trying to create the representation.\nPlease check the representation specification.");
+                MessageDialog.openWarning(shell, Messages.AbstractCreateRepresentationFromRepresentationCreationDescription_creationError_title, Messages.AbstractCreateRepresentationFromRepresentationCreationDescription_creationError_message);
             } else {
                 DialectUIManager.INSTANCE.openEditor(SessionManager.INSTANCE.getSession(target.getTarget()), optionalCreatedRepresentation.get(), new NullProgressMonitor());
             }

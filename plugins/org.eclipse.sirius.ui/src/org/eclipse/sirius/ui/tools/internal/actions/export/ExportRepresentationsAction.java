@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -34,7 +35,7 @@ import com.google.common.collect.Sets;
 
 /**
  * Action to export representations as images.
- * 
+ *
  * @author cbrun
  */
 public class ExportRepresentationsAction extends AbstractExportRepresentationsAction {
@@ -54,7 +55,7 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
 
     /**
      * Build the action.
-     * 
+     *
      * @param session
      *            the current {@link Session}.
      * @param selectedEObjects
@@ -63,7 +64,7 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
      *            the selected {@link DRepresentation}.
      */
     public ExportRepresentationsAction(Session session, Collection<EObject> selectedEObjects, Collection<DRepresentation> selectedRepresentations) {
-        super(SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"), AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/image.gif"));
+        super(Messages.ExportRepresentationsAction_label, AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/image.gif")); //$NON-NLS-1$
         this.session = session;
         this.selectedEObjects = selectedEObjects;
         this.selectedRepresentations = selectedRepresentations;
@@ -74,7 +75,8 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
         if (!getDRepresentationToExport().isEmpty()) {
             super.run();
         } else {
-            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Export representations", "The selected elements do not contain any representation to export.");
+            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), Messages.ExportRepresentationsAction_noRepresentationsDialog_title,
+                    Messages.ExportRepresentationsAction_noRepresentationsDialog_message);
         }
     }
 
@@ -84,7 +86,7 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
         if (dRepresentationsToExport.isEmpty()) {
             dRepresentationsToExport.addAll(computeAllRepresentationsUnderSemantic());
         }
-        return Lists.newArrayList(Iterables.filter(dRepresentationsToExport, exportableRepresentation));
+        return Lists.newArrayList(Iterables.filter(dRepresentationsToExport, ExportRepresentationsAction.exportableRepresentation));
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.internal.views.interpreterview;
 
 import java.text.DecimalFormat;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -59,6 +60,7 @@ import org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.Clipboard;
@@ -89,7 +91,7 @@ import org.eclipse.ui.part.ViewPart;
 /**
  * An Eclipse view to launch model requests language requests and see the
  * results.
- * 
+ *
  * @author cbrun
  */
 public class DesignerInterpreterView extends ViewPart implements InterpreterView {
@@ -142,12 +144,14 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
     private ContentInstanceProposalProvider contentInstanceProposalProvider;
 
     private final IVariableStatusListener variableListener = new IVariableStatusListener() {
+        @Override
         public void notifyChanged(final Map<?, ?> variables) {
             refreshVariables(variables);
         }
     };
 
     private final ISelectionListener listener = new ISelectionListener() {
+        @Override
         public void selectionChanged(final IWorkbenchPart part, final ISelection selection) {
             if (selection instanceof IStructuredSelection) {
                 final Iterator<?> it = ((IStructuredSelection) selection).iterator();
@@ -184,11 +188,6 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         return contentProvider;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     public void createPartControl(final Composite parent) {
         getSite().getPage().addSelectionListener(listener);
@@ -217,10 +216,6 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         interpreter.addVariableStatusListener(this.variableListener);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void setFocus() {
         if (this.top != null) {
@@ -228,11 +223,6 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#dispose()
-     */
     @Override
     public void dispose() {
         getSite().getPage().removeSelectionListener(listener);
@@ -258,15 +248,11 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
      * Creates the action of the view.
      */
     private void createActions() {
-        this.addDependencyAction = new Action("Add Dependency") {
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.eclipse.jface.action.Action#run()
-             */
+        this.addDependencyAction = new Action(Messages.DesignerInterpreterView_addDependencyButton) {
             @Override
             public void run() {
-                final InputDialog inputDependency = new InputDialog(getSite().getShell(), "Add Dependency", "Enter the new dependency to add", "", null);
+                final InputDialog inputDependency = new InputDialog(getSite().getShell(), Messages.DesignerInterpreterView_addDependencyDialogTitle,
+                        Messages.DesignerInterpreterView_addDependencyDialogMessage, "", null); //$NON-NLS-1$
                 inputDependency.setBlockOnOpen(true);
                 final int result = inputDependency.open();
                 if (result == Window.OK) {
@@ -288,13 +274,13 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
             }
 
         };
-        this.copyToClipboardAction = new Action("Copy to Clipboard") {
+        this.copyToClipboardAction = new Action(Messages.DesignerInterpreterView_copyToClipboardButton) {
             @Override
             public void run() {
                 StringBuilder sb = new StringBuilder();
-                sb.append("Result of: ").append(acceleoExpression.getText()).append(" (").append(valuesTree.getItemCount()).append(" elements)\n\n");
+                sb.append(MessageFormat.format(Messages.DesignerInterpreterView_copyToClipboardResult, acceleoExpression.getText(), valuesTree.getItemCount())).append("\n\n"); //$NON-NLS-1$
                 for (TreeItem item : valuesTree.getItems()) {
-                    sb.append("- ").append(item.getText()).append("\n");
+                    sb.append("- ").append(item.getText()).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$
                 }
                 Clipboard cb = new Clipboard(getSite().getShell().getDisplay());
                 TextTransfer textTransfer = TextTransfer.getInstance();
@@ -313,7 +299,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
 
     /**
      * This method initializes formToolkit
-     * 
+     *
      * @return org.eclipse.ui.forms.widgets.FormToolkit
      */
     private FormToolkit getFormToolkit() {
@@ -325,7 +311,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
 
     /**
      * This method initializes intepreterSection
-     * 
+     *
      */
     private void createIntepreterSection() {
         final GridData gridData1 = new GridData();
@@ -341,7 +327,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
 
     /**
      * This method initializes variablesSection
-     * 
+     *
      */
     private void createVariablesSection() {
         final GridData gridData = new GridData();
@@ -352,7 +338,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         gridData.horizontalAlignment = GridData.FILL;
         variablesSection = getFormToolkit().createSection(top, 0);
         variablesSection.setExpanded(true);
-        variablesSection.setText("Variables");
+        variablesSection.setText(Messages.DesignerInterpreterView_variablesSection);
         createVariablesForm();
         variablesSection.setLayoutData(gridData);
         variablesSection.setClient(variablesForm);
@@ -373,10 +359,11 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         gridData2.horizontalAlignment = GridData.FILL;
         interpreterForm = getFormToolkit().createForm(intepreterSection);
         getFormToolkit().decorateFormHeading(interpreterForm);
-        interpreterForm.setText("Requests interpreter");
+        interpreterForm.setText(Messages.DesignerInterpreterView_requestsInterpreter);
         acceleoExpression = getFormToolkit().createText(interpreterForm.getBody(), null, SWT.SINGLE | SWT.BORDER);
         acceleoExpression.setLayoutData(gridData2);
         acceleoExpression.addModifyListener(new ModifyListener() {
+            @Override
             public void modifyText(final ModifyEvent e) {
                 handleNewExpression();
             }
@@ -389,6 +376,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         valuesViewer.setContentProvider(getContentProvider());
         valuesViewer.setLabelProvider(labelProvider);
         valuesViewer.addDoubleClickListener(new IDoubleClickListener() {
+            @Override
             public void doubleClick(final DoubleClickEvent event) {
                 if (event.getSelection() instanceof IStructuredSelection) {
                     addVariable(((IStructuredSelection) event.getSelection()).toList());
@@ -397,18 +385,20 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         });
 
         /* Configure viewer drag behavior */
-        final Transfer[] transfers = new Transfer[] { TRANSFER };
+        final Transfer[] transfers = new Transfer[] { DesignerInterpreterView.TRANSFER };
         final int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
         valuesViewer.addDragSupport(dndOperations, transfers, new ModelDragTargetAdapter(valuesViewer));
     }
 
     private void addVariable(final List<?> list) {
         if (list.size() > 0 && interpreter != null) {
-            final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), "Variable name", "Type variable name", IInterpreterSiriusVariables.ELEMENT, new IInputValidator() {
-                public String isValid(final String newText) {
-                    return null;
-                }
-            });
+            final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), Messages.DesignerInterpreterView_variableName, Messages.DesignerInterpreterView_typeVariableName,
+                    IInterpreterSiriusVariables.ELEMENT, new IInputValidator() {
+                        @Override
+                        public String isValid(final String newText) {
+                            return null;
+                        }
+                    });
             if (askSiriusName.open() == Window.OK) {
                 if (list.size() == 1) {
                     if (askSiriusName.getValue().startsWith(variableTag)) {
@@ -450,10 +440,10 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
                 final long ellapseTime = new Date().getTime() - now;
                 final int numberOfResults = handleExpressionResult(result);
                 final DecimalFormat decimalFormat = new DecimalFormat("###,###,###.###"); //$NON-NLS-1$
-                this.interpreterForm.setMessage("Evaluation successful. Number of returned elements : " + numberOfResults + ". Time to evaluate : " + decimalFormat.format(ellapseTime / (double) 1000)
-                        + " second(s)", IMessageProvider.INFORMATION);
+                this.interpreterForm.setMessage(MessageFormat.format(Messages.DesignerInterpreterView_evaluationResult, numberOfResults, decimalFormat.format(ellapseTime / (double) 1000)),
+                        IMessageProvider.INFORMATION);
             } catch (final EvaluationException e) {
-                this.interpreterForm.setMessage("Invalid expression. " + e.getMessage(), IMessageProvider.ERROR);
+                this.interpreterForm.setMessage(MessageFormat.format(Messages.DesignerInterpreterView_invalidExpressionError, e.getMessage()), IMessageProvider.ERROR);
             }
         }
     }
@@ -497,7 +487,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
 
     /**
      * This method initializes variablesForm
-     * 
+     *
      */
     private void createVariablesForm() {
         final GridData gridData6 = new GridData();
@@ -519,20 +509,23 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
 
         variablesForm = getFormToolkit().createForm(variablesSection);
         variablesForm.getBody().setLayout(gridLayout1);
-        variablesForm.setText("Variables");
+        variablesForm.setText(Messages.DesignerInterpreterView_variablesSection);
         getFormToolkit().decorateFormHeading(variablesForm);
 
-        setVariableButton = getFormToolkit().createButton(variablesForm.getBody(), "Set", SWT.PUSH);
+        setVariableButton = getFormToolkit().createButton(variablesForm.getBody(), Messages.DesignerInterpreterView_setButton, SWT.PUSH);
         setVariableButton.setLayoutData(gridData4);
         setVariableButton.addMouseListener(new MouseListener() {
+            @Override
             public void mouseDoubleClick(final MouseEvent arg0) {
                 // Nothing happen
             }
 
+            @Override
             public void mouseDown(final MouseEvent arg0) {
                 // Nothing happen
             }
 
+            @Override
             public void mouseUp(final MouseEvent arg0) {
                 // Behaviour of the Set button is to save as a variable the
                 // selection in the valuesViewer
@@ -543,17 +536,20 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
                 }
             }
         });
-        unSetVariableButton = getFormToolkit().createButton(variablesForm.getBody(), "Unset", SWT.PUSH);
+        unSetVariableButton = getFormToolkit().createButton(variablesForm.getBody(), Messages.DesignerInterpreterView_unsetButton, SWT.PUSH);
         unSetVariableButton.setLayoutData(gridData5);
         unSetVariableButton.addMouseListener(new MouseListener() {
+            @Override
             public void mouseDoubleClick(final MouseEvent arg0) {
                 // Nothing happens
             }
 
+            @Override
             public void mouseDown(final MouseEvent arg0) {
                 // Nothing happens
             }
 
+            @Override
             public void mouseUp(final MouseEvent arg0) {
                 // Behaviour of the unSet button is to remove the variable
                 // selected in the variablesViewer

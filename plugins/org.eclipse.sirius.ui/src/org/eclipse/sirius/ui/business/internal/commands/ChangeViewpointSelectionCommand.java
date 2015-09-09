@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.commands;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -24,10 +25,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 /**
  * Specific command to change viewpoints selection.
- * 
+ *
  * @author mporhel
  */
 public class ChangeViewpointSelectionCommand extends RecordingCommand {
@@ -46,7 +48,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
 
     /**
      * Specific command to change viewpoint selection.
-     * 
+     *
      * @param session
      *            the current session.
      * @param callback
@@ -59,7 +61,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
      *            a {@link IProgressMonitor}
      */
     public ChangeViewpointSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedViewpoints, Set<Viewpoint> newDeselectedViewpoints, IProgressMonitor monitor) {
-        super(session.getTransactionalEditingDomain(), "Change viewpoints selection");
+        super(session.getTransactionalEditingDomain(), Messages.ChangeViewpointSelectionCommand_label);
         this.callback = callback;
         this.newSelectedViewpoints = newSelectedViewpoints;
         this.newDeselectedViewpoints = newDeselectedViewpoints;
@@ -70,7 +72,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
 
     /**
      * Specific command to change viewpoints selection.
-     * 
+     *
      * @param session
      *            the current session.
      * @param callback
@@ -92,9 +94,6 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
         this.createNewRepresentations = createNewRepresentations;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void doExecute() {
         if (callback == null || session == null) {
@@ -102,13 +101,13 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
         }
         try {
             int nbViewpointsInChange = (newSelectedViewpoints != null ? newSelectedViewpoints.size() + 1 : 0) + (newDeselectedViewpoints != null ? newDeselectedViewpoints.size() : 0);
-            monitor.beginTask("Apply new viewpoints selection...", nbViewpointsInChange);
+            monitor.beginTask(Messages.ChangeViewpointSelectionCommand_applySelectionTask, nbViewpointsInChange);
             if (newSelectedViewpoints != null) {
                 List<Viewpoint> sorted = sortByDependencies(newSelectedViewpoints);
                 monitor.worked(1);
 
                 for (final Viewpoint viewpoint : sorted) {
-                    monitor.subTask("Select viewpoint : " + new IdentifiedElementQuery(viewpoint).getLabel());
+                    monitor.subTask(MessageFormat.format(Messages.ChangeViewpointSelectionCommand_selectViewpointTask, new IdentifiedElementQuery(viewpoint).getLabel()));
                     try {
                         callback.selectViewpoint(viewpoint, session, createNewRepresentations, new SubProgressMonitor(monitor, 1));
                     } catch (SecurityException e) {
@@ -117,7 +116,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
                         // DAnalysis
 
                         // Provide a meaningful error message to the end-user
-                        String errorMessage = "Unable to activate viewpoint '" + viewpoint.getName() + "' because of insufficient rights.";
+                        String errorMessage = MessageFormat.format(Messages.ChangeViewpointSelectionCommand_activationError, viewpoint.getName());
 
                         // And re-throw the security exception with the previous
                         // as cause
@@ -128,7 +127,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
             }
             if (newDeselectedViewpoints != null) {
                 for (final Viewpoint viewpoint : newDeselectedViewpoints) {
-                    monitor.subTask("Deselect viewpoint : " + new IdentifiedElementQuery(viewpoint).getLabel());
+                    monitor.subTask(MessageFormat.format(Messages.ChangeViewpointSelectionCommand_deselectViewpointTask, new IdentifiedElementQuery(viewpoint).getLabel()));
                     callback.deselectViewpoint(viewpoint, session, new SubProgressMonitor(monitor, 1));
                 }
             }

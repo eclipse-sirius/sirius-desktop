@@ -26,6 +26,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonL
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
@@ -36,11 +37,11 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * A {@link ILogListener} that reacts to specific exceptions by logging them through the active {@link DialectEditor}
- * (if any).
- * 
+ * A {@link ILogListener} that reacts to specific exceptions by logging them
+ * through the active {@link DialectEditor} (if any).
+ *
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
+ *
  */
 public final class LogThroughActiveDialectEditorLogListener implements ILogListener {
     /**
@@ -56,12 +57,6 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
     private LogThroughActiveDialectEditorLogListener() {
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.ILogListener#logging(org.eclipse.core.runtime.IStatus, java.lang.String)
-     */
     @Override
     public void logging(IStatus status, String plugin) {
         boolean hasBeenLoggedThroughDialect = false;
@@ -89,7 +84,8 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
                 Display.getDefault().asyncExec(new Runnable() {
                     @Override
                     public void run() {
-                        MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Permission Issue", getErrorMessage(exception));
+                        MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.LogThroughActiveDialectEditorLogListener_permissionError,
+                                getErrorMessage(exception));
                     }
                 });
             }
@@ -105,11 +101,13 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
     }
 
     /**
-     * Indicates whether the given exception should be logged through the active dialect or not.
-     * 
+     * Indicates whether the given exception should be logged through the active
+     * dialect or not.
+     *
      * @param exception
      *            the exception that is being logged in the error log
-     * @return true if the given exception should be logged through the active dialect, false otherwise
+     * @return true if the given exception should be logged through the active
+     *         dialect, false otherwise
      */
     private boolean shouldBeLoggedThroughDialect(DialectEditor editor, Throwable exception) {
         // We only log LockedInstance exceptions
@@ -153,10 +151,11 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
 
     /**
      * Indicates whether the given exception should be logged through a pop-up.
-     * 
+     *
      * @param exception
      *            the exception that is being logged in the error log
-     * @return true if the given exception should be logged through a pop-up, false otherwise
+     * @return true if the given exception should be logged through a pop-up,
+     *         false otherwise
      */
     private boolean shouldBeLoggedThroughPopup(Throwable exception) {
         // We only consider LockedInstanceException
@@ -165,7 +164,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
 
     /**
      * Returns the error message corresponding to the given exception.
-     * 
+     *
      * @param exception
      *            the exception to get the error message from
      * @return the error message corresponding to the given exception
@@ -184,7 +183,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
 
     /**
      * Returns the label provider to use for displaying locked elements.
-     * 
+     *
      * @return the label provider to use for displaying locked elements.
      */
     private ICommonLabelProvider getLabelProvider() {

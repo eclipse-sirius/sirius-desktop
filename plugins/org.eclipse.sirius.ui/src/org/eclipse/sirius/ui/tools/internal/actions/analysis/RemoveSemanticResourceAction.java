@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,12 +24,13 @@ import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceComma
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 import com.google.common.collect.Iterables;
 
 /**
  * Action to remove semantic resources from a session.
- * 
+ *
  * @author ymortier
  */
 public class RemoveSemanticResourceAction extends Action {
@@ -42,23 +43,18 @@ public class RemoveSemanticResourceAction extends Action {
 
     /**
      * Creates a new {@link RemoveSemanticResourceAction}.
-     * 
+     *
      * @param selection
      *            the resources to remove.
      * @param session
      *            the session to change.
      */
     public RemoveSemanticResourceAction(final Collection<Resource> selection, final Session session) {
-        super("Remove Model");
+        super(Messages.RemoveSemanticResourceAction_name);
         this.session = session;
         this.toRemove = new ArrayList<Resource>(selection);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#isEnabled()
-     */
     @Override
     public boolean isEnabled() {
         boolean res = super.isEnabled();
@@ -68,11 +64,6 @@ public class RemoveSemanticResourceAction extends Action {
         return res;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         if (!isEnabled() || !checkResources()) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,6 +58,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
@@ -78,15 +79,10 @@ import com.google.common.collect.Sets;
 
 /**
  * A wizard page to select viewpoints.
- * 
+ *
  * @author mchauvin
  */
 public class ViewpointsSelectionWizardPage extends WizardPage {
-
-    /** The title of the page. */
-    private static final String PAGE_TITLE = "Select viewpoints";
-
-    private static final String PAGE_MESSAGE = "Select viewpoints to activate";
 
     /** The table viewer. */
     private TableViewer tableViewer;
@@ -114,14 +110,14 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
     /**
      * Create a new <code>RepresentationSelectionWizardPage</code>.
-     * 
+     *
      * @param session
      *            the session
      */
     public ViewpointsSelectionWizardPage(final Session session) {
-        super(PAGE_TITLE);
-        this.setTitle(PAGE_TITLE);
-        this.setMessage(PAGE_MESSAGE);
+        super(Messages.ViewpointsSelectionWizardPage_title);
+        this.setTitle(Messages.ViewpointsSelectionWizardPage_title);
+        this.setMessage(Messages.ViewpointsSelectionWizardPage_message);
         this.fileExtensions = computeSemanticFileExtensions(session);
         this.viewpoints = Lists.newArrayList();
         this.viewpointsNamesToActivateByDefault = Lists.newArrayList();
@@ -130,16 +126,16 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     /**
      * Create a new <code>RepresentationSelectionWizardPage</code> with default
      * viewpoints activation. This constructor makes this page optional.
-     * 
+     *
      * @param session
      *            the session
      * @param viewpointsNamesToActivateByDefault
      *            list of viewpoints names to activate by default.
      */
     public ViewpointsSelectionWizardPage(final Session session, List<String> viewpointsNamesToActivateByDefault) {
-        super(PAGE_TITLE);
-        this.setTitle(PAGE_TITLE);
-        this.setMessage(PAGE_MESSAGE);
+        super(Messages.ViewpointsSelectionWizardPage_title);
+        this.setTitle(Messages.ViewpointsSelectionWizardPage_title);
+        this.setMessage(Messages.ViewpointsSelectionWizardPage_message);
         this.fileExtensions = computeSemanticFileExtensions(session);
         this.viewpoints = Lists.newArrayList();
         this.viewpointsNamesToActivateByDefault = Lists.newArrayList(viewpointsNamesToActivateByDefault);
@@ -148,7 +144,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     /**
      * compute the semantic file extensions to restrict the choice of viewpoint
      * based on the session.
-     * 
+     *
      * @param session
      *            the session
      * @return a collection of file extension
@@ -166,11 +162,6 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         return extensions;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.wizard.WizardPage#isPageComplete()
-     */
     @Override
     public boolean isPageComplete() {
         String errorMessage = null;
@@ -191,18 +182,14 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
     /**
      * Return the list of selected viewpoints of this page.
-     * 
+     *
      * @return the list of selected viewpoints
      */
     public List<Viewpoint> getViewpoints() {
         return viewpoints;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
 
@@ -258,10 +245,12 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
         return Collections2.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
 
+            @Override
             public boolean apply(Viewpoint viewpoint) {
                 for (final String ext : fileExtensions) {
-                    if (new ViewpointQuery(viewpoint).handlesSemanticModelExtension(ext))
+                    if (new ViewpointQuery(viewpoint).handlesSemanticModelExtension(ext)) {
                         return true;
+                    }
                 }
                 return false;
             }
@@ -271,7 +260,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
     /**
      * Create the table viewer.
-     * 
+     *
      * @param parent
      *            the parent composite.
      * @return the table viewer.
@@ -297,6 +286,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         viewer.setLabelProvider(new ViewpointsTableLabelProvider());
 
         viewer.addCheckStateListener(new ICheckStateListener() {
+            @Override
             public void checkStateChanged(final CheckStateChangedEvent event) {
                 if (event.getChecked()) {
                     viewpoints.add((Viewpoint) event.getElement());
@@ -309,6 +299,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
         viewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
+            @Override
             public void selectionChanged(SelectionChangedEvent event) {
                 ISelection selection = event.getSelection();
                 if (selection instanceof IStructuredSelection) {
@@ -333,7 +324,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
     /***
      * Set the browser input.A jface like browser viewer would have been better.
-     * 
+     *
      * @param viewpoint
      *            the viewpoint to document
      */
@@ -358,8 +349,9 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
     private boolean containsHTMLDocumentation(Viewpoint viewpoint) {
         if (viewpoint != null) {
             final String doc = viewpoint.getEndUserDocumentation();
-            if (!StringUtil.isEmpty(doc))
+            if (!StringUtil.isEmpty(doc)) {
                 return doc.startsWith("<html>"); //$NON-NLS-1$
+            }
         }
         return false;
     }
@@ -456,13 +448,14 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         content.append("<body>"); //$NON-NLS-1$
 
         if (viewpoint == null) {
-            content.append("<br><br><center><b>Documentation</b></center>");
+            content.append("<br><br><center><b>").append(Messages.ViewpointsSelectionWizardPage_documentation_title).append("</b></center>"); //$NON-NLS-1$ //$NON-NLS-2$
         } else {
             final String endUserDocumentation = viewpoint.getEndUserDocumentation();
-            if (!StringUtil.isEmpty(endUserDocumentation))
+            if (!StringUtil.isEmpty(endUserDocumentation)) {
                 content.append(viewpoint.getEndUserDocumentation());
-            else
-                content.append("no documentation for this viewpoint");
+            } else {
+                content.append(Messages.ViewpointsSelectionWizardPage_documentation_none);
+            }
         }
         content.append("</body>"); //$NON-NLS-1$
         return this;
@@ -487,26 +480,19 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
 
     /**
      * return if the page is the current page.
-     * 
+     *
      * @return if the page is the current page.
      */
     public boolean isCurrentPageOnWizard() {
         return super.isCurrentPage();
     }
 
-    /**
-     * 
-     * @author mchauvin
-     */
     private class ViewpointsTableLabelProvider extends AdapterFactoryLabelProvider implements ITableLabelProvider {
 
         public ViewpointsTableLabelProvider() {
             super(ViewHelper.INSTANCE.createAdapterFactory());
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Image getColumnImage(Object element, int columnIndex) {
             Image image = null;

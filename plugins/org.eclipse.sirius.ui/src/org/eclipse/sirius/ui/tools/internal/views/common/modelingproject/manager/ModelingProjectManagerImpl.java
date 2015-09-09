@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager;
 
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -50,6 +51,7 @@ import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 import com.google.common.base.Predicate;
@@ -60,7 +62,7 @@ import com.google.common.collect.Sets;
 
 /**
  * A manager for modeling projects.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class ModelingProjectManagerImpl implements ModelingProjectManager {
@@ -69,12 +71,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     private static final String VIEWPOINT_MODELING_PROJECT_NATURE_ID = "fr.obeo.dsl.viewpoint.nature.modelingproject"; //$NON-NLS-1$
 
     private final SessionManagerListener sessionManagerListener = new SessionManagerListener.Stub() {
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session,
-         *      int)
-         */
+        @Override
         public void notify(Session updated, int notification) {
             if (notification == SessionListener.OPENING) {
                 // No need to at it again to the sessionFileLoading list because
@@ -87,6 +84,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     };
 
     private Predicate<URI> isAlreadyLoadedPredicate = new Predicate<URI>() {
+        @Override
         public boolean apply(URI representationsFileURI) {
             return isAlreadyLoaded(representationsFileURI);
         }
@@ -107,27 +105,19 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     /**
      * Default initialization of a {@link ModelingProjectManagerImpl}.
-     * 
+     *
      * @return a new instance of {@link ModelingProjectManagerImpl}.
      */
     public static ModelingProjectManagerImpl init() {
         return new ModelingProjectManagerImpl();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager#loadAndOpenRepresentationsFile(org.eclipse.emf.common.util.URI)
-     */
+    @Override
     public void loadAndOpenRepresentationsFile(final URI representationsFileURI) {
         loadAndOpenRepresentationsFiles(Lists.newArrayList(representationsFileURI));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager#loadAndOpenRepresentationsFiles(java.util.List)
-     */
+    @Override
     public void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs) {
         // Add the specific sessions listener (if not already added).
         SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
@@ -153,14 +143,13 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     /**
      * Check if the representations file is already loaded (known by
      * SessionManager).
-     * 
+     *
      * @param representationsFileURI
      *            The URI of the representations file.
      * @return true if already loaded, false otherwise
      */
     private boolean isAlreadyLoaded(URI representationsFileURI) {
-        for (Iterator<Session> iterator = Collections.unmodifiableCollection(SessionManager.INSTANCE.getSessions()).iterator(); iterator.hasNext(); /* */) {
-            Session session = iterator.next();
+        for (Session session : Collections.unmodifiableCollection(SessionManager.INSTANCE.getSessions())) {
             if (representationsFileURI.equals(session.getSessionResource().getURI())) {
                 return true;
             }
@@ -168,31 +157,24 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager#clearCache(org.eclipse.emf.common.util.URI)
-     */
+    @Override
     public void clearCache(URI representationsFileURI) {
         sessionFileLoading.remove(representationsFileURI);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IProject createNewModelingProject(String projectName, boolean createAndOpenBlankRepresentationsFile, IProgressMonitor monitor) throws CoreException {
         return createNewModelingProject(projectName, null, createAndOpenBlankRepresentationsFile, monitor);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public IProject createNewModelingProject(final String projectName, final IPath projectLocationPath, final boolean createAndOpenBlankRepresentationsFile, IProgressMonitor monitor)
             throws CoreException {
         final IWorkspaceRunnable create = new IWorkspaceRunnable() {
+            @Override
             public void run(final IProgressMonitor monitor) throws CoreException {
                 try {
-                    monitor.beginTask("Modeling Project creation : " + projectName, 3);
+                    monitor.beginTask(MessageFormat.format(Messages.ModelingProjectManagerImpl_createModelingProjectTask, projectName), 3);
                     final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
                     if (!project.exists()) {
                         final IProjectDescription desc = project.getWorkspace().newProjectDescription(projectName);
@@ -204,13 +186,13 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                         String[] natures = { ModelingProject.NATURE_ID };
                         desc.setNatureIds(natures);
 
-                        monitor.subTask("Create project");
+                        monitor.subTask(Messages.ModelingProjectManagerImpl_createProjectTask);
                         project.create(desc, new SubProgressMonitor(monitor, 1));
-                        monitor.subTask("Open project");
+                        monitor.subTask(Messages.ModelingProjectManagerImpl_openProjectTask);
                         project.open(new SubProgressMonitor(monitor, 1));
 
                         if (createAndOpenBlankRepresentationsFile) {
-                            monitor.subTask("Create local representations file");
+                            monitor.subTask(Messages.ModelingProjectManagerImpl_createRepresentationFileTask);
                             createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
                         }
                     }
@@ -226,14 +208,13 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void convertToModelingProject(final IProject project, IProgressMonitor monitor) throws CoreException {
         final IWorkspaceRunnable create = new IWorkspaceRunnable() {
+            @Override
             public void run(final IProgressMonitor monitor) throws CoreException {
                 try {
-                    monitor.beginTask("Conversion to Modeling Project", 1);
+                    monitor.beginTask(Messages.ModelingProjectManagerImpl_convertToModelingProjectTask, 1);
                     doAddModelingNature(project, new SubProgressMonitor(monitor, 1));
                 } finally {
                     monitor.done();
@@ -253,11 +234,10 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         return currentJob != null && currentJob.getRule() != null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void removeModelingNature(final IProject project, IProgressMonitor monitor) throws CoreException {
         final IWorkspaceRunnable create = new IWorkspaceRunnable() {
+            @Override
             public void run(final IProgressMonitor monitor) throws CoreException {
                 doRemoveModelingNature(project, monitor);
             }
@@ -265,9 +245,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         ResourcesPlugin.getWorkspace().run(create, monitor);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void createLocalRepresentationsFile(IProject project, IProgressMonitor monitor) throws CoreException {
         URI representationsURI = URI.createPlatformResourceURI(project.getFullPath().append(ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME).toString(), true);
 
@@ -279,7 +257,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     /**
      * Add the modeling nature. Open or create the main aird file. Look for
      * semantic resources to add.
-     * 
+     *
      * @param project
      *            the project to convert.
      * @param monitor
@@ -290,14 +268,14 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
      */
     protected void doAddModelingNature(IProject project, IProgressMonitor monitor) throws CoreException {
         try {
-            monitor.beginTask("Add Modeling Project nature", 3);
+            monitor.beginTask(Messages.ModelingProjectManagerImpl_addingModelingNatureTask, 3);
             IProjectDescription description = project.getDescription();
 
             String[] natures = description.getNatureIds();
-            if (description.hasNature(VIEWPOINT_MODELING_PROJECT_NATURE_ID)) {
+            if (description.hasNature(ModelingProjectManagerImpl.VIEWPOINT_MODELING_PROJECT_NATURE_ID)) {
                 // Replace the old Viewpoint nature
                 for (int i = 0; i < natures.length; i++) {
-                    if (VIEWPOINT_MODELING_PROJECT_NATURE_ID.equals(natures[i])) {
+                    if (ModelingProjectManagerImpl.VIEWPOINT_MODELING_PROJECT_NATURE_ID.equals(natures[i])) {
                         natures[i] = ModelingProject.NATURE_ID;
                     }
                 }
@@ -352,7 +330,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     /**
      * Remove the modeling nature.
-     * 
+     *
      * @param project
      *            the project to convert.
      * @param monitor
@@ -363,7 +341,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
      */
     protected void doRemoveModelingNature(IProject project, IProgressMonitor monitor) throws CoreException {
         try {
-            monitor.beginTask("Remove Modeling Project nature", IProgressMonitor.UNKNOWN);
+            monitor.beginTask(Messages.ModelingProjectManagerImpl_removingModelingNatureTask, IProgressMonitor.UNKNOWN);
             IProjectDescription description = project.getDescription();
             String[] natures = description.getNatureIds();
             for (int i = 0; i < natures.length; ++i) {
@@ -388,7 +366,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     private void addSemanticResources(IContainer container, Session session, IProgressMonitor monitor) throws CoreException {
         try {
-            monitor.beginTask("Semantic resources addition", 1);
+            monitor.beginTask(Messages.ModelingProjectManagerImpl_semanticResourcesAdditionTask, 1);
             Command semanticResourcesAdditionCommand = getSemanticResourcesAdditionCommand(container, session, monitor);
             session.getTransactionalEditingDomain().getCommandStack().execute(semanticResourcesAdditionCommand);
         } finally {
@@ -417,12 +395,12 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
     /**
      * Check if file is a loadable model.
-     * 
+     *
      * @param file
      *            IFile
      * @param session
      *            Session
-     * 
+     *
      * @return <code>true</code> if it is, <code>false</code> otherwise
      */
     private boolean isLoadableModel(IFile file, Session session) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.Common
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -46,23 +47,15 @@ import com.google.common.collect.Lists;
 
 /**
  * Page to select representations from an Aird.
- * 
+ *
  * @author nlepine
  */
 public class RepresentationSelectionWizardPage extends WizardPage {
-
-    private static final String SELECT_REPRESENTATIONS = "Select a representation type";
-
-    private static final String READ_ONLY_REPRESENTATION_CONTAINER = "The representation container is read only.\r\n Please select another representation type.";
-
-    /** The title of the page. */
-    private static final String PAGE_TITLE = "Create a new representation";
 
     /** The table viewer. */
     private TreeViewer treeViewer;
 
     /** The filter. */
-
     private final Session root;
 
     private Composite pageComposite;
@@ -73,15 +66,15 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
     /**
      * Create a new <code>RepresentationSelectionWizardPage</code>.
-     * 
+     *
      * @param root
      *            the root object
      */
     public RepresentationSelectionWizardPage(final Session root) {
-        super(PAGE_TITLE);
-        this.setTitle(PAGE_TITLE);
+        super(Messages.RepresentationSelectionWizardPage_title);
+        this.setTitle(Messages.RepresentationSelectionWizardPage_title);
         this.root = root;
-        setMessage(SELECT_REPRESENTATIONS);
+        setMessage(Messages.RepresentationSelectionWizardPage_message);
     }
 
     @Override
@@ -115,7 +108,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             if (result) {
                 setRepresentation(representationDescription);
             } else {
-                setErrorMessage(READ_ONLY_REPRESENTATION_CONTAINER);
+                setErrorMessage(Messages.RepresentationSelectionWizardPage_errorReadonlyContainer);
             }
         }
 
@@ -173,7 +166,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
     /**
      * Create the table viewer.
-     * 
+     *
      * @param parent
      *            the parent composite.
      * @return the table viewer.
@@ -194,7 +187,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
     /**
      * return if the page is the current page.
-     * 
+     *
      * @return if the page is the current page.
      */
     public boolean isCurrentPageOnWizard() {
@@ -217,7 +210,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
         @Override
         public Object[] getChildren(final Object parentElement) {
-            Object[] children = empty;
+            Object[] children = SessionContentProvider.empty;
             if (parentElement instanceof Session) {
                 children = ((Session) parentElement).getSelectedViewpoints(false).toArray();
             } else if (parentElement instanceof Viewpoint) {

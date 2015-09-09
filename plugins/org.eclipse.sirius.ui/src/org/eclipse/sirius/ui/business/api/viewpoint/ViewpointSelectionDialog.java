@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
@@ -333,24 +334,18 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         return roots;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Control createContents(Composite parent) {
         Control contents = super.createContents(parent);
-        setTitle("Viewpoints Selection");
-        setMessage("Select which viewpoints should be enabled in the session.");
+        setTitle(Messages.ViewpointSelectionDialog_title);
+        setMessage(Messages.ViewpointSelectionDialog_message);
         Shell shell = parent.getShell();
-        shell.setText("Viewpoints Selection");
+        shell.setText(Messages.ViewpointSelectionDialog_text);
         shell.pack();
         shell.setSize(shell.getSize().x, 500);
         return contents;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Control createDialogArea(Composite parent) {
         Composite composite = (Composite) super.createDialogArea(parent);
@@ -361,7 +356,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
         configureTreeViewer();
 
         Group group = new Group(composite, SWT.SHADOW_IN);
-        group.setText("Description");
+        group.setText(Messages.ViewpointSelectionDialog_description);
         group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         FillLayout layout = new FillLayout(SWT.HORIZONTAL);
         layout.marginHeight = 5;

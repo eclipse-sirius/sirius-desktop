@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.ui.tools.internal.wizards.SelectRepresentationsWizard;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -66,15 +67,13 @@ import com.google.common.collect.Sets;
  * Implements the UI part of the "Control" operation. This class gathers the
  * required parameters from the user and the invokes the properly configured
  * {@link org.eclipse.sirius.business.internal.command.control.ControlCommand} .
- * 
+ *
  * @since 0.9.0
- * 
+ *
  * @author pcdavid
  */
 public class SiriusControlHandler extends AbstractHandler {
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object execute(final ExecutionEvent event) throws ExecutionException {
         final EObject semanticRoot = getSelectedEObject(event);
         if (semanticRoot != null) {
@@ -84,7 +83,7 @@ public class SiriusControlHandler extends AbstractHandler {
                     @Override
                     protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                         try {
-                            monitor.beginTask("Control resources", 1);
+                            monitor.beginTask(Messages.SiriusControlHandler_controlTask, 1);
                             performControl(HandlerUtil.getActiveShell(event), semanticRoot, new SubProgressMonitor(monitor, 1));
                         } finally {
                             monitor.done();
@@ -105,7 +104,7 @@ public class SiriusControlHandler extends AbstractHandler {
      * Performs the control operation on the specified semantic element, using
      * the provided shell to interact with the end-user, gathering the required
      * parameters.
-     * 
+     *
      * @param shell
      *            the shell to use to interact with the user
      * @param semanticRoot
@@ -148,7 +147,7 @@ public class SiriusControlHandler extends AbstractHandler {
 
     /**
      * Asks the user for the URI of the controlled resource to create.
-     * 
+     *
      * @param shell
      *            The shell to use to display the dialog
      * @param semanticRoot
@@ -170,7 +169,7 @@ public class SiriusControlHandler extends AbstractHandler {
     /**
      * Creation of the dialog to ask the user for the URI of the controlled
      * resource to create.
-     * 
+     *
      * @param shell
      *            the shell to use to interact with the user.
      * @param defaultURI
@@ -196,7 +195,7 @@ public class SiriusControlHandler extends AbstractHandler {
     /**
      * Finds the URI of the default corresponding Aird of a semantic model with
      * its URI.
-     * 
+     *
      * @param semanticModelUri
      *            URI of a semantic model
      * @return the URI of the default corresponding Aird
@@ -209,7 +208,7 @@ public class SiriusControlHandler extends AbstractHandler {
      * Asks the end-user which representations should be controlled in
      * conjunction with the semantic elements. The default is to control all the
      * representations which target an element of the specified resource.
-     * 
+     *
      * @param shell
      *            the shell to use to interact with the user.
      * @param session
@@ -229,7 +228,7 @@ public class SiriusControlHandler extends AbstractHandler {
     /**
      * Asks the end-user to select a sub-set of the representations existing in
      * the session.
-     * 
+     *
      * @param shell
      *            the shell to use to interact with the user.
      * @param session
@@ -260,7 +259,7 @@ public class SiriusControlHandler extends AbstractHandler {
      * Returns all the existing representations in the given session which are
      * associated to a semantic element of the specified resource (excluding
      * elements of sub-resources).
-     * 
+     *
      * @param session
      *            the session opened for semanticRoot.
      * @param semanticRoot
@@ -282,7 +281,7 @@ public class SiriusControlHandler extends AbstractHandler {
      * Returns the text of the URI proposed by default when controlling the
      * specified object. The URI is based on the initial parent resource and the
      * "name" feature of the controlled element.
-     * 
+     *
      * @param obj
      *            the controlled element.
      * @return the text of the URI.
@@ -306,7 +305,7 @@ public class SiriusControlHandler extends AbstractHandler {
         private final String defaultURI;
 
         public ControlResourceDialog(final Shell parent, final String defaultURI) {
-            super(parent, EMFEditUIPlugin.INSTANCE.getString("_UI_ControlDialog_title"), SWT.SAVE);
+            super(parent, EMFEditUIPlugin.INSTANCE.getString("_UI_ControlDialog_title"), SWT.SAVE); //$NON-NLS-1$
             this.defaultURI = defaultURI;
         }
 

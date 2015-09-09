@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -25,11 +26,12 @@ import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ext.emf.ui.ICellEditorProvider;
 import org.eclipse.sirius.ext.emf.ui.properties.CellEditorProviderCollector;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 /**
  * This collector lookups within the
  * {@link SiriusCellEditorProviderCollector#EXTENSION_POINT_ID}.
- * 
+ *
  * @author Florian Barbin
  */
 public final class SiriusCellEditorProviderCollector implements CellEditorProviderCollector {
@@ -56,14 +58,14 @@ public final class SiriusCellEditorProviderCollector implements CellEditorProvid
      * Provides the unique instance of this class. To be lazy, the
      * SiriusCellEditorProviderExtensionPoint is instantiate the first time we
      * ask the instance.
-     * 
+     *
      * @return the SiriusCellEditorProviderExtensionPoint
      */
     public static SiriusCellEditorProviderCollector getInstance() {
-        if (instance == null) {
-            instance = new SiriusCellEditorProviderCollector();
+        if (SiriusCellEditorProviderCollector.instance == null) {
+            SiriusCellEditorProviderCollector.instance = new SiriusCellEditorProviderCollector();
         }
-        return instance;
+        return SiriusCellEditorProviderCollector.instance;
     }
 
     /**
@@ -71,7 +73,7 @@ public final class SiriusCellEditorProviderCollector implements CellEditorProvid
      */
     private void loadCache() {
         cache = new HashSet<ICellEditorProvider>();
-        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor(EXTENSION_POINT_ID);
+        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor(SiriusCellEditorProviderCollector.EXTENSION_POINT_ID);
         for (IConfigurationElement configurationElement : config) {
             try {
                 Object contribution = configurationElement.createExecutableExtension("class"); //$NON-NLS-1$
@@ -79,7 +81,7 @@ public final class SiriusCellEditorProviderCollector implements CellEditorProvid
                     cache.add((ICellEditorProvider) contribution);
                 }
             } catch (CoreException e) {
-                SiriusPlugin.getDefault().getLog().log(new Status(Status.WARNING, SiriusPlugin.ID, "Cannot instantiate the Cell Editor Provider contributions", e));
+                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, Messages.SiriusCellEditorProviderCollector_contributionInstantiationError, e));
             }
         }
     }

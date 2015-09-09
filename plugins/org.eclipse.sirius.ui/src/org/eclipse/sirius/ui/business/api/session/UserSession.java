@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.business.api.session;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelection
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
@@ -47,7 +49,7 @@ import com.google.common.collect.Sets;
 
 /**
  * An API to manipulate user session easily.
- * 
+ *
  * @provisional this class may be modified and renamed. API may change in future
  *              release without depreciation.
  * @author mchv
@@ -59,7 +61,7 @@ public class UserSession {
 
     /**
      * Instantiate a new user session from a session.
-     * 
+     *
      * @param session
      *            the session to wrap
      */
@@ -69,7 +71,7 @@ public class UserSession {
 
     /**
      * Instantiate a new user session from a session.
-     * 
+     *
      * @param session
      *            the session to wrap
      * @return a {@link UserSession} instance
@@ -81,7 +83,7 @@ public class UserSession {
     /**
      * Instantiate a new user session from a model element (representation or
      * semantic one).
-     * 
+     *
      * @param eObject
      *            the model element
      * @return a {@link UserSession} instance
@@ -100,7 +102,7 @@ public class UserSession {
 
     /**
      * Instantiate a new user session from selection.
-     * 
+     *
      * @param selection
      *            the current selection
      * @return a {@link UserSession} instance
@@ -121,7 +123,7 @@ public class UserSession {
 
     /**
      * Check if a user session is open.
-     * 
+     *
      * @return <code>true</code> if it is, <code>false</code> otherwise.
      */
     public boolean isOpen() {
@@ -134,10 +136,10 @@ public class UserSession {
 
     /**
      * Save session.
-     * 
+     *
      * @param pm
      *            the progress monitor to use.
-     * 
+     *
      * @return the saved user session instance
      */
     public UserSession save(IProgressMonitor pm) {
@@ -147,10 +149,10 @@ public class UserSession {
 
     /**
      * Close session.
-     * 
+     *
      * @param pm
      *            the progress monitor to use.
-     * 
+     *
      * @return the closed user session
      */
     public UserSession close(IProgressMonitor pm) {
@@ -160,7 +162,7 @@ public class UserSession {
 
     /**
      * Open a representation from its name.
-     * 
+     *
      * @param name
      *            name of the representation to open
      * @return the user session
@@ -170,7 +172,7 @@ public class UserSession {
         if (representation != null) {
             openEditor(representation, new NullProgressMonitor());
         } else {
-            SiriusEditPlugin.getPlugin().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Cannot found representation: " + name));
+            SiriusEditPlugin.getPlugin().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, MessageFormat.format(Messages.UserSession_representationNotFound, name)));
         }
         return this;
     }
@@ -182,7 +184,7 @@ public class UserSession {
 
     /**
      * Select a viewpoint from its name.
-     * 
+     *
      * @param viewpointName
      *            the name of the viewpoint to select
      * @return the user session
@@ -193,7 +195,7 @@ public class UserSession {
 
     /**
      * Select a viewpoint from its name and unselect all the others.
-     * 
+     *
      * @param viewpointName
      *            the name of the viewpoint
      * @return the user session
@@ -204,7 +206,7 @@ public class UserSession {
 
     /**
      * Select viewpoints from their name.
-     * 
+     *
      * @param viewpointNames
      *            name of viewpoints to select
      * @return the user session
@@ -215,7 +217,7 @@ public class UserSession {
 
     /**
      * Select viewpoints from their name and unselect all the others.
-     * 
+     *
      * @param viewpointNames
      *            name of viewpoints to select
      * @return the user session
@@ -227,6 +229,7 @@ public class UserSession {
     private UserSession selectViewpoints(final Iterable<String> viewpointNames, final boolean onlyThisViewpoints) {
         try {
             PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
+                @Override
                 public void run(IProgressMonitor monitor) {
                     Set<Viewpoint> viewpoints = Sets.newLinkedHashSet();
                     for (final String viewpointName : viewpointNames) {
@@ -237,9 +240,9 @@ public class UserSession {
                 }
             });
         } catch (InvocationTargetException e) {
-            SiriusEditPlugin.getPlugin().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Cannot select viewpoints: " + viewpointNames + ".", e));
+            SiriusEditPlugin.getPlugin().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, MessageFormat.format(Messages.UserSession_viewpointSelectionFailed, viewpointNames), e));
         } catch (InterruptedException e) {
-            SiriusEditPlugin.getPlugin().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Cannot select viewpoints: " + viewpointNames + ".", e));
+            SiriusEditPlugin.getPlugin().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, MessageFormat.format(Messages.UserSession_viewpointSelectionFailed, viewpointNames), e));
         }
         return this;
     }
@@ -275,7 +278,7 @@ public class UserSession {
 
     /**
      * Get the semantic cross referencer.
-     * 
+     *
      * @return the semantic cross referencer.
      */
     public ECrossReferenceAdapter getSemanticCrossReferencer() {
@@ -306,7 +309,7 @@ public class UserSession {
      * instance of {@link DRepresentation} it will be open. If a selection
      * contains an {@link EObject} which is a target of a representation, this
      * representation will be open.
-     * 
+     *
      * @param selection
      *            the selection
      * @return the user session
@@ -320,7 +323,7 @@ public class UserSession {
      * selection contains an instance of representation it will be open. If a
      * selection contains an EObject which is a target of a representation it
      * will be open.
-     * 
+     *
      * @param selection
      *            the selection
      * @param monitor
@@ -329,7 +332,7 @@ public class UserSession {
      */
     public UserSession openRepresentation(final ISelection selection, final IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Open representation...", 5);
+            monitor.beginTask(Messages.UserSession_openRepresentationTask, 5);
             final EObject selected = getEObject(selection);
             monitor.worked(1);
             final DRepresentation representation = findRepresentation(selected);

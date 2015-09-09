@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,13 +30,14 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * Generic export action.
- * 
+ *
  * @author mchauvin
  */
 public class ExportAction extends WorkspaceModifyOperation {
@@ -44,13 +45,7 @@ public class ExportAction extends WorkspaceModifyOperation {
     /**
      * Export action name.
      */
-    public static final String EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE = "Export Diagrams as images";
-
-    private static final String EXPORT_DIAGRAMS_AS_IMAGES_ACTION_CANCELLED = "The operation was cancelled";
-
-    private static final String EXPORT_DIAGRAMS_AS_IMAGES_ACTION_DEFAULT_DIAGRAM_NAME = "DiagramWithoutName";
-
-    private static final String EXPORT_DIAGRAMS_AS_IMAGES_ACTION_ERROR_ON_MEMORY_ALLOCATION = "Not enough memory available to create image files";
+    public static final String EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE = Messages.ExportAction_exportDiagramsAsImagesTitle;
 
     private static final char POINT = '.';
 
@@ -66,7 +61,7 @@ public class ExportAction extends WorkspaceModifyOperation {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param session
      *            The {@link Session} which owns the {@link DRepresentation}s to
      *            export as image
@@ -90,21 +85,22 @@ public class ExportAction extends WorkspaceModifyOperation {
 
     /**
      * Overridden to do the export work.
-     * 
+     *
      * {@inheritDoc}
      */
+    @Override
     protected void execute(IProgressMonitor monitor) throws CoreException, java.lang.reflect.InvocationTargetException, InterruptedException {
         try {
-            monitor.beginTask(EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE, 7);
+            monitor.beginTask(ExportAction.EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE, 7);
             try {
                 createImageFiles(monitor);
             } catch (final OutOfMemoryError e) {
-                handleException(e, EXPORT_DIAGRAMS_AS_IMAGES_ACTION_ERROR_ON_MEMORY_ALLOCATION);
+                handleException(e, Messages.ExportAction_memAllocError);
             }
         } finally {
             monitor.done();
             if (monitor.isCanceled()) {
-                throw new InterruptedException(EXPORT_DIAGRAMS_AS_IMAGES_ACTION_CANCELLED);
+                throw new InterruptedException(Messages.ExportAction_exportDiagramsAsImagesCancelled);
             }
         }
     }
@@ -117,7 +113,7 @@ public class ExportAction extends WorkspaceModifyOperation {
 
     /**
      * Create the image files.
-     * 
+     *
      * @param monitor
      *            the progress monitor
      */
@@ -197,7 +193,7 @@ public class ExportAction extends WorkspaceModifyOperation {
                 if (errorDuringExport) {
                     // Construct message for dialog and error in error log.
                     StringBuffer messageExceptionForDialog = new StringBuffer();
-                    messageExceptionForDialog.append("One or more representations could not be exported because they are too large: ");
+                    messageExceptionForDialog.append(Messages.ExportAction_imagesTooLargeMessage);
                     for (Throwable thr : messageException) {
                         messageExceptionForDialog.append("\n"); //$NON-NLS-1$
                         messageExceptionForDialog.append(" - "); //$NON-NLS-1$
@@ -205,12 +201,11 @@ public class ExportAction extends WorkspaceModifyOperation {
                     }
                     // Create a popup menu to inform user that representations
                     // export failed
-                    MessageDialog.openError(shell, "Image export impossible", messageExceptionForDialog.toString());
+                    MessageDialog.openError(shell, Messages.ExportAction_exportImpossibleTitle, messageExceptionForDialog.toString());
 
                     // Add in the 'error log' the representations export
                     // failed
-                    SiriusPlugin.getDefault().error("Error while export representation to image",
-                            new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString())));
+                    SiriusPlugin.getDefault().error(Messages.ExportAction_exportError, new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString())));
                 }
             }
         }
@@ -226,34 +221,34 @@ public class ExportAction extends WorkspaceModifyOperation {
      * Get the {@link IPath} of the file to write. This method try first to use
      * the filename given. If the file already exists, it appends a number to
      * its name.
-     * 
+     *
      * @param destinationFolder
      *            the folder where to write the file
      * @param providedFilename
      *            the name of the file
      * @param extension
      *            ) the extension of the file
-     * 
+     *
      */
     private IPath getFilePath(final IPath destinationFolder, final String providedFilename, final String extension) {
 
         String filename = null;
 
         if (providedFilename.length() == 0) {
-            filename = new String(EXPORT_DIAGRAMS_AS_IMAGES_ACTION_DEFAULT_DIAGRAM_NAME);
+            filename = Messages.ExportAction_defaultDiagramName;
         } else {
             filename = providedFilename;
         }
 
         IPath filePath;
-        final StringBuffer file = new StringBuffer(filename).append(POINT).append(extension);
+        final StringBuffer file = new StringBuffer(filename).append(ExportAction.POINT).append(extension);
 
         final String filenameWithExtension = validFilename(file.toString());
         if (destinationFolder.append(filenameWithExtension).toFile().exists()) {
             int version = 1;
 
             do {
-                final String newFileName = validFilename(new StringBuffer(filename).append('_').append(String.valueOf(version)).append(POINT).append(extension).toString());
+                final String newFileName = validFilename(new StringBuffer(filename).append('_').append(String.valueOf(version)).append(ExportAction.POINT).append(extension).toString());
                 filePath = destinationFolder.append(newFileName);
                 version++;
             } while (filePath.toFile().exists());

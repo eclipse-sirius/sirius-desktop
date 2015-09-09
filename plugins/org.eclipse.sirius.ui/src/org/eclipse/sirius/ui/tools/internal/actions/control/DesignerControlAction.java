@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler;
 import org.eclipse.sirius.ui.tools.api.control.SiriusUncontrolHandler;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.ISaveablePart2;
@@ -36,22 +37,19 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * A specific control action handling representations.
- * 
+ *
  * @author cbrun
  */
 public class DesignerControlAction extends ControlAction {
 
     /**
      * Create a new action to control the models.
-     * 
+     *
      */
     public DesignerControlAction() {
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void run() {
         final boolean controlling = this.command == null;
@@ -61,7 +59,7 @@ public class DesignerControlAction extends ControlAction {
         if (session != null) {
             if (session.getStatus() == SessionStatus.DIRTY) {
                 /* Show a dialog. */
-                choice = SWTUtil.showSaveDialog(session, "Representations file", true);
+                choice = SWTUtil.showSaveDialog(session, Messages.DesignerControlAction_saveDialogTitle, true);
             }
 
             if (choice == ISaveablePart2.YES) {
@@ -71,10 +69,10 @@ public class DesignerControlAction extends ControlAction {
                         @Override
                         protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                             try {
-                                monitor.beginTask((controlling ? "Control" : "Uncontrol") + " resources", 2);
+                                monitor.beginTask(controlling ? Messages.DesignerControlAction_controlTask : Messages.DesignerControlAction_uncontrolTask, 2);
 
                                 if (session.isOpen()) {
-                                    monitor.subTask("Session saving");
+                                    monitor.subTask(Messages.DesignerControlAction_savingTask);
                                     session.save(new SubProgressMonitor(monitor, 1));
                                 }
                                 if (controlling) {
@@ -98,9 +96,6 @@ public class DesignerControlAction extends ControlAction {
         updateSelection(getStructuredSelection());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean updateSelection(final IStructuredSelection selection) {
         // At each selection changed, we must reset the eObject to avoid a

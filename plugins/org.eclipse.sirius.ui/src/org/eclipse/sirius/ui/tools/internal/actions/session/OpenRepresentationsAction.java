@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
@@ -39,7 +40,7 @@ import com.google.common.collect.Sets;
 /**
  * Action to open the given representations and init/update the corresponding ui
  * session(s).
- * 
+ *
  * @author mporhel
  */
 public class OpenRepresentationsAction extends Action {
@@ -48,12 +49,12 @@ public class OpenRepresentationsAction extends Action {
 
     /**
      * Constructor.
-     * 
+     *
      * @param representations
      *            representations to open.
      */
     public OpenRepresentationsAction(Collection<DRepresentation> representations) {
-        super("Open");
+        super(Messages.OpenRepresentationsAction_name);
 
         if (representations != null) {
             this.representationsToOpen = Sets.newLinkedHashSet(Iterables.filter(representations, Predicates.notNull()));
@@ -62,7 +63,7 @@ public class OpenRepresentationsAction extends Action {
 
     /**
      * Constructor.
-     * 
+     *
      * @param representation
      *            representation to open.
      */
@@ -70,9 +71,6 @@ public class OpenRepresentationsAction extends Action {
         this(Collections.singletonList(representation));
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void run() {
         Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
@@ -80,6 +78,7 @@ public class OpenRepresentationsAction extends Action {
         try {
             IRunnableContext context = new ProgressMonitorDialog(shell);
             IRunnableWithProgress runnable = new IRunnableWithProgress() {
+                @Override
                 public void run(final IProgressMonitor pm) {
                     openRepresentations(representationsToOpen, pm);
                 }
@@ -95,13 +94,10 @@ public class OpenRepresentationsAction extends Action {
         }
     }
 
-    /**
-     * @param selection
-     */
     private void openRepresentations(final Collection<DRepresentation> selection, final IProgressMonitor monitor) {
-        String taskName = "Open representation...";
+        String taskName = Messages.OpenRepresentationsAction_openRepresentationsTask;
         if (selection.size() > 1) {
-            taskName = "Open representations...";
+            taskName = Messages.OpenRepresentationsAction_openRepresentationsTask;
         }
         try {
             monitor.beginTask(taskName, 5 * selection.size());

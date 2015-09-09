@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IBasicPropertyConstants;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.progress.UIJob;
@@ -24,7 +25,7 @@ import org.eclipse.ui.progress.UIJob;
 /**
  * A {@link UIJob} to refresh the image of the label in a
  * {@link CommonNavigator}.
- * 
+ *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class RefreshLabelImageJob extends UIJob {
@@ -50,21 +51,21 @@ public class RefreshLabelImageJob extends UIJob {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param view
      *            the view to refresh
      * @param elementsToRefresh
      *            the element for which refresh TreeItem in the Model explorer
      */
     public RefreshLabelImageJob(CommonNavigator view, Collection<Object> elementsToRefresh) {
-        super("Refreshing lock decorations");
+        super(Messages.RefreshLabelImageJob_name);
         this.view = view;
         this.elementsToRefresh = elementsToRefresh;
     }
 
     /**
      * Refreshes the lock decorations of the model explorer view.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -86,7 +87,7 @@ public class RefreshLabelImageJob extends UIJob {
 
     /**
      * Returns the elements that this job is in charge of refreshing.
-     * 
+     *
      * @return the elements that this job is in charge of refreshing
      */
     public Collection<?> getElementsToRefresh() {
@@ -95,6 +96,6 @@ public class RefreshLabelImageJob extends UIJob {
 
     @Override
     public boolean belongsTo(Object family) {
-        return FAMILY.equals(family);
+        return RefreshLabelImageJob.FAMILY.equals(family);
     }
 }

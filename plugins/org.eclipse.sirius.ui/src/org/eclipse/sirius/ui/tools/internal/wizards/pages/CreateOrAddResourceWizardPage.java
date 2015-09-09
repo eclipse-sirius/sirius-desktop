@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -21,7 +22,7 @@ import org.eclipse.swt.widgets.Listener;
 
 /**
  * A wizard page to choose Session kind.
- * 
+ *
  * @author mchauvin
  */
 public class CreateOrAddResourceWizardPage extends WizardPage {
@@ -32,20 +33,16 @@ public class CreateOrAddResourceWizardPage extends WizardPage {
 
     /**
      * Constructor.
-     * 
+     *
      * @param pageName
      *            the page name.
      */
     public CreateOrAddResourceWizardPage(final String pageName) {
         super(pageName);
-        setDescription("Create or select existing resource");
+        setDescription(Messages.CreateOrAddResourceWizardPage_description);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
 
         control = SWTUtil.createCompositeBothFill(parent, 1, false);
@@ -59,6 +56,7 @@ public class CreateOrAddResourceWizardPage extends WizardPage {
 
         createButton.addListener(SWT.Selection, new Listener() {
 
+            @Override
             public void handleEvent(final Event event) {
                 final Button button = (Button) event.widget;
                 createResource = button.getSelection();
@@ -66,24 +64,24 @@ public class CreateOrAddResourceWizardPage extends WizardPage {
             }
         });
 
-        createButton.setText("Create resource");
+        createButton.setText(Messages.CreateOrAddResourceWizardPage_createResource_label);
         final Label emptyLabel = new Label(control, SWT.NONE);
-        emptyLabel.setText("     Create a new empty resource and add it to the representations file.");
+        emptyLabel.setText("     " + Messages.CreateOrAddResourceWizardPage_createResource_details); //$NON-NLS-1$
 
         new Label(control, SWT.NONE);
         new Label(control, SWT.NONE);
 
         final Button resourceButton = new Button(control, SWT.RADIO);
-        resourceButton.setText("Add existing resource");
+        resourceButton.setText(Messages.CreateOrAddResourceWizardPage_addResource_label);
         final Label resourceLabel = new Label(control, SWT.NONE);
-        resourceLabel.setText("     Add an existing resource to the representations file");
+        resourceLabel.setText("     " + Messages.CreateOrAddResourceWizardPage_addResource_details); //$NON-NLS-1$
 
         setControl(control);
     }
 
     /**
      * Return whether the wizard should create a new resource.
-     * 
+     *
      * @return <code>true</code> if the wizard should create a new resource,
      *         <code>false</code> otherwise
      */

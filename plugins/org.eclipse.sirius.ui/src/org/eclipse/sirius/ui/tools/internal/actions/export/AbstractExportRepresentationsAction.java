@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsIm
 import org.eclipse.sirius.ui.tools.api.dialogs.ExportOneRepresentationAsImageDialog;
 import org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
@@ -130,9 +131,9 @@ public abstract class AbstractExportRepresentationsAction extends Action {
             try {
                 pmd.run(false, false, exportAction);
             } catch (final InvocationTargetException e) {
-                MessageDialog.openError(shell, "Error", e.getTargetException().getMessage());
+                MessageDialog.openError(shell, Messages.AbstractExportRepresentationsAction_error, e.getTargetException().getMessage());
             } catch (final InterruptedException e) {
-                MessageDialog.openInformation(shell, "Cancelled", e.getMessage());
+                MessageDialog.openInformation(shell, Messages.AbstractExportRepresentationsAction_error, e.getMessage());
             } finally {
                 pmd.close();
             }

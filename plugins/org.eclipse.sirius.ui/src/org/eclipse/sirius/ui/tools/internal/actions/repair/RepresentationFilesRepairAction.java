@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,21 +23,18 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;
 
 /**
  * This action will be called when the user needs to repair a representations
  * file.
- * 
+ *
  * @author <a href="mailto:laurent.goubet@obeo.fr">Laurent Goubet</a>
  * @author mchauvin
  */
 public class RepresentationFilesRepairAction extends ActionDelegate {
-
-    private static final String MSG_REPAIR_ERROR = "Repair error";
-
-    private static final String MSG_REPAIR_INTERRUPTED = "Repair interrupted";
 
     /** The file selected in the workspace. */
     protected IFile file;
@@ -49,11 +46,6 @@ public class RepresentationFilesRepairAction extends ActionDelegate {
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.ActionDelegate#run(org.eclipse.jface.action.IAction)
-     */
     @Override
     public void run(final IAction action) {
         if (file != null) {
@@ -62,6 +54,7 @@ public class RepresentationFilesRepairAction extends ActionDelegate {
                 if (validationStatus.isOK()) {
                     PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
 
+                        @Override
                         public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                             SiriusRepairProcess process = new SiriusRepairProcess(file, true);
                             process.run(monitor);
@@ -71,36 +64,27 @@ public class RepresentationFilesRepairAction extends ActionDelegate {
                 }
             } catch (final InvocationTargetException e) {
                 dispose();
-                final Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, "Could not run repair process.", e.getCause());
-                ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), MSG_REPAIR_ERROR, MSG_REPAIR_ERROR, status);
+                final Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, Messages.RepresentationFilesRepairAction_repairFailed, e.getCause());
+                ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.RepresentationFilesRepairAction_repairError,
+                        Messages.RepresentationFilesRepairAction_repairError, status);
                 SiriusPlugin.getDefault().getLog().log(status);
             } catch (final InterruptedException e) {
                 dispose();
                 final Status status = new Status(IStatus.WARNING, SiriusPlugin.ID, e.getMessage(), e);
-                ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), MSG_REPAIR_INTERRUPTED, MSG_REPAIR_INTERRUPTED, status);
+                ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.RepresentationFilesRepairAction_repairInterrupted,
+                        Messages.RepresentationFilesRepairAction_repairInterrupted, status);
                 SiriusPlugin.getDefault().getLog().log(status);
             }
         }
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.ActionDelegate#dispose()
-     */
     @Override
     public void dispose() {
         super.dispose();
         file = null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.ActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
-     *      org.eclipse.jface.viewers.ISelection)
-     */
     @Override
     public void selectionChanged(final IAction action, final ISelection selection) {
         if (selection instanceof IStructuredSelection) {

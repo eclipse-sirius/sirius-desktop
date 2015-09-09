@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -34,7 +35,7 @@ import com.google.common.collect.Iterables;
 
 /**
  * An action to copy selected representations.
- * 
+ *
  * @author mchauvin
  */
 public class CopyRepresentationAction extends Action {
@@ -45,14 +46,14 @@ public class CopyRepresentationAction extends Action {
 
     /**
      * Construct a new instance.
-     * 
+     *
      * @param session
      *            the current session
      * @param selection
      *            the selected representation to copy
      */
     public CopyRepresentationAction(final Session session, final Collection<DRepresentation> selection) {
-        super("Copy");
+        super(Messages.CopyRepresentationAction_name);
         this.session = session;
         this.representations = selection;
 
@@ -74,14 +75,14 @@ public class CopyRepresentationAction extends Action {
         if (representations.size() == 1) {
             final String oldName = getOldName();
             dialog = new RenameDialog(Display.getCurrent().getActiveShell(), oldName);
-            dialog.setTitle("Copy representation");
+            dialog.setTitle(Messages.CopyRepresentationAction_copyRepresentationDialog_title);
             dialog.create();
         } else {
             final String prefix = getPrefix();
             dialog = new RenameDialog(Display.getCurrent().getActiveShell(), prefix);
-            dialog.setTitle("Copy representations");
-            dialog.setMessage("Prefix for copied representations:");
-            dialog.setDefaultNewName("Copy of");
+            dialog.setTitle(Messages.CopyRepresentationAction_copyRepresentationsDialog_title);
+            dialog.setMessage(Messages.CopyRepresentationAction_copyRepresentationsDialog_message);
+            dialog.setDefaultNewName(Messages.CopyRepresentationAction_copyRepresentationsDialog_defaultNewName);
             dialog.create();
         }
 
@@ -105,7 +106,7 @@ public class CopyRepresentationAction extends Action {
 
     /**
      * Test if the selection is valid.
-     * 
+     *
      * @return true if the selection is valid
      */
     private boolean isValidSelection() {

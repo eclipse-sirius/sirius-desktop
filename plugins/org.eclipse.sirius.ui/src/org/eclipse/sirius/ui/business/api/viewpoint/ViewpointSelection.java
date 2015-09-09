@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,10 +11,12 @@
 package org.eclipse.sirius.ui.business.api.viewpoint;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -68,6 +70,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -89,22 +92,23 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
 /**
  * A class which to show swt widgets with available viewpoints.
- * 
+ *
  * @author mchauvin
  */
 public final class ViewpointSelection {
 
-    private static final String VIEWPOINT_SELECTION_WIZARD_PAGE_TITLE = "Viewpoints selection";
+    private static final String VIEWPOINT_SELECTION_WIZARD_PAGE_TITLE = Messages.ViewpointSelection_wizardTitle;
 
     private static final String VIEWPOINTS_SELECTION_WIZARD_PAGE_ID = "viewpointsSelection"; //$NON-NLS-1$
 
-    private static final String[] COLUMNS = { " ", "icon", "Viewpoint" }; //$NON-NLS-1$
+    private static final String[] COLUMNS = { " ", Messages.ViewpointSelection_iconColumn, Messages.ViewpointSelection_viewpointColumn }; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.
@@ -115,7 +119,7 @@ public final class ViewpointSelection {
 
     /**
      * Return the lists of corresponding viewpoints.
-     * 
+     *
      * @param fileExtension
      *            The extension of the semantic model
      * @return The set of corresponding viewpoints, sorted with workspace
@@ -123,6 +127,7 @@ public final class ViewpointSelection {
      */
     public static Set<Viewpoint> getViewpoints(final String fileExtension) {
         final Predicate<Viewpoint> isValidViewpoint = new Predicate<Viewpoint>() {
+            @Override
             public boolean apply(final Viewpoint viewpoint) {
                 return new ViewpointQuery(viewpoint).handlesSemanticModelExtension(fileExtension != null ? fileExtension : StringUtil.JOKER_STRING);
             }
@@ -136,7 +141,7 @@ public final class ViewpointSelection {
 
     /**
      * Return the lists of corresponding viewpoints.
-     * 
+     *
      * @param fileExtensions
      *            The extensions of the semantic models
      * @return The list of corresponding viewpoints
@@ -151,7 +156,7 @@ public final class ViewpointSelection {
 
     /**
      * Returns the semantic extensions of the given session.
-     * 
+     *
      * @param session
      *            the session.
      * @return the semantic extensions of the given session.
@@ -171,7 +176,7 @@ public final class ViewpointSelection {
 
     /**
      * Create a selection wizard page to select a viewpoint.
-     * 
+     *
      * @param fileExtension
      *            the semantic file extension.
      * @param viewpointsMap
@@ -187,14 +192,16 @@ public final class ViewpointSelection {
             viewpointsMap.put(viewpoint, Boolean.FALSE);
         }
 
-        final WizardPage page = new WizardPage(VIEWPOINTS_SELECTION_WIZARD_PAGE_ID, VIEWPOINT_SELECTION_WIZARD_PAGE_TITLE, null) {
+        final WizardPage page = new WizardPage(ViewpointSelection.VIEWPOINTS_SELECTION_WIZARD_PAGE_ID, ViewpointSelection.VIEWPOINT_SELECTION_WIZARD_PAGE_TITLE, null) {
 
+            @Override
             public void createControl(final Composite parent) {
                 setControl(ViewpointSelection.createViewpointsTableControl(parent, this.getContainer(), viewpointsMap));
             }
 
             private boolean isThereOneSelectedViewpoint() {
                 return Maps.filterValues(viewpointsMap, new Predicate<Boolean>() {
+                    @Override
                     public boolean apply(final Boolean input) {
                         return input.booleanValue();
                     }
@@ -217,7 +224,7 @@ public final class ViewpointSelection {
 
     /**
      * A cell modifier which applies to a wizard page.
-     * 
+     *
      * @author mchauvin
      */
     private static class WizardViewpointsTableLazyCellModifier extends ViewpointsTableLazyCellModifier {
@@ -232,14 +239,11 @@ public final class ViewpointSelection {
             this.wizardContainer = wizardContainer;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void modify(final Object element, final String property, final Object value) {
             super.modify(element, property, value);
 
-            if (property.equals(COLUMNS[0])) {
+            if (property.equals(ViewpointSelection.COLUMNS[0])) {
                 this.wizardContainer.updateButtons();
             }
         }
@@ -247,7 +251,7 @@ public final class ViewpointSelection {
 
     /**
      * Create a selection wizard page to select a viewpoint.
-     * 
+     *
      * @param semanticModel
      *            the semantic model or null.
      * @param viewpointsMap
@@ -268,17 +272,17 @@ public final class ViewpointSelection {
 
     /**
      * Create and open a new dialog to change the viewpoints selection status.
-     * 
+     *
      * @param session
      *            the session
      */
     public static void openViewpointsSelectionDialog(final Session session) {
-        openViewpointsSelectionDialog(session, true);
+        ViewpointSelection.openViewpointsSelectionDialog(session, true);
     }
 
     /**
      * Create and open a new dialog to change the viewpoints selection status.
-     * 
+     *
      * @param session
      *            the session
      * @param createNewRepresentations
@@ -292,9 +296,10 @@ public final class ViewpointSelection {
             org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
             org.eclipse.sirius.business.internal.movida.ViewpointSelection selection = DAnalysisSessionHelper.getViewpointSelection(registry, (DAnalysisSession) session);
             Set<URI> selectedBefore = selection.getSelected();
-            ViewpointSelectionDialog vsd = new ViewpointSelectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), registry, selection, getSemanticFileExtensions(session));
+            ViewpointSelectionDialog vsd = new ViewpointSelectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), registry, selection,
+                    ViewpointSelection.getSemanticFileExtensions(session));
             if (vsd.open() == Window.OK) {
-                applyViewpointSelectionChange(session, selection, selectedBefore);
+                ViewpointSelection.applyViewpointSelectionChange(session, selection, selectedBefore);
             }
         } else {
             session.getSemanticCrossReferencer();
@@ -311,7 +316,7 @@ public final class ViewpointSelection {
      * Compute the error message for the given missing dependencies which
      * indicates the required viewpoinst activation to complete the current
      * selection.
-     * 
+     *
      * @param missingDependencies
      *            a map with an entry for each select viewpoint which has
      *            missing dependencies. The entry's key is the viewpoint name,
@@ -321,12 +326,19 @@ public final class ViewpointSelection {
      *         activation to complete the current selection.
      */
     public static String getMissingDependenciesErrorMessage(Map<String, Collection<String>> missingDependencies) {
-        return "The list of selected viewpoints is invalid; please fix the problems:\n" + "- "
-                + Joiner.on("\n- ").withKeyValueSeparator(" requires: ").join(Maps.transformValues(missingDependencies, new Function<Collection<String>, String>() {
-                    public String apply(java.util.Collection<String> from) {
-                        return Joiner.on(", ").join(from);
-                    }
-                }));
+        Function<Collection<String>, String> toStringList = new Function<Collection<String>, String>() {
+            @Override
+            public String apply(java.util.Collection<String> from) {
+                return Joiner.on(", ").join(from); //$NON-NLS-1$
+            }
+        };
+        StringBuilder sb = new StringBuilder(Messages.ViewpointSelection_missingDependencies_header).append("\n"); //$NON-NLS-1$
+        List<String> lines = Lists.newArrayList();
+        for (Map.Entry<String, Collection<String>> entry : missingDependencies.entrySet()) {
+            lines.add("- " + MessageFormat.format(Messages.ViewpointSelection_missingDependencies_requirements, entry.getKey(), toStringList.apply(entry.getValue()))); //$NON-NLS-1$
+        }
+        sb.append(Joiner.on("\n").join(lines)); //$NON-NLS-1$
+        return sb.toString();
     }
 
     private static void applyViewpointSelectionChange(final Session session, org.eclipse.sirius.business.internal.movida.ViewpointSelection selection, Set<URI> selectedBefore) {
@@ -335,11 +347,13 @@ public final class ViewpointSelection {
         Set<URI> newDeselected = Sets.difference(selectedBefore, selectedAfter);
         final ViewpointSelection.Callback callback = new ViewpointSelectionCallbackWithConfimation();
         final Set<Viewpoint> newSelectedViewpoints = Sets.newHashSet(Iterables.transform(newSelected, new Function<URI, Viewpoint>() {
+            @Override
             public Viewpoint apply(URI from) {
                 return SiriusResourceHelper.getCorrespondingViewpoint(session, from, true).get();
             }
         }));
         final Set<Viewpoint> newDeselectedViewpoints = Sets.newHashSet(Iterables.transform(newDeselected, new Function<URI, Viewpoint>() {
+            @Override
             public Viewpoint apply(URI from) {
                 return SiriusResourceHelper.getCorrespondingViewpoint(session, from, true).get();
             }
@@ -351,9 +365,10 @@ public final class ViewpointSelection {
                 Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
                 IRunnableContext context = new ProgressMonitorDialog(shell);
                 IRunnableWithProgress runnable = new IRunnableWithProgress() {
+                    @Override
                     public void run(final IProgressMonitor monitor) {
                         try {
-                            monitor.beginTask("Apply new viewpoints selection...", 1);
+                            monitor.beginTask(Messages.ViewpointSelection_applySelectionTask, 1);
                             Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedViewpoints, newDeselectedViewpoints, new SubProgressMonitor(monitor, 1));
                             TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
                             domain.getCommandStack().execute(command);
@@ -378,7 +393,7 @@ public final class ViewpointSelection {
     /**
      * Compute the missing viewpoint dependencies (if any) for all the
      * viewpoints enabled by the user.
-     * 
+     *
      * @param selected
      *            the viewpoints selection request by the user.
      * @return for each selected viewpoint which has missing dependencies, an
@@ -387,6 +402,7 @@ public final class ViewpointSelection {
      */
     public static Map<String, Collection<String>> getMissingDependencies(Set<Viewpoint> selected) {
         Set<String> selectedURIs = Sets.newHashSet(Iterables.filter(Iterables.transform(selected, new Function<Viewpoint, String>() {
+            @Override
             public String apply(Viewpoint from) {
                 Option<URI> uri = new ViewpointQuery(from).getViewpointURI();
                 if (uri.some()) {
@@ -402,7 +418,7 @@ public final class ViewpointSelection {
             for (RepresentationExtensionDescription extension : new ViewpointQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
                 String extended = extension.getViewpointURI();
                 Pattern pattern = Pattern.compile(extended);
-                if (!atLeastOneUriMatchesPattern(selectedURIs, pattern)) {
+                if (!ViewpointSelection.atLeastOneUriMatchesPattern(selectedURIs, pattern)) {
                     result.put(viewpoint.getName(), extended.trim().replaceFirst("^viewpoint:/[^/]+/", "")); //$NON-NLS-1$ //$NON-NLS-2$
                 }
             }
@@ -425,7 +441,7 @@ public final class ViewpointSelection {
         // newMap is a copy of originalMap with modifications on values.
         // No elements should have been added.
         if (originalMap.size() != newMap.size()) {
-            throw new IllegalArgumentException("Original and new lists of viewpoints should not be 'different'");
+            throw new IllegalArgumentException(Messages.ViewpointSelection_viewpointsMapNotReused);
         }
 
         final Set<Viewpoint> newSelectedViewpoints = Sets.newHashSet();
@@ -466,6 +482,7 @@ public final class ViewpointSelection {
 
             try {
                 IRunnableWithProgress runnable = new IRunnableWithProgress() {
+                    @Override
                     public void run(final IProgressMonitor monitor) {
                         Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedViewpoints, newDeselectedViewpoints, createNewRepresentations, monitor);
                         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
@@ -491,8 +508,9 @@ public final class ViewpointSelection {
         final IProgressService ps = PlatformUI.getWorkbench().getProgressService();
         try {
             ps.busyCursorWhile(new IRunnableWithProgress() {
+                @Override
                 public void run(final IProgressMonitor pm) {
-                    pm.beginTask("Loading viewpoints...", 4);
+                    pm.beginTask(Messages.ViewpointSelection_loadingViewpointsTask, 4);
 
                     final Collection<String> semanticFileExtensions = ViewpointSelection.getSemanticFileExtensions(session);
                     pm.worked(1);
@@ -560,7 +578,7 @@ public final class ViewpointSelection {
             editors[i] = null;
         }
 
-        tableViewer.setColumnProperties(COLUMNS);
+        tableViewer.setColumnProperties(ViewpointSelection.COLUMNS);
 
         tableViewer.setCellEditors(editors);
         cellModifier.setViewer(tableViewer);
@@ -580,14 +598,14 @@ public final class ViewpointSelection {
 
     /**
      * A simple callback.
-     * 
+     *
      * @author mchauvin
      */
     public interface Callback {
 
         /**
          * Select a {@link Viewpoint}.
-         * 
+         *
          * @param viewpoint
          *            the {@link Viewpoint} to select
          * @param session
@@ -599,7 +617,7 @@ public final class ViewpointSelection {
 
         /**
          * Select a {@link Viewpoint}.
-         * 
+         *
          * @param viewpoint
          *            the {@link Viewpoint} to select
          * @param session
@@ -615,7 +633,7 @@ public final class ViewpointSelection {
 
         /**
          * deselect a viewpoint.
-         * 
+         *
          * @param deselectedViewpoint
          *            the deselected viewpoint
          * @param session
@@ -629,7 +647,7 @@ public final class ViewpointSelection {
 
     /**
      * The label provider
-     * 
+     *
      * @author mchauvin
      */
     private static final class ViewpointsTableLabelProvider extends ColumnLabelProvider {
@@ -640,7 +658,7 @@ public final class ViewpointSelection {
 
         /**
          * Constructor.
-         * 
+         *
          * @param viewpoints
          *            the viewpoints
          */
@@ -670,9 +688,6 @@ public final class ViewpointSelection {
             return image;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Image getImage(final Object element) {
             Image image = null;
@@ -711,9 +726,6 @@ public final class ViewpointSelection {
             return image;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public String getText(final Object element) {
             switch (columnIndex) {
@@ -774,14 +786,11 @@ public final class ViewpointSelection {
 
     /**
      * The content provider.
-     * 
+     *
      * @author mchauvin
      */
     private static final class ViewpointsTableContentProvider implements IStructuredContentProvider {
-
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         @SuppressWarnings("unchecked")
         public Object[] getElements(final Object inputElement) {
             if (inputElement instanceof Set<?>) {
@@ -791,18 +800,12 @@ public final class ViewpointSelection {
             return Collections.EMPTY_LIST.toArray();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-         */
+        @Override
         public void dispose() {
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
             // nothing to do
         }
@@ -810,13 +813,13 @@ public final class ViewpointSelection {
 
     /**
      * An common interface which adds a set viewer method.
-     * 
+     *
      * @author mchauvin
      */
     private interface TableViewerAwareCellModifier extends ICellModifier {
         /**
          * Set the table viewer to update.
-         * 
+         *
          * @param viewer
          *            the viewer to update
          */
@@ -825,7 +828,7 @@ public final class ViewpointSelection {
 
     /**
      * An common abstract class for cell modifiers.
-     * 
+     *
      * @author mchauvin
      */
     private abstract static class AbstractViewpointsTableCellModifier implements TableViewerAwareCellModifier {
@@ -837,7 +840,7 @@ public final class ViewpointSelection {
 
         /**
          * Cosntructor.
-         * 
+         *
          * @param viewpoints
          *            All viewpoints and there selection state.
          */
@@ -845,22 +848,15 @@ public final class ViewpointSelection {
             this.viewpoints = viewpoints;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void setViewer(final TableViewer viewer) {
             this.tableViewer = viewer;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ICellModifier#canModify(java.lang.Object,
-         *      java.lang.String)
-         */
+        @Override
         public boolean canModify(final Object element, final String property) {
 
-            if (property.equals(COLUMNS[0])) {
+            if (property.equals(ViewpointSelection.COLUMNS[0])) {
                 /* first column */
                 return true;
             }
@@ -871,14 +867,14 @@ public final class ViewpointSelection {
 
     /**
      * The cell modifier which only modifies the input map.
-     * 
+     *
      * @author mchauvin
      */
     private static class ViewpointsTableLazyCellModifier extends AbstractViewpointsTableCellModifier {
 
         /**
          * Constructor.
-         * 
+         *
          * @param viewpoints
          *            All viewpoints and there selection state.
          */
@@ -886,15 +882,13 @@ public final class ViewpointSelection {
             super(viewpoints);
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public Object getValue(final Object element, final String property) {
 
             final Viewpoint viewpoint = (Viewpoint) element;
             Object result = null;
 
-            if (property.equals(COLUMNS[0])) {
+            if (property.equals(ViewpointSelection.COLUMNS[0])) {
                 /* first column */
 
                 result = Boolean.FALSE;
@@ -904,7 +898,7 @@ public final class ViewpointSelection {
                         break;
                     }
                 }
-            } else if (property.equals(COLUMNS[1])) {
+            } else if (property.equals(ViewpointSelection.COLUMNS[1])) {
                 /* second column */
                 // do nothing as there is only an image
             } else {
@@ -914,9 +908,7 @@ public final class ViewpointSelection {
             return result;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public void modify(final Object element, final String property, final Object value) {
 
             Object objElement;
@@ -927,7 +919,7 @@ public final class ViewpointSelection {
                 objElement = element;
             }
 
-            if (property.equals(COLUMNS[0])) {
+            if (property.equals(ViewpointSelection.COLUMNS[0])) {
                 final Viewpoint vp = (Viewpoint) objElement;
 
                 // Convert Object to Boolean without instanceof

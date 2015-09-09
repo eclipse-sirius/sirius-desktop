@@ -1,6 +1,5 @@
-/*
- * Copyright (c) 2005-2007 Obeo
- * 
+/*******************************************************************************
+ * Copyright (c) 2005, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- */
-
+ *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
 import java.util.Arrays;
@@ -24,6 +22,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.common.ui.tools.api.resource.WorkspaceResourceDialog;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -42,7 +41,7 @@ import org.eclipse.ui.PlatformUI;
 /**
  * The role of this wizard page is to select an ecore metamodel, in the
  * workspace or in the registry (EPackage).
- * 
+ *
  * @author www.obeo.fr
  */
 public class SelectMetamodelWizardPage extends WizardPage {
@@ -74,7 +73,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
 
     /**
      * Constructor.
-     * 
+     *
      * @param pageName
      *            is the name of the page
      * @param extensions
@@ -86,7 +85,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
 
     /**
      * Constructor.
-     * 
+     *
      * @param pageName
      *            is the name of the page
      * @param extensions
@@ -97,16 +96,12 @@ public class SelectMetamodelWizardPage extends WizardPage {
     public SelectMetamodelWizardPage(final String pageName, final String[] extensions, final boolean chooseMetamodelType) {
         super(pageName);
         setTitle(pageName);
-        setDescription("This page is used to specify the URI of the metamodel"); //$NON-NLS-1$
+        setDescription(Messages.SelectMetamodelWizardPage_description);
         this.extensions = extensions;
         this.chooseMetamodelType = chooseMetamodelType;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-     */
+    @Override
     public void createControl(final Composite parent) {
         final Composite rootContainer = new Composite(parent, SWT.NULL);
         final GridLayout rootContainerLayout = new GridLayout();
@@ -116,37 +111,31 @@ public class SelectMetamodelWizardPage extends WizardPage {
         rootContainerLayout.marginLeft = 5;
         rootContainerLayout.marginRight = 5;
         rootContainer.setLayout(rootContainerLayout);
-
         final Composite registryContainer = new Composite(rootContainer, SWT.NULL);
         final GridLayout registryContainerLayout = new GridLayout();
         registryContainerLayout.numColumns = 3;
         registryContainerLayout.verticalSpacing = 3;
         registryContainer.setLayout(registryContainerLayout);
-
         final Label registryLabel = new Label(registryContainer, SWT.NULL);
-        registryLabel.setText("&Registry values" + ':'); //$NON-NLS-1$
-
+        registryLabel.setText(Messages.SelectMetamodelWizardPage_registryLabel);
         final Set<String> registryValues = new TreeSet<String>(EPackage.Registry.INSTANCE.keySet());
         final String[] valueLabels = registryValues.toArray(new String[registryValues.size()]);
         final Combo comboBox = new Combo(registryContainer, SWT.READ_ONLY);
         comboBox.setItems(valueLabels);
-        final int visibleItemCount = 15;
-        if (valueLabels.length < visibleItemCount) {
-            comboBox.setVisibleItemCount(valueLabels.length);
-        } else {
-            comboBox.setVisibleItemCount(visibleItemCount);
-        }
+        comboBox.setVisibleItemCount(Math.min(valueLabels.length, 15));
         comboBox.addSelectionListener(new SelectionListener() {
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
             }
 
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 metamodelURI.setText(valueLabels[((Combo) e.widget).getSelectionIndex()]);
             }
         });
 
         final Button button = new Button(registryContainer, SWT.PUSH);
-        button.setText("Browse..."); //$NON-NLS-1$
+        button.setText(Messages.SelectMetamodelWizardPage_browseButton);
         button.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(final SelectionEvent e) {
@@ -163,13 +152,14 @@ public class SelectMetamodelWizardPage extends WizardPage {
         uriContainer.setLayout(uriContainerLayout);
 
         final Label uriLabel = new Label(uriContainer, SWT.NULL);
-        uriLabel.setText("&Metamodel URI" + ':'); //$NON-NLS-1$
+        uriLabel.setText(Messages.SelectMetamodelWizardPage_uriLabel);
 
         metamodelURI = new Text(uriContainer, SWT.BORDER | SWT.SINGLE);
         gridData = new GridData(GridData.FILL_HORIZONTAL);
         gridData.horizontalSpan = 3;
         metamodelURI.setLayoutData(gridData);
         metamodelURI.addModifyListener(new ModifyListener() {
+            @Override
             public void modifyText(final ModifyEvent e) {
                 updateTypes();
                 dialogChanged();
@@ -187,30 +177,31 @@ public class SelectMetamodelWizardPage extends WizardPage {
             typeContainer.setLayout(typeContainerLayout);
 
             final Label typeLabel = new Label(typeContainer, SWT.NULL);
-            typeLabel.setText("&Type values" + ':');
+            typeLabel.setText(Messages.SelectMetamodelWizardPage_typeValues);
 
             metamodelType = new Combo(typeContainer, SWT.READ_ONLY);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.horizontalSpan = 4;
             metamodelType.setLayoutData(gridData);
             metamodelType.addSelectionListener(new SelectionListener() {
+                @Override
                 public void widgetDefaultSelected(final SelectionEvent e) {
                 }
 
+                @Override
                 public void widgetSelected(final SelectionEvent e) {
                     dialogChanged();
                 }
             });
         }
-
         updateTypes();
         dialogChanged();
         setControl(rootContainer);
     }
 
     private void handleBrowse() {
-        final WorkspaceResourceDialog dialog = new WorkspaceResourceDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.SINGLE, "Select the metamodel in the workspace",
-                Arrays.asList(extensions));
+        final WorkspaceResourceDialog dialog = new WorkspaceResourceDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.SINGLE,
+                Messages.SelectMetamodelWizardPage_workspaceDialogTitle, Arrays.asList(extensions));
         dialog.open();
         if (dialog.getSelectedResources() != null && !dialog.getSelectedResources().isEmpty()) {
             metamodelURI.setText(dialog.getSelectedResources().get(0).getFullPath().toString());
@@ -266,7 +257,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
      * <p>
      * Sample : "resources.JavaFile" is the short path for the classifier
      * java.resources.JavaFile
-     * 
+     *
      * @param eClassifier
      *            is the classifier
      * @return short path of the classifier
@@ -285,7 +276,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
 
     /**
      * Search all the classifiers recursively in a package.
-     * 
+     *
      * @param ePackage
      *            is the container
      * @return list of classifiers
@@ -296,7 +287,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
 
     /**
      * Search all the classifiers recursively in a package.
-     * 
+     *
      * @param ePackage
      *            is the container
      * @param classOnly
@@ -360,11 +351,11 @@ public class SelectMetamodelWizardPage extends WizardPage {
     private void dialogChanged() {
         final String mmURI = getMetamodelURI();
         if (mmURI.length() == 0) {
-            updateStatus("Metamodel URI must be specified");
+            updateStatus(Messages.SelectMetamodelWizardPage_statusNoURI);
         } else if (SelectMetamodelWizardPage.getEPackage(mmURI) == null) {
-            updateStatus("Metamodel URI doesn't exist");
+            updateStatus(Messages.SelectMetamodelWizardPage_statusUnknownURI);
         } else if (chooseMetamodelType && getMetamodelType().length() == 0) {
-            updateStatus("Metamodel type is not selected");
+            updateStatus(Messages.SelectMetamodelWizardPage_noMetamodelType);
         } else {
             updateStatus(null);
         }
@@ -372,7 +363,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
 
     /**
      * Updates the status of the page.
-     * 
+     *
      * @param message
      *            is the error message.
      */
@@ -383,7 +374,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
 
     /**
      * Returns the metamodel URI.
-     * 
+     *
      * @return the metamodel URI
      */
     public String getMetamodelURI() {
@@ -392,7 +383,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
 
     /**
      * Returns the package associated with the current metamodel uri.
-     * 
+     *
      * @return the package
      */
     public EPackage getEPackage() {
@@ -401,7 +392,7 @@ public class SelectMetamodelWizardPage extends WizardPage {
 
     /**
      * Returns the metamodel type.
-     * 
+     *
      * @return the metamodel type
      */
     public String getMetamodelType() {

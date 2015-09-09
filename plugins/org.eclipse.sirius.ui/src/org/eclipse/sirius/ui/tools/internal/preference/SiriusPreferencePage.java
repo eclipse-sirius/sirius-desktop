@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -28,7 +29,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 /**
  * Page for viewpoint preferences.
- * 
+ *
  * @author ymortier
  */
 public class SiriusPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
@@ -36,7 +37,7 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
     /**
      * Label of the check box emptyAirdFragmentOnControl.
      */
-    public static final String EMPTY_AIRD_ON_CONTROL_CHECKBOX_LABEL = "Always create an aird fragment on control";
+    public static final String EMPTY_AIRD_ON_CONTROL_CHECKBOX_LABEL = Messages.SiriusPreferencePage_emptyAirdOnControl;
 
     private BooleanFieldEditor refreshOnRepresentationOpening;
 
@@ -54,11 +55,6 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
 
     private IntegerFieldEditor groupSize;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
-     */
     @Override
     protected void createFieldEditors() {
         setPreferenceStore(SiriusEditPlugin.getPlugin().getPreferenceStore());
@@ -77,53 +73,55 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
     }
 
     private void addFilesFields(Composite parent) {
-        Composite fileComposite = createGroup(parent, "Files");
+        Composite fileComposite = createGroup(parent, Messages.SiriusPreferencePage_filesGroup);
 
-        emptyAirdFragmentOnControl = new BooleanFieldEditorWithHelp(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), EMPTY_AIRD_ON_CONTROL_CHECKBOX_LABEL,
-                "Allow the creation of an empty aird fragment if there is no selected representation", new Composite(fileComposite, SWT.NONE));
+        emptyAirdFragmentOnControl = new BooleanFieldEditorWithHelp(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), SiriusPreferencePage.EMPTY_AIRD_ON_CONTROL_CHECKBOX_LABEL,
+                Messages.SiriusPreferencePage_emptyAirdOnControl_help, new Composite(fileComposite, SWT.NONE));
         addField(emptyAirdFragmentOnControl);
 
-        defensiveFileEdit = new BooleanFieldEditor(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, "Validate file edits on command application.", new Composite(fileComposite, SWT.NONE));
+        defensiveFileEdit = new BooleanFieldEditor(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, Messages.SiriusPreferencePage_defensiveEditValidation, new Composite(fileComposite,
+                SWT.NONE));
         addField(defensiveFileEdit);
 
     }
 
     private void addRefreshFields(Composite parent) {
-        Composite refreshComposite = createGroup(parent, "Refresh");
+        Composite refreshComposite = createGroup(parent, Messages.SiriusPreferencePage_refreshGroup);
 
-        refreshOnRepresentationOpening = new BooleanFieldEditor(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), "Do refresh on representation opening", new Composite(
-                refreshComposite, SWT.NONE));
+        refreshOnRepresentationOpening = new BooleanFieldEditor(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), Messages.SiriusPreferencePage_refreshOnRepresentationOpening,
+                new Composite(refreshComposite, SWT.NONE));
         addField(refreshOnRepresentationOpening);
 
-        autoRefresh = new BooleanFieldEditor(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), "Automatic Refresh", new Composite(refreshComposite, SWT.NONE));
+        autoRefresh = new BooleanFieldEditor(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), Messages.SiriusPreferencePage_autoRefresh, new Composite(refreshComposite, SWT.NONE));
         addField(autoRefresh);
     }
 
     private void addProfilingField(Composite parent) {
-        Composite profilerComposite = createGroup(parent, "Profiler");
+        Composite profilerComposite = createGroup(parent, Messages.SiriusPreferencePage_profilerGroup);
 
-        traceMode = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_TRACE_ON, "Profiling", "Open the profiler view: Sirius Profiler > Time Profiler View.", new Composite(
+        traceMode = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_TRACE_ON, Messages.SiriusPreferencePage_profiling, Messages.SiriusPreferencePage_profiling_help, new Composite(
                 profilerComposite, SWT.NONE));
         addField(traceMode);
     }
 
     private void addGroupTreeItemsField(Composite parent) {
-        Composite groupComposite = createGroup(parent, "Group tree items");
+        Composite groupComposite = createGroup(parent, Messages.SiriusPreferencePage_groupingGroup);
 
-        groupEnable = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_ENABLE, "Enable",
-                "This feature handles a new intermediary tree level if the children size is above the threshold.", new Composite(groupComposite, SWT.NONE));
+        groupEnable = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_ENABLE, Messages.SiriusPreferencePage_enableGrouping, Messages.SiriusPreferencePage_enableGrouping_help,
+                new Composite(groupComposite, SWT.NONE));
 
         Composite groupTriggerComposite = new Composite(groupComposite, SWT.NONE);
         groupTriggerComposite.setLayout(new GridLayout(3, false));
         groupTriggerComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        groupTrigger = new IntegerFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_TRIGGER, "Threshold",
-                "The threshold needs to be higher or equal to the group size (otherwise Threshold = Group size).", groupTriggerComposite);
+        groupTrigger = new IntegerFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_TRIGGER, Messages.SiriusPreferencePage_groupingTheshold,
+                Messages.SiriusPreferencePage_groupingTheshold_help, groupTriggerComposite);
         groupTrigger.setValidRange(0, Integer.MAX_VALUE);
 
         Composite groupSizeComposite = new Composite(groupComposite, SWT.NONE);
         groupSizeComposite.setLayout(new GridLayout(3, false));
         groupSizeComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        groupSize = new IntegerFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_SIZE, "Group size", "Group size needs to be higher than zero.", groupSizeComposite);
+        groupSize = new IntegerFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_SIZE, Messages.SiriusPreferencePage_groupingGroupSize, Messages.SiriusPreferencePage_groupingGroupSize_help,
+                groupSizeComposite);
         groupSize.setValidRange(0, Integer.MAX_VALUE);
         addField(groupEnable);
         addField(groupTrigger);
@@ -143,17 +141,10 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
         return group;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
-     */
+    @Override
     public void init(final IWorkbench workbench) {
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void initialize() {
         super.initialize();

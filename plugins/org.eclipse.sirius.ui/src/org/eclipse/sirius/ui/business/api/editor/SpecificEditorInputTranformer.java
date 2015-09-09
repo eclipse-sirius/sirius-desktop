@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
@@ -59,7 +60,7 @@ import com.google.common.collect.Sets;
 /**
  * Transform a standard editor input into a session, by creating silently a
  * session.
- * 
+ *
  * @author mchauvin
  * @since 0.9.0
  */
@@ -67,7 +68,7 @@ public class SpecificEditorInputTranformer {
 
     private static final String SESSION_FILE_EXTENSION = "." + SiriusUtil.SESSION_RESOURCE_EXTENSION; //$NON-NLS-1$
 
-    private static final String DEFAULT_FILE_NAME = "file"; //$NON-NLS-1$
+    private static final String DEFAULT_FILE_NAME = Messages.SpecificEditorInputTranformer_defaultFileName;
 
     /**
      * The specific session manager.
@@ -97,7 +98,7 @@ public class SpecificEditorInputTranformer {
 
     /**
      * Init environment.
-     * 
+     *
      * @param viewpointURI
      *            the viewpoint URI
      * @param representationDescriptionName
@@ -139,7 +140,7 @@ public class SpecificEditorInputTranformer {
     /**
      * Transform a standard input into a session one. Session will be
      * automatically created.
-     * 
+     *
      * @param input
      *            the default input
      * @param selection
@@ -164,7 +165,7 @@ public class SpecificEditorInputTranformer {
                 final DRepresentation representation = createSessionAndRepresentation(semanticModelPath, analysisFilenameURI);
                 return createNewEditorInput(representation, semanticModelPath);
             } catch (final IOException exception) {
-                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "Failing of EditorInput transformation.", exception));
+                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, Messages.SpecificEditorInputTranformer_transformationFailure, exception));
             } catch (CoreException exception) {
                 SiriusEditPlugin.getPlugin().getLog().log(exception.getStatus());
             }
@@ -176,7 +177,7 @@ public class SpecificEditorInputTranformer {
      * Create a session and a representation (only if not already created by
      * initialization of Sirius) from a semantic model path and the analysis
      * URI.
-     * 
+     *
      * @param semanticModelPath
      *            model path
      * @param analysisFilenameURI
@@ -202,7 +203,7 @@ public class SpecificEditorInputTranformer {
 
         final EObject semanticModel = session.getSemanticResources().iterator().next().getContents().get(0);
         activateSirius();
-        return createDRepresentation(semanticModel, "new representation");
+        return createDRepresentation(semanticModel, Messages.SpecificEditorInputTranformer_newRepresentationName);
     }
 
     private DRepresentation createDRepresentation(final EObject semanticModel, final String name) {
@@ -221,7 +222,7 @@ public class SpecificEditorInputTranformer {
      * Find the representation in the current session which has
      * <code>representationDescriptionUsed</code> as description and
      * <code>semanticElement</code> as root.
-     * 
+     *
      * @param representationDescriptionUsed
      *            the search representation description
      * @param semanticElement
@@ -245,7 +246,7 @@ public class SpecificEditorInputTranformer {
     /**
      * Get the representation description instance in the session editing domain
      * from another one.
-     * 
+     *
      * @param representationDescription
      *            the original representation description
      * @param semanticModel
@@ -275,7 +276,7 @@ public class SpecificEditorInputTranformer {
     /**
      * Get the editor input URI from the created representation. additional
      * operation, such as model elements creation could be done in this method.
-     * 
+     *
      * @param representation
      *            the created representation
      * @return the uri to use
@@ -302,7 +303,7 @@ public class SpecificEditorInputTranformer {
 
     /**
      * Get the analysis file URI.
-     * 
+     *
      * @param storeInWorkspace
      *            should session file stored in workspace or outside
      * @param selection
@@ -321,7 +322,7 @@ public class SpecificEditorInputTranformer {
 
     /**
      * Get an analysis file URI located in the workspace.
-     * 
+     *
      * @param selection
      *            the current selection
      * @return Workspace analysis file URI
@@ -331,29 +332,29 @@ public class SpecificEditorInputTranformer {
         if (selectedResource instanceof IFile) {
             final IPath path = getWorkspacePath(selectedResource);
             if (path != null) {
-                final String fileName = ((IFile) selectedResource).getName() + SESSION_FILE_EXTENSION;
+                final String fileName = ((IFile) selectedResource).getName() + SpecificEditorInputTranformer.SESSION_FILE_EXTENSION;
                 return URI.createPlatformResourceURI(path.append(fileName).toString(), true);
             }
         }
-        return URI.createURI(DEFAULT_FILE_NAME + SESSION_FILE_EXTENSION);
+        return URI.createURI(SpecificEditorInputTranformer.DEFAULT_FILE_NAME + SpecificEditorInputTranformer.SESSION_FILE_EXTENSION);
     }
 
     /**
      * Get an analysis temporary file URI.
-     * 
+     *
      * @return the URI
      * @throws IOException
      *             if a temporary file could not be created
      */
     protected URI getTempAnalysisURI() throws IOException {
-        File temp = File.createTempFile(DEFAULT_FILE_NAME, SESSION_FILE_EXTENSION);
+        File temp = File.createTempFile(SpecificEditorInputTranformer.DEFAULT_FILE_NAME, SpecificEditorInputTranformer.SESSION_FILE_EXTENSION);
         temp.deleteOnExit();
         return URI.createFileURI(temp.getAbsolutePath());
     }
 
     /**
      * Get an analysis in memory URI.
-     * 
+     *
      * @param selection
      *            the workbench current selection
      * @return the URI
@@ -364,12 +365,12 @@ public class SpecificEditorInputTranformer {
             final String sessionResourcePath = selectedResource.getFullPath().removeFileExtension().addFileExtension(SiriusUtil.SESSION_RESOURCE_EXTENSION).makeRelative().toString();
             return URI.createGenericURI(URIQuery.INMEMORY_URI_SCHEME, sessionResourcePath, null);
         }
-        return URI.createGenericURI(URIQuery.INMEMORY_URI_SCHEME, DEFAULT_FILE_NAME + SESSION_FILE_EXTENSION, null);
+        return URI.createGenericURI(URIQuery.INMEMORY_URI_SCHEME, SpecificEditorInputTranformer.DEFAULT_FILE_NAME + SpecificEditorInputTranformer.SESSION_FILE_EXTENSION, null);
     }
 
     /**
      * Get the path relative to workspace of a resource.
-     * 
+     *
      * @param resource
      *            the resource
      * @return the relative workspace path of the given resource
@@ -386,7 +387,7 @@ public class SpecificEditorInputTranformer {
 
     /**
      * Get the current selected resource from selection.
-     * 
+     *
      * @param selection
      *            the current selection
      * @return the selected resource if there is one, or <code>null</code>

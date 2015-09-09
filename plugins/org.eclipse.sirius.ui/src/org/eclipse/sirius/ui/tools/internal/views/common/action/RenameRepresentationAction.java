@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,11 +23,12 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 
 /**
  * Action to rename one or more Sirius representations.
- * 
+ *
  * @author lredor
  */
 public class RenameRepresentationAction extends Action {
@@ -36,20 +37,15 @@ public class RenameRepresentationAction extends Action {
 
     /**
      * Create a new instance.
-     * 
+     *
      * @param representations
      *            the representations to delete
      */
     public RenameRepresentationAction(Collection<DRepresentation> representations) {
-        super("Rename");
+        super(Messages.RenameRepresentationAction_name);
         this.selectedRepresentations = representations;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.action.Action#run()
-     */
     @Override
     public void run() {
         for (final DRepresentation representation : selectedRepresentations) {
@@ -59,7 +55,7 @@ public class RenameRepresentationAction extends Action {
 
     /**
      * Launch a popup to rename the <code>representation</code>.
-     * 
+     *
      * @param representation
      *            The representation to rename.
      */
@@ -80,7 +76,7 @@ public class RenameRepresentationAction extends Action {
      * Overridden to ask to the {@link IPermissionAuthority} if we can delete
      * all selected {@link DRepresentation}s, if we can't delete one then the
      * action is disabled.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override

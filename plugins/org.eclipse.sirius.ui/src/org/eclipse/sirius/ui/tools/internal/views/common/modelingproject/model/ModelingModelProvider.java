@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.model;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,10 +35,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 
 /**
  * Modeling-aware model provider.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class ModelingModelProvider extends ModelProvider {
@@ -52,9 +54,7 @@ public class ModelingModelProvider extends ModelProvider {
         // Used by the runtime
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ResourceMapping[] getMappings(final IResource resource, final ResourceMappingContext context, final IProgressMonitor monitor) throws CoreException {
         ResourceMapping[] result = null;
         if (resource instanceof IProject) {
@@ -75,12 +75,6 @@ public class ModelingModelProvider extends ModelProvider {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.resources.mapping.ModelProvider#validateChange(org.eclipse.core.resources.IResourceDelta,
-     *      org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     public IStatus validateChange(IResourceDelta delta, IProgressMonitor monitor) {
         IStatus result = null;
@@ -89,22 +83,22 @@ public class ModelingModelProvider extends ModelProvider {
                 ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
                 delta.accept(visitor);
                 if (visitor.getProjectContainingSessionToSaveToDelete().size() == 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "This modeling project contains unsaved data. This data will be lost.");
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, Messages.ModelingModelProvider_satusUnsavedDataWillBeLost);
                 } else if (visitor.getProjectContainingSessionToSaveToDelete().size() > 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Some modeling projects ("
-                            + getProjectsName(visitor.getProjectContainingSessionToSaveToDelete()) + ") contain unsaved data. This data will be lost.");
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
+                            Messages.ModelingModelProvider_satusUnsaveDataWillBeLostWithProjectNames, getProjectsName(visitor.getProjectContainingSessionToSaveToDelete())));
                 } else if (visitor.getMainRepresentationsFilesToDelete().size() == 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Deletion of the main representations file of \""
-                            + visitor.getMainRepresentationsFilesToDelete().get(0).getProject().getName() + "\" will invalidate it.");
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
+                            Messages.ModelingModelProvider_mainRepresentationFileDeleted, visitor.getMainRepresentationsFilesToDelete().get(0).getProject().getName()));
                 } else if (visitor.getMainRepresentationsFilesToDelete().size() > 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Deletion of the main representations files of some modeling projects ("
-                            + getFilesProjectName(visitor.getMainRepresentationsFilesToDelete()) + ") will invalidate them.");
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
+                            Messages.ModelingModelProvider_mainRepresentationFilesOfSomeProjectsDeleted, getFilesProjectName(visitor.getMainRepresentationsFilesToDelete())));
                 } else if (visitor.getRepresentationsFileToAddOnValidModelingProject().size() == 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Add another representations file to \""
-                            + visitor.getRepresentationsFileToAddOnValidModelingProject().get(0).getProject().getName() + "\" may invalidate it.");
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
+                            Messages.ModelingModelProvider_addAnotherRepresentationFile, visitor.getRepresentationsFileToAddOnValidModelingProject().get(0).getProject().getName()));
                 } else if (visitor.getRepresentationsFileToAddOnValidModelingProject().size() > 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Add another representations file to "
-                            + getFilesProjectName(visitor.getRepresentationsFileToAddOnValidModelingProject()) + " may invalidate them.");
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, MessageFormat.format(
+                            Messages.ModelingModelProvider_addAnotherRepresentationFileSeveralProjects, getFilesProjectName(visitor.getRepresentationsFileToAddOnValidModelingProject())));
                 }
             } catch (CoreException e) {
                 /* do nothing */
@@ -119,7 +113,7 @@ public class ModelingModelProvider extends ModelProvider {
     /**
      * Return a String representing the name of this projects separated by a
      * comma.
-     * 
+     *
      * @param projects
      *            the list of projects
      * @return a String representing the name of this projects separated by a
@@ -140,7 +134,7 @@ public class ModelingModelProvider extends ModelProvider {
     /**
      * Return a String representing the name of the project of this files
      * separated by a comma.
-     * 
+     *
      * @param files
      *            the list of files
      * @return a String representing the name of this projects separated by a
@@ -166,7 +160,7 @@ public class ModelingModelProvider extends ModelProvider {
      * <LI>Add of representations file in a valid modeling project (already with
      * a main representations file).</LI>
      * </UL>
-     * 
+     *
      * @author lredor.
      */
     private final class ResourceDeltaVisitor implements IResourceDeltaVisitor {
@@ -179,6 +173,7 @@ public class ModelingModelProvider extends ModelProvider {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean visit(IResourceDelta delta) throws CoreException {
             boolean visitChildren = true;
             IResource res = delta.getResource();
@@ -193,7 +188,7 @@ public class ModelingModelProvider extends ModelProvider {
 
         /**
          * Visits the given resource delta that corresponds to a project.
-         * 
+         *
          * @param delta
          *            The given resource delta
          * @param project
@@ -226,7 +221,7 @@ public class ModelingModelProvider extends ModelProvider {
 
         /**
          * Visits the given resource delta that corresponds to a file.
-         * 
+         *
          * @param delta
          *            The given resource delta
          * @param file
