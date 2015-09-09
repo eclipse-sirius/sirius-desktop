@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts.locator;
 
-import java.awt.geom.AffineTransform;
 import java.util.List;
 
 import org.eclipse.draw2d.ConnectionLocator;
@@ -18,6 +17,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.Straight;
 import org.eclipse.draw2d.geometry.Transform;
 import org.eclipse.draw2d.geometry.Vector;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
@@ -506,8 +506,8 @@ public class EdgeLabelQuery {
             Vector vector = new Vector(segment.getTerminus().x - segment.getOrigin().x, segment.getTerminus().y - segment.getOrigin().y);
             double angle = referenceVector.getAngle(vector);
             if (angle == 0 || angle == 180) {
-                double distToInfiniteLine = java.awt.geom.Line2D.ptLineDist(segment.getOrigin().x, segment.getOrigin().y, segment.getTerminus().x, segment.getTerminus().y,
-                        referenceSegment.getOrigin().x, referenceSegment.getOrigin().y);
+                Straight straight = new Straight(new PrecisionPoint(segment.getOrigin()), new PrecisionPoint(segment.getTerminus()));
+                double distToInfiniteLine = straight.getDistance(new Vector(referenceSegment.getOrigin().x, referenceSegment.getOrigin().y));
                 if (distToInfiniteLine < DISTANCE_TOLERANCE) {
                     if (angle == 180) {
                         result = ON_SAME_LINE_OPPOSITE_DIRECTION;
@@ -679,10 +679,10 @@ public class EdgeLabelQuery {
     private static Vector getRotatedVector(Vector vector, LineSeg segment, boolean inverseRotation) {
         Vector result = new Vector(vector.x, vector.y);
         if (vector.x != 0 || vector.y != 0) {
-            java.awt.Point rotatedPoint = new java.awt.Point();
-            PrecisionPoint newLabelOffsetToPoint = vector.toPoint();
             double angle = angleBetween2Lines(new LineSeg(new Point(0, 0), new Point(1, 0)), segment) * (inverseRotation ? -1 : 1);
-            AffineTransform.getRotateInstance(angle, 0, 0).transform(new java.awt.Point(newLabelOffsetToPoint.x, newLabelOffsetToPoint.y), rotatedPoint);
+            Transform rotateTransform = new Transform();
+            rotateTransform.setRotation(angle);
+            Point rotatedPoint = rotateTransform.getTransformed(vector.toPoint());
 
             result.x = rotatedPoint.x;
             result.y = rotatedPoint.y;
