@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.EClassQuery;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -158,6 +159,7 @@ public class EObjectQuery {
     public Collection<EObject> getInverseReferences(final String featureName) {
         Preconditions.checkNotNull(featureName);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
+            @Override
             public boolean apply(Setting input) {
                 return input != null && input.getEStructuralFeature().getName().equals(featureName);
             }
@@ -177,6 +179,7 @@ public class EObjectQuery {
     public Collection<EObject> getInverseReferences(final EReference ref) {
         Preconditions.checkNotNull(ref);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
+            @Override
             public boolean apply(Setting input) {
                 return input != null && input.getEStructuralFeature().equals(ref);
             }
@@ -196,6 +199,7 @@ public class EObjectQuery {
     public Collection<EObject> getInverseReferences(final Set<EReference> refs) {
         Preconditions.checkNotNull(refs);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
+            @Override
             public boolean apply(Setting input) {
                 return input != null && refs.contains(input.getEStructuralFeature());
             }
@@ -365,7 +369,7 @@ public class EObjectQuery {
         if (ref.isMany()) {
             Object rawValue = eObject.eGet(ref);
             if (rawValue != null && !(rawValue instanceof EList<?>)) {
-                throw new RuntimeException(MessageFormat.format("Expected a collection from many-valued reference {0} but got a {1}", ref.getName(), rawValue.getClass()));
+                throw new RuntimeException(MessageFormat.format(Messages.EObjectQuery_valuesErrorMsg, ref.getName(), rawValue.getClass()));
             }
             if (rawValue != null) {
                 result = Lists.newArrayList((EList<EObject>) rawValue);

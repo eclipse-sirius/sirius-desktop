@@ -10,12 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Preconditions;
 
@@ -43,7 +46,7 @@ public class AnalysisResourceReloadedCommand extends RecordingCommand {
      *            resource to reload
      */
     public AnalysisResourceReloadedCommand(DAnalysisSessionImpl session, TransactionalEditingDomain domain, Resource analysisResource) {
-        super(domain, "Reload " + analysisResource.getURI() + " file");
+        super(domain, MessageFormat.format(Messages.AnalysisResourceReloadedCommand_label, analysisResource.getURI()));
         this.session = Preconditions.checkNotNull(session);
         this.resource = analysisResource;
         EList<EObject> contents = analysisResource.getContents();

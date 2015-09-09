@@ -75,7 +75,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         public void notify(Session updated, int notification) {
             if (notification == SessionListener.OPENING) {
                 // No need to at it again to the sessionFileLoading list because
-                // we add it during the starting of the load
+                // we add it during the starting of the load 
                 // ModelingProjectManager.loadAndOpenSession().
             } else if (notification == SessionListener.OPENED) {
                 sessionFileLoading.remove(updated.getSessionResource().getURI());
@@ -244,7 +244,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         };
         ResourcesPlugin.getWorkspace().run(create, monitor);
     }
-
+    
     @Override
     public void createLocalRepresentationsFile(IProject project, IProgressMonitor monitor) throws CoreException {
         URI representationsURI = URI.createPlatformResourceURI(project.getFullPath().append(ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME).toString(), true);
@@ -299,14 +299,14 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                         OpenRepresentationsFileJob.scheduleNewWhenPossible(mainRepresentationsFileURI.get(), true);
                     }
                 } catch (IllegalArgumentException e) {
-                    if (e.getMessage().contains(ModelingProjectQuery.ZERO_REPRESENTATIONS_FILE_FOUND_IN)) {
+                    if (e.getCause() != null && ModelingProjectQuery.ZERO_REPRESENTATIONS_FILE_FOUND_IN.equals(e.getCause().getMessage())) {
                         // 0 files has been found : create a representation
                         ModelingProjectManager.INSTANCE.createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
                         // Project has been marked as invalid but now it has a
                         // main representation file, force the computation of
                         // its mainRepresentationFileURI.
                         optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), true, true);
-                    } else if (e.getMessage().contains(ModelingProjectQuery.A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE)) {
+                    } else if (e.getCause() != null && ModelingProjectQuery.A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE.equals(e.getCause().getMessage())) {
                         // several files have been found : rollback
                         removeModelingNature(project, new SubProgressMonitor(monitor, 1));
                         throw new CoreException(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getMessage()));

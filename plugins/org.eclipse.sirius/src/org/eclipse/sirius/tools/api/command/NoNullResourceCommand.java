@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * A command wrapper to avoid execution of command if a resource is null.
@@ -41,7 +42,7 @@ public class NoNullResourceCommand extends AbstractCommand implements IAdaptable
      */
     public NoNullResourceCommand(Command cmd, EObject element) {
         if (cmd instanceof RecordingCommand && !(cmd instanceof DCommand)) {
-            throw new UnsupportedOperationException("only instances of SiriusCommand are allowed for recording command");
+            throw new UnsupportedOperationException(Messages.NoNullResourceCommand_instanceErrorMsg);
         }
         this.wrappedCommand = cmd;
         this.element = element;
@@ -61,6 +62,7 @@ public class NoNullResourceCommand extends AbstractCommand implements IAdaptable
     /**
      * {@inheritDoc}
      */
+    @Override
     public void execute() {
         if (element != null && element.eResource() != null) {
             this.wrappedCommand.execute();
@@ -86,6 +88,7 @@ public class NoNullResourceCommand extends AbstractCommand implements IAdaptable
     /**
      * {@inheritDoc}
      */
+    @Override
     public void redo() {
         this.wrappedCommand.redo();
 
@@ -94,6 +97,7 @@ public class NoNullResourceCommand extends AbstractCommand implements IAdaptable
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
         Object object = null;
         if (adapter != null) {

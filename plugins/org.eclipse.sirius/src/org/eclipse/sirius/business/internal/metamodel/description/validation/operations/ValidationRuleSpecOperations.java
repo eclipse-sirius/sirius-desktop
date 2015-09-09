@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
@@ -76,7 +77,7 @@ public final class ValidationRuleSpecOperations {
         try {
             message = acceleoInterpreter.evaluateString(eObj, message);
         } catch (final EvaluationException e) {
-            SiriusPlugin.getDefault().error("Error while evaluating audit message.", e);
+            SiriusPlugin.getDefault().error(Messages.ValidationRuleSpecOperations_evaluationErrorMsg, e);
         }
         return message;
     }

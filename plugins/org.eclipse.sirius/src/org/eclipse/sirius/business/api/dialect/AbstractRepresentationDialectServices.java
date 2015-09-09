@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.dialect;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -94,6 +96,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public void notify(RepresentationNotification notification) {
         // Empty default implementation.
     }
@@ -101,6 +104,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canCreateIdentifier(EObject representationElement) {
         // No support for identifiers by default.
         return false;
@@ -109,6 +113,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public RepresentationElementIdentifier createIdentifier(EObject representationElement, Map<EObject, RepresentationElementIdentifier> elementToIdentifier) {
         // No support for identifiers by default.
         return null;
@@ -117,6 +122,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public void updateRepresentationsExtendedBy(Session session, Viewpoint viewpoint, boolean activated) {
         // No support for representation extension by default.
     }
@@ -124,6 +130,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor) {
         // Do nothing by default, not all dialects have effective representation
         // descriptions.
@@ -143,6 +150,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<DRepresentation> getRepresentations(EObject semantic, Session session) {
         return getRepresentations(session, CustomDataConstants.DREPRESENTATION, semantic);
     }
@@ -150,6 +158,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<DRepresentation> getAllRepresentations(Session session) {
         return getRepresentations(session, CustomDataConstants.DREPRESENTATION, null);
     }
@@ -157,6 +166,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session) {
         return getRepresentations(session, CustomDataConstants.DREPRESENTATION_FROM_DESCRIPTION, representationDescription);
     }
@@ -164,6 +174,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canRefresh(DRepresentation representation) {
         return isSupported(representation);
     }
@@ -171,6 +182,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
         EcoreUtil.Copier copier = new EcoreUtil.Copier();
         DRepresentation newRepresentation = (DRepresentation) copier.copy(representation);
@@ -184,6 +196,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean deleteRepresentation(DRepresentation representation, Session session) {
         if (isSupported(representation)) {
             SiriusUtil.delete(representation, session);
@@ -195,10 +208,11 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public DRepresentation createRepresentation(String name, EObject semantic, RepresentationDescription description, Session session, IProgressMonitor monitor) {
         DRepresentation representation = null;
         try {
-            monitor.beginTask("Create representation : " + name, 2);
+            monitor.beginTask(MessageFormat.format(Messages.AbstractRepresentationDialectServices_createRepresentationMsg, name), 2);
             representation = createRepresentation(name, semantic, description, new SubProgressMonitor(monitor, 1));
             if (representation != null) {
                 session.getServices().putCustomData(CustomDataConstants.DREPRESENTATION, semantic, representation);
@@ -231,6 +245,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<RepresentationDescription> getAvailableRepresentationDescriptions(Collection<Viewpoint> vps, EObject semantic) {
         final Collection<RepresentationDescription> result = Lists.newArrayList();
         for (Viewpoint vp : vps) {
@@ -279,6 +294,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     protected Iterable<RepresentationDescription> getAvailableRepresentationDescriptions(Viewpoint vp, final EObject semantic) {
         Iterable<RepresentationDescription> candidates = new ViewpointQuery(vp).getAllRepresentationDescriptions();
         return Iterables.filter(candidates, new Predicate<RepresentationDescription>() {
+            @Override
             public boolean apply(RepresentationDescription input) {
                 return canCreate(semantic, input);
             }
@@ -431,7 +447,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
             return;
         }
         try {
-            monitor.beginTask("Representations initialization : ", descriptions.size());
+            monitor.beginTask(Messages.AbstractRepresentationDialectServices_initRepresentationMsg, descriptions.size());
             for (final RepresentationDescription desc : descriptions) {
                 initRepresentationForElement(desc, rootSemanticElement, monitor);
             }

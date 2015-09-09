@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.query;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.internal.session.parser.RepresentationsFileSaxParser;
 import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -36,14 +38,14 @@ import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
 public class ModelingProjectQuery {
 
     /**
-     * error message when no representation file found.
+     * Error code when no representation file found.
      */
-    public static final String ZERO_REPRESENTATIONS_FILE_FOUND_IN = "Zero representations file found in \"";
+    public static final String ZERO_REPRESENTATIONS_FILE_FOUND_IN = "0"; //$NON-NLS-1$
 
     /**
-     * error message when several representation files found.
+     * Error code when several representation files found.
      */
-    public static final String A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE = ". A modeling project must contain only one.";
+    public static final String A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE = "*"; //$NON-NLS-1$
 
     private final ModelingProject modelingProject;
 
@@ -109,12 +111,14 @@ public class ModelingProjectQuery {
         monitor.worked(1);
 
         if (notReferencedURIs.isEmpty()) {
-            throw new IllegalArgumentException(ZERO_REPRESENTATIONS_FILE_FOUND_IN + modelingProject.getProject().getName() + "\". A modeling project must contain one.");
+            throw new IllegalArgumentException(MessageFormat.format(Messages.ModelingProjectQuery_mustContainOneRepFileMsg, modelingProject.getProject().getName()),
+                    new Throwable(ZERO_REPRESENTATIONS_FILE_FOUND_IN));
         } else if (notReferencedURIs.size() == 1) {
             result = notReferencedURIs.get(0);
         } else {
-            throw new IllegalArgumentException("Found " + notReferencedURIs.size() + " main representations files (that means not referenced by another) in \""
-                    + modelingProject.getProject().getName() + "\": " + getFragments(notReferencedURIs) + A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE);
+            throw new IllegalArgumentException(
+                    MessageFormat.format(Messages.ModelingProjectQuery_severalRepresentationsFiles, notReferencedURIs.size(), modelingProject.getProject().getName(), getFragments(notReferencedURIs)),
+                    new Throwable(A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE));
         }
         monitor.done();
         return result;
@@ -136,7 +140,7 @@ public class ModelingProjectQuery {
             if (!iterator.hasNext()) {
                 // Replace the last comma by a and
                 result.delete(result.length() - 2, result.length());
-                result.append(" and ");
+                result.append(Messages.ModelingProjectQuery_and);
             }
             result.append(uri.lastSegment());
             if (iterator.hasNext()) {

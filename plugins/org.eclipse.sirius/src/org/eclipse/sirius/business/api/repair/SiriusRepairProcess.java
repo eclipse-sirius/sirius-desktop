@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.api.repair;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -59,6 +60,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -80,7 +82,7 @@ public class SiriusRepairProcess {
     /**
      * Message use when something goes wrong during repair process.
      */
-    public static final String ERROR_MSG = "An error occurs during repair process.";
+    public static final String ERROR_MSG = Messages.SiriusRepairProcess_errorMsg;
 
     /**
      * Quote for messages.
@@ -119,7 +121,7 @@ public class SiriusRepairProcess {
                 }
 
             } catch (CoreException e) {
-                SiriusPlugin.getDefault().getLog().log(new Status(Status.WARNING, SiriusPlugin.ID, "Cannot instanciate migration contribution", e));
+                SiriusPlugin.getDefault().getLog().log(new Status(Status.WARNING, SiriusPlugin.ID, Messages.SiriusRepairProcess_contributionInstantationErrorMsg, e));
             }
         }
         return participants;
@@ -136,7 +138,7 @@ public class SiriusRepairProcess {
     public void run(final IProgressMonitor monitor) throws InterruptedException {
         final URI resourceURI = URI.createPlatformResourceURI(this.file.getFullPath().toOSString(), true);
         try {
-            monitor.beginTask("Repair in progress...", 1);
+            monitor.beginTask(Messages.SiriusRepairProcess_inProgressMsg, 1);
             repair(resourceURI, new SubProgressMonitor(monitor, 1));
         } catch (CoreException e) {
             SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, ERROR_MSG, e));
@@ -163,30 +165,31 @@ public class SiriusRepairProcess {
         Map<IFile, IFile> originalToBackupFiles = new HashMap<IFile, IFile>();
         try {
             monitor.beginTask("", 4); //$NON-NLS-1$
-            monitor.subTask("Loading model");
+            monitor.subTask(Messages.SiriusRepairProcess_loadingModelMsg);
             session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new SubProgressMonitor(monitor, 1));
             session.setReloadingPolicy(new ReloadingPolicy() {
+                @Override
                 public List<Action> getActions(Session session, Resource resource, ResourceStatus newStatus) {
                     return Collections.emptyList();
                 }
 
             });
             checkCancel(monitor);
-            monitor.subTask("Opening session");
+            monitor.subTask(Messages.SiriusRepairProcess_openingsessionMsg);
             session.open(new SubProgressMonitor(monitor, 1));
             checkCancel(monitor);
 
-            monitor.subTask("Resolving references");
+            monitor.subTask(Messages.SiriusRepairProcess_resolvingReferencesMsg);
             ModelUtils.resolveAll(session.getSessionResource());
             workMonitorAndCheckCancel(monitor, 1);
 
             final List<Resource> fragmentedResources = getFragmentedResources(session.getSessionResource());
             IProgressMonitor monitorForMainModel = new SubProgressMonitor(monitor, fragmentedResources.size() + 1, SubProgressMonitor.PREPEND_MAIN_LABEL_TO_SUBTASK);
             try {
-                monitorForMainModel.beginTask("Repair model " + QUOTE + session.getSessionResource().getURI().lastSegment() + QUOTE, 10);
+                monitorForMainModel.beginTask(MessageFormat.format(Messages.SiriusRepairProcess_repairModelMsg, QUOTE, session.getSessionResource().getURI().lastSegment(), QUOTE), 10);
 
                 if (backup) {
-                    monitorForMainModel.subTask("--> Backup file");
+                    monitorForMainModel.subTask(Messages.SiriusRepairProcess_backupMsg);
                     originalToBackupFiles.put(this.file, backupFile(this.file, new SubProgressMonitor(monitorForMainModel, 1)));
                 }
                 checkCancel(monitorForMainModel);
@@ -195,9 +198,9 @@ public class SiriusRepairProcess {
                 for (Resource fragment : fragmentedResources) {
                     IProgressMonitor monitorForFragmentedModel = new SubProgressMonitor(monitorForMainModel, 1, SubProgressMonitor.PREPEND_MAIN_LABEL_TO_SUBTASK);
                     try {
-                        monitorForFragmentedModel.beginTask("Repair model " + QUOTE + fragment.getURI().lastSegment() + QUOTE, 10);
+                        monitorForFragmentedModel.beginTask(MessageFormat.format(Messages.SiriusRepairProcess_repairModelMsg, QUOTE, fragment.getURI().lastSegment(), QUOTE), 10);
                         if (backup) {
-                            monitorForFragmentedModel.subTask("--> Backup file");
+                            monitorForFragmentedModel.subTask(Messages.SiriusRepairProcess_backupMsg);
                             IFile fragmentedFile = (IFile) ResourcesPlugin.getWorkspace().getRoot().findMember(fragment.getURI().toPlatformString(true));
                             IFile fragmentedFileBackup = backupFile(fragmentedFile, new SubProgressMonitor(monitorForFragmentedModel, 1));
                             originalToBackupFiles.put(fragmentedFile, fragmentedFileBackup);
@@ -214,11 +217,11 @@ public class SiriusRepairProcess {
                 // pref is at true, wait the SaveSessionJob before calling
                 // session.save() to avoid concurrent save.
                 Job.getJobManager().join(SaveSessionJob.FAMILY, new SubProgressMonitor(monitorForMainModel, 1));
-                monitorForMainModel.subTask("Saving session");
+                monitorForMainModel.subTask(Messages.SiriusRepairProcess_savingSessionMsg);
                 session.save(new SubProgressMonitor(monitorForMainModel, 1));
 
             } finally {
-                monitorForMainModel.subTask("Closing session");
+                monitorForMainModel.subTask(Messages.SiriusRepairProcess_closingSessionMsg);
                 // In case the
                 // {DesignerUIPreferencesKeys#PREF_SAVE_WHEN_NO_EDITOR}
                 // pref is at true, wait the SaveSessionJob before closing it to
@@ -325,18 +328,18 @@ public class SiriusRepairProcess {
 
                 // handle view: see #handleView method comments for more
                 // details.
-                monitor.subTask("--> Handling view");
+                monitor.subTask(Messages.SiriusRepairProcess_handlingViewMsg);
                 migrationCommandExecutor.execute(transactionalEditingDomain, handleViewCommand);
                 monitor.worked(1);
 
                 // save elements state
-                monitor.subTask("--> Saving elements state");
+                monitor.subTask(Messages.SiriusRepairProcess_savingElementsStateMsg);
                 saveModelElementState(view, new SubProgressMonitor(monitor, 1));
 
                 // monitor.subTask("Migrating elements");
 
                 // Remove elements (this method calls a recording command)
-                monitor.subTask("--> Removing elements");
+                monitor.subTask(Messages.SiriusRepairProcess_removingElementsMsg);
                 removeElements(view, new SubProgressMonitor(monitor, 1));
 
                 if (monitor.isCanceled()) {
@@ -345,7 +348,7 @@ public class SiriusRepairProcess {
 
                 // Refresh representation (this method calls a recording
                 // command)
-                monitor.subTask("--> Refreshing representations");
+                monitor.subTask(Messages.SiriusRepairProcess_refreshingRepresentationsMsg);
                 refreshRepresentations(dAnalysis, view);
                 monitor.worked(1);
 
@@ -354,13 +357,13 @@ public class SiriusRepairProcess {
                 }
 
                 // call post refresh on each participants
-                monitor.subTask("--> Post refresh");
+                monitor.subTask(Messages.SiriusRepairProcess_postRefreshMsg);
                 postRefresh(model);
                 monitor.worked(1);
 
                 // Restore model element state. This method called a recording
                 // command
-                monitor.subTask("--> Restoring element stats");
+                monitor.subTask(Messages.SiriusRepairProcess_restoringElementStatsMsg);
                 restoreModelElementState(view, new SubProgressMonitor(monitor, 1));
                 for (IRepairParticipant participant : repairParticipants) {
                     participant.endRepairOnView();
@@ -460,7 +463,7 @@ public class SiriusRepairProcess {
      *            The view which state is to be saved.
      */
     private void saveModelElementState(final DView view, final IProgressMonitor monitor) {
-        monitor.beginTask("save Model Element State", this.repairParticipants.size());
+        monitor.beginTask(Messages.SiriusRepairProcess_saveModelElementStateMsg, this.repairParticipants.size());
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(view);
         for (final IRepairParticipant participant : this.repairParticipants) {
             Command saveModelElementStateCommand = new SaveModelElementStateCommand(participant, view, new NullProgressMonitor());
@@ -472,7 +475,7 @@ public class SiriusRepairProcess {
     }
 
     private void removeElements(DView view, SubProgressMonitor monitor) {
-        monitor.beginTask("Remove elements", this.repairParticipants.size());
+        monitor.beginTask(Messages.SiriusRepairProcess_removeElementsMsg, this.repairParticipants.size());
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(view);
         for (final IRepairParticipant participant : this.repairParticipants) {
             participant.removeElements(view, transactionalEditingDomain, monitor);
@@ -490,6 +493,7 @@ public class SiriusRepairProcess {
 
     private List<Resource> getFragmentedResources(final Resource modelResource) {
         return Lists.newArrayList(Collections2.filter(modelResource.getResourceSet().getResources(), new Predicate<Resource>() {
+            @Override
             public boolean apply(Resource resource) {
                 return !resource.equals(modelResource) && resource instanceof AirdResource && resource.getURI().isPlatformResource();
             }
@@ -510,7 +514,7 @@ public class SiriusRepairProcess {
         try {
             return ResourceUtil.createBackupFile(fileToBackup, monitor);
         } catch (final CoreException e) {
-            SiriusPlugin.getDefault().error("Error while creating backup file", e);
+            SiriusPlugin.getDefault().error(Messages.SiriusRepairProcess_bckupCreationErrorMsg, e);
         }
         return null;
     }
@@ -534,7 +538,7 @@ public class SiriusRepairProcess {
             try {
                 backupedFile.setContents(inpstrBackupFile, IResource.FORCE, new SubProgressMonitor(monitor, 1));
             } catch (CoreException e) {
-                SiriusPlugin.getDefault().error("Error while restoring backup file", e);
+                SiriusPlugin.getDefault().error(Messages.SiriusRepairProcess_restoringBckErrorMsg, e);
             } finally {
                 inpstrBackupFile.close();
             }
@@ -543,7 +547,7 @@ public class SiriusRepairProcess {
             // Refresh local container
             backupedFile.getParent().refreshLocal(IResource.DEPTH_ONE, new SubProgressMonitor(monitor, 1));
         } catch (final CoreException e) {
-            SiriusPlugin.getDefault().error("Error while restoring backup file", e);
+            SiriusPlugin.getDefault().error(Messages.SiriusRepairProcess_restoringBckErrorMsg, e);
         }
         monitor.done();
     }

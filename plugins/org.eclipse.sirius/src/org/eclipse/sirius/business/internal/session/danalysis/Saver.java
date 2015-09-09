@@ -27,6 +27,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomainListenerImpl;
 import org.eclipse.emf.transaction.impl.InternalTransaction;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -122,7 +123,7 @@ final class Saver extends TransactionalEditingDomainListenerImpl {
                         }
                     }, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
                 } catch (final CoreException e) {
-                    SiriusPlugin.getDefault().error("Core exception while saving session", e);
+                    SiriusPlugin.getDefault().error(Messages.Saver_savingErrorMsg, e);
                 }
             } else {
                 wrappedSave(options, monitor, runExclusive);

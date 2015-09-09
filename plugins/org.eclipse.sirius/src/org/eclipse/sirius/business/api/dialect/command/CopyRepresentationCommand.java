@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * Specific command to copy requested representations.
@@ -45,7 +46,7 @@ public class CopyRepresentationCommand extends RecordingCommand {
      *            the current session.
      */
     public CopyRepresentationCommand(TransactionalEditingDomain domain, Collection<DRepresentation> representations, String newName, Session session) {
-        super(domain, "Copy representations");
+        super(domain, Messages.CopyRepresentationCommand_label);
         this.representations = representations;
         this.newName = newName;
         this.session = session;

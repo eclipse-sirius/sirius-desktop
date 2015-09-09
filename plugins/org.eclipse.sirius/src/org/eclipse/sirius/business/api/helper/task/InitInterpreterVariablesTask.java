@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EObjectCollectionWrapper;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
@@ -109,6 +110,7 @@ public class InitInterpreterVariablesTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
         interpreter.clearVariables();
         /*
@@ -207,8 +209,9 @@ public class InitInterpreterVariablesTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "Init Acceleo variables";
+        return Messages.InitInterpreterVariablesTask_label;
     }
 
     /**
@@ -237,6 +240,7 @@ public class InitInterpreterVariablesTask extends AbstractCommandTask {
          * 
          * @see java.util.Comparator#compare(T, T)
          */
+        @Override
         public int compare(final AbstractVariable variable0, final AbstractVariable variable1) {
 
             if (EcoreUtil.isAncestor(variable0, variable1) || EcoreUtil.isAncestor(variable1, variable0)) {
@@ -245,7 +249,7 @@ public class InitInterpreterVariablesTask extends AbstractCommandTask {
 
             final EObject commonAncestor = ModelVariableComparator.getCommonAncestor(variable0, variable1);
             if (commonAncestor == null) {
-                throw new RuntimeException("Invalid Model");
+                throw new RuntimeException(Messages.InitInterpreterVariablesTask_invalidModelErrorMsg);
             }
             int result = 0;
             final Iterator<EObject> iterContents = commonAncestor.eContents().iterator();

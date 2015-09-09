@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.description.contribution.ResetFeatureContribution;
 import org.eclipse.sirius.description.contribution.SetFeatureContribution;
 import org.eclipse.sirius.description.contribution.util.ContributionSwitch;
 import org.eclipse.sirius.ext.emf.EStructuralFeatureQuery;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
@@ -41,10 +42,6 @@ import com.google.common.collect.Iterables;
  * @author pierre-charles.david@obeo.fr
  */
 public class FeatureContributor {
-    private static final String TARGET_OBJECT = "Target object";
-
-    private static final String SOURCE_OBJECT = "Source object";
-
     private final FeatureContribution contribution;
 
     private Set<EObject> additions;
@@ -59,9 +56,10 @@ public class FeatureContributor {
         this.contribution = Preconditions.checkNotNull(contribution);
         // Preconditions.checkArgument(contribution.getSourceFeature() != null,
         // "No source feature specified.");
-        Preconditions.checkArgument(contribution.getTargetFeature() != null, "No target feature specified.");
-        Preconditions.checkArgument(contribution.getTargetFeature().isChangeable(), "Target feature not modifiable.");
-        Preconditions.checkArgument(new EStructuralFeatureQuery(contribution.getTargetFeature()).isAssignableFrom(contribution.getSourceFeature()), "Incompatible source and target features.");
+        Preconditions.checkArgument(contribution.getTargetFeature() != null, Messages.FeatureContributor_noTargetFeatureErrorMsg);
+        Preconditions.checkArgument(contribution.getTargetFeature().isChangeable(), Messages.FeatureContributor_unmodifiableFeatureErrorMsg);
+        Preconditions.checkArgument(new EStructuralFeatureQuery(contribution.getTargetFeature()).isAssignableFrom(contribution.getSourceFeature()),
+                Messages.FeatureContributor_imcompatibleFeaturesErrorMsg);
     }
 
     /**
@@ -75,8 +73,8 @@ public class FeatureContributor {
      *         last application.
      */
     public Set<EObject> apply(final EObject target, final EObject source) {
-        Preconditions.checkNotNull(source, "No source object specified.");
-        Preconditions.checkNotNull(target, "No target object specified.");
+        Preconditions.checkNotNull(source, Messages.FeatureContributor_noSourceSpefifiedErrorMsg);
+        Preconditions.checkNotNull(target, Messages.FeatureContributor_noTargetSpecifiedErrorMsg);
         this.additions = Collections.emptySet();
         ContributionSwitch<Void> contributionSwitch = new ContributionSwitch<Void>() {
             @Override
@@ -135,12 +133,12 @@ public class FeatureContributor {
         EStructuralFeature sourceFeature = afc.getSourceFeature();
         if (sourceFeature != null) {
             Preconditions.checkArgument(sourceFeature.isMany());
-            checkFeatureIsPresent(source, sourceFeature, SOURCE_OBJECT);
+            checkFeatureIsPresent(source, sourceFeature, Messages.FeatureContributor_sourceObject);
         }
 
         EStructuralFeature targetFeature = afc.getTargetFeature();
         Preconditions.checkArgument(targetFeature.isMany());
-        checkFeatureIsPresent(target, targetFeature, TARGET_OBJECT);
+        checkFeatureIsPresent(target, targetFeature, Messages.FeatureContributor_targetObject);
 
         Collection<Object> targetValues = getMany(target, targetFeature);
         Collection<Object> sourceValues;
@@ -163,12 +161,12 @@ public class FeatureContributor {
         EStructuralFeature sourceFeature = afc.getSourceFeature();
         if (sourceFeature != null) {
             Preconditions.checkArgument(sourceFeature.isMany());
-            checkFeatureIsPresent(source, sourceFeature, SOURCE_OBJECT);
+            checkFeatureIsPresent(source, sourceFeature, Messages.FeatureContributor_sourceObject);
         }
 
         EStructuralFeature targetFeature = afc.getTargetFeature();
         Preconditions.checkArgument(targetFeature.isMany());
-        checkFeatureIsPresent(target, targetFeature, TARGET_OBJECT);
+        checkFeatureIsPresent(target, targetFeature, Messages.FeatureContributor_targetObject);
 
         Collection<Object> targetValues = getMany(target, targetFeature);
         Collection<Object> sourceValues;
@@ -183,7 +181,7 @@ public class FeatureContributor {
     private void doClear(EObject target, ClearFeatureContribution cfc) {
         EStructuralFeature targetFeature = cfc.getTargetFeature();
         Preconditions.checkArgument(targetFeature.isMany());
-        checkFeatureIsPresent(target, targetFeature, TARGET_OBJECT);
+        checkFeatureIsPresent(target, targetFeature, Messages.FeatureContributor_targetObject);
 
         Collection<Object> targetValues = getMany(target, targetFeature);
         targetValues.clear();
@@ -191,7 +189,7 @@ public class FeatureContributor {
 
     private void doReset(EObject target, ResetFeatureContribution rfc) {
         EStructuralFeature targetFeature = rfc.getTargetFeature();
-        checkFeatureIsPresent(target, targetFeature, TARGET_OBJECT);
+        checkFeatureIsPresent(target, targetFeature, Messages.FeatureContributor_targetObject);
         target.eUnset(targetFeature);
     }
 
@@ -202,7 +200,7 @@ public class FeatureContributor {
     private Collection<Object> getMany(EObject target, EStructuralFeature targetFeature) {
         Object rawValue = target.eGet(targetFeature);
         if (rawValue != null && !(rawValue instanceof Collection<?>)) {
-            throw new RuntimeException(MessageFormat.format("Expected a collection from many-valued feature {0} but got a {1}", featureString(targetFeature), rawValue.getClass()));
+            throw new RuntimeException(MessageFormat.format(Messages.FeatureContributor_unexpectedTypeErrorMsg, featureString(targetFeature), rawValue.getClass()));
         }
         return (Collection<Object>) rawValue;
     }
@@ -213,7 +211,7 @@ public class FeatureContributor {
 
     private void checkFeatureIsPresent(EObject obj, EStructuralFeature feature, String name) {
         boolean present = new EStructuralFeatureQuery(feature).existsIn(obj);
-        Preconditions.checkArgument(present, MessageFormat.format("{0} ({1}) does not have feature {2}", name, obj, featureString(feature)));
+        Preconditions.checkArgument(present, MessageFormat.format(Messages.FeatureContributor_featureMissingMsg, name, obj, featureString(feature)));
     }
 
     private boolean isAddition() {

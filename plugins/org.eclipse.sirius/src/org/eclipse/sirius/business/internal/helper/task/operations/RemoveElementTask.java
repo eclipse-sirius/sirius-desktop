@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteView;
 import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
@@ -75,7 +76,7 @@ public class RemoveElementTask extends AbstractOperationTask implements IDeletio
         this.toBeRemoved = context.getCurrentTarget();
         if (deleteView) {
             if (!(toBeRemoved instanceof DRepresentationElement)) {
-                SiriusPlugin.getDefault().warning("The element is not a view ! Do not delete !", new IllegalArgumentException());
+                SiriusPlugin.getDefault().warning(Messages.RemoveElementTask_notAViewErrorMsg, new IllegalArgumentException());
                 return;
             }
         }
@@ -86,7 +87,7 @@ public class RemoveElementTask extends AbstractOperationTask implements IDeletio
 
     @Override
     public String getLabel() {
-        return "Remove an element";
+        return Messages.RemoveElementTask_label;
     }
 
     @Override

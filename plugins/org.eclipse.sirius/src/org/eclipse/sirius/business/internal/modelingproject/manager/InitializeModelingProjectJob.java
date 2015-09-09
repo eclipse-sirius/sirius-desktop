@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Predicate;
@@ -41,7 +42,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
     /**
      * The label of the job.
      */
-    public static final String JOB_LABEL = "Initializing Modeling Projects";
+    public static final String JOB_LABEL = Messages.InitializeModelingProjectJob_label;
 
     /**
      * The label of the job (if all projects are empty, ie containing only
@@ -50,7 +51,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
      * empty project (in case of importing simultaneously several projects). See
      * ModelingProjectResourceListener for more details.
      */
-    public static final String JOB_LABEL_FOR_EMPTY_PROJECTS = "Initializing Empty Modeling Projects";
+    public static final String JOB_LABEL_FOR_EMPTY_PROJECTS = Messages.InitializeModelingProjectJob_labelEmptyProject;
 
     /**
      * The family id for this kind of job.
@@ -84,6 +85,7 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
      */
     public InitializeModelingProjectJob(List<IProject> projects) {
         this(Iterators.all(projects.iterator(), new Predicate<IProject>() {
+            @Override
             public boolean apply(IProject input) {
                 try {
                     return input.members().length == 1;
@@ -155,9 +157,9 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
 
         IStatus result = Status.OK_STATUS;
         if (errorStatus.size() == 1) {
-            result = new MultiStatus(SiriusPlugin.ID, IStatus.ERROR, errorStatus.toArray(new IStatus[0]), "One modeling project is invalid.", null);
+            result = new MultiStatus(SiriusPlugin.ID, IStatus.ERROR, errorStatus.toArray(new IStatus[0]), Messages.InitializeModelingProjectJob_invalidModelingProjectErrorMsg, null);
         } else if (errorStatus.size() > 1) {
-            result = new MultiStatus(SiriusPlugin.ID, IStatus.ERROR, errorStatus.toArray(new IStatus[0]), "Several modeling projects are invalid.", null);
+            result = new MultiStatus(SiriusPlugin.ID, IStatus.ERROR, errorStatus.toArray(new IStatus[0]), Messages.InitializeModelingProjectJob_invalidModelingProjectsErrorMsg, null);
         }
         return result;
     }

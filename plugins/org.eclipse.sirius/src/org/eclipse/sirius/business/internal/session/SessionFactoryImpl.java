@@ -35,6 +35,7 @@ import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
@@ -112,7 +113,7 @@ public final class SessionFactoryImpl implements SessionFactory {
 
         Session session = null;
         try {
-            monitor.beginTask("Session loading", 4);
+            monitor.beginTask(Messages.SessionFactoryImpl_sessionLoadingMsg, 4);
             // Get resource
             final Resource sessionModelResource = resourceSet.getResource(sessionResourceURI, true);
             if (sessionModelResource != null) {
@@ -126,7 +127,7 @@ public final class SessionFactoryImpl implements SessionFactory {
                 }
             }
         } catch (WrappedException e) {
-            throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while loading representations file", e));
+            throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, Messages.SessionFactoryImpl_loadingError, e));
         } finally {
             monitor.done();
             ResourceSetUtil.resetProgressMonitor(resourceSet);
@@ -137,20 +138,20 @@ public final class SessionFactoryImpl implements SessionFactory {
     private Session createSessionResource(final URI sessionResourceURI, final TransactionalEditingDomain transactionalEditingDomain, IProgressMonitor monitor) throws CoreException {
         Session session = null;
         try {
-            monitor.beginTask("Session creation", 2);
+            monitor.beginTask(Messages.SessionFactoryImpl_sessionCreation, 2);
             Resource sessionModelResource = new ResourceSetImpl().createResource(sessionResourceURI);
             DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
             sessionModelResource.getContents().add(analysis);
             try {
                 sessionModelResource.save(Collections.emptyMap());
             } catch (IOException e) {
-                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, "session creation failed", e));
+                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, Messages.SessionFactoryImpl_creationFailedErrorMsg, e));
             }
             monitor.worked(1);
             // Now load it from the TED
             sessionModelResource = transactionalEditingDomain.getResourceSet().getResource(sessionResourceURI, true);
             if (sessionModelResource.getContents().isEmpty()) {
-                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, "session creation failed: the resource content is empty."));
+                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, Messages.SessionFactoryImpl_EmptyContentErrorMsg));
             }
             analysis = (DAnalysis) sessionModelResource.getContents().get(0);
             session = new DAnalysisSessionImpl(analysis);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -66,7 +67,8 @@ public class ChangeContextTask extends AbstractOperationTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "change the context";
+        return Messages.ChangeContextTask_label;
     }
 }

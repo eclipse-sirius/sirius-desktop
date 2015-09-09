@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.uri;
 
+import java.text.MessageFormat;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.PatternSyntaxException;
@@ -17,6 +18,7 @@ import java.util.regex.PatternSyntaxException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl;
 
@@ -29,6 +31,7 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Resource createResource(final URI uri) {
         ViewpointProtocolParser.getViewpoint(uri);
         return super.createResource(uri);
@@ -57,9 +60,9 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
                 return vpWithGoodName.iterator().next();
             }
         } else {
-            throw new ViewpointProtocolException("URI " + uri + " is not valid.");
+            throw new ViewpointProtocolException(MessageFormat.format(Messages.ViewpointProtocolParser_invalidURIErrorMsg, uri));
         }
-        throw new ViewpointProtocolException("No viewpoint is corresponding to " + uri);
+        throw new ViewpointProtocolException(MessageFormat.format(Messages.ViewpointProtocolParser_noViewpointErrorMsg, uri));
     }
 
     private static Set<Viewpoint> filterByNameAndId(final Set<Viewpoint> viewpoints, final String viewpointName, final String pluginId) {
@@ -143,7 +146,7 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
             name = name.substring(0, name.indexOf(viewpointNameSeparator));
             return name;
         } else {
-            return "unnamed";
+            return Messages.ViewpointProtocolParser_unamed;
         }
 
     }

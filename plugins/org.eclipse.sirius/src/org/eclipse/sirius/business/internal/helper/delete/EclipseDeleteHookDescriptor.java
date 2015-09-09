@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,17 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.delete;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.delete.IDeleteHook;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
- * Describes a extension as contributed to the
- * "org.eclipse.sirius.deleteHook" extension point.
+ * Describes a extension as contributed to the "org.eclipse.sirius.deleteHook"
+ * extension point.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -51,6 +54,7 @@ public class EclipseDeleteHookDescriptor implements IDeleteHookDescriptor {
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getId() {
         return id;
     }
@@ -58,14 +62,15 @@ public class EclipseDeleteHookDescriptor implements IDeleteHookDescriptor {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IDeleteHook getIDeleteHook() {
         if (extension == null) {
             if (Platform.isRunning()) {
                 try {
                     extension = (IDeleteHook) element.createExecutableExtension(DELETE_HOOK_CLASS_ATTRIBUTE);
                 } catch (CoreException e) {
-                    SiriusPlugin.getDefault().getLog()
-                            .log(new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while loading the extension " + element.getDeclaringExtension().getUniqueIdentifier(), e));
+                    SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID,
+                            MessageFormat.format(Messages.EclipseDeleteHookDescriptor_extensionLoadingErrorMsg, element.getDeclaringExtension().getUniqueIdentifier()), e));
                 }
             }
         }

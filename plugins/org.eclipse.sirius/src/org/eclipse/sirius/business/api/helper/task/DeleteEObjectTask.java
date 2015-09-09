@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.Feature
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * A task allowing to delete any DRepresentationElement or any EObject.
@@ -68,8 +69,8 @@ public class DeleteEObjectTask extends AbstractCommandTask {
         this.danglingEReferencesToIgnores = new EReferencePredicate() {
             @Override
             public boolean apply(EReference ref) {
-                return DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref)
-                        || DanglingRefRemovalTrigger.NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || (eReferencesToIgnores != null && eReferencesToIgnores.apply(ref));
+                return DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || DanglingRefRemovalTrigger.NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE.apply(ref)
+                        || (eReferencesToIgnores != null && eReferencesToIgnores.apply(ref));
             }
         };
     }
@@ -80,6 +81,7 @@ public class DeleteEObjectTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
         Session session = null;
 
@@ -113,8 +115,9 @@ public class DeleteEObjectTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "Delete EObject task";
+        return Messages.DeleteEObjectTask_label;
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.ui.property;
+
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * Properties provider.
@@ -24,7 +26,7 @@ public interface IPropertiesProvider {
     /**
      * Exception when no property is found.
      */
-    IllegalArgumentException EXCEPTION_PROPERTY_NOT_FOUND = new IllegalArgumentException("The property was not found");
+    IllegalArgumentException EXCEPTION_PROPERTY_NOT_FOUND = new IllegalArgumentException(Messages.IPropertiesProvider_unfoundPropertyErrorMsg);
 
     /**
      * get the enablement of a property.

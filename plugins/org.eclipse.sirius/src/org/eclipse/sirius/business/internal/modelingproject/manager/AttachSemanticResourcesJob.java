@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -33,8 +34,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class AttachSemanticResourcesJob extends Job {
-
-    private static final String ACTION_NAME = "Attach semantic resources";
 
     private Map<Session, Set<URI>> semanticResourcesURIsToAttachPerSession;
 
@@ -46,7 +45,7 @@ public class AttachSemanticResourcesJob extends Job {
      *            resource {@link URI} to attach to it
      */
     public AttachSemanticResourcesJob(Map<Session, Set<URI>> semanticResourcesURIsToAddPerSession) {
-        super(ACTION_NAME);
+        super(Messages.AttachSemanticResourcesJob_name);
         this.semanticResourcesURIsToAttachPerSession = semanticResourcesURIsToAddPerSession;
     }
 
@@ -58,7 +57,7 @@ public class AttachSemanticResourcesJob extends Job {
     @Override
     public IStatus run(IProgressMonitor monitor) {
         try {
-            monitor.beginTask(ACTION_NAME, 6 * semanticResourcesURIsToAttachPerSession.size());
+            monitor.beginTask(Messages.AttachSemanticResourcesJob_name, 6 * semanticResourcesURIsToAttachPerSession.size());
             for (Entry<Session, Set<URI>> entry : semanticResourcesURIsToAttachPerSession.entrySet()) {
                 Session session = entry.getKey();
                 if (session != null && session.isOpen()) {

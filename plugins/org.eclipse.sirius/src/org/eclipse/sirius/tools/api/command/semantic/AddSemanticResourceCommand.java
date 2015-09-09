@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.collect.Sets;
 
@@ -62,7 +63,7 @@ public class AddSemanticResourceCommand extends RecordingCommand {
      *            resource addition
      */
     public AddSemanticResourceCommand(Session session, URI semanticResourceURI, IProgressMonitor monitor) {
-        super(session.getTransactionalEditingDomain(), "Add Model");
+        super(session.getTransactionalEditingDomain(), Messages.AddSemanticResourceCommand_label);
         this.session = session;
         this.semanticResourceURI = semanticResourceURI;
         this.monitor = monitor;

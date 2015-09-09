@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -62,9 +63,9 @@ public final class TaskExecutor {
             try {
                 task.execute();
             } catch (MetaClassNotFoundException e) {
-                SiriusPlugin.getDefault().error("Error while modifying model", e);
+                SiriusPlugin.getDefault().error(Messages.TaskExecutor_errorModifyingModelMsg, e);
             } catch (FeatureNotFoundException e) {
-                SiriusPlugin.getDefault().error("Error while modifying model", e);
+                SiriusPlugin.getDefault().error(Messages.TaskExecutor_errorModifyingModelMsg, e);
             }
             if (!task.executeMyselfChildrenTasks()) {
                 TaskExecutor.execute(task.getChildrenTasks());

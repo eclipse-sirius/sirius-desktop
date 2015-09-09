@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ import com.google.common.collect.Sets;
  * @author pierre-charles.david@obeo.fr
  */
 public class ViewpointSelection {
-    private static final String INVALID_VIEWPOINT_URI = "Selection must contain only logical Viewpoint URIs";
+    private static final String INVALID_VIEWPOINT_URI = "Selection must contain only logical Viewpoint URIs"; //$NON-NLS-1$
 
     /**
      * The set of logical Sirius URIs which make up the selection itself.
@@ -65,12 +65,14 @@ public class ViewpointSelection {
     private Set<URI> conflicts = Collections.emptySet();
 
     private final Predicate<URI> isValidViewpointURI = new Predicate<URI>() {
+        @Override
         public boolean apply(URI input) {
             return ViewpointURIQuery.isValidViewpointURI(input);
         }
     };
 
     private final Function<URI, Viewpoint> viewpointImplementation = new Function<URI, Viewpoint>() {
+        @Override
         public Viewpoint apply(URI from) {
             return registry.getViewpoint(from);
         }
@@ -189,6 +191,7 @@ public class ViewpointSelection {
     public String getErrorMessage() {
         validate();
         Function<URI, String> shortName = new Function<URI, String>() {
+            @Override
             public String apply(URI uri) {
                 return new ViewpointURIQuery(uri).getViewpointName();
             }
@@ -196,10 +199,10 @@ public class ViewpointSelection {
         // CHECKSTYLE:OFF
         StringBuilder sb = new StringBuilder();
         if (conflicts != null && !conflicts.isEmpty()) {
-            sb.append("Conflicts with: " + Joiner.on(", ").join(Iterables.transform(conflicts, shortName))).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
+            sb.append("Conflicts with: " + Joiner.on(", ").join(Iterables.transform(conflicts, shortName))).append("\n"); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
         }
         if (unavailable != null && !unavailable.isEmpty()) {
-            sb.append("Missing: " + Joiner.on(", ").join(Iterables.transform(unavailable, shortName))).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
+            sb.append("Missing: " + Joiner.on(", ").join(Iterables.transform(unavailable, shortName))).append("\n"); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
         }
         // CHECKSTYLE:ON
         return sb.toString();
@@ -207,6 +210,7 @@ public class ViewpointSelection {
 
     private boolean allRequiredViewpointAreAvailable() {
         unavailable = Sets.newHashSet(Iterables.filter(logicalViewpoints, new Predicate<URI>() {
+            @Override
             public boolean apply(URI input) {
                 return viewpointImplementation.apply(input) == null;
             }
@@ -233,6 +237,6 @@ public class ViewpointSelection {
     public String toString() {
         List<URI> uris = Lists.newArrayList(logicalViewpoints);
         Collections.sort(uris, Ordering.usingToString());
-        return "Viewpoint Selection: " + Joiner.on(", ").join(uris); //$NON-NLS-2$
+        return "Viewpoint Selection: " + Joiner.on(", ").join(uris); //$NON-NLS-1$//$NON-NLS-2$
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.dialect.command;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -17,6 +18,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * Specific command to move the given representations.
@@ -43,7 +45,7 @@ public class MoveRepresentationCommand extends RecordingCommand {
      *            the representations to move
      */
     public MoveRepresentationCommand(Session session, DAnalysis targetAnalysis, Collection<DRepresentation> movableRepresentations) {
-        super(session.getTransactionalEditingDomain(), "Move representation to " + targetAnalysis.eResource().getURI().toString());
+        super(session.getTransactionalEditingDomain(), MessageFormat.format(Messages.MoveRepresentationCommand_label, targetAnalysis.eResource().getURI().toString()));
         this.representations = movableRepresentations;
         this.targetAnalysis = targetAnalysis;
         this.session = session;

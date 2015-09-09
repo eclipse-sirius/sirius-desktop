@@ -35,6 +35,7 @@ import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
@@ -147,7 +148,7 @@ class SessionResourcesTracker {
             try {
                 TransactionUtil.runExclusive(session.getTransactionalEditingDomain(), semanticResourcesGetter);
             } catch (InterruptedException e) {
-                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while accessing semantic resources"));
+                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, Messages.SessionResourcesTracker_semanticResourcesAccessErrorMsg));
             }
             ((CopyOnWriteArrayList<Resource>) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
         }
@@ -275,7 +276,7 @@ class SessionResourcesTracker {
             }
         });
         if (!Iterables.isEmpty(newSemanticResourcesIterator)) {
-            domain.getCommandStack().execute(new RecordingCommand(domain, "Add referenced semantic resources") {
+            domain.getCommandStack().execute(new RecordingCommand(domain, Messages.SessionResourcesTracker_addReferencedSemanticResourcesMsg) {
                 @Override
                 protected void doExecute() {
                     for (Resource resource : newSemanticResourcesIterator) {

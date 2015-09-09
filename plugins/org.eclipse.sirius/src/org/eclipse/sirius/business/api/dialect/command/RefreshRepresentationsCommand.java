@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.collect.Lists;
 
@@ -53,7 +54,7 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
      *            the representations to refresh.
      */
     public RefreshRepresentationsCommand(TransactionalEditingDomain domain, boolean fullRefresh, IProgressMonitor monitor, Collection<DRepresentation> representationsToRefresh) {
-        super(domain, "Refresh representation");
+        super(domain, Messages.RefreshRepresentationsCommand_label);
         this.fullRefresh = fullRefresh;
         this.monitor = monitor;
         this.representations = representationsToRefresh;

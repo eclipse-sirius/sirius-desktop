@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.io.IOException;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLContentHandlerImpl.XMI;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -48,7 +49,7 @@ public class XMIModelFileHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if (firstElementRead) {
-            throw new XMIModelFileSaxParserNormalAbortException("All needed informations have been reached. Stop the parsing.");
+            throw new XMIModelFileSaxParserNormalAbortException(Messages.XMIModelFileHandler_parsingStopedMsg);
         }
 
         firstElementRead = true;
@@ -63,7 +64,7 @@ public class XMIModelFileHandler extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if (firstElementRead) {
-            throw new XMIModelFileSaxParserNormalAbortException("All needed informations have been reached. Stop the parsing.");
+            throw new XMIModelFileSaxParserNormalAbortException(Messages.XMIModelFileHandler_parsingStopedMsg);
         }
 
         super.endElement(uri, localName, qName);
@@ -76,7 +77,7 @@ public class XMIModelFileHandler extends DefaultHandler {
      */
     @Override
     public InputSource resolveEntity(String publicId, String systemId) throws IOException, SAXException {
-        throw new XMIModelFileSaxParserNormalAbortException("We try to access external elements. Stop the parsing.");
+        throw new XMIModelFileSaxParserNormalAbortException(Messages.XMIModelFileHandler_stopTheParsingMsg);
     }
 
     private boolean lookForXMI(Attributes attributes) {

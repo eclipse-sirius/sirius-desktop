@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
@@ -52,7 +53,7 @@ public abstract class AbstractSavingPolicy implements SavingPolicy {
     public Collection<Resource> save(final Iterable<Resource> allResources, final Map<?, ?> options, IProgressMonitor monitor) {
         final Collection<Resource> resourcesToSave = Lists.newArrayList();
         try {
-            monitor.beginTask("Save Session", IProgressMonitor.UNKNOWN);
+            monitor.beginTask(Messages.AbstractSavingPolicy_saveMsg, IProgressMonitor.UNKNOWN);
             resourcesToSave.addAll(computeResourcesToSave(Sets.newLinkedHashSet(allResources), options, monitor));
             if (options == null) {
                 ResourceSetSync.getOrInstallResourceSetSync(domain).save(resourcesToSave, allResources, getDefaultSaveOptions());
@@ -60,9 +61,9 @@ public abstract class AbstractSavingPolicy implements SavingPolicy {
                 ResourceSetSync.getOrInstallResourceSetSync(domain).save(resourcesToSave, allResources, options);
             }
         } catch (final IOException e) {
-            SiriusPlugin.getDefault().error("error while saving session", e);
+            SiriusPlugin.getDefault().error(Messages.AbstractSavingPolicy_savingErrorMsg, e);
         } catch (final InterruptedException e) {
-            SiriusPlugin.getDefault().error("error while saving session", e);
+            SiriusPlugin.getDefault().error(Messages.AbstractSavingPolicy_savingErrorMsg, e);
         } finally {
             monitor.done();
         }

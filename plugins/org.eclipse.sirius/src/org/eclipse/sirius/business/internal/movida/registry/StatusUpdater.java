@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ import com.google.common.collect.Sets.SetView;
  * @author pierre-charles.david@obeo.fr
  */
 public class StatusUpdater {
-    private static final String DIAGNOSTICS_SOURCE = "Sirius Registry";
+    private static final String DIAGNOSTICS_SOURCE = "Sirius Registry"; //$NON-NLS-1$
 
     private static final int UNDECLARED_DEPENDENCY = 0;
 
@@ -115,11 +115,13 @@ public class StatusUpdater {
 
     private void checkAllActualDependenciesAreAvailable(Entry entry) {
         Set<URI> actualPhysical = ImmutableSet.copyOf(Iterables.transform(entry.getActualDependencies(), new Function<URI, URI>() {
+            @Override
             public URI apply(URI from) {
                 return resourceSet.getURIConverter().normalize(from);
             }
         }));
         Set<URI> availablePhysical = ImmutableSet.copyOf(Iterables.transform(entries.values(), new Function<Entry, URI>() {
+            @Override
             public URI apply(Entry from) {
                 return from.getResource().getURI();
             };
@@ -128,7 +130,7 @@ public class StatusUpdater {
         if (!unavailable.isEmpty()) {
             entry.setState(ViewpointState.INVALID);
             Object[] data = Iterables.toArray(Iterables.transform(unavailable, Functions.toStringFunction()), String.class);
-            addDiagnostic(entry, Diagnostic.ERROR, PHYSICAL_DEPENDENCY_UNAVAILABLE, "Sirius definition depends on resources not available.", data);
+            addDiagnostic(entry, Diagnostic.ERROR, PHYSICAL_DEPENDENCY_UNAVAILABLE, "Sirius definition depends on resources not available.", data); //$NON-NLS-1$
         }
     }
 
@@ -142,7 +144,7 @@ public class StatusUpdater {
         for (URI dependency : entry.getDeclaredDependencies()) {
             if (!entries.containsKey(dependency)) {
                 entry.setState(ViewpointState.INVALID);
-                addDiagnostic(entry, Diagnostic.ERROR, DECLARED_DEPENDENCY_UNAVAILABLE, "Invalid dependency declared to unavailable Sirius.", new Object[] { dependency });
+                addDiagnostic(entry, Diagnostic.ERROR, DECLARED_DEPENDENCY_UNAVAILABLE, "Invalid dependency declared to unavailable Sirius.", new Object[] { dependency }); //$NON-NLS-1$
             }
         }
     }
@@ -158,6 +160,7 @@ public class StatusUpdater {
         // Include both the logical URIs and their corresponding physical URIs
         // in the declared set.
         Set<URI> declaredResolved = Sets.newHashSet(Iterables.transform(declared, new Function<URI, URI>() {
+            @Override
             public URI apply(URI from) {
                 return resourceSet.getURIConverter().normalize(from);
             }
@@ -168,7 +171,7 @@ public class StatusUpdater {
         if (!undeclared.isEmpty()) {
             entry.setState(ViewpointState.INVALID);
             Object[] data = Iterables.toArray(Iterables.transform(undeclared, Functions.toStringFunction()), String.class);
-            addDiagnostic(entry, Diagnostic.ERROR, UNDECLARED_DEPENDENCY, "Sirius has undeclared dependencies to other resources.", data);
+            addDiagnostic(entry, Diagnostic.ERROR, UNDECLARED_DEPENDENCY, "Sirius has undeclared dependencies to other resources.", data); //$NON-NLS-1$
         }
     }
 

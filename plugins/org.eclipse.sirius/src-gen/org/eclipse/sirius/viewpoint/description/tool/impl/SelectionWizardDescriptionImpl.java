@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
@@ -269,10 +270,10 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getWindowTitle()
-     * @generated
+     * @not-generated
      * @ordered
      */
-    protected static final String WINDOW_TITLE_EDEFAULT = "Selection Wizard";
+    protected static final String WINDOW_TITLE_EDEFAULT = Messages.SelectionWizardDescriptionImpl_title;
 
     /**
      * The cached value of the '{@link #getWindowTitle() <em>Window Title</em>}'
@@ -1038,8 +1039,8 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
     public boolean eIsSet(int featureID) {
         switch (featureID) {
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CANDIDATES_EXPRESSION:
-            return SelectionWizardDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null : !SelectionWizardDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT
-                    .equals(candidatesExpression);
+            return SelectionWizardDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT == null ? candidatesExpression != null
+                    : !SelectionWizardDescriptionImpl.CANDIDATES_EXPRESSION_EDEFAULT.equals(candidatesExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MULTIPLE:
             return multiple != SelectionWizardDescriptionImpl.MULTIPLE_EDEFAULT;
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__TREE:
@@ -1047,8 +1048,8 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION:
             return SelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !SelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION:
-            return SelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !SelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT
-                    .equals(childrenExpression);
+            return SelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null
+                    : !SelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__MESSAGE:
             return SelectionWizardDescriptionImpl.MESSAGE_EDEFAULT == null ? message != null : !SelectionWizardDescriptionImpl.MESSAGE_EDEFAULT.equals(message);
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION__ELEMENT:

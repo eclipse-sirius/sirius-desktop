@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * A common operation to create a session and open it.
@@ -57,17 +58,18 @@ public class DefaultLocalSessionCreationOperation implements SessionCreationOper
      * 
      * @see org.eclipse.sirius.business.api.session.SessionCreationOperation#execute()
      */
+    @Override
     public void execute() throws CoreException {
         if (monitor == null) {
             monitor = new NullProgressMonitor();
         }
         try {
-            monitor.beginTask("Representations resource creation", 3);
-            monitor.subTask("Session creation");
+            monitor.beginTask(Messages.DefaultLocalSessionCreationOperation_createResoureMsg, 3);
+            monitor.subTask(Messages.DefaultLocalSessionCreationOperation_createSessionMsg);
             session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new SubProgressMonitor(monitor, 1));
-            monitor.subTask("Session opening");
+            monitor.subTask(Messages.DefaultLocalSessionCreationOperation_sessionOpenMsg);
             session.open(new SubProgressMonitor(monitor, 1));
-            monitor.subTask("Session saving");
+            monitor.subTask(Messages.DAnalysisSessionImpl_saveMsg);
             session.save(new SubProgressMonitor(monitor, 1));
         } finally {
             monitor.done();
@@ -79,6 +81,7 @@ public class DefaultLocalSessionCreationOperation implements SessionCreationOper
      * 
      * @see org.eclipse.sirius.business.api.session.SessionCreationOperation#getCreatedSession()
      */
+    @Override
     public Session getCreatedSession() {
         return session;
     }

@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * Specific command do remove semantic resources from the given session.
@@ -56,7 +57,7 @@ public class RemoveSemanticResourceCommand extends RecordingCommand {
      *            indicates if the referencing resources are also to remove
      */
     public RemoveSemanticResourceCommand(Session session, Resource semanticResource, IProgressMonitor monitor, boolean removeReferencingResources) {
-        super(session.getTransactionalEditingDomain(), "Remove model");
+        super(session.getTransactionalEditingDomain(), Messages.RemoveSemanticResourceCommand_label);
         this.semanticResource = semanticResource;
         this.session = session;
         this.monitor = monitor;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task.operations;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -21,6 +22,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -72,7 +74,7 @@ public class MoveElementTask extends AbstractOperationTask implements IModificat
                 // already specified.
                 final Object value = extPackage.eGet(container, featureName);
                 if (value != null) {
-                    SiriusPlugin.getDefault().error("Impossible to add a value to the reference " + featureName + " of the object " + container, new RuntimeException());
+                    SiriusPlugin.getDefault().error(MessageFormat.format(Messages.MoveElementTask_ImpossibleToAddValueErrorMsg, featureName, container), new RuntimeException());
                     return;
                 }
             }
@@ -84,7 +86,7 @@ public class MoveElementTask extends AbstractOperationTask implements IModificat
 
     @Override
     public String getLabel() {
-        return "Move an element";
+        return Messages.MoveElementTask_label;
     }
 
     /**

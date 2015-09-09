@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * RestoreModelElementStateRecordingCommand.
@@ -53,7 +54,7 @@ public class RestoreModelElementStateCommand extends IdentityCommand {
      */
     @Override
     public void execute() {
-        monitor.beginTask("restor model elements", repairParticipants.size());
+        monitor.beginTask(Messages.RestoreModelElementStateCommand_label, repairParticipants.size());
         for (final IRepairParticipant participant : repairParticipants) {
             participant.restoreModelElementState(view, new NullProgressMonitor());
             monitor.worked(1);

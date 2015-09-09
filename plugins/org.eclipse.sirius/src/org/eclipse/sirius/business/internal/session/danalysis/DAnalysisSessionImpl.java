@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -92,6 +93,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -174,8 +176,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public DAnalysisSessionImpl(DAnalysis mainDAnalysis) {
         Preconditions.checkNotNull(mainDAnalysis);
         this.sessionResource = mainDAnalysis.eResource();
-        Preconditions.checkNotNull(this.sessionResource, "A session must be inside a resource.");
-        this.transactionalEditingDomain = Preconditions.checkNotNull(TransactionUtil.getEditingDomain(mainDAnalysis), "A session must be associated to an EditingDomain");
+        Preconditions.checkNotNull(this.sessionResource, Messages.DAnalysisSessionImpl_noRessourceErrorMsg);
+        this.transactionalEditingDomain = Preconditions.checkNotNull(TransactionUtil.getEditingDomain(mainDAnalysis), Messages.DAnalysisSessionImpl_noEditingDomainErrorMsg);
         this.mainDAnalysis = mainDAnalysis;
         this.saver = new Saver(this);
         this.interpreter = new ODesignGenericInterpreter();
@@ -371,7 +373,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
             notifyListeners(SessionListener.REPRESENTATION_CHANGE);
         } else {
-            throw new IllegalStateException("Cant add a referenced analysis if no parent analysis exists");
+            throw new IllegalStateException(Messages.DAnalysisSessionImpl_addNoParentAnalysisErrorMsg);
         }
     }
 
@@ -391,7 +393,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             removeAdaptersOnAnalysis(analysis);
             notifyListeners(SessionListener.REPRESENTATION_CHANGE);
         } else {
-            throw new IllegalStateException("Cant remove a referenced analysis if no parent analysis exists");
+            throw new IllegalStateException(Messages.DAnalysisSessionImpl_removeNoParentAnalysisErrorMsg);
         }
     }
 
@@ -543,15 +545,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public synchronized void addSemanticResource(URI semanticModelURI, IProgressMonitor monitor) {
         if (semanticModelURI != null) {
             if (new FileQuery(semanticModelURI.fileExtension()).isSessionResourceFile()) {
-                throw new IllegalArgumentException("A representation file cannot be added as semantic resource.");
+                throw new IllegalArgumentException(Messages.DAnalysisSessionImpl_addSemanticErrorMsg);
             }
-            monitor.beginTask("Semantic resource addition : " + semanticModelURI.lastSegment(), 3);
+            monitor.beginTask(MessageFormat.format(Messages.DAnalysisSessionImpl_addSemanticResourceMsg, semanticModelURI.lastSegment()), 3);
             ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
             // Make ResourceSet aware of resource loading with progress
             // monitor
             ResourceSetUtil.setProgressMonitor(resourceSet, new SubProgressMonitor(monitor, 2));
             try {
-                monitor.beginTask("Semantic resource addition : " + semanticModelURI.lastSegment(), 3);
+                monitor.beginTask(MessageFormat.format(Messages.DAnalysisSessionImpl_addSemanticResourceMsg, semanticModelURI.lastSegment()), 3);
 
                 Resource newSemanticResource = resourceSet.getResource(semanticModelURI, false);
                 if (newSemanticResource != null && newSemanticResource.getContents().isEmpty()) {
@@ -590,7 +592,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void doAddSemanticResource(final Resource newResource, final ResourceSet set) {
         if (new ResourceQuery(newResource).isRepresentationsResource()) {
-            throw new IllegalArgumentException("A representation file cannot be added as semantic resource.");
+            throw new IllegalArgumentException(Messages.DAnalysisSessionImpl_addSemanticErrorMsg);
         }
         if (newResource.getResourceSet() != set) {
             set.getResources().add(newResource);
@@ -772,7 +774,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
         try {
-            monitor.beginTask("Session saving", 3);
+            monitor.beginTask(Messages.DAnalysisSessionImpl_saveMsg, 3);
             final Collection<Resource> allResources = Lists.newArrayList();
             allResources.addAll(getAllSessionResources());
             Collection<Resource> semanticResourcesCollection = getSemanticResources();
@@ -811,7 +813,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 monitor.worked(1);
             }
         } catch (InterruptedException e) {
-            SiriusPlugin.getDefault().warning("save interrupted", e);
+            SiriusPlugin.getDefault().warning(Messages.DAnalysisSessionImpl_saveInterruptedMsg, e);
         } finally {
             monitor.done();
         }
@@ -1123,7 +1125,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     @Override
     public void open(IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Open session", 33);
+            monitor.beginTask(Messages.DAnalysisSessionImpl_openMsg, 33);
             SessionManager.INSTANCE.add(this);
             monitor.worked(1);
             notifyListeners(SessionListener.OPENING);
@@ -1333,7 +1335,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             } catch (final IllegalStateException e) {
                 // we might have an exception unloading a resource already
                 // unaccessible
-                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while unloading an unaccessible resource:\n" + e.getMessage(), e));
+                SiriusPlugin.getDefault().getLog()
+                        .log(new Status(IStatus.WARNING, SiriusPlugin.ID, MessageFormat.format(Messages.DAnalysisSessionImpl_unloadingErrorMsg, e.getMessage()), e));
             }
             rs.getResources().remove(res);
         }
@@ -1371,7 +1374,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public String toString() {
-        return "Local Session: " + getID();
+        return MessageFormat.format(Messages.DAnalysisSessionImpl_toStringMsg, getID());
     }
 
     /**

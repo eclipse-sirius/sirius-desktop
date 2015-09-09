@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tools.internal.validation.description.constraints;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
@@ -49,7 +50,7 @@ public abstract class AbstractCommonToolToAppliedOnConstraint extends AbstractMo
      * @return the label of the given object
      */
     protected String getLabel(final EObject eObject) {
-        String label = "Element whithout name";
+        String label = Messages.AbstractCommonToolToAppliedOnConstraint_label;
         if (eObject instanceof IdentifiedElement) {
             label = new IdentifiedElementQuery((IdentifiedElement) eObject).getLabel();
         } else if (eObject instanceof RepresentationExtensionDescription) {

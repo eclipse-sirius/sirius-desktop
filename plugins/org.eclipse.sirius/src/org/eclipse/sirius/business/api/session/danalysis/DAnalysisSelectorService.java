@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.session.danalysis;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Lists;
@@ -100,13 +102,13 @@ public final class DAnalysisSelectorService {
         Map<String, Collection<DAnalysisSelectorProvider>> providers = EclipseUtil.getExtensionPluginsByKey(DAnalysisSelectorProvider.class, ID, CLASS_ATTRIBUTE, "id"); //$NON-NLS-1$
         Collection<DAnalysisSelectorProvider> defaults = providers.get(DAnalysisSelectorService.DEFAULT_PROVIDER_ID);
         if (defaults == null || defaults.isEmpty()) {
-            SiriusPlugin.getDefault().warning(String.format("No default analysis selector provider found at extension point \"%s\", using the DefaultAnalysisSelectorProvider instead.", ID), null);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DAnalysisSelectorService_noDefaultWaringMsg, ID), null);
             defaultSiriusProvider = new DefaultAnalysisSelectorProvider();
         } else if (defaultSiriusProvider == null) {
             defaultSiriusProvider = defaults.iterator().next();
         }
         if (defaults != null && defaults.size() > 1) {
-            SiriusPlugin.getDefault().error(String.format("Multiple default analysis selector providers found at extension point \"%s\": took only the first found.", ID), null);
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DAnalysisSelectorService_multipleDefaultErrorMsg, ID), null);
         }
         customerProviders = Lists.newArrayList();
         for (Entry<String, Collection<DAnalysisSelectorProvider>> entry : providers.entrySet()) {

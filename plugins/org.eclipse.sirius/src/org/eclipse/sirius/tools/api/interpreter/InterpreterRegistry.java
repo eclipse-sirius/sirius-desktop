@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.interpreter;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
@@ -19,6 +20,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -38,7 +40,7 @@ public class InterpreterRegistry {
      * 
      * @since 0.9.0
      */
-    public static final String ERROR_MSG_IMPOSSIBLE_TO_FIND_AN_INTERPRETER = "Impossible to find an interpreter";
+    public static final String ERROR_MSG_IMPOSSIBLE_TO_FIND_AN_INTERPRETER = Messages.InterpreterRegistry_ImpossibleToFindInterpreterErrorMsg;
 
     /**
      * Return the model requests interpreter for the specified
@@ -63,11 +65,11 @@ public class InterpreterRegistry {
 
             String reason;
             if (modelElement == null) {
-                reason = "Model element is null";
+                reason = Messages.InterpreterRegistry_nullModelElementErrorMsg;
             } else {
-                reason = "Could not find a session for model element : " + modelElement;
+                reason = MessageFormat.format(Messages.InterpreterRegistry_sessionNotFoundErrorMsg, modelElement);
             }
-            SiriusPlugin.getDefault().error(ERROR_MSG_IMPOSSIBLE_TO_FIND_AN_INTERPRETER + " - " + reason, new RuntimeException());
+            SiriusPlugin.getDefault().error(ERROR_MSG_IMPOSSIBLE_TO_FIND_AN_INTERPRETER + " - " + reason, new RuntimeException()); //$NON-NLS-1$
             result = CompoundInterpreter.INSTANCE;
         }
         return result;

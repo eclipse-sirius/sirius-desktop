@@ -23,6 +23,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
@@ -69,7 +70,7 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
                         InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
                     }
                 } catch (IOException e) {
-                    SiriusPlugin.getDefault().warning(MessageFormat.format("Unable to load the VSM at {0}", res.getURI()), e);
+                    SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.SessionVSMUpdater_VSMLoadErrorMsg, res.getURI()), e);
                 }
             }
         }

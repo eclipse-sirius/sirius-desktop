@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.command.view;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -54,7 +56,7 @@ public final class JavaActionFromToolCommand extends RecordingCommand {
      *            the container views
      */
     public JavaActionFromToolCommand(TransactionalEditingDomain domain, IExternalJavaAction javaAction, ExternalJavaAction tool, Collection<DSemanticDecorator> containerViews) {
-        super(domain, "Java action from tool: " + (javaAction != null ? javaAction.getClass().getSimpleName() : "")); //$NON-NLS-2$
+        super(domain, MessageFormat.format(Messages.JavaActionFromToolCommand_label, javaAction != null ? javaAction.getClass().getSimpleName() : "")); //$NON-NLS-1$
         this.action = javaAction;
         this.tool = tool;
         this.containerViews = containerViews;

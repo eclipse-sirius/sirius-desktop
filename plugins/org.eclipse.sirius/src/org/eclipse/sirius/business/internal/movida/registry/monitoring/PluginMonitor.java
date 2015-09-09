@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,7 @@ public class PluginMonitor extends AbstractViewpointResourceMonitor {
         /**
          * {@inheritDoc}
          */
+        @Override
         public void bundleChanged(BundleEvent event) {
             Bundle bundle = event.getBundle();
             // FIXME Study OSGi's bundle life-cycle to understand which state
@@ -113,6 +114,7 @@ public class PluginMonitor extends AbstractViewpointResourceMonitor {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void start() {
         this.running = true;
         detectRegisteredVSMs();
@@ -122,6 +124,7 @@ public class PluginMonitor extends AbstractViewpointResourceMonitor {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void stop() {
         unregisterBundleListener();
         this.running = false;
@@ -168,25 +171,25 @@ public class PluginMonitor extends AbstractViewpointResourceMonitor {
             String contributingPlugin = element.getContributor().getName();
             String localPath = element.getAttribute("path"); //$NON-NLS-1$
             if (localPath == null) {
-                reportWarning("Missing 'path' attribute for VSM definition in " + contributingPlugin + "; ignoring this definition.");
+                reportWarning("Missing 'path' attribute for VSM definition in " + contributingPlugin + "; ignoring this definition."); //$NON-NLS-1$//$NON-NLS-2$
                 continue;
             }
             try {
                 URI uri = URI.createPlatformPluginURI("/" + contributingPlugin + "/" + localPath, true); //$NON-NLS-1$ //$NON-NLS-2$
                 if (!pluginResourceExists(contributingPlugin, localPath)) {
-                    reportWarning("Not resource found at specified location " + uri + " in " + contributingPlugin);
+                    reportWarning("Not resource found at specified location " + uri + " in " + contributingPlugin); //$NON-NLS-1$//$NON-NLS-2$
                     continue;
                 }
                 if (!resourceHandler.handles(uri)) {
-                    reportWarning("Registered resource is not of a supported type: " + uri);
+                    reportWarning("Registered resource is not of a supported type: " + uri); //$NON-NLS-1$
                     continue;
                 }
                 boolean newEntry = discovered.add(uri);
                 if (!newEntry) {
-                    reportWarning("Duplicate registration of " + uri + " in " + contributingPlugin);
+                    reportWarning("Duplicate registration of " + uri + " in " + contributingPlugin); //$NON-NLS-1$//$NON-NLS-2$
                 }
             } catch (IllegalArgumentException iea) {
-                reportWarning("Invalid 'path' attribute for VSM definition in " + contributingPlugin + "; ignoring this definition.");
+                reportWarning("Invalid 'path' attribute for VSM definition in " + contributingPlugin + "; ignoring this definition."); //$NON-NLS-1$//$NON-NLS-2$
             }
         }
         return discovered;

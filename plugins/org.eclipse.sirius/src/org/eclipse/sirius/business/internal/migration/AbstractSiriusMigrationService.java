@@ -31,6 +31,7 @@ import org.eclipse.sirius.business.api.migration.IMigrationParticipant;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.osgi.framework.Version;
 import org.xml.sax.Attributes;
@@ -85,7 +86,7 @@ public abstract class AbstractSiriusMigrationService implements IMigrationPartic
                 }
 
             } catch (CoreException e) {
-                SiriusPlugin.getDefault().getLog().log(new Status(Status.WARNING, SiriusPlugin.ID, "Cannot instanciate migration contribution", e));
+                SiriusPlugin.getDefault().getLog().log(new Status(Status.WARNING, SiriusPlugin.ID, Messages.AbstractSiriusMigrationService_contributionInstantiationErrorMsg, e));
             }
         }
     }

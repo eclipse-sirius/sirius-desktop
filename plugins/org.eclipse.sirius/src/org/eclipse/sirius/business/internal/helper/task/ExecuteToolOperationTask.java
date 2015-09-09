@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaCla
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
@@ -83,6 +84,7 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
         final CommandContext context = this.rootOperationTask.getContext();
         executeTask(this.rootOperationTask, context);
@@ -93,8 +95,9 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "the main tool operation task";
+        return Messages.ExecuteToolOperationTask_label;
     }
 
     private void executeTask(final ICommandTask task, final CommandContext context) {
@@ -102,9 +105,9 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
         try {
             task.execute();
         } catch (MetaClassNotFoundException e) {
-            SiriusPlugin.getDefault().error("Error while modifying model", e);
+            SiriusPlugin.getDefault().error(Messages.TaskExecutor_errorModifyingModelMsg, e);
         } catch (FeatureNotFoundException e) {
-            SiriusPlugin.getDefault().error("Error while modifying model", e);
+            SiriusPlugin.getDefault().error(Messages.TaskExecutor_errorModifyingModelMsg, e);
         }
         if (!(task instanceof ForTask)) {
             final Iterator<ICommandTask> itTasks = task.getChildrenTasks().iterator();

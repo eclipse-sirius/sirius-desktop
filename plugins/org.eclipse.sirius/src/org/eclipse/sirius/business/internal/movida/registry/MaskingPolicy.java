@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
+
 /**
  * The masking policy keeps track of which of the loaded resources are masked
  * and which actually contribute visible Sirius definitions. Only Viewpoints
@@ -67,10 +68,10 @@ public class MaskingPolicy {
     }
 
     /**
-     * A simple descriptor of the concrete implementation of a logical Sirius
-     * by a specific resource. We use such an descriptor instead of referencing
-     * the Viewpoints themselves so that the descriptors stay usable event when
-     * the Sirius's resource has been unloaded.
+     * A simple descriptor of the concrete implementation of a logical Sirius by
+     * a specific resource. We use such an descriptor instead of referencing the
+     * Viewpoints themselves so that the descriptors stay usable event when the
+     * Sirius's resource has been unloaded.
      */
     private static class SiriusImplementation {
         /** The logical Sirius URI. */
@@ -119,19 +120,19 @@ public class MaskingPolicy {
 
     /**
      * All the Viewpoints from all the loaded VSMs, whether they are visible or
-     * not, organized by their Sirius URI. For each logical Sirius URI,
-     * the providers are ordered using <code>viewpointComparator</code>, putting
-     * the higher priority at the beginning.
+     * not, organized by their Sirius URI. For each logical Sirius URI, the
+     * providers are ordered using <code>viewpointComparator</code>, putting the
+     * higher priority at the beginning.
      */
     private final ListMultimap<URI, SiriusImplementation> viewpointImplementations = ArrayListMultimap.create();
 
     /**
      * For each loaded resource A, gives the sum of the number of Viewpoints
-     * from another resource which masks an equivalent Sirius from the
-     * resource A. A resource (and all the Viewpoints it defines) is visible if
-     * and only if this sum is 0.
+     * from another resource which masks an equivalent Sirius from the resource
+     * A. A resource (and all the Viewpoints it defines) is visible if and only
+     * if this sum is 0.
      */
-    private final LoadingCache<Resource, Integer> score = CacheBuilder.newBuilder().<Resource, Integer>build(CacheLoader.from(Functions.constant(0)));
+    private final LoadingCache<Resource, Integer> score = CacheBuilder.newBuilder().<Resource, Integer> build(CacheLoader.from(Functions.constant(0)));
 
     /**
      * The handler used to find Sirius instances inside loaded resources.
@@ -150,6 +151,7 @@ public class MaskingPolicy {
      */
     public MaskingPolicy(Comparator<URI> comparator, ViewpointResourceHandler resourceHandler) {
         this.viewpointComparator = Ordering.from(comparator).onResultOf(new Function<SiriusImplementation, URI>() {
+            @Override
             public URI apply(SiriusImplementation vp) {
                 // The ordering used for masking depends only on the resource's
                 // priority (as defined by the supplied comparator).
@@ -170,12 +172,12 @@ public class MaskingPolicy {
      */
     public synchronized MaskingChange resourceLoaded(Resource loaded) {
         Preconditions.checkNotNull(loaded);
-        Preconditions.checkState(loaded.isLoaded(), "The resource is not loaded: " + loaded);
+        Preconditions.checkState(loaded.isLoaded(), "The resource is not loaded: " + loaded); //$NON-NLS-1$
 
         MaskingChange change = new MaskingChange();
         for (Viewpoint viewpoint : resourceHandler.collectViewpointDefinitions(loaded)) {
             Option<URI> uri = new ViewpointQuery(viewpoint).getViewpointURI();
-            Preconditions.checkState(uri.some(), "Could not identify logical Sirius URI for Sirius " + viewpoint);
+            Preconditions.checkState(uri.some(), "Could not identify logical Sirius URI for Sirius " + viewpoint); //$NON-NLS-1$
             SiriusImplementation vi = new SiriusImplementation(uri.get(), loaded);
             List<SiriusImplementation> implementations = viewpointImplementations.get(vi.logicalURI);
             int insertionPoint = insertSorted(implementations, vi);
@@ -212,10 +214,11 @@ public class MaskingPolicy {
      */
     public synchronized MaskingChange aboutToUnload(final Resource unloaded) {
         Preconditions.checkNotNull(unloaded);
-        Preconditions.checkState(unloaded.isLoaded(), "The resource is not loaded: " + unloaded);
+        Preconditions.checkState(unloaded.isLoaded(), "The resource is not loaded: " + unloaded); //$NON-NLS-1$
 
         MaskingChange change = new MaskingChange();
         Set<SiriusImplementation> viewpointsFromUnloadedResource = ImmutableSet.copyOf(Iterables.filter(this.viewpointImplementations.values(), new Predicate<SiriusImplementation>() {
+            @Override
             public boolean apply(SiriusImplementation input) {
                 return input.provider == unloaded;
             }
@@ -241,12 +244,12 @@ public class MaskingPolicy {
      * whole list sorted (by viewpointComparator).
      * 
      * @param providers
-     *            the list of existing implementers of the logical Sirius.
-     *            The list must be sorted according to viewpointComparator.
+     *            the list of existing implementers of the logical Sirius. The
+     *            list must be sorted according to viewpointComparator.
      * @param viewpoint
      *            a new concrete implementer of the same logical Sirius.
-     * @return the index in the list at which the new Sirius has been
-     *         inserted to keep the whole properly sorted.
+     * @return the index in the list at which the new Sirius has been inserted
+     *         to keep the whole properly sorted.
      */
     private int insertSorted(List<SiriusImplementation> providers, SiriusImplementation viewpoint) {
         assert viewpointComparator.isOrdered(providers);
@@ -258,7 +261,7 @@ public class MaskingPolicy {
             // ignored/masked.
             return -1;
         } else {
-            assert x < 0 : "The viewpoint should not already be present in the list";
+            assert x < 0 : "The viewpoint should not already be present in the list"; //$NON-NLS-1$
             int insertionPoint = -x - 1; // See Collections.binarySearch(().
             providers.add(insertionPoint, viewpoint);
             assert viewpointComparator.isOrdered(providers);
@@ -270,14 +273,14 @@ public class MaskingPolicy {
      * Removes the viewpoint from the sorted list of providers.
      * 
      * @param providers
-     *            the list of existing implementers of the logical Sirius.
-     *            The list must be sorted according to viewpointComparator.
+     *            the list of existing implementers of the logical Sirius. The
+     *            list must be sorted according to viewpointComparator.
      * @param viewpoint
      *            a concrete implementer of the logical Sirius to be removed.
      * @return the index in the list at which the Sirius removed was before.
      */
     private int removeSorted(List<SiriusImplementation> providers, SiriusImplementation viewpoint) {
-        assert providers != null && providers.contains(viewpoint) : "Trying to remove unknown viewpoint implementation " + viewpoint;
+        assert providers != null && providers.contains(viewpoint) : "Trying to remove unknown viewpoint implementation " + viewpoint; //$NON-NLS-1$
         assert viewpointComparator.isOrdered(providers);
         int index = viewpointComparator.binarySearch(providers, viewpoint);
         providers.remove(viewpoint);

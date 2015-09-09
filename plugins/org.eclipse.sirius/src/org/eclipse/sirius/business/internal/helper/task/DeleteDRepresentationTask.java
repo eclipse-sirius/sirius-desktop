@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
@@ -17,6 +19,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -47,6 +50,7 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
 
         /* only destroy attached elements */
@@ -80,10 +84,11 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
         if (representation != null) {
-            return "Delete " + representation.getName();
+            return MessageFormat.format(Messages.DeleteDRepresentationTask_label, representation.getName());
         }
-        return "Delete representation";
+        return Messages.DeleteRepresentationCommand_label;
     }
 }

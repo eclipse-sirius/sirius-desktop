@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
+
 /**
  * A VSM Reloader is responsible for keeping the VSM resources loaded in a
  * resource set in sync with the logical Viewpoints actually needed in the
@@ -127,7 +128,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
     public synchronized void require(URI viewpoint) {
         Preconditions.checkNotNull(viewpoint);
         Option<URI> provider = registry.getProvider(viewpoint);
-        Preconditions.checkState(provider.some(), MessageFormat.format("The specified viewpoint {0} is not available.", viewpoint.toString()));
+        Preconditions.checkState(provider.some(), MessageFormat.format("The specified viewpoint {0} is not available.", viewpoint.toString())); //$NON-NLS-1$
         boolean added = this.requiredViewpoints.add(viewpoint);
         if (added) {
             refresh();
@@ -162,6 +163,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
     /**
      * {@inheritDoc}
      */
+    @Override
     public synchronized void registryChanged(ViewpointRegistry reg, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         assert reg == this.registry;
         SetView<URI> absentRequirements = Sets.intersection(requiredViewpoints, removed);
@@ -169,7 +171,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
             if (errorHandler != null) {
                 errorHandler.run();
             } else {
-                throw new IllegalStateException("The required viewpoints " + Joiner.on(", ").join(absentRequirements) + " are not available anymore.");
+                throw new IllegalStateException("The required viewpoints " + Joiner.on(", ").join(absentRequirements) + " are not available anymore."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
             }
         }
         refresh();

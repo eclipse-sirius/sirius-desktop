@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.internal.session.parser;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -73,7 +74,7 @@ public class RepresentationsFileHandler extends DefaultHandler {
                 referencedAnalysis.add(URI.createURI(hrefValue).resolve(sessionURI).trimFragment());
             }
         } else if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_OwnedViews().getName()) && (dAnalysisReferencedAnalysis || dAnalysisModels)) {
-            throw new SiriusSaxParserNormalAbortException("All needed informations have been reached. Stop the parsing.");
+            throw new SiriusSaxParserNormalAbortException(Messages.XMIModelFileHandler_parsingStopedMsg);
         }
     }
 

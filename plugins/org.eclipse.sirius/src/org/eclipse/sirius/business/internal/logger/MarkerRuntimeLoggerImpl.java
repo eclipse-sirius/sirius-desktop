@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.logger;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -22,6 +24,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
 import org.eclipse.sirius.business.api.logger.RuntimeLogger;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -36,6 +39,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @see org.eclipse.sirius.business.api.logger.RuntimeLogger#error(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
      */
+    @Override
     public void error(final EObject odesignObject, final EStructuralFeature feature, final String message) {
         MarkerRuntimeLoggerImpl.addMarkerFor(odesignObject, feature, message, IMarker.SEVERITY_ERROR);
     }
@@ -46,6 +50,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @see org.eclipse.sirius.business.api.logger.RuntimeLogger#error(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.Throwable)
      */
+    @Override
     public void error(final EObject odesignObject, final EStructuralFeature feature, final Throwable exception) {
         String message = StringUtil.EMPTY_STRING;
         if (exception != null) {
@@ -60,6 +65,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @see org.eclipse.sirius.business.api.logger.RuntimeLogger#info(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.Throwable)
      */
+    @Override
     public void info(final EObject odesignObject, final EStructuralFeature feature, final Throwable exception) {
         String message = StringUtil.EMPTY_STRING;
         if (exception != null) {
@@ -74,6 +80,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @see org.eclipse.sirius.business.api.logger.RuntimeLogger#info(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
      */
+    @Override
     public void info(final EObject odesignObject, final EStructuralFeature feature, final String message) {
         MarkerRuntimeLoggerImpl.addMarkerFor(odesignObject, feature, message, IMarker.SEVERITY_INFO);
     }
@@ -84,6 +91,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @see org.eclipse.sirius.business.api.logger.RuntimeLogger#warning(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.Throwable)
      */
+    @Override
     public void warning(final EObject odesignObject, final EStructuralFeature feature, final Throwable exception) {
         String message = StringUtil.EMPTY_STRING;
         if (exception != null) {
@@ -98,6 +106,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @see org.eclipse.sirius.business.api.logger.RuntimeLogger#warning(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature, java.lang.String)
      */
+    @Override
     public void warning(final EObject odesignObject, final EStructuralFeature feature, final String message) {
         MarkerRuntimeLoggerImpl.addMarkerFor(odesignObject, feature, message, IMarker.SEVERITY_WARNING);
     }
@@ -105,6 +114,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
     /**
      * Clears all errors in the loggers.
      */
+    @Override
     public void clearAll() {
         // Nothing happens
     }
@@ -115,6 +125,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @param object
      *            EObject we want to clearAll logged entries
      */
+    @Override
     public void clear(final EObject object) {
         if (object != null) {
             Resource objectResource = object.eResource();
@@ -163,10 +174,12 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
                 marker.setAttribute(MarkerRuntimeLogger.URI_MARKER_ATTRIBUTE, EcoreUtil.getURI(markerTarget).toString());
                 String markerMessage = StringUtil.EMPTY_STRING;
                 if (feature != null) {
-                    markerMessage += "Feature: " + feature.getName() + " ";
-                }
-                if (message != null) {
-                    markerMessage += message;
+                    markerMessage = MessageFormat.format(Messages.MarkerRuntimeLoggerImpl_feature, feature.getName());
+                    if (message != null) {
+                        markerMessage = MessageFormat.format(Messages.MarkerRuntimeLoggerImpl_featureWithMessage, feature.getName(), message);
+                    }
+                } else if (message != null) {
+                    markerMessage = message;
                 }
                 marker.setAttribute(IMarker.MESSAGE, markerMessage);
             }

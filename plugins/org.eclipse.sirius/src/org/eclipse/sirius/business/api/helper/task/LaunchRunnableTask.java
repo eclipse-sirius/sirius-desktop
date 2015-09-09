@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper.task;
+
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * A task to launch a runnable.
@@ -35,6 +37,7 @@ public class LaunchRunnableTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
         runnable.run();
     }
@@ -45,8 +48,9 @@ public class LaunchRunnableTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "launch a runnable task";
+        return Messages.LaunchRunnableTask_label;
     }
 
 }

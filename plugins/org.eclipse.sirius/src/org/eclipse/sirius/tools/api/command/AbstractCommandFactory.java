@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
@@ -44,7 +45,9 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
     /** The model accessor (used for metamodel extensions). */
     protected ModelAccessor modelAccessor;
 
-    /** This callback is used to exchange with the user interface when needed. */
+    /**
+     * This callback is used to exchange with the user interface when needed.
+     */
     protected UICallBack uiCallBack;
 
     /**
@@ -65,6 +68,7 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      *      org.eclipse.sirius.viewpoint.DRepresentationElement,
      *      java.lang.String)
      */
+    @Override
     public CreateRepresentationCommand buildCreateRepresentationFromDescription(final RepresentationCreationDescription desc, final DRepresentationElement element, final String newDiagramName) {
         final Session session = SessionManager.INSTANCE.getSession(element.getTarget());
         final CreateRepresentationCommand cmd = new CreateRepresentationCommand(session, desc.getRepresentationDescription(), element.getTarget(), newDiagramName, new NullProgressMonitor());
@@ -78,6 +82,7 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      * @param newCB
      *            the new user interface call back.
      */
+    @Override
     public void setUserInterfaceCallBack(final UICallBack newCB) {
         this.uiCallBack = newCB;
     }
@@ -87,6 +92,7 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      * 
      * @see org.eclipse.sirius.tools.api.command.ICommandFactory#getUserInterfaceCallBack()
      */
+    @Override
     public UICallBack getUserInterfaceCallBack() {
         return this.uiCallBack;
     }
@@ -123,10 +129,12 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
 
             if (semanticElement != null && session != null && representationToRefresh != null) {
                 result.getTasks().add(new AbstractCommandTask() {
+                    @Override
                     public String getLabel() {
-                        return "Set RefreshEditorsPrecommitListener options";
+                        return Messages.AbstractCommandFactory_refreshTasklabel;
                     }
 
+                    @Override
                     public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
                         if (toolDescription == null || toolDescription.isForceRefresh()) {
                             // Set the RefreshEditorsListener in forceRefresh

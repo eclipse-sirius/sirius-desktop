@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.api.dialect.command;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * Specific command to rename the given representation.
@@ -37,7 +38,7 @@ public class RenameRepresentationCommand extends RecordingCommand {
      *            the new name.
      */
     public RenameRepresentationCommand(TransactionalEditingDomain transDomain, DRepresentation selection, String name) {
-        super(transDomain, "Rename representation");
+        super(transDomain, Messages.RenameRepresentationCommand_label);
         this.representation = selection;
         this.newName = name;
     }

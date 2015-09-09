@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.command.control;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -17,6 +19,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * A recording version of the standard EMF "Control" action. In addition to
@@ -104,7 +107,7 @@ public class ControlCommand extends RecordingCommand {
         if (controlledResource != null) {
             controlledResource.getContents().add(root);
         } else {
-            throw new RuntimeException("Invalid target URI for control: could not load or create " + uri);
+            throw new RuntimeException(MessageFormat.format(Messages.ControlCommand_moveErrorMsg, uri));
         }
     }
 

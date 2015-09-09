@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -40,6 +41,7 @@ import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.SessionManagerEObjectImpl;
@@ -103,7 +105,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     @Override
     public void add(final Session newSession) {
-        Assert.isNotNull(newSession, "SessionManager can't add a null Session");
+        Assert.isNotNull(newSession, Messages.SessionManagerImpl_cantAddNullSessionErrorMsg);
         if (!doGetSessions().contains(newSession)) {
             if (newSession instanceof DAnalysisSessionEObject) {
                 getOwnedSessions().add((DAnalysisSessionEObject) newSession);
@@ -209,7 +211,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
                     // An issue has been encountered while connecting to remote
                     // CDO server
                     if (SiriusPlugin.getDefault().isDebugging()) {
-                        SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while connecting to remote CDO server"));
+                        SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, Messages.SessionManagerImpl_remoteServerConnectionErrorMsg));
                     }
                 }
             }
@@ -250,14 +252,12 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             try {
                 session = SessionFactory.INSTANCE.createSession(sessionModelURI, monitor);
             } catch (CoreException e) {
-                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while loading representations file " + sessionModelURI.toPlatformString(true), e));
+                SiriusPlugin.getDefault().getLog().log(
+                        new Status(IStatus.ERROR, SiriusPlugin.ID, MessageFormat.format(Messages.SessionManagerImpl_representationsFileLoadingErrorMsg, sessionModelURI.toPlatformString(true)), e));
                 if (optionalResource.some()) {
-                    String message = "Error while loading representations file";
-                    if (e != null) {
-                        message += ": " + (e.getCause() != null ? e.getCause().getMessage() : e.getMessage());
-                    }
-                    message += ". See error log for more details";
-                    MarkerUtil.addMarkerFor(optionalResource.get(), message, IMarker.SEVERITY_ERROR, MarkerRuntimeLogger.MARKER_TYPE);
+                    MarkerUtil.addMarkerFor(optionalResource.get(),
+                            MessageFormat.format(Messages.SessionManagerImpl_representationsFileLoadingSeeErrorLogMsg, e.getCause() != null ? e.getCause().getMessage() : e.getMessage()),
+                            IMarker.SEVERITY_ERROR, MarkerRuntimeLogger.MARKER_TYPE);
                 }
                 return null;
             }

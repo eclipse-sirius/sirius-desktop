@@ -24,6 +24,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -84,7 +85,7 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
 
     @Override
     public String getLabel() {
-        return "Delete without tool";
+        return Messages.DeleteWithoutToolTask_label;
     }
 
     @Override

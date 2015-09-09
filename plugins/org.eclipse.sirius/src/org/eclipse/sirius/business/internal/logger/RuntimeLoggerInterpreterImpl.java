@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -27,8 +28,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * @author mchauvin
  */
 public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
-
-    private static final String EVALUATION_CONDITION_ERROR = "Evaluation condition error";
 
     private IInterpreter interpreter;
 
@@ -49,6 +48,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public Object evaluate(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
         try {
@@ -68,6 +68,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public boolean evaluateBoolean(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         return evaluateBoolean(context, descriptionObject, descriptionFeature, false);
     }
@@ -80,6 +81,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature, boolean)
      */
+    @Override
     public boolean evaluateBoolean(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature, final boolean flagCondition) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
         try {
@@ -88,7 +90,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
         } catch (final EvaluationException e) {
             RuntimeLoggerManager.INSTANCE.error(descriptionObject, descriptionFeature, e);
             if (flagCondition) {
-                SiriusPlugin.getDefault().error(EVALUATION_CONDITION_ERROR, e);
+                SiriusPlugin.getDefault().error(Messages.RuntimeLoggerInterpreterImpl_evaluationConditionErrorMsg, e);
             }
         }
         return false;
@@ -101,6 +103,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public Integer evaluateInteger(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
         try {
@@ -119,6 +122,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public String evaluateString(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
         try {
@@ -137,6 +141,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public EObject evaluateEObject(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
         try {
@@ -155,6 +160,7 @@ public class RuntimeLoggerInterpreterImpl implements RuntimeLoggerInterpreter {
      *      org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public Collection<EObject> evaluateCollection(final EObject context, final EObject descriptionObject, final EStructuralFeature descriptionFeature) {
         final String expression = (String) descriptionObject.eGet(descriptionFeature);
         try {

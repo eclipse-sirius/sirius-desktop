@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.resource;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.sirius.business.internal.resource.parser.XMIModelFileSaxParser;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
@@ -88,7 +90,7 @@ public class LoadEMFResource implements Runnable {
     }
 
     private void error(String path, Exception e) {
-        SiriusPlugin.getDefault().error("Unable to load resource " + path, e);
+        SiriusPlugin.getDefault().error(MessageFormat.format(Messages.LoadEMFResource_loadingErrorMsg, path), e);
         unload();
     }
 

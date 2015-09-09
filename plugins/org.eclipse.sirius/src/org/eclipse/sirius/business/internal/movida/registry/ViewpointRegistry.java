@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -73,7 +73,7 @@ import com.google.common.collect.Sets;
  * @author pierre-charles.david@obeo.fr
  */
 public class ViewpointRegistry extends org.eclipse.sirius.business.api.componentization.ViewpointRegistry implements ViewpointResourceListener {
-    private static final String UNABLE_TO_LOAD_THIS_FILE = "The viewpoint registry was not able to load this file ";
+    private static final String UNABLE_TO_LOAD_THIS_FILE = "The viewpoint registry was not able to load this file "; //$NON-NLS-1$
 
     /**
      * Internal class used to record entries changes.
@@ -99,9 +99,9 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
         public String toString() {
             StringBuilder sb = new StringBuilder();
             // CHECKSTYLE:OFF
-            sb.append("Removed:\n\t").append(Joiner.on("\n\t").join(removed)).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
-            sb.append("Added:\n\t").append(Joiner.on("\n\t").join(added)).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
-            sb.append("Changed:\n\t").append(Joiner.on("\n\t").join(changed)).append("\n"); //$NON-NLS-2$ //$NON-NLS-3$
+            sb.append("Removed:\n\t").append(Joiner.on("\n\t").join(removed)).append("\n"); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+            sb.append("Added:\n\t").append(Joiner.on("\n\t").join(added)).append("\n"); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+            sb.append("Changed:\n\t").append(Joiner.on("\n\t").join(changed)).append("\n"); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
             // CHECKSTYLE:ON
             return sb.toString();
         }
@@ -185,7 +185,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
                         compositeResourceHandler.addResourceType((ViewpointResourceHandler) handler);
                     }
                 } catch (CoreException e) {
-                    reportWarning("Could not instantiate contributed Sirius Resource Type handler " + element.getAttribute("class")); //$NON-NLS-2$
+                    reportWarning("Could not instantiate contributed Sirius Resource Type handler " + element.getAttribute("class")); //$NON-NLS-1$//$NON-NLS-2$
                 }
             }
         }
@@ -267,6 +267,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public void resourceEvent(ViewpointResourceMonitor origin, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         /*
          * This method is the only one from which the content of the registry
@@ -356,7 +357,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
             updateResourcesStatus(change);
             resourceSet.getResources().remove(res.get());
         } else {
-            warning(MessageFormat.format("Inconsistent notification: can not remove unknown resource at {0}", uri), null);
+            warning(MessageFormat.format("Inconsistent notification: can not remove unknown resource at {0}", uri), null); //$NON-NLS-1$
         }
     }
 
@@ -401,6 +402,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     private Option<Resource> findResource(final URI uri) {
         try {
             Resource match = Iterables.find(resourceSet.getResources(), new Predicate<Resource>() {
+                @Override
                 public boolean apply(Resource input) {
                     return input.getURI().equals(uri);
                 }
@@ -419,17 +421,17 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      */
     private Option<Resource> load(URI uri) {
         Preconditions.checkNotNull(uri);
-        Preconditions.checkArgument(uri.isPlatform(), "Unsupported URI scheme: " + uri);
+        Preconditions.checkArgument(uri.isPlatform(), "Unsupported URI scheme: " + uri); //$NON-NLS-1$
 
         final Option<Resource> result;
         Resource vsm;
         try {
             vsm = resourceSet.getResource(uri, true);
             if (vsm == null) {
-                warning(MessageFormat.format("Unable to load the VSM at {0}", uri), null);
+                warning(MessageFormat.format("Unable to load the VSM at {0}", uri), null); //$NON-NLS-1$
                 result = Options.newNone();
             } else if (!vsm.getErrors().isEmpty()) {
-                warning(MessageFormat.format("Errors occured while trying to load the VSM at {0}", uri), null);
+                warning(MessageFormat.format("Errors occured while trying to load the VSM at {0}", uri), null); //$NON-NLS-1$
                 vsm.unload();
                 resourceSet.getResources().remove(vsm);
                 result = Options.newNone();
@@ -452,7 +454,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
             try {
                 unmasked.load(Collections.emptyMap());
             } catch (IOException e) {
-                warning(MessageFormat.format("Unable to load the VSM at {0}", unmasked.getURI()), e);
+                warning(MessageFormat.format("Unable to load the VSM at {0}", unmasked.getURI()), e); //$NON-NLS-1$
             }
         }
     }
@@ -610,8 +612,10 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public synchronized Set<Viewpoint> getViewpoints() {
         return ImmutableSet.copyOf(Iterables.transform(entries.values(), new Function<Entry, Viewpoint>() {
+            @Override
             public Viewpoint apply(Entry from) {
                 return from.getSirius();
             }
@@ -621,6 +625,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isFromPlugin(Viewpoint viewpoint) {
         if (viewpoint != null) {
             Resource viewpointResource = viewpoint.eResource();
@@ -635,6 +640,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public EObject find(EObject eObject) {
         EObject eObj = null;
         try {
@@ -648,6 +654,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public ECrossReferenceAdapter getCrossReferencer() {
         return crossReferencer;
     }
@@ -655,6 +662,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public Viewpoint getViewpoint(RepresentationDescription description) {
         return new RepresentationDescriptionQuery(description).getParentViewpoint();
     }
@@ -662,6 +670,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public Viewpoint getViewpoint(URI viewpointUri) {
         if (entries.containsKey(viewpointUri)) {
             return (entries.get(viewpointUri)).getSirius();
@@ -673,6 +682,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean addListener(ViewpointRegistryListener2 listener) {
         return legacyListeners.addIfAbsent(listener);
     }
@@ -680,6 +690,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean removeListener(ViewpointRegistryListener2 listener) {
         return legacyListeners.remove(listener);
     }
@@ -687,6 +698,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public Set<Viewpoint> registerFromPlugin(String modelerModelResourcePath) {
         try {
             return legacyMonitor.registerFromPlugin(modelerModelResourcePath);
@@ -703,6 +715,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public void disposeFromPlugin(Viewpoint viewpoint) {
         legacyMonitor.disposeFromPlugin(viewpoint);
     }
@@ -710,6 +723,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean addFilter(ViewpointRegistryFilter filter) {
         return this.filters.add(filter);
     }
@@ -717,6 +731,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean removeFilter(ViewpointRegistryFilter filter) {
         return this.filters.remove(filter);
     }
@@ -724,6 +739,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public void removeFilter(String id) {
         Iterator<ViewpointRegistryFilter> iter = filters.iterator();
         while (iter.hasNext()) {
@@ -737,6 +753,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public <T extends Component> void registerFromWorkspace(Set<T> components) {
 
     }
@@ -752,6 +769,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
+    @Override
     public void dispose() {
         if (isRunning()) {
             stop();

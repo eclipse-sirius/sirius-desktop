@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -30,8 +31,6 @@ public class SaveSessionJob extends Job {
      */
     public static final String FAMILY = SiriusPlugin.ID + ".saveSessionJob"; //$NON-NLS-1$
 
-    private static final String ACTION_NAME = "Session saving";
-
     private Session session;
 
     /**
@@ -41,14 +40,14 @@ public class SaveSessionJob extends Job {
      *            the {@link Session} to save
      */
     public SaveSessionJob(Session session) {
-        super(ACTION_NAME);
+        super(Messages.SaveSessionJob_sessionSavingMsg);
         this.session = session;
     }
 
     @Override
     public IStatus run(IProgressMonitor monitor) {
         try {
-            monitor.beginTask(ACTION_NAME, IProgressMonitor.UNKNOWN);
+            monitor.beginTask(Messages.SaveSessionJob_sessionSavingMsg, IProgressMonitor.UNKNOWN);
             if (session != null && session.isOpen() && SessionStatus.DIRTY == session.getStatus()) {
                 if (session instanceof DAnalysisSessionImpl) {
                     /*

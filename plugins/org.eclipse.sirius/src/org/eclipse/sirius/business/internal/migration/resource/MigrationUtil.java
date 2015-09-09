@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -101,7 +102,7 @@ public final class MigrationUtil {
                 qualifiedAttributeName = featureMappings.get(name);
             }
             final String[] decomposedName = qualifiedAttributeName.split(Pattern.quote(DOT));
-            assert decomposedName.length == 2 : "the mapping is not valid";
+            assert decomposedName.length == 2 : Messages.MigrationUtil_invalidMappingErrorMsg;
             EStructuralFeature result = null;
             final EClass classifier = MigrationUtil.findEClass(eClass.getEPackage(), decomposedName[0]);
             result = classifier.getEStructuralFeature(decomposedName[1]);
@@ -125,12 +126,12 @@ public final class MigrationUtil {
         try {
             result.load(in);
         } catch (final IOException e) {
-            SiriusPlugin.getDefault().error("I/O Error", e);
+            SiriusPlugin.getDefault().error(Messages.MigrationUtil_IOErrorMsg, e);
         } finally {
             try {
                 in.close();
             } catch (final IOException e) {
-                SiriusPlugin.getDefault().error("I/O Error", e);
+                SiriusPlugin.getDefault().error(Messages.MigrationUtil_IOErrorMsg, e);
             }
         }
         final Map<String, String> resultMap = new HashMap<String, String>();
@@ -152,10 +153,10 @@ public final class MigrationUtil {
      * @return the contents of the file.
      */
     public static String getContents(final File file, final IProgressMonitor monitor) {
-        monitor.subTask("Loading File");
+        monitor.subTask(Messages.MigrationUtil_loadingMsg);
         if (file.length() > Integer.MAX_VALUE) {
             // file length is too big to get contents
-            SiriusPlugin.getDefault().error("The size of the file is too big to get its contents.", null);
+            SiriusPlugin.getDefault().error(Messages.MigrationUtil_toBigErrorMsg, null);
         } else {
             int fileLenght = (int) file.length();
             byte[] b = new byte[fileLenght];

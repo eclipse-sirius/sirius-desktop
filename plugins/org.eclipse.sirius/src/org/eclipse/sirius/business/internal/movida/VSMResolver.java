@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,10 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
+
 /**
- * Resolves a set of logical Sirius URIs into the complete set of physical
- * VSM resources required to be loaded to provide all these Viewpoints.
+ * Resolves a set of logical Sirius URIs into the complete set of physical VSM
+ * resources required to be loaded to provide all these Viewpoints.
  * 
  * @author pierre-charles.david@obeo.fr
  */
@@ -65,6 +66,7 @@ public class VSMResolver {
         Set<URI> allLogical = computeAllLogicalRequirements(logicalURIs);
         final Set<URI> missing = Sets.newHashSet();
         Iterable<URI> allPhysical = Iterables.transform(allLogical, new Function<URI, URI>() {
+            @Override
             public URI apply(URI from) {
                 Option<URI> provider = registry.getProvider(from);
                 if (provider.some()) {
@@ -76,7 +78,7 @@ public class VSMResolver {
             }
         });
         if (!missing.isEmpty()) {
-            String msg = MessageFormat.format("Some of the required logical Sirius URIs could not be resolved to physical resources: {0}.", Joiner.on(", ").join(missing)); //$NON-NLS-2$
+            String msg = MessageFormat.format("Some of the required logical Sirius URIs could not be resolved to physical resources: {0}.", Joiner.on(", ").join(missing)); //$NON-NLS-1$//$NON-NLS-2$
             throw new IllegalArgumentException(msg);
         } else {
             return ImmutableSet.copyOf(Iterables.filter(allPhysical, Predicates.notNull()));

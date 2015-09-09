@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 Obeo.
+ * Copyright (c) 2011, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.ext.emf.AllContents;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
@@ -36,6 +37,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
+
 /**
  * An updater can modify a model in place to match the structure of a new
  * version of that model.
@@ -100,9 +102,9 @@ public class Updater {
     public EObject update() {
         orphaned = Sets.newHashSet();
         if (!matcher.areSameLogicalElement(element, reference)) {
-            throw new IllegalArgumentException("Can not update an element using a logically different element as reference.");
+            throw new IllegalArgumentException(Messages.Updater_updateElementLogicallyDifferentErrorMsg);
         } else if (element.eClass() != reference.eClass()) {
-            String msg = MessageFormat.format("Can not update an element using a reference element of a different type. Expected {0} but got a {1}", element.eClass(), reference.eClass());
+            String msg = MessageFormat.format(Messages.Updater_updateElementDifferentReferenceTypeErrorMsg, element.eClass(), reference.eClass());
             throw new IllegalArgumentException(msg);
         } else {
             updateAttributes();
@@ -313,7 +315,7 @@ public class Updater {
     private Collection<Object> getMany(EObject target, EStructuralFeature targetFeature) {
         Object rawValue = target.eGet(targetFeature);
         if (rawValue != null && !(rawValue instanceof Collection<?>)) {
-            throw new RuntimeException(MessageFormat.format("Expected a collection from many-valued feature {0} but got a {1}", targetFeature.getName(), rawValue.getClass()));
+            throw new RuntimeException(MessageFormat.format(Messages.FeatureContributor_unexpectedTypeErrorMsg, targetFeature.getName(), rawValue.getClass()));
         }
         return (Collection<Object>) rawValue;
     }
@@ -325,7 +327,7 @@ public class Updater {
     private EList<EObject> getManyEObjects(EObject target, EReference ref) {
         Object rawValue = target.eGet(ref);
         if (rawValue != null && !(rawValue instanceof EList<?>)) {
-            throw new RuntimeException(MessageFormat.format("Expected a collection from many-valued feature {0} but got a {1}", ref.getName(), rawValue.getClass()));
+            throw new RuntimeException(MessageFormat.format(Messages.FeatureContributor_unexpectedTypeErrorMsg, ref.getName(), rawValue.getClass()));
         }
         return (EList<EObject>) rawValue;
     }

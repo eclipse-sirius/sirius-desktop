@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.action;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Preconditions;
 
@@ -59,20 +61,20 @@ public class MoveElementInListAction extends AbstractExternalJavaAction {
         String refName = getParameter(parameters, "referenceName", String.class); //$NON-NLS-1$
         EObject pred = getOptionalParameter(parameters, "predecessor", EObject.class); //$NON-NLS-1$
         if (pred != null) {
-            Preconditions.checkArgument(element != pred, "'element' and 'predecessor' must be different.");
+            Preconditions.checkArgument(element != pred, Messages.MoveElementInListAction_elementAndPredecessorShouldBeDiffErrorMsg);
         }
 
         EStructuralFeature feature = owner.eClass().getEStructuralFeature(refName);
-        Preconditions.checkArgument(feature != null, "Owner element type " + owner.eClass().getName() + " does not have a feature named " + refName);
-        String qName = feature.getEContainingClass().getName() + "." + feature.getName();
-        Preconditions.checkArgument(feature instanceof EReference, "Feature " + qName + " is not an EReference");
-        Preconditions.checkArgument(feature.isMany(), "Reference " + qName + " is not multi-valued");
-        Preconditions.checkArgument(feature.isChangeable(), "Reference " + qName + " is not changeable");
+        Preconditions.checkArgument(feature != null, MessageFormat.format(Messages.MoveElementInListAction_featureNotFoundErrorMsg, owner.eClass().getName(), refName));
+        String qName = feature.getEContainingClass().getName() + "." + feature.getName(); //$NON-NLS-1$
+        Preconditions.checkArgument(feature instanceof EReference, MessageFormat.format(Messages.MoveElementInListAction_notARefErrorMsg, qName));
+        Preconditions.checkArgument(feature.isMany(), MessageFormat.format(Messages.MoveElementInListAction_notMultiValuedRefErrorMsg, qName));
+        Preconditions.checkArgument(feature.isChangeable(), MessageFormat.format(Messages.MoveElementInListAction_referenceNotChangeableErrorMsg, qName));
 
         @SuppressWarnings("unchecked")
         EList<EObject> list = (EList<EObject>) owner.eGet(feature);
-        Preconditions.checkArgument(pred == null || list.contains(pred), "'predecessor' parameter is not a member of the designated list.");
-        Preconditions.checkArgument(list.contains(element), "'element' parameter is not a member of the designated list.");
+        Preconditions.checkArgument(pred == null || list.contains(pred), Messages.MoveElementInListAction_predecessorParameterErrorMsg);
+        Preconditions.checkArgument(list.contains(element), Messages.MoveElementInListAction_notAMemberErrorMsg);
 
         moveElementAfter(element, pred, list);
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.refresh;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.sirius.business.api.refresh.RefreshConstants;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * The provider descriptor for the refresh API.
@@ -72,7 +75,7 @@ public abstract class AbstractProviderDescriptor implements Comparable<AbstractP
         if (defaultValue != null) {
             return defaultValue;
         }
-        throw new IllegalArgumentException("The " + name + " attribute is missing"); //$NON-NLS-1$
+        throw new IllegalArgumentException(MessageFormat.format(Messages.AbstractProviderDescriptor_attributeMissingMsg, name));
     }
 
     /**
@@ -85,13 +88,16 @@ public abstract class AbstractProviderDescriptor implements Comparable<AbstractP
     }
 
     /**
-     * Returns the value of the priority described by the given {@link String}.<br/>
+     * Returns the value of the priority described by the given {@link String}.
+     * <br/>
      * Returned values according to <code>priorityString</code> value :
      * <ul>
-     * <li>&quot;lowest&quot; =&gt; {@value RefreshConstants#PRIORITY_LOWEST}</li>
+     * <li>&quot;lowest&quot; =&gt; {@value RefreshConstants#PRIORITY_LOWEST}
+     * </li>
      * <li>&quot;low&quot; =&gt; {@value RefreshConstants#PRIORITY_LOW}</li>
      * <li>&quot;high&quot; =&gt; {@value RefreshConstants#PRIORITY_HIGH}</li>
-     * <li>&quot;highest&quot; =&gt; {@value RefreshConstants#PRIORITY_HIGHEST}</li>
+     * <li>&quot;highest&quot; =&gt; {@value RefreshConstants#PRIORITY_HIGHEST}
+     * </li>
      * <li>anything else =&gt; {@value RefreshConstants#PRIORITY_NORMAL}</li>
      * </ul>
      * 
@@ -119,6 +125,7 @@ public abstract class AbstractProviderDescriptor implements Comparable<AbstractP
      * 
      * @see java.lang.Comparable#compareTo(T)
      */
+    @Override
     public int compareTo(final AbstractProviderDescriptor other) {
         return doCompareTo(other);
     }

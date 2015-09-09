@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
 
@@ -52,14 +53,14 @@ public class UnsetTask extends AbstractOperationTask {
     public UnsetTask(CommandContext context, ModelAccessor extPackage, Unset unsetOp, IInterpreter interpreter) {
         super(context, extPackage, interpreter);
         if (unsetOp == null) {
-            throw new IllegalArgumentException("unsetOp is null");
+            throw new IllegalArgumentException(Messages.UnsetTask_nullOperationErrorMsg);
         }
         this.unsetOp = unsetOp;
     }
 
     @Override
     public String getLabel() {
-        return "unset the value";
+        return Messages.UnsetTask_label;
     }
 
     @Override

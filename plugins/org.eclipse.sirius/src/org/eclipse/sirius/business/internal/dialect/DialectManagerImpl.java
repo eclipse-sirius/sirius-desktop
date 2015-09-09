@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.dialect;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -40,6 +41,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -80,6 +82,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<RepresentationDescription> getAvailableRepresentationDescriptions(final Collection<Viewpoint> vp, final EObject semantic) {
         final Collection<RepresentationDescription> descs = new ArrayList<RepresentationDescription>();
         for (final Dialect dialect : dialects.values()) {
@@ -91,6 +94,7 @@ public class DialectManagerImpl implements DialectManager {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor) {
         if (Movida.isEnabled()) {
             for (Dialect dialect : dialects.values()) {
@@ -102,6 +106,7 @@ public class DialectManagerImpl implements DialectManager {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void refresh(final DRepresentation representation, final IProgressMonitor monitor) {
         refresh(representation, false, monitor);
     }
@@ -112,7 +117,7 @@ public class DialectManagerImpl implements DialectManager {
     @Override
     public void refresh(DRepresentation representation, boolean doFullRefresh, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh representation", 1);
+            monitor.beginTask(Messages.DialectManagerImpl_refreshMsg, 1);
             for (final Dialect dialect : dialects.values()) {
                 if (dialect.getServices().canRefresh(representation)) {
                     dialect.getServices().refresh(representation, doFullRefresh, new SubProgressMonitor(monitor, 1));
@@ -126,7 +131,7 @@ public class DialectManagerImpl implements DialectManager {
     @Override
     public void refreshImpactedElements(DRepresentation representation, Collection<Notification> notifications, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Refresh impacted representation elements", 1);
+            monitor.beginTask(Messages.DialectManagerImpl_refreshImpactedMsg, 1);
             for (final Dialect dialect : dialects.values()) {
                 if (dialect.getServices().canRefresh(representation)) {
                     dialect.getServices().refreshImpactedElements(representation, notifications, new SubProgressMonitor(monitor, 1));
@@ -148,10 +153,11 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session, final IProgressMonitor monitor) {
         DRepresentation created = null;
         try {
-            monitor.beginTask("Create representation : " + name, 12);
+            monitor.beginTask(MessageFormat.format(Messages.AbstractRepresentationDialectServices_createRepresentationMsg, name), 12);
             Dialect invokedDialect = null;
 
             for (final Dialect dialect : dialects.values()) {
@@ -188,6 +194,7 @@ public class DialectManagerImpl implements DialectManager {
      *      java.lang.String, org.eclipse.sirius.business.api.session.Session,
      *      org.eclipse.core.runtime.IProgressMonitor)
      */
+    @Override
     public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
         Dialect invokedDialect = null;
         DRepresentation copy = null;
@@ -216,6 +223,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public boolean canRefresh(final DRepresentation representation) {
         for (final Dialect dialect : dialects.values()) {
             if (dialect.getServices().canRefresh(representation)) {
@@ -229,6 +237,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * {@inheritDoc}
      */
+    @Override
     public boolean canCreate(final EObject semantic, final RepresentationDescription desc) {
         boolean canCreate = false;
 
@@ -249,6 +258,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectManager#disableDialect(org.eclipse.sirius.business.api.dialect.Dialect)
      */
+    @Override
     public void disableDialect(final Dialect dialect) {
         dialects.remove(dialect.getName());
     }
@@ -258,6 +268,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectManager#enableDialect(org.eclipse.sirius.business.api.dialect.Dialect)
      */
+    @Override
     public void enableDialect(final Dialect dialect) {
         dialects.put(dialect.getName(), dialect);
     }
@@ -267,6 +278,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#notify(org.eclipse.sirius.business.api.dialect.RepresentationNotification)
      */
+    @Override
     public void notify(final RepresentationNotification representation) {
         for (final Dialect dialect : dialects.values()) {
             dialect.getServices().notify(representation);
@@ -280,6 +292,7 @@ public class DialectManagerImpl implements DialectManager {
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#getRepresentations(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public synchronized Collection<DRepresentation> getRepresentations(final EObject semantic, final Session session) {
         if (semantic != null) {
             return findAllRepresentations(semantic, session);
@@ -309,6 +322,7 @@ public class DialectManagerImpl implements DialectManager {
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#getRepresentations(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public Collection<DRepresentation> getRepresentations(final RepresentationDescription representationDescription, final Session session) {
         final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
         for (final Dialect dialect : dialects.values()) {
@@ -322,6 +336,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#getAllRepresentations(org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public Collection<DRepresentation> getAllRepresentations(final Session session) {
         final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
         for (final Dialect dialect : dialects.values()) {
@@ -336,6 +351,7 @@ public class DialectManagerImpl implements DialectManager {
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#deleteRepresentation(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public boolean deleteRepresentation(final DRepresentation representation, final Session session) {
         Dialect deleter = null;
         final Iterator<Dialect> it = dialects.values().iterator();
@@ -362,6 +378,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#getDescription(org.eclipse.sirius.viewpoint.DRepresentation)
      */
+    @Override
     public RepresentationDescription getDescription(final DRepresentation representation) {
         RepresentationDescription result = null;
         final Iterator<Dialect> it = dialects.values().iterator();
@@ -381,6 +398,7 @@ public class DialectManagerImpl implements DialectManager {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void initRepresentations(final Viewpoint vp, final EObject semantic, IProgressMonitor monitor) {
         for (final Dialect dialect : dialects.values()) {
             dialect.getServices().initRepresentations(vp, semantic, monitor);
@@ -392,6 +410,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#canCreateIdentifier(org.eclipse.emf.ecore.EObject)
      */
+    @Override
     public boolean canCreateIdentifier(final EObject representationElement) {
         for (final Dialect dialect : dialects.values()) {
             if (dialect.getServices().canCreateIdentifier(representationElement)) {
@@ -407,6 +426,7 @@ public class DialectManagerImpl implements DialectManager {
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#createIdentifier(org.eclipse.emf.ecore.EObject,
      *      java.util.Map)
      */
+    @Override
     public RepresentationElementIdentifier createIdentifier(final EObject representationElement, final Map<EObject, RepresentationElementIdentifier> elementToIdentifier) {
         for (final Dialect dialect : dialects.values()) {
             if (dialect.getServices().canCreateIdentifier(representationElement)) {
@@ -423,6 +443,7 @@ public class DialectManagerImpl implements DialectManager {
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#updateRepresentationsExtendedBy(Session,
      *      Viewpoint, boolean)
      */
+    @Override
     public void updateRepresentationsExtendedBy(final Session session, final Viewpoint viewpoint, final boolean activated) {
         for (final Dialect dialect : dialects.values()) {
             dialect.getServices().updateRepresentationsExtendedBy(session, viewpoint, activated);
@@ -436,6 +457,7 @@ public class DialectManagerImpl implements DialectManager {
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#createInterpretedExpressionQuery(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
+    @Override
     public IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature) {
         IInterpretedExpressionQuery returnedQuery = null;
 
@@ -461,6 +483,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
+    @Override
     public boolean handles(RepresentationDescription representationDescription) {
         for (Dialect dialect : dialects.values()) {
             if (dialect.getServices().handles(representationDescription)) {
@@ -520,6 +543,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
      */
+    @Override
     public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
         for (Dialect dialect : dialects.values()) {
             if (dialect.getServices().handles(representationExtensionDescription)) {
@@ -535,6 +559,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#invalidateMappingCache()
      */
+    @Override
     public void invalidateMappingCache() {
         for (Dialect dialect : dialects.values()) {
             dialect.getServices().invalidateMappingCache();

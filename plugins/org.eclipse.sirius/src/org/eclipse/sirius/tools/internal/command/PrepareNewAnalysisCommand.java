@@ -17,6 +17,7 @@ import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * Specific command to prepare the given analysis. It will be added to the
@@ -46,7 +47,7 @@ public class PrepareNewAnalysisCommand extends RecordingCommand {
      *            the current session.
      */
     public PrepareNewAnalysisCommand(TransactionalEditingDomain domain, Resource resource, DAnalysis newAnalysis, Session session) {
-        super(domain, "Prepare new Analysis");
+        super(domain, Messages.PrepareNewAnalysisCommand_label);
         this.slaveAnalysis = newAnalysis;
         this.resource = resource;
         this.session = session;

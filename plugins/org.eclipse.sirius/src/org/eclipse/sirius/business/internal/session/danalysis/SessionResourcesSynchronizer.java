@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -34,6 +35,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.SyncStatus;
 
@@ -108,7 +110,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
                             // CHECKSTYLE:OFF
                         } catch (final Exception e) {
                             // CHECKSTYLE:ON
-                            SiriusPlugin.getDefault().error("Can't handle resource change : " + resource.getURI(), e);
+                            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.SessionResourcesSynchronizer_cantHandleResourceChangeMsg, resource.getURI()), e);
 
                         }
                     }
@@ -208,7 +210,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
             if (reload.getResult() != null) {
                 throw (IOException) reload.getResult();
             } else if (!reload.getStatus().isOK()) {
-                SiriusPlugin.getDefault().error("a reload operation failed for unknown reason", null);
+                SiriusPlugin.getDefault().error(Messages.SessionResourcesSynchronizer_reloadOperationFailErrorMsg, null);
             } else {
                 if (representationsResource) {
                     ted.getCommandStack().execute(reloadingAnalysisCmd);

@@ -35,6 +35,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -139,7 +140,7 @@ public class SiriusControlCommand extends ControlCommand {
     @Override
     protected void doExecute() {
         try {
-            monitor.beginTask("Control resource", 3);
+            monitor.beginTask(Messages.SiriusControlCommand_controlResourceMsg, 3);
             super.doExecute(); // Control the semantic model
             monitor.worked(1);
             markContainerResourceAsModified(semanticObjectToControl.eContainer());

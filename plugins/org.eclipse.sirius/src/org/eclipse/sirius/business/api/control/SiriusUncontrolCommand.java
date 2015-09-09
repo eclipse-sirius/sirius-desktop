@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.internal.command.control.UncontrolCommand;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Iterables;
@@ -54,7 +55,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
      * to the semantic elements.
      */
     private final boolean uncontrolRepresentations;
-    
+
     /**
      * A boolean to set if the session should be save at the end of this
      * command.
@@ -83,7 +84,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     public SiriusUncontrolCommand(final EObject semanticRoot, final boolean uncontrolRepresentations, IProgressMonitor monitor) {
         this(semanticRoot, uncontrolRepresentations, true, monitor);
     }
-    
+
     /**
      * Create a new {@link SiriusUncontrolCommand}.
      * 
@@ -105,6 +106,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
         this.shouldEndBySaving = shouldEndBySaving;
         this.monitor = monitor;
     }
+
     /**
      * Get root container of specified object.<br>
      * Default implementation consists in getting the resource container i.e the
@@ -124,7 +126,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     @Override
     protected void doExecute() {
         try {
-            monitor.beginTask("Uncontrol resource", 4);
+            monitor.beginTask(Messages.SiriusUncontrolCommand_label, 4);
 
             Resource childSemanticResource = semanticElementToUncontrol.eResource();
             Resource childAirdResource = getChildAirdResource();
@@ -277,7 +279,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
                 res.save(Collections.emptyMap());
                 res.delete(Collections.emptyMap());
             } catch (IOException e) {
-                SiriusPlugin.getDefault().error("Resource deletion failed", e);
+                SiriusPlugin.getDefault().error(Messages.SiriusUncontrolCommand_resourceDeletionFailedMsg, e);
             }
         }
     }

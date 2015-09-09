@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.movida.registry.monitoring;
 
+import java.text.MessageFormat;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
@@ -59,9 +61,9 @@ public class CompositeResourceMonitor extends AbstractViewpointResourceMonitor i
      *             in use.
      */
     public synchronized void addMonitor(String name, ViewpointResourceMonitor monitor) throws IllegalStateException {
-        Preconditions.checkState(!this.isRunning() && !monitor.isRunning(), "New monitors can not be added while running.");
-        Preconditions.checkState(!monitors.contains(monitor), "The monitor is already registered in the composite.");
-        Preconditions.checkState(!names.contains(name), "A monitor is already registered under the name " + name);
+        Preconditions.checkState(!this.isRunning() && !monitor.isRunning(), Messages.CompositeResourceMonitor_addMonitorErrorMsg);
+        Preconditions.checkState(!monitors.contains(monitor), Messages.CompositeResourceMonitor_alreadyRegisteredErrorMsg);
+        Preconditions.checkState(!names.contains(name), MessageFormat.format(Messages.CompositeResourceMonitor_alreadyUsedNameErrorMsg, name));
 
         monitors.add(monitor);
         names.add(name);
@@ -71,6 +73,7 @@ public class CompositeResourceMonitor extends AbstractViewpointResourceMonitor i
     /**
      * {@inheritDoc}
      */
+    @Override
     public synchronized void start() {
         this.running = true;
         for (ViewpointResourceMonitor monitor : monitors) {
@@ -81,6 +84,7 @@ public class CompositeResourceMonitor extends AbstractViewpointResourceMonitor i
     /**
      * {@inheritDoc}
      */
+    @Override
     public synchronized void stop() {
         for (ViewpointResourceMonitor monitor : monitors) {
             monitor.stop();
@@ -115,6 +119,7 @@ public class CompositeResourceMonitor extends AbstractViewpointResourceMonitor i
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public synchronized void resourceEvent(ViewpointResourceMonitor origin, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         if (this.listener != null) {
             for (URI a : Iterables.concat(added, changed)) {
@@ -139,6 +144,7 @@ public class CompositeResourceMonitor extends AbstractViewpointResourceMonitor i
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public synchronized int compare(URI uri1, URI uri2) {
         ViewpointResourceMonitor src1 = origins.get(uri1);
         ViewpointResourceMonitor src2 = origins.get(uri2);
@@ -149,6 +155,6 @@ public class CompositeResourceMonitor extends AbstractViewpointResourceMonitor i
                 return index1 - index2;
             }
         }
-        throw new IllegalArgumentException("Can only compare URIs from detected resources.");
+        throw new IllegalArgumentException(Messages.CompositeResourceMonitor_uriCompareErrorMsg);
     }
 }

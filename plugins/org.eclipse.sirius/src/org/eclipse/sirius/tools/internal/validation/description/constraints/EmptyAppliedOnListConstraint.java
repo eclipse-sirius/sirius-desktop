@@ -1,9 +1,12 @@
 /*****************************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES
- * All rights reserved.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *      Obeo - Initial API and implementation
+ *    Obeo - initial API and implementation
  *****************************************************************************************/
 package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
@@ -11,6 +14,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 
 /**
@@ -23,11 +27,6 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
  */
 public class EmptyAppliedOnListConstraint extends AbstractModelConstraint {
 
-    /**
-     * Error message for this constraint.
-     */
-    private static final String ERROR_MESSAGE = "This customization has no style to customize.";
-
     @Override
     public IStatus validate(IValidationContext ctx) {
 
@@ -38,7 +37,7 @@ public class EmptyAppliedOnListConstraint extends AbstractModelConstraint {
 
             if (!eStructuralFeatureCustomization.isApplyOnAll()) {
                 if (eStructuralFeatureCustomization.getAppliedOn().isEmpty()) {
-                    status = ctx.createFailureStatus(ERROR_MESSAGE);
+                    status = ctx.createFailureStatus(Messages.EmptyAppliedOnListConstraint_errorMsg);
                 }
             }
         }

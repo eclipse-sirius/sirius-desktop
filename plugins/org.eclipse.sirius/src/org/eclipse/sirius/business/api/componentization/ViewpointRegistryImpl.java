@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.componentization;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -54,6 +55,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolException;
 import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolParser;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -71,8 +73,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 public class ViewpointRegistryImpl extends ViewpointRegistry {
-    private static final String UNABLE_TO_LOAD_THIS_FILE = "The viewpoint registry was not able to load this file ";
-
     private ResourceSet resourceSet;
 
     private Set<Viewpoint> viewpointsFromPlugin;
@@ -98,6 +98,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         collectors = Maps.newHashMap();
         collectors.put(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, new ViewpointFileCollector() {
 
+            @Override
             public boolean isValid(final EObject descRoot) {
                 boolean result;
                 if (descRoot instanceof Group) {
@@ -107,13 +108,14 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                     if (descRoot == null) {
                         // Nothing, already been log
                     } else {
-                        SiriusPlugin.getDefault().warning("The viewpoint specification model : " + descRoot.eResource().getURI() + " can't be loaded, it may need to be migrated.",
-                                new RuntimeException("Can't deploy VSM."));
+                        SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_cantLoadVSMErrorMsg, descRoot.eResource().getURI()),
+                                new RuntimeException(Messages.ViewpointRegistryImpl_cantDeployVSMErrorMsg));
                     }
                 }
                 return result;
             }
 
+            @Override
             public Collection<Viewpoint> collect(EObject root) {
                 return Lists.newArrayList(Iterators.filter(root.eAllContents(), Viewpoint.class));
             }
@@ -140,6 +142,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @param size
      *            the initial size.
      */
+    @Override
     public void init(final int size) {
         this.viewpointsFromPlugin = new HashSet<Viewpoint>(size);
         this.viewpointsFromWorkspace = new HashSet<Viewpoint>(size);
@@ -166,6 +169,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *             found
      * @since 0.9.0
      */
+    @Override
     public Viewpoint getViewpoint(final URI viewpointUri) throws ViewpointProtocolException {
         return ViewpointProtocolParser.getViewpoint(viewpointUri);
     }
@@ -177,6 +181,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
 
     private LoadingCache<EObject, EObject> prepareFoundCache() {
         return CacheBuilder.newBuilder().weakKeys().build(CacheLoader.from(new Function<EObject, EObject>() {
+            @Override
             public EObject apply(EObject from) {
                 return lookForEquivalentInRegistry(from);
             }
@@ -192,6 +197,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @return <code>true</code> if the filter was added, <code>false</code>
      *         otherwise.
      */
+    @Override
     public boolean addFilter(final ViewpointRegistryFilter filter) {
         if (filters == null) {
             filters = new HashSet<ViewpointRegistryFilter>(4);
@@ -207,6 +213,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *            the filter to remove
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
+    @Override
     public boolean removeFilter(final ViewpointRegistryFilter filter) {
         invalidateCache();
         if (filters != null) {
@@ -221,6 +228,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @param id
      *            the id of the filters to remove
      */
+    @Override
     public void removeFilter(final String id) {
 
         if (filters != null) {
@@ -245,6 +253,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @return <code>true</code> if the listener was added, <code>false</code>
      *         otherwise.
      */
+    @Override
     public boolean addListener(final ViewpointRegistryListener2 listener) {
         if (newListeners == null) {
             newListeners = new HashSet<ViewpointRegistryListener2>(4);
@@ -259,6 +268,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *            the listener to remove
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
+    @Override
     public boolean removeListener(final ViewpointRegistryListener2 listener) {
         if (newListeners != null) {
             return newListeners.remove(listener);
@@ -274,6 +284,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *            the platform file path ("pluginname/rep1/rep2/file.odesign)
      * @return the added Viewpoints;
      */
+    @Override
     public Set<Viewpoint> registerFromPlugin(final String modelerModelResourcePath) {
 
         final Set<Viewpoint> addedSirius = new HashSet<Viewpoint>();
@@ -296,13 +307,13 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             }
 
         } catch (final IOException e) {
-            SiriusPlugin.getDefault().error(UNABLE_TO_LOAD_THIS_FILE + modelerModelResourcePath, e);
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ViewpointRegistryImpl_FileLoadingErrorMsg, modelerModelResourcePath), e);
         } catch (final WrappedException e) {
-            SiriusPlugin.getDefault().warning(UNABLE_TO_LOAD_THIS_FILE + modelerModelResourcePath, e.exception());
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_FileLoadingErrorMsg, modelerModelResourcePath), e.exception());
             /* CHECKSTYLE:OFF -> we should handle this kind of exception */
         } catch (final RuntimeException e) {
             /* CHECKSTYLE:ON */
-            SiriusPlugin.getDefault().warning(UNABLE_TO_LOAD_THIS_FILE + modelerModelResourcePath, e);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_FileLoadingErrorMsg, modelerModelResourcePath), e);
         }
         invalidateCache();
         return addedSirius;
@@ -333,6 +344,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @param <T>
      *            the type
      */
+    @Override
     public <T extends Component> void registerFromWorkspace(final Set<T> components) {
         viewpointsFromWorkspace.clear();
         for (final Component c : components) {
@@ -352,6 +364,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @param viewpoint
      *            the viewpoint to dispose
      */
+    @Override
     public void disposeFromPlugin(final Viewpoint viewpoint) {
         viewpointsFromPlugin.remove(viewpoint);
 
@@ -368,6 +381,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             if (vpName != null && pluginName != null) {
                 Iterable<Viewpoint> sameNameAndPluginViewpoints = Iterables.filter(viewpointsFromPlugin, new Predicate<Viewpoint>() {
 
+                    @Override
                     public boolean apply(final Viewpoint input) {
                         return vpName.equals(input.getName()) && pluginName.equals(input.eResource().getURI().segment(1));
                     }
@@ -400,6 +414,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * 
      * @return the viewpoints registered
      */
+    @Override
     public Set<Viewpoint> getViewpoints() {
         final Set<Viewpoint> all = new HashSet<Viewpoint>(this.viewpointsFromPlugin.size() + this.viewpointsFromWorkspace.size());
         all.addAll(this.viewpointsFromWorkspace);
@@ -443,6 +458,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *         <code>null</code> if it could not be found.
      * @since 0.9.0
      */
+    @Override
     public Viewpoint getViewpoint(final RepresentationDescription description) {
         return new RepresentationDescriptionQuery(description).getParentViewpoint();
     }
@@ -455,6 +471,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @return <code>true</code> if the plug-in comes from plug-in false if it
      *         comes from workspace.
      */
+    @Override
     public boolean isFromPlugin(final Viewpoint viewpoint) {
         if (viewpointsFromPlugin != null) {
             return viewpointsFromPlugin.contains(viewpoint);
@@ -465,6 +482,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     /**
      * Dispose the registry.
      */
+    @Override
     public void dispose() {
         disposeViewpointsFromPlugins();
         viewpointsFromWorkspace.clear();
@@ -526,7 +544,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                 // CHECKSTYLE:OFF
             } catch (final RuntimeException e) {
                 // CHECKSTYLE:ON
-                SiriusPlugin.getDefault().error(UNABLE_TO_LOAD_THIS_FILE + res.getURI().toString(), e);
+                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ViewpointRegistryImpl_FileLoadingErrorMsg, res.getURI().toString()), e);
             }
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.RESOLVE_ALL_KEY);
         }
@@ -578,9 +596,9 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             try {
                 resource.unload();
             } catch (final IllegalArgumentException e) {
-                SiriusPlugin.getDefault().error("The viewpoint registry was not able to unload this file " + resource.getURI().toString(), e);
+                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ViewpointRegistryImpl_unableToUnloadFileErrorMsg, resource.getURI().toString()), e);
             } catch (final NullPointerException e) {
-                SiriusPlugin.getDefault().error("The viewpoint registry was not able to unload this file " + resource.getURI().toString(), e);
+                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ViewpointRegistryImpl_unableToUnloadFileErrorMsg, resource.getURI().toString()), e);
             }
             resourceSet.getResources().remove(resource);
         }
@@ -591,13 +609,13 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             final URI fileURI = URI.createPlatformResourceURI(file.getFullPath().toOSString(), true);
             return load(fileURI, set);
         } catch (final IOException e) {
-            SiriusPlugin.getDefault().error(UNABLE_TO_LOAD_THIS_FILE + file.getName(), e);
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ViewpointRegistryImpl_FileLoadingErrorMsg, file.getName()), e);
         } catch (final WrappedException e) {
-            SiriusPlugin.getDefault().warning(UNABLE_TO_LOAD_THIS_FILE + file.getName(), e.exception());
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_FileLoadingErrorMsg, file.getName()), e.exception());
             /* CHECKSTYLE:OFF -> we should handle this kind of exception */
         } catch (final RuntimeException e) {
             /* CHECKSTYLE:ON */
-            SiriusPlugin.getDefault().warning(UNABLE_TO_LOAD_THIS_FILE + file.getName(), e);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_FileLoadingErrorMsg, file.getName()), e);
         }
         return null;
     }
@@ -625,6 +643,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * 
      * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
      */
+    @Override
     public void resourceChanged(final IResourceChangeEvent event) {
         /*
          * Refresh the registry when an odesign resource changed, is added or
@@ -854,6 +873,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * 
      * @return the cross referencer.
      */
+    @Override
     public ECrossReferenceAdapter getCrossReferencer() {
         return crossReferencer;
     }
@@ -866,6 +886,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *            the emf object to look for
      * @return the eObject instance if found, the given object otherwise
      */
+    @Override
     public EObject find(final EObject eObject) {
         try {
             return foundCache.get(eObject);

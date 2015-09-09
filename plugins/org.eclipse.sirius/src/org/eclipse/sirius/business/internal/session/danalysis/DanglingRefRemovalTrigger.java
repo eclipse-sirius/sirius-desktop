@@ -34,6 +34,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Predicate;
@@ -309,7 +310,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          */
         public RemoveDanglingReferencesCommand(TransactionalEditingDomain domain, ModelAccessor accessor, ECrossReferenceAdapter xRef, Collection<Resource> semanticResources,
                 RefreshEditorsPrecommitListener refreshEditorsPrecommitListener, Collection<EObject> toRemoveXRefFrom, EReferencePredicate isReferenceToIgnore) {
-            super(domain, "Remove dangling references");
+            super(domain, Messages.DanglingRefRemovalTrigger_removeDanglingCmdLabel);
             this.modelAccessor = accessor;
             this.xReferencer = xRef;
             this.semanticResources = semanticResources;

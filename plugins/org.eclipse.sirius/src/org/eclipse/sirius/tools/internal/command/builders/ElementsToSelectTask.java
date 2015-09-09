@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.command.builders;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,6 +20,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
@@ -62,7 +64,7 @@ public final class ElementsToSelectTask extends AbstractCommandTask {
 
     @Override
     public String getLabel() {
-        return "Get result of Elements To Select interpreted expression";
+        return Messages.ElementsToSelectTask_label;
     }
 
     @Override
@@ -84,7 +86,7 @@ public final class ElementsToSelectTask extends AbstractCommandTask {
                 uiState.getElementsToSelect().addAll(evaluateCollection);
             }
         } catch (EvaluationException e) {
-            SiriusPlugin.getDefault().warning("the following \"Elements To Select\" expression could not be correctly evaluated : " + elementsToSelectExpression, e);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ElementsToSelectTask_errorMsg, elementsToSelectExpression), e);
         }
     }
 }

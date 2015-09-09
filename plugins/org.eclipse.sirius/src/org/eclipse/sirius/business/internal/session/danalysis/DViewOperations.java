@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -37,6 +38,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescript
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -106,7 +108,7 @@ final class DViewOperations {
 
     public void createView(final Viewpoint viewpoint, final Collection<EObject> semantics, final boolean createNewRepresentations, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("View creation for Sirius : " + viewpoint.getName(), 3 + 10 * semantics.size());
+            monitor.beginTask(MessageFormat.format(Messages.DViewOperations_createViewMsg, viewpoint.getName()), 3 + 10 * semantics.size());
             Set<DView> intializedDViews = new LinkedHashSet<DView>();
             for (DAnalysis analysis : session.allAnalyses()) {
                 if (!hasAlreadyDViewForViewpoint(analysis, viewpoint)) {
@@ -121,7 +123,7 @@ final class DViewOperations {
 
             session.configureInterpreter();
             if (createNewRepresentations) {
-                monitor.subTask("Initialize representations");
+                monitor.subTask(Messages.DViewOperations_initRepresentationMsg);
                 for (final EObject semantic : semantics) {
                     DialectManager.INSTANCE.initRepresentations(viewpoint, semantic, new SubProgressMonitor(monitor, 10));
                 }
@@ -140,7 +142,7 @@ final class DViewOperations {
 
     public void addSelectedView(DView view, IProgressMonitor monitor) throws IllegalArgumentException {
         try {
-            monitor.beginTask("View selection", 3);
+            monitor.beginTask(Messages.DViewOperations_addSelectedViewMsg, 3);
             DAnalysis foundAnalysis = null;
             for (final DAnalysis dAnalysis : session.allAnalyses()) {
                 if (dAnalysis.getOwnedViews().contains(view)) {
@@ -149,7 +151,7 @@ final class DViewOperations {
                 }
             }
             if (foundAnalysis == null) {
-                throw new IllegalArgumentException("The view is not contained in the analysis");
+                throw new IllegalArgumentException(Messages.DViewOperations_notContainedErrorMsg);
             }
             foundAnalysis.getSelectedViews().add(view);
             monitor.worked(1);
@@ -165,7 +167,7 @@ final class DViewOperations {
 
     public void removeSelectedView(final DView view, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("View unselection", 1);
+            monitor.beginTask(Messages.DViewOperations_removeSelectedViewMsg, 1);
             session.getMainAnalysis().getSelectedViews().remove(view);
             updateSelectedViewpointsData(new SubProgressMonitor(monitor, 1));
             session.notifyListeners(SessionListener.SELECTED_VIEWS_CHANGE_KIND);
@@ -194,7 +196,7 @@ final class DViewOperations {
                 }
             }
             SetView<Viewpoint> difference = Sets.difference(Sets.newHashSet(session.getActivatedViewpoints()), Sets.newHashSet(selectedViewpoints));
-            monitor.beginTask("Update selected Viewpoints data", selectedViewpoints.size() + difference.size() + 1);
+            monitor.beginTask(Messages.DViewOperations_updateSelectedVPDataMsg, selectedViewpoints.size() + difference.size() + 1);
             // FIXME : it is useful?
             for (Viewpoint viewpoint : selectedViewpoints) {
                 Resource viewpointResource = viewpoint.eResource();

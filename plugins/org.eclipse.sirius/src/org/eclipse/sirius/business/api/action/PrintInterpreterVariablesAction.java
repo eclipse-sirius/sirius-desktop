@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,11 +44,12 @@ public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction 
 
     private static final String ENABLED_PARAM = "enabled"; //$NON-NLS-1$
 
-    private static final String DEFAULT_TITLE = "<no title>";
+    private static final String DEFAULT_TITLE = "<no title>"; //$NON-NLS-1$
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean canExecute(Collection<? extends EObject> selections) {
         return !selections.isEmpty();
     }
@@ -59,6 +60,7 @@ public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction 
      * <p>
      * {@inheritDoc}
      */
+    @Override
     public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
         Boolean enabled = getOptionalParameter(parameters, ENABLED_PARAM, Boolean.class);
         if (enabled != null && !enabled.booleanValue()) {
@@ -82,16 +84,17 @@ public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction 
     private void printVariables(String title, SortedMap<String, Object> allVariables) {
         if (allVariables.isEmpty()) {
             // CHECKSTYLE:OFF
-            System.out.println("[" + title + "] no variables available.");
+            System.out.println("[" + title + "] no variables available."); //$NON-NLS-1$ //$NON-NLS-2$
             // CHECKSTYLE:ON
         } else {
             int maxLength = Ordering.natural().onResultOf(new Function<String, Integer>() {
+                @Override
                 public Integer apply(String from) {
                     return from.length();
                 }
             }).max(allVariables.keySet()).length();
             // CHECKSTYLE:OFF
-            System.out.println("[" + title + "] variables available:");
+            System.out.println("[" + title + "] variables available:"); //$NON-NLS-1$ //$NON-NLS-2$
             int i = 1;
             for (Map.Entry<String, Object> variable : allVariables.entrySet()) {
                 System.out.print("  " + i++ + ". " + variable.getKey()); //$NON-NLS-1$ //$NON-NLS-2$

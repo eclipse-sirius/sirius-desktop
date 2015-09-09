@@ -24,6 +24,7 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
@@ -155,7 +156,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
         private final DAnalysisSessionImpl session;
 
         public RefreshControlledResourcesCommand(DAnalysisSessionImpl session) {
-            super(session.getTransactionalEditingDomain(), "Controlled resource detection");
+            super(session.getTransactionalEditingDomain(), Messages.ControlledResourcesDetector_refreshCommandLabel);
             this.session = session;
         }
 

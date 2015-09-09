@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task.operations;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -94,7 +96,7 @@ public class ExternalJavaActionTask extends AbstractOperationTask {
 
     @Override
     public String getLabel() {
-        return "Execute external java action \"" + externalJavaAction.getName() + "\"";
+        return MessageFormat.format(Messages.ExternalJavaActionTask_label, externalJavaAction.getName());
     }
 
     @Override

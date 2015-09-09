@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery;
 import org.eclipse.sirius.business.internal.query.EReferenceCustomizationQuery;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
@@ -37,20 +40,22 @@ public class VSMElementCustomizationReuseValidConstraint extends AbstractEStruct
             VSMElementCustomizationReuse vsmElementCustomizationReuse = (VSMElementCustomizationReuse) target;
             for (EObject eObject : vsmElementCustomizationReuse.getAppliedOn()) {
                 if (!isStyleDescriptionElt(eObject)) {
-                    status = ctx.createFailureStatus(getPath(eObject) + " doesn't concerns a style description or a style description element");
+                    status = ctx.createFailureStatus(MessageFormat.format(Messages.VSMElementCustomizationReuseValidConstraint_doesntConcernsStyleDescErrorMsg, getPath(eObject)));
                 } else {
                     for (EStructuralFeatureCustomization featureCustomization : vsmElementCustomizationReuse.getReuse()) {
                         if (featureCustomization instanceof EAttributeCustomization) {
                             EAttributeCustomization eAttributeCustomization = (EAttributeCustomization) featureCustomization;
                             EAttributeCustomizationQuery eAttributeCustomizationQuery = new EAttributeCustomizationQuery(eAttributeCustomization);
                             if (!eAttributeCustomizationQuery.isStyleDescriptionEltConformToEAttributeCustomization(eObject)) {
-                                status = ctx.createFailureStatus(getPath(eObject) + " doesn't have EAttribute named " + eAttributeCustomization.getAttributeName());
+                                status = ctx.createFailureStatus(
+                                        MessageFormat.format(Messages.VSMElementCustomizationReuseValidConstraint_noEAttributeErrorMsg, getPath(eObject), eAttributeCustomization.getAttributeName()));
                             }
                         } else if (featureCustomization instanceof EReferenceCustomization) {
                             EReferenceCustomization eReferenceCustomization = (EReferenceCustomization) featureCustomization;
                             EReferenceCustomizationQuery eReferenceCustomizationQuery = new EReferenceCustomizationQuery(eReferenceCustomization);
                             if (!eReferenceCustomizationQuery.isStyleDescriptionEltConformToEReferenceCustomization(eObject)) {
-                                status = ctx.createFailureStatus(getPath(eObject) + " doesn't have EReference named " + eReferenceCustomization.getReferenceName());
+                                status = ctx.createFailureStatus(
+                                        MessageFormat.format(Messages.VSMElementCustomizationReuseValidConstraint_noEReferenceErrorMsg, getPath(eObject), eReferenceCustomization.getReferenceName()));
                             }
                         }
                     }

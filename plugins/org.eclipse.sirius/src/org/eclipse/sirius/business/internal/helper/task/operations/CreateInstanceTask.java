@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task.operations;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.Feature
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 
@@ -67,13 +69,14 @@ public class CreateInstanceTask extends AbstractOperationTask implements ICreati
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
         target = context.getCurrentTarget();
         final String typeName = getFeatureName(target, createOp, createOp.getTypeName());
         instance = extPackage.createInstance(typeName);
         if (instance == null) {
             // the creation failed
-            SiriusPlugin.getDefault().error("Impossible to create a " + typeName, new RuntimeException());
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.CreateInstanceTask_creationErrorMsg, typeName), new RuntimeException());
             return;
         }
         if (!StringUtil.isEmpty(createOp.getVariableName())) {
@@ -87,7 +90,7 @@ public class CreateInstanceTask extends AbstractOperationTask implements ICreati
             // already specified.
             final Object value = extPackage.eGet(target, referenceName);
             if (value != null) {
-                SiriusPlugin.getDefault().error("Impossible to add a value to the reference " + referenceName + " of the object " + target, new RuntimeException());
+                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.CreateInstanceTask_addToRefErrorMsg, referenceName, target), new RuntimeException());
                 return;
             }
         }
@@ -101,8 +104,9 @@ public class CreateInstanceTask extends AbstractOperationTask implements ICreati
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "Create a new instance";
+        return Messages.CreateInstanceTask_label;
     }
 
     /**
@@ -110,6 +114,7 @@ public class CreateInstanceTask extends AbstractOperationTask implements ICreati
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedElements()
      */
+    @Override
     public Collection<EObject> getCreatedElements() {
         final Collection<EObject> result = new HashSet<EObject>(1);
         if (instance != null) {
@@ -123,6 +128,7 @@ public class CreateInstanceTask extends AbstractOperationTask implements ICreati
      * 
      * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getAffectedElements()
      */
+    @Override
     public Collection<EObject> getAffectedElements() {
         final Collection<EObject> result = new HashSet<EObject>(1);
         if (target != null) {
@@ -136,6 +142,7 @@ public class CreateInstanceTask extends AbstractOperationTask implements ICreati
      * 
      * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getCreatedReferences()
      */
+    @Override
     public Collection<EObject> getCreatedReferences() {
         // not applicable
         return Collections.emptySet();
@@ -146,6 +153,7 @@ public class CreateInstanceTask extends AbstractOperationTask implements ICreati
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedRepresentationElements()
      */
+    @Override
     public Collection<DRepresentationElement> getCreatedRepresentationElements() {
         // nothing
         return Collections.emptySet();

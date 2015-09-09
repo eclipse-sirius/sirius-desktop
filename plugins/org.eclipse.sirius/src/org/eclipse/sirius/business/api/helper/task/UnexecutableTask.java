@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper.task;
+
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * A singleton {@link UnexecutableTask#INSTANCE} that cannot execute.
@@ -31,6 +33,7 @@ public final class UnexecutableTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
 
     }
@@ -50,8 +53,9 @@ public final class UnexecutableTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "unexecutable task";
+        return Messages.UnexecutableTask_label;
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.sirius.business.internal.session.parser.SiriusSaxParserNormalAbortException;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -64,7 +65,7 @@ public abstract class AbstractVersionSAXParser {
      * @return the version
      */
     public String getVersion(final IProgressMonitor monitor) {
-        monitor.beginTask("Get version number of representations file", 1);
+        monitor.beginTask(Messages.AbstractVersionSAXParser_getVersionMsg, 1);
         VersionHandler versionHandler = new VersionHandler();
         ExtensibleURIConverterImpl uriConverterImpl = new ExtensibleURIConverterImpl();
 
@@ -112,7 +113,7 @@ public abstract class AbstractVersionSAXParser {
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
             if (qName.equals(getVersionedElementQualifiedName())) {
                 version = attributes.getValue("version"); //$NON-NLS-1$
-                throw new SiriusSaxParserNormalAbortException("All needed informations have been reached. Stop the parsing.");
+                throw new SiriusSaxParserNormalAbortException(Messages.AbstractVersionSAXParser_stopParsingMsg);
             }
         }
 

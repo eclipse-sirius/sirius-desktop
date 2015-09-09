@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
@@ -211,10 +212,10 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
      * <!-- end-user-doc -->
      * 
      * @see #getChoiceOfValuesMessage()
-     * @generated
+     * @not-generated
      * @ordered
      */
-    protected static final String CHOICE_OF_VALUES_MESSAGE_EDEFAULT = "Choice of values";
+    protected static final String CHOICE_OF_VALUES_MESSAGE_EDEFAULT = Messages.PaneBasedSelectionWizardDescriptionImpl_choiceOfValuesMsg;
 
     /**
      * The cached value of the '{@link #getChoiceOfValuesMessage()
@@ -319,10 +320,10 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
      * <!-- end-user-doc -->
      * 
      * @see #getSelectedValuesMessage()
-     * @generated
+     * @not-generated
      * @ordered
      */
-    protected static final String SELECTED_VALUES_MESSAGE_EDEFAULT = "Selected values";
+    protected static final String SELECTED_VALUES_MESSAGE_EDEFAULT = Messages.PaneBasedSelectionWizardDescriptionImpl_selectedValuesMsg;
 
     /**
      * The cached value of the '{@link #getSelectedValuesMessage()
@@ -467,8 +468,8 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
             containerView = (ContainerViewVariable) eResolveProxy(oldContainerView);
             if (containerView != oldContainerView) {
                 InternalEObject newContainerView = (InternalEObject) containerView;
-                NotificationChain msgs = oldContainerView
-                        .eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, null);
+                NotificationChain msgs = oldContainerView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null,
+                        null);
                 if (newContainerView.eInternalContainer() == null) {
                     msgs = newContainerView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, msgs);
                 }
@@ -626,8 +627,8 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION,
-                        null, null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null,
+                        null);
                 if (newInitialOperation.eInternalContainer() == null) {
                     msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
                 }
@@ -1171,8 +1172,8 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE:
             return PaneBasedSelectionWizardDescriptionImpl.WINDOW_TITLE_EDEFAULT == null ? windowTitle != null : !PaneBasedSelectionWizardDescriptionImpl.WINDOW_TITLE_EDEFAULT.equals(windowTitle);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH:
-            return PaneBasedSelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT == null ? windowImagePath != null : !PaneBasedSelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT
-                    .equals(windowImagePath);
+            return PaneBasedSelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT == null ? windowImagePath != null
+                    : !PaneBasedSelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT.equals(windowImagePath);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__MESSAGE:
             return PaneBasedSelectionWizardDescriptionImpl.MESSAGE_EDEFAULT == null ? message != null : !PaneBasedSelectionWizardDescriptionImpl.MESSAGE_EDEFAULT.equals(message);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CHOICE_OF_VALUES_MESSAGE:
@@ -1184,11 +1185,11 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__TREE:
             return tree != PaneBasedSelectionWizardDescriptionImpl.TREE_EDEFAULT;
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION:
-            return PaneBasedSelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !PaneBasedSelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT
-                    .equals(rootExpression);
+            return PaneBasedSelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null
+                    : !PaneBasedSelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION:
-            return PaneBasedSelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !PaneBasedSelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT
-                    .equals(childrenExpression);
+            return PaneBasedSelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null
+                    : !PaneBasedSelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__SELECTED_VALUES_MESSAGE:
             return PaneBasedSelectionWizardDescriptionImpl.SELECTED_VALUES_MESSAGE_EDEFAULT == null ? selectedValuesMessage != null
                     : !PaneBasedSelectionWizardDescriptionImpl.SELECTED_VALUES_MESSAGE_EDEFAULT.equals(selectedValuesMessage);

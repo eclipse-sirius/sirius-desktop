@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.text.ParseException;
 
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * Task to init interreter variables.
@@ -50,6 +51,7 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
         if (message != null && message.length() == 0) {
             setVariable(Integer.valueOf(0), ""); //$NON-NLS-1$
@@ -103,7 +105,8 @@ public class InitInterpreterFromParsedVariableTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "Init Acceleo interpreter with parsed variables";
+        return Messages.InitInterpreterFromParsedVariableTask_label;
     }
 }

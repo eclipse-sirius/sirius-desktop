@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Iterators;
@@ -127,7 +128,7 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
      */
     @Override
     public String getLabel() {
-        return "Delete representation elements task";
+        return Messages.DeleteDRepresentationElementsTask_label;
     }
 
     private Set<EObject> completeCollection(final Collection<EObject> semantics) {

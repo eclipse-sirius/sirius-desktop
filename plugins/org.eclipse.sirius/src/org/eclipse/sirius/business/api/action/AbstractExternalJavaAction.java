@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.action;
 
+import java.text.MessageFormat;
 import java.util.Map;
 
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * Abstract base class for {@link IExternalJavaAction} implementations, with
@@ -69,7 +71,7 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
         T result;
         if (!parameters.containsKey(name)) {
             if (required) {
-                throw new IllegalArgumentException("Missing required parameter '" + name + "' for Java action " + this.getClass().getName());
+                throw new IllegalArgumentException(MessageFormat.format(Messages.AbstractExternalJavaAction_parameterErrorMsg, name, this.getClass().getName()));
             } else {
                 result = null;
             }
@@ -80,8 +82,9 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
         } else if (value == null && !required) {
             result = null;
         } else {
-            String typeName = (value == null) ? "null" : ("a " + value.getClass().getSimpleName()); //$NON-NLS-1$
-            throw new IllegalArgumentException("Type error: parameter '" + name + "' should be a " + type.getSimpleName() + " but is " + typeName);
+            String typeName = (value == null) ? Messages.AbstractExternalJavaAction_nullParameter
+                    : (MessageFormat.format(Messages.AbstractExternalJavaAction_parameterType, value.getClass().getSimpleName()));
+            throw new IllegalArgumentException(MessageFormat.format(Messages.AbstractExternalJavaAction_parameterTypeErrorMsg, name, type.getSimpleName(), typeName));
         }
         return result;
     }

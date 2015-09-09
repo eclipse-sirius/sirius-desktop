@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -27,6 +28,7 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 import com.google.common.collect.Lists;
@@ -67,10 +69,10 @@ public class ValidImageConstraint extends AbstractConstraint {
         // there is another validation rule for that)
         if (!StringUtil.isEmpty(path)) {
             if (!validateExtension(path)) {
-                failures.add(ctx.createFailureStatus(new Object[] { "The path '" + path + "' does not correspond to an image." }));
+                failures.add(ctx.createFailureStatus(new Object[] { MessageFormat.format(Messages.ValidImageConstraint_invalidPathErrorMsg, path) }));
             }
             if (!validateExistence(path, rs)) {
-                failures.add(ctx.createFailureStatus(new Object[] { "The image '" + path + "' does not exist." }));
+                failures.add(ctx.createFailureStatus(new Object[] { MessageFormat.format(Messages.ValidImageConstraint_imageDoesntExistErrorMsg, path) }));
             }
         }
         if (failures.isEmpty()) {

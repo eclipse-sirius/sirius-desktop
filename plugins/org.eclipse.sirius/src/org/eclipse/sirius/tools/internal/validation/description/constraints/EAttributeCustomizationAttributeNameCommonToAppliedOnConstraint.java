@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
+import java.text.MessageFormat;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.IStatus;
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 
 /**
@@ -32,8 +34,6 @@ import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint extends AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint {
-
-    private static final String EATTRIBUTE_NAME_ON = " EAttribute name on ";
 
     @Override
     public IStatus validate(IValidationContext ctx) {
@@ -56,16 +56,19 @@ public class EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint ext
         if (appliedOnIterator.hasNext()) {
             EObject firstStyleDescriptionElt = appliedOnIterator.next();
             if (!isStyleDescriptionElt(firstStyleDescriptionElt)) {
-                status = ctx.createFailureStatus(getPath(firstStyleDescriptionElt) + " doesn't concerns a style description or a style description element");
+                status = ctx.createFailureStatus(
+                        MessageFormat.format(Messages.EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint_validationStyleDescriptionErrorMsg, getPath(firstStyleDescriptionElt)));
             } else {
                 EStructuralFeature eStructuralFeature = firstStyleDescriptionElt.eClass().getEStructuralFeature(attributeName);
                 if (eStructuralFeature instanceof EAttribute) {
                     EClassifier firstEType = eStructuralFeature.getEType();
                     status = validateFollowingStyleDescriptionElts(appliedOnIterator, firstStyleDescriptionElt, firstEType, attributeName, ctx);
                 } else if (eStructuralFeature == null) {
-                    status = ctx.createFailureStatus(attributeName + EATTRIBUTE_NAME_ON + getPath(firstStyleDescriptionElt) + " doesn't exists");
+                    status = ctx.createFailureStatus(MessageFormat.format(Messages.EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint_validationNotExistErrorMsg, attributeName,
+                            getPath(firstStyleDescriptionElt)));
                 } else {
-                    status = ctx.createFailureStatus(attributeName + EATTRIBUTE_NAME_ON + getPath(firstStyleDescriptionElt) + " concerns " + eStructuralFeature + " which is not a EAttribute");
+                    status = ctx.createFailureStatus(MessageFormat.format(Messages.EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint_notEAttributeErrorMsg, attributeName,
+                            getPath(firstStyleDescriptionElt), eStructuralFeature));
                 }
             }
         }
@@ -77,19 +80,22 @@ public class EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint ext
         while (appliedOnIterator.hasNext()) {
             EObject next = appliedOnIterator.next();
             if (!isStyleDescriptionElt(next)) {
-                status = ctx.createFailureStatus(getPath(next) + " doesn't concerns a style description or a style description element");
+                status = ctx.createFailureStatus(MessageFormat.format(Messages.EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint_validationStyleDescriptionErrorMsg, getPath(next)));
                 break;
             } else {
                 EStructuralFeature eStructuralFeature = next.eClass().getEStructuralFeature(attributeName);
                 if (eStructuralFeature instanceof EAttribute) {
                     if (firstEType != eStructuralFeature.getEType()) {
-                        status = ctx.createFailureStatus(getPath(firstStyleDescriptionElt) + " and " + getPath(next) + "have each a EAttribute named " + attributeName + " but with differents types");
+                        status = ctx.createFailureStatus(MessageFormat.format(Messages.EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint_EAttributeDiffernentTypesErrorMsg,
+                                getPath(firstStyleDescriptionElt), getPath(next), attributeName));
                         break;
                     }
                 } else if (eStructuralFeature == null) {
-                    status = ctx.createFailureStatus(attributeName + EATTRIBUTE_NAME_ON + getPath(next) + " doesn't exists");
+                    status = ctx.createFailureStatus(
+                            MessageFormat.format(Messages.EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint_validationNotExistErrorMsg, attributeName, getPath(next)));
                 } else {
-                    status = ctx.createFailureStatus(attributeName + EATTRIBUTE_NAME_ON + getPath(next) + " concerns " + eStructuralFeature + " which is not a EAttribute");
+                    status = ctx.createFailureStatus(
+                            MessageFormat.format(Messages.EAttributeCustomizationAttributeNameCommonToAppliedOnConstraint_notEAttributeErrorMsg, attributeName, getPath(next), eStructuralFeature));
                     break;
                 }
             }

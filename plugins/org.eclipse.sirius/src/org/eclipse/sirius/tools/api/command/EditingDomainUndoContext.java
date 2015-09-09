@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2006, 2010 IBM Corporation and others.
+ * Copyright (c) 2006, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.tools.api.command;
 
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * An {@link IUndoContext} that tags an EMF operation with the editing domain
@@ -41,8 +42,9 @@ public final class EditingDomainUndoContext implements IUndoContext {
      * 
      * @see org.eclipse.core.commands.operations.IUndoContext#getLabel()
      */
+    @Override
     public String getLabel() {
-        return "Affected Editing Domain";
+        return Messages.EditingDomainUndoContext_label;
     }
 
     /**
@@ -54,6 +56,7 @@ public final class EditingDomainUndoContext implements IUndoContext {
      *      <code>EditingDomainUndoContext</code> representing the same editing
      *      domain as I.
      */
+    @Override
     public boolean matches(final IUndoContext context) {
         return this.equals(context);
     }

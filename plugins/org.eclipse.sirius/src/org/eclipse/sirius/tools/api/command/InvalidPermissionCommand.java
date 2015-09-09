@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.command;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * A command that throws a {@link LockedInstanceException} when it gets
@@ -52,7 +55,7 @@ public class InvalidPermissionCommand extends SiriusCommand {
      *            the elements that user tried to modify
      */
     public InvalidPermissionCommand(TransactionalEditingDomain domain, EObject... lockedElements) {
-        super(domain, "Invalid Permission : cannot modify " + lockedElements);
+        super(domain, MessageFormat.format(Messages.InvalidPermissionCommand_label, lockedElements));
         this.lockedElements = lockedElements;
     }
 

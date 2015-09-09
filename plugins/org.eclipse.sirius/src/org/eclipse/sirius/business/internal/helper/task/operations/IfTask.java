@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task.operations;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.If;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -58,6 +61,6 @@ public class IfTask extends AbstractOperationTask {
 
     @Override
     public String getLabel() {
-        return "Evaluate : " + ifOperation.getConditionExpression();
+        return MessageFormat.format(Messages.IfTask_label, ifOperation.getConditionExpression());
     }
 }

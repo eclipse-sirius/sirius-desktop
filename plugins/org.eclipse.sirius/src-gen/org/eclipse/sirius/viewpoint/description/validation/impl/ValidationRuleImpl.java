@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
@@ -78,10 +79,10 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getMessage()
-     * @generated
+     * @not-generated
      * @ordered
      */
-    protected static final String MESSAGE_EDEFAULT = "The element has...";
+    protected static final String MESSAGE_EDEFAULT = Messages.ValidationRuleImpl_elementHas;
 
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}'

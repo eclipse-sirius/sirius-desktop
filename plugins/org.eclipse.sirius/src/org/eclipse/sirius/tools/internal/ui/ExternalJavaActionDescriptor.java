@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.ui;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -50,9 +53,9 @@ public class ExternalJavaActionDescriptor {
         try {
             return (IExternalJavaAction) element.createExecutableExtension(CLASS_ATTRIBUTE);
         } catch (final CoreException e) {
-            SiriusPlugin.getDefault().error("Impossible to create the action " + element.getAttribute(CLASS_ATTRIBUTE), e);
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ExternalJavaActionDescriptor_actionCreationErrorMsg, element.getAttribute(CLASS_ATTRIBUTE)), e);
         } catch (final ClassCastException e) {
-            SiriusPlugin.getDefault().error("Impossible to create the action " + element.getAttribute(CLASS_ATTRIBUTE), e);
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ExternalJavaActionDescriptor_actionCreationErrorMsg, element.getAttribute(CLASS_ATTRIBUTE)), e);
         }
         return null;
     }

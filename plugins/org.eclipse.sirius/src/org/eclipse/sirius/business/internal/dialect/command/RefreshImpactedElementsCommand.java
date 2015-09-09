@@ -21,6 +21,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * This command performs a refresh only for impacted elements.
@@ -49,7 +50,7 @@ public class RefreshImpactedElementsCommand extends RecordingCommand {
      *            not contain touch notifications.
      */
     public RefreshImpactedElementsCommand(TransactionalEditingDomain domain, IProgressMonitor monitor, Collection<DRepresentation> representationsToRefresh, Collection<Notification> notifications) {
-        super(domain, "Refresh impacted representation elements");
+        super(domain, Messages.RefreshImpactedElementsCommand_label);
         this.monitor = monitor;
         this.representations = representationsToRefresh;
         this.notifications = notifications;
@@ -65,7 +66,7 @@ public class RefreshImpactedElementsCommand extends RecordingCommand {
         }
 
         try {
-            monitor.beginTask("Refresh impacted representation elements", representations.size());
+            monitor.beginTask(Messages.RefreshImpactedElementsCommand_label, representations.size());
             for (DRepresentation representation : representations) {
                 if (safeRefresh(representation)) {
                     DialectManager.INSTANCE.refreshImpactedElements(representation, notifications, new SubProgressMonitor(monitor, 1));

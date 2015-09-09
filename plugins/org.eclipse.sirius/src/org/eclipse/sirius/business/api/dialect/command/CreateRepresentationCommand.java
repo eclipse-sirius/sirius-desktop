@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.dialect.command;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Set;
 
@@ -23,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -69,7 +71,7 @@ public class CreateRepresentationCommand extends RecordingCommand {
      *            representation creation
      */
     public CreateRepresentationCommand(Session session, RepresentationDescription description, EObject eObject, String name, IProgressMonitor monitor) {
-        super(session.getTransactionalEditingDomain(), "Create representation");
+        super(session.getTransactionalEditingDomain(), Messages.CreateRepresentationCommand_label);
         this.session = session;
         this.description = description;
         this.semantic = eObject;
@@ -171,8 +173,8 @@ public class CreateRepresentationCommand extends RecordingCommand {
                 RuntimeLoggerManager.INSTANCE.warning(newRepresentationRoot, ToolPackage.eINSTANCE.getRepresentationCreationDescription_BrowseExpression(), e);
             }
             if (newRepresentationRoot == null) {
-                RuntimeLoggerManager.INSTANCE.warning(initialRoot, ToolPackage.eINSTANCE.getRepresentationCreationDescription_BrowseExpression(), "Browse expression " + desc.getBrowseExpression()
-                        + " evaluated to null.");
+                RuntimeLoggerManager.INSTANCE.warning(initialRoot, ToolPackage.eINSTANCE.getRepresentationCreationDescription_BrowseExpression(),
+                        MessageFormat.format(Messages.CreateRepresentationCommand_nullExpresionWarningMsg, desc.getBrowseExpression()));
             }
         }
         return newRepresentationRoot;

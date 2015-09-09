@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.profiler;
 
+import org.eclipse.sirius.viewpoint.Messages;
+
 /**
  * Profiling tasks Key sused.
  * 
@@ -17,7 +19,7 @@ package org.eclipse.sirius.tools.api.profiler;
  * 
  */
 public final class SiriusTasksKey {
-
+    // CHECKSTYLE:OFF
     /**
      * DDiagram category.
      */
@@ -66,340 +68,340 @@ public final class SiriusTasksKey {
     /**
      * Metamodel extension category.
      */
-    public static final String MM_EXTENSION_CAT = "Metamodel Extension";
+    public static final String MM_EXTENSION_CAT = Messages.SiriusTasksKey_mmExtension;
 
     /**
      * Modeler Category.
      */
-    public static final String GENERIC_MODELER_CAT = "Generic Modeler";
+    public static final String GENERIC_MODELER_CAT = Messages.SiriusTasksKey_genericModeler;
 
     /**
      * Repair/migration Category.
      */
-    public static final String REPAIR_MIGRATE = "Repair/migrate";
+    public static final String REPAIR_MIGRATE = Messages.SiriusTasksKey_repairMigrate;
 
     /**
      * Task singleton.
      */
-    public static final String CLEAN_DIAGRAM_KEY = "Cleaning a diagram";
+    public static final String CLEAN_DIAGRAM_KEY = Messages.SiriusTasksKey_cleaningADiagram;
 
     /**
      * Task singleton.
      */
-    public static final String UPDATING_DIAGRAM_KEY = "Updating a diagram";
+    public static final String UPDATING_DIAGRAM_KEY = Messages.SiriusTasksKey_updatingADiagram;
 
     /**
      * Task singleton.
      */
-    public static final String EVALUATING_ACCELEO_KEY = "Evaluating Acceleo expressions";
+    public static final String EVALUATING_ACCELEO_KEY = Messages.SiriusTasksKey_evaluatingAcceleoExpression;
 
     /**
      * Task singleton.
      */
-    public static final String EVALUATING_OCL_KEY = "Evaluating OCL expressions";
+    public static final String EVALUATING_OCL_KEY = Messages.SiriusTasksKey_evaluatingOCLExpressions;
 
     /**
      * Task singleton.
      */
-    public static final String CHECK_PRECONDITION_KEY = "Check precondition expressions";
+    public static final String CHECK_PRECONDITION_KEY = Messages.SiriusTasksKey_checkPreconditionExpressions;
 
     /**
      * Task singleton.
      */
-    public static final String INITIALIZE_ACCELEO_KEY = "Initialize Acceleo interpreter";
+    public static final String INITIALIZE_ACCELEO_KEY = Messages.SiriusTasksKey_InitAcceleoInterpreter;
 
     /**
      * Task singleton.
      */
-    public static final String UPDATE_ALL_EDGES_KEY = "Updating all edges";
+    public static final String UPDATE_ALL_EDGES_KEY = Messages.SiriusTasksKey_updatingAllEdges;
 
     /**
      * Task singleton.
      */
-    public static final String UPDATE_ALL_CONTAINERS_KEY = "Updating all containers";
+    public static final String UPDATE_ALL_CONTAINERS_KEY = Messages.SiriusTasksKey_updateAllContainers;
 
     /**
      * Task singleton.
      */
-    public static final String UPDATE_ALL_NODES_KEY = "Updating all nodes";
+    public static final String UPDATE_ALL_NODES_KEY = Messages.SiriusTasksKey_updatingAllNodes;
 
     /**
      * Task singleton.
      */
-    public static final String CREATE_MISSING_NODES_KEY = "Create missing node from viewpoint";
+    public static final String CREATE_MISSING_NODES_KEY = Messages.SiriusTasksKey_createMissingNodeFromViewpoint;
 
     /**
      * Task singleton.
      */
-    public static final String IS_VISIBLE_KEY = "Display Service : is the element displayed ?";
+    public static final String IS_VISIBLE_KEY = Messages.SiriusTasksKey_isElementDisplayed;
 
     /**
      * Task singleton.
      * 
      * @since 0.9.0
      */
-    public static final String REFRESH_VISIBILITY_KEY = "Display Service : check that the element has to be displayed";
+    public static final String REFRESH_VISIBILITY_KEY = Messages.SiriusTasksKey_checkThatElementHasToBeDisplayed;
 
     /**
      * Task singleton.
      */
-    public static final String IS_COLLAPSED_KEY = "FilterService : is the element collapsed ?";
+    public static final String IS_COLLAPSED_KEY = Messages.SiriusTasksKey_isTheElementCollapsed;
 
     /**
      * Task singleton.
      */
-    public static final String CREATE_MISSING_NODES_CONTAINER_KEY = "Create missing node from container";
+    public static final String CREATE_MISSING_NODES_CONTAINER_KEY = Messages.SiriusTasksKey_createMissingNodeFromContainer;
 
     /**
      * Task singleton.
      */
-    public static final String CREATE_MISSING_EDGES_KEY = "Create missing edges from viewpoint";
+    public static final String CREATE_MISSING_EDGES_KEY = Messages.SiriusTasksKey_createMissingEdgesFromViewpoint;
 
     /**
      * Task singleton.
      */
-    public static final String CREATE_MISSING_CONTAINER_KEY = "Create missing containers from viewpoint";
+    public static final String CREATE_MISSING_CONTAINER_KEY = Messages.SiriusTasksKey_createMissingContainersFromViewpoint;
 
     /**
      * Task singleton.
      */
-    public static final String REFRESH_DIAGRAM_KEY = "Refresh a diagram";
+    public static final String REFRESH_DIAGRAM_KEY = Messages.SiriusTasksKey_refreshADiagram;
 
     /**
      * Task singleton.
      */
-    public static final String CLEANING_REMOVEDANGLING_KEY = "Cleaning : remove dangling references";
+    public static final String CLEANING_REMOVEDANGLING_KEY = Messages.SiriusTasksKey_CleaningRemoveDanglingRef;
 
     /**
      * Task singleton.
      */
-    public static final String CLEANING_EDGES_KEY = "Cleaning all edges";
+    public static final String CLEANING_EDGES_KEY = Messages.SiriusTasksKey_cleaningAllEdges;
 
     /**
      * Task singleton.
      */
-    public static final String VALIDATE_NODE_KEY = "Validating the node";
+    public static final String VALIDATE_NODE_KEY = Messages.SiriusTasksKey_validatingTheNode;
 
     /**
      * Task singleton.
      */
-    public static final String VALIDATE_EDGE_KEY = "Validating the edge";
+    public static final String VALIDATE_EDGE_KEY = Messages.SiriusTasksKey_validatingEdge;
 
     /**
      * Task singleton.
      */
-    public static final String GET_NODE_CANDIDATES_KEY = "Get node's candidates";
+    public static final String GET_NODE_CANDIDATES_KEY = Messages.SiriusTasksKey_getNodesCandidates;
 
     /**
      * Task singleton.
      */
-    public static final String GET_EDGE_CANDIDATES_KEY = "Get edge's candidates";
+    public static final String GET_EDGE_CANDIDATES_KEY = Messages.SiriusTasksKey_getEdgesCandidates;
 
     /**
      * Task singleton.
      */
-    public static final String INSTANCE_OF_KEY = "EInstance of ";
+    public static final String INSTANCE_OF_KEY = Messages.SiriusTasksKey_instanceOf;
 
     /**
      * Task singleton.
      */
-    public static final String GET_CONTAINER_CANDIDATES_KEY = "Get container candidates";
+    public static final String GET_CONTAINER_CANDIDATES_KEY = Messages.SiriusTasksKey_getContainerCandidates;
 
     /**
      * Task singleton.
      */
-    public static final String IS_FOLD_KEY = "Is fold";
+    public static final String IS_FOLD_KEY = Messages.SiriusTasksKey_isFold;
 
     /**
      * Task singleton.
      */
-    public static final String CACHE_ACCESS_KEY = "Cache access";
+    public static final String CACHE_ACCESS_KEY = Messages.SiriusTasksKey_cacheAccess;
 
     /**
      * Task singleton.
      */
-    public static final String VALIDATE_VIEWPOINT_KEY = "Validate all the DDiagram elements";
+    public static final String VALIDATE_VIEWPOINT_KEY = Messages.SiriusTasksKey_validateAllDDiagramElements;
 
     /**
      * Task singleton.
      */
-    public static final String REFRESH_GEF_KEY = "Big refresh";
+    public static final String REFRESH_GEF_KEY = Messages.SiriusTasksKey_bigRefresh;
 
     /**
      * Task singleton.
      */
-    public static final String CANONICAL_REFRESH_KEY = "Canonical refresh";
+    public static final String CANONICAL_REFRESH_KEY = Messages.SiriusTasksKey_canonicalRefresh;
 
     /**
      * Task singleton.
      */
-    public static final String LAUCNH_REFRESH_FROM_LISTENER_KEY = "Launch Refresh From Operation History Listener";
+    public static final String LAUCNH_REFRESH_FROM_LISTENER_KEY = Messages.SiriusTasksKey_launchRefreshFromOperationHistoryListener;
 
     /**
      * Task singleton.
      */
-    public static final String LAUNCH_REFRESH_FROM_LAYER_CHANGE_KEY = "Launch Refresh From Layer Change";
+    public static final String LAUNCH_REFRESH_FROM_LAYER_CHANGE_KEY = Messages.SiriusTasksKey_launchRefreshFromLayerChange;
 
     /**
      * Task to check if a notation view is valid.
      */
-    public static final String IS_VIEW_VALID_KEY = "Is the GMF view valid ?";
+    public static final String IS_VIEW_VALID_KEY = Messages.SiriusTasksKey_isGMFViewValid;
 
     /**
      * Task EMF resolve all.
      */
-    public static final String RESOLVE_ALL_KEY = "Resolve All";
+    public static final String RESOLVE_ALL_KEY = Messages.SiriusTasksKey_resolveAll;
 
     /**
      * Task finding the .air from any model element.
      */
-    public static final String GET_ACCELEO_INTERPRETER_FROM_MODEL_KEY = "Find .air from model element.";
+    public static final String GET_ACCELEO_INTERPRETER_FROM_MODEL_KEY = Messages.SiriusTasksKey_findAirFromModelElement;
 
     /**
      * Task finding new candidates on the list.
      */
-    public static final String GET_ADDED_NODE_CANDIDATES_KEY = "Get Added nodes candidates";
+    public static final String GET_ADDED_NODE_CANDIDATES_KEY = Messages.SiriusTasksKey_getAddedNodesCandidates;
 
     /**
      * Task finding kept candidates on the list.
      */
-    public static final String GET_KEPT_NODE_CANDIDATES_KEY = "Get kept nodes candidates";
+    public static final String GET_KEPT_NODE_CANDIDATES_KEY = Messages.SiriusTasksKey_getKeptNodesCandidates;
 
     /**
      * Task finding removed candidates in the list.
      */
-    public static final String GET_REMOVED_NODE_CANDIDATES_KEY = "Get removed nodes candidates";
+    public static final String GET_REMOVED_NODE_CANDIDATES_KEY = Messages.SiriusTasksKey_getRemovedNodesCandidates;
 
     /**
      * When retrieving candidates target views.
      */
-    public static final String COMPUTE_TARGET_ELEMENTS_KEY = "Compute edge source/target views";
+    public static final String COMPUTE_TARGET_ELEMENTS_KEY = Messages.SiriusTasksKey_computeEdgeSrcTgtViews;
 
     /**
      * When cleaning diagram.
      */
-    public static final String CLEAN_ORPHANED_NODE_KEY = "Clean orphaned nodes";
+    public static final String CLEAN_ORPHANED_NODE_KEY = Messages.SiriusTasksKey_cleanOrphanedNodes;
 
     /**
      * When removing dangling reference.
      */
-    public static final String REMOVE_DANGLING_REFERENCE_KEY = "Remove dangling reference";
+    public static final String REMOVE_DANGLING_REFERENCE_KEY = Messages.SiriusTasksKey_removeDanglingRef;
 
     /**
      * When opening diagram.
      */
-    public static final String OPEN_DIAGRAM_KEY = "Open diagram";
+    public static final String OPEN_DIAGRAM_KEY = Messages.SiriusTasksKey_openDiagram;
 
     /**
      * The action that load the aird resource and open the session.
      */
-    public static final String OPEN_SESSION_ACTION_KEY = "Open Session Action";
+    public static final String OPEN_SESSION_ACTION_KEY = Messages.SiriusTasksKey_openSessionAction;
 
     /**
      * When opening session.
      */
-    public static final String OPEN_SESSION_KEY = "Open Session";
+    public static final String OPEN_SESSION_KEY = Messages.SiriusTasksKey_openSession;
 
     /**
      * Semantic refresh.
      */
-    public static final String SEMANTIC_REFRESH_KEY = "Semantic Refresh";
+    public static final String SEMANTIC_REFRESH_KEY = Messages.SiriusTasksKey_semanticRefresh;
 
     /**
      * Semantic refresh.
      */
-    public static final String SYNCHRONIZE_DIAGRAM_KEY = "Synchronize Diagram";
+    public static final String SYNCHRONIZE_DIAGRAM_KEY = Messages.SiriusTasksKey_synchronizeDiagram;
 
     /**
      * When refreshing the table.
      */
-    public static final String REFRESH_TABLE_KEY = "Refresh a table";
+    public static final String REFRESH_TABLE_KEY = Messages.SiriusTasksKey_refreshTable;
 
     /**
      * When refreshing the tree.
      */
-    public static final String REFRESH_TREE_KEY = "Refresh a tree";
+    public static final String REFRESH_TREE_KEY = Messages.SiriusTasksKey_refreshATree;
 
     /**
      * When creating the SWT.table.
      */
-    public static final String CREATE_TABLE_KEY = "Create the SWT table";
+    public static final String CREATE_TABLE_KEY = Messages.SiriusTasksKey_createSWTTable;
 
     /**
      * When refreshing the table.
      */
-    public static final String REFRESH_SWT_TABLE_KEY = "Refresh the SWT table";
+    public static final String REFRESH_SWT_TABLE_KEY = Messages.SiriusTasksKey_refreshSWTTable;
 
     /**
      * When refreshing a line of the table.
      */
-    public static final String REFRESH_SWT_LINE_KEY = "Refresh a line of the SWT table";
+    public static final String REFRESH_SWT_LINE_KEY = Messages.SiriusTasksKey_refreshSWTTableLine;
 
     /**
      * When updating a line of the table.
      */
-    public static final String UPDATE_SWT_LINE_KEY = "Update a line of the SWT table";
+    public static final String UPDATE_SWT_LINE_KEY = Messages.SiriusTasksKey_updateSWTTableLine;
 
     /**
      * When collapsing or expanding a line of the table.
      */
     @Deprecated
-    public static final String CHANGE_SWT_LINE_COLAPSE_STATE_KEY = "Change the collapse state of a line of the SWT table";
-    
+    public static final String CHANGE_SWT_LINE_COLAPSE_STATE_KEY = Messages.SiriusTasksKey_changeSWTTableCollapseState;
+
     /**
      * When collapsing or expanding a line of the table.
      */
-    public static final String CHANGE_SWT_LINE_COLLAPSE_STATE_KEY = "Change the collapse state of a line of the SWT table";
+    public static final String CHANGE_SWT_LINE_COLLAPSE_STATE_KEY = Messages.SiriusTasksKey_changeSWTTableCollapseState;
 
     /**
      * When refreshing a line of the table.
      */
-    public static final String ADD_SWT_COLUMN_KEY = "Add a column in the SWT table";
+    public static final String ADD_SWT_COLUMN_KEY = Messages.SiriusTasksKey_addAColumnInSWTTable;
 
     /**
      * When setting the name of a column.
      */
-    public static final String SET_COLUMN_NAME_KEY = "Set the column name in the SWT table";
+    public static final String SET_COLUMN_NAME_KEY = Messages.SiriusTasksKey_setColumnNameInSWTTable;
 
     /**
      * When refreshing the properties.
      */
-    public static final String REFRESH_PROPERTIES_VIEW_KEY = "Refresh the properties view";
+    public static final String REFRESH_PROPERTIES_VIEW_KEY = Messages.SiriusTasksKey_refreshPropertiesView;
 
     /**
      * When refreshing the properties.
      */
-    public static final String REFRESH_PROPERTIES_VIEW_SECTION_KEY = "Refresh a section of the properties view";
+    public static final String REFRESH_PROPERTIES_VIEW_SECTION_KEY = Messages.SiriusTasksKey_refreshPropertiesViewSection;
 
     /**
      * When opening table.
      */
-    public static final String OPEN_TABLE_KEY = "Open table";
+    public static final String OPEN_TABLE_KEY = Messages.SiriusTasksKey_openTable;
 
     /**
      * When opening tree.
      */
-    public static final String OPEN_TREE_KEY = "Open tree";
+    public static final String OPEN_TREE_KEY = Messages.SiriusTasksKey_openTree;
 
     /**
      * When showing or hiding a line of the table.
      */
-    public static final String CHANGE_SWT_LINE_VISIBLE_STATE_KEY = "Change the visible state of a line of the SWT table";
+    public static final String CHANGE_SWT_LINE_VISIBLE_STATE_KEY = Messages.SiriusTasksKey_changeSWTTableLineVisibleSate;
 
     /**
      * When showing or hiding a line of the table.
      */
-    public static final String CHANGE_SWT_COLUMN_VISIBLE_STATE_KEY = "Change the visible state of a column of the SWT table";
+    public static final String CHANGE_SWT_COLUMN_VISIBLE_STATE_KEY = Messages.SiriusTasksKey_changeSWTTableColumnVisibleState;
 
     /**
      * When showing or hiding a line of the table.
      */
-    public static final String REFRESH_LOST_ELEMENTS_KEY = "Refresh elements lost by repair/migrate first pass";
+    public static final String REFRESH_LOST_ELEMENTS_KEY = Messages.SiriusTasksKey_refreshRepairMigrateLostElements;
 
     /**
      * When loading an aird file.
      */
-    public static final String LOAD_AIRD_KEY = "Load aird file";
+    public static final String LOAD_AIRD_KEY = Messages.SiriusTasksKey_loadAirdFile;
 
     /**
      * avoid instanciation
