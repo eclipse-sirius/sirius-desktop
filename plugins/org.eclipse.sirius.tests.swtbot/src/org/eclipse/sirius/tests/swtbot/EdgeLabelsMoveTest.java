@@ -388,9 +388,29 @@ public class EdgeLabelsMoveTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * TODO: Add specific test for edge linking nodes contained in container.
+     * Add specific test for edge linking nodes contained in container.
      */
-    public void _testLabelMoveForEdgeInContainer() {
+    public void testLabelMoveForEdgeInContainer() {
+        String diagramName = "EdgeWith3SegmentsHVH";
+        Map<String, Dimension> edgeLabelExpectedPosition = Maps.newLinkedHashMap();
+        edgeLabelExpectedPosition.put("refToC1BBegin", new Dimension(0, -31));
+        edgeLabelExpectedPosition.put("refToC1BCenter", new Dimension(0, 0));
+        edgeLabelExpectedPosition.put("refToC1BEnd", new Dimension(0, 0));
+        doTestMovePointOnEdge(diagramName, Lists.newArrayList(new Point(-5, -30)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1A", "C1B", 0, true);
+
+        edgeLabelExpectedPosition.clear();
+        edgeLabelExpectedPosition.put("refToC1BBegin", new Dimension(0, 0));
+        doTestMoveSegment(DIAGRAM_DESCRIPTION_NAME, diagramName, Lists.newArrayList(new Point(0, 20), new Point(0, -10), new Point(0, -40)), edgeLabelExpectedPosition, ZoomLevel.ZOOM_100, "C1A",
+                "C1B", 2);
+
+        if (!failures.isEmpty()) {
+            String message = "";
+            for (AssertionFailedError assertion : failures) {
+                message = message + "\n" + assertion.getMessage();
+            }
+            System.out.println(message);
+            throw new AssertionFailedError(failures.size() + " failures found : " + message);
+        }
     }
 
     /**
