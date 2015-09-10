@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
+import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
@@ -18,6 +19,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.DEdgeCreateCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.DNode4CreateCommand;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
@@ -92,6 +94,22 @@ public abstract class AbstractDDiagramElementContainerItemSemanticEditPolicy ext
             return getGEFWrapper(new DEdgeCreateCommand(req, req.getSource(), req.getTarget()));
         }
         return null;
+    }
+
+    @Override
+    public boolean understandsRequest(Request request) {
+        boolean understandsRequest = super.understandsRequest(request);
+        if (understandsRequest) {
+            // Reconnect is disabled on Regions: the reconnect tool does not
+            // handle extra source/target mapping and there is currently no
+            // other means to allow reconnect tools on the RegionContainer.
+            if (REQ_RECONNECT_SOURCE.equals(request.getType()) || REQ_RECONNECT_TARGET.equals(request.getType())) {
+                if (getHost() instanceof AbstractDiagramElementContainerEditPart) {
+                    return !((AbstractDiagramElementContainerEditPart) getHost()).isRegion();
+                }
+            }
+        }
+        return understandsRequest;
     }
 
 }

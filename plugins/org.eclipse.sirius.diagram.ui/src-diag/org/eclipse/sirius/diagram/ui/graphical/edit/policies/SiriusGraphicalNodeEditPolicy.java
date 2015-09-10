@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -879,6 +879,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      *         the snapToGrid state.
      */
     protected EdgeLayoutData getEdgeLayoutDataWithSnapToGrid(CreateConnectionRequest request, INodeEditPart sourceEditPart, INodeEditPart targetEditPart, Point sourceLocation, Point targetLocation) {
+        IGraphicalEditPart srcEditPart = (IGraphicalEditPart) sourceEditPart;
+        IGraphicalEditPart tgtEditPart = (IGraphicalEditPart) targetEditPart;
+
         // Get the absolute source and target location but in 100% to facilitate
         // the computing
         Rectangle absoluteSourceBoundsIn100Percent = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceEditPart);
@@ -888,12 +891,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
         // Compute intersection between the line (source location<-->target
         // location) and the source node
-        Option<Point> intersectionSourcePoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, (IGraphicalEditPart) sourceEditPart, false,
-                true);
+        Option<Point> intersectionSourcePoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, srcEditPart, false, true);
         // Compute intersection between the line (source location<-->target
         // location) and the target node
-        Option<Point> intersectionTargetPoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, (IGraphicalEditPart) targetEditPart, true,
-                true);
+        Option<Point> intersectionTargetPoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, tgtEditPart, true, true);
         // Compute the snap source location and the snap target location
         Point absoluteSourceLocationSnapIn100Percent;
         Point absoluteTargetLocationSnapIn100Percent;
@@ -925,9 +926,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         // Applied the zoom of the current diagram to set the pointList, the
         // source reference point and the target reference point.
         PrecisionPoint absoluteSourceLocationSnap = new PrecisionPoint(absoluteSourceLocationSnapIn100Percent);
-        GraphicalHelper.applyInverseZoomOnPoint((IGraphicalEditPart) sourceEditPart, absoluteSourceLocationSnap);
+        GraphicalHelper.applyInverseZoomOnPoint(srcEditPart, absoluteSourceLocationSnap);
         PrecisionPoint absoluteTargteLoactionSnap = new PrecisionPoint(absoluteTargetLocationSnapIn100Percent);
-        GraphicalHelper.applyInverseZoomOnPoint((IGraphicalEditPart) targetEditPart, absoluteTargteLoactionSnap);
+        GraphicalHelper.applyInverseZoomOnPoint(tgtEditPart, absoluteTargteLoactionSnap);
 
         edgeLayoutData.setSourceRefPoint(absoluteSourceLocationSnap);
         edgeLayoutData.setTargetRefPoint(absoluteTargteLoactionSnap);

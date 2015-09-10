@@ -69,10 +69,10 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditP
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
-import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.RegionGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
@@ -190,11 +190,11 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
-        // CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
-        // compoundEditPolicy.addEditPolicy(new
-        // SiriusGraphicalNodeEditPolicy(getEditingDomain()));
+
         AbstractDiagramNodeEditPartOperation.createDefaultEditPolicies(this);
-        installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new SiriusGraphicalNodeEditPolicy());
+        if (isRegion()) {
+            installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new RegionGraphicalNodeEditPolicy());
+        }
         installEditPolicy(EditPolicy.LAYOUT_ROLE, createLayoutEditPolicy());
     }
 
@@ -862,7 +862,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         if (containerCompartment != null) {
             mainFigure.add(containerCompartment);
         }
-        
+
         // Update drop shadow.
         mainFigure.setBorder(tmpFigure.getBorder());
     }
