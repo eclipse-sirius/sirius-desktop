@@ -36,15 +36,18 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.BendpointMovedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -56,9 +59,9 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  * container, test change source decoration in Odesign, test bracketEdge on
  * bracketEdge, test bracketEdge on standardEdge, test standard edge on
  * bracketEdge, test change lineStyle.
- * 
+ *
  * Test VP-3092
- * 
+ *
  * @author jdupont
  */
 public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
@@ -464,12 +467,12 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Move newEReference1
         newEReference1BracketEdgeEditPartBot.select();
         int xDelta = 50;
-        Point dragLocation = newEReference1PointList.getMidpoint();
+        Point dragLocation = newEReference1PointList.getPoint(newEReference1PointList.size() / 2);
         Point dropLocation = dragLocation.getTranslated(xDelta, 0);
-        CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(newEReference1BracketEdgeEditPartBot);
+        BendpointMovedCondition bendpointMovedCondition = new BendpointMovedCondition((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) newEReference1BracketEdgeEditPartBot.part(),
+                dragLocation).checkBendpointAtPosition(newEReference1PointList.size() / 2);
         editor.drag(dragLocation, dropLocation);
-        bot.waitUntil(checkEditPartMoved);
-        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(bendpointMovedCondition);
 
         // Check bracket edge new pointList
         PointList newEReference1PointListAfterDrop = getPointList((BracketEdgeEditPart) newEReference1BracketEdgeEditPartBot.part());
@@ -482,7 +485,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(newEReference1PointList.getPoint(5), newEReference1PointListAfterDrop.getPoint(5));
 
         // Undo
-        undo(BracketBendpointEditPolicy.MOVE_COMMAND_LABEL);
+        undo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
         // Check
@@ -496,7 +499,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(newEReference1PointList.getPoint(5), newEReference1PointListAfterUndo.getPoint(5));
 
         // Redo
-        redo(BracketBendpointEditPolicy.MOVE_COMMAND_LABEL);
+        redo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
         // Check
@@ -538,12 +541,12 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         // Move newEReference111
         newEReference111BracketEdgeEditPartBot.select();
         int xDelta = 50;
-        Point dragLocation = newEReference111PointList.getMidpoint();
+        Point dragLocation = newEReference111PointList.getPoint(newEReference111PointList.size() / 2);
         Point dropLocation = dragLocation.getTranslated(xDelta, 0);
-        CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(newEReference111BracketEdgeEditPartBot);
+        BendpointMovedCondition bendpointMovedCondition = new BendpointMovedCondition((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) newEReference111BracketEdgeEditPartBot.part(),
+                dragLocation).checkBendpointAtPosition(newEReference111PointList.size() / 2);
         editor.drag(dragLocation, dropLocation);
-        bot.waitUntil(checkEditPartMoved);
-        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(bendpointMovedCondition);
 
         // Check bracket edge new pointList
         PointList newEReference111PointListAfterDrop = getPointList((BracketEdgeEditPart) newEReference111BracketEdgeEditPartBot.part());
@@ -556,7 +559,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(newEReference111PointList.getPoint(5), newEReference111PointListAfterDrop.getPoint(5));
 
         // Undo
-        undo(BracketBendpointEditPolicy.MOVE_COMMAND_LABEL);
+        undo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
         // Check
@@ -570,7 +573,7 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         assertEquals(newEReference111PointList.getPoint(5), newEReference111PointListAfterUndo.getPoint(5));
 
         // Redo
-        redo(BracketBendpointEditPolicy.MOVE_COMMAND_LABEL);
+        redo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
         // Check
@@ -688,13 +691,13 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         int xDelta = 30;
         Point dragLocation = newEReference111PointList.getMidpoint();
         Point dropLocation = dragLocation.getTranslated(xDelta, 0);
-        CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(newEReference111BracketEdgeEditPartBot);
+        BendpointMovedCondition bendpointMovedCondition = new BendpointMovedCondition((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) newEReference111BracketEdgeEditPartBot.part(),
+                dragLocation).checkBendpointAtPosition(newEReference111PointList.size() / 2);
         // Need to do a logical2screen to dragAndDrop the midPoint
         GraphicalHelper.logical2screen(dragLocation, (IGraphicalEditPart) newEReference111BracketEdgeEditPartBot.part());
         GraphicalHelper.logical2screen(dropLocation, (IGraphicalEditPart) newEReference111BracketEdgeEditPartBot.part());
         editor.drag(dragLocation, dropLocation);
-        bot.waitUntil(checkEditPartMoved);
-        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(bendpointMovedCondition);
 
         // Check bracket edge new pointList
         xDelta = (int) (xDelta * zoomLevel.getAmount());
@@ -908,6 +911,8 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         bot.viewByTitle(PROPERTIES).setFocus();
         // accesses to tab Decorators
         SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        final long previousTimeout = SWTBotPreferences.TIMEOUT;
+        SWTBotPreferences.TIMEOUT = 1000;
         try {
             // Check that routing style is not present
             bot.viewByTitle(PROPERTIES).bot().radio();
@@ -931,6 +936,8 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
             } catch (WidgetNotFoundException wnfe) {
                 // No things to do
             }
+        } finally {
+            SWTBotPreferences.TIMEOUT = previousTimeout;
         }
 
     }
@@ -1230,10 +1237,10 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         int yDelta = -100;
         Point dragLocation = newEReference1PointList.getPoint(BracketConnectionQuery.ORIGIN_POINT_INDEX);
         Point dropLocation = dragLocation.getTranslated(xDelta, yDelta);
-        CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(newEReference1BracketEdgeEditPartBot);
+        BendpointMovedCondition bendpointMovedCondition = new BendpointMovedCondition((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) newEReference1BracketEdgeEditPartBot.part(),
+                dragLocation).checkBendpointAtPosition(BracketConnectionQuery.ORIGIN_POINT_INDEX);
         editor.drag(dragLocation, dropLocation);
-        bot.waitUntil(checkEditPartMoved);
-        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(bendpointMovedCondition);
 
         // Check bracket edge new pointList
         PointList newEReference1PointListAfterDrop = getPointList((BracketEdgeEditPart) newEReference1BracketEdgeEditPartBot.part());
@@ -1306,10 +1313,10 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         int yDelta = 100;
         Point dragLocation = newEReference1PointList.getPoint(BracketConnectionQuery.TARGET_POINT_INDEX);
         Point dropLocation = dragLocation.getTranslated(xDelta, yDelta);
-        CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(newEReference1BracketEdgeEditPartBot);
+        BendpointMovedCondition bendpointMovedCondition = new BendpointMovedCondition((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) newEReference1BracketEdgeEditPartBot.part(),
+                dragLocation).checkBendpointAtPosition(BracketConnectionQuery.TARGET_POINT_INDEX);
         editor.drag(dragLocation, dropLocation);
-        bot.waitUntil(checkEditPartMoved);
-        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(bendpointMovedCondition);
 
         // Check bracket edge new pointList
         PointList newEReference1PointListAfterDrop = getPointList((BracketEdgeEditPart) newEReference1BracketEdgeEditPartBot.part());
@@ -1381,10 +1388,10 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         int xDelta = -300;
         Point dragLocation = newEReference1PointList.getPoint(BracketConnectionQuery.TARGET_POINT_INDEX);
         Point dropLocation = dragLocation.getTranslated(xDelta, 0);
-        CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(newEReference1BracketEdgeEditPartBot);
+        BendpointMovedCondition bendpointMovedCondition = new BendpointMovedCondition((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) newEReference1BracketEdgeEditPartBot.part(),
+                dragLocation).checkBendpointAtPosition(BracketConnectionQuery.TARGET_POINT_INDEX);
         editor.drag(dragLocation, dropLocation);
-        bot.waitUntil(checkEditPartMoved);
-        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(bendpointMovedCondition);
 
         // Check bracket edge new pointList
         PointList newEReference1PointListAfterDrop = getPointList((BracketEdgeEditPart) newEReference1BracketEdgeEditPartBot.part());
@@ -1456,10 +1463,10 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         int xDelta = 50;
         Point dragLocation = newEReference1PointList.getPoint(BracketConnectionQuery.TARGET_POINT_INDEX);
         Point dropLocation = dragLocation.getTranslated(xDelta, 0);
-        CheckEditPartMoved checkEditPartMoved = new CheckEditPartMoved(newEReference1BracketEdgeEditPartBot);
+        BendpointMovedCondition bendpointMovedCondition = new BendpointMovedCondition((org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart) newEReference1BracketEdgeEditPartBot.part(),
+                dragLocation).checkBendpointAtPosition(BracketConnectionQuery.TARGET_POINT_INDEX);
         editor.drag(dragLocation, dropLocation);
-        bot.waitUntil(checkEditPartMoved);
-        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(bendpointMovedCondition);
 
         // Check bracket edge new pointList
         PointList newEReference1PointListAfterDrop = getPointList((BracketEdgeEditPart) newEReference1BracketEdgeEditPartBot.part());
