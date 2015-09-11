@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.ocl.helper.Choice;
 import org.eclipse.ocl.helper.ConstraintKind;
 import org.eclipse.ocl.helper.OCLHelper;
 import org.eclipse.sirius.common.ocl.DslOclPlugin;
+import org.eclipse.sirius.common.ocl.tools.Messages;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
@@ -58,7 +59,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProposalProvider {
 
     /** The OCL expression discrimant. */
-    public static final String OCL_DISCRIMINANT = "ocl:";
+    public static final String OCL_DISCRIMINANT = "ocl:"; //$NON-NLS-1$
 
     /** The OCL object. */
     private OCL<?, EClassifier, ?, ?, ?, ?, ?, ?, ?, Constraint, EClass, EObject> ocl;
@@ -75,6 +76,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
         // Nothing to do
     }
@@ -82,6 +84,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void addImport(final String dependency) {
         // ignore
     }
@@ -89,6 +92,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void clearImports() {
         // ignore
     }
@@ -96,6 +100,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void addVariableStatusListener(final IVariableStatusListener newListener) {
         this.variablesListeners.add(newListener);
     }
@@ -103,6 +108,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void removeVariableStatusListener(final IVariableStatusListener listener) {
         this.variablesListeners.remove(listener);
     }
@@ -110,6 +116,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setVariable(final String name, final Object value) {
         this.variables.setVariable(name, value);
         this.fireVariablesChanged();
@@ -118,6 +125,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void unSetVariable(final String name) {
         this.variables.unSetVariable(name);
         this.fireVariablesChanged();
@@ -126,6 +134,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void clearVariables() {
         this.variables.clearVariables();
         this.fireVariablesChanged();
@@ -134,6 +143,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object getVariable(final String name) {
         return this.variables.getVariable(name);
     }
@@ -141,6 +151,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Map<String, Object> getVariables() {
         return this.variables.getVariables();
     }
@@ -157,6 +168,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean provides(final String expression) {
         return expression != null && expression.startsWith(OclInterpreter.OCL_DISCRIMINANT);
     }
@@ -164,6 +176,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setProperty(final Object key, final Object value) {
         // ignore.
     }
@@ -171,6 +184,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object evaluate(final EObject target, final String expression) throws EvaluationException {
         return internalEvaluate(target, expression);
     }
@@ -178,6 +192,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
         boolean result = false;
@@ -192,6 +207,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<EObject> evaluateCollection(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
         Collection<EObject> result = Collections.emptyList();
@@ -219,6 +235,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public EObject evaluateEObject(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
         if (value instanceof EObject) {
@@ -230,6 +247,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
         Integer result = null;
@@ -239,7 +257,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
             try {
                 result = new Integer((String) value);
             } catch (final NumberFormatException nfe) {
-                DslOclPlugin.getPlugin().error("The value returned by the OCL evaluation is not a number", nfe);
+                DslOclPlugin.getPlugin().error(Messages.OclInterpreter_OclNotANumber, nfe);
             }
         }
         return result;
@@ -248,6 +266,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public String evaluateString(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
         if (value != null) {
@@ -271,7 +290,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     private Object internalEvaluate(final EObject context, final String expression) throws EvaluationException {
         try {
             final String exp = expression.substring(OCL_DISCRIMINANT.length());
-            if ("".equals(exp)) {
+            if ("".equals(exp)) { //$NON-NLS-1$
                 return null;
             }
 
@@ -327,6 +346,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public IInterpreter createInterpreter() {
         return new OclInterpreter();
     }
@@ -334,6 +354,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void dispose() {
         this.variables.clearVariables();
         this.variablesListeners.clear();
@@ -342,6 +363,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setModelAccessor(final ModelAccessor modelAccessor) {
         // ignore
     }
@@ -349,6 +371,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
         List<ContentProposal> computeCompletionEntry = OclCompletionEntry.computeCompletionEntry(context);
         return computeCompletionEntry;
@@ -357,6 +380,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getPrefix() {
         return OclInterpreter.OCL_DISCRIMINANT;
     }
@@ -364,13 +388,15 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT, "New OCL expression.");
+        return new ContentProposal(OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT, Messages.OclInterpreter_NewOclExpression);
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getVariablePrefix() {
         return null; // no prefix for variables
     }
@@ -378,6 +404,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setCrossReferencer(final ECrossReferenceAdapter crossReferencer) {
         // no handling (AFAIK) of cross references for OCL
     }
@@ -385,6 +412,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         // Make sure that context and cursor position are valid
         if (context != null && context.getTextSoFar() != null && context.getCursorPosition() != -1 && context.getTextSoFar().length() >= context.getCursorPosition()) {
@@ -401,7 +429,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
                 if (choices != null && choices.size() > 0) {
                     final List<ContentProposal> contentProposals = new ArrayList<ContentProposal>();
                     for (Choice choice : choices) {
-                        contentProposals.add(new ContentProposal(choice.getName(), choice.getName() + " (" + choice.getKind().name() + ")", choice.getDescription()));
+                        contentProposals.add(new ContentProposal(choice.getName(), choice.getName() + " (" + choice.getKind().name() + ")", choice.getDescription())); //$NON-NLS-1$//$NON-NLS-2$
                     }
                     Collections.sort(contentProposals);
                     return contentProposals;
@@ -414,6 +442,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<String> getImports() {
         return Collections.<String> emptyList();
     }
@@ -421,6 +450,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void removeImport(String dependency) {
         // empty
     }
@@ -428,6 +458,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
         return new LinkedHashSet<IInterpreterStatus>();
     }
@@ -435,6 +466,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean supportsValidation() {
         return false;
     }

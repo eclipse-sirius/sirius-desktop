@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 public class DslOclPlugin extends EMFPlugin {
 
     /** The plug-in ID. */
-    public static final String PLUGIN_ID = "org.eclipse.sirius.common.ocl";
+    public static final String PLUGIN_ID = "org.eclipse.sirius.common.ocl"; //$NON-NLS-1$
 
     /**
      * Keep track of the singleton.
@@ -67,7 +67,7 @@ public class DslOclPlugin extends EMFPlugin {
         public Implementation() {
             plugin = this;
         }
-        
+
         /**
          * Log a an error in the error log view.
          * 
