@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,8 +54,8 @@ import com.google.common.collect.Lists;
  * 
  * @param <D>
  *            Type of diagram element.
- * @author lgoubet <a
- *         href="mailto:laurent.goubet@obeo.fr">laurent.goubet@obeo.fr</a>
+ * @author lgoubet
+ *         <a href="mailto:laurent.goubet@obeo.fr">laurent.goubet@obeo.fr</a>
  */
 public abstract class AbstractDiagramElementState<D extends DDiagramElement> implements IDiagramElementState<D> {
 
@@ -142,6 +142,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void dispose() {
         nodes.clear();
         edges.clear();
@@ -151,6 +152,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void storeElementState(EObject target, DiagramElementMapping mapping, D element) {
         customizableToCustomizedFeatures.clear();
         isVisible = element.isVisible();
@@ -197,6 +199,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
         // after restore.
         Predicate<Object> predicate = new Predicate<Object>() {
 
+            @Override
             public boolean apply(Object input) {
                 if (input instanceof CollapseFilter) {
                     if (((CollapseFilter) input).eIsSet(DiagramPackage.eINSTANCE.getCollapseFilter_Height()) && ((CollapseFilter) input).eIsSet(DiagramPackage.eINSTANCE.getCollapseFilter_Width())) {
@@ -229,7 +232,12 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
         for (String featureName : customizable.getCustomFeatures()) {
             EStructuralFeature structuralFeature = customizable.eClass().getEStructuralFeature(featureName);
             if (structuralFeature != null) {
-                customFeatures.put(featureName, customizable.eGet(structuralFeature));
+                Object value = customizable.eGet(structuralFeature);
+                if (value instanceof Collection<?>) {
+                    value = Lists.newArrayList((Collection<?>) value);
+                }
+                customFeatures.put(featureName, value);
+
             }
         }
         Identifier customizableIdentifier = Identifier.createCustomizableIdentifier(customizable);
@@ -262,6 +270,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void restoreElementState(final D element) {
         if (isHidden) {
             HideFilterHelper.INSTANCE.hide(element);
@@ -392,6 +401,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Identifier getIdentifier() {
         return identifier;
     }
