@@ -234,14 +234,19 @@ public class EditPartQuery {
      */
     public boolean isFreeFormContainerChildrenPresentation() {
         boolean isFreeForm = true;
-        EObject eContainer = part.resolveSemanticElement().eContainer();
-        if (eContainer instanceof DNodeList) {
+        EObject semElt = part.resolveSemanticElement();
+        if (semElt == null) {
             isFreeForm = false;
-        } else if (eContainer instanceof DNodeContainer) {
-            DNodeContainer container = (DNodeContainer) eContainer;
-            ContainerLayout childrenPresentation = container.getChildrenPresentation();
-            if (!childrenPresentation.equals(ContainerLayout.FREE_FORM)) {
+        } else {
+            EObject eContainer = semElt.eContainer();
+            if (eContainer instanceof DNodeList) {
                 isFreeForm = false;
+            } else if (eContainer instanceof DNodeContainer) {
+                DNodeContainer container = (DNodeContainer) eContainer;
+                ContainerLayout childrenPresentation = container.getChildrenPresentation();
+                if (!childrenPresentation.equals(ContainerLayout.FREE_FORM)) {
+                    isFreeForm = false;
+                }
             }
         }
         return isFreeForm;
