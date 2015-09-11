@@ -14,9 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
@@ -47,20 +45,24 @@ public abstract class AbstractDiagramElementContainerNameEditPart extends Abstra
      * 
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new NonResizableEditPolicy() {
 
+            @Override
             protected List createSelectionHandles() {
                 List handles = new ArrayList();
                 NonResizableHandleKit.addMoveHandle((GraphicalEditPart) getHost(), handles);
                 return handles;
             }
 
+            @Override
             public Command getCommand(Request request) {
                 return null;
             }
 
+            @Override
             public boolean understandsRequest(Request request) {
                 return false;
             }
@@ -83,12 +85,13 @@ public abstract class AbstractDiagramElementContainerNameEditPart extends Abstra
      */
     @Override
     public boolean isSelectable() {
-        return super.isSelectable() && getParent().getSelected() == EditPart.SELECTED;
+        return false;
     }
 
     /**
      * @was-generated
      */
+    @Override
     protected void handleNotificationEvent(Notification event) {
         Object feature = event.getFeature();
         if (DiagramPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
@@ -100,6 +103,7 @@ public abstract class AbstractDiagramElementContainerNameEditPart extends Abstra
     /**
      * @was-generated
      */
+    @Override
     protected IFigure createFigure() {
         // Parent should assign one using setLabel() method
         return null;
@@ -108,6 +112,7 @@ public abstract class AbstractDiagramElementContainerNameEditPart extends Abstra
     /**
      * @not-generated
      */
+    @Override
     public void setLabel(IFigure figure) {
         if (figure instanceof SiriusWrapLabel) {
             this.setLabel((SiriusWrapLabel) figure);
