@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.layoutdata.tools.internal.util.configuration;
 
+import org.eclipse.sirius.diagram.layoutdata.tools.Messages;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.EdgeConfiguration;
 
 /**
@@ -28,6 +29,7 @@ public class EdgeConfigurationImpl implements EdgeConfiguration {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setDistanceAroundPointsOfEdgeBendpointsList(double pDistance) {
         this.distance = pDistance;
     }
@@ -35,6 +37,7 @@ public class EdgeConfigurationImpl implements EdgeConfiguration {
     /**
      * {@inheritDoc}
      */
+    @Override
     public final double getDistanceAroundPointsOfEdgeBendpointsList() {
         return distance;
     }
@@ -44,7 +47,7 @@ public class EdgeConfigurationImpl implements EdgeConfiguration {
      */
     @Override
     public String toString() {
-        return "distanceAroundPointsOfEdgeBendpointsList: " + getDistanceAroundPointsOfEdgeBendpointsList();
+        return Messages.EdgeConfigurationImpl_toString;
     }
 
 }

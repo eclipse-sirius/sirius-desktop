@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.layoutdata.tools.internal.util.configuration;
 
+import java.text.MessageFormat;
+
+import org.eclipse.sirius.diagram.layoutdata.tools.Messages;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.NodeConfiguration;
 
 /**
@@ -26,6 +29,7 @@ public class NodeConfigurationImpl implements NodeConfiguration {
     /**
      * {@inheritDoc}
      */
+    @Override
     public final double getDistanceAroundPoint() {
         return distanceAroundPoint;
     }
@@ -33,6 +37,7 @@ public class NodeConfigurationImpl implements NodeConfiguration {
     /**
      * {@inheritDoc}
      */
+    @Override
     public final void setDistanceAroundPoint(double distanceAroundPoint) {
         this.distanceAroundPoint = distanceAroundPoint;
     }
@@ -42,7 +47,7 @@ public class NodeConfigurationImpl implements NodeConfiguration {
      */
     @Override
     public String toString() {
-        return "distanceAroundPoint: " + getDistanceAroundPoint();
+        return MessageFormat.format(Messages.NodeConfigurationImpl_distanceAroundPoint, getDistanceAroundPoint());
     }
 
 }

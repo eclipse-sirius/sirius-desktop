@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.layoutdata.tools.internal.util.configuration;
 
+import org.eclipse.sirius.diagram.layoutdata.tools.Messages;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.Configuration;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.EdgeConfiguration;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.NodeConfiguration;
@@ -40,6 +41,7 @@ public class ConfigurationImpl implements Configuration {
     /**
      * {@inheritDoc}
      */
+    @Override
     public EdgeConfiguration getEdgeConfiguration() {
         return edgeConfiguration;
     }
@@ -47,6 +49,7 @@ public class ConfigurationImpl implements Configuration {
     /**
      * {@inheritDoc}
      */
+    @Override
     public NodeConfiguration getNodeConfiguration() {
         return nodeConfiguration;
     }
@@ -54,6 +57,7 @@ public class ConfigurationImpl implements Configuration {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void setRecursively(boolean recursively) {
         this.recursively = recursively;
     }
@@ -61,6 +65,7 @@ public class ConfigurationImpl implements Configuration {
     /**
      * {@inheritDoc}
      */
+    @Override
     public final boolean isRecursive() {
         return recursively;
     }
@@ -70,7 +75,7 @@ public class ConfigurationImpl implements Configuration {
      */
     @Override
     public String toString() {
-        return "Node configuration: " + nodeConfiguration + "\nEdge configuration: " + edgeConfiguration;
+        return Messages.ConfigurationImpl_toString;
     }
 
 }

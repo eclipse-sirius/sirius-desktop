@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.layoutdata.tools.internal.util;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -17,12 +18,12 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.Point;
+import org.eclipse.sirius.diagram.layoutdata.tools.Messages;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.LayoutHelper;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.Configuration;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.EdgeConfiguration;
@@ -57,9 +58,9 @@ public class LayoutHelperImpl implements LayoutHelper {
         /**
          * {@inheritDoc}
          */
+        @Override
         public String getMessage() {
-            return "Configuration: [\n" + configuration + "\n]\nDifference between left element [[\n\t" + elementToString(leftElement) + "\n]] and right element [[\n\t"
-                    + elementToString(rightElement) + "\n]]";
+            return MessageFormat.format(Messages.LayoutHelperImpl_layoutDifferenceMessage, configuration, elementToString(leftElement), elementToString(rightElement));
         }
 
         private String elementToString(T element) {
@@ -75,6 +76,7 @@ public class LayoutHelperImpl implements LayoutHelper {
         /**
          * {@inheritDoc}
          */
+        @Override
         public T getLeftElement() {
             return leftElement;
         }
@@ -82,6 +84,7 @@ public class LayoutHelperImpl implements LayoutHelper {
         /**
          * {@inheritDoc}
          */
+        @Override
         public T getRightElement() {
             return rightElement;
         }
@@ -98,6 +101,7 @@ public class LayoutHelperImpl implements LayoutHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean haveSameLayout(final NodeLayoutData nodeLayout1, final NodeLayoutData nodeLayout2, final Configuration configuration) {
         return doHaveSameLayout(nodeLayout1, nodeLayout2, configuration) == null;
     }
@@ -192,6 +196,7 @@ public class LayoutHelperImpl implements LayoutHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public LayoutDifference<?> computeFirstLayoutDifference(final Collection<? extends EObject> col1, final Collection<? extends EObject> col2, final Configuration configuration) {
 
         LayoutDifference<?> result = null;
@@ -230,6 +235,7 @@ public class LayoutHelperImpl implements LayoutHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean haveSameLayout(final Collection<? extends EObject> col1, final Collection<? extends EObject> col2, final Configuration configuration) {
         return computeFirstLayoutDifference(col1, col2, configuration) == null;
     }
@@ -237,6 +243,7 @@ public class LayoutHelperImpl implements LayoutHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean haveSameLayout(final EdgeLayoutData edgeLayout1, final EdgeLayoutData edgeLayout2, Configuration configuration) {
         return doHaveSameLayout(edgeLayout1, edgeLayout2, configuration) == null;
     }
@@ -283,7 +290,7 @@ public class LayoutHelperImpl implements LayoutHelper {
     }
 
     private static String toString(EObject eobject) {
-        return LayoutHelperImpl.toString("\n", eobject);
+        return LayoutHelperImpl.toString("\n", eobject); //$NON-NLS-1$
     }
 
     private static String toString(String prefix, EObject eobject) {
@@ -298,21 +305,21 @@ public class LayoutHelperImpl implements LayoutHelper {
             if (!feature.isDerived()) {
                 sb.append(prefix);
                 sb.append(feature.getName());
-                sb.append(" : ");
+                sb.append(" : "); //$NON-NLS-1$
                 Object obj = eobject.eGet(feature);
                 if (obj == null) {
-                    sb.append("null");
+                    sb.append("null"); //$NON-NLS-1$
                 } else if (obj instanceof EObject) {
-                    sb.append(LayoutHelperImpl.toString("\n     ", (EObject) obj));
+                    sb.append(LayoutHelperImpl.toString("\n     ", (EObject) obj)); //$NON-NLS-1$
                 } else if (obj instanceof List<?>) {
                     List<?> list = (List<?>) obj;
                     if (!list.isEmpty()) {
                         sb.append('\n');
-                        sb.append("     ");
+                        sb.append("     "); //$NON-NLS-1$
                     }
                     for (Object object : list) {
                         sb.append('\n');
-                        sb.append("     ");
+                        sb.append("     "); //$NON-NLS-1$
                         if (object instanceof EObject) {
                             sb.append(LayoutHelperImpl.toString((EObject) object));
                         } else {
