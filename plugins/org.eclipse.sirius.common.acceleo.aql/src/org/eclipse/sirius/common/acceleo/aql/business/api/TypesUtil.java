@@ -17,11 +17,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.acceleo.query.runtime.IQueryEnvironment;
-import org.eclipse.acceleo.query.validation.type.ClassType;
 import org.eclipse.acceleo.query.validation.type.EClassifierType;
 import org.eclipse.acceleo.query.validation.type.IType;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
@@ -60,7 +59,7 @@ public final class TypesUtil {
         }
 
         if (selfTyping.size() == 0) {
-            selfTyping.add(new ClassType(queryEnvironment, EObject.class));
+            selfTyping.add(new EClassifierType(queryEnvironment, EcorePackage.eINSTANCE.getEObject()));
         }
         variableTypes.put("self", selfTyping); //$NON-NLS-1$
 
@@ -74,7 +73,7 @@ public final class TypesUtil {
                 }
             }
             if (potentialTypes.size() == 0) {
-                potentialTypes.add(new ClassType(queryEnvironment, EObject.class));
+                potentialTypes.add(new EClassifierType(queryEnvironment, EcorePackage.eINSTANCE.getEObject()));
             }
             variableTypes.put(varDef.getKey(), potentialTypes);
         }
