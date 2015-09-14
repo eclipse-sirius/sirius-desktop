@@ -162,6 +162,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
             super.activate();
             DiagramElementEditPartOperation.activate(this);
         }
+        this.getEditPartAuthorityListener().refreshEditMode();
     }
 
     /**

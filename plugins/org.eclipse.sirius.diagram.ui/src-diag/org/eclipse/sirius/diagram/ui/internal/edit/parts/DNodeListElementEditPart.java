@@ -209,6 +209,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
             super.activate();
             DiagramElementEditPartOperation.activate(this);
         }
+        this.getEditPartAuthorityListener().refreshEditMode();
     }
 
     /**

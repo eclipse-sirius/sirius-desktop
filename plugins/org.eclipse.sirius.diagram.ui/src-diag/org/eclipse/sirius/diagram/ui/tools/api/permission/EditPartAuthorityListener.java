@@ -103,24 +103,6 @@ public class EditPartAuthorityListener implements IAuthorityListener {
     }
 
     /**
-     * Tells if a editMode and lock status decoration refresh is needed.
-     * 
-     * @return true if needed, false otherwise
-     */
-    private boolean refreshNeeded() {
-        boolean shouldRefresh = false;
-        final Option<DDiagramEditor> diagramEditorIfAny = getDDiagramEditor();
-        if (diagramEditorIfAny.some()) {
-            final DDiagramEditor diagramEditor = diagramEditorIfAny.get();
-            final EObject semanticElement = part.resolveSemanticElement();
-            final IPermissionAuthority auth = diagramEditor.getPermissionAuthority();
-            final boolean enableEditMode = auth.canEditInstance(semanticElement) && isTargetValid(semanticElement);
-            shouldRefresh = enableEditMode != part.isEditModeEnabled();
-        }
-        return shouldRefresh;
-    }
-
-    /**
      * Enables or disables the edit mode according to the
      * {@link IPermissionAuthority} informations and refreshes decorators
      * (launches the refresh asynchronously or synchronously in the UI Thread
@@ -129,36 +111,31 @@ public class EditPartAuthorityListener implements IAuthorityListener {
      * preference).
      */
     public void refreshEditMode() {
-        if (refreshNeeded()) {
-            // Step 1: check if the current editor is null (means it has just
-            // been
-            // closed)
-            final Option<DDiagramEditor> diagramEditorIfAny = getDDiagramEditor();
-            if (diagramEditorIfAny.some()) {
-                final DDiagramEditor diagramEditor = diagramEditorIfAny.get();
-                final EObject semanticElement = part.resolveSemanticElement();
-                final IPermissionAuthority auth = diagramEditor.getPermissionAuthority();
-                final boolean enableEditMode = auth.canEditInstance(semanticElement);
+        // Step 1: check if the current editor is null (means it has just been
+        // closed)
+        final Option<DDiagramEditor> diagramEditorIfAny = getDDiagramEditor();
+        if (diagramEditorIfAny.some()) {
+            final DDiagramEditor diagramEditor = diagramEditorIfAny.get();
+            final EObject semanticElement = part.resolveSemanticElement();
+            final IPermissionAuthority auth = diagramEditor.getPermissionAuthority();
+            final boolean enableEditMode = auth.canEditInstance(semanticElement);
 
-                // Step 2: launch the refresh synchronously or not according to
-                // preferences
-                boolean refreshShouldBePerformedSynchronously = DiagramUIPlugin.getPlugin().getPreferenceStore()
-                        .getBoolean(SiriusDiagramUiPreferencesKeys.PREF_REFRESH_DECORATORS_SYNCHRONOUSLY.name());
-                // If refresh should be performed synchronously, we directly
-                // launch
-                // the refresh
-                if (refreshShouldBePerformedSynchronously) {
-                    doRefreshEditMode(enableEditMode, diagramEditor, semanticElement);
-                } else {
-                    // Otherwise, we launch it asynchronously
-                    EclipseUIUtil.displayAsyncExec(new Runnable() {
+            // Step 2: launch the refresh synchronously or not according to
+            // preferences
+            boolean refreshShouldBePerformedSynchronously = DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiPreferencesKeys.PREF_REFRESH_DECORATORS_SYNCHRONOUSLY.name());
+            // If refresh should be performed synchronously, we directly launch
+            // the refresh
+            if (refreshShouldBePerformedSynchronously) {
+                doRefreshEditMode(enableEditMode, diagramEditor, semanticElement);
+            } else {
+                // Otherwise, we launch it asynchronously
+                EclipseUIUtil.displayAsyncExec(new Runnable() {
 
-                        @Override
-                        public void run() {
-                            doRefreshEditMode(enableEditMode, diagramEditor, semanticElement);
-                        }
-                    });
-                }
+                    @Override
+                    public void run() {
+                        doRefreshEditMode(enableEditMode, diagramEditor, semanticElement);
+                    }
+                });
             }
         }
     }
