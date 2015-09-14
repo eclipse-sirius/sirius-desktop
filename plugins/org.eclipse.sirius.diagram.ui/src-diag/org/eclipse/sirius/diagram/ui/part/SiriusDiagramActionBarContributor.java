@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.SiriusActionBarActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -55,6 +56,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
     /**
      * @was-generated
      */
+    @Override
     protected Class<?> getEditorClass() {
         return SiriusDiagramEditor.class;
     }
@@ -62,41 +64,42 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
     /**
      * Action id for the "Launch behavior"
      */
-    public static final String LAUNCH_BEHAVIOR = "Launch behavior";
+    public static final String LAUNCH_BEHAVIOR = Messages.SiriusDiagramActionBarContributor_launchBehavior;
 
     /**
      * Action id for the "Refresh DDiagram"
      */
-    public static final String REFRESH_DIAGRAM = "Refresh diagram";
+    public static final String REFRESH_DIAGRAM = Messages.SiriusDiagramActionBarContributor_refreshDiagram;
 
     /**
      * Action id for the "Hide element"
      */
-    public static final String HIDE_ELEMENT = "Hide element";
+    public static final String HIDE_ELEMENT = Messages.SiriusDiagramActionBarContributor_hideElement;
 
     /**
      * Action id for the "Hide label"
      */
-    public static final String HIDE_LABEL = "Hide label";
+    public static final String HIDE_LABEL = Messages.SiriusDiagramActionBarContributor_hideLabel;
 
     /**
      * Action id for the "Reveal elements"
      */
-    public static final String REVEAL_ELEMENTS = "Reveal elements";
+    public static final String REVEAL_ELEMENTS = Messages.SiriusDiagramActionBarContributor_revealElement;
 
     /**
      * Action tooltip text for the "Delete from Diagram"
      */
-    public static final String DELETE_FROM_DIAGRAM = "Delete from Diagram";
+    public static final String DELETE_FROM_DIAGRAM = Messages.SiriusDiagramActionBarContributor_deleteFromDiagram;
 
     /**
      * Action tooltip text for the "Delete from Diagram"
      */
-    public static final String DELETE_FROM_MODEL = "Delete from Model";
+    public static final String DELETE_FROM_MODEL = Messages.SiriusDiagramActionBarContributor_deleteFromModel;
 
     /**
      * @was-generated
      */
+    @Override
     protected String getEditorId() {
         return DDiagramEditor.EDITOR_ID;
     }
@@ -107,6 +110,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
      * @was-generated NOT
      * @see org.eclipse.gmf.runtime.diagram.ui.parts.DiagramActionBarContributor#buildActions()
      */
+    @Override
     protected void buildActions() {
         super.buildActions();
         final RetargetAction action = new LaunchBehaviorToolAction(LAUNCH_BEHAVIOR, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.GO_IMG));
@@ -153,6 +157,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
      * 
      * @was-generated NOT
      */
+    @Override
     public void contributeToToolBar(final IToolBarManager toolBarManager) {
         super.contributeToToolBar(toolBarManager);
         if (isOldUIEnabled()) {

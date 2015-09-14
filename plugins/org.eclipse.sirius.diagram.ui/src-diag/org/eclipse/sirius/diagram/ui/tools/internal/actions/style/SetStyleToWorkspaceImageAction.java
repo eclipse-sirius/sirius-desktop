@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -45,10 +46,10 @@ import org.eclipse.ui.PlatformUI;
 public class SetStyleToWorkspaceImageAction extends Action {
 
     /** Action id for the "Set style to workspace image". */
-    public static final String SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID = "org.eclipse.sirius.diagram.tools.internal.actions.style";
+    public static final String SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID = "org.eclipse.sirius.diagram.tools.internal.actions.style"; //$NON-NLS-1$
 
     /** Action name for the "Set style to workspace image". */
-    public static final String SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_NAME = "Set style to workspace image";
+    public static final String SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_NAME = Messages.SetStyleToWorkspaceImageAction_text;
 
     /**
      * Create an new {@link SetStyleToWorkspaceImageAction}.

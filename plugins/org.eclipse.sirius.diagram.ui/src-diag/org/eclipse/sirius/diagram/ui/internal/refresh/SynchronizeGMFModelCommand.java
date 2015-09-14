@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.internal.refresh;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * EMF Command to execute the {@link CanonicalSynchronizer}.
@@ -34,7 +35,7 @@ public class SynchronizeGMFModelCommand extends RecordingCommand {
      *            the {@link CanonicalSynchronizer} to execute
      */
     public SynchronizeGMFModelCommand(TransactionalEditingDomain domain, CanonicalSynchronizer canonicalSynchronizer) {
-        super(domain, "Synchronize GMF Notation Model");
+        super(domain, Messages.SynchronizeGMFModelCommand_label);
         this.canonicalSynchronizer = canonicalSynchronizer;
     }
 

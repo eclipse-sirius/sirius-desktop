@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.view;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -63,6 +64,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -78,23 +80,25 @@ import com.google.common.collect.Lists;
 @SuppressWarnings("restriction")
 public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManager {
 
-    private static final String ARRANGE_COMMAND_LABEL = "Arrange created views";
-
     /**
      * An adapter to mark the View as layout by the SiriusLayoutDataManager.
      */
     private static final Adapter LAYOUT_MARKER_ADAPTER = new Adapter() {
 
+        @Override
         public void setTarget(final Notifier newTarget) {
         }
 
+        @Override
         public void notifyChanged(final Notification notification) {
         }
 
+        @Override
         public boolean isAdapterForType(final Object type) {
             return type instanceof SiriusLayoutDataManager;
         }
 
+        @Override
         public Notifier getTarget() {
             return null;
         }
@@ -106,16 +110,20 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      */
     private static final Adapter LAYOUT_MARKER_ADAPTER_ON_OPENING = new Adapter() {
 
+        @Override
         public void setTarget(final Notifier newTarget) {
         }
 
+        @Override
         public void notifyChanged(final Notification notification) {
         };
 
+        @Override
         public boolean isAdapterForType(final Object type) {
             return type instanceof SiriusLayoutDataManager;
         }
 
+        @Override
         public Notifier getTarget() {
             return null;
         }
@@ -127,16 +135,20 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      */
     private static final Adapter CENTER_LAYOUT_MARKER_ADAPTER = new Adapter() {
 
+        @Override
         public void setTarget(final Notifier newTarget) {
         }
 
+        @Override
         public void notifyChanged(final Notification notification) {
         }
 
+        @Override
         public boolean isAdapterForType(final Object type) {
             return type instanceof SiriusLayoutDataManager;
         }
 
+        @Override
         public Notifier getTarget() {
             return null;
         }
@@ -155,6 +167,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      */
     Predicate<View> predicate = new Predicate<View>() {
 
+        @Override
         public boolean apply(View input) {
             return hasToArrange(input);
         }
@@ -199,6 +212,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @param aLayoutData
      *            The rootLayoutData
      */
+    @Override
     public void addData(final AbstractLayoutData aLayoutData) {
         // if a rootLayoutData exist with the same target, we delete the
         // previous rootLayoutData
@@ -227,6 +241,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      *            true if the data must be retrieve from the node parent
      * @return the corresponding LayoutData or null if not found.
      */
+    @Override
     public LayoutData getData(final AbstractDNode node, final boolean searchParent) {
         LayoutData result = null;
         if (node != null) {
@@ -237,7 +252,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 } else if (node.eContainer() instanceof DDiagram) {
                     result = getData((DDiagram) node.eContainer());
                 } else {
-                    DiagramPlugin.getDefault().logWarning("This kind of container  (" + node.eContainer().getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+                    DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.SiriusLayoutDataManagerImpl_unhandledContainerKind, node.eContainer().getClass().getName()));
                 }
             }
             if (result == null) {
@@ -299,6 +314,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      *            true if the data must be retrieve from the node parent
      * @return the corresponding EdgeLayoutData or null if not found.
      */
+    @Override
     public EdgeLayoutData getData(final DEdge edge, final boolean searchParent) {
         Option<EdgeLayoutData> noEdgeLayoutData = Options.newNone();
         return getData(edge, searchParent, noEdgeLayoutData);
@@ -398,6 +414,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getData(org.eclipse.sirius.viewpoint.AbstractDNode)
      */
+    @Override
     public LayoutData getData(final AbstractDNode node) {
         return getData(node, false);
     }
@@ -407,6 +424,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAdapterMarker()
      */
+    @Override
     public Adapter getAdapterMarker() {
         return LAYOUT_MARKER_ADAPTER;
     }
@@ -416,6 +434,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getCenterAdapterMarker()
      */
+    @Override
     public Adapter getCenterAdapterMarker() {
         return CENTER_LAYOUT_MARKER_ADAPTER;
     }
@@ -426,8 +445,9 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAddAdapterMakerCommand(org.eclipse.emf.transaction.TransactionalEditingDomain,
      *      org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor)
      */
+    @Override
     public AbstractTransactionalCommand getAddAdapterMakerCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter) {
-        return new AbstractTransactionalCommand(domain, "Add layout marker on view", null) {
+        return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addLayoutMarkerCommandLabel, null) {
             @Override
             protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
                 final View view = (View) viewAdapter.getAdapter(View.class);
@@ -445,8 +465,9 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAddAdapterMakerCommand(org.eclipse.emf.transaction.TransactionalEditingDomain,
      *      org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor)
      */
+    @Override
     public AbstractTransactionalCommand getAddCenterAdapterMakerCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter) {
-        return new AbstractTransactionalCommand(domain, "Add center layout marker on view", null) {
+        return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addCenterLayoutMarkerCommandLabel, null) {
             @Override
             protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
                 final View view = (View) viewAdapter.getAdapter(View.class);
@@ -465,7 +486,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      *      org.eclipse.gmf.runtime.notation.View)
      */
     public AbstractTransactionalCommand getAddAdapterMakerOnOpeningCommand(final TransactionalEditingDomain domain, final IAdaptable viewAdapter) {
-        return new AbstractTransactionalCommand(domain, "Add layout marker on view on opening diagram", null) {
+        return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addLayoutMarkerOnOpeningCommandLabel, null) {
             @Override
             protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
                 final View view = (View) viewAdapter.getAdapter(View.class);
@@ -483,8 +504,9 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getAddAdapterMakerOnOpeningCommand(org.eclipse.emf.transaction.TransactionalEditingDomain,
      *      org.eclipse.gmf.runtime.notation.View)
      */
+    @Override
     public AbstractTransactionalCommand getAddAdapterMakerOnOpeningCommand(final TransactionalEditingDomain domain, final View view) {
-        return new AbstractTransactionalCommand(domain, "Add layout marker on view on opening diagram", null) {
+        return new AbstractTransactionalCommand(domain, Messages.SiriusLayoutDataManagerImpl_addLayoutMarkerOnOpeningCommandLabel, null) {
             @Override
             protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
                 if (view != null && !view.eAdapters().contains(LAYOUT_MARKER_ADAPTER_ON_OPENING)) {
@@ -498,6 +520,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     /**
      * {@inheritDoc}
      */
+    @Override
     public EdgeLabelLayoutData getLabelData(final DEdge edge) {
         EdgeLabelLayoutData result = null;
 
@@ -524,6 +547,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#arrangeCreatedViews(java.util.List,
      *      org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
      */
+    @Override
     public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host) {
         // Layout only the views that are not
         // already layout (by a drag'n'drop for example)
@@ -639,8 +663,9 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#arrangeCreatedViewsOnOpening(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
      */
+    @Override
     public Command getArrangeCreatedViewsOnOpeningCommand(final IGraphicalEditPart host) {
-        CompoundCommand cc = new CompoundCommand(ARRANGE_COMMAND_LABEL);
+        CompoundCommand cc = new CompoundCommand(Messages.SiriusLayoutDataManagerImpl_createdViewsArrangCommandLabel);
         View containerView = (View) host.getModel();
         Command layoutCommand = getlayoutCommand(host, containerView);
         if (layoutCommand instanceof CompoundCommand && !((CompoundCommand) layoutCommand).isEmpty()) {
@@ -671,7 +696,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @return the layout commands
      */
     private Command getlayoutCommand(final IGraphicalEditPart host, View containerView) {
-        CompoundCommand cc = new CompoundCommand(ARRANGE_COMMAND_LABEL);
+        CompoundCommand cc = new CompoundCommand(Messages.SiriusLayoutDataManagerImpl_createdViewsArrangCommandLabel);
 
         // get the created views and remove the layout adapter
         @SuppressWarnings("unchecked")
@@ -757,6 +782,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      *            The view to check
      * @return true if this view is to arrange, false otherwise
      */
+    @Override
     public boolean hasToArrange(View view) {
         boolean arranged = false;
         if (view != null) {
@@ -813,9 +839,10 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getArrangeCommand(org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest,
      *      org.eclipse.gef.EditPart)
      */
-    // CHECKSTYLE:OFF
+    @Override
     @SuppressWarnings({ "unchecked" })
     public Command getArrangeCommand(ArrangeRequest request, EditPart host) {
+        Command arrangeCommand = null;
 
         // layout new created views at diagram
         // opening : launch arrange selection even if there is only one new
@@ -832,41 +859,40 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
             offsetFromBoundingBox = true;
         }
 
-        if (editparts.isEmpty()) {
-            return null;
-        }
-        List<LayoutNode> nodes = new ArrayList<LayoutNode>(editparts.size());
-        ListIterator<EditPart> li = editparts.listIterator();
-        while (li.hasNext()) {
-            IGraphicalEditPart ep = (IGraphicalEditPart) li.next();
-            View view = ep.getNotationView();
-            if (view instanceof Node) {
-                Rectangle bounds = ep.getFigure().getBounds();
-                nodes.add(new LayoutNode((Node) view, bounds.width, bounds.height));
+        if (!editparts.isEmpty()) {
+            List<LayoutNode> nodes = new ArrayList<LayoutNode>(editparts.size());
+            ListIterator<EditPart> li = editparts.listIterator();
+            while (li.hasNext()) {
+                IGraphicalEditPart ep = (IGraphicalEditPart) li.next();
+                View view = ep.getNotationView();
+                if (view instanceof Node) {
+                    Rectangle bounds = ep.getFigure().getBounds();
+                    nodes.add(new LayoutNode((Node) view, bounds.width, bounds.height));
+                }
+                // remove adapters
+                removeAlreadyArrangeMarkeronOpening(view);
             }
-            // remove adapters
-            removeAlreadyArrangeMarkeronOpening(view);
+
+            List<Object> hints = new ArrayList<Object>(2);
+            hints.add(layoutDesc);
+            hints.add(host);
+            IAdaptable layoutHint = new ObjectAdapter(hints);
+            final Runnable layoutRun = layoutNodes(nodes, offsetFromBoundingBox, layoutHint);
+
+            if (layoutRun instanceof IInternalLayoutRunnable) {
+                arrangeCommand = ((IInternalLayoutRunnable) layoutRun).getCommand();
+            } else {
+                TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) host).getEditingDomain();
+                arrangeCommand = new ICommandProxy(new AbstractTransactionalCommand(editingDomain, "", null) { //$NON-NLS-1$
+                            @Override
+                            protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {
+                                layoutRun.run();
+                                return CommandResult.newOKCommandResult();
+                            }
+                        });
+            }
         }
-
-        List<Object> hints = new ArrayList<Object>(2);
-        hints.add(layoutDesc);
-        hints.add(host);
-        IAdaptable layoutHint = new ObjectAdapter(hints);
-        final Runnable layoutRun = layoutNodes(nodes, offsetFromBoundingBox, layoutHint);
-
-        if (layoutRun instanceof IInternalLayoutRunnable) {
-            return ((IInternalLayoutRunnable) layoutRun).getCommand();
-        } else {
-            TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) host).getEditingDomain();
-
-            return new ICommandProxy(new AbstractTransactionalCommand(editingDomain, "", null) {//$NON-NLS-1$
-                        @Override
-                        protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {
-                            layoutRun.run();
-                            return CommandResult.newOKCommandResult();
-                        }
-                    });
-        }
+        return arrangeCommand;
     }
 
     /**
@@ -903,8 +929,6 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         super.finalize();
     }
 
-    // CHECKSTYLE:ON
-
     /**
      * Layout nodes.
      * 
@@ -924,6 +948,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     /**
      * {@inheritDoc}
      */
+    @Override
     public void addCreatedViewsToLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
         createdViewToLayout.put(gmfDiagram, createdViewsToLayout);
     }
@@ -931,6 +956,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     /**
      * {@inheritDoc}
      */
+    @Override
     public Map<Diagram, Set<View>> getCreatedViewsToLayout() {
         return createdViewToLayout;
     }
@@ -940,6 +966,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#setIgnoreConsumeState(boolean)
      */
+    @Override
     public void setIgnoreConsumeState(boolean ignoreConsumeState) {
         this.ignoreConsumeState = ignoreConsumeState;
     }
@@ -949,6 +976,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getData()
      */
+    @Override
     public Option<AbstractLayoutData> getData() {
         if (!rootsLayoutData.isEmpty()) {
             return Options.newSome(rootsLayoutData.iterator().next());
@@ -961,6 +989,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getCreatedViewWithSpecialLayout()
      */
+    @Override
     public Map<Diagram, Set<View>> getCreatedViewWithCenterLayout() {
         return createdViewWithCenterLayout;
     }
@@ -970,6 +999,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#addCreatedViewWithCenterLayout(org.eclipse.gmf.runtime.notation.View)
      */
+    @Override
     public void addCreatedViewWithCenterLayout(Diagram gmfDiagram, LinkedHashSet<View> createdViewsToLayout) {
         this.createdViewWithCenterLayout.put(gmfDiagram, createdViewsToLayout);
     }

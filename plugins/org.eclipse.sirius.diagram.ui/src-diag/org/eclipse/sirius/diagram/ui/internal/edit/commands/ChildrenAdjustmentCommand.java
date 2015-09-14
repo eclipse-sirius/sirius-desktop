@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusResizeTracker;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -49,7 +50,7 @@ import com.google.common.collect.Lists;
 /**
  * This command avoids time consumption as long as it does not executed. The
  * "real" command is created during the execution.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
@@ -65,7 +66,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param host
      *            the <i>host</i> EditPart on which this policy is installed.
      * @param request
@@ -77,7 +78,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param host
      *            the <i>host</i> EditPart on which this policy is installed.
      * @param request
@@ -89,7 +90,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
      *            the content pane)
      */
     public ChildrenAdjustmentCommand(IGraphicalEditPart host, ChangeBoundsRequest request, boolean borderNodes, boolean subNodes) {
-        super(host.getEditingDomain(), "Adapt children location", null);
+        super(host.getEditingDomain(), Messages.ChildrenAdjustmentCommand_label, null);
         this.host = host;
         this.request = request;
         this.adjustBorderNodes = borderNodes;
@@ -130,7 +131,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
                 }
             } else {
                 // Not expected to be there
-                result = CommandResult.newWarningCommandResult("The adaptation of children location to shape move can not be done.", null);
+                result = CommandResult.newWarningCommandResult(Messages.ChildrenAdjustmentCommand_errorMsg, null);
             }
         }
         return result;
@@ -162,7 +163,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
     /**
      * Add the needed commands, to move the children nodes, to the original
      * command.
-     * 
+     *
      * @param resizedPart
      *            The part that will be resized
      * @param cc
@@ -188,7 +189,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
     /**
      * Add the needed commands, to "move" only the last segment of edges
      * pointing to the children nodes, to the original command.
-     * 
+     *
      * @param resizedPart
      *            The part that will be resized
      * @param cc
@@ -200,8 +201,8 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
     private void addChildrenEdgesAdjustmentCommands(IGraphicalEditPart resizedPart, CompositeTransactionalCommand cc, ChangeBoundsRequest cbr) {
         PrecisionPoint delta = new PrecisionPoint(cbr.getMoveDelta());
         GraphicalHelper.applyInverseZoomOnPoint(resizedPart, delta);
-        DNodeContainerViewNodeContainerCompartmentEditPart compartment = Iterables
-                .getFirst(Iterables.filter(resizedPart.getChildren(), DNodeContainerViewNodeContainerCompartmentEditPart.class), null);
+        DNodeContainerViewNodeContainerCompartmentEditPart compartment = Iterables.getFirst(Iterables.filter(resizedPart.getChildren(), DNodeContainerViewNodeContainerCompartmentEditPart.class),
+                null);
         if (compartment != null) {
             Iterable<EditPart> childrenExceptBorderItemPart = Iterables.filter(compartment.getChildren(), EditPart.class);
             for (EditPart editPart : childrenExceptBorderItemPart) {
@@ -216,7 +217,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
     /**
      * Add the needed commands, to move the border nodes, to the original
      * command.
-     * 
+     *
      * @param resizedPart
      *            The part that will be resized (parent of the border nodes to
      *            move)

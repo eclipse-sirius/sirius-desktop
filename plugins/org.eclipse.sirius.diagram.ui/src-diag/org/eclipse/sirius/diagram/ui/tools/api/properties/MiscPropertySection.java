@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.diagram.ui.properties.sections.AdvancedPropertySe
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.properties.DefaultPropertySource;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
@@ -40,6 +41,7 @@ public class MiscPropertySection extends AdvancedPropertySection implements IPro
      *            the object.
      * @return the property source of the specified object.
      */
+    @Override
     public IPropertySource getPropertySource(final Object object) {
 
         IPropertySource propSrc = null;
@@ -66,7 +68,7 @@ public class MiscPropertySection extends AdvancedPropertySection implements IPro
             for (int i = 0; i < collection.length; i++) {
                 Object next = collection[i];
                 if (next == null) {
-                    next = "null object";
+                    next = Messages.MiscPropertySection_nullObject;
                 }
                 propertyDescriptors[i] = new PropertyDescriptor(next, i + ""); //$NON-NLS-1$
             }

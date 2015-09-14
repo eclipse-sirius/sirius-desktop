@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -134,10 +135,10 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
 
     @Override
     protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {
-        assert null != getEdgeAdaptor() : "Null child in SetConnectionAnchorsCommand"; //$NON-NLS-1$             
+        assert null != getEdgeAdaptor() : Messages.TreeLayoutSetConnectionAnchorsCommand_nullChildInSetConnectionAnchorsCommand;              
 
         Edge edge = (Edge) getEdgeAdaptor().getAdapter(Edge.class);
-        assert null != edge : "Null edge in SetConnectionAnchorsCommand"; //$NON-NLS-1$      
+        assert null != edge : Messages.TreeLayoutSetConnectionAnchorsCommand_nullEdgeInSetConnectionAnchorsCommand;     
 
         // Retrieve old source anchor corresponding before move source point
         IdentityAnchor oldSourceAnchor = null;

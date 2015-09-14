@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ActivateFiltersCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.DeactivateFiltersCommand;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -102,6 +103,7 @@ public class FiltersPropertySection extends AbstractPropertySection {
     private Button removeButton;
 
     private final IDoubleClickListener availableElementsTableDoubleClickListener = new IDoubleClickListener() {
+        @Override
         public void doubleClick(final DoubleClickEvent event) {
             if (addButton.isEnabled()) {
                 addButton.notifyListeners(SWT.Selection, null);
@@ -110,6 +112,7 @@ public class FiltersPropertySection extends AbstractPropertySection {
     };
 
     private final IDoubleClickListener selectedElementsTableDoubleClickListener = new IDoubleClickListener() {
+        @Override
         public void doubleClick(final DoubleClickEvent event) {
             if (removeButton.isEnabled()) {
                 removeButton.notifyListeners(SWT.Selection, null);
@@ -164,10 +167,12 @@ public class FiltersPropertySection extends AbstractPropertySection {
 
         addButton.addSelectionListener(new SelectionListener() {
 
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
 
             }
 
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 final List<Object> newElements = new ArrayList<Object>();
                 final IStructuredSelection selection = (IStructuredSelection) availableElementsTableViewer.getSelection();
@@ -185,10 +190,12 @@ public class FiltersPropertySection extends AbstractPropertySection {
         });
         removeButton.addSelectionListener(new SelectionListener() {
 
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
 
             }
 
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 final List<Object> oldElements = new ArrayList<Object>();
                 final IStructuredSelection selection = (IStructuredSelection) selectedElementsTableViewer.getSelection();
@@ -254,10 +261,10 @@ public class FiltersPropertySection extends AbstractPropertySection {
 
         new Label(controlButtons, SWT.NONE);
 
-        addButton = getWidgetFactory().createButton(controlButtons, "Add >", SWT.PUSH);
+        addButton = getWidgetFactory().createButton(controlButtons, Messages.FiltersPropertySection_addButtonLabel, SWT.PUSH);
         addButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
-        removeButton = getWidgetFactory().createButton(controlButtons, "< Remove", SWT.PUSH);
+        removeButton = getWidgetFactory().createButton(controlButtons, Messages.FiltersPropertySection_removeButtonLabel, SWT.PUSH);
         removeButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
         final Label spaceLabel = new Label(controlButtons, SWT.NONE);
@@ -291,7 +298,7 @@ public class FiltersPropertySection extends AbstractPropertySection {
         featureComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         featureComposite.setLayout(new GridLayout());
 
-        final Label featureLabel = getWidgetFactory().createLabel(featureComposite, "Applied filters", SWT.NONE);
+        final Label featureLabel = getWidgetFactory().createLabel(featureComposite, Messages.FiltersPropertySection_appliedFiltersLabel, SWT.NONE);
         featureLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         return featureComposite;
     }
@@ -308,7 +315,7 @@ public class FiltersPropertySection extends AbstractPropertySection {
         choiceComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         choiceComposite.setLayout(new GridLayout());
 
-        final Label choiceLabel = getWidgetFactory().createLabel(choiceComposite, "Available filters", SWT.NONE);
+        final Label choiceLabel = getWidgetFactory().createLabel(choiceComposite, Messages.FiltersPropertySection_availableFiltersLabel, SWT.NONE);
         choiceLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         return choiceComposite;
     }
@@ -406,6 +413,7 @@ public class FiltersPropertySection extends AbstractPropertySection {
     public void refresh() {
         Display.getDefault().syncExec(new Runnable() {
 
+            @Override
             public void run() {
                 /*
                  * Set content/label provider

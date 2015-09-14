@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.diagram.description.style.provider;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.ColorQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * This is the item provider adapter for a
@@ -183,7 +185,7 @@ public class FlatContainerStyleDescriptionItemProvider extends ContainerStyleDes
         String label = getString("_UI_FlatContainerStyleDescription_type"); //$NON-NLS-1$
 
         if (fgColor != null & bgColor != null) {
-            return label + " " + bgColor + " to " + fgColor;
+            return MessageFormat.format(Messages.ItemProvider_foregroundBackgroundLabel, label, bgColor, fgColor);
         } else {
             return label;
         }

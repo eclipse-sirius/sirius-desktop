@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.operation;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * This command moves the specified bordered nodes of a given EditPart
@@ -46,7 +48,7 @@ public class ShiftDirectBorderedNodesOperation extends AbstractModelChangeOperat
      *            (in logical space).
      */
     public ShiftDirectBorderedNodesOperation(List<Node> children, Dimension delta) {
-        super("Shift bordered nodes' positions by " + delta);
+        super(MessageFormat.format(Messages.ShiftDirectBorderedNodesOperation_name, delta));
         this.children = children;
         this.delta = delta;
     }

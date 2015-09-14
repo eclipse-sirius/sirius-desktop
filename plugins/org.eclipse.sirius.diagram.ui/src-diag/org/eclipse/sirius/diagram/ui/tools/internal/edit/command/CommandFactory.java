@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,12 +25,13 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Helper class to convert an {@link AbstractModelChangeOperation}s into either
  * a plain EMF Transaction {@link RecordingCommand} or a GMF-compatible
  * {@link ICommand}.
- * 
+ *
  * @author pcdavid
  */
 public final class CommandFactory {
@@ -40,29 +41,29 @@ public final class CommandFactory {
 
     /**
      * Converts these operations into an EMF Transaction recording command.
-     * 
+     *
      * @param ted
      *            the editing domain in which to command will execute.
      * @param operations
      *            the array of operation to convert.
-     * 
+     *
      * @param <T>
      *            the return type of the operation.
      * @return a recording command which will execute this operation.
      */
     public static <T> RecordingCommand createRecordingCommand(TransactionalEditingDomain ted, final Collection<AbstractModelChangeOperation<T>> operations) {
-        String name = operations.isEmpty() ? "Do nothing" : operations.iterator().next().getName();
+        String name = operations.isEmpty() ? Messages.CommandFactory_doNothingLabel : operations.iterator().next().getName();
         return new RecordingCommandsExecutor<T>(ted, name, operations);
     }
 
     /**
      * Converts this operation into an EMF Transaction recording command.
-     * 
+     *
      * @param ted
      *            the editing domain in which to command will execute.
      * @param operation
      *            the operation to convert.
-     * 
+     *
      * @param <T>
      *            the return type of the operation.
      * @return a recording command which will execute this operation.
@@ -73,12 +74,12 @@ public final class CommandFactory {
 
     /**
      * Converts these operations into an EMF Transaction recording command.
-     * 
+     *
      * @param ted
      *            the editing domain in which to command will execute.
      * @param operations
      *            the array of operation to convert.
-     * 
+     *
      * @param <T>
      *            the return type of the operation.
      * @return a recording command which will execute this operation.
@@ -89,18 +90,18 @@ public final class CommandFactory {
 
     /**
      * Converts these operations into a GMF-compatible ICommand.
-     * 
+     *
      * @param ted
      *            the editing domain in which to command will execute.
      * @param operations
      *            the operations to convert.
-     * 
+     *
      * @param <T>
      *            the return types of the operations.
      * @return a GMF-compatible command which will execute this operation.
      */
     public static <T> ICommand createICommand(TransactionalEditingDomain ted, final Collection<AbstractModelChangeOperation<T>> operations) {
-        String name = operations.isEmpty() ? "Do nothing" : operations.iterator().next().getName();
+        String name = operations.isEmpty() ? Messages.CommandFactory_doNothingLabel : operations.iterator().next().getName();
         return new AbstractTransactionalCommand(ted, name, null) {
             @Override
             protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
@@ -118,12 +119,12 @@ public final class CommandFactory {
 
     /**
      * Converts this operation into a GMF-compatible ICommand.
-     * 
+     *
      * @param ted
      *            the editing domain in which to command will execute.
      * @param operation
      *            the operation to convert.
-     * 
+     *
      * @param <T>
      *            the return type of the operation.
      * @return a GMF-compatible command which will execute this operation.
@@ -134,12 +135,12 @@ public final class CommandFactory {
 
     /**
      * Converts these operations into a GMF-compatible ICommand.
-     * 
+     *
      * @param ted
      *            the editing domain in which to command will execute.
      * @param operations
      *            the operations to convert.
-     * 
+     *
      * @param <T>
      *            the return types of the operations.
      * @return a GMF-compatible command which will execute this operation.

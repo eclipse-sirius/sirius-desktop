@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
@@ -279,7 +280,7 @@ public final class DiagramBorderNodeEditPartOperation {
                     break;
                 }
             }
-            SetBoundsCommand setBoundsCommand = new SetBoundsCommand(part.getEditingDomain(), "Resize", new EObjectAdapter(part.getNotationView()), new Rectangle(position, dimension));
+            SetBoundsCommand setBoundsCommand = new SetBoundsCommand(part.getEditingDomain(), Messages.IAbstractDiagramNodeEditPart_resizeCommandLabel, new EObjectAdapter(part.getNotationView()), new Rectangle(position, dimension));
             result = new ICommandProxy(setBoundsCommand);
         } else {
             result = null;

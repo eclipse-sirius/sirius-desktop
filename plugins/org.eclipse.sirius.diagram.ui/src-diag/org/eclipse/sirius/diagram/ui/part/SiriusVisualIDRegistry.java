@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.part;
+
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -54,6 +56,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
@@ -107,7 +110,7 @@ public class SiriusVisualIDRegistry {
             return Integer.parseInt(type);
         } catch (NumberFormatException e) {
             if (Boolean.TRUE.toString().equalsIgnoreCase(Platform.getDebugOption(DEBUG_KEY))) {
-                DiagramPlugin.getDefault().logError("Unable to parse view type as a visualID number: " + type);
+                DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.SiriusVisualIDRegistry_parseError, type));
             }
         }
         return -1;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2006, 2007, 2008 IBM Corporation and others.
+ * Copyright (c) 2000, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -73,12 +74,6 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
  * @author mchauvin
  */
 public abstract class AbstractExtendedContentOutlinePage extends Page implements IContentOutlinePage, ISelectionChangedListener, ISelectionListener {
-
-    /**
-     * The name to associate to the job in charge of setting this outline's
-     * selection.
-     */
-    private static final String SET_SELECTION_JOB_NAME = "Refreshing outline";
 
     /**
      * The delay to use for scheduling the setSelectionJob.
@@ -132,6 +127,7 @@ public abstract class AbstractExtendedContentOutlinePage extends Page implements
      * 
      * @see org.eclipse.jface.viewers.ISelectionProvider#addSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)
      */
+    @Override
     public void addSelectionChangedListener(final ISelectionChangedListener listener) {
         selectionChangedListeners.add(listener);
     }
@@ -221,6 +217,7 @@ public abstract class AbstractExtendedContentOutlinePage extends Page implements
         for (int i = 0; i < listeners.length; ++i) {
             final ISelectionChangedListener l = (ISelectionChangedListener) listeners[i];
             SafeRunner.run(new SafeRunnable() {
+                @Override
                 public void run() {
                     l.selectionChanged(event);
                 }
@@ -264,6 +261,7 @@ public abstract class AbstractExtendedContentOutlinePage extends Page implements
      * 
      * @see org.eclipse.jface.viewers.ISelectionProvider#getSelection()
      */
+    @Override
     public ISelection getSelection() {
         if (treeViewer == null) {
             return StructuredSelection.EMPTY;
@@ -276,6 +274,7 @@ public abstract class AbstractExtendedContentOutlinePage extends Page implements
      * 
      * @see org.eclipse.jface.viewers.ISelectionProvider#removeSelectionChangedListener(org.eclipse.jface.viewers.ISelectionChangedListener)
      */
+    @Override
     public void removeSelectionChangedListener(final ISelectionChangedListener listener) {
         selectionChangedListeners.remove(listener);
     }
@@ -285,6 +284,7 @@ public abstract class AbstractExtendedContentOutlinePage extends Page implements
      * 
      * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
      */
+    @Override
     public void selectionChanged(final SelectionChangedEvent event) {
         fireSelectionChanged(event.getSelection());
     }
@@ -302,6 +302,7 @@ public abstract class AbstractExtendedContentOutlinePage extends Page implements
      * 
      * @see org.eclipse.jface.viewers.ISelectionProvider#setSelection(org.eclipse.jface.viewers.ISelection)
      */
+    @Override
     public void setSelection(final ISelection selection) {
 
         // Setting the selection on the treeViewer can be rather long, as
@@ -310,10 +311,11 @@ public abstract class AbstractExtendedContentOutlinePage extends Page implements
         if (setSelectionJob != null) {
             setSelectionJob.cancel();
         }
-        setSelectionJob = new Job(SET_SELECTION_JOB_NAME) {
+        setSelectionJob = new Job(Messages.AbstractExtendedContentOutlinePage_setSelectionJobName) {
             @Override
             protected IStatus run(IProgressMonitor monitor) {
                 Display.getDefault().asyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         if (treeViewer != null) {
                             treeViewer.setSelection(selection);
@@ -362,6 +364,7 @@ public abstract class AbstractExtendedContentOutlinePage extends Page implements
      * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
+    @Override
     public void selectionChanged(final IWorkbenchPart part, final ISelection selection) {
         if (!(part instanceof ContentOutline)) {
             if (selection instanceof IStructuredSelection) {

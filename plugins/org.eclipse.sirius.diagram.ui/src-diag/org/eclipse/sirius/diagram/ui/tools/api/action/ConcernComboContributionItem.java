@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SetCurrentConcernCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SetDefaultConcernCommand;
@@ -47,7 +48,7 @@ import org.eclipse.ui.IWorkbenchPart;
 /**
  * A ControlContribution that uses a {@link org.eclipse.swt.widgets.Combo} as
  * its control.
- * 
+ *
  * @author ymortier
  */
 public class ConcernComboContributionItem extends ContributionItem {
@@ -77,7 +78,7 @@ public class ConcernComboContributionItem extends ContributionItem {
 
     /**
      * Constructor for ComboToolItem.
-     * 
+     *
      * @param partService
      *            used to add a PartListener
      * @param initString
@@ -89,7 +90,7 @@ public class ConcernComboContributionItem extends ContributionItem {
 
     /**
      * Constructor for ComboToolItem.
-     * 
+     *
      * @param partService
      *            used to add a PartListener
      * @param initStrings
@@ -100,6 +101,7 @@ public class ConcernComboContributionItem extends ContributionItem {
         this.initStrings = initStrings;
         service = partService;
         partListener = new IPartListener() {
+            @Override
             public void partActivated(final IWorkbenchPart part) {
 
                 if (part instanceof DDiagramEditor) {
@@ -110,15 +112,19 @@ public class ConcernComboContributionItem extends ContributionItem {
                 }
             }
 
+            @Override
             public void partBroughtToTop(final IWorkbenchPart p) {
             }
 
+            @Override
             public void partClosed(final IWorkbenchPart p) {
             }
 
+            @Override
             public void partDeactivated(final IWorkbenchPart p) {
             }
 
+            @Override
             public void partOpened(final IWorkbenchPart p) {
             }
         };
@@ -127,7 +133,7 @@ public class ConcernComboContributionItem extends ContributionItem {
 
     /**
      * Get the current diagram.
-     * 
+     *
      * @return current diagram
      */
     public DDiagram getDiagram() {
@@ -137,6 +143,7 @@ public class ConcernComboContributionItem extends ContributionItem {
     private void diagramChanged() {
         if (Display.getCurrent() == null) {
             EclipseUIUtil.displayAsyncExec(new Runnable() {
+                @Override
                 public void run() {
                     refresh(false);
                 }
@@ -195,7 +202,7 @@ public class ConcernComboContributionItem extends ContributionItem {
 
     /**
      * Computes the width required by control.
-     * 
+     *
      * @param control
      *            The control to compute width
      * @return int The width required
@@ -207,7 +214,7 @@ public class ConcernComboContributionItem extends ContributionItem {
     /**
      * Creates and returns the control for this contribution item under the
      * given parent composite.
-     * 
+     *
      * @param parent
      *            the parent composite
      * @return the new control
@@ -215,19 +222,23 @@ public class ConcernComboContributionItem extends ContributionItem {
     protected Control createControl(final Composite parent) {
         combo = new Combo(parent, SWT.DROP_DOWN);
         combo.addSelectionListener(new SelectionListener() {
+            @Override
             public void widgetSelected(final SelectionEvent e) {
                 handleWidgetSelected(e);
             }
 
+            @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
                 handleWidgetDefaultSelected(e);
             }
         });
         combo.addFocusListener(new FocusListener() {
+            @Override
             public void focusGained(final FocusEvent e) {
                 // do nothing
             }
 
+            @Override
             public void focusLost(final FocusEvent e) {
                 refresh(false);
             }
@@ -236,14 +247,14 @@ public class ConcernComboContributionItem extends ContributionItem {
         // Initialize width of combo
         combo.setItems(initStrings);
         toolitem.setWidth(computeWidth(combo));
-        combo.setToolTipText("Current concern");
+        combo.setToolTipText(Messages.ConcernComboContributionItem_tooltip);
         refresh(true);
         return combo;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.ContributionItem#dispose()
      */
     @Override
@@ -264,7 +275,7 @@ public class ConcernComboContributionItem extends ContributionItem {
      * method calls the <code>createControl</code> framework method. Subclasses
      * must implement <code>createControl</code> rather than overriding this
      * method.
-     * 
+     *
      * @param parent
      *            The parent of the control to fill
      */
@@ -276,7 +287,7 @@ public class ConcernComboContributionItem extends ContributionItem {
     /**
      * The control item implementation of this <code>IContributionItem</code>
      * method throws an exception since controls cannot be added to menus.
-     * 
+     *
      * @param parent
      *            The menu
      * @param index
@@ -292,7 +303,7 @@ public class ConcernComboContributionItem extends ContributionItem {
      * control under the given parent, and then creates a new tool item to hold
      * it. Subclasses must implement <code>createControl</code> rather than
      * overriding this method.
-     * 
+     *
      * @param parent
      *            The ToolBar to add the new control to
      * @param index
@@ -307,7 +318,7 @@ public class ConcernComboContributionItem extends ContributionItem {
 
     /**
      * Sets the DDiagram.
-     * 
+     *
      * @param dia
      *            The diagram
      */

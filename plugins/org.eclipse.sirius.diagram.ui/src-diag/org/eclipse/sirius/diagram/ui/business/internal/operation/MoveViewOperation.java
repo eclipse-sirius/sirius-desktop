@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Shift a view by the delta.
@@ -43,8 +44,8 @@ public class MoveViewOperation extends AbstractModelChangeOperation<Void> {
      */
     public MoveViewOperation(String label, IAdaptable adapter, Point moveDelta) {
         super(label);
-        Assert.isNotNull(adapter, "view cannot be null"); //$NON-NLS-1$
-        Assert.isNotNull(moveDelta, "moveDelta cannot be null"); //$NON-NLS-1$
+        Assert.isNotNull(adapter, Messages.MoveViewOperation_nullViewError);
+        Assert.isNotNull(moveDelta, Messages.MoveViewOperation_nullMoveDeltaError);
         this.adapter = adapter;
         this.moveDelta = moveDelta;
     }

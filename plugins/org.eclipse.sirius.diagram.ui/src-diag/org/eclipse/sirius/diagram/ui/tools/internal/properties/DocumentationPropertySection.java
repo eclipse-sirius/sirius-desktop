@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -81,6 +82,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
      */
     class TextListener implements ITextListener {
 
+        @Override
         public void textChanged(TextEvent event) {
             handleTextModified();
         }
@@ -204,7 +206,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
      * @see org.eclipse.sirius.editor.properties.sections.AbstractMultilinePropertySection#getPropertyDescription()
      */
     protected String getPropertyDescription() {
-        return "Use this field to save notes about this representation.";
+        return Messages.DocumentationPropertySection_description;
     }
 
     protected String getToolTipText() {
@@ -258,7 +260,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
      * @return The default label for the text field.
      */
     protected String getDefaultLabelText() {
-        return "Documentation:"; //$NON-NLS-1$
+        return Messages.DocumentationPropertySection_defaultLabel;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.diagram.ui.render.editparts.RenderedDiagramRootEd
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.swt.SWT;
@@ -38,7 +39,7 @@ import org.eclipse.ui.IWorkbenchPart;
 
 /**
  * Add a button to launch all behaviors.
- * 
+ *
  * @author ymortier
  */
 public class LaunchBehaviorContributionItem extends ContributionItem {
@@ -60,7 +61,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
 
     /**
      * Constructor for ComboToolItem.
-     * 
+     *
      * @param partService
      *            used to add a PartListener
      */
@@ -69,6 +70,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
         service = partService;
         Assert.isNotNull(partService);
         partListener = new IPartListener() {
+            @Override
             public void partActivated(final IWorkbenchPart part) {
                 final EditPart editPArt = (EditPart) part.getAdapter(EditPart.class);
                 if (editPArt instanceof RenderedDiagramRootEditPart) {
@@ -84,15 +86,19 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
 
             }
 
+            @Override
             public void partBroughtToTop(final IWorkbenchPart p) {
             }
 
+            @Override
             public void partClosed(final IWorkbenchPart p) {
             }
 
+            @Override
             public void partDeactivated(final IWorkbenchPart p) {
             }
 
+            @Override
             public void partOpened(final IWorkbenchPart p) {
             }
         };
@@ -102,14 +108,14 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
     /**
      * Creates and returns the control for this contribution item under the
      * given parent composite.
-     * 
+     *
      * @param parent
      *            the parent composite
      * @return the new control
      */
     protected Control createControl(final Composite parent) {
         button = new Button(parent, SWT.PUSH);
-        button.setText("Launch Behavior");
+        button.setText(Messages.LaunchBehaviorContributionItem_launchBehaviorButtonLabel);
         button.setSize(30, 20);
         button.addSelectionListener(new SelectionAdapter() {
             @Override
@@ -126,7 +132,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.ContributionItem#dispose()
      */
     @Override
@@ -149,7 +155,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
      * method calls the <code>createControl</code> framework method. Subclasses
      * must implement <code>createControl</code> rather than overriding this
      * method.
-     * 
+     *
      * @param parent
      *            The parent of the control to fill
      */
@@ -161,7 +167,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
     /**
      * The control item implementation of this <code>IContributionItem</code>
      * method throws an exception since controls cannot be added to menus.
-     * 
+     *
      * @param parent
      *            The menu
      * @param index
@@ -178,7 +184,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
      * control under the given parent, and then creates a new tool item to hold
      * it. Subclasses must implement <code>createControl</code> rather than
      * overriding this method.
-     * 
+     *
      * @param parent
      *            The ToolBar to add the new control to
      * @param index

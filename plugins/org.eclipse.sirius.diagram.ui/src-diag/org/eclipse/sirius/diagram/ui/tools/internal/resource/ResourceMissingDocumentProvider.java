@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,17 +22,16 @@ import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.ui.IEditorInput;
 
 /**
  * Provide an "error" diagram if initial resource could not be found.
- * 
+ *
  * @author mchauvin
  */
 public class ResourceMissingDocumentProvider {
-
-    private static final String DEFAULT_NOTE_MESSAGE = "This diagram was not saved. You can close the editor";
 
     private ResourceSet errorResourceSet;
 
@@ -42,7 +41,7 @@ public class ResourceMissingDocumentProvider {
 
     /**
      * Set the document content.
-     * 
+     *
      * @param document
      *            the document
      * @param element
@@ -50,12 +49,12 @@ public class ResourceMissingDocumentProvider {
      */
     public void setDocumentContent(final IDocument document, final IEditorInput element) {
         // TODO get diagram name
-        document.setContent(getErrorDiagram(DEFAULT_NOTE_MESSAGE));
+        document.setContent(getErrorDiagram(Messages.ResourceMissingDocumentProvider_defaultMessage));
     }
 
     /**
      * Set the document content.
-     * 
+     *
      * @param document
      *            the document
      * @param element
@@ -93,7 +92,7 @@ public class ResourceMissingDocumentProvider {
 
     /**
      * Specific command to add error diagram in error resource.
-     * 
+     *
      * @author mporhel
      */
     private class AddErrorCommand extends RecordingCommand {
@@ -106,7 +105,7 @@ public class ResourceMissingDocumentProvider {
 
         /**
          * Constructor.
-         * 
+         *
          * @param domain
          *            the editing domain.
          * @param noteMessage
@@ -120,7 +119,7 @@ public class ResourceMissingDocumentProvider {
          *            the current session.
          */
         public AddErrorCommand(TransactionalEditingDomain domain, Diagram diagram, Resource resource, String noteMessage) {
-            super(domain, "Navigate to another representation");
+            super(domain, Messages.AddErrorCommand_label);
             this.diagram = diagram;
             this.resource = resource;
             this.noteMessage = noteMessage;

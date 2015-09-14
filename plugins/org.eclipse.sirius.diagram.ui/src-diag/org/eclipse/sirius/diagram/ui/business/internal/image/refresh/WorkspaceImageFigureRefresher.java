@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -47,6 +48,7 @@ public class WorkspaceImageFigureRefresher implements IResourceChangeListener {
      * 
      * {@inheritDoc}
      */
+    @Override
     public void resourceChanged(IResourceChangeEvent event) {
         IResourceDelta delta = event.getDelta();
         if (delta != null) {
@@ -58,7 +60,7 @@ public class WorkspaceImageFigureRefresher implements IResourceChangeListener {
                     refreshOpenedEditors();
                 }
             } catch (CoreException e) {
-                DiagramPlugin.getDefault().logError("Update image descriptor failed.", e);
+                DiagramPlugin.getDefault().logError(Messages.WorkspaceImageFigureRefresher_imageDescriptorUpdateError, e);
             }
 
         }
@@ -69,6 +71,7 @@ public class WorkspaceImageFigureRefresher implements IResourceChangeListener {
      */
     private void refreshOpenedEditors() {
         EclipseUIUtil.displayAsyncExec(new Runnable() {
+            @Override
             public void run() {
                 IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
                 if (activeWorkbenchWindow != null) {

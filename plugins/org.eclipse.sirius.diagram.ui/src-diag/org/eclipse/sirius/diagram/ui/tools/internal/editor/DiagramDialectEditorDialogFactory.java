@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.NotificationFigure;
 import org.eclipse.sirius.ui.business.api.dialect.DefaultDialectEditorDialogFactory;
@@ -71,7 +72,7 @@ public class DiagramDialectEditorDialogFactory extends DefaultDialectEditorDialo
             // We open a message dialog displaying the given message
             IWorkbenchPartSite site = editor.getSite();
             if (site != null && site.getShell() != null) {
-                MessageDialog.openInformation(site.getShell(), "Forbidden operation", message);
+                MessageDialog.openInformation(site.getShell(), Messages.DiagramDialectEditorDialogFactory_forbiddenOperation, message);
             }
         }
     }

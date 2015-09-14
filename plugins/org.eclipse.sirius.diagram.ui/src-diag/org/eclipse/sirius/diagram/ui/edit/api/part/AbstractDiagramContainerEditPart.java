@@ -52,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
@@ -76,6 +77,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
         super(view);
     }
 
+    @Override
     public Class<?> getMetamodelType() {
         return DNodeContainer.class;
     }
@@ -128,7 +130,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
      * @return a command to create port which wrap the original command
      */
     protected Command getPortCreationCommand(final Command originalCommand, final CreateViewRequest request) {
-        final CompositeCommand compositeCommand = new CompositeCommand("Create View");
+        final CompositeCommand compositeCommand = new CompositeCommand(Messages.IAbstractDiagramNodeEditPart_createViewCommandLabel);
         compositeCommand.compose(new CommandProxy(originalCommand));
         final Iterator<? extends ViewDescriptor> iterDescriptor = request.getViewDescriptors().iterator();
         LayoutUtils.prepareFigureForDummyAdds(this.getBorderedFigure().getBorderItemContainer());
@@ -191,6 +193,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
      * 
      * @was-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DNodeContainerItemSemanticEditPolicy());

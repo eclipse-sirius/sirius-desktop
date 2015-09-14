@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,6 +59,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvid
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirDestroyElementRequest;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.DeleteHelper;
@@ -164,7 +165,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                                 DDiagramElement viewPointElement = (DDiagramElement) view.getElement();
                                 DDiagramEditor diagramEditor = (DDiagramEditor) this.getHost().getViewer().getProperty(DDiagramEditor.EDITOR_ID);
                                 Object adapter = diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);
-                                CompositeCommand compositeCommand = new CompositeCommand("Delete element from diagram");
+                                CompositeCommand compositeCommand = new CompositeCommand(Messages.SiriusBaseItemSemanticEditPolicy_deleteFromDiagramCmdLabel);
                                 IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) (adapter);
                                 org.eclipse.emf.common.command.Command cmd = cmdFactoryProvider.getCommandFactory(editingDomain).buildDeleteFromDiagramCommand(viewPointElement);
                                 if (shouldImpactLinkedNotesOnHideOrRemove()) {
@@ -193,7 +194,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                     IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) (adapter);
                     org.eclipse.emf.common.command.Command cmd = cmdFactoryProvider.getCommandFactory(editingDomain).buildDeleteDiagramElement(viewPointElement);
                     if (cmd.canExecute()) {
-                        CompositeCommand compositeCommand = new CompositeCommand("Delete element");
+                        CompositeCommand compositeCommand = new CompositeCommand(Messages.SiriusBaseItemSemanticEditPolicy_deleteCmdLabel);
                         if (shouldImpactLinkedNotesOnHideOrRemove()) {
                             DeleteHelper.addDeleteLinkedNotesTask(cmd, view);
                         }

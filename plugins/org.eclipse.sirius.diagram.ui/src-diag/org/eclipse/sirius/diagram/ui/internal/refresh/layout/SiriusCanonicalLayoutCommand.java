@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 
 /**
@@ -31,8 +32,6 @@ import org.eclipse.swt.widgets.Display;
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class SiriusCanonicalLayoutCommand extends RecordingCommand implements NonDirtying {
-
-    private static final String ARRANGE_CREATED_VIEWS_CMD_LABEL = "Arrange Created views";
 
     private IGraphicalEditPart diagramEditPart;
 
@@ -70,7 +69,7 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
      *            list of {@link IAdaptable} for created Views to center layout
      */
     public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> childViewsAdaptersForCenterLayout) {
-        super(domain, ARRANGE_CREATED_VIEWS_CMD_LABEL);
+        super(domain, Messages.SiriusCanonicalLayoutCommand_label);
         this.diagramEditPart = parentEditPart;
         this.childViewsAdapters = childViewsAdapters;
         this.childViewsAdaptersForCenterLayout = childViewsAdaptersForCenterLayout;
@@ -83,6 +82,7 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
     protected void doExecute() {
         Display.getDefault().asyncExec(new Runnable() {
 
+            @Override
             public void run() {
                 if (childViewsAdapters == null && childViewsAdaptersForCenterLayout == null) {
                     executeLayoutOnDiagramOpening();

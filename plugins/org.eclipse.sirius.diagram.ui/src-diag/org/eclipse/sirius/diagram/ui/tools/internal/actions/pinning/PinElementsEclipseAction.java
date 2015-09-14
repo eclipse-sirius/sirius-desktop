@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009-2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -28,13 +29,11 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAutho
  */
 public class PinElementsEclipseAction extends AbstractPinUnpinElementsEclipseAction {
 
-    private static final String PIN_SELECTED_ELEMENTS = "Pin selected elements";
-
     /**
      * Constructor.
      */
     public PinElementsEclipseAction() {
-        super(PIN_SELECTED_ELEMENTS, ActionIds.PIN_ELEMENTS, PIN_SELECTED_ELEMENTS, DiagramImagesPath.PIN_ELEMENTS_ICON);
+        super(Messages.PinElementsEclipseAction_text, ActionIds.PIN_ELEMENTS, Messages.PinElementsEclipseAction_text, DiagramImagesPath.PIN_ELEMENTS_ICON);
     }
 
     /**

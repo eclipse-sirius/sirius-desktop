@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery.FoldingState;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -33,15 +34,10 @@ import com.google.common.collect.Sets;
 /**
  * A command to fold all the edges (which support it) which have a given element
  * as folding point.
- * 
+ *
  * @author pcdavid
  */
 public class ToggleFoldingStateCommand extends RecordingCommand {
-    /**
-     * The command's label.
-     */
-    public static final String LABEL = "Toggle edges folding state";
-
     private final IDiagramElementEditPart part;
 
     /**
@@ -52,14 +48,14 @@ public class ToggleFoldingStateCommand extends RecordingCommand {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            the editing domain.
      * @param part
      *            the folding point from which to start the folding.
      */
     public ToggleFoldingStateCommand(TransactionalEditingDomain domain, IDiagramElementEditPart part) {
-        super(domain, LABEL);
+        super(domain, Messages.ToggleFoldingStateCommand_label);
         this.part = part;
     }
 

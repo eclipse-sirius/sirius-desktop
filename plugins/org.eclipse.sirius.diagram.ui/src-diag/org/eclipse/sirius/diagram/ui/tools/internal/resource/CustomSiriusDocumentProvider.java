@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.resource;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -58,7 +59,7 @@ import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * .
- * 
+ *
  * @author cbrun
  */
 public class CustomSiriusDocumentProvider extends AbstractDocumentProvider implements IDiagramDocumentProvider {
@@ -74,7 +75,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * Default constructor.
-     * 
+     *
      * @param transactionalEditingDomain
      *            the {@link TransactionalEditingDomain}
      */
@@ -85,14 +86,14 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.AbstractDocumentProvider#createDocument(java.lang.Object)
      */
     @Override
     protected IDocument createDocument(final Object element) throws CoreException {
         if (!(element instanceof FileEditorInput) && !(element instanceof URIEditorInput)) {
-            throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0, NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element,
-                    "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$ 
+            throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0,
+                    NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
                     null));
         }
         final IDocument document = createEmptyDocument();
@@ -103,12 +104,13 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * .
-     * 
+     *
      * @param document
      *            .
      * @param element
      *            .
-     * @throws CoreException .
+     * @throws CoreException
+     *             .
      */
     protected void setDocumentContent(final IDocument document, final IEditorInput element) throws CoreException {
         final IDiagramDocument diagramDocument = (IDiagramDocument) document;
@@ -141,8 +143,8 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 } else if (element instanceof URIEditorInput) {
                     caseURIEditorInput(document, (URIEditorInput) element, domain);
                 } else {
-                    throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0, NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element,
-                            "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$ 
+                    throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0,
+                            NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
                             null));
                 }
             } finally {
@@ -222,8 +224,8 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                         return;
                     }
                 }
-                DiagramUIPlugin.getPlugin().getResourceMissingDocumentProvider()
-                        .setDocumentContent(document, element, "You should use the Model Explorer view and the Design perspective to open aird files.");
+                DiagramUIPlugin.getPlugin().getResourceMissingDocumentProvider().setDocumentContent(document, element,
+                        org.eclipse.sirius.diagram.ui.provider.Messages.CustomSiriusDocumentProvider_useModelExplorerToOpenMsg);
             }
             // We do not throw a RuntimeException anymore if there is no
             // diagram. We open an empty diagram.
@@ -247,7 +249,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
      * Sets up the given document as it would be provided for the given element.
      * The content of the document is not changed. This default implementation
      * is empty. Subclasses may reimplement.
-     * 
+     *
      * @param element
      *            the blue-print element
      * @param document
@@ -259,7 +261,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.AbstractDocumentProvider#createEmptyDocument()
      */
     @Override
@@ -271,7 +273,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.AbstractDocumentProvider#doSaveDocument(org.eclipse.core.runtime.IProgressMonitor,
      *      java.lang.Object,
      *      org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument,
@@ -288,7 +290,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.AbstractDocumentProvider#getOperationRunner(org.eclipse.core.runtime.IProgressMonitor)
      */
     @Override
@@ -298,7 +300,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocumentProvider#createInputWithEditingDomain(org.eclipse.ui.IEditorInput,
      *      org.eclipse.emf.transaction.TransactionalEditingDomain)
      */
@@ -309,7 +311,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocumentProvider#getDiagramDocument(java.lang.Object)
      */
     @Override
@@ -323,7 +325,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.AbstractDocumentProvider#isReadOnly(java.lang.Object)
      */
     @Override
@@ -335,7 +337,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.AbstractDocumentProvider#isModifiable(java.lang.Object)
      */
     @Override
@@ -350,7 +352,8 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 URI resourceURI = inputURI.trimFragment();
                 Resource resource = resourceSet.getResource(resourceURI, false);
                 if (resource == null) {
-                    DiagramPlugin.getDefault().logError("No resource in resourceSet corresponding to " + resourceURI.toString());
+                    DiagramPlugin.getDefault()
+                            .logError(MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.CustomSiriusDocumentProvider_noCorrespondingResourceMsg, resourceURI.toString()));
                     return isModifiable;
                 }
                 String fragment = inputURI.fragment();
@@ -371,7 +374,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.AbstractDocumentProvider#canSaveDocument(java.lang.Object)
      */
     @Override

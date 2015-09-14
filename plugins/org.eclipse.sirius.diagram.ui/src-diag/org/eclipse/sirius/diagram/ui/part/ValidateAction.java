@@ -109,7 +109,7 @@ public class ValidateAction extends Action {
                     }
                 }).run(new NullProgressMonitor());
             } catch (Exception e) {
-                DiagramPlugin.getDefault().logError("Validation action failed", e); //$NON-NLS-1$
+                DiagramPlugin.getDefault().logError(org.eclipse.sirius.diagram.ui.provider.Messages.ValidateAction_failureMessage, e);
             }
         }
     }
@@ -128,7 +128,7 @@ public class ValidateAction extends Action {
                 }
             }
         } catch (Exception e) {
-            DiagramPlugin.getDefault().logError("Validation action failed", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(org.eclipse.sirius.diagram.ui.provider.Messages.ValidateAction_failureMessage, e);
         }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
@@ -56,33 +57,6 @@ public class DistributeAction extends DiagramAction {
 
     /** Constant indicating distribution of centers vertically. */
     public static final int CENTERS_VERTICALLY = 3;
-
-    /** Prefix used for label when the action is displayed in the tab bar. */
-    private static final String DISTRIBUTE_PREFIX = "Distribute ";
-
-    /** Label for horizontal distribution with uniform gaps. */
-    private static final String GAPS_HORIZONTALLY_LABEL = "Gaps Horizontally";
-
-    /** Label for distribution of centers horizontally. */
-    private static final String CENTERS_HORIZONTALLY_LABEL = "Centers Horizontally";
-
-    /** Label for vertical distribution with uniform gaps. */
-    private static final String GAPS_VERTICALLY_LABEL = "Gaps Vertically";
-
-    /** Label for distribution of centers vertically. */
-    private static final String CENTERS_VERTICALLY_LABEL = "Centers Vertically";
-
-    /** Label for horizontal distribution with uniform gaps. */
-    private static final String GAPS_HORIZONTALLY_TOOLTIP = DISTRIBUTE_PREFIX + "With Uniform Gaps Horizontally";
-
-    /** Label for distribution of centers horizontally. */
-    private static final String CENTERS_HORIZONTALLY_TOOLTIP = DISTRIBUTE_PREFIX + "Centers Evenly Horizontally";
-
-    /** Label for vertical distribution with uniform gaps. */
-    private static final String GAPS_VERTICALLY_TOOLTIP = DISTRIBUTE_PREFIX + "With Uniform Gaps Vertically";
-
-    /** Label for distribution of centers vertically. */
-    private static final String CENTERS_VERTICALLY_TOOLTIP = DISTRIBUTE_PREFIX + "Centers Evenly Vertically";
 
     /**
      * The distribution type must by one of:
@@ -136,23 +110,38 @@ public class DistributeAction extends DiagramAction {
         String label = StringStatics.BLANK;
         switch (distributeType) {
         case DistributeAction.GAPS_HORIZONTALLY:
-            label = DistributeAction.GAPS_HORIZONTALLY_LABEL;
+            label = Messages.DistributeAction_gapsHorizontallyLabel;
             break;
         case DistributeAction.CENTERS_HORIZONTALLY:
-            label = DistributeAction.CENTERS_HORIZONTALLY_LABEL;
+            label = Messages.DistributeAction_centersHorizontallyLabel;
             break;
         case DistributeAction.GAPS_VERTICALLY:
-            label = DistributeAction.GAPS_VERTICALLY_LABEL;
+            label = Messages.DistributeAction_gapsVerticallyLabel;
             break;
         case DistributeAction.CENTERS_VERTICALLY:
-            label = DistributeAction.CENTERS_VERTICALLY_LABEL;
+            label = Messages.DistributeAction_centersVerticallyLabel;
             break;
         default:
             break;
         }
         if (isToolbarItem && !StringStatics.BLANK.equals(label)) {
-            // Add distribute prefix
-            label = DistributeAction.DISTRIBUTE_PREFIX + label;
+            // Use same label but with distribute prefix
+            switch (distributeType) {
+            case DistributeAction.GAPS_HORIZONTALLY:
+                label = Messages.DistributeAction_distributeGapsHorizontallyLabel;
+                break;
+            case DistributeAction.CENTERS_HORIZONTALLY:
+                label = Messages.DistributeAction_distributeCentersHorizontallyLabel;
+                break;
+            case DistributeAction.GAPS_VERTICALLY:
+                label = Messages.DistributeAction_distributeGapsVerticallyLabel;
+                break;
+            case DistributeAction.CENTERS_VERTICALLY:
+                label = Messages.DistributeAction_distributeCentersVerticallyLabel;
+                break;
+            default:
+                break;
+            }
         }
         return label;
     }
@@ -168,16 +157,16 @@ public class DistributeAction extends DiagramAction {
         String tooltip = StringStatics.BLANK;
         switch (distributeType) {
         case DistributeAction.GAPS_HORIZONTALLY:
-            tooltip = DistributeAction.GAPS_HORIZONTALLY_TOOLTIP;
+            tooltip = Messages.DistributeAction_distributeGapsHorizontallyTooltip;
             break;
         case DistributeAction.CENTERS_HORIZONTALLY:
-            tooltip = DistributeAction.CENTERS_HORIZONTALLY_TOOLTIP;
+            tooltip = Messages.DistributeAction_distributeCentersHorizontallyTooltip;
             break;
         case DistributeAction.GAPS_VERTICALLY:
-            tooltip = DistributeAction.GAPS_VERTICALLY_TOOLTIP;
+            tooltip = Messages.DistributeAction_distributeGapsVerticallyTooltip;
             break;
         case DistributeAction.CENTERS_VERTICALLY:
-            tooltip = DistributeAction.CENTERS_VERTICALLY_TOOLTIP;
+            tooltip = Messages.DistributeAction_distributeCentersVerticallyTooltip;
             break;
         default:
             break;
@@ -390,8 +379,9 @@ public class DistributeAction extends DiagramAction {
                 EditPart part = (EditPart) editparts.get(i);
                 // if there is no common parent, then Distribute isn't
                 // supported.
-                if (part.getParent() != parent)
+                if (part.getParent() != parent) {
                     return null;
+                }
             }
         }
         return parent;

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2013 IBM Corporation and others.
+ * Copyright (c) 2005, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.MessageFormat;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -37,6 +38,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -147,11 +149,11 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
                 CopyToImageUtil copyToHmlUtil = (CopyToImageUtil) exportToHtmlClass.newInstance();
                 return copyToHmlUtil.copyToImage(diagramEP, destination, format, monitor);
             } catch (InstantiationException e) {
-                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, " Cannot export image (InstanciationException)", e));
+                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, MessageFormat.format(Messages.DiagramEditPartService_imageExportException, "InstanciationException"), e)); //$NON-NLS-1$
             } catch (IllegalAccessException e) {
-                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, " Cannot export image (IllegalAccessException)", e));
+                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, MessageFormat.format(Messages.DiagramEditPartService_imageExportException, "IllegalAccessException"), e)); //$NON-NLS-1$
             } catch (OutOfMemoryError e) {
-                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, " Cannot export image (OutofMemoryError)", e));
+                throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, -1, MessageFormat.format(Messages.DiagramEditPartService_imageExportException, "OutofMemoryError"), e)); //$NON-NLS-1$
             }
         }
         // Retrieve swt image for knows size.

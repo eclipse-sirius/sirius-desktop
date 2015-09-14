@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.layout;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -69,6 +70,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEdit
 import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -82,9 +84,9 @@ import com.google.common.collect.Sets;
  * An abstract implementation for {@link SiriusLayoutDataManager}. <BR>
  * Provide a method to store a layout from a graphicalEditPart and iterates on
  * it's children.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
+ *
  */
 public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDataManager {
 
@@ -92,9 +94,10 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#storeLayoutData(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
      */
+    @Override
     public void storeLayoutData(final IGraphicalEditPart rootEditPart) {
         final Collection<LayoutDataKey> discoveredKeys = Sets.newHashSet();
         final EObject semanticElement = rootEditPart.resolveSemanticElement();
@@ -113,10 +116,11 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#applyLayout(org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart,
      *      org.eclipse.gef.EditPartViewer)
      */
+    @Override
     public void applyLayout(final IGraphicalEditPart rootEditPart) {
         final EObject semanticElement = rootEditPart.resolveSemanticElement();
         final View toStoreView = (View) rootEditPart.getModel();
@@ -277,7 +281,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
     /**
      * Search a layout corresponding to the semantic decorator and applies it to
      * the node. Then it applies to it's children and outgoing edges.
-     * 
+     *
      * @param semanticDecorator
      *            The semantic decorator to search the corresponding layout
      * @param toRestoreView
@@ -386,13 +390,13 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
         }
 
         if (logWarn) {
-            DiagramPlugin.getDefault().logWarning("This kind of diagram element  (" + semanticDecorator.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.AbstractSiriusLayoutDataManager_unhandledDiagramElementKind, semanticDecorator.getClass().getName()));
         }
     }
 
     /**
      * Try to apply a layout to the children of the {@link DNode}.
-     * 
+     *
      * @param parentNode
      *            The parent containing children to apply layout on.
      * @param editPartViewer
@@ -408,7 +412,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Try to apply a layout to the children of the {@link DNodeContainer}.
-     * 
+     *
      * @param container
      *            The parent containing children to apply layout on.
      * @param editPartViewer
@@ -434,7 +438,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Try to apply the layout to the bordered nodes.
-     * 
+     *
      * @param borderedNodes
      *            The list of bordered nodes to deals with
      * @param editPartViewer
@@ -487,7 +491,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Try to apply the layout to a bordered node.
-     * 
+     *
      * @param semanticDecorator
      *            The semantic decorator associated with this Node
      * @param toRestoreView
@@ -600,7 +604,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Try to apply a layout to the children of the {@link DNodeList}.
-     * 
+     *
      * @param nodeList
      *            The parent containing children to apply layout on.
      * @param editPartViewer
@@ -617,7 +621,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Add the layout for the children of a node.
-     * 
+     *
      * @param parentNode
      *            The parent of the children
      * @param parentLayoutData
@@ -630,7 +634,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      *            The {@link LayoutDataKey} discovered during the current store
      *            action.
      */
-    protected void addNodeChildren(final DNode parentNode, final NodeLayoutData parentLayoutData, final IGraphicalEditPart parentEditPart, final View gmfView, Collection<LayoutDataKey> discoveredKeys) {
+    protected void addNodeChildren(final DNode parentNode, final NodeLayoutData parentLayoutData, final IGraphicalEditPart parentEditPart, final View gmfView,
+            Collection<LayoutDataKey> discoveredKeys) {
         for (final DNode child : parentNode.getOwnedBorderedNodes()) {
             checkDataAndAddChildLayout(parentLayoutData, child, parentEditPart, discoveredKeys);
         }
@@ -640,7 +645,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Add a layout (if we have enough information : GMF view and editPart).
-     * 
+     *
      * @param parentLayoutData
      *            The parent layout data
      * @param child
@@ -651,7 +656,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      *            The {@link LayoutDataKey} discovered during the current store
      *            action.
      */
-    protected void checkDataAndAddChildLayout(final NodeLayoutData parentLayoutData, final AbstractDNode child, final IGraphicalEditPart parentSavedEditPart, Collection<LayoutDataKey> discoveredKeys) {
+    protected void checkDataAndAddChildLayout(final NodeLayoutData parentLayoutData, final AbstractDNode child, final IGraphicalEditPart parentSavedEditPart,
+            Collection<LayoutDataKey> discoveredKeys) {
         // Search the GMF node corresponding to the child
         final Node gmfNode = SiriusGMFHelper.getGmfNode(child);
         if (gmfNode != null) {
@@ -664,7 +670,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Add children of the node.
-     * 
+     *
      * @param container
      *            The parent of the children
      * @param parentLayoutData
@@ -688,7 +694,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Add children of the node.
-     * 
+     *
      * @param nodeList
      *            The parent of the children
      * @param parentLayoutData
@@ -707,7 +713,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Add the child layout of the diagram.
-     * 
+     *
      * @param diagram
      *            the diagram
      * @param editPart
@@ -729,7 +735,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Add a layout.
-     * 
+     *
      * @param parentLayoutData
      *            The parent layout data
      * @param child
@@ -778,7 +784,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Add outgoing edge of the edgeTarget.
-     * 
+     *
      * @param parentLayoutData
      *            The parent layout data
      * @param sourceOfEdge
@@ -794,7 +800,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
 
     /**
      * Add edge layout data.
-     * 
+     *
      * @param parentLayoutData
      *            The parent layout data
      * @param edge
@@ -825,7 +831,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * Add the layout data of the label of the edge. This layout data sets the
      * <code>edgeLabelLayoutData</code> of the {@link EdgeLayoutData}. It's not
      * added to the layout data with a key in the manager.
-     * 
+     *
      * @param parentLayoutData
      *            The edge layout data
      * @param element

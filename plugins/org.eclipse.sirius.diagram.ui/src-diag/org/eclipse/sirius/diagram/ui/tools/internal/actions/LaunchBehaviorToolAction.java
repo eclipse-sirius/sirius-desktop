@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.PlatformUI;
@@ -31,7 +32,7 @@ import org.eclipse.ui.actions.RetargetAction;
 
 /**
  * This action launch all {@link RuleTool} to update the model.
- * 
+ *
  * @author ymortier
  */
 public class LaunchBehaviorToolAction extends RetargetAction {
@@ -41,21 +42,21 @@ public class LaunchBehaviorToolAction extends RetargetAction {
 
     /**
      * Create a new {@link LaunchBehaviorToolAction}.
-     * 
+     *
      * @param actionID
      *            the action id
      * @param imageDescriptor
      *            an image descriptor for the UI
      */
     public LaunchBehaviorToolAction(final String actionID, final ImageDescriptor imageDescriptor) {
-        super(actionID, "Launch behavior rules", IAction.AS_PUSH_BUTTON);
+        super(actionID, Messages.LaunchBehaviorToolAction_label, IAction.AS_PUSH_BUTTON);
         this.setImageDescriptor(imageDescriptor);
 
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.actions.RetargetAction#run()
      */
     @Override
@@ -77,7 +78,7 @@ public class LaunchBehaviorToolAction extends RetargetAction {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.actions.RetargetAction#runWithEvent(org.eclipse.swt.widgets.Event)
      */
     @Override
@@ -134,7 +135,7 @@ public class LaunchBehaviorToolAction extends RetargetAction {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.Action#isEnabled()
      */
     @Override

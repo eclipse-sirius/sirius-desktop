@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,8 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.ui.internal.preferences.DiagramAppearancePreferencePage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -32,7 +32,7 @@ import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.junit.Assert;
 
 /**
- * 
+ *
  * @author alagarde
  */
 public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTestCase {
@@ -83,7 +83,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -234,7 +234,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
     /**
      * Ensures that label icons are correctly displayed according to the given
      * parameters.
-     * 
+     *
      * @param hideLabelIconsForShapes
      *            indicates if all label icons of shapes (node and containers)
      *            should be hidden
@@ -255,7 +255,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
     /**
      * Returns the current icon of the edit part with the given name (null if no
      * icon).
-     * 
+     *
      * @param editPartName
      *            the name of the edit part
      * @return the current icon of the edit part with the given name (null if no
@@ -277,7 +277,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
     /**
      * Changes the values of preferences related to label icons hiding using
      * standard API.
-     * 
+     *
      * @param hideLabelIconsForShapes
      *            indicates if all label icons of shapes (node and containers)
      *            should be hidden
@@ -287,6 +287,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
      */
     protected void changeHideLabeIconPreferencesUsingAPI(final boolean hideLabelIconsForShapes, final boolean hideLabelIconsForConnectors) {
         UIThreadRunnable.syncExec(new VoidResult() {
+            @Override
             public void run() {
                 IPreferenceStore pluginPreferences = DiagramUIPlugin.getPlugin().getPreferenceStore();
                 pluginPreferences.setValue(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_CONNECTORS.name(), hideLabelIconsForConnectors);
@@ -298,7 +299,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
     /**
      * Changes the values of preferences related to label icons hiding using the
      * preferences UI.
-     * 
+     *
      * @param hideLabelIconsForShapes
      *            indicates if all label icons of shapes (node and containers)
      *            should be hidden
@@ -312,15 +313,15 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").expand().select().getNode("Appearance").select();
 
         if (hideLabelIconsForShapes) {
-            bot.checkBoxInGroup(DiagramAppearancePreferencePage.HIDE_LABEL_ICONS_ON_SHAPES_MESSAGE, DiagramAppearancePreferencePage.LABEL_ICONS_GROUP_TITLE).select();
+            bot.checkBoxInGroup(Messages.DiagramAppearancePreferencePage_hideShapeLabelIconsLabel, Messages.DiagramAppearancePreferencePage_labelIconsGroupText).select();
         } else {
-            bot.checkBoxInGroup(DiagramAppearancePreferencePage.HIDE_LABEL_ICONS_ON_SHAPES_MESSAGE, DiagramAppearancePreferencePage.LABEL_ICONS_GROUP_TITLE).deselect();
+            bot.checkBoxInGroup(Messages.DiagramAppearancePreferencePage_hideShapeLabelIconsLabel, Messages.DiagramAppearancePreferencePage_labelIconsGroupText).deselect();
         }
 
         if (hideLabelIconsForConnectors) {
-            bot.checkBoxInGroup(DiagramAppearancePreferencePage.HIDE_LABEL_ICONS_ON_CONNECTORS_MESSAGE, DiagramAppearancePreferencePage.LABEL_ICONS_GROUP_TITLE).select();
+            bot.checkBoxInGroup(Messages.DiagramAppearancePreferencePage_hideConnectorLabelIconsLabel, Messages.DiagramAppearancePreferencePage_labelIconsGroupText).select();
         } else {
-            bot.checkBoxInGroup(DiagramAppearancePreferencePage.HIDE_LABEL_ICONS_ON_CONNECTORS_MESSAGE, DiagramAppearancePreferencePage.LABEL_ICONS_GROUP_TITLE).deselect();
+            bot.checkBoxInGroup(Messages.DiagramAppearancePreferencePage_hideConnectorLabelIconsLabel, Messages.DiagramAppearancePreferencePage_labelIconsGroupText).deselect();
         }
 
         bot.button("OK").click();
@@ -330,7 +331,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
     /**
      * Tests that label incons hiding preferences are correctly displayed in the
      * preference UI.
-     * 
+     *
      * @param expectedHideLabelIconsForShapes
      *            expected value for the hide label icons for shapes properties
      * @param expectedHideLabelIconsForConnectors
@@ -342,10 +343,10 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
         bot.waitUntil(Conditions.shellIsActive("Preferences"));
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").expand().select().getNode("Appearance").select();
 
-        Assert.assertEquals("Preference " + DiagramAppearancePreferencePage.HIDE_LABEL_ICONS_ON_SHAPES_MESSAGE + " has not expected value ", expectedHideLabelIconsForShapes,
-                bot.checkBoxInGroup(DiagramAppearancePreferencePage.HIDE_LABEL_ICONS_ON_SHAPES_MESSAGE, DiagramAppearancePreferencePage.LABEL_ICONS_GROUP_TITLE).isChecked());
+        Assert.assertEquals("Preference " + Messages.DiagramAppearancePreferencePage_hideShapeLabelIconsLabel + " has not expected value ", expectedHideLabelIconsForShapes,
+                bot.checkBoxInGroup(Messages.DiagramAppearancePreferencePage_hideShapeLabelIconsLabel, Messages.DiagramAppearancePreferencePage_labelIconsGroupText).isChecked());
         Assert.assertEquals("Preference " + " Hide label icons on connectors" + " has not expected value ", expectedHideLabelIconsForConnectors,
-                bot.checkBoxInGroup(DiagramAppearancePreferencePage.HIDE_LABEL_ICONS_ON_CONNECTORS_MESSAGE, DiagramAppearancePreferencePage.LABEL_ICONS_GROUP_TITLE).isChecked());
+                bot.checkBoxInGroup(Messages.DiagramAppearancePreferencePage_hideConnectorLabelIconsLabel, Messages.DiagramAppearancePreferencePage_labelIconsGroupText).isChecked());
         bot.shell("Preferences").close();
     }
 
@@ -360,7 +361,7 @@ public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTe
 
     /**
      * Creates a new node and ensures it is displayed correctly.
-     * 
+     *
      * @param mustHideNodeLabelIcon
      *            indicates if the new node's label icon must be hidden
      * @param mustHideEdgeLabelIcon

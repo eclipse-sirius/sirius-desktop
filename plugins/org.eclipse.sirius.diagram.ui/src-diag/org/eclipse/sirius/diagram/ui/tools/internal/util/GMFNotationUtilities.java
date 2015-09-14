@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -37,11 +38,6 @@ import com.google.common.collect.Lists;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public final class GMFNotationUtilities {
-
-    /**
-     * Error message for case where we detect an edge connected to other edge.
-     */
-    private static final String MSG_EDGE_ON_EDGE_NOT_MANAGED = "Edge on edge not managed";
 
     /**
      * Default constructor.
@@ -94,7 +90,7 @@ public final class GMFNotationUtilities {
                 referencePointOfChangedAnchor = new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height * 0.5d);
             }
         } else if (edge.getSource() instanceof Edge) {
-            throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
+            throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
         }
         if (referencePointOfChangedAnchor == null) {
             return Options.newNone();
@@ -146,7 +142,7 @@ public final class GMFNotationUtilities {
                 referencePointOfChangedAnchor = new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height * 0.5d);
             }
         } else if (edge.getTarget() instanceof Edge) {
-            throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
+            throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
         }
         if (referencePointOfChangedAnchor == null) {
             return Options.newNone();
@@ -244,7 +240,7 @@ public final class GMFNotationUtilities {
                         * relativeReferencePoint.preciseY()));
             }
         } else {
-            throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
+            throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
         }
         return Options.newNone();
     }
@@ -283,7 +279,7 @@ public final class GMFNotationUtilities {
                         * relativeReferencePoint.preciseY()));
             }
         } else {
-            throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
+            throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
         }
         return Options.newNone();
     }
@@ -319,14 +315,14 @@ public final class GMFNotationUtilities {
             sourceLocation = new PrecisionPoint(sourceBounds.x + sourceBounds.width * sourceAnchorReference.preciseX(), sourceBounds.y + sourceBounds.height * sourceAnchorReference.preciseY());
         } else if (edgeToModify.getSource() instanceof Edge) {
             // TODO Manage edge on egde ...
-            throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
+            throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
         }
         if (edgeToModify.getTarget() instanceof Node) {
             targetBounds = GMFHelper.getBounds((Node) edgeToModify.getTarget(), true);
             targetLocation = new PrecisionPoint(targetBounds.x + targetBounds.width * targetAnchorReference.preciseX(), targetBounds.y + targetBounds.height * targetAnchorReference.preciseY());
         } else if (edgeToModify.getTarget() instanceof Edge) {
             // TODO Manage edge on egde ...
-            throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
+            throw new UnsupportedOperationException(Messages.GMFNotationUtilities_edgeOnEdgeNotManaged);
         }
 
         if (referenceEdge.getBendpoints() instanceof RelativeBendpoints) {

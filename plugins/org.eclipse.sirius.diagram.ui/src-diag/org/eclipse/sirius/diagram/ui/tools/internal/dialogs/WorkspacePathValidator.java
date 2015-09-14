@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * A {@link IValidator} to validate the workspace path entered in the text
@@ -44,6 +45,7 @@ public class WorkspacePathValidator implements IValidator {
     /**
      * {@inheritDoc}
      */
+    @Override
     public IStatus validate(Object value) {
         IStatus status = Status.OK_STATUS;
         if (value instanceof String && controlDecoration.getControl().isEnabled()) {
@@ -53,8 +55,8 @@ public class WorkspacePathValidator implements IValidator {
                 File file = FileProvider.getDefault().getFile(path);
                 if (file == null || !file.exists()) {
                     controlDecoration.show();
-                    controlDecoration.setDescriptionText("The specified path does not correspond to an image in the workspace or in the runtime");
-                    status = ValidationStatus.error("NonExistingImageResource");
+                    controlDecoration.setDescriptionText(Messages.WorkspacePathValidator_invalidPathDecorationDescriptionText);
+                    status = ValidationStatus.error(Messages.WorkspacePathValidator_invalidPahtStatusMessage);
                 }
             }
         }

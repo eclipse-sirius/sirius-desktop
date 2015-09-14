@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
@@ -48,6 +49,7 @@ public class MiscPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
      */
+    @Override
     public Object getEditableValue() {
         return this.selectedObject;
     }
@@ -57,6 +59,7 @@ public class MiscPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
      */
+    @Override
     public IPropertyDescriptor[] getPropertyDescriptors() {
         final List<Field> allFields = new LinkedList<Field>();
         Field[] fields = this.selectedObject.getClass().getDeclaredFields();
@@ -89,6 +92,7 @@ public class MiscPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
      */
+    @Override
     public Object getPropertyValue(final Object id) {
 
         Object value = null;
@@ -100,9 +104,9 @@ public class MiscPropertySource implements IPropertySource {
                 try {
                     value = field.get(this.selectedObject);
                 } catch (final IllegalArgumentException e) {
-                    SiriusTransPlugin.getPlugin().error("Error while getting property value", e);
+                    SiriusTransPlugin.getPlugin().error(Messages.MiscPropertySource_errorGettingValueMsg, e);
                 } catch (final IllegalAccessException e) {
-                    SiriusTransPlugin.getPlugin().error("Error while getting property value", e);
+                    SiriusTransPlugin.getPlugin().error(Messages.MiscPropertySource_errorGettingValueMsg, e);
                 }
             } finally {
                 field.setAccessible(oldAccessible);
@@ -116,6 +120,7 @@ public class MiscPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
      */
+    @Override
     public boolean isPropertySet(final Object id) {
         // does nothing
         return true;
@@ -126,6 +131,7 @@ public class MiscPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
      */
+    @Override
     public void resetPropertyValue(final Object id) {
         // does nothing.
     }
@@ -136,6 +142,7 @@ public class MiscPropertySource implements IPropertySource {
      * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object,
      *      java.lang.Object)
      */
+    @Override
     public void setPropertyValue(final Object id, final Object value) {
         // does nothing.
     }

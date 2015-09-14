@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.collect.Iterables;
 
@@ -57,7 +58,7 @@ public class CenterEditPartEdgesCommand extends AbstractTransactionalCommand {
      *            because of this kind of request. Can be null.
      */
     public CenterEditPartEdgesCommand(IGraphicalEditPart graphicalEditPart, ChangeBoundsRequest request) {
-        super(graphicalEditPart.getEditingDomain(), "Center Edges", null);
+        super(graphicalEditPart.getEditingDomain(), Messages.CenterEditPartEdgesCommand_label, null);
         editPart = graphicalEditPart;
         this.request = request;
 

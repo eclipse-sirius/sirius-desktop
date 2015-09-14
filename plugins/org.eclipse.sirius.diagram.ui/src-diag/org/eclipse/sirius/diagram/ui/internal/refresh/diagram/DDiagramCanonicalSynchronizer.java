@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,9 +65,9 @@ import com.google.common.collect.Sets;
 /**
  * Synchronizer allowing to synchronize a DSemanticDiagram with its
  * corresponding GMFDiagram.
- * 
+ *
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
+ *
  * @since 0.9.0
  */
 public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer {
@@ -84,7 +84,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
     /**
      * Default constructor.
-     * 
+     *
      * @param gmfDiagram
      *            the {@link Diagram} to update according to "semantic"
      *            DSemanticDiagram.
@@ -96,9 +96,9 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.business.api.refresh.view.refresh.CanonicalSynchronizer#synchronize()
      */
     @Override
@@ -187,7 +187,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
      * createdViewsWithCenterLayout : only the container(s) of all the new
      * created views must have a center layout. the filtered views must have a
      * "normal" layout.
-     * 
+     *
      * @param createdViewsWithSpecialLayout
      * @param createdViewsToLayout
      */
@@ -213,7 +213,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
     /**
      * AnnotationEntries contains the GMF diagrams.
-     * 
+     *
      * @param view
      * @param aView
      * @return if view is contained by aView
@@ -228,7 +228,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
     /**
      * Remove the adapter marker that reveal an already arranged view.
-     * 
+     *
      * @param view
      *            The view to check
      */
@@ -263,7 +263,8 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             final EObject nextDiagramLinkEContainer = nextDiagramLink.eContainer();
             if (diagramLinkObject != null) {
                 final EObject diagramLinkEContainer = diagramLinkObject.eContainer();
-                if (nextDiagramLink.getSource() != null && nextDiagramLink.getTarget() != null && nextDiagramLink.getSource().eContainer() != null && nextDiagramLink.getTarget().eContainer() != null) {
+                if (nextDiagramLink.getSource() != null && nextDiagramLink.getTarget() != null && nextDiagramLink.getSource().eContainer() != null
+                        && nextDiagramLink.getTarget().eContainer() != null) {
                     final EObject diagramLinkSrc = nextDiagramLink.getSource().getElement();
                     final EObject diagramLinkDst = nextDiagramLink.getTarget().getElement();
                     final int diagramLinkVisualID = SiriusVisualIDRegistry.getVisualID(nextDiagramLink);
@@ -349,12 +350,12 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         };
         while (it.hasNext()) {
             View child = it.next();
-            if (!domain2NotationMap.containsKey(child.getElement())) { //$NON-NLS-1$
+            if (!domain2NotationMap.containsKey(child.getElement())) {
                 domain2NotationMap.put(child.getElement(), child);
             }
         }
         for (Edge edge : Iterables.filter(((Diagram) view).getEdges(), Edge.class)) {
-            if (!domain2NotationMap.containsKey(edge.getElement())) { //$NON-NLS-1$
+            if (!domain2NotationMap.containsKey(edge.getElement())) {
                 domain2NotationMap.put(edge.getElement(), edge);
             }
         }
@@ -387,7 +388,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
     /**
      * Collect all Note Attachments.
-     * 
+     *
      * @param diagram
      *            the diagram.
      * @return all note attachments.
@@ -407,7 +408,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
 
     /**
      * Collect all Line (GMF figure).
-     * 
+     *
      * @param diagram
      *            the diagram.
      * @return all lines.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008 Borland Software Corporation
+ * Copyright (c) 2008, 2015 Borland Software Corporation and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -27,6 +27,7 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.ImageTranscoder;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.w3c.dom.Document;
 
 //CHECKSTYLE:OFF
@@ -148,10 +149,11 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
             }
             transcode(new TranscoderInput(document), new TranscoderOutput());
         } catch (TranscoderException e) {
-            DiagramPlugin.getDefault().logError("Error transcoding SVG image", e);
+            DiagramPlugin.getDefault().logError(Messages.SimpleImageTranscoder_svgImageTranscodingError, e);
         }
     }
 
+    @Override
     protected void transcode(Document document, String uri, TranscoderOutput output) throws TranscoderException {
         super.transcode(document, uri, output);
         int w = (int) (width + 0.5);

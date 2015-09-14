@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.common.ui.tools.api.resource.WorkspaceResourceDialogWithFilter;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Text;
@@ -59,12 +60,13 @@ public class WorkspaceImagePathSelector extends SelectionAdapter {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void widgetSelected(SelectionEvent e) {
         List<ViewerFilter> filters = Lists.newArrayList();
         if (IMAGE_FILE_EXTENSIONS != null) {
             filters.add(new FileExtensionFilter(IMAGE_FILE_EXTENSIONS));
         }
-        IFile[] selectedResources = WorkspaceResourceDialogWithFilter.openFileSelection(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Background image", "Select the image file:", false,
+        IFile[] selectedResources = WorkspaceResourceDialogWithFilter.openFileSelection(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.WorkspaceImagePathSelector_dialogTitle, Messages.WorkspaceImagePathSelector_dialogMessage, false,
                 null, filters);
         if (selectedResources != null && selectedResources.length == 1) {
             workspacePathText.setText(selectedResources[0].getFullPath().makeRelative().toString());

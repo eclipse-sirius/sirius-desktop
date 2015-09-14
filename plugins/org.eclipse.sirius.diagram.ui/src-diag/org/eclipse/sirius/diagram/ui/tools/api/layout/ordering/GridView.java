@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Represents a grid of views.
@@ -168,7 +169,7 @@ public final class GridView {
          */
         public View getLeftSibling(final View view) throws IllegalArgumentException {
             if (!this.views.contains(view)) {
-                throw new IllegalArgumentException("The view is not in the column");
+                throw new IllegalArgumentException(Messages.Column_wrongColumnViewError);
             }
             if (this.index == 0) {
                 return null;
@@ -188,7 +189,7 @@ public final class GridView {
          */
         public View getRightSibling(final View view) throws IllegalArgumentException {
             if (!this.views.contains(view)) {
-                throw new IllegalArgumentException("The view is not in the column");
+                throw new IllegalArgumentException(Messages.Column_wrongColumnViewError);
             }
             if (this.index + 1 == GridView.this.getColumnsCount()) {
                 return null;

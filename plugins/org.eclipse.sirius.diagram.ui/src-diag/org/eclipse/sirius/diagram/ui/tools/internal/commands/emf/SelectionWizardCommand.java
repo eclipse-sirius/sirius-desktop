@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -39,7 +40,7 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * A command to display a selection wizard.
- * 
+ *
  * @author mchauvin
  */
 public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
@@ -54,7 +55,7 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param factory
      *            the command factory.
      * @param tool
@@ -74,7 +75,7 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.transaction.RecordingCommand#doExecute()
      */
     @Override
@@ -89,8 +90,8 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
             shell = new Shell();
             createdShell = true;
         }
-        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(this.tool.getWindowTitle(), this.tool.getMessage(), getImage(), input, DiagramUIPlugin.getPlugin()
-                .getItemProvidersAdapterFactory());
+        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(this.tool.getWindowTitle(), this.tool.getMessage(), getImage(), input,
+                DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.setMany(tool.isMultiple());
         final WizardDialog dlg = new WizardDialog(shell, wizard);
         final int result = dlg.open();
@@ -108,7 +109,7 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
             if (createdShell) {
                 shell.dispose();
             }
-            throw new OperationCanceledException("User cancel operation");
+            throw new OperationCanceledException(Messages.SelectionWizardCommand_cancelExceptionMsg);
         }
     }
 
@@ -149,7 +150,7 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.common.command.AbstractCommand#getLabel()
      */
     @Override

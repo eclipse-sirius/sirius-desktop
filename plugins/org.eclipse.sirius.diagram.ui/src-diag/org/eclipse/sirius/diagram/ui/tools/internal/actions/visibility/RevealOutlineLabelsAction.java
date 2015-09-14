@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvid
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
@@ -33,17 +34,11 @@ import org.eclipse.sirius.ext.base.Option;
  * @author lredor
  */
 public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Object> {
-
-    /**
-     * Action label.
-     */
-    public static final String REVEAL_LABEL_LABEL = "Show label";
-
     /**
      * Constructor.
      */
     public RevealOutlineLabelsAction() {
-        this(REVEAL_LABEL_LABEL);
+        this(Messages.RevealOutlineLabelsAction_label);
     }
 
     /**

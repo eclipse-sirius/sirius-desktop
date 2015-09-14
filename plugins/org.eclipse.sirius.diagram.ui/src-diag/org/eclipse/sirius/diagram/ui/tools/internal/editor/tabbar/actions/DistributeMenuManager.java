@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 
@@ -30,8 +31,8 @@ public class DistributeMenuManager extends ActionMenuManager {
      */
     private static class DistributeMenuAction extends Action {
         public DistributeMenuAction() {
-            setText("&Distribute");
-            setToolTipText("Distribute selected shapes");
+            setText(Messages.DistributeMenuAction_text);
+            setToolTipText(Messages.DistributeMenuAction_tooltip);
             ImageDescriptor imageDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DISTRIBUTE_WITH_UNIFORM_GAPS_HORIZONTALLY);
             setImageDescriptor(imageDesc);
             setHoverImageDescriptor(imageDesc);

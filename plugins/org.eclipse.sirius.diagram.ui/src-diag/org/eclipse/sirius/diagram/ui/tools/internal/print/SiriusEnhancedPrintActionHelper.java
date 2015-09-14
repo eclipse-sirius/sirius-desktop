@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.gmf.runtime.diagram.ui.printing.util.DiagramPrinterUtil;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
@@ -49,10 +50,10 @@ import org.eclipse.ui.IWorkbenchPart;
  * applicable diagrams will be displayed to the user, when prompting the user to
  * select a diagram for printing. If the diagram does not correspond to an
  * IFile, its part name will be used as the next choice.
- * 
+ *
  * This class implements the IPrintActionHelper interface that can be passed
  * into Print Preview, enabling the print action from there.
- * 
+ *
  * @author Wayne Diu, wdiu
  */
 @SuppressWarnings("restriction")
@@ -61,14 +62,15 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void doPrint(final IWorkbenchPart workbenchPart) {
         DiagramEditor diagramEditor = null;
 
         if (workbenchPart instanceof DiagramEditor) {
             diagramEditor = (DiagramEditor) workbenchPart;
         } else {
-            Log.error(DiagramUIPrintingRenderPlugin.getInstance(), IStatus.ERROR, "Invalid IWorkbenchPart"); //$NON-NLS-1$
-            final IllegalArgumentException e = new IllegalArgumentException("Invalid IWorkbenchPart."); //$NON-NLS-1$
+            Log.error(DiagramUIPrintingRenderPlugin.getInstance(), IStatus.ERROR, Messages.SiriusEnhancedPrintActionHelper_invalidIworkbenchPart);
+            final IllegalArgumentException e = new IllegalArgumentException(Messages.SiriusEnhancedPrintActionHelper_invalidIworkbenchPart);
             Trace.throwing(DiagramUIPrintingRenderPlugin.getInstance(), DiagramUIPrintingRenderDebugOptions.EXCEPTIONS_THROWING, EnhancedPrintActionHelper.class, "doPrint()", e); //$NON-NLS-1$
             throw e;
         }
@@ -96,7 +98,7 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
     /**
      * Return a Map with diagram name String as key and Diagram as value All
      * entries in the map correspond to open editors.
-     * 
+     *
      * @return Map with diagram name String as key and Diagram as value All
      *         entries in the map correspond to open editors with the
      *         diagramEditor's id.
@@ -135,7 +137,7 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
      * Make the <code>name</code> unique. If this name exists in the
      * <code>existingNames</code> list, a digit is added at the end to make it
      * unique.
-     * 
+     *
      * @param name
      *            The name to make unique
      * @param existingNames
@@ -154,7 +156,7 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
      * Make the <code>name</code> unique. If this name exists in the
      * <code>existingNames</code> list, a digit is added at the end to make it
      * unique.
-     * 
+     *
      * @param name
      *            The name to make unique
      * @param existingNames

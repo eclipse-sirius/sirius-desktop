@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.InitializeLayoutCommand;
@@ -30,9 +31,9 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 
 /**
  * Create a new Representation from a {@link RepresentationCreationDescription}.
- * 
+ *
  * @author cbrun
- * 
+ *
  */
 public class CreateRepresentationFromRepresentationCreationDescription extends AbstractCreateRepresentationFromRepresentationCreationDescription {
 
@@ -40,7 +41,7 @@ public class CreateRepresentationFromRepresentationCreationDescription extends A
 
     /**
      * Build the action.
-     * 
+     *
      * @param desc
      *            {@link RepresentationCreationDescription} to use.
      * @param target
@@ -61,7 +62,7 @@ public class CreateRepresentationFromRepresentationCreationDescription extends A
 
     @Override
     protected Option<DRepresentation> executeCreationCommand(Option<Command> initialOperationCommand, CreateRepresentationCommand createRepresentationCommand) {
-        final CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(getEditingDomain(), "Create and open representation");
+        final CompositeTransactionalCommand compositeCommand = new CompositeTransactionalCommand(getEditingDomain(), Messages.CreateRepresentationFromRepresentationCreationDescription_cmdLabel);
         if (initialOperationCommand.some()) {
             compositeCommand.compose(new GMFCommandWrapper(getEditingDomain(), initialOperationCommand.get()));
         }
@@ -84,9 +85,9 @@ public class CreateRepresentationFromRepresentationCreationDescription extends A
 
     /**
      * Returns the emf command factory.
-     * 
+     *
      * @param curPart
-     * 
+     *
      * @return the emf command factory.
      */
     private static IDiagramCommandFactory getDiagramCommandFactory(IGraphicalEditPart curPart, TransactionalEditingDomain editingDomain) {

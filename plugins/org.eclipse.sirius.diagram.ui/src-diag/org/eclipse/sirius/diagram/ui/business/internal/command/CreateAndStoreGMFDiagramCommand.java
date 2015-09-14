@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectServices;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Specific command to create and store gmf diagram.
@@ -35,7 +36,7 @@ public final class CreateAndStoreGMFDiagramCommand extends RecordingCommand {
      *            the diagram to refresh.
      */
     public CreateAndStoreGMFDiagramCommand(Session session, DSemanticDiagram diag) {
-        super(session.getTransactionalEditingDomain(), "Refresh diagram on opening");
+        super(session.getTransactionalEditingDomain(), Messages.CreateAndStoreGMFDiagramCommand_label);
         this.session = session;
         this.diag = diag;
     }

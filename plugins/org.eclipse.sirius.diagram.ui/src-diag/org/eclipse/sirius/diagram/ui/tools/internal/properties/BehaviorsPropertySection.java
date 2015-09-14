@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ActivateBehaviorToolsCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.DeactivateBehaviorToolsCommand;
 import org.eclipse.swt.SWT;
@@ -33,14 +34,14 @@ import com.google.common.collect.Lists;
 
 /**
  * Sections that allows the user to choose activated filters.
- * 
+ *
  * @author ymortier
  */
 public class BehaviorsPropertySection extends FiltersPropertySection {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#getAppliedElements()
      */
     @Override
@@ -54,7 +55,7 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#getAvailableElements()
      */
     @Override
@@ -80,7 +81,7 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#createFeatureComposite(org.eclipse.swt.widgets.Composite)
      */
     @Override
@@ -89,14 +90,14 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
         featureComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         featureComposite.setLayout(new GridLayout());
 
-        final Label featureLabel = getWidgetFactory().createLabel(featureComposite, "Activated Behaviors", SWT.NONE);
+        final Label featureLabel = getWidgetFactory().createLabel(featureComposite, Messages.BehaviorsPropertySection_activatedBehaviorsLabel, SWT.NONE);
         featureLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         return featureComposite;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#createChoiceComposite(org.eclipse.swt.widgets.Composite)
      */
     @Override
@@ -105,14 +106,14 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
         choiceComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         choiceComposite.setLayout(new GridLayout());
 
-        final Label choiceLabel = getWidgetFactory().createLabel(choiceComposite, "Available Behaviors", SWT.NONE);
+        final Label choiceLabel = getWidgetFactory().createLabel(choiceComposite, Messages.BehaviorsPropertySection_availableBehaviorsLabel, SWT.NONE);
         choiceLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         return choiceComposite;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#newElementsSelected(java.util.Collection)
      */
     @Override
@@ -122,7 +123,7 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.internal.properties.FiltersPropertySection#oldElementsRemoved(java.util.Collection)
      */
     @Override

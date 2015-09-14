@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CopyToClipboardCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.clipboard.SiriusClipboardManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
@@ -28,7 +29,7 @@ import com.google.common.collect.Sets;
 /**
  * A copy command which is a proxy to {@link CopyToClipboardCommand} but set the
  * copy result to a viewpoint clipboard.
- * 
+ *
  * @author mporhel
  */
 public class CopyToSiriusClipboardCommand extends RecordingCommand implements AbstractCommand.NonDirtying {
@@ -48,10 +49,10 @@ public class CopyToSiriusClipboardCommand extends RecordingCommand implements Ab
 
     /**
      * Creates a new {@link CopyToSiriusClipboardCommand}.
-     * 
+     *
      * The links between elements and semanticElements will be copied. Others
      * references will target original objects.
-     * 
+     *
      * @param domain
      *            the editing domain.
      * @param dElements
@@ -60,7 +61,7 @@ public class CopyToSiriusClipboardCommand extends RecordingCommand implements Ab
      *            the semantic elements to copy.
      */
     public CopyToSiriusClipboardCommand(final TransactionalEditingDomain domain, final Collection<DSemanticDecorator> dElements, Collection<EObject> semanticElements) {
-        super(domain, "Copy to clipboard");
+        super(domain, Messages.CopyToSiriusClipboardCommand_label);
         this.domain = domain;
         this.dElementsToCopy.addAll(dElements);
         this.elementsToCopy.addAll(semanticElements);
@@ -68,7 +69,7 @@ public class CopyToSiriusClipboardCommand extends RecordingCommand implements Ab
 
     /**
      * This returns the collection of objects to be copied to the clipboard.
-     * 
+     *
      * @return the object to copy.
      */
     public Collection<?> getSourceObjects() {
@@ -89,6 +90,7 @@ public class CopyToSiriusClipboardCommand extends RecordingCommand implements Ab
     /**
      * {@inheritDoc}
      */
+    @Override
     public void doExecute() {
         if (copyCommand != null) {
             copyCommand.execute();
@@ -104,7 +106,7 @@ public class CopyToSiriusClipboardCommand extends RecordingCommand implements Ab
      * This gives an abbreviated name using this object's own class' name,
      * without package qualification, followed by a space separated list of
      * <tt>field:value</tt> pairs.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override

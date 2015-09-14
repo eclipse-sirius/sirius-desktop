@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008 Borland Software Corporation
+ * Copyright (c) 2008, 2015 Borland Software Corporation and others.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -31,6 +31,7 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.InferringNamespaceContext;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
@@ -110,11 +111,11 @@ public class SVGFigure extends Figure {
         try {
             return factory.createDocument(uri);
         } catch (IOException e) {
-            boolean saxParserNotFound = e.getMessage() != null && e.getMessage().contains("SAX2 driver class org.apache.xerces.parsers.SAXParser not found");
+            boolean saxParserNotFound = e.getMessage() != null && e.getMessage().contains("SAX2 driver class org.apache.xerces.parsers.SAXParser not found"); //$NON-NLS-1$
             if (!forceClassLoader && saxParserNotFound && Thread.currentThread().getContextClassLoader() == null) {
                 return createDocument(factory, true);
             } else {
-                DiagramPlugin.getDefault().logError("Error loading SVG file", e);
+                DiagramPlugin.getDefault().logError(Messages.SVGFigure_loadError, e);
             }
         } finally {
             if (forceClassLoader) {

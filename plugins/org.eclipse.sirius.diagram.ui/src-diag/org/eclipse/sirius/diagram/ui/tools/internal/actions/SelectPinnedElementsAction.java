@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelectionDialog;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.swt.widgets.Shell;
@@ -43,7 +44,7 @@ import com.google.common.base.Predicate;
 /**
  * Action to open a dialog box where the user can select/deselect the diagram
  * elements which should be pinned.
- * 
+ *
  * @author pcdavid
  */
 public class SelectPinnedElementsAction extends AbstractDiagramAction {
@@ -57,7 +58,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
 
         @Override
         protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-            DiagramElementsSelectionDialog dlg = new DiagramElementsSelectionDialog(TITLE, MESSAGE);
+            DiagramElementsSelectionDialog dlg = new DiagramElementsSelectionDialog(Messages.SelectPinnedElementsAction_label, Messages.PinnedElementsSelectionCommand_dialogMessage);
             dlg.setSelectionPredicate(isPinned);
             dlg.setSelectedAction(pinElement);
             dlg.setDeselectedAction(unpinElement);
@@ -72,6 +73,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
 
         private Predicate<Object> getNonSelectablePredicate() {
             return new Predicate<Object>() {
+                @Override
                 public boolean apply(Object input) {
                     if (input instanceof DDiagramElement) {
                         return !PinHelper.allowsPinUnpin((DDiagramElement) input);
@@ -84,18 +86,13 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
 
     private static final String ACTION_ID = "selectPinnedElementsAction"; //$NON-NLS-1$
 
-    private static final String TITLE = "Diagram elements pinning";
-
-    private static final String MESSAGE = "Pinned diagram elements are checked.";
-
-    private static final String TOOLTIP = "Pin/Unpin";
-
     private static final String ICON_PATH = "icons/pinWizard.gif"; //$NON-NLS-1$
 
     /** The pin icon descriptor. */
     private static final ImageDescriptor DESC_PIN = DiagramUIPlugin.Implementation.getBundledImageDescriptor(ICON_PATH);
 
     private final Predicate<Object> isPinned = new Predicate<Object>() {
+        @Override
         public boolean apply(Object input) {
             if (input instanceof DDiagramElement) {
                 return new PinHelper().isPinned((DDiagramElement) input);
@@ -105,6 +102,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
     };
 
     private final Function<Object, Void> pinElement = new Function<Object, Void>() {
+        @Override
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
                 new PinHelper().markAsPinned((DDiagramElement) from);
@@ -114,6 +112,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
     };
 
     private final Function<Object, Void> unpinElement = new Function<Object, Void>() {
+        @Override
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
                 new PinHelper().markAsUnpinned((DDiagramElement) from);
@@ -124,21 +123,21 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
 
     /**
      * Constructor.
-     * 
+     *
      * @param workbenchPage
      *            the workbench page.
      */
     public SelectPinnedElementsAction(IWorkbenchPage workbenchPage) {
         super(workbenchPage);
-        setText(TITLE);
-        setToolTipText(TOOLTIP);
+        setText(Messages.SelectPinnedElementsAction_label);
+        setToolTipText(Messages.SelectPinnedElementsAction_tooltip);
         setId(ACTION_ID);
         setImageDescriptor(DiagramUIPlugin.Implementation.getDecoratedCheckedImageDescriptor(DESC_PIN));
     }
 
     /**
      * Constructor.
-     * 
+     *
      * @param workbenchPage
      *            the workbench page.
      * @param part
@@ -147,8 +146,8 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
     public SelectPinnedElementsAction(IWorkbenchPage workbenchPage, IWorkbenchPart part) {
         super(workbenchPage);
         setWorkbenchPart(part);
-        setText(TITLE);
-        setToolTipText(TOOLTIP);
+        setText(Messages.SelectPinnedElementsAction_label);
+        setToolTipText(Messages.SelectPinnedElementsAction_tooltip);
         setId(ACTION_ID);
         setImageDescriptor(getImage());
     }
@@ -229,7 +228,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
             EObject semanticElement = diagramEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagram) {
                 DDiagram diagram = (DDiagram) semanticElement;
-                elementsSelectionCommand = new ICommandProxy(new PinnedElementsSelectionCommand(diagramEditPart.getEditingDomain(), TITLE, diagram));
+                elementsSelectionCommand = new ICommandProxy(new PinnedElementsSelectionCommand(diagramEditPart.getEditingDomain(), Messages.SelectPinnedElementsAction_label, diagram));
             }
         }
         return elementsSelectionCommand;

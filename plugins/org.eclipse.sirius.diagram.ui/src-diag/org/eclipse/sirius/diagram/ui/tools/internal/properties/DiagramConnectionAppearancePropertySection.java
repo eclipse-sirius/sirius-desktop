@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
@@ -63,9 +64,9 @@ import org.eclipse.ui.IWorkbenchPart;
 
 /**
  * allow color customization of diagram edges.
- * 
+ *
  * @author fmorel
- * 
+ *
  */
 @SuppressWarnings("restriction")
 public class DiagramConnectionAppearancePropertySection extends ConnectionAppearancePropertySection {
@@ -93,7 +94,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ColorsAndFontsPropertySection#changeColor(org.eclipse.swt.events.SelectionEvent,
      *      org.eclipse.swt.widgets.Button, java.lang.String, java.lang.String,
      *      org.eclipse.jface.resource.ImageDescriptor)
@@ -146,6 +147,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
                     final RGB finalColor = color; // need a final variable
                     commands.add(createCommand(commandName, ((View) ep.getModel()).eResource(), new Runnable() {
 
+                        @Override
                         public void run() {
                             final ENamedElement element = PackageUtil.getElement(propertyId);
                             if (element instanceof EStructuralFeature) {
@@ -157,7 +159,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
 
                             // change the color.
                             final UserFixedColor newColor = DescriptionFactory.eINSTANCE.createUserFixedColor();
-                            newColor.setName("<anonymous>");
+                            newColor.setName(Messages.AnonymousUserFixedColorName);
                             newColor.setBlue(finalColor.blue);
                             newColor.setGreen(finalColor.green);
                             newColor.setRed(finalColor.red);
@@ -180,7 +182,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection#createFontsGroup(org.eclipse.swt.widgets.Composite)
      */
     @Override
@@ -200,7 +202,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
         fontUnderlineButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
             @Override
             public void getName(final AccessibleEvent e) {
-                e.result = "Underline";
+                e.result = Messages.FontPropertySection_underline;
             }
         });
 
@@ -210,7 +212,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
         fontStrikeThroughButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
             @Override
             public void getName(final AccessibleEvent e) {
-                e.result = "StrikeThrough";
+                e.result = Messages.FontPropertySection_strikeThrough;
             }
         });
 
@@ -288,7 +290,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
 
     /**
      * Overridden to access to the routing group.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -300,7 +302,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
     /**
      * Overridden to display property of selection only if semantic element of
      * selection exists.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -325,7 +327,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
     /**
      * Transform selection to have {@link DSemanticDecorator} instead of
      * {@link EditPart} or null if the semantic element (target) not exists.
-     * 
+     *
      * @param selection
      *            the currently selected object
      * @return the unwrapped object
@@ -355,7 +357,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ColorsAndFontsPropertySection#dispose()
      */
     @Override
@@ -367,7 +369,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection#refresh()
      */
     @Override
@@ -376,6 +378,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
             super.refresh();
             executeAsReadAction(new Runnable() {
 
+                @Override
                 public void run() {
                     boolean hasBracketStyle = false;
                     final IGraphicalEditPart ep = getSingleInput();
@@ -409,7 +412,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
 
     /**
      * Disable the routing group and all its children for Bracket edge.
-     * 
+     *
      * @param hasBracketStyle
      *            true if we must disable, false otherwise
      */

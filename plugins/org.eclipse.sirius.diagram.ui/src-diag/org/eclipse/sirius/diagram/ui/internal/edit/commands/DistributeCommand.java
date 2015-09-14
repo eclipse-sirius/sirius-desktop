@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.ShiftDirectBorderedNodesOperation;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
@@ -49,7 +50,7 @@ import com.google.common.collect.Maps;
  * Performance information: This command is only time consumming on execution,
  * not creation. The "real" command, <code>wrappedCommand</code>, is created
  * during the execution.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class DistributeCommand extends AbstractTransactionalCommand {
@@ -72,7 +73,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param domain
      *            my editing domain
      * @param host
@@ -121,7 +122,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                 }
             } else {
                 // Not expected to be there
-                result = CommandResult.newWarningCommandResult("The distribution of selected elements can not be done.", null);
+                result = CommandResult.newWarningCommandResult(Messages.DistributeCommand_errorMsg, null);
             }
         }
         return result;
@@ -130,7 +131,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
     /**
      * A {@link Comparator} that sorts the {@link IGraphicalEditPart parts} by
      * the x coordinate of the center of the bounds of the part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class PartByCenter implements Comparator<IGraphicalEditPart> {
@@ -155,7 +156,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
     /**
      * A {@link Comparator} that sorts the {@link IGraphicalEditPart parts} by
      * the y coordinate of the center of the bounds of the part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class PartByMiddle implements Comparator<IGraphicalEditPart> {
@@ -182,9 +183,9 @@ public class DistributeCommand extends AbstractTransactionalCommand {
      * edit part and the gap. The {@link #apply(Object, Rectangle, int)} must be
      * called instead of {@link #apply(Object)} for this function. This function
      * does not modify the original bounds.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
-     * 
+     *
      * @param <IGraphicalEditPart>
      *            The edit part from which getting the new bounds
      * @param <Rectangle>
@@ -205,9 +206,9 @@ public class DistributeCommand extends AbstractTransactionalCommand {
     /**
      * A function with {@link HashMap<IGraphicalEditPart, Rectangle>} as
      * parameter.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
-     * 
+     *
      */
     public abstract class FunctionWithBounds implements Function<IGraphicalEditPart, Integer> {
         HashMap<IGraphicalEditPart, Rectangle> partsToBounds;
@@ -227,7 +228,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Get the x coordinate of the left side of the edit part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class GetLeftFunction extends FunctionWithBounds {
@@ -235,6 +236,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
             super(partsToBounds);
         }
 
+        @Override
         protected Integer apply(Rectangle rectangle) {
             return new Integer(rectangle.x);
         };
@@ -242,7 +244,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Get the x coordinate of the center of the edit part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class GetCenterFunction extends FunctionWithBounds {
@@ -250,6 +252,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
             super(partsToBounds);
         }
 
+        @Override
         protected Integer apply(Rectangle rectangle) {
             return new Integer(rectangle.getCenter().x);
         };
@@ -257,7 +260,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Get the x coordinate of the right side of the edit part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class GetRightFunction extends FunctionWithBounds {
@@ -265,6 +268,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
             super(partsToBounds);
         }
 
+        @Override
         protected Integer apply(Rectangle rectangle) {
             return new Integer(rectangle.getRight().x);
         };
@@ -272,7 +276,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Get the y coordinate of the top side of the edit part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class GetTopFunction extends FunctionWithBounds {
@@ -280,6 +284,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
             super(partsToBounds);
         }
 
+        @Override
         protected Integer apply(Rectangle rectangle) {
             return new Integer(rectangle.y);
         };
@@ -287,7 +292,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Get the y coordinate of the center the edit part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class GetMiddleFunction extends FunctionWithBounds {
@@ -295,6 +300,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
             super(partsToBounds);
         }
 
+        @Override
         protected Integer apply(Rectangle rectangle) {
             return new Integer(rectangle.getCenter().y);
         };
@@ -302,7 +308,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Get the y coordinate of the bottom side of the edit part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class GetBottomFunction extends FunctionWithBounds {
@@ -310,6 +316,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
             super(partsToBounds);
         }
 
+        @Override
         protected Integer apply(Rectangle rectangle) {
             return new Integer(rectangle.getBottom().y);
         };
@@ -317,7 +324,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Get width of the edit part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class GetWidthFunction extends FunctionWithBounds {
@@ -325,6 +332,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
             super(partsToBounds);
         }
 
+        @Override
         protected Integer apply(Rectangle rectangle) {
             return new Integer(rectangle.width);
         };
@@ -332,7 +340,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Get height of the edit part.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public class GetHeightFunction extends FunctionWithBounds {
@@ -340,6 +348,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
             super(partsToBounds);
         }
 
+        @Override
         protected Integer apply(Rectangle rectangle) {
             return new Integer(rectangle.height);
         };
@@ -347,7 +356,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Function to compute the gap for the parts to distribute.
-     * 
+     *
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
     public abstract class GetGapFunction {
@@ -372,35 +381,37 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Must be called only when <code>wrappedCommand</code> is initialized.
-     * 
+     *
      * @param partsToBounds
      *            List of parts to distribute associated with their bounds (the
      *            bounds of their figure).
      */
     private void distributeHorizontallyWithUniformGaps(final HashMap<IGraphicalEditPart, Rectangle> partsToBounds) {
         GetNewBoundsFunction setXFunction = new GetNewBoundsFunction() {
+            @Override
             public Rectangle apply(IGraphicalEditPart input) {
                 return partsToBounds.get(input).getCopy().setX(previousPartBounds.getRight().x + gap);
             };
         };
-        distributeWithUniformGaps(partsToBounds.keySet(), new GetLeftFunction(partsToBounds), new GetTopFunction(partsToBounds), new GetRightFunction(partsToBounds), new GetBottomFunction(
-                partsToBounds), new GetWidthFunction(partsToBounds), new PartByCenter(partsToBounds), setXFunction, Functions.forMap(partsToBounds));
+        distributeWithUniformGaps(partsToBounds.keySet(), new GetLeftFunction(partsToBounds), new GetTopFunction(partsToBounds), new GetRightFunction(partsToBounds),
+                new GetBottomFunction(partsToBounds), new GetWidthFunction(partsToBounds), new PartByCenter(partsToBounds), setXFunction, Functions.forMap(partsToBounds));
     }
 
     /**
      * Must be called only when <code>wrappedCommand</code> is initialized.
-     * 
+     *
      * @param partsToBounds
      *            List of parts to distribute associated with their bounds.
      */
     private void distributeVerticallyWithUniformGaps(final HashMap<IGraphicalEditPart, Rectangle> partsToBounds) {
         GetNewBoundsFunction setYFunction = new GetNewBoundsFunction() {
+            @Override
             public Rectangle apply(IGraphicalEditPart input) {
                 return partsToBounds.get(input).getCopy().setY(previousPartBounds.getBottom().y + gap);
             };
         };
-        distributeWithUniformGaps(partsToBounds.keySet(), new GetTopFunction(partsToBounds), new GetLeftFunction(partsToBounds), new GetBottomFunction(partsToBounds), new GetRightFunction(
-                partsToBounds), new GetHeightFunction(partsToBounds), new PartByMiddle(partsToBounds), setYFunction, Functions.forMap(partsToBounds));
+        distributeWithUniformGaps(partsToBounds.keySet(), new GetTopFunction(partsToBounds), new GetLeftFunction(partsToBounds), new GetBottomFunction(partsToBounds),
+                new GetRightFunction(partsToBounds), new GetHeightFunction(partsToBounds), new PartByMiddle(partsToBounds), setYFunction, Functions.forMap(partsToBounds));
     }
 
     private void distributeWithUniformGaps(Set<IGraphicalEditPart> partsToDistribute, Function<IGraphicalEditPart, Integer> getFirstPartMainAxisFunction,
@@ -431,12 +442,13 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Must be called only when <code>wrappedCommand</code> is initialized.
-     * 
+     *
      * @param partsToBounds
      *            List of parts to distribute associated with their bounds.
      */
     private void distributeCentersHorizontally(final HashMap<IGraphicalEditPart, Rectangle> partsToBounds) {
         GetNewBoundsFunction setCenterFunction = new GetNewBoundsFunction() {
+            @Override
             public Rectangle apply(IGraphicalEditPart input) {
                 Rectangle r = partsToBounds.get(input).getCopy();
                 return r.setX(previousPartBounds.getCenter().x + gap - (r.width / 2));
@@ -449,12 +461,13 @@ public class DistributeCommand extends AbstractTransactionalCommand {
 
     /**
      * Must be called only when <code>wrappedCommand</code> is initialized.
-     * 
+     *
      * @param partsToBounds
      *            List of parts to distribute associated with their bounds.
      */
     private void distributeCentersVertically(final HashMap<IGraphicalEditPart, Rectangle> partsToBounds) {
         GetNewBoundsFunction setMiddleFunction = new GetNewBoundsFunction() {
+            @Override
             public Rectangle apply(IGraphicalEditPart input) {
                 Rectangle r = partsToBounds.get(input).getCopy();
                 return r.setY(previousPartBounds.getCenter().y + gap - (r.height / 2));
@@ -483,7 +496,7 @@ public class DistributeCommand extends AbstractTransactionalCommand {
     /**
      * Generic distribute method that distributes shapes according to parameters
      * to customize the distribution.
-     * 
+     *
      * @param partsToDistribute
      *            List of {@link IGraphicalEditPart parts} to distribute
      *            (including the first and the last that don't move).
@@ -586,11 +599,11 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                 }
                 Dimension delta = newBounds.getLocation().getDifference(getBoundsFunction.apply(editPart).getLocation());
                 if (delta.width != 0) {
-                    wrappedCommand.compose(CommandFactory.createICommand(wrappedCommand.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList((Node) editPart.getModel()),
-                            new Dimension(delta.width, 0))));
+                    wrappedCommand.compose(CommandFactory.createICommand(wrappedCommand.getEditingDomain(),
+                            new ShiftDirectBorderedNodesOperation(Lists.newArrayList((Node) editPart.getModel()), new Dimension(delta.width, 0))));
                 } else {
-                    wrappedCommand.compose(CommandFactory.createICommand(wrappedCommand.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList((Node) editPart.getModel()),
-                            new Dimension(0, delta.height))));
+                    wrappedCommand.compose(CommandFactory.createICommand(wrappedCommand.getEditingDomain(),
+                            new ShiftDirectBorderedNodesOperation(Lists.newArrayList((Node) editPart.getModel()), new Dimension(0, delta.height))));
                 }
                 previousPartBounds = expectedNewBounds;
             }

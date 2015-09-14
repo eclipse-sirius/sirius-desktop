@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ExtendedFeatureEditorDialog;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtensionFeatureDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -95,6 +96,7 @@ public class ExtendedPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#getEditableValue()
      */
+    @Override
     public Object getEditableValue() {
         return target.getTarget();
     }
@@ -104,6 +106,7 @@ public class ExtendedPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyDescriptors()
      */
+    @Override
     public IPropertyDescriptor[] getPropertyDescriptors() {
         if (this.target == null || this.target.getTarget() == null || this.getModelAccessor() == null) {
             return EMPTY;
@@ -139,6 +142,7 @@ public class ExtendedPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#getPropertyValue(java.lang.Object)
      */
+    @Override
     public Object getPropertyValue(final Object id) {
         Object object = null;
         if (id instanceof ExtensionFeatureDescription) {
@@ -166,6 +170,7 @@ public class ExtendedPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#isPropertySet(java.lang.Object)
      */
+    @Override
     public boolean isPropertySet(final Object id) {
         return this.getPropertyValue(id) != null;
     }
@@ -175,6 +180,7 @@ public class ExtendedPropertySource implements IPropertySource {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySource#resetPropertyValue(java.lang.Object)
      */
+    @Override
     public void resetPropertyValue(final Object id) {
         // TODOYMO Auto-generated method stub
     }
@@ -185,6 +191,7 @@ public class ExtendedPropertySource implements IPropertySource {
      * @see org.eclipse.ui.views.properties.IPropertySource#setPropertyValue(java.lang.Object,
      *      java.lang.Object)
      */
+    @Override
     public void setPropertyValue(final Object id, final Object value) {
         if (id instanceof ExtensionFeatureDescription) {
             final ExtensionFeatureDescription desc = (ExtensionFeatureDescription) id;
@@ -192,7 +199,7 @@ public class ExtendedPropertySource implements IPropertySource {
                 try {
                     this.getModelAccessor().eSet(target.getTarget(), ExtendedPropertySource.getFeatureName((ExtensionFeatureDescription) id), value);
                 } catch (final FeatureNotFoundException e) {
-                    SiriusPlugin.getDefault().error("Error while setting the property value", e);
+                    SiriusPlugin.getDefault().error(Messages.ExtendedPropertySource_errorSettingValueMsg, e);
                 }
             } else if (desc.isReference()) {
                 this.getModelAccessor().eClear(target.getTarget(), ExtendedPropertySource.getFeatureName((ExtensionFeatureDescription) id));
@@ -241,6 +248,7 @@ public class ExtendedPropertySource implements IPropertySource {
          * 
          * @see org.eclipse.ui.views.properties.IPropertyDescriptor#createPropertyEditor(org.eclipse.swt.widgets.Composite)
          */
+        @Override
         public CellEditor createPropertyEditor(final Composite parent) {
             final EObject editableValue = (EObject) getEditableValue();
             CellEditor editor = null;
@@ -254,7 +262,7 @@ public class ExtendedPropertySource implements IPropertySource {
                 try {
                     referenceValues = (List<EObject>) getModelAccessor().eGet(editableValue, ExtendedPropertySource.getFeatureName(extensionDescription));
                 } catch (final FeatureNotFoundException e) {
-                    SiriusPlugin.getDefault().error("Error while retrieving reference values", e);
+                    SiriusPlugin.getDefault().error(Messages.ExtendedPropertyDescriptor_errorRetrievingValueMsg, e);
                 }
                 final List<EObject> ref = referenceValues == null ? Collections.EMPTY_LIST : referenceValues;
 
@@ -268,7 +276,7 @@ public class ExtendedPropertySource implements IPropertySource {
                     }
                 };
             } else {
-                throw new UnsupportedOperationException("unknown extension");
+                throw new UnsupportedOperationException(Messages.ExtendedPropertyDescriptor_unknownExtensionMsg);
             }
             return editor;
         }
@@ -297,20 +305,23 @@ public class ExtendedPropertySource implements IPropertySource {
         /**
          * @see IPropertyDescriptor#getCategory()
          */
+        @Override
         public String getCategory() {
-            return "Extended";
+            return Messages.ExtendedPropertyDescriptor_categoryName;
         }
 
         /**
          * @see IPropertyDescriptor#getDescription()
          */
+        @Override
         public String getDescription() {
-            return "Property source for the extension framework";
+            return Messages.ExtendedPropertyDescriptor_description;
         }
 
         /**
          * @see IPropertyDescriptor#getDisplayName()
          */
+        @Override
         public String getDisplayName() {
             return ExtendedPropertySource.getFeatureName(this.extensionDescription);
         }
@@ -318,6 +329,7 @@ public class ExtendedPropertySource implements IPropertySource {
         /**
          * @see IPropertyDescriptor#getFilterFlags()
          */
+        @Override
         public String[] getFilterFlags() {
             return EMPTY_STRING_ARRAY;
         }
@@ -325,6 +337,7 @@ public class ExtendedPropertySource implements IPropertySource {
         /**
          * @see IPropertyDescriptor#getHelpContextIds()
          */
+        @Override
         public Object getHelpContextIds() {
             return null;
         }
@@ -332,6 +345,7 @@ public class ExtendedPropertySource implements IPropertySource {
         /**
          * @see IPropertyDescriptor#getId()
          */
+        @Override
         public Object getId() {
             return this.extensionDescription;
         }
@@ -339,6 +353,7 @@ public class ExtendedPropertySource implements IPropertySource {
         /**
          * @see IPropertyDescriptor#getLabelProvider()
          */
+        @Override
         public ILabelProvider getLabelProvider() {
             return this;
         }
@@ -346,6 +361,7 @@ public class ExtendedPropertySource implements IPropertySource {
         /**
          * @see IPropertyDescriptor#isCompatibleWith(IPropertyDescriptor)
          */
+        @Override
         public boolean isCompatibleWith(final IPropertyDescriptor anotherProperty) {
             if (anotherProperty instanceof ExtendedPropertyDescriptor) {
                 return this.extensionDescription.equals(((ExtendedPropertyDescriptor) anotherProperty).extensionDescription);
@@ -356,6 +372,7 @@ public class ExtendedPropertySource implements IPropertySource {
         /**
          * @see ILabelProvider#getImage(Object)
          */
+        @Override
         public Image getImage(final Object element) {
             // No specific image by default
             return null;
@@ -366,6 +383,7 @@ public class ExtendedPropertySource implements IPropertySource {
          * 
          * @see org.eclipse.jface.viewers.ILabelProvider#getText(java.lang.Object)
          */
+        @Override
         public String getText(final Object element) {
 
             String text = null;
@@ -374,7 +392,7 @@ public class ExtendedPropertySource implements IPropertySource {
                 try {
                     text = String.valueOf(getModelAccessor().eGet((EObject) element, ExtendedPropertySource.getFeatureName(extensionDescription)));
                 } catch (final FeatureNotFoundException e) {
-                    SiriusPlugin.getDefault().error("Error while getting the property value", e);
+                    SiriusPlugin.getDefault().error(Messages.ExtendedPropertyDescriptor_errorGettingValueMsg, e);
                     text = e.getMessage();
                 }
             } else if (element instanceof Collection) {

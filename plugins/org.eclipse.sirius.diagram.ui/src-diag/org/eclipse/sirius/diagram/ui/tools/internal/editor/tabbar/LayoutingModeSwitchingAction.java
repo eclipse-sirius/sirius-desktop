@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptor
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.ui.IEditorPart;
@@ -42,27 +43,11 @@ import org.eclipse.ui.part.EditorActionBarContributor;
 
 /**
  * An action that switches the LayoutingMode of the given {@link DDiagram}.
- * 
+ *
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
- * 
+ *
  */
 public class LayoutingModeSwitchingAction extends DiagramAction {
-
-    private static final String MESSAGE_ACTIVATE_LAYOUTING_MODE = "Activate Layouting Mode"; //$NON-NLS-1$
-
-    private static final String MESSAGE_DEACTIVATE_LAYOUTING_MODE = "Deactivate Layouting Mode"; //$NON-NLS-1$
-
-    /**
-     * Message used in the editor's status line to show that layouting mode is
-     * activated.
-     */
-    private static final String MESSAGE_STATUS_LINE_LAYOUTING_MODE_IS_ON = "Layouting Mode"; //$NON-NLS-1$
-
-    /**
-     * Message used in the editor's status line to show that layouting mode is
-     * disabled.
-     */
-    private static final String MESSAGE_STATUS_LINE_LAYOUTING_MODE_IS_OFF = ""; //$NON-NLS-1$
 
     /**
      * Icon used in the tabbar to allow end-user to activate layouting mode. It
@@ -78,7 +63,7 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param workbenchPage
      *            The workbench page associated with this action
      * @param editorDiagram
@@ -101,10 +86,10 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
     private void setTextAndStatusAccordingToLayoutingMode() {
         // Step 1 : updating action's text and image
         if (this.ddiagram != null && this.ddiagram.isIsInLayoutingMode()) {
-            setText(MESSAGE_DEACTIVATE_LAYOUTING_MODE);
+            setText(Messages.LayoutingModeSwitchingAction_deactivate);
             setChecked(true);
         } else {
-            setText(MESSAGE_ACTIVATE_LAYOUTING_MODE);
+            setText(Messages.LayoutingModeSwitchingAction_activate);
             setChecked(false);
         }
 
@@ -126,19 +111,19 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
             if (statusLineManager != null) {
                 // we update it according to the DDiagram layouting mode status
                 if (this.ddiagram != null && this.ddiagram.isIsInLayoutingMode()) {
-                    String statusMessage = MESSAGE_STATUS_LINE_LAYOUTING_MODE_IS_ON;
+                    String statusMessage = Messages.LayoutingModeSwitchingAction_statusOn;
                     statusLineManager.setMessage(DiagramUIPlugin.getPlugin().getImage(ACTIVATE_LAYOUTING_MODE_IMAGE_DESCRIPTOR), statusMessage);
                 } else {
-                    statusLineManager.setMessage(MESSAGE_STATUS_LINE_LAYOUTING_MODE_IS_OFF);
+                    statusLineManager.setMessage(""); //$NON-NLS-1$
                 }
             }
         }
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.Action#getStyle()
      */
     @Override
@@ -147,9 +132,9 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#isSelectionListener()
      */
     @Override
@@ -158,9 +143,9 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommand()
      */
     @Override
@@ -185,7 +170,7 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
     /**
      * Returns a command that switches the LayoutingMode of the given
      * {@link DDiagram}.
-     * 
+     *
      * @param diagram
      *            the {@link DDiagram} on witch the layouting mode should be
      *            switched
@@ -202,9 +187,9 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#dispose()
      */
     @Override
@@ -215,7 +200,7 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
 
     /**
      * Indicates if the given ddiagram is allowing layouting mode.
-     * 
+     *
      * @param diagram
      *            the diagram to inspect
      * @return true if the given ddiagram is allowing layouting mode, false
@@ -246,9 +231,9 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
     /**
      * A command that changes the LayoutingMode of the given {@link DDiagram}
      * and updates the image assocatied to the Action.
-     * 
+     *
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
-     * 
+     *
      */
     public class SetLayoutingModeCommandAndUpdateActionImage extends AbstractTransactionalCommand {
 
@@ -264,7 +249,7 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
 
         /**
          * Constructor.
-         * 
+         *
          * @param editingDomain
          *            the editing domain
          * @param diagram
@@ -275,18 +260,18 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
          *            disabled
          */
         public SetLayoutingModeCommandAndUpdateActionImage(TransactionalEditingDomain editingDomain, DDiagram diagram, boolean layoutingModeShouldBeEnabled) {
-            super(editingDomain, "Activating Layouting mode", null);
+            super(editingDomain, Messages.SetLayoutingModeCommandAndUpdateActionImage_activateLabel, null);
             this.diagram = diagram;
             this.layoutingModeShouldBeEnabled = layoutingModeShouldBeEnabled;
             if (this.diagram.isIsInLayoutingMode()) {
-                setText("Deactivating  Layouting mode");
+                setText(Messages.SetLayoutingModeCommandAndUpdateActionImage_deactivateLabel);
             }
         }
 
         /**
-         * 
+         *
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand#doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor,
          *      org.eclipse.core.runtime.IAdaptable)
          */
@@ -302,9 +287,9 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#createTargetRequest()
      */
     @Override

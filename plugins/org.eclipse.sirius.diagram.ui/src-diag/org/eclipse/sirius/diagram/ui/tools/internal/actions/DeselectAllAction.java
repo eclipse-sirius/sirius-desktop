@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.swt.SWT;
@@ -28,7 +29,7 @@ import org.eclipse.ui.PlatformUI;
  * Select the {@link org.eclipse.sirius.diagram.DDiagram diagram} (equivalent to
  * unselect all selected {@link org.eclipse.sirius.diagram.DDiagramElement
  * diagram elements}).
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class DeselectAllAction extends Action implements IObjectActionDelegate {
@@ -43,14 +44,14 @@ public class DeselectAllAction extends Action implements IObjectActionDelegate {
         setId(ActionIds.DESELECT_ALL);
         setActionDefinitionId("org.eclipse.sirius.diagram.ui.command.deselectAll"); //$NON-NLS-1$
         setAccelerator(SWT.ESC);
-        setText("Deselect All");
-        setToolTipText("Deselect all selected diagram elements.");
+        setText(Messages.DeselectAllAction_label);
+        setToolTipText(Messages.DeselectAllAction_tooltip);
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DESELECT_ALL_ICON));
     }
 
     /**
      * Deselect all from the selection.
-     * 
+     *
      * @param selection
      *            ISelection
      */
@@ -68,17 +69,18 @@ public class DeselectAllAction extends Action implements IObjectActionDelegate {
 
     /**
      * Empty. {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
      *      org.eclipse.ui.IWorkbenchPart)
      */
+    @Override
     public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
         // empty.
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.jface.action.Action#run()
      */
     @Override
@@ -90,19 +92,21 @@ public class DeselectAllAction extends Action implements IObjectActionDelegate {
     /**
      * Execute the action. Refresh all selected view point element.
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
+    @Override
     public void run(final IAction action) {
         DeselectAllAction.deselectAll(selection);
     }
 
     /**
      * Set the selection. {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
      *      org.eclipse.jface.viewers.ISelection)
      */
+    @Override
     public void selectionChanged(final IAction action, final ISelection s) {
         this.selection = s;
     }

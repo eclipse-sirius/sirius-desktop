@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,10 +15,11 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.helper.concern.ConcernService;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Specific command to set current concern to default.
- * 
+ *
  * @author mporhel
  */
 public final class SetDefaultConcernCommand extends RecordingCommand {
@@ -27,14 +28,14 @@ public final class SetDefaultConcernCommand extends RecordingCommand {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            the editing domain.
      * @param diagram
      *            the current diagram.
      */
     public SetDefaultConcernCommand(TransactionalEditingDomain domain, DDiagram diagram) {
-        super(domain, "Set current concern to default");
+        super(domain, Messages.SetDefaultConcernCommand_label);
         this.diag = diagram;
     }
 

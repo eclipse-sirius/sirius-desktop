@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.Iterator;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -58,6 +59,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
     /**
      * @was-generated
      */
+    @Override
     protected Command getOpenCommand(Request request) {
         EditPart targetEditPart = getTargetEditPart(request);
         if (false == targetEditPart.getModel() instanceof View) {
@@ -97,6 +99,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
         /**
          * @not-generated
          */
+        @Override
         protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
             try {
                 Diagram diagram = getDiagramToOpen();
@@ -112,10 +115,10 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
                     page.openEditor(editorInput, getEditorID());
                     return CommandResult.newOKCommandResult();
                 }
-                return CommandResult.newErrorCommandResult("Can't open diagram -- getElement() is not an instance of Sirius");
+                return CommandResult.newErrorCommandResult(org.eclipse.sirius.diagram.ui.provider.Messages.OpenDiagramCommand_notDiagramElementErrorMsg);
 
             } catch (Exception ex) {
-                throw new ExecutionException("Can't open diagram", ex);
+                throw new ExecutionException(org.eclipse.sirius.diagram.ui.provider.Messages.OpenDiagramCommand_exceptionMsg, ex);
             }
         }
 
@@ -132,7 +135,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
         protected Diagram intializeNewDiagram() throws ExecutionException {
             Diagram d = ViewService.createDiagram(getDiagramDomainElement(), getDiagramKind(), getPreferencesHint());
             if (d == null) {
-                throw new ExecutionException("Can't create diagram of '" + getDiagramKind() + "' kind");
+                throw new ExecutionException(MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.OpenDiagramCommand_creationErrorMsg, getDiagramKind()));
             }
             diagramFacet.setDiagramLink(d);
             final Resource diagramFacetResource = diagramFacet.eResource();
@@ -140,6 +143,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
             diagramFacetResource.getContents().add(d);
             try {
                 new WorkspaceModifyOperation() {
+                    @Override
                     protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                         try {
                             for (Iterator<Resource> it = diagramFacetResource.getResourceSet().getResources().iterator(); it.hasNext();) {
@@ -149,14 +153,14 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
                                 }
                             }
                         } catch (IOException ex) {
-                            throw new InvocationTargetException(ex, "Save operation failed");
+                            throw new InvocationTargetException(ex, org.eclipse.sirius.diagram.ui.provider.Messages.OpenDiagramCommand_saveFailedMsg);
                         }
                     }
                 }.run(null);
             } catch (InvocationTargetException e) {
-                throw new ExecutionException("Can't create diagram of '" + getDiagramKind() + "' kind", e);
+                throw new ExecutionException(MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.OpenDiagramCommand_creationErrorMsg, getDiagramKind()), e);
             } catch (InterruptedException e) {
-                throw new ExecutionException("Can't create diagram of '" + getDiagramKind() + "' kind", e);
+                throw new ExecutionException(MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.OpenDiagramCommand_creationErrorMsg, getDiagramKind()), e);
             }
             return d;
         }

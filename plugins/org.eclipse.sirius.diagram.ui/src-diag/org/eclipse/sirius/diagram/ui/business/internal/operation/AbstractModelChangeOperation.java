@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.operation;
+
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Abstract base class for operations which will need to modify an EMF Model.
@@ -29,7 +31,7 @@ public abstract class AbstractModelChangeOperation<T> {
      * Constructor.
      */
     protected AbstractModelChangeOperation() {
-        this("Unnamed operation");
+        this(Messages.AbstractModelChangeOperation_name);
     }
 
     /**

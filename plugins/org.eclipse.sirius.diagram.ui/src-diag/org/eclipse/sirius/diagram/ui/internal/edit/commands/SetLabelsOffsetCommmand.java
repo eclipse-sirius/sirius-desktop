@@ -18,6 +18,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * This class allows to update edge label Node position.
@@ -36,7 +37,7 @@ public class SetLabelsOffsetCommmand extends AbstractTransactionalCommand {
      *            the editing domain through which model changes are made
      */
     public SetLabelsOffsetCommmand(TransactionalEditingDomain editingDomain) {
-        super(editingDomain, "Update labels offset", null);
+        super(editingDomain, Messages.SetLabelsOffsetCommmand_label, null);
         setLabelsOperation = new SetLabelsOffsetOperation();
     }
 

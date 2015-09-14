@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -37,7 +38,7 @@ import com.google.common.collect.Sets;
 
 /**
  * Delete helper to execute specific operations on delete request.
- * 
+ *
  * @author mchauvin
  */
 public final class DeleteHelper {
@@ -49,7 +50,7 @@ public final class DeleteHelper {
     /**
      * Delete all notes attached to view. If a note is attached to an other
      * view, the note is not destroyed.
-     * 
+     *
      * @param command
      *            the command
      * @param deletedView
@@ -70,7 +71,7 @@ public final class DeleteHelper {
 
     /**
      * Delete all note attachments attached to view.
-     * 
+     *
      * @param command
      *            the command
      * @param deletedView
@@ -112,9 +113,9 @@ public final class DeleteHelper {
      * Delete note if this is associated to node deleted. If a note is
      * associated at two node, the note is not deleted if the two node are not
      * deleted.
-     * 
+     *
      * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
-     * 
+     *
      */
     private static final class DeleteRelatedNotesTask extends AbstractCommandTask {
 
@@ -150,7 +151,7 @@ public final class DeleteHelper {
 
         @Override
         public String getLabel() {
-            return "Delete Related GMF notes";
+            return Messages.DeleteRelatedNotesTask_label;
         }
 
         private Set<View> getAllRelatedNotesToDelete(View viewToDelete) {
@@ -189,7 +190,7 @@ public final class DeleteHelper {
         /**
          * Remove all contains set if the set contains an element that is not a
          * note. It the element is hide, hide notes associated.
-         * 
+         *
          * @param linked
          *            set of notes to delete.
          * @return a collection of notes
@@ -251,9 +252,9 @@ public final class DeleteHelper {
 
     /**
      * Delete note attachment if this is associated to node deleted.
-     * 
+     *
      * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
-     * 
+     *
      */
     private static final class DeleteRelatedNoteAttachmentsTask extends AbstractCommandTask {
 
@@ -286,7 +287,7 @@ public final class DeleteHelper {
 
         @Override
         public String getLabel() {
-            return "Delete Related GMF note attachments";
+            return Messages.DeleteRelatedNoteAttachmentsTask_label;
         }
     }
 

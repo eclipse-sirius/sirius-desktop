@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.swt.widgets.Item;
 import org.eclipse.ui.IWorkbench;
@@ -70,6 +71,7 @@ public class LayersCellModifier implements ICellModifier {
      * @see org.eclipse.jface.viewers.ICellModifier#canModify(java.lang.Object,
      *      java.lang.String)
      */
+    @Override
     public boolean canModify(final Object element, final String property) {
 
         if (property.equals(layerColumns[0])) {
@@ -85,6 +87,7 @@ public class LayersCellModifier implements ICellModifier {
      * @see org.eclipse.jface.viewers.ICellModifier#getValue(java.lang.Object,
      *      java.lang.String)
      */
+    @Override
     public Object getValue(final Object element, final String property) {
 
         final Layer layer = (Layer) element;
@@ -118,6 +121,7 @@ public class LayersCellModifier implements ICellModifier {
      * @see org.eclipse.jface.viewers.ICellModifier#modify(java.lang.Object,
      *      java.lang.String, java.lang.Object)
      */
+    @Override
     public void modify(final Object element, final String property, final Object value) {
 
         Object objElement;
@@ -148,8 +152,9 @@ public class LayersCellModifier implements ICellModifier {
                     try {
                         ps.busyCursorWhile(new IRunnableWithProgress() {
 
+                            @Override
                             public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-                                monitor.beginTask("Apply layer modifications...", 1);
+                                monitor.beginTask(Messages.LayersCellModifier_layerSelectionChangesTaskName, 1);
                                 TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
                                 Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, layer, monitor);
                                 domain.getCommandStack().execute(changeActivatedLayersCmd);

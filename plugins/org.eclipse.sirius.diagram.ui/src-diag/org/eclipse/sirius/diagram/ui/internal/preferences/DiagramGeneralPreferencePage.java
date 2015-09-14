@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
@@ -52,22 +53,22 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
     protected void createFieldEditors() {
         super.createFieldEditors();
 
-        autosizeOnArrangeAll = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), "Auto-size containers during arrange-all action.",
+        autosizeOnArrangeAll = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), Messages.DiagramGeneralPreferencePage_arrangeAndAutoSizeContainersLabel,
                 getFieldEditorParent());
         addField(autosizeOnArrangeAll);
 
-        moveUnlinkedNotesDuringLayout = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), "Move unlinked notes during layout", getFieldEditorParent());
+        moveUnlinkedNotesDuringLayout = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), Messages.DiagramGeneralPreferencePage_moveUnlinkedNodeLabel, getFieldEditorParent());
         addField(moveUnlinkedNotesDuringLayout);
 
-        autoPinOnMove = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name(), "Automatically mark moved elements as pinned", getFieldEditorParent());
+        autoPinOnMove = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name(), Messages.DiagramGeneralPreferencePage_pinMovedElementsLabel, getFieldEditorParent());
         addField(autoPinOnMove);
 
-        synchronizeOnDiagramCreation = new BooleanFieldEditor(SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), "Synchronized mode for new diagrams",
+        synchronizeOnDiagramCreation = new BooleanFieldEditor(SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), Messages.DiagramGeneralPreferencePage_synchronizedModeLabel,
                 getFieldEditorParent());
         addField(synchronizeOnDiagramCreation);
 
         removeHideNoteWhenAnnotatedElementRemovedHidden = new BooleanFieldEditor(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name(),
-                "Remove/hide note when the annotated element is removed/hidden", getFieldEditorParent());
+                Messages.DiagramGeneralPreferencePage_removeHideNoteLabel, getFieldEditorParent());
         addField(removeHideNoteWhenAnnotatedElementRemovedHidden);
     }
 

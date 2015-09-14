@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -83,7 +84,7 @@ public class HierarchyLabelProvider extends LabelProvider {
     }
 
     private String getLabel(final EObject eObject) {
-        String label = "Element whithout name";
+        String label = Messages.HierarchyLabelProvider_elementWihtoutNameLabel;
         if (eObject instanceof IdentifiedElement) {
             label = new IdentifiedElementQuery((IdentifiedElement) eObject).getLabel();
         } else if (eObject instanceof RepresentationExtensionDescription) {

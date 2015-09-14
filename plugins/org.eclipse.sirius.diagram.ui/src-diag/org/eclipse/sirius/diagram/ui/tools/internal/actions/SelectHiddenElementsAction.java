@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelectionDialog;
@@ -47,7 +48,7 @@ import com.google.common.base.Predicates;
 /**
  * Action to open a dialog box where the user can select/deselect the diagram
  * elements which should be hidden.
- * 
+ *
  * @author pcdavid
  */
 public class SelectHiddenElementsAction extends AbstractDiagramAction {
@@ -62,7 +63,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
 
         @Override
         protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-            DiagramElementsSelectionDialog dlg = new DiagramElementsSelectionDialog(TITLE, MESSAGE);
+            DiagramElementsSelectionDialog dlg = new DiagramElementsSelectionDialog(Messages.HiddenElementsSelectionCommand_dialogTitle, Messages.HiddenElementsSelectionCommand_dialogMessage);
             dlg.setSelectionPredicate(isVisible);
             dlg.setSelectedAction(revealElement);
             dlg.setDeselectedAction(hideElement);
@@ -82,6 +83,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
             }
 
             return new Predicate<Object>() {
+                @Override
                 public boolean apply(Object input) {
                     if (input instanceof DDiagramElement) {
                         return !allowsHideReveal.apply((DDiagramElement) input);
@@ -92,18 +94,13 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
         }
     }
 
-    private static final String TITLE = "Diagram elements visibility";
-
-    private static final String MESSAGE = "Visible diagram elements are checked.";
-
-    private static final String TOOLTIP = "Show/Hide";
-
     private static final String ICON_PATH = "icons/categoryWizard.gif"; //$NON-NLS-1$
 
     /** The hide icon descriptor. */
     private static final ImageDescriptor DESC_HIDE = DiagramUIPlugin.Implementation.getBundledImageDescriptor(ICON_PATH);
 
     private final Predicate<Object> isVisible = new Predicate<Object>() {
+        @Override
         public boolean apply(Object input) {
             boolean result = false;
             if (input instanceof DDiagramElement) {
@@ -119,6 +116,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
     };
 
     private final Function<Object, Void> hideElement = new Function<Object, Void>() {
+        @Override
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
                 HideFilterHelper.INSTANCE.hide((DDiagramElement) from);
@@ -133,6 +131,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
     };
 
     private final Function<Object, Void> revealElement = new Function<Object, Void>() {
+        @Override
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
                 HideFilterHelper.INSTANCE.reveal((DDiagramElement) from);
@@ -145,21 +144,21 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
 
     /**
      * Constructor.
-     * 
+     *
      * @param workbenchPage
      *            the workbench page.
      */
     public SelectHiddenElementsAction(IWorkbenchPage workbenchPage) {
         super(workbenchPage);
-        setText(TOOLTIP);
+        setText(Messages.SelectHiddenElementsAction_tooltip);
         setId(ActionIds.SELECT_HIDDEN_ELEMENTS);
-        setToolTipText(TOOLTIP);
+        setToolTipText(Messages.SelectHiddenElementsAction_tooltip);
         setImageDescriptor(DESC_HIDE);
     }
 
     /**
      * Constructor.
-     * 
+     *
      * @param workbenchPage
      *            the workbench page.
      * @param part
@@ -168,9 +167,9 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
     public SelectHiddenElementsAction(IWorkbenchPage workbenchPage, IDiagramWorkbenchPart part) {
         super(workbenchPage);
         setWorkbenchPart(part);
-        setText(TOOLTIP);
+        setText(Messages.SelectHiddenElementsAction_tooltip);
         setId(ActionIds.SELECT_HIDDEN_ELEMENTS);
-        setToolTipText(TOOLTIP);
+        setToolTipText(Messages.SelectHiddenElementsAction_tooltip);
         setImageDescriptor(getImage());
     }
 
@@ -238,7 +237,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
             EObject semanticElement = diagramEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagram) {
                 DDiagram diagram = (DDiagram) semanticElement;
-                elementsSelectionCommand = new ICommandProxy(new HiddenElementsSelectionCommand(diagramEditPart.getEditingDomain(), TOOLTIP, diagram));
+                elementsSelectionCommand = new ICommandProxy(new HiddenElementsSelectionCommand(diagramEditPart.getEditingDomain(), Messages.SelectHiddenElementsAction_tooltip, diagram));
             }
         }
         return elementsSelectionCommand;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,10 +13,11 @@ package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Specific command to change synchronized diagram status.
- * 
+ *
  * @author mporhel
  */
 public class ChangeSynchronizedDagramStatusCommand extends RecordingCommand {
@@ -25,14 +26,14 @@ public class ChangeSynchronizedDagramStatusCommand extends RecordingCommand {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            the editing domain.
      * @param diagram
      *            the diagram to update.
      */
     public ChangeSynchronizedDagramStatusCommand(TransactionalEditingDomain domain, DDiagram diagram) {
-        super(domain, "Change Synchronized status");
+        super(domain, Messages.ChangeSynchronizedDagramStatusCommand_label);
         this.diagram = diagram;
     }
 

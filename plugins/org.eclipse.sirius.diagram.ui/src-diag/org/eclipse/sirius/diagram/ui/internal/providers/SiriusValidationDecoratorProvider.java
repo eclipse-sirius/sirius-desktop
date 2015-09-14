@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -79,7 +80,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
     /**
      * @was-generated
      */
-    private static Map/* <String, List<IDecorator>> */allDecorators = new HashMap();
+    private static Map/* <String, List<IDecorator>> */ allDecorators = new HashMap();
 
     /**
      * @was-generated
@@ -150,7 +151,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
                         }
                     });
                 } catch (Exception e) {
-                    DiagramPlugin.getDefault().logError("Decorator refresh failure", e); //$NON-NLS-1$
+                    DiagramPlugin.getDefault().logError(Messages.SiriusValidationDecoratorProvider_refreshFailureMsg, e);
                 }
             }
         });
@@ -181,7 +182,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
                     }
                 });
             } catch (Exception e) {
-                DiagramPlugin.getDefault().logError("ViewID access failure", e); //$NON-NLS-1$			
+                DiagramPlugin.getDefault().logError(Messages.StatusDecorator_viewIdAccessFailureMsg, e);
             }
         }
 
@@ -219,7 +220,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             try {
                 markers = resource.findMarkers(MARKER_TYPE, true, IResource.DEPTH_INFINITE);
             } catch (CoreException e) {
-                DiagramPlugin.getDefault().logError("Validation markers refresh failure", e); //$NON-NLS-1$
+                DiagramPlugin.getDefault().logError(Messages.StatusDecorator_validationMarkersFailureMsg, e);
             }
             if (markers == null || markers.length == 0) {
                 return;
@@ -439,7 +440,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             try {
                 return marker.getType();
             } catch (CoreException e) {
-                DiagramPlugin.getDefault().logError("Validation marker refresh failure", e); //$NON-NLS-1$
+                DiagramPlugin.getDefault().logError(Messages.MarkerObserver_validationMarkerFailureMsg, e);
                 return ""; //$NON-NLS-1$
             }
         }

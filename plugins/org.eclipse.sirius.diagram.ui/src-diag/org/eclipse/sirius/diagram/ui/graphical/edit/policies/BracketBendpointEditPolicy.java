@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.bracket.handles.Bendpoint
 import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelQuery;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -61,10 +62,10 @@ import org.eclipse.swt.graphics.Cursor;
 public class BracketBendpointEditPolicy extends BendpointEditPolicy {
 
     /** The label used for the bracket edge move command. */
-    public static final String MOVE_COMMAND_LABEL = "Move bracket connection";
+    public static final String MOVE_COMMAND_LABEL = Messages.BracketBendpointEditPolicy_moveBrackedCommandLabel;
 
     /** The label used for the bracket edge rotate command. */
-    public static final String ROTATE_COMMAND_LABEL = "Rotate bracket connection";
+    public static final String ROTATE_COMMAND_LABEL = Messages.BracketBendpointEditPolicy_rotateBracketCommandLabel;
 
     /** The background feedback color as in GMF. */
     private static final Color GRAY = new Color(null, 200, 200, 200);

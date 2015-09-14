@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
@@ -68,9 +69,9 @@ import org.eclipse.swt.widgets.Label;
 
 /**
  * Class necessary to remove default color option.
- * 
+ *
  * @author jdupont
- * 
+ *
  */
 @SuppressWarnings("restriction")
 public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPropertySection {
@@ -98,9 +99,9 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @overrides
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ColorsAndFontsPropertySection#changeColor(org.eclipse.swt.events.SelectionEvent,
      *      org.eclipse.swt.widgets.Button, java.lang.String, java.lang.String,
      *      org.eclipse.jface.resource.ImageDescriptor)
@@ -163,7 +164,7 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
                             final View view = (View) ep.getModel();
                             // change the color.
                             final UserFixedColor newColor = DescriptionFactory.eINSTANCE.createUserFixedColor();
-                            newColor.setName("<anonymous>");
+                            newColor.setName(Messages.AnonymousUserFixedColorName);
                             newColor.setBlue(finalColor.blue);
                             newColor.setGreen(finalColor.green);
                             newColor.setRed(finalColor.red);
@@ -187,13 +188,14 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
 
     /**
      * This method has been overridden to add the undo context to the command.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
     protected CommandResult executeAsCompositeCommand(String actionName, List commands) {
-        if (bIsCommandInProgress)
+        if (bIsCommandInProgress) {
             return null;
+        }
 
         bIsCommandInProgress = true;
 
@@ -221,7 +223,7 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection#createFontsGroup(org.eclipse.swt.widgets.Composite)
      */
     @Override
@@ -241,7 +243,7 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
         fontUnderlineButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
             @Override
             public void getName(final AccessibleEvent e) {
-                e.result = "Underline";
+                e.result = Messages.FontPropertySection_underline;
             }
         });
 
@@ -251,7 +253,7 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
         fontStrikeThroughButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
             @Override
             public void getName(final AccessibleEvent e) {
-                e.result = "StrikeThrough";
+                e.result = Messages.FontPropertySection_strikeThrough;
             }
         });
 
@@ -328,7 +330,7 @@ public class DiagramColorAndFontPropertySection extends DiagramColorsAndFontsPro
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection#refresh()
      */
     @Override

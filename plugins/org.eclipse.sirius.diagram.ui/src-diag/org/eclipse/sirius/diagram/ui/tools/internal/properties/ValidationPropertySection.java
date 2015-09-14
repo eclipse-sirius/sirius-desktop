@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.properties;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ActivateRulesCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.DeactivateRulesCommand;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
@@ -76,7 +77,7 @@ public class ValidationPropertySection extends FiltersPropertySection {
         featureComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         featureComposite.setLayout(new GridLayout());
 
-        final Label featureLabel = getWidgetFactory().createLabel(featureComposite, "Activated rules", SWT.NONE);
+        final Label featureLabel = getWidgetFactory().createLabel(featureComposite, Messages.ValidationPropertySection_activatedRulesLabel, SWT.NONE);
         featureLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
         return featureComposite;
     }
@@ -92,7 +93,7 @@ public class ValidationPropertySection extends FiltersPropertySection {
         choiceComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         choiceComposite.setLayout(new GridLayout());
 
-        final Label choiceLabel = getWidgetFactory().createLabel(choiceComposite, "Available rules", SWT.NONE);
+        final Label choiceLabel = getWidgetFactory().createLabel(choiceComposite, Messages.ValidationPropertySection_availableRulesLabel, SWT.NONE);
         choiceLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         return choiceComposite;
     }

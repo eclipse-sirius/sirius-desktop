@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,6 +51,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
@@ -643,8 +644,7 @@ public final class GMFHelper {
             }
             return result;
         }
-        throw new IllegalArgumentException(
-                "The model of the edgeEditPart should be a org.eclipse.gmf.runtime.notation.Edge and the figure of this edgeEditPart should be a org.eclipse.draw2d.Connection.");
+        throw new IllegalArgumentException(Messages.GMFHelper_invalidEdgeModelAndFigure);
     }
 
     /**
@@ -673,7 +673,6 @@ public final class GMFHelper {
             }
             return result;
         }
-        throw new IllegalArgumentException(
-                "The model of the edgeEditPart should be a org.eclipse.gmf.runtime.notation.Edge and the figure of this edgeEditPart should be a org.eclipse.draw2d.Connection.");
+        throw new IllegalArgumentException(Messages.GMFHelper_invalidEdgeModelAndFigure);
     }
 }

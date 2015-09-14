@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.dialect;
 
 import java.io.File;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -88,6 +89,7 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMFDiagramCommand;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.ext.base.Option;
@@ -124,7 +126,7 @@ import com.google.common.collect.Sets;
 
 /**
  * The default diagram ui services.
- * 
+ *
  * @author cbrun
  */
 public class DiagramDialectUIServices implements DialectUIServices {
@@ -132,9 +134,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * The label used for the action which refreshes a diagram.
      */
-    public static final String REFRESH_DIAGRAM = "Refresh diagram";
-
-    private static final String EXPORT_DIAGRAM_AS_IMAGE_ERROR_ON_CREATE_IMAGE = "The program was not able to create image file ";
+    public static final String REFRESH_DIAGRAM = Messages.DiagramDialectUIServices_refreshDiagram;
 
     /**
      * {@inheritDoc}
@@ -143,7 +143,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     public IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor) {
         DialectEditor result = null;
         try {
-            monitor.beginTask("diagram opening", 15);
+            monitor.beginTask(Messages.DiagramDialectUIServices_diagramOpeningMonitorTaskName, 15);
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_DIAGRAM_KEY);
 
             if (dRepresentation instanceof DSemanticDiagram) {
@@ -196,7 +196,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         String editorName = DialectUIManager.INSTANCE.getEditorName(dRepresentation);
         monitor.worked(1);
         final IEditorInput editorInput = new SessionEditorInput(uri, editorName, session);
-        monitor.subTask("diagram editor opening : " + dRepresentation.getName());
+        monitor.subTask(MessageFormat.format(Messages.DiagramDialectUIServices_diagramEditorOpeningMonitorTaskName, dRepresentation.getName()));
         RunnableWithResult<DialectEditor> runnable = new RunnableWithResult.Impl<DialectEditor>() {
 
             @Override
@@ -208,7 +208,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                         setResult((DialectEditor) editorPart);
                     }
                 } catch (final PartInitException e) {
-                    DiagramPlugin.getDefault().logError("diagram editor opening error", e);
+                    DiagramPlugin.getDefault().logError(Messages.DiagramDialectUIServices_diagramEditorOpeningError, e);
                 }
             }
 
@@ -257,8 +257,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
             @Override
             public void run() {
-                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Viewpoints selection",
-                        "The current diagram requires some viewpoints selected (" + description + "), because some activated layers are contributed by these viewpoints");
+                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.DiagramDialectUIServices_requiredViewpointsDialogTitle,
+                        MessageFormat.format(Messages.DiagramDialectUIServices_requiredViewpointsDialogMessage, description));
             }
 
         });
@@ -267,7 +267,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * Synchronizes the GMF diagram model according to the viewpoint
      * DSemanticDiagram model.
-     * 
+     *
      * @param diagram
      *            the GMF diagram model to synchronize.
      */
@@ -279,7 +279,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandleEditor(org.eclipse.ui.IEditorPart)
      */
     @Override
@@ -289,7 +289,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#closeEditor(org.eclipse.ui.IEditorPart,
      *      boolean)
      */
@@ -302,7 +302,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
-                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while deactivating the representation, the remote server may be unreachable."));
+                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DiagramDialectUIServices_diagramEditPartDeactivationError));
             }
 
             try {
@@ -311,7 +311,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 // we might have an exception closing an editor which is
                 // already in trouble
                 if (DiagramUIPlugin.getPlugin().isDebugging()) {
-                    DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
+                    DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DiagramDialectUIServices_diagramEditorClosingError));
                 }
             }
 
@@ -322,7 +322,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -333,7 +333,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -344,7 +344,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -355,7 +355,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     }
 
     /**
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -378,7 +378,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
@@ -401,7 +401,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     // FXIME unit test this
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
@@ -421,7 +421,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     @Override
@@ -431,7 +431,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
     @Override
@@ -441,7 +441,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
      *      )
      */
@@ -463,7 +463,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
@@ -513,13 +513,13 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
                         // We finally ensure that the image has been created
                         if (!new File(correctPath.toOSString()).exists()) {
-                            throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, EXPORT_DIAGRAM_AS_IMAGE_ERROR_ON_CREATE_IMAGE + correctPath));
+                            throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath)));
                         }
                     } catch (final CoreException exception) {
                         if (exception instanceof SizeTooLargeException) {
                             throw (SizeTooLargeException) exception;
                         }
-                        SiriusPlugin.getDefault().error(EXPORT_DIAGRAM_AS_IMAGE_ERROR_ON_CREATE_IMAGE + correctPath, exception);
+                        SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath), exception);
                     } finally {
                         diagramEditPart.deactivate();
                         // Memory leak : also disposing the
@@ -565,7 +565,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * Returns command parameters to create diagram type description.
-     * 
+     *
      * @return command parameters to create diagram type description.
      */
     private Collection<CommandParameter> getDiagramTypesCreation() {
@@ -575,7 +575,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             specificDiagramDescription.setEnablePopupBars(true);
             if (specificDiagramDescription.getDefaultLayer() == null) {
                 Layer layer = DescriptionFactory.eINSTANCE.createLayer();
-                layer.setName("Default");
+                layer.setName(Messages.DefaultLayerName);
                 specificDiagramDescription.setDefaultLayer(layer);
             }
             final CommandParameter typeCommandParameter = new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, specificDiagramDescription);
@@ -586,14 +586,14 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     @Override
     public String getEditorName(final DRepresentation representation) {
         String editorName = representation.getName();
         if (StringUtil.isEmpty(editorName)) {
-            editorName = "New Diagram";
+            editorName = Messages.DiagramDialectUIServices_representationWithEmptyNameEditorName;
         }
         return editorName;
     }
@@ -630,9 +630,9 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getHierarchyLabelProvider(ILabelProvider)
-     * 
+     *
      */
     @Override
     public ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider) {
@@ -680,7 +680,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getSelection(org.eclipse.sirius.ui.business.api.dialect.DialectEditor)
      */
     @Override
@@ -705,14 +705,14 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * Get the editPart corresponding to this diagram element.<BR>
      * The editPart is search in the active editor.
-     * 
+     *
      * @param diagramElement
      *            the diagram element
      * @param graphicalViewer
      *            the editor containing the editPart
      * @param session
      *            the current session
-     * 
+     *
      * @return the editPart corresponding to the diagram element given as
      *         parameter or null if any
      */
@@ -741,7 +741,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
      *      EObject, EStructuralFeature)
      */
@@ -752,12 +752,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
             if (feature != null && feature.equals(ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION)) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(toolTipText);
-                String cr = "\n . "; //$NON-NLS-1$
-                sb.append(cr + IInterpreterSiriusVariables.SOURCE_VIEW_PRE + ": diagram.EdgeTarget | (edge only) the source view of the current potential edge.");
-                sb.append(cr + IInterpreterSiriusVariables.SOURCE_PRE + ": ecore.EObject | (edge only) the semantic element of $preSourceView.");
-                sb.append(cr + IInterpreterSiriusVariables.TARGET_VIEW_PRE + ": diagram.EdgeTarget | (edge only) the target view of the current potential edge.");
-                sb.append(cr + IInterpreterSiriusVariables.TARGET_PRE + ": ecore.EObject | (edge only) the semantic element of $preTargetView.");
-                sb.append(cr + IInterpreterSiriusVariables.DIAGRAM + ": diagram.DDiagram | the diagram of the current potential edge");
+                sb.append(MessageFormat.format(Messages.DiagramDialectUIServices_sourceViewPreDescription, IInterpreterSiriusVariables.SOURCE_VIEW_PRE));
+                sb.append(MessageFormat.format(Messages.DiagramDialectUIServices_sourcePreDescription, IInterpreterSiriusVariables.SOURCE_PRE));
+                sb.append(MessageFormat.format(Messages.DiagramDialectUIServices_targetViewPreDescription, IInterpreterSiriusVariables.TARGET_VIEW_PRE));
+                sb.append(MessageFormat.format(Messages.DiagramDialectUIServices_targetPreDescription, IInterpreterSiriusVariables.TARGET_PRE));
+                sb.append(MessageFormat.format(Messages.DiagramDialectUIServices_diagramDescription, IInterpreterSiriusVariables.DIAGRAM));
                 toolTip = sb.toString();
             }
         }
@@ -785,7 +784,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
      *      EObject)
      * @deprecated this method has not access to the feature of eObject. This is

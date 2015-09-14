@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,6 +62,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
@@ -275,7 +276,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
      * @return a command to create port which wrap the original command
      */
     protected Command getPortCreationCommand(final Command originalCommand, final CreateViewRequest request) {
-        final CompositeCommand compositeCommand = new CompositeCommand("Create View");
+        final CompositeCommand compositeCommand = new CompositeCommand(Messages.IAbstractDiagramNodeEditPart_createViewCommandLabel);
         compositeCommand.compose(new CommandProxy(originalCommand));
         LayoutUtils.prepareFigureForDummyAdds(this.getBorderedFigure().getBorderItemContainer());
         for (ViewDescriptor viewDescriptor : Iterables.filter(request.getViewDescriptors(), ViewDescriptor.class)) {

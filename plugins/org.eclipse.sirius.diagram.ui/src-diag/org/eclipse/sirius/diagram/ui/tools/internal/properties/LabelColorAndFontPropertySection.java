@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
@@ -57,7 +58,7 @@ import org.eclipse.ui.IWorkbenchPart;
 
 /**
  * Allow color customization of labels.
- * 
+ *
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  */
 @SuppressWarnings("restriction")
@@ -136,7 +137,7 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
                             final View view = (View) ep.getModel();
                             // change the color.
                             final UserFixedColor newColor = DescriptionFactory.eINSTANCE.createUserFixedColor();
-                            newColor.setName("<anonymous>");
+                            newColor.setName(Messages.AnonymousUserFixedColorName);
                             newColor.setBlue(finalColor.blue);
                             newColor.setGreen(finalColor.green);
                             newColor.setRed(finalColor.red);
@@ -177,7 +178,7 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
         fontUnderlineButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
             @Override
             public void getName(final AccessibleEvent e) {
-                e.result = "Underline";
+                e.result = Messages.FontPropertySection_underline;
             }
         });
 
@@ -187,7 +188,7 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
         fontStrikeThroughButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
             @Override
             public void getName(final AccessibleEvent e) {
-                e.result = "StrikeThrough";
+                e.result = Messages.FontPropertySection_strikeThrough;
             }
         });
 
@@ -223,7 +224,7 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
     /**
      * Overridden to display property of selection only if semantic element of
      * selection exists.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -248,7 +249,7 @@ public class LabelColorAndFontPropertySection extends ColorsAndFontsPropertySect
     /**
      * Transform selection to have {@link DSemanticDecorator} instead of
      * {@link EditPart} or null if the semantic element (target) not exists.
-     * 
+     *
      * @param selection
      *            the currently selected object
      * @return the unwrapped object

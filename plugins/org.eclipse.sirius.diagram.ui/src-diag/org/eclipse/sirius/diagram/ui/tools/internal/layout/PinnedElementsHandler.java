@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Direction;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
@@ -97,6 +98,7 @@ public class PinnedElementsHandler {
      * Compares points in left-to-right, top-to-bottom ("reading") order.
      */
     private final Comparator<Point> pointComparator = new Comparator<Point>() {
+        @Override
         public int compare(final Point p1, final Point p2) {
             if (p1.y != p2.y) {
                 return p1.y - p2.y;
@@ -111,6 +113,7 @@ public class PinnedElementsHandler {
      * to produce a more regular and predictable result.
      */
     private final Comparator<IGraphicalEditPart> positionComparator = new Comparator<IGraphicalEditPart>() {
+        @Override
         public int compare(final IGraphicalEditPart igep1, final IGraphicalEditPart igep2) {
             return pointComparator.compare(getCurrentPosition(igep1), getCurrentPosition(igep2));
         }
@@ -121,6 +124,7 @@ public class PinnedElementsHandler {
      * point as reference).
      */
     private final Comparator<IGraphicalEditPart> leftToRightComparator = new Comparator<IGraphicalEditPart>() {
+        @Override
         public int compare(final IGraphicalEditPart p1, final IGraphicalEditPart p2) {
             return getCurrentPosition(p1).x - getCurrentPosition(p2).x;
         }
@@ -131,6 +135,7 @@ public class PinnedElementsHandler {
      * point as reference).
      */
     private final Comparator<IGraphicalEditPart> topToBottomComparator = new Comparator<IGraphicalEditPart>() {
+        @Override
         public int compare(final IGraphicalEditPart p1, final IGraphicalEditPart p2) {
             return getCurrentPosition(p1).y - getCurrentPosition(p2).y;
         }
@@ -479,7 +484,7 @@ public class PinnedElementsHandler {
         for (IGraphicalEditPart part : fixedEditParts) {
             resolveOverlaps(part);
         }
-        assert !hasRemainingSolvableOverlaps() : "solvable but unsolved overlaps remain";
+        assert !hasRemainingSolvableOverlaps() : Messages.PinnedElementsHandler_remainOverlapsMsg;
     }
 
     /**
@@ -506,7 +511,7 @@ public class PinnedElementsHandler {
                 assert !overlaps(fixedPart, part);
             }
         }
-        assert Collections2.filter(findOverlappingParts(fixedPart), Predicates.not(isPinned)).isEmpty() : "solvable but unsolved overlaps remain";
+        assert Collections2.filter(findOverlappingParts(fixedPart), Predicates.not(isPinned)).isEmpty() : Messages.PinnedElementsHandler_remainOverlapsMsg;
     }
 
     /**
@@ -655,7 +660,7 @@ public class PinnedElementsHandler {
             move = computeMoveVector(movable, movablePadding, fixed, fixedPadding, SOUTH).expand(computeMoveVector(movable, movablePadding, fixed, fixedPadding, WEST));
         } else {
             move = null;
-            assert false : "Unknown direction";
+            assert false : Messages.PinnedElementsHandler_unknownDirection;
         }
         return move;
     }
@@ -847,7 +852,7 @@ public class PinnedElementsHandler {
     }
 
     private void setCurrentPosition(final IGraphicalEditPart part, final Point position) {
-        Preconditions.checkArgument(!isPinned.apply(part), "Pinned elements can not move");
+        Preconditions.checkArgument(!isPinned.apply(part), Messages.PinnedElementsHandler_notMovableMsg);
         if (position.equals(getInitialPosition(part))) {
             currentBounds.remove(part);
         } else {

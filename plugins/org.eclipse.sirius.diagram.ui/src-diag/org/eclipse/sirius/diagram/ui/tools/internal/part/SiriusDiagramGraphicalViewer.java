@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2014 IBM Corporation and others.
+ * Copyright (c) 2002, 2015 IBM Corporation and others and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.part;
 
 import java.lang.reflect.Field;
+import java.text.MessageFormat;
 import java.util.List;
 
 import org.eclipse.draw2d.DeferredUpdateManager;
@@ -27,6 +28,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusPaletteToolDropTargetListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
@@ -63,6 +65,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
      * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#registerEditPartForSemanticElement(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.gef.EditPart)
      */
+    @Override
     public void registerEditPartForSemanticElement(final EObject element, final EditPart ep) {
         elementToEditPartsMap.registerEditPartForElement(element, ep);
     }
@@ -73,6 +76,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
      * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPartForSemanticElement(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.gef.EditPart)
      */
+    @Override
     public void unregisterEditPartForSemanticElement(final EObject element, final EditPart ep) {
         elementToEditPartsMap.unregisterEditPartForElement(element, ep);
     }
@@ -82,6 +86,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPart(org.eclipse.gef.EditPart)
      */
+    @Override
     public void unregisterEditPart(final EditPart ep) {
         elementToEditPartsMap.unregisterEditPart(ep);
     }
@@ -92,6 +97,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
      * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#findEditPartsForElement(String,
      *      Class)
      */
+    @Override
     public <T extends EditPart> List<T> findEditPartsForElement(final EObject element, final Class<T> editPartClass) {
         return elementToEditPartsMap.findEditPartsForElement(element, editPartClass);
     }
@@ -133,10 +139,6 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
      */
     private static class ToggleUpdateManager extends DeferredUpdateManager {
 
-        private static final String ERROR_INVALID_FIGURES_FIELD = "Error while getting the invalidFigures field.";
-
-        private static final String ERROR_VALIDATING_FIELD = "Error while getting the validating field.";
-
         private boolean disableUpdates;
 
         private final Field invalidFiguresField;
@@ -154,9 +156,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 field.setAccessible(true);
                 return field;
             } catch (final SecurityException e) {
-                DiagramPlugin.getDefault().logError("Error while getting the " + name + " field.", e);
+                DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ToggleUpdateManager_fieldAccessError, name), e);
             } catch (final NoSuchFieldException e) {
-                DiagramPlugin.getDefault().logError("Error while getting the " + name + " field.", e);
+                DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ToggleUpdateManager_fieldAccessError, name), e);
             }
             return null;
         }
@@ -232,9 +234,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     return (List) invalidFiguresField.get(this);
                 } catch (final IllegalArgumentException e) {
-                    DiagramPlugin.getDefault().logError(ERROR_INVALID_FIGURES_FIELD, e);
+                    DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ToggleUpdateManager_fieldAccessError, invalidFiguresField.getName()), e);
                 } catch (final IllegalAccessException e) {
-                    DiagramPlugin.getDefault().logError(ERROR_INVALID_FIGURES_FIELD, e);
+                    DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ToggleUpdateManager_fieldAccessError, invalidFiguresField.getName()), e);
                 }
             }
             return null;
@@ -250,9 +252,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     return validatingField.getBoolean(this);
                 } catch (final IllegalArgumentException e) {
-                    DiagramPlugin.getDefault().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ToggleUpdateManager_fieldAccessError, validatingField.getName()), e);
                 } catch (final IllegalAccessException e) {
-                    DiagramPlugin.getDefault().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ToggleUpdateManager_fieldAccessError, validatingField.getName()), e);
                 }
             }
             return false;
@@ -269,9 +271,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     validatingField.setBoolean(this, validating);
                 } catch (final IllegalArgumentException e) {
-                    DiagramPlugin.getDefault().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ToggleUpdateManager_fieldAccessError, validatingField.getName()), e);
                 } catch (final IllegalAccessException e) {
-                    DiagramPlugin.getDefault().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ToggleUpdateManager_fieldAccessError, validatingField.getName()), e);
                 }
             }
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,6 +64,7 @@ import org.eclipse.sirius.diagram.description.tool.RequestDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.ext.base.Option;
@@ -90,8 +91,6 @@ import com.google.common.collect.UnmodifiableIterator;
  * @author mchauvin
  */
 public class PaletteManagerImpl implements PaletteManager {
-    private static final String SEVERAL_CANDIDATES_IN_PALETTE_FOUND = "Several {0}s with identical id '{1}' have been found in the palette. Please fix your VSM by whether set a different ID for these Palette entries or ensuring that they cannot be available in the same time.";
-
     /** The image provider. */
     private static PaletteImageProvider paletteImageProvider = new PaletteImageProvider();
 
@@ -121,6 +120,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager#dispose()
      */
+    @Override
     public void dispose() {
         listenersManager.dispose();
         listenersManager = null;
@@ -133,6 +133,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager#addToolFilter(org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter)
      */
+    @Override
     public void addToolFilter(ToolFilter toolFilter) {
         filters.add(toolFilter);
     }
@@ -142,6 +143,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager#removeToolFilter(org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter)
      */
+    @Override
     public void removeToolFilter(ToolFilter toolFilter) {
         filters.remove(toolFilter);
     }
@@ -160,6 +162,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager#update()
      */
+    @Override
     public void update(final Diagram diagram) {
         update(diagram, false);
     }
@@ -169,6 +172,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager#update()
      */
+    @Override
     public void update(final Diagram diagram, final boolean clean) {
         if (diagram != null) {
             initPaletteRoot();
@@ -178,6 +182,7 @@ public class PaletteManagerImpl implements PaletteManager {
                 // If test is not launched in UI Thread make the changes in UI
                 // thread
                 Display.getDefault().asyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         updatePalette(diagram, clean);
                     }
@@ -371,6 +376,7 @@ public class PaletteManagerImpl implements PaletteManager {
     private <T extends PaletteEntry> Option<T> getPaletteEntry(PaletteContainer container, final String id, Class<T> type) {
         Option<T> matchingPaletteEntry = Options.newNone();
         UnmodifiableIterator<T> matchingPaletteEntries = Iterators.filter(Iterators.filter(container.getChildren().iterator(), type), new Predicate<T>() {
+            @Override
             public boolean apply(T paletteEntry) {
                 return id.equals(paletteEntry.getId());
             }
@@ -381,7 +387,7 @@ public class PaletteManagerImpl implements PaletteManager {
             // Here no matching candidate has been found, we will return
             // Options.newNone
         } catch (IllegalArgumentException e) {
-            DiagramPlugin.getDefault().logWarning(MessageFormat.format(SEVERAL_CANDIDATES_IN_PALETTE_FOUND, type.getName(), id));
+            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.PaletteManagerImpl_severalCandidatesInPalette, type.getName(), id));
             // Here no matching candidate has been found, we will return
             // Options.newNone
         }
@@ -463,6 +469,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * @param layer
      *            the layer
      */
+    @Override
     public void hideLayer(final Layer layer) {
         // final PaletteViewer viewer = editDomain.getPaletteViewer();
         // if (viewer != null) {
@@ -480,6 +487,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * @param layer
      *            the layer
      */
+    @Override
     public void showLayer(final Layer layer) {
         final PaletteViewer viewer = editDomain.getPaletteViewer();
         if (viewer != null) {
@@ -783,7 +791,7 @@ public class PaletteManagerImpl implements PaletteManager {
             } else if (existingPaletteEntry.get() instanceof PaletteStack) {
                 paletteStack = (PaletteStack) existingPaletteEntry.get();
             } else {
-                throw new IllegalArgumentException("An existing palette entry with name " + newName + " already exists but it is another kind of entry.");
+                throw new IllegalArgumentException(MessageFormat.format(Messages.PaletteManagerImpl_alreadyExistingEntry, newName));
             }
             for (final AbstractToolDescription tool : ((ToolGroup) toolEntry).getTools()) {
                 Option<PaletteEntry> paletteEntry = getPaletteEntry(paletteStack, new IdentifiedElementQuery(tool).getLabel(), PaletteEntry.class);
@@ -847,6 +855,7 @@ public class PaletteManagerImpl implements PaletteManager {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager#isDisposed()
      */
+    @Override
     public boolean isDisposed() {
         return isDisposed;
     }
@@ -886,10 +895,12 @@ public class PaletteManagerImpl implements PaletteManager {
             this.toolDescription = toolDescription;
         }
 
+        @Override
         public Object getObjectType() {
             return toolDescription.getClass();
         }
 
+        @Override
         public Object getNewObject() {
             return toolDescription;
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.ColorPropertyContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeAllOnlyLayoutProvider;
@@ -53,8 +54,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     private static final String PIN_GROUP = "pinGroup"; //$NON-NLS-1$
 
     private static final String FILTER_FORMAT_GROUP = "filterFormatGroup"; //$NON-NLS-1$
-
-    private static final String ARRANGE_MENU_ERROR = "Arrange menu is not renamed in Layout";
 
     /** the workbench part */
     private IWorkbenchPart part;
@@ -319,17 +318,17 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
             field.setAccessible(true);
             Object realMenuManager = field.get(arrangeMenu);
             if (realMenuManager instanceof ActionMenuManager) {
-                ((ActionMenuManager) realMenuManager).getDefaultAction().setText("Layout");
+                ((ActionMenuManager) realMenuManager).getDefaultAction().setText(Messages.DiagramEditorContextMenuProvider_arrangeMenuText);
             }
 
         } catch (SecurityException e) {
-            SiriusPlugin.getDefault().error(ARRANGE_MENU_ERROR, e);
+            SiriusPlugin.getDefault().error(Messages.DiagramEditorContextMenuProvider_arrangeMenuRenameError, e);
         } catch (NoSuchFieldException e) {
-            SiriusPlugin.getDefault().error(ARRANGE_MENU_ERROR, e);
+            SiriusPlugin.getDefault().error(Messages.DiagramEditorContextMenuProvider_arrangeMenuRenameError, e);
         } catch (IllegalArgumentException e) {
-            SiriusPlugin.getDefault().error(ARRANGE_MENU_ERROR, e);
+            SiriusPlugin.getDefault().error(Messages.DiagramEditorContextMenuProvider_arrangeMenuRenameError, e);
         } catch (IllegalAccessException e) {
-            SiriusPlugin.getDefault().error(ARRANGE_MENU_ERROR, e);
+            SiriusPlugin.getDefault().error(Messages.DiagramEditorContextMenuProvider_arrangeMenuRenameError, e);
         }
     }
 

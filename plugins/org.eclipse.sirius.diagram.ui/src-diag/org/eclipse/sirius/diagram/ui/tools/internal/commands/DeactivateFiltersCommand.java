@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,11 @@ import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.helper.concern.ConcernService;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Specific command to update activated filters.
- * 
+ *
  * @author mporhel
  */
 public final class DeactivateFiltersCommand extends RecordingCommand {
@@ -32,7 +33,7 @@ public final class DeactivateFiltersCommand extends RecordingCommand {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            the editing domain.
      * @param diagram
@@ -41,7 +42,7 @@ public final class DeactivateFiltersCommand extends RecordingCommand {
      *            elements to deactivate
      */
     public DeactivateFiltersCommand(TransactionalEditingDomain domain, DDiagram diagram, Collection<FilterDescription> oldElements) {
-        super(domain, "Deactivate filters");
+        super(domain, Messages.DeactivateFiltersCommand_label);
         this.oldElements = oldElements;
         this.diagram = diagram;
     }

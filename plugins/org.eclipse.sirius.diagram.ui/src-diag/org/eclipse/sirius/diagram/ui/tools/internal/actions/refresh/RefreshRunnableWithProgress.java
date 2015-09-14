@@ -1,9 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES
- * All rights reserved.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *      Obeo - Initial API and implementation
+ *    Obeo - initial API and implementation
  *******************************************************************************/
 
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh;
@@ -29,6 +32,7 @@ import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCom
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -60,9 +64,10 @@ public class RefreshRunnableWithProgress implements IRunnableWithProgress {
      * 
      * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
      */
+    @Override
     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
         try {
-            monitor.beginTask("Refresh", editPartsToRefresh.size());
+            monitor.beginTask(Messages.RefreshRunnableWithProgress_taskName, editPartsToRefresh.size());
             Collection<Command> commandsToExecute = new ArrayList<Command>();
             for (final EditPart editPartToRefresh : editPartsToRefresh) {
                 if (editPartToRefresh instanceof IDDiagramEditPart) {
@@ -94,7 +99,7 @@ public class RefreshRunnableWithProgress implements IRunnableWithProgress {
     private void executeInCompoundCommand(Collection<Command> commandsToExecute, IProgressMonitor monitor) {
         if (!commandsToExecute.isEmpty()) {
             IDiagramEditDomain domain = getFirstEditingDomain();
-            CompoundCommand compoundCommand = new CompoundCommand("Refresh");
+            CompoundCommand compoundCommand = new CompoundCommand(Messages.RefreshRunnableWithProgress_commandLabel);
             for (Command command : commandsToExecute) {
                 compoundCommand.add(command);
             }

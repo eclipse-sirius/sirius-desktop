@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,11 +16,12 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Specific command to add hidden elements to transient reference
  * hiddenElements.
- * 
+ *
  * @author mporhel
  */
 public final class InitializeHiddenElementsCommand extends RecordingCommand {
@@ -31,7 +32,7 @@ public final class InitializeHiddenElementsCommand extends RecordingCommand {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            the editing domain.
      * @param hiddenElements
@@ -40,7 +41,7 @@ public final class InitializeHiddenElementsCommand extends RecordingCommand {
      *            the DDiagram to update.
      */
     public InitializeHiddenElementsCommand(TransactionalEditingDomain domain, DDiagram dDiagram, List<DDiagramElement> hiddenElements) {
-        super(domain, "Initialize hidden elements");
+        super(domain, Messages.InitializeHiddenElementsCommand_label);
         this.dDiagram = dDiagram;
         this.hiddenElements = hiddenElements;
     }

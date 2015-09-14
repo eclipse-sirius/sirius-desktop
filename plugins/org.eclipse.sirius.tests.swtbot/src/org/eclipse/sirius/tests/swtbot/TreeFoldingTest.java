@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.ToggleFoldingStateCommand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -29,14 +29,14 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
 /**
  * Test class for tree folding.
- * 
+ *
  * @author smonnier
  */
 public class TreeFoldingTest extends AbstractSiriusSwtBotGefTestCase {
 
-    private static final String REDO_FOLDING_LABEL = "Redo " + ToggleFoldingStateCommand.LABEL;
+    private static final String REDO_FOLDING_LABEL = "Redo " + Messages.ToggleFoldingStateCommand_label;
 
-    private static final String UNDO_FOLDING_LABEL = "Undo " + ToggleFoldingStateCommand.LABEL;
+    private static final String UNDO_FOLDING_LABEL = "Undo " + Messages.ToggleFoldingStateCommand_label;
 
     private static final String REPRESENTATION_INSTANCE_NAME = "TC 1852";
 
@@ -96,7 +96,7 @@ public class TreeFoldingTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Test method.
-     * 
+     *
      * @throws Exception
      *             Test error.
      */
@@ -167,7 +167,7 @@ public class TreeFoldingTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Test method.
-     * 
+     *
      * @throws Exception
      *             Test error.
      */
@@ -245,7 +245,7 @@ public class TreeFoldingTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
      * Test method.
-     * 
+     *
      * @throws Exception
      *             Test error.
      */

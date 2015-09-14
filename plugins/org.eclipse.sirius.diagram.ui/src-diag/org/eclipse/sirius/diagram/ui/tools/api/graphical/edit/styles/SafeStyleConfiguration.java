@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles;
 
+import java.text.MessageFormat;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -19,13 +21,14 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.swt.graphics.Image;
 
 /**
  * A safe style configuration to preserve the integrity of designer.
- * 
+ *
  * @author ymortier
  */
 public class SafeStyleConfiguration implements StyleConfiguration {
@@ -38,7 +41,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
 
     /**
      * Creates a new {@link SafeStyleConfiguration}.
-     * 
+     *
      * @param delegated
      *            the delegated configuration.
      */
@@ -50,10 +53,11 @@ public class SafeStyleConfiguration implements StyleConfiguration {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
      */
+    @Override
     public void adaptNodeLabel(final DNode node, final SiriusWrapLabel nodeLabel) {
         try {
             this.delegated.adaptNodeLabel(node, nodeLabel);
@@ -65,11 +69,12 @@ public class SafeStyleConfiguration implements StyleConfiguration {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */
+    @Override
     public int adaptViewNodeSizeWithLabel(final DNode viewNode, final SiriusWrapLabel nodeLabel, final int nodeWidth) {
         try {
             return this.delegated.adaptViewNodeSizeWithLabel(viewNode, nodeLabel, nodeWidth);
@@ -81,11 +86,12 @@ public class SafeStyleConfiguration implements StyleConfiguration {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#fitToText(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)
      */
+    @Override
     public Dimension fitToText(DNode node, SiriusWrapLabel nodeLabel, DefaultSizeNodeFigure defaultSizeNodeFigure) {
         try {
             return this.delegated.fitToText(node, nodeLabel, defaultSizeNodeFigure);
@@ -97,9 +103,10 @@ public class SafeStyleConfiguration implements StyleConfiguration {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getAnchorProvider()
      */
+    @Override
     public AnchorProvider getAnchorProvider() {
         try {
             return this.delegated.getAnchorProvider();
@@ -111,9 +118,10 @@ public class SafeStyleConfiguration implements StyleConfiguration {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getBorderItemLocatorProvider()
      */
+    @Override
     public BorderItemLocatorProvider getBorderItemLocatorProvider() {
         try {
             return this.delegated.getBorderItemLocatorProvider();
@@ -125,10 +133,11 @@ public class SafeStyleConfiguration implements StyleConfiguration {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(DDiagramElement,
      *      IGraphicalEditPart)
      */
+    @Override
     public Image getLabelIcon(DDiagramElement vpElement, IGraphicalEditPart editPart) {
         try {
             return new StyleConfigurationQuery(this.delegated).getLabelIcon(vpElement, editPart);
@@ -140,10 +149,11 @@ public class SafeStyleConfiguration implements StyleConfiguration {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getNameBorderItemLocator(DNode,
      *      IFigure)
      */
+    @Override
     public IBorderItemLocator getNameBorderItemLocator(DNode node, IFigure mainFigure) {
         try {
             return this.delegated.getNameBorderItemLocator(node, mainFigure);
@@ -157,7 +167,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     // CHECKSTYLE:ON
 
     private void log(final Exception e) {
-        DiagramPlugin.getDefault().logError("Error while invoking custom style configuration : " + this.delegated.getClass().getName(), e);
+        DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.SafeStyleConfiguration_customStyleInvocationError, this.delegated.getClass().getName()), e);
     }
 
 }

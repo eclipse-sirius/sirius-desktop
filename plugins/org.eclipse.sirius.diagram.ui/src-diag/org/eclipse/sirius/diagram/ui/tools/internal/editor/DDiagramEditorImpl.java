@@ -128,6 +128,7 @@ import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
 import org.eclipse.sirius.diagram.ui.part.ValidateAction;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
@@ -216,7 +217,7 @@ import com.google.common.collect.Sets;
 
 /**
  * The diagram editor.
- * 
+ *
  * @author mchauvin
  * @since 0.9.0
  */
@@ -228,7 +229,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
          * Constructs a new AbstractTransferDropTargetListener and sets the
          * EditPartViewer and Transfer. The Viewer's Control should be the Drop
          * target.
-         * 
+         *
          * @param viewer
          *            the EditPartViewer
          * @param xfer
@@ -390,7 +391,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             try {
                 refreshJob.join();
             } catch (InterruptedException e) {
-                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.INFO, DiagramPlugin.ID, "Refresh job got interrupted", e));
+                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.INFO, DiagramPlugin.ID, Messages.DDiagramEditorImpl_refreshJobInterruptedMsg, e));
             }
         }
         disposeGraphicalListeners();
@@ -400,7 +401,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * We have to take care of the case when Eclipse starts up with a session.
      * and diagram already open. {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.part.SiriusDiagramEditor#init(org.eclipse.ui.IEditorSite,
      *      org.eclipse.ui.IEditorInput)
      */
@@ -450,7 +451,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             initPermissionAuthority();
 
         } catch (NullPointerException e) {
-            DiagramPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, "Error while getting the session.", e));
+            DiagramPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, Messages.DDiagramEditorImpl_noSessionMsg, e));
         }
 
     }
@@ -513,7 +514,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * Overridden to instantiate a {@link SiriusPaletteViewer} instead of the
      * standard one, to support creation from the palette with drag'n drop.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -535,7 +536,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Overridden to change the visibility of the inherited method.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -590,7 +591,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 
             keyHandler.put(/* CTRL + D */
-            KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
+                    KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
         }
         return keyHandler;
     }
@@ -606,7 +607,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             // Run refresh in a job to avoid taking lock on the Workspace on
             // representation change, while the lock is already taken on odesign
             // change
-            refreshJob = new Job("Refresh ") {
+            refreshJob = new Job(Messages.DDiagramEditorImpl_refreshJobLabel) {
 
                 @Override
                 protected IStatus run(IProgressMonitor monitor) {
@@ -636,7 +637,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * Overridden to not create a new {@link TransactionalEditingDomain} but
      * return the {@link Session#getTransactionalEditingDomain()}.
-     * 
+     *
      * @return the {@link Session#getTransactionalEditingDomain()}
      */
     @Override
@@ -646,7 +647,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Called when the diagram is displayed. Updates the Palette.
-     * 
+     *
      * {@inheritDoc}
      */
     @Override
@@ -835,7 +836,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         }
                         return result;
                     }
-                }, new IObjectActionDelegateWrapper(new RevealOutlineElementsAction(), RevealOutlineElementsAction.REVEAL_ELEMENT_LABEL) {
+                }, new IObjectActionDelegateWrapper(new RevealOutlineElementsAction(), Messages.RevealOutlineElementsAction_label) {
 
                     @Override
                     public ImageDescriptor getImageDescriptor() {
@@ -852,7 +853,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         }
                         return false;
                     }
-                }, new IObjectActionDelegateWrapper(new RevealOutlineLabelsAction(), RevealOutlineLabelsAction.REVEAL_LABEL_LABEL) {
+                }, new IObjectActionDelegateWrapper(new RevealOutlineLabelsAction(), Messages.RevealOutlineLabelsAction_label) {
 
                     @Override
                     public ImageDescriptor getImageDescriptor() {
@@ -983,7 +984,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                             // An issue has been encountered while connecting to
                             // remote CDO server
                             if (DiagramUIPlugin.getPlugin().isDebugging()) {
-                                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, "Error while connecting to remote CDO server"));
+                                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DDiagramEditorImpl_cdoServerConnectionPbMsg));
                             }
                         }
                     } else {
@@ -1098,9 +1099,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * Overridden to delegate {@link SessionListener} events to
      * {@link DDiagramEditorSessionListenerDelegate}.
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @since 0.9.0
      */
     @Override
@@ -1123,7 +1124,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Method to update some ui parts according to events.
-     * 
+     *
      * @param notificationKind
      *            the event to update ui parts.
      */
@@ -1284,7 +1285,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Return true if the header must be enabled, false otherwise.
-     * 
+     *
      * @return true if the header must be enabled, false otherwise.
      */
     public boolean isHeaderSectionEnabled() {
@@ -1304,7 +1305,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Get the tab bar.
-     * 
+     *
      * @return Returns the tab bar
      */
     public Tabbar getTabbar() {
@@ -1313,7 +1314,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Set the tab bar.
-     * 
+     *
      * @param tabbar
      *            the tab bar to set .
      */
@@ -1323,7 +1324,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Create classic diagram graphical viewer.
-     * 
+     *
      * @param parent
      *            the parent composite
      */
@@ -1345,7 +1346,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @not-generated : we're making sure the property is set as soon as
      *                possible.
      */
@@ -1437,7 +1438,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Sets my undo context.
-     * 
+     *
      * @param context
      *            the undo context
      */
@@ -1474,14 +1475,14 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * This will create the quick outline presenter and install it on this
      * editor.
-     * 
+     *
      * @return The quick outline presenter.
      */
     public SiriusInformationPresenter getQuickOutlinePresenter() {
         SiriusInformationPresenter informationPresenter = new SiriusInformationPresenter(new IInformationControlCreator() {
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.jface.text.IInformationControlCreator#createInformationControl(org.eclipse.swt.widgets.Shell)
              */
             @Override
@@ -1581,7 +1582,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * weakHashMap used bu DiagramEventBroker is not clean.<BR>
      * But if there is no more GMF editor, using this transactional editing
      * domain, opened when can remove the diagram event broker to be more clear.
-     * 
+     *
      * @param ted
      *            The transactional editing domain used by the current editor.
      */
@@ -1618,7 +1619,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * Overridden for two reason: <br/>
      * - to update the given input in case the URI is a DDiagram instead of a
      * GMF Diagram <br/>
@@ -1639,7 +1640,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     DDiagram dDiagram = (DDiagram) eObject;
                     final DiagramCreationUtil util = new DiagramCreationUtil(dDiagram);
                     if (!util.findAssociatedGMFDiagram()) {
-                        DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "The gmf diagram is expected to be created before calling setInput() on the editor"));
+                        DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DDiagramEditorImpl_noAssociatedGMFDiagramMsg));
                     }
                     final Diagram gmfDiag = util.getAssociatedGMFDiagram();
                     updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), dDiagram.getName(), session);
@@ -1717,7 +1718,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     /**
      * Return the diagram header composite.
-     * 
+     *
      * @return the diagram header composite
      */
     public DiagramHeaderComposite getDiagramHeader() {

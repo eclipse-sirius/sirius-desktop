@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,14 +14,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.NodeLayoutDataKey;
 
 /**
  * Kind of key use to store the layout data corresponding to an
  * {@link AbstractDNode} or a {@link DDiagram}.
- * 
+ *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
+ *
  */
 public class DNodeLayoutDataKey implements NodeLayoutDataKey {
     /**
@@ -32,20 +33,20 @@ public class DNodeLayoutDataKey implements NodeLayoutDataKey {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param target
      *            The target of the
      */
     public DNodeLayoutDataKey(final EObject target) {
         if (!(target instanceof AbstractDNode || target instanceof DDiagram)) {
-            throw new IllegalArgumentException("The key uses to store this layout data can only be an AbstractDNode or a DDiagram.");
+            throw new IllegalArgumentException(Messages.DNodeLayoutDataKey_wrongKeyMsg);
         }
         this.target = target;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -59,7 +60,7 @@ public class DNodeLayoutDataKey implements NodeLayoutDataKey {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -77,9 +78,10 @@ public class DNodeLayoutDataKey implements NodeLayoutDataKey {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey#getId()
      */
+    @Override
     public String getId() {
         return EcoreUtil.getURI(getTarget()).fragment();
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.util;
 import java.util.Iterator;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Tools for edit part.
@@ -40,7 +41,7 @@ public final class EditPartTools {
      */
     public static EditPart getEditPartOfType(final EditPart root, final Class<?> editPartType) {
         if (root == null || editPartType == null) {
-            throw new IllegalArgumentException("root or editPartType is null");
+            throw new IllegalArgumentException(Messages.EditPartTools_nullParameterMsg);
         }
         EditPart result = null;
         if (editPartType.isInstance(root)) {

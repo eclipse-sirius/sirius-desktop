@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.layout.provider;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -83,6 +84,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
@@ -170,14 +172,12 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          */
         @Override
         public String toString() {
-            String result = "";
+            StringBuilder result = new StringBuilder();
             if (isMoved) {
-                result += "Border item has been moved since previous layout.";
+                return MessageFormat.format(Messages.BorderItemLayoutData_movedBorderItemSincePreviousLayout, getPreviousCenterLocation());
             } else {
-                result += "Border item has not been moved since previous layout.";
+                return MessageFormat.format(Messages.BorderItemLayoutData_unmovedBorderItemSincePreviousLayout, getPreviousCenterLocation());
             }
-            result += " " + getPreviousCenterLocation();
-            return result;
         }
     }
 
@@ -591,7 +591,6 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            to stay fixed
      */
     private void resetBoundsOfPinnedElements(final List selectedObjects, final CompoundCommand compoundCommand, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
-        final String commandName = "Set Bounds";
         for (IGraphicalEditPart graphicalEditPart : Iterables.filter(selectedObjects, IGraphicalEditPart.class)) {
             EObject semanticElement = graphicalEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagramElement) {
@@ -601,7 +600,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                     View notationView = graphicalEditPart.getNotationView();
                     if (notationView instanceof Node) {
                         final Node node = (Node) notationView;
-                        resetBounds(compoundCommand, commandName, node, editingDomain);
+                        resetBounds(compoundCommand, node, editingDomain);
                     }
 
                     // Keep the GMF model consistent for pinned RegionContainer
@@ -611,7 +610,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                         AbstractDNodeContainerCompartmentEditPart comp = Iterables.getFirst(Iterables.filter(graphicalEditPart.getChildren(), AbstractDNodeContainerCompartmentEditPart.class), null);
                         if (comp != null && comp.getNotationView() != null) {
                             for (Node region : Iterables.filter(comp.getChildren(), Node.class)) {
-                                resetBounds(compoundCommand, commandName, region, editingDomain);
+                                resetBounds(compoundCommand, region, editingDomain);
                             }
                         }
                         compoundCommand.add(
@@ -622,22 +621,22 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         }
     }
 
-    private void resetBounds(final CompoundCommand compoundCommand, final String commandName, Node node, TransactionalEditingDomain editingDomain) {
+    private void resetBounds(final CompoundCommand compoundCommand, Node node, TransactionalEditingDomain editingDomain) {
         final EObjectAdapter objectAdapter = new EObjectAdapter(node);
 
         final LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         if (layoutConstraint instanceof Bounds) {
             final Bounds bounds = (Bounds) layoutConstraint;
-            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain, commandName, objectAdapter,
+            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain,  Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter,
                     new Rectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight()));
             compoundCommand.add(new ICommandProxy(setBoundsCommand));
         } else if (layoutConstraint instanceof Location) {
             final Location location = (Location) layoutConstraint;
-            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain, commandName, objectAdapter, new Point(location.getX(), location.getY()));
+            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain,  Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter, new Point(location.getX(), location.getY()));
             compoundCommand.add(new ICommandProxy(setBoundsCommand));
         } else if (layoutConstraint instanceof Size) {
             final Size size = (Size) layoutConstraint;
-            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain, commandName, objectAdapter, new Dimension(size.getWidth(), size.getHeight()));
+            final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(editingDomain,  Messages.BorderItemAwareLayoutProvider_setBoundsCommandLabel, objectAdapter, new Dimension(size.getWidth(), size.getHeight()));
             compoundCommand.add(new ICommandProxy(setBoundsCommand));
         }
     }
@@ -1046,7 +1045,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                 newLocation = new Point(0, current);
                 break;
             default:
-                throw new IllegalArgumentException("Invalid items position.");
+                throw new IllegalArgumentException(Messages.BorderItemAwareLayoutProvider_invalidItemsPosition);
             }
 
             newLocation = newLocation.getTranslated(containerBounds.getTopLeft());

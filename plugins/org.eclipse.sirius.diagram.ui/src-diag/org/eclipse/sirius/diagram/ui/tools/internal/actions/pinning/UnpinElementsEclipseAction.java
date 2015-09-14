@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.tools.internal.commands.UnpinElementsCommand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -28,13 +29,11 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAutho
  */
 public class UnpinElementsEclipseAction extends AbstractPinUnpinElementsEclipseAction {
 
-    private static final String UNPIN_SELECTED_ELEMENTS = "Unpin selected elements";
-
     /**
      * Constructor.
      */
     public UnpinElementsEclipseAction() {
-        super(UNPIN_SELECTED_ELEMENTS, ActionIds.UNPIN_ELEMENTS, UNPIN_SELECTED_ELEMENTS, DiagramImagesPath.UNPIN_ELEMENTS_ICON);
+        super(Messages.UnpinElementsEclipseAction_text, ActionIds.UNPIN_ELEMENTS, Messages.UnpinElementsEclipseAction_text, DiagramImagesPath.UNPIN_ELEMENTS_ICON);
     }
 
     /**

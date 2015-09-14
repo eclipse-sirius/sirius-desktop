@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.layout;
 
+import java.text.MessageFormat;
 import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -36,6 +37,7 @@ import org.eclipse.sirius.diagram.layoutdata.LayoutdataFactory;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.Point;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticEdgeLayoutDataKey;
@@ -58,6 +60,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(final EObject input) {
             return input.eContainer() == null;
         }
@@ -76,6 +79,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
      *      org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart,
      *      org.eclipse.sirius.diagram.layoutdata.NodeLayoutData)
      */
+    @Override
     public NodeLayoutData createNodeLayoutData(final Node node, final IGraphicalEditPart editPart, final NodeLayoutData parentLayoutData) {
         final NodeLayoutData result = LayoutdataFactory.eINSTANCE.createNodeLayoutData();
 
@@ -135,6 +139,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper#createEdgeLayoutData(org.eclipse.gmf.runtime.notation.Edge)
      */
+    @Override
     public EdgeLayoutData createEdgeLayoutData(final Edge gmfEdge, final ConnectionEditPart connectionEditPart) {
         final EdgeLayoutData result = LayoutdataFactory.eINSTANCE.createEdgeLayoutData();
         final ConnectorStyle connectorStyle = (ConnectorStyle) gmfEdge.getStyle(NotationPackage.eINSTANCE.getConnectorStyle());
@@ -173,6 +178,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper#createLabelLayoutData(org.eclipse.gmf.runtime.notation.Node)
      */
+    @Override
     public NodeLayoutData createLabelLayoutData(final Node labelNode) {
         final NodeLayoutData result = LayoutdataFactory.eINSTANCE.createNodeLayoutData();
 
@@ -201,6 +207,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper#getAbsoluteLocation(org.eclipse.sirius.diagram.layoutdata.NodeLayoutData)
      */
+    @Override
     public Point getAbsoluteLocation(final NodeLayoutData nodeLayoutData) {
         Point result = getCopy(nodeLayoutData.getLocation());
         if (nodeLayoutData.eContainer() instanceof NodeLayoutData) {
@@ -215,6 +222,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper#getRelativeLocation(org.eclipse.sirius.diagram.layoutdata.NodeLayoutData,
      *      org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart)
      */
+    @Override
     public Point getRelativeLocation(final NodeLayoutData layoutData, final IGraphicalEditPart editPart) {
         final Point result = getAbsoluteLocation(layoutData);
         final org.eclipse.draw2d.geometry.Point p = new org.eclipse.draw2d.geometry.Point(result.getX(), result.getY());
@@ -295,6 +303,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
      *            Point which provides the translation amounts.
      * @return A new Point
      */
+    @Override
     public Point getTranslated(final Point originalPoint, final org.eclipse.draw2d.geometry.Point pt) {
         final Point translatedPoint = LayoutdataFactory.eINSTANCE.createPoint();
         translatedPoint.setX(originalPoint.getX() + pt.x);
@@ -313,6 +322,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public LayoutDataKey createKey(final AbstractLayoutData layoutData) {
         LayoutDataKey result;
         if (layoutData instanceof NodeLayoutData) {
@@ -320,7 +330,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
         } else if (layoutData instanceof EdgeLayoutData) {
             result = new SemanticEdgeLayoutDataKey(layoutData.getId());
         } else {
-            throw new IllegalArgumentException("Layoutdata of type " + layoutData.getClass() + " is unknown");
+            throw new IllegalArgumentException(MessageFormat.format(Messages.LayoutDataHelperImpl_unkownLayoutData, layoutData.getClass()));
         }
         return result;
     }

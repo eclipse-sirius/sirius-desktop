@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 import java.util.Map;
 
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SynchronizedDiagramAction;
 import org.eclipse.sirius.ui.tools.internal.commands.AbstractActionWrapperHandler;
@@ -24,7 +25,7 @@ import org.eclipse.ui.menus.UIElement;
 
 /**
  * Toggle between synchronized and unsynchronized diagram modes.
- * 
+ *
  * @author smonnier
  */
 public class SynchronizedDiagramCommand extends AbstractActionWrapperHandler implements IElementUpdater {
@@ -38,10 +39,11 @@ public class SynchronizedDiagramCommand extends AbstractActionWrapperHandler imp
 
     /**
      * Update the synchronization contribution menu. {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.ui.commands.IElementUpdater#updateElement(org.eclipse.ui.menus.UIElement,
      *      java.util.Map)
      */
+    @Override
     public void updateElement(final UIElement element, @SuppressWarnings("rawtypes") final Map parameters) {
         final IWorkbenchWindow window = (IWorkbenchWindow) element.getServiceLocator().getService(IWorkbenchWindow.class);
         if (window == null) {
@@ -55,7 +57,7 @@ public class SynchronizedDiagramCommand extends AbstractActionWrapperHandler imp
             if (ddiagramEditor.getRepresentation() instanceof DDiagram) {
                 final DDiagram diagram = (DDiagram) ddiagramEditor.getRepresentation();
                 element.setChecked(!diagram.isSynchronized());
-                element.setText("Unsynchronized");
+                element.setText(Messages.SynchronizedDiagramCommand_unsynchronizedLabel);
             }
         }
     }

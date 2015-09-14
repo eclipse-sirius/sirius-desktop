@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.FigureUtilities;
@@ -40,6 +41,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
@@ -62,6 +64,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
      */
+    @Override
     public void adaptNodeLabel(final DNode node, final SiriusWrapLabel nodeLabel) {
         if (nodeLabel.getParent() != null) {
             final Rectangle constraint = new Rectangle(nodeLabel.getParent().getBounds());
@@ -87,6 +90,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */
+    @Override
     public int adaptViewNodeSizeWithLabel(final DNode viewNode, final SiriusWrapLabel nodeLabel, final int nodeWidth) {
         if (viewNode.getResizeKind() != ResizeKind.NONE_LITERAL) {
             // empty
@@ -99,6 +103,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getAnchorProvider()
      */
+    @Override
     public AnchorProvider getAnchorProvider() {
         return null;
     }
@@ -108,6 +113,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getBorderItemLocatorProvider()
      */
+    @Override
     public BorderItemLocatorProvider getBorderItemLocatorProvider() {
         return DefaultBorderItemLocatorProvider.getInstance();
     }
@@ -118,6 +124,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getNameBorderItemLocator(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.draw2d.IFigure)
      */
+    @Override
     public IBorderItemLocator getNameBorderItemLocator(final DNode node, final IFigure mainFigure) {
         final BorderItemLocator locator = new DBorderItemLocator(mainFigure, PositionConstants.NSEW);
         locator.setBorderItemOffset(IBorderItemOffsets.NO_OFFSET);
@@ -130,6 +137,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(DDiagramElement,
      *      IGraphicalEditPart)
      */
+    @Override
     public Image getLabelIcon(final DDiagramElement vpElement, IGraphicalEditPart editPart) {
         Image icon = null;
 
@@ -176,7 +184,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     }
 
     private void logIconNotFoundWarning(String iconPath, MalformedURLException e) {
-        SiriusPlugin.getDefault().warning("Icon file \"" + iconPath + "\" not found", e);
+        SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.SimpleStyleConfiguration_iconFileNotFound, iconPath), e);
     }
 
     /**
@@ -233,6 +241,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)
      */
+    @Override
     public Dimension fitToText(final DNode node, final SiriusWrapLabel nodeLabel, final DefaultSizeNodeFigure defaultSizeNodeFigure) {
         if (nodeLabel.getFont() != null) {
             final String text = node.getName();

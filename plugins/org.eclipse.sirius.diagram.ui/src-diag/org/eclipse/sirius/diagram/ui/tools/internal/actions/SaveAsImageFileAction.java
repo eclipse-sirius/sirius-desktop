@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
@@ -30,7 +31,7 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * Action to save current diagram as an image file.
- * 
+ *
  * @author dlecan
  */
 public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
@@ -39,7 +40,7 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
      * Default constructor.
      */
     public SaveAsImageFileAction() {
-        super("Export diagram as image", DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/screenshot.gif")); //$NON-NLS-2$
+        super(Messages.SaveAsImageFileAction_label, DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/screenshot.gif")); //$NON-NLS-1$
 
         /* set the id */
         setId(ActionIds.COPY_TO_IMAGE);

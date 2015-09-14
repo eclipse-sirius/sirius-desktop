@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.emf.ui.providers.marker.AbstractModelMarkerNaviga
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
@@ -41,6 +42,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
     /**
      * @was-generated
      */
+    @Override
     protected void doGotoMarker(IMarker marker) {
         String elementId = marker.getAttribute(org.eclipse.gmf.runtime.common.core.resources.IMarker.ELEMENT_ID, null);
         if (elementId == null || !(getEditor() instanceof DiagramEditor)) {
@@ -87,7 +89,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             }
             marker.setAttribute(IMarker.SEVERITY, markerSeverity);
         } catch (CoreException e) {
-            DiagramPlugin.getDefault().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(Messages.SiriusMarkerNavigationProvider_validationMarkerCreationError, e);
         }
         return marker;
     }
@@ -111,7 +113,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             }
             marker.setAttribute(IMarker.SEVERITY, markerSeverity);
         } catch (CoreException e) {
-            DiagramPlugin.getDefault().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(Messages.SiriusMarkerNavigationProvider_validationMarkerCreationError, e);
         }
         return marker;
     }

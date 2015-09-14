@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Wrap an EMF command into a GMF command.
@@ -44,12 +45,12 @@ public class GMFCommandWrapper extends AbstractTransactionalCommand {
      *            the EMF command.
      */
     public GMFCommandWrapper(final TransactionalEditingDomain domain, final Command emfCommand) {
-        super(domain, "GMF Command Wrapper", null);
+        super(domain, Messages.GMFCommandWrapper_label, null);
         if (emfCommand == null) {
-            throw new IllegalArgumentException("the command is null");
+            throw new IllegalArgumentException(Messages.GMFCommandWrapper_nullCommand);
         }
         if (domain == null) {
-            throw new IllegalArgumentException("the domain is null");
+            throw new IllegalArgumentException(Messages.GMFCommandWrapper_nullDomain);
         }
 
         /* Set the right label */

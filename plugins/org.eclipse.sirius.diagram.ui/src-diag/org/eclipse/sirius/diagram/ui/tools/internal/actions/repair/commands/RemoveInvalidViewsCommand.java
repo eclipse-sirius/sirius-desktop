@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.EditPartService;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 
 /**
@@ -41,7 +42,7 @@ public class RemoveInvalidViewsCommand extends IdentityCommand {
      *            Aird {@link Resource}
      */
     public RemoveInvalidViewsCommand(Resource airdResource) {
-        super("Remove invalid views");
+        super(Messages.RemoveInvalidViewsCommand_label);
         this.airdResource = airdResource;
     }
 

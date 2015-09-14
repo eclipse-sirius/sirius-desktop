@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -202,10 +202,10 @@ public class TreeLayoutConnectionLineSegEditPolicy extends SiriusConnectionBendp
     protected void showMoveOrthogonalBendpointFeedback2(BendpointRequest request) {
         // Change visibility of super method and call it. The bugzilla 331779
         // exists to make this method protected.
-        if (!ReflectionHelper.invokeMethodWithoutException(this, org.eclipse.gmf.runtime.gef.ui.internal.editpolicies.ConnectionBendpointEditPolicy.class, "showMoveOrthogonalBenspointFeedback",
+        if (!ReflectionHelper.invokeMethodWithoutException(this, org.eclipse.gmf.runtime.gef.ui.internal.editpolicies.ConnectionBendpointEditPolicy.class, "showMoveOrthogonalBenspointFeedback", //$NON-NLS-1$
                 new Class[] { BendpointRequest.class }, new Object[] { request }, true)) {
             DiagramUIPlugin.INSTANCE.log(new Status(IStatus.WARNING, DiagramUIPlugin.ID,
-                    "Impossible to call showMoveOrthogonalBenspointFeedback by reflection to handle edge label correctly during edge move (bug 465328)."));
+                    "Impossible to call showMoveOrthogonalBenspointFeedback by reflection to handle edge label correctly during edge move (bug 465328).")); //$NON-NLS-1$
         } else {
             initialPointsManager.storeInitialPointsInRequest(request, (ConnectionEditPart) getHost());
         }

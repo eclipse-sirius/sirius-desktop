@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -81,11 +82,11 @@ public class ResetOriginChangeModelOperation extends AbstractModelChangeOperatio
 
     @Override
     public String getName() {
-        String name = "Reset Origin";
+        String name = Messages.ResetOriginChangeModelOperation_name;
         if (containerEditPart instanceof DiagramEditPart) {
-            name = "Reset Diagram Origin";
+            name = Messages.ResetOriginChangeModelOperation_nameOnDiagram;
         } else if (containerEditPart instanceof AbstractDiagramContainerEditPart) {
-            name = "Reset Container Origin";
+            name = Messages.ResetOriginChangeModelOperation_nameOnContainer;
         }
         return name;
     }

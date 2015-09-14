@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,11 +29,12 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.filter.FilterTools;
 
 /**
  * Specific command to update activated filters.
- * 
+ *
  * @author mporhel
  */
 public final class ActivateFiltersCommand extends RecordingCommand {
@@ -44,7 +45,7 @@ public final class ActivateFiltersCommand extends RecordingCommand {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            the editing domain.
      * @param diagram
@@ -53,7 +54,7 @@ public final class ActivateFiltersCommand extends RecordingCommand {
      *            elements to activate
      */
     public ActivateFiltersCommand(TransactionalEditingDomain domain, DDiagram diagram, Collection<FilterDescription> newElements) {
-        super(domain, "Activate filters");
+        super(domain, Messages.ActivateFiltersCommand_label);
         this.newElements = newElements;
         this.diagram = diagram;
     }

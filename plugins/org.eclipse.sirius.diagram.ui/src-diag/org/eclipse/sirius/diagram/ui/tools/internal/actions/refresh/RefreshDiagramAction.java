@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramHelper;
 import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -95,10 +96,10 @@ public class RefreshDiagramAction extends RetargetAction {
             try {
                 monitorDialog.run(true, false, new RefreshRunnableWithProgress(minimizedSelection));
             } catch (final InvocationTargetException e) {
-                MessageDialog.openError(activeShell, "Error", e.getTargetException().getMessage());
-                SiriusPlugin.getDefault().error("Error while refreshing diagram", e);
+                MessageDialog.openError(activeShell, Messages.RefreshDiagramAction_error, e.getTargetException().getMessage());
+                SiriusPlugin.getDefault().error(Messages.RefreshDiagramAction_refreshDiagramError, e);
             } catch (final InterruptedException e) {
-                MessageDialog.openInformation(activeShell, "Cancelled", e.getMessage());
+                MessageDialog.openInformation(activeShell, Messages.RefreshDiagramAction_cancelled, e.getMessage());
             }
 
         }

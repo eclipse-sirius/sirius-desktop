@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 
@@ -278,7 +279,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
         private final Map<View, Boolean> viewsToUpdate;
 
         public VisibilityUpdateCommand(TransactionalEditingDomain domain, Map<View, Boolean> viewsToUpdate) {
-            super(domain, "Update view visibility");
+            super(domain, Messages.VisibilityUpdateCommand_label);
             this.viewsToUpdate = viewsToUpdate;
         }
 

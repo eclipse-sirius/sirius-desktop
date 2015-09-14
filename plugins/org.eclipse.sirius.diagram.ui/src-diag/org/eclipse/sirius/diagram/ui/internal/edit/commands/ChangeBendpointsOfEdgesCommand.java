@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnection
 import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAccordingToDraw2DCommand;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAccordingToExtremityMoveCommmand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -70,7 +71,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
      *            The move delta
      */
     public ChangeBendpointsOfEdgesCommand(IGraphicalEditPart movedPart, PrecisionPoint moveDelta) {
-        super(movedPart.getEditingDomain(), "Adapt bendpoints of edges", null);
+        super(movedPart.getEditingDomain(), Messages.ChangeBendpointsOfEdgesCommand_label, null);
         this.movedPart = movedPart;
         this.moveDelta = moveDelta;
     }
@@ -130,7 +131,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
                 }
             } else {
                 // Not expected to be there
-                result = CommandResult.newWarningCommandResult("The adaptation of edges according to shape move can not be done.", null);
+                result = CommandResult.newWarningCommandResult(Messages.ChangeBendpointsOfEdgesCommand_warningCommandResultMessage, null);
             }
         }
         return result;
@@ -232,16 +233,17 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
             // layout component
             ConnectionEditPartQuery connectionEditPartQuery = new ConnectionEditPartQuery(connectionEditPart);
             if (new ConnectionQuery(connectionFigure).isOrthogonalTreeBranch(connectionFigure.getPoints()) && connectionEditPartQuery.isLayoutComponent()) {
-                CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Map GMF to Draw2D");
+                CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, Messages.ChangeBendpointsOfEdgesCommand_mapGmfToDraw2dCommandLabel);
 
-                SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, "Map GMF anchor to Draw2D anchor");
+                SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain,
+                        Messages.ChangeBendpointsOfEdgesCommand_mapGmfAnchorToDraw2dAnchorCommandLabel);
                 setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
                 setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));
                 setConnectionAnchorsCommand.setNewTargetTerminal(((INodeEditPart) connectionEditPart.getTarget()).mapConnectionAnchorToTerminal(connectionFigure.getTargetAnchor()));
                 command.add(setConnectionAnchorsCommand);
 
                 SetConnectionBendpointsAccordingToDraw2DCommand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToDraw2DCommand(transactionalEditingDomain);
-                setConnectionBendpointsCommand.setLabel("Map GMF points to Draw2D points");
+                setConnectionBendpointsCommand.setLabel(Messages.ChangeBendpointsOfEdgesCommand_mapGmfPointsToDraw2dPoints);
                 setConnectionBendpointsCommand.setSourceMove(sourceMove);
                 setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
                 setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
@@ -251,7 +253,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
             } else if (connectionEditPartQuery.isEdgeWithObliqueRoutingStyle() || connectionEditPartQuery.isEdgeWithRectilinearRoutingStyle()) {
                 if (!allMovedEditParts.isEmpty()) {
                     if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
-                        CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Map GMF to Draw2D");
+                        CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, Messages.ChangeBendpointsOfEdgesCommand_mapGmfToDraw2dCommandLabel);
                         // Reset the connection anchor source and target
                         // considering
                         // it can be wrongly modified by the arrange selection
@@ -279,7 +281,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
                 if (!allMovedEditParts.isEmpty()) {
                     if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
                         // Just update the label offset
-                        CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Update offset of labels");
+                        CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, Messages.ChangeBendpointsOfEdgesCommand_updateLabelsOffsetCmdLabel);
                         PointList currentPointList = connectionEditPart.getConnectionFigure().getPoints();
                         PointList futurePointList = new BracketConnectionQuery(connectionEditPart.getConnectionFigure()).getPointListFromConstraintAndMove(moveDelta, sourceMove);
                         SetLabelsOffsetCommmand setLabelsOffsetCommand = new SetLabelsOffsetCommmand(transactionalEditingDomain);

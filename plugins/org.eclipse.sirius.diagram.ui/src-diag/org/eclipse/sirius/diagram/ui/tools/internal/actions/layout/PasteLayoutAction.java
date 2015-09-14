@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2014 IBM Corporation and others.
+ * Copyright (c) 2002, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCo
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory;
@@ -58,10 +59,10 @@ public class PasteLayoutAction extends AbstractCopyPasteLayoutAction {
     public PasteLayoutAction(final IWorkbenchPage workbenchPage, IWorkbenchPart actionWorkbenchPart) {
         super(workbenchPage, actionWorkbenchPart);
 
-        setText("Paste layout");
+        setText(Messages.PasteLayoutAction_text);
         setAccelerator(SWT.CTRL | SWT.SHIFT | SWT.ALT | 'V');
         setId(ActionIds.PASTE_LAYOUT);
-        setToolTipText("Paste the current recorded layout to the selected diagram");
+        setToolTipText(Messages.PasteLayoutAction_toolTipText);
 
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_LAYOUT_ICON));
         setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PASTE_LAYOUT_DISABLED_ICON));
@@ -85,7 +86,7 @@ public class PasteLayoutAction extends AbstractCopyPasteLayoutAction {
      */
     @Override
     protected String getCommandLabel() {
-        return "Paste Layout";
+        return Messages.PasteLayoutAction_commandLabel;
     }
 
     /**
@@ -99,7 +100,7 @@ public class PasteLayoutAction extends AbstractCopyPasteLayoutAction {
         if (SiriusLayoutDataManagerForSemanticElementsFactory.getInstance().getSiriusLayoutDataManager().containsData()) {
 
             // Create a compound command to hold the resize commands
-            CompoundCommand doStoreLayoutsCmd = new CompoundCommand("Restore layouts");
+            CompoundCommand doStoreLayoutsCmd = new CompoundCommand(Messages.PasteLayoutAction_restoreLayoutCommandLabel);
 
             // Create an iterator for the selection
             final Iterator<?> iter = getSelectedObjects().iterator();
@@ -147,7 +148,7 @@ public class PasteLayoutAction extends AbstractCopyPasteLayoutAction {
          *            the edit part to restore
          */
         public PasteLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToRestore) {
-            super(domain, "Paste layout data", null);
+            super(domain, Messages.PasteLayoutDataCommand_label, null);
             this.dDiagram = dDiagram;
             this.editPartToRestore = editPartToRestore;
         }

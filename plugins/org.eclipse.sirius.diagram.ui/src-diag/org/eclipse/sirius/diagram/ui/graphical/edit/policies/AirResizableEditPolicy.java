@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEditPartEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChangeBendpointsOfEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChildrenAdjustmentCommand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
@@ -92,7 +93,7 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
                     final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(mapping, style);
                     final Dimension newDim = styleConfiguration.fitToText(viewNode, label, defaultSizeNodeFigure);
                     final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(viewNode);
-                    final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(transactionalEditingDomain, "Auto Size",
+                    final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(transactionalEditingDomain, Messages.AirResizableEditPolicy_autoSizeCommandLabel,
                             new EObjectAdapter(((IGraphicalEditPart) this.getHost()).getNotationView()), newDim);
                     return new ICommandProxy(setBoundsCommand);
                 }

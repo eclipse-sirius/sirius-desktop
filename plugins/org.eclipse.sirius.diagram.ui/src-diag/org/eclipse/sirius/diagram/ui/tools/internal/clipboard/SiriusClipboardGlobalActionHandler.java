@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.clipboard;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -60,6 +61,7 @@ import org.eclipse.sirius.diagram.tools.internal.command.builders.PasteCommandBu
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
@@ -89,11 +91,6 @@ import com.google.common.collect.Sets;
 public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalActionHandler {
 
     /**
-     * Start of the error message when more than one valid paste description.
-     */
-    private static final String MORE_THAN_ONE_PASTE_DESCRIPTION_ERROR_MSG = "There are more than one paste description that match the target container";
-
-    /**
      * Keep trace of the paste command computed for canPaste : avoid duplicated
      * command buildong operation and mouse location change between.
      */
@@ -104,6 +101,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
      * 
      * @see org.eclipse.gmf.runtime.common.ui.action.AbstractGlobalActionHandler#canHandle(IGlobalActionContext)
      */
+    @Override
     public boolean canHandle(IGlobalActionContext cntxt) {
 
         /*
@@ -302,7 +300,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
         if (session != null && diag != null && !dSelection.isEmpty()) {
             boolean valid = true;
             TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-            CompositeTransactionalCommand cc = new CompositeTransactionalCommand(domain, "Paste ...");
+            CompositeTransactionalCommand cc = new CompositeTransactionalCommand(domain, Messages.SiriusClipboardGlobalActionHandler_pasteCommandLabel);
             valid = fillCompositePasteCommand(cc, domain, dSelection, cntxt, activePart);
 
             // Append GMF Not paste command
@@ -486,8 +484,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
             if (bestTool == null) {
                 bestTool = pasteTool;
             } else {
-                SiriusPlugin.getDefault().warning(MORE_THAN_ONE_PASTE_DESCRIPTION_ERROR_MSG + " : " + pasteTarget.getTarget() + " (" + bestTool.getName() + " and " + pasteTool.getName() + ").",
-                        new RuntimeException());
+                SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.SiriusClipboardGlobalActionHandler_severalFoundPasteToolError, pasteTarget.getTarget(), bestTool.getName(), pasteTool.getName()), new RuntimeException());
             }
         }
 
@@ -558,7 +555,7 @@ public class SiriusClipboardGlobalActionHandler extends ImageSupportGlobalAction
         final Set<DSemanticDecorator> dSelection = extractDSelection(cntxt);
         if (dSelection.size() == 1 && cntxt.getSelection() instanceof IStructuredSelection) {
             final Point cursorLocation = getCursorLocation(activePart, ((IStructuredSelection) cntxt.getSelection()).iterator().next());
-            cc.compose(new AbstractCommand("Add layout data") {
+            cc.compose(new AbstractCommand(Messages.SiriusClipboardGlobalActionHandler_addLayoutDataCommandLabel) {
 
                 @Override
                 protected CommandResult doUndoWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,6 +54,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.GMFDiagramUpdater;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.repair.commands.RemoveInvalidViewsCommand;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -93,6 +94,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void repairStarted() {
         diagramElementStateFactory = DiagramElementStateFactory.newInstance();
         lostNodesByDelete = ArrayListMultimap.create();
@@ -102,6 +104,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void repairCompeleted() {
         Collection<IDiagramElementState<DDiagramElement>> values = elementStatesMap.values();
 
@@ -117,8 +120,9 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void restoreModelElementState(DView view, IProgressMonitor monitor) {
-        monitor.subTask("Restoring model state");
+        monitor.subTask(Messages.DiagramRepairParticipant_restoreModelStateTaskName);
         // Creates a new CrossReferencer before restoring the model state (This
         // cross referencer will return all the references named "element" on
         // GMF Nodes)
@@ -190,6 +194,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void postRefreshOperations(TransactionalEditingDomain domain, Resource resource) {
 
         this.editingDomain = domain;
@@ -201,8 +206,9 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void saveModelElementState(DView view, IProgressMonitor monitor) {
-        monitor.subTask("Saving model state");
+        monitor.subTask(Messages.DiagramRepairParticipant_saveModelStateTaskName);
 
         // Creates a new CrossReferencer before saving the model state (This
         // cross referencer will return all the references named "element" on
@@ -286,6 +292,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void startRepairOnView(Session session, DView view) {
 
         for (DRepresentation representation : view.getOwnedRepresentations()) {
@@ -300,6 +307,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void endRepairOnView() {
         for (GMFDiagramUpdater gmfDiagramUpdater : gmfDiagramUpdaters) {
             gmfDiagramUpdater.dispose();
@@ -364,7 +372,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
     }
 
     private void removeDiagramElements(final IProgressMonitor monitor, TransactionalEditingDomain transactionalEditingDomain, final List<EObject> toBeRemoved) {
-        monitor.beginTask("remove Diagram Elements", 1);
+        monitor.beginTask(Messages.DiagramRepairParticipant_removeDiagramElementTaskName, 1);
         Command removeDiagramElementsCommand = new RemoveDiagramElementsCommand(new NullProgressMonitor(), toBeRemoved);
 
         new MigrationCommandExecutor().execute(transactionalEditingDomain, removeDiagramElementsCommand);

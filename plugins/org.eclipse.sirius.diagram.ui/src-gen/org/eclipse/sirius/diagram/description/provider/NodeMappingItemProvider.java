@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.diagram.description.provider;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -31,6 +32,7 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * This is the item provider adapter for a
@@ -140,7 +142,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
         String label = new IdentifiedElementQuery((NodeMapping) object).getLabel();
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
-            return "Bordered " + label;
+            return MessageFormat.format(Messages.NodeMappingItemProvider_borderedLabel, label);
         }
         return label == null || label.length() == 0 ? getString("_UI_NodeMapping_type") : label; //$NON-NLS-1$
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,6 +55,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.internal.policies.validators.DragAndDropValidator;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -74,7 +75,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
     /**
      * The name of the Drag'n'Drop command.
      */
-    public static final String DROP_ELEMENTS_CMD_NAME = "Drop Elements";
+    public static final String DROP_ELEMENTS_CMD_NAME = Messages.SiriusContainerDropPolicy_dropElementsCommandLabel;
 
     /** The background feedback color as in GMF. */
     private static final Color GRAY = new Color(null, 200, 200, 200);
@@ -360,7 +361,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
     }
 
     private org.eclipse.emf.common.command.Command getSaveLayoutCommand(ChangeBoundsRequest request, final Iterable<IGraphicalEditPart> editPartsToDrop, TransactionalEditingDomain editingDomain) {
-        org.eclipse.emf.common.command.CompoundCommand saveLayoutCommand = new org.eclipse.emf.common.command.CompoundCommand("Save layout for edit part");
+        org.eclipse.emf.common.command.CompoundCommand saveLayoutCommand = new org.eclipse.emf.common.command.CompoundCommand(Messages.SiriusContainerDropPolicy_saveEditPartLayoutCommandLabel);
         EditPartViewer viewer = getHost().getViewer();
 
         Point moveDelta = request.getMoveDelta().getCopy();

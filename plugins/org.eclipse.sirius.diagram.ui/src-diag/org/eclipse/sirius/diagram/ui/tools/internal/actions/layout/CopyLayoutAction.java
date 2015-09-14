@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2014 IBM Corporation and others.
+ * Copyright (c) 2002, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -30,6 +31,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
@@ -59,10 +61,10 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
     public CopyLayoutAction(final IWorkbenchPage workbenchPage, IWorkbenchPart actionWorkbenchPart) {
         super(workbenchPage, actionWorkbenchPart);
 
-        setText("Copy layout");
+        setText(Messages.CopyLayoutAction_text);
         setAccelerator(SWT.CTRL | SWT.SHIFT | SWT.ALT | 'C');
         setId(ActionIds.COPY_LAYOUT);
-        setToolTipText("Copy the layout of the selected diagram elements");
+        setToolTipText(Messages.CopyLayoutAction_toolTipText);
 
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_LAYOUT_ICON));
         setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_LAYOUT_DISABLED_ICON));
@@ -86,7 +88,7 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
      */
     @Override
     protected String getCommandLabel() {
-        return "Copy Layout";
+        return Messages.CopyLayoutAction_commandLabel;
     }
 
     /**
@@ -97,8 +99,8 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
     @Override
     protected Command getCommand() {
         // Create a compound command to hold the store layout commands
-        final CompoundCommand doStoreLayoutsCmd = new CompoundCommand("Store layouts");
-        doStoreLayoutsCmd.add(new Command("Clear previous layout data") {
+        final CompoundCommand doStoreLayoutsCmd = new CompoundCommand(Messages.CopyLayoutAction_storeLayoutCommandLabel);
+        doStoreLayoutsCmd.add(new Command(Messages.CopyLayoutAction_clrearPreviousLayoutDateCommandLabel) {
             /**
              * {@inheritDoc}
              * 
@@ -142,35 +144,10 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
                 List<IGraphicalEditPart> selectedEditParts = cleanSelectedObjects(getSelectedObjects());
                 // For each selected edit part, store its layout.
                 for (final IGraphicalEditPart toStore : selectedEditParts) {
-
-                    doStoreLayoutsCmd.add(new ICommandProxy(new AbstractTransactionalCommand(toStore.getEditingDomain(), "Copy layout data", null) {
-
-                        @Override
-                        protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
-                            for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getSiriusLayoutDataManagers(diagram.get())) {
-                                layoutDataManager.storeLayoutData(toStore);
-                            }
-                            return CommandResult.newOKCommandResult();
-                        }
-
-                        /**
-                         * {@inheritDoc}
-                         * 
-                         * @see org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand#doUndo(org.eclipse.core.runtime.IProgressMonitor,
-                         *      org.eclipse.core.runtime.IAdaptable)
-                         */
-                        @Override
-                        protected IStatus doUndo(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
-                            for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getSiriusLayoutDataManagers(diagram.get())) {
-                                layoutDataManager.clearLayoutData();
-                            }
-                            return super.doUndo(monitor, info);
-                        }
-                    }));
+                    doStoreLayoutsCmd.add(new ICommandProxy(new CopyLayoutDataCommand(toStore.getEditingDomain(), diagram.get(), toStore)));
                 }
             }
         }
-
         return doStoreLayoutsCmd.unwrap();
     }
 
@@ -193,5 +170,53 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
             }
         }
         return result;
+    }
+
+    /**
+     * A command allowing to copy layout data.
+     */
+    private final class CopyLayoutDataCommand extends AbstractTransactionalCommand {
+
+        private IGraphicalEditPart toStore;
+
+        private DDiagram dDiagram;
+
+        /**
+         * Default constructor.
+         * 
+         * @param domain
+         *            the editing domain on which this command will be executed
+         * @param dDiagram
+         *            the {@link DDiagram} on which layout will be pasted
+         * @param editPartToStore
+         *            the edit part to store
+         */
+        public CopyLayoutDataCommand(TransactionalEditingDomain domain, DDiagram dDiagram, IGraphicalEditPart editPartToStore) {
+            super(domain, Messages.CopyLayoutDataCommand_label, null);
+            this.dDiagram = dDiagram;
+            this.toStore = editPartToStore;
+        }
+
+        @Override
+        protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
+            for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram)) {
+                layoutDataManager.storeLayoutData(toStore);
+            }
+            return CommandResult.newOKCommandResult();
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand#doUndo(org.eclipse.core.runtime.IProgressMonitor,
+         *      org.eclipse.core.runtime.IAdaptable)
+         */
+        @Override
+        protected IStatus doUndo(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
+            for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram)) {
+                layoutDataManager.clearLayoutData();
+            }
+            return super.doUndo(monitor, info);
+        }
     }
 }

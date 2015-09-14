@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.layout.provider;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -33,6 +34,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutExtender;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.GridView;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.GridView.Column;
@@ -127,7 +129,7 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
      */
     public void setColumnSizeMode(final int columnSizeMode) {
         if (columnSizeMode < GridLayoutProvider.SAME_DIMENSION || columnSizeMode > GridLayoutProvider.FREE_DIMENSION) {
-            throw new IllegalArgumentException("Unknown mode : " + columnSizeMode);
+            throw new IllegalArgumentException(MessageFormat.format(Messages.GridLayoutProvider_unknownMode, columnSizeMode));
         }
         this.columnSizeMode = columnSizeMode;
     }
@@ -159,7 +161,7 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
      */
     public void setLineSizeMode(final int lineSizeMode) {
         if (lineSizeMode < GridLayoutProvider.SAME_DIMENSION || lineSizeMode > GridLayoutProvider.FREE_DIMENSION) {
-            throw new IllegalArgumentException("Unknown mode : " + lineSizeMode);
+            throw new IllegalArgumentException(MessageFormat.format(Messages.GridLayoutProvider_unknownMode, lineSizeMode));
         }
         this.lineSizeMode = lineSizeMode;
     }
@@ -518,6 +520,7 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider#getExtender()
      */
+    @Override
     public LayoutExtender getExtender() {
         return extender;
     }
@@ -527,6 +530,7 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider#handleConnectableListItems()
      */
+    @Override
     public boolean handleConnectableListItems() {
         return false;
     }
@@ -536,6 +540,7 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
      * 
      * @see org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider#provideNodeMetrics(org.eclipse.draw2d.graph.Node)
      */
+    @Override
     public Rectangle provideNodeMetrics(Node node) {
         return null;
     }

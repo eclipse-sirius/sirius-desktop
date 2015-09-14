@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -29,42 +30,6 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
  * @was-generated
  */
 public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
-
-    /**
-     * Title of the popup opened when toggling ui style.
-     */
-    public static final String USER_INTERFACE = "User interface";
-
-    /**
-     * Message explaining user the action of toggling ui style.
-     */
-    public static final String OLD_STYLE_NO_TAB_BAR_LAYERS_AND_FILTERS_MANAGEMENT_IN_OUTLINE = "old style : no tab bar, layers and filters management in outline";
-
-    /**
-     * Message explaining user the action of hiding label icons for all
-     * connectors.
-     */
-    public static final String HIDE_LABEL_ICONS_ON_CONNECTORS_MESSAGE = " Hide label icons on connectors"; //$NON-NLS-1$
-
-    /**
-     * Message explaining user the action of hiding label icons for all shapes.
-     */
-    public static final String HIDE_LABEL_ICONS_ON_SHAPES_MESSAGE = " Hide label icons on shapes"; //$NON-NLS-1$
-
-    /**
-     * Title of the group containing all options related to label icons hiding.
-     */
-    public static final String LABEL_ICONS_GROUP_TITLE = "Label icons (does not affect existing elements of opened diagrams)"; //$NON-NLS-1$
-
-    /**
-     * Title of the group containing display header option.
-     */
-    public static final String LABEL_DISPLAY_HEADER_TITLE = "Display header"; //$NON-NLS-1$ /**
-
-    /**
-     * Message explaining user the action of display header.
-     */
-    public static final String DISPLAY_HEADER_MESSAGE = "Display header"; //$NON-NLS-1$
 
     private BooleanFieldEditor hideLabelIconsOfShapes;
 
@@ -106,7 +71,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         gridData.grabExcessHorizontalSpace = true;
         gridData.horizontalSpan = 3;
         composite.setLayoutData(gridData);
-        group.setText(LABEL_ICONS_GROUP_TITLE);
+        group.setText(Messages.DiagramAppearancePreferencePage_labelIconsGroupText);
 
         addLabelIconsFields(composite);
 
@@ -133,7 +98,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         gridData.grabExcessHorizontalSpace = true;
         gridData.horizontalSpan = 3;
         composite.setLayoutData(gridData);
-        group.setText(LABEL_DISPLAY_HEADER_TITLE);
+        group.setText(Messages.DiagramAppearancePreferencePage_displayHeaderGroupText);
 
         addDisplayHeaderField(composite);
 
@@ -153,7 +118,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
      *            the group on which create the fields
      */
     protected void addDisplayHeaderField(Composite composite) {
-        displayHeader = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_DISPLAY_HEADER_SECTION.name(), DISPLAY_HEADER_MESSAGE, composite);
+        displayHeader = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_DISPLAY_HEADER_SECTION.name(), Messages.DiagramAppearancePreferencePage_displayHeaderLabel, composite);
         addField(displayHeader);
 
     }
@@ -165,10 +130,10 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
      *            the group on which create the fields
      */
     protected void addLabelIconsFields(Composite composite) {
-        hideLabelIconsOfShapes = new BooleanFieldEditor(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_SHAPES.name(), HIDE_LABEL_ICONS_ON_SHAPES_MESSAGE, composite);
+        hideLabelIconsOfShapes = new BooleanFieldEditor(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_SHAPES.name(), Messages.DiagramAppearancePreferencePage_hideShapeLabelIconsLabel, composite);
         addField(hideLabelIconsOfShapes);
 
-        hideLabelIconsOfConnectors = new BooleanFieldEditor(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_CONNECTORS.name(), HIDE_LABEL_ICONS_ON_CONNECTORS_MESSAGE, composite);
+        hideLabelIconsOfConnectors = new BooleanFieldEditor(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_CONNECTORS.name(), Messages.DiagramAppearancePreferencePage_hideConnectorLabelIconsLabel, composite);
         addField(hideLabelIconsOfConnectors);
     }
 

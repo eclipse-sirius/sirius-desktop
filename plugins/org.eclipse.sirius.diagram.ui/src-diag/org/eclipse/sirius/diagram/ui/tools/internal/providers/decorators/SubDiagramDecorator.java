@@ -35,6 +35,7 @@ import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
@@ -60,7 +61,7 @@ import com.google.common.collect.Iterables;
  */
 public class SubDiagramDecorator extends AbstractDecorator {
 
-    private static final ProfilerTask DECORATOR_REFRESH = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, "SubDiagramDecorator refresh", SiriusTasks.IMAGES_VIEWPOINT);
+    private static final ProfilerTask DECORATOR_REFRESH = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, Messages.SubDiagramDecorator_taskName, SiriusTasks.IMAGES_VIEWPOINT);
 
     private Session session;
 
@@ -80,6 +81,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void activate() {
         // Nothing to do.
     }
@@ -95,6 +97,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator#refresh()
      */
+    @Override
     public void refresh() {
         DslCommonPlugin.PROFILER.startWork(DECORATOR_REFRESH);
         removeDecoration();

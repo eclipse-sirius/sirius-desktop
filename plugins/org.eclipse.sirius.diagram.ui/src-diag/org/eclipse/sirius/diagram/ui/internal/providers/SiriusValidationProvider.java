@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.part.ValidateAction;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * @was-generated
@@ -50,6 +51,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
     /**
      * @was-generated
      */
+    @Override
     protected IAction createAction(String actionId, IWorkbenchPartDescriptor partDescriptor) {
         if (ValidateAction.VALIDATE_ACTION_KEY.equals(actionId)) {
             return new ValidateAction(partDescriptor);
@@ -64,6 +66,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
         final Runnable fop = op;
         Runnable task = new Runnable() {
 
+            @Override
             public void run() {
                 try {
                     constraintsActive = true;
@@ -78,7 +81,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
             try {
                 txDomain.runExclusive(task);
             } catch (Exception e) {
-                DiagramPlugin.getDefault().logError("Validation action failed", e); //$NON-NLS-1$
+                DiagramPlugin.getDefault().logError(Messages.SiriusValidationProvider_validationFailed, e); 
             }
         } else {
             task.run();
@@ -150,6 +153,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
         /**
          * @was-generated
          */
+        @Override
         public void elementValidated(EObject element, IStatus status) {
             defaultStrategy.elementValidated(element, status);
         }
@@ -157,6 +161,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
         /**
          * @was-generated
          */
+        @Override
         public boolean hasNext() {
             return defaultStrategy.hasNext();
         }
@@ -164,6 +169,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
         /**
          * @was-generated
          */
+        @Override
         public boolean isClientContextChanged() {
             if (preFetchedNextTarget == null) {
                 preFetchedNextTarget = next();
@@ -175,6 +181,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
         /**
          * @was-generated
          */
+        @Override
         public EObject next() {
             EObject nextTarget = preFetchedNextTarget;
             if (nextTarget == null) {
@@ -187,6 +194,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
         /**
          * @was-generated
          */
+        @Override
         public void startTraversal(Collection traversalRoots, IProgressMonitor monitor) {
             defaultStrategy.startTraversal(traversalRoots, monitor);
         }

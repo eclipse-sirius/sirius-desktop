@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -66,8 +67,7 @@ public class EdgeReconnectionHelper {
     public EdgeReconnectionHelper(View reconnectionTarget, List<Edge> reconnectionTargetEdges, ReconnectionKind reconnectionKind) {
         this.reconnectionTarget = reconnectionTarget;
         this.reconnectionTargetEdges = new ArrayList<Edge>(reconnectionTargetEdges);
-        assert reconnectionKind == ReconnectionKind.RECONNECT_SOURCE_LITERAL
-                || reconnectionKind == ReconnectionKind.RECONNECT_TARGET_LITERAL : "reconnectionKind must be ReconnectionKind.RECONNECT_SOURCE or ReconnectionKind.RECONNECT_TARGET";
+        assert reconnectionKind == ReconnectionKind.RECONNECT_SOURCE_LITERAL || reconnectionKind == ReconnectionKind.RECONNECT_TARGET_LITERAL : Messages.EdgeReconnectionHelper_invalidReconnectionKind;
         this.reconnectionKind = reconnectionKind;
     }
 

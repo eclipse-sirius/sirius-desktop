@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh.diagram;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -49,13 +50,14 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Specific factory for {@link Edge} used by the
  * {@link DDiagramCanonicalSynchronizer}.
- * 
+ *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class ConnectionsFactory {
@@ -87,7 +89,7 @@ public class ConnectionsFactory {
 
     /**
      * Default constructor.
-     * 
+     *
      * @param gmfDiagram
      *            the {@link Diagram} on which create {@link Edge}.
      * @param viewpointViewProvider
@@ -101,13 +103,13 @@ public class ConnectionsFactory {
     /**
      * Create a {@link Edge} according to information provided in
      * <code>viewDescriptor</code> and <code>domain2NotationMap</code>.
-     * 
+     *
      * @param viewDescriptor
      *            {@link SiriusLinkDescriptor} describing the Edge to create.
-     * 
+     *
      * @param domain2NotationMap
      *            map from DDiagramElement to gmf notation view.
-     * 
+     *
      * @return the created {@link Edge}
      */
     public Edge createEdge(SiriusLinkDescriptor viewDescriptor, Map<EObject, View> domain2NotationMap) {
@@ -168,7 +170,7 @@ public class ConnectionsFactory {
 
                     createdEdge = edge;
                 } else {
-                    DiagramPlugin.getDefault().logError("GMF Edge not created between source element : " + sourceEdgeTarget + ", and target element : " + targetEdgeTarget);
+                    DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ConnectionsFactory_edgeNotCreatedMsg, sourceEdgeTarget, targetEdgeTarget));
                 }
             }
         }
@@ -178,7 +180,7 @@ public class ConnectionsFactory {
     /**
      * As FontStyle.fontHeight default value is 9 and BasicLabelStyle.labelSize
      * default value is 8 we must synchronize this property.
-     * 
+     *
      * @param edge
      */
     // FIXME : as we have begin/center/endLabelStyle we should have a FontStyle
@@ -263,7 +265,7 @@ public class ConnectionsFactory {
      * Only source or target of edge has been moved (or dragged and dropped).
      * Use the data as is, except for border node that potentially needs
      * adaptation.
-     * 
+     *
      * @param egdeLayoutData
      *            Edge layout data from source (or from target)
      * @param edge
@@ -296,7 +298,7 @@ public class ConnectionsFactory {
      * We must use a "mix" of the edge layout data from source that contains the
      * impacted points for the source move and the edge layout data from target
      * that contains the impacted points for the target move.
-     * 
+     *
      * @param egdeLayoutData
      *            Edge layout data from source (or from target)
      * @param oppositeEgdeLayoutData
@@ -393,9 +395,9 @@ public class ConnectionsFactory {
             }
         }
         if (sourceTerminal != null) {
-            if (sourceTerminal.length() == 0)
+            if (sourceTerminal.length() == 0) {
                 edge.setSourceAnchor(null);
-            else {
+            } else {
                 IdentityAnchor a = (IdentityAnchor) edge.getSourceAnchor();
                 if (a == null) {
                     a = NotationFactory.eINSTANCE.createIdentityAnchor();
@@ -417,9 +419,9 @@ public class ConnectionsFactory {
             targetTerminal = "(0.5,0.5)"; //$NON-NLS-1$
         }
         if (targetTerminal != null) {
-            if (targetTerminal.length() == 0)
+            if (targetTerminal.length() == 0) {
                 edge.setTargetAnchor(null);
-            else {
+            } else {
                 IdentityAnchor a = (IdentityAnchor) edge.getTargetAnchor();
                 if (a == null) {
                     a = NotationFactory.eINSTANCE.createIdentityAnchor();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -29,6 +30,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -68,7 +70,7 @@ public class PaletteImageProvider {
                     final EObject anInstance = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(abstractToolDescription).createInstance(domainClassToUse);
                     return DiagramUIPlugin.getPlugin().getItemImageDescriptor(anInstance);
                 } catch (final MetaClassNotFoundException e) {
-                    SiriusPlugin.getDefault().warning("No icon is available for the tool " + abstractToolDescription.getName() + ". A default icon has been set instead.", null);
+                    SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.PaletteImageProvider_noIconFor, abstractToolDescription.getName()), null);
                 }
             }
             if (abstractToolDescription instanceof EdgeCreationDescription) {

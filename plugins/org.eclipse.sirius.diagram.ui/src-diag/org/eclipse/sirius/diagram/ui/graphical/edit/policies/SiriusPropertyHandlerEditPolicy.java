@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -58,10 +59,6 @@ import org.eclipse.swt.graphics.RGB;
  */
 @SuppressWarnings("restriction")
 public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
-
-    private static final String APPLY_VIEWPOINT_APPEARANCE_PROPERTIES_UNDO_COMMAND_NAME = "Apply viewpoint appearance properties"; //$NON-NLS-1$
-
-    private static final String APPLY_VIEWPOINT_TOOLBAR_PROPERTIES_UNDO_COMMAND_NAME = "Apply viewpoint toolbar properties"; //$NON-NLS-1$
 
     /**
      * 
@@ -83,7 +80,7 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
 
         if (styleCommand != null) {
             final CompoundCommand cc = new CompoundCommand();
-            cc.setDebugLabel("Chained Style Command"); //$NON-NLS-1$
+            cc.setDebugLabel(Messages.SiriusPropertyHandlerEditPolicy_chainedStyleCommandDebugLabel); 
             cc.add(c);
             cc.add(styleCommand);
             return cc;
@@ -114,7 +111,7 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
             final DEdge edge = (DEdge) styleReceiver;
             final EdgeStyle edgeStyle = (EdgeStyle) styleToCopy;
 
-            viewStyleCommand = new AbstractTransactionalCommand(getEditingDomain(), APPLY_VIEWPOINT_APPEARANCE_PROPERTIES_UNDO_COMMAND_NAME, null) {
+            viewStyleCommand = new AbstractTransactionalCommand(getEditingDomain(), Messages.SiriusPropertyHandlerEditPolicy_applyAppearancePropertiesCommandLabel, null) {
                 @Override
                 protected CommandResult doExecuteWithResult(final IProgressMonitor progressMonitor, final IAdaptable info) throws ExecutionException {
                     edge.setOwnedStyle(edgeStyle);
@@ -125,7 +122,7 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
             final DNode node = (DNode) styleReceiver;
             final NodeStyle nodeStyle = (NodeStyle) styleToCopy;
 
-            viewStyleCommand = new AbstractTransactionalCommand(getEditingDomain(), APPLY_VIEWPOINT_APPEARANCE_PROPERTIES_UNDO_COMMAND_NAME, null) {
+            viewStyleCommand = new AbstractTransactionalCommand(getEditingDomain(), Messages.SiriusPropertyHandlerEditPolicy_applyAppearancePropertiesCommandLabel, null) {
                 @Override
                 protected CommandResult doExecuteWithResult(final IProgressMonitor progressMonitor, final IAdaptable info) throws ExecutionException {
                     node.setOwnedStyle(nodeStyle);
@@ -136,7 +133,7 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
             final DDiagramElementContainer container = (DDiagramElementContainer) styleReceiver;
             final ContainerStyle containerStyle = (ContainerStyle) styleToCopy;
 
-            viewStyleCommand = new AbstractTransactionalCommand(getEditingDomain(), APPLY_VIEWPOINT_APPEARANCE_PROPERTIES_UNDO_COMMAND_NAME, null) {
+            viewStyleCommand = new AbstractTransactionalCommand(getEditingDomain(), Messages.SiriusPropertyHandlerEditPolicy_applyAppearancePropertiesCommandLabel, null) {
                 @Override
                 protected CommandResult doExecuteWithResult(final IProgressMonitor progressMonitor, final IAdaptable info) throws ExecutionException {
                     container.setOwnedStyle(containerStyle);
@@ -168,13 +165,13 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
 
     private Command buildColorPropertyChangeCommand(final View view, final ChangePropertyValueRequest cpvr, final EditPart ep) {
         if (view != null && ViewUtil.isPropertySupported(view, cpvr.getPropertyID()) && ep instanceof IDiagramElementEditPart) {
-            ICommand colorCommand = new AbstractTransactionalCommand(getEditingDomain(), APPLY_VIEWPOINT_TOOLBAR_PROPERTIES_UNDO_COMMAND_NAME, null) {
+            ICommand colorCommand = new AbstractTransactionalCommand(getEditingDomain(), Messages.SiriusPropertyHandlerEditPolicy_applyTabbarPropertiesCommandLabel, null) {
                 @Override
                 protected CommandResult doExecuteWithResult(final IProgressMonitor progressMonitor, final IAdaptable info) throws ExecutionException {
                     if (cpvr.getValue() instanceof Integer) {
                         final RGB finalColor = FigureUtilities.integerToRGB((Integer) cpvr.getValue());
                         final UserFixedColor newColor = DescriptionFactory.eINSTANCE.createUserFixedColor();
-                        newColor.setName("<anonymous>"); //$NON-NLS-1$
+                        newColor.setName(Messages.AnonymousUserFixedColorName);
                         newColor.setBlue(finalColor.blue);
                         newColor.setGreen(finalColor.green);
                         newColor.setRed(finalColor.red);

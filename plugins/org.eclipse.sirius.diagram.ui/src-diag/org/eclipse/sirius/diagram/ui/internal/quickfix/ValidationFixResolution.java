@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.quickfix;
+
+import java.text.MessageFormat;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -25,6 +27,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -58,17 +61,19 @@ public class ValidationFixResolution implements IMarkerResolution {
         this.fix = fix;
     }
 
+    @Override
     public String getLabel() {
         return fix.getName();
     }
 
+    @Override
     public void run(IMarker marker) {
         IResource airdFile = marker.getResource();
         if (airdFile instanceof IFile) {
             try {
                 tryToOpenEditor(airdFile, marker);
             } catch (PartInitException e) {
-                SiriusPlugin.getDefault().error("Can't open editor for " + airdFile, e);
+                SiriusPlugin.getDefault().error(MessageFormat.format(Messages.ValidationFixResolution_editorOpeningError, airdFile), e);
             }
         }
     }

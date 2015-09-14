@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.part;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -101,7 +102,7 @@ public class SiriusDiagramEditorUtil {
         try {
             file.setCharset("UTF-8", new NullProgressMonitor()); //$NON-NLS-1$
         } catch (CoreException e) {
-            DiagramPlugin.getDefault().logError("Unable to set charset for file " + file.getFullPath(), e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.SiriusDiagramEditorUtil_charsetError, file.getFullPath()), e);
         }
     }
 
@@ -113,7 +114,7 @@ public class SiriusDiagramEditorUtil {
             containerFullPath = new Path(""); //$NON-NLS-1$
         }
         if (fileName == null || fileName.trim().length() == 0) {
-            fileName = "default"; //$NON-NLS-1$
+            fileName = org.eclipse.sirius.diagram.ui.provider.Messages.SiriusDiagramEditorUtil_defaultFileName; 
         }
         IPath filePath = containerFullPath.append(fileName);
         if (extension != null && !extension.equals(filePath.getFileExtension())) {
@@ -181,7 +182,7 @@ public class SiriusDiagramEditorUtil {
                     diagramResource.save(org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil.getSaveOptions());
                 } catch (IOException e) {
 
-                    DiagramPlugin.getDefault().logError("Unable to store model and diagram resources", e); //$NON-NLS-1$
+                    DiagramPlugin.getDefault().logError(org.eclipse.sirius.diagram.ui.provider.Messages.SiriusDiagramEditorUtil_modelAndDiagramResourceSaveError, e);
                 }
                 return CommandResult.newOKCommandResult();
             }
@@ -189,7 +190,7 @@ public class SiriusDiagramEditorUtil {
         try {
             OperationHistoryFactory.getOperationHistory().execute(command, new SubProgressMonitor(progressMonitor, 1), null);
         } catch (ExecutionException e) {
-            DiagramPlugin.getDefault().logError("Unable to create model and diagram", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(org.eclipse.sirius.diagram.ui.provider.Messages.SiriusDiagramEditorUtil_modelAndDiagramCreationError, e);
         }
         setCharset(WorkspaceSynchronizer.getFile(modelResource));
         setCharset(WorkspaceSynchronizer.getFile(diagramResource));

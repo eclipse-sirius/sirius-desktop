@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.handler;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,13 +30,14 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.filter.FilterTools;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 
 /**
  * Change filter activation.
- * 
+ *
  * @author mchauvin
  */
 public class ChangeFilterActivation extends AbstractChangeActivation {
@@ -44,9 +46,9 @@ public class ChangeFilterActivation extends AbstractChangeActivation {
 
     /**
      * Constructor.
-     * 
+     *
      * @see AbstractChangeActivation constructor
-     * 
+     *
      * @param part
      *            the diagram workbench part
      * @param diagram
@@ -63,9 +65,10 @@ public class ChangeFilterActivation extends AbstractChangeActivation {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.lang.Runnable#run()
      */
+    @Override
     public void run() {
 
         final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(diagram);
@@ -73,9 +76,10 @@ public class ChangeFilterActivation extends AbstractChangeActivation {
         command.getTasks().add(new AbstractCommandTask() {
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
              */
+            @Override
             public void execute() {
                 NotificationUtil.sendNotification(diagram, org.eclipse.sirius.common.tools.api.listener.Notification.Kind.START,
                         org.eclipse.sirius.common.tools.api.listener.Notification.VISIBILITY_UPDATE);
@@ -90,11 +94,12 @@ public class ChangeFilterActivation extends AbstractChangeActivation {
 
             /**
              * {@inheritDoc}
-             * 
+             *
              * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
              */
+            @Override
             public String getLabel() {
-                return "hide or show filter";
+                return Messages.ChangeFilterActivation_label;
             }
 
         });
@@ -102,7 +107,8 @@ public class ChangeFilterActivation extends AbstractChangeActivation {
         // This DDiagramSynchronizer.refesh is useless
         // command.getTasks().add(new RefreshDElementTask((DDiagram)
         // designerElement));
-        command.setLabel(activate ? "Activate " : "Deactivate " + filter.getName() + " filter");
+        command.setLabel(activate ? MessageFormat.format(Messages.ChangeFilterActivation_activateFilter, filter.getName())
+                : MessageFormat.format(Messages.ChangeFilterActivation_deactivateFilter, filter.getName()));
 
         domain.getCommandStack().execute(command);
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.LayersActivationAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers.LayersActivationAdapter;
@@ -73,7 +74,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
      */
     @Override
     protected String getLabel() {
-        return "Layers";
+        return Messages.LayersContribution_label;
     }
 
     /**
@@ -111,6 +112,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
         allLayers.remove(diagramDesc.getDefaultLayer());
         Iterables.removeIf(allLayers, new Predicate<Layer>() {
 
+            @Override
             public boolean apply(Layer layer) {
                 if (layer instanceof AdditionalLayer) {
                     return !((AdditionalLayer) layer).isOptional();

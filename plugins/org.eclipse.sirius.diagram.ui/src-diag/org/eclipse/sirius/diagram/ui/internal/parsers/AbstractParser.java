@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -115,6 +115,7 @@ public abstract class AbstractParser implements IParser {
     /**
      * @was-generated
      */
+    @Override
     public boolean isAffectingEvent(Object event, int flags) {
         if (event instanceof Notification) {
             return isAffectingFeature(((Notification) event).getFeature());
@@ -137,6 +138,7 @@ public abstract class AbstractParser implements IParser {
     /**
      * @was-generated
      */
+    @Override
     public IContentAssistProcessor getCompletionProcessor(IAdaptable element) {
         return null;
     }
@@ -178,7 +180,7 @@ public abstract class AbstractParser implements IParser {
         if (editingDomain == null) {
             return UnexecutableCommand.INSTANCE;
         }
-        CompositeTransactionalCommand command = new CompositeTransactionalCommand(editingDomain, "Set Values"); //$NON-NLS-1$
+        CompositeTransactionalCommand command = new CompositeTransactionalCommand(editingDomain, org.eclipse.sirius.diagram.ui.provider.Messages.AbstractParser_setValuesCmdLabel);
         for (int i = 0; i < values.length; i++) {
             command.compose(getModificationCommand(element, features[i], values[i]));
         }
@@ -391,6 +393,7 @@ public abstract class AbstractParser implements IParser {
         /**
          * @was-generated
          */
+        @Override
         public String toString() {
             return description;
         }

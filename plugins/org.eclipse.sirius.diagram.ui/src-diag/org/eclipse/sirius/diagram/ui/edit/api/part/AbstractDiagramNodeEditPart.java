@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,6 +67,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
@@ -160,7 +161,7 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
      * @return a command to create port which wrap the original command
      */
     protected Command getPortCreationCommand(final Command originalCommand, final CreateViewRequest request) {
-        final CompositeCommand compositeCommand = new CompositeCommand("Create View");
+        final CompositeCommand compositeCommand = new CompositeCommand(Messages.IAbstractDiagramNodeEditPart_createViewCommandLabel);
         compositeCommand.compose(new CommandProxy(originalCommand));
         final Iterator<?> iterDescriptor = request.getViewDescriptors().iterator();
         LayoutUtils.prepareFigureForDummyAdds(this.getBorderedFigure().getBorderItemContainer());
@@ -249,7 +250,7 @@ public abstract class AbstractDiagramNodeEditPart extends AbstractBorderedDiagra
                                 break;
                             }
                         }
-                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), "Resize", new EObjectAdapter(graphicalEditPart.getNotationView()),
+                        final SetBoundsCommand setBoundsCommand = new SetBoundsCommand(getEditingDomain(), Messages.IAbstractDiagramNodeEditPart_resizeCommandLabel, new EObjectAdapter(graphicalEditPart.getNotationView()),
                                 new Rectangle(position, dimension));
                         cmd = new ICommandProxy(setBoundsCommand);
                     }

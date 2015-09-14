@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.CreateRepresentationFromRepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -56,6 +57,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void contributeToActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
@@ -64,6 +66,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void contributeToPopupMenu(final IMenuManager menu, final IWorkbenchPart part) {
 
         if (part instanceof SiriusDiagramEditor) {
@@ -86,7 +89,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
                 }
                 if (editpart instanceof ISiriusEditPart) {
                     // Create a new sub-menu manager
-                    final MenuManager newMenuManager = new MenuManager("New", SubDiagramMenu.MENU_NEW_REPRESENTATION_ID);
+                    final MenuManager newMenuManager = new MenuManager(Messages.SubDiagramMenu_newLabel, SubDiagramMenu.MENU_NEW_REPRESENTATION_ID);
                     // Create the item to add to the top of main manager, just
                     // before the open menu
                     if (!menu.isEmpty()) {
@@ -149,6 +152,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void disposeContributions(final IWorkbenchPartDescriptor arg0) {
         // Nothing to contribute
 
@@ -157,6 +161,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void updateActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
@@ -165,6 +170,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void addProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
 
@@ -173,6 +179,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean provides(final IOperation arg0) {
         // Always provide
         return true;
@@ -181,6 +188,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void removeProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,13 +42,14 @@ import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
 import com.google.common.collect.Iterables;
 
 /**
  * An abstract layout provider.
- * 
+ *
  * @author ymortier
  */
 public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvider {
@@ -56,19 +57,19 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
     /**
      * Modeler Category.
      */
-    public static final String GENERIC_MODELER_CAT = "Generic Modeler";
+    public static final String GENERIC_MODELER_CAT = Messages.AbstractLayoutProvider_arrangeAllProfilerTaskCategory;
 
     /**
      * Arrange all.
      */
-    public static final ProfilerTask ARRANGE_ALL = new ProfilerTask(GENERIC_MODELER_CAT, "Arrange All");
+    public static final ProfilerTask ARRANGE_ALL = new ProfilerTask(GENERIC_MODELER_CAT, Messages.AbstractLayoutProvider_arrangeAllProfilerTaskName);
 
     /** Map all views with a its associated {@link ChangeBoundsRequest}. */
     protected Map<View, List<Request>> viewsToChangeBoundsRequest;
 
     /**
      * Create a new {@link AbstractLayoutProvider}.
-     * 
+     *
      */
     public AbstractLayoutProvider() {
         this.viewsToChangeBoundsRequest = new HashMap<View, List<Request>>();
@@ -77,7 +78,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
     /**
      * Set the map that maps all views with a its associated
      * {@link ChangeBoundsRequest}.
-     * 
+     *
      * @param viewsToChangeBoundsRequest
      *            Map all views with a its associated
      *            {@link ChangeBoundsRequest}.
@@ -89,7 +90,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
     /**
      * Return the map that maps all views with a its associated
      * {@link ChangeBoundsRequest}.
-     * 
+     *
      * @return the map that maps all views with a its associated
      *         {@link ChangeBoundsRequest}.
      */
@@ -99,7 +100,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider#layoutEditParts(org.eclipse.gef.GraphicalEditPart,
      *      org.eclipse.core.runtime.IAdaptable)
      */
@@ -112,22 +113,22 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
         /*
          * If we are asked to layout a whole diagram, check if a specific
          * provider has been registered for it (through the
-         * org.eclipse.sirius.common.ui.airLayoutProvider extension point), and use
-         * that provider if there is.
+         * org.eclipse.sirius.common.ui.airLayoutProvider extension point), and
+         * use that provider if there is.
          */
         if (containerEditPart instanceof DiagramEditPart) {
             final DiagramEditPart diagramEditPart = (DiagramEditPart) containerEditPart;
             final LayoutProvider diagramLayoutProvider = getDiagramLayoutProvider(diagramEditPart, layoutHint);
             if (diagramLayoutProvider != null) {
                 final Command command = getCommandFromDiagramLayoutProvider(diagramLayoutProvider, diagramEditPart, layoutHint);
-                command.setLabel("Arrange all");
+                command.setLabel(Messages.AbstractLayoutProvider_arrangeAllCommandLabel);
                 DslCommonPlugin.PROFILER.stopWork(ARRANGE_ALL);
                 return command;
             }
         }
 
         final Command command = buildCommand(containerEditPart, layoutHint);
-        command.setLabel("Arrange all");
+        command.setLabel(Messages.AbstractLayoutProvider_arrangeAllCommandLabel);
         this.getViewsToChangeBoundsRequest().clear();
         AbstractLayoutProvider.resetWrappedCommand(command);
         DslCommonPlugin.PROFILER.stopWork(ARRANGE_ALL);
@@ -136,7 +137,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     /**
      * Get the the diagram layout provider if there is one.
-     * 
+     *
      * @param diagramEditPart
      *            the diagram edit part
      * @param layoutHint
@@ -164,9 +165,9 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
                 command = layoutProvider.layoutEditParts(diagramEditPart, layoutHint);
             }
         } catch (final SecurityException e) {
-            SiriusTransPlugin.getPlugin().error("Layout Error", e);
+            SiriusTransPlugin.getPlugin().error(Messages.AbstractLayoutProvider_layoutError, e);
         } catch (final NoSuchMethodException e) {
-            SiriusTransPlugin.getPlugin().error("Layout Error", e);
+            SiriusTransPlugin.getPlugin().error(Messages.AbstractLayoutProvider_layoutError, e);
         }
         if (command == null) {
             final List<?> children = diagramEditPart.getChildren();
@@ -182,7 +183,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
      * The resulting command is a compound command built recursively by calling
      * {@link #layoutEditParts(List, IAdaptable)} on all the descendants of the
      * specified container and then on the container itself.
-     * 
+     *
      * @param containerEditPart
      *            the container to layout.
      * @param layoutHint
@@ -209,16 +210,17 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
      */
+    @Override
     public boolean provides(final IOperation operation) {
         return false;
     }
 
     /**
      * Search a request for the specified edit part and of the specified type.
-     * 
+     *
      * @param editPart
      *            the edit part.
      * @param requestType
@@ -234,7 +236,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     /**
      * Search a request for the specified view and of the specified type.
-     * 
+     *
      * @param notationView
      *            the view.
      * @param requestType
@@ -258,7 +260,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     /**
      * Create a command with the specified request.
-     * 
+     *
      * @param request
      *            the request.
      * @param editPart
@@ -280,7 +282,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
     /**
      * Tests whether an edit part should be considered as pinned (fixed size and
      * location) during the layout.
-     * 
+     *
      * @param part
      *            the edit part.
      * @return <code>true</code> if the edit part should be considered as
@@ -297,7 +299,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     /**
      * Wraps a GMF Command.
-     * 
+     *
      * @author ymortier
      */
     protected static class CommandWrapper extends Command {
@@ -313,7 +315,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
         /**
          * Create a new Command wrapper.
-         * 
+         *
          * @param request
          *            the request.
          * @param editPart
@@ -326,7 +328,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.gef.commands.Command#execute()
          */
         @Override
@@ -338,7 +340,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.gef.commands.Command#canExecute()
          */
         @Override
@@ -348,7 +350,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.gef.commands.Command#canUndo()
          */
         @Override
@@ -358,7 +360,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.gef.commands.Command#undo()
          */
         @Override
@@ -368,7 +370,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.gef.commands.Command#redo()
          */
         @Override
@@ -401,7 +403,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
         /**
          * Returns the request that is causing the command.
-         * 
+         *
          * @return the request
          */
         public Request getRequest() {
@@ -410,7 +412,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
         /**
          * Return the associated edit part.
-         * 
+         *
          * @return the editPart
          */
         public EditPart getEditPart() {
@@ -420,7 +422,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     /**
      * Return the relative bounds of the specified edit part.
-     * 
+     *
      * @param graphicalEditPart
      *            the edit part.
      * @return the bounds of the specified edit part.
@@ -486,7 +488,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
     /**
      * Return the first figure of type <code>type</code> that is the figure
      * <code>searchRoot</code> or a child of <code>searchRoot</code>.
-     * 
+     *
      * @param searchRoot
      *            the root figure to start the search.
      * @param type
@@ -510,7 +512,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
 
     /**
      * Return all edit parts contained in root + root.
-     * 
+     *
      * @param root
      *            the root edit part
      * @return all edit parts contained in root + root.

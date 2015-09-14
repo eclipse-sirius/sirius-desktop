@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
@@ -48,7 +49,7 @@ import com.google.common.collect.Iterables;
 public class ResetStylePropertiesToDefaultValuesAction extends Action implements Disposable {
 
     /** The action name. */
-    public static final String ACTION_NAME = "Reset style properties to default values";
+    public static final String ACTION_NAME = Messages.ResetStylePropertiesToDefaultValuesAction_text;
 
     /** The action id. */
     public static final String ID = "RESET_STYLE_PROPERTIES_TO_DEFAULT_VALUES_ACTION_ID"; //$NON-NLS-1$
@@ -167,6 +168,7 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
     /**
      * {@inheritDoc}
      */
+    @Override
     public void dispose() {
         this.selection = null;
         this.page = null;

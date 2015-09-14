@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.jface.fieldassist.FieldDecorationRegistry;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -40,8 +41,6 @@ import org.eclipse.swt.widgets.Text;
  * @author fmorel
  */
 public class SelectDiagramElementBackgroundImageDialog extends Dialog {
-
-    private static final String DIALOG_TITLE = "Select background image from workspace";
 
     private WorkspaceImage workspaceImageForWorkspace;
 
@@ -100,7 +99,7 @@ public class SelectDiagramElementBackgroundImageDialog extends Dialog {
         fromWorkspaceComposite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true));
 
         workspacePathLabel = new Label(fromWorkspaceComposite, SWT.NONE);
-        workspacePathLabel.setText("Path:");
+        workspacePathLabel.setText(Messages.SelectDiagramElementBackgroundImageDialog_pathLabelText);
 
         workspacePathText = new Text(fromWorkspaceComposite, SWT.FLAT | SWT.BORDER);
         workspacePathText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
@@ -115,7 +114,7 @@ public class SelectDiagramElementBackgroundImageDialog extends Dialog {
         ctx.bindValue(workspacePathTextObservable, workspaceImageObservable, new UpdateValueStrategy().setAfterConvertValidator(workspacePathValidator), null);
 
         browseButton = new Button(fromWorkspaceComposite, SWT.NONE);
-        browseButton.setText("Browse");
+        browseButton.setText(Messages.SelectDiagramElementBackgroundImageDialog_browseButtonText);
         browseButton.addSelectionListener(new WorkspaceImagePathSelector(workspacePathText));
     }
 
@@ -128,7 +127,7 @@ public class SelectDiagramElementBackgroundImageDialog extends Dialog {
     @Override
     protected void configureShell(final Shell shell) {
         super.configureShell(shell);
-        shell.setText(DIALOG_TITLE);
+        shell.setText(Messages.SelectDiagramElementBackgroundImageDialog_title);
         shell.setMinimumSize(500, 100);
         setShellStyle(getShellStyle() | SWT.RESIZE | SWT.MAX);
     }

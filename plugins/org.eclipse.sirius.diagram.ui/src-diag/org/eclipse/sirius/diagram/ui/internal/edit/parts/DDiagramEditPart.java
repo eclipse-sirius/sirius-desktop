@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RevealSelectedEleme
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DDiagramItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
@@ -120,9 +121,9 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
 
     /**
      * A command that changes the LayoutingMode of the given {@link DDiagram}.
-     * 
+     *
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
-     * 
+     *
      */
     public static class SetLayoutingModeCommand extends SiriusCommand {
 
@@ -138,7 +139,7 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
 
         /**
          * Constructor.
-         * 
+         *
          * @param editingDomain
          *            the editing domain
          * @param diagram
@@ -149,18 +150,18 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
          *            disabled
          */
         public SetLayoutingModeCommand(TransactionalEditingDomain editingDomain, DDiagram diagram, boolean layoutingModeShouldBeEnabled) {
-            super(editingDomain, "Deactivating Layouting mode");
+            super(editingDomain, Messages.SetLayoutingModeCommand_deactivateLabel);
             this.diagram = diagram;
             this.layoutingModeShouldBeEnabled = layoutingModeShouldBeEnabled;
             if (layoutingModeShouldBeEnabled) {
-                setLabel("Activating Layouting mode");
+                setLabel(Messages.SetLayoutingModeCommand_activateLabel);
             }
         }
 
         /**
-         * 
+         *
          * {@inheritDoc}
-         * 
+         *
          * @see org.eclipse.sirius.tools.api.command.SiriusCommand#doExecute()
          */
         @Override

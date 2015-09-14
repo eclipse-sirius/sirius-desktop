@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePageListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.filters.FiltersTableViewer;
@@ -42,12 +43,6 @@ public class DiagramOutlineWithBookPages extends DiagramOutlinePage {
 
     /** The id of the layers. 4 */
     protected static final int ID_FILTERS = 4;
-
-    /** the layers tooltip text. */
-    private static final String LAYER_TIP_TEXT = "Layers";
-
-    /** the layers tooltip text. */
-    private static final String FILTER_TIP_TEXT = "Filters";
 
     /** The layers icon descriptor. */
     private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif"); //$NON-NLS-1$
@@ -113,7 +108,7 @@ public class DiagramOutlineWithBookPages extends DiagramOutlinePage {
             }
         };
         showLayersAction.setImageDescriptor(DESC_LAYER);
-        showLayersAction.setToolTipText(LAYER_TIP_TEXT);
+        showLayersAction.setToolTipText(Messages.DiagramOutlineWithBookPages_layersTooltip);
         tbm.add(showLayersAction);
     }
 
@@ -125,7 +120,7 @@ public class DiagramOutlineWithBookPages extends DiagramOutlinePage {
             }
         };
         showFiltersAction.setImageDescriptor(DESC_FILTER);
-        showFiltersAction.setToolTipText(FILTER_TIP_TEXT);
+        showFiltersAction.setToolTipText(Messages.DiagramOutlineWithBookPages_filtersTooltip);
         tbm.add(showFiltersAction);
     }
 

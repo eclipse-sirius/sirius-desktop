@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.AbstractDiagramAction;
@@ -72,7 +73,7 @@ public class ArrangeBorderNodesAction extends AbstractDiagramAction {
     protected void initAction(final String id, final String text) {
         setId(id);
         setText(text);
-        setToolTipText("Arrange all the linked border nodes of the diagram.");
+        setToolTipText(Messages.ArrangeBorderNodesAction_toolTipText);
         setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.ARRANGE_BORDERED_NODES_ICON));
     }
 
@@ -123,7 +124,7 @@ public class ArrangeBorderNodesAction extends AbstractDiagramAction {
 
     @Override
     protected String getCommandLabel() {
-        return "Arrange Linked Border Nodes ";
+        return Messages.ArrangeBorderNodesAction_commandLabel;
     }
 
     /**
@@ -135,7 +136,7 @@ public class ArrangeBorderNodesAction extends AbstractDiagramAction {
      */
     public static ArrangeBorderNodesAction createArrangeBorderNodesAction(final IWorkbenchPage workbenchPage) {
         final ArrangeBorderNodesAction action = new ArrangeBorderNodesAction(workbenchPage);
-        action.initAction(ActionIds.ARRANGE_BORDER_NODES, "Linked Border Nodes");
+        action.initAction(ActionIds.ARRANGE_BORDER_NODES, Messages.ArrangeBorderNodesAction_actionText);
         return action;
     }
 
@@ -148,7 +149,7 @@ public class ArrangeBorderNodesAction extends AbstractDiagramAction {
      */
     public static ArrangeBorderNodesAction createToolBarArrangeBorderNodesAction(final IWorkbenchPage workbenchPage) {
         final ArrangeBorderNodesAction action = new ArrangeBorderNodesAction(workbenchPage);
-        action.initAction(ActionIds.ARRANGE_BORDER_NODES_TOOLBAR, "Arrange Linked Border Nodes");
+        action.initAction(ActionIds.ARRANGE_BORDER_NODES_TOOLBAR, Messages.ArrangeBorderNodesAction_toolbarActionText);
         return action;
     }
 

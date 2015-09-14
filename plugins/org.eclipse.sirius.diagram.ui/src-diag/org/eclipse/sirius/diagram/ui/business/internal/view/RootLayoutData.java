@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.view;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.util.EditPartTools;
 
 /**
@@ -33,6 +35,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.util.EditPartTools;
  * 
  */
 public class RootLayoutData extends LayoutData {
+
     private EditPartViewer viewer;
 
     /**
@@ -62,7 +65,7 @@ public class RootLayoutData extends LayoutData {
         } else if (adaptObject instanceof DEdge) {
             init((DEdge) adaptObject, location, size);
         } else {
-            DiagramPlugin.getDefault().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.RootLayoutData_unhandledDiagramElementKind, adaptObject.getClass().getName()));
         }
     }
 
@@ -111,7 +114,7 @@ public class RootLayoutData extends LayoutData {
         } else if (adaptObject instanceof DEdge) {
             init((DEdge) adaptObject, location, size);
         } else {
-            DiagramPlugin.getDefault().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.RootLayoutData_unhandledDiagramElementKind, adaptObject.getClass().getName()));
         }
     }
 

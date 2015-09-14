@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -107,7 +108,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
 
                 Command regionContainerAutoSizeCommand = regionContainerPart.getCommand(req);
                 if (getHost() instanceof IDiagramElementEditPart && regionContainerAutoSizeCommand != null) {
-                    CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((IDiagramElementEditPart) getHost()).getEditingDomain(), "Region Auto Size Composite Command");
+                    CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((IDiagramElementEditPart) getHost()).getEditingDomain(), Messages.RegionResizableEditPolicy_regionAutoSizeCommandLabel);
                     ctc.add(new CommandProxy(autoSizeCommand));
                     ctc.add(new CommandProxy(regionContainerAutoSizeCommand));
                     autoSizeCommand = new ICommandProxy(ctc);

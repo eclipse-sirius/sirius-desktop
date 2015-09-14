@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Specific command to refresh a diagram on opening.
@@ -37,7 +38,7 @@ public final class RefreshDiagramOnOpeningCommand extends RecordingCommand {
      *            the diagram to refresh.
      */
     public RefreshDiagramOnOpeningCommand(TransactionalEditingDomain domain, DSemanticDiagram diag) {
-        super(domain, "Refresh diagram on opening");
+        super(domain, Messages.RefreshDiagramOnOpeningCommand_label);
         this.diag = diag;
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,11 +15,12 @@ import java.util.Collection;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * Specific command to update activated rules.
- * 
+ *
  * @author mporhel
  */
 public final class ActivateRulesCommand extends RecordingCommand {
@@ -30,7 +31,7 @@ public final class ActivateRulesCommand extends RecordingCommand {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            the editing domain.
      * @param diagram
@@ -39,7 +40,7 @@ public final class ActivateRulesCommand extends RecordingCommand {
      *            elements to activate
      */
     public ActivateRulesCommand(TransactionalEditingDomain domain, DDiagram diagram, Collection<ValidationRule> newElements) {
-        super(domain, "Activate validation rules");
+        super(domain, Messages.ActivateRulesCommand_label);
         this.newElements = newElements;
         this.diagram = diagram;
     }

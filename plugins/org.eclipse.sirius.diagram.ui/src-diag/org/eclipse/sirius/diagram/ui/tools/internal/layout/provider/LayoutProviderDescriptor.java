@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,14 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.layout.provider;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 
 /**
  * The descriptor of a {@link LayoutProvider}.
- * 
+ *
  * @author ymortier
  */
 public class LayoutProviderDescriptor extends AbstractProviderDescriptor {
@@ -27,7 +30,7 @@ public class LayoutProviderDescriptor extends AbstractProviderDescriptor {
 
     /**
      * Create a new descriptor with the specified configuration element.
-     * 
+     *
      * @param element
      *            the configuration element.
      */
@@ -37,7 +40,7 @@ public class LayoutProviderDescriptor extends AbstractProviderDescriptor {
 
     /**
      * Return the layout provider.
-     * 
+     *
      * @return the layout provider.
      */
     public LayoutProvider getProviderInstance() {
@@ -45,7 +48,7 @@ public class LayoutProviderDescriptor extends AbstractProviderDescriptor {
             try {
                 provider = (LayoutProvider) element.createExecutableExtension("providerClass"); //$NON-NLS-1$
             } catch (final CoreException e) {
-                DiagramPlugin.getDefault().logError("CoreException during the initialization of the AIR Layout Provider " + this.getProviderClassName(), e);
+                DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.LayoutProviderDescriptor_initializationErrorMsg, this.getProviderClassName()), e);
             }
         }
         return provider;

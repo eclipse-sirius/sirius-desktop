@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.styles;
 
 import java.lang.ref.WeakReference;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -36,6 +37,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SafeStyleConfiguration;
@@ -54,12 +56,14 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
 
     private static final SimpleStyleConfiguration DEFAULT_CONFIGURATION = new SimpleStyleConfiguration();
 
-    private static final ProfilerTask GET_CONFIG = new ProfilerTask("Sirius", "get style configuration");
+    private static final ProfilerTask GET_CONFIG = new ProfilerTask("Sirius", Messages.StyleConfigurationRegistry_profilerTaskName); //$NON-NLS-1$
 
     /** All providers. */
     private static List<IStyleConfigurationProvider> styleConfigurationProviders = new ArrayList<IStyleConfigurationProvider>();
 
-    /** Name of the extension point to parse for style configuration providers. */
+    /**
+     * Name of the extension point to parse for style configuration providers.
+     */
     private static final String STYLE_CONFIGURATION_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.ui.styleConfigurationProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
@@ -100,7 +104,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
                             final IStyleConfigurationProvider styleConfigurationProvider = (IStyleConfigurationProvider) configElement.createExecutableExtension("providerClass"); //$NON-NLS-1$
                             StyleConfigurationRegistry.styleConfigurationProviders.add(styleConfigurationProvider);
                         } catch (final CoreException e) {
-                            DiagramPlugin.getDefault().logError("Impossible to load the style configuration provider : " + configElement.getName(), e);
+                            DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.StyleConfigurationRegistry_styleConfigurationProviderLoadError, configElement.getName()), e);
                         }
                     }
                 }
@@ -220,8 +224,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
             // CHECKSTYLE:OFF
         } catch (final Exception e) {
             // CHECKSTYLE:ON
-            DiagramPlugin.getDefault().logError(
-                    "The style configuration provider " + styleConfigurationProvider.getClass().getName() + " has threw an exception in its provides method and has been deactivated.", e);
+            DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.StyleConfigurationRegistry_disableStyleConfigurationProviderInError, styleConfigurationProvider.getClass().getName()), e);
             currentIterator.remove();
         }
         return result;

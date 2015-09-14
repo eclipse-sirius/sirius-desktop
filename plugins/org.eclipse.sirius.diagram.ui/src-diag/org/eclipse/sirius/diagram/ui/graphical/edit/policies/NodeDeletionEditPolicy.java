@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusComponentEditP
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusNodeDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.DeleteHelper;
@@ -81,7 +82,7 @@ public class NodeDeletionEditPolicy extends SiriusComponentEditPolicy {
     }
 
     private Command buildGlobalDeleteCommand(final IDiagramCommandFactory commandFactory, final View view, final DDiagramElement diagramElement) {
-        final CompositeCommand compositeCommand = new CompositeCommand("Delete element");
+        final CompositeCommand compositeCommand = new CompositeCommand(Messages.NodeDeletionEditPolicy_deleteElementCommandLabel);
         org.eclipse.emf.common.command.Command buildedCommand = commandFactory.buildDeleteDiagramElement(diagramElement);
         boolean removeHideNote = DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
         if (removeHideNote) {

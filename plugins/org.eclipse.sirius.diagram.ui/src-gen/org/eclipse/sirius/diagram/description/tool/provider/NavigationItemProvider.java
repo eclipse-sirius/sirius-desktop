@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.diagram.description.tool.provider;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import org.eclipse.sirius.diagram.description.tool.Navigation;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ContainerModelOperationItemProvider;
 
 /**
@@ -111,9 +113,9 @@ public class NavigationItemProvider extends ContainerModelOperationItemProvider 
     public String getText(Object object) {
         Navigation navigation = (Navigation) object;
         if (navigation.getDiagramDescription() != null && navigation.getDiagramDescription().getName() != null) {
-            return getString("_UI_Navigation_type") + " to " + navigation.getDiagramDescription().getName(); //$NON-NLS-1$
+            return MessageFormat.format(Messages.NavigationItemProvider_labelWithDescriptionName, getString("_UI_Navigation_type"), navigation.getDiagramDescription().getName()); //$NON-NLS-1$
         } else {
-            return getString("_UI_Navigation_type") + " " + navigation.isCreateIfNotExistent(); //$NON-NLS-1$ //$NON-NLS-2$
+            return MessageFormat.format("{0} {1}", getString("_UI_Navigation_type"), navigation.isCreateIfNotExistent()); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 

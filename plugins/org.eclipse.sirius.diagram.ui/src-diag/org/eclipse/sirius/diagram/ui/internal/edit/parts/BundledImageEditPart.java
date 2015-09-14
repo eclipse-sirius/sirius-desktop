@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPar
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -116,7 +117,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
         if (this.getMetamodelType().isInstance(this.resolveSemanticElement())) {
             bif = (BundledImageFigure) BundledImageFigure.createImageFigure((BundledImage) resolveSemanticElement());
         } else {
-            DiagramPlugin.getDefault().logWarning("The element is not a BundledImage");
+            DiagramPlugin.getDefault().logWarning(Messages.BundledImageEditPart_notBundleImageMsg);
             final BundledImage bundle = DiagramFactory.eINSTANCE.createBundledImage();
             bundle.setShape(BundledImageShape.SQUARE_LITERAL);
             bundle.getLabelFormat().clear();
@@ -162,10 +163,10 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
 
     /**
      * Creates figure for this edit part.
-     * 
+     *
      * Body of this method does not depend on settings in generation model so
      * you may safely remove <i>generated</i> tag and modify it.
-     * 
+     *
      * @not-generated
      */
     @Override
@@ -181,7 +182,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
     /**
      * Default implementation treats passed figure as content pane. Respects
      * layout one may have set for generated figure.
-     * 
+     *
      * @param nodeShape
      *            instance of generated figure class
      * @was-generated

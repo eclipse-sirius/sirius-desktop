@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.part;
+
+import java.text.MessageFormat;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
@@ -49,6 +51,7 @@ public class SiriusInitDiagramFileAction implements IObjectActionDelegate {
     /**
      * @was-generated
      */
+    @Override
     public void setActivePart(IAction action, IWorkbenchPart targetPart) {
         this.targetPart = targetPart;
     }
@@ -56,6 +59,7 @@ public class SiriusInitDiagramFileAction implements IObjectActionDelegate {
     /**
      * @was-generated
      */
+    @Override
     public void selectionChanged(IAction action, ISelection selection) {
         domainModelURI = null;
         action.setEnabled(false);
@@ -77,6 +81,7 @@ public class SiriusInitDiagramFileAction implements IObjectActionDelegate {
     /**
      * @was-generated
      */
+    @Override
     public void run(IAction action) {
         final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(domainModelURI);
         TransactionalEditingDomain editingDomain = GMFEditingDomainFactory.INSTANCE.createEditingDomain(set);
@@ -85,7 +90,7 @@ public class SiriusInitDiagramFileAction implements IObjectActionDelegate {
             Resource resource = set.getResource(domainModelURI, true);
             diagramRoot = resource.getContents().get(0);
         } catch (WrappedException ex) {
-            DiagramPlugin.getDefault().logError("Unable to load resource: " + domainModelURI, ex); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.SiriusInitDiagramFileAction_loadResourceError, domainModelURI), ex);
         }
         if (diagramRoot == null) {
             MessageDialog.openError(getShell(), Messages.SiriusInitDiagramFileAction_InitDiagramFileResourceErrorDialogTitle,

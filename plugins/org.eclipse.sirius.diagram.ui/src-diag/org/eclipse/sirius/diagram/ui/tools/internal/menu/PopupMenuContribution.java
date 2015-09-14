@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,6 +60,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.ext.base.Option;
@@ -98,6 +99,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
      * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#contributeToActionBars(org.eclipse.ui.IActionBars,
      *      org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
      */
+    @Override
     public void contributeToActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
@@ -109,6 +111,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
      * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#contributeToPopupMenu(org.eclipse.jface.action.IMenuManager,
      *      org.eclipse.ui.IWorkbenchPart)
      */
+    @Override
     public void contributeToPopupMenu(final IMenuManager menu, final IWorkbenchPart part) {
         if (part instanceof SiriusDiagramEditor) {
 
@@ -449,7 +452,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
         final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(selectedViews.iterator().next());
         final Command command = emfCommandFactory.buildOperationActionFromTool(operationAction, selectedViews);
         final CompoundCommand cc = new CompoundCommand(command.getLabel());
-        cc.add(new org.eclipse.gef.commands.Command("Store mouse location") {
+        cc.add(new org.eclipse.gef.commands.Command(Messages.PopupMenuContribution_storeMouseLocationCmdLabel) {
             @Override
             public void execute() {
                 SiriusLayoutDataManager.INSTANCE.addData(new RootLayoutData(primarySelection, currentMouseLocation.getCopy(), new Dimension(-1, -1)));
@@ -457,9 +460,11 @@ public class PopupMenuContribution implements IContributionItemProvider {
         });
         cc.add(new ICommandProxy(new GMFCommandWrapper(transactionalEditingDomain, command)));
         ImageDescriptor imageDescriptor = null;
-        if (operationAction.getIcon() != null && !"".equals(operationAction.getIcon())) //$NON-NLS-1$
+        if (operationAction.getIcon() != null && !"".equals(operationAction.getIcon())) { //$NON-NLS-1$
             imageDescriptor = DiagramUIPlugin.Implementation.findImageDescriptor(operationAction.getIcon());
+        }
         return new Action(new IdentifiedElementQuery(operationAction).getLabel(), imageDescriptor) {
+            @Override
             public void run() {
                 super.run();
                 domain.getCommandStack().execute(cc);
@@ -473,6 +478,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
      * 
      * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#disposeContributions(org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
      */
+    @Override
     public void disposeContributions(final IWorkbenchPartDescriptor arg0) {
 
     }
@@ -483,6 +489,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
      * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#updateActionBars(org.eclipse.ui.IActionBars,
      *      org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
      */
+    @Override
     public void updateActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
@@ -493,6 +500,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#addProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
      */
+    @Override
     public void addProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
 
@@ -503,6 +511,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
      */
+    @Override
     public boolean provides(final IOperation arg0) {
         // Always provide
         return true;
@@ -513,6 +522,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#removeProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
      */
+    @Override
     public void removeProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
 

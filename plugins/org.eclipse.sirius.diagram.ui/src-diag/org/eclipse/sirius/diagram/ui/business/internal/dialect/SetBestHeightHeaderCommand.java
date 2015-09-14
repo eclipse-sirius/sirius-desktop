@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 import com.google.common.collect.Lists;
 
@@ -44,7 +45,7 @@ public class SetBestHeightHeaderCommand extends RecordingCommand {
      *            {@inheritDoc}
      */
     public SetBestHeightHeaderCommand(TransactionalEditingDomain domain, Diagram diagram) {
-        super(domain, "Refresh graphical layout");
+        super(domain, Messages.SetBestHeightHeaderCommand_label);
         this.diagram = diagram;
     }
 

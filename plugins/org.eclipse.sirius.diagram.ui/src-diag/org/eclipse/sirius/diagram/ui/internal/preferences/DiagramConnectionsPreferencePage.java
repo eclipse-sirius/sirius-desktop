@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Combo;
@@ -48,11 +49,6 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
      * Label of the lineStyle field.
      */
     private static final String LINE_STYLE_LABEL = DiagramUIMessages.ConnectionsPreferencePage_lineStyle_label;
-
-    /**
-     * Label of the enableOverride field.
-     */
-    private static final String ENABLE_OVERRIDE_LABEL = "Enable user specifc default values. These setting apply to all diagrams (does not affect existing elements)."; //$NON-NLS-1$
 
     /**
      * LineStyle field.
@@ -90,7 +86,7 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
     protected void addFieldEditors(Composite composite) {
         fieldsParent = composite;
         // Create the check box to enable or not the override.
-        enableOverrideFieldEditor = new CheckBoxFieldEditor(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, ENABLE_OVERRIDE_LABEL, fieldsParent);
+        enableOverrideFieldEditor = new CheckBoxFieldEditor(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, Messages.DiagramConnectionsPreferencePage_enableOverrideLabel, fieldsParent);
         addField(enableOverrideFieldEditor);
 
         // The original field of the GMF Connections preference page, is not

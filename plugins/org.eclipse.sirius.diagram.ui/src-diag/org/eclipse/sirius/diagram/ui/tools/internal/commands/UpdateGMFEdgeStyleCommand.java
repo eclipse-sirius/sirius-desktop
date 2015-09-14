@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,10 +17,11 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Specific command to update GMF style.
- * 
+ *
  * @author <a href="mailto:steve.monnier@obeo.fr">Steve Monnier</a>
  */
 public class UpdateGMFEdgeStyleCommand extends RecordingCommand {
@@ -31,7 +32,7 @@ public class UpdateGMFEdgeStyleCommand extends RecordingCommand {
 
     /**
      * Constructor.
-     * 
+     *
      * @param domain
      *            the editing domain
      * @param edge
@@ -40,7 +41,7 @@ public class UpdateGMFEdgeStyleCommand extends RecordingCommand {
      *            style to put at edge
      */
     public UpdateGMFEdgeStyleCommand(final TransactionalEditingDomain domain, final Edge edge, EdgeStyle style) {
-        super(domain, "Update GMF Edge Style");
+        super(domain, Messages.UpdateGMFEdgeStyleCommand_label);
         this.edge = edge;
         this.style = style;
     }

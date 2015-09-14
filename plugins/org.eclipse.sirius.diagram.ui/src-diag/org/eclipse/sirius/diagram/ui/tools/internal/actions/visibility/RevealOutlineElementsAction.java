@@ -18,6 +18,7 @@ import org.eclipse.gef.RootEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
 
@@ -27,17 +28,11 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
  * @author dlecan
  */
 public class RevealOutlineElementsAction extends AbstractRevealElementsAction<DDiagramElement> {
-
-    /**
-     * Action label.
-     */
-    public static final String REVEAL_ELEMENT_LABEL = "Show element";
-
     /**
      * Constructor.
      */
     public RevealOutlineElementsAction() {
-        super(REVEAL_ELEMENT_LABEL);
+        super(Messages.RevealOutlineElementsAction_label);
     }
 
     /**

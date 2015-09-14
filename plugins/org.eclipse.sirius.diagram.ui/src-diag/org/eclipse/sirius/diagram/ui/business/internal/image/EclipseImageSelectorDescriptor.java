@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.image;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
@@ -17,6 +19,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
@@ -45,6 +48,7 @@ public class EclipseImageSelectorDescriptor extends AbstractImageSelectorDescrip
     /**
      * {@inheritDoc}
      */
+    @Override
     public ImageSelector getImageSelector() {
         if (imageSelector == null) {
             if (Platform.isRunning()) {
@@ -52,7 +56,7 @@ public class EclipseImageSelectorDescriptor extends AbstractImageSelectorDescrip
                     imageSelector = (ImageSelector) element.createExecutableExtension(IMAGE_SELECTOR_CLASS_ATTRIBUTE);
                 } catch (CoreException e) {
                     SiriusEditPlugin.getPlugin().getLog()
-                            .log(new Status(IStatus.ERROR, DiagramPlugin.ID, "Error while loading the extension " + element.getDeclaringExtension().getUniqueIdentifier(), e));
+                            .log(new Status(IStatus.ERROR, DiagramPlugin.ID, MessageFormat.format(Messages.EclipseImageSelectorDescriptor_extensionLoadingError, element.getDeclaringExtension().getUniqueIdentifier()), e));
                 }
             }
         }

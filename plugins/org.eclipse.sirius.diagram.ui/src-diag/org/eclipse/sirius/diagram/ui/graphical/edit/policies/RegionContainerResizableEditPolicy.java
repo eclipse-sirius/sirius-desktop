@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChildrenAdjustmentCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -56,17 +57,17 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
     /**
      * Key to store the part responsible for auto-size propagation.
      */
-    protected static final String REGION_AUTO_SIZE_PROPAGATOR = "region_auto-size_propagator"; //$NON-NLS-1$
+    protected static final String REGION_AUTO_SIZE_PROPAGATOR = "sirius.region.auto.size.propagator"; //$NON-NLS-1$
 
     /**
      * Key to store the part responsible for resize propagation.
      */
-    protected static final String REGION_RESIZE_PROPAGATOR = "region_resize_propagator";
+    protected static final String REGION_RESIZE_PROPAGATOR = "sirius.region.resize.propagator"; //$NON-NLS-1$
 
     /**
      * Key to store the initial request for resize propragation.
      */
-    protected static final String REGION_RESIZE_INITIAL_REQUEST = "region_resize_initial_request";
+    protected static final String REGION_RESIZE_INITIAL_REQUEST = "sirius.region.resize.initial.request"; //$NON-NLS-1$
 
     @Override
     protected Command getAutoSizeCommand(Request request) {
@@ -92,7 +93,7 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
     protected Command getRegionContainerAutoSizeCommand(Request request, Command autoSizeCommand) {
         IDiagramElementEditPart host = (IDiagramElementEditPart) getHost();
         TransactionalEditingDomain domain = host.getEditingDomain();
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(domain, "Region Container Auto Size Command");
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(domain, Messages.RegionContainerResizableEditPolicy_regionContainerAutoSizeCommandLabel);
         ctc.add(new CommandProxy(autoSizeCommand));
         Command regionContainerAutoSizeCommand = new ICommandProxy(ctc);
 

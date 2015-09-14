@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.image.refresh;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.MessageFormat;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
@@ -23,6 +24,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.ext.base.Option;
@@ -41,6 +43,7 @@ public class WorkspaceImageChangeDetector implements IResourceDeltaVisitor {
      * 
      * {@inheritDoc}
      */
+    @Override
     public boolean visit(IResourceDelta delta) throws CoreException {
         boolean continueToVisit = true;
         boolean isWorkspaceImageChange = false;
@@ -128,7 +131,7 @@ public class WorkspaceImageChangeDetector implements IResourceDeltaVisitor {
             try {
                 url = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation().append(resource.getFullPath()).toOSString()).toURI().toURL();
             } catch (MalformedURLException e) {
-                DiagramPlugin.getDefault().logError("Invalid uri : " + e.getMessage());
+                DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.WorkspaceImageChangeDetector_invalidUri, e.getMessage()));
                 return false;
             }
             ImageDescriptor bundledImageDescriptor = ImageDescriptor.createFromURL(url);

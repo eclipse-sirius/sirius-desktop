@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -21,6 +22,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvider;
 
 /**
@@ -33,7 +35,9 @@ public final class ViewOrderingProviderRegistry {
     /** The shared instance. */
     private static ViewOrderingProviderRegistry instance = new ViewOrderingProviderRegistry();
 
-    /** Name of the extension point to parse for style configuration providers. */
+    /**
+     * Name of the extension point to parse for style configuration providers.
+     */
     private static final String VIEW_ORDERING_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.ui.viewOrderingProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
@@ -65,7 +69,7 @@ public final class ViewOrderingProviderRegistry {
                             final ViewOrderingProvider viewOrderingProvider = (ViewOrderingProvider) configElement.createExecutableExtension("providerClass"); //$NON-NLS-1$
                             this.viewOrderingProviders.add(viewOrderingProvider);
                         } catch (final CoreException e) {
-                            DiagramPlugin.getDefault().logError("Impossible to load the view ordering provider : " + configElement.getName(), e);
+                            DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.ViewOrderingProviderRegistry_viewOrderingProvider_loadingProblem, configElement.getName()), e);
                         }
                     }
                 }

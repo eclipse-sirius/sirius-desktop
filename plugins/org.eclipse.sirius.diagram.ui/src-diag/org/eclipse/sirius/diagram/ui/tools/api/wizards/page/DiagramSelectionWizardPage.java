@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.wizards.page;
 
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -33,6 +34,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -56,11 +58,6 @@ import org.eclipse.ui.navigator.ICommonContentProvider;
  * @author ymortier
  */
 public class DiagramSelectionWizardPage extends WizardPage {
-
-    private static final String SELECT_DIAGRAMS_TO_EXPORT = "Select Diagrams to export";
-
-    /** The title of the page. */
-    private static final String PAGE_TITLE = "Select diagrams to export";
 
     /** The page is completed. */
     private static final int CODE_OK = 0;
@@ -90,7 +87,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
      *            the root object
      */
     public DiagramSelectionWizardPage(final DView root) {
-        super(PAGE_TITLE);
+        super(Messages.DiagramSelectionWizardPage_title);
         initialize(root, new DiagramSelectionFilter());
     }
 
@@ -105,7 +102,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
      * @since 0.9.0
      */
     public DiagramSelectionWizardPage(final DView root, final ViewerFilter diagramSelectionFilter) {
-        super(PAGE_TITLE);
+        super(Messages.DiagramSelectionWizardPage_title);
         initialize(root, diagramSelectionFilter);
     }
 
@@ -114,15 +111,13 @@ public class DiagramSelectionWizardPage extends WizardPage {
         this.setPageComplete(false);
         this.diagramSelectionFilter = aDiagramSelectionFilter;
 
-        setMessage(SELECT_DIAGRAMS_TO_EXPORT, IMessageProvider.INFORMATION);
+        setMessage(Messages.DiagramSelectionWizardPage_message, IMessageProvider.INFORMATION);
 
-        final StringBuilder title = new StringBuilder();
-        title.append(PAGE_TITLE);
         if (root.getViewpoint() != null && !StringUtil.isEmpty(new IdentifiedElementQuery(root.getViewpoint()).getLabel())) {
-            title.append(" for ");
-            title.append(new IdentifiedElementQuery(root.getViewpoint()).getLabel());
+            this.setTitle(MessageFormat.format(Messages.DiagramSelectionWizardPage_titleFor, new IdentifiedElementQuery(root.getViewpoint()).getLabel()));
+        } else {
+            this.setTitle(Messages.DiagramSelectionWizardPage_title);
         }
-        this.setTitle(title.toString());
     }
 
     /**
@@ -130,6 +125,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
      * 
      * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
      */
+    @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
 
@@ -215,23 +211,24 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.jface.viewers.ICheckStateListener#checkStateChanged(org.eclipse.jface.viewers.CheckStateChangedEvent)
          */
+        @Override
         public void checkStateChanged(final CheckStateChangedEvent event) {
             final int result = checkSelection(getSelectedElements());
             switch (result) {
             case CODE_OK:
-                setMessage(SELECT_DIAGRAMS_TO_EXPORT, IMessageProvider.INFORMATION);
+                setMessage(Messages.DiagramSelectionWizardPage_message, IMessageProvider.INFORMATION);
                 setPageComplete(true);
                 break;
             case CODE_NO_SEL:
-                setMessage(SELECT_DIAGRAMS_TO_EXPORT, IMessageProvider.INFORMATION);
+                setMessage(Messages.DiagramSelectionWizardPage_message, IMessageProvider.INFORMATION);
                 setPageComplete(false);
                 break;
             case CODE_ERROR:
-                setMessage("You must select Diagrams", IMessageProvider.ERROR);
+                setMessage(Messages.SiriusDiagramSelectionCheckStateListener_errorMsg, IMessageProvider.ERROR);
                 setPageComplete(false);
                 break;
             default:
-                setMessage("Unknown code result", IMessageProvider.ERROR);
+                setMessage(Messages.SiriusDiagramSelectionCheckStateListener_unknwonCodeResult, IMessageProvider.ERROR);
                 setPageComplete(false);
                 break;
             }
@@ -419,6 +416,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.ui.navigator.ICommonContentProvider#init(org.eclipse.ui.navigator.ICommonContentExtensionSite)
          */
+        @Override
         public void init(final ICommonContentExtensionSite config) {
             // empty.
         }
@@ -428,6 +426,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
          */
+        @Override
         public Object[] getChildren(final Object parentElement) {
             if (parentElement instanceof EObject && !(parentElement instanceof DDiagram)) {
                 final EObject parent = (EObject) parentElement;
@@ -450,6 +449,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
          */
+        @Override
         public Object getParent(final Object element) {
             if (element instanceof EObject) {
                 final EObject current = (EObject) element;
@@ -464,6 +464,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
          */
+        @Override
         public boolean hasChildren(final Object element) {
             return getChildren(element).length > 0;
         }
@@ -473,6 +474,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
          */
+        @Override
         public Object[] getElements(final Object inputElement) {
             return getChildren(inputElement);
         }
@@ -482,6 +484,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.jface.viewers.IContentProvider#dispose()
          */
+        @Override
         public void dispose() {
             this.semanticProvider.dispose();
         }
@@ -492,6 +495,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
          *      java.lang.Object, java.lang.Object)
          */
+        @Override
         public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
             // empty
         }
@@ -501,6 +505,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.ui.navigator.IMementoAware#restoreState(org.eclipse.ui.IMemento)
          */
+        @Override
         public void restoreState(final IMemento memento) {
             // empty.
         }
@@ -510,6 +515,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
          * 
          * @see org.eclipse.ui.navigator.IMementoAware#saveState(org.eclipse.ui.IMemento)
          */
+        @Override
         public void saveState(final IMemento memento) {
             // empty.
         }

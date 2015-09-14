@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.business.internal.navigation.MappingDefinitionFinder;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ui.tools.api.image.ImagesPath;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
@@ -61,6 +62,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
      * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#contributeToActionBars(org.eclipse.ui.IActionBars,
      *      org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
      */
+    @Override
     public void contributeToActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
@@ -72,6 +74,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
      * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#contributeToPopupMenu(org.eclipse.jface.action.IMenuManager,
      *      org.eclipse.ui.IWorkbenchPart)
      */
+    @Override
     public void contributeToPopupMenu(final IMenuManager menu, final IWorkbenchPart part) {
         if (part instanceof SiriusDiagramEditor) {
 
@@ -118,7 +121,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
                 }
 
                 if (modelFile != null) {
-                    final Action openAction = new Action("Open Definition", imageDescriptor) {
+                    final Action openAction = new Action(Messages.SpecificationMenuContribution_openDefinitionMenuLabel, imageDescriptor) {
 
                         @Override
                         public void run() {
@@ -138,7 +141,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
 
                         }
                     };
-                    openAction.setId("Open Definition");
+                    openAction.setId(Messages.SpecificationMenuContribution_openDefinitionMenuLabel);
                     menu.insertAfter(IWorkbenchActionConstants.MB_ADDITIONS, openAction);
                 }
             }
@@ -154,6 +157,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
      * 
      * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#disposeContributions(org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
      */
+    @Override
     public void disposeContributions(final IWorkbenchPartDescriptor arg0) {
         // Nothing to contribute
 
@@ -165,6 +169,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
      * @see org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider#updateActionBars(org.eclipse.ui.IActionBars,
      *      org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor)
      */
+    @Override
     public void updateActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
 
@@ -175,6 +180,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#addProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
      */
+    @Override
     public void addProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
 
@@ -185,6 +191,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
      */
+    @Override
     public boolean provides(final IOperation arg0) {
         // Always provide
         return true;
@@ -195,6 +202,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
      * 
      * @see org.eclipse.gmf.runtime.common.core.service.IProvider#removeProviderChangeListener(org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener)
      */
+    @Override
     public void removeProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
 

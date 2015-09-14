@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.util.DescriptionAdapterFactory;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -728,7 +729,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
                 DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
                 diagramDescription.setEnablePopupBars(true);
                 Layer layer = DescriptionFactory.eINSTANCE.createLayer();
-                layer.setName("Default");
+                layer.setName(Messages.DefaultLayerName);
                 diagramDescription.setDefaultLayer(layer);
                 newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, diagramDescription));
 

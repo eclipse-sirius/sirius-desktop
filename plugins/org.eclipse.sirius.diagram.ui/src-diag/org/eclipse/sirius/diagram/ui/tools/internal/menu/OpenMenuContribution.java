@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -81,6 +82,7 @@ public class OpenMenuContribution implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void contributeToPopupMenu(final IMenuManager menu, final IWorkbenchPart part) {
         if (part instanceof SiriusDiagramEditor) {
             final SiriusDiagramEditor diagrampart = (SiriusDiagramEditor) part;
@@ -114,7 +116,7 @@ public class OpenMenuContribution implements IContributionItemProvider {
                     navigateManager.remove("open"); //$NON-NLS-1$
                 }
                 // Add menus to open existing representations
-                final MenuManager openMenuManager = new MenuManager("Open", MENU_OPEN_REPRESENTATION_ID);
+                final MenuManager openMenuManager = new MenuManager(Messages.OpenMenuContribution_menuLabel, MENU_OPEN_REPRESENTATION_ID);
                 if (!menu.isEmpty()) {
                     menu.insertBefore(menu.getItems()[0].getId(), openMenuManager);
                 } else {
@@ -167,7 +169,8 @@ public class OpenMenuContribution implements IContributionItemProvider {
         return isFromActiveViewpoint(session, description);
     }
 
-    private void buildOpenableRepresentationsMenu(final IMenuManager openMenu, final EObject designerObj, final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {
+    private void buildOpenableRepresentationsMenu(final IMenuManager openMenu, final EObject designerObj, final Session session, final EditPart editpart,
+            final TransactionalEditingDomain transDomain) {
         final DRepresentationElement element = (DRepresentationElement) designerObj;
         final Separator createGroup = new Separator(MenuHelper.OPEN_REPRESENTATION_GROUP_SEPARATOR);
         openMenu.add(createGroup);
@@ -214,6 +217,7 @@ public class OpenMenuContribution implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void contributeToActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
     }
@@ -221,6 +225,7 @@ public class OpenMenuContribution implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void disposeContributions(final IWorkbenchPartDescriptor arg0) {
         // Nothing to contribute
     }
@@ -228,6 +233,7 @@ public class OpenMenuContribution implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void updateActionBars(final IActionBars arg0, final IWorkbenchPartDescriptor arg1) {
         // Nothing to contribute
     }
@@ -235,6 +241,7 @@ public class OpenMenuContribution implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void addProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
     }
@@ -242,6 +249,7 @@ public class OpenMenuContribution implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean provides(final IOperation arg0) {
         // Always provide
         return true;
@@ -250,6 +258,7 @@ public class OpenMenuContribution implements IContributionItemProvider {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void removeProviderChangeListener(final IProviderChangeListener arg0) {
         // Nothing to contribute
     }

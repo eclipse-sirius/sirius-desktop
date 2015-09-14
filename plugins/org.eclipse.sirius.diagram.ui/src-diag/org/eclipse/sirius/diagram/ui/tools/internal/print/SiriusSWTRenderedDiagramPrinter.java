@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2014 IBM Corporation and others.
+ * Copyright (c) 2005, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,13 +28,14 @@ import org.eclipse.gmf.runtime.diagram.ui.printing.render.util.RenderedDiagramPr
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.printing.PrinterData;
 import org.eclipse.swt.widgets.Shell;
 
 /**
  * A specialized <code>RenderedDiagramPrinter</code> that manage also diagram
  * print for diagram stored in any resource not only XMLResource.
- * 
+ *
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 @SuppressWarnings("restriction")
@@ -42,7 +43,7 @@ public class SiriusSWTRenderedDiagramPrinter extends RenderedDiagramPrinter {
 
     /**
      * Creates a new instance.
-     * 
+     *
      * @param preferencesHint
      *            the preferences hint to use for initializing the preferences
      * @param mm
@@ -60,8 +61,8 @@ public class SiriusSWTRenderedDiagramPrinter extends RenderedDiagramPrinter {
      */
     @Override
     public void run() {
-        assert null != printer : "printer must be set"; //$NON-NLS-1$
-        if (!(printer.startJob("Printing"))) { //$NON-NLS-1$
+        assert null != printer : Messages.SiriusSWTRenderedDiagramPrinter_printerNotSetMsg;
+        if (!(printer.startJob(Messages.SiriusSWTRenderedDiagramPrinter_jobLabel))) {
             return;
         }
 
@@ -81,8 +82,9 @@ public class SiriusSWTRenderedDiagramPrinter extends RenderedDiagramPrinter {
                 boolean loadedPreferences = PrintHelperUtil.initializePreferences(dgrmEP, preferencesHint);
 
                 RootEditPart rep = dgrmEP.getRoot();
-                if (rep instanceof DiagramRootEditPart)
+                if (rep instanceof DiagramRootEditPart) {
                     this.mapMode = ((DiagramRootEditPart) rep).getMapMode();
+                }
 
                 initialize();
 

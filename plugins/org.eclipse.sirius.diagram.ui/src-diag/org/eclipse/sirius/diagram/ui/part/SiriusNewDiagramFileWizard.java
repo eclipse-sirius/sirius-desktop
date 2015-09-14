@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.part;
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -66,9 +67,9 @@ public class SiriusNewDiagramFileWizard extends Wizard {
      * @was-generated
      */
     public SiriusNewDiagramFileWizard(URI domainModelURI, EObject diagramRoot, TransactionalEditingDomain editingDomain) {
-        assert domainModelURI != null : "Domain model uri must be specified"; //$NON-NLS-1$
-        assert diagramRoot != null : "Doagram root element must be specified"; //$NON-NLS-1$
-        assert editingDomain != null : "Editing domain must be specified"; //$NON-NLS-1$
+        assert domainModelURI != null : org.eclipse.sirius.diagram.ui.provider.Messages.SiriusNewDiagramFileWizard_invalidDomainModelURI;
+        assert diagramRoot != null : org.eclipse.sirius.diagram.ui.provider.Messages.SiriusNewDiagramFileWizard_invalidDiagramRootElement;
+        assert editingDomain != null : org.eclipse.sirius.diagram.ui.provider.Messages.SiriusNewDiagramFileWizard_invalidEditingDomain;
 
         myFileCreationPage = new WizardNewFileCreationPage(Messages.SiriusNewDiagramFileWizard_CreationPageName, StructuredSelection.EMPTY);
         myFileCreationPage.setTitle(Messages.SiriusNewDiagramFileWizard_CreationPageTitle);
@@ -81,7 +82,7 @@ public class SiriusNewDiagramFileWizard extends Wizard {
             filePath = new Path(domainModelURI.trimSegments(1).toFileString());
         } else {
             // TODO : use some default path
-            throw new IllegalArgumentException("Unsupported URI: " + domainModelURI); //$NON-NLS-1$
+            throw new IllegalArgumentException(MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.SiriusNewDiagramFileWizard_unsupportedURI, domainModelURI));
         }
         myFileCreationPage.setContainerFullPath(filePath);
         myFileCreationPage.setFileName(SiriusDiagramEditorUtil.getUniqueFileName(filePath, fileName, "airview")); //$NON-NLS-1$
@@ -97,6 +98,7 @@ public class SiriusNewDiagramFileWizard extends Wizard {
     /**
      * @was-generated
      */
+    @Override
     public void addPages() {
         addPage(myFileCreationPage);
         addPage(diagramRootElementSelectionPage);
@@ -105,6 +107,7 @@ public class SiriusNewDiagramFileWizard extends Wizard {
     /**
      * @was-generated
      */
+    @Override
     public boolean performFinish() {
         List affectedFiles = new LinkedList();
         IFile diagramFile = myFileCreationPage.createNewFile();
@@ -115,6 +118,7 @@ public class SiriusNewDiagramFileWizard extends Wizard {
         final Resource diagramResource = resourceSet.createResource(diagramModelURI);
         AbstractTransactionalCommand command = new AbstractTransactionalCommand(myEditingDomain, Messages.SiriusNewDiagramFileWizard_InitDiagramCommand, affectedFiles) {
 
+            @Override
             protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
                 int diagramVID = SiriusVisualIDRegistry.getDiagramVisualID(diagramRootElementSelectionPage.getModelElement());
                 if (diagramVID != DDiagramEditPart.VISUAL_ID) {
@@ -130,11 +134,11 @@ public class SiriusNewDiagramFileWizard extends Wizard {
             diagramResource.save(SiriusDiagramEditorUtil.getSaveOptions());
             SiriusDiagramEditorUtil.openDiagram(diagramResource);
         } catch (ExecutionException e) {
-            DiagramPlugin.getDefault().logError("Unable to create model and diagram", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(org.eclipse.sirius.diagram.ui.provider.Messages.SiriusNewDiagramFileWizard_errorDuringCreation, e);
         } catch (IOException ex) {
-            DiagramPlugin.getDefault().logError("Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.SiriusNewDiagramFileWizard_saveFailed, diagramModelURI), ex);
         } catch (PartInitException ex) {
-            DiagramPlugin.getDefault().logError("Unable to open editor", ex); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(org.eclipse.sirius.diagram.ui.provider.Messages.SiriusNewDiagramFileWizard_errorDuringOpening, ex);
         }
         return true;
     }
@@ -154,6 +158,7 @@ public class SiriusNewDiagramFileWizard extends Wizard {
         /**
          * @was-generated
          */
+        @Override
         protected String getSelectionTitle() {
             return Messages.SiriusNewDiagramFileWizard_RootSelectionPageSelectionTitle;
         }
@@ -161,13 +166,14 @@ public class SiriusNewDiagramFileWizard extends Wizard {
         /**
          * @was-generated
          */
+        @Override
         protected boolean validatePage() {
             if (selectedModelElement == null) {
                 setErrorMessage(Messages.SiriusNewDiagramFileWizard_RootSelectionPageNoSelectionMessage);
                 return false;
             }
-            boolean result = ViewService.getInstance().provides(
-                    new CreateDiagramViewOperation(new EObjectAdapter(selectedModelElement), DDiagramEditPart.MODEL_ID, DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT));
+            boolean result = ViewService.getInstance()
+                    .provides(new CreateDiagramViewOperation(new EObjectAdapter(selectedModelElement), DDiagramEditPart.MODEL_ID, DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT));
             setErrorMessage(result ? null : Messages.SiriusNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
             return result;
         }

@@ -53,6 +53,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQ
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
@@ -385,7 +386,7 @@ public final class DiagramElementEditPartOperation {
                         // An issue has been encountered while connecting to
                         // remote
                         if (DiagramUIPlugin.getPlugin().isDebugging()) {
-                            DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, "Error while connecting to remote CDO server"));
+                            DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DiagramElementEditPartOperation_partDeactivationError));
                         }
                     }
                 }

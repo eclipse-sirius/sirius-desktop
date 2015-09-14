@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
@@ -426,9 +427,9 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
     public void setSourceMove(boolean sourceMove) {
         this.sourceMove = sourceMove;
         if (sourceMove) {
-            setLabel("Move first segment (on source side)");
+            setLabel(Messages.SetConnectionBendpointsAccordingToExtremityMoveCommmand_sourceSidedLabel);
         } else {
-            setLabel("Move last segment (on target side)");
+            setLabel(Messages.SetConnectionBendpointsAccordingToExtremityMoveCommmand_targetSidedLabel);
         }
     }
 

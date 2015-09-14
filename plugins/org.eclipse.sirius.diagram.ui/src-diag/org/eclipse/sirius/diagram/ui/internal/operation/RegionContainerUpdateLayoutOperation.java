@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeC
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
@@ -52,7 +53,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
      *            The Region Container view to layout.
      */
     public RegionContainerUpdateLayoutOperation(Node regionContainer) {
-        super("Layout Regions Operations");
+        super(Messages.RegionContainerUpdateLayoutOperation_name);
         this.regionContainer = extractRealRegionContainer(regionContainer);
     }
 

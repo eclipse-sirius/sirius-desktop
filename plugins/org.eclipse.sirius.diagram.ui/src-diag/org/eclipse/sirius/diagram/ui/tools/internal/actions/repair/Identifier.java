@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -20,6 +21,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.migration.IDiagramIdentifierProvider;
 import org.eclipse.sirius.viewpoint.Customizable;
 
@@ -232,7 +234,7 @@ public final class Identifier {
 
     private static void checkNotNull(Object obj, String propertyName) {
         if (obj == null) {
-            throw new IllegalArgumentException(propertyName + " cannot be null");
+            throw new IllegalArgumentException(MessageFormat.format(Messages.Identifier_invalidNullObject, propertyName));
         }
     }
 

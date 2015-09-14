@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
@@ -168,7 +169,7 @@ public class VisibilityUpdater extends ResourceSetListenerImpl {
          *            elements which visibility needs to be refreshed
          */
         public UpdateVisibilityCommand(TransactionalEditingDomain domain, DDiagram diagram, Collection<DDiagramElement> elementsToRefresh) {
-            super(domain, "Update visibility");
+            super(domain, Messages.UpdateVisibilityCommand_label);
             this.diagram = diagram;
             this.elementsToRefresh = elementsToRefresh;
         }
@@ -199,6 +200,7 @@ public class VisibilityUpdater extends ResourceSetListenerImpl {
         /**
          * {@inheritDoc}
          */
+        @Override
         public void receive(int kind, int notification) {
             switch (notification) {
             case org.eclipse.sirius.common.tools.api.listener.Notification.VISIBILITY_UPDATE:
@@ -222,6 +224,7 @@ public class VisibilityUpdater extends ResourceSetListenerImpl {
             }
         }
 
+        @Override
         public Notifier getTarget() {
             return target;
         }
@@ -229,6 +232,7 @@ public class VisibilityUpdater extends ResourceSetListenerImpl {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean isAdapterForType(Object type) {
             return type instanceof DDiagram;
         }
@@ -236,11 +240,13 @@ public class VisibilityUpdater extends ResourceSetListenerImpl {
         /**
          * {@inheritDoc}
          */
+        @Override
         public void notifyChanged(Notification notification) {
             // do nothing
 
         }
 
+        @Override
         public void setTarget(Notifier newTarget) {
             target = newTarget;
         }

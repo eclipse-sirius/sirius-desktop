@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class InitialPointsOfRequestDataManager {
      * The key used to store the initial points of the edge (before the feedback
      * drawing).
      */
-    private static final String INITIAL_POINTS_KEY = "InitialPointsManagerForEdgePolicy.initialPointsKey"; // $NON-NLS-1
+    private static final String INITIAL_POINTS_KEY = "InitialPointsManagerForEdgePolicy.initialPointsKey"; //$NON-NLS-1$
 
     /** The list of points before feedback drawing. */
     private PointList initialPoints;

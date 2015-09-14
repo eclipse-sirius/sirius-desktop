@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,10 +19,11 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * This edit policy is composed of many edit policies.
- * 
+ *
  * @author ymortier
  */
 public class CompoundEditPolicy implements EditPolicy {
@@ -41,7 +42,7 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * <code>true</code> if the resulted command can contain null value.
-     * 
+     *
      * @param allowNullCommand
      *            <code>true</code> if the resulted command can contain null
      *            value.
@@ -52,7 +53,7 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * Returns <code>true</code> if the resulted command can contain null value.
-     * 
+     *
      * @return <code>true</code> if the resulted command can contain null value.
      */
     public boolean isAllowNullCommand() {
@@ -61,9 +62,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#activate()
      */
+    @Override
     public void activate() {
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
         while (iterEditPolicies.hasNext()) {
@@ -73,9 +75,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#deactivate()
      */
+    @Override
     public void deactivate() {
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
         while (iterEditPolicies.hasNext()) {
@@ -85,9 +88,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#eraseSourceFeedback(org.eclipse.gef.Request)
      */
+    @Override
     public void eraseSourceFeedback(final Request request) {
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
         while (iterEditPolicies.hasNext()) {
@@ -97,9 +101,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#eraseTargetFeedback(org.eclipse.gef.Request)
      */
+    @Override
     public void eraseTargetFeedback(final Request request) {
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
         while (iterEditPolicies.hasNext()) {
@@ -109,9 +114,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#getCommand(org.eclipse.gef.Request)
      */
+    @Override
     public Command getCommand(final Request request) {
         CompoundCommand ret = null;
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.listIterator();
@@ -142,18 +148,20 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#getHost()
      */
+    @Override
     public EditPart getHost() {
         return this.host;
     }
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#getTargetEditPart(org.eclipse.gef.Request)
      */
+    @Override
     public EditPart getTargetEditPart(final Request request) {
         EditPart res = null;
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
@@ -166,9 +174,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#setHost(org.eclipse.gef.EditPart)
      */
+    @Override
     public void setHost(final EditPart editpart) {
         this.host = editpart;
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
@@ -179,9 +188,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#showSourceFeedback(org.eclipse.gef.Request)
      */
+    @Override
     public void showSourceFeedback(final Request request) {
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
         while (iterEditPolicies.hasNext()) {
@@ -191,9 +201,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#showTargetFeedback(org.eclipse.gef.Request)
      */
+    @Override
     public void showTargetFeedback(final Request request) {
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
         while (iterEditPolicies.hasNext()) {
@@ -203,9 +214,10 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.gef.EditPolicy#understandsRequest(org.eclipse.gef.Request)
      */
+    @Override
     public boolean understandsRequest(final Request request) {
         boolean res = false;
         final Iterator<EditPolicy> iterEditPolicies = this.delegatedEditPolicies.iterator();
@@ -217,20 +229,20 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * Adds an edit policy.
-     * 
+     *
      * @param editPolicy
      *            the edit policy to add.
      */
     public void addEditPolicy(final EditPolicy editPolicy) {
         if (editPolicy == null) {
-            throw new IllegalArgumentException("the edit policy is null");
+            throw new IllegalArgumentException(Messages.CompoundEditPolicy_nullEditPolicyMsg);
         }
         this.delegatedEditPolicies.add(editPolicy);
     }
 
     /**
      * Removes an edit policy.
-     * 
+     *
      * @param policy
      *            the policy to remove.
      */
@@ -240,7 +252,7 @@ public class CompoundEditPolicy implements EditPolicy {
 
     /**
      * Return all edit policies.
-     * 
+     *
      * @return all edit policies.
      */
     public List<EditPolicy> getEditPolicies() {

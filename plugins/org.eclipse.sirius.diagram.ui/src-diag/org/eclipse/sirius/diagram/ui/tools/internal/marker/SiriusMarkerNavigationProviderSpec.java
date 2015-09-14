@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.NavigationMarkerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -200,7 +201,7 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
             marker.setAttribute(NavigationMarkerConstants.SEMANTIC_URI, semanticURI);
             marker.setAttribute(IDE.EDITOR_ID_ATTR, DDiagramEditor.EDITOR_ID);
         } catch (final CoreException e) {
-            DiagramPlugin.getDefault().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(Messages.SiriusMarkerNavigationProvider_validationMarkerCreationError, e);
         }
         return marker;
     }
@@ -238,7 +239,7 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
             marker.setAttribute(NavigationMarkerConstants.SEMANTIC_URI, semanticURI);
             marker.setAttribute(IDE.EDITOR_ID_ATTR, DDiagramEditor.EDITOR_ID);
         } catch (final CoreException e) {
-            DiagramPlugin.getDefault().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError(Messages.SiriusMarkerNavigationProvider_validationMarkerCreationError, e);
         }
         return marker;
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * This class wraps an
@@ -39,7 +40,7 @@ public class IBorderItemLocatorWrapper implements IBorderItemLocator {
      */
     public IBorderItemLocatorWrapper(final org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator locator) throws IllegalArgumentException {
         if (locator == null) {
-            throw new IllegalArgumentException("The locator is null");
+            throw new IllegalArgumentException(Messages.IBorderItemLocatorWrapper_nullLocator);
         }
         this.wrappedLocator = locator;
     }
@@ -49,6 +50,7 @@ public class IBorderItemLocatorWrapper implements IBorderItemLocator {
      * 
      * @see org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator#getCurrentSideOfParent()
      */
+    @Override
     public int getCurrentSideOfParent() {
         return this.wrappedLocator.getCurrentSideOfParent();
     }
@@ -59,6 +61,7 @@ public class IBorderItemLocatorWrapper implements IBorderItemLocator {
      * @see org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator#getValidLocation(org.eclipse.draw2d.geometry.Rectangle,
      *      org.eclipse.draw2d.IFigure)
      */
+    @Override
     public Rectangle getValidLocation(final Rectangle proposedLocation, final IFigure borderItem) {
         return this.wrappedLocator.getValidLocation(proposedLocation, borderItem);
     }
@@ -68,6 +71,7 @@ public class IBorderItemLocatorWrapper implements IBorderItemLocator {
      * 
      * @see org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator#setConstraint(org.eclipse.draw2d.geometry.Rectangle)
      */
+    @Override
     public void setConstraint(final Rectangle constraint) {
         this.wrappedLocator.setConstraint(constraint);
     }
@@ -77,6 +81,7 @@ public class IBorderItemLocatorWrapper implements IBorderItemLocator {
      * 
      * @see org.eclipse.draw2d.Locator#relocate(org.eclipse.draw2d.IFigure)
      */
+    @Override
     public void relocate(final IFigure target) {
         this.wrappedLocator.relocate(target);
     }

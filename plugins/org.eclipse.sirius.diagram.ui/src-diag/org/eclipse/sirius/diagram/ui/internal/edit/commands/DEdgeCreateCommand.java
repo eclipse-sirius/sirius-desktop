@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusBaseItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * @was-generated
@@ -72,6 +73,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
     /**
      * @was-generated
      */
+    @Override
     public boolean canExecute() {
         if (source == null && target == null) {
             return false;
@@ -96,6 +98,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
     /**
      * @was-generated
      */
+    @Override
     protected EObject doDefaultElementCreation() {
         // org.eclipse.sirius.DEdge newElement = (org.eclipse.sirius.DEdge)
         // super.doDefaultElementCreation();
@@ -109,6 +112,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
     /**
      * @was-generated
      */
+    @Override
     protected EClass getEClassToEdit() {
         return DiagramPackage.eINSTANCE.getDDiagram();
     }
@@ -116,9 +120,10 @@ public class DEdgeCreateCommand extends CreateElementCommand {
     /**
      * @was-generated
      */
+    @Override
     protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
         if (!canExecute()) {
-            throw new ExecutionException("Invalid arguments in create link command"); //$NON-NLS-1$
+            throw new ExecutionException(Messages.DEdgeCreateCommand_executionErrorMsg);
         }
         return super.doExecuteWithResult(monitor, info);
     }
@@ -126,6 +131,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
     /**
      * @was-generated
      */
+    @Override
     protected ConfigureRequest createConfigureRequest() {
         ConfigureRequest request = super.createConfigureRequest();
         request.setParameter(CreateRelationshipRequest.SOURCE, getSource());
@@ -136,6 +142,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
     /**
      * @was-generated
      */
+    @Override
     protected void setElementToEdit(EObject element) {
         throw new UnsupportedOperationException();
     }

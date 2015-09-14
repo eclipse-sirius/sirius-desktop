@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -62,6 +63,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.PolygoneAndPolylineDecoraction;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.EdgeRoutingStyleChangedCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -174,7 +176,7 @@ public final class DiagramEdgeEditPartOperation {
             routing = EdgeRouting.TREE_LITERAL;
             break;
         default:
-            SiriusPlugin.getDefault().warning("Unknown routing style: " + rstyle.getRouting().getName(), null);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DiagramEdgeEditPartOperation_unknownRountingStyle, rstyle.getRouting().getName()), null);
             routing = EdgeRouting.STRAIGHT_LITERAL;
         }
         return routing;

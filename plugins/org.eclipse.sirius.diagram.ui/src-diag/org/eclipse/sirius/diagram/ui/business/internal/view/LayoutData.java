@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.view;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * Store the layout information of an AbstractDNode at a given time.
@@ -104,7 +106,7 @@ public class LayoutData extends AbstractLayoutData {
         } else if (target instanceof DNodeList) {
             addNodeListChildren();
         } else {
-            DiagramPlugin.getDefault().logWarning("This kind of diagram element  (" + target.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.LayoutData_unhandledDiagramElementKind, target.getClass().getName()));
         }
         if (target instanceof EdgeTarget) {
             addOutgoingEdge();
@@ -333,7 +335,7 @@ public class LayoutData extends AbstractLayoutData {
      */
     protected void setTarget(final EObject target) {
         if (!(target instanceof AbstractDNode || target instanceof DDiagram || target instanceof DEdge)) {
-            throw new IllegalArgumentException("The target of a LayoutData can only be an AbstractDNode, a DEdge or a DDiagram.");
+            throw new IllegalArgumentException(Messages.LayoutData_illegalTarget);
         }
         this.target = target;
     }

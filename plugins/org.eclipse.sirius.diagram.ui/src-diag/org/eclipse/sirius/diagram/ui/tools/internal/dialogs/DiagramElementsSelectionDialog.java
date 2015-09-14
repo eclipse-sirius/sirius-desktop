@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.DDiagramElementContainerLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
@@ -105,6 +106,7 @@ import com.google.common.collect.Sets;
 public class DiagramElementsSelectionDialog {
 
     private static final Function<Object, Void> DO_NOTHING = new Function<Object, Void>() {
+        @Override
         public Void apply(Object from) {
             return null;
         };
@@ -155,23 +157,6 @@ public class DiagramElementsSelectionDialog {
     protected final class CustomTreeSelectionDialog extends CheckedTreeSelectionDialog {
 
         /**
-         * A String used to identify the Text allowing user to type regular
-         * expression (can be used for testing).
-         */
-        public static final String REGEXP_TOOL_TIP = "Expression that will be used to filer elements by name (for example 'abc', 'a?c', '*c'...)";
-
-        /**
-         * The title of the Group allowing user to type Regular Expressions and
-         * filter the selection.
-         */
-        private static final String REGEXP_TITLE = "Filter elements by name";
-
-        /**
-         * The String explaining to user how to use regular expressions.
-         */
-        private static final String REGEXP_EXPLANATIONS = "? = any character, * = any String";
-
-        /**
          * A matcher used to determine if a given DDiagramElement is matching
          * the regular expression typed by user. It's updated each time the user
          * modify the regular expression.
@@ -219,15 +204,18 @@ public class DiagramElementsSelectionDialog {
             Control result = super.createContents(parent);
             getTreeViewer().setCheckStateProvider(new ICheckStateProvider() {
 
+                @Override
                 public boolean isGrayed(Object element) {
                     return isGrayed.apply(element);
                 }
 
+                @Override
                 public boolean isChecked(Object element) {
                     return checkedElements.contains(element);
                 }
             });
             getTreeViewer().addCheckStateListener(new ICheckStateListener() {
+                @Override
                 public void checkStateChanged(CheckStateChangedEvent event) {
                     if (!isGrayed.apply(event.getElement())) {
                         if (event.getChecked()) {
@@ -304,7 +292,7 @@ public class DiagramElementsSelectionDialog {
             data.grabExcessHorizontalSpace = true;
             composite.setData(data);
 
-            new Label(buttonComposite, SWT.LEAD).setText("Show");
+            new Label(buttonComposite, SWT.LEAD).setText(Messages.CustomTreeSelectionDialog_showLabelText);
             final Combo choices = new Combo(buttonComposite, SWT.READ_ONLY);
             choices.add(FilteringMode.SHOW_ALL.getName());
             choices.add(FilteringMode.SHOW_ONLY_CHECKED_ELEMENTS.getName());
@@ -335,7 +323,7 @@ public class DiagramElementsSelectionDialog {
 
             data = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.GRAB_HORIZONTAL);
             data.grabExcessHorizontalSpace = true;
-            addButton(buttonComposite, "Check All", DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.CHECK_ALL_ICON), new SelectionAdapter() {
+            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_checkAllButtonTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.CHECK_ALL_ICON), new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     checkAll();
@@ -347,7 +335,7 @@ public class DiagramElementsSelectionDialog {
                 }
             }).setLayoutData(data);
 
-            addButton(buttonComposite, "Uncheck All", DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNCHECK_ALL_ICON), new SelectionAdapter() {
+            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_uncheckAllButtonTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNCHECK_ALL_ICON), new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     uncheckAll();
@@ -359,14 +347,14 @@ public class DiagramElementsSelectionDialog {
                 }
             }).setLayoutData(data);
 
-            addButton(buttonComposite, "Expand All", DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.EXPAND_ALL_ICON), new SelectionAdapter() {
+            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_expandAllButtonTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.EXPAND_ALL_ICON), new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     expandAll();
                 }
             }).setLayoutData(data);
 
-            addButton(buttonComposite, "Collapse All", DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.COLLAPSE_ALL_ICON), new SelectionAdapter() {
+            addButton(buttonComposite, Messages.CustomTreeSelectionDialog_collapaseAllTooltip, DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.COLLAPSE_ALL_ICON), new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     collapseAll();
@@ -386,7 +374,7 @@ public class DiagramElementsSelectionDialog {
         private void createRegexpTypeZone(Composite composite) {
             // Step 1 : create Group
             Group expregGroup = new Group(composite, SWT.NONE);
-            expregGroup.setText(REGEXP_TITLE);
+            expregGroup.setText(Messages.CustomTreeSelectionDialog_regexpTitle);
             GridLayout expregLayout = new GridLayout();
             expregGroup.setLayout(expregLayout);
             expregGroup.setFont(composite.getFont());
@@ -394,16 +382,17 @@ public class DiagramElementsSelectionDialog {
 
             // Step 2 : create explanations zone
             final Label explanationsLabel = new Label(expregGroup, SWT.NONE);
-            explanationsLabel.setText(REGEXP_EXPLANATIONS);
+            explanationsLabel.setText(Messages.CustomTreeSelectionDialog_regexpExplanations);
 
             // Step 3 : create the text zone in which user will type the expreg
             final Text regularExpressionText = new Text(expregGroup, SWT.BORDER);
-            regularExpressionText.setToolTipText(REGEXP_TOOL_TIP);
+            regularExpressionText.setToolTipText(Messages.CustomTreeSelectionDialog_regexpTooltip);
             regularExpressionText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
             // Step 4 : add modify listener to this textZone
             regularExpressionText.addModifyListener(new ModifyListener() {
 
+                @Override
                 public void modifyText(ModifyEvent e) {
                     String typedRegex = ((Text) e.getSource()).getText();
                     // Each time the regular expression is modified, the
@@ -544,6 +533,7 @@ public class DiagramElementsSelectionDialog {
                 return true;
             } else {
                 return Iterables.any(Arrays.asList(contentProvider.getChildren(element)), new Predicate<Object>() {
+                    @Override
                     public boolean apply(Object input) {
                         return isOrHasDescendant(input, pred);
                     }
@@ -579,15 +569,15 @@ public class DiagramElementsSelectionDialog {
         /**
          * Filtering mode in which all elements are considered.
          */
-        SHOW_ALL("all elements"),
+        SHOW_ALL(Messages.FilteringMode_allElements),
         /**
          * Filtering mode in which only checked elements are considered.
          */
-        SHOW_ONLY_CHECKED_ELEMENTS("only checked elements"),
+        SHOW_ONLY_CHECKED_ELEMENTS(Messages.FilteringMode_onlyCheckedElements),
         /**
          * Filtering mode in which only unchecked elements are considered.
          */
-        SHOW_ONLY_UNCHECKED_ELEMENTS("only unchecked elements");
+        SHOW_ONLY_UNCHECKED_ELEMENTS(Messages.FilteringMode_onlyUncheckedElements);
 
         private final String name;
 
@@ -775,7 +765,7 @@ public class DiagramElementsSelectionDialog {
         if (!Predicates.alwaysFalse().equals(isGrayed)) {
             StringBuilder sb = new StringBuilder(message);
             sb.append("\n"); //$NON-NLS-1$
-            sb.append("The wizard will have no effect on grayed elements.");
+            sb.append(Messages.DiagramElementsSelectionDialog_grayedElementDialogMessage);
             msg = sb.toString();
         }
         dialog.setMessage(msg);
@@ -950,6 +940,7 @@ public class DiagramElementsSelectionDialog {
         /**
          * {@inheritDoc}
          */
+        @Override
         public Color getForeground(final Object element) {
 
             Color foreground = null;
@@ -962,6 +953,7 @@ public class DiagramElementsSelectionDialog {
         /**
          * {@inheritDoc}
          */
+        @Override
         public Color getBackground(Object element) {
             return null;
         }
