@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -41,6 +42,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefViewer;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.junit.Assert;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -139,6 +141,30 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
         checkSelectedEditParts(getEditPartsFromNames(PACKAGE_1_NAME, PACKAGE_2_NAME, PACKAGE_3_NAME, CLASS_1_NAME, CLASS_2_NAME, CLASS_3_NAME, CLASS_4_NAME));
         editor.getCanvas().pressShortcut(KeyStroke.getInstance(SWT.ESC));
         checkSelectedEditParts(Lists.newArrayList(editor.mainEditPart()));
+    }
+
+    /**
+     * Ensures that the 'Select All' action selects the expected EditParts and
+     * that the attempt to select a container label does not lead to
+     * IllegalArgumentException.
+     */
+    public void testSelectAllAndTryContainerLabelSelection() {
+        // Wait all UI events to ensure that the tabbar is correctly refreshed.
+        SWTBotUtils.waitAllUiEvents();
+
+        editor.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
+        checkSelectedEditParts(getEditPartsFromNames(PACKAGE_1_NAME, PACKAGE_2_NAME, PACKAGE_3_NAME, CLASS_1_NAME, CLASS_2_NAME, CLASS_3_NAME, CLASS_4_NAME));
+
+        SWTBotGefEditPart labelPart = editor.getEditPart(PACKAGE_1_NAME);
+        assertTrue(labelPart.part() instanceof AbstractDiagramElementContainerNameEditPart);
+        labelPart.click();
+
+        // Check there is no more IllegalArgumentException when the user click
+        // on the label of a secondary selected part.
+        if (doesAnErrorOccurs()) {
+            Assert.fail(getErrorLoggersMessage());
+        }
+        checkSelectedEditParts(Lists.newArrayList(getEditPartsFromNames(PACKAGE_1_NAME)));
     }
 
     /**
