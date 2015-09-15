@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.IContentProposal;
-import org.eclipse.jface.viewers.TreeSelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
@@ -105,8 +105,8 @@ public class TextContentProposalProvider implements IAssistContentProvider {
     }
 
     private Object getSelectedElement() {
-        if (element == null && view != null) {
-            return ((TreeSelection) view.getSelection()).getFirstElement();
+        if (element == null && view != null && view.getSelection() instanceof IStructuredSelection) {
+            return ((IStructuredSelection) view.getSelection()).getFirstElement();
         } else {
             return element;
         }
