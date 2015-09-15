@@ -84,9 +84,9 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_2peOUC2nEeKG1qVh92N5RA" red="227" green="164" blue="156"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']"/>
-        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_1x4fAC2nEeKG1qVh92N5RA" name="NewEClass1" tooltipText="newPackage1.NewEClass1" incomingEdges="_3-Po4C2nEeKG1qVh92N5RA">
-          <target xmi:type="ecore:EClass" href="VP-3643.ecore#//newPackage1/NewEClass1"/>
-          <semanticElements xmi:type="ecore:EClass" href="VP-3643.ecore#//newPackage1/NewEClass1"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_1x4fAC2nEeKG1qVh92N5RA" name="NewEClass2" tooltipText="newPackage1.NewEClass2" incomingEdges="_3-Po4C2nEeKG1qVh92N5RA">
+          <target xmi:type="ecore:EClass" href="VP-3643.ecore#//newPackage1/NewEClass2"/>
+          <semanticElements xmi:type="ecore:EClass" href="VP-3643.ecore#//newPackage1/NewEClass2"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_1ymQsC2nEeKG1qVh92N5RA" backgroundStyle="GradientTopToBottom">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_1ymQsS2nEeKG1qVh92N5RA"/>
             <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
