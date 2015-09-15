@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
 
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -28,6 +33,7 @@ import org.eclipse.sirius.tests.unit.api.layers.MultipleMappingImportTests2;
 import org.eclipse.sirius.tests.unit.api.layers.OptionalLayersActivationTests;
 import org.eclipse.sirius.tests.unit.api.mappings.CompartmentsTests;
 import org.eclipse.sirius.tests.unit.api.mappings.ContainerMappingImportTests;
+import org.eclipse.sirius.tests.unit.api.mappings.ContainerMappingImportWithChildrenPresentationChangesTests;
 import org.eclipse.sirius.tests.unit.api.mappings.EdgeMappingTest;
 import org.eclipse.sirius.tests.unit.api.mappings.MappingImportAndFiltersTests;
 import org.eclipse.sirius.tests.unit.api.mappings.MappingsReuseTests;
@@ -229,11 +235,6 @@ import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartme
 import org.eclipse.sirius.tests.unit.table.unit.migration.InitializeElementsToSelectExpressionForTableMigrationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.SelectionInTableAfterToolExecutionTest;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 public class AllDiagramPluginsTests {
 
     /**
@@ -420,6 +421,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(EdgeMappingTest.class);
         suite.addTestSuite(ContainerMappingImportTests.class);
         suite.addTestSuite(CompartmentsTests.class);
+        suite.addTestSuite(ContainerMappingImportWithChildrenPresentationChangesTests.class);
         suite.addTestSuite(NodeMappingImportTests.class);
         suite.addTestSuite(MappingImportChainsTest.class);
         suite.addTest(new JUnit4TestAdapter(MultiMappingImportChainsWithSameSemanticTest.class));

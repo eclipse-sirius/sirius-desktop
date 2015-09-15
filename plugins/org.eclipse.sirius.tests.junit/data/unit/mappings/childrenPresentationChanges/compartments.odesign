@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Compartments" version="10.1.0.201507271600">
+  <ownedViewpoints name="Compartments">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ChildrenPresentationChangeDiagram" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="Compartment_1" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+          <subContainerMappings name="ListRegions" semanticCandidatesExpression="feature:eContents" domainClass="EClass" childrenPresentation="List">
+            <subNodeMappings name="Attributes" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
+              <style xsi:type="style:SquareDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+              <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
+                <style xsi:type="style:SquareDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
+                <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelAlignment="RIGHT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </style>
+            <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+          <subContainerMappings name="FreeFormRegions" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='drop%20class']">
+            <subNodeMappings name="nodes" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+              <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="default">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="newPackage" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='FreeFormRegions'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newP'.concat(container.eSubpackages.size())"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="newClassNode" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newClassNode'.concat(container.eClassifiers.size())"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="newClassList" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='ListRegions']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newClassList.concat(container.eClassifiers.size())"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="newAttribute" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newAttr'.concat(container.eContents.size())"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop class" mappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='ListRegions']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="[newSemanticContainer/]" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="VStackByImport">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="VStackByImport" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='FreeFormRegions'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='ListRegions']" childrenPresentation="VerticalStack" inheritsAncestorFilters="false" importedMapping="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']"/>
+      </additionalLayers>
+      <additionalLayers name="ListByImport">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ListByImport" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='FreeFormRegions'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='ListRegions']" childrenPresentation="List" inheritsAncestorFilters="false" importedMapping="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@additionalLayers[name='VStackByImport']/@containerMappings[name='VStackByImport']"/>
+      </additionalLayers>
+      <additionalLayers name="HStackByImport">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="hstack" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='FreeFormRegions'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@defaultLayer/@containerMappings[name='Compartment_1']/@subContainerMappings[name='ListRegions']" childrenPresentation="HorizontalStack" inheritsAncestorFilters="false" importedMapping="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='ChildrenPresentationChangeDiagram']/@additionalLayers[name='ListByImport']/@containerMappings[name='ListByImport']"/>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="Colors">
+    <entries xsi:type="description:InterpolatedColor" name="regionInterpolatedColor" colorValueComputationExpression="aql:self.name.substring(self.name.size())">
+      <colorSteps associatedValue="0">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+      </colorSteps>
+      <colorSteps associatedValue="3">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+      </colorSteps>
+      <colorSteps associatedValue="5">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+      </colorSteps>
+    </entries>
+  </userColorsPalettes>
+</description:Group>

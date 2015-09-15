@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -29,7 +28,6 @@ import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
@@ -55,20 +53,11 @@ public class CompartmentsTests extends SiriusDiagramTestCase {
 
     private DDiagram dDiagram;
 
-    private DiagramEditor editor;
-
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(MODEL_PATH, VSM_PATH, SESSION_PATH);
         TestsUtil.synchronizationWithUIThread();
-    }
-
-    @Override
-    protected void tearDown() throws Exception {
-        DialectUIManager.INSTANCE.closeEditor(editor, false);
-        TestsUtil.synchronizationWithUIThread();
-        super.tearDown();
     }
 
     /**

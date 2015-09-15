@@ -411,7 +411,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
      * 
      * @author mporhel
      */
-    private static class RegionContainerLayoutManager extends FreeFormLayoutEx {
+    public static class RegionContainerLayoutManager extends FreeFormLayoutEx {
 
         private final boolean isVertical;
 
@@ -423,6 +423,10 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
          */
         public RegionContainerLayoutManager(boolean isVertical) {
             this.isVertical = isVertical;
+        }
+        
+        public boolean isVertical() {
+            return isVertical;
         }
 
         /**
