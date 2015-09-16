@@ -25,7 +25,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -35,23 +34,7 @@ import org.eclipse.sirius.viewpoint.description.Group;
  * 
  * @author <a href="mailto:belqassim.djafer@obeo.fr">Belqassim Djafer</a>
  */
-public class CompartmentsTests extends SiriusDiagramTestCase {
-
-    private static final String MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/compartments/My.ecore";
-
-    private static final String SESSION_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/compartments/My.aird";
-
-    private static final String VSM_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/compartments/compartments.odesign";
-
-    private static final String HORIZONTAL_STACK_REPRESENTATION_NAME = "Diag with HStack";
-
-    private static final String VERTICAL_STACK_REPRESENTATION_NAME = "Diag with VStack";
-
-    private static final String VERTICAL_STACK = "VerticalStack";
-
-    private static final String HORIZONTAL_STACK = "HorizontalStack";
-
-    private DDiagram dDiagram;
+public class CompartmentsTests extends SiriusDiagramTestCase implements ICompartmentTests {
 
     @Override
     protected void setUp() throws Exception {
@@ -91,29 +74,32 @@ public class CompartmentsTests extends SiriusDiagramTestCase {
         Diagnostician diagnostician = new Diagnostician();
         Diagnostic diagnostic = null;
 
-        DDiagram representation = getRepresentation(VERTICAL_STACK);
-        ContainerMapping regionContainerMapping = getContainerMapping(representation);
+        DDiagram dDiagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
+        ContainerMapping regionContainerMapping = getContainerMapping(dDiagram);
 
         assertEquals("The '" + regionContainerMapping.getName() + "' should displays its children in vertical stack", ContainerLayout.VERTICAL_STACK, regionContainerMapping.getChildrenPresentation());
 
         final ContainerMapping regionMapping = regionContainerMapping.getAllContainerMappings().get(0);
 
+        diagnostic = diagnostician.validate(dDiagram.getDescription());
+        checkDiagnostic(diagnostic, Diagnostic.OK, 0, 0, "The VSM should be valid.");
+
         // set mapping to be a vertical stack container mapping
         changeChildrenPresentation(regionMapping, ContainerLayout.VERTICAL_STACK);
 
-        diagnostic = diagnostician.validate(representation.getDescription());
-        checkDiagnostic(diagnostic);
+        diagnostic = diagnostician.validate(dDiagram.getDescription());
+        checkDiagnostic(diagnostic, Diagnostic.ERROR, 2, 1, "The VSM is not valid, a region container mapping can now contains other regions containers but user must be warned.");
 
         undo();
 
         // set mapping to be a horizontal stack container mapping
         changeChildrenPresentation(regionMapping, ContainerLayout.HORIZONTAL_STACK);
-        diagnostic = diagnostician.validate(representation.getDescription());
-        checkDiagnostic(diagnostic);
+        diagnostic = diagnostician.validate(dDiagram.getDescription());
+        checkDiagnostic(diagnostic, Diagnostic.ERROR, 2, 1, "The VSM is not valid, a region container mapping can now contains other regions containers but user must be warned.");
     }
 
-    private void checkDiagnostic(Diagnostic diagnostic) {
-        assertEquals("The VSM is not valid, there should be 2 errors and 1 warning.", Diagnostic.ERROR, diagnostic.getSeverity());
+    private void checkDiagnostic(Diagnostic diagnostic, int globalSeverity, int expectedErrors, int expectedWarning, String message) {
+        assertEquals("This diagnostic severity is not expected.", globalSeverity, diagnostic.getSeverity());
         int errors = 0;
         int warnings = 0;
         for (Diagnostic d : diagnostic.getChildren()) {
@@ -123,7 +109,8 @@ public class CompartmentsTests extends SiriusDiagramTestCase {
                 warnings++;
             }
         }
-        assertTrue("The VSM is not valid, a region container mapping can now contains other regions containers but user must be warned.", errors == 2 && warnings == 1);
+        assertEquals(message, expectedErrors, errors);
+        assertEquals(message, expectedWarning, warnings);
     }
 
     /**
@@ -152,18 +139,6 @@ public class CompartmentsTests extends SiriusDiagramTestCase {
 
         assertTrue("The '" + diagramElementMapping.getLabel() + "' mapping should be a ContainerMapping", diagramElementMapping instanceof ContainerMapping);
         ContainerMapping containerMapping = (ContainerMapping) diagramElementMapping;
-        return containerMapping;
-    }
-
-    /**
-     * Get the diagram representation which owns the given label.
-     */
-    private DDiagram getRepresentation(String representationName) {
-        if (representationName == HORIZONTAL_STACK) {
-            dDiagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
-        } else {
-            dDiagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
-        }
-        return dDiagram;
+        return containerMapping;  
     }
 }

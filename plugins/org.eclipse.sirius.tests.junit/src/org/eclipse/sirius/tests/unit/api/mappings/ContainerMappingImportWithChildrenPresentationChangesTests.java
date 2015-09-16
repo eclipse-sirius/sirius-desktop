@@ -76,7 +76,7 @@ public class ContainerMappingImportWithChildrenPresentationChangesTests extends 
         super.tearDown();
     }
 
-    public void testDiagramAfterChildrenPresentationChange() {
+    public void testDiagramAfterChildrenPresentationChange() throws Exception {
 
         // Default layer mapping is configured as a FreeForm container.
         checkLayerChangeEffect(ContainerLayout.FREE_FORM);
@@ -89,6 +89,17 @@ public class ContainerMappingImportWithChildrenPresentationChangesTests extends 
 
         activateLayer(dDiagram, "HStackByImport");
         checkLayerChangeEffect(ContainerLayout.HORIZONTAL_STACK);
+        
+        undo();
+        checkLayerChangeEffect(ContainerLayout.LIST);
+        
+        undo();
+        //Second undo for the "Arrange created views" command.
+        undo();
+        checkLayerChangeEffect(ContainerLayout.VERTICAL_STACK);
+        
+        undo();
+        checkLayerChangeEffect(ContainerLayout.FREE_FORM);
     }
 
     private void checkLayerChangeEffect(ContainerLayout expectedContainerLayout) {
@@ -110,7 +121,7 @@ public class ContainerMappingImportWithChildrenPresentationChangesTests extends 
         } else {
             assertTrue(expectedContainerLayout.getName() + " children presentation should produce a DNodeContainer", ddec instanceof DNodeContainer);
             assertTrue("Wrong edit part type for a DNodeDNodeContainer.", editPart instanceof IDiagramContainerEditPart);
-            
+
             assertEquals("Wrong children presentation for the DNodeContainer.", expectedContainerLayout, ((DNodeContainer) ddec).getChildrenPresentation());
             assertTrue("Wrong type of compartment part for the DNodeContainer.", compartmentPart instanceof AbstractDNodeContainerCompartmentEditPart);
             assertFalse("The DNodeContainer compartment should not be empty.", compartmentPart.getChildren().isEmpty());

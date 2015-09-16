@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Compartments" version="10.0.0.201504091800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="compartments" version="10.1.0.201507271600">
   <ownedViewpoints name="Compartments">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with VStack" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <containerMappings name="Compartment" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="VerticalStack">
+        <containerMappings name="VStack" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="VerticalStack">
           <subContainerMappings name="ListRegions" semanticCandidatesExpression="feature:eContents" domainClass="EClass" childrenPresentation="List">
             <subNodeMappings name="Attributes" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
               <style xsi:type="style:SquareDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
@@ -26,20 +26,21 @@
                 </style>
               </conditionnalStyles>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelAlignment="RIGHT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelAlignment="RIGHT" tooltipExpression="feature:name" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </style>
             <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelAlignment="LEFT" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
               </style>
             </conditionnalStyles>
           </subContainerMappings>
@@ -51,12 +52,25 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelAlignment="RIGHT" widthComputationExpression="15" heightComputationExpression="5" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
+            <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelAlignment="LEFT" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>
+              </style>
+            </conditionnalStyles>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" roundedCorner="true" widthComputationExpression="5" heightComputationExpression="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -64,51 +78,51 @@
           </style>
         </containerMappings>
         <toolSections name="default">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="newPackage" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='FreeFormRegions'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='Compartment']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newP&lt;%$container.eSubpackages.nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="newClassNode" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newClassNode&lt;%$container.eClassifiers.nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="newClassList" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='ListRegions']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newClassList&lt;%$container.eClassifiers.nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="newAttribute" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EAttribute" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newAttr&lt;%$container.eContents.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'attr' + container.eContents()->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop class" mappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='ListRegions']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPackage" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'p' + container.eSubpackages->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EClassNode" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'class' + container.eClassifiers->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EClassList" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'class' + container.eClassifiers->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop class" mappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -124,8 +138,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with HStack" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <containerMappings name="Compartment" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="HorizontalStack">
-          <subContainerMappings name="ListRegions" semanticCandidatesExpression="feature:eContents" domainClass="EClass" childrenPresentation="List">
+        <containerMappings name="HStack" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="HListRegions" semanticCandidatesExpression="feature:eContents" domainClass="EClass" childrenPresentation="List">
             <subNodeMappings name="HAttributes" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
               <style xsi:type="style:SquareDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -147,20 +161,21 @@
                 </style>
               </conditionnalStyles>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelAlignment="RIGHT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" labelAlignment="RIGHT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </style>
             <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
               </style>
             </conditionnalStyles>
           </subContainerMappings>
@@ -172,12 +187,25 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" labelAlignment="RIGHT" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
+            <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>
+              </style>
+            </conditionnalStyles>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="10">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="4" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -185,51 +213,51 @@
           </style>
         </containerMappings>
         <toolSections name="default">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="newPackage" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='FreeFormRegions'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='Compartment']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newP&lt;%$container.eSubpackages.nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="newClassNode" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newClassNode&lt;%$container.eClassifiers.nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="newClassList" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='ListRegions']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newClassList&lt;%$container.eClassifiers.nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="newAttribute" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='HAttributes']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EAttribute" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newAttr&lt;%$container.eContents.nSize%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'attr'+ container.eContents()->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop class" mappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='Compartment']/@subContainerMappings[name='ListRegions']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPackage" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'p' + container.eSubpackages->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EClassNode" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'class' + container.eClassifiers->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EClassList" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'class' + container.eClassifiers->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop class" mappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -243,9 +271,99 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="RecurDiag" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="EPackageHStack1" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="LeftPane" semanticCandidatesExpression="var:self" domainClass="EPackage">
+            <subNodeMappings name="ListElt" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="EPackage">
+              <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="LeftPane" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="EPackageVStack2" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="VerticalStack">
+            <subContainerMappings name="EPackageCont" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='drop']" childrenPresentation="List">
+              <subNodeMappings name="cl" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+                <style xsi:type="style:BundledImageDescription" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+                <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name.concat('-VStack')">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name.concat('- hstack')">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Default">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop" forceRefresh="true" mappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@subNodeMappings[name='cl']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag with Image" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="RCWithImage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" childrenPresentation="VerticalStack">
+          <subContainerMappings name="RegionsWithImage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+            <subNodeMappings name="nodes" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+              <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" borderLineStyle="dash_dot" workspacePath="/DesignerTestProject/TUX-G2-SVG.svg">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" sizeComputationExpression="-1" workspacePath="/DesignerTestProject/Tux.svg">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Colors">
-    <entries xsi:type="description:InterpolatedColor" name="regionInterpolatedColor" colorValueComputationExpression="&lt;%name.charAt(name.length-1)%>">
+    <entries xsi:type="description:InterpolatedColor" name="regionInterpolatedColor" colorValueComputationExpression="aql:self.oclAsType(ecore::ENamedElement).name.substring(self.oclAsType(ecore::ENamedElement).name.size())">
       <colorSteps associatedValue="0">
         <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
       </colorSteps>

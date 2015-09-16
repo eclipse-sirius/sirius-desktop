@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -194,6 +194,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         /**
          * {@inheritDoc}
          */
+        @Override
         @SuppressWarnings("unchecked")
         public T apply(F from) {
             return (T) from.part();
@@ -500,7 +501,15 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         return expectedLabelAlignment;
     }
 
-    private int getActualLabelAlignment(IGraphicalEditPart graphicalEditPart) {
+    /**
+     * Return the actual label alignement of the given part. See
+     * LabelAlignmentHelper.
+     * 
+     * @param graphicalEditPart
+     *            the given part
+     * @return the label alignment of the given part
+     */
+    public static int getActualLabelAlignment(IGraphicalEditPart graphicalEditPart) {
         int actualLabelAlignment = 0;
         if (graphicalEditPart instanceof IStyleEditPart) {
             IStyleEditPart styleEditPart = (IStyleEditPart) graphicalEditPart;

@@ -25,6 +25,8 @@ import org.eclipse.sirius.tests.swtbot.clipboard.CustomClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.DisabledSiriusClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.GenericClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.MultiSessionCopyPasteTest;
+import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsCreationTest;
+import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsLayoutTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionExpressionTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.BorderSizeComputationExpressionTest;
