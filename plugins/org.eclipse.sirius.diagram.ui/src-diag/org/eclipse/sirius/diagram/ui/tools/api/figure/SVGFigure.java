@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.WeakHashMap;
 
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
@@ -23,6 +24,7 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
@@ -33,10 +35,19 @@ import org.w3c.dom.Document;
 
 //CHECKSTYLE:OFF
 public class SVGFigure extends Figure {
+    /**
+     * The uri of the image to display when the file has not been found.
+     */
+    protected static final String IMAGE_NOT_FOUND_URI = MessageFormat.format("platform:/plugin/{0}/images/NotFound.svg", DiagramUIPlugin.getPlugin().getSymbolicName()); //$NON-NLS-1$
+
+    /**
+     * Key separator.
+     */
+    protected static final String SEPARATOR = "|"; //$NON-NLS-1$
 
     private String uri;
 
-    private boolean failedToLoadDocument, specifyCanvasWidth = true, specifyCanvasHeight = true;
+    private boolean failedToLoadDocument;
 
     private SimpleImageTranscoder transcoder;
 
@@ -138,7 +149,7 @@ public class SVGFigure extends Figure {
         Image image = null;
         try {
             Rectangle r = getClientArea();
-            transcoder.setCanvasSize(specifyCanvasWidth ? r.width : -1, specifyCanvasHeight ? r.height : -1);
+            transcoder.setCanvasSize(r.width, r.height);
             updateRenderingHints(graphics);
             BufferedImage awtImage = transcoder.getBufferedImage();
             if (awtImage != null) {
@@ -209,14 +220,6 @@ public class SVGFigure extends Figure {
 
     protected SimpleImageTranscoder getTranscoder() {
         return transcoder;
-    }
-
-    protected boolean getSpecifyCanvasWidth() {
-        return specifyCanvasWidth;
-    }
-
-    protected boolean getSpecifyCanvasHeight() {
-        return specifyCanvasHeight;
     }
     // CHECKSTYLE:ON
 }

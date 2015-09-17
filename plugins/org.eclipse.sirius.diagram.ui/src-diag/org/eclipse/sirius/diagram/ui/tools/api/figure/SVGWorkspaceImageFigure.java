@@ -174,7 +174,7 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
             if (existingImageUri.some()) {
                 setURI(existingImageUri.get());
             } else {
-                setURI(AbstractCachedSVGFigure.getImageNotFoundURI());
+                setURI(SVGFigure.IMAGE_NOT_FOUND_URI);
             }
             return true;
         }

@@ -11,14 +11,12 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import java.awt.image.BufferedImage;
-import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.ImageCache;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
@@ -37,13 +35,6 @@ import com.google.common.collect.Lists;
  * @author mporhel
  */
 public abstract class AbstractCachedSVGFigure extends SVGFigure implements StyledFigure, ITransparentFigure, ImageFigureWithAlpha {
-    /**
-     * Key separator.
-     */
-    protected static final String SEPARATOR = "|"; //$NON-NLS-1$
-
-    private static final String IMAGE_NOT_FOUND_URI = MessageFormat.format("platform:/plugin/{0}/images/NotFound.svg", DiagramUIPlugin.getPlugin().getSymbolicName()); //$NON-NLS-1$
-    
     /**
      * Cache to store bitmaps of rendered SVGs.
      */
@@ -111,9 +102,9 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
         result.append(aaText);
         result.append(AbstractCachedSVGFigure.SEPARATOR);
         Rectangle r = getClientArea();
-        result.append(getSpecifyCanvasWidth() ? r.width : -1);
+        result.append(r.width);
         result.append(AbstractCachedSVGFigure.SEPARATOR);
-        result.append(getSpecifyCanvasHeight() ? r.height : -1);
+        result.append(r.height);
 
         return result.toString();
     }
@@ -137,8 +128,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
             if (document == null) {
                 return null;
             }
-
-            getTranscoder().setCanvasSize(getSpecifyCanvasWidth() ? clientArea.width : -1, getSpecifyCanvasHeight() ? clientArea.height : -1);
+            getTranscoder().setCanvasSize(clientArea.width, clientArea.height);
             updateRenderingHints(graphics);
             BufferedImage awtImage = getTranscoder().getBufferedImage();
             if (awtImage != null) {
@@ -159,15 +149,6 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
      * @return The key corresponding to this BundleImageFigure.
      */
     protected abstract String getKey();
-
-    /**
-     * The uri of the image to display when the file has not been found.
-     *
-     * @return The uri of the image to display when the file has not been found.
-     */
-    protected static String getImageNotFoundURI() {
-        return AbstractCachedSVGFigure.IMAGE_NOT_FOUND_URI;
-    }
 
     /**
      * Remove all entries whose key begins with the given key. Remove from the
