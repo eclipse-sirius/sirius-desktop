@@ -14,13 +14,11 @@ import java.awt.image.BufferedImage;
 import java.util.Collection;
 
 import org.eclipse.draw2d.Graphics;
-import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.ImageCache;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -34,45 +32,11 @@ import com.google.common.collect.Lists;
  *
  * @author mporhel
  */
-public abstract class AbstractCachedSVGFigure extends SVGFigure implements StyledFigure, ITransparentFigure, ImageFigureWithAlpha {
+public abstract class AbstractCachedSVGFigure extends SVGFigure {
     /**
      * Cache to store bitmaps of rendered SVGs.
      */
     private static final ImageCache CACHE = new ImageCache();
-
-
-    private int viewpointAlpha = DEFAULT_ALPHA;
-
-    private boolean transparent;
-
-    /**
-     * Build a new {@link AbstractCachedSVGFigure} from an Image instance.
-     *
-     */
-    public AbstractCachedSVGFigure() {
-        this.setLayoutManager(new XYLayout());
-    }
-
-    @Override
-    public int getSiriusAlpha() {
-        return viewpointAlpha;
-    }
-
-    @Override
-    public boolean isTransparent() {
-        return transparent;
-    }
-
-    @Override
-    public void setSiriusAlpha(int alpha) {
-        this.viewpointAlpha = alpha;
-
-    }
-
-    @Override
-    public void setTransparent(boolean transparent) {
-        this.transparent = transparent;
-    }
 
     @Override
     protected void paintFigure(Graphics graphics) {
@@ -179,46 +143,4 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
         return false;
     }
 
-    @Override
-    public int getImageHeight() {
-        SimpleImageTranscoder transcoder = getTranscoder();
-        int height = 0;
-        if (transcoder != null) {
-            int canvasHeight = transcoder.getCanvasHeight();
-            if (canvasHeight == -1) {
-                height = transcoder.getBufferedImage().getHeight();
-            } else {
-                height = canvasHeight;
-            }
-        }
-        return height;
-    }
-
-    @Override
-    public int getImageWidth() {
-        SimpleImageTranscoder transcoder = getTranscoder();
-        int width = 0;
-        if (transcoder != null) {
-            int canvasWidth = transcoder.getCanvasWidth();
-            if (canvasWidth == -1) {
-                width = transcoder.getBufferedImage().getWidth();
-            } else {
-                width = canvasWidth;
-            }
-        }
-        return width;
-    }
-
-    @Override
-    public int getImageAlphaValue(int x, int y) {
-        SimpleImageTranscoder transcoder = getTranscoder();
-        if (transcoder != null) {
-            BufferedImage bufferedImage = transcoder.getBufferedImage();
-            if (bufferedImage != null && bufferedImage.getWidth() >= x && bufferedImage.getHeight() >= y) {
-                int[] result = bufferedImage.getAlphaRaster().getPixel(x, y, new int[1]);
-                return result[0];
-            }
-        }
-        return 255;
-    }
 }

@@ -22,6 +22,7 @@ import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
 import org.apache.batik.util.XMLResourceDescriptor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -34,7 +35,7 @@ import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
 
 //CHECKSTYLE:OFF
-public class SVGFigure extends Figure {
+public class SVGFigure extends Figure implements StyledFigure, ITransparentFigure, ImageFigureWithAlpha {
     /**
      * The uri of the image to display when the file has not been found.
      */
@@ -47,11 +48,83 @@ public class SVGFigure extends Figure {
 
     private String uri;
 
+    private int viewpointAlpha = ITransparentFigure.DEFAULT_ALPHA;
+
+    private boolean transparent;
+
     private boolean failedToLoadDocument;
 
     private SimpleImageTranscoder transcoder;
 
     protected static WeakHashMap<String, Document> documentsMap = new WeakHashMap<String, Document>();
+    
+    public SVGFigure() {
+        this.setLayoutManager(new XYLayout());
+    }
+
+    @Override
+    public int getSiriusAlpha() {
+        return viewpointAlpha;
+    }
+
+    @Override
+    public boolean isTransparent() {
+        return transparent;
+    }
+
+    @Override
+    public void setSiriusAlpha(int alpha) {
+        this.viewpointAlpha = alpha;
+
+    }
+
+    @Override
+    public void setTransparent(boolean transparent) {
+        this.transparent = transparent;
+    }
+
+    @Override
+    public int getImageHeight() {
+        SimpleImageTranscoder transcoder = getTranscoder();
+        int height = 0;
+        if (transcoder != null) {
+            int canvasHeight = transcoder.getCanvasHeight();
+            if (canvasHeight == -1) {
+                height = transcoder.getBufferedImage().getHeight();
+            } else {
+                height = canvasHeight;
+            }
+        }
+        return height;
+    }
+
+    @Override
+    public int getImageWidth() {
+        SimpleImageTranscoder transcoder = getTranscoder();
+        int width = 0;
+        if (transcoder != null) {
+            int canvasWidth = transcoder.getCanvasWidth();
+            if (canvasWidth == -1) {
+                width = transcoder.getBufferedImage().getWidth();
+            } else {
+                width = canvasWidth;
+            }
+        }
+        return width;
+    }
+
+    @Override
+    public int getImageAlphaValue(int x, int y) {
+        SimpleImageTranscoder transcoder = getTranscoder();
+        if (transcoder != null) {
+            BufferedImage bufferedImage = transcoder.getBufferedImage();
+            if (bufferedImage != null && bufferedImage.getWidth() >= x && bufferedImage.getHeight() >= y) {
+                int[] result = bufferedImage.getAlphaRaster().getPixel(x, y, new int[1]);
+                return result[0];
+            }
+        }
+        return 255;
+    }
 
     public final String getURI() {
         return uri;
