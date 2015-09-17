@@ -20,16 +20,13 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.ImageCache;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
 
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.RemovalListener;
-import com.google.common.cache.RemovalNotification;
 import com.google.common.collect.Lists;
 
 /**
@@ -49,15 +46,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
     /**
      * Cache to store bitmaps of rendered SVGs.
      */
-    private static final Cache<String, Image> SVG_IMG_CACHE = CacheBuilder.newBuilder().softValues().removalListener(new RemovalListener<String, Image>() {
-        @Override
-        public void onRemoval(RemovalNotification<String, Image> notification) {
-            Image img = notification.getValue();
-            if (img != null) {
-                img.dispose();
-            }
-        }
-    }).build();
+    private static final ImageCache CACHE = new ImageCache();
 
 
     private int viewpointAlpha = DEFAULT_ALPHA;
@@ -140,8 +129,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
      * @return an image store in a cache
      */
     protected Image getCachedImage(final String key, Rectangle clientArea, Graphics graphics) {
-
-        Image result = AbstractCachedSVGFigure.SVG_IMG_CACHE.getIfPresent(key);
+        Image result = AbstractCachedSVGFigure.CACHE.getIfPresent(key);
         if (result == null) {
             /* Create the image if it does not exist */
             Document document = getDocument();
@@ -154,7 +142,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
             BufferedImage awtImage = getTranscoder().getBufferedImage();
             if (awtImage != null) {
                 result = toSWT(Display.getCurrent(), awtImage);
-                AbstractCachedSVGFigure.SVG_IMG_CACHE.put(key, result);
+                AbstractCachedSVGFigure.CACHE.put(key, result);
             }
         }
         // Get the image from the cache
@@ -177,7 +165,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
      * @return The uri of the image to display when the file has not been found.
      */
     protected static String getImageNotFoundURI() {
-        return IMAGE_NOT_FOUND_URI;
+        return AbstractCachedSVGFigure.IMAGE_NOT_FOUND_URI;
     }
 
     /**
@@ -193,14 +181,14 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
         if (!StringUtil.isEmpty(documentKey)) {
             boolean remove = false;
             Collection<String> keyToRemove = Lists.newArrayList();
-            for (String key : AbstractCachedSVGFigure.SVG_IMG_CACHE.asMap().keySet()) {
+            for (String key : AbstractCachedSVGFigure.CACHE.keySet()) {
                 if (key.startsWith(documentKey)) {
                     keyToRemove.add(key);
                 }
             }
 
             for (String toRemove : keyToRemove) {
-                AbstractCachedSVGFigure.SVG_IMG_CACHE.invalidate(toRemove);
+                AbstractCachedSVGFigure.CACHE.invalidate(toRemove);
                 remove = true;
             }
             boolean removedFromDocumentsMap = SVGFigure.documentsMap.remove(documentKey) != null;
