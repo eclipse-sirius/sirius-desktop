@@ -724,6 +724,10 @@
            class="org.eclipse.sirius.diagram.business.internal.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipant"
            kind="RepresentationsFile">
      </participant>
+     <participant
+           class="org.eclipse.sirius.diagram.business.internal.migration.GMFLabelStyleMigrationParticipant"
+           kind="RepresentationsFile">
+     </participant>
   </extension>
   <extension
         point="org.eclipse.sirius.mmdescriptor">

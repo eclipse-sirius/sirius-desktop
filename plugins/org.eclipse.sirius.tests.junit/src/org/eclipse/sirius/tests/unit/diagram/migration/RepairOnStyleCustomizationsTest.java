@@ -40,6 +40,10 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.ui.IEditorPart;
+import org.osgi.framework.Version;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Test that the repair process restore only customizations and leave the
@@ -91,6 +95,9 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
 
     @SuppressWarnings("unchecked")
     private void testRepairOnStyleCustomizations(boolean unsynchronized) throws Exception {
+        // Check that the representation file migration is needed.
+        Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + "/" + PATH + REPRESENTATIONS_RESOURCE_NAME, true), true);
+        assertTrue("The test case has been migrated but should be in 8.0.0 version", Version.parseVersion("8.0.0").compareTo(loadedVersion) == 0);
 
         URI representationsResourceURI = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME, true);
         if (unsynchronized) {
@@ -109,16 +116,19 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
         DDiagramElement dDiagramElementOfEPackage = getDiagramElementsFromLabel(dDiagram, "newPackage1").get(0);
         DDiagramElement dDiagramElementOfEPackageWithWorkspaceImage = getDiagramElementsFromLabel(dDiagram, "newPackage2").get(0);
         DDiagramElement dDiagramElementOfEClass = getDiagramElementsFromLabel(dDiagram, "NewEClass1").get(0);
+        DDiagramElement dDiagramElementOfEClass2 = getDiagramElementsFromLabel(dDiagram, "NewEClass2").get(0);
         DDiagramElement dDiagramElementOfEReference = getDiagramElementsFromLabel(dDiagram, "[0..1] newEReference1").get(0);
 
         assertTrue(dDiagramElementOfEPackage instanceof DNodeContainer);
         assertTrue(dDiagramElementOfEPackageWithWorkspaceImage instanceof DNodeContainer);
         assertTrue(dDiagramElementOfEClass instanceof DNodeList);
+        assertTrue(dDiagramElementOfEClass2 instanceof DNodeList);
         assertTrue(dDiagramElementOfEReference instanceof DEdge);
 
         DNodeContainer dNodeContainerOfEPackage = (DNodeContainer) dDiagramElementOfEPackage;
         DNodeContainer dNodeContainerOfEPackageWithWorkspaceImage = (DNodeContainer) dDiagramElementOfEPackageWithWorkspaceImage;
         DNodeList dNodeListOfEClass = (DNodeList) dDiagramElementOfEClass;
+        DNodeList dNodeListOfEClass2 = (DNodeList) dDiagramElementOfEClass2;
         DEdge dEdgeOfEReference = (DEdge) dDiagramElementOfEReference;
 
         RGBValuesProvider rgbValuesProvider = new RGBValuesProvider();
@@ -142,15 +152,27 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
         assertEquals(assertMessage, foregroundColorRGBValuesFromDescriptionForEPackage.getGreen(), ((FlatContainerStyle) dNodeContainerOfEPackage.getStyle()).getForegroundColor().getGreen());
         assertEquals(assertMessage, foregroundColorRGBValuesFromDescriptionForEPackage.getBlue(), ((FlatContainerStyle) dNodeContainerOfEPackage.getStyle()).getForegroundColor().getBlue());
 
-        assertMessage = "After a repair the Style.customFeatures should be unchanged";
+        assertMessage = "After a migration and a repair the Style.customFeatures should be unchanged";
         EAttribute labelFormatFeature = ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT;
         assertEquals(assertMessage, Collections.emptyList(), dEdgeOfEReference.getOwnedStyle().getCustomFeatures());
         assertEquals(assertMessage, Collections.singletonList(labelFormatFeature.getName()), dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().getCustomFeatures());
         assertEquals(assertMessage, FontFormat.BOLD_LITERAL, ((List<FontFormat>) dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().eGet(labelFormatFeature)).get(1));
         assertEquals(assertMessage, FontFormat.ITALIC_LITERAL, ((List<FontFormat>) dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().eGet(labelFormatFeature)).get(0));
-        assertEquals(assertMessage, Collections.singletonList(labelFormatFeature.getName()), dNodeListOfEClass.getStyle().getCustomFeatures());
+        List<String> expectedDnodeListCustomFeatures = Lists.newArrayList();
+        expectedDnodeListCustomFeatures.add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName());
+        expectedDnodeListCustomFeatures.add(labelFormatFeature.getName());
+        assertEquals(assertMessage, Sets.newHashSet(expectedDnodeListCustomFeatures), Sets.newHashSet(dNodeListOfEClass.getStyle().getCustomFeatures()));
+        assertEquals(assertMessage, 4, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).size());
+        assertEquals(assertMessage, FontFormat.STRIKE_THROUGH_LITERAL, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).get(3));
+        assertEquals(assertMessage, FontFormat.UNDERLINE_LITERAL, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).get(2));
         assertEquals(assertMessage, FontFormat.BOLD_LITERAL, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).get(1));
         assertEquals(assertMessage, FontFormat.ITALIC_LITERAL, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).get(0));
+        assertEquals(assertMessage, RGBValues.create(228, 179, 229), dNodeListOfEClass.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR));
+
+        assertEquals(assertMessage, Collections.singletonList(labelFormatFeature.getName()), dNodeListOfEClass2.getStyle().getCustomFeatures());
+        assertEquals(assertMessage, FontFormat.UNDERLINE_LITERAL, ((List<FontFormat>) dNodeListOfEClass2.getStyle().eGet(labelFormatFeature)).get(0));
+        assertEquals(assertMessage, FontFormat.STRIKE_THROUGH_LITERAL, ((List<FontFormat>) dNodeListOfEClass2.getStyle().eGet(labelFormatFeature)).get(1));
+
         assertEquals(assertMessage, Collections.singletonList(labelFormatFeature.getName()), dNodeContainerOfEPackage.getStyle().getCustomFeatures());
         assertEquals(assertMessage, FontFormat.BOLD_LITERAL, ((List<FontFormat>) dNodeContainerOfEPackage.getStyle().eGet(labelFormatFeature)).get(1));
         assertEquals(assertMessage, FontFormat.ITALIC_LITERAL, ((List<FontFormat>) dNodeContainerOfEPackage.getStyle().eGet(labelFormatFeature)).get(0));

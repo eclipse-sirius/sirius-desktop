@@ -11,7 +11,7 @@
               <styles xmi:type="notation:SortingStyle" xmi:id="_72pFkSzdEeKO1tOqDmd78A"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_72pFkizdEeKO1tOqDmd78A"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_72k0ISzdEeKO1tOqDmd78A" fontName="Ubuntu" fontHeight="8" bold="true" italic="true" fillColor="10011046"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_72k0ISzdEeKO1tOqDmd78A" fontColor="15053796" fontName="Ubuntu" fontHeight="8" bold="true" italic="true" underline="true" strikeThrough="true" fillColor="10011046"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_72k0IizdEeKO1tOqDmd78A" x="35" y="130"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_u9FxcC2nEeKG1qVh92N5RA" type="2002" element="_ukjVoC2nEeKG1qVh92N5RA">
@@ -23,7 +23,7 @@
                   <styles xmi:type="notation:SortingStyle" xmi:id="_1-taES2nEeKG1qVh92N5RA"/>
                   <styles xmi:type="notation:FilteringStyle" xmi:id="_1-taEi2nEeKG1qVh92N5RA"/>
                 </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_1-nTcS2nEeKG1qVh92N5RA" fontName="Ubuntu" fontHeight="8"/>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_1-nTcS2nEeKG1qVh92N5RA" fontName="Ubuntu" fontHeight="8" underline="true" strikeThrough="true"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1-nTci2nEeKG1qVh92N5RA" x="62" y="35"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_u9YFUS2nEeKG1qVh92N5RA"/>
@@ -66,7 +66,8 @@
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_70l3ICzdEeKO1tOqDmd78A" labelFormat="bold_italic" backgroundStyle="GradientTopToBottom">
           <customFeatures>labelFormat</customFeatures>
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_70l3ISzdEeKO1tOqDmd78A"/>
+          <customFeatures>labelColor</customFeatures>
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_70l3ISzdEeKO1tOqDmd78A" red="228" green="179" blue="229"/>
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_70l3IizdEeKO1tOqDmd78A"/>
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_3Qxe4C2nEeKG1qVh92N5RA" red="166" green="193" blue="152"/>
