@@ -242,31 +242,25 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         RequestQuery query = new RequestQuery(request);
         Dimension sizeDelta = request.getSizeDelta().getCopy();
 
+        EditPart regionContainer = getRegionContainerPart();
+        boolean allowedRegionContainerPropagation = !request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer;
+
         int stackDirection = getStackDirection();
         if (stackDirection == PositionConstants.NORTH_SOUTH) {
-            constrainedRequest = Options.newSome(getVStackConstrainedSiblingRequest(request, query, sizeDelta));
+            constrainedRequest = Options.newSome(getVStackConstrainedSiblingRequest(request, query, sizeDelta, allowedRegionContainerPropagation, regionContainer));
         } else if (stackDirection == PositionConstants.EAST_WEST) {
-            constrainedRequest = Options.newSome(getHStackConstrainedSiblingRequest(request, query, sizeDelta));
+            constrainedRequest = Options.newSome(getHStackConstrainedSiblingRequest(request, query, sizeDelta, allowedRegionContainerPropagation, regionContainer));
         }
         return constrainedRequest;
     }
 
-    private ChangeBoundsRequest getVStackConstrainedSiblingRequest(ChangeBoundsRequest request, RequestQuery query, Dimension sizeDelta) {
+    private ChangeBoundsRequest getVStackConstrainedSiblingRequest(ChangeBoundsRequest request, RequestQuery query, Dimension sizeDelta, boolean allowedRegionContainerPropagation,
+            EditPart regionContainer) {
         ChangeBoundsRequest constrainedRequest = null;
         ChangeBoundsRequest req = initSiblingRequest(request);
 
         if (query.isResizeFromTop()) {
-            EditPart regionContainer = getRegionContainerPart();
-            if (isFirstRegionPart()) {
-                if (!request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer) {
-                    // resize regioncontainer.
-                    req.setEditParts(regionContainer);
-                    req.setResizeDirection(request.getResizeDirection());
-                    req.setSizeDelta(new Dimension(0, sizeDelta.height));
-                    req.setMoveDelta(new Point(0, -sizeDelta.height));
-                    constrainedRequest = req;
-                }
-            } else {
+            if (!isFirstRegionPart()) {
                 Option<AbstractDiagramElementContainerEditPart> pred = getPrecedingRegion();
                 if (pred.some() && !request.isConstrainedResize()) {
                     req.setEditParts(pred.get());
@@ -274,23 +268,16 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
                     req.setSizeDelta(new Dimension(0, sizeDelta.getNegated().height));
                     constrainedRequest = req;
                 }
+            } else if (allowedRegionContainerPropagation) {
+                // resize regioncontainer from first region part resize.
+                req.setEditParts(regionContainer);
+                req.setResizeDirection(request.getResizeDirection());
+                req.setSizeDelta(new Dimension(0, sizeDelta.height));
+                req.setMoveDelta(new Point(0, -sizeDelta.height));
+                constrainedRequest = req;
             }
         } else if (query.isResizeFromBottom()) {
-            EditPart regionContainer = getRegionContainerPart();
-            if (isLastRegionPart()) {
-                if (!request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer) {
-                    // resize regioncontainer.
-                    req.setEditParts(regionContainer);
-                    req.setResizeDirection(request.getResizeDirection());
-                    req.setSizeDelta(new Dimension(0, sizeDelta.height));
-                    constrainedRequest = req;
-                    // Handle F3 for regions in region to allow manual layout.
-                    // Allow manual resize of the region container to reduce
-                    // empty space due to VSM specified size or recursive
-                    // regions.
-                    constrainedRequest = handleEmptySpaceInContainerOnLastRegionResize(request, constrainedRequest);
-                }
-            } else {
+            if (!isLastRegionPart()) {
                 Option<AbstractDiagramElementContainerEditPart> follo = getFollowingRegion();
                 if (follo.some() && !request.isConstrainedResize()) {
                     Point moveDelta = new Point(sizeDelta.width, sizeDelta.height);
@@ -300,27 +287,31 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
                     req.setMoveDelta(new Point(0, moveDelta.y));
                     constrainedRequest = req;
                 }
-            }
-        } else if (query.isResizeFromRight()) {
-            EditPart regionContainer = getRegionContainerPart();
-            if (!request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer) {
-                // resize regioncontainer.
+            } else if (allowedRegionContainerPropagation) {
+                // resize regioncontainer from last region part resize.
                 req.setEditParts(regionContainer);
                 req.setResizeDirection(request.getResizeDirection());
-                req.setSizeDelta(new Dimension(sizeDelta.width, 0));
+                req.setSizeDelta(new Dimension(0, sizeDelta.height));
                 constrainedRequest = req;
+                // Handle F3 for regions in region to allow manual layout.
+                // Allow manual resize of the region container to reduce
+                // empty space due to VSM specified size or recursive
+                // regions.
+                constrainedRequest = handleEmptySpaceInContainerOnLastRegionResize(request, constrainedRequest);
             }
-        } else if (query.isResizeFromLeft()) {
-            EditPart regionContainer = getRegionContainerPart();
-            if (!request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer) {
-                // resize regioncontainer.
-                req.setEditParts(regionContainer);
-                req.setResizeDirection(request.getResizeDirection());
-                req.setSizeDelta(new Dimension(sizeDelta.width, 0));
-                req.setMoveDelta(new Point(-sizeDelta.width, 0));
-                constrainedRequest = req;
-            }
-
+        } else if (query.isResizeFromRight() && allowedRegionContainerPropagation) {
+            // resize regioncontainer.
+            req.setEditParts(regionContainer);
+            req.setResizeDirection(request.getResizeDirection());
+            req.setSizeDelta(new Dimension(sizeDelta.width, 0));
+            constrainedRequest = req;
+        } else if (query.isResizeFromLeft() && allowedRegionContainerPropagation) {
+            // resize regioncontainer.
+            req.setEditParts(regionContainer);
+            req.setResizeDirection(request.getResizeDirection());
+            req.setSizeDelta(new Dimension(sizeDelta.width, 0));
+            req.setMoveDelta(new Point(-sizeDelta.width, 0));
+            constrainedRequest = req;
         }
         return constrainedRequest;
     }
@@ -343,22 +334,13 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         return result;
     }
 
-    private ChangeBoundsRequest getHStackConstrainedSiblingRequest(ChangeBoundsRequest request, RequestQuery query, Dimension sizeDelta) {
+    private ChangeBoundsRequest getHStackConstrainedSiblingRequest(ChangeBoundsRequest request, RequestQuery query, Dimension sizeDelta, boolean regionContainerPropagationAllowed,
+            EditPart regionContainer) {
         ChangeBoundsRequest constrainedRequest = null;
         ChangeBoundsRequest req = initSiblingRequest(request);
 
         if (query.isResizeFromLeft()) {
-            EditPart regionContainer = getRegionContainerPart();
-            if (isFirstRegionPart()) {
-                if (!request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer) {
-                    // resize regioncontainer.
-                    req.setEditParts(regionContainer);
-                    req.setResizeDirection(request.getResizeDirection());
-                    req.setSizeDelta(new Dimension(sizeDelta.width, 0));
-                    req.setMoveDelta(new Point(-sizeDelta.width, 0));
-                    constrainedRequest = req;
-                }
-            } else {
+            if (!isFirstRegionPart()) {
                 Option<AbstractDiagramElementContainerEditPart> pred = getPrecedingRegion();
                 if (pred.some() && !request.isConstrainedResize()) {
                     req.setEditParts(pred.get());
@@ -366,23 +348,16 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
                     req.setSizeDelta(new Dimension(sizeDelta.getNegated().width, 0));
                     constrainedRequest = req;
                 }
+            } else if (regionContainerPropagationAllowed) {
+                // resize regioncontainer from first region part resize.
+                req.setEditParts(regionContainer);
+                req.setResizeDirection(request.getResizeDirection());
+                req.setSizeDelta(new Dimension(sizeDelta.width, 0));
+                req.setMoveDelta(new Point(-sizeDelta.width, 0));
+                constrainedRequest = req;
             }
         } else if (query.isResizeFromRight()) {
-            if (isLastRegionPart()) {
-                EditPart regionContainer = getRegionContainerPart();
-                if (!request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer) {
-                    // resize regioncontainer.
-                    req.setEditParts(regionContainer);
-                    req.setResizeDirection(request.getResizeDirection());
-                    req.setSizeDelta(new Dimension(sizeDelta.width, 0));
-                    constrainedRequest = req;
-                    // Handle F3 for regions in region to allow manual layout.
-                    // Allow manual resize of the region container to reduce
-                    // empty space due to VSM specified size or recursive
-                    // regions.
-                    constrainedRequest = handleEmptySpaceInContainerOnLastRegionResize(request, constrainedRequest);
-                }
-            } else {
+            if (!isLastRegionPart()) {
                 Option<AbstractDiagramElementContainerEditPart> follo = getFollowingRegion();
                 if (follo.some() && !request.isConstrainedResize()) {
                     req.setEditParts(follo.get());
@@ -391,25 +366,31 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
                     req.setMoveDelta(new Point(sizeDelta.width, 0));
                     constrainedRequest = req;
                 }
-            }
-        } else if (query.isResizeFromBottom()) {
-            EditPart regionContainer = getRegionContainerPart();
-            if (!request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer) {
-                // resize regioncontainer.
+            } else if (regionContainerPropagationAllowed) {
+                // resize regioncontainer from last region part resize.
                 req.setEditParts(regionContainer);
                 req.setResizeDirection(request.getResizeDirection());
-                req.setSizeDelta(new Dimension(0, sizeDelta.height));
+                req.setSizeDelta(new Dimension(sizeDelta.width, 0));
                 constrainedRequest = req;
+                // Handle F3 for regions in region to allow manual layout.
+                // Allow manual resize of the region container to reduce
+                // empty space due to VSM specified size or recursive
+                // regions.
+                constrainedRequest = handleEmptySpaceInContainerOnLastRegionResize(request, constrainedRequest);
             }
-        } else if (query.isResizeFromTop()) {
-            EditPart regionContainer = getRegionContainerPart();
-            if (!request.isConstrainedResize() || request.getExtendedData().get(RegionContainerResizableEditPolicy.REGION_RESIZE_PROPAGATOR) != regionContainer) {
-                // resize regioncontainer.
-                req.setEditParts(regionContainer);
-                req.setSizeDelta(new Dimension(0, sizeDelta.height));
-                req.setMoveDelta(new Point(0, -sizeDelta.height));
-                constrainedRequest = req;
-            }
+        } else if (query.isResizeFromBottom() && regionContainerPropagationAllowed) {
+            // resize regioncontainer.
+            req.setEditParts(regionContainer);
+            req.setResizeDirection(request.getResizeDirection());
+            req.setSizeDelta(new Dimension(0, sizeDelta.height));
+            constrainedRequest = req;
+        } else if (query.isResizeFromTop() && regionContainerPropagationAllowed) {
+            // resize regioncontainer from first region part resize.
+            req.setEditParts(regionContainer);
+            req.setResizeDirection(request.getResizeDirection());
+            req.setSizeDelta(new Dimension(0, sizeDelta.height));
+            req.setMoveDelta(new Point(0, -sizeDelta.height));
+            constrainedRequest = req;
         }
         return constrainedRequest;
     }
@@ -434,7 +415,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     private Option<AbstractDiagramElementContainerEditPart> getPrecedingRegion() {
-        List<AbstractDiagramElementContainerEditPart> siblingRegions = getSiblingRegionPart();
+        List<AbstractDiagramElementContainerEditPart> siblingRegions = getSiblingRegionParts();
         int precedingIndex = siblingRegions.indexOf(getHost()) - 1;
         if (precedingIndex >= 0 && siblingRegions.size() >= precedingIndex) {
             return Options.newSome(siblingRegions.get(precedingIndex));
@@ -443,7 +424,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     private Option<AbstractDiagramElementContainerEditPart> getFollowingRegion() {
-        List<AbstractDiagramElementContainerEditPart> siblingRegions = getSiblingRegionPart();
+        List<AbstractDiagramElementContainerEditPart> siblingRegions = getSiblingRegionParts();
         int followingIndex = siblingRegions.indexOf(getHost()) + 1;
         if (followingIndex > 0 && siblingRegions.size() > followingIndex) {
             return Options.newSome(siblingRegions.get(followingIndex));
@@ -471,7 +452,7 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         return direction;
     }
 
-    private List<AbstractDiagramElementContainerEditPart> getSiblingRegionPart() {
+    private List<AbstractDiagramElementContainerEditPart> getSiblingRegionParts() {
         EditPart parent = getHost() != null ? getHost().getParent() : null;
         if (parent instanceof AbstractDNodeContainerCompartmentEditPart) {
             return Lists.newArrayList(Iterables.filter(parent.getChildren(), AbstractDiagramElementContainerEditPart.class));
@@ -480,12 +461,12 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     private boolean isFirstRegionPart() {
-        Iterable<AbstractDiagramElementContainerEditPart> regionParts = getSiblingRegionPart();
+        Iterable<AbstractDiagramElementContainerEditPart> regionParts = getSiblingRegionParts();
         return !Iterables.isEmpty(regionParts) && Iterables.getFirst(regionParts, null) == getHost();
     }
 
     private boolean isLastRegionPart() {
-        Iterable<AbstractDiagramElementContainerEditPart> regionParts = getSiblingRegionPart();
+        Iterable<AbstractDiagramElementContainerEditPart> regionParts = getSiblingRegionParts();
         return !Iterables.isEmpty(regionParts) && Iterables.getLast(regionParts, null) == getHost();
 
     }
