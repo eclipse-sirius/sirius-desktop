@@ -10,21 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
-import java.awt.image.BufferedImage;
-import java.util.Collection;
-
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.ImageCache;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
-import org.w3c.dom.Document;
-
-import com.google.common.collect.Lists;
 
 /**
  * A {@link AbstractCachedSVGFigure} is a {@link SVGFigure} corresponding to a
@@ -44,13 +36,23 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
         modifier.pushState();
 
         Rectangle r = getClientArea();
-        Image image = getCachedImage(getKey() + getContextKey(graphics), r, graphics);
+        Image image = getImage(getKey() + getContextKey(graphics), r, graphics);
         // Draw the image
         if (image != null) {
             graphics.drawImage(image, r.x, r.y);
         }
         modifier.popState();
     }
+
+    /**
+     * Compute a key for this figure. This key is used to store in cache the
+     * corresponding {@link org.eclipse.swt.graphics.Image}.
+     *
+     * The key must begin by the document key.
+     *
+     * @return The key corresponding to this BundleImageFigure.
+     */
+    protected abstract String getKey();
 
     private String getContextKey(Graphics graphics) {
         // CHECKSTYLE:OFF
@@ -84,35 +86,16 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
      *            the graphical context
      * @return an image store in a cache
      */
-    protected Image getCachedImage(final String key, Rectangle clientArea, Graphics graphics) {
+    protected Image getImage(String key, Rectangle clientArea, Graphics graphics) {
         Image result = AbstractCachedSVGFigure.CACHE.getIfPresent(key);
         if (result == null) {
-            /* Create the image if it does not exist */
-            Document document = getDocument();
-            if (document == null) {
-                return null;
-            }
-            getTranscoder().setCanvasSize(clientArea.width, clientArea.height);
-            updateRenderingHints(graphics);
-            BufferedImage awtImage = getTranscoder().getBufferedImage();
-            if (awtImage != null) {
-                result = SVGUtils.toSWT(Display.getCurrent(), awtImage);
+            result = render(clientArea, graphics);
+            if (result != null) {
                 AbstractCachedSVGFigure.CACHE.put(key, result);
             }
         }
-        // Get the image from the cache
         return result;
     }
-
-    /**
-     * Compute a key for this figure. This key is used to store in cache the
-     * corresponding {@link org.eclipse.swt.graphics.Image}.
-     *
-     * The key must begin by the document key.
-     *
-     * @return The key corresponding to this BundleImageFigure.
-     */
-    protected abstract String getKey();
 
     /**
      * Remove all entries whose key begins with the given key. Remove from the
@@ -125,20 +108,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
      */
     protected static boolean doRemoveFromCache(final String documentKey) {
         if (!StringUtil.isEmpty(documentKey)) {
-            boolean remove = false;
-            Collection<String> keyToRemove = Lists.newArrayList();
-            for (String key : AbstractCachedSVGFigure.CACHE.keySet()) {
-                if (key.startsWith(documentKey)) {
-                    keyToRemove.add(key);
-                }
-            }
-
-            for (String toRemove : keyToRemove) {
-                AbstractCachedSVGFigure.CACHE.invalidate(toRemove);
-                remove = true;
-            }
-            boolean removedFromDocumentsMap = SVGFigure.documentsMap.remove(documentKey) != null;
-            return remove || removedFromDocumentsMap;
+            return CACHE.doRemoveFromCache(documentKey) || SVGFigure.documentsMap.remove(documentKey) != null;
         }
         return false;
     }

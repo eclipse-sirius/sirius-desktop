@@ -10,12 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.figure.svg;
 
+import java.util.Collection;
 import java.util.Set;
 
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.collect.Lists;
 
 /**
  * Cache of pre-rendered images.
@@ -69,5 +72,33 @@ public class ImageCache {
      */
     public void invalidate(String key) {
         images.invalidate(key);
+    }
+    
+    /**
+     * Remove all entries whose key begins with the given key. Remove from the
+     * document map, the entries with the given keys to force to re-read the
+     * file.
+     *
+     * @param documentKey
+     *            the document key.
+     * @return true of something was removed.
+     */
+    public boolean doRemoveFromCache(final String documentKey) {
+        if (!StringUtil.isEmpty(documentKey)) {
+            boolean remove = false;
+            Collection<String> keyToRemove = Lists.newArrayList();
+            for (String key : keySet()) {
+                if (key.startsWith(documentKey)) {
+                    keyToRemove.add(key);
+                }
+            }
+
+            for (String toRemove : keyToRemove) {
+                invalidate(toRemove);
+                remove = true;
+            }
+            return remove;
+        }
+        return false;
     }
 }

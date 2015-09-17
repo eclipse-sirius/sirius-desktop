@@ -29,7 +29,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
@@ -57,7 +56,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     private SimpleImageTranscoder transcoder;
 
     protected static WeakHashMap<String, Document> documentsMap = new WeakHashMap<String, Document>();
-    
+
     public SVGFigure() {
         this.setLayoutManager(new XYLayout());
     }
@@ -212,68 +211,29 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         return uri;
     }
 
-    @Override
-    protected void paintFigure(Graphics graphics) {
-        super.paintFigure(graphics);
-        Document document = getDocument();
-        if (document == null) {
-            return;
-        }
-        Image image = null;
-        try {
-            Rectangle r = getClientArea();
-            transcoder.setCanvasSize(r.width, r.height);
+    protected Image render(Rectangle clientArea, Graphics graphics) {
+        Image result = null;
+        if (getDocument() != null) {
+            getTranscoder().setCanvasSize(clientArea.width, clientArea.height);
             updateRenderingHints(graphics);
-            BufferedImage awtImage = transcoder.getBufferedImage();
+            BufferedImage awtImage = getTranscoder().getBufferedImage();
             if (awtImage != null) {
-                image = SVGUtils.toSWT(Display.getCurrent(), awtImage);
-                graphics.drawImage(image, r.x, r.y);
-            }
-        } finally {
-            if (image != null) {
-                image.dispose();
+                result = SVGUtils.toSWT(Display.getCurrent(), awtImage);
             }
         }
+        return result;
     }
 
     protected void updateRenderingHints(Graphics graphics) {
-        {
-            int aa = SWT.DEFAULT;
-            try {
-                aa = graphics.getAntialias();
-            } catch (Exception e) {
-                // not supported
-            }
-            Object aaHint;
-            if (aa == SWT.ON) {
-                aaHint = RenderingHints.VALUE_ANTIALIAS_ON;
-            } else if (aa == SWT.OFF) {
-                aaHint = RenderingHints.VALUE_ANTIALIAS_OFF;
-            } else {
-                aaHint = RenderingHints.VALUE_ANTIALIAS_DEFAULT;
-            }
-            if (transcoder != null && transcoder.getRenderingHints().get(RenderingHints.KEY_ANTIALIASING) != aaHint) {
-                transcoder.getRenderingHints().put(RenderingHints.KEY_ANTIALIASING, aaHint);
+        if (transcoder != null) {
+            Object antiAliasHint = SVGUtils.getAntialiasHint(graphics);
+            if (transcoder.getRenderingHints().get(RenderingHints.KEY_ANTIALIASING) != antiAliasHint) {
+                transcoder.getRenderingHints().put(RenderingHints.KEY_ANTIALIASING, antiAliasHint);
                 transcoder.contentChanged();
             }
-        }
-        {
-            int aa = SWT.DEFAULT;
-            try {
-                aa = graphics.getTextAntialias();
-            } catch (Exception e) {
-                // not supported
-            }
-            Object aaHint;
-            if (aa == SWT.ON) {
-                aaHint = RenderingHints.VALUE_TEXT_ANTIALIAS_ON;
-            } else if (aa == SWT.OFF) {
-                aaHint = RenderingHints.VALUE_TEXT_ANTIALIAS_OFF;
-            } else {
-                aaHint = RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT;
-            }
-            if (transcoder != null && transcoder.getRenderingHints().get(RenderingHints.KEY_TEXT_ANTIALIASING) != aaHint) {
-                transcoder.getRenderingHints().put(RenderingHints.KEY_TEXT_ANTIALIASING, aaHint);
+            Object textAntiAliasHint = SVGUtils.getTextAntialiasHint(graphics);
+            if (transcoder.getRenderingHints().get(RenderingHints.KEY_TEXT_ANTIALIASING) != textAntiAliasHint) {
+                transcoder.getRenderingHints().put(RenderingHints.KEY_TEXT_ANTIALIASING, textAntiAliasHint);
                 transcoder.contentChanged();
             }
         }

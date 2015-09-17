@@ -12,9 +12,12 @@
  */
 package org.eclipse.sirius.diagram.ui.tools.internal.figure.svg;
 
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
+import org.eclipse.draw2d.Graphics;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
@@ -58,6 +61,42 @@ public class SVGUtils {
             }
         }
         return new org.eclipse.swt.graphics.Image(device, swtImageData);
+    }
+
+    public static Object getAntialiasHint(Graphics graphics) {
+        int aa = SWT.DEFAULT;
+        try {
+            aa = graphics.getAntialias();
+        } catch (Exception e) {
+            // not supported
+        }
+        Object aaHint;
+        if (aa == SWT.ON) {
+            aaHint = RenderingHints.VALUE_ANTIALIAS_ON;
+        } else if (aa == SWT.OFF) {
+            aaHint = RenderingHints.VALUE_ANTIALIAS_OFF;
+        } else {
+            aaHint = RenderingHints.VALUE_ANTIALIAS_DEFAULT;
+        }
+        return aaHint;
+    }
+
+    public static Object getTextAntialiasHint(Graphics graphics) {
+        int aa = SWT.DEFAULT;
+        try {
+            aa = graphics.getTextAntialias();
+        } catch (Exception e) {
+            // not supported
+        }
+        Object aaHint;
+        if (aa == SWT.ON) {
+            aaHint = RenderingHints.VALUE_TEXT_ANTIALIAS_ON;
+        } else if (aa == SWT.OFF) {
+            aaHint = RenderingHints.VALUE_TEXT_ANTIALIAS_OFF;
+        } else {
+            aaHint = RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT;
+        }
+        return aaHint;
     }
 }
 // CHECKSTYLE:ON
