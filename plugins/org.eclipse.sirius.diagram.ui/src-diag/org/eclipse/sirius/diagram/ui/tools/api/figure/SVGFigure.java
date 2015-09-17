@@ -13,15 +13,9 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import java.awt.RenderingHints;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.WeakHashMap;
-
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
 import org.apache.batik.util.XMLResourceDescriptor;
@@ -30,14 +24,12 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.InferringNamespaceContext;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 
 //CHECKSTYLE:OFF
 public class SVGFigure extends Figure {
@@ -93,7 +85,6 @@ public class SVGFigure extends Figure {
     private Document createDocument() {
         String parser = XMLResourceDescriptor.getXMLParserClassName();
         SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(parser);
-
         return createDocument(factory, false);
     }
 
@@ -135,35 +126,6 @@ public class SVGFigure extends Figure {
      */
     protected String getDocumentKey() {
         return uri;
-    }
-
-    /**
-     * Returns true if document was loaded without errors; tries to load
-     * document if needed.
-     */
-    public final boolean checkContentAvailable() {
-        return getDocument() != null;
-    }
-
-    private XPath getXPath() {
-        XPath xpath = XPathFactory.newInstance().newXPath();
-        xpath.setNamespaceContext(new InferringNamespaceContext(getDocument().getDocumentElement()));
-        return xpath;
-    }
-
-    /**
-     * Executes XPath query over the SVG document.
-     */
-    protected final NodeList getNodes(String query) {
-        Document document = getDocument();
-        if (document != null) {
-            try {
-                return (NodeList) getXPath().evaluate(query, document, XPathConstants.NODESET);
-            } catch (XPathExpressionException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return null;
     }
 
     @Override
@@ -231,37 +193,6 @@ public class SVGFigure extends Figure {
                 transcoder.contentChanged();
             }
         }
-    }
-
-    public final Rectangle2D getAreaOfInterest() {
-        getDocument();
-        return transcoder == null ? null : transcoder.getCanvasAreaOfInterest();
-    }
-
-    public void setAreaOfInterest(Rectangle2D value) {
-        getDocument();
-        if (transcoder != null) {
-            transcoder.setCanvasAreaOfInterest(value);
-        }
-        repaint();
-    }
-
-    public final boolean isSpecifyCanvasWidth() {
-        return specifyCanvasWidth;
-    }
-
-    public void setSpecifyCanvasWidth(boolean specifyCanvasWidth) {
-        this.specifyCanvasWidth = specifyCanvasWidth;
-        contentChanged();
-    }
-
-    public final boolean isSpecifyCanvasHeight() {
-        return specifyCanvasHeight;
-    }
-
-    public void setSpecifyCanvasHeight(boolean specifyCanvasHeight) {
-        this.specifyCanvasHeight = specifyCanvasHeight;
-        contentChanged();
     }
 
     /**
