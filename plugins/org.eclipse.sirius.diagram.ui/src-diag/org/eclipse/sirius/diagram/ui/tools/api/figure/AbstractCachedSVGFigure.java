@@ -21,6 +21,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.ImageCache;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -141,7 +142,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
             updateRenderingHints(graphics);
             BufferedImage awtImage = getTranscoder().getBufferedImage();
             if (awtImage != null) {
-                result = toSWT(Display.getCurrent(), awtImage);
+                result = SVGUtils.toSWT(Display.getCurrent(), awtImage);
                 AbstractCachedSVGFigure.CACHE.put(key, result);
             }
         }
