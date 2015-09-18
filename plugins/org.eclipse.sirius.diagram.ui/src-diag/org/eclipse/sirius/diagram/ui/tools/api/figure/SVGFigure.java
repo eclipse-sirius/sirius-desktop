@@ -104,9 +104,11 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     }
 
     private static final ImageCache CACHE = new ImageCache();
-    
+
     private static final boolean CACHE_ENABLED = true;
-    
+
+    private static final boolean CACHE_SCALED_IMAGES = true;
+
     /**
      * The uri of the image to display when the file has not been found.
      */
@@ -292,7 +294,10 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         result.append(SVGFigure.SEPARATOR);
         result.append(aaText);
         result.append(SVGFigure.SEPARATOR);
-        Rectangle r = getClientArea();
+        Rectangle r = getClientArea().getCopy();
+        if (CACHE_SCALED_IMAGES && graphics != null) {
+            r.performScale(graphics.getAbsoluteScale());
+        }
         result.append(r.width);
         result.append(SVGFigure.SEPARATOR);
         result.append(r.height);
@@ -304,10 +309,19 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     protected void paintFigure(Graphics graphics) {
         TransparentFigureGraphicsModifier modifier = new TransparentFigureGraphicsModifier(this, graphics);
         modifier.pushState();
-        Rectangle r = getClientArea();
-        Image image = getImage(r, graphics);
-        if (image != null) {
-            graphics.drawImage(image, r.x, r.y);
+        Rectangle svgArea = getClientArea();
+        if (CACHE_SCALED_IMAGES) {
+            Rectangle scaledArea = new Rectangle(svgArea);
+            scaledArea.performScale(graphics.getAbsoluteScale());
+            Image image = getImage(svgArea, graphics);
+            if (image != null) {
+                graphics.drawImage(image, 0, 0, scaledArea.width, scaledArea.height, svgArea.x, svgArea.y, svgArea.width, svgArea.height);
+            }
+        } else {
+            Image image = getImage(svgArea, graphics);
+            if (image != null) {
+                graphics.drawImage(image, svgArea.x, svgArea.y);
+            }
         }
         modifier.popState();
     }
@@ -332,7 +346,13 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     protected static Image render(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
         Image result = null;
         if (fig.getDocument() != null) {
-            fig.getTranscoder().setCanvasSize(clientArea.width, clientArea.height);
+            if (CACHE_SCALED_IMAGES && graphics != null) {
+                Rectangle scaledArea = new Rectangle(clientArea);
+                scaledArea.performScale(graphics.getAbsoluteScale());
+                fig.getTranscoder().setCanvasSize(scaledArea.width, scaledArea.height);
+            } else {
+                fig.getTranscoder().setCanvasSize(clientArea.width, clientArea.height);
+            }
             fig.getTranscoder().updateRenderingHints(graphics);
             BufferedImage awtImage = fig.getTranscoder().getBufferedImage();
             if (awtImage != null) {
@@ -341,7 +361,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         }
         return result;
     }
-    
+
     /**
      * Remove all entries whose key begins with the given key. Remove from the
      * document map, the entries with the given keys to force to re-read the
