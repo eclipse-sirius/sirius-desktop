@@ -102,14 +102,21 @@
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-info">Modified</span> You now really  have the capability to set the 
-				<code>BorderSizeComputationExpression</code> as 0 for style of 
-				<code>ContainerMapping</code>. Before Sirius 3.1.0, a size of 0 was interpreted as 1 at runtime. For compatibility reason, all existing 
-				<code>BorderSizeComputationExpression</code> equals to 0 for style of 
-				<code>ContainerMapping</code> are automatically set to 1 (ditto for results of this expression in representations file for container elements). For 
-				<code>ContainerMapping</code>, the default value of 
-				<code>BorderSizeComputationExpression</code> for new style is now 1, except for 
-				<em>Worskpace Image</em> where the value is 0.
+			<li><span class="label label-info">Modified</span> The 
+				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
+				<code>ePackageName::eClassName</code>). The improvements realized can be viewed by clicking on the image below (click to zoom).
+			</li>
+		</ul>
+		<p>
+			<a href="images/improvedsiriusinterpreter.png">
+				<img border="0" src="images/improvedsiriusinterpreter_thumbnail.png"/>
+			</a>
+		</p>
+		<ul>
+			<li><span class="label label-info">Modified</span> Related to the previous point, the projects created by the 
+				<em>Viewpoint Specification Project</em> wizard are now configured to use AQL by default (instead of Acceleo 3/MTL before). They depend on 
+				<code>org.eclipse.sirius.common.acceleo.aql</code> instead of 
+				<code>org.eclipse.sirius.common.acceleo.mtl</code>, and do not have the Acceleo nature anymore (it is not needed by AQL). If you want to use another language in your queries, make sure you set the appropriate dependencies so that the Sirius support for that language will be present at runtime to interpret the queries.
 			</li>
 			<li><span class="label label-info">Modified</span> The support for containers with vertical or horizontal 
 				<em>compartments</em> on diagrams was introduced in Sirius 3.0.0 as an experimental feature. Several improvements and corrections have been done around the behaviors of this feature which is no longer considered experimental. Validation rules and tooltips in the VSM editor are here to help the specifier create a consistent mapping structure.
@@ -127,17 +134,15 @@
 				<em>Horizontal Stack</em>. It allows to define complex stacks of 
 				<em>compartments</em> mixing both stack directions. While working reliably, this support is marked experimental in Sirius 3.1.0 as there are still some behaviors which do not behave as expected. If you make use of this feature, be aware that some details may still change in future releases, including 3.1.x maintenance releases.
 			</li>
-			<li><span class="label label-info">Modified</span> The 
-				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
-				<code>ePackageName::eClassName</code>). The improvements realized can be viewed by clicking on the image below (click to zoom).
+			<li><span class="label label-info">Modified</span> You now really  have the capability to set the 
+				<code>BorderSizeComputationExpression</code> as 0 for style of 
+				<code>ContainerMapping</code>. Before Sirius 3.1.0, a size of 0 was interpreted as 1 at runtime. For compatibility reason, all existing 
+				<code>BorderSizeComputationExpression</code> equals to 0 for style of 
+				<code>ContainerMapping</code> are automatically set to 1 (ditto for results of this expression in representations file for container elements). For 
+				<code>ContainerMapping</code>, the default value of 
+				<code>BorderSizeComputationExpression</code> for new style is now 1, except for 
+				<em>Worskpace Image</em> where the value is 0.
 			</li>
-		</ul>
-		<p>
-			<a href="images/improvedsiriusinterpreter.png">
-				<img border="0" src="images/improvedsiriusinterpreter_thumbnail.png"/>
-			</a>
-		</p>
-		<ul>
 			<li><span class="label label-info">Modified</span> The delete command availability computation has been changed. In case of a delete tool, the availability is now computed considering first the precondition of the tool and then the delete authorisation (using 
 				<code>IPermissionAuthority</code>) of the potential to delete objects. This is the reverse order of what was done before, and can have performance impacts if the precondition is slow. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.
 			</li>

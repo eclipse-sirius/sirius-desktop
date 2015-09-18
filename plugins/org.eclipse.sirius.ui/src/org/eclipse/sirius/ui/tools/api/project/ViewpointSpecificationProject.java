@@ -17,17 +17,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.lang.model.SourceVersion;
 
-import org.eclipse.core.commands.Command;
-import org.eclipse.core.commands.ParameterizedCommand;
-import org.eclipse.core.commands.common.CommandException;
-import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -55,7 +50,6 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -67,8 +61,6 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-import org.eclipse.ui.commands.ICommandService;
-import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
@@ -352,33 +344,6 @@ public final class ViewpointSpecificationProject {
         ViewpointSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, "plugin.xml", "resources/plugin.xml", replacements, monitor); //$NON-NLS-1$ //$NON-NLS-2$ $NON-NLS-2$
-
-        addAcceleoNature(prj);
-    }
-
-    private static void addAcceleoNature(IProject projet) {
-        ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
-        IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
-        Command addAcceleoNatureCommand = commandService.getCommand("org.eclipse.sirius.common.acceleo.mtl.ide.internal.convert"); //$NON-NLS-1$
-
-        // If the acceleo interpreter is not present, do not configure.
-        // the acceleo conversion command is not API yet, so, it
-        // is declared by the org.eclipse.sirius.common.acceleo.mtl.ide plugin,
-        // to
-        // avoid dependencies from viewpoint.ui to Acceleo.
-        if (addAcceleoNatureCommand != null && addAcceleoNatureCommand.isDefined()) {
-            // Force org.eclipse.sirius.common.acceleo.mtl.ide plugin
-            // inialization.
-            ProposalProviderRegistry.getAllProviders();
-            ParameterizedCommand parmCommand = new ParameterizedCommand(addAcceleoNatureCommand, null);
-            try {
-                EvaluationContext evaluationContext = new EvaluationContext(null, Collections.singletonList(projet));
-                handlerService.executeCommandInContext(parmCommand, null, evaluationContext);
-            } catch (CommandException e) {
-                final IStatus status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, e.getMessage(), e);
-                SiriusEditPlugin.getPlugin().getLog().log(status);
-            }
-        }
     }
 
     /**
