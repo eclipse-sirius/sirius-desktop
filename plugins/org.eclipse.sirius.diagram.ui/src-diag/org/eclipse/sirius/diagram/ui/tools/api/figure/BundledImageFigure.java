@@ -32,7 +32,7 @@ import org.w3c.dom.Element;
  *
  * @author cbrun
  */
-public class BundledImageFigure extends AbstractCachedSVGFigure {
+public class BundledImageFigure extends SVGFigure {
 
     /**
      * The stroke tag in the SVG file.
@@ -476,11 +476,11 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
     protected String getDocumentKey() {
         StringBuffer result = new StringBuffer();
         result.append(super.getDocumentKey());
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(SVGFigure.SEPARATOR);
         result.append(shapeName);
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(SVGFigure.SEPARATOR);
         result.append(mainBorderColor);
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(SVGFigure.SEPARATOR);
         result.append(mainGradientColor);
         result.append(SEPARATOR);
         result.append(mainBorderSize);

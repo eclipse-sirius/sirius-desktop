@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.Collection;
 import java.util.WeakHashMap;
 
 import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
@@ -23,6 +24,7 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -34,8 +36,77 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
 
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.collect.Lists;
+
 //CHECKSTYLE:OFF
 public class SVGFigure extends Figure implements StyledFigure, ITransparentFigure, ImageFigureWithAlpha {
+    /**
+     * Cache of pre-rendered images.
+     */
+    private static class ImageCache {
+        /**
+         * The rendered bitmaps, organized by key..
+         */
+        private final Cache<String, Image> images = CacheBuilder.newBuilder().softValues().build();
+
+        /**
+         * Get the image cached or create new one and cache it.
+         *
+         * @param key
+         *            the key
+         * @param clientArea
+         *            the client area
+         * @param graphics
+         *            the graphical context
+         * @return an image store in a cache
+         */
+        public Image getImage(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
+            String key = fig.getKey(graphics);
+            Image result = images.getIfPresent(key);
+            if (result == null) {
+                result = render(fig, clientArea, graphics);
+                if (result != null) {
+                    images.put(key, result);
+                }
+            }
+            return result;
+        }
+
+        /**
+         * Remove all entries whose key begins with the given key. Remove from
+         * the document map, the entries with the given keys to force to re-read
+         * the file.
+         *
+         * @param documentKey
+         *            the document key.
+         * @return true of something was removed.
+         */
+        public boolean doRemoveFromCache(String documentKey) {
+            if (!StringUtil.isEmpty(documentKey)) {
+                boolean remove = false;
+                Collection<String> keyToRemove = Lists.newArrayList();
+                for (String key : images.asMap().keySet()) {
+                    if (key.startsWith(documentKey)) {
+                        keyToRemove.add(key);
+                    }
+                }
+
+                for (String toRemove : keyToRemove) {
+                    images.invalidate(toRemove);
+                    remove = true;
+                }
+                return remove;
+            }
+            return false;
+        }
+    }
+
+    private static final ImageCache CACHE = new ImageCache();
+    
+    private static final boolean CACHE_ENABLED = true;
+    
     /**
      * The uri of the image to display when the file has not been found.
      */
@@ -216,14 +287,14 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
         StringBuffer result = new StringBuffer();
         result.append(getDocumentKey());
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(SVGFigure.SEPARATOR);
         result.append(getSiriusAlpha());
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(SVGFigure.SEPARATOR);
         result.append(aaText);
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(SVGFigure.SEPARATOR);
         Rectangle r = getClientArea();
         result.append(r.width);
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(SVGFigure.SEPARATOR);
         result.append(r.height);
 
         return result.toString();
@@ -251,7 +322,11 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      * @return an image store in a cache
      */
     protected Image getImage(Rectangle clientArea, Graphics graphics) {
-        return render(this, clientArea, graphics);
+        if (CACHE_ENABLED) {
+            return CACHE.getImage(this, clientArea, graphics);
+        } else {
+            return render(this, clientArea, graphics);
+        }
     }
 
     protected static Image render(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
@@ -266,5 +341,22 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         }
         return result;
     }
+    
+    /**
+     * Remove all entries whose key begins with the given key. Remove from the
+     * document map, the entries with the given keys to force to re-read the
+     * file.
+     *
+     * @param documentKey
+     *            the document key.
+     * @return true of something was removed.
+     */
+    protected static boolean doRemoveFromCache(final String documentKey) {
+        if (!StringUtil.isEmpty(documentKey)) {
+            return CACHE.doRemoveFromCache(documentKey) || SVGFigure.documentsMap.remove(documentKey) != null;
+        }
+        return false;
+    }
+
     // CHECKSTYLE:ON
 }

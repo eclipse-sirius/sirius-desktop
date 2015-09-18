@@ -33,7 +33,7 @@ import org.eclipse.swt.graphics.Image;
  * @author mporhel
  *
  */
-public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements IWorkspaceImageFigure {
+public class SVGWorkspaceImageFigure extends SVGFigure implements IWorkspaceImageFigure {
 
     private double imageAspectRatio = 1.0;
 
@@ -202,7 +202,7 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
     public static Option<String> removeFromCache(String workspacePath) {
         Option<String> imageUri = SVGWorkspaceImageFigure.getImageUri(workspacePath, true);
         if (imageUri.some()) {
-            if (AbstractCachedSVGFigure.doRemoveFromCache(imageUri.get())) {
+            if (SVGFigure.doRemoveFromCache(imageUri.get())) {
                 return imageUri;
             }
         }
