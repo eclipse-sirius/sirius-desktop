@@ -15,7 +15,6 @@ import java.text.MessageFormat;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.XYLayout;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.BundledImageShape;
@@ -146,14 +145,6 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * The actual main gradient color use to draw the SVG figure
      */
     private String mainGradientColor;
-
-    /**
-     * Build a new {@link BundledImageFigure} from an Image instance.
-     *
-     */
-    public BundledImageFigure() {
-        this.setLayoutManager(new XYLayout());
-    }
 
     /**
      * Create the {@link BundledImageFigure} from a {@link BundledImage}

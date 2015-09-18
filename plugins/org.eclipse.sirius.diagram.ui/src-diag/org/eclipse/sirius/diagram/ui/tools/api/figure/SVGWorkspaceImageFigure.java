@@ -60,25 +60,6 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
         return fig;
     }
 
-    /**
-     * Create the {@link SVGWorkspaceImageFigure} from a {@link ContainerStyle}
-     * instance.
-     *
-     * @param containerStyle
-     *            {@link ContainerStyle} specification.
-     * @return new Figure.
-     */
-    public static SVGWorkspaceImageFigure createImageFigure(final ContainerStyle containerStyle) {
-        if (containerStyle instanceof FlatContainerStyle) {
-            FlatContainerStyle style = (FlatContainerStyle) containerStyle;
-            SVGWorkspaceImageFigure fig = new SVGWorkspaceImageFigure();
-            fig.refreshFigure(style);
-            return fig;
-        }
-        // TODO handle other styles..
-        return null;
-    }
-
     @Override
     public void setSize(final int w, final int h) {
         if (keepAspectRatio) {

@@ -74,7 +74,6 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     @Override
     public void setSiriusAlpha(int alpha) {
         this.viewpointAlpha = alpha;
-
     }
 
     @Override
