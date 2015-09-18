@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.ImageCache;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -29,30 +28,6 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
      * Cache to store bitmaps of rendered SVGs.
      */
     private static final ImageCache CACHE = new ImageCache();
-
-    @Override
-    protected void paintFigure(Graphics graphics) {
-        TransparentFigureGraphicsModifier modifier = new TransparentFigureGraphicsModifier(this, graphics);
-        modifier.pushState();
-
-        Rectangle r = getClientArea();
-        Image image = getImage(getKey() + getContextKey(graphics), r, graphics);
-        // Draw the image
-        if (image != null) {
-            graphics.drawImage(image, r.x, r.y);
-        }
-        modifier.popState();
-    }
-
-    /**
-     * Compute a key for this figure. This key is used to store in cache the
-     * corresponding {@link org.eclipse.swt.graphics.Image}.
-     *
-     * The key must begin by the document key.
-     *
-     * @return The key corresponding to this BundleImageFigure.
-     */
-    protected abstract String getKey();
 
     private String getContextKey(Graphics graphics) {
         // CHECKSTYLE:OFF
@@ -78,6 +53,20 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
     /**
      * Get the image cached or create new one and cache it.
      *
+     * @param clientArea
+     *            the client area
+     * @param graphics
+     *            the graphical context
+     * @return an image store in a cache
+     */
+    @Override
+    protected Image getImage(Rectangle clientArea, Graphics graphics) {
+        return getImage(getKey() + getContextKey(graphics), clientArea, graphics);
+    }
+
+    /**
+     * Get the image cached or create new one and cache it.
+     *
      * @param key
      *            the key
      * @param clientArea
@@ -89,7 +78,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
     protected Image getImage(String key, Rectangle clientArea, Graphics graphics) {
         Image result = AbstractCachedSVGFigure.CACHE.getIfPresent(key);
         if (result == null) {
-            result = render(clientArea, graphics);
+            result = render(this, clientArea, graphics);
             if (result != null) {
                 AbstractCachedSVGFigure.CACHE.put(key, result);
             }

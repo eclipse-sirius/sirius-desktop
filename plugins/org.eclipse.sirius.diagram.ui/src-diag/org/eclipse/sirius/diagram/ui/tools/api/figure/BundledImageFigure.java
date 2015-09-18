@@ -482,24 +482,6 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * @return The key corresponding to this BundleImageFigure.
      */
     @Override
-    protected String getKey() {
-        StringBuffer result = new StringBuffer();
-        result.append(getDocumentKey());
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
-        result.append(getSiriusAlpha());
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
-        return result.toString();
-    }
-
-    /**
-     * Compute a key for this BundleImageFigure. This key is used to store in
-     * cache the corresponding {@link org.eclipse.swt.graphics.Image}.
-     *
-     * {@inheritDoc}
-     *
-     * @return The key corresponding to this BundleImageFigure.
-     */
-    @Override
     protected String getDocumentKey() {
         StringBuffer result = new StringBuffer();
         result.append(super.getDocumentKey());

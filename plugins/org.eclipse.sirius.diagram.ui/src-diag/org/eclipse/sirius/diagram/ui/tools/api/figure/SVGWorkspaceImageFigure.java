@@ -194,25 +194,6 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
     }
 
     /**
-     * Compute a key for this {@link SVGWorkspaceImageFigure}. This key is used
-     * to store in cache the corresponding
-     * {@link org.eclipse.swt.graphics.Image}.
-     *
-     * {@inheritDoc}
-     *
-     * @return The key corresponding to this SVGWorkspaceImageFigure.
-     */
-    @Override
-    protected String getKey() {
-        StringBuffer result = new StringBuffer();
-        result.append(getDocumentKey());
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
-        result.append(getSiriusAlpha());
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
-        return result.toString();
-    }
-
-    /**
      * Get an {@link Image} instance. The image will be stored in a cache.
      *
      * @param path

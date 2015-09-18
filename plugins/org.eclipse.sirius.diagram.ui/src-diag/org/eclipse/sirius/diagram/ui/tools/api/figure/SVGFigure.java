@@ -26,6 +26,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.graphics.Image;
@@ -83,30 +84,17 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
     @Override
     public int getImageHeight() {
-        SimpleImageTranscoder transcoder = getTranscoder();
-        if (transcoder != null) {
-            return transcoder.getImageHeight();
-        } else {
-            return 0;
-        }
+        return (transcoder != null) ? transcoder.getImageHeight() : 0;
     }
 
     @Override
     public int getImageWidth() {
-        SimpleImageTranscoder transcoder = getTranscoder();
-        if (transcoder != null) {
-            return transcoder.getImageWidth();
-        }
-        return 0;
+        return (transcoder != null) ? transcoder.getImageWidth() : 0;
     }
 
     @Override
     public int getImageAlphaValue(int x, int y) {
-        SimpleImageTranscoder transcoder = getTranscoder();
-        if (transcoder != null) {
-            return transcoder.getImageAlphaValue(x, y);
-        }
-        return 255;
+        return (transcoder != null) ? transcoder.getImageAlphaValue(x, y) : 255;
     }
 
     public final String getURI() {
@@ -146,7 +134,6 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
             transcoder = new SimpleImageTranscoder(document);
             failedToLoadDocument = false;
         }
-
     }
 
     private Document createDocument() {
@@ -187,34 +174,6 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     }
 
     /**
-     * The key used to store the document.
-     * 
-     * @return the key.
-     */
-    protected String getDocumentKey() {
-        return uri;
-    }
-
-    protected Image render(Rectangle clientArea, Graphics graphics) {
-        Image result = null;
-        if (getDocument() != null) {
-            getTranscoder().setCanvasSize(clientArea.width, clientArea.height);
-            updateRenderingHints(graphics);
-            BufferedImage awtImage = getTranscoder().getBufferedImage();
-            if (awtImage != null) {
-                result = SVGUtils.toSWT(Display.getCurrent(), awtImage);
-            }
-        }
-        return result;
-    }
-
-    protected void updateRenderingHints(Graphics graphics) {
-        if (transcoder != null) {
-            transcoder.updateRenderingHints(graphics);
-        }
-    }
-
-    /**
      * Should be called when SVG document has been changed. It will be
      * re-rendered and figure will be repainted.
      */
@@ -228,6 +187,70 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
     protected SimpleImageTranscoder getTranscoder() {
         return transcoder;
+    }
+
+    /**
+     * The key used to store the document.
+     * 
+     * @return the key.
+     */
+    protected String getDocumentKey() {
+        return uri;
+    }
+
+    /**
+     * Compute a key for this figure. This key is used to store in cache the
+     * corresponding {@link org.eclipse.swt.graphics.Image}.
+     *
+     * The key must begin by the document key.
+     *
+     * @return The key corresponding to this BundleImageFigure.
+     */
+    protected String getKey() {
+        StringBuffer result = new StringBuffer();
+        result.append(getDocumentKey());
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(getSiriusAlpha());
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        return result.toString();
+    }
+
+    @Override
+    protected void paintFigure(Graphics graphics) {
+        TransparentFigureGraphicsModifier modifier = new TransparentFigureGraphicsModifier(this, graphics);
+        modifier.pushState();
+        Rectangle r = getClientArea();
+        Image image = getImage(r, graphics);
+        if (image != null) {
+            graphics.drawImage(image, r.x, r.y);
+        }
+        modifier.popState();
+    }
+
+    /**
+     * Get the image cached or create new one and cache it.
+     *
+     * @param clientArea
+     *            the client area
+     * @param graphics
+     *            the graphical context
+     * @return an image store in a cache
+     */
+    protected Image getImage(Rectangle clientArea, Graphics graphics) {
+        return render(this, clientArea, graphics);
+    }
+
+    protected static Image render(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
+        Image result = null;
+        if (fig.getDocument() != null) {
+            fig.getTranscoder().setCanvasSize(clientArea.width, clientArea.height);
+            fig.getTranscoder().updateRenderingHints(graphics);
+            BufferedImage awtImage = fig.getTranscoder().getBufferedImage();
+            if (awtImage != null) {
+                result = SVGUtils.toSWT(Display.getCurrent(), awtImage);
+            }
+        }
+        return result;
     }
     // CHECKSTYLE:ON
 }
