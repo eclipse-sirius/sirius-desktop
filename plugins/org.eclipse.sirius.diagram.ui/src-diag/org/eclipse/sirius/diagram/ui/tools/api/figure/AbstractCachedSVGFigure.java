@@ -10,11 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
+import java.util.Collection;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.ImageCache;
 import org.eclipse.swt.graphics.Image;
+
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.collect.Lists;
 
 /**
  * A {@link AbstractCachedSVGFigure} is a {@link SVGFigure} corresponding to a
@@ -23,6 +28,67 @@ import org.eclipse.swt.graphics.Image;
  * @author mporhel
  */
 public abstract class AbstractCachedSVGFigure extends SVGFigure {
+    /**
+     * Cache of pre-rendered images.
+     */
+    private static class ImageCache {
+        /**
+         * The rendered bitmaps, organized by key..
+         */
+        private final Cache<String, Image> images = CacheBuilder.newBuilder().softValues().build();
+
+        /**
+         * Get the image cached or create new one and cache it.
+         *
+         * @param key
+         *            the key
+         * @param clientArea
+         *            the client area
+         * @param graphics
+         *            the graphical context
+         * @return an image store in a cache
+         */
+        public Image getImage(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
+            String key = fig.getKey(graphics);
+            Image result = images.getIfPresent(key);
+            if (result == null) {
+                result = render(fig, clientArea, graphics);
+                if (result != null) {
+                    images.put(key, result);
+                }
+            }
+            return result;
+        }
+
+        /**
+         * Remove all entries whose key begins with the given key. Remove from
+         * the document map, the entries with the given keys to force to re-read
+         * the file.
+         *
+         * @param documentKey
+         *            the document key.
+         * @return true of something was removed.
+         */
+        public boolean doRemoveFromCache(String documentKey) {
+            if (!StringUtil.isEmpty(documentKey)) {
+                boolean remove = false;
+                Collection<String> keyToRemove = Lists.newArrayList();
+                for (String key : images.asMap().keySet()) {
+                    if (key.startsWith(documentKey)) {
+                        keyToRemove.add(key);
+                    }
+                }
+
+                for (String toRemove : keyToRemove) {
+                    images.invalidate(toRemove);
+                    remove = true;
+                }
+                return remove;
+            }
+            return false;
+        }
+    }
+
     /**
      * Cache to store bitmaps of rendered SVGs.
      */
@@ -39,30 +105,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
      */
     @Override
     protected Image getImage(Rectangle clientArea, Graphics graphics) {
-        return getImage(this, clientArea, graphics);
-    }
-
-    /**
-     * Get the image cached or create new one and cache it.
-     *
-     * @param key
-     *            the key
-     * @param clientArea
-     *            the client area
-     * @param graphics
-     *            the graphical context
-     * @return an image store in a cache
-     */
-    private static Image getImage(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
-        String key = fig.getKey(graphics);
-        Image result = AbstractCachedSVGFigure.CACHE.getIfPresent(key);
-        if (result == null) {
-            result = render(fig, clientArea, graphics);
-            if (result != null) {
-                AbstractCachedSVGFigure.CACHE.put(key, result);
-            }
-        }
-        return result;
+        return CACHE.getImage(this, clientArea, graphics);
     }
 
     /**
