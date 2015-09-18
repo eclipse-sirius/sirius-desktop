@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
@@ -205,12 +206,26 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      *
      * @return The key corresponding to this BundleImageFigure.
      */
-    protected String getKey() {
+    protected String getKey(Graphics graphics) {
+        int aaText = SWT.DEFAULT;
+        try {
+            aaText = graphics.getTextAntialias();
+        } catch (Exception e) {
+            // not supported
+        }
+
         StringBuffer result = new StringBuffer();
         result.append(getDocumentKey());
         result.append(AbstractCachedSVGFigure.SEPARATOR);
         result.append(getSiriusAlpha());
         result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(aaText);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        Rectangle r = getClientArea();
+        result.append(r.width);
+        result.append(AbstractCachedSVGFigure.SEPARATOR);
+        result.append(r.height);
+
         return result.toString();
     }
 

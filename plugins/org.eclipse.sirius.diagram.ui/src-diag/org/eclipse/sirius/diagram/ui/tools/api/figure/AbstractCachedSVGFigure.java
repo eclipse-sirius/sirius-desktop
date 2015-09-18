@@ -14,7 +14,6 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.ImageCache;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -29,27 +28,6 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
      */
     private static final ImageCache CACHE = new ImageCache();
 
-    private String getContextKey(Graphics graphics) {
-        // CHECKSTYLE:OFF
-        int aaText = SWT.DEFAULT;
-        try {
-            aaText = graphics.getTextAntialias();
-        } catch (Exception e) {
-            // not supported
-        }
-        // CHECKSTYLE:ON
-
-        StringBuilder result = new StringBuilder();
-        result.append(aaText);
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
-        Rectangle r = getClientArea();
-        result.append(r.width);
-        result.append(AbstractCachedSVGFigure.SEPARATOR);
-        result.append(r.height);
-
-        return result.toString();
-    }
-
     /**
      * Get the image cached or create new one and cache it.
      *
@@ -61,7 +39,7 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
      */
     @Override
     protected Image getImage(Rectangle clientArea, Graphics graphics) {
-        return getImage(getKey() + getContextKey(graphics), clientArea, graphics);
+        return getImage(this, clientArea, graphics);
     }
 
     /**
@@ -75,10 +53,11 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure {
      *            the graphical context
      * @return an image store in a cache
      */
-    protected Image getImage(String key, Rectangle clientArea, Graphics graphics) {
+    private static Image getImage(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
+        String key = fig.getKey(graphics);
         Image result = AbstractCachedSVGFigure.CACHE.getIfPresent(key);
         if (result == null) {
-            result = render(this, clientArea, graphics);
+            result = render(fig, clientArea, graphics);
             if (result != null) {
                 AbstractCachedSVGFigure.CACHE.put(key, result);
             }

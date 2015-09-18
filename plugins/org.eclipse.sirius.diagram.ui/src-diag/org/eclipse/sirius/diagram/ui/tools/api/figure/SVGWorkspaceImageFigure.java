@@ -186,7 +186,7 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
         SVGWorkspaceImageFigure fig = new SVGWorkspaceImageFigure();
         fig.updateImageURI(path);
         fig.contentChanged();
-        return fig.getImage(fig.getKey(), new Rectangle(0, 0, -1, -1), null);
+        return fig.getImage(new Rectangle(0, 0, -1, -1), null);
     }
 
     /**
