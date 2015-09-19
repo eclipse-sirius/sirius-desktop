@@ -31,6 +31,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
@@ -399,7 +400,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
         String airdFilename = SESSION_FILE;
         SWTBotUtils.waitAllUiEvents();
         expandedProjectTreeItem.select(airdFilename);
-        SWTBotUtils.clickContextMenu(airdFileTreeItem, SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"));
+        SWTBotUtils.clickContextMenu(airdFileTreeItem, Messages.ExportRepresentationsAction_label);
 
         bot.waitUntil(Conditions.shellIsActive(EXPORT_DIAGRAMS_AS_IMAGE));
 
@@ -435,7 +436,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
         String airdFilename = SESSION_FILE;
         SWTBotUtils.waitAllUiEvents();
         expandedProjectTreeItem.select(airdFilename);
-        SWTBotUtils.clickContextMenu(airdFileTreeItem, SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"));
+        SWTBotUtils.clickContextMenu(airdFileTreeItem, Messages.ExportRepresentationsAction_label);
 
         bot.waitUntil(Conditions.shellIsActive(EXPORT_DIAGRAMS_AS_IMAGE));
 
@@ -466,7 +467,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
         if (localSession == null)
             fail();
         SWTBotTreeItem semanticRoot = localSession.getSemanticResourceNode(new UIResource(designerProject, FILE_DIR, MODEL)).select(rootElementName);
-        SWTBotUtils.clickContextMenu(semanticRoot, SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"));
+        SWTBotUtils.clickContextMenu(semanticRoot, Messages.ExportRepresentationsAction_label);
 
         int nbRepsToExport = DialectManager.INSTANCE.getAllRepresentations(localSession.getOpenedSession()).size();
 

@@ -22,6 +22,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckTreeItemEnabled;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -549,9 +550,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         UIDiagramRepresentation uiDiagramRepresentation = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
                 .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME3, UIDiagramRepresentation.class);
         uiDiagramRepresentation.open();
-        SWTBotUtils.clickContextMenu(uiDiagramRepresentation.getTreeItem(), SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"));
+        SWTBotUtils.clickContextMenu(uiDiagramRepresentation.getTreeItem(), Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive("Export representation as image file"));
+        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
         bot.comboBox(1).setSelection("SVG");
 
         bot.button("OK").click();
@@ -562,9 +563,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     private void exportAsImageFromProjectExplorerView(String imageExtension) throws Exception {
         SWTBotTree tree = bot.viewByTitle("Model Explorer").bot().tree();
         SWTBotTreeItem airdFile = tree.expandNode(designerProject.getName()).select(SESSION_FILE);
-        SWTBotUtils.clickContextMenu(airdFile, SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"));
+        SWTBotUtils.clickContextMenu(airdFile, Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive("Export representations as image file"));
+        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
         bot.comboBox(1).setSelection(imageExtension);
         bot.button("OK").click();
         SWTBotUtils.waitAllUiEvents();
@@ -574,9 +575,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     private void exportBigAsImageFromProjectExplorerView(String imageExtension) throws Exception {
         SWTBotTree tree = bot.viewByTitle("Model Explorer").bot().tree();
         SWTBotTreeItem airdFile = tree.expandNode(designerProject.getName()).select(BIG_SESSION);
-        SWTBotUtils.clickContextMenu(airdFile, SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"));
+        SWTBotUtils.clickContextMenu(airdFile, Messages.ExportRepresentationsAction_label);
         SWTBotUtils.waitAllUiEvents();
-        bot.waitUntil(Conditions.shellIsActive("Export representations as image file"));
+        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
         bot.comboBox(1).setSelection(imageExtension);
         bot.button("OK").click();
         SWTBotUtils.waitAllUiEvents();
@@ -586,9 +587,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         if (localSession == null)
             fail();
         SWTBotTreeItem semanticRoot = localSession.getSemanticResourceNode(new UIResource(designerProject, FILE_DIR, MODEL)).select(rootElementName);
-        SWTBotUtils.clickContextMenu(semanticRoot, SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"));
+        SWTBotUtils.clickContextMenu(semanticRoot, Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive("Export representations as image file"));
+        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
         bot.comboBox(1).setSelection(imageExtension);
         bot.button("OK").click();
     }
@@ -597,9 +598,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         if (localSession == null)
             fail();
         SWTBotTreeItem semanticRoot = localSession.getSemanticResourceNode(new UIResource(designerProject, FILE_DIR, MODEL)).select(rootElementName);
-        SWTBotUtils.clickContextMenu(semanticRoot, SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"));
+        SWTBotUtils.clickContextMenu(semanticRoot, Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive("Export representations as image file"));
+        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
         bot.comboBox(1).setSelection(imageExtension);
         bot.button("OK").click();
     }
@@ -611,7 +612,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
 
         bot.activeEditor().bot().toolbarButtonWithTooltip("Export diagram as image").click();
 
-        bot.waitUntil(Conditions.shellIsActive("Export representation as image file"));
+        bot.waitUntil(Conditions.shellIsActive(Messages.ExportOneRepresentationAsImageDialog_dialogTitle));
         bot.comboBox(1).setSelection(imageExtension);
         bot.button("OK").click();
     }
