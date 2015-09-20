@@ -552,7 +552,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         uiDiagramRepresentation.open();
         SWTBotUtils.clickContextMenu(uiDiagramRepresentation.getTreeItem(), Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
+        bot.waitUntil(Conditions.shellIsActive(Messages.ExportOneRepresentationAsImageDialog_dialogTitle));
         bot.comboBox(1).setSelection("SVG");
 
         bot.button("OK").click();
