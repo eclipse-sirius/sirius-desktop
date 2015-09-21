@@ -34,7 +34,11 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic.IEvaluationResult;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+
+import com.google.common.collect.Sets;
 
 /**
  * This task delegates to the viewpoint's CompoundInterpreter for expression
@@ -85,6 +89,23 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
             vpInterpreter = curSession.getInterpreter();
         } else {
             vpInterpreter = CompoundInterpreter.INSTANCE.getInterpreterForExpression(expression);
+
+            /*
+             * we can't rely on the session initializing the interpreter with
+             * the accessible EPackages as we are in a case where there is no
+             * session. As such we at least make sure the current EPackage of
+             * the current selection is known by the interpreter.
+             */
+            Collection<MetamodelDescriptor> mmDescriptors = Sets.newLinkedHashSet();
+            for (EObject targetEObject : context.getTargetEObjects()) {
+
+                EPackage ePackage = targetEObject.eClass().getEPackage();
+                if (ePackage != null) {
+                    mmDescriptors.add(new EcoreMetamodelDescriptor(ePackage));
+                }
+            }
+            vpInterpreter.activateMetamodels(mmDescriptors);
+
         }
 
         assert vpInterpreter != null;
