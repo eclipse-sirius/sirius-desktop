@@ -38,6 +38,8 @@ import org.w3c.dom.Document;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.RemovalListener;
+import com.google.common.cache.RemovalNotification;
 import com.google.common.collect.Lists;
 
 //CHECKSTYLE:OFF
@@ -49,7 +51,12 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         /**
          * The rendered bitmaps, organized by key..
          */
-        private final Cache<String, Image> images = CacheBuilder.newBuilder().softValues().build();
+        private final Cache<String, Image> images = CacheBuilder.newBuilder().maximumSize(10).removalListener(new RemovalListener<String, Image>() {
+            @Override
+            public void onRemoval(RemovalNotification<String, Image> notification) {
+                notification.getValue().dispose();
+            }
+        }).build();
 
         /**
          * Get the image cached or create new one and cache it.
