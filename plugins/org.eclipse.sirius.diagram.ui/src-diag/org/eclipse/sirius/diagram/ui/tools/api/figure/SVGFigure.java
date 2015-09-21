@@ -12,7 +12,6 @@
  */
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collection;
@@ -29,11 +28,9 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
 
 import com.google.common.cache.Cache;
@@ -73,7 +70,9 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
             String key = fig.getKey(graphics);
             Image result = images.getIfPresent(key);
             if (result == null) {
-                result = render(fig, clientArea, graphics);
+                if (fig.transcoder != null) {
+                    result = fig.transcoder.render(fig, clientArea, graphics, CACHE_SCALED_IMAGES);
+                }
                 if (result != null) {
                     images.put(key, result);
                 }
@@ -345,29 +344,13 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     protected Image getImage(Rectangle clientArea, Graphics graphics) {
         if (CACHE_ENABLED) {
             return CACHE.getImage(this, clientArea, graphics);
+        } else if (transcoder != null) {
+            return transcoder.render(this, clientArea, graphics, CACHE_SCALED_IMAGES);
         } else {
-            return render(this, clientArea, graphics);
+            return null;
         }
     }
 
-    protected static Image render(SVGFigure fig, Rectangle clientArea, Graphics graphics) {
-        Image result = null;
-        if (fig.getDocument() != null) {
-            if (CACHE_SCALED_IMAGES && graphics != null) {
-                Rectangle scaledArea = new Rectangle(clientArea);
-                scaledArea.performScale(graphics.getAbsoluteScale());
-                fig.getTranscoder().setCanvasSize(scaledArea.width, scaledArea.height);
-            } else {
-                fig.getTranscoder().setCanvasSize(clientArea.width, clientArea.height);
-            }
-            fig.getTranscoder().updateRenderingHints(graphics);
-            BufferedImage awtImage = fig.getTranscoder().getBufferedImage();
-            if (awtImage != null) {
-                result = SVGUtils.toSWT(Display.getCurrent(), awtImage);
-            }
-        }
-        return result;
-    }
 
     /**
      * Remove all entries whose key begins with the given key. Remove from the

@@ -25,8 +25,12 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.ImageTranscoder;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGFigure;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
 
 //CHECKSTYLE:OFF
@@ -47,75 +51,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
 
     public final Document getDocument() {
         return document;
-    }
-
-    public void setCanvasSize(int width, int height) {
-        if (this.canvasWidth == width && this.canvasHeight == height) {
-            return;
-        }
-        this.canvasWidth = width;
-        this.canvasHeight = height;
-        contentChanged();
-    }
-
-    public void contentChanged() {
-        bufferedImage = null;
-    }
-
-    private void updateImage() {
-        if (document == null) {
-            return;
-        }
-        try {
-            if (canvasWidth > 0) {
-                addTranscodingHint(ImageTranscoder.KEY_WIDTH, new Float(canvasWidth));
-            } else {
-                removeTranscodingHint(ImageTranscoder.KEY_WIDTH);
-            }
-            if (canvasHeight > 0) {
-                addTranscodingHint(ImageTranscoder.KEY_HEIGHT, new Float(canvasHeight));
-            } else {
-                removeTranscodingHint(ImageTranscoder.KEY_HEIGHT);
-            }
-            removeTranscodingHint(ImageTranscoder.KEY_AOI);
-            transcode(new TranscoderInput(document), new TranscoderOutput());
-        } catch (TranscoderException e) {
-            DiagramPlugin.getDefault().logError(Messages.SimpleImageTranscoder_svgImageTranscodingError, e);
-        }
-    }
-
-    @Override
-    protected void transcode(Document document, String uri, TranscoderOutput output) throws TranscoderException {
-        super.transcode(document, uri, output);
-        int w = (int) (width + 0.5);
-        int h = (int) (height + 0.5);
-        ImageRenderer renderer = createImageRenderer();
-        renderer.updateOffScreen(w, h);
-        // curTxf.translate(0.5, 0.5);
-        renderer.setTransform(curTxf);
-        renderer.setTree(this.root);
-        this.root = null; // We're done with it...
-        try {
-            Shape raoi = new Rectangle2D.Float(0, 0, width, height);
-            // Warning: the renderer's AOI must be in user space
-            renderer.repaint(curTxf.createInverse().createTransformedShape(raoi));
-            bufferedImage = renderer.getOffScreen();
-        } catch (Exception ex) {
-            throw new TranscoderException(ex);
-        }
-    }
-
-    protected ImageRenderer createImageRenderer() {
-        StaticRenderer renderer = new StaticRenderer();
-        renderer.getRenderingHints().add(renderingHints);
-        return renderer;
-    }
-
-    public final BufferedImage getBufferedImage() {
-        if (bufferedImage == null) {
-            updateImage();
-        }
-        return bufferedImage;
     }
 
     public int getImageHeight() {
@@ -157,7 +92,93 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
         }
     }
 
-    public void updateRenderingHints(Graphics graphics) {
+    public void contentChanged() {
+        bufferedImage = null;
+    }
+
+    @Override
+    protected void transcode(Document document, String uri, TranscoderOutput output) throws TranscoderException {
+        super.transcode(document, uri, output);
+        int w = (int) (width + 0.5);
+        int h = (int) (height + 0.5);
+        ImageRenderer renderer = createImageRenderer();
+        renderer.updateOffScreen(w, h);
+        renderer.setTransform(curTxf);
+        renderer.setTree(this.root);
+        this.root = null;
+        try {
+            Shape raoi = new Rectangle2D.Float(0, 0, width, height);
+            renderer.repaint(curTxf.createInverse().createTransformedShape(raoi));
+            bufferedImage = renderer.getOffScreen();
+        } catch (Exception ex) {
+            throw new TranscoderException(ex);
+        }
+    }
+
+    private ImageRenderer createImageRenderer() {
+        StaticRenderer renderer = new StaticRenderer();
+        renderer.getRenderingHints().add(renderingHints);
+        return renderer;
+    }
+
+    public Image render(SVGFigure fig, Rectangle clientArea, Graphics graphics, boolean scaleImage) {
+        Image result = null;
+        if (document != null) {
+            if (scaleImage && graphics != null) {
+                Rectangle scaledArea = new Rectangle(clientArea);
+                scaledArea.performScale(graphics.getAbsoluteScale());
+                setCanvasSize(scaledArea.width, scaledArea.height);
+            } else {
+                setCanvasSize(clientArea.width, clientArea.height);
+            }
+            updateRenderingHints(graphics);
+            BufferedImage awtImage = getBufferedImage();
+            if (awtImage != null) {
+                result = SVGUtils.toSWT(Display.getCurrent(), awtImage);
+            }
+        }
+        return result;
+    }
+
+    private void updateImage() {
+        if (document == null) {
+            return;
+        }
+        try {
+            if (canvasWidth > 0) {
+                addTranscodingHint(ImageTranscoder.KEY_WIDTH, new Float(canvasWidth));
+            } else {
+                removeTranscodingHint(ImageTranscoder.KEY_WIDTH);
+            }
+            if (canvasHeight > 0) {
+                addTranscodingHint(ImageTranscoder.KEY_HEIGHT, new Float(canvasHeight));
+            } else {
+                removeTranscodingHint(ImageTranscoder.KEY_HEIGHT);
+            }
+            removeTranscodingHint(ImageTranscoder.KEY_AOI);
+            transcode(new TranscoderInput(document), new TranscoderOutput());
+        } catch (TranscoderException e) {
+            DiagramPlugin.getDefault().logError(Messages.SimpleImageTranscoder_svgImageTranscodingError, e);
+        }
+    }
+
+    private void setCanvasSize(int width, int height) {
+        if (this.canvasWidth == width && this.canvasHeight == height) {
+            return;
+        }
+        this.canvasWidth = width;
+        this.canvasHeight = height;
+        contentChanged();
+    }
+
+    private BufferedImage getBufferedImage() {
+        if (bufferedImage == null) {
+            updateImage();
+        }
+        return bufferedImage;
+    }
+
+    private void updateRenderingHints(Graphics graphics) {
         Object antiAliasHint = SVGUtils.getAntialiasHint(graphics);
         if (renderingHints.get(RenderingHints.KEY_ANTIALIASING) != antiAliasHint) {
             renderingHints.put(RenderingHints.KEY_ANTIALIASING, antiAliasHint);
