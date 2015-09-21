@@ -38,8 +38,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
 
     private int canvasWidth = -1, canvasHeight = -1;
 
-    private Rectangle2D canvasAOI;
-
     private RenderingHints renderingHints;
 
     public SimpleImageTranscoder(Document document) {
@@ -49,14 +47,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
 
     public final Document getDocument() {
         return document;
-    }
-
-    public final int getCanvasWidth() {
-        return canvasWidth;
-    }
-
-    public final int getCanvasHeight() {
-        return canvasHeight;
     }
 
     public void setCanvasSize(int width, int height) {
@@ -87,11 +77,7 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
             } else {
                 removeTranscodingHint(ImageTranscoder.KEY_HEIGHT);
             }
-            if (canvasAOI != null) {
-                addTranscodingHint(ImageTranscoder.KEY_AOI, canvasAOI);
-            } else {
-                removeTranscodingHint(ImageTranscoder.KEY_AOI);
-            }
+            removeTranscodingHint(ImageTranscoder.KEY_AOI);
             transcode(new TranscoderInput(document), new TranscoderOutput());
         } catch (TranscoderException e) {
             DiagramPlugin.getDefault().logError(Messages.SimpleImageTranscoder_svgImageTranscodingError, e);
@@ -134,7 +120,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
 
     public int getImageHeight() {
         int height = 0;
-        int canvasHeight = getCanvasHeight();
         if (canvasHeight == -1) {
             height = getBufferedImage().getHeight();
         } else {
@@ -145,7 +130,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
 
     public int getImageWidth() {
         int width = 0;
-        int canvasWidth = getCanvasWidth();
         if (canvasWidth == -1) {
             width = getBufferedImage().getWidth();
         } else {
@@ -164,9 +148,6 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
     }
 
     public double getAspectRatio() {
-        int canvasHeight = getCanvasHeight();
-        int canvasWidth = getCanvasWidth();
-
         if (canvasHeight == -1 || canvasWidth == -1) {
             int width = getBufferedImage().getWidth();
             int height = getBufferedImage().getHeight();
