@@ -541,6 +541,10 @@
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.condition.TreeChildrenNumberCondition</code>: New condition to wait that a tree has the expected number of children.
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.saveCurrentEditor(Session)</code>: This new method is preferable to 
+				<code>saveCurrentEditor()</code> because there is a wait condition to ensure that the save is finished.
+			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.condition.CheckBoundsCondition</code>: This condition now also checks the bounds location if the checkWidth or checkHeight (or both) is false.
 			</li>

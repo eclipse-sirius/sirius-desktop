@@ -58,7 +58,7 @@ public class InitializeSessionTest extends AbstractScenarioTestCase {
         openedDiagram.getEditor().click(0, 0);
 
         // Save and close the editor
-        SWTBotCommonHelper.saveCurrentEditor();
+        SWTBotCommonHelper.saveCurrentEditor(localSession.getOpenedSession());
         // SWTBotCommonHelper.closeCurrentEditor();
 
         // Initialization of a bot on the diagram

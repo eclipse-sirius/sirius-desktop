@@ -61,7 +61,7 @@ public class RequestInterpreterTest extends AbstractMMEcoreBasedScenarioTestCase
         openedDiagram.getEditor().click(0, 0);
 
         // Save and close the editor
-        SWTBotCommonHelper.saveCurrentEditor();
+        SWTBotCommonHelper.saveCurrentEditor(localSession.getOpenedSession());
         // SWTBotCommonHelper.closeCurrentEditor();
 
         // Initialization of a bot on the diagram

@@ -19,6 +19,8 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.api.view.SiriusOutlineView;
@@ -143,10 +145,23 @@ public final class SWTBotCommonHelper {
     }
 
     /**
-     * Save the current editor.
+     * Save the current editor. Warning: It is preferable to use
+     * {@link #saveCurrentEditor(Session)} because this method contains a wait
+     * condition to ensure that the save is finished.
      */
     public static void saveCurrentEditor() {
         SWTBotCommonHelper.bot.menu(SWTBotCommonHelper.FILE).menu("Save").click();
+    }
+
+    /**
+     * Save the current editor and wait that save is finished.
+     * 
+     * @param session
+     *            Session to wait the saving for.
+     */
+    public static void saveCurrentEditor(Session session) {
+        SWTBotCommonHelper.bot.menu(SWTBotCommonHelper.FILE).menu("Save").click();
+        SWTBotCommonHelper.bot.waitUntil(new SessionSavedCondition(session));
     }
 
     /**

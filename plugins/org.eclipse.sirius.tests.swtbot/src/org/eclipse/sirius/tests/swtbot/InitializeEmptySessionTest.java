@@ -49,7 +49,7 @@ public class InitializeEmptySessionTest extends AbstractScenarioTestCase {
         openedDiagram.getEditor().click(0, 0);
 
         // Save and close the editor
-        SWTBotCommonHelper.saveCurrentEditor();
+        SWTBotCommonHelper.saveCurrentEditor(localSession.getOpenedSession());
 
         // save the editor
         // SWTBotCommonHelper.saveCurrentEditor();

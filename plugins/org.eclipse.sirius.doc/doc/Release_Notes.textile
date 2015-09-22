@@ -152,6 +152,7 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.TopCondition@: New condition to wait that top of the edit part is on the expected location.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.BendpointLocationCondition@: New condition to wait that a bendpoint is on the expected x or y location.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.TreeChildrenNumberCondition@: New condition to wait that a tree has the expected number of children.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.saveCurrentEditor(Session)@: This new method is preferable to @saveCurrentEditor()@ because there is a wait condition to ensure that the save is finished.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.tests.swtbot.support.api.condition.CheckBoundsCondition@: This condition now also checks the bounds location if the checkWidth or checkHeight (or both) is false.
 
 h4. Changes in @org.eclipse.sirius.synchronizer@
