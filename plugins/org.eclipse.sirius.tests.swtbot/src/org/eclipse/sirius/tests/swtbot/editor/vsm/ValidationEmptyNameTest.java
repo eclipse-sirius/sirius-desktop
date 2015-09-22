@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -21,6 +23,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckTreeItemEnabled;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -41,7 +44,7 @@ public class ValidationEmptyNameTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String DATA_UNIT_DIR = "data/unit/vsmValidation/emptyNameVariable/";
 
-    private static final String errorMessage = "\"Group > emptyName > diagTest > Default > \" is not a valid name, it must be different of empty or null.";
+    private static final String errorMessage = MessageFormat.format(Messages.VSMElementNameValidConstraint_invalidNameErrorMsg, "\"Group > emptyName > diagTest > Default > \"");
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -96,8 +99,10 @@ public class ValidationEmptyNameTest extends AbstractSiriusSwtBotGefTestCase {
     private void checkIconNodeInvalidate(final SWTBotVSMEditor odesignEditor, SWTBotTree tree) {
         final SWTBotTreeItem treeItem = tree.getTreeItem(ODESIGN).getNode("Group").getNode("emptyName").getNode("diagTest").getNode("Default").getNode("Node").select();
         RunnableWithResult<Boolean> runnable = new RunnableWithResult.Impl<Boolean>() {
+            @Override
             public void run() {
                 treeItem.widget.getDisplay().syncExec(new Runnable() {
+                    @Override
                     public void run() {
                         Image treeItemImageDisplay = treeItem.widget.getImage();
                         SiriusEditor treeEditor = (CustomSiriusEditor) odesignEditor.getReference().getEditor(false);

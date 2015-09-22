@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
@@ -31,7 +33,7 @@ public class VSMElementNameValidConstraint extends AbstractCommonToolToAppliedOn
         if (target instanceof IdentifiedElement) {
             String elementName = ((IdentifiedElement) target).getName();
             if (StringUtil.isEmpty(elementName)) {
-                status = ctx.createFailureStatus(getPath(target) + Messages.VSMElementNameValidConstraint_invalidNameErrorMsg);
+                status = ctx.createFailureStatus(MessageFormat.format(Messages.VSMElementNameValidConstraint_invalidNameErrorMsg, getPath(target)));
             }
         }
         if (status == null) {

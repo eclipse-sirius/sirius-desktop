@@ -10,12 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.crossTable;
 
+import java.text.MessageFormat;
+
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckTreeItemEnabled;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -89,7 +92,7 @@ public class CrossTableIntersectionExpressionTest extends AbstractSiriusSwtBotGe
         problemViewBot.setFocus();
         SWTBotTree problemsTree = problemViewBot.bot().tree();
         bot.waitUntil(new CheckTreeItemEnabled(problemsTree.getTreeItem(ERROR_NODE)));
-        String errorMessage = "Feature: columnFinderExpression Unknown service \"myImaginaryService\"";
+        String errorMessage = MessageFormat.format(Messages.MarkerRuntimeLoggerImpl_featureWithMessage, "columnFinderExpression", "Unknown service \"myImaginaryService\"");
         for (SWTBotTreeItem item : problemsTree.getAllItems()) {
             item.expand();
             for (String itemMessage : item.getNodes()) {
