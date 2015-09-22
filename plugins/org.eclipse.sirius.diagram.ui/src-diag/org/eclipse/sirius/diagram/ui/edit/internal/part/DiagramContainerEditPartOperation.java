@@ -146,7 +146,7 @@ public final class DiagramContainerEditPartOperation {
             final ContainerStyle style = ddec.getOwnedStyle();
 
             // Change the primary shape if needed.
-            refreshBackgroundFigure(self, ddec, style);
+            refreshBackgroundFigure(self, style);
 
             final ViewNodeContainerFigureDesc primaryShape = self.getPrimaryShape();
             refreshBorder(self, primaryShape, style);
@@ -156,7 +156,7 @@ public final class DiagramContainerEditPartOperation {
             }
 
             refreshCorners(self, diagElement, primaryShape);
-            DiagramElementEditPartOperation.refreshLabelAlignment(self.getContentPane(), ddec.getOwnedStyle());
+            DiagramElementEditPartOperation.refreshLabelAlignment(self.getContentPane(), style);
         }
 
         if (diagElement != null) {
@@ -178,11 +178,11 @@ public final class DiagramContainerEditPartOperation {
      * This method might refresh the background figure, or change it regarding
      * how the style has evolved.
      */
-    private static void refreshBackgroundFigure(final AbstractDiagramElementContainerEditPart self, final DDiagramElementContainer ddec, final ContainerStyle style) {
+    private static void refreshBackgroundFigure(final AbstractDiagramElementContainerEditPart self, final ContainerStyle style) {
 
         // Update the background figure when the workspace image path changes.
-        if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && ddec.getOwnedStyle() != null) {
-            ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(ddec.getOwnedStyle());
+        if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && style != null) {
+            ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(style);
         }
 
         // Update the background figure when the background gradient style
