@@ -173,22 +173,26 @@ public class TreeLayoutConnectionLineSegEditPolicy extends SiriusConnectionBendp
      */
     @Override
     public void showSourceFeedback(Request request) {
-        if (getLineSegMode() != LineMode.OBLIQUE) {
-            if (REQ_CREATE_BENDPOINT.equals(request.getType())) {
-                showMoveLineSegFeedback((BendpointRequest) request);
-            } else if (REQ_MOVE_BENDPOINT.equals(request.getType())) {
-                showMoveOrthogonalBendpointFeedback2((BendpointRequest) request);
-            }
-
+        MoveEdgeGroupManager nodesGroupMoveManager = new MoveEdgeGroupManager(request);
+        if (nodesGroupMoveManager.isToolActivated()) {
+            nodesGroupMoveManager.showGroupFeedback();
         } else {
-            if (REQ_MOVE_BENDPOINT.equals(request.getType())) {
-                showMoveBendpointFeedback((BendpointRequest) request);
-            } else if (REQ_CREATE_BENDPOINT.equals(request.getType())) {
-                showCreateBendpointFeedback((BendpointRequest) request);
+            nodesGroupMoveManager.eraseGroupFeedback();
+            if (getLineSegMode() != LineMode.OBLIQUE) {
+                if (REQ_CREATE_BENDPOINT.equals(request.getType())) {
+                    showMoveLineSegFeedback((BendpointRequest) request);
+                } else if (REQ_MOVE_BENDPOINT.equals(request.getType())) {
+                    showMoveOrthogonalBendpointFeedback2((BendpointRequest) request);
+                }
+
+            } else {
+                if (REQ_MOVE_BENDPOINT.equals(request.getType())) {
+                    showMoveBendpointFeedback((BendpointRequest) request);
+                } else if (REQ_CREATE_BENDPOINT.equals(request.getType())) {
+                    showCreateBendpointFeedback((BendpointRequest) request);
+                }
             }
         }
-
-        super.showSourceFeedback(request);
     }
 
     /**
