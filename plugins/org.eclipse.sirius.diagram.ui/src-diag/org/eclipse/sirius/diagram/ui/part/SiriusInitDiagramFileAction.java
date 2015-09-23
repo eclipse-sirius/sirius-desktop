@@ -25,7 +25,6 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
@@ -98,7 +97,7 @@ public class SiriusInitDiagramFileAction implements IObjectActionDelegate {
             return;
         }
         Wizard wizard = new SiriusNewDiagramFileWizard(domainModelURI, diagramRoot, editingDomain);
-        wizard.setWindowTitle(NLS.bind(Messages.SiriusInitDiagramFileAction_InitDiagramFileWizardTitle, DDiagramEditPart.MODEL_ID));
+        wizard.setWindowTitle(MessageFormat.format(Messages.SiriusInitDiagramFileAction_InitDiagramFileWizardTitle, DDiagramEditPart.MODEL_ID));
         SiriusDiagramEditorUtil.runWizard(getShell(), wizard, "InitDiagramFile"); //$NON-NLS-1$
     }
 }

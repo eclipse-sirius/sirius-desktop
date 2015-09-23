@@ -475,6 +475,18 @@ public final class Messages {
     public static String MenuHelper_anonymousRepresentation;
 
     @TranslatableMessage
+    public static String Messages_createRepresentationInputDialog_NamePrefix;
+
+    @TranslatableMessage
+    public static String Messages_createRepresentationInputDialog_NewRepresentationNameLabel;
+
+    @TranslatableMessage
+    public static String Messages_createRepresentationInputDialog_RepresentationDescriptionLabel;
+
+    @TranslatableMessage
+    public static String Messages_createRepresentationInputDialog_Title;
+
+    @TranslatableMessage
     public static String ModelingModelProvider_addAnotherRepresentationFile;
 
     @TranslatableMessage
@@ -943,6 +955,9 @@ public final class Messages {
     public static String ViewpointSelection_applySelectionTask;
 
     @TranslatableMessage
+    public static String ViewpointSelection_iconColumn;
+
+    @TranslatableMessage
     public static String ViewpointSelection_loadingViewpointsTask;
 
     @TranslatableMessage
@@ -950,9 +965,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ViewpointSelection_missingDependencies_requirements;
-
-    @TranslatableMessage
-    public static String ViewpointSelection_iconColumn;
 
     @TranslatableMessage
     public static String ViewpointSelection_viewpointColumn;

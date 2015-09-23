@@ -19,7 +19,6 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public final class Messages {
-
     static {
         I18N.initializeMessages(Messages.class, TableUIPlugin.INSTANCE);
     }
@@ -66,6 +65,42 @@ public final class Messages {
 
     @TranslatableMessage
     public static String DFeatureColumnEditingSupport_notValidValue;
+
+    @TranslatableMessage
+    public static String DTableEditor_ErrorSaveDeletedMessage;
+
+    @TranslatableMessage
+    public static String DTableEditor_ErrorSaveDeletedTitle;
+
+    @TranslatableMessage
+    public static String DTableEditor_handleElementContentChanged;
+
+    @TranslatableMessage
+    public static String DTableEditor_NoTableInResourceError;
+
+    @TranslatableMessage
+    public static String DTableEditor_SaveAsErrorMessage;
+
+    @TranslatableMessage
+    public static String DTableEditor_SaveAsErrorTitle;
+
+    @TranslatableMessage
+    public static String DTableEditor_SaveErrorMessage;
+
+    @TranslatableMessage
+    public static String DTableEditor_SaveErrorTitle;
+
+    @TranslatableMessage
+    public static String DTableEditor_SaveNextResourceTask;
+
+    @TranslatableMessage
+    public static String DTableEditor_SaveTableTask;
+
+    @TranslatableMessage
+    public static String DTableEditor_SavingDeletedFile;
+
+    @TranslatableMessage
+    public static String DTableEditor_TableLoadingError;
 
     @TranslatableMessage
     public static String DTableMenuListener_cvsExportException;
@@ -173,6 +208,18 @@ public final class Messages {
     public static String SortLinesByColumnAction_label;
 
     @TranslatableMessage
+    public static String Table_CurrentSemanticElement;
+
+    @TranslatableMessage
+    public static String Table_SemanticColumnElement;
+
+    @TranslatableMessage
+    public static String Table_SemanticLineElement;
+
+    @TranslatableMessage
+    public static String Table_SemanticRootElement;
+
+    @TranslatableMessage
     public static String TableDialectUIServices_newTableName;
 
     @TranslatableMessage
@@ -185,28 +232,16 @@ public final class Messages {
     public static String TableDialectUIServices_tableOpeningVar;
 
     @TranslatableMessage
-    public static String TableQuickOutlineHandler_selectLine;
+    public static String TableQuickOutlineHandler_selectColumn;
 
     @TranslatableMessage
-    public static String TableQuickOutlineHandler_selectColumn;
+    public static String TableQuickOutlineHandler_selectLine;
 
     @TranslatableMessage
     public static String TableUIHelper_undefinedContent;
 
     @TranslatableMessage
     public static String TableUIHelper_unsupportedColor;
-
-    @TranslatableMessage
-    public static String Table_CurrentSemanticElement;
-
-    @TranslatableMessage
-    public static String Table_SemanticColumnElement;
-
-    @TranslatableMessage
-    public static String Table_SemanticLineElement;
-
-    @TranslatableMessage
-    public static String Table_SemanticRootElement;
 
     // CHECKSTYLE:ON
 

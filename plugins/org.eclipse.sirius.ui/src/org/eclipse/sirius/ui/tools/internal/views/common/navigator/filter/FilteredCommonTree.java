@@ -28,7 +28,6 @@ import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.TooltipAwareNavigatorDecoratingLabelProvider;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -620,7 +619,7 @@ public class FilteredCommonTree extends Composite {
                 if (filterTextString.length() == 0 || filterTextString.equals(initialText)) {
                     e.result = initialText;
                 } else {
-                    e.result = NLS.bind(WorkbenchMessages.FilteredTree_AccessibleListenerFiltered, new String[] { filterTextString, String.valueOf(getFilteredItemsCount()) });
+                    e.result = MessageFormat.format(WorkbenchMessages.FilteredTree_AccessibleListenerFiltered, new String[] { filterTextString, String.valueOf(getFilteredItemsCount()) });
                 }
             }
 

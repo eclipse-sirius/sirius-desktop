@@ -11,6 +11,7 @@
 package org.eclipse.sirius.table.ui.tools.internal.editor;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,7 +42,6 @@ import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.Window;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -145,7 +145,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
         }
         dialog.create();
         if (isDeleted(input) && original != null) {
-            final String message = NLS.bind(Messages.dTableEditor_SavingDeletedFile, original.getName());
+            final String message = MessageFormat.format(Messages.dTableEditor_SavingDeletedFile, original.getName());
             dialog.setErrorMessage(null);
             dialog.setMessage(message, IMessageProvider.WARNING);
         }

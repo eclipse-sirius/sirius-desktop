@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2014 IBM Corporation and others.
+ * Copyright (c) 2004, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.e3.ui.dialogs;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -25,7 +27,6 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.ACC;
 import org.eclipse.swt.accessibility.AccessibleAdapter;
@@ -641,8 +642,7 @@ public class FilteredTree extends Composite {
                                 || filterTextString.equals(initialText)) {
                             e.result = initialText;
                         } else {
-                            e.result = NLS
-                                    .bind(
+                            e.result = MessageFormat.format(
                                             WorkbenchMessages.FilteredTree_AccessibleListenerFiltered,
                                             new String[] {
                                                     filterTextString,

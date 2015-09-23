@@ -36,7 +36,6 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -73,7 +72,7 @@ public class SiriusNewDiagramFileWizard extends Wizard {
 
         myFileCreationPage = new WizardNewFileCreationPage(Messages.SiriusNewDiagramFileWizard_CreationPageName, StructuredSelection.EMPTY);
         myFileCreationPage.setTitle(Messages.SiriusNewDiagramFileWizard_CreationPageTitle);
-        myFileCreationPage.setDescription(NLS.bind(Messages.SiriusNewDiagramFileWizard_CreationPageDescription, DDiagramEditPart.MODEL_ID));
+        myFileCreationPage.setDescription(MessageFormat.format(Messages.SiriusNewDiagramFileWizard_CreationPageDescription, DDiagramEditPart.MODEL_ID));
         IPath filePath;
         String fileName = domainModelURI.trimFileExtension().lastSegment();
         if (domainModelURI.isPlatformResource()) {

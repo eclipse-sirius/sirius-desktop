@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,13 +12,13 @@
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
 import java.io.File;
+import java.text.MessageFormat;
 
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.internal.resources.Project;
 import org.eclipse.core.internal.utils.Messages;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
@@ -79,14 +79,14 @@ public class NewModelingProjectCreationWizardPage extends WizardNewProjectCreati
         // Return true if the project location have the same project name with
         // same case
         if (folder.getName().equals(getProjectName())) {
-            String msg = NLS.bind(Messages.localstore_fileExists, new Path(folder.toString()).removeLastSegments(1).append(folder.getName()).toOSString());
+            String msg = MessageFormat.format(Messages.localstore_fileExists, new Path(folder.toString()).removeLastSegments(1).append(folder.getName()).toOSString());
             // Set a warning message
             setMessage(msg, 2);
         } else {
             // Return true if the project location have the same project name in
             // different case
             if (folder.getName().toUpperCase().equals(getProjectName().toUpperCase()) && isMacOrWindowsOS()) {
-                String msg = NLS.bind(Messages.resources_existsLocalDifferentCase, new Path(folder.toString()).removeLastSegments(1).append(folder.getName()).toOSString());
+                String msg = MessageFormat.format(Messages.resources_existsLocalDifferentCase, new Path(folder.toString()).removeLastSegments(1).append(folder.getName()).toOSString());
                 setErrorMessage(msg);
                 return true;
             }
@@ -103,12 +103,12 @@ public class NewModelingProjectCreationWizardPage extends WizardNewProjectCreati
         if (folder.listFiles() != null) {
             for (int i = 0; i < folder.listFiles().length && !projectNameExistsInSameCase; i++) {
                 if (name != null && folder.listFiles()[i].getName().equals(getProjectName())) {
-                    String msg = NLS.bind(Messages.localstore_fileExists, new Path(folder.toString()).append(folder.listFiles()[i].getName()).toOSString());
+                    String msg = MessageFormat.format(Messages.localstore_fileExists, new Path(folder.toString()).append(folder.listFiles()[i].getName()).toOSString());
                     setMessage(msg, 2);
                     projectNameExistsInSameCase = true;
                 } else {
                     if (name != null && folder.listFiles()[i].getName().toUpperCase().equals(getProjectName().toUpperCase()) && isMacOrWindowsOS()) {
-                        String msg = NLS.bind(Messages.resources_existsLocalDifferentCase, new Path(folder.toString()).append(folder.listFiles()[i].getName()).toOSString());
+                        String msg = MessageFormat.format(Messages.resources_existsLocalDifferentCase, new Path(folder.toString()).append(folder.listFiles()[i].getName()).toOSString());
                         setErrorMessage(msg);
                         return true;
                     }

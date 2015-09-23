@@ -54,6 +54,15 @@ public final class Messages {
     public static String AbstractParser_setValuesCmdLabel;
 
     @TranslatableMessage
+    public static String AbstractParser_UnexpectedValueTypeMessage;
+
+    @TranslatableMessage
+    public static String AbstractParser_UnknownLiteralMessage;
+
+    @TranslatableMessage
+    public static String AbstractParser_WrongStringConversionMessage;
+
+    @TranslatableMessage
     public static String AbstractProviderDescriptor_missingAttributeMsg;
 
     @TranslatableMessage
@@ -162,6 +171,9 @@ public final class Messages {
     public static String CommandFactory_doNothingLabel;
 
     @TranslatableMessage
+    public static String CommandName_OpenDiagram;
+
+    @TranslatableMessage
     public static String CompoundEditPolicy_nullEditPolicyMsg;
 
     @TranslatableMessage
@@ -256,9 +268,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String DEdgeLabelItemProvider_label;
-
-    @TranslatableMessage
-    public static String ResourceMissingDocumentProvider_defaultMessage;
 
     @TranslatableMessage
     public static String DefaultLayerName;
@@ -444,7 +453,19 @@ public final class Messages {
     public static String DistributeMenuAction_tooltip;
 
     @TranslatableMessage
+    public static String DNodeContainerViewNodeContainerCompartment2EditPart_title;
+
+    @TranslatableMessage
+    public static String DNodeContainerViewNodeContainerCompartmentEditPart_title;
+
+    @TranslatableMessage
     public static String DNodeLayoutDataKey_wrongKeyMsg;
+
+    @TranslatableMessage
+    public static String DNodeListViewNodeListCompartment2EditPart_title;
+
+    @TranslatableMessage
+    public static String DNodeListViewNodeListCompartmentEditPart_title;
 
     @TranslatableMessage
     public static String DocumentationPropertySection_defaultLabel;
@@ -615,10 +636,16 @@ public final class Messages {
     public static String MarkerObserver_validationMarkerFailureMsg;
 
     @TranslatableMessage
+    public static String MessageFormatParser_InvalidInputError;
+
+    @TranslatableMessage
     public static String MiscPropertySection_nullObject;
 
     @TranslatableMessage
     public static String MiscPropertySource_errorGettingValueMsg;
+
+    @TranslatableMessage
+    public static String ModelElementSelectionPageMessage;
 
     @TranslatableMessage
     public static String MoveViewOperation_nullMoveDeltaError;
@@ -628,6 +655,66 @@ public final class Messages {
 
     @TranslatableMessage
     public static String NavigationItemProvider_labelWithDescriptionName;
+
+    @TranslatableMessage
+    public static String NavigatorActionProvider_OpenDiagramActionName;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DDiagram_1000_links;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DEdge_4001_source;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DEdge_4001_target;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNode_2001_incominglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNode_2001_outgoinglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNode_3001_incominglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNode_3001_outgoinglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNode_3007_incominglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNode_3007_outgoinglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNode_3012_incominglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNode_3012_outgoinglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNodeContainer_2002_incominglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNodeContainer_2002_outgoinglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNodeContainer_3008_incominglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNodeContainer_3008_outgoinglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNodeList_2003_incominglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNodeList_2003_outgoinglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNodeList_3009_incominglinks;
+
+    @TranslatableMessage
+    public static String NavigatorGroupName_DNodeList_3009_outgoinglinks;
 
     @TranslatableMessage
     public static String NodeDeletionEditPolicy_deleteElementCommandLabel;
@@ -714,13 +801,13 @@ public final class Messages {
     public static String RefreshRunnableWithProgress_taskName;
 
     @TranslatableMessage
-    public static String RegionCollapseAwarePropertyHandlerEditPolicy_gmfSizeUpdateCommandLabel;
+    public static String RegionCollapseAwarePropertyHandlerEditPolicy_collapseRegionCommandLabel;
 
     @TranslatableMessage
     public static String RegionCollapseAwarePropertyHandlerEditPolicy_expandRegionCommandLabel;
 
     @TranslatableMessage
-    public static String RegionCollapseAwarePropertyHandlerEditPolicy_collapseRegionCommandLabel;
+    public static String RegionCollapseAwarePropertyHandlerEditPolicy_gmfSizeUpdateCommandLabel;
 
     @TranslatableMessage
     public static String RegionContainerResizableEditPolicy_regionContainerAutoSizeCommandLabel;
@@ -751,6 +838,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ResizeImageCommand_label;
+
+    @TranslatableMessage
+    public static String ResourceMissingDocumentProvider_defaultMessage;
 
     @TranslatableMessage
     public static String RevealOutlineElementsAction_label;
@@ -855,6 +945,30 @@ public final class Messages {
     public static String SiriusContainerDropPolicy_saveEditPartLayoutCommandLabel;
 
     @TranslatableMessage
+    public static String SiriusCreationWizard_DiagramModelFilePageDescription;
+
+    @TranslatableMessage
+    public static String SiriusCreationWizard_DiagramModelFilePageTitle;
+
+    @TranslatableMessage
+    public static String SiriusCreationWizard_DomainModelFilePageDescription;
+
+    @TranslatableMessage
+    public static String SiriusCreationWizard_DomainModelFilePageTitle;
+
+    @TranslatableMessage
+    public static String SiriusCreationWizardCreationError;
+
+    @TranslatableMessage
+    public static String SiriusCreationWizardOpenEditorError;
+
+    @TranslatableMessage
+    public static String SiriusCreationWizardPageExtensionError;
+
+    @TranslatableMessage
+    public static String SiriusCreationWizardTitle;
+
+    @TranslatableMessage
     public static String SiriusDiagramActionBarContributor_deleteFromDiagram;
 
     @TranslatableMessage
@@ -876,7 +990,28 @@ public final class Messages {
     public static String SiriusDiagramActionBarContributor_revealElement;
 
     @TranslatableMessage
+    public static String SiriusDiagramEditor_SaveAsErrorMessage;
+
+    @TranslatableMessage
+    public static String SiriusDiagramEditor_SaveAsErrorTitle;
+
+    @TranslatableMessage
+    public static String SiriusDiagramEditor_SaveErrorMessage;
+
+    @TranslatableMessage
+    public static String SiriusDiagramEditor_SaveErrorTitle;
+
+    @TranslatableMessage
+    public static String SiriusDiagramEditor_SavingDeletedFile;
+
+    @TranslatableMessage
     public static String SiriusDiagramEditorUtil_charsetError;
+
+    @TranslatableMessage
+    public static String SiriusDiagramEditorUtil_CreateDiagramCommandLabel;
+
+    @TranslatableMessage
+    public static String SiriusDiagramEditorUtil_CreateDiagramProgressTask;
 
     @TranslatableMessage
     public static String SiriusDiagramEditorUtil_defaultFileName;
@@ -888,16 +1023,64 @@ public final class Messages {
     public static String SiriusDiagramEditorUtil_modelAndDiagramResourceSaveError;
 
     @TranslatableMessage
+    public static String SiriusDiagramEditorUtil_OpenModelResourceErrorDialogMessage;
+
+    @TranslatableMessage
+    public static String SiriusDiagramEditorUtil_OpenModelResourceErrorDialogTitle;
+
+    @TranslatableMessage
     public static String SiriusDiagramSelectionCheckStateListener_errorMsg;
 
     @TranslatableMessage
     public static String SiriusDiagramSelectionCheckStateListener_unknwonCodeResult;
 
     @TranslatableMessage
+    public static String SiriusDocumentProvider_DiagramLoadingError;
+
+    @TranslatableMessage
+    public static String SiriusDocumentProvider_handleElementContentChanged;
+
+    @TranslatableMessage
+    public static String SiriusDocumentProvider_IncorrectInputError;
+
+    @TranslatableMessage
+    public static String SiriusDocumentProvider_isModifiable;
+
+    @TranslatableMessage
+    public static String SiriusDocumentProvider_NoDiagramInResourceError;
+
+    @TranslatableMessage
+    public static String SiriusDocumentProvider_SaveAsOperation;
+
+    @TranslatableMessage
+    public static String SiriusDocumentProvider_SaveDiagramTask;
+
+    @TranslatableMessage
+    public static String SiriusDocumentProvider_SaveNextResourceTask;
+
+    @TranslatableMessage
+    public static String SiriusDocumentProvider_UnsynchronizedFileSaveError;
+
+    @TranslatableMessage
+    public static String SiriusElementChooserDialog_SelectModelElementTitle;
+
+    @TranslatableMessage
     public static String SiriusEnhancedPrintActionHelper_invalidIworkbenchPart;
 
     @TranslatableMessage
+    public static String SiriusInitDiagramFileAction_InitDiagramFileResourceErrorDialogMessage;
+
+    @TranslatableMessage
+    public static String SiriusInitDiagramFileAction_InitDiagramFileResourceErrorDialogTitle;
+
+    @TranslatableMessage
+    public static String SiriusInitDiagramFileAction_InitDiagramFileWizardTitle;
+
+    @TranslatableMessage
     public static String SiriusInitDiagramFileAction_loadResourceError;
+
+    @TranslatableMessage
+    public static String SiriusInitDiagramFileAction_OpenModelFileDialogTitle;
 
     @TranslatableMessage
     public static String SiriusLayoutDataManagerImpl_addCenterLayoutMarkerCommandLabel;
@@ -918,10 +1101,31 @@ public final class Messages {
     public static String SiriusMarkerNavigationProvider_validationMarkerCreationError;
 
     @TranslatableMessage
+    public static String SiriusModelingAssistantProviderMessage;
+
+    @TranslatableMessage
+    public static String SiriusModelingAssistantProviderTitle;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_CreationPageDescription;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_CreationPageName;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_CreationPageTitle;
+
+    @TranslatableMessage
     public static String SiriusNewDiagramFileWizard_errorDuringCreation;
 
     @TranslatableMessage
     public static String SiriusNewDiagramFileWizard_errorDuringOpening;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_IncorrectRootError;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_InitDiagramCommand;
 
     @TranslatableMessage
     public static String SiriusNewDiagramFileWizard_invalidDiagramRootElement;
@@ -931,6 +1135,24 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusNewDiagramFileWizard_invalidEditingDomain;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_RootSelectionPageDescription;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_RootSelectionPageName;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_RootSelectionPageNoSelectionMessage;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_RootSelectionPageSelectionTitle;
+
+    @TranslatableMessage
+    public static String SiriusNewDiagramFileWizard_RootSelectionPageTitle;
 
     @TranslatableMessage
     public static String SiriusNewDiagramFileWizard_saveFailed;
@@ -1024,6 +1246,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ValidateAction_failureMessage;
+
+    @TranslatableMessage
+    public static String ValidateActionMessage;
 
     @TranslatableMessage
     public static String ValidationFixResolution_editorOpeningError;

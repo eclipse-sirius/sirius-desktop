@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserEditStatus;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -217,7 +216,7 @@ public class MessageFormatParser extends AbstractParser {
         ParsePosition pos = new ParsePosition(0);
         Object[] values = getEditProcessor().parse(editString, pos);
         if (values == null) {
-            return new ParserEditStatus(DiagramPlugin.ID, IParserEditStatus.UNEDITABLE, NLS.bind(Messages.MessageFormatParser_InvalidInputError, new Integer(pos.getErrorIndex())));
+            return new ParserEditStatus(DiagramPlugin.ID, IParserEditStatus.UNEDITABLE, MessageFormat.format(Messages.MessageFormatParser_InvalidInputError, new Integer(pos.getErrorIndex())));
         }
         return validateNewValues(values);
     }

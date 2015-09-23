@@ -45,12 +45,6 @@ public final class Messages {
     public static String DynamicPackageRegistryReader_packageConflict;
 
     @TranslatableMessage
-    public static String EObjectCouple_firstNull;
-
-    @TranslatableMessage
-    public static String EObjectCouple_secondNull;
-
-    @TranslatableMessage
     public static String EclipseEditingDomainFactoryDescriptor_errorLoadingExtension;
 
     @TranslatableMessage
@@ -58,6 +52,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String EditingSessionWorkspaceListener_resourceRefreshError;
+
+    @TranslatableMessage
+    public static String EObjectCouple_firstNull;
+
+    @TranslatableMessage
+    public static String EObjectCouple_secondNull;
 
     @TranslatableMessage
     public static String FeatureInterpreter_invalidFeature;
@@ -70,6 +70,33 @@ public final class Messages {
 
     @TranslatableMessage
     public static String FileStatusPrecommitListener_fileModificationValidationStatus;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogBackwardRadio;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogCancelButton;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogDialogTitle;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogDirectionGroup;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogErrorDialogTitle;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogFindLabel;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogForwardRadio;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogNextButton;
+
+    @TranslatableMessage
+    public static String FindMessages_abstractFindLabelDialogNoMatchingElementMessage;
 
     @TranslatableMessage
     public static String MonomorphicService_serviceError;
@@ -88,7 +115,7 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ProfilerTaskRegistry_keyConflict;
-    
+
     @TranslatableMessage
     public static String ProfilerTaskRegistry_valueConflict;
 

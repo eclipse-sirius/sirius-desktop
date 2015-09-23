@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.find;
 
-import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.common.tools.Messages;
 
 /**
  * FindMessage NLS Class.
@@ -19,40 +19,24 @@ import org.eclipse.osgi.util.NLS;
  * 
  */
 // CHECKSTYLE:OFF
-public final class FindMessages extends NLS {
-    /** NLS String. */
-    public static String abstractFindLabelDialogBackwardRadio;
+public final class FindMessages {
+    public static String abstractFindLabelDialogBackwardRadio = Messages.FindMessages_abstractFindLabelDialogBackwardRadio;
 
-    /** NLS String. */
-    public static String abstractFindLabelDialogCancelButton;
+    public static String abstractFindLabelDialogCancelButton = Messages.FindMessages_abstractFindLabelDialogCancelButton;
 
-    /** NLS String. */
-    public static String abstractFindLabelDialogDialogTitle;
+    public static String abstractFindLabelDialogDialogTitle = Messages.FindMessages_abstractFindLabelDialogDialogTitle;
 
-    /** NLS String. */
-    public static String abstractFindLabelDialogDirectionGroup;
+    public static String abstractFindLabelDialogDirectionGroup = Messages.FindMessages_abstractFindLabelDialogDirectionGroup;
 
-    /** NLS String. */
-    public static String abstractFindLabelDialogErrorDialogTitle;
+    public static String abstractFindLabelDialogErrorDialogTitle = Messages.FindMessages_abstractFindLabelDialogErrorDialogTitle;
 
-    /** NLS String. */
-    public static String abstractFindLabelDialogFindLabel;
+    public static String abstractFindLabelDialogFindLabel = Messages.FindMessages_abstractFindLabelDialogFindLabel;
 
-    /** NLS String. */
-    public static String abstractFindLabelDialogForwardRadio;
+    public static String abstractFindLabelDialogForwardRadio = Messages.FindMessages_abstractFindLabelDialogForwardRadio;
 
-    /** NLS String. */
-    public static String abstractFindLabelDialogNextButton;
+    public static String abstractFindLabelDialogNextButton = Messages.FindMessages_abstractFindLabelDialogNextButton;
 
-    /** NLS String. */
-    public static String abstractFindLabelDialogNoMatchingElementMessage;
-    
-    private static final String BUNDLE_NAME = FindMessages.class.getPackage().getName() + ".findMessages"; //$NON-NLS-1$
-
-    static {
-        // initialize resource bundle
-        NLS.initializeMessages(BUNDLE_NAME, FindMessages.class);
-    }
+    public static String abstractFindLabelDialogNoMatchingElementMessage = Messages.FindMessages_abstractFindLabelDialogNoMatchingElementMessage;
 
     private FindMessages() {
     }

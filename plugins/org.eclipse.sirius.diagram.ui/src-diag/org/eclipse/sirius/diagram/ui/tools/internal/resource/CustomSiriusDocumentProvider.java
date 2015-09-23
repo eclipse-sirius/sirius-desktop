@@ -37,7 +37,6 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.internal.util.Diagram
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.operation.IRunnableContext;
-import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -93,7 +92,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
     protected IDocument createDocument(final Object element) throws CoreException {
         if (!(element instanceof FileEditorInput) && !(element instanceof URIEditorInput)) {
             throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0,
-                    NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
+                    MessageFormat.format(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
                     null));
         }
         final IDocument document = createEmptyDocument();
@@ -144,7 +143,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                     caseURIEditorInput(document, (URIEditorInput) element, domain);
                 } else {
                     throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0,
-                            NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
+                            MessageFormat.format(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element, "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$
                             null));
                 }
             } finally {
