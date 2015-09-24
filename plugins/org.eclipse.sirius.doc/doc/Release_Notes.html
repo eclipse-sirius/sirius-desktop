@@ -85,7 +85,7 @@
 				<a href="./user/sequences/Sequence%20Diagrams.html#introduction">documentation</a> for details. Previously, the user has to explicitely disable the snap features.
 			</li>
 			<li><span class="label label-info">Modified</span> The Link with Editor behavior has changed. The link with editor was previously unidirectional from the Common Navigator (Model Explorer view or Project view) toward the active representation. By now, when selecting one or several elements in the representation, the corresponding semantic elements are selected in the Common Navigator.</li>
-			<li><span class="label label-info">Modified</span> The &#8220;Arrange Linked Bordered Nodes&#8221; tabbar action has been renamed to &#8220;Arrange Linked Border Nodes&#8221; as it is border nodes which are layouted and not bordered nodes.</li>
+			<li><span class="label label-info">Modified</span> The &#171;Arrange Linked Bordered Nodes&#187; tabbar action has been renamed to &#171;Arrange Linked Border Nodes&#187; as it is border nodes which are layouted and not bordered nodes.</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -123,9 +123,12 @@
 				<img border="0" src="images/improvedsiriusinterpreter_thumbnail.png"/>
 			</a>
 		</p>
+		<ul>
+			<li><span class="label label-info">Modified</span> The delete command availability computation has been changed. In case of a delete tool, the availability is now computed considering first the precondition of the tool and then the delete authorisation (using IPermissionAuthority) of the potential to delete objects. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.</li>
+		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>
-		<p>Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate &#8220;language packs&#8221; as OSGi fragments. Note that this does not concern the VSM editor&#8217;s UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.</p>
+		<p>Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate &#171;language packs&#187; as OSGi fragments. Note that this does not concern the VSM editor&#8217;s UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.</p>
 		<p>Some API changes were required to enable this. While technically breaking changes if interpreting strictly the OSGi versioning rules, the major version number of the impacted bundles was not incremented as the changes only concern classes that should not impact the vast majority of users. Most breaking changes concern the plug-in/activator classes from each bundle. They are:</p>
 		<ul>
 			<li><span class="label label-success">Added</span>
@@ -342,7 +345,7 @@
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic</code> has been added. It allows an interpreter to evaluate an expression and return not only the result of the evaluation but also a diagnostic.
 			</li>
 			<li><span class="label label-success">Added</span> The new class 
-				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement</code> has been added. It allows interpreters to provide proposals for the code completion which can replace an existing part of the expression used. This behavior can be used if the user has started to type a value that would be returned by the code completion. For example, if the user types &#8220;aql:self.na&#8221; and if he selects the content proposal &#8220;name&#8221;, it can replace the existing part of the expression &#8220;na&#8221; to write &#8220;aql:self.name&#8221; instead of just appending &#8220;name&#8221; to create &#8220;aql:self.naname&#8221;.
+				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement</code> has been added. It allows interpreters to provide proposals for the code completion which can replace an existing part of the expression used. This behavior can be used if the user has started to type a value that would be returned by the code completion. For example, if the user types &#171;aql:self.na&#187; and if he selects the content proposal &#171;name&#187;, it can replace the existing part of the expression &#171;na&#187; to write &#171;aql:self.name&#187; instead of just appending &#171;name&#187; to create &#171;aql:self.naname&#187;.
 			</li>
 			<li><span class="label label-success">Added</span> The new class 
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
@@ -584,7 +587,7 @@
 			</li>
 			<li><span class="label label-success">Added</span> On diagrams, it is now possible to set a custom background image on list containers.</li>
 			<li><span class="label label-info">Modified</span> In the 
-				<em>Viewpoint Selection</em> dialog and wizard page, the &#8220;plug-in&#8221; decorator for viewpoints loaded from plug-ins is removed, and a &#8220;Folder&#8221; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the most common where viewpoints come from installed plug-ins.
+				<em>Viewpoint Selection</em> dialog and wizard page, the &#171;plug-in&#187; decorator for viewpoints loaded from plug-ins is removed, and a &#171;Folder&#187; decorator for viewpoints loaded from the current workspace has been added. This makes the icons more visible in the most common where viewpoints come from installed plug-ins.
 			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
@@ -607,12 +610,12 @@
 			<li><span class="label label-success">Added</span> Compressed SVG images (
 				<code>*.svgz</code>) are now supported everywhere normal SVG images were supported.
 			</li>
-			<li><span class="label label-success">Added</span> When developing a modeler in &#8220;live mode&#8221;, with the VSM in the same workspace as the sample session(s) which use it, VSM expressions which use 
+			<li><span class="label label-success">Added</span> When developing a modeler in &#171;live mode&#187;, with the VSM in the same workspace as the sample session(s) which use it, VSM expressions which use 
 				<code>service:</code> or 
 				<code>aql:</code> can now invoke Java services which are defined in the workspace (with no need to launch a separate runtime).
 			</li>
 			<li><span class="label label-success">Added</span> A quick outline is now accessible in the VSM editor by using the shortcut <kbd>Ctrl+o</kbd>. It supports filtering on both an element&#8217;s name and properties for quick, keyboard-only navigation in complex VSMs.</li>
-			<li><span class="label label-success">Added</span> The &#8220;hide label by default capability&#8221; has been added to the container styles.</li>
+			<li><span class="label label-success">Added</span> The &#171;hide label by default capability&#187; has been added to the container styles.</li>
 			<li><span class="label label-success">Added</span> In addition to 
 				<em>Bold</em> and 
 				<em>Italic</em>, 
@@ -645,7 +648,7 @@
 			</li>
 			<li><span class="label label-success">Improved</span> The precision of the VSM validation, especially regarding the typing of computed expressions, has been greatly improved. Other validation rules like static image paths have also been added or improved.</li>
 			<li><span class="label label-info">Modified</span> In the VSM editor, the context menu entries (categories and items) have been reorganized to put most common actions/items first.</li>
-			<li><span class="label label-info">Modified</span> In diagrams, the style previously named &#8220;Lozenge&#8221; is now called &#8220;Diamond&#8221;.</li>
+			<li><span class="label label-info">Modified</span> In diagrams, the style previously named &#171;Lozenge&#187; is now called &#171;Diamond&#187;.</li>
 			<li><span class="label label-info">Modified</span> In the 
 				<em>Open</em> menu on a representation, the menu is computed from the navigation tool&#8217;s label instead of its name/id.
 			</li>
@@ -1528,13 +1531,13 @@
 			<img border="0" src="images/containerResize-changedBehavior.gif"/>
 		</p>
 		<ul>
-			<li>The &#8220;snap to shapes&#8221; is now enabled by default (see  
+			<li>The &#171;snap to shapes&#187; is now enabled by default (see  
 				<em>Sirius &gt; Sirius Diagram &gt; Rulers and Grid</em> preference page). This is true only for new diagrams. The existing diagrams are not impacted.
 			</li>
-			<li>The &#8220;Navigate&#8221; top-level contextual menu entry with mixed actions for creating new representations and opening existing ones has been changed by two top-level menus:
+			<li>The &#171;Navigate&#187; top-level contextual menu entry with mixed actions for creating new representations and opening existing ones has been changed by two top-level menus:
 				<ul>
-					<li>One named &#8220;New&#8221;, which lists only the available actions to create new representations on the selected element.</li>
-					<li>One named &#8220;Open&#8221;, which lists only the existing representations on the selected element. </li>
+					<li>One named &#171;New&#187;, which lists only the available actions to create new representations on the selected element.</li>
+					<li>One named &#171;Open&#187;, which lists only the existing representations on the selected element. </li>
 				</ul>
 			</li>
 			<li>When a shape is resized (no matter the direction), the edge(s) connection location (toward or from this one) is kept. Before that, edges connections moved according to the ratio of the resizing.</li>
@@ -1559,19 +1562,19 @@
 					<li>Distribute centers vertically</li>
 				</ul>
 			</li>
-			<li>The end user can now remove all bend-points between the two edge ends. This action is available on edge context menu &#8220;Remove Bend-points&#8221; or by using the shortcut &#8220;Ctrl&#8221; + &#8220;Shift&#8221; + &#8220;-&#8221;.</li>
+			<li>The end user can now remove all bend-points between the two edge ends. This action is available on edge context menu &#171;Remove Bend-points&#187; or by using the shortcut &#171;Ctrl&#187; + &#171;Shift&#187; + &#171;-&#187;.</li>
 			<li>Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.</li>
 			<li>A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
-			<li>The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the &#8220;advance&#8221; tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See 
+			<li>The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the &#171;advance&#187; tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See 
 				<a href="specifier/diagrams/Diagrams.html#edges_styles">Edges Styles &gt; Edge Centering</a> in the specifier manual for more details.
 			</li>
 			<li>When creating a new Viewpoint Specification Project using the supplied wizard: 
 				<em>New &gt; Viewpoint Specification Project</em>, the VSM name is now given according to the project name. If the project name is suffixed with &#171;design&#187;, the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.
 			</li>
-			<li>&#8220;Lozenge&#8221; is replaced by &#8220;Diamond&#8221; in diagram style.</li>
+			<li>&#171;Lozenge&#187; is replaced by &#171;Diamond&#187; in diagram style.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius3">Changes in 

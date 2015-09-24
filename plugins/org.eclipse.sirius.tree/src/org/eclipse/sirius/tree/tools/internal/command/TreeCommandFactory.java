@@ -27,7 +27,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
-import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -129,26 +128,29 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
     public Command buildDeleteTreeElement(final DTreeElement element) {
         Command cmd = UnexecutableCommand.INSTANCE;
         if (element instanceof DTreeItem) {
-            if (!getPermissionAuthority().canEditInstance(element)) {
-                cmd = new InvalidPermissionCommand(domain, element);
-            } else {
-                if (!getPermissionAuthority().canEditInstance(element.eContainer())) {
-                    cmd = new InvalidPermissionCommand(domain, element.eContainer());
+            // We check that, in case of tool, the tool allows the deletion
+            TreeItemDeletionTool deleteTool = getDeleteTool(element);
+            if ((deleteTool == null) || isDeleteAllowedByTool(element, deleteTool)) {
+                if (!getPermissionAuthority().canEditInstance(element)) {
+                    cmd = new InvalidPermissionCommand(domain, element);
                 } else {
-                    final SiriusCommand result = new SiriusCommand(domain);
-                    TreeItemDeletionTool deleteTool = getDeleteTool(element);
-                    final DTree parentTree = TreeHelper.getTree(element);
-                    if (deleteTool != null) {
-                        addDeleteTreeElementFromTool(result, element, deleteTool);
-                        addRefreshTask(parentTree, result, deleteTool);
-                        Option<DRepresentation> dRepresentation = new EObjectQuery(element).getRepresentation();
-                        result.getTasks().add(new ElementsToSelectTask(deleteTool, InterpreterUtil.getInterpreter(element), element, dRepresentation.get()));
-
-                        cmd = new NoNullResourceCommand(result, element);
+                    if (!getPermissionAuthority().canEditInstance(element.eContainer())) {
+                        cmd = new InvalidPermissionCommand(domain, element.eContainer());
                     } else {
-                        result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
-                        addRefreshTask(parentTree, result, deleteTool);
-                        cmd = new NoNullResourceCommand(result, element);
+                        final SiriusCommand result = new SiriusCommand(domain);
+                        final DTree parentTree = TreeHelper.getTree(element);
+                        if (deleteTool != null) {
+                            addDeleteTreeElementFromTool(result, element, deleteTool);
+                            addRefreshTask(parentTree, result, deleteTool);
+                            Option<DRepresentation> dRepresentation = new EObjectQuery(element).getRepresentation();
+                            result.getTasks().add(new ElementsToSelectTask(deleteTool, InterpreterUtil.getInterpreter(element), element, dRepresentation.get()));
+
+                            cmd = new NoNullResourceCommand(result, element);
+                        } else {
+                            result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
+                            addRefreshTask(parentTree, result, deleteTool);
+                            cmd = new NoNullResourceCommand(result, element);
+                        }
                     }
                 }
             }
@@ -156,7 +158,17 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         return cmd;
     }
 
-    private void addDeleteTreeElementFromTool(final SiriusCommand cmd, final DTreeElement element, final TreeItemDeletionTool deleteTool) {
+    /**
+     * Check the delete availability from tool based on its condition
+     * expression.
+     * 
+     * @param element
+     *            the DTreeElement
+     * @param deleteTool
+     *            the tool
+     * @return
+     */
+    private boolean isDeleteAllowedByTool(final DTreeElement element, final TreeItemDeletionTool deleteTool) {
         final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
         final EObject rootContainer = TreeHelper.getTree(element).getTarget();
         // check precondition
@@ -174,12 +186,13 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
             acceleoInterpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
             acceleoInterpreter.unSetVariable(IInterpreterSiriusVariables.ELEMENT);
         }
-        if (delete) {
-            cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
-            cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element));
-        } else {
-            cmd.getTasks().add(UnexecutableTask.INSTANCE);
-        }
+        return delete;
+    }
+
+    private void addDeleteTreeElementFromTool(final SiriusCommand cmd, final DTreeElement element, final TreeItemDeletionTool deleteTool) {
+        final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
+        cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
+        cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element));
     }
 
     /**

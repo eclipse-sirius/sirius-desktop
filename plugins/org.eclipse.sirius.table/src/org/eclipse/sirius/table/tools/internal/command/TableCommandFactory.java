@@ -24,7 +24,6 @@ import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
-import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -120,25 +119,29 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     @Override
     public Command buildDeleteTableElement(final DTableElement element) {
         Command cmd = UnexecutableCommand.INSTANCE;
-        if (element instanceof DLine || element instanceof DTargetColumn) {
-            if (!getPermissionAuthority().canEditInstance(element)) {
-                cmd = new InvalidPermissionCommand(domain, element);
-            } else {
-                if (!getPermissionAuthority().canEditInstance(element.eContainer())) {
-                    cmd = new InvalidPermissionCommand(domain, element.eContainer());
-                } else {
 
-                    final SiriusCommand result = new SiriusCommand(domain);
-                    DeleteTool deleteTool = getDeleteTool(element);
-                    final DTable parentTable = TableHelper.getTable(element);
-                    if (deleteTool != null) {
-                        addDeleteTableElementFromTool(result, element, deleteTool);
-                        addRefreshTask(parentTable, result, deleteTool);
-                        cmd = new NoNullResourceCommand(result, element);
+        if (element instanceof DLine || element instanceof DTargetColumn) {
+            // We check that, in case of tool, the tool allows the deletion
+            DeleteTool deleteTool = getDeleteTool(element);
+            if (deleteTool == null || isDeleteAllowedByTool(element, deleteTool)) {
+                if (!getPermissionAuthority().canEditInstance(element)) {
+                    cmd = new InvalidPermissionCommand(domain, element);
+                } else {
+                    if (!getPermissionAuthority().canEditInstance(element.eContainer())) {
+                        cmd = new InvalidPermissionCommand(domain, element.eContainer());
                     } else {
-                        result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
-                        addRefreshTask(parentTable, result, deleteTool);
-                        cmd = new NoNullResourceCommand(result, element);
+
+                        final SiriusCommand result = new SiriusCommand(domain);
+                        final DTable parentTable = TableHelper.getTable(element);
+                        if (deleteTool != null) {
+                            addDeleteTableElementFromTool(result, element, deleteTool);
+                            addRefreshTask(parentTable, result, deleteTool);
+                            cmd = new NoNullResourceCommand(result, element);
+                        } else {
+                            result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
+                            addRefreshTask(parentTable, result, deleteTool);
+                            cmd = new NoNullResourceCommand(result, element);
+                        }
                     }
                 }
             }
@@ -222,7 +225,17 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         return result;
     }
 
-    private void addDeleteTableElementFromTool(final SiriusCommand cmd, final DTableElement element, final DeleteTool deleteTool) {
+    /**
+     * Check the delete availability from tool, based on its condition
+     * expression.
+     * 
+     * @param element
+     *            the DTableElement
+     * @param deleteTool
+     *            the tool
+     * @return if the deletion is available from tool
+     */
+    private boolean isDeleteAllowedByTool(final DTableElement element, final DeleteTool deleteTool) {
         final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
         final EObject rootContainer = TableHelper.getTable(element).getTarget();
         // check precondition
@@ -240,12 +253,13 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             acceleoInterpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
             acceleoInterpreter.unSetVariable(IInterpreterSiriusVariables.ELEMENT);
         }
-        if (delete) {
-            cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
-            cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element));
-        } else {
-            cmd.getTasks().add(UnexecutableTask.INSTANCE);
-        }
+        return delete;
+    }
+
+    private void addDeleteTableElementFromTool(final SiriusCommand cmd, final DTableElement element, final DeleteTool deleteTool) {
+        final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
+        cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
+        cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element));
     }
 
     /**

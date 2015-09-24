@@ -156,9 +156,13 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     private Command buildDeleteDiagramElement() {
 
         Command cmd = UnexecutableCommand.INSTANCE;
-        // We first check that the permission authority allows to delete the
+        setTool();
+
+        // We first check that
+        // * in case of tool, the tool allows the deletion
+        // * the permission authority allows to delete the
         // given diagram element
-        if (permissionAuthority.canDeleteInstance(diagramElement)) {
+        if ((tool == null || isDeleteAllowedByTool()) && permissionAuthority.canDeleteInstance(diagramElement)) {
 
             // We also check that the underlying semantic elements can be
             // deleted
@@ -168,7 +172,6 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
             // the command
             if (semanticElements != null) {
                 final DCommand result = createEnclosingCommand();
-                setTool();
                 if (tool != null) {
                     addDeleteDiagramElementFromTool(result);
                     addRefreshTask(diagramElement, result, tool);
@@ -192,7 +195,50 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         }
     }
 
+    /**
+     * Add tasks on deletion command from tool</br>
+     * This method does not check if the delete allows deletion
+     * 
+     * @param cmd
+     *            the command on which to add tasks
+     */
     private void addDeleteDiagramElementFromTool(final DCommand cmd) {
+        final EObject semanticContainer = ((DSemanticDecorator) diagramElement).getTarget();
+        final EObject viewContainer = diagramElement.eContainer();
+
+        cmd.getTasks().addAll(buildDeleteFromToolTask(semanticContainer, viewContainer).getTasks());
+        cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, taskHelper, diagramElement) {
+
+            @Override
+            protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks) {
+                // Nothing to add per default.
+                // If the semantic decorator is related to edges,
+                // these edges should also be deleted
+                if (decorator instanceof EdgeTarget) {
+                    EdgeTarget edgeTarget = (EdgeTarget) decorator;
+                    for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
+                        subTasks.add(new DeleteEObjectTask(edge, modelAccessor));
+                    }
+                }
+            }
+        });
+        if (diagramElement instanceof DEdge) {
+            Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(((DEdge) diagramElement).getActualMapping()).getEdgeMapping();
+            if (edgeMapping.some() && !edgeMapping.get().isUseDomainElement()) {
+                // Add the delete task for relation edges only.
+                cmd.getTasks().add(new DeleteEObjectTask(diagramElement, modelAccessor));
+            }
+        }
+    }
+
+    /**
+     * Check the delete availability from tool</br>
+     * If a deletion tool exists and if the condition expression returns false,
+     * the deletion is not available
+     * 
+     * @return if the deletion is available from tool
+     */
+    private boolean isDeleteAllowedByTool() {
         final EObject semanticContainer = ((DSemanticDecorator) diagramElement).getTarget();
         final EObject viewContainer = diagramElement.eContainer();
         // check precondition
@@ -204,7 +250,6 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
             interpreter.setVariable(IInterpreterSiriusVariables.VIEW, diagramElement);
             interpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, semanticContainer);
             try {
-                delete = false;
                 delete = interpreter.evaluateBoolean(semanticContainer, tool.getPrecondition());
             } catch (final EvaluationException e) {
                 RuntimeLoggerManager.INSTANCE.error(tool, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
@@ -213,34 +258,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
             interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
             interpreter.unSetVariable(IInterpreterSiriusVariables.ELEMENT);
         }
-        if (delete) {
-
-            cmd.getTasks().addAll(buildDeleteFromToolTask(semanticContainer, viewContainer).getTasks());
-            cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, taskHelper, diagramElement) {
-
-                @Override
-                protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks) {
-                    // Nothing to add per default.
-                    // If the semantic decorator is related to edges,
-                    // these edges should also be deleted
-                    if (decorator instanceof EdgeTarget) {
-                        EdgeTarget edgeTarget = (EdgeTarget) decorator;
-                        for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
-                            subTasks.add(new DeleteEObjectTask(edge, modelAccessor));
-                        }
-                    }
-                }
-            });
-            if (diagramElement instanceof DEdge) {
-                Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(((DEdge) diagramElement).getActualMapping()).getEdgeMapping();
-                if (edgeMapping.some() && !edgeMapping.get().isUseDomainElement()) {
-                    // Add the delete task for relation edges only.
-                    cmd.getTasks().add(new DeleteEObjectTask(diagramElement, modelAccessor));
-                }
-            }
-        } else {
-            cmd.getTasks().add(UnexecutableTask.INSTANCE);
-        }
+        return delete;
     }
 
     private DCommand buildDeleteFromToolTask(final EObject deletedSemanticElement, final EObject containerView) {
