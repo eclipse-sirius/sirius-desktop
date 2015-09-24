@@ -120,7 +120,7 @@ public final class Messages {
     public static String DAnalysisSelectorService_multipleDefaultErrorMsg;
 
     @TranslatableMessage
-    public static String DAnalysisSelectorService_noDefaultWaringMsg;
+    public static String DAnalysisSelectorService_noDefaultWarningMsg;
 
     @TranslatableMessage
     public static String DAnalysisSessionImpl_addNoParentAnalysisErrorMsg;

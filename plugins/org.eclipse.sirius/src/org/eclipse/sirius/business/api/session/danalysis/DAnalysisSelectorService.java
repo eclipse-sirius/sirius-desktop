@@ -102,7 +102,7 @@ public final class DAnalysisSelectorService {
         Map<String, Collection<DAnalysisSelectorProvider>> providers = EclipseUtil.getExtensionPluginsByKey(DAnalysisSelectorProvider.class, ID, CLASS_ATTRIBUTE, "id"); //$NON-NLS-1$
         Collection<DAnalysisSelectorProvider> defaults = providers.get(DAnalysisSelectorService.DEFAULT_PROVIDER_ID);
         if (defaults == null || defaults.isEmpty()) {
-            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DAnalysisSelectorService_noDefaultWaringMsg, ID), null);
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DAnalysisSelectorService_noDefaultWarningMsg, ID), null);
             defaultSiriusProvider = new DefaultAnalysisSelectorProvider();
         } else if (defaultSiriusProvider == null) {
             defaultSiriusProvider = defaults.iterator().next();
