@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
@@ -21,6 +28,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondit
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.junit.Assert;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Tests only zoom and creation with single/double click, others features to
@@ -71,6 +80,17 @@ public class CombinedFragmentsOperandCreationTests extends AbstractCombinedFragm
         Assert.assertEquals(firstOperandOfSecondCombinedFragmentBounds.getTranslated(0, LayoutConstants.DEFAULT_OPERAND_HEIGHT), editor.getBounds(firstOperandOfSecondCombinedFragmentBot));
         Assert.assertEquals(secondOperandOfSecondCombinedFragmentBounds.getTranslated(0, LayoutConstants.DEFAULT_OPERAND_HEIGHT), editor.getBounds(secondOperandOfSecondCombinedFragmentBot));
 
+        OperandEditPart opPart = (OperandEditPart) newOperandOption.get().part();
+        Assert.assertNull("The operand figure should not have a drop shadow.",   opPart.getMainFigure().getBorder());
+        Assert.assertTrue("The operand border should be a single line.",   opPart.getPrimaryShape().getBorder() instanceof OneLineMarginBorder);
+        Assert.assertEquals("The operand border should be a single line.", Boolean.FALSE, ReflectionHelper.getFieldValueWithoutException(opPart.getPrimaryShape(), "outline", Shape.class).get());
+        Assert.assertEquals("The operand border should be place on the bottom of the figure.",PositionConstants.BOTTOM,  ((OneLineMarginBorder) opPart.getPrimaryShape().getBorder()).getPosition());
+        Assert.assertEquals("The operand border should have a custom dash style.",Graphics.LINE_CUSTOM,  ((OneLineMarginBorder) opPart.getPrimaryShape().getBorder()).getStyle());
+        
+        Assert.assertNull("The CF figure should not have a drop shadow.", firstCombinedFragmentEditPart.getMainFigure().getBorder());
+        Assert.assertNull("The CF compartment figure should not have a border.", Iterables.getOnlyElement(Iterables.filter(firstCombinedFragmentEditPart.getChildren(), ResizableCompartmentEditPart.class)).getFigure().getBorder());
+        
+        
         // FIXME find why there is a delta of 1 pixel
         Assert.assertEquals(
                 new Rectangle(firstOperandOfFirstCombinedFragmentBounds.getBottomLeft(), secondOperandOfFirstCombinedFragmentBounds.getTranslated(-1, LayoutConstants.DEFAULT_OPERAND_HEIGHT - 1)

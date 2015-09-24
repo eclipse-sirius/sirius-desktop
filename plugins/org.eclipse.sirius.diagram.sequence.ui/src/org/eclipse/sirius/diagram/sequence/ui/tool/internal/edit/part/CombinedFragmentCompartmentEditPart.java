@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.CombinedFragmentInvisibleResizableCompartmentFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
@@ -59,9 +60,6 @@ public class CombinedFragmentCompartmentEditPart extends DNodeContainerViewNodeC
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
@@ -89,24 +87,14 @@ public class CombinedFragmentCompartmentEditPart extends DNodeContainerViewNodeC
         return scf;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart#refreshVisuals()
-     */
-    protected void refreshVisuals() {
-        super.refreshVisuals();
-
-        // TODO: Remove this when Sequence will be based on generic region
-        // support.
-        if (getFigure() instanceof ResizableCompartmentFigure) {
-            ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
-            if (rcf.getScrollPane() != null) {
-                int mb = getMapMode().DPtoLP(0);
-                rcf.getScrollPane().setBorder(new MarginBorder(mb, mb, mb, mb));
-            }
-        }
-
+    @Override
+    protected void configureBorder(ResizableCompartmentFigure rcf) {
+        rcf.setBorder(null);
     }
 
+    @Override
+    protected void configureScrollPaneBorder(ScrollPane scrollPane, ContainerStyle ownedStyle) {
+        int mb = getMapMode().DPtoLP(0);
+        scrollPane.setBorder(new MarginBorder(mb, mb, mb, mb));
+    }
 }

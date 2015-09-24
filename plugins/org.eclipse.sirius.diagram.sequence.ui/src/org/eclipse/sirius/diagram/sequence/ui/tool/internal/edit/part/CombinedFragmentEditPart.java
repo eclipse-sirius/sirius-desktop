@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -41,18 +42,12 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
         super(view);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void addNotify() {
         SequenceEditPartsOperations.registerDiagramElement(this, resolveDiagramElement());
         super.addNotify();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void removeNotify() {
         super.removeNotify();
@@ -74,9 +69,6 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
@@ -85,16 +77,17 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
         installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected NodeFigure createMainFigure() {
         NodeFigure figure = super.createMainFigure();
-        // Remove the shadow border to avoid unwanted spacing
-        figure.setBorder(null);
         forceCombinedFragmentDefaultSize(figure);
         return figure;
+    }
+
+    @Override
+    protected void addDropShadow(NodeFigure figure, IFigure shape) {
+        // Remove the shadow border to avoid unwanted spacing
+        figure.setBorder(null);
     }
 
     private void forceCombinedFragmentDefaultSize(NodeFigure figure) {
@@ -109,9 +102,7 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISequenceEvent getISequenceEvent() {
         return ISequenceElementAccessor.getCombinedFragment(getNotationView()).get();
     }

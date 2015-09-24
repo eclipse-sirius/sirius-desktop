@@ -24,6 +24,7 @@ import org.eclipse.draw2d.LayoutManager;
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.ScrollPane;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -63,6 +64,7 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -74,6 +76,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPopupBarEditP
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerViewNodeContainerCompartmentItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.RegionCollapseAwarePropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
@@ -169,31 +172,14 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 if (borderColor != null) {
                     getFigure().setForegroundColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderColor));
                 }
-                int borderSize = 0;
-                if (ownedStyle.getBorderSize() != null) {
-                    borderSize = ownedStyle.getBorderSize().intValue();
-                }
 
                 if (getFigure() instanceof ResizableCompartmentFigure) {
                     ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
                     configureBorder(rcf);
+
+                    // Configure scroll pane border.
                     if (rcf.getScrollPane() != null) {
-                        Border border;
-                        if (isRegionContainerCompartment()) {
-                            // scroll pane / layout compensation
-                            if (borderSize == 0) {
-                                border = new MarginBorder(0, 0, 0, 0);
-                            } else {
-                                border = new MarginBorder(0, 0, -1, -1);
-                            }
-                        } else {
-                            // We should not have to report the border size
-                            // here, but the content pane of the figure will be
-                            // the main figure for FreeForm containers.
-                            int margin = borderSize + DEFAULT_MARGIN;
-                            border = new MarginBorder(margin, margin, margin, margin);
-                        }
-                        rcf.getScrollPane().setBorder(border);
+                        configureScrollPaneBorder(rcf.getScrollPane(), ownedStyle);
                     }
                 }
             }
@@ -209,7 +195,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
             // Make the shape compartment nestable.
             scf = new ShapeCompartmentFigure(getCompartmentName(), mapMode) {
                 @Override
-                public Dimension getMinClientDimension(){
+                public Dimension getMinClientDimension() {
                     return new Dimension(0, 0);
                 }
             };
@@ -225,7 +211,13 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         return scf;
     }
 
-    private void configureBorder(ResizableCompartmentFigure rcf) {
+    /**
+     * Configure the border of the compartment figure.
+     * 
+     * @param rcf
+     *            the figure of this edit part.
+     */
+    protected void configureBorder(ResizableCompartmentFigure rcf) {
         boolean shouldHaveBorder = isRegionContainerCompartment();
         Option<LabelBorderStyleDescription> labelBorderStyle = getLabelBorderStyle();
         if (labelBorderStyle.some()) {
@@ -240,6 +232,60 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         } else if (rcf.getBorder() instanceof MarginBorder || rcf.getBorder() == null) {
             rcf.setBorder(new OneLineBorder(getMapMode().DPtoLP(1), PositionConstants.TOP));
         }
+    }
+
+    /**
+     * Configure the scrollpane border of this compartment figure.
+     * 
+     * @param scrollPane
+     *            the figure of this edit part.
+     *            @param 
+     */
+    protected void configureScrollPaneBorder(ScrollPane scrollPane, ContainerStyle ownedStyle) {
+        int borderSize = 0;
+        if (ownedStyle.getBorderSize() != null) {
+            borderSize = ownedStyle.getBorderSize().intValue();
+        }
+
+        boolean fullLabelBorder = false;
+        Option<LabelBorderStyleDescription> labelBorderStyle = getLabelBorderStyle();
+        if (labelBorderStyle.some()) {
+            fullLabelBorder = LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
+        }
+
+        Border border = null;
+        if (isRegionContainerCompartment()) {
+            // scroll pane / layout compensation
+            if (borderSize == 0) {
+                border = new MarginBorder(0, 0, 0, 0);
+            } else {
+                border = new MarginBorder(0, 0, -1, -1);
+            }
+        } else if (fullLabelBorder) {
+            border = new MarginBorder(DEFAULT_MARGIN, DEFAULT_MARGIN, DEFAULT_MARGIN, DEFAULT_MARGIN);
+        } else {
+            // We should not have to report the border size
+            // here, but the content pane of the figure will be
+            // the main figure for FreeForm containers.
+            int margin = borderSize + DEFAULT_MARGIN;
+            border = new MarginBorder(margin, margin, margin, margin);
+
+            // Correctly handle scrollpane border when when the primary shape
+            // has a one side border.
+            if (((AbstractDiagramElementContainerEditPart) getParent()).getPrimaryShape().getBorder() instanceof OneLineMarginBorder) {
+                int lineBorderPosition = ((OneLineMarginBorder) ((AbstractDiagramElementContainerEditPart) getParent()).getPrimaryShape().getBorder()).getPosition();
+                if (PositionConstants.TOP == lineBorderPosition) {
+                    border = new MarginBorder(margin, DEFAULT_MARGIN, DEFAULT_MARGIN, DEFAULT_MARGIN);
+                } else if (PositionConstants.LEFT == lineBorderPosition) {
+                    border = new MarginBorder(DEFAULT_MARGIN, margin, DEFAULT_MARGIN, DEFAULT_MARGIN);
+                } else if (PositionConstants.BOTTOM == lineBorderPosition) {
+                    border = new MarginBorder(DEFAULT_MARGIN, DEFAULT_MARGIN, margin, DEFAULT_MARGIN);
+                } else if (PositionConstants.RIGHT == lineBorderPosition) {
+                    border = new MarginBorder(DEFAULT_MARGIN, DEFAULT_MARGIN, DEFAULT_MARGIN, margin);
+                }
+            }
+        }
+        scrollPane.setBorder(border);
     }
 
     private boolean isLabelHidden() {

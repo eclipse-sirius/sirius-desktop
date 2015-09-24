@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPolicy;
@@ -83,9 +84,6 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
@@ -94,9 +92,6 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
         installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void addDropShadow(NodeFigure figure, IFigure shape) {
         // Removes the shadow border to have operands border overlapping
@@ -124,16 +119,6 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
 
     /**
      * {@inheritDoc}
-     */
-    @Override
-    protected NodeFigure createMainFigure() {
-        NodeFigure figure = super.createMainFigure();
-
-        return figure;
-    }
-
-    /**
-     * {@inheritDoc}
      * 
      * Overridden to create our own figure without border but only a bottom dash
      * line.
@@ -151,9 +136,7 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ISequenceEvent getISequenceEvent() {
         return ISequenceElementAccessor.getOperand(getNotationView()).get();
     }
@@ -170,7 +153,10 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
 
             // Always keep a 0 pixel margin for Operand figure.
             if (primaryShape.getBorder() instanceof OneLineMarginBorder) {
-                ((OneLineMarginBorder) primaryShape.getBorder()).setMargin(0);
+                OneLineMarginBorder oneLineBorder = (OneLineMarginBorder) primaryShape.getBorder();
+                oneLineBorder.setMargin(0);
+                oneLineBorder.setStyle(Graphics.LINE_CUSTOM);
+                oneLineBorder.setLineDash(LayoutConstants.OPERAND_DASH_STYLE);
             }
         }
     }

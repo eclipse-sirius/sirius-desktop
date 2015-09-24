@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,10 +46,17 @@ public class OperandFigure extends GradientRoundedRectangle {
         this.setFill(false);
         this.setOutline(false);
     }
-
+    
     /**
-     * {@inheritDoc}
+     * The outline of the shape is disabled for Operands which have a specific
+     * border figure.
      */
+    @Override
+    public void setOutline(boolean b) {
+        super.setOutline(false);
+    }
+
+    @Override
     protected void createBorder() {
         OneLineMarginBorder oneLineBorder = new OneLineMarginBorder(PositionConstants.BOTTOM);
         oneLineBorder.setStyle(Graphics.LINE_CUSTOM);
