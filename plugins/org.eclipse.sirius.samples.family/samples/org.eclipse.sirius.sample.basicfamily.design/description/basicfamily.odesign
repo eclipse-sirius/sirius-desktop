@@ -38,7 +38,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="basicfamily.Man" referenceName="members">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['man'+container.members->filter(Man)->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'man'+container.members->filter(basicfamily::Man)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
