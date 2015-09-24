@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.layoutdata.tools.internal.util.configuration;
 
+import java.text.MessageFormat;
+
 import org.eclipse.sirius.diagram.layoutdata.tools.Messages;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.EdgeConfiguration;
 
@@ -47,7 +49,7 @@ public class EdgeConfigurationImpl implements EdgeConfiguration {
      */
     @Override
     public String toString() {
-        return Messages.EdgeConfigurationImpl_toString;
+        return MessageFormat.format(Messages.EdgeConfigurationImpl_toString, getDistanceAroundPointsOfEdgeBendpointsList());
     }
 
 }

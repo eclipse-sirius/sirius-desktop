@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.layoutdata.tools.internal.util.configuration;
 
+import java.text.MessageFormat;
+
 import org.eclipse.sirius.diagram.layoutdata.tools.Messages;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.Configuration;
 import org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration.EdgeConfiguration;
@@ -75,7 +77,7 @@ public class ConfigurationImpl implements Configuration {
      */
     @Override
     public String toString() {
-        return Messages.ConfigurationImpl_toString;
+        return MessageFormat.format(Messages.ConfigurationImpl_toString, nodeConfiguration, edgeConfiguration);
     }
 
 }
