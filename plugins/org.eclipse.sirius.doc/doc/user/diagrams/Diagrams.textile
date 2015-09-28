@@ -252,11 +252,6 @@ When there is no selected element on the diagram, _Show/Hide_ tab bar button all
 
 h5. Containers, Lists and compartments labels
 
-<div style="display:none">
-   TODO Correct displayed name for compartments: DNodeContainer name and not smeantic elemnt label ?
-	!images/diagram_editor_hide_container_list_region_label_1.png!
-</div>
-	
 Labels of containers, lists and compartment might be hidden by default. You can choose to display them using the outline, contextual menu or _Show/Hide_ tree view.
 
 h5. Nodes labels

@@ -27,7 +27,7 @@ The rest of this document explains how you can use the Sirius UI to create and m
 
 h2(#FormerUsers). Note to Users of Previous Versions
 
-New users can skip this section safely. For users of previous version who have existing models, this section explains the required steps to use their models with this version, and gives an overview of the main UI changes. See also the "release notes":../../Release%20Notes.html for more details.
+New users can skip this section safely. For users of previous version who have existing models, this section explains the required steps to use their models with this version, and gives an overview of the main UI changes. See also the "release notes":../../Release_Notes.html for more details.
 
 h3(#Migration). Migration of Existing Representation Files
 
