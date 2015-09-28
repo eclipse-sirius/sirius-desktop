@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -44,6 +39,7 @@ import org.eclipse.sirius.tests.unit.api.mmextension.ExtensionPaletteToolTest;
 import org.eclipse.sirius.tests.unit.api.refresh.ChangeIdAndLabelTests;
 import org.eclipse.sirius.tests.unit.api.refresh.DefaultColorsTest;
 import org.eclipse.sirius.tests.unit.api.refresh.EdgeWithConditionalStyleTest;
+import org.eclipse.sirius.tests.unit.api.refresh.IconRefreshTests;
 import org.eclipse.sirius.tests.unit.api.refresh.RefreshInUIThreadTests;
 import org.eclipse.sirius.tests.unit.api.refresh.RefreshOnDeletionInAutoRefreshTests;
 import org.eclipse.sirius.tests.unit.api.refresh.RefreshOnDeletionInManualRefreshTests;
@@ -234,6 +230,11 @@ import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationT
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
 import org.eclipse.sirius.tests.unit.table.unit.migration.InitializeElementsToSelectExpressionForTableMigrationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.SelectionInTableAfterToolExecutionTest;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class AllDiagramPluginsTests {
 
@@ -472,6 +473,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(HideAndDeleteUndoTest.class);
         suite.addTestSuite(HierarchicalControlTest.class);
         suite.addTestSuite(HierarchicalControlWithRootElementReadOnlyTest.class);
+        suite.addTestSuite(IconRefreshTests.class);
 
         suite.addTestSuite(PopupMenuTest.class);
 
