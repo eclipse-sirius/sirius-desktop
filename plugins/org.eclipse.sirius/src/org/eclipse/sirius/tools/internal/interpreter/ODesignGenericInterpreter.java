@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -31,6 +32,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
@@ -45,7 +47,7 @@ import com.google.common.collect.Sets;
  * 
  * @author ymortier
  */
-public class ODesignGenericInterpreter implements IInterpreter, IProposalProvider {
+public class ODesignGenericInterpreter implements IInterpreter, IProposalProvider, IInterpreterWithDiagnostic {
 
     /** Maps provider with interpreters. */
     private final Map<IInterpreterProvider, IInterpreter> loadedInterpreters = new HashMap<IInterpreterProvider, IInterpreter>();
@@ -113,6 +115,31 @@ public class ODesignGenericInterpreter implements IInterpreter, IProposalProvide
     @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
         return getInterpreter(expression).validateExpression(context, expression);
+    }
+
+    @Override
+    public IEvaluationResult evaluateExpression(final EObject target, final String expression) throws EvaluationException {
+        final IInterpreter interpreter = getInterpreter(expression);
+        if (interpreter instanceof IInterpreterWithDiagnostic) {
+            return ((IInterpreterWithDiagnostic) interpreter).evaluateExpression(target, expression);
+        }
+
+        // Fall back on the default behavior otherwise with an OK diagnostic
+        final Object result = interpreter.evaluate(target, expression);
+
+        IEvaluationResult evaluationResult = new IEvaluationResult() {
+            @Override
+            public Object getValue() {
+                return result;
+            }
+
+            @Override
+            public Diagnostic getDiagnostic() {
+                return Diagnostic.OK_INSTANCE;
+            }
+        };
+
+        return evaluationResult;
     }
 
     @Override
