@@ -98,10 +98,12 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
         EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
         if (editPart instanceof IDiagramElementEditPart) {
             DDiagramElement dDiagramElement = ((IDiagramElementEditPart) editPart).resolveDiagramElement();
-            String tooltip = getToolTipText(dDiagramElement);
-            if (tooltip != null) {
-                if (decoration instanceof Figure) {
-                    ((Figure) decoration).setToolTip(new Label(tooltip));
+            if (dDiagramElement != null) {
+                String tooltip = getToolTipText(dDiagramElement);
+                if (tooltip != null) {
+                    if (decoration instanceof Figure) {
+                        ((Figure) decoration).setToolTip(new Label(tooltip));
+                    }
                 }
             }
         }

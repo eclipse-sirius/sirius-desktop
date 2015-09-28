@@ -281,7 +281,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(CompoundInterpreterTestCase.class);
         // TooltipProviderTests must be executed with the inner IAdapterFactory
         // not with another one
-        if (Platform.getAdapterManager().hasAdapter(EcorePackage.eINSTANCE, IToolTipProvider.class.getName())) {
+        if (!Platform.getAdapterManager().hasAdapter(EcorePackage.eINSTANCE, IToolTipProvider.class.getName())) {
             suite.addTestSuite(TooltipProviderTests.class);
         }
         suite.addTestSuite(TransientSessionTests.class);
