@@ -161,10 +161,12 @@ public final class ContainerMappingHelper {
     public static EList<EObject> getNodesCandidates(IContainerMappingExt self, EObject semanticOrigin, EObject container, EObject containerView) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.GET_CONTAINER_CANDIDATES_KEY);
         //
-        // find the parent viewpoint.
-        DDiagram parentVp = null;
+        // find the parent diagram.
+        DDiagram diagram = null;
         if (containerView instanceof DDiagramElement) {
-            parentVp = ((DDiagramElement) containerView).getParentDiagram();
+            diagram = ((DDiagramElement) containerView).getParentDiagram();
+        } else if (containerView instanceof DDiagram) {
+            diagram = (DDiagram) containerView;
         }
         //
         // The container variable.
@@ -174,12 +176,12 @@ public final class ContainerMappingHelper {
         } else {
             safeContainer = container;
         }
-        final EObjectCouple couple = new EObjectCouple(semanticOrigin, safeContainer, RefreshIdsHolder.getOrCreateHolder(parentVp));
+        final EObjectCouple couple = new EObjectCouple(semanticOrigin, safeContainer, RefreshIdsHolder.getOrCreateHolder(diagram));
         EList<EObject> result = self.getCandidatesCache().get(couple);
         if (result == null) {
             result = new UniqueEList<EObject>();
             Iterator<EObject> it;
-            it = DiagramElementMappingHelper.getSemanticIterator(self, semanticOrigin, parentVp);
+            it = DiagramElementMappingHelper.getSemanticIterator(self, semanticOrigin, diagram);
             if (self.getDomainClass() != null) {
                 while (it.hasNext()) {
                     final EObject eObj = it.next();
