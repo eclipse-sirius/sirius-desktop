@@ -37,6 +37,7 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -581,6 +582,7 @@ public class DiagramSynchronizerTest extends AbstractSynchronizerTest {
         IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
         if (uiSession != null) {
             uiSession.close();
+            TestsUtil.emptyEventsFromUIThread();
         }
     }
 

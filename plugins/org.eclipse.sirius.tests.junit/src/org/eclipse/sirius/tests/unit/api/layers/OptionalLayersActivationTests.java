@@ -30,6 +30,7 @@ import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -191,6 +192,7 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
             }
         });
         SessionUIManager.INSTANCE.getUISession(session).close(true);
+        TestsUtil.emptyEventsFromUIThread();
 
         session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
         assertEquals(1, findDiagram(session).getActivatedLayers().size());

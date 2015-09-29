@@ -220,8 +220,7 @@ public class PinnedElementsTest extends SiriusDiagramTestCase {
     @Override
     protected void tearDown() throws Exception {
         SessionUIManager.INSTANCE.getUISession(session).closeEditors(false, Collections.singleton((DDiagramEditor) editorPart));
-        DialectUIManager.INSTANCE.closeEditor(editorPart, false);
-        editorPart.getSite().getPage().closeEditor(editorPart, false);
+        TestsUtil.emptyEventsFromUIThread();
         super.tearDown();
     }
 }

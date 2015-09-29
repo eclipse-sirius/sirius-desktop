@@ -278,16 +278,19 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         IEditingSession uiSession1 = SessionUIManager.INSTANCE.getUISession(session1);
         if (uiSession1 != null) {
             uiSession1.close();
+            TestsUtil.emptyEventsFromUIThread();
         }
         session2.close(new NullProgressMonitor());
         IEditingSession uiSession2 = SessionUIManager.INSTANCE.getUISession(session2);
         if (uiSession2 != null) {
             uiSession2.close();
+            TestsUtil.emptyEventsFromUIThread();
         }
         session3.close(new NullProgressMonitor());
         IEditingSession uiSession3 = SessionUIManager.INSTANCE.getUISession(session3);
         if (uiSession3 != null) {
             uiSession3.close();
+            TestsUtil.emptyEventsFromUIThread();
         }
 
         // Same as before, but remove a representation which was here already at

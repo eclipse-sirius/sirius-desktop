@@ -230,6 +230,7 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
         if (sessionUI != null) {
             SessionUIManager.INSTANCE.remove(sessionUI);
             sessionUI.close();
+            TestsUtil.emptyEventsFromUIThread();
         }
         if (session != null) {
             doRemoveSession();

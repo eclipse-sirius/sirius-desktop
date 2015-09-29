@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.HideFilter;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -122,6 +123,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
 
         assertNotNull("we should be able to retrieve the new session from the model after migration.", newSession);
         uiSession.close();
+        TestsUtil.emptyEventsFromUIThread();
         newSession.close(new NullProgressMonitor());
         uiSession = SessionUIManager.INSTANCE.getUISession(newSession);
         if (uiSession != null) {
@@ -178,6 +180,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
         IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(newSession);
         if (uiSession != null) {
             uiSession.close();
+            TestsUtil.emptyEventsFromUIThread();
         }
     }
 
@@ -231,6 +234,7 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
         IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(newSession);
         if (uiSession != null) {
             uiSession.close();
+            TestsUtil.emptyEventsFromUIThread();
         }
     }
 

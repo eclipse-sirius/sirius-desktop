@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -195,6 +196,7 @@ public abstract class AbstractSynchronizerTest extends SiriusDiagramTestCase {
             if (sessionUI != null) {
                 SessionUIManager.INSTANCE.remove(sessionUI);
                 sessionUI.close();
+                TestsUtil.emptyEventsFromUIThread();
             }
             if (session.isOpen()) {
                 session.close(new NullProgressMonitor());
