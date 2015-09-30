@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_2NnzcBaCEeWnboyshadNBw"  version="10.0.0.201505222000">
+  <semanticResources>reverse1.ecorebin</semanticResources>
+  <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+  <semanticResources>reverse10.ecorebin</semanticResources>
+  <semanticResources>reverse11.ecorebin</semanticResources>
+  <semanticResources>reverse12.ecorebin</semanticResources>
+  <semanticResources>reverse13.ecorebin</semanticResources>
+  <semanticResources>reverse14.ecorebin</semanticResources>
+  <semanticResources>reverse15.ecorebin</semanticResources>
+  <semanticResources>reverse16.ecorebin</semanticResources>
+  <semanticResources>reverse17.ecorebin</semanticResources>
+  <semanticResources>reverse18.ecorebin</semanticResources>
+  <semanticResources>reverse19.ecorebin</semanticResources>
+  <semanticResources>reverse2.ecorebin</semanticResources>
+  <semanticResources>reverse20.ecorebin</semanticResources>
+  <semanticResources>reverse3.ecorebin</semanticResources>
+  <semanticResources>reverse4.ecorebin</semanticResources>
+  <semanticResources>reverse5.ecorebin</semanticResources>
+  <semanticResources>reverse6.ecorebin</semanticResources>
+  <semanticResources>reverse7.ecorebin</semanticResources>
+  <semanticResources>reverse8.ecorebin</semanticResources>
+  <semanticResources>reverse9.ecorebin</semanticResources>
+</viewpoint:DAnalysis>

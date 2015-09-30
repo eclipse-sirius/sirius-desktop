@@ -130,6 +130,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrati
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
+import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
@@ -296,6 +297,7 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(SubMenusPrioritiesTest.class);
         suite.addTestSuite(ZombieViewpointsTest.class);
+        suite.addTestSuite(Session1MillionTests.class);
     }
 
     /**
