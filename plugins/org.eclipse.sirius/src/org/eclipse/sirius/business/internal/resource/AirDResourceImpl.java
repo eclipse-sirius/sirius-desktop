@@ -13,19 +13,25 @@ package org.eclipse.sirius.business.internal.resource;
 import java.io.IOException;
 import java.util.Map;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLLoad;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.api.session.resource.DResource;
 import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
+import org.eclipse.sirius.business.internal.migration.RepresentationsFileExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
+import org.eclipse.sirius.business.internal.migration.RepresentationsFileResourceHandler;
+import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
 import org.eclipse.sirius.business.internal.resource.parser.RepresentationsFileXMIHelper;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.osgi.framework.Version;
 
 /**
  * Aird resource to provide custom factory.
@@ -115,6 +121,7 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.LOAD_AIRD_KEY);
         AirDResourceImpl.incrementLoadInProgress();
         try {
+            handleMigrationOptions();
             super.load(options);
         } finally {
             AirDResourceImpl.decrementLoadInProgress();
@@ -123,6 +130,38 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
         // AirDResourceMigration migration = new AirDResourceMigration(this);
         // // Notify user only if there is no more load in progress.
         // migration.migrate(!AirDResourceImpl.hasLoadInProgress());
+    }
+
+    private void handleMigrationOptions() {
+        RepresentationsFileVersionSAXParser parser = new RepresentationsFileVersionSAXParser(uri);
+        boolean migrationIsNeeded = true;
+        String loadedVersion = parser.getVersion(new NullProgressMonitor());
+        if (loadedVersion != null) {
+            migrationIsNeeded = RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
+        }
+        Object versionOption = this.getDefaultLoadOptions().get(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION);
+
+        // If the migration options have been installed and we do not need to
+        // migrate anymore (a reload following a save for instance), we remove
+        // them.
+        if (!migrationIsNeeded && versionOption != null) {
+            removeMigrationMechanism();
+        }
+        // If we need to migrate we install the mechanism. If the mechanism
+        // was already installed and the loaded version is different, we
+        // update it.
+        else if (migrationIsNeeded && (versionOption == null || !versionOption.equals(loadedVersion))) {
+            addMigrationOptions(loadedVersion, this.getDefaultLoadOptions(), this.getDefaultSaveOptions());
+        }
+
+    }
+
+    private void removeMigrationMechanism() {
+        this.getDefaultLoadOptions().remove(XMLResource.OPTION_EXTENDED_META_DATA);
+        this.getDefaultLoadOptions().remove(XMLResource.OPTION_RESOURCE_HANDLER);
+        this.getDefaultLoadOptions().remove(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION);
+        this.getDefaultSaveOptions().remove(XMLResource.OPTION_EXTENDED_META_DATA);
+        this.getDefaultSaveOptions().remove(XMLResource.OPTION_RESOURCE_HANDLER);
     }
 
     @Override
@@ -159,6 +198,34 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
         } else {
             return super.getEObject(uriFragment);
         }
+    }
+
+    /**
+     * Add the migration options in the given loadOptions and saveOptions maps.
+     * 
+     * @param loadedVersion
+     *            the loadedVersion.
+     * @param loadOptions
+     *            the loadOptions map.
+     * @param saveOptions
+     *            the saveOptions map.
+     */
+    public static void addMigrationOptions(String loadedVersion, Map<Object, Object> loadOptions, Map<Object, Object> saveOptions) {
+
+        RepresentationsFileExtendedMetaData extendedMetaData = new RepresentationsFileExtendedMetaData(loadedVersion);
+        RepresentationsFileResourceHandler resourceHandler = new RepresentationsFileResourceHandler(loadedVersion);
+
+        loadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+        loadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
+        /**
+         * This option is passed so that the resource can decide to adapt the
+         * load mechanism depending on the loaded version.
+         */
+        loadOptions.put(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION, loadedVersion);
+
+        saveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+        saveOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
+
     }
 
 }

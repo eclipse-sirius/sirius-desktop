@@ -23,10 +23,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
-import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
-import org.eclipse.sirius.business.internal.migration.RepresentationsFileExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
-import org.eclipse.sirius.business.internal.migration.RepresentationsFileResourceHandler;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
 import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
 import org.osgi.framework.Version;
@@ -47,10 +44,6 @@ public class AirDResourceFactory extends XMIResourceFactoryImpl {
 
     // default save options.
     private static final Map<Object, Object> DEFAULT_SAVE_OPTIONS = Maps.newHashMap();
-
-    private RepresentationsFileExtendedMetaData extendedMetaData;
-
-    private RepresentationsFileResourceHandler resourceHandler;
 
     static {
 
@@ -104,13 +97,8 @@ public class AirDResourceFactory extends XMIResourceFactoryImpl {
             migrationIsNeeded = RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
         }
 
-        if (migrationIsNeeded) {
-            extendedMetaData = new RepresentationsFileExtendedMetaData(loadedVersion);
-            resourceHandler = new RepresentationsFileResourceHandler(loadedVersion);
-        }
         final XMIResource resource = doCreateAirdResourceImpl(uri);
-        setLoadOptions(resource, migrationIsNeeded, loadedVersion);
-        setSaveOptions(resource, migrationIsNeeded);
+        setOptions(resource, migrationIsNeeded, loadedVersion);
 
         if (!resource.getEncoding().equals(XMI_ENCODING)) {
             resource.setEncoding(XMI_ENCODING);
@@ -134,59 +122,41 @@ public class AirDResourceFactory extends XMIResourceFactoryImpl {
     }
 
     /**
-     * Sets the Load options to associate to the AirDResource.
+     * Sets the options to associate to the AirDResource.
      * 
      * @param resource
      *            the resource being loaded
      * @param migrationIsNeeded
+     *            if a migration is needed.
+     * @param loadedVersion
+     *            the loaded version.
      */
-    private void setLoadOptions(XMIResource resource, boolean migrationIsNeeded, String loadedVersion) {
+    private void setOptions(XMIResource resource, boolean migrationIsNeeded, String loadedVersion) {
 
-        final Map<Object, Object> options = new HashMap<Object, Object>();
+        final Map<Object, Object> loadOptions = new HashMap<Object, Object>();
+        final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
         /* default load options. */
-        options.putAll(getDefaultLoadOptions());
-        options.put(XMLResource.OPTION_DEFER_ATTACHMENT, true);
-        options.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, true);
-        options.put(XMLResource.OPTION_USE_DEPRECATED_METHODS, false);
-        options.put(XMLResource.OPTION_USE_PARSER_POOL, new XMLParserPoolImpl(true));
-        options.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, Maps.newHashMap());
+        loadOptions.putAll(getDefaultLoadOptions());
+        /* default save options. */
+        saveOptions.putAll(getDefaultSaveOptions());
+
+        loadOptions.put(XMLResource.OPTION_DEFER_ATTACHMENT, true);
+        loadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, true);
+        loadOptions.put(XMLResource.OPTION_USE_DEPRECATED_METHODS, false);
+        loadOptions.put(XMLResource.OPTION_USE_PARSER_POOL, new XMLParserPoolImpl(true));
+        loadOptions.put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, Maps.newHashMap());
 
         // extendedMetaData and resourceHandler
 
         if (migrationIsNeeded) {
-            options.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
-            options.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
-            /**
-             * This option is passed so that the resource can decide to adapt
-             * the load mechanism depending on the loaded version.
-             */
-            options.put(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION, loadedVersion);
+            AirDResourceImpl.addMigrationOptions(loadedVersion, loadOptions, saveOptions);
         }
 
-        options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+        loadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
+        saveOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
-        resource.getDefaultLoadOptions().putAll(options);
+        resource.getDefaultSaveOptions().putAll(saveOptions);
+        resource.getDefaultLoadOptions().putAll(loadOptions);
     }
 
-    /**
-     * Sets the Save options to associate to the AirDResource.
-     * 
-     * @param resource
-     *            the resource being loaded
-     * @param migrationIsNeeded
-     */
-    private void setSaveOptions(XMIResource resource, boolean migrationIsNeeded) {
-
-        final Map<Object, Object> options = new HashMap<Object, Object>();
-        /* default save options. */
-        options.putAll(getDefaultSaveOptions());
-        if (migrationIsNeeded) {
-            options.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
-            options.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
-        }
-        options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-
-        resource.getDefaultSaveOptions().putAll(options);
-
-    }
 }

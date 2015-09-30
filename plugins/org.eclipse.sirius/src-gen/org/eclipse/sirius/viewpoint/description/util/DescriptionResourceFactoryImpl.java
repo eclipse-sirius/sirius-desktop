@@ -20,10 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
-import org.eclipse.sirius.business.internal.migration.description.VSMExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
-import org.eclipse.sirius.business.internal.migration.description.VSMResourceHandler;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.osgi.framework.Version;
 
@@ -35,9 +32,6 @@ import org.osgi.framework.Version;
  * @generated
  */
 public class DescriptionResourceFactoryImpl extends ResourceFactoryImpl {
-    private VSMExtendedMetaData extendedMetaData;
-
-    private VSMResourceHandler resourceHandler;
 
     /**
      * Creates an instance of the resource factory. <!-- begin-user-doc --> <!--
@@ -76,19 +70,7 @@ public class DescriptionResourceFactoryImpl extends ResourceFactoryImpl {
 
         // handle migration option
         if (migrationIsNeeded) {
-            extendedMetaData = new VSMExtendedMetaData(loadedVersion);
-            resourceHandler = new VSMResourceHandler(loadedVersion);
-
-            loadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
-            loadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
-            /**
-             * This option is passed so that the resource can decide to adapt
-             * the load mechanism depending on the loaded version.
-             */
-            loadOptions.put(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION, loadedVersion);
-
-            saveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
-            saveOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
+            DescriptionResourceImpl.addMigrationOptions(loadedVersion, loadOptions, saveOptions);
         }
 
         resource.getDefaultLoadOptions().putAll(loadOptions);
