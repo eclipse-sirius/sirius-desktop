@@ -123,14 +123,14 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="IU creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.InteractionUse" referenceName="interactionUses" variableName="newIU">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:'ref.' + self.eContainer().eContents()->filter(InteractionUse)->size()"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainerOrSelf(Interaction)"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredParticipants" valueExpression="var:coverage"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.InteractionUseEnd" referenceName="ends" variableName="startingEnd">
@@ -170,7 +170,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="CF creation"/>
                   <parameters name="enabled" value="aql:false"/>
@@ -229,7 +229,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="Operand Creation"/>
                   <parameters name="enabled" value="aql:false"/>
@@ -1064,19 +1064,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Execution)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.end"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust execution position 2" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="executions"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::ExecutionEnd)->select(current | current.execution.start = current)->last().execution"/>
@@ -1084,19 +1084,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(State)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.end"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust state position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="states"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::StateEnd)->select(current | current.state.start = current)->last().state"/>
@@ -1105,7 +1105,7 @@
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Message)">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sending end" id="org.eclipse.sirius.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="aql:self.sendingEnd"/>
                       <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
@@ -1113,14 +1113,14 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.receivingEnd">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move receiving end" id="org.eclipse.sirius.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="aql:self.receivingEnd"/>
                       <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust message position 2" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="messages"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.sendingEnd.precedingSiblings()->filter(interactions::MessageEnd)->select(current | current.message.receivingEnd = current)->last().message"/>
@@ -1128,19 +1128,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(InteractionUse)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.finish"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust Interaction Use position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="interactionUses"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::InteractionUseEnd)->select(current| current.owner.start = current)->last().owner"/>
@@ -1148,19 +1148,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(CombinedFragment)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.finish"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust CombinedFragment position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="combinedFragments"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::CombinedFragmentEnd)->select(current | current.owner.start = current)->last().owner"/>
@@ -1168,7 +1168,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Operand)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
@@ -2551,14 +2551,14 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="IU creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.InteractionUse" referenceName="interactionUses" variableName="newIU">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:'ref.' + self.eContainer().eContents()->filter(InteractionUse)->size()"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainerOrSelf(Interaction)"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredParticipants" valueExpression="var:coverage"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.InteractionUseEnd" referenceName="ends" variableName="startingEnd">
@@ -2598,7 +2598,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="CF creation"/>
                   <parameters name="enabled" value="aql:false"/>
@@ -2657,7 +2657,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="Operand Creation"/>
                   <parameters name="enabled" value="aql:false"/>
@@ -2837,19 +2837,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Execution)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.end"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust execution position 2" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="executions"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::ExecutionEnd)->select(current | current.execution.start = current)->last().execution"/>
@@ -2857,19 +2857,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(State)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.end"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust state position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="states"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::StateEnd)->select(current | current.state.start = current)->last().state"/>
@@ -2878,7 +2878,7 @@
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Message)">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sending end" id="org.eclipse.sirius.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="aql:self.sendingEnd"/>
                       <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
@@ -2886,14 +2886,14 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.receivingEnd">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move receiving end" id="org.eclipse.sirius.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="aql:self.receivingEnd"/>
                       <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust message position 2" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="messages"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.sendingEnd.precedingSiblings()->filter(interactions::MessageEnd)->select(current | current.message.receivingEnd = current)->last().message"/>
@@ -2901,19 +2901,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(InteractionUse)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.finish"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust Interaction Use position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="interactionUses"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::InteractionUseEnd)->select(current| current.owner.start = current)->last().owner"/>
@@ -2921,19 +2921,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(CombinedFragment)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.finish"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust CombinedFragment position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="combinedFragments"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::CombinedFragmentEnd)->select(current | current.owner.start = current)->last().owner"/>
@@ -2941,7 +2941,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Operand)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
@@ -4324,14 +4324,14 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="IU creation"/>
                   <parameters name="enabled" value="aql:false"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.InteractionUse" referenceName="interactionUses" variableName="newIU">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:'ref.' + self.eContainer().eContents()->filter(InteractionUse)->size()"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainerOrSelf(Interaction)"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="coveredParticipants" valueExpression="var:coverage"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="interactions.InteractionUseEnd" referenceName="ends" variableName="startingEnd">
@@ -4371,7 +4371,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="CF creation"/>
                   <parameters name="enabled" value="aql:false"/>
@@ -4430,7 +4430,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(interactions::Interaction)">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="Operand Creation"/>
                   <parameters name="enabled" value="aql:false"/>
@@ -4610,19 +4610,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Execution)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.end"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust execution position 2" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="executions"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::ExecutionEnd)->select(current | current.execution.start = current)->last().execution"/>
@@ -4630,19 +4630,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(State)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.end"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust state position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="states"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::StateEnd)->select(current | current.state.start = current)->last().state"/>
@@ -4651,7 +4651,7 @@
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Message)">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move sending end" id="org.eclipse.sirius.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="aql:self.sendingEnd"/>
                       <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
@@ -4659,14 +4659,14 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.receivingEnd">
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move receiving end" id="org.eclipse.sirius.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                      <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                       <parameters name="referenceName" value="ends"/>
                       <parameters name="element" value="aql:self.receivingEnd"/>
                       <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust message position 2" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="messages"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.sendingEnd.precedingSiblings()->filter(interactions::MessageEnd)->select(current | current.message.receivingEnd = current)->last().message"/>
@@ -4674,19 +4674,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(InteractionUse)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.finish"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust Interaction Use position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="interactionUses"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::InteractionUseEnd)->select(current| current.owner.start = current)->last().owner"/>
@@ -4694,19 +4694,19 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(CombinedFragment)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.finish"/>
                     <parameters name="predecessor" value="aql:finishingEndPredecessorAfter.semanticEnd"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust CombinedFragment position" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="combinedFragments"/>
                     <parameters name="element" value="var:self"/>
                     <parameters name="predecessor" value="aql:self.start.precedingSiblings()->filter(interactions::CombinedFragmentEnd)->select(current | current.owner.start = current)->last().owner"/>
@@ -4714,7 +4714,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclIsKindOf(Operand)">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
-                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(Interaction)"/>
+                    <parameters name="referenceOwner" value="aql:self.eContainerOrSelf(interactions::Interaction)"/>
                     <parameters name="referenceName" value="ends"/>
                     <parameters name="element" value="aql:self.start"/>
                     <parameters name="predecessor" value="aql:startingEndPredecessorAfter.semanticEnd"/>

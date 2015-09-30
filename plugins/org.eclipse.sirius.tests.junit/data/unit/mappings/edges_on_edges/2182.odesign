@@ -218,7 +218,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="EMb TC1" preconditionExpression="aql:self.eOpposite = null" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC1']/@defaultLayer/@edgeMappings[name='EMa%20TC1']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC1']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC1']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self.eContainer().eContents()->filter(EAnnotation).references" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="EMb TC1" preconditionExpression="aql:self.eOpposite = null" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC1']/@defaultLayer/@edgeMappings[name='EMa%20TC1']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC1']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC1']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self.eContainer().eContents()->filter(ecore::EAnnotation).references" domainClass="EReference" useDomainElement="true">
           <style sizeComputationExpression="3">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_yellow']"/>
             <centerLabelStyleDescription labelSize="12" labelExpression="aql:'EMb ' + self.name">
@@ -509,7 +509,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="EMb TC4" preconditionExpression="aql:self.eOpposite = null" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC4']/@defaultLayer/@edgeMappings[name='EMa%20TC4']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC4']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC4']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self.eContainer().eContents()->filter(EAnnotation).references" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC4']/@defaultLayer/@toolSections.2/@ownedTools[name='ReconnectEReference']">
+        <edgeMappings name="EMb TC4" preconditionExpression="aql:self.eOpposite = null" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC4']/@defaultLayer/@edgeMappings[name='EMa%20TC4']" targetMapping="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC4']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC4']" targetFinderExpression="aql:self.eType" sourceFinderExpression="aql:self.eContainer().eContents()->filter(ecore::EAnnotation).references" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='doremi_2182']/@ownedRepresentations[name='doremi-2182_TC4']/@defaultLayer/@toolSections.2/@ownedTools[name='ReconnectEReference']">
           <style sizeComputationExpression="3">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_yellow']"/>
             <centerLabelStyleDescription labelExpression="EMb">
