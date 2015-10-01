@@ -121,7 +121,7 @@ public class IconRefreshTests extends SiriusDiagramTestCase {
             EObject viewElt = eAllContents.next();
             if (viewElt instanceof DSemanticDecorator) {
                 EObject semanticElt = ((DSemanticDecorator) viewElt).getTarget();
-                assertTrue(semanticElt instanceof NamedElement);
+                assertTrue("The semantic element is not a NamedElement.", semanticElt instanceof NamedElement);
                 NamedElement namedElement = (NamedElement) semanticElt;
 
                 checkLabelIcon(namedElement);

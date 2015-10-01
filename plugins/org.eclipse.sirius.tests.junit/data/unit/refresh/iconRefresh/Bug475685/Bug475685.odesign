@@ -2,7 +2,7 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Bug475685" version="10.1.0.201507271600">
   <ownedViewpoints name="Bug475685_Viewpoint" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Bug475685_DiagDef" domainClass="uml.Package">
-      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
       <defaultLayer name="Default1">
         <nodeMappings name="Nodes" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Class">
           <borderedNodeMappings name="NodeMappingOfNodes" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Property">
