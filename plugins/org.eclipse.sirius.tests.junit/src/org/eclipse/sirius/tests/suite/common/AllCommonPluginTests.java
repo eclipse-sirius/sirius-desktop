@@ -97,6 +97,7 @@ import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampai
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign08;
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign09;
 import org.eclipse.sirius.tests.unit.common.migration.DiagramMigrationTestCampaign10;
+import org.eclipse.sirius.tests.unit.common.migration.GeneralMigrationMechanismTest;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius0_9Test;
 import org.eclipse.sirius.tests.unit.common.migration.MigrationFromSirius1_0_0_M5Test;
 import org.eclipse.sirius.tests.unit.common.migration.ModelsToSemanticResourcesMigrationTest;
@@ -179,6 +180,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(RepairMigrateLostDiagramElementsTC1Test.class);
         suite.addTestSuite(RepairMigrateLostDiagramElementsTC2Test.class);
         suite.addTestSuite(RepairMigratePinStatusTest.class);
+        suite.addTestSuite(GeneralMigrationMechanismTest.class);
         // suite.addTestSuite(EdgeStyleDescriptionAndEdgeStyleMigrationTests.class);
         suite.addTestSuite(FragmentedFilesMigrationTest.class);
         suite.addTestSuite(MigrationOfCollapsedBorderedNodeTest.class);
