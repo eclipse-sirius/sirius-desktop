@@ -71,17 +71,16 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.TextAlignment;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.GradientData;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.AlignmentKind;
-import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
-import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.GaugeCompositeStyle;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.LineStyle;
@@ -219,6 +218,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
 
@@ -254,9 +254,9 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
         return feature instanceof EReference && ((EReference) feature).isContainment();
     }
 
-    protected void resetStylePropertiesToDefault(SWTBotGefEditPart swtBotGefEditPart) {
+    protected void resetStylePropertiesToDefault(SWTBotGefEditPart swtBotGefEditPart, boolean launchResetFromTabbar) {
         swtBotGefEditPart.select();
-        AbstractSWTBot<? extends Widget> resetStylePropertiesToDefaultButton = getResetStylePropertiesToDefaultValuesButton(true, true);
+        AbstractSWTBot<? extends Widget> resetStylePropertiesToDefaultButton = getResetStylePropertiesToDefaultValuesButton(launchResetFromTabbar, true);
         click(resetStylePropertiesToDefaultButton);
         editor.setFocus();
         editor.scrollTo(0, 0);
@@ -264,6 +264,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
         SWTBotUtils.waitAllUiEvents();
     }
 
+    @Override
     protected void click(AbstractSWTBot<? extends Widget> button) {
         button.setFocus();
         if (button instanceof SWTBotToolbarButton) {
@@ -300,12 +301,6 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
             if (category == null) {
                 category = "Misc";
             }
-            if (style instanceof EdgeStyle) {
-                category = "Edge Style solid";
-                if (style instanceof BracketEdgeStyle) {
-                    category = "Bracket Edge Style solid";
-                }
-            }
             String displayName = propertyDescriptor.getDisplayName(style);
             Object propertyValue = propertyDescriptor.getPropertyValue(style);
             Object value = null;
@@ -319,7 +314,13 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
             SWTBotTreeItem treeItem = tree.expandNode(category).select().getNode(displayName);
             treeItem.doubleClick();
             if (feature instanceof EAttribute) {
-                if (feature.getEType() instanceof EEnum && value instanceof Enumerator) {
+                if (feature.getEType() instanceof EEnum && value instanceof List && ((List) value).isEmpty()) {
+                    // For label format, we make the change from tabbar (more
+                    // simple)...
+                    editor.setFocus();
+                    editor.bot().toolbarToggleButtonWithTooltip("Bold Font Style").click();
+                    SWTBotUtils.waitAllUiEvents();
+                } else if (feature.getEType() instanceof EEnum && value instanceof Enumerator) {
                     SWTBotCCombo ccomboBox = propertiesBot.bot().ccomboBox();
                     Enumerator newValueLiteral = getNewValueLiteral(value, choiceOfValues);
                     String text = propertyDescriptor.getLabelProvider(style).getText(newValueLiteral);
@@ -333,6 +334,12 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                     ccomboBox.setSelection(newSelection);
                 } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH) {
                     propertiesBot.bot().text().setText("/" + getProjectName() + "/" + NEW_IMAGE_NAME);
+                } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR || feature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR
+                        || feature == DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR || feature == DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR
+                        || feature == DiagramPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR || feature == DiagramPackage.Literals.ELLIPSE__COLOR
+                        || feature == DiagramPackage.Literals.SQUARE__COLOR || feature == DiagramPackage.Literals.DOT__BACKGROUND_COLOR || feature == DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR
+                        || feature == DiagramPackage.Literals.NOTE__COLOR || feature == DiagramPackage.Literals.BUNDLED_IMAGE__COLOR || feature == DiagramPackage.Literals.LOZENGE__COLOR) {
+                    propertiesBot.bot().text().setText("100,100,100");
                 } else if (feature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION) {
                     // FIXME VP-3559 : the customization of borderSize
                     // doesn't works because the
@@ -391,7 +398,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                     customized = true;
                 }
             } else if (gmfStyleEAttribute == NotationPackage.Literals.FILL_STYLE__TRANSPARENCY) {
-                // FIXME : the transparancy doesn't works for TextEditPart
+                // FIXME : the transparency doesn't works for TextEditPart
                 if (!(swtBotGefEditPart.part() instanceof TextEditPart)) {
                     int transparancy = (Integer) gmfStyle.eGet(gmfStyleEAttribute);
                     TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(gmfStyle);
@@ -655,8 +662,9 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
             } else if (feature == DiagramPackage.Literals.EDGE_STYLE__ROUTING_STYLE) {
                 EdgeRouting edgeRouting = (EdgeRouting) viewpointStyle.eGet(feature);
                 EdgeRouting figureEdgeRouting = getFigureEdgeRouting(swtBotGefEditPart);
-                // assertEquals("The edge routing of the figure should corresponds to the edgeRouting feature value of the customized style",
-                // edgeRouting, figureEdgeRouting);
+                // assertEquals("The edge routing of the figure should
+                // corresponds to the edgeRouting feature value of the
+                // customized style", edgeRouting, figureEdgeRouting);
                 // FIXME : changing the routingStyle:EdgeRouting doesn't update
                 // the GMF routing the neither the figure connection router
             } else if (feature == DiagramPackage.Literals.NOTE__COLOR) {
@@ -736,8 +744,9 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
             TextAlignment textAlignment = (TextAlignment) gmfStyle.eGet(feature);
             TextAlignment figureTextAlignment = getFigureTextAlignment(swtBotGefEditPart);
             // FIXME : TextAlignment change doesn't works
-            // assertEquals("The textAlignment of the figure font should corresponds to the textAlignment feature value of the customized GMF style",
-            // textAlignment, figureTextAlignment);
+            // assertEquals("The textAlignment of the figure font should
+            // corresponds to the textAlignment feature value of the customized
+            // GMF style", textAlignment, figureTextAlignment);
         } else if (feature == NotationPackage.Literals.DESCRIPTION_STYLE__DESCRIPTION) {
             String description = (String) gmfStyle.eGet(feature);
             String figureDescription = getFigureNoteDescription(swtBotGefEditPart);
@@ -1313,19 +1322,21 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
 
     List<FontFormat> getFigureFontFormat(Font font) {
         List<FontFormat> fontFormat = new ArrayList<FontFormat>();
-        FontData[] fontData = font.getFontData();
-        int swtFontStyle = fontData[0].getStyle();
-        if ((SWT.NORMAL & swtFontStyle) != 0) {
-            fontFormat = null;
-        } else if ((SWT.BOLD & swtFontStyle) != 0 && (SWT.ITALIC & swtFontStyle) != 0) {
-            fontFormat.add(FontFormat.BOLD_LITERAL);
-            fontFormat.add(FontFormat.ITALIC_LITERAL);
-        } else if ((SWT.ITALIC & swtFontStyle) != 0) {
-            fontFormat.add(FontFormat.ITALIC_LITERAL);
-        } else if ((SWT.BOLD & swtFontStyle) != 0) {
-            fontFormat.add(FontFormat.BOLD_LITERAL);
-        } else {
-            fontFormat = null;
+        if (font.getFontData().length > 0) {
+            switch (font.getFontData()[0].getStyle()) {
+            case SWT.BOLD:
+                FontFormatHelper.setFontFormat(fontFormat, FontFormat.BOLD_LITERAL);
+                break;
+            case SWT.ITALIC:
+                FontFormatHelper.setFontFormat(fontFormat, FontFormat.ITALIC_LITERAL);
+                break;
+            case SWT.BOLD | SWT.ITALIC:
+                FontFormatHelper.setFontFormat(fontFormat, FontFormat.BOLD_LITERAL);
+                FontFormatHelper.setFontFormat(fontFormat, FontFormat.ITALIC_LITERAL);
+                break;
+            default:
+                break;
+            }
         }
         return fontFormat;
     }

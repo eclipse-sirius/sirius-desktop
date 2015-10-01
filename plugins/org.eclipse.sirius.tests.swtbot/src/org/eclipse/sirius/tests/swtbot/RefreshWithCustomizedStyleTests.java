@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -23,6 +24,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
@@ -37,8 +39,10 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSync
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.graphics.FontData;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -454,18 +458,22 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
     }
 
     private void testStyleCustomization(SWTBotGefEditPart swtBotGefEditPart) throws Exception {
-        // Not available in 4.x specific Tabbar
-        if (TestsUtil.isDynamicTabbar()) {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
             return;
         }
 
+        // Launch tests from properties view (style tab) and cancel
+        // customization from Appearance tab
         if (isSiriusElt(swtBotGefEditPart)) {
-            testSiriusStyleCustomizationFromStyleTab(swtBotGefEditPart);
+            testSiriusStyleCustomizationFromStyleTab(swtBotGefEditPart, false);
         }
-        testGMFStyleCustomization(swtBotGefEditPart);
+        // Launch tests from properties view (Appearance tab) and cancel
+        // customization from Tabbar
+        testGMFStyleCustomization(swtBotGefEditPart, true);
     }
 
-    private void testSiriusStyleCustomizationFromStyleTab(SWTBotGefEditPart swtBotGefEditPart) throws Exception {
+    private void testSiriusStyleCustomizationFromStyleTab(SWTBotGefEditPart swtBotGefEditPart, boolean launchResetFromTabbar) throws Exception {
         DDiagramElement dDiagramElement = getDDiagramElement(swtBotGefEditPart);
         View notationView = ((IGraphicalEditPart) swtBotGefEditPart.part()).getNotationView();
         Style viewpointStyle = dDiagramElement.getStyle();
@@ -479,6 +487,10 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
         for (String customizableFeatureName : customizableFeatureNames) {
             EStructuralFeature feature = viewpointStyle.eClass().getEStructuralFeature(customizableFeatureName);
             Object initialValue = viewpointStyle.eGet(feature);
+            if (initialValue instanceof BasicEList<?>) {
+                // Clone the list to avoid a change of it during customization.
+                initialValue = ((BasicEList<?>) initialValue).clone();
+            }
             if (customizeSiriusStylePropertyFromStyleTab(swtBotGefEditPart, viewpointStyle, feature)) {
                 Object newValue = viewpointStyle.eGet(feature);
 
@@ -499,7 +511,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
                 assertEquals(assertMessage, customizableFeatureName, viewpointStyle.getCustomFeatures().get(0));
 
                 // Reset style properties to default values
-                resetStylePropertiesToDefault(swtBotGefEditPart);
+                resetStylePropertiesToDefault(swtBotGefEditPart, launchResetFromTabbar);
                 viewpointStyle = dDiagramElement.getStyle();
 
                 assertSiriusAndGMFStyleSynchronized(viewpointStyle, notationView);
@@ -523,7 +535,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
         }
     }
 
-    private void testGMFStyleCustomization(SWTBotGefEditPart swtBotGefEditPart) throws Exception {
+    private void testGMFStyleCustomization(SWTBotGefEditPart swtBotGefEditPart, boolean launchResetFromTabbar) throws Exception {
         // Test the GMF style properties customization from the Appearance tab
         // of the property view
         for (EAttribute gmfStyleEAttribute : ViewQuery.CUSTOMIZABLE_GMF_STYLE_ATTRIBUTES) {
@@ -546,7 +558,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
                     checkFigure(swtBotGefEditPart, gmfStyleEAttribute);
 
                     // Reset style properties to default values
-                    resetStylePropertiesToDefault(swtBotGefEditPart);
+                    resetStylePropertiesToDefault(swtBotGefEditPart, launchResetFromTabbar);
                     correspondingView = (View) swtBotGefEditPart.part().getModel();
                     gmfStyle = correspondingView.getStyle(gmfStyleEAttribute.getEContainingClass());
 
@@ -585,20 +597,32 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
     }
 
     private Object convertToSiriusPropertyValue(org.eclipse.gmf.runtime.notation.Style gmfStyle, EAttribute gmfStyleAttribute) {
-        List<FontFormat> gmfStylePropertyValue = new ArrayList<FontFormat>();
-        if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__BOLD || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__ITALIC) {
+        Object result = null;
+        if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__BOLD || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__ITALIC
+                || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__UNDERLINE || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__STRIKE_THROUGH) {
+            List<FontFormat> gmfStylePropertyValue = new ArrayList<FontFormat>();
             FontStyle gmfFontStyle = (FontStyle) gmfStyle;
-            if (gmfFontStyle.isBold() && gmfFontStyle.isItalic()) {
+            if (gmfFontStyle.isBold()) {
                 gmfStylePropertyValue.add(FontFormat.BOLD_LITERAL);
-                gmfStylePropertyValue.add(FontFormat.ITALIC_LITERAL);
-            } else if (gmfFontStyle.isBold()) {
-                gmfStylePropertyValue.add(FontFormat.BOLD_LITERAL);
-            } else if (gmfFontStyle.isItalic()) {
-                gmfStylePropertyValue.add(FontFormat.ITALIC_LITERAL);
-            } else {
-                gmfStylePropertyValue = null;
             }
+            if (gmfFontStyle.isItalic()) {
+                gmfStylePropertyValue.add(FontFormat.ITALIC_LITERAL);
+            }
+            if (gmfFontStyle.isUnderline()) {
+                gmfStylePropertyValue.add(FontFormat.UNDERLINE_LITERAL);
+            }
+            if (gmfFontStyle.isStrikeThrough()) {
+                gmfStylePropertyValue.add(FontFormat.STRIKE_THROUGH_LITERAL);
+            }
+            result = gmfStylePropertyValue;
+        } else if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__FONT_COLOR) {
+            RGB rgb = FigureUtilities.integerToRGB((Integer) gmfStyle.eGet(gmfStyleAttribute));
+            result = RGBValues.create(rgb.red, rgb.green, rgb.blue);
+        } else if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT) {
+            result = gmfStyle.eGet(gmfStyleAttribute);
+        } else {
+            result = gmfStyle.eGet(gmfStyleAttribute);
         }
-        return gmfStylePropertyValue;
+        return result;
     }
 }

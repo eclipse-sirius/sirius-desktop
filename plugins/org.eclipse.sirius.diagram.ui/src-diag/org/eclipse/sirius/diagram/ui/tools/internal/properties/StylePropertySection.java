@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.Routing;
@@ -38,6 +39,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
@@ -245,8 +247,11 @@ public class StylePropertySection extends SemanticPropertySection {
                             fontStyle.setUnderline(false);
                             fontStyle.setStrikeThrough(false);
                         }
-                    } else if (value instanceof Integer && propertyId.equals(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
+                    } else if (value instanceof Integer && ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName().equals(propertyId)) {
                         fontStyle.setFontHeight(Math.max((Integer) value, 1));
+                    } else if (value instanceof RGBValues && ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName().equals(propertyId)) {
+                        RGBValues rgbValues = (RGBValues) value;
+                        fontStyle.setFontColor(FigureUtilities.RGBToInteger(new RGB(rgbValues.getRed(), rgbValues.getGreen(), rgbValues.getBlue())));
                     }
                 } else if (notationStyle instanceof ConnectorStyle) {
                     ConnectorStyle connectorStyle = (ConnectorStyle) notationStyle;
