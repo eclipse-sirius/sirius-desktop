@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 Obeo.
+ * Copyright (c) 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -41,9 +42,9 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
      * limit is set empirically: this projects takes less than 10 seconds on my
      * machine with an SSD drive.
      */
-    private static final long MAX_TIME_TO_OPEN_SECONDS = 20;
+    private static final long MAX_TIME_TO_OPEN_SECONDS = 15;
 
-    private static final int NUMBER_Of_ELEMENTS = 966648;
+    private static final int NUMBER_Of_ELEMENTS = 966220;
 
     private static final String[] SEMANTIC_ROOTS = { "/reverse1.ecorebin", "/reverse2.ecorebin", "/reverse3.ecorebin", "/reverse4.ecorebin", "/reverse5.ecorebin", "/reverse6.ecorebin",
             "/reverse7.ecorebin", "/reverse8.ecorebin", "/reverse9.ecorebin", "/reverse10.ecorebin", "/reverse11.ecorebin", "/reverse12.ecorebin", "/reverse13.ecorebin", "/reverse14.ecorebin",
@@ -81,20 +82,27 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
         int semanticElementsCount = 0;
         Stopwatch eAllContentsTimer = Stopwatch.createStarted();
         for (Resource r : session.getSemanticResources()) {
-            Iterator<EObject> it = Iterators.filter(EcoreUtil.getAllContents(r, false), EObject.class);
-            while (it.hasNext()) {
-                it.next();
-                semanticElementsCount++;
+            if (r.getURI().isPlatformResource()) {
+                Iterator<EObject> it = Iterators.filter(EcoreUtil.getAllContents(r, false), EObject.class);
+                while (it.hasNext()) {
+                    it.next();
+                    semanticElementsCount++;
+                }
             }
         }
-        System.out.println("[PERFO] Loading a model with " + semanticElementsCount + " semantic elements " + elapsedTime + " seconds.");
+        System.out.println("[PERFO] Loading a project with " + semanticElementsCount + " semantic elements in " + elapsedTime + " seconds.");
         eAllContentsTimer.stop();
-        System.out.println("[PERFO] Iterating a model with " + semanticElementsCount + " semantic elements " + eAllContentsTimer.elapsed(TimeUnit.MILLISECONDS) + " milliseconds.");
+        System.out.println("[PERFO] Iterating a project with " + semanticElementsCount + " semantic elements in " + eAllContentsTimer.elapsed(TimeUnit.MILLISECONDS) + " milliseconds.");
 
         assertEquals("The number of semantic elements in the project is not the expected one", NUMBER_Of_ELEMENTS, semanticElementsCount);
+        assertTrue("The time required to open the session (" + elapsedTime + " secs) is bigger than expected (" + MAX_TIME_TO_OPEN_SECONDS + ").", elapsedTime < MAX_TIME_TO_OPEN_SECONDS);
 
-        assertTrue("The time required to open the session (" + elapsedTime + " secs) is bigger than expected (" + MAX_TIME_TO_OPEN_SECONDS + ").",
-                elapsedTime < MAX_TIME_TO_OPEN_SECONDS);
+        Stopwatch closingtimer = Stopwatch.createStarted();
+        session.close(new NullProgressMonitor());
+        closingtimer.stop();
+        System.out.println("[PERFO] Closing a project with " + semanticElementsCount + " semantic elements in " + closingtimer.elapsed(TimeUnit.SECONDS) + " seconds.");
+        assertFalse("The session should have been closed and is not reporting it is", session.isOpen());
+
     }
 
     @Override
