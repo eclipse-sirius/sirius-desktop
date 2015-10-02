@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="UML2 Tables tests" version="10.0.0.201505222000">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="UML2 Tables tests" version="10.1.0.201507271600">
   <ownedViewpoints documentation="Sample of some UML tables " name="UML2 tables for tests" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Colored Classes Table" domainClass="Model">
       <ownedLineMappings name="Model Classes" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Class%20and%20subClass%20with%20some%20attributes']/@ownedRepresentationCreationDescriptions[name='To%20Class%20and%20subClass%20with%20some%20attributes']" domainClass="Class" semanticCandidatesExpression="" headerLabelExpression="aql:'Class : ' + self.name">
@@ -16,13 +16,13 @@
             <labelFormat>italic</labelFormat>
             <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </defaultForeground>
-          <create name="Create Property">
+          <create name="Create Property" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
           </create>
         </ownedSubLines>
-        <create name="Create Class" mapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Colored%20Classes%20Table']/@ownedLineMappings[name='Model%20Classes']">
+        <create name="Create Class" elementsToSelect="service:stdEmptyCollection" mapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Colored%20Classes%20Table']/@ownedLineMappings[name='Model%20Classes']">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -86,13 +86,13 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="All Types and Instance" domainClass="Model">
       <ownedLineMappings name="All EClasses" domainClass="EClass" semanticCandidatesExpression="aql:self.eAllContents().eClass()->asSet()" headerLabelExpression="aql:self.name">
-        <ownedSubLines name="Instances" domainClass="EObject" semanticCandidatesExpression="&lt;%$root.eAllContents($container.name)%>" headerLabelExpression="aql:self.name"/>
+        <ownedSubLines name="Instances" domainClass="EObject" semanticCandidatesExpression="aql:root.eAllContents(container)" headerLabelExpression="aql:self.name"/>
       </ownedLineMappings>
-      <ownedColumnMappings name="Instances count" headerLabelExpression="Count" featureName="Count" labelExpression="&lt;%$container.filter(&quot;EClass&quot;).$root.eAllContents($container.name).nSize%>"/>
+      <ownedColumnMappings name="Instances count" headerLabelExpression="Count" featureName="Count" labelExpression="aql:container->filter(ecore::EClass).root.eAllContents(container)->size()"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Model Generalization Cross Table" domainClass="Model">
-      <ownedLineMappings name="CT Generalization Classes" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents().filter(&quot;Class&quot;).sort(&quot;name&quot;)%>" headerLabelExpression="aql:self.name">
-        <create name="Create Line Class">
+      <ownedLineMappings name="CT Generalization Classes" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents()->filter(uml::Class)->sortedBy(e | e.name)" headerLabelExpression="aql:self.name">
+        <create name="Create Line Class" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -103,8 +103,8 @@
           </firstModelOperation>
         </create>
       </ownedLineMappings>
-      <ownedColumnMappings name="CT Generalization Classes Column" headerLabelExpression="aql:self.name" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents().filter(&quot;Class&quot;).sort(&quot;name&quot;)%>">
-        <create name="Create Column Class">
+      <ownedColumnMappings name="CT Generalization Classes Column" headerLabelExpression="aql:self.name" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents()->filter(uml::Class)->sortedBy(e | e.name)">
+        <create name="Create Column Class" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The semantic currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -157,7 +157,7 @@
       </ownedRepresentationCreationDescriptions>
       <ownedLineMappings name="Class lines" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Just%20for%20test%20navigation']/@toolSection/@ownedTools[name='Test%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Just%20for%20test%20navigation']/@toolSection/@ownedTools[name='Test%20Diagram%20Navigation']" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->select( e | e.generalization->size()  = 0)" headerLabelExpression="">
         <ownedSubLines name="SubClass lines" domainClass="Class" semanticCandidatesExpression="aql:root.eAllContents(uml::Class)->select( e | e.generalization.general->includes(container)) + root.eAllContents(uml::Class)->select( c | c.generalization.general = container).classifierBehavior + root.eAllContents(uml::Class)->select( c | c.generalization.general = container).useCase" headerLabelExpression="aql:self.name">
-          <create documentation="Create a concrete subclass (only for abstract class)" name="Create concrete subclass" precondition="aql:self.isAbstract">
+          <create documentation="Create a concrete subclass (only for abstract class)" name="Create concrete subclass" precondition="aql:self.isAbstract" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table."/>
             <variables name="element" documentation="The currently edited element."/>
             <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -170,7 +170,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="Create a class in the first package of the model">
+          <create name="Create a class in the first package of the model" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table.">
               <subVariables xsi:type="tool:AcceleoVariable" name="premierPackage" computationExpression="aql:self.nestedPackage->first()"/>
             </variables>
@@ -182,7 +182,7 @@
               </subModelOperations>
             </firstModelOperation>
           </create>
-          <create name="Create a class in the selected package of the model">
+          <create name="Create a class in the selected package of the model" elementsToSelect="service:stdEmptyCollection">
             <variables name="root" documentation="The semantic element of the table.">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedPackage" candidatesExpression="aql:self.eAllContents()->filter(uml::Package)" message="Select the correct package"/>
             </variables>
@@ -195,7 +195,7 @@
             </firstModelOperation>
           </create>
         </ownedSubLines>
-        <create name="New Class">
+        <create name="New Class" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -205,7 +205,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create name="New other class">
+        <create name="New other class" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -215,7 +215,7 @@
             </subModelOperations>
           </firstModelOperation>
         </create>
-        <create documentation="Create a concrete subclass (only for abstract class)" name="Create concrete subclass" precondition="aql:self.isAbstract">
+        <create documentation="Create a concrete subclass (only for abstract class)" name="Create concrete subclass" precondition="aql:self.isAbstract" elementsToSelect="service:stdEmptyCollection">
           <variables name="root" documentation="The semantic element of the table."/>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -238,7 +238,7 @@
           </firstModelOperation>
         </delete>
       </ownedLineMappings>
-      <ownedCreateLine name="New Line">
+      <ownedCreateLine name="New Line" elementsToSelect="service:stdEmptyCollection">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -248,7 +248,7 @@
           </subModelOperations>
         </firstModelOperation>
       </ownedCreateLine>
-      <ownedCreateLine name="New Abstract Line">
+      <ownedCreateLine name="New Abstract Line" elementsToSelect="service:stdEmptyCollection">
         <variables name="root" documentation="The semantic element of the table."/>
         <variables name="element" documentation="The semantic currently edited element."/>
         <variables name="container" documentation="The semantic element corresponding to the view container."/>
@@ -278,7 +278,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="UseCaseDirectEdit" headerLabelExpression="UseCaseDirectEdit" featureName="useCase" labelExpression="&lt;%if (useCase){%>(&lt;%useCase.name.sep(&quot;,&quot;)%>)&lt;%}%>">
+      <ownedColumnMappings name="UseCaseDirectEdit" headerLabelExpression="UseCaseDirectEdit" featureName="useCase" labelExpression="aql:if self.useCase->size() > 0  then '(' + self.useCase.name.sep(',') + ')' else '' endif">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -339,7 +339,7 @@
         <containerViewVariable name="containerView"/>
         <representationNameVariable name="tableName"/>
       </ownedRepresentationCreationDescriptions>
-      <ownedLineMappings name="Line Classes" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;).sort(&quot;name&quot;)%>" headerLabelExpression="aql:self.name">
+      <ownedLineMappings name="Line Classes" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->sortedBy( e | e.name)" headerLabelExpression="aql:self.name">
         <ownedSubLines name="Associations" domainClass="Association" semanticCandidatesExpression="aql:root.eAllContents(uml::Association)->select( e | e.memberEnd->first().type = container)" headerLabelExpression="aql:self.name"/>
       </ownedLineMappings>
       <ownedColumnMappings name="Column Classes" headerLabelExpression="aql:self.name" domainClass="Class"/>
@@ -384,7 +384,7 @@
       <ownedColumnMappings name="Property Upper" headerLabelExpression="Upper" featureName="upper" labelExpression="aql:self.upper"/>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Cross Table Colors" domainClass="Model">
-      <ownedLineMappings name="Line Color Classes" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedRepresentationCreationDescriptions[name='To%20model%20all%20associations']" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;).sort(&quot;name&quot;)%>" headerLabelExpression="aql:self.name">
+      <ownedLineMappings name="Line Color Classes" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedRepresentationCreationDescriptions[name='To%20model%20all%20associations']" domainClass="Class" semanticCandidatesExpression="aql:self.eAllContents(uml::Class)->sortedBy( e | e.name)" headerLabelExpression="aql:self.name">
         <defaultForeground>
           <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
         </defaultForeground>
@@ -443,5 +443,6 @@
       <ownedColumnMappings name="Name" headerLabelExpression="Name" initialWidth="200" canEdit="aql:self.isAbstract" featureName="name" labelExpression="aql:self.name"/>
       <ownedColumnMappings name="Is class abstract" headerLabelExpression="IsAbstract" featureName="isAbstract" labelExpression="aql:self.isAbstract"/>
     </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
   </ownedViewpoints>
 </description:Group>
