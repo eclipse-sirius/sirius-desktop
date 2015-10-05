@@ -10,12 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.properties;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
@@ -29,9 +26,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
-import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -63,7 +58,6 @@ public class ResetStylePropertiesToDefaultValuesSelectionAdapter extends Selecti
             DDiagram dDiagram = (DDiagram) colorAndFontPropertySection.getSingleInput().getNotationView().getDiagram().getElement();
             TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
             Map<View, DDiagramElement> customizedViews = new LinkedHashMap<View, DDiagramElement>();
-            Map<IGraphicalEditPart, Style> oldStyles = new HashMap<IGraphicalEditPart, Style>();
             for (Object obj : input) {
                 if (obj instanceof IGraphicalEditPart) {
                     IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) obj;
@@ -74,7 +68,6 @@ public class ResetStylePropertiesToDefaultValuesSelectionAdapter extends Selecti
                         dDiagramElement = (DDiagramElement) semanticElement;
                         if (new DDiagramElementQuery(dDiagramElement).isCustomized() || new ViewQuery(notationView).isCustomized()) {
                             customizedViews.put(notationView, dDiagramElement);
-                            oldStyles.put(graphicalEditPart, dDiagramElement.getStyle());
                         }
                     } else if (semanticElement instanceof DSemanticDiagram) {
                         // If a diagram is selected, reset all the children
@@ -88,7 +81,6 @@ public class ResetStylePropertiesToDefaultValuesSelectionAdapter extends Selecti
                             if (subSemanticElement instanceof DDiagramElement
                                     && (new DDiagramElementQuery((DDiagramElement) subSemanticElement).isCustomized() || new ViewQuery(subNotationView).isCustomized())) {
                                 customizedViews.put(subNotationView, (DDiagramElement) subSemanticElement);
-                                oldStyles.put(subGraphicalEditPart, ((DDiagramElement) subSemanticElement).getStyle());
                             } else if (dDiagramElement == null && new ViewQuery(subNotationView).isCustomized()) {
                                 customizedViews.put(subNotationView, dDiagramElement);
                             }
@@ -101,13 +93,6 @@ public class ResetStylePropertiesToDefaultValuesSelectionAdapter extends Selecti
             if (!customizedViews.isEmpty()) {
                 Command resetStylePropertiesToDefaultValuesCommand = new ResetStylePropertiesToDefaultValuesCommand(domain, dDiagram, customizedViews);
                 domain.getCommandStack().execute(resetStylePropertiesToDefaultValuesCommand);
-                Set<Entry<IGraphicalEditPart, Style>> entrySet = oldStyles.entrySet();
-                for (Entry<IGraphicalEditPart, Style> entry : entrySet) {
-                    if (entry.getKey() instanceof AbstractDiagramContainerEditPart) {
-                        AbstractDiagramContainerEditPart graphicalEditPart = (AbstractDiagramContainerEditPart) entry.getKey();
-                        graphicalEditPart.reInitFigure();
-                    }
-                }
             }
         }
     }
