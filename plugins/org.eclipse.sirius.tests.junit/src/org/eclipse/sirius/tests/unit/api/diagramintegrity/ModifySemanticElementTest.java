@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ public class ModifySemanticElementTest extends DiagramIntegrityTestCase {
         // check that there is Two DNodeContainer representing the 2 chapters in
         // the diagram.
         try {
-            eltName = INTERPRETER.evaluateString(myRepresentation, "<%eAllContents(\"DNode\").nFirst().name%>").toString();
+            eltName = INTERPRETER.evaluateString(myRepresentation, "aql:self.eAllContents(diagram::DNode)->first().name").toString();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class ModifySemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there is one DNodeContainer left in the diagram.
         try {
-            eltName = INTERPRETER.evaluateString(myRepresentation, "<%eAllContents(\"DNode\").nFirst().name%>").toString();
+            eltName = INTERPRETER.evaluateString(myRepresentation, "aql:self.eAllContents(diagram::DNode)->first().name").toString();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();

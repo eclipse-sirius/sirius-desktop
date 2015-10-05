@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -269,7 +269,7 @@ public class DCrossTableNoDomainSynchronizerVSMWithEditorTest extends TableTestC
         session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain(), commandName) {
             protected void doExecute() {
                 lineToAdd.setName("Attribut3");
-                lineToAdd.setHeaderLabelExpression("3-<%name%>");
+                lineToAdd.setHeaderLabelExpression("aql:'3-' + self.name");
                 ((CrossTableDescription) tableDescription).getAllLineMappings().get(0).getOwnedSubLines().add(lineToAdd);
             };
         });
@@ -418,7 +418,7 @@ public class DCrossTableNoDomainSynchronizerVSMWithEditorTest extends TableTestC
         session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain()) {
             protected void doExecute() {
                 lineToAdd.setName("SousAttribut4");
-                lineToAdd.setHeaderLabelExpression("S4-<%name%>");
+                lineToAdd.setHeaderLabelExpression("aql:'S4-' + self.name");
                 ((CrossTableDescription) tableDescription).getAllLineMappings().get(0).getOwnedSubLines().get(0).getOwnedSubLines().add(lineToAdd);
             };
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // before executing the command, we check that there is no "title"
         // object in the diagram.
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eAllContents()[target.eClass.name == \"Title\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eAllContents()->select(e | e.target.eClass().name = 'Title')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -51,7 +51,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // directly under the diagram.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eContents()[target.eClass.name == \"Title\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eContents()->select(e | e.target.eClass().name = 'Title')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // we verify that 1 and only one "title" object has been created in the
         // "info" container.
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eContents()[target.eClass.name == \"Info\"].eContents()[target.eClass.name == \"Title\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eContents()->select(e | e.target.eClass().name = 'Info').eContents()->select(e | e.target.eClass().name = 'Title')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -85,7 +85,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // before executing the command, we check that there is no "big sect"
         // object in the diagram.
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eAllContents()[target.eClass.name == \"Sect1\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eAllContents()->select(e | e.target.eClass().name = 'Sect1')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -98,7 +98,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // directly under the diagram.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eContents().filter(\"DNode\")[target.eClass.name == \"Sect1\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eContents()->filter(diagram::DNode)->select(n | n.target.eClass().name = 'Sect1')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -108,7 +108,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // we verify that 1 and only one "big sect" object has been created in
         // the "info" container.
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eContents()[target.eClass.name == \"Info\"].eContents()[target.eClass.name == \"Sect1\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eContents()->select(n | n.target.eClass().name = 'Info').eContents()->select(e | e.target.eClass().name= 'Sect1')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -132,7 +132,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // before executing the command, we check that there is no "author"
         // object in the diagram.
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eAllContents()[target.eClass.name == \"Author\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eAllContents()->select(e | e.target.eClass().name = 'Author')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -144,7 +144,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // we verify that 1 and only one "author" object has been created in
         // border of the "info" container.
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eContents()[target.eClass.name == \"Info\"].eContents()[target.eClass.name == \"Author\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eContents()->select(e | e.target.eClass().name = 'Info').eContents()->select(n | n.target.eClass().name = 'Author')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -154,7 +154,7 @@ public class ReusedMappingTest extends DocbookTestCase {
         // we verify that 1 and only one "author" object has been created
         // directly under the diagram.
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eContents().filter(\"DNode\")[target.eClass.name == \"Author\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eContents()->filter(diagram::DNode)->select(n | n.target.eClass().name = 'Author')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();

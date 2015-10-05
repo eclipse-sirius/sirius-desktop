@@ -87,9 +87,11 @@ public class AQLProposalProvider implements IProposalProvider {
             }
         }
         interpreter.activateMetamodels(metamodels);
-        Resource vsmResource = context.getInterpreterContext().getElement().eResource();
-        if (vsmResource != null) {
-            interpreter.setProperty(IInterpreter.FILES, Lists.newArrayList(vsmResource.getURI().toPlatformString(true)));
+        if (context.getInterpreterContext().getElement() != null) {
+            Resource vsmResource = context.getInterpreterContext().getElement().eResource();
+            if (vsmResource != null) {
+                interpreter.setProperty(IInterpreter.FILES, Lists.newArrayList(vsmResource.getURI().toPlatformString(true)));
+            }
         }
         for (String imp : context.getInterpreterContext().getDependencies()) {
             interpreter.addImport(imp);
@@ -108,7 +110,7 @@ public class AQLProposalProvider implements IProposalProvider {
         for (ICompletionProposal propFromAQL : proposal) {
             int offset = position - completionResult.getPrefix().length();
             int length = completionResult.getPrefix().length() + completionResult.getRemaining().length();
-            
+
             ContentProposal contentProposal = ContentProposalBuilder.proposal(propFromAQL.getProposal(), propFromAQL.toString(), propFromAQL.getDescription(), propFromAQL.getCursorOffset())
                     .withReplacement(offset, length).build();
             proposals.add(contentProposal);

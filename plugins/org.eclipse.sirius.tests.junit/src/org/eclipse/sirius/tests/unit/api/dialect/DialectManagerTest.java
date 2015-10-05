@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,7 +72,7 @@ public class DialectManagerTest extends TestCase {
         assertEquals("we should have one possible representation", 1, descriptions.size());
 
         final DiagramDescription diagramDescription = findDiagramDescription(dialectGroup, "Class Diagram");
-        diagramDescription.setPreconditionExpression("<%false%>");
+        diagramDescription.setPreconditionExpression("aql:false");
         descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(currentVp, class1);
 
         assertEquals("we should have zero possible representation", 0, descriptions.size());

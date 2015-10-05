@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,8 +67,8 @@ public class InterpreterPerformanceTests extends SiriusDiagramTestCase implement
         Thread.sleep(3000);
     }
 
-    public void testEvaluateNameWithAcceleo2() throws EvaluationException {
-        measure("Acceleo 2", semanticModel, "<%name%>", NAME, ITER);
+    public void testEvaluateNameWithAQL() throws EvaluationException {
+        measure("AQL", semanticModel, "aql:self.name", NAME, ITER);
     }
 
     public void testEvaluateNameWithAcceleo3() throws EvaluationException {
@@ -79,8 +79,8 @@ public class InterpreterPerformanceTests extends SiriusDiagramTestCase implement
         measure("feature:", semanticModel, "feature:name", NAME, ITER);
     }
 
-    public void testEvaluateVarWithAcceleo2() throws EvaluationException {
-        measure("Acceleo 2", semanticModel, "<%$testVar%>", VAR_VALUE, ITER);
+    public void testEvaluateVarWithAQL() throws EvaluationException {
+        measure("AQL", semanticModel, "aql:testVar", VAR_VALUE, ITER);
     }
 
     public void testEvaluateVarWithAcceleo3() throws EvaluationException {
@@ -91,8 +91,8 @@ public class InterpreterPerformanceTests extends SiriusDiagramTestCase implement
         measure("var:", semanticModel, "var:testVar", VAR_VALUE, ITER);
     }
 
-    public void _testEvaluateServiceWithAcceleo2() throws EvaluationException {
-        measure("Acceleo 2", testAttr, "<%self.render()%>", "foo : EString", ITER);
+    public void _testEvaluateServiceWithAQL() throws EvaluationException {
+        measure("AQL", testAttr, "aql:self.render()", "foo : EString", ITER);
     }
 
     public void _testEvaluateServiceWithAcceleo3() throws EvaluationException {

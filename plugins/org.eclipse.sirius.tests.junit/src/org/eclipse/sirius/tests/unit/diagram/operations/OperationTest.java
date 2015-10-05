@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,7 +84,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with Book as first and last element.
         try {
-            book = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer()%>");
+            book = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject book.");
             e.printStackTrace();
@@ -111,7 +111,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with chapter as first and last element.
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -124,7 +124,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of sect1 in the model.
 
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Sect1\").nSize()%>");
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->size()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -147,7 +147,7 @@ public class OperationTest extends DocbookTestCase {
         // check that one instance of sect1 as been created.
 
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Sect1\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -165,7 +165,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with book as first and last element.
         try {
-            book = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer()%>");
+            book = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject book.");
             e.printStackTrace();
@@ -174,7 +174,7 @@ public class OperationTest extends DocbookTestCase {
         CommandContext context = new CommandContext(book, null);
 
         // definition and execution of the change context operation.
-        String browseChapter = "<%eContents().nFirst()%>";
+        String browseChapter = "aql:self.eContents()->first()";
         op.setBrowseExpression(browseChapter);
         final AbstractOperationTask task = new ChangeContextTask(context, accessor, op, INTERPRETER);
 
@@ -193,7 +193,7 @@ public class OperationTest extends DocbookTestCase {
 
         EObject chapter = null;
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -218,7 +218,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with chapter as first and last element.
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -231,7 +231,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\")[id==\"newChapterID\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -254,7 +254,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is one instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\")[id==\"newChapterID\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -276,7 +276,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with book as first and last element.
         try {
-            book = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer()%>");
+            book = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject book.");
             e.printStackTrace();
@@ -288,7 +288,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is only one instance of chapter in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -310,7 +310,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is now two instances of chapter in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -327,11 +327,11 @@ public class OperationTest extends DocbookTestCase {
         EObject book = null;
         int instanceCount = -1;
         op.setFeatureName("chapter");
-        op.setElementExpression("<%eContents().nFirst()%>");
+        op.setElementExpression("aql:self.eContents()->first()");
 
         // definition of a new context with book as first and last element.
         try {
-            book = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer()%>");
+            book = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject book.");
             e.printStackTrace();
@@ -343,7 +343,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is one instance of chapter in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -365,7 +365,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is now no instance of chapter in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -384,7 +384,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with chapter as first and last element.
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -396,7 +396,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is one instance of chapter in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -418,7 +418,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is now no instance of chapter in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -436,7 +436,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with chapter as first and last element.
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -475,7 +475,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is one sect1 in my book.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Sect1\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject sect1.");
             e.printStackTrace();
@@ -484,7 +484,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there are two chapters in my book.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -493,7 +493,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is no sect1 referenced under the second chapter.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nLast().eContents().filter(\"Sect1\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->last().eContents()->filter(docbook::Sect1)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -504,7 +504,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with sect1 as first and last element.
         try {
-            sect1 = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eAllContents(\"Sect1\").nFirst()%>");
+            sect1 = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject sect1.");
             e.printStackTrace();
@@ -514,7 +514,7 @@ public class OperationTest extends DocbookTestCase {
 
         final MoveElement op = ToolFactory.eINSTANCE.createMoveElement();
         op.setFeatureName("sect1");
-        op.setNewContainerExpression("<%getRootContainer().eAllContents(\"Chapter\").nLast()%>");
+        op.setNewContainerExpression("aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->last()");
 
         final AbstractOperationTask task = new MoveElementTask(sect1context, accessor, op, session.getInterpreter());
 
@@ -534,7 +534,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is now one sect1 referenced under the second
         // chapter.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\").nLast().eContents().filter(\"Sect1\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->last().eContents()->filter(docbook::Sect1)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -554,7 +554,7 @@ public class OperationTest extends DocbookTestCase {
         final DNodeContainer chapterView = createChapter();
 
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -571,11 +571,11 @@ public class OperationTest extends DocbookTestCase {
         });
 
         final CreateEdgeView op = org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateEdgeView();
-        String acceleoExp = "<%eAllContents(\"DNodeContainer\").nFirst().target%>";
+        String acceleoExp = "aql:self.eAllContents(diagram::DNodeContainer)->first().target";
         op.setMapping(edgeMapping);
         op.setSourceExpression(acceleoExp);
         op.setTargetExpression(acceleoExp);
-        op.setContainerViewExpression("<%current()%>");
+        op.setContainerViewExpression("aql:self");
 
         assertNotNull("Not possible to catch the diagram.", obviousDiagram);
         CommandContext context = new CommandContext(obviousDiagram, null);
@@ -585,7 +585,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is only one egde view before executing the
         // CreateViewTask.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the edge.");
             e.printStackTrace();
@@ -607,7 +607,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is now two edge views.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the edge.");
             e.printStackTrace();
@@ -620,7 +620,7 @@ public class OperationTest extends DocbookTestCase {
      * condition of the if is true.
      */
     public void testIFOperation() {
-        testIf("<%current.eClass.name == \"Chapter\"%>", 0, 1);
+        testIf("aql:self.eClass().name = 'Chapter'", 0, 1);
     }
 
     /**
@@ -629,7 +629,7 @@ public class OperationTest extends DocbookTestCase {
      */
     public void testIFOperationConditionError() {
         setErrorCatchActive(true);
-        testIf("<%ifConditionWithError%>", 0, 0);
+        testIf("var:ifConditionWithError", 0, 0);
         assertTrue(doesAnErrorOccurs());
     }
 
@@ -639,7 +639,7 @@ public class OperationTest extends DocbookTestCase {
      * true condition expression, only the first check true is executed.
      */
     public void testSwitchOperation() {
-        testSwitch("<%current.eClass.name == \"Chapter\"%>", 0, 1, 0, 0);
+        testSwitch("aql:self.eClass().name = 'Chapter'", 0, 1, 0, 0);
     }
 
     /**
@@ -647,7 +647,7 @@ public class OperationTest extends DocbookTestCase {
      * is executed.
      */
     public void testSwitchOperationDefault() {
-        testSwitch("<%current.eClass.name == \"UnexistingClassName\"%>", 0, 0, 0, 1);
+        testSwitch("aql:self.eClass().name = 'UnexistingClassName'", 0, 0, 0, 1);
     }
 
     /**
@@ -656,7 +656,7 @@ public class OperationTest extends DocbookTestCase {
      */
     public void testSwitchOperationConditionError() {
         setErrorCatchActive(true);
-        testSwitch("<%switchConditionWithError%>", 0, 0, 0, 1);
+        testSwitch("var:switchConditionWithError", 0, 0, 0, 1);
         assertTrue(doesAnErrorOccurs());
     }
 
@@ -677,13 +677,13 @@ public class OperationTest extends DocbookTestCase {
 
         setop.setFeatureName("id");
         setop.setValueExpression("new id");
-        forop.setExpression("<%eContents().filter(\"Sect1\")%>");
+        forop.setExpression("aql:self.eContents()->filter(docbook::Sect1)");
         forop.setIteratorName("it");
         forop.getSubModelOperations().add(setop);
 
         // definition of a new context with chapter as first and last element.
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -702,7 +702,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of sect1 with an id equal to "new id"
         // in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Sect1\")[id==\"new id\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->select( s | s.id='new id')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -719,7 +719,7 @@ public class OperationTest extends DocbookTestCase {
 
         // check that there is now 3 instances of sect1 in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Sect1\").nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -731,7 +731,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is now 3 instances of sect1 with an id equal to "new
         // id" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Sect1\")[id==\"new id\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Sect1)->select( s | s.id='new id')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -766,7 +766,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with chapter as first and last element.
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -795,7 +795,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\")[id==\"newChapterID\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -809,14 +809,14 @@ public class OperationTest extends DocbookTestCase {
         // check that there is one instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\")[id==\"newChapterID\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='newChapterID')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
         }
         assertEquals("Wrong count of element having the wanted value.", valueIf, instanceCount);
 
-        ifop.setConditionExpression("<%current.eClass.name != \"Chapter\"%>");
+        ifop.setConditionExpression("aql:self.eClass().name <> 'Chapter'");
         iftask = new IfTask(context, accessor, ifop, session.getInterpreter());
         iftask.getChildrenTasks().add(shallNotBeExecutedTask);
         command.getTasks().clear();
@@ -883,7 +883,7 @@ public class OperationTest extends DocbookTestCase {
 
         // definition of a new context with chapter as first and last element.
         try {
-            chapter = INTERPRETER.evaluateEObject(semanticModel, "<%getRootContainer().eContents().nFirst()%>");
+            chapter = INTERPRETER.evaluateEObject(semanticModel, "aql:self.eResource().getContents()->first().eContents()->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the eObject chapter.");
             e.printStackTrace();
@@ -895,7 +895,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\")[id==\"" + labelId1 + "\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId1 + "')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -909,7 +909,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is one instance of chapter with an id equal to
         // "newChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\")[id==\"" + labelId1 + "\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId1 + "')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -919,7 +919,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "newChapterID2" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\")[id==\"" + labelId2 + "\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelId2 + "')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();
@@ -929,7 +929,7 @@ public class OperationTest extends DocbookTestCase {
         // check that there is no instance of chapter with an id equal to
         // "defaultChapterID" in the model.
         try {
-            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "<%getRootContainer().eAllContents(\"Chapter\")[id==\"" + labelIdDefault + "\"].nSize()%>").intValue();
+            instanceCount = INTERPRETER.evaluateInteger(semanticModel, "aql:self.eResource().getContents()->first().eAllContents(docbook::Chapter)->select(c | c.id='" + labelIdDefault + "')->size()").intValue();
         } catch (EvaluationException e) {
             fail("Exception while trying to get the instance count.");
             e.printStackTrace();

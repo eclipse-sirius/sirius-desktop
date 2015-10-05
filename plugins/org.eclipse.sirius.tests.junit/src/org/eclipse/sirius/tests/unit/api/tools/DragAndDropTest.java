@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,15 @@ import org.eclipse.sirius.tools.api.command.DCommand;
  */
 public class DragAndDropTest extends DocbookTestCase {
 
+    private static final String QUERY_E_CONTENTS_E_CLASS_NAME_D_NODE_TARGET_E_CLASS_NAME_PARA_N_SIZE = "aql:self.eContents()->select( e | e.eClass().name = 'DNode').target->select(e | e.eClass().name = 'Para')->size()";
+    private static final String QUERY_TARGET_E_ALL_CONTENTS_CHAPTER_N_LAST_E_ALL_CONTENTS_PARA_N_SIZE = "aql:self.target.eAllContents(docbook::Chapter)->last().eAllContents(docbook::Para)->size()";
+    private static final String QUERY_TARGET_E_ALL_CONTENTS_CHAPTER_N_FIRST_E_ALL_CONTENTS_PARA_N_SIZE = "aql:self.target.eAllContents(docbook::Chapter)->first().eAllContents(docbook::Para)->size()";
+    private static final String QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_1_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_SIZE = "aql:self.eAllContents(diagram::DNodeContainer)->select( e | e.target.eClass().name = 'Chapter')->at(2).eAllContents(diagram::DNode)->select( e | e.target.eClass().name = 'Para')->size()";
+    private static final String QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_SIZE = "aql:self.eAllContents(diagram::DNodeContainer)->select( e | e.target.eClass().name = 'Chapter')->at(1).eAllContents(diagram::DNode)->select(e | e.target.eClass().name = 'Para')->size()";
+    private static final String QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_1_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_SIZE = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name = 'Chapter')->at(2).eAllContents(diagram::DNode)->select(e | e.target.eClass().name = 'Sect2')->size()";
+    private static final String QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_SIZE = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name = 'Chapter')->at(1).eAllContents(diagram::DNode)->select(e | e.target.eClass().name = 'Sect2')->size()";
+    private static final String QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_SECT1_N_SIZE = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name = 'Chapter')->at(1).eAllContents(diagram::DNodeContainer)->select(e| e.target.eClass().name = 'Sect1')->size()";
+
     /**
      * test drag and drop of a container in a container.
      */
@@ -38,7 +47,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(0).eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\"].nSize()%>").intValue();
+                    QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_SECT1_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -56,7 +65,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(0).eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\"].nSize()%>").intValue();
+                    QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_SECT1_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -66,7 +75,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(1).eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\"].nSize()%>").intValue();
+                    "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name = 'Chapter')->at(2).eAllContents(diagram::DNodeContainer)->select(n | n.target.eClass().name = 'Sect1')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -86,7 +95,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(0).eAllContents(\"DNode\")[target.eClass.name == \"Sect2\"].nSize()%>").intValue();
+                    QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -104,7 +113,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(0).eAllContents(\"DNode\")[target.eClass.name == \"Sect2\"].nSize()%>").intValue();
+                    QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -114,7 +123,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(1).eAllContents(\"DNode\")[target.eClass.name == \"Sect2\"].nSize()%>").intValue();
+                    QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_1_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -136,7 +145,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(0).eAllContents(\"DNode\")[target.eClass.name == \"Para\"].nSize()%>").intValue();
+                    QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -154,7 +163,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(0).eAllContents(\"DNode\")[target.eClass.name == \"Para\"].nSize()%>").intValue();
+                    QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_0_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -164,7 +173,7 @@ public class DragAndDropTest extends DocbookTestCase {
 
         try {
             targetCount = INTERPRETER.evaluateInteger(obviousDiagram,
-                    "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(1).eAllContents(\"DNode\")[target.eClass.name == \"Para\"].nSize()%>").intValue();
+                    QUERY_E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_GET_1_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -184,7 +193,7 @@ public class DragAndDropTest extends DocbookTestCase {
         int targetCount = -1;
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%target.eAllContents(\"Chapter\").nFirst().eAllContents(\"Para\").nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, QUERY_TARGET_E_ALL_CONTENTS_CHAPTER_N_FIRST_E_ALL_CONTENTS_PARA_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -201,7 +210,7 @@ public class DragAndDropTest extends DocbookTestCase {
         // that no medium section is inside the second chapter.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%target.eAllContents(\"Chapter\").nFirst().eAllContents(\"Para\").nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, QUERY_TARGET_E_ALL_CONTENTS_CHAPTER_N_FIRST_E_ALL_CONTENTS_PARA_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -210,7 +219,7 @@ public class DragAndDropTest extends DocbookTestCase {
         assertEquals("Wrong bordered node count inside the considered DNode.", 1, targetCount);
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%target.eAllContents(\"Chapter\").nLast().eAllContents(\"Para\").nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, QUERY_TARGET_E_ALL_CONTENTS_CHAPTER_N_LAST_E_ALL_CONTENTS_PARA_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -233,7 +242,7 @@ public class DragAndDropTest extends DocbookTestCase {
         // before command execution.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eContents()[eClass.name == \"DNode\"].target[eClass.name == \"Para\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, QUERY_E_CONTENTS_E_CLASS_NAME_D_NODE_TARGET_E_CLASS_NAME_PARA_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -248,7 +257,7 @@ public class DragAndDropTest extends DocbookTestCase {
         // the diagram.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eContents()[eClass.name == \"DNode\"].target[eClass.name == \"Para\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, QUERY_E_CONTENTS_E_CLASS_NAME_D_NODE_TARGET_E_CLASS_NAME_PARA_N_SIZE).intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();

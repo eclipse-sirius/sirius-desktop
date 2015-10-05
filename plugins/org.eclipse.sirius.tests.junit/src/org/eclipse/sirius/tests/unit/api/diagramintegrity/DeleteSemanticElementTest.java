@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         // check that there is Two DNodeContainer representing the 2 chapters in
         // the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNodeContainer\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DNodeContainer)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there is one DEdge between chapters in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -60,7 +60,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there is one DNodeContainer left in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNodeContainer\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DNodeContainer)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are no more Edges in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -93,7 +93,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         // check that there is one DNode representing the 2 chapters in the
         // diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNode\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DNode)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -108,7 +108,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are no DNode left in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(sessionModel, "<%eAllContents(\"DSemanticDiagram\")[name == \"evoluate view\"].eAllContents(\"DNode\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(sessionModel, "aql:self.eAllContents(diagram::DSemanticDiagram)->select( e | e.name = 'evoluate view').eAllContents(diagram::DNode)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -135,7 +135,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there is 4 Edges in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -144,7 +144,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there is 5 nodes in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNode\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DNode)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -159,7 +159,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there is 3 Edges left in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -168,7 +168,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there is is 4 nodes in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNode\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DNode)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -187,7 +187,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         int eltCount = -1;
 
         try {
-            eltCount = INTERPRETER.evaluateInteger(sessionModel, "<%eAllContents(\"DRepresentation\")[name == \"chapterDiagram\"].nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(sessionModel, "aql:self.eAllContents(viewpoint::DRepresentation)->select(r | r.name = 'chapterDiagram')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -214,7 +214,7 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         // refreshRepresentation();
 
         try {
-            eltCount = INTERPRETER.evaluateInteger(sessionModel, "<%eAllContents(\"DRepresentation\")[name == \"chapterDiagram\"].nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(sessionModel, "aql:self.eAllContents(viewpoint::DRepresentation)->select(r | r.name = 'chapterDiagram')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();

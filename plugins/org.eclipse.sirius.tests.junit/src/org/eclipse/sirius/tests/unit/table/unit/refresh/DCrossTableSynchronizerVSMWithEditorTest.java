@@ -261,7 +261,7 @@ public class DCrossTableSynchronizerVSMWithEditorTest extends TableTestCase {
         session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain(), commandName) {
             protected void doExecute() {
                 lineToAdd.setName("Attribut3");
-                lineToAdd.setHeaderLabelExpression("3-<%name%>");
+                lineToAdd.setHeaderLabelExpression("aql:'3-' + self.name");
                 ((CrossTableDescription) tableDescription).getAllLineMappings().get(0).getOwnedSubLines().add(lineToAdd);
             };
         });
@@ -414,7 +414,7 @@ public class DCrossTableSynchronizerVSMWithEditorTest extends TableTestCase {
         session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain()) {
             protected void doExecute() {
                 lineToAdd.setName("SousAttribut4");
-                lineToAdd.setHeaderLabelExpression("S4-<%name%>");
+                lineToAdd.setHeaderLabelExpression("aql:'S4-' + self.name");
                 ((CrossTableDescription) tableDescription).getAllLineMappings().get(0).getOwnedSubLines().get(0).getOwnedSubLines().add(lineToAdd);
             };
 

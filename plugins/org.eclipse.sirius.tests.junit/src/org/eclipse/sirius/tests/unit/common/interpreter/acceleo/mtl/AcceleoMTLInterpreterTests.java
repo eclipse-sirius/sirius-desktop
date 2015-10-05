@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,7 +54,7 @@ public class AcceleoMTLInterpreterTests extends TestCase {
         IInterpreterProvider provider = new AcceleoMTLInterpreterProvider();
 
         assertFalse("The expression is not a mtl expression.", provider.provides("string"));
-        assertFalse("The expression is an Acceleo 2 expression, not a mtl expression.", provider.provides("<%incomplete[expression]%>"));
+        assertFalse("The expression is an AQL expression, not a mtl expression.", provider.provides("aql:'incomplete' + '[' + 'expression'+ ']'"));
         assertTrue("The expression looks like a mtl expression.", provider.provides("[expression/]"));
 
         assertTrue("The expression looks like a mtl expression.", provider.provides("['an' + expression/]"));

@@ -55,7 +55,7 @@ public class DialectManagerTest extends TestCase {
         assertEquals("we should have one possible representation", 1, descriptions.size());
 
         final TableDescription tableDescription = findTableDescription(dialectGroup, "Class Table");
-        tableDescription.setPreconditionExpression("<%false%>");
+        tableDescription.setPreconditionExpression("aql:false");
         descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(currentVp, class1);
 
         assertEquals("we should have zero possible representation", 0, descriptions.size());

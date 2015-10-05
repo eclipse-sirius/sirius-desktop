@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -446,7 +446,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
      * specific variables.
      */
     private String getAcceleoPreconditionWithAllVariables(List<AbstractVariable> variables) {
-        String precondition = "<% ";
+        String precondition = "aql:";
         Iterator<AbstractVariable> iterator = variables.iterator();
         if (!iterator.hasNext()) {
             return null;
@@ -454,14 +454,13 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
         while (iterator.hasNext()) {
             AbstractVariable variable = iterator.next();
             String variableName = variable.getName();
-            String affirmation = " $" + variableName + "!= null";
-            String negation = "!" + affirmation;
-            precondition += affirmation + " || " + negation;
+            String affirmation = " " + variableName + "<> null";
+            String negation = " not (" + affirmation + ")";
+            precondition += affirmation + " or " + negation;
             if (variables.indexOf(variable) < variables.size() - 1) {
-                precondition += " && ";
+                precondition += " and ";
             }
         }
-        precondition += "%>";
         return precondition;
     }
 

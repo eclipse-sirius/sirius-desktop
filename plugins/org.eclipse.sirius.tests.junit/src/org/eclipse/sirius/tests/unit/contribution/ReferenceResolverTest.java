@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,7 +91,7 @@ public class ReferenceResolverTest {
     @Test
     public void computed_reference_with_valid_expression_but_not_context_resolves_to_empty_option() {
         ComputedEObjectReference ref = factory.createComputedEObjectReference();
-        ref.setValueExpression("<%self%>");
+        ref.setValueExpression("aql:self");
         Option<EObject> result = resolver.resolve(ref, NO_CONTEXT);
         assertHasNoValue(result);
     }
@@ -100,7 +100,7 @@ public class ReferenceResolverTest {
     public void computed_reference_with_self_expression_resolves_to_context() {
         EObject self = EcoreFactory.eINSTANCE.createEObject();
         ComputedEObjectReference ref = factory.createComputedEObjectReference();
-        ref.setValueExpression("<%self%>");
+        ref.setValueExpression("aql:self");
         Map<String, Object> context = Maps.newHashMap();
         context.put("self", self);
         Option<EObject> result = resolver.resolve(ref, context);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,7 +72,7 @@ public class CreateInstanceOperationTest extends TestCase {
             root = task.getContext().getNextPush();
             task.execute();
             IInterpreter interpreter = iRegistry.getInterpreter(root);
-            assertNotNull("The $" + variableName + " should be available to reference the created instance", interpreter.evaluateEObject(root, "<%$" + variableName + "%>"));
+            assertNotNull("The " + variableName + " variable should be available to reference the created instance", interpreter.evaluateEObject(root, "aql:" + variableName));
         }
     }
 

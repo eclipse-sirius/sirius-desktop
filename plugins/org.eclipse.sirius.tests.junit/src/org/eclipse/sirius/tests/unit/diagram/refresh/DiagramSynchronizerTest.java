@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -508,7 +508,7 @@ public class DiagramSynchronizerTest extends AbstractSynchronizerTest {
 
         assertNotNull("The edge with a path is not found", pathEdge);
 
-        Collection<EObject> allpackages = interpreter.evaluateCollection(((Model) semanticModel), "<%eAllContents(\"Package\")%>");
+        Collection<EObject> allpackages = interpreter.evaluateCollection(((Model) semanticModel), "aql:self.eAllContents(uml::Package)");
         assertEquals("the path'ed elements should be all the model packages", allpackages.size(), pathEdge.getPath().size());
 
     }
@@ -541,7 +541,7 @@ public class DiagramSynchronizerTest extends AbstractSynchronizerTest {
 
         assertNotNull("The edge with a path is not found", pathEdge);
 
-        Collection<EObject> allpackages = interpreter.evaluateCollection(((Model) semanticModel), "<%eAllContents(\"Package\") + eAllContents(\"Package\").nLast%>");
+        Collection<EObject> allpackages = interpreter.evaluateCollection(((Model) semanticModel), "aql:self.eAllContents(uml::Package) + Sequence{self.eAllContents(uml::Package)->last()}");
         assertEquals("the path'ed elements should be all the model packages", allpackages.size(), pathEdge.getPath().size());
 
     }

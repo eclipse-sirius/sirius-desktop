@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,17 +12,17 @@ package org.eclipse.sirius.tests.unit.api.interpreter;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
-import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
@@ -30,7 +30,11 @@ import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * Tests on editing domain based on entities diagram of ecore modeler.
@@ -49,7 +53,7 @@ public class CompletionTests extends SiriusDiagramTestCase implements EcoreModel
     }
 
     public void testGetStructuralFeatures() {
-        ContentContext context = getContext(null, null, "DDiagram:1.1.0", getContentContextText(), 2);
+        ContentContext context = getContext(null, null, "diagram.DDiagram", getContentContextText(), 9);
 
         assertTrue(interpreter instanceof IProposalProvider);
 
@@ -63,7 +67,7 @@ public class CompletionTests extends SiriusDiagramTestCase implements EcoreModel
         NodeCreationDescription nodeCreationDescription = ToolFactory.eINSTANCE.createNodeCreationDescription();
         EAttribute precondition = ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition();
 
-        ContentContext context = getContext(nodeCreationDescription, precondition, NodeCreationDescription.class.getName(), getContentContextText("c"), 2);
+        ContentContext context = getContext(nodeCreationDescription, precondition, NodeCreationDescription.class.getName(), getContentContextText("c"), 4);
 
         assertTrue(interpreter instanceof IProposalProvider);
 
@@ -72,19 +76,24 @@ public class CompletionTests extends SiriusDiagramTestCase implements EcoreModel
     }
 
     private ContentContext getContext(EObject element, EStructuralFeature feature, String domainClass, String text, int cursorPosition) {
-        IInterpreterContext interContext = DefaultInterpreterContextFactory.createInterpreterContext(element, true, feature, VariableType.fromString(domainClass), Collections.<EPackage> emptyList(),
-                Collections.<String, VariableType> emptyMap(), Collections.<String> emptyList());
+        Map<String, VariableType> variables = Maps.newLinkedHashMap();
+        if (element != null && feature != null) {
+            variables = SiriusInterpreterContextFactory.createInterpreterContext(element, feature).getVariables();
+        }
+
+        IInterpreterContext interContext = DefaultInterpreterContextFactory.createInterpreterContext(element, true, feature, VariableType.fromString(domainClass),
+                Sets.newHashSet(DiagramPackage.eINSTANCE, EcorePackage.eINSTANCE), variables, Collections.<String> emptyList());
 
         ContentContext context = new ContentContext(text, cursorPosition, interContext);
         return context;
     }
 
     private String getContentContextText() {
-        return getContentContextText("");
+        return getContentContextText("self.");
     }
 
     private String getContentContextText(String firstChars) {
-        return "<%" + firstChars;
+        return "aql:" + firstChars;
     }
 
     private void assertContains(Collection<ContentProposal> contentProposals, String name) {

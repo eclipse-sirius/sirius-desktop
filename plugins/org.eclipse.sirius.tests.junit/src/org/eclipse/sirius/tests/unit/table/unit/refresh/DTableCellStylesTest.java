@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the isAbstract column
         DColumn isAbstractColumn = null;
         try {
-            isAbstractColumn = (DColumn) interpreter.evaluateEObject(newTable, "<%columns[label == \"" + COLUMN_LABEL_IS_ABSTARCT + "\"]%>");
+            isAbstractColumn = (DColumn) interpreter.evaluateEObject(newTable, "aql:self.columns->select(c | c.label = '" + COLUMN_LABEL_IS_ABSTARCT + "' )->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isAbstract column.");
             e.printStackTrace();
@@ -86,9 +86,9 @@ public class DTableCellStylesTest extends TableTestCase {
 
         // Get the line corresponding to the Class Class1
         DLine class1Line = null;
-        String acceleoRequestForClass1Line = "lines[label == \"Class : Class1\"]";
+        String acceleoRequestForClass1Line = "self.lines->select( l | l.label = 'Class : Class1')->first()";
         try {
-            class1Line = (DLine) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass1Line + "%>");
+            class1Line = (DLine) interpreter.evaluateEObject(newTable, "aql:" + acceleoRequestForClass1Line);
         } catch (EvaluationException e) {
             fail("Exception while trying to get the line corresponding to the Class Class1.");
             e.printStackTrace();
@@ -99,7 +99,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Class1 Line
         DCell cell = null;
         try {
-            cell = (DCell) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass1Line + ".cells[column.label == \"" + COLUMN_LABEL_IS_ABSTARCT + "\"]%>");
+            cell = (DCell) interpreter.evaluateEObject(newTable, "aql:" + acceleoRequestForClass1Line + ".cells->select(c | c.column.label = '" + COLUMN_LABEL_IS_ABSTARCT + "')->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isAbstract cell of the Class1 line.");
             e.printStackTrace();
@@ -147,7 +147,8 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the isActive column
         DColumn isActiveColumn = null;
         try {
-            isActiveColumn = (DColumn) interpreter.evaluateEObject(newTable, "<%columns[label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            isActiveColumn = (DColumn) interpreter.evaluateEObject(newTable, "aql:self.columns->select( c |c.label = '" + COLUMN_LABEL_IS_ACTIVE + "')->first()");
+
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive column.");
             e.printStackTrace();
@@ -156,9 +157,9 @@ public class DTableCellStylesTest extends TableTestCase {
 
         // Get the line corresponding to the Class Class1
         DLine class1Line = null;
-        String acceleoRequestForClass1Line = "lines[label == \"Class : Class1\"]";
+        String acceleoRequestForClass1Line = "self.lines->select( l | l.label = 'Class : Class1')->first()";
         try {
-            class1Line = (DLine) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass1Line + "%>");
+            class1Line = (DLine) interpreter.evaluateEObject(newTable, "aql:" + acceleoRequestForClass1Line);
         } catch (EvaluationException e) {
             fail("Exception while trying to get the line corresponding to the Class Class1.");
             e.printStackTrace();
@@ -168,7 +169,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the foreground style of the cell of the isActive column of Class1
         DCell cellForClasse1 = null;
         try {
-            cellForClasse1 = (DCell) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass1Line + ".cells[column.label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            cellForClasse1 = (DCell) interpreter.evaluateEObject(newTable, "aql:" + acceleoRequestForClass1Line + ".cells->select(c | c.column.label = '" + COLUMN_LABEL_IS_ACTIVE + "')->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive cell of the Class1 line.");
             e.printStackTrace();
@@ -183,9 +184,9 @@ public class DTableCellStylesTest extends TableTestCase {
 
         // Get the line corresponding to the Class Class2
         DLine class2Line = null;
-        String acceleoRequestForClass2Line = "lines[label == \"Class : Class2\"]";
+        String acceleoRequestForClass2Line = "lines->select(l |l.label = 'Class : Class2')->first()";
         try {
-            class2Line = (DLine) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass2Line + "%>");
+            class2Line = (DLine) interpreter.evaluateEObject(newTable, "aql:self." + acceleoRequestForClass2Line );
         } catch (EvaluationException e) {
             fail("Exception while trying to get the line corresponding to the Class Class2.");
             e.printStackTrace();
@@ -195,7 +196,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the foreground style of the cell of the isActive column of Class2
         DCell cellForClasse2 = null;
         try {
-            cellForClasse2 = (DCell) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass2Line + ".cells[column.label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            cellForClasse2 = (DCell) interpreter.evaluateEObject(newTable, "aql:self." + acceleoRequestForClass2Line + ".cells->select(c | c.column.label = '" + COLUMN_LABEL_IS_ACTIVE + "')->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive cell of the Class2 line.");
             e.printStackTrace();
@@ -255,7 +256,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the isActive column
         DColumn isActiveColumn = null;
         try {
-            isActiveColumn = (DColumn) interpreter.evaluateEObject(newTable, "<%columns[label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            isActiveColumn = (DColumn) interpreter.evaluateEObject(newTable, "aql:self.columns->select( c |c.label = '" + COLUMN_LABEL_IS_ACTIVE + "')->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive column.");
             e.printStackTrace();
@@ -264,9 +265,9 @@ public class DTableCellStylesTest extends TableTestCase {
 
         // Get the line corresponding to the Class Class1
         DLine class1Line = null;
-        String acceleoRequestForClass1Line = "lines[label == \"Class : Class1\"]";
+        String acceleoRequestForClass1Line = "self.lines->select( l | l.label = 'Class : Class1')->first()";
         try {
-            class1Line = (DLine) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass1Line + "%>");
+            class1Line = (DLine) interpreter.evaluateEObject(newTable, "aql:" + acceleoRequestForClass1Line);
         } catch (EvaluationException e) {
             fail("Exception while trying to get the line corresponding to the Class Class1.");
             e.printStackTrace();
@@ -276,7 +277,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the foreground style of the cell of the isActive column of Class1
         DCell cellForClasse1 = null;
         try {
-            cellForClasse1 = (DCell) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass1Line + ".cells[column.label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            cellForClasse1 = (DCell) interpreter.evaluateEObject(newTable, "aql:" + acceleoRequestForClass1Line + ".cells->select(c | c.column.label = '" + COLUMN_LABEL_IS_ACTIVE + "')->first()"); 
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive cell of the Class1 line.");
             e.printStackTrace();
@@ -289,9 +290,9 @@ public class DTableCellStylesTest extends TableTestCase {
 
         // Get the line corresponding to the Class Class2
         DLine class2Line = null;
-        String acceleoRequestForClass2Line = "lines[label == \"Class : Class2\"]";
+        String acceleoRequestForClass2Line = "lines->select(l |l.label = 'Class : Class2')->first()";
         try {
-            class2Line = (DLine) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass2Line + "%>");
+            class2Line = (DLine) interpreter.evaluateEObject(newTable, "aql:self." + acceleoRequestForClass2Line + "");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the line corresponding to the Class Class2.");
             e.printStackTrace();
@@ -301,7 +302,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the foreground style of the cell of the isActive column of Class2
         DCell cellForClasse2 = null;
         try {
-            cellForClasse2 = (DCell) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass2Line + ".cells[column.label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            cellForClasse2 = (DCell) interpreter.evaluateEObject(newTable, "aql:self." + acceleoRequestForClass2Line + ".cells->select( c | c.column.label ='" + COLUMN_LABEL_IS_ACTIVE + "')->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive cell of the Class2 line.");
             e.printStackTrace();
@@ -355,7 +356,8 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the isActive column
         DColumn isActiveColumn = null;
         try {
-            isActiveColumn = (DColumn) interpreter.evaluateEObject(newTable, "<%columns[label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            isActiveColumn = (DColumn) interpreter.evaluateEObject(newTable, "aql:self.columns->select( c |c.label = '" + COLUMN_LABEL_IS_ACTIVE + "')->first()");
+
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive column.");
             e.printStackTrace();
@@ -364,9 +366,9 @@ public class DTableCellStylesTest extends TableTestCase {
 
         // Get the line corresponding to the Class Class1
         DLine class1Line = null;
-        String acceleoRequestForClass1Line = "lines[label == \"Class : Class1\"]";
+        String acceleoRequestForClass1Line = "self.lines->select( l | l.label = 'Class : Class1')->first()";
         try {
-            class1Line = (DLine) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass1Line + "%>");
+            class1Line = (DLine) interpreter.evaluateEObject(newTable, "aql:" + acceleoRequestForClass1Line);
         } catch (EvaluationException e) {
             fail("Exception while trying to get the line corresponding to the Class Class1.");
             e.printStackTrace();
@@ -376,7 +378,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the foreground style of the cell of the isActive column of Class1
         DCell cellForClasse1 = null;
         try {
-            cellForClasse1 = (DCell) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass1Line + ".cells[column.label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            cellForClasse1 = (DCell) interpreter.evaluateEObject(newTable, "aql:" + acceleoRequestForClass1Line + ".cells->select(c | c.column.label = '" + COLUMN_LABEL_IS_ACTIVE + "')->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive cell of the Class1 line.");
             e.printStackTrace();
@@ -390,9 +392,9 @@ public class DTableCellStylesTest extends TableTestCase {
 
         // Get the line corresponding to the Class Class2
         DLine class2Line = null;
-        String acceleoRequestForClass2Line = "lines[label == \"Class : Class2\"]";
+        String acceleoRequestForClass2Line = "lines->select(l |l.label = 'Class : Class2')->first()";
         try {
-            class2Line = (DLine) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass2Line + "%>");
+            class2Line = (DLine) interpreter.evaluateEObject(newTable, "aql:self." + acceleoRequestForClass2Line);
         } catch (EvaluationException e) {
             fail("Exception while trying to get the line corresponding to the Class Class2.");
             e.printStackTrace();
@@ -402,7 +404,7 @@ public class DTableCellStylesTest extends TableTestCase {
         // Get the foreground style of the cell of the isActive column of Class2
         DCell cellForClasse2 = null;
         try {
-            cellForClasse2 = (DCell) interpreter.evaluateEObject(newTable, "<%" + acceleoRequestForClass2Line + ".cells[column.label == \"" + COLUMN_LABEL_IS_ACTIVE + "\"]%>");
+            cellForClasse2 = (DCell) interpreter.evaluateEObject(newTable, "aql:self." + acceleoRequestForClass2Line + ".cells->select( c | c.column.label = '" + COLUMN_LABEL_IS_ACTIVE + "')->first()");
         } catch (EvaluationException e) {
             fail("Exception while trying to get the isActive cell of the Class2 line.");
             e.printStackTrace();

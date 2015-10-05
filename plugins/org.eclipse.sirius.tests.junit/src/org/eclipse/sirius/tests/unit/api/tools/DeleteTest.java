@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,9 +92,9 @@ public class DeleteTest extends DocbookTestCase {
     }
 
     private void checkModel(int paraSemanticNb, int evoDiagParaNb, int obviousDiagParaNb) {
-        check(evoluateDiagram, "<%target.eAllContents(\"Para\").nSize()%>", paraSemanticNb);
-        check(evoluateDiagram, "<%eAllContents().target.filter(\"Para\").nSize()%>", evoDiagParaNb);
-        check(obviousDiagram, "<%nFirst().eAllContents(\"DNodeContainer\").eAllContents().target.filter(\"Para\").nSize()%>", obviousDiagParaNb);
+        check(evoluateDiagram, "aql:self.target.eAllContents(docbook::Para)->size()", paraSemanticNb);
+        check(evoluateDiagram, "aql:self.eAllContents().target->filter(docbook::Para)->size()", evoDiagParaNb);
+        check(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer).eAllContents().target->filter(docbook::Para)->size()", obviousDiagParaNb);
     }
 
     private void check(DDiagram context, String expression, int expected) {

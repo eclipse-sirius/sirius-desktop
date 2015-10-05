@@ -77,6 +77,36 @@ import com.google.common.collect.Multimap;
  */
 public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookModeler {
 
+    private static final String E_ALL_CONTENTS_D_EDGE_TARGET_E_CLASS_NAME_PARA_N_LAST = "aql:self.eAllContents(diagram::DEdge)->select(e | e.target.eClass().name ='Para')->last()";
+
+    private static final String E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_CHAPTER_N_LAST = "aql:self.eAllContents(diagram::DNode)->select(e | e.target.eClass().name ='Chapter')->last()";
+
+    private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_E_CLASS_NAME_D_NODE_CONTAINER_TARGET_NODE_E_CLASS_NAME_D_NODE_CONTAINER_N_GET_0 = "aql:self.eAllContents(diagram::DEdge)->select(e | e.sourceNode.eClass().name = 'DNodeContainer' and e.targetNode.eClass().name = 'DNodeContainer')->at(1)";
+
+    private static final String E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT3_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_LAST = "aql:self.eAllContents(diagram::DNode)->select(n | n.target.eClass().name = 'Sect3').eAllContents(diagram::DNode)->select(n | n.target.eClass().name = 'Para')->last()";
+
+    private static final String E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_GET_1 = "aql:self.eAllContents(diagram::DNode)->select(e | e.target.eClass().name ='Sect2')->at(2)";
+
+    private static final String E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_SECT1_N_GET_0 = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name ='Sect1')->first()";
+
+    private static final String E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT3_N_LAST = "aql:self.eAllContents(diagram::DNode)->select(e | e.target.eClass().name ='Sect3')->last()";
+
+    private static final String E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_LAST = "aql:self.eAllContents(diagram::DNode)->select(e | e.target.eClass().name ='Sect2')->last()";
+
+    private static final String E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_TITLE_N_GET_0 = "aql:self.eAllContents(diagram::DNode)->select(e | e.target.eClass().name ='Title')->first()";
+
+    private static final String E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_SECT1_N_LAST = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name ='Sect1')->last()";
+
+    private static final String E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_PARA_N_LAST = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.eClass().name ='Para')->last()";
+
+    private static final String E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_PARA_N_LAST = "aql:self.eAllContents(diagram::DEdge)->select(e | e.sourceNode.target.eClass().name ='Para')->last()";
+
+    private static final String E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_LAST = "aql:self.eAllContents(diagram::DNode)->select(e | e.target.eClass().name ='Para')->last()";
+
+    private static final String E_ALL_CONTENTS_TARGET_E_CLASS_NAME_INFO_N_LAST = "aql:self.eAllContents()->select(e | e.target.eClass().name ='Info')->last()";
+
+    private static final String E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_LAST = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name ='Chapter')->last()";
+
     /** Interpreter which can be used by subclasses to avoid instantiating more. */
     protected static IInterpreter INTERPRETER;
 
@@ -805,7 +835,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         EObject chapter = null;
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
         try {
-            chapter = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNodeContainer\")[target.eClass.name==\"Chapter\"].nLast()%>");
+            chapter = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_CHAPTER_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject chapter.");
             e.printStackTrace();
@@ -824,7 +854,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            info = INTERPRETER.evaluateEObject(evoluateDiagram, "<%eAllContents()[target.eClass.name==\"Info\"].nLast()%>");
+            info = INTERPRETER.evaluateEObject(evoluateDiagram, E_ALL_CONTENTS_TARGET_E_CLASS_NAME_INFO_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject info");
             e.printStackTrace();
@@ -860,7 +890,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            note = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name==\"Para\"].nLast()%>");
+            note = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject chapter note.");
             e.printStackTrace();
@@ -869,7 +899,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         createdElts.add(note);
 
         try {
-            edgeFromNote = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DEdge\")[sourceNode.target.eClass.name == \"Para\"].nLast()%>");
+            edgeFromNote = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_TARGET_E_CLASS_NAME_PARA_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject edge.");
             e.printStackTrace();
@@ -878,7 +908,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         createdElts.add(edgeFromNote);
 
         try {
-            edgeToNote = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DEdge\")[targetNode.target.eClass.name == \"Para\"].nLast()%>");
+            edgeToNote = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_NODE_TARGET_E_CLASS_NAME_PARA_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject edge.");
             e.printStackTrace();
@@ -910,7 +940,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            bigSection = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNodeContainer\")[target.eClass.name==\"Sect1\"].nLast()%>");
+            bigSection = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_SECT1_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject big section.");
             e.printStackTrace();
@@ -938,7 +968,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            title = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass().name == \"Title\"].nGet(0)%>");
+            title = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_TITLE_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject title.");
             e.printStackTrace();
@@ -965,7 +995,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            bigSection = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNodeContainer\")[target.eClass.name==\"Sect1\"].nLast()%>");
+            bigSection = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_SECT1_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject big section.");
             e.printStackTrace();
@@ -993,7 +1023,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            mediumSection = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name==\"Sect2\"].nLast()%>");
+            mediumSection = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject medium section.");
             e.printStackTrace();
@@ -1023,7 +1053,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            tinySection = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name==\"Sect3\"].nLast()%>");
+            tinySection = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT3_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject tiny section.");
             e.printStackTrace();
@@ -1053,7 +1083,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         EdgeTarget res = null;
 
         try {
-            bigSect = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNodeContainer\")[target.eClass.name==\"Sect1\"].nGet(0)%>");
+            bigSect = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_CONTAINER_TARGET_E_CLASS_NAME_SECT1_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject big section.");
             e.printStackTrace();
@@ -1065,7 +1095,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
             session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
             try {
-                medSect = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name==\"Sect2\"].nGet(1)%>");
+                medSect = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT2_N_GET_1);
             } catch (final EvaluationException e) {
                 fail("Exception while trying to get the EObject medium section.");
                 e.printStackTrace();
@@ -1098,7 +1128,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            tinyNote = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name==\"Sect3\"].eAllContents(\"DNode\")[target.eClass.name==\"Para\"].nLast()%>");
+            tinyNote = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT3_E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_PARA_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject tiny note.");
             e.printStackTrace();
@@ -1139,7 +1169,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         EObject edge = null;
 
         try {
-            edge = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DEdge\")[sourceNode.eClass().name == \"DNodeContainer\" && targetNode.eClass().name == \"DNodeContainer\"].nGet(0)%>");
+            edge = INTERPRETER.evaluateEObject(obviousDiagram, E_ALL_CONTENTS_D_EDGE_SOURCE_NODE_E_CLASS_NAME_D_NODE_CONTAINER_TARGET_NODE_E_CLASS_NAME_D_NODE_CONTAINER_N_GET_0);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject edge between two chapters.");
             e.printStackTrace();
@@ -1190,14 +1220,14 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
         try {
-            chapter = INTERPRETER.evaluateEObject(evoluateDiagram, "<%eAllContents(\"DNode\")[target.eClass.name==\"Chapter\"].nLast()%>");
+            chapter = INTERPRETER.evaluateEObject(evoluateDiagram, E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_CHAPTER_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject chapter.");
             e.printStackTrace();
         }
 
         try {
-            tinySect = INTERPRETER.evaluateEObject(evoluateDiagram, "<%eAllContents(\"DNode\")[target.eClass.name==\"Sect3\"].nLast()%>");
+            tinySect = INTERPRETER.evaluateEObject(evoluateDiagram, E_ALL_CONTENTS_D_NODE_TARGET_E_CLASS_NAME_SECT3_N_LAST);
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject tiny section.");
             e.printStackTrace();
@@ -1210,7 +1240,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
             session.getTransactionalEditingDomain().getCommandStack().execute(command);
 
             try {
-                note = INTERPRETER.evaluateEObject(evoluateDiagram, "<%eAllContents(\"DEdge\")[target.eClass.name==\"Para\"].nLast()%>");
+                note = INTERPRETER.evaluateEObject(evoluateDiagram, E_ALL_CONTENTS_D_EDGE_TARGET_E_CLASS_NAME_PARA_N_LAST);
             } catch (final EvaluationException e) {
                 fail("Exception while trying to get the EObject note.");
                 e.printStackTrace();

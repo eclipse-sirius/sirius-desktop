@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are 5 nodes in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNode\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DNode)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -43,7 +43,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are 4 edges in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are 3 edges in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DEdge)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are 4 nodes in the diagram.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNode\").nSize()%>").intValue();
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eAllContents(diagram::DNode)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -95,7 +95,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
         // check that there are 2 elements under the first chapter.
         try {
             eltCount = INTERPRETER.evaluateInteger(myRepresentation,
-                    "<%eContents().filter(\"DNodeContainer\")[target == target.eContainer.chapter.nFirst()].eAllContents(\"DNodeContainer\").nSize()%>").intValue();
+                    "aql:self.eContents()->filter(diagram::DNodeContainer)->select(e | e.target = e.target.eContainer().chapter->first()).eAllContents(diagram::DNodeContainer)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -105,7 +105,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
         // check that there are no elements under the second (last) chapter.
         try {
             eltCount = INTERPRETER
-                    .evaluateInteger(myRepresentation, "<%eContents().filter(\"DNodeContainer\")[target == target.eContainer.chapter.nLast()].eAllContents(\"DNodeContainer\").nSize()%>").intValue();
+                    .evaluateInteger(myRepresentation, "aql:self.eContents()->filter(diagram::DNodeContainer)->select(e | e.target = e.target.eContainer().chapter->last()).eAllContents(diagram::DNodeContainer)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -121,7 +121,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
         // check that there are no elements under the first chapter.
         try {
             eltCount = INTERPRETER.evaluateInteger(myRepresentation,
-                    "<%eContents().filter(\"DNodeContainer\")[target == target.eContainer.chapter.nFirst()].eAllContents(\"DNodeContainer\").nSize()%>").intValue();
+                    "aql:self.eContents()->filter(diagram::DNodeContainer)->select(e | e.target = e.target.eContainer().chapter->first()).eAllContents(diagram::DNodeContainer)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -131,7 +131,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
         // check that there is one element under the second (last) chapter.
         try {
             eltCount = INTERPRETER
-                    .evaluateInteger(myRepresentation, "<%eContents().filter(\"DNodeContainer\")[target == target.eContainer.chapter.nLast()].eAllContents(\"DNodeContainer\").nSize()%>").intValue();
+                    .evaluateInteger(myRepresentation, "aql:self.eContents()->filter(diagram::DNodeContainer)->select(e | e.target = e.target.eContainer().chapter->last()).eAllContents(diagram::DNodeContainer)->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
             e.printStackTrace();
@@ -158,7 +158,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there is 1 element under the first big section.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eContents().filter(\"DNodeContainer\")[target == target.eContainer.chapter.nFirst()].eAllContents(\"DNode\").nSize()%>")
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eContents()->filter(diagram::DNodeContainer)->select(e | e.target = e.target.eContainer().chapter->first()).eAllContents(diagram::DNode)->size()")
                     .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
@@ -168,7 +168,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are no elements under the second (last) big section.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eContents().filter(\"DNodeContainer\")[target == target.eContainer.chapter.nLast()].eAllContents(\"DNode\").nSize()%>")
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eContents()->filter(diagram::DNodeContainer)->select(e | e.target = e.target.eContainer().chapter->last()).eAllContents(diagram::DNode)->size()")
                     .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
@@ -184,7 +184,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are no elements under the first chapter.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eContents().filter(\"DNodeContainer\")[target == target.eContainer.chapter.nFirst()].eAllContents(\"DNode\").nSize()%>")
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eContents()->filter(diagram::DNodeContainer)->select(e | e.target = e.target.eContainer().chapter->first()).eAllContents(diagram::DNode)->size()")
                     .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");
@@ -194,7 +194,7 @@ public class MoveSemanticElementTest extends DiagramIntegrityTestCase {
 
         // check that there are no elements under the second (last) chapter.
         try {
-            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eContents().filter(\"DNodeContainer\")[target == target.eContainer.chapter.nLast()].eAllContents(\"DNode\").nSize()%>")
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "aql:self.eContents()->filter(diagram::DNodeContainer)->select(e | e.target = e.target.eContainer().chapter->last()).eAllContents(diagram::DNode)->size()")
                     .intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the integer value.");

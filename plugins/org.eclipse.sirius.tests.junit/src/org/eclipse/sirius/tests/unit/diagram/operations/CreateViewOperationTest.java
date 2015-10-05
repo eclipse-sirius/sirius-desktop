@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,9 +79,9 @@ public class CreateViewOperationTest extends TestCase {
             viewpointCommand.getTasks().add(task);
             domain.getCommandStack().execute(viewpointCommand);
             IInterpreter interpreter = session.getInterpreter();
-            assertNotNull("The $" + ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME.getDefaultValueLiteral() + " should be available to reference the created view",
-                    interpreter.evaluateEObject(rootContext.getCurrentTarget(), "<%$" + ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME.getDefaultValueLiteral() + "%>"));
-            assertNotNull("The $" + ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME.getDefaultValueLiteral() + " should be available to reference the created view",
+            assertNotNull("The variable" + ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME.getDefaultValueLiteral() + " should be available to reference the created view",
+                    interpreter.evaluateEObject(rootContext.getCurrentTarget(), "aql:" + ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME.getDefaultValueLiteral()));
+            assertNotNull("The variable" + ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME.getDefaultValueLiteral() + " should be available to reference the created view",
                     interpreter.getVariable(ToolPackage.Literals.CREATE_VIEW__VARIABLE_NAME.getDefaultValueLiteral()));
         }
     }
@@ -95,7 +95,7 @@ public class CreateViewOperationTest extends TestCase {
 
             session.getInterpreter().setVariable("elementView", diagram);
 
-            task = createViewTask(rootContext, mapping, "<%$elementView.eContainer(\"DDiagram\")%>");
+            task = createViewTask(rootContext, mapping, "aql:elementView.eContainerOrSelf(diagram::DDiagram)");
 
             super.check();
             rootContext.getNextPush();
@@ -145,7 +145,7 @@ public class CreateViewOperationTest extends TestCase {
 
     private class NoMapping extends Case {
         public void check(DiagramElementMapping mapping) throws Exception {
-            task = createViewTask(rootContext, mapping, "<%$elementView.eContainer(\"DDiagram\")%>");
+            task = createViewTask(rootContext, mapping, "aql:elementView.eContainerOrSelf(diagram::DDiagram)");
             task.execute();
 
             // TODO VP-874 check we have the requested business exception
@@ -251,7 +251,7 @@ public class CreateViewOperationTest extends TestCase {
      */
     public void testBadContainerViewExpression() throws Exception {
         try {
-            new NoContainerViewExpression().check("<%eContainer(\"EPackage\")%>");
+            new NoContainerViewExpression().check("aql:self.eContainerOrSelf(ecore::EPackage)");
         } catch (ClassCastException e) {
             // TODO VP-874 : A business exception should be returned instead of
             // a
@@ -265,7 +265,7 @@ public class CreateViewOperationTest extends TestCase {
      * @throws Exception
      */
     public void testBadContainerViewExpression2() throws Exception {
-        new NoContainerViewExpression().check("<%eContainer(\"EPackage\")%>");
+        new NoContainerViewExpression().check("aql:self.eContainerOrSelf(ecore::EPackage)");
     }
 
     /**

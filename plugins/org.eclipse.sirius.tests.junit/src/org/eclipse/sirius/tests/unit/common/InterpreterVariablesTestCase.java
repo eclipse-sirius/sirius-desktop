@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ public class InterpreterVariablesTestCase extends TestCase {
     /**
      * 
      */
-    private static final String ELEMENT_VARIABLE = "<%$element%>";
+    private static final String ELEMENT_VARIABLE = "aql:element";
 
     /**
      * 
@@ -64,7 +64,7 @@ public class InterpreterVariablesTestCase extends TestCase {
      */
     public void testSettingVariable() throws Exception {
         interpreter.setVariable(IInterpreterSiriusVariables.SOURCE, claz);
-        EObject result = interpreter.evaluateEObject(pak, "<%$source%>");
+        EObject result = interpreter.evaluateEObject(pak, "aql:source");
         assertSame(THE_RETURNED_VALUE_IS_NOT_THE_VARIABLE, claz, result);
     }
 
@@ -77,7 +77,7 @@ public class InterpreterVariablesTestCase extends TestCase {
     public void testSettingMultipleVariables() throws Exception {
         interpreter.setVariable(IInterpreterSiriusVariables.SOURCE, claz);
         interpreter.setVariable(IInterpreterSiriusVariables.TARGET, claz);
-        boolean result = interpreter.evaluateBoolean(pak, "<%$source == $target%>");
+        boolean result = interpreter.evaluateBoolean(pak, "aql:source = target");
         assertTrue("The expresion using variable has not been correctly evaluated", result);
     }
 
@@ -107,7 +107,7 @@ public class InterpreterVariablesTestCase extends TestCase {
      */
     public void testVariableUsage() throws Exception {
         interpreter.setVariable(IInterpreterSiriusVariables.SOURCE, claz);
-        boolean result = interpreter.evaluateBoolean(claz, "<%$source == self%>");
+        boolean result = interpreter.evaluateBoolean(claz, "aql:source = self");
         assertEquals("The expresion using variable has not been correctly evaluated", true, result);
     }
 
@@ -116,7 +116,7 @@ public class InterpreterVariablesTestCase extends TestCase {
      */
     public void testNonExistingVariable() {
         try {
-            interpreter.evaluateBoolean(claz, "<%$dummy == self%>");
+            interpreter.evaluateBoolean(claz, "var:dummy");
             fail("No exception has been thrown when accessing a non existing variable");
         } catch (final EvaluationException e) {
             // Here, The test is OK.

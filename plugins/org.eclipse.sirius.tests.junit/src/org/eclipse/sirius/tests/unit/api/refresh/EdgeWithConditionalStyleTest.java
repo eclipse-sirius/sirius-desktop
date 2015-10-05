@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -89,7 +89,7 @@ public class EdgeWithConditionalStyleTest extends DocbookTestCase {
         // Test that the style for the first edge is the conditional style
         EObject firstBigSectionEdge = null;
         try {
-            firstBigSectionEdge = INTERPRETER.evaluateEObject(evoluateDiagram, "<%eAllContents(\"DEdge\")[target.eClass.name==\"Sect1\"].nFirst()%>");
+            firstBigSectionEdge = INTERPRETER.evaluateEObject(evoluateDiagram, "aql:self.eAllContents(diagram::DEdge)->select(e | e.target.eClass().name='Sect1')->first()");
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the first edge for the mapping \"belong to Chapter\".");
             e.printStackTrace();
@@ -106,8 +106,8 @@ public class EdgeWithConditionalStyleTest extends DocbookTestCase {
         // Test that the style for the second edge is the normal style
         EObject secondBigSectionEdge = null;
         try {
-            secondBigSectionEdge = INTERPRETER.evaluateEObject(evoluateDiagram, "<%(" + "eAllContents(\"DEdge\")[target.eClass.name==\"Sect1\"] - "
-                    + "eAllContents(\"DEdge\")[target.eClass.name==\"Sect1\"].nFirst()).nFirst()%>");
+            secondBigSectionEdge = INTERPRETER.evaluateEObject(evoluateDiagram, "aql:(" + "self.eAllContents(diagram::DEdge)->select(e | e.target.eClass().name='Sect1') - "
+                    + "Sequence{self.eAllContents(diagram::DEdge)->select(e | e.target.eClass().name='Sect1')->first()})->first()");
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the second edge for the mapping \"belong to Chapter\".");
             e.printStackTrace();
@@ -160,7 +160,7 @@ public class EdgeWithConditionalStyleTest extends DocbookTestCase {
         // Test that the style for the first edge is the conditional style
         EObject firstBigSectionEdge = null;
         try {
-            firstBigSectionEdge = INTERPRETER.evaluateEObject(evoluateDiagram, "<%eAllContents(\"DEdge\")[target.eClass.name==\"Sect1\"].nFirst()%>");
+            firstBigSectionEdge = INTERPRETER.evaluateEObject(evoluateDiagram, "aql:self.eAllContents(diagram::DEdge)->select(e | e.target.eClass().name='Sect1')->first()");
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the first edge for the mapping \"belong to Chapter\".");
             e.printStackTrace();

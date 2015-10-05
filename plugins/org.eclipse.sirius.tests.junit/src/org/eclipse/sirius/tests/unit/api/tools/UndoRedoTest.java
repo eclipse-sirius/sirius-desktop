@@ -40,7 +40,7 @@ public class UndoRedoTest extends DocbookTestCase {
         final Command command = createChapterCommand(obviousDiagram);
 
         // check that before chapter creation, obvious diagram is empty.
-        String expression = "<%eContents().filter(\"DDiagramElement\").nSize%>";
+        String expression = "aql:self.eContents(diagram::DDiagramElement)->size()";
         String failureMessage = "Wrong element count.";
         check(obviousDiagram, expression, 0, failureMessage);
 
@@ -71,8 +71,8 @@ public class UndoRedoTest extends DocbookTestCase {
         // check that before reconnection the note (Para) element is linked with
         // the second chapter (chap1)
         // and not with the first (chap0).
-        String after = "<%eAllContents(\"DEdge\")[targetNode.target.eClass.name == \"Para\" && sourceNode.name == \"chap0\"].nSize()%>";
-        String before = "<%eAllContents(\"DEdge\")[targetNode.target.eClass.name == \"Para\" && sourceNode.name == \"chap1\"].nSize()%>";
+        String after = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.eClass().name = 'Para' and e.sourceNode.name = 'chap0')->size()";
+        String before = "aql:self.eAllContents(diagram::DEdge)->select(e | e.targetNode.target.eClass().name = 'Para' and e.sourceNode.name = 'chap1')->size()";
 
         String failureMessage = "Wrong target count for the considered edge.";
         check(obviousDiagram, after, 0, failureMessage);
@@ -80,7 +80,7 @@ public class UndoRedoTest extends DocbookTestCase {
 
         // retrieve the edge to reconnect.
         try {
-            edge = INTERPRETER.evaluateEObject(obviousDiagram, "<%eAllContents(\"DEdge\")[sourceNode.target.eClass.name == \"Chapter\" && targetNode.target.eClass.name == \"Sect1\"].nGet(0)%>");
+            edge = INTERPRETER.evaluateEObject(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select(e | e.sourceNode.target.eClass().name = 'Chapter' and e.targetNode.target.eClass().name = 'Sect1')->first()");
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the EObject edge.");
             e.printStackTrace();
@@ -124,8 +124,8 @@ public class UndoRedoTest extends DocbookTestCase {
 
         // check that in the initial state, there is no container in the first
         // chapter.
-        String after = "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(0).eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\"].nSize()%>";
-        String before = "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Chapter\"].nGet(1).eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\"].nSize()%>";
+        String after = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name = 'Chapter')->first().eAllContents(diagram::DNodeContainer)->select(n | n.target.eClass().name = 'Sect1')->size()";
+        String before = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name = 'Chapter')->at(2).eAllContents(diagram::DNodeContainer)->select( n | n.target.eClass().name = 'Sect1')->size()";
         String failureMessage = "Wrong DNodeContainer count inside the considered DNodeContainer.";
         check(obviousDiagram, after, 0, failureMessage);
         check(obviousDiagram, before, 1, failureMessage);
@@ -162,7 +162,7 @@ public class UndoRedoTest extends DocbookTestCase {
 
         // check that in the initial state, there is no "Sect1" element with the
         // label "new label".
-        String expression = "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\" && target.id == \"new label\"].nSize()%>";
+        String expression = "aql:self.eAllContents(diagram::DNodeContainer)->select(e | e.target.eClass().name = 'Sect1' and e.target.id = 'new label')->size()";
         String failureMessage = "Wrong container count having the right label name.";
         check(obviousDiagram, expression, 0, failureMessage);
 
@@ -279,9 +279,9 @@ public class UndoRedoTest extends DocbookTestCase {
 
     private void checkModel(int paraSemanticNb, int evoDiagParaNb, int obviousDiagParaNb) {
         String message = "Wrong element count having the right type.";
-        check(evoluateDiagram, "<%target.eAllContents(\"Para\").nSize()%>", paraSemanticNb, message);
-        check(evoluateDiagram, "<%eAllContents().target.filter(\"Para\").nSize()%>", evoDiagParaNb, message);
-        check(obviousDiagram, "<%nFirst().eAllContents(\"DNodeContainer\").eAllContents().target.filter(\"Para\").nSize()%>", obviousDiagParaNb, message);
+        check(evoluateDiagram, "aql:self.target.eAllContents(docbook::Para)->size()", paraSemanticNb, message);
+        check(evoluateDiagram, "aql:self.eAllContents().target->filter(docbook::Para)->size()", evoDiagParaNb, message);
+        check(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer).eAllContents().target->filter(docbook::Para)->size()", obviousDiagParaNb, message);
     }
 
     private void check(DDiagram context, String expression, int expected, String failureMessage) {

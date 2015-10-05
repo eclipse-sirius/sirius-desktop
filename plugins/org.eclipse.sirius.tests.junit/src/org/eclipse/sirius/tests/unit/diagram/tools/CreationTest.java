@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,10 +41,10 @@ public class CreationTest extends DocbookTestCase {
     public void testAvailableVariablesOnPrecondition() {
         TestCommandBuilder testBuilder = new TestCommandBuilder();
         AbstractToolDescription tool = ToolFactory.eINSTANCE.createNodeCreationDescription();
-        tool.setPrecondition("<%" + "$" + IInterpreterSiriusVariables.CONTAINER + "!= null %>");
+        tool.setPrecondition("aql:" +  IInterpreterSiriusVariables.CONTAINER + "<> null");
         assertTrue(testBuilder.testPrecondition(obviousDiagram, tool));
 
-        tool.setPrecondition("<%" + "$" + IInterpreterSiriusVariables.CONTAINER_VIEW + "!= null %>");
+        tool.setPrecondition("aql:" + IInterpreterSiriusVariables.CONTAINER_VIEW + "<> null");
         assertTrue(testBuilder.testPrecondition(obviousDiagram, tool));
     }
 
@@ -79,7 +79,7 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DNodeContainer\")%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer)");
         } catch (final EvaluationException e) {
             fail("Exception while trying to fetch the created container nodes.");
         }
@@ -96,7 +96,7 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DNodeContainer\")[target.eClass.name==\"Chapter\"].eContents()[eClass.name==\"DNodeContainer\"]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer)->select( e | e.target.eClass().name ='Chapter').eContents()->select(e | e.eClass().name='DNodeContainer')");
         } catch (final EvaluationException e) {
             fail("Exception while trying to fetch the created container nodes.");
         }
@@ -113,7 +113,7 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DNodeContainer\").ownedDiagramElements[eClass.name==\"DNode\"]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer).ownedDiagramElements->select( e | e.eClass().name='DNode')");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_NODE);
         }
@@ -130,7 +130,7 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eContents()[eClass.name==\"DNode\"]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eContents()->select(e |e.eClass().name='DNode')");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_NODE);
         }
@@ -147,7 +147,7 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DNode\").eAllContents(\"DNode\")%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNode).eAllContents(diagram::DNode)");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_NODE);
         }
@@ -164,7 +164,7 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DNodeContainer\").ownedBorderedNodes[eClass.name==\"DNode\"]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer).ownedBorderedNodes->select(e | e.eClass().name='DNode')");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_NODE);
         }
@@ -181,10 +181,10 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DEdge\")[(sourceNode.eClass.name == \"DNode\") && (sourceNode.parent.eClass.name != \"DNode\") && "
-                    + "((sourceNode.parent.eClass.name != \"DNodeContainer\") || !(sourceNode.parent.ownedBorderedNodes.nContains(sourceNode))) && "
-                    + "(targetNode.eClass.name == \"DNode\") && (targetNode.parent.eClass.name != \"DNode\") && "
-                    + "((targetNode.parent.eClass.name != \"DNodeContainer\") || !(targetNode.parent.ownedBorderedNodes.nContains(targetNode)))]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select(e | (e.sourceNode.eClass().name = 'DNode') and (e.sourceNode.eContainer().eClass().name <> 'DNode') and "
+                    + "((e.sourceNode.eContainer().eClass().name <> 'DNodeContainer') or not(e.sourceNode.eContainer().ownedBorderedNodes->includes(e.sourceNode))) and "
+                    + "(e.targetNode.eClass().name = 'DNode') and (e.targetNode.eContainer().eClass().name <> 'DNode') and "
+                    + "((e.targetNode.eContainer().eClass().name <> 'DNodeContainer') or not(e.targetNode.eContainer().ownedBorderedNodes->includes(e.targetNode))))");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_EDGE);
         }
@@ -202,10 +202,10 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DEdge\")[((sourceNode.eClass.name == \"DNode\") && ((sourceNode.parent.eClass.name == \"DNode\") || "
-                    + "(sourceNode.parent.ownedBorderedNodes.nContains(sourceNode))) && (targetNode.eClass.name == \"DNodeContainer\")) || "
-                    + "((targetNode.eClass.name == \"DNode\") && ((targetNode.parent.eClass.name == \"DNode\") || "
-                    + "(targetNode.parent.ownedBorderedNodes.nContains(targetNode))) && (sourceNode.eClass.name == \"DNodeContainer\"))]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | ((e.sourceNode.eClass().name = 'DNode') and ((e.sourceNode.eContainer().eClass().name = 'DNode') or "
+                    + "(e.sourceNode.eContainer().ownedBorderedNodes->includes(e.sourceNode))) and (e.targetNode.eClass().name = 'DNodeContainer')) or "
+                    + "((e.targetNode.eClass().name = 'DNode') and ((e.targetNode.eContainer().eClass().name = 'DNode') or "
+                    + "(e.targetNode.eContainer().ownedBorderedNodes->includes(e.targetNode))) and (e.sourceNode.eClass().name = 'DNodeContainer')))");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_EDGE);
         }
@@ -222,7 +222,7 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DEdge\")[(sourceNode.eClass.name == \"DNodeContainer\") && (targetNode.eClass.name == \"DNodeContainer\")]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select(e | (e.sourceNode.eClass().name = 'DNodeContainer') and (e.targetNode.eClass().name = 'DNodeContainer'))");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_EDGE);
         }
@@ -240,10 +240,10 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DEdge\")[(sourceNode.eClass.name == \"DNode\") && ((sourceNode.parent.eClass.name == \"DNode\") || "
-                    + "((sourceNode.parent.eClass.name == \"DNodeContainer\") && (sourceNode.parent.ownedBorderedNodes.nContains(sourceNode)))) && "
-                    + "(targetNode.eClass.name == \"DNode\") && ((targetNode.parent.eClass.name == \"DNode\") || "
-                    + "((targetNode.parent.eClass.name == \"DNodeContainer\") && (targetNode.parent.ownedBorderedNodes.nContains(targetNode))))]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | (e.sourceNode.eClass().name = 'DNode') and ((e.sourceNode.eContainer().eClass().name = 'DNode') or "
+                    + "((e.sourceNode.eContainer().eClass().name = 'DNodeContainer') and (e.sourceNode.eContainer().ownedBorderedNodes->includes(e.sourceNode)))) and "
+                    + "(e.targetNode.eClass().name = 'DNode') and ((e.targetNode.eContainer().eClass().name = 'DNode') or "
+                    + "((e.targetNode.eContainer().eClass().name = 'DNodeContainer') and (e.targetNode.eContainer().ownedBorderedNodes->includes(e.targetNode)))))");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_EDGE);
         }
@@ -265,7 +265,7 @@ public class CreationTest extends DocbookTestCase {
                     .evaluateCollection(
                             obviousDiagram,
 
-                            "<%eAllContents(\"DEdge\")[(((sourceNode.eClass.name == \"DNode\" && sourceNode.parent.eClass.name == \"DNode\") || (sourceNode.parent.eClass.name == \"DNodeContainer\" && sourceNode.parent.ownedBorderedNodes.nContains(sourceNode))) && targetNode.eClass.name == \"DNode\" && targetNode.parent.eClass.name != \"DNode\" && (targetNode.parent.eClass.name != \"DNodeContainer\" || !targetNode.parent.ownedBorderedNodes.nContains(targetNode))) || (((targetNode.eClass.name == \"DNode\" && targetNode.parent.eClass.name == \"DNode\") || (targetNode.parent.eClass.name == \"DNodeContainer\" && targetNode.parent.ownedBorderedNodes.nContains(targetNode))) && sourceNode.eClass.name == \"DNode\" && sourceNode.parent.eClass.name != \"DNode\" && (sourceNode.parent.eClass.name != \"DNodeContainer\" || !sourceNode.parent.ownedBorderedNodes.nContains(sourceNode)))]%>");
+                            "aql:self.eAllContents(diagram::DEdge)->select( e | (((e.sourceNode.eClass().name = 'DNode' and e.sourceNode.eContainer().eClass().name = 'DNode') or (e.sourceNode.eContainer().eClass().name = 'DNodeContainer' and e.sourceNode.eContainer().ownedBorderedNodes->includes(e.sourceNode))) and e.targetNode.eClass().name = 'DNode' and e.targetNode.eContainer().eClass().name <> 'DNode' and (e.targetNode.eContainer().eClass().name <> 'DNodeContainer' or not (e.targetNode.eContainer().ownedBorderedNodes->includes(e.targetNode)))) or (((e.targetNode.eClass().name = 'DNode' and e.targetNode.eContainer().eClass().name = 'DNode') or (e.targetNode.eContainer().eClass().name = 'DNodeContainer' and e.targetNode.eContainer().ownedBorderedNodes->includes(e.targetNode))) and e.sourceNode.eClass().name = 'DNode' and e.sourceNode.eContainer().eClass().name <> 'DNode' and (e.sourceNode.eContainer().eClass().name <> 'DNodeContainer' or not(e.sourceNode.eContainer().ownedBorderedNodes->includes(e.sourceNode)))))");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_EDGE);
         }
@@ -283,11 +283,11 @@ public class CreationTest extends DocbookTestCase {
         final List<EObject> containers = Lists.newArrayList();
         Collection<EObject> nodes = null;
         try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DEdge\")[(((sourceNode.eClass.name == \"DNode\") && !(sourceNode.parent.eClass.name == \"DNode\") && "
-                    + "(!(sourceNode.parent.eClass.name == \"DNodeContainer\") || !(sourceNode.parent.ownedBorderedNodes.nContains(sourceNode)))) && "
-                    + "(targetNode.eClass.name == \"DNodeContainer\")) || (((targetNode.eClass.name == \"DNode\") && !(targetNode.parent.eClass.name == \"DNode\") "
-                    + "&& (!(targetNode.parent.eClass.name == \"DNodeContainer\") || !(targetNode.parent.ownedBorderedNodes.nContains(targetNode)))) && "
-                    + "(sourceNode.eClass.name == \"DNodeContainer\"))]%>");
+            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | (((e.sourceNode.eClass().name = 'DNode') and not(e.sourceNode.eContainer().eClass().name = 'DNode') and "
+                    + "(not(e.sourceNode.eContainer().eClass().name = 'DNodeContainer') or not(e.sourceNode.eContainer().ownedBorderedNodes->includes(e.sourceNode)))) and "
+                    + "(e.targetNode.eClass().name = 'DNodeContainer')) or (((e.targetNode.eClass().name = 'DNode') and not(e.targetNode.eContainer().eClass().name = 'DNode') "
+                    + "and (not(e.targetNode.eContainer().eClass().name = 'DNodeContainer') or not(e.targetNode.eContainer().ownedBorderedNodes->includes(e.targetNode)))) and "
+                    + "(e.sourceNode.eClass().name = 'DNodeContainer')))");
         } catch (final EvaluationException e) {
             fail(EXCEPTION_FETCH_EDGE);
         }
@@ -295,81 +295,5 @@ public class CreationTest extends DocbookTestCase {
         assertEquals("wrong number of DEdge between nodes and border node created in Diagram", 2, containers.size());
     }
 
-    /**
-     * check that medium section creation and diagram creation throw navigation
-     * link creates one and only one navigation link in the description diagram.
-     */
-    public void testCreateNavigationLinkThrowNode() {
-        int navLinkCount = -1;
-        final DNode mediumSection = createMediumSection();
-        final AbstractCommand command = (AbstractCommand) createDiagramThrowNodeNavigationLinkCommand(obviousDiagram, mediumSection);
-        assertTrue("Could not create diagram throw node navigation link", command.canExecute());
-        session.getTransactionalEditingDomain().getCommandStack().execute(command);
-        try {
-            navLinkCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNode\").eAllContents(\"DNavigationLink\").nSize()%>").intValue();
-        } catch (final EvaluationException e) {
-            fail(EXCEPTION_FETCH_EDGE);
-        }
-        assertEquals("wrong number of DNavigationLink throw node created in Diagram", 0, navLinkCount);
-    }
 
-    /**
-     * check that chapter creation and diagram creation throw navigation link
-     * creates one and only one navigation link in the description diagram.
-     */
-    public void testCreateNavigationLinkThrowNodeContainer() {
-        final DNodeContainer chapter = createChapter();
-        final AbstractCommand command = (AbstractCommand) createDiagramThrowContainerNavigationLinkCommand(obviousDiagram, chapter);
-        assertTrue("Could not create diagram throw container navigation link", command.canExecute());
-        session.getTransactionalEditingDomain().getCommandStack().execute(command);
-        final List<EObject> containers = Lists.newArrayList();
-        Collection<EObject> nodes = null;
-        try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DNodeContainer\").eAllContents(\"DNavigationLink\")%>");
-        } catch (final EvaluationException e) {
-            fail(EXCEPTION_FETCH_EDGE);
-        }
-        containers.addAll(nodes);
-        assertEquals("wrong number of DNavigationLink throw node container created in Diagram", 0, containers.size());
-    }
-
-    /**
-     * check that medium section creation and diagram creation throw navigation
-     * link creates one and only one navigation link in the description diagram.
-     */
-    public void testCreateNavigationLinkThrowBorderedNode() {
-        final DNode title = createChapterReturnTitle();
-        final AbstractCommand command = (AbstractCommand) createDiagramThrowNodeNavigationLinkCommand(obviousDiagram, title);
-        assertTrue("Could not create diagram throw node navigation link", command.canExecute());
-        session.getTransactionalEditingDomain().getCommandStack().execute(command);
-        final List<EObject> containers = Lists.newArrayList();
-        Collection<EObject> nodes = null;
-        try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DNavigationLink\")%>");
-        } catch (final EvaluationException e) {
-            fail(EXCEPTION_FETCH_EDGE);
-        }
-        containers.addAll(nodes);
-        assertEquals("wrong number of DNavigationLink created in Diagram", 0, containers.size());
-    }
-
-    /**
-     * check that two chapters creation and diagram creation throw navigation
-     * link creates one and only one navigation link in the description diagram.
-     */
-    public void testCreateNavigationLinkThrowEdge() {
-        final DEdge edge = createTwoChapters();
-        final AbstractCommand command = (AbstractCommand) createDiagramThrowEdgeNavigationLinkCommand(obviousDiagram, edge);
-        assertTrue("Could not create diagram throw edge navigation link", command.canExecute());
-        session.getTransactionalEditingDomain().getCommandStack().execute(command);
-        final List<EObject> containers = Lists.newArrayList();
-        Collection<EObject> nodes = null;
-        try {
-            nodes = INTERPRETER.evaluateCollection(obviousDiagram, "<%eAllContents(\"DEdge\").eAllContents(\"DNavigationLink\")%>");
-        } catch (final EvaluationException e) {
-            fail(EXCEPTION_FETCH_EDGE);
-        }
-        containers.addAll(nodes);
-        assertEquals("wrong number of DNavigationLink throw edge created in Diagram", 0, containers.size());
-    }
 }

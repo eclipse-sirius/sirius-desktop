@@ -26,7 +26,7 @@ public class DirectEditTest extends DocbookTestCase {
         final DRepresentationElement repElement = createBigSection();
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\" && target.id == \"new label\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer)->select(c | c.target.eClass().name ='Sect1' and c.target.id = 'new label')->size() ").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class DirectEditTest extends DocbookTestCase {
         // check that the container label has changed to the new one.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNodeContainer\")[target.eClass.name == \"Sect1\" && target.id == \"new label\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DNodeContainer)->select(c | c.target.eClass().name ='Sect1' and c.target.id = 'new label')->size() ").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -57,7 +57,7 @@ public class DirectEditTest extends DocbookTestCase {
         final DRepresentationElement repElement = createMediumSection();
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name == \"Sect2\" && target.id == \"new label\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DNode)->select(n | n.target.eClass().name = 'Sect2' and n.target.id = 'new label')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -71,7 +71,7 @@ public class DirectEditTest extends DocbookTestCase {
         // check that the node label has changed to the new one.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name == \"Sect2\" && target.id == \"new label\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DNode)->select(n | n.target.eClass().name = 'Sect2' and n.target.id = 'new label')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -88,7 +88,7 @@ public class DirectEditTest extends DocbookTestCase {
         final DRepresentationElement repElement = createChapterReturnTitle();
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name == \"Title\" && target.data == \"new label\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DNode)->select( n | n.target.eClass().name = 'Title' and n.target.data = 'new label')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -102,7 +102,7 @@ public class DirectEditTest extends DocbookTestCase {
         // check that the node label has changed to the new one.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "<%eAllContents(\"DNode\")[target.eClass.name == \"Title\" && target.data == \"new label\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(obviousDiagram, "aql:self.eAllContents(diagram::DNode)->select( n | n.target.eClass().name = 'Title' and n.target.data = 'new label')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -119,7 +119,7 @@ public class DirectEditTest extends DocbookTestCase {
         DRepresentationElement repElement = (DRepresentationElement) createNoteInEvoluateView().get(1);
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eAllContents(\"DEdge\")[target.eClass.name == \"Para\" && target.data == \"new label\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | e.target.eClass().name = 'Para' and e.target.data = 'new label')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
@@ -133,7 +133,7 @@ public class DirectEditTest extends DocbookTestCase {
         // check that the edge label has changed to the new one.
 
         try {
-            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "<%eAllContents(\"DEdge\")[target.eClass.name == \"Para\" && target.data == \"new label\"].nSize()%>").intValue();
+            targetCount = INTERPRETER.evaluateInteger(evoluateDiagram, "aql:self.eAllContents(diagram::DEdge)->select( e | e.target.eClass().name = 'Para' and e.target.data = 'new label')->size()").intValue();
         } catch (final EvaluationException e) {
             fail("Exception while trying to get the Int source.");
             e.printStackTrace();
