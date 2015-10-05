@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,10 @@ package org.eclipse.sirius.business.internal.extender;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
+import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
@@ -28,23 +29,25 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * @author cbrun
  * 
  */
-public class EcoreIntrinsicMetamodelDescriptorProvider implements MetamodelDescriptorProvider {
+public class EcoreIntrinsicMetamodelDescriptorProvider implements MetamodelDescriptorProvider2 {
     /**
      * 
      * {@inheritDoc}
      */
-    public Collection<MetamodelDescriptor> provides(final Viewpoint vp) {
+    public Collection<MetamodelDescriptor> provides(final Collection<Viewpoint> vps) {
         final Collection<MetamodelDescriptor> result = new ArrayList<MetamodelDescriptor>();
 
-        for (final RepresentationDescription desc : new ViewpointQuery(vp).getAllRepresentationDescriptions()) {
-            for (final EPackage pak : desc.getMetamodel()) {
-                result.add(getMetamodelDescriptor(pak));
+        for (Viewpoint vp : vps) {
+            for (final RepresentationDescription desc : new ViewpointQuery(vp).getAllRepresentationDescriptions()) {
+                for (final EPackage pak : desc.getMetamodel()) {
+                    result.add(getMetamodelDescriptor(pak));
+                }
             }
-        }
-
-        for (final RepresentationExtensionDescription ext : vp.getOwnedRepresentationExtensions()) {
-            for (final EPackage pak : ext.getMetamodel()) {
-                result.add(getMetamodelDescriptor(pak));
+            
+            for (final RepresentationExtensionDescription ext : vp.getOwnedRepresentationExtensions()) {
+                for (final EPackage pak : ext.getMetamodel()) {
+                    result.add(getMetamodelDescriptor(pak));
+                }
             }
         }
 
@@ -59,6 +62,11 @@ public class EcoreIntrinsicMetamodelDescriptorProvider implements MetamodelDescr
         } else {
             return new EcoreMetamodelDescriptor(pak);
         }
+    }
+    
+    @Override
+    public Collection<MetamodelDescriptor> provides(Viewpoint vp) {
+        return Collections.<MetamodelDescriptor>emptyList();
     }
 
 }

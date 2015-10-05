@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,15 +12,18 @@ package org.eclipse.sirius.business.internal.extender;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
+import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * Implementation for the manager.
@@ -58,12 +61,24 @@ public class MetamodelDescriptorManagerImpl implements MetamodelDescriptorManage
      * {@inheritDoc}
      */
     public Collection<MetamodelDescriptor> provides(final Collection<Viewpoint> enabledViewpoints) {
-        final Collection<MetamodelDescriptor> result = new HashSet<MetamodelDescriptor>();
+        final Collection<MetamodelDescriptor> result = Sets.newLinkedHashSet();
+        for (MetamodelDescriptorProvider2 provider : Iterables.filter(providers, MetamodelDescriptorProvider2.class)) {
+            final Collection<MetamodelDescriptor> provided = provider.provides(enabledViewpoints);
+            if (provided != null) {
+                result.addAll(provided);
+            }
+        }
         for (Viewpoint vp : enabledViewpoints) {
             for (MetamodelDescriptorProvider provider : providers) {
-                final Collection<MetamodelDescriptor> provided = provider.provides(vp);
-                if (provided != null) {
-                    result.addAll(provided);
+                /*
+                 * Implementers of MetamodelDescriptorProvider2 have been called
+                 * before.
+                 */
+                if (!(provider instanceof MetamodelDescriptorProvider2)) {
+                    final Collection<MetamodelDescriptor> provided = provider.provides(vp);
+                    if (provided != null) {
+                        result.addAll(provided);
+                    }
                 }
             }
         }
