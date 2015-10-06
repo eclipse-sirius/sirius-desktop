@@ -147,9 +147,14 @@ public interface IPermissionAuthority {
     void setListening(boolean shouldListen);
 
     /**
-     * Tell whether the given instance may be deleted or not. If true is
-     * returned then it will return also true for children because if the
-     * instance is deleted the children will be also deleted.
+     * Tell whether the given instance may be deleted or not. An instance can be
+     * deleted if the following conditions are satisfied:
+     * <ul>
+     * <li>The parent modification is authorized. (The deletion will modify the
+     * containing feature)</li>
+     * <li>The element itself can be deleted.</li>
+     * <li>The children can be deleted.</li>
+     * </ul>
      * 
      * @param target
      *            any instance.
