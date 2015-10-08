@@ -74,9 +74,11 @@ public class SiriusControlAndCrossReferenceInMultiSessionTest extends SiriusTest
 
     private Session sessionLibrary;
 
+    Object previousEcoreFactory;
+
     @Override
     protected void setUp() throws Exception {
-
+        previousEcoreFactory = Registry.INSTANCE.getExtensionToFactoryMap().get("ecore");
         Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl() {
             @Override
             public Resource createResource(URI uri) {
@@ -107,6 +109,19 @@ public class SiriusControlAndCrossReferenceInMultiSessionTest extends SiriusTest
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, CONSUMER_PROJECT, PATH, Lists.newArrayList(SEMANTIC_MODEL_CONSUMER, AIRD_CONSUMER_1));
         genericSetUp(Collections.singletonList(toURI(CONSUMER_PROJECT + "/" + SEMANTIC_MODEL_CONSUMER, ResourceURIType.RESOURCE_PLATFORM_URI)), Collections.<URI> emptyList(), true,
                 toURI(CONSUMER_PROJECT + "/" + AIRD_CONSUMER_1, ResourceURIType.RESOURCE_PLATFORM_URI));
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        // Store locally the factory because the field is cleaned by the
+        // super.tearDown()
+        Object factory = previousEcoreFactory;
+        super.tearDown();
+        if (factory == null) {
+            Registry.INSTANCE.getExtensionToFactoryMap().remove("ecore");
+        } else {
+            Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", factory);
+        }
     }
 
     private void copyFilesToTestProject(String pluginID, String projetName, String pluginCommonPath, Collection<String> filePaths) {

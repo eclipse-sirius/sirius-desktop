@@ -13,14 +13,13 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Map;
 
-import junit.framework.TestCase;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListener;
@@ -36,6 +35,8 @@ import org.eclipse.sirius.business.internal.resource.AirDResourceFactory;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 
+import junit.framework.TestCase;
+
 /**
  * Test for Bugzilla 445603.
  * 
@@ -47,9 +48,12 @@ public class SaverTest extends TestCase {
 
     private Session session;
 
+    Object previousAirdFactory;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        previousAirdFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(SiriusUtil.SESSION_RESOURCE_EXTENSION);
         Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(SiriusUtil.SESSION_RESOURCE_EXTENSION, new AirDResourceFactory());
         tempFile = File.createTempFile("test", "." + SiriusUtil.SESSION_RESOURCE_EXTENSION);
         tempFile.delete();
@@ -172,6 +176,14 @@ public class SaverTest extends TestCase {
         session = null;
         tempFile.delete();
         tempFile = null;
+        // Store locally the factory because the field is cleaned by the
+        // super.tearDown()
+        Object factory = previousAirdFactory;
         super.tearDown();
+        if (factory == null) {
+            Registry.INSTANCE.getExtensionToFactoryMap().remove(SiriusUtil.SESSION_RESOURCE_EXTENSION);
+        } else {
+            Registry.INSTANCE.getExtensionToFactoryMap().put(SiriusUtil.SESSION_RESOURCE_EXTENSION, factory);
+        }
     }
 }
