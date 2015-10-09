@@ -178,13 +178,8 @@ public final class DiagramNodeEditPartOperation {
         if (borderSize == 0) {
             /* NoteFigure in GMF does not expect a null figure since GMF 2.2 */
             if (!(styledFigure instanceof NoteFigure)) {
-                styledFigure.setBorder(null);
-                if (styledFigure instanceof Shape) {
-                    ((Shape) styledFigure).setOutline(false);
-                }
+              styledFigure.setBorder(null);
             }
-        } else if (styledFigure instanceof Shape) {
-            ((Shape) styledFigure).setOutline(true);
         }
     }
 
