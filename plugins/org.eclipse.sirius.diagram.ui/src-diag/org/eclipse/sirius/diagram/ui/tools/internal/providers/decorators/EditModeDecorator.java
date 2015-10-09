@@ -133,6 +133,7 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
 
     @Override
     protected boolean shouldBeVisibleAtPrint() {
-        return false;
+        EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
+        return isBroken(editPart);
     }
 }
