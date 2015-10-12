@@ -184,8 +184,7 @@
 				<code>name</code> variable, and may result in an error if the variable in question is not defined. 
 			</li>
 			<li>&#171;Lambda&#187; expressions must always declare their parameters and use them explicitly. Again, there is no implicit 
-				<code>self</code> in such a context. For example: <code>[self.eContents()
-				<del>&gt;select(name.startsWith(&#8249;A&#8250;))/]</code> becomes <code>aql:self.eContents()</del>&gt;select(i | i.name.startsWith(&#8249;A&#8250;)]</code> with an explicit declaration and usage of 
+				<code>self</code> in such a context. For example: <code>[self.eContents()&#45;&gt;select(name.startsWith(&apos;A&apos;))/]</code> becomes <code>aql:self.eContents()&#45;&gt;select(i | i.name.startsWith(&apos;A&apos;))</code> with an explicit declaration and usage of 
 				<code>i</code> in AQL.
 			</li>
 			<li>AQL is more persmissive in terms of missing/empty intermediate results in complex expressions: 
@@ -213,7 +212,7 @@
 		</p>
 		<p>Note that  Acceleo expressions used inside VSMs 
 			<strong>must</strong> be enclosed inside a single bracket. It is not currently possible to mix Acceleo expressions and fixed text (like 
-			<code>"prefix[someExpression/]suffix"</code>). Instead, you can use Acceleo&#8217;s string manipulation operations to obtain the same result: <code>[&#8249;prefix&#8250; + someExpression + &#8249;suffix&#8250;/]</code>). Related to this, auto-completion only works if you are inside a well-formed bracket (i.e. <code>[&lt;cursor&gt;/]</code>); if you have simply opened the bracket but not closed it (i.e. <code>[&lt;cursor&gt;</code>), completion will not be available.
+			<code>"prefix[someExpression/]suffix"</code>). Instead, you can use Acceleo&#8217;s string manipulation operations to obtain the same result: <code>[&apos;prefix&apos; + someExpression + &apos;suffix&apos;/]</code>). Related to this, auto-completion only works if you are inside a well-formed bracket (i.e. <code>[&lt;cursor&gt;/]</code>); if you have simply opened the bracket but not closed it (i.e. <code>[&lt;cursor&gt;</code>), completion will not be available.
 		</p>
 		<p>Acceleo expressions can transparently invoke methods from Java classes which follow the 
 			<a href="#service_methods">service methods</a> conventions and have been properly declared in the VSM. Note that currently this only works if the Java service class is in the same project as the 
