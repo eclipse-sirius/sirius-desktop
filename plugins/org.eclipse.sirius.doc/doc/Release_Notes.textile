@@ -15,6 +15,9 @@ Sample before Sirius 3.1:
 !images/edgeLabelMoveBeforeSirius3.1.gif! 
 Same sample since Sirius 3.1:
 !images/edgeLabelMoveAfterSirius3.1.gif!
+* <span class="label label-success">Added</span> It is now possible to collapse compartments using the handle visible on the following illustrations. The handle's position varies depending on the label alignment to avoid overlapping (depending on the list elements alignment for a list with an hidden label).
+!images/compartments_collapse.png! 
+!images/compartments_collapse2.png!
 * <span class="label label-info">Modified</span> The _Snap to Grid_ and _Snap to Shapes_ features are now automatically disabled on Sequence diagrams. As indicated "in the user documentation":./user/sequences/Sequence%20Diagrams.html#introduction, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. Previously, the user had to explicitely disable the snap features.
 * <span class="label label-info">Modified</span> The _Link with Editor_ behavior has changed. The link with editor was previously unidirectional from the Common Navigator (Model Explorer view or Project view) toward the active representation. Now, when selecting one or several elements in the representation, the corresponding semantic elements are selected in the Common Navigator.
 * <span class="label label-info">Modified</span> The _Arrange Linked Bordered Nodes_ tabbar action has been renamed to _Arrange Linked Border Nodes_ as it is border nodes which are layouted and not bordered nodes.

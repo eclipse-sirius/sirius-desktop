@@ -14,11 +14,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
@@ -205,55 +203,16 @@ public class RegionContainerResizableEditPolicy extends AirResizableEditPolicy {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
                 req.setEditParts(Lists.newArrayList(regionToResize));
                 req.setSizeDelta(new Dimension(sizeDelta.width, 0));
-                if (query.isResizeFromRight()) {
-                    // Handle F3 for regions in region to allow manual layout.
-                    // Allow manual resize of the region container to reduce
-                    // empty space due to VSM specified size or recursive
-                    // regions.
-                    req = handleEmptySpace(request, req);
-                }
                 constrainedRequests.add(req);
             } else if (stackDirection == PositionConstants.EAST_WEST && (query.isResizeFromTop() || query.isResizeFromBottom()) && sizeDelta.height != 0) {
                 ChangeBoundsRequest req = initConstrainedRequest(request);
                 req.setEditParts(Lists.newArrayList(regionToResize));
                 req.setSizeDelta(new Dimension(0, sizeDelta.height));
-                if (query.isResizeFromBottom()) {
-                    // Handle F3 for regions in region to allow manual layout.
-                    // Allow manual resize of the region container to reduce
-                    // empty space due to VSM specified size or recursive
-                    // regions.
-                    req = handleEmptySpace(request, req);
-                }
                 constrainedRequests.add(req);
             }
         }
 
         return constrainedRequests;
-    }
-
-    private ChangeBoundsRequest handleEmptySpace(ChangeBoundsRequest initialRequest, ChangeBoundsRequest constrainedRequest) {
-        ChangeBoundsRequest result = constrainedRequest;
-        Object object = initialRequest.getExtendedData().get(SiriusResizeTracker.CHILDREN_MOVE_MODE_KEY);
-        boolean keepSameAbsoluteLocation = (object == null && SiriusResizeTracker.DEFAULT_CHILDREN_MOVE_MODE) || (object != null && ((Boolean) object).booleanValue());
-        if (!initialRequest.isConstrainedResize() && !keepSameAbsoluteLocation) {
-            result.setMoveDelta(new Point(0, 0));
-            result.setSizeDelta(new Dimension(0, 0));
-
-            Rectangle rect = new Rectangle();
-            IFigure parentFigure = getHostFigure();
-            for (IGraphicalEditPart part : Iterables.filter(constrainedRequest.getEditParts(), IGraphicalEditPart.class)) {
-                IFigure figure = part.getFigure();
-                rect = rect.getUnion(figure.getBounds());
-                parentFigure = figure.getParent();
-            }
-
-            // Restrict the move to the parent bounds.
-            RequestQuery requestQuery = new RequestQuery(initialRequest);
-            if (rect.contains(requestQuery.getLogicalTransformedRectangle(parentFigure.getBounds()).getBottomRight())) {
-                result = null;
-            }
-        }
-        return result;
     }
 
     private ChangeBoundsRequest initConstrainedRequest(ChangeBoundsRequest request) {
