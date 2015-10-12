@@ -1,13 +1,13 @@
 target "sirius_juno"
 
-include "modules/acceleo-nightly.tpd"
+include "modules/acceleo-3.6.tpd"
 include "modules/eef-1.5.tpd"
 include "modules/emf-compare-2.1.tpd"
 include "modules/orbit.tpd"
 include "modules/swtbot-2.1.tpd"
 include "modules/xtext-2.3.tpd"
 include "modules/shared-license.tpd"
-include "modules/aql-nightly.tpd"
+include "modules/aql-3.6.tpd"
 
 with source, requirements
 
