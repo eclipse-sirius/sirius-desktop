@@ -25,6 +25,8 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -64,7 +66,8 @@ public class LabelAndIconRefresher implements NotificationListener {
     public void notifyChanged(Notification notification) {
         if (graphicalEditPart != null && graphicalEditPart.isActive()) {
             DDiagramElement dDiagramElement = getDDiagramElement(graphicalEditPart);
-            if (dDiagramElement != null && dDiagramElement.getSemanticElements().contains(notification.getNotifier())) {
+            final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(graphicalEditPart.getEditingDomain().getResourceSet());
+            if (dDiagramElement != null && dDiagramElement.getSemanticElements().contains(notification.getNotifier()) && auth.canEditInstance(dDiagramElement)) {
                 refreshLabelAndIcon(dDiagramElement);
             } else if (ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS == notification.getFeature()) {
                 // Manage change on DRepresentationElement.semanticElements
