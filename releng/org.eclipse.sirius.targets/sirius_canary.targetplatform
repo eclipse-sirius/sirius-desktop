@@ -42,7 +42,7 @@ location EMF-LastSuccessful "https://hudson.eclipse.org/xtext/view/EMF/job/emf-c
 	org.eclipse.emf.ecore.feature.group lazy
 }
 
-location UML2-LastSuccessful "https://hudson.eclipse.org/hudson/job/mdt-uml2-master/lastSuccessfulBuild/artifact/UML2.p2.repository/" {
+location UML2-LastSuccessful "https://hudson.eclipse.org/uml2/job/mdt-uml2-master/lastSuccessfulBuild/artifact/UML2.p2.repository/" {
 	org.eclipse.uml2.sdk.feature.group lazy
 }
 
