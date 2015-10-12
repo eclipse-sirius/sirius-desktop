@@ -1810,4 +1810,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         }
         return dRepresentation;
     }
+
+    @Override
+    public void saveAndClose() {
+        save();
+        SWTBotUtils.waitAllUiEvents();
+        close();
+    }
 }
