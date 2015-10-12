@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_headless_mars" sequenceNumber="1439195030">
+<target name="sirius_headless_mars" sequenceNumber="1444643695">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -22,15 +22,15 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="15.0.0.v201403281430"/>
-      <unit id="org.eclipse.emf" version="2.6.0.v20150601-0402"/>
-      <unit id="org.eclipse.emf.common" version="2.11.0.v20150512-0501"/>
-      <unit id="org.eclipse.emf.ecore" version="2.11.0.v20150512-0501"/>
-      <unit id="org.eclipse.emf.ecore.xmi" version="2.11.0.v20150512-0501"/>
-      <unit id="org.eclipse.emf.databinding" version="1.3.0.v20150601-0402"/>
-      <unit id="org.eclipse.emf.edit" version="2.11.0.v20150601-0402"/>
+      <unit id="org.eclipse.emf" version="2.6.0.v20150806-0404"/>
+      <unit id="org.eclipse.emf.common" version="2.11.0.v20150805-0538"/>
+      <unit id="org.eclipse.emf.ecore" version="2.11.1.v20150805-0538"/>
+      <unit id="org.eclipse.emf.ecore.xmi" version="2.11.1.v20150805-0538"/>
+      <unit id="org.eclipse.emf.databinding" version="1.3.0.v20150806-0404"/>
+      <unit id="org.eclipse.emf.edit" version="2.11.1.v20150806-0404"/>
       <unit id="org.eclipse.emf.workspace" version="1.5.1.201506010221"/>
-      <unit id="org.eclipse.acceleo.engine" version="3.6.0.201506080954"/>
-      <unit id="org.eclipse.acceleo.parser" version="3.6.0.201506080954"/>
+      <unit id="org.eclipse.acceleo.engine" version="3.6.1.201509091420"/>
+      <unit id="org.eclipse.acceleo.parser" version="3.6.1.201509091420"/>
       <unit id="org.eclipse.ocl.ecore" version="3.5.0.v20150525-1635"/>
       <unit id="org.eclipse.gmf.runtime.emf.core" version="1.7.0.201506060219"/>
       <unit id="org.eclipse.gmf.runtime.diagram.core" version="1.7.0.201506060219"/>
