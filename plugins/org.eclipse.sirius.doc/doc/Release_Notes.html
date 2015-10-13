@@ -63,10 +63,10 @@
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to brother shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of edge, see 
-				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">documentation</a> for details.
+			<li><span class="label label-success">Added</span> A new feature allows to snap to all shapes (instead of just to snap to sibling shapes). The <kdb>F4</kdb> shortcut key activates this mode when you resize a node, move a node or move a bendpoint of an edge, see 
+				<a href="./user/diagrams/Diagrams.html#snap_to_shapes">the documentation</a> for details.
 			</li>
-			<li><span class="label label-success">Added</span> A new feature allows to move the edge group (Edge, Label, Border Nodes) if the <kdb>F3</kdb> shortcut is pressed during the edge moving/draging. This feature is only available for the case of edges with border node as source and target. See 
+			<li><span class="label label-success">Added</span> A new feature allows to move the edge group (Edge, Label, Border Nodes) if the <kdb>F3</kdb> shortcut is pressed during the edge moving/dragging. This feature is only available for the case of edges with border node as source and target. See 
 				<a href="./user/diagrams/Diagrams.html#move_edge_group">documentation</a> for more details.
 			</li>
 			<li><span class="label label-success">Added</span> The label of edges now stays as much as possible near the edge when it is moved.</li>
@@ -81,17 +81,22 @@
 		<ul>
 			<li><span class="label label-info">Modified</span> The 
 				<em>Snap to Grid</em> and 
-				<em>Snap to Shapes</em> are now automatically disabled on Sequence diagrams. As indicated in the user documentation, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. see 
-				<a href="./user/sequences/Sequence%20Diagrams.html#introduction">documentation</a> for details. Previously, the user has to explicitely disable the snap features.
+				<em>Snap to Shapes</em> features are now automatically disabled on Sequence diagrams. As indicated 
+				<a href="./user/sequences/Sequence%20Diagrams.html#introduction">in the user documentation</a>, to work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. Previously, the user had to explicitely disable the snap features.
 			</li>
-			<li><span class="label label-info">Modified</span> The Link with Editor behavior has changed. The link with editor was previously unidirectional from the Common Navigator (Model Explorer view or Project view) toward the active representation. By now, when selecting one or several elements in the representation, the corresponding semantic elements are selected in the Common Navigator.</li>
-			<li><span class="label label-info">Modified</span> The &#171;Arrange Linked Bordered Nodes&#187; tabbar action has been renamed to &#171;Arrange Linked Border Nodes&#187; as it is border nodes which are layouted and not bordered nodes.</li>
+			<li><span class="label label-info">Modified</span> The 
+				<em>Link with Editor</em> behavior has changed. The link with editor was previously unidirectional from the Common Navigator (Model Explorer view or Project view) toward the active representation. Now, when selecting one or several elements in the representation, the corresponding semantic elements are selected in the Common Navigator.
+			</li>
+			<li><span class="label label-info">Modified</span> The 
+				<em>Arrange Linked Bordered Nodes</em> tabbar action has been renamed to 
+				<em>Arrange Linked Border Nodes</em> as it is border nodes which are layouted and not bordered nodes.
+			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-info">Modified</span> You have now really the capability to set the 
+			<li><span class="label label-info">Modified</span> You now really  have the capability to set the 
 				<code>BorderSizeComputationExpression</code> as 0 for style of 
-				<code>ContainerMapping</code>. Before Sirius 3.1.0, a size of 0 is interpreted as 1 at runtime. For compatibility reason, all existing 
+				<code>ContainerMapping</code>. Before Sirius 3.1.0, a size of 0 was interpreted as 1 at runtime. For compatibility reason, all existing 
 				<code>BorderSizeComputationExpression</code> equals to 0 for style of 
 				<code>ContainerMapping</code> are automatically set to 1 (ditto for results of this expression in representations file for container elements). For 
 				<code>ContainerMapping</code>, the default value of 
@@ -99,7 +104,7 @@
 				<em>Worskpace Image</em> where the value is 0.
 			</li>
 			<li><span class="label label-info">Modified</span> The support for containers with vertical or horizontal 
-				<em>compartments</em> on diagrams was introduced in Sirius 3.0.0 as an experimental feature. Several improvements and corrections have been done around the behaviors of this feature which is now ready to have its experimental state removed. Validation rules and tooltips in the VSM editor are here to help the specifier create a consistent mapping structure.
+				<em>compartments</em> on diagrams was introduced in Sirius 3.0.0 as an experimental feature. Several improvements and corrections have been done around the behaviors of this feature which is no longer considered experimental. Validation rules and tooltips in the VSM editor are here to help the specifier create a consistent mapping structure.
 			</li>
 			<li><span class="label label-info">Modified</span> <span class="label label-info">Experimental</span> New, experimental support for recursive 
 				<em>compartments</em> on diagrams: the 
@@ -115,7 +120,8 @@
 				<em>compartments</em> mixing both stack directions. While working reliably, this support is marked experimental in Sirius 3.1.0 as there are still some behaviors which do not behave as expected. If you make use of this feature, be aware that some details may still change in future releases, including 3.1.x maintenance releases.
 			</li>
 			<li><span class="label label-info">Modified</span> The 
-				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. It will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (ePackageName::eClassName). The improvements realized can be viewed by clicking on the image below.
+				<em>Acceleo Query Language</em> (AQL) interpreter  has been improved. AQL, and its support in Sirius, is no longer considered experimental, and instead is now the recommended query language to use for new VSMs. Improvements mostly concern better completion and validation, and more precise error reporting. In particular AQL expressions will now be able to display warnings and errors in the Interpreter view. The message displayed in the Interpreter view after an evaluation has also been improved to display the qualified name of the type of the value computed (
+				<code>ePackageName::eClassName</code>). The improvements realized can be viewed by clicking on the image below.
 			</li>
 		</ul>
 		<p>
@@ -124,7 +130,9 @@
 			</a>
 		</p>
 		<ul>
-			<li><span class="label label-info">Modified</span> The delete command availability computation has been changed. In case of a delete tool, the availability is now computed considering first the precondition of the tool and then the delete authorisation (using IPermissionAuthority) of the potential to delete objects. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.</li>
+			<li><span class="label label-info">Modified</span> The delete command availability computation has been changed. In case of a delete tool, the availability is now computed considering first the precondition of the tool and then the delete authorisation (using 
+				<code>IPermissionAuthority</code>) of the potential to delete objects. This is the reverse order of what was done before, and can have performance impacts if the precondition is slow. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>
@@ -341,39 +349,30 @@
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>invokeMethod</code> has been added in class 
+				<code>org.eclipse.sirius.common.tools.api.util.ReflectionHelper</code> to call a private method. Warning: This method must be used carefully.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>invokeMethodWithoutException</code> has been added in class 
+				<code>org.eclipse.sirius.common.tools.api.util.ReflectionHelper</code> to call a private method. This method returns true (and not the result of the method) if it is called without exception. It returns false otherwise. Warning: This method must be used carefully.
+			</li>
+		</ul>
+		<ul>
 			<li><span class="label label-success">Added</span> The new interface 
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic</code> has been added. It allows an interpreter to evaluate an expression and return not only the result of the evaluation but also a diagnostic.
 			</li>
 			<li><span class="label label-success">Added</span> The new class 
-				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement</code> has been added. It allows interpreters to provide proposals for the code completion which can replace an existing part of the expression used. This behavior can be used if the user has started to type a value that would be returned by the code completion. For example, if the user types &#171;aql:self.na&#187; and if he selects the content proposal &#171;name&#187;, it can replace the existing part of the expression &#171;na&#187; to write &#171;aql:self.name&#187; instead of just appending &#171;name&#187; to create &#171;aql:self.naname&#187;.
+				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalWithReplacement</code> has been added. It allows interpreters to provide proposals for the code completion which can replace an existing part of the expression used. This behavior can be used if the user has started to type a value that would be returned by the code completion. For example, if the user types 
+				<code>aql:self.na</code> and if he selects the content proposal 
+				<code>name</code>, it can replace the existing part of the expression 
+				<code>na</code> to write 
+				<code>aql:self.name</code> instead of just appending 
+				<code>name</code> to create 
+				<code>aql:self.naname</code>.
 			</li>
 			<li><span class="label label-success">Added</span> The new class 
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ext.gef">Changes in 
-			<code>org.eclipse.sirius.ext.gef</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> The new class 
-				<code>org.eclipse.sirius.ext.gef.query.EditPartQuery</code> has been added. It allows to retrieve all children of the current part.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ext.jface">Changes in 
-			<code>org.eclipse.sirius.ext.jface</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> The new class 
-				<code>org.eclipse.sirius.ext.jface.viewers.IToolTipProvider</code> has been copied from JFace 3.10 from Luna, so that we can use it with Juno and Kepler too.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
-			<code>org.eclipse.sirius.ext.gmf.runtime</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> 2 new 
-				<code>getIntersection</code> methods have been added in org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper. They are similar to the existing 
-				<code>getIntersection</code> methods, but they consider the nearest point on the figure if there is no intersection.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
@@ -385,7 +384,8 @@
 				<code>org.eclipse.sirius.tools.api.command.AbstractCommandFactory</code> to allow selection after tool execution.
 			</li>
 			<li><span class="label label-success">Added</span> The class 
-				<code>org.eclipse.sirius.common.tools.api.interpreter.StandardServices</code> has been added. This class owns methods used for service: interpreter.
+				<code>org.eclipse.sirius.common.tools.api.interpreter.StandardServices</code> has been added. This class owns methods used for 
+				<code>service:</code> interpreter.
 			</li>
 			<li><span class="label label-success">Added</span> The class 
 				<code>org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider2</code> has been added and should be prefered instead of implementing 
@@ -395,27 +395,14 @@
 				<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.canDeleteInstance(EObject)</code> when called for an object will not be called for children of this object as we know it will return true because if we can delete a parent object we can delete its children. 
 			</li>
 			<li><span class="label label-info">Modified</span> 
-				<code>org.eclipse.sirius.tools.api.command.DCommand</code> no more inherits of 
-				<code>IUndoableCommand</code> because useless since undo/redo is managed by EMF Transaction.
+				<code>org.eclipse.sirius.tools.api.command.DCommand</code> no longer inherits from 
+				<code>IUndoableCommand</code> since undo/redo is managed by EMF Transaction.
 			</li>
 			<li><span class="label label-danger">Removed</span> 
 				<code>org.eclipse.sirius.business.api.helper.task.ICommandTask.undo()/redo()</code> methods removed because they are useless since undo/redo is managed by EMF Transaction.
 			</li>
 			<li><span class="label label-danger">Removed</span> 
 				<code>org.eclipse.sirius.tools.api.command.IUndoableCommand</code> interface removed because it is useless since undo/redo is managed by EMF Transaction.
-			</li>
-		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
-			<code>org.eclipse.sirius.common</code>
-		</h4>
-		<ul>
-			<li><span class="label label-success">Added</span> The method 
-				<code>invokeMethod</code> has been added in class 
-				<code>org.eclipse.sirius.common.tools.api.util.ReflectionHelper</code> to call a private method. Warning: This method must be used carefully.
-			</li>
-			<li><span class="label label-success">Added</span> The method 
-				<code>invokeMethodWithoutException</code> has been added in class 
-				<code>org.eclipse.sirius.common.tools.api.util.ReflectionHelper</code> to call a private method. This method returns true (and not the result of the method) if it is called without exception. It returns false otherwise. Warning: This method must be used carefully.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
@@ -431,13 +418,13 @@
 				<code>Session</code> or not when the known session is closed or does not exist. The 
 				<code>getSession</code> method calls getSession(true).
 			</li>
-			<li><span class="label label-warning">Deprecated</span>  
-				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()</code> method has been deprecated as a 
-				<code>IEditorInput</code> can be reused by several instances of 
-				<code>IEditorPart</code> through the navigation history view.
-			</li>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.selectAndReveal(DialectEditor, List&lt;DRepresentationElement&gt;)</code> method has been added to explicitly indicate to reveal elements out of the screen (hidden because of the scrollbars location) when selecting them.
+			</li>
+			<li><span class="label label-warning">Deprecated</span>  
+				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.dispose()</code> method has been deprecated as an 
+				<code>IEditorInput</code> can be reused by several instances of 
+				<code>IEditorPart</code> through the navigation history view.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
@@ -495,6 +482,15 @@
 				<code>org.eclipse.draw2d.IFigure.useLocalCoordinates()</code> to always return false for its figures. 
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
+			<code>org.eclipse.sirius.synchronizer</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.synchronizer.CreatedOutput.synchronizeChildren()</code> method takes now a 
+				<code>RefreshPlan</code> in parameter to have more informations to say if children must be synchronized.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
@@ -505,13 +501,13 @@
 			<li><span class="label label-info">Modified</span> The class 
 				<code>org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase</code> has been modified 
 				<ul>
-					<li>It inherits from 
+					<li><span class="label label-info">Modified</span> It now inherits from 
 						<code>AbstractToolDescriptionTestCase</code> 
 					</li>
-					<li>The method 
+					<li><span class="label label-success">Added</span> The method 
 						<code>applyContainerCreationTool(String,DDiagram,EObject)</code> has been added.
 					</li>
-					<li>The method 
+					<li><span class="label label-success">Added</span> The method 
 						<code>applyGenericTool(String,DDiagram,EObject)</code> has been added.
 					</li>
 				</ul>
@@ -522,7 +518,7 @@
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> The methods 
-				<code>closePerspective(String)</code>, 
+				<code>closePerspective(String)</code>,  
 				<code>closeSiriusPerspective()</code> and 
 				<code>closeModelingPerspective()</code> have been added in class 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.perspective.DesignerPerspectives</code> to allow the closing of perspectives.
@@ -536,10 +532,11 @@
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor</code>. They allow to know the state of the corresponding properties.
 			</li>
 			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int)</code>, and so 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int)</code> (and also 
 				<code>SWTBotSiriusGefViewer.dragWithKey</code> and 
-				<code>SWTBotSiriusFigureCanvas.mouseDragWithKey</code>), has an additional parameter, compared to 
-				<code>drag(int, int, int, int)</code> method, to precise the key code to press during the drag&#8217;n&#8217;drop. It is possible to call this method with SWT.None to retrieve the standard behavior of 
+				<code>SWTBotSiriusFigureCanvas.mouseDragWithKey</code>), has an additional fifth parameter compared to 
+				<code>drag(int, int, int, int)</code> method, to indicate the key code to press during the drag&#8217;n&#8217;drop. It is possible to call this method with 
+				<code>SWT.None</code> to obtain the standard behavior of 
 				<code>drag</code> method. This method also has a correct behavior for the move of bendpoints of edges.
 			</li>
 			<li><span class="label label-success">Added</span> 
@@ -559,13 +556,30 @@
 				<code>org.eclipse.sirius.tests.swtbot.support.api.condition.CheckBoundsCondition</code>: This condition now also checks the bounds location if the checkWidth or checkHeight (or both) is false.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
-			<code>org.eclipse.sirius.synchronizer</code>
+		<h4 id="Changesinorg.eclipse.sirius.ext.gef">Changes in 
+			<code>org.eclipse.sirius.ext.gef</code>
 		</h4>
 		<ul>
-			<li><span class="label label-success">Added</span> 
-				<code>org.eclipse.sirius.synchronizer.CreatedOutput.synchronizeChildren()</code> method takes now a 
-				<code>RefreshPlan</code> in parameter to have more informations to say if children must be synchronized.
+			<li><span class="label label-success">Added</span> The new class 
+				<code>org.eclipse.sirius.ext.gef.query.EditPartQuery</code> has been added. It allows to retrieve all children of the current part.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ext.jface">Changes in 
+			<code>org.eclipse.sirius.ext.jface</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The new class 
+				<code>org.eclipse.sirius.ext.jface.viewers.IToolTipProvider</code> has been copied from JFace 3.10 from Luna, so that we can use it with Juno and Kepler too.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
+			<code>org.eclipse.sirius.ext.gmf.runtime</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> Two new 
+				<code>getIntersection</code> methods have been added in 
+				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper</code>. They are similar to the existing 
+				<code>getIntersection</code> methods, but they consider the nearest point on the figure if there is no intersection.
 			</li>
 		</ul>
 		<h2 id="sirius3.0.0">Changes in Sirius 3.0.0</h2>
@@ -751,7 +765,7 @@
 				<a href="https://git.eclipse.org/r/#/admin/projects/sirius/org.eclipse.sirius">Sirius Gerrit</a> now automatically trigger a sub-set of the Sirius automated test suites, which give a good feedback on the absence of regressions introduced by the proposed patch.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1670,7 +1684,7 @@
 				<code>findViewpointByName()</code> to correct a wrong rebranding.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
