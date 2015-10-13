@@ -126,9 +126,9 @@
        
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-       
+
           - preconditionExpression: boolean
-       
+
 
          
    <!-- Start of user code TableDescription description -->
@@ -142,9 +142,9 @@
        
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-       
+
           - preconditionExpression: boolean
-       
+
 
          
    <!-- Start of user code EditionTableDescription description -->
@@ -158,9 +158,9 @@
        
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-       
+
           - preconditionExpression: boolean
-       
+
 
          
    <!-- Start of user code CrossTableDescription description -->
@@ -177,7 +177,7 @@
                 . view: current DTableElement (DCell, DColumn, DLine, ...).
                 . containerView: container of the current DTableElement (variable is available if container is not null).
                 . container: semantic target of containerView (if it is a DSemanticDecorator).
-       
+
 
          
    <!-- Start of user code TableMapping description -->
@@ -194,16 +194,16 @@
                 . view: current DTableElement (DCell, DColumn, DLine, ...).
                 . containerView: container of the current DTableElement (variable is available if container is not null).
                 . container: semantic target of containerView (if it is a DSemanticDecorator).
-       
+
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . viewpoint: (deprecated) current DTable.
                 . table: current DTable.
                 . root: semantic target of $table.
                 . containerView: current LineContainer (DLine or DTable).
                 . container: semantic target of $containerView (if it is a DSemanticDecorator).
-       
+
           - headerLabelExpression: a string.
-       
+
 
          
    <!-- Start of user code LineMapping description -->
@@ -220,9 +220,9 @@
                 . view: current DTableElement (DCell, DColumn, DLine, ...).
                 . containerView: container of the current DTableElement (variable is available if container is not null).
                 . container: semantic target of containerView (if it is a DSemanticDecorator).
-       
+
           - headerLabelExpression: a string.
-       
+
 
          
    <!-- Start of user code ColumnMapping description -->
@@ -239,15 +239,15 @@
                 . view: current DTableElement (DCell, DColumn, DLine, ...).
                 . containerView: container of the current DTableElement (variable is available if container is not null).
                 . container: semantic target of containerView (if it is a DSemanticDecorator).
-       
+
           - headerLabelExpression: a string.
-       
+
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . viewpoint: (deprecated) current DTable.
                 . table: current DTable.
                 . containerView: current DTable.
                 . container: semantic element targeted by the current DTable.
-       
+
 
          
    <!-- Start of user code ElementColumnMapping description -->
@@ -264,11 +264,11 @@
                 . view: current DTableElement (DCell, DColumn, DLine, ...).
                 . containerView: container of the current DTableElement (variable is available if container is not null).
                 . container: semantic target of containerView (if it is a DSemanticDecorator).
-       
+
           - headerLabelExpression: a string.
-       
+
           - canEdit: a boolean.
-       
+
           - labelExpression: a string.
                 . root: semantic target of the current DTable.
                 . line: DLine of the current DCell.
@@ -276,11 +276,11 @@
                 . container: semantic target of $line.
                 . column: DColumn of the current DCell.
                 . columnSemantic: semantic target of $column
-       
+
           - featureParentExpression: a Collection&lt;EObject> or an EObject.
                 . root: semantic target of the current DTable.
                 . container: semantic target of the current DLine.
-       
+
 
          
    <!-- Start of user code FeatureColumnMapping description -->
@@ -294,7 +294,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - canEdit: a boolean.
-       
+
 
          
    <!-- Start of user code CellUpdater description -->
@@ -322,9 +322,9 @@
                 . view: current DTableElement (DCell, DColumn, DLine, ...).
                 . containerView: container of the current DTableElement (variable is available if container is not null).
                 . container: semantic target of containerView (if it is a DSemanticDecorator).
-       
+
           - canEdit: a boolean.
-       
+
           - labelExpression: a string.
                 . root: semantic target of the current DTable.
                 . line: DLine of the current DCell.
@@ -332,20 +332,20 @@
                 . container: semantic target of $line.
                 . column: DColumn of the current DCell.
                 . columnSemantic: semantic target of $column
-       
+
           - columnFinderExpression: a Collection&lt;EObject> or an EObject.
-       
+
           - lineFinderExpression: a Collection&lt;EObject> or an EObject.
-       
+
           - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
-       
+
           - preconditionExpression: a boolean.
                 . line: the source view of the current potential line.
                 . lineSemantic: the semantic element of $line.
                 . column: the source view of the current potential column.
                 . columnSemantic: the semantic element of $column.
                 . table: the current DTable.
-       
+
 
          
    <!-- Start of user code IntersectionMapping description -->
@@ -382,9 +382,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
 
        List of the available variables for tool operations:
             - variables: 
@@ -401,9 +401,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
 
          
    <!-- Start of user code CreateColumnTool description -->
@@ -418,9 +418,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
 
          
    <!-- Start of user code CreateCrossColumnTool description -->
@@ -435,9 +435,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
 
          
    <!-- Start of user code CreateLineTool description -->
@@ -452,9 +452,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
 
        List of the available variables for tool operations:
             - variables: 
@@ -471,9 +471,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
 
        List of the available variables for tool operations:
             - variables: 
@@ -490,9 +490,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
 
          
    <!-- Start of user code DeleteColumnTool description -->
@@ -507,9 +507,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
 
          
    <!-- Start of user code DeleteLineTool description -->
@@ -545,7 +545,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - predicateExpression: a boolean.
-       
+
 
          
    <!-- Start of user code ForegroundConditionalStyle description -->
@@ -559,7 +559,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - predicateExpression: a boolean.
-       
+
 
          
    <!-- Start of user code BackgroundConditionalStyle description -->
@@ -585,13 +585,13 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
           - titleExpression: a string.
-       
+
           - browseExpression: an EObject.
-       
+
 
        List of the available variables for tool operations:
             - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
@@ -609,14 +609,14 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-       
+
           - elementsToSelect: a Collection&lt;EObject>
-       
+
           - browseExpression: an EObject.
-       
+
           - navigationNameExpression: a string.
                 . name: name of the targeted Representation.
-       
+
 
        List of the available variables for tool operations:
             - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).

@@ -13,20 +13,16 @@ package org.eclipse.sirius.diagram.editor.properties.sections.style.borderedstyl
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 // End of user code imports
 

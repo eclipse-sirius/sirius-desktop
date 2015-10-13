@@ -60,11 +60,11 @@ public final class SiriusEditorPlugin extends EMFPlugin {
      */
     private static Implementation plugin;
 
+    private static Set<String> siriusRuntimeBundles = Sets.newLinkedHashSet();
+
     // Start of user code fields
 
     private static WorkspaceEPackageRegistry workspaceEPackageRegistry;
-
-    private static Set<String> siriusRuntimeBundles = Sets.newLinkedHashSet();
 
     // End of user code fields
 
