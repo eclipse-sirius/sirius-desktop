@@ -25,16 +25,18 @@ check() {
     echo "CHECKING: $1"
 }
 
+readonly IGNORE_MAVEN_REPO="-prune -o ( -type d -name '.maven' )"
+
 # The embedded web server used by the Eclipse Help expects HTML files to be parsable XML
 check "All published documentation files must be well-formed XML"
 find plugins/org.eclipse.sirius.doc/doc -name "*.html" -exec xmllint --noout {} \;
 find plugins/org.eclipse.sirius.eef.adapters/doc -name "*.html" -exec xmllint --noout {} \;
 
 check "All *.xml files must be well-formed XML"
-find . -name "*.xml" -exec xmllint --noout {} \;
+find . -name "*.xml" -type f $IGNORE_MAVEN_REPO -exec xmllint --noout {} \;
 
 check "All *.target files must be well-formed XML"
-find . -name "*.target" -exec xmllint --noout {} \;
+find . -name "*.target" $IGNORE_MAVEN_REPO -exec xmllint --noout {} \;
 
 check "All plug-ins must have an about.html file at their root"
 for plugin in plugins/*; do
@@ -91,3 +93,4 @@ check "All Java files should have the EPL license header"
 # take the responsibility to set/change the copyright attribution
 # and/or license.
 find plugins -name "*.java" | while read f; do  grep -q "Eclipse Public" $f || echo $f; done | grep -v '/src-paperclips/' | sed -e "s/^/[ERROR] Source file missing EPL header: /"
+
