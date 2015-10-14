@@ -52,7 +52,7 @@ public interface ICompartmentTests {
 
     public static final String REGION_CONTAINER_NAME = "P1";
 
-    public static final String NEW_REGION_CONTAINER_NAME = "p4";
+    public static final String NEW_REGION_CONTAINER_NAME = "p3";
 
     public static final String LEFT_CLASS_NAME = "Left_class1";
 

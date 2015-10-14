@@ -77,7 +77,7 @@ public class CompartmentsLayoutTest extends AbstractCompartmentTest {
      */
     public void testBorderSizeInVerticalStack() {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
-        doTestBorderSize(ContainerLayout.VERTICAL_STACK, 2, 1, LineStyle.SOLID_LITERAL);
+        doTestBorderSize(ContainerLayout.VERTICAL_STACK, 5, 1, LineStyle.SOLID_LITERAL);
     }
 
     private void doTestBorderSize(ContainerLayout stackDirection, int regionContainerBorderSize, int regionBorderSize, LineStyle regionBorderLineStyle) {
