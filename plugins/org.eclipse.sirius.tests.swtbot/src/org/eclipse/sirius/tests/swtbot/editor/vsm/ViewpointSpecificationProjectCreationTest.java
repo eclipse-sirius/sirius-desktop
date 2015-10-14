@@ -168,14 +168,6 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         // Check the natures
         IProjectNature nature = null;
         try {
-            nature = project.getNature("org.eclipse.acceleo.ide.ui.acceleoNature");
-        } catch (CoreException e1) {
-            fail("Cannot get the acceleo nature.");
-        }
-        assertNotNull("Acceleo should add its nature.", nature);
-
-        nature = null;
-        try {
             nature = project.getNature("org.eclipse.pde.PluginNature");
         } catch (CoreException e1) {
             fail("Cannot get the plugin nature.");
