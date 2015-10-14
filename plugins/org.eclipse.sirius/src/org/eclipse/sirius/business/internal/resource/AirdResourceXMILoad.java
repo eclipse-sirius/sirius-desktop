@@ -10,8 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.resource;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.UnresolvedReferenceException;
 import org.eclipse.emf.ecore.xmi.XMIException;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
@@ -66,6 +69,17 @@ public class AirdResourceXMILoad extends XMILoadImpl {
     @Override
     protected DefaultHandler makeDefaultHandler() {
         return new SAXWrapper(new AirdHandler(resource, helper, options));
+    }
+
+    @Override
+    public void load(XMLResource r, InputStream s, Map<?, ?> o) throws IOException {
+        try {
+            super.load(r, s, o);
+        } catch (Resource.IOWrappedException e) {
+            if (!(e.getCause() instanceof UnresolvedReferenceException)) {
+                throw e;
+            }
+        }
     }
 
     /**
