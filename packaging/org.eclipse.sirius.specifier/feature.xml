@@ -50,6 +50,20 @@ Install this if you want to create your own Sirius-based modelers.
          unpack="false"/>
 
    <plugin
+         id="org.eclipse.sirius.common.acceleo.aql"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.common.acceleo.aql.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.eclipse.sirius.common.acceleo.mtl"
          download-size="0"
          install-size="0"
