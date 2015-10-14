@@ -29,11 +29,9 @@ import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
-import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.TreeViewerEditor;
-import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.jface.viewers.ViewerColumn;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -164,7 +162,6 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
         // Create and setup the TreeViewer
         final int style = SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI;
-
         DTreeViewer dTreeViewer = new DTreeViewer(composite, style, getAccessor().getPermissionAuthority());
         treeViewer = dTreeViewer;
         new TreeItemExpansionManager(dTreeViewer.getTree(), getSession());
@@ -197,10 +194,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         initializeKeyBindingSupport();
         ColumnViewerToolTipSupport.enableFor(treeViewer);
 
-        // Create a new CellFocusManager
-        final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
-        // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
+        // Create a TreeViewerEditor
+        TreeViewerEditor.create(treeViewer, new DTableColumnViewerEditorActivationStrategy(treeViewer),
                 ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 
         // The input for the table viewer is the instance of DTable
