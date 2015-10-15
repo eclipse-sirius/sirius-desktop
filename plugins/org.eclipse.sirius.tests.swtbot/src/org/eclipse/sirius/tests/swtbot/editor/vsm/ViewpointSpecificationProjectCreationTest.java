@@ -168,11 +168,19 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         // Check the natures
         IProjectNature nature = null;
         try {
+            nature = project.getNature("org.eclipse.acceleo.ide.ui.acceleoNature");
+        } catch (CoreException e1) {
+            fail("Cannot get the acceleo nature.");
+        }
+        assertNull("The VSM project should not have the Acceleo nature.", nature);
+
+        nature = null;
+        try {
             nature = project.getNature("org.eclipse.pde.PluginNature");
         } catch (CoreException e1) {
             fail("Cannot get the plugin nature.");
         }
-        assertNotNull("The VSM PRoject should have a Plugin nature.", nature);
+        assertNotNull("The VSM project should have a Plugin nature.", nature);
 
         nature = null;
         try {
@@ -180,8 +188,9 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         } catch (CoreException e1) {
             fail("Cannot get the java nature.");
         }
-        assertNotNull("The VSM PRoject should be a Java Project.", nature);
+        assertNotNull("The VSM project should be a Java Project.", nature);
     }
+
 
     /**
      * Create a Sirius Specification Project and wait until the creation is
