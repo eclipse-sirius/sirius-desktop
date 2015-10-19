@@ -1,6 +1,6 @@
 target "baseline" 
 
-location Sirius-Latest-Release "http://download.eclipse.org/sirius/updates/releases/3.0.0/mars" {
+location Sirius-Latest-Release "http://download.eclipse.org/sirius/updates/releases/3.1.0/mars" {
 	org.eclipse.sirius.runtime.acceleo.feature.group
 	org.eclipse.sirius.runtime.feature.group
 	org.eclipse.sirius.runtime.ide.ui.feature.group
@@ -15,6 +15,6 @@ location Sirius-Latest-Release "http://download.eclipse.org/sirius/updates/relea
 }
 
 
-location Sirius-legacy "http://download.eclipse.org/sirius/updates/legacy" {
+location Sirius-legacy "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
 	org.eclipse.sirius.query.legacy.feature.feature.group
 }
