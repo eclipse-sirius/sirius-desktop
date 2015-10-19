@@ -36,9 +36,7 @@ public class ContainerMappingChildrenPresentationPropertySectionSpec extends Con
         if (button != null && eObject instanceof ContainerMapping) {
             ContainerMapping containerMapping = (ContainerMapping) eObject;
             Option<String> experimentalStackButtons = shouldMarkCompartmentsExperimental(containerMapping);
-            Option<String> disabledStackButtons = shouldDisableCompartments(containerMapping);
-
-            updateControls(experimentalStackButtons, disabledStackButtons);
+            updateControls(experimentalStackButtons);
         }
     }
 
@@ -62,15 +60,7 @@ public class ContainerMappingChildrenPresentationPropertySectionSpec extends Con
         return experimental ? Options.newSome(message.toString()) : Options.<String> newNone();
     }
 
-    private Option<String> shouldDisableCompartments(ContainerMapping containerMapping) {
-        String message = null;
-        if (!containerMapping.getAllNodeMappings().isEmpty()) {
-            message = "The mapping contains node mappings, it cannot be a RegionContainer mapping.";
-        }
-        return Options.newSome(message);
-    }
-
-    private void updateControls(Option<String> experimentalStackButtons, Option<String> disabledStackButtons) {
+    private void updateControls(Option<String> experimentalStackButtons) {
         String hStackButtonText = getText(ContainerLayout.HORIZONTAL_STACK);
         String vStackButtonText = getText(ContainerLayout.VERTICAL_STACK);
 
@@ -78,12 +68,9 @@ public class ContainerMappingChildrenPresentationPropertySectionSpec extends Con
         boolean needsLayout = false;
         for (Button b : button) {
             if (hStackButtonText.equals(b.getText()) || vStackButtonText.equals(b.getText())) {
-                needsLayout = updateButton(b, experimentalStackButtons, disabledStackButtons) || needsLayout;
+                needsLayout = updateButton(b, experimentalStackButtons) || needsLayout;
             }
         }
-
-        // Update group
-        updateGroup(disabledStackButtons);
 
         // If the section has been created with italic buttons, it might require
         // layout be able to display the buttons with normal font.
@@ -92,7 +79,7 @@ public class ContainerMappingChildrenPresentationPropertySectionSpec extends Con
         }
     }
 
-    private boolean updateButton(Button b, Option<String> experimentalStackButtons, Option<String> disabledStackButtons) {
+    private boolean updateButton(Button b, Option<String> experimentalStackButtons) {
         boolean needsLayout = false;
         if (experimentalStackButtons.some()) {
             b.setToolTipText(experimentalStackButtons.get());
@@ -117,17 +104,6 @@ public class ContainerMappingChildrenPresentationPropertySectionSpec extends Con
             }
         }
 
-        b.setEnabled(!disabledStackButtons.some());
         return needsLayout;
-    }
-
-    private void updateGroup(Option<String> disabledStackButtons) {
-        if (group != null) {
-            if (disabledStackButtons.some()) {
-                group.setToolTipText(disabledStackButtons.get());
-            } else {
-                group.setToolTipText(null);
-            }
-        }
     }
 }
