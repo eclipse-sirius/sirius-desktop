@@ -11,14 +11,22 @@
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
 import java.util.Collection;
+import java.util.Collections;
 
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ParameterizedCommand;
+import org.eclipse.core.commands.common.CommandException;
+import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceDescription;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
@@ -33,6 +41,9 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
+import org.eclipse.ui.handlers.IHandlerService;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
@@ -89,8 +100,9 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
      * @exception CoreException
      *                In case of problem during setting workspace description to
      *                disable auto build.
+     * @throws CommandException
      */
-    private void initContext() throws InterruptedException, OperationCanceledException, CoreException {
+    private void initContext() throws InterruptedException, OperationCanceledException, CoreException, CommandException {
         designerPerspectives.openSiriusPerspective();
         // Wait the end of the current build and/or refresh.
         waitJobsBuildOrRefresh();
@@ -106,6 +118,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
 
         // Create VSM Project.
         ViewpointSpecificationProjectCreationTest.createViewpointSpecificationProject(bot, VSM_PROJECT_NAME, VSM);
+        waitJobsBuildOrRefresh();
+        // Explicitly add the Acceleo nature, as this is no longer done by
+        // default
+        addAcceleoNature(ResourcesPlugin.getWorkspace().getRoot().getProject(VSM_PROJECT_NAME));
         waitJobsBuildOrRefresh();
         // Define the imports in the VSM and add Ecore dependency
         String MANIFEST_MF = "MANIFEST.MF";
@@ -131,13 +147,33 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         ResourcesPlugin.getWorkspace().build(IncrementalProjectBuilder.FULL_BUILD, new NullProgressMonitor());
         // Wait the end of the current build and/or refresh.
         waitJobsBuildOrRefresh();
-        
+
         bot.activeEditor().setFocus();
         bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM, "test", "VP", "Diag").select();
 
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
         SWTBotSiriusHelper.selectPropertyTabItem("General");
+    }
+
+    private void addAcceleoNature(IProject projet) throws CommandException {
+        ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
+        IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench().getService(IHandlerService.class);
+        Command addAcceleoNatureCommand = commandService.getCommand("org.eclipse.sirius.common.acceleo.mtl.ide.internal.convert"); //$NON-NLS-1$
+
+        // If the acceleo interpreter is not present, do not configure.
+        // the acceleo conversion command is not API yet, so, it
+        // is declared by the org.eclipse.sirius.common.acceleo.mtl.ide plugin,
+        // to
+        // avoid dependencies from viewpoint.ui to Acceleo.
+        if (addAcceleoNatureCommand != null && addAcceleoNatureCommand.isDefined()) {
+            // Force org.eclipse.sirius.common.acceleo.mtl.ide plugin
+            // inialization.
+            ProposalProviderRegistry.getAllProviders();
+            ParameterizedCommand parmCommand = new ParameterizedCommand(addAcceleoNatureCommand, null);
+            EvaluationContext evaluationContext = new EvaluationContext(null, Collections.singletonList(projet));
+            handlerService.executeCommandInContext(parmCommand, null, evaluationContext);
+        }
     }
 
     /**
@@ -155,14 +191,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     /**
      * Check that the right Java service appears in the completion proposals.
      * 
-     * @exception InterruptedException
-     *                In case of problem during context initialization.
-     * @exception OperationCanceledException
-     *                In case of problem during context initialization.
-     * @exception CoreException
+     * @exception Exception
      *                In case of problem during context initialization.
      */
-    public void test_Java_Service_Completion() throws InterruptedException, OperationCanceledException, CoreException {
+    public void test_Java_Service_Completion() throws Exception {
 
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
@@ -190,14 +222,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     /**
      * Check that the right MTL services appear in the completion proposals.
      * 
-     * @exception InterruptedException
-     *                In case of problem during context initialization.
-     * @exception OperationCanceledException
-     *                In case of problem during context initialization.
-     * @exception CoreException
+     * @exception Exception
      *                In case of problem during context initialization.
      */
-    public void test_MTL_Service_Completion() throws InterruptedException, OperationCanceledException, CoreException {
+    public void test_MTL_Service_Completion() throws Exception {
 
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
@@ -235,14 +263,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     /**
      * Check that type completion with no selected MM is consistent.
      * 
-     * @exception InterruptedException
-     *                In case of problem during context initialization.
-     * @exception OperationCanceledException
-     *                In case of problem during context initialization.
-     * @exception CoreException
+     * @exception Exception
      *                In case of problem during context initialization.
      */
-    public void test_Domain_Class_Completion_With_No_Selected_MetaModels() throws InterruptedException, OperationCanceledException, CoreException {
+    public void test_Domain_Class_Completion_With_No_Selected_MetaModels() throws Exception {
 
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
@@ -269,14 +293,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     /**
      * Check that type completion with selected MM is consistent.
      * 
-     * @exception InterruptedException
-     *                In case of problem during context initialization.
-     * @exception OperationCanceledException
-     *                In case of problem during context initialization.
-     * @exception CoreException
+     * @exception Exception
      *                In case of problem during context initialization.
      */
-    public void test_Domain_Class_Completion_With_Selected_MetaModels() throws InterruptedException, OperationCanceledException, CoreException {
+    public void test_Domain_Class_Completion_With_Selected_MetaModels() throws Exception {
         initContext();
 
         // select Sirius metamodels
@@ -296,7 +316,6 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         assertFalse("Proposal should only contain types from selected meta models: docBook.Book found", contentAssistProposal.contains("docBook.Book"));
         assertFalse("Proposal should only contain types from selected meta models: test.Test found", contentAssistProposal.contains("test.Test"));
 
-        
         assertTrue("Proposal should contain types from selected meta models. DiagramDescription not found", contentAssistProposal.contains("description.DiagramDescription"));
         assertTrue("Proposal should contain types from selected meta models. DNode not found", contentAssistProposal.contains("diagram.DNode"));
         assertFalse("Proposal should not contain viewpoint.DNode a it has been moved to the diagram package.", contentAssistProposal.contains("viewpoint.DNode"));
@@ -324,7 +343,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
                 }
                 return true;
             }
-            
+
             @Override
             public String getFailureMessage() {
                 return "Some of the expected metamodels were not found: " + Joiner.on(", ").join(expectedNsURIs);
