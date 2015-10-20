@@ -368,9 +368,10 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
             if (rectilinear.size() <= 2) {
                 computePointListByIntersections(rectilinear, sourceBounds, targetBounds);
             }
-
-            CanonicalRectilinearRouter rectilinearRouter = new CanonicalRectilinearRouter();
-            rectilinearRouter.routeLine(edge, 0, rectilinear, sourceBounds, targetBounds);
+            if (rectilinear.size() >= 2) {
+                CanonicalRectilinearRouter rectilinearRouter = new CanonicalRectilinearRouter();
+                rectilinearRouter.routeLine(edge, 0, rectilinear, sourceBounds, targetBounds);
+            }
         }
         if (rectilinear.size() >= 2) {
             RectilinearEdgeUtil.centerEdgeEnds(rectilinear, newSourceAnchorAbsoluteLocation, newTargetAnchorAbsoluteLocation, center);

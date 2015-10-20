@@ -37,6 +37,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
  * commented.
  */
 // CHECKSTYLE:OFF
+@SuppressWarnings({ "deprecation", "restriction" })
 public class CanonicalRectilinearRouter {
 
     private static int maxNestedRoutingDepth = 1;
@@ -49,6 +50,10 @@ public class CanonicalRectilinearRouter {
      *      int, org.eclipse.draw2d.geometry.PointList)
      */
     public void routeLine(Edge edge, int nestedRoutingDepth, PointList newLine, Rectangle srcAbsoluteBounds, Rectangle tgtAbsoluteBounds) {
+        // The line should have at least 2 points.
+        if (newLine.size() < 2) {
+            return;
+        }
         boolean skipNormalization = false;
 
         // Handle special routing: self connections and intersecting shapes
@@ -286,8 +291,8 @@ public class CanonicalRectilinearRouter {
     }
 
     private Point getAbsoluteAnchorCoordinates(Rectangle absoluteBounds, PrecisionPoint precisionPoint) {
-        return new Point((int) (absoluteBounds.x() + Math.round(absoluteBounds.width() * precisionPoint.preciseX())), (int) (absoluteBounds.y() + Math.round(absoluteBounds.height()
-                * precisionPoint.preciseY())));
+        return new Point((int) (absoluteBounds.x() + Math.round(absoluteBounds.width() * precisionPoint.preciseX())),
+                (int) (absoluteBounds.y() + Math.round(absoluteBounds.height() * precisionPoint.preciseY())));
 
     }
 
@@ -402,8 +407,8 @@ public class CanonicalRectilinearRouter {
                 } else {
                     newLine.addPoint((source.getLeft().x + target.getRight().x) / 2, lastRemovedFromSource.y);
                 }
-            } else if ((edge.getSourceAnchor() instanceof IdentityAnchor && StringStatics.BLANK.equals(((IdentityAnchor) edge.getSourceAnchor()).getId()) && (edge.getTargetAnchor() instanceof IdentityAnchor && StringStatics.BLANK
-                    .equals(((IdentityAnchor) edge.getTargetAnchor()).getId())))) {
+            } else if ((edge.getSourceAnchor() instanceof IdentityAnchor && StringStatics.BLANK.equals(((IdentityAnchor) edge.getSourceAnchor()).getId())
+                    && (edge.getTargetAnchor() instanceof IdentityAnchor && StringStatics.BLANK.equals(((IdentityAnchor) edge.getTargetAnchor()).getId())))) {
                 /*
                  * This a special case for old diagrams with rectilinear
                  * connections routed by the old router to look good with the
@@ -556,28 +561,4 @@ public class CanonicalRectilinearRouter {
         }
         return line.size() != initialNumberOfPoints;
     }
-
-    /**
-     * Method checkSelfRelConnection. Checks to see if this connection should be
-     * routed specially as a self relation.
-     * 
-     * @param conn
-     *            Connection to check if it's a self relation
-     * @param newLine
-     *            PointList of the routed points
-     * @return boolean True if Connection is a self relation, False otherwise.
-     */
-    private boolean checkSelfRelConnection(Edge edge, PointList newLine) {
-
-        return false;
-        // if ((edge.getSource() == edge.getTarget())
-        // && newLine.size() < 4) {
-        // getSelfRelVertices(conn, newLine);
-        // return true;
-        // } else {
-        // removeSelfRelConnection(conn);
-        // return false;
-        // }
-    }
-
 }

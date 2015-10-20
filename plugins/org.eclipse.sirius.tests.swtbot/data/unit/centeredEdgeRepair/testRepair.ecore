@@ -10,7 +10,9 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="Package3">
-    <eClassifiers xsi:type="ecore:EClass" name="eClass5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="eClass5">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Package3/eClass6"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="eClass6"/>
   </eSubpackages>
   <eSubpackages name="Package4">

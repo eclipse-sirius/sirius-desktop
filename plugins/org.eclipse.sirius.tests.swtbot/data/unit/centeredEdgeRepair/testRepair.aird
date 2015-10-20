@@ -62,7 +62,7 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gIgG4lXZEeSEwrc-YP5Cbg"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_gIdqoVXZEeSEwrc-YP5Cbg" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gIdqolXZEeSEwrc-YP5Cbg" x="-2" y="11" width="10" height="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gIdqolXZEeSEwrc-YP5Cbg" x="-2" width="10" height="10"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_gIRdYVXZEeSEwrc-YP5Cbg" fontName="Cantarell" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gIRdYlXZEeSEwrc-YP5Cbg"/>
@@ -140,6 +140,22 @@
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IJ2ucGA3EeSvh9mZMMU_Gw" id="(0.1,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IJ2ucWA3EeSvh9mZMMU_Gw" id="(0.5,0.5)"/>
           </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_xZxVsHc0EeW-APw8I6LT1w" type="4001" element="_xZgP8Hc0EeW-APw8I6LT1w" source="_gIb1cFXZEeSEwrc-YP5Cbg" target="_gIdqoFXZEeSEwrc-YP5Cbg">
+            <children xmi:type="notation:Node" xmi:id="_xZ1nIHc0EeW-APw8I6LT1w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xZ1nIXc0EeW-APw8I6LT1w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xZ1nInc0EeW-APw8I6LT1w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xZ1nI3c0EeW-APw8I6LT1w" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xZ2OMHc0EeW-APw8I6LT1w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xZ2OMXc0EeW-APw8I6LT1w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_xZxVsXc0EeW-APw8I6LT1w" routing="Rectilinear"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_xZxVsnc0EeW-APw8I6LT1w" fontName="Cantarell" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xZxVs3c0EeW-APw8I6LT1w" points=""/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xZ21QHc0EeW-APw8I6LT1w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xZ21QXc0EeW-APw8I6LT1w" id="(0.5,0.5)"/>
+          </edges>
         </data>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_IHBc4GA3EeSvh9mZMMU_Gw" name="package1">
@@ -185,7 +201,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_IHBc5mA3EeSvh9mZMMU_Gw" name="Package3">
         <target xmi:type="ecore:EPackage" href="testRepair.ecore#//Package3"/>
         <semanticElements xmi:type="ecore:EPackage" href="testRepair.ecore#//Package3"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_IHKm0GA3EeSvh9mZMMU_Gw" name="eClass5" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_IHKm0GA3EeSvh9mZMMU_Gw" name="eClass5" outgoingEdges="_xZgP8Hc0EeW-APw8I6LT1w" width="1" height="1" resizeKind="NSEW">
           <target xmi:type="ecore:EClass" href="testRepair.ecore#//Package3/eClass5"/>
           <semanticElements xmi:type="ecore:EClass" href="testRepair.ecore#//Package3/eClass5"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_IHKm0WA3EeSvh9mZMMU_Gw" showIcon="false">
@@ -196,7 +212,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="testRepair.odesign#//@ownedViewpoints[name='testReconnect']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@containerMappings[name='ePackage']/@borderedNodeMappings[name='eClass']"/>
         </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_IHKm1WA3EeSvh9mZMMU_Gw" name="eClass6" width="1" height="1" resizeKind="NSEW">
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_IHKm1WA3EeSvh9mZMMU_Gw" name="eClass6" incomingEdges="_xZgP8Hc0EeW-APw8I6LT1w" width="1" height="1" resizeKind="NSEW">
           <target xmi:type="ecore:EClass" href="testRepair.ecore#//Package3/eClass6"/>
           <semanticElements xmi:type="ecore:EClass" href="testRepair.ecore#//Package3/eClass6"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_IHKm1mA3EeSvh9mZMMU_Gw" showIcon="false">
@@ -293,6 +309,19 @@
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_IHUX12A3EeSvh9mZMMU_Gw" red="136" green="136" blue="136"/>
           <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_IHUX2GA3EeSvh9mZMMU_Gw">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IHUX2WA3EeSvh9mZMMU_Gw"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="testRepair.odesign#//@ownedViewpoints[name='testReconnect']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@edgeMappings[name='reference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_xZgP8Hc0EeW-APw8I6LT1w" name="ref" sourceNode="_IHKm0GA3EeSvh9mZMMU_Gw" targetNode="_IHKm1WA3EeSvh9mZMMU_Gw">
+        <target xmi:type="ecore:EReference" href="testRepair.ecore#//Package3/eClass5/ref"/>
+        <semanticElements xmi:type="ecore:EReference" href="testRepair.ecore#//Package3/eClass5/ref"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_xZg3AHc0EeW-APw8I6LT1w" size="2" routingStyle="manhattan">
+          <customFeatures>routingStyle</customFeatures>
+          <description xmi:type="style:EdgeStyleDescription" href="testRepair.odesign#//@ownedViewpoints[name='testReconnect']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@edgeMappings[name='reference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_xZg3AXc0EeW-APw8I6LT1w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_xZg3Anc0EeW-APw8I6LT1w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_xZg3A3c0EeW-APw8I6LT1w"/>
           </centerLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="testRepair.odesign#//@ownedViewpoints[name='testReconnect']/@ownedRepresentations[name='testReconnect']/@defaultLayer/@edgeMappings[name='reference']"/>
