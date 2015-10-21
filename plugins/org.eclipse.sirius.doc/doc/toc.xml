@@ -125,6 +125,7 @@
       <topic href="doc/specifier/general/Writing_Queries.html#introduction" label="Introduction" />
       <topic href="doc/specifier/general/Writing_Queries.html#general" label="General Rules" />
       <topic href="doc/specifier/general/Writing_Queries.html#specialized" label="Using the Specialized interpreters" />
+      <topic href="doc/specifier/general/Writing_Queries.html#aql" label="Using AQL" />
       <topic href="doc/specifier/general/Writing_Queries.html#acceleo" label="Using Acceleo" />
       <topic href="doc/specifier/general/Writing_Queries.html#ocl" label="Using Raw OCL" />
       <topic href="doc/specifier/general/Writing_Queries.html#custom" label="Providing a Custom Language" />
