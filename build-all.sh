@@ -9,9 +9,10 @@ readonly BASEDIR=$(pwd)
 readonly BUILD_POM="packaging/org.eclipse.sirius.parent/pom.xml"
 readonly TESTS_POM="packaging/org.eclipse.sirius.tests.parent/pom.xml"
 readonly TESTS_SETTINGS="packaging/org.eclipse.sirius.tests.parent/sirius-local-settings.xml"
+readonly USE_P2_MIRRORS="-Declipse.p2.mirrors=true"
 
 # Build Sirius core using the normal Target Platform definition
-mvn -Dplatform-version-name="$PLATFORM" -f "$BUILD_POM" clean package
+mvn -Dplatform-version-name="$PLATFORM" -Declipse.p2.mirrors=$USE_P2_MIRRORS -f "$BUILD_POM" clean package
 
 # Build (and optionally execute) the Sirius test suites, using an
 # adjusted Target Platform which uses the locally build Sirius core
@@ -24,5 +25,5 @@ if [ "$OSTYPE" = "msys" ]; then
     sed -r -i -e "s|file:///([A-Za-z]{1})/|file:///\1:/|" "$TESTS_SETTINGS"
 fi
 
-SWT_GTK3=0 mvn -Dplatform-version-name="$PLATFORM" -s "$TESTS_SETTINGS" -f "$TESTS_POM" -P "$TESTS_SUITES" clean "$TESTS_GOAL"
+SWT_GTK3=0 mvn -Dplatform-version-name="$PLATFORM"  -Declipse.p2.mirrors=$USE_P2_MIRRORS -s "$TESTS_SETTINGS" -f "$TESTS_POM" -P "$TESTS_SUITES" clean "$TESTS_GOAL"
 mv "$ORIGINAL_SETTINGS" "$TESTS_SETTINGS"
