@@ -26,7 +26,6 @@ import org.eclipse.sirius.tests.swtbot.clipboard.DisabledSiriusClipboardSupportT
 import org.eclipse.sirius.tests.swtbot.clipboard.GenericClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.MultiSessionCopyPasteTest;
 import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsCreationTest;
-import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsLayoutTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionExpressionTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.BorderSizeComputationExpressionTest;
@@ -272,7 +271,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(InvalidMetamodelRessourceTest.class);
         suite.addTestSuite(ExtensionActivationOrderTest.class);
         suite.addTestSuite(CompartmentsCreationTest.class);
-        suite.addTestSuite(CompartmentsLayoutTest.class);
     }
 
     /**

@@ -211,7 +211,6 @@ public final class DiagramContainerEditPartOperation {
                 boolean firstRegionPart = isFirstRegionPart(self);
                 boolean lastRegionPart = isLastRegionPart(self);
                 if (parentStackDirection == PositionConstants.NORTH_SOUTH && lastRegionPart) {
-                    specificDimension = cornerDimension;
                     cornerDimension = Dimension.max(cornerDimension, regionContainerCornerDimension);
                     if (specificDimension != cornerDimension) {
                         specificCornerPosition.set(PositionConstants.NORTH_WEST);
@@ -219,7 +218,6 @@ public final class DiagramContainerEditPartOperation {
                     }
                     updatePrecedingSiblingCorner(self, PositionConstants.SOUTH_WEST, PositionConstants.SOUTH_EAST);
                 } else if (parentStackDirection == PositionConstants.EAST_WEST && (firstRegionPart || lastRegionPart)) {
-                    specificDimension = cornerDimension;
                     cornerDimension = Dimension.max(cornerDimension, regionContainerCornerDimension);
 
                     specificCornerPosition.set(PositionConstants.NORTH_WEST);
@@ -255,8 +253,10 @@ public final class DiagramContainerEditPartOperation {
         AbstractDiagramElementContainerEditPart previous = siblings.isEmpty() ? null : Iterables.getLast(siblings);
         if (previous != null && previous.getPrimaryShape() instanceof RegionRoundedGradientRectangle) {
             RegionRoundedGradientRectangle gradientRoundedRectangle = (RegionRoundedGradientRectangle) previous.getPrimaryShape();
-            for (int i : cornerToCorrect) {
-                gradientRoundedRectangle.getAdditionalDimensionCorners().set(i);
+            if (!gradientRoundedRectangle.getAdditionalCornerDimensions().equals(gradientRoundedRectangle.getCornerDimensions())) {
+                for (int i : cornerToCorrect) {
+                    gradientRoundedRectangle.getAdditionalDimensionCorners().set(i);
+                }
             }
 
             if (gradientRoundedRectangle.getAdditionalDimensionCorners().cardinality() == 4) {
@@ -317,7 +317,7 @@ public final class DiagramContainerEditPartOperation {
 
                     if (parentStackDirection == PositionConstants.NORTH_SOUTH) {
                         oneLineBorder.setPosition(PositionConstants.TOP);
-                    } else if (parentStackDirection == PositionConstants.NORTH_SOUTH) {
+                    } else if (parentStackDirection == PositionConstants.EAST_WEST) {
                         oneLineBorder.setPosition(PositionConstants.LEFT);
                     }
 

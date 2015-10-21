@@ -57,13 +57,11 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
@@ -452,11 +450,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     private Option<LabelBorderStyleDescription> getLabelBorderStyle(DStylizable viewNode) {
-        if (viewNode != null && viewNode.getStyle() instanceof FlatContainerStyle && viewNode.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
-            FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) viewNode.getStyle().getDescription();
-            if (fcsd.getLabelBorderStyle() != null) {
-                return Options.newSome(fcsd.getLabelBorderStyle());
-            }
+        if (viewNode instanceof DDiagramElementContainer) {
+            return new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) viewNode).getLabelBorderStyle();
         }
         return Options.newNone();
     }

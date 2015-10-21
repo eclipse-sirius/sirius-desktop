@@ -48,10 +48,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -63,8 +61,10 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.RegionCollapseAwareP
 import org.eclipse.sirius.diagram.ui.internal.operation.ComparisonHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -195,11 +195,8 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     private boolean hasLabelBorderStyle() {
         EObject element = resolveSemanticElement();
         if (element instanceof DDiagramElementContainer) {
-            DDiagramElementContainer ddec = (DDiagramElementContainer) element;
-            if (ddec.getStyle() instanceof FlatContainerStyle && ddec.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
-                FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ddec.getStyle().getDescription();
-                return fcsd.getLabelBorderStyle() != null && !LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(fcsd.getLabelBorderStyle().getId());
-            }
+            Option<LabelBorderStyleDescription> labelBorderStyle = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) element).getLabelBorderStyle();
+            return labelBorderStyle.some() && !LabelBorderStyleIds.LABEL_FULL_BORDER_STYLE_FOR_CONTAINER_ID.equals(labelBorderStyle.get().getId());
         }
         return false;
     }
@@ -322,10 +319,10 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         }
         return super.getCommand(_request);
     }
-    
+
     @Override
     protected void setCollapsed(boolean collapsed, boolean animate) {
-        //Always disable the animation.
+        // Always disable the animation.
         super.setCollapsed(collapsed, false);
     }
 }

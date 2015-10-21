@@ -560,28 +560,9 @@ public final class DiagramElementEditPartOperation {
      *            edges).
      */
     public static void setLineStyle(Shape figure, LineStyle lineStyle, boolean useCustomDashStyle) {
-        // Line style.
-        final int lineStyleValue = lineStyle.getValue();
-        switch (lineStyleValue) {
-        case LineStyle.SOLID:
-            figure.setLineStyle(SWT.LINE_SOLID);
-            break;
-        case LineStyle.DOT:
-            figure.setLineStyle(SWT.LINE_DOT);
-            break;
-        case LineStyle.DASH:
-            if (useCustomDashStyle) {
-                figure.setLineDash(DASH_STYLE);
-                figure.setLineStyle(SWT.LINE_CUSTOM);
-            } else {
-                figure.setLineStyle(SWT.LINE_DASH);
-            }
-            break;
-        case LineStyle.DASH_DOT:
-            figure.setLineStyle(SWT.LINE_DASHDOT);
-            break;
-        default:
-            break;
+        figure.setLineStyle(getSwtLineStyle(lineStyle, useCustomDashStyle));
+        if (useCustomDashStyle && lineStyle == LineStyle.DASH_LITERAL) {
+            figure.setLineDash(DASH_STYLE);
         }
     }
 
@@ -595,24 +576,7 @@ public final class DiagramElementEditPartOperation {
      *            the {@link LineStyle} to set.
      */
     public static void setLineStyle(NodeFigure figure, final LineStyle lineStyle) {
-        // Line style.
-        final int lineStyleValue = lineStyle.getValue();
-        switch (lineStyleValue) {
-        case LineStyle.SOLID:
-            figure.setLineStyle(SWT.LINE_SOLID);
-            break;
-        case LineStyle.DOT:
-            figure.setLineStyle(SWT.LINE_DOT);
-            break;
-        case LineStyle.DASH:
-            figure.setLineStyle(SWT.LINE_DASH);
-            break;
-        case LineStyle.DASH_DOT:
-            figure.setLineStyle(SWT.LINE_DASHDOT);
-            break;
-        default:
-            break;
-        }
+        figure.setLineStyle(getSwtLineStyle(lineStyle, false));
     }
 
     /**
@@ -625,24 +589,35 @@ public final class DiagramElementEditPartOperation {
      *            the {@link LineStyle} to set.
      */
     public static void setLineStyle(LineBorder border, final LineStyle lineStyle) {
+        border.setStyle(getSwtLineStyle(lineStyle, false));
+    }
+
+    private static int getSwtLineStyle(LineStyle lineStyle, boolean useCustomDashStyle) {
         // Line style.
         final int lineStyleValue = lineStyle.getValue();
+        int effectiveExpectedSWTValue = 0;
         switch (lineStyleValue) {
         case LineStyle.SOLID:
-            border.setStyle(SWT.LINE_SOLID);
+            effectiveExpectedSWTValue = SWT.LINE_SOLID;
             break;
         case LineStyle.DOT:
-            border.setStyle(SWT.LINE_DOT);
+            effectiveExpectedSWTValue = SWT.LINE_DOT;
             break;
         case LineStyle.DASH:
-            border.setStyle(SWT.LINE_DASH);
+            if (useCustomDashStyle) {
+                effectiveExpectedSWTValue = SWT.LINE_CUSTOM;
+            } else {
+                effectiveExpectedSWTValue = SWT.LINE_DASH;
+            }
             break;
         case LineStyle.DASH_DOT:
-            border.setStyle(SWT.LINE_DASHDOT);
+            effectiveExpectedSWTValue = SWT.LINE_DASHDOT;
             break;
         default:
             break;
         }
+
+        return effectiveExpectedSWTValue;
     }
 
     /**

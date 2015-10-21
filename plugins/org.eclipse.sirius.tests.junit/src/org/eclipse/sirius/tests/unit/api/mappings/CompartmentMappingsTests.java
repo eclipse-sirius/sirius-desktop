@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.compartment.ICompartmentTests;
 import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
@@ -34,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.Group;
  * 
  * @author <a href="mailto:belqassim.djafer@obeo.fr">Belqassim Djafer</a>
  */
-public class CompartmentsTests extends SiriusDiagramTestCase implements ICompartmentTests {
+public class CompartmentMappingsTests extends SiriusDiagramTestCase implements ICompartmentTests {
 
     @Override
     protected void setUp() throws Exception {

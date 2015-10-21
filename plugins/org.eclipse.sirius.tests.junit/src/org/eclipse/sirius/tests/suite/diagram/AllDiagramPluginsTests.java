@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.diagram;
 
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -26,7 +31,7 @@ import org.eclipse.sirius.tests.unit.api.initialization.InitOperationForDiagrams
 import org.eclipse.sirius.tests.unit.api.layers.MultipleMappingImportTests;
 import org.eclipse.sirius.tests.unit.api.layers.MultipleMappingImportTests2;
 import org.eclipse.sirius.tests.unit.api.layers.OptionalLayersActivationTests;
-import org.eclipse.sirius.tests.unit.api.mappings.CompartmentsTests;
+import org.eclipse.sirius.tests.unit.api.mappings.CompartmentMappingsTests;
 import org.eclipse.sirius.tests.unit.api.mappings.ContainerMappingImportTests;
 import org.eclipse.sirius.tests.unit.api.mappings.ContainerMappingImportWithChildrenPresentationChangesTests;
 import org.eclipse.sirius.tests.unit.api.mappings.EdgeMappingTest;
@@ -89,6 +94,8 @@ import org.eclipse.sirius.tests.unit.diagram.action.EntitiesDiagramHideRevealTes
 import org.eclipse.sirius.tests.unit.diagram.action.LabelHideRevealTests;
 import org.eclipse.sirius.tests.unit.diagram.command.BuildDeleteCommandTest;
 import org.eclipse.sirius.tests.unit.diagram.command.DeleteViewCommandTest;
+import org.eclipse.sirius.tests.unit.diagram.compartment.CompartmentsLayoutTest;
+import org.eclipse.sirius.tests.unit.diagram.compartment.CompartmentsTest;
 import org.eclipse.sirius.tests.unit.diagram.compute.variable.ComputeAvailableVariableLabelTest;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlDetectorTest;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlTest;
@@ -230,11 +237,6 @@ import org.eclipse.sirius.tests.unit.diagram.vsm.VSMWithCustomizationValidationT
 import org.eclipse.sirius.tests.unit.perf.diagram.refresh.connections.DCompartmentConnectionRefreshMgrTest;
 import org.eclipse.sirius.tests.unit.table.unit.migration.InitializeElementsToSelectExpressionForTableMigrationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.SelectionInTableAfterToolExecutionTest;
-
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 public class AllDiagramPluginsTests {
 
@@ -421,7 +423,9 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(NodeMappingTest.class);
         suite.addTestSuite(EdgeMappingTest.class);
         suite.addTestSuite(ContainerMappingImportTests.class);
-        suite.addTestSuite(CompartmentsTests.class);
+        suite.addTestSuite(CompartmentMappingsTests.class);
+        suite.addTestSuite(CompartmentsTest.class);
+        suite.addTestSuite(CompartmentsLayoutTest.class);
         suite.addTestSuite(ContainerMappingImportWithChildrenPresentationChangesTests.class);
         suite.addTestSuite(NodeMappingImportTests.class);
         suite.addTestSuite(MappingImportChainsTest.class);

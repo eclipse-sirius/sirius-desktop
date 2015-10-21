@@ -502,7 +502,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Return the actual label alignement of the given part. See
+     * Return the actual label alignment of the given part. See
      * LabelAlignmentHelper.
      * 
      * @param graphicalEditPart

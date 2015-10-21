@@ -59,11 +59,10 @@ import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
@@ -193,12 +192,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         ShapeCompartmentFigure scf = new ShapeCompartmentFigure(getCompartmentName(), mapMode);
         if (new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) resolveSemanticElement()).isRegion()) {
             // Make the shape compartment nestable.
-            scf = new ShapeCompartmentFigure(getCompartmentName(), mapMode) {
-                @Override
-                public Dimension getMinClientDimension() {
-                    return new Dimension(0, 0);
-                }
-            };
+            scf = new RegionShapeCompartmentFigure(getCompartmentName(), mapMode);
             scf.getScrollPane().setMinimumSize(new Dimension(0, 0));
         }
 
@@ -229,8 +223,23 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 // Do not draw the top line border for free form containers.
                 rcf.setBorder(new MarginBorder(getMapMode().DPtoLP(1), 0, 0, 0));
             }
+
         } else if (rcf.getBorder() instanceof MarginBorder || rcf.getBorder() == null) {
             rcf.setBorder(new OneLineBorder(getMapMode().DPtoLP(1), PositionConstants.TOP));
+        }
+
+        // Update content pane if required to correctly place and show the
+        // border.
+        IFigure parentFigure = rcf.getParent();
+        if (parentFigure != null && getParent() instanceof AbstractDiagramContainerEditPart) {
+            AbstractDiagramContainerEditPart adcep = (AbstractDiagramContainerEditPart) getParent();
+            if (shouldHaveBorder && adcep.getContentPane() != parentFigure) {
+                parentFigure.remove(rcf);
+                adcep.getContentPane().add(rcf);
+            } else if (!shouldHaveBorder && adcep.getMainFigure() != parentFigure) {
+                parentFigure.remove(rcf);
+                adcep.getMainFigure().add(rcf);
+            }
         }
     }
 
@@ -239,7 +248,8 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
      * 
      * @param scrollPane
      *            the figure of this edit part.
-     *            @param 
+     * @param ownedStyle
+     *            the current {@link ContainerStyle} of the diagram element.
      */
     protected void configureScrollPaneBorder(ScrollPane scrollPane, ContainerStyle ownedStyle) {
         int borderSize = 0;
@@ -304,11 +314,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
     private Option<LabelBorderStyleDescription> getLabelBorderStyle() {
         EObject element = resolveSemanticElement();
         if (element instanceof DDiagramElementContainer) {
-            DDiagramElementContainer ddec = (DDiagramElementContainer) element;
-            if (ddec.getStyle() instanceof FlatContainerStyle && ddec.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
-                FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) ddec.getStyle().getDescription();
-                return Options.newSome(fcsd.getLabelBorderStyle());
-            }
+            return new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) element).getLabelBorderStyle();
         }
         return Options.newNone();
     }
@@ -472,6 +478,20 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         return layoutManager;
     }
 
+    @Override
+    public Object getAdapter(Class key) {
+        if (key == SnapToHelper.class) {
+            return SiriusSnapToHelperUtil.getSnapHelper(this);
+        }
+        return super.getAdapter(key);
+    }
+
+    @Override
+    protected void setCollapsed(boolean collapsed, boolean animate) {
+        // Always disable the animation.
+        super.setCollapsed(collapsed, false);
+    }
+
     /**
      * Specific layout manager to handle Regions.
      * 
@@ -625,17 +645,33 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         }
     };
 
-    @Override
-    public Object getAdapter(Class key) {
-        if (key == SnapToHelper.class) {
-            return SiriusSnapToHelperUtil.getSnapHelper(this);
-        }
-        return super.getAdapter(key);
-    }
+    /**
+     * Specific shape compartment figure to allow collapse of region, ie nested
+     * compartment.
+     */
+    private static class RegionShapeCompartmentFigure extends ShapeCompartmentFigure {
 
-    @Override
-    protected void setCollapsed(boolean collapsed, boolean animate) {
-        // Always disable the animation.
-        super.setCollapsed(collapsed, false);
+        /**
+         * Create an instance.
+         * 
+         * @See {@link ShapeCompartmentFigure}
+         * 
+         * @param title
+         *            figure's title.
+         * @param mm
+         *            the <code>IMapMode</code> that is used to initialize the
+         *            default values of of the scrollpane contained inside the
+         *            figure. This is necessary since the figure is not attached
+         *            at construction time and consequently can't get access to
+         *            the owned IMapMode in the parent containment hierarchy.
+         */
+        public RegionShapeCompartmentFigure(String title, IMapMode mm) {
+            super(title, mm);
+        }
+
+        @Override
+        public Dimension getMinClientDimension() {
+            return new Dimension(0, 0);
+        }
     }
 }

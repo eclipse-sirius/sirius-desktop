@@ -13,6 +13,11 @@ package org.eclipse.sirius.diagram.business.internal.query;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
+import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 /**
  * Queries for DDiagramElementContainer.
@@ -82,5 +87,19 @@ public class DDiagramElementContainerExperimentalQuery {
             }
         }
         return false;
+    }
+
+    /**
+     * Get the label border style of the current
+     * {@link DDiagramElementContainer} if it exists.
+     * 
+     * @return an {@link Option} with the found label border style if it exists.
+     */
+    public Option<LabelBorderStyleDescription> getLabelBorderStyle() {
+        if (container.getStyle() instanceof FlatContainerStyle && container.getStyle().getDescription() instanceof FlatContainerStyleDescription) {
+            FlatContainerStyleDescription fcsd = (FlatContainerStyleDescription) container.getStyle().getDescription();
+            return Options.newSome(fcsd.getLabelBorderStyle());
+        }
+        return Options.newNone();
     }
 }

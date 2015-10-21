@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.compartment;
 
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -20,7 +19,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.tests.unit.api.mappings.ICompartmentTests;
+import org.eclipse.sirius.tests.unit.diagram.compartment.ICompartmentTests;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
@@ -36,7 +35,7 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(SiriusTestsPlugin.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
-        
+
         // Activate auto refresh
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
     }
@@ -79,9 +78,9 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
      *            the edit part name
      * @return the semantic element associated to the given edit part
      */
-    protected DDiagramElementContainer getDiagramElement(String editPartName) {
+    protected DDiagramElementContainer getDiagramElementContainer(String editPartName) {
         SWTBotGefEditPart editPart = editor.getEditPart(editPartName, AbstractDiagramElementContainerEditPart.class);
-        DDiagramElementContainer diagramElement = (DDiagramElementContainer) ((IGraphicalEditPart) editPart.part()).resolveSemanticElement();
+        DDiagramElementContainer diagramElement = (DDiagramElementContainer) ((AbstractDiagramElementContainerEditPart) editPart.part()).resolveDiagramElement();
         return diagramElement;
     }
 }

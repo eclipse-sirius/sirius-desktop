@@ -287,10 +287,11 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
     private void checkChildrenPresentation(String editPartName, ContainerMapping actualMapping, ContainerLayout expectedContainerLayout) {
         assertEquals("Wrong children presentation for '" + editPartName + "' mapping", expectedContainerLayout, actualMapping.getChildrenPresentation());
 
+        DDiagramElementContainer ddec = getDiagramElementContainer(editPartName);
         if (ContainerLayout.LIST == expectedContainerLayout) {
-            assertTrue("Wrong children presentation for '" + editPartName + "' list", getDiagramElement(editPartName) instanceof DNodeList);
+            assertTrue("Wrong children presentation for '" + editPartName + "' list", ddec instanceof DNodeList);
         } else {
-            DNodeContainer diagramElement = (DNodeContainer) getDiagramElement(editPartName);
+            DNodeContainer diagramElement = (DNodeContainer) ddec;
             assertEquals("Wrong children presentation for '" + editPartName + "' container", expectedContainerLayout, diagramElement.getChildrenPresentation());
         }
     }

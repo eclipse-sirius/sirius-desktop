@@ -26,7 +26,7 @@
                 </style>
               </conditionnalStyles>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelAlignment="RIGHT" tooltipExpression="feature:name" hideLabelByDefault="true" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" borderLineStyle="dash" labelAlignment="RIGHT" tooltipExpression="feature:name" hideLabelByDefault="true" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </style>
@@ -37,7 +37,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
@@ -57,13 +57,13 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
             <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelAlignment="LEFT" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" borderLineStyle="dot" labelAlignment="LEFT" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" borderLineStyle="dash_dot" widthComputationExpression="15" heightComputationExpression="5" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>
@@ -166,13 +166,13 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </style>
             <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
@@ -187,18 +187,18 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" labelAlignment="RIGHT" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" labelAlignment="RIGHT" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             </style>
             <conditionnalStyles predicateExpression="[name.startsWith('Left')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dot" labelAlignment="LEFT" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[name.startsWith('Center')/]">
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" borderLineStyle="dash_dot" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='regionInterpolatedColor']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
                 <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>

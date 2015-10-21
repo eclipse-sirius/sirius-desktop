@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.unit.api.mappings;
+package org.eclipse.sirius.tests.unit.diagram.compartment;
 
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
