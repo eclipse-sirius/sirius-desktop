@@ -31,8 +31,6 @@ import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
-import com.google.common.collect.Sets;
-
 /**
  * Ensure that some actions on representation are disabled when the
  * {@link DRepresentationContainer} is locked by using the permission authority
@@ -91,7 +89,8 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
 
     private UIResource semanticModel;
 
-    private EObject representationContainer;
+    @SuppressWarnings("javadoc")
+    protected EObject representationContainer;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -102,9 +101,6 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-
-        // Activate Design viewpoint
-        localSession.changeViewpointSelection(Sets.newHashSet(VIEWPOINT_NAME), Sets.<String> newHashSet());
 
         // Open the entity diagram & retrieve the representation container
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
@@ -129,8 +125,8 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
         lockRepresentationContainer();
 
         // After locking the representation container
-        assertFalse("The creation of new representation should be disabled when the representation container is locked", semanticPackageNode.contextMenu(NEW_REPRESENTATION).menu(REPRESENTATION_NAME)
-                .isEnabled());
+        assertFalse("The creation of new representation should be disabled when the representation container is locked",
+                semanticPackageNode.contextMenu(NEW_REPRESENTATION).menu(REPRESENTATION_NAME).isEnabled());
     }
 
     /**
@@ -306,7 +302,7 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     /**
      * Lock the representation container.
      */
-    private void lockRepresentationContainer() {
+    protected void lockRepresentationContainer() {
         // Activate the ReadOnlyPermission Authority on the representation
         // container to lock it
         ((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representationContainer)).activate();
