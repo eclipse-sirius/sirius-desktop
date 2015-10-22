@@ -317,9 +317,6 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
             if (createdEdge != null) {
                 createdEdges.add(createdEdge);
             }
-
-            // In case of edges toward edges
-            collectAllLinks(gmfDiagram, domain2NotationMap);
         }
         return createdEdges;
     }
@@ -350,13 +347,15 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         };
         while (it.hasNext()) {
             View child = it.next();
-            if (!domain2NotationMap.containsKey(child.getElement())) {
-                domain2NotationMap.put(child.getElement(), child);
+            EObject element = child.getElement();
+            if (!domain2NotationMap.containsKey(element)) {
+                domain2NotationMap.put(element, child);
             }
         }
         for (Edge edge : Iterables.filter(((Diagram) view).getEdges(), Edge.class)) {
-            if (!domain2NotationMap.containsKey(edge.getElement())) {
-                domain2NotationMap.put(edge.getElement(), edge);
+            EObject element = edge.getElement();
+            if (!domain2NotationMap.containsKey(element)) {
+                domain2NotationMap.put(element, edge);
             }
         }
         return result;
