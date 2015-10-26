@@ -28,7 +28,9 @@ import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
@@ -42,6 +44,8 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -110,6 +114,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         super.setUp();
         genericSetUp(MODEL_PATH, VSM_PATH, SESSION_PATH);
         TestsUtil.synchronizationWithUIThread();
+
+        changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
     }
 
     @Override
@@ -188,13 +194,15 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Test the initial expected layout.
+     * Test the initial expected layout (non auto-sized).
      */
     public void testHorizontalStackInitialLayout() {
         diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
-
+       
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, session.getStatus());
+        
         checkBounds(REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 831, 247));
         checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, 165, 211), new Rectangle(0, 0, 165, 211));
         checkBounds(CENTER_CLASS_NAME, new Rectangle(165, 0, 136, 211), new Rectangle(165, 0, 136, 211));
@@ -207,20 +215,22 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Test the initial expected layout.
+     * Test the initial expected layout (auto-sized).
      */
     public void testVerticalStackInitialLayout() {
         diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, session.getStatus());
+        
         checkBounds(REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 414));
         checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
-        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 40, -1, -1), new Rectangle(0, 91, 129, 92));
-        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 80, -1, -1), new Rectangle(0, 183, 129, 44));
-        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 120, -1, -1), new Rectangle(0, 227, 129, 41));
-        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 160, -1, -1), new Rectangle(0, 268, 129, 67));
-        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 200, -1, -1), new Rectangle(0, 335, 129, 41));
+        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 91, -1, -1), new Rectangle(0, 91, 129, 92));
+        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 183, -1, -1), new Rectangle(0, 183, 129, 44));
+        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 227, -1, -1), new Rectangle(0, 227, 129, 41));
+        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 268, -1, -1), new Rectangle(0, 268, 129, 67));
+        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 335, -1, -1), new Rectangle(0, 335, 129, 41));
 
         doTestInitialLayout(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
     }
@@ -230,6 +240,11 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) getEditPart(region);
 
         IFigure mainFigure = editPart.getMainFigure();
+        System.out.println(label);
+        System.out.println(getBounds((Node) editPart.getNotationView()));
+        System.out.println(mainFigure.getBounds());
+        System.out.println("---");
+
         assertEquals("Wrong GMF bounds for " + label, expectedGmfBounds, getBounds((Node) editPart.getNotationView()));
         assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
     }
@@ -498,6 +513,81 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         checkContentPanes(newClass2Name, true, true);
         checkContentPanes(newPkg3Name, true, true);
         checkContentPanes(newPkg4Name, false, false);
+    }
+
+    /**
+     * Test the region reorder from semantic changes.
+     */
+    public void testReorderHorizontalStack() {
+        diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        changeSemanticOrder();
+
+        // See initial indexes and bounds in testHorizontalStackInitialLayout
+        // and doTestInitialLayout
+
+        doTestReorderedLayout(ContainerLayout.HORIZONTAL_STACK, 4, 20, 2);
+
+        checkBounds(REGION_CONTAINER_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 831, 247));
+        checkBounds(LEFT_CLASS_NAME, new Rectangle(136, 0, 165, 211), new Rectangle(136, 0, 165, 211));
+        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, 136, 211), new Rectangle(0, 0, 136, 211));
+        checkBounds(RIGHT_CLASS_NAME, new Rectangle(301, 0, 130, 211), new Rectangle(301, 0, 130, 211));
+        checkBounds(LEFT_PKG_NAME, new Rectangle(543, 0, 122, 211), new Rectangle(543, 0, 122, 211));
+        checkBounds(CENTER_PKG_NAME, new Rectangle(665, 0, 156, 211), new Rectangle(665, 0, 156, 211));
+        checkBounds(RIGHT_PKG_NAME, new Rectangle(431, 0, 112, 211), new Rectangle(431, 0, 112, 211));
+    }
+
+    /**
+     * Test the region reorder from semantic changes.
+     */
+    public void testReorderVerticalStack() {
+        diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        changeSemanticOrder();
+
+        // See initial indexes and bounds in testVerticalStackInitialLayout and
+        // doTestInitialLayout
+
+        doTestReorderedLayout(ContainerLayout.VERTICAL_STACK, 5, 10, 1);
+
+        checkBounds(REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, 414));
+        checkBounds(LEFT_CLASS_NAME, new Rectangle(0, 92, -1, -1), new Rectangle(0, 91, 129, 92));
+        checkBounds(CENTER_CLASS_NAME, new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 129, 91));
+        checkBounds(RIGHT_CLASS_NAME, new Rectangle(0, 183, -1, -1), new Rectangle(0, 183, 129, 44));
+        checkBounds(LEFT_PKG_NAME, new Rectangle(0, 268, -1, -1), new Rectangle(0, 268, 129, 41));
+        checkBounds(CENTER_PKG_NAME, new Rectangle(0, 309, -1, -1), new Rectangle(0, 309, 129, 67));
+        checkBounds(RIGHT_PKG_NAME, new Rectangle(0, 227, -1, -1), new Rectangle(0, 227, 129, 41));
+    }
+
+    private void changeSemanticOrder() {
+        final EClass cl2 = (EClass) getDiagramElementsFromLabel(diagram, CENTER_CLASS_NAME).get(0).getTarget();
+        final EPackage pkg5 = (EPackage) getDiagramElementsFromLabel(diagram, RIGHT_PKG_NAME).get(0).getTarget();
+        final EPackage pkg = cl2.getEPackage();
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        domain.getCommandStack().execute(new RecordingCommand(domain) {
+            @Override
+            protected void doExecute() {
+                pkg.getEClassifiers().move(0, cl2);
+                pkg.getESubpackages().move(0, pkg5);
+            }
+        });
+        TestsUtil.synchronizationWithUIThread();
+    }
+
+    private void doTestReorderedLayout(ContainerLayout stackDirection, int regionContainerBorderSize, int regionContainerCorners, int regionBorderSize) {
+        int regionCorners = 0;
+
+        checkRegionContainer(REGION_CONTAINER_NAME, regionContainerBorderSize, LineStyle.SOLID_LITERAL, regionContainerCorners);
+        checkRegion(LEFT_CLASS_NAME, 1, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(CENTER_CLASS_NAME, 0, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners, getFirstRegionExpectedSpecificCorners(stackDirection));
+        checkRegion(RIGHT_CLASS_NAME, 2, regionBorderSize, LineStyle.DASH_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(LEFT_PKG_NAME, 4, regionBorderSize, LineStyle.DOT_LITERAL, regionCorners, regionContainerCorners);
+        checkRegion(CENTER_PKG_NAME, 5, regionBorderSize, LineStyle.DASH_DOT_LITERAL, regionCorners, regionContainerCorners, getLastRegionExpectedSpecificCorners(stackDirection));
+        checkRegion(RIGHT_PKG_NAME, 3, regionBorderSize, LineStyle.SOLID_LITERAL, regionCorners, regionContainerCorners);
     }
 
     private void changeElementName(String label, final String newName) {

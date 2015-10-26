@@ -61,7 +61,7 @@
                   <styles xmi:type="notation:DrawerStyle" xmi:id="_x1uZV0gKEeWO8ekbzmZQXg"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_x1uZUUgKEeWO8ekbzmZQXg" fontColor="2697711" fontName=".SF NS Text" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1uZUkgKEeWO8ekbzmZQXg" y="40"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1uZUkgKEeWO8ekbzmZQXg" y="91"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_x1uZWEgKEeWO8ekbzmZQXg" type="3009" element="_x0wwAEgKEeWO8ekbzmZQXg">
                 <children xmi:type="notation:Node" xmi:id="_x1vAYEgKEeWO8ekbzmZQXg" type="5004"/>
@@ -75,7 +75,7 @@
                   <styles xmi:type="notation:DrawerStyle" xmi:id="_x1vAZEgKEeWO8ekbzmZQXg"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_x1uZWUgKEeWO8ekbzmZQXg" fontColor="2697711" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1uZWkgKEeWO8ekbzmZQXg" y="80"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1uZWkgKEeWO8ekbzmZQXg" y="183"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_x1wOhEgKEeWO8ekbzmZQXg" type="3008" element="_x1H8YEgKEeWO8ekbzmZQXg">
                 <children xmi:type="notation:Node" xmi:id="_x1wOh0gKEeWO8ekbzmZQXg" type="5005"/>
@@ -107,7 +107,7 @@
                   <styles xmi:type="notation:DrawerStyle" xmi:id="_x1w1k0gKEeWO8ekbzmZQXg"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_x1wOhUgKEeWO8ekbzmZQXg" fontColor="2697711" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1wOhkgKEeWO8ekbzmZQXg" y="120"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1wOhkgKEeWO8ekbzmZQXg" y="227"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_x1w1lEgKEeWO8ekbzmZQXg" type="3008" element="_x1JKgEgKEeWO8ekbzmZQXg">
                 <children xmi:type="notation:Node" xmi:id="_x1w1l0gKEeWO8ekbzmZQXg" type="5005"/>
@@ -128,7 +128,7 @@
                   <styles xmi:type="notation:DrawerStyle" xmi:id="_x1xcoEgKEeWO8ekbzmZQXg"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_x1w1lUgKEeWO8ekbzmZQXg" fontColor="2697711" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1w1lkgKEeWO8ekbzmZQXg" y="160"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1w1lkgKEeWO8ekbzmZQXg" y="268"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_x1xcoUgKEeWO8ekbzmZQXg" type="3008" element="_x1K_sEgKEeWO8ekbzmZQXg">
                 <children xmi:type="notation:Node" xmi:id="_x1xcpEgKEeWO8ekbzmZQXg" type="5005"/>
@@ -149,7 +149,7 @@
                   <styles xmi:type="notation:DrawerStyle" xmi:id="_x1xcqEgKEeWO8ekbzmZQXg"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_x1xcokgKEeWO8ekbzmZQXg" fontColor="4108284" fontName=".Helvetica Neue DeskInterface" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1xco0gKEeWO8ekbzmZQXg" y="200"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x1xco0gKEeWO8ekbzmZQXg" y="335"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_x1rWBUgKEeWO8ekbzmZQXg"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_x1rWBkgKEeWO8ekbzmZQXg"/>
@@ -216,7 +216,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']"/>
-        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_x0tssEgKEeWO8ekbzmZQXg" name="Left_class1" width="15" height="5">
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_x0tssEgKEeWO8ekbzmZQXg" name="Left_class1" width="-1" height="-1">
           <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_class1"/>
           <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_class1"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_x0uTwEgKEeWO8ekbzmZQXg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" backgroundStyle="Liquid" backgroundColor="122,181,155" foregroundColor="122,181,155">
@@ -256,7 +256,7 @@
             <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']"/>
           </ownedElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_x0u60EgKEeWO8ekbzmZQXg" name="Center_class2" width="15" height="5">
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_x0u60EgKEeWO8ekbzmZQXg" name="Center_class2" width="-1" height="-1">
           <target xmi:type="ecore:EClass" href="My.ecore#//P1/Center_class2"/>
           <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Center_class2"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="__i6UMHfwEeWQo7JxcqP_Mw" labelColor="239,41,41" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" backgroundStyle="Liquid" backgroundColor="130,203,103" foregroundColor="130,203,103">
@@ -313,7 +313,7 @@
             <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']"/>
           </ownedElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1H8YEgKEeWO8ekbzmZQXg" name="Left_p3" width="15" height="5">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1H8YEgKEeWO8ekbzmZQXg" name="Left_p3" width="-1" height="-1">
           <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
           <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_x1IjcEgKEeWO8ekbzmZQXg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" borderLineStyle="dot" backgroundStyle="Liquid" backgroundColor="138,226,52" foregroundColor="138,226,52">
@@ -337,7 +337,7 @@
             <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']"/>
           </ownedDiagramElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1JKgEgKEeWO8ekbzmZQXg" name="Center_p4" width="15" height="5">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1JKgEgKEeWO8ekbzmZQXg" name="Center_p4" width="-1" height="-1">
           <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
           <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_x1KYoEgKEeWO8ekbzmZQXg" labelColor="239,41,41" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" borderLineStyle="dash_dot" backgroundStyle="Liquid" backgroundColor="195,229,65" foregroundColor="195,229,65">
@@ -353,7 +353,7 @@
             <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']"/>
           </ownedDiagramElements>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1K_sEgKEeWO8ekbzmZQXg" name="Right_p5" width="15" height="5">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1K_sEgKEeWO8ekbzmZQXg" name="Right_p5" width="-1" height="-1">
           <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
           <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_x1MN0EgKEeWO8ekbzmZQXg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="252,175,62" backgroundColor="252,233,79" foregroundColor="252,233,79">
@@ -378,7 +378,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']"/>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1csgEgKEeWO8ekbzmZQXg" name="aaa" visible="false" width="15" height="5">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1csgEgKEeWO8ekbzmZQXg" name="aaa" visible="false" width="-1" height="-1">
           <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
           <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_x1d6oEgKEeWO8ekbzmZQXg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
@@ -386,7 +386,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']"/>
         </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1ehsEgKEeWO8ekbzmZQXg" name="aaaa" visible="false" width="15" height="5">
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_x1ehsEgKEeWO8ekbzmZQXg" name="aaaa" visible="false" width="-1" height="-1">
           <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
           <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_x1fv0EgKEeWO8ekbzmZQXg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">

@@ -19,12 +19,14 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
@@ -36,6 +38,7 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -48,13 +51,20 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.LabelBorderStyleIds;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 import org.eclipse.ui.IEditorPart;
 
@@ -499,6 +509,13 @@ public final class GMFHelper {
                     if (bounds.height == -1) {
                         bounds.height = figureBounds.height;
                     }
+                } else {
+                    // Diagram editor might be initializing and there is no edit
+                    // part yet. For regions we might retrieve the previous
+                    // known constraints in the GMF model by looking into the
+                    // GMF location of the next region as they were computed
+                    // from the location and size of the current region.
+                    lookForNextRegionLocation(bounds, node);
                 }
                 // CHECKSTYLE:ON
             } else {
@@ -527,6 +544,38 @@ public final class GMFHelper {
             }
             if (bounds.height == -1) {
                 bounds.height = defaultSize.height;
+            }
+        }
+    }
+
+    private static void lookForNextRegionLocation(Rectangle bounds, Node node) {
+        EObject element = node.getElement();
+        if (element instanceof DDiagramElementContainer && node.eContainer() instanceof Node) {
+            DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+            DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery(ddec);
+            boolean isRegion = query.isRegion();
+            EList children = ((Node) node.eContainer()).getChildren();
+            int nextIndex = children.indexOf(node) + 1;
+            if (isRegion && nextIndex != 0 && nextIndex < children.size() && children.get(nextIndex) instanceof Node) {
+                Node nextNode = (Node) children.get(nextIndex);
+                int visualID = SiriusVisualIDRegistry.getVisualID(nextNode.getType());
+                if (DNodeContainer2EditPart.VISUAL_ID == visualID || DNodeListEditPart.VISUAL_ID == visualID || DNodeList2EditPart.VISUAL_ID == visualID) {
+                    // DNodeContainerEditPart.VISUAL_ID == visualID is not
+                    // checked as a region cannot be a DNodeContainerEditPart as
+                    // it is directly contained by the diagram part.
+                    LayoutConstraint layoutConstraint = nextNode.getLayoutConstraint();
+                    if (layoutConstraint instanceof Location) {
+                        Location nextLocation = (Location) layoutConstraint;
+                        // Update only the parent stack direction if some layout
+                        // has already been done.
+                        if (bounds.width == -1 && query.isRegionInHorizontalStack() && nextLocation.getX() != 0) {
+                            bounds.width = nextLocation.getX() - bounds.x;
+                        }
+                        if (bounds.height == -1 && query.isRegionInVerticalStack() && nextLocation.getY() != 0) {
+                            bounds.height = nextLocation.getY() - bounds.y;
+                        }
+                    }
+                }
             }
         }
     }
@@ -584,11 +633,24 @@ public final class GMFHelper {
      */
     public static Option<GraphicalEditPart> getGraphicalEditPart(View view) {
         Option<GraphicalEditPart> result = Options.newNone();
+        DiagramEditor diagramEditor = null;
         if (view != null) {
             final IEditorPart editor = EclipseUIUtil.getActiveEditor();
-            if (editor instanceof DiagramEditor) {
-                return getGraphicalEditPart(view, (DiagramEditor) editor);
+            Diagram diagram = view.getDiagram();
+            if (editor instanceof DiagramEditor && ((DiagramEditor) editor).getDiagram() == diagram) {
+                diagramEditor = (DiagramEditor) editor;
+            } else if (diagram.getElement() instanceof DDiagram) {
+                DDiagram diag = (DDiagram) diagram.getElement();
+                for (IEditingSession uiSession : SessionUIManager.INSTANCE.getUISessions()) {
+                    DialectEditor dialectEditor = uiSession.getEditor(diag);
+                    if (dialectEditor instanceof DiagramEditor && ((DiagramEditor) editor).getDiagram() != diagram) {
+                        diagramEditor = (DiagramEditor) dialectEditor;
+                    }
+                }
             }
+        }
+        if (diagramEditor != null) {
+            return getGraphicalEditPart(view, diagramEditor);
         }
         return result;
     }
