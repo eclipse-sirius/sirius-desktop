@@ -1320,7 +1320,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     private Composite createParentComposite(Composite parent) {
-        this.diagramMenuUpdater = new DiagramMenuUpdater(this);
         Composite composite = new Composite(parent, SWT.NONE);
         composite.setLayoutData(new GridData(GridData.FILL_BOTH));
         GridLayout layout = new GridLayout(1, true);
