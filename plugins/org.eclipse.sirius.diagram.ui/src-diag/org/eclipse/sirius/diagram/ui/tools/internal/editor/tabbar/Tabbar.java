@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
@@ -105,9 +106,12 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
     private void setPermissionAuthorityListener() {
         if (part instanceof DDiagramEditor) {
             DDiagramEditor editor = (DDiagramEditor) part;
-            permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(editor.getSession().getSessionResource().getResourceSet());
-            if (permissionAuthority != null) {
-                permissionAuthority.addAuthorityListener(this);
+            Session session = editor.getSession();
+            if (session != null) {
+                permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(session.getSessionResource().getResourceSet());
+                if (permissionAuthority != null) {
+                    permissionAuthority.addAuthorityListener(this);
+                }
             }
         }
     }
@@ -146,12 +150,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         return canBeDynamic;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart,
-     *      org.eclipse.jface.viewers.ISelection)
-     */
+    @Override
     public void selectionChanged(IWorkbenchPart partSelected, ISelection selection) {
         // nothing to do here. Each item contribution is now responsible for
         // refresh himself when selection change.
@@ -197,6 +196,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
 
     private void updateAllItems() {
         EclipseUIUtil.displayAsyncExec(new Runnable() {
+            @Override
             public void run() {
                 List<IContributionItem> items = Arrays.asList(manager.getItems());
                 for (IContributionItem item : items) {
@@ -209,31 +209,23 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         });
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void notifyIsLocked(EObject instance) {
         updateAllItems();
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void notifyIsReleased(EObject instance) {
         updateAllItems();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void notifyIsLocked(Collection<EObject> instances) {
         updateAllItems();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void notifyIsReleased(Collection<EObject> instances) {
         updateAllItems();
     }

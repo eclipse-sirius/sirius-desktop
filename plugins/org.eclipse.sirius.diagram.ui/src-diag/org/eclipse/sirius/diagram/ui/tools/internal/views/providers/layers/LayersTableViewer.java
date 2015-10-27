@@ -89,7 +89,7 @@ public final class LayersTableViewer {
         tableViewer.setContentProvider(new LayersContentProvider(adapter, sessionListener, diagramPart));
         tableViewer.setLabelProvider(new LayersLabelProvider(diagramPart));
 
-        if (diagramPart != null) {
+        if (diagramPart != null && diagramPart.getDiagram() != null) {
             final EObject eObj = diagramPart.getDiagram().getElement();
             if (eObj instanceof DDiagram) {
                 final DDiagram diagram = (DDiagram) eObj;

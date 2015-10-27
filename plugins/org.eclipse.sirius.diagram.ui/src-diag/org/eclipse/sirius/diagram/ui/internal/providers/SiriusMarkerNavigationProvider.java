@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.emf.ui.providers.marker.AbstractModelMarkerNavigationProvider;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -49,8 +50,12 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             return;
         }
         DiagramEditor editor = (DiagramEditor) getEditor();
-        Map editPartRegistry = editor.getDiagramGraphicalViewer().getEditPartRegistry();
-        EObject targetView = editor.getDiagram().eResource().getEObject(elementId);
+        Map<?, ?> editPartRegistry = editor.getDiagramGraphicalViewer().getEditPartRegistry();
+        Diagram diagram = editor.getDiagram();
+        if (diagram == null) {
+            return;
+        }
+        EObject targetView = diagram.eResource().getEObject(elementId);
         if (targetView == null) {
             return;
         }

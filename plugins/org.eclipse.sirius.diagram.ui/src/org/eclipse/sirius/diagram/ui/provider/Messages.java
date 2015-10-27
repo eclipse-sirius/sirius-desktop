@@ -240,6 +240,9 @@ public final class Messages {
     public static String CustomTreeSelectionDialog_uncheckAllButtonTooltip;
 
     @TranslatableMessage
+    public static String DDiagramEditorImpl_editorToBeClosedAndReopenedSinceContentIsNotAccessible;
+
+    @TranslatableMessage
     public static String DDiagramEditorImpl_cdoServerConnectionPbMsg;
 
     @TranslatableMessage

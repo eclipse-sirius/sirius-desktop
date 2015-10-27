@@ -58,11 +58,16 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
@@ -230,6 +235,31 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     @Override
     public void createPartControl(final Composite parent) {
+        // Display the status message to inform user about reason why the
+        // session opening failed
+        if (session == null && getEditorInput() instanceof SessionEditorInput) {
+            SessionEditorInput sessionEditorInput = (SessionEditorInput) getEditorInput();
+            IStatus status = sessionEditorInput.getStatus();
+            if (status.getSeverity() >= IStatus.ERROR) {
+                Composite composite = new Composite(parent, SWT.NO_FOCUS);
+                control = composite;
+                GridLayout gridLayout = new GridLayout();
+                composite.setLayout(gridLayout);
+                StyledText widget = new StyledText(composite, SWT.NO_FOCUS | SWT.READ_ONLY | SWT.MULTI | SWT.WRAP);
+                widget.setLineAlignment(0, widget.getLineCount(), SWT.CENTER);
+                widget.setAlignment(SWT.CENTER);
+                String message = MessageFormat.format(org.eclipse.sirius.table.metamodel.table.provider.Messages.AbstractDTableEditor_editorToBeClosedAndReopenedSinceContentIsNotAccessible,
+                        status.getMessage());
+                widget.setText(message);
+                GridData layoutData = new GridData();
+                layoutData.grabExcessHorizontalSpace = true;
+                layoutData.grabExcessVerticalSpace = true;
+                layoutData.horizontalAlignment = SWT.CENTER;
+                layoutData.verticalAlignment = SWT.CENTER;
+                widget.setLayoutData(layoutData);
+                return;
+            }
+        }
         super.createPartControl(parent);
 
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CREATE_TABLE_KEY);
@@ -290,8 +320,14 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     @Override
     public Control getControl() {
-        TreeViewer treeViewer = this.getTableViewer().getTreeViewer();
-        return treeViewer.getTree();
+        if (control == null) {
+            AbstractDTableViewerManager tableViewer = getTableViewer();
+            if (tableViewer != null) {
+                TreeViewer treeViewer = tableViewer.getTreeViewer();
+                control = treeViewer.getTree();
+            }
+        }
+        return control;
     }
 
     @Override

@@ -27,6 +27,9 @@ public final class Messages {
     // CHECKSTYLE:OFF
 
     @TranslatableMessage
+    public static String DTreeEditor_editorToBeClosedAndReopenedSinceContentIsNotAccessible;
+
+    @TranslatableMessage
     public static String DTreeEditor_treeModelUnsaved;
 
     @TranslatableMessage
@@ -88,6 +91,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String TreeDialectUIServices_errorOpeningEditor;
+
+    @TranslatableMessage
+    public static String TreeDialectUIServices_errorClosingEditor;
 
     @TranslatableMessage
     public static String TreeDialectUIServices_newTree;

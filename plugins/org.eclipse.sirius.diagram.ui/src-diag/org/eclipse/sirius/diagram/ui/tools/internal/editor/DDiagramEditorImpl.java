@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -29,6 +30,8 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -47,12 +50,15 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.KeyHandler;
 import org.eclipse.gef.KeyStroke;
+import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.MouseWheelHandler;
 import org.eclipse.gef.MouseWheelZoomHandler;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.commands.CommandStack;
 import org.eclipse.gef.dnd.AbstractTransferDropTargetListener;
 import org.eclipse.gef.dnd.TemplateTransferDragSourceListener;
+import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.ui.actions.ActionRegistry;
@@ -68,6 +74,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
@@ -78,6 +85,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.text.AbstractInformationControlManager;
 import org.eclipse.jface.text.IDocument;
@@ -413,18 +421,18 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             this.session = ((SessionEditorInput) correctedInput).getSession();
         }
 
-        final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
-
-        /*
-         * we are during eclipse boot, we are not trying to close the editor
-         */
-        if (sessions.isEmpty() && (!isClosing)) {
-            SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
-        }
-        isClosing = false;
-
         try {
             if (getSession() != null) {
+                /*
+                 * we are during eclipse boot, we are not trying to close the
+                 * editor
+                 */
+                Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
+                if (sessions.isEmpty() && (!isClosing)) {
+                    SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
+                }
+                isClosing = false;
+
                 // Initialize the undo context
                 initUndoContext();
                 // Enable GMF notation model canonical refresh in pre-commit
@@ -487,27 +495,33 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     public void createPartControl(Composite parent) {
         super.createPartControl(parent);
-
-        // Initialize drag'n drop listener from palette
-        // PaletteViewer paletteViewer =
-        // getPaletteViewerProvider().getEditDomain().getPaletteViewer();
-        // paletteTransferDragSourceListener = new
-        // TemplateTransferDragSourceListener(paletteViewer);
-        // paletteViewer.addDragSourceListener(paletteTransferDragSourceListener);
-        //
-        // paletteTransferDropTargetListener = new
-        // ViewpointPaletteToolDropTargetListener(getGraphicalViewer());
-        // getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
-
-        tabbarPostCommitListener = new TabbarRefresher(getEditingDomain());
-        visibilityPostCommitListener = new VisibilityPostCommitListener(getDiagramEditPart());
-        if (isHeaderSectionEnabled()) {
-            diagramHeaderPostCommitListener = new DiagramHeaderPostCommitListener(getEditingDomain(), getDiagramHeader());
+        // Display the status message to inform user about reason why the
+        // session opening failed
+        if (session == null && getEditorInput() instanceof SessionEditorInput) {
+            SessionEditorInput sessionEditorInput = (SessionEditorInput) getEditorInput();
+            IStatus status = sessionEditorInput.getStatus();
+            if (status.getSeverity() >= IStatus.ERROR) {
+                RootEditPart rootEditPart = getGraphicalViewer().getRootEditPart();
+                if (rootEditPart instanceof LayerManager) {
+                    LayerManager layerManager = (LayerManager) rootEditPart;
+                    IFigure layer = layerManager.getLayer(LayerConstants.PRINTABLE_LAYERS);
+                    String message = MessageFormat.format(Messages.DDiagramEditorImpl_editorToBeClosedAndReopenedSinceContentIsNotAccessible, status.getMessage());
+                    layer.add(new Label(message));
+                }
+                return;
+            }
         }
 
-        // Update palette : should be hidden if diagram is not editable
-        if (!getPermissionAuthority().canEditInstance(getRepresentation())) {
-            notify(REPRESENTATION_EDITION_PERMISSION_DENIED);
+        if (getEditingDomain() != null) {
+            tabbarPostCommitListener = new TabbarRefresher(getEditingDomain());
+            visibilityPostCommitListener = new VisibilityPostCommitListener(getDiagramEditPart());
+            if (isHeaderSectionEnabled()) {
+                diagramHeaderPostCommitListener = new DiagramHeaderPostCommitListener(getEditingDomain(), getDiagramHeader());
+            }
+            // Update palette : should be hidden if diagram is not editable
+            if (!getPermissionAuthority().canEditInstance(getRepresentation())) {
+                notify(REPRESENTATION_EDITION_PERMISSION_DENIED);
+            }
         }
     }
 
@@ -551,14 +565,17 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     private void initPermissionAuthority() {
         // This IPermissionAuthority is added only on shared
         // representations.
-        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getDiagram().getElement());
-        dRepresentationLockStatusListener = new DRepresentationPermissionStatusListener((DSemanticDiagram) getDiagram().getElement(), this);
-        permissionAuthority.addAuthorityListener(dRepresentationLockStatusListener);
+        Diagram diagram = getDiagram();
+        if (diagram != null) {
+            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram.getElement());
+            dRepresentationLockStatusListener = new DRepresentationPermissionStatusListener((DSemanticDiagram) diagram.getElement(), this);
+            permissionAuthority.addAuthorityListener(dRepresentationLockStatusListener);
 
-        if (!permissionAuthority.canEditInstance(this.getRepresentation())) {
-            notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_DENIED);
-        } else if (LockStatus.LOCKED_BY_ME.equals(permissionAuthority.getLockStatus(getDiagram().getElement()))) {
-            notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY);
+            if (!permissionAuthority.canEditInstance(this.getRepresentation())) {
+                notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_DENIED);
+            } else if (LockStatus.LOCKED_BY_ME.equals(permissionAuthority.getLockStatus(getDiagram().getElement()))) {
+                notify(SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY);
+            }
         }
     }
 
@@ -575,7 +592,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     protected KeyHandler getKeyHandler() {
-        if (keyHandler == null) {
+        if (keyHandler == null && session != null) {
             keyHandler = super.getKeyHandler();
 
             /* map our custom delete action */
@@ -627,11 +644,12 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     private void configureCommandFactoryProviders() {
-        /*
-         * We add a callback for UI stuffs
-         */
-        IDiagramCommandFactory diagramCommandFactory = emfCommandFactoryProvider.getCommandFactory(getEditingDomain());
-        diagramCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
+        /* We add a callback for UI stuffs */
+        TransactionalEditingDomain domain = getEditingDomain();
+        if (domain != null) {
+            IDiagramCommandFactory diagramCommandFactory = emfCommandFactoryProvider.getCommandFactory(domain);
+            diagramCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
+        }
     }
 
     /**
@@ -642,7 +660,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      */
     @Override
     protected TransactionalEditingDomain createEditingDomain() {
-        return getSession().getTransactionalEditingDomain();
+        if (getSession() != null) {
+            return getSession().getTransactionalEditingDomain();
+        }
+        return null;
     }
 
     /**
@@ -694,8 +715,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (getSession() != null) {
             getSession().removeListener(this);
         }
-        selectElementsListener.dispose();
-        selectElementsListener = null;
+        if (selectElementsListener != null) {
+            selectElementsListener.dispose();
+            selectElementsListener = null;
+        }
 
         if (getGraphicalViewer() != null) {
             getGraphicalViewer().removeDropTargetListener(transferDropTargetListener);
@@ -745,6 +768,13 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         stopDiagramEventBrokerListener(getEditingDomain());
     }
 
+    @Override
+    public void persistViewerSettings() {
+        if (getDiagram() != null) {
+            super.persistViewerSettings();
+        }
+    }
+
     /**
      * Dispose all graphical listeners. This method can be called as soon as the
      * close of the editor is in progress. This avoids that these listeners
@@ -777,16 +807,23 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     protected void configureGraphicalViewer() {
-        super.configureGraphicalViewer();
+        if (getDiagram() != null) {
+            super.configureGraphicalViewer();
 
-        /* register our menu provider to provide our custom delete action */
-        final DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this, getDiagramGraphicalViewer());
-        getDiagramGraphicalViewer().setContextMenu(provider);
-        getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
+            /* register our menu provider to provide our custom delete action */
+            final DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(this, getDiagramGraphicalViewer());
+            getDiagramGraphicalViewer().setContextMenu(provider);
+            getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU, provider, getDiagramGraphicalViewer());
 
-        getOperationHistory().addOperationHistoryListener(operationHistoryListener);
-        // add the wheel mouse to zoom
-        this.getGraphicalViewer().setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.CTRL), MouseWheelZoomHandler.SINGLETON);
+            getOperationHistory().addOperationHistoryListener(operationHistoryListener);
+            // add the wheel mouse to zoom
+            this.getGraphicalViewer().setProperty(MouseWheelHandler.KeyGenerator.getKey(SWT.CTRL), MouseWheelZoomHandler.SINGLETON);
+        } else {
+            workspaceViewerPreferenceStore = new PreferenceStore();
+            if (getDiagramGraphicalViewer() instanceof DiagramGraphicalViewer) {
+                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).hookWorkspacePreferenceStore(getWorkspaceViewerPreferenceStore());
+            }
+        }
     }
 
     private DiagramOutlinePage initOutline() {
@@ -879,12 +916,12 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         return result;
                     }
                 }, };
-        DiagramOutlinePage outline;
+        DiagramOutlinePage outline = null;
         if (isOldUIEnabled()) {
             outline = new DiagramOutlineWithBookPages(this.getDiagramEditPart().getModel(), getGraphicalViewer(), outlinePopupMenuActions);
         } else {
-            outline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(),
-                    outlinePopupMenuActions);
+            outline = new DiagramOutlinePage(getDiagramEditPart() != null ? getDiagramEditPart().getModel() : null, new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(),
+                    getGraphicalViewer(), outlinePopupMenuActions);
         }
         outline.setDiagramWorkbenchPart(this);
         return outline;
@@ -896,37 +933,40 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      */
     @Override
     public void setFocus() {
-        super.setFocus();
-
-        final Iterator<EditPart> iterParts = getDiagramGraphicalViewer().getRootEditPart().getChildren().iterator();
-        while (iterParts.hasNext()) {
-            final EditPart editPart = iterParts.next();
-            if (editPart instanceof AbstractDDiagramEditPart && ((GraphicalEditPart) editPart).resolveSemanticElement() instanceof DSemanticDiagram) {
-                final DSemanticDiagram semanticElement = (DSemanticDiagram) ((GraphicalEditPart) editPart).resolveSemanticElement();
-                if (semanticElement == null || semanticElement.eResource() == null || semanticElement.getTarget() == null || semanticElement.getTarget().eResource() == null) {
-                    // The session may not be accessible if the session is using
-                    // CDOResources and the server is down
-                    if (SessionManager.INSTANCE.getSession(semanticElement.getTarget()) != null) {
-                        /*
-                         * The element has been deleted, we should close the
-                         * editor
-                         */
-                        myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
-                        close(false);
+        if (getDiagram() != null) {
+            super.setFocus();
+            final Iterator<EditPart> iterParts = getDiagramGraphicalViewer().getRootEditPart().getChildren().iterator();
+            while (iterParts.hasNext()) {
+                final EditPart editPart = iterParts.next();
+                if (editPart instanceof AbstractDDiagramEditPart && ((GraphicalEditPart) editPart).resolveSemanticElement() instanceof DSemanticDiagram) {
+                    final DSemanticDiagram semanticElement = (DSemanticDiagram) ((GraphicalEditPart) editPart).resolveSemanticElement();
+                    if (semanticElement == null || semanticElement.eResource() == null || semanticElement.getTarget() == null || semanticElement.getTarget().eResource() == null) {
+                        // The session may not be accessible if the session is
+                        // using
+                        // CDOResources and the server is down
+                        if (SessionManager.INSTANCE.getSession(semanticElement.getTarget()) != null) {
+                            /*
+                             * The element has been deleted, we should close the
+                             * editor
+                             */
+                            myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
+                            close(false);
+                        }
+                        return;
                     }
-                    return;
                 }
             }
-        }
 
-        if (getOperationHistory() != null) {
-            // See the javadoc of addOperationHistoryListener. If the listener
-            // is already registered, the call has no effect.
-            // so we can safely add the listener here.
-            getOperationHistory().addOperationHistoryListener(this.operationHistoryListener);
-        }
+            if (getOperationHistory() != null) {
+                // See the javadoc of addOperationHistoryListener. If the
+                // listener
+                // is already registered, the call has no effect.
+                // so we can safely add the listener here.
+                getOperationHistory().addOperationHistoryListener(this.operationHistoryListener);
+            }
 
-        setEclipseWindowTitle();
+            setEclipseWindowTitle();
+        }
     }
 
     private void setEclipseWindowTitle() {
@@ -1068,6 +1108,14 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             return DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain());
         }
         return super.getDocumentProvider(input);
+    }
+
+    @Override
+    public DiagramEditPart getDiagramEditPart() {
+        if (getGraphicalViewer() == null) {
+            return null;
+        }
+        return super.getDiagramEditPart();
     }
 
     @Override
@@ -1220,7 +1268,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         } else if (type == IDiagramWorkbenchPart.class) {
             adapter = this;
         }
-        return adapter != null ? adapter : super.getAdapter(type);
+        return (adapter != null || session == null) ? adapter : super.getAdapter(type);
     }
 
     @Override
@@ -1245,7 +1293,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     protected void createGraphicalViewer(final Composite parent) {
         this.diagramMenuUpdater = new DiagramMenuUpdater(this);
         parentComposite = createParentComposite(parent);
-        if (!isOldUIEnabled()) {
+        if (!isOldUIEnabled() && session != null) {
             setTabbar(new Tabbar(parentComposite, this));
         }
         createHeaderSection(parentComposite);
@@ -1358,31 +1406,33 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     protected void initializeGraphicalViewer() {
+        if (getDiagram() != null) {
+            /*
+             * Refresh diagram if needed. Must be done before that
+             */
+            if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
+                launchRefresh(true);
+            }
 
-        /*
-         * Refresh diagram if needed. Must be done before that
-         */
-        if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
-            launchRefresh(true);
-        }
+            super.initializeGraphicalViewer();
 
-        super.initializeGraphicalViewer();
+            // After EditPart instantiation call arrange command on views marked
+            // as
+            // to be arranged
+            final DiagramEditPart diagramEditPart = getDiagramEditPart();
+            if (diagramEditPart != null) {
+                SiriusCanonicalLayoutHandler.launchArrangeCommand(diagramEditPart);
+            }
 
-        // After EditPart instantiation call arrange command on views marked as
-        // to be arranged
-        final DiagramEditPart diagramEditPart = getDiagramEditPart();
-        if (diagramEditPart != null) {
-            SiriusCanonicalLayoutHandler.launchArrangeCommand(diagramEditPart);
-        }
+            transferDropTargetListener = new DDiagramEditorTransferDropTargetListener(getGraphicalViewer(), LocalSelectionTransfer.getTransfer());
 
-        transferDropTargetListener = new DDiagramEditorTransferDropTargetListener(getGraphicalViewer(), LocalSelectionTransfer.getTransfer());
+            getGraphicalViewer().addDropTargetListener(transferDropTargetListener);
 
-        getGraphicalViewer().addDropTargetListener(transferDropTargetListener);
-
-        // Initialize and rebuild the header composite
-        if (getDiagramHeader() != null) {
-            getDiagramHeader().setGraphicalViewer((ScrollingGraphicalViewer) getGraphicalViewer());
-            getDiagramHeader().rebuildHeaderSection();
+            // Initialize and rebuild the header composite
+            if (getDiagramHeader() != null) {
+                getDiagramHeader().setGraphicalViewer((ScrollingGraphicalViewer) getGraphicalViewer());
+                getDiagramHeader().rebuildHeaderSection();
+            }
         }
     }
 
@@ -1632,7 +1682,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // In case the input is based on the DDiagram, we need to updated it to
         // use the GMF diagram
         IEditorInput updatedEditorInput = input;
-        if (input instanceof URIEditorInput) {
+        if (session != null && input instanceof URIEditorInput) {
             URI uri = ((URIEditorInput) input).getURI();
             if (uri != null && !StringUtil.isEmpty(uri.fragment())) {
                 EObject eObject = session.getTransactionalEditingDomain().getResourceSet().getEObject(uri, false);

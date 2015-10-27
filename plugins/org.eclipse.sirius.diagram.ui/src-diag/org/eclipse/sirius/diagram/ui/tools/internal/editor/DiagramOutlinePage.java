@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2013 IBM Corporation and others.
+ * Copyright (c) 2002, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -482,23 +482,25 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
     protected void initializeOverview() {
         final LightweightSystem lws = new LightweightSystem(overview);
         final RootEditPart rep = graphicalViewer.getRootEditPart();
-        final DiagramRootEditPart root = (DiagramRootEditPart) rep;
-        thumbnail = new ScrollableThumbnail((Viewport) root.getFigure());
-        thumbnail.setSource(root.getLayer(LayerConstants.SCALABLE_LAYERS));
+        if (rep instanceof DiagramRootEditPart) {
+            final DiagramRootEditPart root = (DiagramRootEditPart) rep;
+            thumbnail = new ScrollableThumbnail((Viewport) root.getFigure());
+            thumbnail.setSource(root.getLayer(LayerConstants.SCALABLE_LAYERS));
 
-        lws.setContents(thumbnail);
-        disposeListener = new DisposeListener() {
+            lws.setContents(thumbnail);
+            disposeListener = new DisposeListener() {
 
-            @Override
-            public void widgetDisposed(final DisposeEvent e) {
-                if (thumbnail != null) {
-                    thumbnail.deactivate();
-                    thumbnail = null;
+                @Override
+                public void widgetDisposed(final DisposeEvent e) {
+                    if (thumbnail != null) {
+                        thumbnail.deactivate();
+                        thumbnail = null;
+                    }
                 }
-            }
-        };
-        getEditor().addDisposeListener(disposeListener);
-        this.overviewInitialized = true;
+            };
+            getEditor().addDisposeListener(disposeListener);
+            this.overviewInitialized = true;
+        }
     }
 
     /**

@@ -298,7 +298,10 @@ public class DiagramDialectUIServices implements DialectUIServices {
         boolean result = false;
         if (editorPart instanceof DiagramDocumentEditor) {
             try {
-                ((DiagramDocumentEditor) editorPart).getDiagramEditPart().deactivate();
+                DiagramEditPart diagramEditPart = ((DiagramDocumentEditor) editorPart).getDiagramEditPart();
+                if (diagramEditPart != null) {
+                    diagramEditPart.deactivate();
+                }
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
@@ -310,9 +313,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
-                if (DiagramUIPlugin.getPlugin().isDebugging()) {
-                    DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DiagramDialectUIServices_diagramEditorClosingError));
-                }
+                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, Messages.DiagramDialectUIServices_diagramEditorClosingError, e));
             }
 
             // We suppose it is closed.

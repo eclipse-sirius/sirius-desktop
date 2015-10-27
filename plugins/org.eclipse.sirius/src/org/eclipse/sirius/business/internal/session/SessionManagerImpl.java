@@ -252,14 +252,12 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             try {
                 session = SessionFactory.INSTANCE.createSession(sessionModelURI, monitor);
             } catch (CoreException e) {
-                SiriusPlugin.getDefault().getLog().log(
-                        new Status(IStatus.ERROR, SiriusPlugin.ID, MessageFormat.format(Messages.SessionManagerImpl_representationsFileLoadingErrorMsg, sessionModelURI.toPlatformString(true)), e));
                 if (optionalResource.some()) {
                     MarkerUtil.addMarkerFor(optionalResource.get(),
                             MessageFormat.format(Messages.SessionManagerImpl_representationsFileLoadingSeeErrorLogMsg, e.getCause() != null ? e.getCause().getMessage() : e.getMessage()),
                             IMarker.SEVERITY_ERROR, MarkerRuntimeLogger.MARKER_TYPE);
                 }
-                return null;
+                throw new RuntimeException(e.getLocalizedMessage(), e);
             }
         }
         return session;

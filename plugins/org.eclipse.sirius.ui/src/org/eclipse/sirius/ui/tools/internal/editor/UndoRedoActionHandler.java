@@ -96,7 +96,7 @@ public class UndoRedoActionHandler extends Action {
      */
     protected IUndoContext getUndoContext() {
         if (undoContext == null) {
-            if (domain.getCommandStack() instanceof IWorkspaceCommandStack) {
+            if (domain != null && domain.getCommandStack() instanceof IWorkspaceCommandStack) {
                 // We use the command stack to get the default Undo Context
                 undoContext = ((IWorkspaceCommandStack) domain.getCommandStack()).getDefaultUndoContext();
             }

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.tools.internal.editor;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
@@ -49,11 +51,16 @@ import org.eclipse.sirius.tree.ui.tools.internal.commands.EMFCommandFactoryUI;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -188,6 +195,30 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
     @Override
     public void createPartControl(final Composite parent) {
+        // Display the status message to inform user about reason why the
+        // session opening failed
+        if (session == null && getEditorInput() instanceof SessionEditorInput) {
+            SessionEditorInput sessionEditorInput = (SessionEditorInput) getEditorInput();
+            IStatus status = sessionEditorInput.getStatus();
+            if (status.getSeverity() >= IStatus.ERROR) {
+                Composite composite = new Composite(parent, SWT.NO_FOCUS);
+                control = composite;
+                GridLayout gridLayout = new GridLayout();
+                composite.setLayout(gridLayout);
+                StyledText widget = new StyledText(composite, SWT.NO_FOCUS | SWT.READ_ONLY | SWT.MULTI | SWT.WRAP);
+                widget.setLineAlignment(0, widget.getLineCount(), SWT.CENTER);
+                widget.setAlignment(SWT.CENTER);
+                String message = MessageFormat.format(Messages.DTreeEditor_editorToBeClosedAndReopenedSinceContentIsNotAccessible, status.getMessage());
+                widget.setText(message);
+                GridData layoutData = new GridData();
+                layoutData.grabExcessHorizontalSpace = true;
+                layoutData.grabExcessVerticalSpace = true;
+                layoutData.horizontalAlignment = SWT.CENTER;
+                layoutData.verticalAlignment = SWT.CENTER;
+                widget.setLayoutData(layoutData);
+                return;
+            }
+        }
         super.createPartControl(parent);
 
         // DslCommonPlugin.PROFILER.startWork(SiriusTasks.CREATE_TREE);
@@ -251,8 +282,14 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
     @Override
     public Control getControl() {
-        TreeViewer treeViewer = this.getTableViewer().getTreeViewer();
-        return treeViewer.getTree();
+        if (control == null) {
+            AbstractDTableViewerManager tableViewer = getTableViewer();
+            if (tableViewer != null) {
+                TreeViewer treeViewer = tableViewer.getTreeViewer();
+                control = treeViewer.getTree();
+            }
+        }
+        return control;
     }
 
     private void launchRefresh(boolean loading) {
@@ -443,9 +480,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         display.asyncExec(new Runnable() {
             @Override
             public void run() {
-                if (treeViewerManager != null) {
-                    getSite().getPage().closeEditor(DTreeEditor.this, save);
-                }
+                getSite().getPage().closeEditor(DTreeEditor.this, save);
             }
         });
 

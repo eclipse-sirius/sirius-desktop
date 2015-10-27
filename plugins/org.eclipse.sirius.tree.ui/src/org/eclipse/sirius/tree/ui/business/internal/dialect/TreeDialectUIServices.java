@@ -148,6 +148,7 @@ public class TreeDialectUIServices implements DialectUIServices {
             } catch (NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
+                TreeUIPlugin.getPlugin().log(new Status(IStatus.ERROR, TreeUIPlugin.ID, Messages.TreeDialectUIServices_errorOpeningEditor, e));
             }
             // We suppose it is closed.
             result = true;

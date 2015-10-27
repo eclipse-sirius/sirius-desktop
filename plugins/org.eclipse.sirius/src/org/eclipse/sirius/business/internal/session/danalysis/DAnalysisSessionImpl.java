@@ -23,7 +23,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -1171,7 +1170,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
             notifyListeners(SessionListener.OPENED);
             monitor.worked(1);
-        } catch (OperationCanceledException e) {
+            // CHECKSTYLE:OFF
+        } catch (RuntimeException e) {
+            // CHECKSTYLE:ON
             super.setOpen(true);
             close(new SubProgressMonitor(monitor, 10));
             throw e;
@@ -1190,7 +1191,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         notifyListeners(SessionListener.CLOSING);
         disableAndRemoveECrossReferenceAdapters();
 
-        removeListener(getRefreshEditorsListener());
+        if (getRefreshEditorsListener() != null) {
+            removeListener(getRefreshEditorsListener());
+        }
         refreshEditorsListeners = null;
         reloadingPolicy = null;
         savingPolicy = null;
@@ -1215,14 +1218,17 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             currentResourceCollector = null;
         }
         interpreter = null;
-        representationNameListener.dispose();
-        representationNameListener = null;
+        if (representationNameListener != null) {
+            representationNameListener.dispose();
+            representationNameListener = null;
+        }
         representationsChangeAdapter = null;
         // dispose the SessionEventBroker
         if (broker != null) {
             broker.dispose();
             broker = null;
         }
+
         flushOperations(transactionalEditingDomain);
         // Unload all referenced resources
         unloadAllResources();
@@ -1335,8 +1341,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             } catch (final IllegalStateException e) {
                 // we might have an exception unloading a resource already
                 // unaccessible
-                SiriusPlugin.getDefault().getLog()
-                        .log(new Status(IStatus.WARNING, SiriusPlugin.ID, MessageFormat.format(Messages.DAnalysisSessionImpl_unloadingErrorMsg, e.getMessage()), e));
+                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, MessageFormat.format(Messages.DAnalysisSessionImpl_unloadingErrorMsg, e.getMessage()), e));
             }
             rs.getResources().remove(res);
         }

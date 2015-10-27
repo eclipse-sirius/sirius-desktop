@@ -113,21 +113,23 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
             if (obj instanceof DiagramEditor) { // DiagramDocumentEditor
                 final DiagramEditor dEditor = (DiagramEditor) obj;
                 Diagram diagram = dEditor.getDiagram();
-                String diagramName = dEditor.getPartName();
-                if (diagramName == null) {
-                    diagramName = dEditor.getTitle();
-                }
-                if (diagramName == null) {
-                    diagramName = diagram.getName();
-                }
+                if (diagram != null) {
+                    String diagramName = dEditor.getPartName();
+                    if (diagramName == null) {
+                        diagramName = dEditor.getTitle();
+                    }
+                    if (diagramName == null) {
+                        diagramName = diagram.getName();
+                    }
 
-                Resource resource = diagram.eResource();
-                if (resource != null) {
-                    URI resourceURI = resource.getURI();
-                    diagramName = resourceURI.toString() + "#" + diagramName; //$NON-NLS-1$
+                    Resource resource = diagram.eResource();
+                    if (resource != null) {
+                        URI resourceURI = resource.getURI();
+                        diagramName = resourceURI.toString() + "#" + diagramName; //$NON-NLS-1$
+                    }
+                    diagramName = makeNameUnique(diagramName, diagramMap.keySet());
+                    diagramMap.put(diagramName, diagram);
                 }
-                diagramName = makeNameUnique(diagramName, diagramMap.keySet());
-                diagramMap.put(diagramName, diagram);
             }
         }
         return diagramMap;

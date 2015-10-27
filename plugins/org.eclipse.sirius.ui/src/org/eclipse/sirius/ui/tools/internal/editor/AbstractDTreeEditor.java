@@ -64,6 +64,7 @@ import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.IActionBars;
@@ -90,8 +91,8 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public abstract class AbstractDTreeEditor extends EditorPart implements DialectEditor, IViewerProvider, ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReusableEditor, SessionListener,
-        ISaveablesSource, IPageListener {
+public abstract class AbstractDTreeEditor extends EditorPart
+        implements DialectEditor, IViewerProvider, ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReusableEditor, SessionListener, ISaveablesSource, IPageListener {
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_ME_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation
@@ -116,6 +117,9 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
      * The tree viewer manager.
      */
     protected AbstractDTableViewerManager treeViewerManager;
+
+    /** The control of this editor. */
+    protected Control control;
 
     /**
      * The session.
@@ -256,7 +260,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
     @Override
     public TransactionalEditingDomain getEditingDomain() {
-        return session.getTransactionalEditingDomain();
+        return session != null ? session.getTransactionalEditingDomain() : null;
     }
 
     public IActionBars getActionBars() {
@@ -327,7 +331,9 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
             SessionEditorInput sessionEditorInput = (SessionEditorInput) input;
             final URI uri = sessionEditorInput.getURI();
             this.session = sessionEditorInput.getSession();
-            setRepresentation(uri, false);
+            if (session != null) {
+                setRepresentation(uri, false);
+            }
         } else if (input instanceof URIEditorInput) {
             /* This happens when Eclipse is launched with an open tree editor */
             final URI uri = ((URIEditorInput) input).getURI();
@@ -338,14 +344,13 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
         if (session != null) {
             session.addListener(this);
+            configureCommandFactoryProviders();
+
+            IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(this.session);
+            uiSession.open();
+            uiSession.attachEditor(this);
+            setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getRepresentation()));
         }
-
-        configureCommandFactoryProviders();
-
-        final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(this.session);
-        uiSession.open();
-        uiSession.attachEditor(this);
-        setAccessor(SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(getRepresentation()));
 
         DRepresentation representation = getRepresentation();
         if (representation != null) {
@@ -397,8 +402,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
     @Override
     public boolean isDirty() {
-        final boolean dirty = this.session.getStatus() == SessionStatus.DIRTY;
-        return dirty;
+        return session != null && session.getStatus() == SessionStatus.DIRTY;
     }
 
     @Override
@@ -451,6 +455,8 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
             }
 
             checkSemanticAssociation();
+        } else if (control != null) {
+            control.setFocus();
         }
     }
 
@@ -573,7 +579,10 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
 
     @Override
     public void dispose() {
-
+        if (control != null) {
+            control.dispose();
+            control = null;
+        }
         if (dRepresentationLockStatusListener != null) {
             IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getRepresentation());
             permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
@@ -633,7 +642,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements DialectE
         }
 
     }
-    
+
     public AdapterFactory getAdapterFactory() {
         return adapterFactory;
     }

@@ -81,7 +81,7 @@ public final class FiltersTableViewer {
         tableViewer.setContentProvider(new FiltersContentProvider(adapter, workbenchPart));
         tableViewer.setLabelProvider(new FiltersLabelProvider(workbenchPart));
 
-        if (workbenchPart != null) {
+        if (workbenchPart != null && workbenchPart.getDiagram() != null) {
             final EObject eObj = workbenchPart.getDiagram().getElement();
             if (eObj instanceof DDiagram) {
                 final DDiagram diagram = (DDiagram) eObj;

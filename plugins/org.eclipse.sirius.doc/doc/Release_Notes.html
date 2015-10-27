@@ -18,6 +18,9 @@
 							<li>
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
+							<li>
+								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+							</li>
 						</ol>
 					</li>
 					<li>
@@ -30,7 +33,7 @@
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -44,7 +47,7 @@
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -72,6 +75,15 @@
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The use of type literals in operations like filter() or oclIsKindOf() requires to explicitly add the domain meta-models plug-ins to the dependencies of the Viewpoint Specification Project. The documentation has been modified to recommend this.</li>
+		</ul>
+		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ui.business.api.session.SessionEditorInput.getStatus()</code> has been added to have the status about session opening, i.e. if it has been correctly opened, cancelled or an exception has occurred.
+			</li>
 		</ul>
 		<h2 id="sirius3.1.0">Changes in Sirius 3.1.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
@@ -160,7 +172,7 @@
 				<code>IPermissionAuthority</code>) of the potential to delete objects. This is the reverse order of what was done before, and can have performance impacts if the precondition is slow. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>
 		<p>Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate &#171;language packs&#187; as OSGi fragments. Note that this does not concern the VSM editor&#8217;s UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.</p>
 		<p>Some API changes were required to enable this. While technically breaking changes if interpreting strictly the OSGi versioning rules, the major version number of the impacted bundles was not incremented as the changes only concern classes that should not impact the vast majority of users. Most breaking changes concern the plug-in/activator classes from each bundle. They are:</p>
@@ -401,7 +413,7 @@
 				<code>org.eclipse.sirius.common.tools.api.contentassist.ContentProposalBuilder</code> used to build the content proposals with their various parameters more easily.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -709,7 +721,7 @@
 				<em>EStructuralFeature</em> (inherited or with same name).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<p>The most important and impacting changes in this release are (details below in plug-in specific sections):</p>
 		<ul>
 			<li><span class="label label-success">Added</span>  The new extension point 
@@ -910,7 +922,7 @@
 				<code>org.eclipse.sirius.common.ui.ext</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1621,7 +1633,7 @@
 			<li>&#171;Lozenge&#187; is replaced by &#171;Diamond&#187; in diagram style.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

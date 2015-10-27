@@ -70,8 +70,6 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      */
     public static final String JOB_LABEL = Messages.OpenRepresentationsFileJob_label;
 
-    private static final String QUOTE = "\""; //$NON-NLS-1$
-
     /**
      * The list of representations files to load. This list is exclusive with
      * the list of modeling projects.
@@ -299,35 +297,43 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
      * @return Resource associated to session.
      */
     public Set<Session> performOpenSession(URI representationsFileURI, IProgressMonitor monitor) {
-        monitor.beginTask(Messages.OpenRepresentationsFileJob_loadRepresentationsTask, 16);
         Set<Session> openedSessions = new HashSet<Session>();
-        if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(representationsFileURI.fileExtension())) {
-            monitor.worked(1);
-            Session session = SessionManager.INSTANCE.getSession(representationsFileURI, new SubProgressMonitor(monitor, 10));
-            // Open the session if needed (load the referenced models by
-            // a ResolveAll call)
-            monitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
-            if (session != null) {
-                if (!session.isOpen()) {
-                    session.open(new SubProgressMonitor(monitor, 4));
+        try {
+            monitor.beginTask(Messages.OpenRepresentationsFileJob_loadRepresentationsTask, 16);
+            if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(representationsFileURI.fileExtension())) {
+                monitor.worked(1);
+                Session session = SessionManager.INSTANCE.getSession(representationsFileURI, new SubProgressMonitor(monitor, 10));
+                // Open the session if needed (load the referenced models by
+                // a ResolveAll call)
+                monitor.subTask(MessageFormat.format(Messages.OpenRepresentationsFileJob_loadReferencedModelsTask, representationsFileURI.lastSegment()));
+                if (session != null) {
+                    if (!session.isOpen()) {
+                        session.open(new SubProgressMonitor(monitor, 4));
+                    }
+                    IEditingSession editingSession;
+                    // JGO : Do not create an editing session in case the
+                    // session is
+                    // null
+                    // the session could be null if the session is not a local
+                    // session (CDO for example) and
+                    // if the remote CDO server is unreachable
+                    editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
+                    if (!editingSession.isOpen()) {
+                        editingSession.open();
+                    }
+                    if (openedSessions != null) {
+                        openedSessions.add(session);
+                    }
                 }
-                IEditingSession editingSession;
-                // JGO : Do not create an editing session in case the session is
-                // null
-                // the session could be null if the session is not a local
-                // session (CDO for example) and
-                // if the remote CDO server is unreachable
-                editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
-                if (!editingSession.isOpen()) {
-                    editingSession.open();
-                }
-                if (openedSessions != null) {
-                    openedSessions.add(session);
-                }
+                monitor.worked(1);
             }
-            monitor.worked(1);
+            // CHECKSTYLE:OFF
+        } catch (RuntimeException e) {
+            // CHECKSTYLE:ON
+            SiriusEditPlugin.getPlugin().log(e);
+        } finally {
+            monitor.done();
         }
-        monitor.done();
         return openedSessions;
     }
 

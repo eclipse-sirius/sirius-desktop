@@ -341,12 +341,15 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
 
     @Override
     public void setSelection(ISelection newSelection) {
-        // This setFocus to null must be provided by the super class directly.
-        // The corresponding GEF bugzilla is 458416.
-        if (newSelection instanceof IStructuredSelection) {
-            setFocus(null);
-        }
+        if (getContents() != null) {
+            // This setFocus to null must be provided by the super class
+            // directly.
+            // The corresponding GEF bugzilla is 458416.
+            if (newSelection instanceof IStructuredSelection) {
+                setFocus(null);
+            }
 
-        super.setSelection(newSelection);
+            super.setSelection(newSelection);
+        }
     }
 }

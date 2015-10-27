@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -101,6 +101,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
 
         if (type == IShowInTargetList.class) {
             return new IShowInTargetList() {
+                @Override
                 public String[] getShowInTargetIds() {
                     return new String[] { ProjectExplorer.VIEW_ID, IModelExplorerView.ID };
                 }
@@ -128,6 +129,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
     /**
      * @was-generated
      */
+    @Override
     public void gotoMarker(final IMarker marker) {
         MarkerNavigationService.getInstance().gotoMarker(this, marker);
     }
@@ -141,6 +143,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
      * 
      * @return the workspace viewer <code>PreferenceStore</code>
      */
+    @Override
     public PreferenceStore getWorkspaceViewerPreferenceStore() {
         if (workspaceViewerPreferenceStore != null) {
             return workspaceViewerPreferenceStore;
@@ -206,7 +209,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
     private ISelection getNavigatorSelection() {
         if (getEditorInput() instanceof SessionEditorInput) {
             SessionEditorInput sessionEditorInput = (SessionEditorInput) getEditorInput();
-            Session session = sessionEditorInput.getSession();
+            Session session = sessionEditorInput.getSession(false);
             if (session != null) {
                 Resource sessionResource = session.getSessionResource();
                 if (sessionResource != null && sessionResource.getURI().isPlatformResource()) {

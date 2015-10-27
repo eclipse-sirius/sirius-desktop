@@ -14,8 +14,10 @@ import java.lang.ref.WeakReference;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
@@ -54,6 +56,8 @@ public class SessionEditorInput extends URIEditorInput {
     private URI sessionResourceURI;
 
     private WeakReference<EObject> inputRef;
+
+    private IStatus status = Status.OK_STATUS;
 
     /**
      * Create a new SessionEditorInput with the current session and ui session.
@@ -220,6 +224,7 @@ public class SessionEditorInput extends URIEditorInput {
             // case: the session lifecycle is not safe enough to try to open a
             // previously closed session.
             if (sessionFromURI == null && restore) {
+                status = Status.OK_STATUS;
                 sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI, new NullProgressMonitor());
                 if (sessionFromURI != null && !sessionFromURI.isOpen()) {
                     sessionFromURI.open(new NullProgressMonitor());
@@ -240,12 +245,16 @@ public class SessionEditorInput extends URIEditorInput {
                     uiSession.open();
                 }
             }
-        } catch (IllegalStateException e) {
-            sessionFromURI = null;
-            // Silent catch: can happen if failing to retrieve the session from
-            // its URI
         } catch (OperationCanceledException e) {
             sessionFromURI = null;
+            status = new Status(IStatus.CANCEL, SiriusEditPlugin.ID, e.getLocalizedMessage(), e); // $NON-NLS-1$
+            // Silent catch: can happen if failing to retrieve the session from
+            // its URI
+            // CHECKSTYLE:OFF
+        } catch (RuntimeException e) {
+            // CHECKSTYLE:ON
+            sessionFromURI = null;
+            status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e); // $NON-NLS-1$
             // Silent catch: can happen if failing to retrieve the session from
             // its URI
         }
@@ -337,12 +346,30 @@ public class SessionEditorInput extends URIEditorInput {
         return exists;
     }
 
+    /**
+     * Get the status of the session opening from this
+     * {@link SessionEditorInput}.
+     * 
+     * <ul>
+     * <li>A status with severity {@link IStatus#CANCEL} is returned for a
+     * session opening canceled through {@link OperationCanceledException}.</li>
+     * <li>A status with severity {@link IStatus#ERROR} is returned for a
+     * session opening failing because of another {@link RuntimeException}.</li>
+     * <li>Otherwise a status with severity {@link IStatus#OK} is returned.</li>
+     * </ul>
+     * 
+     * @return the status of the session opening, null is never returned
+     */
+    public IStatus getStatus() {
+        return status;
+    }
+
     @Override
     public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
         Object a = super.getAdapter(adapter);
         if (IFile.class == adapter && a == null) {
             if (EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE) {
-                Session inputSession = getSession();
+                Session inputSession = getSession(false);
                 if (inputSession != null && inputSession.isOpen()) {
                     a = EclipseUtil.getAdatper(adapter, inputSession.getSessionResource().getURI());
                 }
@@ -364,10 +391,15 @@ public class SessionEditorInput extends URIEditorInput {
     public boolean equals(Object o) {
         boolean equals = this == o || o instanceof SessionEditorInput && getURI().equals(((SessionEditorInput) o).getURI());
         if (equals && o instanceof SessionEditorInput) {
-            EObject input = getInput(false);
-            if (input != null) {
-                SessionEditorInput otherSessionEditorInput = (SessionEditorInput) o;
-                return input.equals(otherSessionEditorInput.getInput(false));
+            SessionEditorInput otherSessionEditorInput = (SessionEditorInput) o;
+            IStatus otherStatus = otherSessionEditorInput.getStatus();
+            if (status != otherStatus) {
+                equals = false;
+            } else {
+                EObject input = getInput(false);
+                if (input != null) {
+                    equals = input.equals(otherSessionEditorInput.getInput(false));
+                }
             }
         }
         return equals;

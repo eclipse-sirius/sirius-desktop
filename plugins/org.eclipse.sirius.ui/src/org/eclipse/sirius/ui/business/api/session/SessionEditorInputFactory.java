@@ -49,18 +49,7 @@ public class SessionEditorInputFactory extends URIEditorInputFactory {
     @Override
     public IAdaptable createElement(IMemento memento) {
         IAdaptable element = super.createElement(memento);
-
-        if (element instanceof SessionEditorInput) {
-            /*
-             * If the session editor input is not able to retrieve a session, do
-             * not let Eclipse try to restore the editor from the memento, it
-             * might lead to a lot of StackOverflowError and
-             * NullPointerException.
-             */
-            if (((SessionEditorInput) element).getSession() == null) {
-                element = null;
-            }
-        } else {
+        if (!(element instanceof SessionEditorInput)) {
             /*
              * The memento indicates that the expected restored editor input
              * should be an instance of SessionEditorInput. If it is not the

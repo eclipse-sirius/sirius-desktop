@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.tools.internal.editor;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.EditorCreateTreeItemMenuAction;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.ui.IWorkbenchActionConstants;
 
 /**
@@ -34,4 +36,10 @@ public class DTreeActionBarContributor extends EditingDomainActionBarContributor
         toolBarManager.update(true);
     }
 
+    @Override
+    public void update() {
+        if (activeEditor != null && activeEditor.getEditorInput() instanceof SessionEditorInput && ((SessionEditorInput) activeEditor.getEditorInput()).getStatus().getSeverity() < IStatus.ERROR) {
+            super.update();
+        }
+    }
 }

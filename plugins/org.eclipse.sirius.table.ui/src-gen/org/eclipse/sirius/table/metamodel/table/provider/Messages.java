@@ -28,6 +28,9 @@ public final class Messages {
     public static String AbstractDTableEditor_tableNotSaved;
 
     @TranslatableMessage
+    public static String AbstractDTableEditor_editorToBeClosedAndReopenedSinceContentIsNotAccessible;
+
+    @TranslatableMessage
     public static String Action_cancelled;
 
     @TranslatableMessage

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
+import org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor;
+import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
+import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateLineMenuAction;
+import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateTargetColumnMenuAction;
+import org.eclipse.sirius.table.ui.tools.internal.editor.action.PrintAction;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorActionBarContributor;
 import org.eclipse.ui.IEditorPart;
@@ -20,14 +29,6 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.IPage;
-
-import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
-import org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor;
-import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateLineMenuAction;
-import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateTargetColumnMenuAction;
-import org.eclipse.sirius.table.ui.tools.internal.editor.action.PrintAction;
-import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 
 /**
  * This is a contributor for an DTable editor.
@@ -75,25 +76,27 @@ public class DTableActionBarContributor extends EditingDomainActionBarContributo
 
     @Override
     public void setActiveEditor(IEditorPart part) {
-        boolean updateCreateMenus = part != activeEditor && part != null;
-        super.setActiveEditor(part);
-        if (updateCreateMenus && activeEditor instanceof AbstractDTableEditor) {
-            AbstractDTableViewerManager tableViewer = ((AbstractDTableEditor) activeEditor).getTableViewer();
-            if (tableViewer instanceof DTableViewerManager) {
-                // Add the CreateLine menu of the toolbar
-                addCreateLineMenu(((DTableViewerManager) tableViewer).getCreateLineMenu());
-            }
-        }
-        if (activeEditor instanceof DTableCrossEditor) {
-            DTableCrossEditor tableCrossEditor = (DTableCrossEditor) activeEditor;
-            // Add the CreateTargetColumn menu of the toolbar
-            IEditorActionBarContributor actionBarContributor = tableCrossEditor.getEditorSite().getActionBarContributor();
-            if (actionBarContributor instanceof DTableActionBarContributor) {
-                DTableActionBarContributor dTableActionBarContributor = (DTableActionBarContributor) actionBarContributor;
-                AbstractDTableViewerManager tableViewer = tableCrossEditor.getTableViewer();
+        if (part != null && part.getEditorInput() instanceof SessionEditorInput && ((SessionEditorInput) part.getEditorInput()).getStatus().getSeverity() < IStatus.ERROR) {
+            boolean updateCreateMenus = part != activeEditor && part != null;
+            super.setActiveEditor(part);
+            if (updateCreateMenus && activeEditor instanceof AbstractDTableEditor) {
+                AbstractDTableViewerManager tableViewer = ((AbstractDTableEditor) activeEditor).getTableViewer();
                 if (tableViewer instanceof DTableViewerManager) {
-                    DTableViewerManager dTableViewerManager = (DTableViewerManager) tableViewer;
-                    dTableActionBarContributor.addCreateTargetColumnMenu(dTableViewerManager.getCreateTargetColumnMenu());
+                    // Add the CreateLine menu of the toolbar
+                    addCreateLineMenu(((DTableViewerManager) tableViewer).getCreateLineMenu());
+                }
+            }
+            if (activeEditor instanceof DTableCrossEditor) {
+                DTableCrossEditor tableCrossEditor = (DTableCrossEditor) activeEditor;
+                // Add the CreateTargetColumn menu of the toolbar
+                IEditorActionBarContributor actionBarContributor = tableCrossEditor.getEditorSite().getActionBarContributor();
+                if (actionBarContributor instanceof DTableActionBarContributor) {
+                    DTableActionBarContributor dTableActionBarContributor = (DTableActionBarContributor) actionBarContributor;
+                    AbstractDTableViewerManager tableViewer = tableCrossEditor.getTableViewer();
+                    if (tableViewer instanceof DTableViewerManager) {
+                        DTableViewerManager dTableViewerManager = (DTableViewerManager) tableViewer;
+                        dTableActionBarContributor.addCreateTargetColumnMenu(dTableViewerManager.getCreateTargetColumnMenu());
+                    }
                 }
             }
         }
