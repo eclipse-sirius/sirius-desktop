@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.properties;
 
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.sirius.ext.emf.ui.properties.ExtensiblePropertySource;
 import org.eclipse.sirius.ui.tools.internal.properties.SiriusCellEditorProviderCollector;
+import org.eclipse.ui.views.properties.IPropertyDescriptor;
 
 /**
  * Clients that want to provide custom cell editor through the extension point
@@ -34,6 +36,11 @@ public class SiriusExtensiblePropertySource extends ExtensiblePropertySource {
      */
     public SiriusExtensiblePropertySource(Object object, IItemPropertySource itemPropertySource) {
         super(object, itemPropertySource, SiriusCellEditorProviderCollector.getInstance());
+    }
+
+    @Override
+    protected IPropertyDescriptor createPropertyDescriptor(IItemPropertyDescriptor itemPropertyDescriptor) {
+        return new SiriusExtensiblePropertyDescriptor(object, itemPropertyDescriptor, collector);
     }
 
 }
