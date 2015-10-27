@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,9 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor.PropertyValueWrapper;
-import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -42,11 +42,7 @@ public class SemanticPropertySection extends AdvancedPropertySection implements 
         page.setRootEntry(root);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySourceProvider#getPropertySource(java.lang.Object)
-     */
+    @Override
     public IPropertySource getPropertySource(final Object object) {
         IPropertySource propSrc = null;
         Object selectedObject = object;
@@ -57,7 +53,7 @@ public class SemanticPropertySection extends AdvancedPropertySection implements 
         if (af != null && (isSemanticEObject(selectedObject) || object instanceof PropertyValueWrapper)) {
             IItemPropertySource ips = (IItemPropertySource) af.adapt(selectedObject, IItemPropertySource.class);
             if (ips != null) {
-                propSrc = new PropertySource(selectedObject, ips);
+                propSrc = new SiriusExtensiblePropertySource(selectedObject, ips);
             }
         }
         return propSrc;

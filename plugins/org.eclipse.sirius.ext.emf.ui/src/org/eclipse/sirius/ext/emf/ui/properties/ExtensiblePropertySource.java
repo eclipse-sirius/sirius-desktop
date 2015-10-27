@@ -26,7 +26,8 @@ import org.eclipse.ui.views.properties.IPropertyDescriptor;
  */
 public class ExtensiblePropertySource extends PropertySource {
 
-    private CellEditorProviderCollector collector;
+    /** The {@link CellEditorProviderCollector}. */
+    protected CellEditorProviderCollector collector;
 
     /**
      * Default constructor.
