@@ -4,6 +4,12 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius3.1.1). Changes in Sirius 3.1.1
+
+h3. Specifier-Visible Changes
+
+* <span class="label label-info">Modified</span> The use of type literals in operations like filter() or oclIsKindOf() requires to explicitly add the domain meta-models plug-ins to the dependencies of the Viewpoint Specification Project. The documentation has been modified to recommend this.
+
 h2(#sirius3.1.0). Changes in Sirius 3.1.0
 
 h3. User-Visible Changes

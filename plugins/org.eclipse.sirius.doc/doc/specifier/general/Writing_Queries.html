@@ -198,9 +198,12 @@
 		<p>
 			<em>Note:</em> Viewpoint Specification Projects created with the default wizard will be already setup to use it. Otherwise you need to add a dependency to the 
 			<code>org.eclipse.sirius.common.acceleo.aql</code> plug-in to ensure AQL support will be available wherever your modelers are used. When 
-			<strong>developing</strong> new VSMs which use AQL, it is recommanded to have the  
+			<strong>developing</strong> new VSMs which use AQL, it is recommended to have the  
 			<code>org.eclipse.sirius.common.acceleo.aql.ide</code> plug-in installed as it provides specification-time features like expression completion. However, 
 			<code>org.eclipse.sirius.common.acceleo.aql.ide</code> is not needed at runtime for the resulting modelers to function.
+		</p>
+		<p>
+			<em>Note:</em> Several services like olcIsKindOf() or filter() use type literals and will require to explicitly reference the known meta-models as dependencies to work. It is recommended to add the corresponding meta-models plug-ins to the dependencies of the Viewpoint Specific Project.
 		</p>
 		<h2 id="acceleo">Using Acceleo</h2>
 		<p>Acceleo 3 implements the MTL standard, and provides a query language similar to OCL (with some extensions). It provides relatively good static validation and auto-completion when editing your expressions, but AQL is even better, and faster. For new modelers, prefer AQL over Acceleo/MTL. If you have existing modelers which use Acceleo/MTL, converting them to use AQL is relatively straightforward, see 
@@ -218,7 +221,8 @@
 			<a href="#service_methods">service methods</a> conventions and have been properly declared in the VSM. Note that currently this only works if the Java service class is in the same project as the 
 			<em>VSM</em>. You can also invoke Acceleo 
 			<em>queries</em> defined in 
-			<code>.mtl</code> files in your Viewpoint Specification Project. For this to work, your Viewpoint Specification Project should be an Acceleo Generator project. This is the default for projects created with the wizard. If you want to use queries from 
+			<code>.mtl</code> files in your Viewpoint Specification Project. For this to work, your Viewpoint Specification Project should be an Acceleo Generator project, you can convert the project with the 
+			<em>Configure &gt; Toggle Acceleo Nature</em> contextual menu. If you want to use queries from 
 			<code>.mtl</code> files in you Sirius project, the parent 
 			<em>Viewpoint</em> element must have a 
 			<em>Java Extension</em> element which references the MTL file, using the 

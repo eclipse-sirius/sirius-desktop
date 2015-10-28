@@ -158,15 +158,10 @@
 			<code>build.properties</code> so that it is included in the deployed version.
 		</p>
 		<p>The VSM name is given according to the project name defined when using the previous wizard. If the project name is suffixed with &#171;design&#187;, the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.</p>
-		<p>The 
-			<em>Viewpoint Specification Projects</em> created by the default wizard are also Acceleo 3 projects. This is because inside a VSM you will need to write 
-			<a href="Writing_Queries.html">model query expression</a>, and the default language to do so is Acceleo 3. Being an Acceleo project means that you can easily add Acceleo files (
-			<code>*.mtl</code>) inside the project&#8217;s source to define complex or commonly used queries (but be sure to read 
-			<a href="Writing_Queries.html#acceleo">the Acceleo 3 section</a> about how to properly deploy such plug-ins if you do).
-		</p>
 		<p>Other than that, the project is a normal Java plug-in project. You can add 
-			<a href="Writing_Queries.html#service_methods">service classes</a> into it if the query language you use support it, and any other Java code, including Eclipse views, actions, etc.
+			<a href="Writing_Queries.html#service_methods">service classes</a> into it if the query language you use support it, and any other Java code, including Eclipse views, actions, etc. 
 		</p>
+		<p>Note that it is recommended to add your domain meta-model(s) plug-ins as dependencies of the project. Java services and some features of query language (like the use of type literals in AQL filter() operations) might require them. </p>
 		<p>
 			<strong>Important:</strong> Any VSM you place in the Eclipse workspace will be immediately available for use and testing, with no deployment. This is to facilitate dynamic and iterative development of viewpoints. However, when you 
 			<strong>deploy</strong> your VSMs, they 
