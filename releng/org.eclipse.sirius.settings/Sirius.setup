@@ -108,7 +108,7 @@
     <repository
         url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/"/>
     <repository
-        url="http://eclipse-cs.sourceforge.net/update/"/>
+        url="http://sourceforge.net/projects/eclipse-cs/files/updatesite/6.5.0/"/>
     <repository
         url="http://download.eclipse.org/mylyn/releases/3.13"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
@@ -267,7 +267,10 @@
       xsi:type="setup:PreferenceTask"
       key="/instance/org.eclipse.jdt.ui/sp_cleanup.format_source_code"
       value="true"/>
-  <setupTask xsi:type="setup:PreferenceTask" key="/instance/org.eclipse.jdt.ui/sp_cleanup.format_source_code_changes_only" value="false"/>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.jdt.ui/sp_cleanup.format_source_code_changes_only"
+      value="false"/>
   <setupTask
       xsi:type="setup:PreferenceTask"
       key="/instance/org.eclipse.jdt.ui/sp_cleanup.on_save_use_additional_actions"
@@ -280,7 +283,6 @@
       xsi:type="setup:PreferenceTask"
       key="/instance/org.eclipse.jdt.ui/sp_cleanup.remove_unnecessary_casts"
       value="true"/>
-  
   <stream name="master"/>
   <stream name="v2.0.x"/>
   <stream name="v1.0.x"/>
