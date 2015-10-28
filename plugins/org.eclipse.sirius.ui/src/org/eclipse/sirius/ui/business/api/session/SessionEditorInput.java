@@ -163,6 +163,7 @@ public class SessionEditorInput extends URIEditorInput {
     @Override
     public void saveState(final IMemento memento) {
         super.saveState(memento);
+        memento.putString(URIEditorInput.URI_TAG, getURI().toString());
         memento.putString(URIEditorInput.NAME_TAG, getName());
         memento.putString(URIEditorInput.CLASS_TAG, getClass().getName());
         if (sessionResourceURI != null) {
