@@ -54,6 +54,7 @@ import org.eclipse.sirius.tests.unit.api.session.SiriusRegistryTests;
 import org.eclipse.sirius.tests.unit.api.session.ViewpointSelectionTests;
 import org.eclipse.sirius.tests.unit.api.tools.SiriusControlAndCrossReferenceInMultiSessionTest;
 import org.eclipse.sirius.tests.unit.api.vsm.edit.SiriusAdapterFactoryRegistryTest;
+import org.eclipse.sirius.tests.unit.common.DialectEditorsOpeningWithFailingSessionOpeningTests;
 import org.eclipse.sirius.tests.unit.common.EclipseUtilTest;
 import org.eclipse.sirius.tests.unit.common.EqualityHelperTestCase;
 import org.eclipse.sirius.tests.unit.common.InterpreterVariablesTestCase;
@@ -162,7 +163,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(EqualityHelperTestCase.class);
         suite.addTestSuite(WorkspaceResourceSyncTestCase.class);
         suite.addTestSuite(InterpreterVariablesTestCase.class);
-
+        suite.addTestSuite(DialectEditorsOpeningWithFailingSessionOpeningTests.class);
         suite.addTestSuite(PreferencesTests.class);
 
         suite.addTestSuite(ConvertProjectToModelingProjectTest.class);
