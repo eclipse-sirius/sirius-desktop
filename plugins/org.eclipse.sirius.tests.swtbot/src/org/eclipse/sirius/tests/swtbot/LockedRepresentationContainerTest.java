@@ -125,8 +125,8 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
         lockRepresentationContainer();
 
         // After locking the representation container
-        assertFalse("The creation of new representation should be disabled when the representation container is locked",
-                semanticPackageNode.contextMenu(NEW_REPRESENTATION).menu(REPRESENTATION_NAME).isEnabled());
+        assertFalse("The creation of new representation should be disabled when the representation container is locked", semanticPackageNode.contextMenu(NEW_REPRESENTATION).menu(REPRESENTATION_NAME)
+                .isEnabled());
     }
 
     /**
@@ -137,26 +137,29 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     public void testCreateRepresentationFromSession() {
         SWTBotTreeItem sessionTreeItem = localSession.getRootSessionTreeItem();
 
-        // Open the "Create Representation" Wizard from the session
-        clickContextMenu(sessionTreeItem, CREATE_REPRESENTATION);
+        try {
+            // Open the "Create Representation" Wizard from the session
+            clickContextMenu(sessionTreeItem, CREATE_REPRESENTATION);
 
-        SWTBotShell shell = bot.shell(CREATE_REPRESENTATION_WIZARD);
-        shell.activate();
+            SWTBotShell shell = bot.shell(CREATE_REPRESENTATION_WIZARD);
+            shell.activate();
 
-        // Select the representation description
-        bot.tree().expandNode(VIEWPOINT_NAME, REPRESENTATION_DESCRIPTION_NAME).select();
-        assertTrue("The representation creation should be allowed", bot.button(NEXT).isEnabled());
+            // Select the representation description
+            bot.tree().expandNode(VIEWPOINT_NAME, REPRESENTATION_DESCRIPTION_NAME).select();
+            assertTrue("The representation creation should be allowed", bot.button(NEXT).isEnabled());
 
-        // Lock the representation container
-        lockRepresentationContainer();
+            // Lock the representation container
+            lockRepresentationContainer();
+            // After locking the representation container, the node must be
+            // selected
+            // again to update the button status
+            bot.tree().expandNode(VIEWPOINT_NAME, REPRESENTATION_DESCRIPTION_NAME).select();
+            assertFalse("The representation creation should be forbidden when the representation container is locked", bot.button(NEXT).isEnabled());
 
-        // After locking the representation container, the node must be selected
-        // again to update the button status
-        bot.tree().expandNode(VIEWPOINT_NAME, REPRESENTATION_DESCRIPTION_NAME).select();
-        assertFalse("The representation creation should be forbidden when the representation container is locked", bot.button(NEXT).isEnabled());
-
-        // Close the wizard
-        bot.button(CANCEL).click();
+        } finally {
+            // Close the wizard
+            bot.button(CANCEL).click();
+        }
     }
 
     /**
@@ -167,36 +170,39 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
     public void testControlSemanticModel() {
         SWTBotTreeItem semanticPackageNode = getSelectedSemanticSubPackageNode();
 
-        // Call the control action
-        clickContextMenu(semanticPackageNode, CONTROL_ACTION);
+        try {
+            // Call the control action
+            clickContextMenu(semanticPackageNode, CONTROL_ACTION);
 
-        // Click "Ok" on the first dialog
-        SWTBotShell shell = bot.shell(CONTROL_DIALOG);
-        shell.activate();
-        bot.button(OK).click();
+            // Click "Ok" on the first dialog
+            SWTBotShell shell = bot.shell(CONTROL_DIALOG);
+            shell.activate();
+            bot.button(OK).click();
 
-        // Activate the selection wizard
-        shell = bot.shell(CONTROL_WIZARD);
-        shell.activate();
+            // Activate the selection wizard
+            shell = bot.shell(CONTROL_WIZARD);
+            shell.activate();
 
-        // Select the representation description
-        SWTBotTreeItem item = bot.tree().expandNode(MODEL_URI, PACKAGE_NAME, REPRESENTATION_NAME).select();
-        item.check();
+            // Select the representation description
+            SWTBotTreeItem item = bot.tree().expandNode(MODEL_URI, PACKAGE_NAME, REPRESENTATION_NAME).select();
+            item.check();
 
-        assertTrue("The representation extraction should be allowed", bot.button(FINISH).isEnabled());
+            assertTrue("The representation extraction should be allowed", bot.button(FINISH).isEnabled());
 
-        // Lock the representation container
-        lockRepresentationContainer();
+            // Lock the representation container
+            lockRepresentationContainer();
 
-        // After locking the representation container, the node must be selected
-        // again to update the button status
-        item = bot.tree().expandNode(MODEL_URI, PACKAGE_NAME, REPRESENTATION_NAME).select();
-        item.check();
+            // After locking the representation container, the node must be
+            // selected
+            // again to update the button status
+            item = bot.tree().expandNode(MODEL_URI, PACKAGE_NAME, REPRESENTATION_NAME).select();
+            item.check();
 
-        assertFalse("The representation extraction should be forbidden when the representation container is locked", bot.button(FINISH).isEnabled());
-
-        // Close the wizard
-        bot.button(CANCEL).click();
+            assertFalse("The representation extraction should be forbidden when the representation container is locked", bot.button(FINISH).isEnabled());
+        } finally {
+            // Close the wizard
+            bot.button(CANCEL).click();
+        }
     }
 
     /**
