@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common;
 
+import java.text.MessageFormat;
+
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.draw2d.IFigure;
@@ -39,6 +41,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IEditorPart;
@@ -142,6 +145,7 @@ public class DialectEditorsOpeningWithFailingSessionOpeningTests extends SiriusT
         openedEditor = IDE.openEditor(activePage, sessionEditorInput, editorID);
         TestsUtil.synchronizationWithUIThread();
 
+        String expectedMessage = null;
         String displayedMessage = null;
         if (editorID == DDiagramEditor.EDITOR_ID) {
             assertTrue(openedEditor instanceof DDiagramEditorImpl);
@@ -154,6 +158,7 @@ public class DialectEditorsOpeningWithFailingSessionOpeningTests extends SiriusT
             Object child = layer.getChildren().get(layer.getChildren().size() - 1);
             assertTrue(child instanceof Label);
             Label statusLabel = (Label) child;
+            expectedMessage = MessageFormat.format(org.eclipse.sirius.diagram.ui.provider.Messages.DDiagramEditorImpl_editorToBeClosedAndReopenedSinceContentIsNotAccessible, exceptionMessage);
             displayedMessage = statusLabel.getText();
         } else if (editorID == DTreeEditor.ID) {
             assertTrue(openedEditor instanceof DTreeEditor);
@@ -163,8 +168,9 @@ public class DialectEditorsOpeningWithFailingSessionOpeningTests extends SiriusT
             Composite composite = (Composite) control;
             assertEquals(1, composite.getChildren().length);
             Control child = composite.getChildren()[0];
-            assertTrue(child instanceof org.eclipse.swt.widgets.Label);
-            org.eclipse.swt.widgets.Label label = (org.eclipse.swt.widgets.Label) child;
+            assertTrue(child instanceof StyledText);
+            StyledText label = (StyledText) child;
+            expectedMessage = MessageFormat.format(org.eclipse.sirius.tree.ui.provider.Messages.DTreeEditor_editorToBeClosedAndReopenedSinceContentIsNotAccessible, exceptionMessage);
             displayedMessage = label.getText();
         } else if (editorID == DTableEditionEditor.ID) {
             assertTrue(openedEditor instanceof DTableEditionEditor);
@@ -174,8 +180,10 @@ public class DialectEditorsOpeningWithFailingSessionOpeningTests extends SiriusT
             Composite composite = (Composite) control;
             assertEquals(1, composite.getChildren().length);
             Control child = composite.getChildren()[0];
-            assertTrue(child instanceof org.eclipse.swt.widgets.Label);
-            org.eclipse.swt.widgets.Label label = (org.eclipse.swt.widgets.Label) child;
+            assertTrue(child instanceof StyledText);
+            StyledText label = (StyledText) child;
+            expectedMessage = MessageFormat.format(org.eclipse.sirius.table.metamodel.table.provider.Messages.AbstractDTableEditor_editorToBeClosedAndReopenedSinceContentIsNotAccessible,
+                    exceptionMessage);
             displayedMessage = label.getText();
         } else if (editorID == DTableCrossEditor.ID) {
             assertTrue(openedEditor instanceof DTableCrossEditor);
@@ -185,11 +193,13 @@ public class DialectEditorsOpeningWithFailingSessionOpeningTests extends SiriusT
             Composite composite = (Composite) control;
             assertEquals(1, composite.getChildren().length);
             Control child = composite.getChildren()[0];
-            assertTrue(child instanceof org.eclipse.swt.widgets.Label);
-            org.eclipse.swt.widgets.Label label = (org.eclipse.swt.widgets.Label) child;
+            assertTrue(child instanceof StyledText);
+            StyledText label = (StyledText) child;
+            expectedMessage = MessageFormat.format(org.eclipse.sirius.table.metamodel.table.provider.Messages.AbstractDTableEditor_editorToBeClosedAndReopenedSinceContentIsNotAccessible,
+                    exceptionMessage);
             displayedMessage = label.getText();
         }
-        assertEquals("The exception message should be displayed in background of opened dialect editor to explain why the session opening has failed", exceptionMessage, displayedMessage);
+        assertEquals("The exception message should be displayed in background of opened dialect editor to explain why the session opening has failed", expectedMessage, displayedMessage);
     }
 
     @Override
