@@ -770,7 +770,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     public void persistViewerSettings() {
-        if (getDiagram() != null) {
+        if (getDiagramEditPart() != null) {
             super.persistViewerSettings();
         }
     }
