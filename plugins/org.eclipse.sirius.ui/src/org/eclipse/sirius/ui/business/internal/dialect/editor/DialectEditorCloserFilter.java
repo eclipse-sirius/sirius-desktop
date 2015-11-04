@@ -54,22 +54,31 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     private boolean isRepresentationDeletion(Notification notification) {
         boolean representationDeleted = false;
-        if (notification.getFeature() == ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS) {
-            int eventType = notification.getEventType();
-            if (eventType == Notification.REMOVE || eventType == Notification.UNSET || eventType == Notification.REMOVE_MANY) {
-                // If the representation eContainer is still a DView, this
-                // remove notification does not indicate a delete but a move.
-                // No need to close the editor.
-                representationDeleted = isInOldValue(notification, dRepresentation) && !(dRepresentation.eContainer() instanceof DView);
-            }
+        if (notification.getFeature() == ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS && wasInOldValue(notification, dRepresentation)) {
+            // If the representation eContainer is still a DView, this
+            // remove notification does not indicate a delete but a move.
+            // No need to close the editor.
+            representationDeleted = !(dRepresentation.eContainer() instanceof DView);
+        } else if (notification.getFeature() == ViewpointPackage.Literals.DANALYSIS__OWNED_VIEWS && wasInOldValue(notification, dRepresentation.eContainer())) {
+            // If it is a undo or a rollback but not a
+            // DRepresentationContainer moved from a DAnalysis to another
+            representationDeleted = dRepresentation.eContainer() == null || !(dRepresentation.eContainer() != null && dRepresentation.eContainer().eContainer() instanceof DView);
         }
-
         return representationDeleted;
     }
 
-    private boolean isInOldValue(Notification notification, Object obj) {
+    private boolean wasInOldValue(Notification notification, EObject eObject) {
+        boolean isCurrentDRepresentationRemove = false;
+        int eventType = notification.getEventType();
+        if (eventType == Notification.REMOVE || eventType == Notification.UNSET || eventType == Notification.REMOVE_MANY) {
+            isCurrentDRepresentationRemove = isInOldValue(notification, eObject);
+        }
+        return isCurrentDRepresentationRemove;
+    }
+
+    private boolean isInOldValue(Notification notification, EObject obj) {
         if (notification.getOldValue() instanceof Collection) {
-            return ((Collection<?>) notification.getOldValue()).contains(dRepresentation);
+            return ((Collection<?>) notification.getOldValue()).contains(obj);
         } else {
             return notification.getOldValue() == obj;
         }
