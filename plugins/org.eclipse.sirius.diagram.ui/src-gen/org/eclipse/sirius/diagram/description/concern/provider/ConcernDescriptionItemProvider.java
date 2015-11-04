@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 
 /**
@@ -155,7 +156,7 @@ public class ConcernDescriptionItemProvider extends DocumentedElementItemProvide
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((ConcernDescription) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_ConcernDescription_type") : label; //$NON-NLS-1$
     }
 

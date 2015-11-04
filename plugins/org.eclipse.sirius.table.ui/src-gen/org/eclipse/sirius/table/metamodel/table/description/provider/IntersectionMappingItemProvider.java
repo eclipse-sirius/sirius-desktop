@@ -35,6 +35,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
@@ -292,7 +293,7 @@ public class IntersectionMappingItemProvider extends TableMappingItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((IntersectionMapping) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_IntersectionMapping_type") : label; //$NON-NLS-1$
     }
 

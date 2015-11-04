@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.provider.NodeMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * This is the item provider adapter for a
@@ -76,7 +77,7 @@ public class EndOfLifeMappingItemProvider extends NodeMappingItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((EndOfLifeMapping) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_EndOfLifeMapping_type") : getString("_UI_EndOfLifeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 

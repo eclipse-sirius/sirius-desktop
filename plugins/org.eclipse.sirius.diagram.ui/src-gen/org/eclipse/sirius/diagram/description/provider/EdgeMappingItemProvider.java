@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * This is the item provider adapter for a
@@ -292,7 +293,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((EdgeMapping) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         if ((label == null || label.length() == 0)) {
             if (((EdgeMapping) object).isUseDomainElement()) {
                 label = Messages.ItemProvider_elementBasedEdge;

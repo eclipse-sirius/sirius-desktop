@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * This is the item provider adapter for a
@@ -139,7 +140,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((NodeMapping) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
             return MessageFormat.format(Messages.NodeMappingItemProvider_borderedLabel, label);

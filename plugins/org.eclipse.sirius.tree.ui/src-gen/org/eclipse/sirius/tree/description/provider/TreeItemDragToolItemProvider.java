@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemDragTool;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.tools.api.provider.ItemProviderHelper;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDescriptionItemProvider;
@@ -158,7 +159,7 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((TreeItemDragTool) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return StringUtil.isEmpty(label) ? getString("_UI_TreeItemDragTool_type") : getString("_UI_TreeItemDragTool_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 

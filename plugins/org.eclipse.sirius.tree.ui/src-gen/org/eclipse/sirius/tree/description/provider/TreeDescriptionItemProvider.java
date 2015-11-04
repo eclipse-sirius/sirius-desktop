@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 
 /**
@@ -264,7 +265,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
      */
     @Override
     public String getText(Object object) {
-        final String label = new IdentifiedElementQuery((TreeDescription) object).getLabel();
+        final String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return StringUtil.isEmpty(label) ? getString("_UI_TreeDescription_type") : label; //$NON-NLS-1$
     }
 

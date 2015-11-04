@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 
@@ -486,7 +487,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((DiagramDescription) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_DiagramDescription_type") : label; //$NON-NLS-1$
     }
 
