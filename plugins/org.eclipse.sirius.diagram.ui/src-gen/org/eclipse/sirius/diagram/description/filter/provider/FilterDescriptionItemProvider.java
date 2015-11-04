@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 
 /**
@@ -99,7 +100,7 @@ public class FilterDescriptionItemProvider extends DocumentedElementItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((FilterDescription) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         if (label != null) {
             return label;
         }

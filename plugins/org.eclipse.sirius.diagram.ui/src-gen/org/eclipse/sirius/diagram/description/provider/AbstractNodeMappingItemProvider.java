@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * This is the item provider adapter for a
@@ -151,7 +152,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((AbstractNodeMapping) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return StringUtil.isEmpty(label) ? getString("_UI_AbstractNodeMapping_type") : getString("_UI_AbstractNodeMapping_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
@@ -89,7 +90,7 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
      */
     @Override
     public String getText(Object object) {
-        IdentifiedElementQuery query = new IdentifiedElementQuery((SemanticValidationRule) object);
+        IdentifiedElementQuery query = new IdentifiedElementQuery((IdentifiedElement) object);
         String label = query.getLabel();
         return label == null || label.length() == 0 ? getString("_UI_ViewValidationRule_type") : getString("_UI_ViewValidationRule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }

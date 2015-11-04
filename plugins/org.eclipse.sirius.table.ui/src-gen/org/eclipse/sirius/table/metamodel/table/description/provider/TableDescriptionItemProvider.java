@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 
 /**
@@ -278,7 +279,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
      */
     @Override
     public String getText(final Object object) {
-        final String label = new IdentifiedElementQuery((TableDescription) object).getLabel();
+        final String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_TableDescription_type") : label; //$NON-NLS-1$
     }
 

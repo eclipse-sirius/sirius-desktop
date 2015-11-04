@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 
@@ -501,7 +502,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((DiagramImportDescription) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_DiagramImportDescription_type") : getString("_UI_DiagramImportDescription_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 

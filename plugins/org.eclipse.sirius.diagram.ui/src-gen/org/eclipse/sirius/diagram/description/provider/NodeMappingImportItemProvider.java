@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * This is the item provider adapter for a
@@ -131,7 +132,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((NodeMappingImport) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
             return MessageFormat.format(Messages.NodeMappingItemProvider_borderedLabel, label);

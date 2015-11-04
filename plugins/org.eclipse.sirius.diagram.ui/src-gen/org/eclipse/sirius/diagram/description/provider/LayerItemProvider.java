@@ -38,6 +38,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 
 /**
@@ -257,7 +258,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = new IdentifiedElementQuery((Layer) object).getLabel();
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_Layer_type") : label; //$NON-NLS-1$
     }
 
