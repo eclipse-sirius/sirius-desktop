@@ -72,6 +72,8 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
 
     private static final String IMG_FILE1 = "aircraft1.JPG";
 
+    private static final String IMG_SVG_FILE = "image.svg";
+
     private static final String DATA_UNIT_DIR = "data/unit/style/";
 
     private static final String FILE_DIR = "/";
@@ -94,6 +96,8 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
 
     private static final String A1C1_NODE = A1 + C1_NODE;
 
+    private static final String BUNDLE_IMAGE_SUFFIX = "_BI";
+
     private static final String A1C1_CONTAINER = A1 + C1_CONTAINER;
 
     private static final String A1C1_LIST = A1 + C1_LIST;
@@ -113,7 +117,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         // "Reset style properties to default values" button works.
         oldDefaultFontName = changeDefaultFontName("Times New Roman");
 
-        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, DESIGN_FILE, IMG_FILE, IMG_FILE1);
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, DESIGN_FILE, IMG_FILE, IMG_FILE1, IMG_SVG_FILE);
     }
 
     /**
@@ -170,8 +174,8 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
              * tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
              * .getSetStyleToWorkspaceImageButton
              * (AbstractSiriusSwtBotGefTestCase.java:1126) at
-             * org.eclipse.sirius.
-             * tests.swtbot.SetStyleToWorkspaceImageTests.testSetWkpImageStyleCancel
+             * org.eclipse.sirius. tests.swtbot.SetStyleToWorkspaceImageTests.
+             * testSetWkpImageStyleCancel
              * (SetStyleToWorkspaceImageTests.java:404) at
              * org.eclipse.sirius.tests.swtbot.SetStyleToWorkspaceImageTests.
              * testSetWkpImageStyleCancelFromAppearanceSection
@@ -246,7 +250,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
             return;
         }
 
-        testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, true, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
     }
 
     /**
@@ -260,7 +264,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         if (!TestsUtil.isDynamicTabbar()) {
             return;
         }
-        testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, true, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath());
     }
 
     /**
@@ -274,7 +278,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         if (!TestsUtil.isDynamicTabbar()) {
             return;
         }
-        testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
     }
 
     /**
@@ -289,7 +293,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
             return;
         }
 
-        testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
     }
 
     /**
@@ -304,7 +308,187 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
             return;
         }
 
-        testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromJpgToSvgOnNodeFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
+
+        testChangeWkpImageStyle(C1_NODE + BUNDLE_IMAGE_SUFFIX, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(C1_NODE + BUNDLE_IMAGE_SUFFIX, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromJpgToSvgOnListFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getSvgImagePath());
+
+        testChangeWkpImageStyle(C1_LIST + BUNDLE_IMAGE_SUFFIX, AbstractDiagramListEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(C1_LIST + BUNDLE_IMAGE_SUFFIX, AbstractDiagramListEditPart.class, true, getSvgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromJpgToSvgOnContainerFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getSvgImagePath());
+
+        testChangeWkpImageStyle(C1_CONTAINER + BUNDLE_IMAGE_SUFFIX, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(C1_CONTAINER + BUNDLE_IMAGE_SUFFIX, AbstractDiagramContainerEditPart.class, true, getSvgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromJpgToSvgOnBorderedNodeFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getSvgImagePath());
+
+        testChangeWkpImageStyle(A1C1_NODE + BUNDLE_IMAGE_SUFFIX, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(A1C1_NODE + BUNDLE_IMAGE_SUFFIX, AbstractDiagramBorderNodeEditPart.class, true, getSvgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromJpgToSvgOnContainedNodeFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
+
+        testChangeWkpImageStyle(A1C1_CONTAINER + BUNDLE_IMAGE_SUFFIX, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+        testChangeWkpImageStyle(A1C1_CONTAINER + BUNDLE_IMAGE_SUFFIX, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromSvgToJpgOnNodeFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+
+        testChangeWkpImageStyle(C1_NODE + BUNDLE_IMAGE_SUFFIX, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(C1_NODE + BUNDLE_IMAGE_SUFFIX, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromSvgToJpgOnListFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath());
+
+        testChangeWkpImageStyle(C1_LIST + BUNDLE_IMAGE_SUFFIX, AbstractDiagramListEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(C1_LIST + BUNDLE_IMAGE_SUFFIX, AbstractDiagramListEditPart.class, true, getJpgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromSvgToJpgOnContainerFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
+
+        testChangeWkpImageStyle(C1_CONTAINER + BUNDLE_IMAGE_SUFFIX, AbstractDiagramContainerEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(C1_CONTAINER + BUNDLE_IMAGE_SUFFIX, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromSvgToJpgOnBorderedNodeFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
+
+        testChangeWkpImageStyle(A1C1_NODE + BUNDLE_IMAGE_SUFFIX, AbstractDiagramBorderNodeEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(A1C1_NODE + BUNDLE_IMAGE_SUFFIX, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeWkpImageStyleFromSvgToJpgOnContainedNodeFromTabbar() throws Exception {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+        testChangeWkpImageStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+
+        testChangeWkpImageStyle(A1C1_CONTAINER + BUNDLE_IMAGE_SUFFIX, AbstractDiagramNodeEditPart.class, true, getSvgImagePath());
+        testChangeWkpImageStyle(A1C1_CONTAINER + BUNDLE_IMAGE_SUFFIX, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
     }
 
     /**
@@ -314,7 +498,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnNodeFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, false, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, false, getJpgImagePath());
     }
 
     /**
@@ -324,7 +508,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnListFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, false, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, false, getJpgImagePath());
     }
 
     /**
@@ -334,7 +518,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnContainerFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, false, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, false, getJpgImagePath());
     }
 
     /**
@@ -344,7 +528,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnBorderNodeFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, false, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, false, getJpgImagePath());
     }
 
     /**
@@ -354,7 +538,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnContainedNodeFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, false, getImagePath());
+        testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, false, getJpgImagePath());
     }
 
     /**
@@ -414,7 +598,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         // Check that nothing is filtered if there is no filter
         expandIfNeeded(true);
         bot.text().setText("");
-        bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 3, "The dialog should display a normal view if there is no filter."));
+        bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 4, "The dialog should display a normal view if there is no filter."));
     }
 
     /**
@@ -564,6 +748,29 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         }
     }
 
+    private void testChangeWkpImageStyle(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar, String imagePath) throws Exception {
+        SWTBotGefEditPart botPart = selectAndCheckEditPart(name, type);
+        IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) botPart.part();
+
+        AbstractSWTBot<? extends Widget> wkpImageButton = getSetStyleToWorkspaceImageButton(tabbar, true);
+
+        click(wkpImageButton);
+
+        openSelectImageDialog();
+
+        setImage(imagePath);
+
+        if (tabbar) {
+            editor.click(editor.mainEditPart());
+
+            botPart = selectAndCheckEditPart(name, type);
+            wkpImageButton = getSetStyleToWorkspaceImageButton(tabbar, true);
+        }
+
+        assertFalse("No message should be log in error log after a change of image:" + getErrorLoggersMessage(), doesAnErrorOccurs());
+        checkCustom(part, true);
+    }
+
     private Dimension getSize(Node gmfNode) {
         Size size = (Size) gmfNode.getLayoutConstraint();
         return new Dimension(size.getWidth(), size.getHeight());
@@ -583,8 +790,12 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         bot.waitUntil(done);
     }
 
-    private String getImagePath() {
+    private String getJpgImagePath() {
         return designerProject.getName() + "/" + IMG_FILE;
+    }
+
+    private String getSvgImagePath() {
+        return designerProject.getName() + "/" + IMG_SVG_FILE;
     }
 
     private void cancel(SWTBotGefEditPart botPart) {

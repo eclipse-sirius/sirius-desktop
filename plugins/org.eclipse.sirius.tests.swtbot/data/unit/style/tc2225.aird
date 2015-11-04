@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_SZJdYJpZEd-PK6vZSn4rhA" selectedViews="_S1roYJpZEd-PK6vZSn4rhA" version="10.0.0.201412231738">
-  <models xmi:type="ecore:EPackage" href="tc2225.ecore#/"/>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_S1roYJpZEd-PK6vZSn4rhA" initialized="true">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_SZJdYJpZEd-PK6vZSn4rhA" selectedViews="_S1roYJpZEd-PK6vZSn4rhA" version="10.1.0.201509162000">
+  <semanticResources>tc2225.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_S1roYJpZEd-PK6vZSn4rhA">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Tuh78JpZEd-PK6vZSn4rhA" name="2225 package entities">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_TvLcMJpZEd-PK6vZSn4rhA" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_TvLcMZpZEd-PK6vZSn4rhA" type="Sirius" element="_Tuh78JpZEd-PK6vZSn4rhA" measurementUnit="Pixel">
@@ -82,8 +82,66 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_Ty9wAZpZEd-PK6vZSn4rhA" fontName="Times New Roman" fontHeight="8"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ty9wAppZEd-PK6vZSn4rhA" x="515" y="80"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_5jw2oIOgEeWepLXXty06hg" type="2001" element="_5jZqQIOgEeWepLXXty06hg">
+            <children xmi:type="notation:Node" xmi:id="_5j3kUIOgEeWepLXXty06hg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5j3kUYOgEeWepLXXty06hg" y="-21"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_5kDxkIOgEeWepLXXty06hg" type="3001" element="_5jctkIOgEeWepLXXty06hg">
+              <children xmi:type="notation:Node" xmi:id="_5kDxk4OgEeWepLXXty06hg" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_5kDxlIOgEeWepLXXty06hg" x="31" y="-5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_OvwTQIOhEeWepLXXty06hg" type="3005" element="_Ovl7MIOhEeWepLXXty06hg">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_OvwTQYOhEeWepLXXty06hg" fontName="Ubuntu"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OvwTQoOhEeWepLXXty06hg"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_5kDxkYOgEeWepLXXty06hg" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5kDxkoOgEeWepLXXty06hg" x="-22" width="30" height="30"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_-_bOEIOgEeWepLXXty06hg" type="3005" element="_-_MkkIOgEeWepLXXty06hg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_-_bOEYOgEeWepLXXty06hg" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-_bOEoOgEeWepLXXty06hg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5jxdsIOgEeWepLXXty06hg" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5jxdsYOgEeWepLXXty06hg" x="90" y="275" width="100" height="70"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_5j_gIIOgEeWepLXXty06hg" type="2003" element="_5jgX8IOgEeWepLXXty06hg">
+            <children xmi:type="notation:Node" xmi:id="_5kAuQIOgEeWepLXXty06hg" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_5kBVUIOgEeWepLXXty06hg" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_5kG04IOgEeWepLXXty06hg" type="3010" element="_5jhmEIOgEeWepLXXty06hg">
+                <styles xmi:type="notation:FontStyle" xmi:id="_5kG04YOgEeWepLXXty06hg" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_5kG04oOgEeWepLXXty06hg"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_5kBVUYOgEeWepLXXty06hg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_5kBVUoOgEeWepLXXty06hg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5j_gIYOgEeWepLXXty06hg" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5j_gIoOgEeWepLXXty06hg" x="300" y="275"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_5kB8YIOgEeWepLXXty06hg" type="2002" element="_5jiNIIOgEeWepLXXty06hg">
+            <children xmi:type="notation:Node" xmi:id="_5kCjcIOgEeWepLXXty06hg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_5kDKgIOgEeWepLXXty06hg" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_5kIDAIOgEeWepLXXty06hg" type="3007" element="_5jjbQIOgEeWepLXXty06hg">
+                <children xmi:type="notation:Node" xmi:id="_5kIqEIOgEeWepLXXty06hg" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_5kIqEYOgEeWepLXXty06hg" x="31"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_OvxhYIOhEeWepLXXty06hg" type="3005" element="_OvtP8IOhEeWepLXXty06hg">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_OvxhYYOhEeWepLXXty06hg" fontName="Ubuntu"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OvxhYoOhEeWepLXXty06hg"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_5kIDAYOgEeWepLXXty06hg" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5kIDAoOgEeWepLXXty06hg" x="30" y="30" width="30" height="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_5kDKgYOgEeWepLXXty06hg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_5kDKgoOgEeWepLXXty06hg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_5kB8YYOgEeWepLXXty06hg" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5kB8YoOgEeWepLXXty06hg" x="520" y="275"/>
+          </children>
           <styles xmi:type="notation:DiagramStyle" xmi:id="_TvLcMppZEd-PK6vZSn4rhA"/>
         </data>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_dPdTgIOgEeWepLXXty06hg" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_dPdTgYOgEeWepLXXty06hg"/>
       </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_O0poMJjLEeCGbO5oLE72PQ" name="c1Node" width="6" height="6" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="tc2225.ecore#//c1"/>
@@ -92,21 +150,15 @@
           <target xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_O0qPQZjLEeCGbO5oLE72PQ">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_O0qPQpjLEeCGbO5oLE72PQ"/>
             <description xmi:type="style:BundledImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_O0qPQ5jLEeCGbO5oLE72PQ"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_Txbe8ppZEd-PK6vZSn4rhA"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedBorderedNodes>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_O0poMZjLEeCGbO5oLE72PQ">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_O0poMpjLEeCGbO5oLE72PQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_O0poMZjLEeCGbO5oLE72PQ" borderColor="138,226,52" color="138,226,52">
           <description xmi:type="style:BundledImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@nodeMappings[name='EC%20Class%20Node']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_O0poM5jLEeCGbO5oLE72PQ" red="138" green="226" blue="52"/>
-          <color xmi:type="viewpoint:RGBValues" xmi:id="_TxZCsZpZEd-PK6vZSn4rhA" red="138" green="226" blue="52"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@nodeMappings[name='EC%20Class%20Node']"/>
       </ownedDiagramElements>
@@ -117,21 +169,15 @@
           <target xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_O0rdYZjLEeCGbO5oLE72PQ">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_O0rdYpjLEeCGbO5oLE72PQ"/>
             <description xmi:type="style:BundledImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_O0rdY5jLEeCGbO5oLE72PQ"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_TxdUIppZEd-PK6vZSn4rhA"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedBorderedNodes>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_O0q2UZjLEeCGbO5oLE72PQ">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_O0q2UpjLEeCGbO5oLE72PQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_O0q2UZjLEeCGbO5oLE72PQ" borderColor="138,226,52" color="138,226,52">
           <description xmi:type="style:BundledImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@nodeMappings[name='EC%20Class%20Node%202']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_O0q2U5jLEeCGbO5oLE72PQ" red="138" green="226" blue="52"/>
-          <color xmi:type="viewpoint:RGBValues" xmi:id="_TxctEppZEd-PK6vZSn4rhA" red="138" green="226" blue="52"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@nodeMappings[name='EC%20Class%20Node%202']"/>
       </ownedDiagramElements>
@@ -141,22 +187,15 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_O0srgJjLEeCGbO5oLE72PQ" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_O0srgZjLEeCGbO5oLE72PQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_O0srgJjLEeCGbO5oLE72PQ" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
           <description xmi:type="style:FlatContainerStyleDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20Liste']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_O0srgpjLEeCGbO5oLE72PQ"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_O0srg5jLEeCGbO5oLE72PQ" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_O0srhJjLEeCGbO5oLE72PQ" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20Liste']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_O0srhZjLEeCGbO5oLE72PQ" name="a1c1List">
           <target xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Fdv6kJvtEeSruqaqjt7oEg">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Fdv6kZvtEeSruqaqjt7oEg"/>
             <description xmi:type="style:BundledImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Fdv6kpvtEeSruqaqjt7oEg"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_Fdv6k5vtEeSruqaqjt7oEg"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
@@ -167,24 +206,74 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_O0t5oJjLEeCGbO5oLE72PQ" backgroundStyle="GradientTopToBottom">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_O0t5oZjLEeCGbO5oLE72PQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_O0t5oJjLEeCGbO5oLE72PQ" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
           <description xmi:type="style:FlatContainerStyleDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_O0t5opjLEeCGbO5oLE72PQ"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_O0t5o5jLEeCGbO5oLE72PQ" red="255" green="255" blue="255"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_O0t5pJjLEeCGbO5oLE72PQ" red="209" green="209" blue="209"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_O0t5pZjLEeCGbO5oLE72PQ" name="a1c1Container" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_O0ugsJjLEeCGbO5oLE72PQ">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_O0ugsZjLEeCGbO5oLE72PQ"/>
             <description xmi:type="style:BundledImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_O0ugspjLEeCGbO5oLE72PQ"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_TxhlkppZEd-PK6vZSn4rhA"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5jZqQIOgEeWepLXXty06hg" name="c1Node_BI" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="tc2225.ecore#//c1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2225.ecore#//c1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_5jctkIOgEeWepLXXty06hg" name="a1c1Node_BI_BI" width="3" height="3">
+          <target xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Ovl7MIOhEeWepLXXty06hg" workspacePath="/DesignerTestProject/missingImage.jpg">
+            <description xmi:type="style:WorkspaceImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_-_MkkIOgEeWepLXXty06hg" workspacePath="/DesignerTestProject/missingImage.jpg">
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@nodeMappings[name='EC%20Class%20Node%20WithBundleImage']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@nodeMappings[name='EC%20Class%20Node%20WithBundleImage']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_5jgX8IOgEeWepLXXty06hg" name="c1List_BI">
+        <target xmi:type="ecore:EClass" href="tc2225.ecore#//c1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2225.ecore#//c1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_5jg_AIOgEeWepLXXty06hg" workspacePath="/DesignerTestProject/missingImage.jpg">
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20Liste%20WithBundleImage']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20Liste%20WithBundleImage']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_5jhmEIOgEeWepLXXty06hg" name="a1c1List_BI_BI">
+          <target xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_OvqzsIOhEeWepLXXty06hg" workspacePath="/DesignerTestProject/missingImage.jpg">
+            <description xmi:type="style:WorkspaceImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_5jiNIIOgEeWepLXXty06hg" name="c1Container_BI" tooltipText="2225.c1">
+        <target xmi:type="ecore:EClass" href="tc2225.ecore#//c1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc2225.ecore#//c1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Ovso4IOhEeWepLXXty06hg" workspacePath="/DesignerTestProject/missingImage.jpg">
+          <description xmi:type="style:WorkspaceImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_5jjbQIOgEeWepLXXty06hg" name="a1c1Container_BI_BI" width="3" height="3">
+          <target xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_OvtP8IOhEeWepLXXty06hg" workspacePath="/DesignerTestProject/missingImage.jpg">
+            <description xmi:type="style:WorkspaceImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20Class%20WithBundleImage']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']"/>

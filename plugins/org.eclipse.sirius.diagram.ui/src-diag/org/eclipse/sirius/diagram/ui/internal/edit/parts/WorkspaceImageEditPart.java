@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNod
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
@@ -94,7 +95,18 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
         EObject element = this.resolveSemanticElement();
         if (element instanceof WorkspaceImage && figure != null) {
             WorkspaceImage bundledImage = (WorkspaceImage) element;
-            figure.refreshFigure(bundledImage);
+            // Check if the figure is the right one (SVGWorkspaceImageFigure for
+            // SVG format, WorkspaceImageFigure for others kinds).
+            if (DiagramContainerEditPartOperation.needFigureChange(bundledImage, figure)) {
+                // Replace the wrong IWorkspaceImageFigure kind by the new one.
+                getFigure().remove(figure);
+                IFigure shape = createNodeShape();
+                getFigure().add(shape);
+                contentPane = setupContentPane(shape);
+            } else {
+                // Refresh the right IWorkspaceImageFigure kind
+                figure.refreshFigure(bundledImage);
+            }
             DiagramNodeEditPartOperation.refreshFigure(this);
             DiagramElementEditPartOperation.refreshLabelAlignment(((GraphicalEditPart) getParent()).getContentPane(), bundledImage);
             ((GraphicalEditPart) this.getParent()).setLayoutConstraint(this, this.getFigure(), new Rectangle(0, 0, figure.getPreferredSize().width, figure.getPreferredSize().height));
