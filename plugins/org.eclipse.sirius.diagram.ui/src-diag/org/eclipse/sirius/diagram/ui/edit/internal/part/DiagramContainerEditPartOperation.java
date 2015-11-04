@@ -167,10 +167,22 @@ public final class DiagramContainerEditPartOperation {
      * how the style has evolved.
      */
     private static void refreshBackgroundFigure(final AbstractDiagramElementContainerEditPart self, final ContainerStyle style) {
-
         // Update the background figure when the workspace image path changes.
         if (self.getBackgroundFigure() instanceof IWorkspaceImageFigure && style != null) {
-            ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(style);
+            IWorkspaceImageFigure figure = (IWorkspaceImageFigure) self.getBackgroundFigure();
+            // Check if the figure is the right one (SVGWorkspaceImageFigure for
+            // SVG format, WorkspaceImageFigure for others kinds).
+            boolean needFigureChange = false;
+            if (style instanceof WorkspaceImage) {
+                needFigureChange = DiagramContainerEditPartOperation.needFigureChange((WorkspaceImage) style, figure);
+            }
+            if (needFigureChange) {
+                // Replace the wrong IWorkspaceImageFigure kind by the new one.
+                self.reInitFigure();
+            } else {
+                // Refresh the right IWorkspaceImageFigure kind
+                ((IWorkspaceImageFigure) self.getBackgroundFigure()).refreshFigure(style);
+            }
         }
 
         // Update the background figure when the background gradient style
@@ -522,5 +534,29 @@ public final class DiagramContainerEditPartOperation {
                 shapeFigure.setBorder(newBorder);
             }
         }
+    }
+
+    /**
+     * Check if the current <code>figure</code> is the right one
+     * (SVGWorkspaceImageFigure for SVG format, WorkspaceImageFigure for others
+     * kinds) according to the {@link WorkspaceImage} style.
+     * 
+     * @param bundledImage
+     *            the {@link WorkspaceImage} style
+     * @param figure
+     *            The figure to check.
+     * @return true if a new figure must be create according to style
+     *         <code>bundledImage</code>, false if the current figure can be
+     *         used.
+     */
+    public static boolean needFigureChange(final WorkspaceImage bundledImage, IWorkspaceImageFigure figure) {
+        boolean result = false;
+        String workspacePath = bundledImage.getWorkspacePath();
+        if (!StringUtil.isEmpty(workspacePath) && WorkspaceImageFigure.isSvgImage(workspacePath)) {
+            result = !(figure instanceof SVGWorkspaceImageFigure);
+        } else {
+            result = !(figure instanceof WorkspaceImageFigure);
+        }
+        return result;
     }
 }
