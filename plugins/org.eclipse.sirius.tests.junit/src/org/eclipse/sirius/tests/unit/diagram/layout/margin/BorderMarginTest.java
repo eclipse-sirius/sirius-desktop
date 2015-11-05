@@ -88,9 +88,9 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
     {
         // Comic Sans MS has been used to create the test data, but there are
         // differences between linux and windows.
-        listAutoSizes.put(Integer.valueOf(0), new Dimension(183, 49));
-        listAutoSizes.put(Integer.valueOf(1), new Dimension(181, 49));
-        listAutoSizes.put(Integer.valueOf(10), new Dimension(206, 67));
+        listAutoSizes.put(Integer.valueOf(0), new Dimension(187, 45));
+        listAutoSizes.put(Integer.valueOf(1), new Dimension(189, 47));
+        listAutoSizes.put(Integer.valueOf(10), new Dimension(214, 65));
 
         listAutoSizesWin.put(Integer.valueOf(0), new Dimension(182, 47));
         listAutoSizesWin.put(Integer.valueOf(1), new Dimension(180, 47));
