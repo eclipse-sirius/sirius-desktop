@@ -30,7 +30,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.modelingproject.manager.AttachSemanticResourcesJob;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -54,6 +53,7 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
     /**
      * Install the listener.
      */
+    @Override
     public void init() {
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
         workspace.addResourceChangeListener(this);
@@ -62,6 +62,7 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
     /**
      * Dispose the listener.
      */
+    @Override
     public void dispose() {
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
         workspace.removeResourceChangeListener(this);
@@ -72,6 +73,7 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
      * 
      * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
      */
+    @Override
     public void resourceChanged(IResourceChangeEvent event) {
         IResourceDelta delta = event.getDelta();
 
@@ -112,19 +114,6 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
             } catch (Exception e) {
                 // CHECKSTYLE:ON
                 SiriusEditPlugin.getPlugin().log(e);
-            }
-        } else if (IResourceChangeEvent.PRE_CLOSE == event.getType()) {
-            if (event.getResource() instanceof IProject) {
-                final Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject((IProject) event.getResource());
-                if (optionalModelingProject.some()) {
-                    // The modeling project is being closed
-                    // The cleaning of the ModelingProjectManager
-                    // (sessionFileLoading) is already done by the
-                    // sessionManagerListener of this last.
-                    // The closing (and saving) of the session is already done
-                    // by the
-                    // DAnalysisSessionImpl.statusChanged (ResourceSyncClient).
-                }
             }
         }
     }
