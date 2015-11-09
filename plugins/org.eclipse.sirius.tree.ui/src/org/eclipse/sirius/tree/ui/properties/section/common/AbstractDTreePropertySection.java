@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,13 +47,13 @@ import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
- * An abstract implementation of a property tab section for the property sheet.<BR>
+ * An abstract implementation of a property tab section for the property sheet.
+ * <BR>
  * This implementation uses a {@link PropertySheetPage} in the section to manage
  * {@link org.eclipse.ui.views.properties.PropertySheetEntry} and
  * {@link org.eclipse.emf.edit.ui.provider.PropertySource}
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
- * 
  */
 public abstract class AbstractDTreePropertySection extends AbstractPropertySection implements IPropertySourceProvider {
 
@@ -73,7 +73,7 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
     protected EObject eObject;
 
     /** The list of currently selected objects. */
-    protected List<Object> eObjectList;
+    protected List<?> eObjectList;
 
     /**
      * Plugin's
@@ -235,8 +235,11 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
      */
     @Override
     public void dispose() {
-        super.dispose();
-
+        parentPropertySheetPage = null;
+        if (adapterFactoryLabelProvider != null) {
+            adapterFactoryLabelProvider.dispose();
+            adapterFactoryLabelProvider = null;
+        }
         if (contentPage != null) {
             contentPage.dispose();
             contentPage = null;
@@ -249,13 +252,9 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
             }
         }
         eObject = null;
+        super.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#refresh()
-     */
     @Override
     public void refresh() {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_PROPERTIES_VIEW_SECTION_KEY);
@@ -263,11 +262,6 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_PROPERTIES_VIEW_SECTION_KEY);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeHidden()
-     */
     @Override
     public void aboutToBeHidden() {
         super.aboutToBeHidden();
@@ -278,11 +272,6 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
-     */
     @Override
     public void aboutToBeShown() {
         super.aboutToBeShown();
@@ -335,6 +324,7 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
                 if (contentPage != null && contentPage.getControl() != null) {
                     final Control control = contentPage.getControl();
                     control.getDisplay().syncExec(new Runnable() {
+                        @Override
                         public void run() {
                             if (!control.isDisposed() && control.isVisible()) {
                                 refresh();

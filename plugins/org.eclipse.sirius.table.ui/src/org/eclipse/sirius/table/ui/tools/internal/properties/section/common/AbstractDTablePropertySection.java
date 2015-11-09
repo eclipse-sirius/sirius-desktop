@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,14 @@ import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
+import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
+import org.eclipse.sirius.ui.tools.api.properties.UndoableModelPropertySheetEntry;
+import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
@@ -36,23 +44,14 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
-import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
-import org.eclipse.sirius.ui.tools.api.properties.UndoableModelPropertySheetEntry;
-import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
-
 /**
- * An abstract implementation of a property tab section for the property sheet.<BR>
+ * An abstract implementation of a property tab section for the property sheet.
+ * <BR>
  * This implementation uses a {@link PropertySheetPage} in the section to manage
  * {@link org.eclipse.ui.views.properties.PropertySheetEntry} and
  * {@link org.eclipse.emf.edit.ui.provider.PropertySource}
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
  */
 public abstract class AbstractDTablePropertySection extends AbstractPropertySection implements IPropertySourceProvider {
 
@@ -72,7 +71,7 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
     protected EObject eObject;
 
     /** The list of currently selected objects. */
-    protected List<Object> eObjectList;
+    protected List<?> eObjectList;
 
     /**
      * Plugin's
@@ -94,17 +93,12 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
     };
 
     /**
-     * The editing domain of the corresponding {@link AbstractDTableEditor
+     * The editing domain of the corresponding
+     * {@link org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor
      * editor}
      */
     private TransactionalEditingDomain editingDomain;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
-     *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
-     */
     @Override
     public void createControls(final Composite parent, final TabbedPropertySheetPage aTabbedPropertySheetPage) {
         super.createControls(parent, aTabbedPropertySheetPage);
@@ -135,12 +129,6 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
         // ((SortedPropertySheetPage) page).setSorter(new AirPropertySorter());
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.ISection#setInput(org.eclipse.ui.IWorkbenchPart,
-     *      org.eclipse.jface.viewers.ISelection)
-     */
     @Override
     public void setInput(final IWorkbenchPart part, final ISelection selection) {
         super.setInput(part, selection);
@@ -219,15 +207,13 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#dispose()
-     */
     @Override
     public void dispose() {
-        super.dispose();
-
+        parentPropertySheetPage = null;
+        if (adapterFactoryLabelProvider != null) {
+            adapterFactoryLabelProvider.dispose();
+            adapterFactoryLabelProvider = null;
+        }
         if (contentPage != null) {
             contentPage.dispose();
             contentPage = null;
@@ -240,13 +226,9 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
             }
         }
         eObject = null;
+        super.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#refresh()
-     */
     @Override
     public void refresh() {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_PROPERTIES_VIEW_SECTION_KEY);
@@ -254,11 +236,6 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_PROPERTIES_VIEW_SECTION_KEY);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeHidden()
-     */
     @Override
     public void aboutToBeHidden() {
         super.aboutToBeHidden();
@@ -269,11 +246,6 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#aboutToBeShown()
-     */
     @Override
     public void aboutToBeShown() {
         super.aboutToBeShown();
@@ -319,13 +291,13 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
      *            the event notification
      */
     protected void update(final TransactionalEditingDomain domain, final Notification notification) {
-
         if (parentPropertySheetPage.isUpdateEnabled()) {
             final Object notifier = notification.getNotifier();
 
             if (notifier instanceof EObject && contentPage != null && contentPage.getControl() != null) {
                 final Control control = contentPage.getControl();
                 EclipseUIUtil.displayAsyncExec(new Runnable() {
+                    @Override
                     public void run() {
                         if (!control.isDisposed() && control.isVisible()) {
                             refresh();
@@ -356,7 +328,8 @@ public abstract class AbstractDTablePropertySection extends AbstractPropertySect
     }
 
     /**
-     * Override to use all vertical space.<BR> {@inheritDoc}
+     * Override to use all vertical space.<BR>
+     * {@inheritDoc}
      * 
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
      */

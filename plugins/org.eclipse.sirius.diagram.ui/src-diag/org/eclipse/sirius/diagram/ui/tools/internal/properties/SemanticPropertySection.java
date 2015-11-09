@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,6 +53,7 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
      *            the object.
      * @return the property source of the specified objet.
      */
+    @Override
     public IPropertySource getPropertySource(final Object object) {
 
         IPropertySource propSrc = null;
@@ -128,9 +129,7 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
      * @return the unwrapped object
      */
     protected Object transformSelection(final Object selection) {
-
         Object object = selection;
-
         if (object instanceof EditPart) {
             object = ((EditPart) object).getModel();
         } else if (object instanceof IAdaptable) {
@@ -150,12 +149,6 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
         return object;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.properties.AbstractPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
-     *      org.eclipse.jface.viewers.ISelection)
-     */
     @Override
     public void setInput(final IWorkbenchPart workbenchPart, final ISelection selection) {
         this.part = workbenchPart;
@@ -194,11 +187,6 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
         return adapterFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.properties.AbstractPropertySection#refresh()
-     */
     @Override
     public void refresh() {
         if (this.transformedSelection != null) {
@@ -220,11 +208,6 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
         super.refresh();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.properties.AbstractPropertySection#getSelectedObject()
-     */
     @Override
     public Object getSelectedObject() {
         Object result = null;
@@ -232,6 +215,13 @@ public class SemanticPropertySection extends AbstractPropertySection implements 
             result = transformedSelection.get(0);
         }
         return result;
+    }
+
+    @Override
+    public void dispose() {
+        transformedSelection = null;
+        part = null;
+        super.dispose();
     }
 
 }

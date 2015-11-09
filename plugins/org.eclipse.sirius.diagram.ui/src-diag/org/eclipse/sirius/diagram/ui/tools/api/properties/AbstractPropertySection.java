@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2003, 2009 IBM Corporation and others.
+ * Copyright (c) 2003, 2015 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -250,27 +250,15 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.AbstractModelerPropertySection#dispose()
-     */
     @Override
     public void dispose() {
-        super.dispose();
-
         if (page != null) {
             page.dispose();
             page = null;
         }
-
+        super.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#refresh()
-     */
     @Override
     public void refresh() {
         try {
@@ -283,11 +271,6 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
-     */
     @Override
     public boolean shouldUseExtraSpace() {
         return true;
@@ -308,6 +291,7 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
         if (!isDisposed()) {
             postUpdateRequest(new Runnable() {
 
+                @Override
                 public void run() {
                     if (!isDisposed() && !isNotifierDeleted(notification)) {
                         refresh();
@@ -317,11 +301,6 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.AbstractModelerPropertySection#getFilter()
-     */
     @Override
     public NotificationFilter getFilter() {
         return NotificationFilter.createEventTypeFilter(Notification.SET).or(NotificationFilter.createEventTypeFilter(Notification.UNSET))
@@ -330,11 +309,6 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
                 .and(NotificationFilter.createNotifierTypeFilter(EObject.class));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.properties.sections.AbstractModelerPropertySection#addToEObjectList(java.lang.Object)
-     */
     @Override
     protected boolean addToEObjectList(final Object object) {
         /* not implemented */
@@ -344,7 +318,7 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
     /**
      * Returns the selected object.
      * 
-     * @return the selected objet.
+     * @return the selected object.
      */
     public abstract Object getSelectedObject();
 
@@ -356,11 +330,6 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
      */
     private static class SortedPropertySheetPage extends PropertySheetPage {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.views.properties.PropertySheetPage#setSorter(org.eclipse.ui.views.properties.PropertySheetSorter)
-         */
         @Override
         public void setSorter(final PropertySheetSorter sorter) {
             super.setSorter(sorter);
