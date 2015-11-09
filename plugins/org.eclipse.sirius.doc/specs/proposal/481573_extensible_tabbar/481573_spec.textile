@@ -1,0 +1,56 @@
+h1. Sirius Evolution Specification: Customize the tabbar actions
+
+h2. Preamble
+
+_Summary_: Make possible to display a sub-set of existing actions and provide specific ones.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2015-11-05 | fbarbin    | Initial version. |
+
+
+_Relevant tickets_ :
+* "Bug 481573 - Provide an extensible mechanism to allow developers to customize the diagram tabbar":https://bugs.eclipse.org/bugs/show_bug.cgi?id=481573
+
+h2. Introduction
+
+It is currently possible for developers to add new actions in the Sirius tabbar by using the general eclipse extension point @org.eclipse.ui.menus@ (see Sirius Developer Manual/Provide tab-bar extensions). This mechanism allows adding new actions after a group of existing Sirius actions. However, it is not possible to hide the default Sirius actions or to change the order of those actions. This evolution aims to provide a new Sirius extension point that will let developers to provide a specific tabbar items list according to the current selection.
+
+h2. Detailed Specification
+
+In this evolution, we want to provide an extension point that will allow to define the tabbar items according to the current selection. In this extension point, the developer will provide a class (extending an Abstract Sirius class) for a specific kind of selection (the diagram blank, or a diagram element for instance). This class will allow to create the Sirius standard items one by one by calling the appropriate method from the super class, but also adding new ones.
+If at least one contribution to this extension point is provided, the standard tabbar is not used anymore. That means if the developer does not provide tabbar items for some kind of selection, the tabbar will be empty. If two extensions are provided for a same kind of selection, the first one is choosen.
+
+h2. Backward Compatibility and Migration Paths
+
+This evolution does not change existing API.
+
+h3. Metamodel Changes
+
+This evolution does not change the metamodel.
+  
+h3. API Changes
+
+We will add a new abstract class in API the developers should inherit to contribute the tabbar items.
+
+
+h3. User Interface Changes
+
+Except for the new tabbar behavior defined by developers, this evolution does not change the user-interface.
+
+h3. Documentation Changes
+
+The New and Noteworthy documentation and the developer documentation will be updated to mention and explain the new extension point.
+
+h2. Tests and Non-regression strategy
+
+New SWTBot tests will be added to check the following behaviors:
+
+* The tabbar content is the default one without any contribution to the new extension point.
+* Test that the tabbar contribution is properly displayed when:
+** the diagram is selected (at the opening time).
+** The selection change to a diagram element for which a different contribution has been provided.
+** The selection switch back to the diagram.
+
+h2. Implementation choices and tradeoffs
+
+The current extensible mechanism with @org.eclipse.ui.menus@ extension point will not be operational with this feature. When this feature is activated, the tabbar is only filled through this new mechanism.
