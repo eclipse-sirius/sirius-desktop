@@ -14,7 +14,7 @@
     <topic href="doc/Release_Notes_Previous.html" label="Release Notes for Older Versions" />
   </topic>
   <topic href="doc/user/Sirius User Manual.html" label="Sirius User Manual">
-    <anchor id="userStart"/>
+    <anchor id="userStart" />
     <topic href="doc/user/general/Modeling Project.html" label="Modeling Project">
       <topic href="doc/user/general/Modeling Project.html#Introduction" label="Introduction" />
       <topic href="doc/user/general/Modeling Project.html#FormerUsers" label="Note to Users of Previous Versions" />
@@ -24,10 +24,10 @@
       <topic href="doc/user/general/Modeling Project.html#LegacyMode" label="Legacy Mode" />
     </topic>
     <topic href="doc/user/diagrams/Diagrams.html" label="Diagrams">
-      <topic href="doc/user/diagrams/Diagrams.html#introduction" label="Introduction"/>
-      <topic href="doc/user/diagrams/Diagrams.html#features_overview" label="Features Overview"/>
-      <topic href="doc/user/diagrams/Diagrams.html#reference" label="Reference"/>
-      <topic href="doc/user/diagrams/Diagrams.html#preferences" label="Preferences"/>
+      <topic href="doc/user/diagrams/Diagrams.html#introduction" label="Introduction" />
+      <topic href="doc/user/diagrams/Diagrams.html#features_overview" label="Features Overview" />
+      <topic href="doc/user/diagrams/Diagrams.html#reference" label="Reference" />
+      <topic href="doc/user/diagrams/Diagrams.html#preferences" label="Preferences" />
     </topic>
     <topic href="doc/user/sequences/Sequence Diagrams.html" label="Sequence Diagrams">
       <topic href="doc/user/sequences/Sequence Diagrams.html#introduction" label="Introduction" />
@@ -49,35 +49,35 @@
       <topic href="doc/user/trees/Trees.html#items" label="Adding and Removing Tree Items" />
       <topic href="doc/user/trees/Trees.html#editing" label="Editing Tree Items" />
     </topic>
-    <anchor id="moreUserRefs"/>
+    <anchor id="moreUserRefs" />
   </topic>
   <topic href="doc/specifier/Sirius Specifier Manual.html" label="Sirius Specifier Manual">
-    <anchor id="specifierStart"/>
+    <anchor id="specifierStart" />
     <topic href="doc/specifier/general/Specifying_Viewpoints.html" label="Viewpoints">
       <topic href="doc/specifier/general/Specifying_Viewpoints.html#introduction" label="Introduction" />
       <topic href="doc/specifier/general/Specifying_Viewpoints.html#concepts" label="Philosophy and Concepts" />
       <topic href="doc/specifier/general/Specifying_Viewpoints.html#vsp" label="Viewpoint Specification Projects" />
       <topic href="doc/specifier/general/Specifying_Viewpoints.html#vsm" label="Viewpoint Specification Models">
-	<topic href="doc/specifier/general/Specifying_Viewpoints.html#vsm_organization" label="Organization" />
-	<topic href="doc/specifier/general/Specifying_Viewpoints.html#common_attributes" label="Common Attributes"/>
-	<topic href="doc/specifier/general/Specifying_Viewpoints.html#type_names" label="Type Names"/>
-	<topic href="doc/specifier/general/Specifying_Viewpoints.html#interpreted_expressions" label="Interpreted Expressions"/>
-	<topic href="doc/specifier/general/Specifying_Viewpoints.html#model_operations" label="Model Operations"/>
-	<topic href="doc/specifier/general/Specifying_Viewpoints.html#validation" label="VSM Validation"/>
-	<topic href="doc/specifier/general/Specifying_Viewpoints.html#dynamic" label="Dynamic Development"/>
+        <topic href="doc/specifier/general/Specifying_Viewpoints.html#vsm_organization" label="Organization" />
+        <topic href="doc/specifier/general/Specifying_Viewpoints.html#common_attributes" label="Common Attributes" />
+        <topic href="doc/specifier/general/Specifying_Viewpoints.html#type_names" label="Type Names" />
+        <topic href="doc/specifier/general/Specifying_Viewpoints.html#interpreted_expressions" label="Interpreted Expressions" />
+        <topic href="doc/specifier/general/Specifying_Viewpoints.html#model_operations" label="Model Operations" />
+        <topic href="doc/specifier/general/Specifying_Viewpoints.html#validation" label="VSM Validation" />
+        <topic href="doc/specifier/general/Specifying_Viewpoints.html#dynamic" label="Dynamic Development" />
       </topic>
     </topic>
     <topic href="doc/specifier/diagrams/Diagrams.html" label="Diagrams">
       <topic href="doc/specifier/diagrams/Diagrams.html#introduction" label="Introduction" />
       <topic href="doc/specifier/diagrams/Diagrams.html#diagram_description" label="Diagram Description" />
       <topic href="doc/specifier/diagrams/Diagrams.html#layers_graphical_elements" label="Layers and Graphical Elements">
-	<topic href="doc/specifier/diagrams/Diagrams.html#layers" label="Layers" />
-	<topic href="doc/specifier/diagrams/Diagrams.html#graphical_elements" label="Graphical Elements and Mappings" />
-	<topic href="doc/specifier/diagrams/Diagrams.html#nodes" label="Nodes" />
-	<topic href="doc/specifier/diagrams/Diagrams.html#containers" label="Containers" />
-	<topic href="doc/specifier/diagrams/Diagrams.html#bordered_nodes" label="Bordered Nodes" />
-	<topic href="doc/specifier/diagrams/Diagrams.html#edges" label="Edges" />
-	<topic href="doc/specifier/diagrams/Diagrams.html#decorations" label="Decorations" />
+        <topic href="doc/specifier/diagrams/Diagrams.html#layers" label="Layers" />
+        <topic href="doc/specifier/diagrams/Diagrams.html#graphical_elements" label="Graphical Elements and Mappings" />
+        <topic href="doc/specifier/diagrams/Diagrams.html#nodes" label="Nodes" />
+        <topic href="doc/specifier/diagrams/Diagrams.html#containers" label="Containers" />
+        <topic href="doc/specifier/diagrams/Diagrams.html#bordered_nodes" label="Bordered Nodes" />
+        <topic href="doc/specifier/diagrams/Diagrams.html#edges" label="Edges" />
+        <topic href="doc/specifier/diagrams/Diagrams.html#decorations" label="Decorations" />
       </topic>
       <topic href="doc/specifier/diagrams/Diagrams.html#styling" label="Styling" />
       <topic href="doc/specifier/diagrams/Diagrams.html#tools" label="Tools" />
@@ -99,24 +99,25 @@
     <topic href="doc/specifier/tables/Tables.html" label="Tables">
       <topic href="doc/specifier/tables/Tables.html#introduction" label="Introduction" />
       <topic href="doc/specifier/tables/Tables.html#edition_tables" label="Edition Tables">
-	<topic href="doc/specifier/tables/Tables.html#table_tools" label="Table Tools" />
-	<topic href="doc/specifier/tables/Tables.html#line_mappings" label="Line Mappings" />
-	<topic href="doc/specifier/tables/Tables.html#feature_column_mapping" label="Feature Column Mappings" />
+        <topic href="doc/specifier/tables/Tables.html#table_tools" label="Table Tools" />
+        <topic href="doc/specifier/tables/Tables.html#line_mappings" label="Line Mappings" />
+        <topic href="doc/specifier/tables/Tables.html#feature_column_mapping" label="Feature Column Mappings" />
       </topic>
       <topic href="doc/specifier/tables/Tables.html#cross_tables" label="Cross Tables">
-	<topic href="doc/specifier/tables/Tables.html#cross_table_tools" label="Table Tools" />
-	<topic href="doc/specifier/tables/Tables.html#element_column_mapping" label="Element Column Mappings" />
-	<topic href="doc/specifier/tables/Tables.html#intersection_mapping" label="Intersection Mappings" />
+        <topic href="doc/specifier/tables/Tables.html#cross_table_tools" label="Table Tools" />
+        <topic href="doc/specifier/tables/Tables.html#element_column_mapping" label="Element Column Mappings" />
+        <topic href="doc/specifier/tables/Tables.html#intersection_mapping" label="Intersection Mappings" />
       </topic>
     </topic>
     <topic href="doc/specifier/trees/Trees.html" label="Trees">
       <topic href="doc/specifier/trees/Trees.html#introduction" label="Introduction" />
       <topic href="doc/specifier/trees/Trees.html#tree_description" label="Tree Descriptions" />
       <topic href="doc/specifier/trees/Trees.html#mappings" label="Tree Item Mappings">
-	<topic href="doc/specifier/trees/Trees.html#item_style" label="Tree Item Styles" />
-	<topic href="doc/specifier/trees/Trees.html#item_tools" label="Tree Item Tools" />
+        <topic href="doc/specifier/trees/Trees.html#item_style" label="Tree Item Styles" />
+        <topic href="doc/specifier/trees/Trees.html#item_tools" label="Tree Item Tools" />
       </topic>
     </topic>
+    <topic href="doc/specifier/general/ToolsSpecification.html" label="Tools Specification" />
     <topic href="doc/specifier/general/Model_Operations.html" label="Model Operations" />
     <topic href="doc/specifier/general/Colors.html" label="Color Palettes" />
     <topic href="doc/specifier/general/Writing_Queries.html" label="Queries and Interpreted Expressions">
@@ -129,26 +130,26 @@
       <topic href="doc/specifier/general/Writing_Queries.html#custom" label="Providing a Custom Language" />
       <topic href="doc/specifier/general/Writing_Queries.html#service_methods" label="Writing Java Services" />
     </topic>
-    <anchor id="moreSpecifierRefs"/>
+    <anchor id="moreSpecifierRefs" />
   </topic>
   <topic href="doc/developer/Sirius Developer Manual.html" label="Sirius Developer Manual">
-    <anchor id="developerStart"/>
-    <topic href="doc/developer/Architecture_Overview.html" label="Architecture Overview"/>
-    <topic href="doc/developer/Architecture.html" label="Architecture and Concepts"/>
-    <topic href="doc/developer/Meta-models.html" label="Meta-models"/>
+    <anchor id="developerStart" />
+    <topic href="doc/developer/Architecture_Overview.html" label="Architecture Overview" />
+    <topic href="doc/developer/Architecture.html" label="Architecture and Concepts" />
+    <topic href="doc/developer/Meta-models.html" label="Meta-models" />
     <topic label="Extension Points">
-      <topic href="doc/developer/integration-plm.html" label="Integration with Product Life Cycle Management"/>
-      <topic href="doc/developer/integration-modeler_description_file_deployment.html" label="Deploy a Modeler Description File"/>
-      <topic href="doc/developer/extensions-provide_save_dialog.html" label="Provide custom save dialog"/>
-      <topic href="doc/developer/extensions-provide_custom-arrange-all.html" label="Provide custom arrange-all"/>
-      <topic href="doc/developer/extensions-provide_custom_style.html" label="Provide custom style"/>
-      <topic href="doc/developer/extensions-provide_tabbar_extensions.html" label="Provide tab-bar extensions"/>
-      <topic href="doc/developer/extensions-provide_migrate_contribution.html" label="Provide custom representation files migration"/>
-      <topic href="doc/developer/extensions-provide_repair_contribution.html" label="Provide custom repair participant"/>
-      <topic href="doc/developer/extensions-provide_celleditor.html" label="Provide custom cell editor"/>
-      <anchor id="moreExtensionPointsRefs"/>
+      <topic href="doc/developer/integration-plm.html" label="Integration with Product Life Cycle Management" />
+      <topic href="doc/developer/integration-modeler_description_file_deployment.html" label="Deploy a Modeler Description File" />
+      <topic href="doc/developer/extensions-provide_save_dialog.html" label="Provide custom save dialog" />
+      <topic href="doc/developer/extensions-provide_custom-arrange-all.html" label="Provide custom arrange-all" />
+      <topic href="doc/developer/extensions-provide_custom_style.html" label="Provide custom style" />
+      <topic href="doc/developer/extensions-provide_tabbar_extensions.html" label="Provide tab-bar extensions" />
+      <topic href="doc/developer/extensions-provide_migrate_contribution.html" label="Provide custom representation files migration" />
+      <topic href="doc/developer/extensions-provide_repair_contribution.html" label="Provide custom repair participant" />
+      <topic href="doc/developer/extensions-provide_celleditor.html" label="Provide custom cell editor" />
+      <anchor id="moreExtensionPointsRefs" />
     </topic>
-    <anchor id="moreDeveloperRefs"/>
+    <anchor id="moreDeveloperRefs" />
   </topic>
   <topic href="doc/Glossary.html" label="Glossary"></topic>
 </toc>
