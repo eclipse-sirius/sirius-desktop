@@ -117,9 +117,7 @@
 	<topic href="doc/specifier/trees/Trees.html#item_tools" label="Tree Item Tools" />
       </topic>
     </topic>
-    <topic href="doc/specifier/general/Model_Operations.html" label="Model Operations">
-      <topic href="doc/specifier/general/Model_Operations.html" label="Model Operations" />
-    </topic>
+    <topic href="doc/specifier/general/Model_Operations.html" label="Model Operations" />
     <topic href="doc/specifier/general/Colors.html" label="Color Palettes" />
     <topic href="doc/specifier/general/Writing_Queries.html" label="Queries and Interpreted Expressions">
       <topic href="doc/specifier/general/Writing_Queries.html#introduction" label="Introduction" />
