@@ -20,6 +20,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.DefaultPermissionProvider;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionProviderDescriptor;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionService;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors.StandalonePermissionProviderDescriptor;
@@ -96,6 +97,8 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private UILocalSession localSession;
 
     private SWTBotSiriusDiagramEditor editor;
+
+    private PermissionProviderDescriptor permissionProviderDescriptor;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -190,8 +193,8 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
     private void initCustomPermissionAuthority() {
         ReadOnlyPermissionAuthority readOnlyPermissionAuthority = new ReadOnlyPermissionAuthority();
         IPermissionProvider permissionProvider = new DefaultPermissionProvider(readOnlyPermissionAuthority);
-        StandalonePermissionProviderDescriptor permissionProviderDescriptor = new StandalonePermissionProviderDescriptor("org.eclipse.sirius.tree.tests.forbiddenPermissionAuthorityProvider",
-                ExtenderConstants.HIGHEST_PRIORITY, permissionProvider);
+        permissionProviderDescriptor = new StandalonePermissionProviderDescriptor("org.eclipse.sirius.tree.tests.forbiddenPermissionAuthorityProvider", ExtenderConstants.HIGHEST_PRIORITY,
+                permissionProvider);
         PermissionService.addExtension(permissionProviderDescriptor);
     }
 
@@ -281,12 +284,21 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
     }
 
+    @Override
+    protected void tearDown() throws Exception {
+        PermissionService.removeExtension(permissionProviderDescriptor);
+        permissionProviderDescriptor = null;
+        editor = null;
+        localSession = null;
+        sessionAirdResource = null;
+        super.tearDown();
+    }
+
     /**
      * A matcher that returns all {@link MenuItem}s except the ones having the
      * given tooltip.
      * 
      * @author alagarde
-     * 
      */
     private static final class AllItemsExcept extends BaseMatcher<MenuItem> {
 
