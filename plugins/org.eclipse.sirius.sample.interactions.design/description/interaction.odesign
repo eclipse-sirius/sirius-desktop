@@ -953,12 +953,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:For" expression="aql:self.eInverse('context')->select( c | c.eContainer()->size() > 0)" iteratorName="end">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;$end.filter(&quot;ExecutionEnd&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:end.oclIsKindOf(interactions::ExecutionEnd)">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:end.execution">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;$end.filter(&quot;MessageEnd&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:end.oclIsKindOf(interactions::MessageEnd)">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:end.message">
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd = end and self.receivingEnd = null">
                         <subModelOperations xsi:type="tool_1:RemoveElement"/>
@@ -968,7 +968,7 @@
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;$end.filter(&quot;StateEnd&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:end.oclIsKindOf(interactions::StateEnd)">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:end.state">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
