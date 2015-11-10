@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_0mRv4eS0EeKH-OJR8wbplA" selectedViews="_2XwUkOS0EeKH-OJR8wbplA" version="8.0.0">
-  <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_2XwUkOS0EeKH-OJR8wbplA" initialized="true">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_0mRv4eS0EeKH-OJR8wbplA" selectedViews="_2XwUkOS0EeKH-OJR8wbplA" version="10.1.0.201509162000">
+  <semanticResources>My.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_2XwUkOS0EeKH-OJR8wbplA">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_ivna4OS1EeKH-OJR8wbplA" name="Margin Diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ivsTYOS1EeKH-OJR8wbplA" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_ivsTYeS1EeKH-OJR8wbplA" type="Sirius" element="_ivna4OS1EeKH-OJR8wbplA" measurementUnit="Pixel">
@@ -107,28 +107,24 @@
           <styles xmi:type="notation:DiagramStyle" xmi:id="_ivsTYuS1EeKH-OJR8wbplA"/>
         </data>
       </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_twbhoIe1EeWRSYNd7IemNg" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_twbhoYe1EeWRSYNd7IemNg"/>
+      </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_ivna4eS1EeKH-OJR8wbplA" name="The border label VSM size is 0 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivna4uS1EeKH-OJR8wbplA" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ivoB8OS1EeKH-OJR8wbplA" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivna4uS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ivoB8eS1EeKH-OJR8wbplA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ivoB8uS1EeKH-OJR8wbplA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ivoB8-S1EeKH-OJR8wbplA" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ivoB9OS1EeKH-OJR8wbplA" name="newAttribute">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_ivoB9eS1EeKH-OJR8wbplA" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ivoB9uS1EeKH-OJR8wbplA"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ivoB9-S1EeKH-OJR8wbplA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_ivoB-OS1EeKH-OJR8wbplA" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
@@ -139,22 +135,15 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivopAOS1EeKH-OJR8wbplA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ivopAeS1EeKH-OJR8wbplA" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivopAOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ivopAuS1EeKH-OJR8wbplA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ivopA-S1EeKH-OJR8wbplA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ivopBOS1EeKH-OJR8wbplA" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_93RF4eigEeKOY_cfP55F3g" name="newAttribute">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_93VXUOigEeKOY_cfP55F3g" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_93VXUeigEeKOY_cfP55F3g"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_93VXUuigEeKOY_cfP55F3g"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_93VXU-igEeKOY_cfP55F3g" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
@@ -165,22 +154,15 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivopBuS1EeKH-OJR8wbplA" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ivopB-S1EeKH-OJR8wbplA" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_ivopBuS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ivopCOS1EeKH-OJR8wbplA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ivopCeS1EeKH-OJR8wbplA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ivopCuS1EeKH-OJR8wbplA" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_93YaoOigEeKOY_cfP55F3g" name="newAttribute">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_93ZBsOigEeKOY_cfP55F3g" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_93ZBseigEeKOY_cfP55F3g"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_93ZBsuigEeKOY_cfP55F3g"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_93ZBs-igEeKOY_cfP55F3g" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
@@ -191,22 +173,15 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHUssOS1EeKH-OJR8wbplA" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_rHVTwOS1EeKH-OJR8wbplA" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHUssOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_rHVTweS1EeKH-OJR8wbplA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rHVTwuS1EeKH-OJR8wbplA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rHVTw-S1EeKH-OJR8wbplA" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_rHdPkOS1EeKH-OJR8wbplA" name="newAttribute" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_rHedsOS1EeKH-OJR8wbplA" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_rHedseS1EeKH-OJR8wbplA"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_rHedsuS1EeKH-OJR8wbplA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_rHeds-S1EeKH-OJR8wbplA" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
@@ -217,22 +192,15 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHXwAOS1EeKH-OJR8wbplA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_rHXwAeS1EeKH-OJR8wbplA" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHXwAOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_rHXwAuS1EeKH-OJR8wbplA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rHXwA-S1EeKH-OJR8wbplA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rHXwBOS1EeKH-OJR8wbplA" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_93gWcOigEeKOY_cfP55F3g" name="newAttribute" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_93g9gOigEeKOY_cfP55F3g" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_93g9geigEeKOY_cfP55F3g"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_93g9guigEeKOY_cfP55F3g"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_93g9g-igEeKOY_cfP55F3g" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
@@ -243,12 +211,8 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHazUOS1EeKH-OJR8wbplA" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_rHazUeS1EeKH-OJR8wbplA" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rHazUOS1EeKH-OJR8wbplA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_rHazUuS1EeKH-OJR8wbplA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rHazU-S1EeKH-OJR8wbplA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rHazVOS1EeKH-OJR8wbplA" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_93iysOigEeKOY_cfP55F3g" name="newAttribute" width="3" height="3" resizeKind="NSEW">
@@ -258,10 +222,7 @@
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_93jZwOigEeKOY_cfP55F3g" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_93jZweigEeKOY_cfP55F3g"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_93jZwuigEeKOY_cfP55F3g"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_93jZw-igEeKOY_cfP55F3g" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
@@ -285,7 +246,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDs_yT19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDs_yj19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_yz19EeO8172-f6hTJg" x="20" y="9" width="187" height="45"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_yz19EeO8172-f6hTJg" x="20" y="9" width="183" height="49"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XDs_zD19EeO8172-f6hTJg" type="2003" element="_XDtnAD19EeO8172-f6hTJg">
             <children xmi:type="notation:Node" xmi:id="_XDs_zT19EeO8172-f6hTJg" type="5007"/>
@@ -298,7 +259,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDs_0j19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDs_0z19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_1D19EeO8172-f6hTJg" x="205" y="11" width="189" height="47"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_1D19EeO8172-f6hTJg" x="205" y="11" width="181" height="49"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XDs_1T19EeO8172-f6hTJg" type="2003" element="_XDtnCz19EeO8172-f6hTJg">
             <children xmi:type="notation:Node" xmi:id="_XDs_1j19EeO8172-f6hTJg" type="5007"/>
@@ -311,7 +272,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_XDs_2z19EeO8172-f6hTJg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_XDs_3D19EeO8172-f6hTJg" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_3T19EeO8172-f6hTJg" x="418" width="214" height="65"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XDs_3T19EeO8172-f6hTJg" x="418" width="206" height="67"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_XDs_3j19EeO8172-f6hTJg" type="2002" element="_XDtnFj19EeO8172-f6hTJg">
             <children xmi:type="notation:Node" xmi:id="_XDs_3z19EeO8172-f6hTJg" type="5006"/>
@@ -376,28 +337,24 @@
           <styles xmi:type="notation:DiagramStyle" xmi:id="_XDtm9D19EeO8172-f6hTJg"/>
         </data>
       </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_twbhooe1EeWRSYNd7IemNg" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_twbho4e1EeWRSYNd7IemNg"/>
+      </ownedAnnotationEntries>
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtm9T19EeO8172-f6hTJg" name="The border label VSM size is 0 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtm9j19EeO8172-f6hTJg" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtm9z19EeO8172-f6hTJg" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtm9j19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtm-D19EeO8172-f6hTJg" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtm-T19EeO8172-f6hTJg" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtm-j19EeO8172-f6hTJg" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_XDtm-z19EeO8172-f6hTJg" name="newAttribute">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_XDtm_D19EeO8172-f6hTJg" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtm_T19EeO8172-f6hTJg"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtm_j19EeO8172-f6hTJg"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_XDtm_z19EeO8172-f6hTJg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
@@ -408,22 +365,15 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnAT19EeO8172-f6hTJg" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnAj19EeO8172-f6hTJg" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnAT19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnAz19EeO8172-f6hTJg" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnBD19EeO8172-f6hTJg" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnBT19EeO8172-f6hTJg" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_XDtnBj19EeO8172-f6hTJg" name="newAttribute">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_XDtnBz19EeO8172-f6hTJg" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnCD19EeO8172-f6hTJg"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnCT19EeO8172-f6hTJg"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_XDtnCj19EeO8172-f6hTJg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
@@ -431,22 +381,15 @@
       <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_XDtnCz19EeO8172-f6hTJg" name="The border label VSM size is 10 ">
         <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnDD19EeO8172-f6hTJg" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnDT19EeO8172-f6hTJg" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnDD19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnDj19EeO8172-f6hTJg" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnDz19EeO8172-f6hTJg" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnED19EeO8172-f6hTJg" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_XDtnET19EeO8172-f6hTJg" name="newAttribute">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_XDtnEj19EeO8172-f6hTJg" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnEz19EeO8172-f6hTJg"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnFD19EeO8172-f6hTJg"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_XDtnFT19EeO8172-f6hTJg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
@@ -457,22 +400,15 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnFz19EeO8172-f6hTJg" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnGD19EeO8172-f6hTJg" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnFz19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnGT19EeO8172-f6hTJg" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnGj19EeO8172-f6hTJg" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnGz19EeO8172-f6hTJg" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XDtnHD19EeO8172-f6hTJg" name="newAttribute" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_XDtnHT19EeO8172-f6hTJg" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnHj19EeO8172-f6hTJg"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnHz19EeO8172-f6hTJg"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_XDtnID19EeO8172-f6hTJg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
@@ -483,22 +419,15 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnIj19EeO8172-f6hTJg" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnIz19EeO8172-f6hTJg" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDtnIj19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnJD19EeO8172-f6hTJg" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnJT19EeO8172-f6hTJg" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnJj19EeO8172-f6hTJg" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XDtnJz19EeO8172-f6hTJg" name="newAttribute" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_XDtnKD19EeO8172-f6hTJg" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnKT19EeO8172-f6hTJg"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDtnKj19EeO8172-f6hTJg"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_XDuN4D19EeO8172-f6hTJg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
@@ -509,291 +438,21 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDuN4j19EeO8172-f6hTJg" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDuN4z19EeO8172-f6hTJg" red="239" green="41" blue="41"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_XDuN4j19EeO8172-f6hTJg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" borderColor="114,159,207" backgroundStyle="Liquid" backgroundColor="69,69,69" foregroundColor="255,255,255">
           <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDuN5D19EeO8172-f6hTJg" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDuN5T19EeO8172-f6hTJg" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_XDuN5j19EeO8172-f6hTJg" red="255" green="255" blue="255"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_XDuN5z19EeO8172-f6hTJg" name="newAttribute" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
           <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
           <ownedStyle xmi:type="diagram:Square" xmi:id="_XDuN6D19EeO8172-f6hTJg" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_XDuN6T19EeO8172-f6hTJg"/>
             <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_XDuN6j19EeO8172-f6hTJg"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_XDuN6z19EeO8172-f6hTJg" red="136" green="136" blue="136"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_XDuN7D19EeO8172-f6hTJg"/>
-      <activatedLayers xmi:type="description_1:Layer" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer"/>
-      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
-    </ownedRepresentations>
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_fqu3EUJLEeO5N5dgVuiiuA" name="No scroll bar on fixed size from auto size for Windows">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_fqu3EkJLEeO5N5dgVuiiuA" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_fqu3E0JLEeO5N5dgVuiiuA" type="Sirius" element="_fqu3EUJLEeO5N5dgVuiiuA" measurementUnit="Pixel">
-          <children xmi:type="notation:Node" xmi:id="_fqu3FEJLEeO5N5dgVuiiuA" type="2003" element="_fqveRUJLEeO5N5dgVuiiuA">
-            <children xmi:type="notation:Node" xmi:id="_fqu3FUJLEeO5N5dgVuiiuA" type="5007"/>
-            <children xmi:type="notation:Node" xmi:id="_fqu3FkJLEeO5N5dgVuiiuA" type="7004">
-              <children xmi:type="notation:Node" xmi:id="_fqu3F0JLEeO5N5dgVuiiuA" type="3010" element="_fqveS0JLEeO5N5dgVuiiuA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_fqu3GEJLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_fqu3GUJLEeO5N5dgVuiiuA"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_fqu3GkJLEeO5N5dgVuiiuA"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_fqu3G0JLEeO5N5dgVuiiuA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_fqu3HEJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3HUJLEeO5N5dgVuiiuA" x="20" y="9" width="183" height="47"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_fqu3HkJLEeO5N5dgVuiiuA" type="2003" element="_fqveUEJLEeO5N5dgVuiiuA">
-            <children xmi:type="notation:Node" xmi:id="_fqu3H0JLEeO5N5dgVuiiuA" type="5007"/>
-            <children xmi:type="notation:Node" xmi:id="_fqu3IEJLEeO5N5dgVuiiuA" type="7004">
-              <children xmi:type="notation:Node" xmi:id="_fqu3IUJLEeO5N5dgVuiiuA" type="3010" element="_fqveVkJLEeO5N5dgVuiiuA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_fqu3IkJLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_fqu3I0JLEeO5N5dgVuiiuA"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_fqu3JEJLEeO5N5dgVuiiuA"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_fqu3JUJLEeO5N5dgVuiiuA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_fqu3JkJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3J0JLEeO5N5dgVuiiuA" x="205" y="11" width="181" height="47"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_fqu3KEJLEeO5N5dgVuiiuA" type="2003" element="_fqveW0JLEeO5N5dgVuiiuA">
-            <children xmi:type="notation:Node" xmi:id="_fqu3KUJLEeO5N5dgVuiiuA" type="5007"/>
-            <children xmi:type="notation:Node" xmi:id="_fqu3KkJLEeO5N5dgVuiiuA" type="7004">
-              <children xmi:type="notation:Node" xmi:id="_fqu3K0JLEeO5N5dgVuiiuA" type="3010" element="_fqveYUJLEeO5N5dgVuiiuA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_fqu3LEJLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_fqu3LUJLEeO5N5dgVuiiuA"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_fqu3LkJLEeO5N5dgVuiiuA"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_fqu3L0JLEeO5N5dgVuiiuA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_fqu3MEJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3MUJLEeO5N5dgVuiiuA" x="418" width="206" height="65"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_fqu3MkJLEeO5N5dgVuiiuA" type="2002" element="_fqveZkJLEeO5N5dgVuiiuA">
-            <children xmi:type="notation:Node" xmi:id="_fqu3M0JLEeO5N5dgVuiiuA" type="5006"/>
-            <children xmi:type="notation:Node" xmi:id="_fqu3NEJLEeO5N5dgVuiiuA" type="7001">
-              <children xmi:type="notation:Node" xmi:id="_fqu3NUJLEeO5N5dgVuiiuA" type="3007" element="_fqvebEJLEeO5N5dgVuiiuA">
-                <children xmi:type="notation:Node" xmi:id="_fqu3NkJLEeO5N5dgVuiiuA" type="5003">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_fqu3N0JLEeO5N5dgVuiiuA" y="5"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_fqu3OEJLEeO5N5dgVuiiuA" type="3003" element="_fqvebUJLEeO5N5dgVuiiuA">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_fqu3OUJLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqu3OkJLEeO5N5dgVuiiuA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveIEJLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveIUJLEeO5N5dgVuiiuA" x="30" y="30" width="30" height="30"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_fqveIkJLEeO5N5dgVuiiuA"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_fqveI0JLEeO5N5dgVuiiuA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveJEJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveJUJLEeO5N5dgVuiiuA" x="10" y="92" width="183" height="74"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_fqveJkJLEeO5N5dgVuiiuA" type="2002" element="_fqvecUJLEeO5N5dgVuiiuA">
-            <children xmi:type="notation:Node" xmi:id="_fqveJ0JLEeO5N5dgVuiiuA" type="5006"/>
-            <children xmi:type="notation:Node" xmi:id="_fqveKEJLEeO5N5dgVuiiuA" type="7001">
-              <children xmi:type="notation:Node" xmi:id="_fqveKUJLEeO5N5dgVuiiuA" type="3007" element="_fqved0JLEeO5N5dgVuiiuA">
-                <children xmi:type="notation:Node" xmi:id="_fqveKkJLEeO5N5dgVuiiuA" type="5003">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_fqveK0JLEeO5N5dgVuiiuA" y="5"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_fqveLEJLEeO5N5dgVuiiuA" type="3003" element="_fqveeEJLEeO5N5dgVuiiuA">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveLUJLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveLkJLEeO5N5dgVuiiuA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveL0JLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveMEJLEeO5N5dgVuiiuA" x="30" y="30" width="30" height="30"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_fqveMUJLEeO5N5dgVuiiuA"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_fqveMkJLEeO5N5dgVuiiuA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveM0JLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveNEJLEeO5N5dgVuiiuA" x="202" y="87" width="181" height="74"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_fqveNUJLEeO5N5dgVuiiuA" type="2002" element="_fqvefEJLEeO5N5dgVuiiuA">
-            <children xmi:type="notation:Node" xmi:id="_fqveNkJLEeO5N5dgVuiiuA" type="5006"/>
-            <children xmi:type="notation:Node" xmi:id="_fqveN0JLEeO5N5dgVuiiuA" type="7001">
-              <children xmi:type="notation:Node" xmi:id="_fqveOEJLEeO5N5dgVuiiuA" type="3007" element="_fqvegkJLEeO5N5dgVuiiuA">
-                <children xmi:type="notation:Node" xmi:id="_fqveOUJLEeO5N5dgVuiiuA" type="5003">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_fqveOkJLEeO5N5dgVuiiuA" y="5"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_fqveO0JLEeO5N5dgVuiiuA" type="3003" element="_fqveg0JLEeO5N5dgVuiiuA">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_fqvePEJLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqvePUJLEeO5N5dgVuiiuA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_fqvePkJLEeO5N5dgVuiiuA" fontName="Comic Sans MS" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveP0JLEeO5N5dgVuiiuA" x="30" y="30" width="30" height="30"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_fqveQEJLEeO5N5dgVuiiuA"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_fqveQUJLEeO5N5dgVuiiuA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_fqveQkJLEeO5N5dgVuiiuA" fontColor="2697711" fontName="Comic Sans MS" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fqveQ0JLEeO5N5dgVuiiuA" x="413" y="82" width="206" height="92"/>
-          </children>
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_fqveREJLEeO5N5dgVuiiuA"/>
-        </data>
-      </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveRUJLEeO5N5dgVuiiuA" name="The border label VSM size is 0 ">
-        <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fqveRkJLEeO5N5dgVuiiuA" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveR0JLEeO5N5dgVuiiuA" red="239" green="41" blue="41"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveSEJLEeO5N5dgVuiiuA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveSUJLEeO5N5dgVuiiuA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveSkJLEeO5N5dgVuiiuA" red="255" green="255" blue="255"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_fqveS0JLEeO5N5dgVuiiuA" name="newAttribute">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_fqveTEJLEeO5N5dgVuiiuA" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveTUJLEeO5N5dgVuiiuA"/>
-            <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveTkJLEeO5N5dgVuiiuA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_fqveT0JLEeO5N5dgVuiiuA" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
-        </ownedElements>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveUEJLEeO5N5dgVuiiuA" name="The border label VSM size is 1 ">
-        <target xmi:type="ecore:EClass" href="My.ecore#//1"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//1"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fqveUUJLEeO5N5dgVuiiuA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveUkJLEeO5N5dgVuiiuA" red="239" green="41" blue="41"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveU0JLEeO5N5dgVuiiuA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveVEJLEeO5N5dgVuiiuA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveVUJLEeO5N5dgVuiiuA" red="255" green="255" blue="255"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_fqveVkJLEeO5N5dgVuiiuA" name="newAttribute">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_fqveV0JLEeO5N5dgVuiiuA" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveWEJLEeO5N5dgVuiiuA"/>
-            <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveWUJLEeO5N5dgVuiiuA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_fqveWkJLEeO5N5dgVuiiuA" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
-        </ownedElements>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_fqveW0JLEeO5N5dgVuiiuA" name="The border label VSM size is 10 ">
-        <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fqveXEJLEeO5N5dgVuiiuA" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveXUJLEeO5N5dgVuiiuA" red="239" green="41" blue="41"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveXkJLEeO5N5dgVuiiuA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveX0JLEeO5N5dgVuiiuA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveYEJLEeO5N5dgVuiiuA" red="255" green="255" blue="255"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_fqveYUJLEeO5N5dgVuiiuA" name="newAttribute">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_fqveYkJLEeO5N5dgVuiiuA" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveY0JLEeO5N5dgVuiiuA"/>
-            <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveZEJLEeO5N5dgVuiiuA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_fqveZUJLEeO5N5dgVuiiuA" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='List']/@subNodeMappings[name='Attributes']"/>
-        </ownedElements>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqveZkJLEeO5N5dgVuiiuA" name="The border label VSM size is 0 ">
-        <target xmi:type="ecore:EClass" href="My.ecore#//0"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//0"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fqveZ0JLEeO5N5dgVuiiuA" labelAlignment="LEFT" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveaEJLEeO5N5dgVuiiuA" red="239" green="41" blue="41"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveaUJLEeO5N5dgVuiiuA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveakJLEeO5N5dgVuiiuA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvea0JLEeO5N5dgVuiiuA" red="255" green="255" blue="255"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fqvebEJLEeO5N5dgVuiiuA" name="newAttribute" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//0/newAttribute"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_fqvebUJLEeO5N5dgVuiiuA" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvebkJLEeO5N5dgVuiiuA"/>
-            <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveb0JLEeO5N5dgVuiiuA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_fqvecEJLEeO5N5dgVuiiuA" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
-        </ownedDiagramElements>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqvecUJLEeO5N5dgVuiiuA" name="The border label VSM size is 1 ">
-        <target xmi:type="ecore:EClass" href="My.ecore#//1"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//1"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fqveckJLEeO5N5dgVuiiuA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvec0JLEeO5N5dgVuiiuA" red="239" green="41" blue="41"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvedEJLEeO5N5dgVuiiuA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvedUJLEeO5N5dgVuiiuA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvedkJLEeO5N5dgVuiiuA" red="255" green="255" blue="255"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fqved0JLEeO5N5dgVuiiuA" name="newAttribute" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//1/newAttribute"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_fqveeEJLEeO5N5dgVuiiuA" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveeUJLEeO5N5dgVuiiuA"/>
-            <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqveekJLEeO5N5dgVuiiuA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_fqvee0JLEeO5N5dgVuiiuA" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
-        </ownedDiagramElements>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_fqvefEJLEeO5N5dgVuiiuA" name="The border label VSM size is 10 ">
-        <target xmi:type="ecore:EClass" href="My.ecore#//10"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//10"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_fqvefUJLEeO5N5dgVuiiuA" labelAlignment="LEFT" borderSize="10" borderSizeComputationExpression="&lt;%name%>" backgroundStyle="Liquid">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvefkJLEeO5N5dgVuiiuA" red="239" green="41" blue="41"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@style"/>
-          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvef0JLEeO5N5dgVuiiuA" red="114" green="159" blue="207"/>
-          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvegEJLEeO5N5dgVuiiuA" red="69" green="69" blue="69"/>
-          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvegUJLEeO5N5dgVuiiuA" red="255" green="255" blue="255"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']"/>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fqvegkJLEeO5N5dgVuiiuA" name="newAttribute" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//10/newAttribute"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_fqveg0JLEeO5N5dgVuiiuA" labelAlignment="RIGHT" labelPosition="node">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvehEJLEeO5N5dgVuiiuA"/>
-            <description xmi:type="style:SquareDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fqvehUJLEeO5N5dgVuiiuA"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_fqvehkJLEeO5N5dgVuiiuA" red="136" green="136" blue="136"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer/@containerMappings[name='Container']/@subNodeMappings[name='Attributes']"/>
-        </ownedDiagramElements>
-      </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_fqveh0JLEeO5N5dgVuiiuA"/>
       <activatedLayers xmi:type="description_1:Layer" href="margin.odesign#//@ownedViewpoints[name='margin']/@ownedRepresentations[name='Margin%20Diagram']/@defaultLayer"/>
       <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
     </ownedRepresentations>

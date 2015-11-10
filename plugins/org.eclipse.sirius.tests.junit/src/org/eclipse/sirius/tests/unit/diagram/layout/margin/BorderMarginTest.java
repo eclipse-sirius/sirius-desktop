@@ -15,14 +15,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.AnimatableScrollPane;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -32,14 +36,17 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FigureQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -61,49 +68,17 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
 
     private static final String TEST_DIR = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/margin/";
 
-    private static final String SEMANTIC_MODEL_PATH = TEST_DIR + "My.ecore";
+    private static final String SEMANTIC_MODEL_FILENAME = "My.ecore";
 
-    private static final String SESSION_NAME = "My.aird";
+    private static final String SESSION_FILENAME = "My.aird";
 
-    private static final String SESSION_PATH = TEST_DIR + SESSION_NAME;
-
-    private static final String MODELER_PATH = TEST_DIR + "margin.odesign";
+    private static final String MODELER_FILENAME = "margin.odesign";
 
     private static final String DIAGRAM_AND_DESCRIPTION_ID = "Margin Diagram";
 
     private static final String AUTO_SIZE = "Margin Diagram";
 
     private static final String NO_VISIBLE_SCROLL_BAR = "No scroll bar on fixed size from auto size";
-
-    private static final String NO_VISIBLE_SCROLL_BAR_WIN = "No scroll bar on fixed size from auto size for Windows";
-
-    private static final Map<Integer, Dimension> listAutoSizes = Maps.newHashMap();
-
-    private static final Map<Integer, Dimension> containerAutoSizes = Maps.newHashMap();
-
-    private static final Map<Integer, Dimension> listAutoSizesWin = Maps.newHashMap();
-
-    private static final Map<Integer, Dimension> containerAutoSizesWin = Maps.newHashMap();
-
-    {
-        // Comic Sans MS has been used to create the test data, but there are
-        // differences between linux and windows.
-        listAutoSizes.put(Integer.valueOf(0), new Dimension(187, 45));
-        listAutoSizes.put(Integer.valueOf(1), new Dimension(189, 47));
-        listAutoSizes.put(Integer.valueOf(10), new Dimension(214, 65));
-
-        listAutoSizesWin.put(Integer.valueOf(0), new Dimension(182, 47));
-        listAutoSizesWin.put(Integer.valueOf(1), new Dimension(180, 47));
-        listAutoSizesWin.put(Integer.valueOf(10), new Dimension(205, 65));
-
-        containerAutoSizes.put(Integer.valueOf(0), new Dimension(183, 74));
-        containerAutoSizes.put(Integer.valueOf(1), new Dimension(181, 74));
-        containerAutoSizes.put(Integer.valueOf(10), new Dimension(206, 92));
-
-        containerAutoSizesWin.put(Integer.valueOf(0), new Dimension(182, 74));
-        containerAutoSizesWin.put(Integer.valueOf(1), new Dimension(180, 74));
-        containerAutoSizesWin.put(Integer.valueOf(10), new Dimension(205, 92));
-    }
 
     private DDiagramEditor diagramEditor;
 
@@ -115,7 +90,11 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(TEST_DIR + SEMANTIC_MODEL_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(TEST_DIR + SESSION_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(TEST_DIR + MODELER_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_FILENAME);
+
+        genericSetUp(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME, TEMPORARY_PROJECT_NAME + "/" + MODELER_FILENAME, TEMPORARY_PROJECT_NAME + "/" + SESSION_FILENAME);
     }
 
     private void openDiagram(String name) {
@@ -213,79 +192,99 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
      * @throws Exception
      */
     public void testAutoSize() throws Exception {
-        if (!TestsUtil.isJuno3Platform()) {
-            openDiagram(AUTO_SIZE);
+        openDiagram(AUTO_SIZE);
 
-            // Prepare a global failure message with all expected and observed
-            // sizes
-            StringBuilder sb = new StringBuilder();
-            sb.append("Jenkins wrong expected sizes, some figure size from auto-sized GMF Node have changed:").append("\n");
-            boolean wrongSizes = false;
+        // Prepare a global failure message with all expected and observed
+        // sizes
+        StringBuilder sb = new StringBuilder();
+        sb.append("Jenkins wrong expected sizes, some figure size from auto-sized GMF Node have changed:").append("\n");
+        boolean wrongSizes = false;
 
-            List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
-            for (int i = 0; i < ownedDiagramElements.size(); i++) {
-                DDiagramElement dde = ownedDiagramElements.get(i);
+        List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
+        for (int i = 0; i < ownedDiagramElements.size(); i++) {
+            DDiagramElement dde = ownedDiagramElements.get(i);
 
-                AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) getEditPart(dde);
-                Node gmfNode = (Node) part.getModel();
+            AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) getEditPart(dde);
+            int defaultExpectedWidth = part instanceof IDiagramListEditPart ? LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width : LayoutUtils.DEFAULT_CONTAINER_DIMENSION.width;
+            Node gmfNode = (Node) part.getModel();
 
-                assertEquals("GMF Node should be in auto-size.", -1, ((Size) gmfNode.getLayoutConstraint()).getHeight());
-                assertEquals("GMF Node should be in auto-size.", -1, ((Size) gmfNode.getLayoutConstraint()).getWidth());
+            assertEquals("GMF Node should be in auto-size.", -1, ((Size) gmfNode.getLayoutConstraint()).getHeight());
+            assertEquals("GMF Node should be in auto-size.", -1, ((Size) gmfNode.getLayoutConstraint()).getWidth());
 
-                String borderSizeString = dde.getName().substring(29, dde.getName().length() - 1);
-                sb.append(" ." + dde.eClass().getName() + " " + dde.getName());
-                Option<IFigure> labelFigure = new FigureQuery(part.getFigure()).getLabelFigure();
-                if (labelFigure.some()) {
-                    Dimension labelFigureSize = labelFigure.get().getBounds().getSize();
-                    int borderSize = Integer.valueOf(borderSizeString);
-                    int expectedWidth = labelFigureSize.width + 2 + (borderSize * 2);
-                    Dimension figureSize = part.getFigure().getBounds().getSize();
-                    if (expectedWidth != figureSize.width) {
-                        wrongSizes = true;
-                        sb.append(", expected: " + expectedWidth);
-                        sb.append(" but was: " + figureSize.width).append("\n");
-                    } else {
-                        sb.append(" expected and observed: " + expectedWidth).append("\n");
-                    }
+            String borderSizeString = dde.getName().substring(29, dde.getName().length() - 1);
+            sb.append(" ." + dde.eClass().getName() + " " + dde.getName());
+            Option<IFigure> labelFigure = new FigureQuery(part.getFigure()).getLabelFigure();
+            if (labelFigure.some()) {
+                Dimension labelFigureSize = labelFigure.get().getBounds().getSize();
+                int borderSize = Integer.valueOf(borderSizeString);
+                int expectedWidth = labelFigureSize.width + 2 + (borderSize * 2);
+                expectedWidth = Math.max(expectedWidth, defaultExpectedWidth);
+                Dimension figureSize = part.getFigure().getBounds().getSize();
+                if (expectedWidth != figureSize.width) {
+                    wrongSizes = true;
+                    sb.append(", expected: " + expectedWidth);
+                    sb.append(" but was: " + figureSize.width).append("\n");
+                } else {
+                    sb.append(" expected and observed: " + expectedWidth).append("\n");
                 }
-
-                assertNoVisibleScrollBar(dde, part);
             }
-            // At least one figure does not present the expected auto-size.
-            assertFalse(sb.toString(), wrongSizes);
+
+            assertNoVisibleScrollBar(dde, part);
         }
+        // At least one figure does not present the expected auto-size.
+        assertFalse(sb.toString(), wrongSizes);
     }
 
     /**
      * Test that scrollbars are not displayed in list and containers when the
      * size has been set by the user to the same value than auto-size (through a
-     * copy / paste layout for example).
+     * copy / paste layout for example). In this test, we set the same size as
+     * the figure in auto-size mode.
      * 
      * @throws Exception
      */
     public void testFixedSizeFromAutoSizeDoNotDisplayScrollBars() throws Exception {
-        if (!TestsUtil.isJuno3Platform()) {
-            if (Platform.getOS().startsWith(Platform.OS_WIN32)) {
-                openDiagram(NO_VISIBLE_SCROLL_BAR_WIN);
-            } else {
-                openDiagram(NO_VISIBLE_SCROLL_BAR);
+        // Open "auto-size" diagram to retrieve the real figure size
+        // according to each OS (fonts have not the same size on each OS)
+        openDiagram(AUTO_SIZE);
+        Map<EObject, Map<DiagramElementMapping, Dimension>> autoSizedDimensions = Maps.newHashMap();
+
+        List<DDiagramElement> autoSizedOwnedDiagramElements = diagram.getOwnedDiagramElements();
+        for (int i = 0; i < autoSizedOwnedDiagramElements.size(); i++) {
+            DDiagramElement dde = autoSizedOwnedDiagramElements.get(i);
+
+            AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) getEditPart(dde);
+            Dimension figureSize = part.getFigure().getBounds().getSize();
+            Map<DiagramElementMapping, Dimension> currentSemanticDimensions = autoSizedDimensions.get(dde.getTarget());
+            if (autoSizedDimensions.get(dde.getTarget()) == null) {
+                currentSemanticDimensions = Maps.newHashMap();
+                autoSizedDimensions.put(dde.getTarget(), currentSemanticDimensions);
             }
+            currentSemanticDimensions.put(dde.getDiagramElementMapping(), figureSize);
+        }
+        // Open the diagram and set the GMF size according to the figure
+        // size.
+        openDiagram(NO_VISIBLE_SCROLL_BAR);
 
-            List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
-            for (int i = 0; i < ownedDiagramElements.size(); i++) {
-                DDiagramElement dde = ownedDiagramElements.get(i);
+        List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        CompoundCommand resizeAllDiagramElementsAccordingToAutoSizeDimentsion = new CompoundCommand("Resize elements");
+        for (int i = 0; i < ownedDiagramElements.size(); i++) {
+            DDiagramElement dde = ownedDiagramElements.get(i);
 
-                AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) getEditPart(dde);
-                Node gmfNode = (Node) part.getModel();
+            AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) getEditPart(dde);
+            Node gmfNode = (Node) part.getModel();
+            Dimension autoSizeDimension = autoSizedDimensions.get(dde.getTarget()).get(dde.getDiagramElementMapping());
+            resizeAllDiagramElementsAccordingToAutoSizeDimentsion.append(SetCommand.create(domain, gmfNode.getLayoutConstraint(), NotationPackage.Literals.SIZE__HEIGHT, autoSizeDimension.height()));
+            resizeAllDiagramElementsAccordingToAutoSizeDimentsion.append(SetCommand.create(domain, gmfNode.getLayoutConstraint(), NotationPackage.Literals.SIZE__WIDTH, autoSizeDimension.width()));
+        }
+        domain.getCommandStack().execute(resizeAllDiagramElementsAccordingToAutoSizeDimentsion);
+        // Check that with these sizes, there is no scroll bar.
+        for (int i = 0; i < ownedDiagramElements.size(); i++) {
+            DDiagramElement dde = ownedDiagramElements.get(i);
+            AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) getEditPart(dde);
 
-                assertNotSame("GMF Node should not be in auto-size.", -1, ((Size) gmfNode.getLayoutConstraint()).getHeight());
-                assertNotSame("GMF Node should not be in auto-size.", -1, ((Size) gmfNode.getLayoutConstraint()).getWidth());
-
-                Dimension expected = getExpectedAutoSize(dde);
-                assertEquals("Figure size was set to be the expected auto-sized. Auto-size has changed." + dde.getTarget(), expected, part.getFigure().getBounds().getSize());
-
-                assertNoVisibleScrollBar(dde, part);
-            }
+            assertNoVisibleScrollBar(dde, part);
         }
     }
 
@@ -311,25 +310,5 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
         boolean vScrollBarVisible = vScrollBar != null && vScrollBar.isVisible();
         assertFalse("No scrollbar should be visible for " + dde.eClass().getName() + " " + dde.getName() + " (hScrollBar:" + hScrollBarVisible + ", vScrollBar:" + vScrollBarVisible + ").",
                 hScrollBarVisible || vScrollBarVisible);
-    }
-
-    private Dimension getExpectedAutoSize(DDiagramElement dde) {
-        Map<Integer, Dimension> expectedSizeMap = null;
-        ContainerStyle style = (ContainerStyle) ((DDiagramElementContainer) dde).getStyle();
-
-        if (dde instanceof DNodeList) {
-            if (Platform.getOS().startsWith(Platform.OS_WIN32)) {
-                expectedSizeMap = listAutoSizesWin;
-            } else {
-                expectedSizeMap = listAutoSizes;
-            }
-        } else if (dde instanceof DNodeContainer) {
-            if (Platform.getOS().startsWith(Platform.OS_WIN32)) {
-                expectedSizeMap = containerAutoSizesWin;
-            } else {
-                expectedSizeMap = containerAutoSizes;
-            }
-        }
-        return expectedSizeMap.get(style.getBorderSize());
     }
 }
