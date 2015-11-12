@@ -546,11 +546,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             if (new FileQuery(semanticModelURI.fileExtension()).isSessionResourceFile()) {
                 throw new IllegalArgumentException(Messages.DAnalysisSessionImpl_addSemanticErrorMsg);
             }
-            monitor.beginTask(MessageFormat.format(Messages.DAnalysisSessionImpl_addSemanticResourceMsg, semanticModelURI.lastSegment()), 3);
             ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
-            // Make ResourceSet aware of resource loading with progress
-            // monitor
-            ResourceSetUtil.setProgressMonitor(resourceSet, new SubProgressMonitor(monitor, 2));
             try {
                 monitor.beginTask(MessageFormat.format(Messages.DAnalysisSessionImpl_addSemanticResourceMsg, semanticModelURI.lastSegment()), 3);
 
@@ -565,6 +561,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                     newSemanticResource.unload();
                 }
                 monitor.worked(1);
+                // Make ResourceSet aware of resource loading with progress
+                // monitor
+                ResourceSetUtil.setProgressMonitor(resourceSet, new SubProgressMonitor(monitor, 2));
                 newSemanticResource = resourceSet.getResource(semanticModelURI, true);
                 // If it is a new resource, register it with all its referenced
                 // resources as semantic models.
