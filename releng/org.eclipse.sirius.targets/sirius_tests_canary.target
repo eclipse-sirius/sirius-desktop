@@ -112,7 +112,7 @@
       <unit id="org.eclipse.sirius.specifier.ide.ui.aql.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
-      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon"/>
+      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/3.1.x/neon"/>
     </location>
   </locations>
 </target>

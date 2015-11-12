@@ -5,7 +5,7 @@ include "modules/query-legacy.tpd"
 
 with source, requirements
 
-location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest/luna" {
+location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/3.1.x/luna" {
         org.eclipse.sirius.doc.feature.feature.group lazy
         org.eclipse.sirius.runtime.acceleo.feature.group lazy
         org.eclipse.sirius.runtime.feature.group lazy

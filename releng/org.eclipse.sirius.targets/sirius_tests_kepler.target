@@ -63,7 +63,7 @@
       <unit id="org.eclipse.sirius.specifier.ide.ui.aql.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
-      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/latest/kepler"/>
+      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/3.1.x/kepler"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.uml2.sdk.feature.group" version="4.1.2.v20140202-2055"/>
