@@ -960,10 +960,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:end.oclIsKindOf(interactions::MessageEnd)">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:end.message">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd = end and self.receivingEnd = null">
-                        <subModelOperations xsi:type="tool_1:RemoveElement"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.sendingEnd = null and self.receivingEnd = end">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:(self.sendingEnd = end and self.receivingEnd = null) or (self.sendingEnd = null and self.receivingEnd = end)">
                         <subModelOperations xsi:type="tool_1:RemoveElement"/>
                       </subModelOperations>
                     </subModelOperations>

@@ -58,6 +58,7 @@ public class InteractionUseCoverageTests extends AbstractInteractionUseSequenceT
     /**
      * Checks the diagram consistency following semantic eventEnds ordering.
      */
+    @Override
     public void testDiagramConsistency() {
 
         // Check InstanceRoles positions
@@ -333,10 +334,10 @@ public class InteractionUseCoverageTests extends AbstractInteractionUseSequenceT
 
         // Checks that the first IU is horizontally resized
         Rectangle newFirstInteractionUseBounds = editor.getBounds(firstInteractionUseBot);
-        Assert.assertTrue("InteractionUse has bad left margin ", newFirstInteractionUseBounds.x >= instanceRoleEditPartBBounds.x);
-        Assert.assertTrue("InteractionUse has bad left margin ", newFirstInteractionUseBounds.x <= instanceRoleEditPartBBounds.x + instanceRoleEditPartBBounds.width / 2);
-        Assert.assertTrue("InteractionUse has bad right margin ", newFirstInteractionUseBounds.getTopRight().x >= instanceRoleEditPartDBounds.x + instanceRoleEditPartDBounds.width / 2);
-        Assert.assertTrue("InteractionUse has bad right margin ", newFirstInteractionUseBounds.getTopRight().x <= instanceRoleEditPartDBounds.getTopRight().x);
+        Assert.assertTrue("First InteractionUse has bad left margin ", newFirstInteractionUseBounds.x >= instanceRoleEditPartBBounds.x);
+        Assert.assertTrue("First InteractionUse has bad left margin ", newFirstInteractionUseBounds.x <= instanceRoleEditPartBBounds.x + instanceRoleEditPartBBounds.width / 2);
+        Assert.assertTrue("First InteractionUse has bad right margin ", newFirstInteractionUseBounds.getTopRight().x >= instanceRoleEditPartDBounds.x + instanceRoleEditPartDBounds.width / 2);
+        Assert.assertTrue("First InteractionUse has bad right margin ", newFirstInteractionUseBounds.getTopRight().x <= instanceRoleEditPartDBounds.getTopRight().x);
 
         // Remove LIFELINE_C
         instanceRoleEditPartCBot.parent().select();
@@ -360,11 +361,16 @@ public class InteractionUseCoverageTests extends AbstractInteractionUseSequenceT
 
         // Checks that the second IU is horizontally resized
         Rectangle newSecondInteractionUseBounds = editor.getBounds(secondInteractionUseBot);
-        Assert.assertTrue("InteractionUse has bad left margin ", newSecondInteractionUseBounds.x >= instanceRoleEditPartBBounds.x);
-        Assert.assertTrue("InteractionUse has bad left margin ", newSecondInteractionUseBounds.x <= instanceRoleEditPartBBounds.x + instanceRoleEditPartBBounds.width / 2);
-        Assert.assertTrue("InteractionUse has bad right margin ", newSecondInteractionUseBounds.getTopRight().x >= instanceRoleEditPartBBounds.x + instanceRoleEditPartBBounds.width / 2);
-        Assert.assertTrue("InteractionUse has bad right margin ", newSecondInteractionUseBounds.getTopRight().x <= instanceRoleEditPartBBounds.getTopRight().x);
-        Assert.assertEquals(newFirstInteractionUseBounds, editor.getBounds(firstInteractionUseBot));
+        Assert.assertTrue("Second InteractionUse has bad left margin ", newSecondInteractionUseBounds.x >= instanceRoleEditPartBBounds.x);
+        Assert.assertTrue("Second InteractionUse has bad left margin ", newSecondInteractionUseBounds.x <= instanceRoleEditPartBBounds.x + instanceRoleEditPartBBounds.width / 2);
+        Assert.assertTrue("Second InteractionUse has bad right margin ", newSecondInteractionUseBounds.getTopRight().x >= instanceRoleEditPartBBounds.x + instanceRoleEditPartBBounds.width / 2);
+        Assert.assertTrue("Second InteractionUse has bad right margin ", newSecondInteractionUseBounds.getTopRight().x <= instanceRoleEditPartBBounds.getTopRight().x);
+        // And also the first one
+        newFirstInteractionUseBounds = editor.getBounds(firstInteractionUseBot);
+        Assert.assertTrue("First InteractionUse has bad left margin ", newFirstInteractionUseBounds.x >= instanceRoleEditPartBBounds.x);
+        Assert.assertTrue("First InteractionUse has bad left margin ", newFirstInteractionUseBounds.x <= instanceRoleEditPartBBounds.x + instanceRoleEditPartBBounds.width / 2);
+        Assert.assertTrue("First InteractionUse has bad right margin ", newFirstInteractionUseBounds.getTopRight().x >= instanceRoleEditPartDBounds.x + instanceRoleEditPartDBounds.width / 2);
+        Assert.assertTrue("First InteractionUse has bad right margin ", newFirstInteractionUseBounds.getTopRight().x <= instanceRoleEditPartDBounds.getTopRight().x);
     }
 
     /**
