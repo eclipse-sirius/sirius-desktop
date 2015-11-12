@@ -25,6 +25,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.Synchroni
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.RefreshOrderingHelper;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 
 /**
@@ -68,54 +70,56 @@ public class RefreshLayoutCommand extends RecordingCommand {
     protected void doExecute() {
         DslCommonPlugin.PROFILER.startWork(REFRESH_LAYOUT);
         SequenceDiagram sequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(diagram).get();
-        sequenceDiagram.useCache(true);
-        try {
-            SequenceDDiagram sequenceDDiagram = sequenceDiagram.getSequenceDDiagram();
-
-            /*
-             * Everything has been committed, so we should be in a stable state
-             * where it is safe to refresh both orderings.
-             */
-
-            // Compute only once (and not three times) the event ends.
-            final Iterable<? extends EventEnd> allEventEnds = RefreshOrderingHelper.getAllEventEnds(sequenceDDiagram);
-
-            AbstractModelChangeOperation<Boolean> refreshSemanticOrderingOperation = new RefreshSemanticOrderingsOperation(sequenceDDiagram) {
-                @Override
-                protected Iterable<? extends EventEnd> getAllEventEnds() {
-                    return allEventEnds;
-                }
-            };
-            if (refreshSemanticOrderingOperation.execute()) {
-                sequenceDiagram.clearOrderedCaches();
-            }
-            AbstractModelChangeOperation<Boolean> refreshGraphicalOrderingOperation = new RefreshGraphicalOrderingOperation(sequenceDiagram) {
-                @Override
-                protected Iterable<? extends EventEnd> getAllEventEnds() {
-                    return allEventEnds;
-                }
-            };
-            if (refreshGraphicalOrderingOperation.execute()) {
-                sequenceDiagram.clearOrderedCaches();
-            }
-
-            if (refreshDiagram) {
+        SequenceDDiagram sequenceDDiagram = sequenceDiagram.getSequenceDDiagram();
+        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(sequenceDDiagram);
+        if (permissionAuthority != null && permissionAuthority.canEditInstance(sequenceDDiagram)) {
+            sequenceDiagram.useCache(true);
+            try {
                 /*
-                 * Launch a non-packing layout
+                 * Everything has been committed, so we should be in a stable
+                 * state where it is safe to refresh both orderings.
                  */
-                AbstractModelChangeOperation<Boolean> synchronizeGraphicalOrderingOperation = new SynchronizeGraphicalOrderingOperation(diagram, false);
-                synchronizeGraphicalOrderingOperation.execute();
-                /*
-                 * The layout has probably changed graphical positions:
-                 * re-compute the ordering to make sure it is up-to-date.
-                 */
+
+                // Compute only once (and not three times) the event ends.
+                final Iterable<? extends EventEnd> allEventEnds = RefreshOrderingHelper.getAllEventEnds(sequenceDDiagram);
+
+                AbstractModelChangeOperation<Boolean> refreshSemanticOrderingOperation = new RefreshSemanticOrderingsOperation(sequenceDDiagram) {
+                    @Override
+                    protected Iterable<? extends EventEnd> getAllEventEnds() {
+                        return allEventEnds;
+                    }
+                };
+                if (refreshSemanticOrderingOperation.execute()) {
+                    sequenceDiagram.clearOrderedCaches();
+                }
+                AbstractModelChangeOperation<Boolean> refreshGraphicalOrderingOperation = new RefreshGraphicalOrderingOperation(sequenceDiagram) {
+                    @Override
+                    protected Iterable<? extends EventEnd> getAllEventEnds() {
+                        return allEventEnds;
+                    }
+                };
                 if (refreshGraphicalOrderingOperation.execute()) {
                     sequenceDiagram.clearOrderedCaches();
                 }
+
+                if (refreshDiagram) {
+                    /*
+                     * Launch a non-packing layout
+                     */
+                    AbstractModelChangeOperation<Boolean> synchronizeGraphicalOrderingOperation = new SynchronizeGraphicalOrderingOperation(diagram, false);
+                    synchronizeGraphicalOrderingOperation.execute();
+                    /*
+                     * The layout has probably changed graphical positions:
+                     * re-compute the ordering to make sure it is up-to-date.
+                     */
+                    if (refreshGraphicalOrderingOperation.execute()) {
+                        sequenceDiagram.clearOrderedCaches();
+                    }
+                }
+            } finally {
+                sequenceDiagram.useCache(false);
+                sequenceDiagram.clearAllCaches();
             }
-        } finally {
-            sequenceDiagram.useCache(false);
-            sequenceDiagram.clearAllCaches();
         }
         DslCommonPlugin.PROFILER.stopWork(REFRESH_LAYOUT);
     }
