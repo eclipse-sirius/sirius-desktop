@@ -38,11 +38,17 @@ public class BorderSizeComputationExpressionMigrationParticipant extends Abstrac
     /**
      * The version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("11.0.0.201511131800"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("11.0.0.201511131800"); //$NON-NLS-1$
 
-    private static final Version INITIAL_MIGRATION_VERSION = new Version("10.1.0.201507101000"); //$NON-NLS-1$
+    /**
+     * The initial migration version.
+     */
+    public static final Version INITIAL_MIGRATION_VERSION = new Version("10.1.0.201507101000"); //$NON-NLS-1$
 
-    private static final Version ALREADY_MIGRATED_VERSION = new Version("10.1.3.201511131800"); //$NON-NLS-1$
+    /**
+     * The 3.1.3 migration correction version.
+     */
+    public static final Version ALREADY_MIGRATED_VERSION = new Version("10.1.3.201511131800"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
@@ -107,7 +113,9 @@ public class BorderSizeComputationExpressionMigrationParticipant extends Abstrac
 
     /**
      * Recursively migrate the given containers and their sub containers.
-     * @param containerMappings the container mappings to migrate.
+     * 
+     * @param containerMappings
+     *            the container mappings to migrate.
      */
     private void migrateBorderSizeComputationExpressions(List<ContainerMapping> containerMappings) {
         for (ContainerMapping containerMapping : containerMappings) {

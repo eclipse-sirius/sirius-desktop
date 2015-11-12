@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_NQjJEIktEeWGq8kEh7-t0w" selectedViews="_NxeE0IktEeWGq8kEh7-t0w" version="10.1.0.201509162000">
+  <semanticResources>borderSizeMigration.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_NxeE0IktEeWGq8kEh7-t0w">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_OmlH4IktEeWGq8kEh7-t0w" name="borderSizeMigration">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_OmlH4YktEeWGq8kEh7-t0w" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_OmlH4oktEeWGq8kEh7-t0w"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_OnKWsIktEeWGq8kEh7-t0w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_OnKWsYktEeWGq8kEh7-t0w" type="Sirius" element="_OmlH4IktEeWGq8kEh7-t0w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_sKJgMIk9EeWGq8kEh7-t0w" type="2002" element="_sKHD8Ik9EeWGq8kEh7-t0w">
+            <children xmi:type="notation:Node" xmi:id="_sKKHQIk9EeWGq8kEh7-t0w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_sKKHQYk9EeWGq8kEh7-t0w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_NFf4MIlEEeWGq8kEh7-t0w" type="3008" element="_NFLvIIlEEeWGq8kEh7-t0w">
+                <children xmi:type="notation:Node" xmi:id="_NFiUcIlEEeWGq8kEh7-t0w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_NFjikIlEEeWGq8kEh7-t0w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_NFkws4lEEeWGq8kEh7-t0w" type="3008" element="_NFOLYIlEEeWGq8kEh7-t0w">
+                    <children xmi:type="notation:Node" xmi:id="_NFlXwIlEEeWGq8kEh7-t0w" type="5005"/>
+                    <children xmi:type="notation:Node" xmi:id="_NFlXwYlEEeWGq8kEh7-t0w" type="7002">
+                      <styles xmi:type="notation:SortingStyle" xmi:id="_NFlXwolEEeWGq8kEh7-t0w"/>
+                      <styles xmi:type="notation:FilteringStyle" xmi:id="_NFlXw4lEEeWGq8kEh7-t0w"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_NFkwtIlEEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NFkwtYlEEeWGq8kEh7-t0w" x="30" y="30"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_NFjikYlEEeWGq8kEh7-t0w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_NFjikolEEeWGq8kEh7-t0w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_NFf4MYlEEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NFf4MolEEeWGq8kEh7-t0w" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_sKKHQok9EeWGq8kEh7-t0w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_sKKHQ4k9EeWGq8kEh7-t0w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_sKJgMYk9EeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sKJgMok9EeWGq8kEh7-t0w" x="20" y="28"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_sKKuUIk9EeWGq8kEh7-t0w" type="2002" element="_sKHrAIk9EeWGq8kEh7-t0w">
+            <children xmi:type="notation:Node" xmi:id="_sKKuU4k9EeWGq8kEh7-t0w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_sKLVYIk9EeWGq8kEh7-t0w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_NFppNIlEEeWGq8kEh7-t0w" type="3008" element="_NFSc0IlEEeWGq8kEh7-t0w">
+                <children xmi:type="notation:Node" xmi:id="_NFqQQIlEEeWGq8kEh7-t0w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_NFvv0IlEEeWGq8kEh7-t0w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_NFyMFIlEEeWGq8kEh7-t0w" type="3008" element="_NFWHMIlEEeWGq8kEh7-t0w">
+                    <children xmi:type="notation:Node" xmi:id="_NFzaMIlEEeWGq8kEh7-t0w" type="5005"/>
+                    <children xmi:type="notation:Node" xmi:id="_NFzaMYlEEeWGq8kEh7-t0w" type="7002">
+                      <styles xmi:type="notation:SortingStyle" xmi:id="_NFzaMolEEeWGq8kEh7-t0w"/>
+                      <styles xmi:type="notation:FilteringStyle" xmi:id="_NFzaM4lEEeWGq8kEh7-t0w"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_NFyMFYlEEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NFyMFolEEeWGq8kEh7-t0w" x="30" y="30"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_NFvv0YlEEeWGq8kEh7-t0w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_NFvv0olEEeWGq8kEh7-t0w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_NFppNYlEEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NFppNolEEeWGq8kEh7-t0w" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_sKLVYYk9EeWGq8kEh7-t0w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_sKLVYok9EeWGq8kEh7-t0w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_sKKuUYk9EeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sKKuUok9EeWGq8kEh7-t0w" x="300" y="28"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tVt7cIk9EeWGq8kEh7-t0w" type="2002" element="_tVn00Ik9EeWGq8kEh7-t0w">
+            <children xmi:type="notation:Node" xmi:id="_tVuigIk9EeWGq8kEh7-t0w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_tVuigYk9EeWGq8kEh7-t0w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_rjUlMIlHEeWGq8kEh7-t0w" type="3008" element="_rjKNIIlHEeWGq8kEh7-t0w">
+                <children xmi:type="notation:Node" xmi:id="_rjVMQIlHEeWGq8kEh7-t0w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_rjVMQYlHEeWGq8kEh7-t0w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_rjVzUIlHEeWGq8kEh7-t0w" type="3008" element="_rjK0MIlHEeWGq8kEh7-t0w">
+                    <children xmi:type="notation:Node" xmi:id="_rjVzU4lHEeWGq8kEh7-t0w" type="5005"/>
+                    <children xmi:type="notation:Node" xmi:id="_rjVzVIlHEeWGq8kEh7-t0w" type="7002">
+                      <styles xmi:type="notation:SortingStyle" xmi:id="_rjVzVYlHEeWGq8kEh7-t0w"/>
+                      <styles xmi:type="notation:FilteringStyle" xmi:id="_rjVzVolHEeWGq8kEh7-t0w"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_rjVzUYlHEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rjVzUolHEeWGq8kEh7-t0w" x="30" y="30"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_rjVMQolHEeWGq8kEh7-t0w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_rjVMQ4lHEeWGq8kEh7-t0w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_rjUlMYlHEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rjUlMolHEeWGq8kEh7-t0w" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tVuigok9EeWGq8kEh7-t0w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tVuig4k9EeWGq8kEh7-t0w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tVt7cYk9EeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tVt7cok9EeWGq8kEh7-t0w" x="20" y="208"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tVvJkIk9EeWGq8kEh7-t0w" type="2002" element="_tVpC8Ik9EeWGq8kEh7-t0w">
+            <children xmi:type="notation:Node" xmi:id="_tVvJk4k9EeWGq8kEh7-t0w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_tVvwoIk9EeWGq8kEh7-t0w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_rjVzV4lHEeWGq8kEh7-t0w" type="3008" element="_rjLbQYlHEeWGq8kEh7-t0w">
+                <children xmi:type="notation:Node" xmi:id="_rjWaYIlHEeWGq8kEh7-t0w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_rjWaYYlHEeWGq8kEh7-t0w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_rjXBcIlHEeWGq8kEh7-t0w" type="3008" element="_rjMpYIlHEeWGq8kEh7-t0w">
+                    <children xmi:type="notation:Node" xmi:id="_rjXBc4lHEeWGq8kEh7-t0w" type="5005"/>
+                    <children xmi:type="notation:Node" xmi:id="_rjYPkIlHEeWGq8kEh7-t0w" type="7002">
+                      <styles xmi:type="notation:SortingStyle" xmi:id="_rjYPkYlHEeWGq8kEh7-t0w"/>
+                      <styles xmi:type="notation:FilteringStyle" xmi:id="_rjYPkolHEeWGq8kEh7-t0w"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_rjXBcYlHEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rjXBcolHEeWGq8kEh7-t0w" x="30" y="30"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_rjWaYolHEeWGq8kEh7-t0w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_rjWaY4lHEeWGq8kEh7-t0w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_rjVzWIlHEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rjVzWYlHEeWGq8kEh7-t0w" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tVvwoYk9EeWGq8kEh7-t0w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tVvwook9EeWGq8kEh7-t0w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tVvJkYk9EeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tVvJkok9EeWGq8kEh7-t0w" x="300" y="208"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tnSzoIk9EeWGq8kEh7-t0w" type="2002" element="_tnMtAIk9EeWGq8kEh7-t0w">
+            <children xmi:type="notation:Node" xmi:id="_tnTasIk9EeWGq8kEh7-t0w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_tnUBwIk9EeWGq8kEh7-t0w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_BZZgoIlIEeWGq8kEh7-t0w" type="3008" element="_BZQWsIlIEeWGq8kEh7-t0w">
+                <children xmi:type="notation:Node" xmi:id="_BZaHsolIEeWGq8kEh7-t0w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_BZaHs4lIEeWGq8kEh7-t0w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_BZauwIlIEeWGq8kEh7-t0w" type="3008" element="_BZSL4IlIEeWGq8kEh7-t0w">
+                    <children xmi:type="notation:Node" xmi:id="_BZauw4lIEeWGq8kEh7-t0w" type="5005"/>
+                    <children xmi:type="notation:Node" xmi:id="_BZauxIlIEeWGq8kEh7-t0w" type="7002">
+                      <styles xmi:type="notation:SortingStyle" xmi:id="_BZauxYlIEeWGq8kEh7-t0w"/>
+                      <styles xmi:type="notation:FilteringStyle" xmi:id="_BZauxolIEeWGq8kEh7-t0w"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_BZauwYlIEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BZauwolIEeWGq8kEh7-t0w" x="30" y="30"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_BZaHtIlIEeWGq8kEh7-t0w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_BZaHtYlIEeWGq8kEh7-t0w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_BZaHsIlIEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BZaHsYlIEeWGq8kEh7-t0w" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tnUBwYk9EeWGq8kEh7-t0w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tnUBwok9EeWGq8kEh7-t0w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tnSzoYk9EeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tnSzook9EeWGq8kEh7-t0w" x="20" y="388"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tnUBw4k9EeWGq8kEh7-t0w" type="2002" element="_tnNUEYk9EeWGq8kEh7-t0w">
+            <children xmi:type="notation:Node" xmi:id="_tnUo0Ik9EeWGq8kEh7-t0w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_tnUo0Yk9EeWGq8kEh7-t0w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_BZaux4lIEeWGq8kEh7-t0w" type="3008" element="_BZSy8IlIEeWGq8kEh7-t0w">
+                <children xmi:type="notation:Node" xmi:id="_BZbV0IlIEeWGq8kEh7-t0w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_BZbV0YlIEeWGq8kEh7-t0w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_BZbV1IlIEeWGq8kEh7-t0w" type="3008" element="_BZTaAIlIEeWGq8kEh7-t0w">
+                    <children xmi:type="notation:Node" xmi:id="_BZb84IlIEeWGq8kEh7-t0w" type="5005"/>
+                    <children xmi:type="notation:Node" xmi:id="_BZb84YlIEeWGq8kEh7-t0w" type="7002">
+                      <styles xmi:type="notation:SortingStyle" xmi:id="_BZb84olIEeWGq8kEh7-t0w"/>
+                      <styles xmi:type="notation:FilteringStyle" xmi:id="_BZb844lIEeWGq8kEh7-t0w"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_BZbV1YlIEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BZbV1olIEeWGq8kEh7-t0w" x="30" y="30"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_BZbV0olIEeWGq8kEh7-t0w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_BZbV04lIEeWGq8kEh7-t0w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_BZauyIlIEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BZauyYlIEeWGq8kEh7-t0w" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tnUo0ok9EeWGq8kEh7-t0w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tnUo04k9EeWGq8kEh7-t0w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tnUBxIk9EeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tnUBxYk9EeWGq8kEh7-t0w" x="300" y="388"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_OnKWsoktEeWGq8kEh7-t0w"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sKHD8Ik9EeWGq8kEh7-t0w" name="DefaultLayerDefaultStyle">
+        <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+        <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sKHD8Yk9EeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_NFLvIIlEEeWGq8kEh7-t0w" name="SubDefaultLayerDefaultStyle">
+          <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+          <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_NFLvIYlEEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@subContainerMappings[name='subCmDefaultLayer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@subContainerMappings[name='subCmDefaultLayer']"/>
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_NFOLYIlEEeWGq8kEh7-t0w" name="SubSubDefaultLayerDefaultStyle">
+            <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+            <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_NFOLYYlEEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+              <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@subContainerMappings[name='subCmDefaultLayer']/@subContainerMappings[name='subSubCmDefaultLayer']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@subContainerMappings[name='subCmDefaultLayer']/@subContainerMappings[name='subSubCmDefaultLayer']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sKHrAIk9EeWGq8kEh7-t0w" name="DefaultLayerConditionalStyle">
+        <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+        <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sKISEIk9EeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@conditionnalStyles.0/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_NFSc0IlEEeWGq8kEh7-t0w" name="SubDefaultLayerConditionalStyle">
+          <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+          <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_NFSc0YlEEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@subContainerMappings[name='subCmDefaultLayer']/@conditionnalStyles.0/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@subContainerMappings[name='subCmDefaultLayer']"/>
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_NFWHMIlEEeWGq8kEh7-t0w" name="SubSubDefaultLayerConditionalStyle">
+            <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+            <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_NFWHMYlEEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+              <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@subContainerMappings[name='subCmDefaultLayer']/@subContainerMappings[name='subSubCmDefaultLayer']/@conditionnalStyles.0/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer/@containerMappings[name='cmDefaultLayer']/@subContainerMappings[name='subCmDefaultLayer']/@subContainerMappings[name='subSubCmDefaultLayer']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_tVn00Ik9EeWGq8kEh7-t0w" name="AdditionalLayerDefaultStyle">
+        <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+        <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_tVob4Ik9EeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rjKNIIlHEeWGq8kEh7-t0w" name="SubAdditionalLayerDefaultStyle">
+          <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+          <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rjKNIYlHEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@subContainerMappings[name='subCmAdditionalLayer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@subContainerMappings[name='subCmAdditionalLayer']"/>
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rjK0MIlHEeWGq8kEh7-t0w" name="SubSubAdditionalLayerDefaultStyle">
+            <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+            <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rjLbQIlHEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+              <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@subContainerMappings[name='subCmAdditionalLayer']/@subContainerMappings[name='subSubCmAdditionalLayer']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@subContainerMappings[name='subCmAdditionalLayer']/@subContainerMappings[name='subSubCmAdditionalLayer']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_tVpC8Ik9EeWGq8kEh7-t0w" name="AdditionalLayerConditionalStyle">
+        <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+        <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_tVpC8Yk9EeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@conditionnalStyles.0/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rjLbQYlHEeWGq8kEh7-t0w" name="SubAdditionalLayerConditionalStyle">
+          <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+          <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rjMCUIlHEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@subContainerMappings[name='subCmAdditionalLayer']/@conditionnalStyles.0/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@subContainerMappings[name='subCmAdditionalLayer']"/>
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rjMpYIlHEeWGq8kEh7-t0w" name="SubSubAdditionalLayerConditionalStyle">
+            <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+            <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rjMpYYlHEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+              <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@subContainerMappings[name='subCmAdditionalLayer']/@subContainerMappings[name='subSubCmAdditionalLayer']/@conditionnalStyles.0/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']/@containerMappings[name='cmAdditionalLayer']/@subContainerMappings[name='subCmAdditionalLayer']/@subContainerMappings[name='subSubCmAdditionalLayer']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_tnMtAIk9EeWGq8kEh7-t0w" name="ExtensionLayerDefaultStyle">
+        <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+        <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_tnNUEIk9EeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BZQWsIlIEeWGq8kEh7-t0w" name="SubExtensionLayerDefaultStyle">
+          <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+          <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BZRk0IlIEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@subContainerMappings[name='subCmExtensionLayer']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@subContainerMappings[name='subCmExtensionLayer']"/>
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BZSL4IlIEeWGq8kEh7-t0w" name="SubSubExtensionLayerDefaultStyle">
+            <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+            <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BZSL4YlIEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+              <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@subContainerMappings[name='subCmExtensionLayer']/@subContainerMappings[name='subSubCmExtensionLayer']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@subContainerMappings[name='subCmExtensionLayer']/@subContainerMappings[name='subSubCmExtensionLayer']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_tnNUEYk9EeWGq8kEh7-t0w" name="ExtensionLayerConditionalStyle">
+        <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+        <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_tnN7IIk9EeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@conditionnalStyles.0/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BZSy8IlIEeWGq8kEh7-t0w" name="SubExtensionLayerConditionalStyle">
+          <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+          <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BZSy8YlIEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@subContainerMappings[name='subCmExtensionLayer']/@conditionnalStyles.0/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@subContainerMappings[name='subCmExtensionLayer']"/>
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BZTaAIlIEeWGq8kEh7-t0w" name="SubSubExtensionLayerConditionalStyle">
+            <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+            <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BZTaAYlIEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+              <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@subContainerMappings[name='subCmExtensionLayer']/@subContainerMappings[name='subSubCmExtensionLayer']/@conditionnalStyles.0/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']/@containerMappings[name='cmExtensionLayer']/@subContainerMappings[name='subCmExtensionLayer']/@subContainerMappings[name='subSubCmExtensionLayer']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_OmlH44ktEeWGq8kEh7-t0w"/>
+      <activatedLayers xmi:type="description_1:Layer" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='layer1']"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='layer2']"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigration']/@additionalLayers[name='AdditionalLayer']"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentationExtensions[name='borderSizeMigrationExt']/@layers[name='ExtensionLayer']"/>
+      <target xmi:type="ecore:EPackage" href="borderSizeMigration.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_aLa0UIk-EeWGq8kEh7-t0w" name="borderSizeMigrationWithoutLayer">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_aLa0UYk-EeWGq8kEh7-t0w" source="DANNOTATION_CUSTOMIZATION_KEY">
+        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_aLa0Uok-EeWGq8kEh7-t0w"/>
+      </ownedAnnotationEntries>
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_aLbbYIk-EeWGq8kEh7-t0w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_aLbbYYk-EeWGq8kEh7-t0w" type="Sirius" element="_aLa0UIk-EeWGq8kEh7-t0w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_aLbbY4k-EeWGq8kEh7-t0w" type="2002" element="_aLa0U4k-EeWGq8kEh7-t0w">
+            <children xmi:type="notation:Node" xmi:id="_aLcCcIk-EeWGq8kEh7-t0w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_aLcCcYk-EeWGq8kEh7-t0w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_0g8ngIlHEeWGq8kEh7-t0w" type="3008" element="_0g49IIlHEeWGq8kEh7-t0w">
+                <children xmi:type="notation:Node" xmi:id="_0g8ng4lHEeWGq8kEh7-t0w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_0g8nhIlHEeWGq8kEh7-t0w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_0g9OkIlHEeWGq8kEh7-t0w" type="3008" element="_0g5kMYlHEeWGq8kEh7-t0w">
+                    <children xmi:type="notation:Node" xmi:id="_0g9Ok4lHEeWGq8kEh7-t0w" type="5005"/>
+                    <children xmi:type="notation:Node" xmi:id="_0g9OlIlHEeWGq8kEh7-t0w" type="7002">
+                      <styles xmi:type="notation:SortingStyle" xmi:id="_0g9OlYlHEeWGq8kEh7-t0w"/>
+                      <styles xmi:type="notation:FilteringStyle" xmi:id="_0g9OlolHEeWGq8kEh7-t0w"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_0g9OkYlHEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0g9OkolHEeWGq8kEh7-t0w" x="30" y="32"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_0g8nhYlHEeWGq8kEh7-t0w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_0g8nholHEeWGq8kEh7-t0w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_0g8ngYlHEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0g8ngolHEeWGq8kEh7-t0w" x="31" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_aLcCcok-EeWGq8kEh7-t0w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_aLcCc4k-EeWGq8kEh7-t0w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_aLbbZIk-EeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aLbbZYk-EeWGq8kEh7-t0w" x="20" y="20"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_aLcCdIk-EeWGq8kEh7-t0w" type="2002" element="_aLa0VYk-EeWGq8kEh7-t0w">
+            <children xmi:type="notation:Node" xmi:id="_aLcpgIk-EeWGq8kEh7-t0w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_aLcpgYk-EeWGq8kEh7-t0w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_0g9Ol4lHEeWGq8kEh7-t0w" type="3008" element="_0g6LQIlHEeWGq8kEh7-t0w">
+                <children xmi:type="notation:Node" xmi:id="_0g9OmolHEeWGq8kEh7-t0w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_0g9Om4lHEeWGq8kEh7-t0w" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_0g91oIlHEeWGq8kEh7-t0w" type="3008" element="_0g6yUIlHEeWGq8kEh7-t0w">
+                    <children xmi:type="notation:Node" xmi:id="_0g91o4lHEeWGq8kEh7-t0w" type="5005"/>
+                    <children xmi:type="notation:Node" xmi:id="_0g91pIlHEeWGq8kEh7-t0w" type="7002">
+                      <styles xmi:type="notation:SortingStyle" xmi:id="_0g91pYlHEeWGq8kEh7-t0w"/>
+                      <styles xmi:type="notation:FilteringStyle" xmi:id="_0g91polHEeWGq8kEh7-t0w"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_0g91oYlHEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0g91oolHEeWGq8kEh7-t0w" x="30" y="32"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_0g9OnIlHEeWGq8kEh7-t0w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_0g9OnYlHEeWGq8kEh7-t0w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_0g9OmIlHEeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0g9OmYlHEeWGq8kEh7-t0w" x="31" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_aLcpgok-EeWGq8kEh7-t0w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_aLcpg4k-EeWGq8kEh7-t0w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_aLcCdYk-EeWGq8kEh7-t0w" fontName=".SF NS Text" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aLcCdok-EeWGq8kEh7-t0w" x="280" y="20"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_aLbbYok-EeWGq8kEh7-t0w"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_aLa0U4k-EeWGq8kEh7-t0w" name="NoLayerDefaultStyle">
+        <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+        <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aLa0VIk-EeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_0g49IIlHEeWGq8kEh7-t0w" name="SubDefaultStyle">
+          <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+          <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_0g5kMIlHEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@subContainerMappings[name='subCm']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@subContainerMappings[name='subCm']"/>
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_0g5kMYlHEeWGq8kEh7-t0w" name="SubSubDefaultStyle">
+            <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+            <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//class"/>
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_0g5kMolHEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+              <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@subContainerMappings[name='subCm']/@subContainerMappings[name='subSubCm']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@subContainerMappings[name='subCm']/@subContainerMappings[name='subSubCm']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_aLa0VYk-EeWGq8kEh7-t0w" name="NoLayerConditionalStyle">
+        <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+        <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_aLa0Vok-EeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@conditionnalStyles.0/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_0g6LQIlHEeWGq8kEh7-t0w" name="SubConditionalStyle">
+          <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+          <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_0g6LQYlHEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+            <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@subContainerMappings[name='subCm']/@conditionnalStyles.0/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@subContainerMappings[name='subCm']"/>
+          <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_0g6yUIlHEeWGq8kEh7-t0w" name="SubSubConditionalStyle">
+            <target xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+            <semanticElements xmi:type="ecore:EClass" href="borderSizeMigration.ecore#//abstractClass"/>
+            <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_0g6yUYlHEeWGq8kEh7-t0w" borderSize="1" borderSizeComputationExpression="1">
+              <description xmi:type="style:FlatContainerStyleDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@subContainerMappings[name='subCm']/@subContainerMappings[name='subSubCm']/@conditionnalStyles.0/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ContainerMapping" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']/@containerMappings[name='cmWithoutLayer']/@subContainerMappings[name='subCm']/@subContainerMappings[name='subSubCm']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']/@ownedRepresentations[name='borderSizeMigrationWithoutLayer']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_aLa0V4k-EeWGq8kEh7-t0w"/>
+      <target xmi:type="ecore:EPackage" href="borderSizeMigration.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="borderSizeMigration.odesign#//@ownedViewpoints[name='borderSizeMigration']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -35,7 +35,7 @@ public class BorderSizeRepresentationFileMigrationParticipant extends AbstractRe
     /**
      * The VP version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("10.1.0.201507101000"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("10.1.0.201507101000"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
