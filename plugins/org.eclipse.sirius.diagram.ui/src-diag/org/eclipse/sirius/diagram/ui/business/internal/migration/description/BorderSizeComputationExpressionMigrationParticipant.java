@@ -38,9 +38,12 @@ public class BorderSizeComputationExpressionMigrationParticipant extends Abstrac
     /**
      * The version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("10.1.3.201511131800"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("10.1.3.201511131800"); //$NON-NLS-1$
 
-    private static final Version INITIAL_MIGRATION_VERSION = new Version("10.1.0.201507101000"); //$NON-NLS-1$
+    /**
+     * The initial version of this migration.
+     */
+    public static final Version INITIAL_MIGRATION_VERSION = new Version("10.1.0.201507101000"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
