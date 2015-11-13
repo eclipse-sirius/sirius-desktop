@@ -13,19 +13,23 @@ package org.eclipse.sirius.tests.swtbot;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.ILabelProviderProvider;
 import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.LabelProviderProviderDescriptor;
 import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.LabelProviderProviderRegistry;
 import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.StandaloneLabelProviderProviderDescriptor;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.ui.internal.sheet.SiriusSheetLabelProvider;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.tests.support.api.ImageEquality;
 import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.DiagramLabelProviderProviderStub.DiagramLabelProvider;
@@ -37,6 +41,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentatio
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tree.DTreeElement;
+import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
+import org.eclipse.sirius.ui.tools.api.provider.DTableLabelProvider;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
@@ -45,6 +51,8 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCLabel;
+import org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry;
+import org.eclipse.ui.part.IPage;
 
 /**
  * Tests that a contributed {@link ILabelProvider} customize the title
@@ -54,6 +62,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotCLabel;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
+@SuppressWarnings("restriction")
 public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String PATH = "data/unit/propertiesView/VP-3852/";
@@ -93,6 +102,7 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
         super.onSetUpBeforeClosingWelcomePage();
 
         defaultImage = UIThreadRunnable.syncExec(new Result<Image>() {
+            @Override
             public Image run() {
                 return DiagramUIPlugin.getPlugin().getLabelProvider().getImage(EcorePackage.eINSTANCE);
             }
@@ -116,14 +126,22 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testPropertiesViewTitleOnDiagramDialectEditorWithoutContributions() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESC_NAME, "new " + DIAGRAM_DESC_NAME, DDiagram.class);
-        editor.select(DEFAULT_LABEL);
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();
-        SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
-        String assertMessage = "On DDiagramElement selection, the DiagramLabelProvider should be used";
-        assertEquals(assertMessage, DEFAULT_LABEL, titleLabelBot.getText());
-        assertTrue(assertMessage, ImageEquality.areEqualImages(defaultImage, titleLabelBot.image()));
-        editor.close();
+        Object oldLabelProvider = null;
+        try {
+            oldLabelProvider = setPropertyViewLabelProvider(propertiesView);
+            checkPropertiesLabelProvider(propertiesView, SiriusSheetLabelProvider.class);
+            editor.setFocus();
+            editor.select(DEFAULT_LABEL);
+            SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
+            String assertMessage = "On DDiagramElement selection, the DiagramLabelProvider should be used";
+            assertEquals(assertMessage, DEFAULT_LABEL, titleLabelBot.getText());
+            assertTrue(assertMessage, ImageEquality.areEqualImages(defaultImage, titleLabelBot.image()));
+        } finally {
+            resetPropertyViewLabelProvider(propertiesView, oldLabelProvider);
+            editor.close();
+        }
     }
 
     /**
@@ -134,14 +152,21 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
         UITableRepresentation table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TABLE_DESC_NAME)
                 .selectRepresentationInstance("new " + TABLE_DESC_NAME, UITableRepresentation.class).open();
         SWTBotEditor tableEditorBot = table.getEditor();
-        tableEditorBot.bot().tree().getAllItems()[0].select();
         SWTBotView propertiesView = bot.viewByTitle("Properties");
-        SWTBot propertiesViewBot = propertiesView.bot();
-        SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
-        String assertMessage = "On DTableElement selection, the TableLabelProvider should be used";
-        assertEquals(assertMessage, DEFAULT_LABEL, titleLabelBot.getText());
-        assertTrue(assertMessage, ImageEquality.areEqualImages(defaultImage, titleLabelBot.image()));
-        tableEditorBot.close();
+        Object oldLabelProvider = null;
+        try {
+            oldLabelProvider = setPropertyViewLabelProvider(propertiesView);
+            checkPropertiesLabelProvider(propertiesView, DTableLabelProvider.class);
+            tableEditorBot.bot().tree().getAllItems()[0].select();
+            SWTBot propertiesViewBot = propertiesView.bot();
+            SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
+            String assertMessage = "On DTableElement selection, the TableLabelProvider should be used";
+            assertEquals(assertMessage, DEFAULT_LABEL, titleLabelBot.getText());
+            assertTrue(assertMessage, ImageEquality.areEqualImages(defaultImage, titleLabelBot.image()));
+        } finally {
+            resetPropertyViewLabelProvider(propertiesView, oldLabelProvider);
+            tableEditorBot.close();
+        }
     }
 
     /**
@@ -152,14 +177,21 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
         UITreeRepresentation tree = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TREE_DESC_NAME)
                 .selectRepresentationInstance("new " + TREE_DESC_NAME, UITreeRepresentation.class).open();
         SWTBotEditor treeEditorBot = tree.getEditor();
-        treeEditorBot.bot().tree().getAllItems()[0].select();
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();
-        SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
-        String assertMessage = "On DTreeElement selection, the TreeLabelProvider should be used";
-        assertEquals(assertMessage, DEFAULT_LABEL, titleLabelBot.getText());
-        assertTrue(assertMessage, ImageEquality.areEqualImages(defaultImage, titleLabelBot.image()));
-        treeEditorBot.close();
+        Object oldLabelProvider = null;
+        try {
+            oldLabelProvider = setPropertyViewLabelProvider(propertiesView);
+            checkPropertiesLabelProvider(propertiesView, DTableLabelProvider.class);
+            treeEditorBot.bot().tree().getAllItems()[0].select();
+            SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
+            String assertMessage = "On DTreeElement selection, the TreeLabelProvider should be used";
+            assertEquals(assertMessage, DEFAULT_LABEL, titleLabelBot.getText());
+            assertTrue(assertMessage, ImageEquality.areEqualImages(defaultImage, titleLabelBot.image()));
+        } finally {
+            resetPropertyViewLabelProvider(propertiesView, oldLabelProvider);
+            treeEditorBot.close();
+        }
     }
 
     /**
@@ -169,14 +201,22 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
     public void testPropertiesViewTitleOnDiagramDialectEditorWithContributions() {
         addContributions();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESC_NAME, "new " + DIAGRAM_DESC_NAME, DDiagram.class);
-        editor.select("test");
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();
-        SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
-        String assertMessage = "On DDiagramElement selection, the DiagramLabelProvider should be used";
-        assertEquals(assertMessage, DiagramLabelProvider.LABEL, titleLabelBot.getText());
-        assertTrue(assertMessage, ImageEquality.areEqualImages(DIAGRAM_IMAGE, titleLabelBot.image()));
-        editor.close();
+        Object oldLabelProvider = null;
+        try {
+            oldLabelProvider = setPropertyViewLabelProvider(propertiesView);
+            checkPropertiesLabelProvider(propertiesView, SiriusSheetLabelProvider.class);
+            editor.select("test");
+            editor.setFocus();
+            SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
+            String assertMessage = "On DDiagramElement selection, the DiagramLabelProvider should be used";
+            assertEquals(assertMessage, DiagramLabelProvider.LABEL, titleLabelBot.getText());
+            assertTrue(assertMessage, ImageEquality.areEqualImages(DIAGRAM_IMAGE, titleLabelBot.image()));
+        } finally {
+            resetPropertyViewLabelProvider(propertiesView, oldLabelProvider);
+            editor.close();
+        }
     }
 
     /**
@@ -188,14 +228,21 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
         UITableRepresentation table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TABLE_DESC_NAME)
                 .selectRepresentationInstance("new " + TABLE_DESC_NAME, UITableRepresentation.class).open();
         SWTBotEditor tableEditorBot = table.getEditor();
-        tableEditorBot.bot().tree().getAllItems()[0].select();
         SWTBotView propertiesView = bot.viewByTitle("Properties");
-        SWTBot propertiesViewBot = propertiesView.bot();
-        SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
-        String assertMessage = "On DTableElement selection, the TableLabelProvider should be used";
-        assertEquals(assertMessage, TableLabelProvider.LABEL, titleLabelBot.getText());
-        assertTrue(assertMessage, ImageEquality.areEqualImages(TABLE_IMAGE, titleLabelBot.image()));
-        tableEditorBot.close();
+        Object oldLabelProvider = null;
+        try {
+            oldLabelProvider = setPropertyViewLabelProvider(propertiesView);
+            checkPropertiesLabelProvider(propertiesView, DTableLabelProvider.class);
+            tableEditorBot.bot().tree().getAllItems()[0].select();
+            SWTBot propertiesViewBot = propertiesView.bot();
+            SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
+            String assertMessage = "On DTableElement selection, the TableLabelProvider should be used";
+            assertEquals(assertMessage, TableLabelProvider.LABEL, titleLabelBot.getText());
+            assertTrue(assertMessage, ImageEquality.areEqualImages(TABLE_IMAGE, titleLabelBot.image()));
+        } finally {
+            resetPropertyViewLabelProvider(propertiesView, oldLabelProvider);
+            tableEditorBot.close();
+        }
     }
 
     /**
@@ -207,14 +254,66 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
         UITreeRepresentation tree = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TREE_DESC_NAME)
                 .selectRepresentationInstance("new " + TREE_DESC_NAME, UITreeRepresentation.class).open();
         SWTBotEditor treeEditorBot = tree.getEditor();
-        treeEditorBot.bot().tree().getAllItems()[0].select();
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();
-        SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
-        String assertMessage = "On DTreeElement selection, the TreeLabelProvider should be used";
-        assertEquals(assertMessage, TreeLabelProvider.LABEL, titleLabelBot.getText());
-        assertTrue(assertMessage, ImageEquality.areEqualImages(TREE_IMAGE, titleLabelBot.image()));
-        treeEditorBot.close();
+        Object oldLabelProvider = null;
+        try {
+            oldLabelProvider = setPropertyViewLabelProvider(propertiesView);
+            checkPropertiesLabelProvider(propertiesView, DTableLabelProvider.class);
+            treeEditorBot.bot().tree().getAllItems()[0].select();
+            SWTBotCLabel titleLabelBot = propertiesViewBot.clabel();
+            String assertMessage = "On DTreeElement selection, the TreeLabelProvider should be used";
+            assertEquals(assertMessage, TreeLabelProvider.LABEL, titleLabelBot.getText());
+            assertTrue(assertMessage, ImageEquality.areEqualImages(TREE_IMAGE, titleLabelBot.image()));
+        } finally {
+            resetPropertyViewLabelProvider(propertiesView, oldLabelProvider);
+            treeEditorBot.close();
+        }
+    }
+
+    /**
+     * Have LabelProviderProviderTests executed always with the Sirius
+     * propertyContributor labelProviders for properties view instead of
+     * EEFLabelProvider when EEF is in the runtime.
+     */
+    private Object setPropertyViewLabelProvider(SWTBotView propertiesView) {
+        Object oldLabelProvider = null;
+        if (Platform.getBundle("org.eclipse.emf.eef.runtime") != null) {
+            IPage currentPage = ((org.eclipse.ui.views.properties.PropertySheet) propertiesView.getReference().getView(false)).getCurrentPage();
+            Option<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
+            assertTrue(valueOption.get() instanceof TabbedPropertyRegistry);
+            TabbedPropertyRegistry tabbedPropertyRegistry = (TabbedPropertyRegistry) valueOption.get();
+            String contributorId = (String) ReflectionHelper.getFieldValueWithoutException(tabbedPropertyRegistry, "contributorId").get();
+            oldLabelProvider = ReflectionHelper.getFieldValueWithoutException(tabbedPropertyRegistry, "labelProvider").get();
+            Object newLabelProvider = null;
+            if (DiagramUIPlugin.ID.equals(contributorId)) {
+                newLabelProvider = new SiriusSheetLabelProvider();
+            } else if ("org.eclipse.sirius.table.ui.EditorID".equals(contributorId) || DTreeEditor.ID.equals(contributorId)) {
+                newLabelProvider = new DTableLabelProvider();
+            }
+            if (newLabelProvider != null) {
+                ReflectionHelper.setFieldValueWithoutException(tabbedPropertyRegistry, "labelProvider", newLabelProvider);
+            }
+        }
+        return oldLabelProvider;
+    }
+
+    private void checkPropertiesLabelProvider(SWTBotView propertiesView, Class<?> labelProviderType) {
+        IPage currentPage = ((org.eclipse.ui.views.properties.PropertySheet) propertiesView.getReference().getView(false)).getCurrentPage();
+        Option<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
+        assertTrue(valueOption.get() instanceof TabbedPropertyRegistry);
+        TabbedPropertyRegistry tabbedPropertyRegistry = (TabbedPropertyRegistry) valueOption.get();
+        assertEquals("The properties view labelProvider is not of the expected type", labelProviderType, tabbedPropertyRegistry.getLabelProvider().getClass());
+    }
+
+    private void resetPropertyViewLabelProvider(SWTBotView propertiesView, Object oldLabelProvider) {
+        if (oldLabelProvider != null) {
+            IPage currentPage = ((org.eclipse.ui.views.properties.PropertySheet) propertiesView.getReference().getView(false)).getCurrentPage();
+            Option<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
+            assertTrue(valueOption.get() instanceof TabbedPropertyRegistry);
+            TabbedPropertyRegistry tabbedPropertyRegistry = (TabbedPropertyRegistry) valueOption.get();
+            ReflectionHelper.setFieldValueWithoutException(tabbedPropertyRegistry, "labelProvider", oldLabelProvider);
+        }
     }
 
     private void addContributions() {
@@ -238,10 +337,12 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
 
     class TreeLabelProviderProviderStub implements ILabelProviderProvider {
 
+        @Override
         public ILabelProvider getLabelProvider() {
             return new TreeLabelProvider();
         }
 
+        @Override
         public boolean provides(Object selection) {
             return unwrap(selection) instanceof DTreeElement;
         }
@@ -268,10 +369,12 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
 
     class TableLabelProviderProviderStub implements ILabelProviderProvider {
 
+        @Override
         public ILabelProvider getLabelProvider() {
             return new TableLabelProvider();
         }
 
+        @Override
         public boolean provides(Object selection) {
             return unwrap(selection) instanceof DTableElement;
         }
@@ -298,10 +401,12 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
 
     class DiagramLabelProviderProviderStub implements ILabelProviderProvider {
 
+        @Override
         public ILabelProvider getLabelProvider() {
             return new DiagramLabelProvider();
         }
 
+        @Override
         public boolean provides(Object selection) {
             return unwrap(selection) instanceof DDiagramElement;
         }
