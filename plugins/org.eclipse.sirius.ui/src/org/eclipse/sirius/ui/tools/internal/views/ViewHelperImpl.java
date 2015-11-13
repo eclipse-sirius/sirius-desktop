@@ -58,11 +58,7 @@ public final class ViewHelperImpl implements ViewHelper {
         return new ViewHelperImpl();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.ViewHelper#createAdapterFactory()
-     */
+    @Override
     public AdapterFactory createAdapterFactory() {
         final List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
         final ComposedAdapterFactory generic = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
@@ -73,17 +69,14 @@ public final class ViewHelperImpl implements ViewHelper {
         return new ComposedAdapterFactory(factories);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.api.views.ViewHelper#getContentProvider()
-     */
+    @Override
     public ITreeContentProvider getContentProvider() {
         if (contentProvider == null) {
             SessionWrapperContentProvider sessionWrapperContentProvider = new SessionWrapperContentProvider(new AdapterFactoryContentProvider(createAdapterFactory()));
 
             contentProvider = new GroupingContentProvider(sessionWrapperContentProvider);
             Collection<ITreeContentProvider> liveProviders = Collections2.transform(extensions, new Function<ISessionViewExtension, ITreeContentProvider>() {
+                @Override
                 public ITreeContentProvider apply(ISessionViewExtension from) {
                     return from.getContentProvider();
                 }
@@ -94,12 +87,20 @@ public final class ViewHelperImpl implements ViewHelper {
     }
 
     /**
+     * Reset to null the contentProvider.
+     */
+    public void resetContentProvider() {
+        contentProvider = null;
+    }
+
+    /**
      * Get the context menu providers from extensions.
      * 
      * @return the providers
      */
     public Collection<IContextMenuActionProvider> getContextMenuActionsProviders() {
         Collection<IContextMenuActionProvider> liveProviders = Collections2.transform(extensions, new Function<ISessionViewExtension, IContextMenuActionProvider>() {
+            @Override
             public IContextMenuActionProvider apply(ISessionViewExtension from) {
                 return from.getContextMenuActionProvider();
             }

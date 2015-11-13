@@ -347,6 +347,9 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ProjectDependenciesTest.class);
         suite.addTestSuite(ProjectsConcurrentCloseTest.class);
         suite.addTestSuite(PropertyViewOnModelExplorerSelectionWithLockedObjectTest.class);
+        // PropertyViewOnModelExplorerSelectionTests.testPropertyViewEditionOnModelExplorerViewSelection()
+        // pass in the suite with CloseWithoutSavingTest and
+        // LockedModelExplorerTest executed before because of Bug 482122
         suite.addTestSuite(PropertyViewOnModelExplorerSelectionTests.class);
         suite.addTestSuite(ContextualMenuTest.class);
         suite.addTestSuite(BracketEdgeTests.class);
