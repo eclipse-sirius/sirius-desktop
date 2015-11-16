@@ -10,15 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session;
 
-import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-
-import com.google.common.collect.Iterables;
 
 /**
  * Post-commit listener which notifies the session manager when a representation
@@ -37,6 +35,8 @@ public class RepresentationNameListener extends ResourceSetListenerImpl {
      *            the {@link Session}
      */
     public RepresentationNameListener(Session session) {
+        super(NotificationFilter.NOT_TOUCH
+                .and(NotificationFilter.createNotifierTypeFilter(DRepresentation.class).and(NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.DREPRESENTATION__NAME))));
         this.session = session;
         session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
@@ -48,15 +48,9 @@ public class RepresentationNameListener extends ResourceSetListenerImpl {
 
     @Override
     public void resourceSetChanged(ResourceSetChangeEvent event) {
-        for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
-            if (isRepresentationNameChange(notif)) {
-                SessionManager.INSTANCE.notifyRepresentationRenamed(session);
-            }
+        for (int i = 0; i < event.getNotifications().size(); i++) {
+            SessionManager.INSTANCE.notifyRepresentationRenamed(session);
         }
-    }
-
-    private boolean isRepresentationNameChange(Notification notif) {
-        return notif.getNotifier() instanceof DRepresentation && notif.getFeatureID(DRepresentation.class) == ViewpointPackage.DREPRESENTATION__NAME;
     }
 
     /**
