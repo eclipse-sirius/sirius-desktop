@@ -141,7 +141,10 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                 connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
             }
             normalizeAndStraight(connectionPointList);
-            removePointsInViews(connectionPointList, (PrecisionRectangle) sourceBounds.getTranslated(moveDelta), sourceRefPoint, targetBounds, targetRefPoint);
+            if (connectionPointList.size() > 2) {
+                // This code is not needed if the edge has only 2 points.
+                removePointsInViews(connectionPointList, (PrecisionRectangle) sourceBounds.getTranslated(moveDelta), sourceRefPoint, targetBounds, targetRefPoint);
+            }
         } else {
             // Compute intersection between the line
             // (tempSourceRefPoint<-->second point) and the source node
@@ -190,7 +193,10 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                 connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta.x, moveDelta.y), connectionPointList.size() - 1);
             }
             normalizeAndStraight(connectionPointList);
-            removePointsInViews(connectionPointList, sourceBounds, sourceRefPoint, (PrecisionRectangle) targetBounds.getTranslated(moveDelta), targetRefPoint);
+            if (connectionPointList.size() > 2) {
+                // This code is not needed if the edge has only 2 points.
+                removePointsInViews(connectionPointList, sourceBounds, sourceRefPoint, (PrecisionRectangle) targetBounds.getTranslated(moveDelta), targetRefPoint);
+            }
         } else {
             // Compute intersection between the line
             // (tempTargetRefPoint<-->second to last point) and the target node
@@ -303,7 +309,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
         PointList targetPointList = PointListUtilities.createPointsFromRect(target);
         if (newLine.size() != 0) {
             int nbIncludedPoints = 0;
-            for (int i = newLine.size() - 1; i > 0 && targetPointList.polygonContainsPoint(newLine.getPoint(i).x, newLine.getPoint(i).y); i--) {
+            for (int i = newLine.size() - 1; i >= 0 && targetPointList.polygonContainsPoint(newLine.getPoint(i).x, newLine.getPoint(i).y); i--) {
                 nbIncludedPoints++;
             }
             // Do nothing if there is only one point inside and no other
