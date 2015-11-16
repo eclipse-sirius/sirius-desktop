@@ -25,7 +25,6 @@ import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
@@ -88,6 +87,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
      * A map associating an edit Part Name with a location.
      */
     private static final Map<String, Point> LOCATIONS = Maps.newHashMap();
+
     static {
         LOCATIONS.put(PACKAGE_1_NAME, new Point(25, 70));
         LOCATIONS.put(PACKAGE_2_NAME, new Point(230, 70));
@@ -139,7 +139,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
 
         editor.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
         checkSelectedEditParts(getEditPartsFromNames(PACKAGE_1_NAME, PACKAGE_2_NAME, PACKAGE_3_NAME, CLASS_1_NAME, CLASS_2_NAME, CLASS_3_NAME, CLASS_4_NAME));
-        editor.getCanvas().pressShortcut(KeyStroke.getInstance(SWT.ESC));
+        SWTBotUtils.pressKeyboardKey(editor.getCanvas().widget, SWT.ESC);
         checkSelectedEditParts(Lists.newArrayList(editor.mainEditPart()));
     }
 
