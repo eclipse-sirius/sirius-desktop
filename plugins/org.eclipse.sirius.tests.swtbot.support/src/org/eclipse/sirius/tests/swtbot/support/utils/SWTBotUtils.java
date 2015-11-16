@@ -102,6 +102,27 @@ public final class SWTBotUtils {
     }
 
     /**
+     * Press a combination of keys.
+     * 
+     * @param widget
+     *            the current widget
+     * @param key
+     *            the key to press
+     * @param c
+     *            the key character to press
+     */
+    public static void pressKeyboardKey(final Widget widget, final int key, final char c) {
+        UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
+            public void run() {
+                Event event = SWTBotUtils.keyEvent(key, c, SWT.Selection, widget);
+                widget.notifyListeners(SWT.KeyDown, event);
+                widget.notifyListeners(SWT.KeyUp, event);
+            }
+        });
+    }
+
+    /**
      * Press the enter key.
      * 
      * @param widget

@@ -26,7 +26,6 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
 /**
  * Test that the delete from diagram key shortcut works correctly. see VP-4067.
@@ -107,11 +106,7 @@ public class KeyboardDeleteFromDiagramTests extends AbstractSiriusSwtBotGefTestC
      */
     private void deleteWithCtrlShiftDShortcut() {
         bot.activeEditor();
-
-        String savedKeyboardLayout = SWTBotPreferences.KEYBOARD_LAYOUT;
-        SWTBotPreferences.KEYBOARD_LAYOUT = "EN_US";
-        editor.getCanvas().pressShortcut(SWT.CTRL | SWT.SHIFT, 'd');
-        SWTBotPreferences.KEYBOARD_LAYOUT = savedKeyboardLayout;
+        SWTBotUtils.pressKeyboardKey(editor.getCanvas().widget, SWT.CTRL | SWT.SHIFT, 'd');
         SWTBotUtils.waitAllUiEvents();
     }
 
