@@ -109,7 +109,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     }
 
     private static boolean isEnabled(IGraphicalEditPart graphicalEditPart) {
-        if (graphicalEditPart.resolveSemanticElement() instanceof DDiagramElement) {
+        if (graphicalEditPart.isActive() && graphicalEditPart.resolveSemanticElement() instanceof DDiagramElement) {
             return HideDDiagramElementLabelAction.isEnabled((DDiagramElement) graphicalEditPart.resolveSemanticElement());
         }
         return false;
@@ -126,6 +126,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
      * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
      *      org.eclipse.ui.IWorkbenchPart)
      */
+    @Override
     public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
         // empty.
     }
@@ -135,6 +136,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
      * 
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
+    @Override
     public void run(final IAction action) {
         if (this.selection instanceof IStructuredSelection) {
             final IStructuredSelection structuredSelection = (IStructuredSelection) this.selection;
@@ -231,6 +233,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
      *      org.eclipse.jface.viewers.ISelection)
      */
+    @Override
     public void selectionChanged(final IAction action, final ISelection s) {
         this.selection = s;
         this.setEnabled(true);

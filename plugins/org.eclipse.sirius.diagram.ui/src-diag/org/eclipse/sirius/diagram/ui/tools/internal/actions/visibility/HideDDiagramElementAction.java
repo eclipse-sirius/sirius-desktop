@@ -107,6 +107,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
      * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
      *      org.eclipse.ui.IWorkbenchPart)
      */
+    @Override
     public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
         // empty.
     }
@@ -137,9 +138,12 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
             Collection<DDiagramElement> ddes = Sets.newHashSet();
             for (Object selected : ((IStructuredSelection) currentSelection).toList()) {
                 if (selected instanceof IDiagramElementEditPart) {
-                    DDiagramElement dDiagramElement = ((IDiagramElementEditPart) selected).resolveDiagramElement();
-                    if (dDiagramElement != null) {
-                        ddes.add(dDiagramElement);
+                    IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) selected;
+                    if (diagramElementEditPart.isActive()) {
+                        DDiagramElement dDiagramElement = diagramElementEditPart.resolveDiagramElement();
+                        if (dDiagramElement != null) {
+                            ddes.add(dDiagramElement);
+                        }
                     }
                 } else if (selected instanceof DDiagramElement) {
                     ddes.add((DDiagramElement) selected);
@@ -170,6 +174,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
      * 
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
+    @Override
     public void run(final IAction action) {
         if (this.selection instanceof IStructuredSelection) {
             final IStructuredSelection structuredSelection = (IStructuredSelection) this.selection;
@@ -256,6 +261,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
      *      org.eclipse.jface.viewers.ISelection)
      */
+    @Override
     public void selectionChanged(final IAction action, final ISelection s) {
         IWorkbenchPart selectedPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart();
         if (representationPart != null && !representationPart.equals(selectedPart)) {
@@ -278,6 +284,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
         // DDiagram that are not handled
         // by any DiagramDescriptionProvider).
         Predicate<DDiagramElement> result = new Predicate<DDiagramElement>() {
+            @Override
             public boolean apply(DDiagramElement dde) {
                 if (dde instanceof DDiagramElementContainer) {
                     DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
