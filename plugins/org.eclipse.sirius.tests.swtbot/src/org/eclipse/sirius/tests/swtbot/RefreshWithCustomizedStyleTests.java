@@ -15,10 +15,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
@@ -487,9 +487,9 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
         for (String customizableFeatureName : customizableFeatureNames) {
             EStructuralFeature feature = viewpointStyle.eClass().getEStructuralFeature(customizableFeatureName);
             Object initialValue = viewpointStyle.eGet(feature);
-            if (initialValue instanceof BasicEList<?>) {
-                // Clone the list to avoid a change of it during customization.
-                initialValue = ((BasicEList<?>) initialValue).clone();
+            if (initialValue instanceof InternalEList<?>) {
+                // Copy the list to avoid a change of it during customization.
+                initialValue = new ArrayList(((InternalEList<?>) initialValue).basicList());
             }
             if (customizeSiriusStylePropertyFromStyleTab(swtBotGefEditPart, viewpointStyle, feature)) {
                 Object newValue = viewpointStyle.eGet(feature);
