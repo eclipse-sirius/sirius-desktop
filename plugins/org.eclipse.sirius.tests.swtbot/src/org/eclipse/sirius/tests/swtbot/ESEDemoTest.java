@@ -38,36 +38,22 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  */
 public class ESEDemoTest extends AbstractScenarioTestCase {
 
-    private static final long PAUSE = 2000;
-
     private final String[] viewpointsSelection = new String[] { "Design", "Quality" };
 
     private UILocalSession localSession;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
-
         changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), true);
-
-        final UIResource ecoreEcoreResource = new UIResource(designerProject, MODELS_DIR, "Ecore.ecore");
-
-        final SessionChoice wizard = designerPerspective.openSessionCreationWizardFromSemanticResource(ecoreEcoreResource);
-
+        UIResource ecoreEcoreResource = new UIResource(designerProject, MODELS_DIR, "Ecore.ecore");
+        SessionChoice wizard = designerPerspective.openSessionCreationWizardFromSemanticResource(ecoreEcoreResource);
         localSession = wizard.fromAlreadySelectedSemanticResource().withDefaultSessionName().finish().selectViewpoints(viewpointsSelection);
-
-        final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
-        final SWTBotTreeItem ecoreTreeItem = semanticResourceNode.getNode("ecore");
-
+        SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
+        SWTBotTreeItem ecoreTreeItem = semanticResourceNode.getNode("ecore");
         localSession.newDiagramRepresentation("ecore package entities").on(ecoreTreeItem).withDefaultName().ok();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         // Close editor without saving
@@ -78,16 +64,14 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Test method. TODO : remove all these bot.sleep() calls
+     * Test method.
      * 
      * @throws Exception
      *             Test error.
      */
     @SuppressWarnings("unchecked")
     public void testGEFBotAPI() throws Exception {
-
-        /* get the bot */
-        final SWTBotSiriusDiagramEditor editor = SWTBotSiriusHelper.getSiriusDiagramEditor("ecore package entities");
+        SWTBotSiriusDiagramEditor editor = SWTBotSiriusHelper.getSiriusDiagramEditor("ecore package entities");
 
         /* test tool element creation API to Add a node element */
         editor.setFocus();
@@ -106,14 +90,15 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         final Request request = new DirectEditRequest();
 
         /*
-         * Workaround for GMF based modelers -> need to be in a SWTBotGMFEditor ->
-         * org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.
+         * Workaround for GMF based modelers -> need to be in a SWTBotGMFEditor
+         * -> org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.
          * REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR
          */
         request.getExtendedData().put("directedit_extendeddata_initial_char", 'a');
 
         final EditPart part = editor.getEditPart(NEW_ECLASS_1).part();
         UIThreadRunnable.syncExec(new VoidResult() {
+            @Override
             public void run() {
                 part.performRequest(request);
             }
@@ -124,33 +109,29 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         /* retrieve the properties view */
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         propertiesView.setFocus();
-        final SWTBot propertiesViewBot = propertiesView.bot();
-        final SWTBotTree tree = propertiesViewBot.tree();
+        SWTBot propertiesViewBot = propertiesView.bot();
+        SWTBotTree tree = propertiesViewBot.tree();
 
         /* Change the name of the class by properties */
         editor.click(NEW_ECLASS_2);
-        final SWTBotTreeItem nodeClass22Name = tree.getTreeItem(NEW_ECLASS_2).getNode("Name");
+        SWTBotTreeItem nodeClass22Name = tree.getTreeItem(NEW_ECLASS_2).getNode("Name");
 
         nodeClass22Name.select();
         nodeClass22Name.click();
-        bot.sleep(PAUSE);
+        done = new OperationDoneCondition();
         SWTBotText text = propertiesViewBot.text();
         text.setText("Class2");
         tree.select(0);
-        bot.sleep(PAUSE);
+        bot.waitUntil(done);
 
         /* test tool element creation API to Add a node element */
         editor.activateTool("Reference");
-        done = new OperationDoneCondition();
         editor.click("MySuperClassForEse");
         editor.click("Class2");
-        bot.waitUntil(done);
         editor.activateTool("Select");
 
-        bot.sleep(PAUSE);
-
         /* retrieve the outline */
-        final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
+        SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
 
         /* test tool element creation API to Add a node element */
         editor.activateTool("Package");
@@ -168,13 +149,13 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         editor.click(300, 220);
         bot.waitUntil(done);
 
+        done = new OperationDoneCondition();
         outlineView.activateLayer("Package");
+        bot.waitUntil(done);
 
-        bot.sleep(PAUSE);
-
+        done = new OperationDoneCondition();
         outlineView.activateLayer("Package");
-
-        bot.sleep(PAUSE);
+        bot.waitUntil(done);
 
         SWTBotCommonHelper.closeCurrentEditor();
         bot.button("No").click();
