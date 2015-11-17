@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.table;
 
-import org.eclipse.jface.bindings.keys.IKeyLookup;
-import org.eclipse.jface.bindings.keys.KeyStroke;
-import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -20,8 +17,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
+import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
@@ -52,9 +48,6 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
     /** Session. */
     private UIResource sessionAirdResource;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         String[] fileNames = { MODEL, SESSION_FILE, ECORE_FILE };
@@ -63,9 +56,6 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -97,11 +87,12 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
         // Toggle the cell on line "B0" and column "IsAbstract".
         items[1].select();
         items[1].click(1);
-        pressKey(table.getTable(), IKeyLookup.SPACE_NAME);
+        SWTBotUtils.pressKeyboardKey(table.getTable().widget, SWT.SPACE, SWT.SPACE);
 
         bot.toolbarButtonWithTooltip("Force a refresh of the table").click();
         SWTBotUtils.waitAllUiEvents();
         table.getTable().display.syncExec(new Runnable() {
+            @Override
             public void run() {
                 table.getTable().widget.update();
             }
@@ -118,17 +109,6 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
         assertEquals("true", items[1].cell(2));
     }
 
-    private void pressKey(AbstractSWTBot<?> bot, String key) throws ParseException {
-        String savedKeyboardLayout = SWTBotPreferences.KEYBOARD_LAYOUT;
-        SWTBotPreferences.KEYBOARD_LAYOUT = "EN_US";
-        bot.pressShortcut(KeyStroke.getInstance(key));
-        SWTBotPreferences.KEYBOARD_LAYOUT = savedKeyboardLayout;
-        SWTBotUtils.waitAllUiEvents();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         sessionAirdResource = null;
