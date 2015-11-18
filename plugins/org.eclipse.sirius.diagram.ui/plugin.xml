@@ -25,6 +25,19 @@
          id="org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory"/>
   </extension>
 
+   <extension point="org.eclipse.ui.editors">
+      <?gmfgen generated="true"?>
+      <editor
+         id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID"
+         name="%editorName"
+         icon="icons/DDiagram.gif"
+         extensions="ddiagram"
+         default="true"
+         class="org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl"
+         matchingStrategy="org.eclipse.sirius.diagram.ui.part.SiriusMatchingStrategy"
+         contributorClass="org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor">
+      </editor>
+   </extension>
 
    <extension point="org.eclipse.ui.contexts">
       <?gmfgen generated="true"?>
