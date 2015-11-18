@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,8 +46,7 @@ import com.google.common.collect.Sets;
 /**
  * A post commit listener which select the representation elements specified
  * through the "Elements To Select" expression and "Inverse Selection Order" tag
- * of the tool. </br>
- * Elements will be selected only on the active editor.
+ * of the tool. </br> Elements will be selected only on the active editor.
  * 
  * Each dialect is responsible to add this post commit listener or one
  * specializing this one.
@@ -61,9 +60,10 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      * {@link DRepresentationElement} creation or specified "Elements To Select"
      * list.
      */
-    private static final NotificationFilter DEFAULT_NOTIFICATION_FILTER = NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT)
-            .or(NotificationFilter.NOT_TOUCH.and(SessionEventBrokerImpl.asFilter(DanglingRefRemovalTrigger.IS_ATTACHMENT)).and(NotificationFilter
-                    .createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION).or(NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION_ELEMENT))));
+    private static final NotificationFilter DEFAULT_NOTIFICATION_FILTER = NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT).or(
+            NotificationFilter.NOT_TOUCH.and(SessionEventBrokerImpl.asFilter(DanglingRefRemovalTrigger.IS_ATTACHMENT)).and(
+                    NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION).or(
+                            NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION_ELEMENT))));
 
     /**
      * The dialect editor.
@@ -102,17 +102,20 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
     }
 
     @Override
-    public void resourceSetChanged(ResourceSetChangeEvent event) {
-        IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
-        if (!Boolean.TRUE.equals(event.getTransaction().getOptions().get(Transaction.OPTION_IS_UNDO_REDO_TRANSACTION)) && dialectEditor.equals(activeEditor)) {
-            DRepresentation currentRep = dialectEditor.getRepresentation();
-
-            List<DRepresentationElement> elementsToSelect = extractElementsToSelect(event, currentRep);
-            if (elementsToSelect != null) {
-                // Set the selection in async exec: for some dialect, ui could
-                // be refresh by another post commit triggered after this one
-                // and doing some UI refresh in sync exec.
-                EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
+    public void resourceSetChanged(final ResourceSetChangeEvent event) {
+        // Do not react to undo/redo. The option might not be present: react if
+        // value is Boolean.FALSE or null ie is not Boolean.TRUE
+        if (!Boolean.TRUE.equals(event.getTransaction().getOptions().get(Transaction.OPTION_IS_UNDO_REDO_TRANSACTION))) {
+            IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
+            if (dialectEditor.equals(activeEditor)) {
+                DRepresentation currentRep = dialectEditor.getRepresentation();
+                List<DRepresentationElement> elementsToSelect = extractElementsToSelect(event, currentRep);
+                if (elementsToSelect != null) {
+                    // Set the selection in async exec: for some dialect, ui
+                    // could be refresh by another post commit triggered after
+                    // this one and doing some UI refresh in sync exec.
+                    EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
+                }
             }
         }
     }
@@ -257,11 +260,9 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      * {@link org.eclipse.emf.ecore.change.ChangeDescription#getObjectsToDetach()}
      * work only from Eclipse Mars. See Bug 460206.
      */
-    private boolean isViewWithNewSemanticTarget(ResourceSetChangeEvent event, DRepresentationElement view) {
+    private boolean isViewWithNewSemanticTarget(Collection<EObject> attachedEObjects, DRepresentationElement view) {
         boolean isViewWithNewSemanticTarget = false;
-        TransactionChangeDescription changeDescription = event.getTransaction().getChangeDescription();
-        if (changeDescription != null) {
-            Collection<EObject> attachedEObjects = changeDescription.getObjectsToDetach();
+        if (attachedEObjects != null && !attachedEObjects.isEmpty()) {
             isViewWithNewSemanticTarget = EcoreUtil.isAncestor(attachedEObjects, view.getTarget());
         }
         return isViewWithNewSemanticTarget;
@@ -269,14 +270,24 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
 
     private boolean analyseNotifications(ResourceSetChangeEvent event, DRepresentation currentRep, List<DRepresentationElement> keptNotifiedElements) {
         boolean elementsToSelectUpdated = false;
+        Collection<EObject> attachedEObjects = null;
         for (Notification n : event.getNotifications()) {
             if (!n.getFeature().equals(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT) && !n.getFeature().equals(ViewpointPackage.Literals.DREPRESENTATION__UI_STATE)) {
                 Set<DRepresentationElement> notificationValues = getNotificationValues(n);
                 for (DRepresentationElement elt : notificationValues) {
                     if (currentRep == new DRepresentationElementQuery(elt).getParentRepresentation()) {
+                        if (attachedEObjects == null && selectOnlyViewWithNewSemanticTarget) {
+                            // Compute the change description effect only once.
+                            TransactionChangeDescription changeDescription = event.getTransaction().getChangeDescription();
+                            // Get the objects attached during the current
+                            // transaction from the change description. The
+                            // getObjectsToDetach() compute those elements which
+                            // will be detached in case of rollback or undo.
+                            attachedEObjects = changeDescription.getObjectsToDetach();
+                        }
                         // EcoreUtil.isAncestor() used to only select top level
                         // created views.
-                        if ((!selectOnlyViewWithNewSemanticTarget || isViewWithNewSemanticTarget(event, elt)) && !EcoreUtil.isAncestor(keptNotifiedElements, elt)) {
+                        if ((!selectOnlyViewWithNewSemanticTarget || isViewWithNewSemanticTarget(attachedEObjects, elt)) && !EcoreUtil.isAncestor(keptNotifiedElements, elt)) {
                             keptNotifiedElements.add(elt);
                         }
                     }

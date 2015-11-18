@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
@@ -323,7 +324,7 @@ public abstract class AbstractDTreePropertySection extends AbstractPropertySecti
             if (shouldUpdate) {
                 if (contentPage != null && contentPage.getControl() != null) {
                     final Control control = contentPage.getControl();
-                    control.getDisplay().syncExec(new Runnable() {
+                    EclipseUIUtil.displayAsyncExec(new Runnable() {
                         @Override
                         public void run() {
                             if (!control.isDisposed() && control.isVisible()) {
