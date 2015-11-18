@@ -105,17 +105,6 @@
     
     <!-- Standard External Java Actions usable from VSMs. --> 
   
-       <extension point="org.eclipse.ui.editors">
-      <editor
-            class="org.eclipse.ui.editors.text.TextEditor"
-            default="true"
-            extensions="aird"
-            icon="icons/obj16/SiriusFile.gif"
-            id="org.eclipse.sirius.ui.fakeeditoronlyforicon"
-            name="Text editor">
-      </editor>
-   </extension>
-  
     <!-- Model content tab wrapper
   <extension
         point="org.eclipse.sirius.ui.modelExplorerTabExtension">

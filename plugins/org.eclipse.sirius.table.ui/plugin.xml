@@ -46,6 +46,27 @@
       </dialectUI>
    </extension>
 
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.sirius.table.ui.tools.internal.editor.DTableEditionEditor"
+            contributorClass="org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableActionBarContributor"
+            default="true"
+            extensions="dtable"
+            icon="icons/full/obj16/EditionTableDescription.gif"
+            id="org.eclipse.sirius.table.ui.EditionTableEditorID"
+            name="%editor.editionTable.name">
+      </editor>
+      <editor
+            class="org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor"
+            contributorClass="org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableActionBarContributor"
+            default="false"
+            extensions="dtable"
+            icon="icons/full/obj16/CrossTableDescription.gif"
+            id="org.eclipse.sirius.table.ui.CrossTableEditorID"
+            name="%editor.crossTable.name">
+      </editor>
+   </extension>
+   
    <extension
          point="org.eclipse.ui.editorActions">
       <editorContribution
