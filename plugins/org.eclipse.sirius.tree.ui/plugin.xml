@@ -40,6 +40,18 @@
    </extension>
 
 
+ <extension point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor"
+            contributorClass="org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeActionBarContributor"
+            default="true"
+            extensions="dtree"
+            icon="icons/full/obj16/TreeDescription.gif"
+            id="org.eclipse.sirius.tree.ui.EditorID"
+            name="%editor.treeEditor.name">
+      </editor>
+   </extension>
+   
  <extension
        point="org.eclipse.ui.contexts">
     <context
