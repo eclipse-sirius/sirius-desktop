@@ -276,6 +276,12 @@ public final class Messages {
     public static String DefaultLayerName;
 
     @TranslatableMessage
+    public static String DefaultTabbarContributorProvider_contributionError_withId;
+
+    @TranslatableMessage
+    public static String DefaultTabbarContributorProvider_contributionError;
+
+    @TranslatableMessage
     public static String DeleteRelatedNoteAttachmentsTask_label;
 
     @TranslatableMessage

@@ -18,6 +18,7 @@
    <extension-point id="layoutProvider" name="%extension-point.layoutProvider.name" schema="schema/layoutProvider.exsd"/>
    <extension-point id="layoutDataManager" name="%extension-point.layoutDataManager.name" schema="schema/layoutDataManager.exsd"/>
    <extension-point id="imageSelector" name="%extension-point.imageSelector.name" schema="schema/imageSelector.exsd"/>
+   <extension-point id="tabbarContributor" name="%extension-point.tabbarContributor.name" schema="schema/tabbarContributor.exsd"/>
 
    <extension point="org.eclipse.ui.elementFactories">
      <factory

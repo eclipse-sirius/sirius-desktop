@@ -66,7 +66,7 @@ public class ZoomExtensionContributionFactory extends SiriusTabbarExtensionContr
         zoomIn.setText(DiagramUIMessages.ZoomAction_ZoomIn);
         TabbarZoomAction zoomOut = new TabbarZoomOutAction();
         zoomOut.setImageDescriptor(DiagramUIPluginImages.DESC_ZOOM_OUT);
-        zoomIn.setText(DiagramUIMessages.ZoomAction_ZoomOut);
+        zoomOut.setText(DiagramUIMessages.ZoomAction_ZoomOut);
 
         additions.addContributionItem(new ZoomContributionItem(zoomIn, getPage()), new DDiagramTabbarExpression());
         additions.addContributionItem(new ZoomContributionItem(zoomOut, getPage()), new DDiagramTabbarExpression());
@@ -97,6 +97,7 @@ public class ZoomExtensionContributionFactory extends SiriusTabbarExtensionContr
             super(action);
             this.page = page;
             listener = new IPartListener() {
+                @Override
                 public void partActivated(IWorkbenchPart part) {
                     if (part instanceof DDiagramEditor) {
                         final ZoomManager zoomManager = (ZoomManager) part.getAdapter(ZoomManager.class);
@@ -106,15 +107,19 @@ public class ZoomExtensionContributionFactory extends SiriusTabbarExtensionContr
                     }
                 }
 
+                @Override
                 public void partBroughtToTop(IWorkbenchPart p) {
                 }
 
+                @Override
                 public void partClosed(IWorkbenchPart p) {
                 }
 
+                @Override
                 public void partDeactivated(IWorkbenchPart p) {
                 }
 
+                @Override
                 public void partOpened(IWorkbenchPart p) {
                 }
             };

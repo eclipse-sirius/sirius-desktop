@@ -18,6 +18,14 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+* <span class="label label-success">Added</span> It is now possible to provide a full customized tab-bar by implementing the @ITabbarContributor@ through the @org.eclipse.sirius.diagram.ui.tabbarContributor@ extension-point. See the developer documentation for more details.
+
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor@ interface has been added to provide a customized tab-bar for a specific selection.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor@ is an abstract implementation of @ITabbarContributor@ that allows reusing one or several of the default Sirius contribution items.
+
 h4. Changes in @org.eclipse.sirius.ext.emf.ui@
 
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.ext.emf.ui.properties.ExtensiblePropertySource.collector@ field is now in protected visibility to be modifiable and accessible by subclass.

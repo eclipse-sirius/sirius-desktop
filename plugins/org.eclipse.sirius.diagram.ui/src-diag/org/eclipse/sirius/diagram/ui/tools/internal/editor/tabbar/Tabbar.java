@@ -21,6 +21,7 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -63,6 +64,10 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
 
     private IPermissionAuthority permissionAuthority;
 
+    private ITabbarContributorProvider tabbarContributorProvider;
+
+    private Collection<Object> currentSelection;
+
     /**
      * Instantiate a new tab bar.
      * 
@@ -81,6 +86,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         layout.marginHeight = 0;
         layout.marginWidth = 0;
         this.setLayout(layout);
+        this.tabbarContributorProvider = new ExtensionPointTabbarContributorProvider();
         createToolBar();
         fillForDiagram();
     }
@@ -117,10 +123,14 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
     }
 
     private void fillForDiagram() {
-        if (canBeDynamic()) {
-            diagramFiller = new TabbarFillerWithContributions(manager, page);
+        if (tabbarContributorProvider.hasContributor()) {
+            diagramFiller = new TabbarFillerWithContributor(manager, page, tabbarContributorProvider);
         } else {
-            diagramFiller = new TabbarFillerWithoutContributions(manager, page);
+            if (canBeDynamic()) {
+                diagramFiller = new TabbarFillerWithContributions(manager, page);
+            } else {
+                diagramFiller = new TabbarFillerWithoutContributions(manager, page);
+            }
         }
         diagramFiller.setPart(part);
         diagramFiller.fill();
@@ -150,10 +160,28 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         return canBeDynamic;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void selectionChanged(IWorkbenchPart partSelected, ISelection selection) {
-        // nothing to do here. Each item contribution is now responsible for
-        // refresh himself when selection change.
+        if (diagramFiller instanceof TabbarFillerWithContributor && partSelected == this.part) {
+            if (currentSelection == null || !sameSelection(selection)) {
+                if (selection instanceof StructuredSelection) {
+                    currentSelection = ((StructuredSelection) selection).toList();
+                }
+                reinitToolBar(selection);
+            }
+        }
+    }
+
+    @SuppressWarnings("rawtypes")
+    private boolean sameSelection(ISelection selection) {
+        if (selection instanceof StructuredSelection) {
+            List newSelection = ((StructuredSelection) selection).toList();
+            if (newSelection.size() == currentSelection.size()) {
+                return currentSelection.containsAll(newSelection);
+            }
+        }
+        return false;
     }
 
     /**
@@ -163,6 +191,9 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
      *            the selection
      */
     public void reinitToolBar(ISelection iSelection) {
+        if (diagramFiller instanceof TabbarFillerWithContributor) {
+            ((TabbarFillerWithContributor) diagramFiller).update(iSelection);
+        }
         updateAllItems();
     }
 

@@ -21,7 +21,7 @@
 			<img border="0" src="images/tabbar02.png"/>
 		</p>
 		<p>Sirius allows to define new operations and to add them at the end of the tab-bar.</p>
-		<h2 id="Defineatabbarextension">Define a tab-bar extension</h2>
+		<h2 id="Addanewtabbaritem">Add a new tab-bar item</h2>
 		<p>Sirius asks the workbench&#8217;s 
 			<code>IMenuService</code> service to populate the tab-bar with provided contributions. This service leans on the 
 			<code>org.eclipse.ui.menus</code> extension point.
@@ -40,7 +40,7 @@
 			<em>org.eclipse.sirius.diagram.ui.isDDiagram</em> and 
 			<em>org.eclipse.sirius.diagram.ui.isDDiagramElement</em>, but you can define your own domain specific testers.
 		</p>
-		<h3 id="Provideyourtabbarextensionusingtheorg.eclipse.ui.menusextensionpoint">Provide your tab-bar extension using the 
+		<h3 id="Provideyourtabbaritemsusingtheorg.eclipse.ui.menusextensionpoint">Provide your tab-bar items using the 
 			<code>org.eclipse.ui.menus</code> extension point
 		</h3>
 		<p>Please refer to this extension point documentation for more details.</p>
@@ -48,7 +48,7 @@
 			<code>org.eclipse.ui.commands</code> extension point
 		</h3>
 		<p>Please refer to this extension point documentation for more details.</p>
-		<h2 id="Example">Example</h2>
+		<h3 id="Example">Example</h3>
 		<p>The following example defines a new push button for the tab-bar. The contribution will only be visible when an element is selected on diagram which correspond to a specific description.</p>
 		<p>You have to add your menu contribution in the plugin.xml file.</p>
 		<p>	
@@ -108,7 +108,7 @@
 				<em>activeEditorId</em> and the Sirius Diagram Editor id.
 			</li>
 			<li>it asks a property tester if the active editor should trigger the contribution visibility (see next section for the sample property tester explanation)</li>
-			<li>it iterates over the selection with a &#171;OR&#187; operator between elements and a false result for empty selection:
+			<li>it iterates over the selection with a &#8220;OR&#8221; operator between elements and a false result for empty selection:
 				<ul>
 					<li>it uses the Sirius predefined property tester to check that a selected element is a diagram element.</li>
 					<li>it asks a property tester if the current element should trigger the contribution visibility (see next section for the sample property tester explanation)</li>
@@ -186,5 +186,110 @@ public class SampleTestTabbarExtensionActivationPropertyTester extends PropertyT
 		<p>	
 			<img border="0" src="images/tabbar_extension_result.png"/>
 		</p>
+		<h2 id="Contributeafullcustomizedtabbar">Contribute a full customized tab-bar</h2>
+		<p>Sirius lets the possibility to contribute an entire customized tabbar. To do so, the developer has to contribute an 
+			<code>org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor</code> to the 
+			<code>org.eclipse.sirius.diagram.ui.tabbarContributor</code> extension-point. An abstract implementation of 
+			<code>ITabbarContributor</code> exists: 
+			<code>org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor</code>. This implementation contains protected methods that allows creating one or several contributions of the default Sirius tabbar.
+		</p>
+		<p>here is an example of 
+			<code>ITabbarContributor</code> implementation:
+		</p>
+		<pre><code>public class TestTabbarExt extends AbstractTabbarContributor {
+
+    private ArrayList&lt;IContributionItem&gt; diagramContributionItems;
+
+    private ArrayList&lt;IContributionItem&gt; diagramElementContributionItems;
+
+    @Override
+    public List&lt;IContributionItem&gt; getContributionItems(ISelection selection, IDiagramWorkbenchPart part, ToolBarManager manager) {
+        List&lt;IContributionItem&gt; contributionItems = new ArrayList&lt;IContributionItem&gt;();
+        if (selection instanceof IStructuredSelection) {
+            Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+            if (firstElement instanceof AbstractDDiagramEditPart) {
+                contributionItems = getDiagramContributionItem(part, manager);
+            } else if (firstElement instanceof IAbstractDiagramNodeEditPart) {
+                contributionItems = getDiagramElementContributionItem(part, manager);
+            }
+        }
+        return contributionItems;
+    }
+
+    @Override
+    public boolean accept(ISelection selection) {
+        boolean accept = false;
+        if (selection == null) {
+            accept = true;
+        } else if (selection instanceof IStructuredSelection) {
+            Object firstElement = ((IStructuredSelection) selection).getFirstElement();
+            if (firstElement instanceof AbstractDDiagramEditPart || firstElement instanceof IAbstractDiagramNodeEditPart) {
+                accept = true;
+            }
+        }
+        return accept;
+    }
+
+    @Override
+    public List&lt;IContributionItem&gt; getContributionItems(IDiagramWorkbenchPart part, ToolBarManager manager) {
+        return getDiagramContributionItem(part, manager);
+    }
+
+    private List&lt;IContributionItem&gt; getDiagramContributionItem(IDiagramWorkbenchPart part, ToolBarManager manager) {
+        if (diagramContributionItems == null) {
+            diagramContributionItems = new ArrayList&lt;IContributionItem&gt;();
+            diagramContributionItems.add(createArrangeMenuManager(part));
+            diagramContributionItems.add(createSelectMenuManager());
+            diagramContributionItems.add(createLayerContribution(part, manager));
+            diagramContributionItems.add(createZoomInContribution(part));
+            diagramContributionItems.add(createZoomOutContribution(part));
+            diagramContributionItems.add(createZoomContribution(part));
+            diagramContributionItems.add(createSelectPinnedElementsContribution(part));
+            diagramContributionItems.add(createSelectHiddenElementsContribution(part));
+            diagramContributionItems.add(createFilterContribution(part, manager));
+            diagramContributionItems.add(createPasteLayoutContribution(part));
+            diagramContributionItems.add(createRefreshContribution());
+            diagramContributionItems.add(createSaveAsImageContributionItem());
+            diagramContributionItems.add(createLayoutingModeContributionItem(part));
+            diagramContributionItems.add(createCopyAppearancePropertiesContribution(part));
+            diagramContributionItems.add(createCopyLayoutContribution(part));
+        }
+        return diagramContributionItems;
+    }
+
+    private List&lt;IContributionItem&gt; getDiagramElementContributionItem(IDiagramWorkbenchPart part, ToolBarManager manager) {
+        if (diagramElementContributionItems == null) {
+            diagramElementContributionItems = new ArrayList&lt;IContributionItem&gt;();
+            diagramElementContributionItems.add(createArrangeMenuManager(part));
+            diagramElementContributionItems.add(createAlignMenuManager());
+            diagramElementContributionItems.add(createHideElementLabelContribution(part));
+            diagramElementContributionItems.add(createHideElementContribution(part));
+            diagramElementContributionItems.add(createDeleteFromDiagramContribution(part));
+            diagramElementContributionItems.add(createDeleteFromModelContribution(part));
+            IContributionItem pinElementContributionItem = createPinElementContribution(part);
+            diagramElementContributionItems.add(pinElementContributionItem);
+            diagramElementContributionItems.add(createUnPinElementContribution(part, pinElementContributionItem));
+            diagramElementContributionItems.add(createFontColorContribution(part));
+            diagramElementContributionItems.add(createPasteLayoutContribution(part));
+            diagramElementContributionItems.add(createBoldFontStyleContribution(part));
+            diagramElementContributionItems.add(createItalicFontStyleContribution(part));
+            diagramElementContributionItems.add(createFontDialogContribution(part));
+            diagramElementContributionItems.add(createFillColorContribution(part));
+            diagramElementContributionItems.add(createLineColorPropertyContribution(part));
+            diagramElementContributionItems.add(createResetStylePropertyContribution(part));
+            diagramElementContributionItems.add(createSetStyleToWorkspaceImageContribution(part));
+            diagramElementContributionItems.add(createSaveAsImageContributionItem());
+            diagramElementContributionItems.add(createDistributeContribution());
+            diagramElementContributionItems.add(createLayoutingModeContributionItem(part));
+            diagramElementContributionItems.add(createRouterContribution());
+            diagramElementContributionItems.add(createCopyAppearancePropertiesContribution(part));
+            diagramElementContributionItems.add(createCopyLayoutContribution(part));
+            diagramElementContributionItems.add(createSizeBothContribution(part));
+            diagramElementContributionItems.add(createAutoSizeContribution(part));
+        }
+        return diagramElementContributionItems;
+    }
+
+</code></pre>
 	</body>
 </html>
