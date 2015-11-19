@@ -56,6 +56,7 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.RepresentationVisibilityAft
 import org.eclipse.sirius.tests.swtbot.tabbar.LockedTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.NotInvisibleTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.TabBarTest;
+import org.eclipse.sirius.tests.swtbot.tabbar.TabbarContributorExtensionTest;
 import org.eclipse.sirius.tests.swtbot.table.SetPropertyOfTableTreeByPropertiesViewTest;
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfLabelOfBorderedNodeTest;
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest;
@@ -188,6 +189,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LockedModelExplorerTest.class);
         suite.addTestSuite(SnapAllShapesTest.class);
         suite.addTestSuite(MoveEdgeGroupTest.class);
+        suite.addTestSuite(TabbarContributorExtensionTest.class);
     }
 
     /**
