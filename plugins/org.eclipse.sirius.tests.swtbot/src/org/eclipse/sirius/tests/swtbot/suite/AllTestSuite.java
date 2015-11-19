@@ -183,6 +183,11 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(NodeCreationWithSnapToGridTest.class);
         suite.addTestSuite(GenericClipboardSupportTest.class);
         suite.addTestSuite(MultiSessionCopyPasteTest.class);
+        // The test PropertyViewOnModelExplorerSelectionTests has been move
+        // before CloseWithoutSavingTest and LockedModelExplorerTest because it
+        // fails otherwise (this is temporary on this branch (see Bug 482122 for
+        // more details).
+        suite.addTestSuite(PropertyViewOnModelExplorerSelectionTests.class);
         suite.addTestSuite(CloseWithoutSavingTest.class);
         suite.addTestSuite(CreateMandatoryElementsTest.class);
         suite.addTestSuite(LockedModelExplorerTest.class);
@@ -347,7 +352,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ProjectDependenciesTest.class);
         suite.addTestSuite(ProjectsConcurrentCloseTest.class);
         suite.addTestSuite(PropertyViewOnModelExplorerSelectionWithLockedObjectTest.class);
-        suite.addTestSuite(PropertyViewOnModelExplorerSelectionTests.class);
         suite.addTestSuite(ContextualMenuTest.class);
         suite.addTestSuite(BracketEdgeTests.class);
         suite.addTestSuite(EdgeCopyPasteLayoutTest.class);
