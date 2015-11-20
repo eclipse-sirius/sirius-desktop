@@ -35,6 +35,7 @@ import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.Environment;
+import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -142,6 +143,14 @@ public class DescriptionSwitch<T> {
             if (result == null) {
                 result = caseDocumentedElement(group);
             }
+            if (result == null) {
+                result = defaultCase(theEObject);
+            }
+            return result;
+        }
+        case DescriptionPackage.EXTENSION: {
+            Extension extension = (Extension) theEObject;
+            T result = caseExtension(extension);
             if (result == null) {
                 result = defaultCase(theEObject);
             }
@@ -583,6 +592,23 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseGroup(Group object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Extension</em>'. <!-- begin-user-doc --> This implementation returns
+     * null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Extension</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseExtension(Extension object) {
         return null;
     }
 

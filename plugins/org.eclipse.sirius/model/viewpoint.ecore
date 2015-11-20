@@ -285,7 +285,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="userColorsPalettes" upperBound="-1"
           eType="#//description/UserColorsPalette" containment="true" eKeys="#//description/UserColorsPalette/name"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
+          eType="#//description/Extension" containment="true"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Extension" abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" interface="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="Viewpoint" eSuperTypes="#//description/DocumentedElement #//description/Component #//description/EndUserDocumentedElement #//description/IdentifiedElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -35,6 +35,7 @@ import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.Environment;
+import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -118,6 +119,11 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseGroup(Group object) {
             return createGroupAdapter();
+        }
+
+        @Override
+        public Adapter caseExtension(Extension object) {
+            return createExtensionAdapter();
         }
 
         @Override
@@ -362,6 +368,22 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createGroupAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.Extension
+     * <em>Extension</em>}'. <!-- begin-user-doc --> This default implementation
+     * returns null so that we can easily ignore cases; it's useful to ignore a
+     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.Extension
+     * @generated
+     */
+    public Adapter createExtensionAdapter() {
         return null;
     }
 

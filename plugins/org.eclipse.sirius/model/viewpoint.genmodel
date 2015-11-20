@@ -180,7 +180,9 @@
             ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/systemColorsPalette"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/userColorsPalettes"/>
         <genFeatures property="None" createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Group/version"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/extensions"/>
       </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/Extension"/>
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/Component"/>
       <genClasses ecoreClass="viewpoint.ecore#//description/Viewpoint">
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="This field allows to associate this viewpoint to one or more semantic resource file extension(s), for several file extensions, they must be space separeted. For example to associate this viewpoint to uml and ecore metamodels, put \&quot;uml ecore\&quot;."

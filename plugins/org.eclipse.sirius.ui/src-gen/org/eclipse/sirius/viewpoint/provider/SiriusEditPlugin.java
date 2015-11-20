@@ -171,6 +171,10 @@ public final class SiriusEditPlugin extends EMFPlugin {
          * @generated
          */
         public Implementation() {
+            super();
+
+            // Remember the static instance.
+            //
             SiriusEditPlugin.plugin = this;
         }
 

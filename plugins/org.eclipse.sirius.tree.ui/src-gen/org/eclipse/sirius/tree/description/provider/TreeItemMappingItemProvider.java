@@ -30,7 +30,6 @@ import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
-import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 

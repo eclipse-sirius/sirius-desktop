@@ -42,6 +42,7 @@ import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.Environment;
+import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -91,6 +92,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass groupEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass extensionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -584,6 +592,26 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     @Override
     public EAttribute getGroup_Version() {
         return (EAttribute) groupEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EReference getGroup_Extensions() {
+        return (EReference) groupEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EClass getExtension() {
+        return extensionEClass;
     }
 
     /**
@@ -1953,6 +1981,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEReference(groupEClass, DescriptionPackage.GROUP__SYSTEM_COLORS_PALETTE);
         createEReference(groupEClass, DescriptionPackage.GROUP__USER_COLORS_PALETTES);
         createEAttribute(groupEClass, DescriptionPackage.GROUP__VERSION);
+        createEReference(groupEClass, DescriptionPackage.GROUP__EXTENSIONS);
+
+        extensionEClass = createEClass(DescriptionPackage.EXTENSION);
 
         componentEClass = createEClass(DescriptionPackage.COMPONENT);
 
@@ -2229,6 +2260,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 getGroup_Version(),
                 theEcorePackage.getEString(),
                 "version", null, 0, 1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(
+                getGroup_Extensions(),
+                this.getExtension(),
+                null,
+                "extensions", null, 0, -1, Group.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+
+        initEClass(extensionEClass, Extension.class, "Extension", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(componentEClass, Component.class, "Component", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

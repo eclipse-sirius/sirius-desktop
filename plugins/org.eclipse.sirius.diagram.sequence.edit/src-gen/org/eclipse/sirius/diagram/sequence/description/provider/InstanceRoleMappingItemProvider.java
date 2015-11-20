@@ -22,7 +22,6 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.provider.NodeMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
-import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**

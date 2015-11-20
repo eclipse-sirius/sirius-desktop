@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.Extension;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.SytemColorsPalette;
 import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
@@ -51,6 +52,9 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getVersion
  * <em>Version</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.impl.GroupImpl#getExtensions
+ * <em>Extensions</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,6 +155,16 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * @ordered
      */
     protected String version = GroupImpl.VERSION_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getExtensions() <em>Extensions</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getExtensions()
+     * @generated
+     * @ordered
+     */
+    protected EList<Extension> extensions;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -317,12 +331,27 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * @generated
      */
     @Override
+    public EList<Extension> getExtensions() {
+        if (extensions == null) {
+            extensions = new EObjectContainmentEList.Resolving<Extension>(Extension.class, this, DescriptionPackage.GROUP__EXTENSIONS);
+        }
+        return extensions;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case DescriptionPackage.GROUP__OWNED_VIEWPOINTS:
             return ((InternalEList<?>) getOwnedViewpoints()).basicRemove(otherEnd, msgs);
         case DescriptionPackage.GROUP__USER_COLORS_PALETTES:
             return ((InternalEList<?>) getUserColorsPalettes()).basicRemove(otherEnd, msgs);
+        case DescriptionPackage.GROUP__EXTENSIONS:
+            return ((InternalEList<?>) getExtensions()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -350,6 +379,8 @@ public class GroupImpl extends DModelElementImpl implements Group {
             return getUserColorsPalettes();
         case DescriptionPackage.GROUP__VERSION:
             return getVersion();
+        case DescriptionPackage.GROUP__EXTENSIONS:
+            return getExtensions();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -383,6 +414,10 @@ public class GroupImpl extends DModelElementImpl implements Group {
         case DescriptionPackage.GROUP__VERSION:
             setVersion((String) newValue);
             return;
+        case DescriptionPackage.GROUP__EXTENSIONS:
+            getExtensions().clear();
+            getExtensions().addAll((Collection<? extends Extension>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -413,6 +448,9 @@ public class GroupImpl extends DModelElementImpl implements Group {
         case DescriptionPackage.GROUP__VERSION:
             setVersion(GroupImpl.VERSION_EDEFAULT);
             return;
+        case DescriptionPackage.GROUP__EXTENSIONS:
+            getExtensions().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -437,6 +475,8 @@ public class GroupImpl extends DModelElementImpl implements Group {
             return userColorsPalettes != null && !userColorsPalettes.isEmpty();
         case DescriptionPackage.GROUP__VERSION:
             return GroupImpl.VERSION_EDEFAULT == null ? version != null : !GroupImpl.VERSION_EDEFAULT.equals(version);
+        case DescriptionPackage.GROUP__EXTENSIONS:
+            return extensions != null && !extensions.isEmpty();
         }
         return super.eIsSet(featureID);
     }

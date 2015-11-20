@@ -32,6 +32,8 @@ import org.eclipse.emf.common.util.EList;
  * <em>User Colors Palettes</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getVersion <em>
  * Version</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.description.Group#getExtensions <em>
+ * Extensions</em>}</li>
  * </ul>
  * </p>
  *
@@ -168,5 +170,24 @@ public interface Group extends DModelElement, DocumentedElement {
      * @generated
      */
     void setVersion(String value);
+
+    /**
+     * Returns the value of the '<em><b>Extensions</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.Extension}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Extensions</em>' containment reference list
+     * isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Extensions</em>' containment reference
+     *         list.
+     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getGroup_Extensions()
+     * @model containment="true" resolveProxies="true"
+     * @generated
+     */
+    EList<Extension> getExtensions();
 
 } // Group

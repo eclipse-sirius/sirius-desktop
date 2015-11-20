@@ -103,6 +103,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
             super.getChildrenFeatures(object);
             childrenFeatures.add(DescriptionPackage.Literals.GROUP__OWNED_VIEWPOINTS);
             childrenFeatures.add(DescriptionPackage.Literals.GROUP__USER_COLORS_PALETTES);
+            childrenFeatures.add(DescriptionPackage.Literals.GROUP__EXTENSIONS);
         }
         return childrenFeatures;
     }
@@ -164,6 +165,7 @@ public class GroupItemProvider extends DModelElementItemProvider {
             return;
         case DescriptionPackage.GROUP__OWNED_VIEWPOINTS:
         case DescriptionPackage.GROUP__USER_COLORS_PALETTES:
+        case DescriptionPackage.GROUP__EXTENSIONS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
