@@ -33,7 +33,17 @@ public class SiriusInterpreter implements IInterpreter {
             }
         }
 
-        IEvaluationResult result = null;
+        IEvaluationResult result = new IEvaluationResult() {
+            @Override
+            public Object getValue() {
+                return null;
+            }
+
+            @Override
+            public Diagnostic getDiagnostic() {
+                return Diagnostic.CANCEL_INSTANCE;
+            }
+        };
 
         Object object = variables.get("self");
         if (object instanceof EObject) {
