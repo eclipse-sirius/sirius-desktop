@@ -8,16 +8,14 @@
 package org.eclipse.sirius.expression;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Sirius Expression Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Sirius Expression Description</b></em>'. <!--
+ * end-user-doc -->
  *
  * <!-- begin-model-doc -->
  * Defines an expression.
@@ -25,7 +23,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.sirius.expression.SiriusExpressionDescription#getLowerBound <em>Lower Bound</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.SiriusExpressionDescription#getUpperBound <em>Upper Bound</em>}</li>
@@ -34,6 +31,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  *   <li>{@link org.eclipse.sirius.expression.SiriusExpressionDescription#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.SiriusExpressionDescription#getVariableContainers <em>Variable Containers</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusExpressionDescription()
  * @model
@@ -42,8 +40,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 public interface SiriusExpressionDescription extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines the return type lower bound.
 	 * <!-- end-model-doc -->
@@ -57,8 +54,7 @@ public interface SiriusExpressionDescription extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusExpressionDescription#getLowerBound <em>Lower Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Lower Bound</em>' attribute.
 	 * @see #getLowerBound()
 	 * @generated
@@ -66,13 +62,10 @@ public interface SiriusExpressionDescription extends EObject {
 	void setLowerBound(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Upper Bound</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Defines the return type upper bound.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Upper Bound</b></em>' attribute. The default value is <code>"1"</code>. <!--
+	 * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Defines the return type upper bound. <!--
+	 * end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Upper Bound</em>' attribute.
 	 * @see #setUpperBound(int)
 	 * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusExpressionDescription_UpperBound()
@@ -83,8 +76,7 @@ public interface SiriusExpressionDescription extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusExpressionDescription#getUpperBound <em>Upper Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Upper Bound</em>' attribute.
 	 * @see #getUpperBound()
 	 * @generated
@@ -93,8 +85,7 @@ public interface SiriusExpressionDescription extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Expression</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References an expression from another metamodel.
 	 * <!-- end-model-doc -->
@@ -108,8 +99,7 @@ public interface SiriusExpressionDescription extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusExpressionDescription#getExpression <em>Expression</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Expression</em>' reference.
 	 * @see #getExpression()
 	 * @generated
@@ -117,13 +107,10 @@ public interface SiriusExpressionDescription extends EObject {
 	void setExpression(EStructuralFeature value);
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.sirius.expression.SiriusParameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Contains the variables associated to an expression description.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list. The list contents are of type
+	 * {@link org.eclipse.sirius.expression.SiriusParameter}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+	 * begin-model-doc --> Contains the variables associated to an expression description. <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusExpressionDescription_Parameters()
 	 * @model containment="true" resolveProxies="true"
@@ -133,8 +120,7 @@ public interface SiriusExpressionDescription extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Return Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines the return type of an expression.
 	 * <!-- end-model-doc -->
@@ -148,8 +134,7 @@ public interface SiriusExpressionDescription extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusExpressionDescription#getReturnType <em>Return Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Return Type</em>' reference.
 	 * @see #getReturnType()
 	 * @generated
@@ -157,13 +142,10 @@ public interface SiriusExpressionDescription extends EObject {
 	void setReturnType(EClassifier value);
 
 	/**
-	 * Returns the value of the '<em><b>Variable Containers</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.emf.ecore.EClass}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * References contextable elements to get the associated context variables.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Variable Containers</b></em>' reference list. The list contents are of type
+	 * {@link org.eclipse.emf.ecore.EClass}. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+	 * References contextable elements to get the associated context variables. <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Variable Containers</em>' reference list.
 	 * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusExpressionDescription_VariableContainers()
 	 * @model

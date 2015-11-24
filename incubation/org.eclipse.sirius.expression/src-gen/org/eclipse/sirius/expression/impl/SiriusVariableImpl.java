@@ -8,37 +8,33 @@
 package org.eclipse.sirius.expression.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.sirius.expression.ExpressionPackage;
 import org.eclipse.sirius.expression.SiriusVariable;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sirius Variable</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sirius Variable</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
- *   <li>{@link org.eclipse.sirius.expression.impl.SiriusVariableImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.sirius.expression.impl.SiriusVariableImpl#getDocumentation <em>Documentation</em>}</li>
- *   <li>{@link org.eclipse.sirius.expression.impl.SiriusVariableImpl#getEType <em>EType</em>}</li>
+ * <li>{@link org.eclipse.sirius.expression.impl.SiriusVariableImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.expression.impl.SiriusVariableImpl#getDocumentation <em>Documentation</em>}</li>
+ * <li>{@link org.eclipse.sirius.expression.impl.SiriusVariableImpl#getEType <em>EType</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements SiriusVariable {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -46,9 +42,9 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -76,9 +72,9 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	protected String documentation = DOCUMENTATION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getEType() <em>EType</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEType() <em>EType</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see #getEType()
 	 * @generated
 	 * @ordered
@@ -86,8 +82,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	protected EClassifier eType;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected SiriusVariableImpl() {
@@ -95,8 +90,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -105,8 +99,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getName() {
@@ -114,8 +107,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -126,8 +118,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getDocumentation() {
@@ -135,8 +126,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setDocumentation(String newDocumentation) {
@@ -147,8 +137,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClassifier getEType() {
@@ -164,8 +153,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClassifier basicGetEType() {
@@ -173,8 +161,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setEType(EClassifier newEType) {
@@ -185,8 +172,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -204,8 +190,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -225,8 +210,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -246,8 +230,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -264,8 +247,7 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -281,4 +263,4 @@ public class SiriusVariableImpl extends MinimalEObjectImpl.Container implements 
 		return result.toString();
 	}
 
-} //SiriusVariableImpl
+} // SiriusVariableImpl

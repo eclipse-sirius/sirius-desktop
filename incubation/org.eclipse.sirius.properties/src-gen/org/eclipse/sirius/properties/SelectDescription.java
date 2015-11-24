@@ -20,20 +20,11 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.SelectDescription#getValueExpression
- * <em>Value Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.SelectDescription#getInitialOperation
- * <em>Initial Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.SelectDescription#isMultiple <em>
- * Multiple</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression
- * <em>Candidates Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression
- * <em>Candidate Display Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.SelectDescription#getValueExpression <em>Value Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.SelectDescription#getInitialOperation <em>Initial Operation</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.SelectDescription#isMultiple <em>Multiple</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression <em>Candidates Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression <em>Candidate Display Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,7 +41,6 @@ public interface SelectDescription extends WidgetDescription {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription_ValueExpression()
@@ -60,29 +50,24 @@ public interface SelectDescription extends WidgetDescription {
     String getValueExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.SelectDescription#getValueExpression
-     * <em>Value Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.properties.SelectDescription#getValueExpression <em>Value Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Value Expression</em>' attribute.
+     * @param value the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
      * @generated
      */
     void setValueExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Initial Operation</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Initial Operation</em>' containment
-     *         reference.
+     * @return the value of the '<em>Initial Operation</em>' containment reference.
      * @see #setInitialOperation(InitialOperation)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription_InitialOperation()
      * @model containment="true" required="true"
@@ -91,14 +76,10 @@ public interface SelectDescription extends WidgetDescription {
     InitialOperation getInitialOperation();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.SelectDescription#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
+     * Sets the value of the '{@link org.eclipse.sirius.properties.SelectDescription#getInitialOperation <em>Initial Operation</em>}' containment reference.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Initial Operation</em>' containment
-     *            reference.
+     * @param value the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
      * @generated
      */
@@ -135,14 +116,13 @@ public interface SelectDescription extends WidgetDescription {
     void setMultiple(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Candidates Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Candidates Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Candidates Expression</em>' attribute isn't
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Candidates Expression</em>' attribute.
      * @see #setCandidatesExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription_CandidatesExpression()
@@ -152,30 +132,24 @@ public interface SelectDescription extends WidgetDescription {
     String getCandidatesExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression
-     * <em>Candidates Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.properties.SelectDescription#getCandidatesExpression <em>Candidates Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Candidates Expression</em>'
-     *            attribute.
+     * @param value the new value of the '<em>Candidates Expression</em>' attribute.
      * @see #getCandidatesExpression()
      * @generated
      */
     void setCandidatesExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Candidate Display Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Candidate Display Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Candidate Display Expression</em>' attribute
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Candidate Display Expression</em>'
-     *         attribute.
+     * @return the value of the '<em>Candidate Display Expression</em>' attribute.
      * @see #setCandidateDisplayExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getSelectDescription_CandidateDisplayExpression()
      * @model dataType="org.eclipse.sirius.expression.Expression"
@@ -184,14 +158,10 @@ public interface SelectDescription extends WidgetDescription {
     String getCandidateDisplayExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression
-     * <em>Candidate Display Expression</em>}' attribute. <!-- begin-user-doc
+     * Sets the value of the '{@link org.eclipse.sirius.properties.SelectDescription#getCandidateDisplayExpression <em>Candidate Display Expression</em>}' attribute.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Candidate Display Expression</em>'
-     *            attribute.
+     * @param value the new value of the '<em>Candidate Display Expression</em>' attribute.
      * @see #getCandidateDisplayExpression()
      * @generated
      */

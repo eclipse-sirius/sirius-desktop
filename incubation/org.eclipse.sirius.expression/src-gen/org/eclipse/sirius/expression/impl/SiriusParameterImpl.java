@@ -8,36 +8,32 @@
 package org.eclipse.sirius.expression.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.sirius.expression.ExpressionPackage;
 import org.eclipse.sirius.expression.SiriusParameter;
 import org.eclipse.sirius.expression.SiriusVariable;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sirius Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sirius Parameter</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
- *   <li>{@link org.eclipse.sirius.expression.impl.SiriusParameterImpl#isOptional <em>Optional</em>}</li>
- *   <li>{@link org.eclipse.sirius.expression.impl.SiriusParameterImpl#getVariable <em>Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.expression.impl.SiriusParameterImpl#isOptional <em>Optional</em>}</li>
+ * <li>{@link org.eclipse.sirius.expression.impl.SiriusParameterImpl#getVariable <em>Variable</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements SiriusParameter {
 	/**
 	 * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #isOptional()
 	 * @generated
 	 * @ordered
@@ -46,8 +42,8 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #isOptional()
 	 * @generated
 	 * @ordered
@@ -56,8 +52,8 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getVariable()
 	 * @generated
 	 * @ordered
@@ -65,8 +61,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	protected SiriusVariable variable;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected SiriusParameterImpl() {
@@ -74,8 +69,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -84,8 +78,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isOptional() {
@@ -93,8 +86,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setOptional(boolean newOptional) {
@@ -105,8 +97,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SiriusVariable getVariable() {
@@ -122,8 +113,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SiriusVariable basicGetVariable() {
@@ -131,8 +121,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setVariable(SiriusVariable newVariable) {
@@ -143,8 +132,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -160,8 +148,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -178,8 +165,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -196,8 +182,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -212,8 +197,7 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -227,4 +211,4 @@ public class SiriusParameterImpl extends MinimalEObjectImpl.Container implements
 		return result.toString();
 	}
 
-} //SiriusParameterImpl
+} // SiriusParameterImpl

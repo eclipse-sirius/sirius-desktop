@@ -6,12 +6,10 @@ import java.util.Set;
 
 import org.eclipse.eef.interpreter.api.IEvaluationResult;
 import org.eclipse.eef.interpreter.api.IInterpreter;
-import org.eclipse.eef.interpreter.api.IValidationResult;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
-import org.eclipse.sirius.expression.SiriusExpressionDescription;
 
 import com.google.common.collect.Lists;
 
@@ -24,7 +22,7 @@ public class SiriusInterpreter implements IInterpreter {
     }
 
     @Override
-    public IEvaluationResult evaluateExpression(Map<String, Object> variables, SiriusExpressionDescription expressionDescription, String expressionBody) {
+    public IEvaluationResult evaluateExpression(Map<String, Object> variables, String expressionBody) {
         if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
             org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;
             i.setProperty(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter.FILES, Lists.newArrayList("org.eclipse.sirius.ui.properties"));
@@ -70,10 +68,4 @@ public class SiriusInterpreter implements IInterpreter {
 
         return result;
     }
-
-    @Override
-    public IValidationResult validateExpression(SiriusExpressionDescription expressionDescription, String expressionBody) {
-        return null;
-    }
-
 }

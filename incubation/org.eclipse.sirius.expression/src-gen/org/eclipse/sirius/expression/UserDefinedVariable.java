@@ -7,18 +7,16 @@
  */
 package org.eclipse.sirius.expression;
 
-
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>User Defined Variable</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>User Defined Variable</b></em>'. <!--
+ * end-user-doc -->
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.sirius.expression.UserDefinedVariable#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.sirius.expression.ExpressionPackage#getUserDefinedVariable()
  * @model
@@ -29,8 +27,8 @@ public interface UserDefinedVariable extends SiriusVariable {
 	 * Returns the value of the '<em><b>Value Expression</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value Expression</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Value Expression</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value Expression</em>' attribute.
@@ -43,8 +41,7 @@ public interface UserDefinedVariable extends SiriusVariable {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.UserDefinedVariable#getValueExpression <em>Value Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value Expression</em>' attribute.
 	 * @see #getValueExpression()
 	 * @generated

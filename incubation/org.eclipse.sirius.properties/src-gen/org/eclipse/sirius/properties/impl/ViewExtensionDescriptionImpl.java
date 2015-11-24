@@ -35,27 +35,13 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getIdentifier
- * <em>Identifier</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getMetamodels
- * <em>Metamodels</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPages
- * <em>Pages</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getDefaultPage
- * <em>Default Page</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPreconditionExpression
- * <em>Precondition Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getLabelExpression
- * <em>Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getGroups
- * <em>Groups</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getMetamodels <em>Metamodels</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPages <em>Pages</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getDefaultPage <em>Default Page</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPreconditionExpression <em>Precondition Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getGroups <em>Groups</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,9 +49,8 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
  */
 public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container implements ViewExtensionDescription {
     /**
-     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -73,9 +58,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final String IDENTIFIER_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -83,9 +67,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected String identifier = IDENTIFIER_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getMetamodels()
      * @generated
      * @ordered
@@ -93,9 +76,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected EList<EPackage> metamodels;
 
     /**
-     * The cached value of the '{@link #getPages() <em>Pages</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getPages() <em>Pages</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getPages()
      * @generated
      * @ordered
@@ -103,9 +85,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected EList<PageDescription> pages;
 
     /**
-     * The cached value of the '{@link #getDefaultPage() <em>Default Page</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getDefaultPage() <em>Default Page</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getDefaultPage()
      * @generated
      * @ordered
@@ -113,10 +94,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected PageDescription defaultPage;
 
     /**
-     * The default value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
+     * The default value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -124,10 +104,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final String PRECONDITION_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getPreconditionExpression()
-     * <em>Precondition Expression</em>}' attribute. <!-- begin-user-doc -->
+     * The cached value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #getPreconditionExpression()
      * @generated
      * @ordered
@@ -135,10 +114,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected String preconditionExpression = PRECONDITION_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -146,10 +124,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected static final String LABEL_EXPRESSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getLabelExpression()
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -157,9 +134,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getGroups() <em>Groups</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getGroups()
      * @generated
      * @ordered
@@ -168,7 +144,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ViewExtensionDescriptionImpl() {
@@ -177,7 +152,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -187,7 +161,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getIdentifier() {
@@ -196,7 +169,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setIdentifier(String newIdentifier) {
@@ -208,7 +180,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<EPackage> getMetamodels() {
@@ -220,7 +191,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<PageDescription> getPages() {
@@ -232,13 +202,12 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PageDescription getDefaultPage() {
         if (defaultPage != null && defaultPage.eIsProxy()) {
-            InternalEObject oldDefaultPage = (InternalEObject) defaultPage;
-            defaultPage = (PageDescription) eResolveProxy(oldDefaultPage);
+            InternalEObject oldDefaultPage = (InternalEObject)defaultPage;
+            defaultPage = (PageDescription)eResolveProxy(oldDefaultPage);
             if (defaultPage != oldDefaultPage) {
                 if (eNotificationRequired())
                     eNotify(new ENotificationImpl(this, Notification.RESOLVE, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE, oldDefaultPage, defaultPage));
@@ -249,7 +218,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public PageDescription basicGetDefaultPage() {
@@ -258,7 +226,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setDefaultPage(PageDescription newDefaultPage) {
@@ -270,7 +237,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getPreconditionExpression() {
@@ -279,7 +245,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setPreconditionExpression(String newPreconditionExpression) {
@@ -291,7 +256,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getLabelExpression() {
@@ -300,7 +264,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setLabelExpression(String newLabelExpression) {
@@ -312,7 +275,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<GroupDescription> getGroups() {
@@ -324,153 +286,145 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
-            return ((InternalEList<?>) getPages()).basicRemove(otherEnd, msgs);
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
-            return ((InternalEList<?>) getGroups()).basicRemove(otherEnd, msgs);
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
+                return ((InternalEList<?>)getPages()).basicRemove(otherEnd, msgs);
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
+                return ((InternalEList<?>)getGroups()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
-            return getIdentifier();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
-            return getMetamodels();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
-            return getPages();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            if (resolve)
-                return getDefaultPage();
-            return basicGetDefaultPage();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
-            return getPreconditionExpression();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            return getLabelExpression();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
-            return getGroups();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
+                return getIdentifier();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
+                return getMetamodels();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
+                return getPages();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
+                if (resolve) return getDefaultPage();
+                return basicGetDefaultPage();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
+                return getPreconditionExpression();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
+                return getLabelExpression();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
+                return getGroups();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
-            setIdentifier((String) newValue);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
-            getMetamodels().clear();
-            getMetamodels().addAll((Collection<? extends EPackage>) newValue);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
-            getPages().clear();
-            getPages().addAll((Collection<? extends PageDescription>) newValue);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            setDefaultPage((PageDescription) newValue);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
-            setPreconditionExpression((String) newValue);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression((String) newValue);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
-            getGroups().clear();
-            getGroups().addAll((Collection<? extends GroupDescription>) newValue);
-            return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
+                setIdentifier((String)newValue);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
+                getMetamodels().clear();
+                getMetamodels().addAll((Collection<? extends EPackage>)newValue);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
+                getPages().clear();
+                getPages().addAll((Collection<? extends PageDescription>)newValue);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
+                setDefaultPage((PageDescription)newValue);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
+                setPreconditionExpression((String)newValue);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
+                setLabelExpression((String)newValue);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
+                getGroups().clear();
+                getGroups().addAll((Collection<? extends GroupDescription>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
-            setIdentifier(IDENTIFIER_EDEFAULT);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
-            getMetamodels().clear();
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
-            getPages().clear();
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            setDefaultPage((PageDescription) null);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
-            setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
-            return;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
-            getGroups().clear();
-            return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
+                setIdentifier(IDENTIFIER_EDEFAULT);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
+                getMetamodels().clear();
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
+                getPages().clear();
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
+                setDefaultPage((PageDescription)null);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
+                setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
+                setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
+                return;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
+                getGroups().clear();
+                return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
-            return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
-            return metamodels != null && !metamodels.isEmpty();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
-            return pages != null && !pages.isEmpty();
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
-            return defaultPage != null;
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
-            return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
-            return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
-        case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
-            return groups != null && !groups.isEmpty();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__IDENTIFIER:
+                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__METAMODELS:
+                return metamodels != null && !metamodels.isEmpty();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PAGES:
+                return pages != null && !pages.isEmpty();
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
+                return defaultPage != null;
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
+                return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
+                return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
+            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
+                return groups != null && !groups.isEmpty();
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (identifier: ");

@@ -20,14 +20,9 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier <em>
- * Identifier</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression
- * <em>Label Expression</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.WidgetDescription#getDomainCandidatesExpression
- * <em>Domain Candidates Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression <em>Label Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.WidgetDescription#getDomainCandidatesExpression <em>Domain Candidates Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,13 +49,10 @@ public interface WidgetDescription extends EObject {
     String getIdentifier();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier
-     * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetDescription#getIdentifier <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Identifier</em>' attribute.
+     * @param value the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
      * @generated
      */
@@ -74,7 +66,6 @@ public interface WidgetDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetDescription_LabelExpression()
@@ -84,29 +75,24 @@ public interface WidgetDescription extends EObject {
     String getLabelExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetDescription#getLabelExpression <em>Label Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Label Expression</em>' attribute.
+     * @param value the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
      * @generated
      */
     void setLabelExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Domain Candidates Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Domain Candidates Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Domain Candidates Expression</em>' attribute
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Domain Candidates Expression</em>'
-     *         attribute.
+     * @return the value of the '<em>Domain Candidates Expression</em>' attribute.
      * @see #setDomainCandidatesExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getWidgetDescription_DomainCandidatesExpression()
      * @model dataType="org.eclipse.sirius.expression.Expression"
@@ -115,14 +101,10 @@ public interface WidgetDescription extends EObject {
     String getDomainCandidatesExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.WidgetDescription#getDomainCandidatesExpression
-     * <em>Domain Candidates Expression</em>}' attribute. <!-- begin-user-doc
+     * Sets the value of the '{@link org.eclipse.sirius.properties.WidgetDescription#getDomainCandidatesExpression <em>Domain Candidates Expression</em>}' attribute.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Domain Candidates Expression</em>'
-     *            attribute.
+     * @param value the new value of the '<em>Domain Candidates Expression</em>' attribute.
      * @see #getDomainCandidatesExpression()
      * @generated
      */

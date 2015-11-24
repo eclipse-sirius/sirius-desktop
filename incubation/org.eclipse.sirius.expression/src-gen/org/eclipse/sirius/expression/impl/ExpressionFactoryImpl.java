@@ -11,24 +11,25 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.sirius.expression.*;
+import org.eclipse.sirius.expression.ExpressionFactory;
+import org.eclipse.sirius.expression.ExpressionPackage;
+import org.eclipse.sirius.expression.SiriusExpressionClass;
+import org.eclipse.sirius.expression.SiriusExpressionDescription;
+import org.eclipse.sirius.expression.SiriusExpressionPackage;
+import org.eclipse.sirius.expression.SiriusParameter;
+import org.eclipse.sirius.expression.SiriusVariable;
+import org.eclipse.sirius.expression.UserDefinedVariable;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
  * @generated
  */
 public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFactory {
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static ExpressionFactory init() {
@@ -46,8 +47,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 
 	/**
 	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ExpressionFactoryImpl() {
@@ -55,8 +55,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -74,8 +73,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -95,8 +93,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -116,8 +113,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SiriusExpressionPackage createSiriusExpressionPackage() {
@@ -126,8 +122,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SiriusExpressionDescription createSiriusExpressionDescription() {
@@ -136,8 +131,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SiriusVariable createSiriusVariable() {
@@ -146,8 +140,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SiriusExpressionClass createSiriusExpressionClass() {
@@ -156,8 +149,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SiriusParameter createSiriusParameter() {
@@ -166,8 +158,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public UserDefinedVariable createUserDefinedVariable() {
@@ -176,8 +167,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Void createVoidFromString(EDataType eDataType, String initialValue) {
@@ -185,8 +175,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertVoidToString(EDataType eDataType, Object instanceValue) {
@@ -194,8 +183,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Object createObjectFromString(EDataType eDataType, String initialValue) {
@@ -203,8 +191,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertObjectToString(EDataType eDataType, Object instanceValue) {
@@ -212,8 +199,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Object createPredicateFromString(EDataType eDataType, String initialValue) {
@@ -221,8 +207,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertPredicateToString(EDataType eDataType, Object instanceValue) {
@@ -230,8 +215,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String createExpressionFromString(EDataType eDataType, String initialValue) {
@@ -239,8 +223,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertExpressionToString(EDataType eDataType, Object instanceValue) {
@@ -248,8 +231,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ExpressionPackage getExpressionPackage() {
@@ -257,8 +239,7 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
@@ -267,4 +248,4 @@ public class ExpressionFactoryImpl extends EFactoryImpl implements ExpressionFac
 		return ExpressionPackage.eINSTANCE;
 	}
 
-} //ExpressionFactoryImpl
+} // ExpressionFactoryImpl

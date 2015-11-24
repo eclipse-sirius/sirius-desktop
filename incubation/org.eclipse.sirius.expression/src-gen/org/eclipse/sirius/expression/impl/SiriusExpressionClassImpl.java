@@ -11,15 +11,11 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.expression.ExpressionPackage;
@@ -28,25 +24,24 @@ import org.eclipse.sirius.expression.SiriusExpressionDescription;
 import org.eclipse.sirius.expression.SiriusVariable;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sirius Expression Class</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sirius Expression Class</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionClassImpl#getVariables <em>Variables</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionClassImpl#getExpressionDescriptions <em>Expression Descriptions</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionClassImpl#getEClass <em>EClass</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container implements SiriusExpressionClass {
 	/**
-	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getVariables()
 	 * @generated
 	 * @ordered
@@ -55,8 +50,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 
 	/**
 	 * The cached value of the '{@link #getExpressionDescriptions() <em>Expression Descriptions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getExpressionDescriptions()
 	 * @generated
 	 * @ordered
@@ -65,8 +59,8 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 
 	/**
 	 * The cached value of the '{@link #getEClass() <em>EClass</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getEClass()
 	 * @generated
 	 * @ordered
@@ -74,8 +68,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	protected EClass eClass;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected SiriusExpressionClassImpl() {
@@ -83,8 +76,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -93,8 +85,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<SiriusVariable> getVariables() {
@@ -105,8 +96,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<SiriusExpressionDescription> getExpressionDescriptions() {
@@ -117,8 +107,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getEClass() {
@@ -134,8 +123,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass basicGetEClass() {
@@ -143,8 +131,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setEClass(EClass newEClass) {
@@ -155,8 +142,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -171,8 +157,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -190,8 +175,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -214,8 +198,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -235,8 +218,7 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -252,4 +234,4 @@ public class SiriusExpressionClassImpl extends MinimalEObjectImpl.Container impl
 		return super.eIsSet(featureID);
 	}
 
-} //SiriusExpressionClassImpl
+} // SiriusExpressionClassImpl

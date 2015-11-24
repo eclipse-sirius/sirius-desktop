@@ -137,7 +137,6 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
         EEFViewDescription eefViewDescription = EefFactory.eINSTANCE.createEEFViewDescription();
         eefViewDescription.setIdentifier(viewExtensionDescription.getIdentifier());
         eefViewDescription.setLabelExpression(viewExtensionDescription.getLabelExpression());
-        eefViewDescription.setPreconditionExpression(viewExtensionDescription.getPreconditionExpression());
 
         List<GroupDescription> groups = viewExtensionDescription.getGroups();
         for (GroupDescription groupDescription : groups) {
@@ -145,7 +144,6 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
             eefViewDescription.getGroups().add(eefGroupDescription);
 
             eefGroupDescription.setIdentifier(groupDescription.getIdentifier());
-            eefGroupDescription.setDomainClass(groupDescription.getDomainClass());
             eefGroupDescription.setSemanticCandidateExpression(groupDescription.getSemanticCandidateExpression());
             eefGroupDescription.setLabelExpression(groupDescription.getLabelExpression());
 
@@ -177,7 +175,6 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
             eefViewDescription.getPages().add(eefPageDescription);
 
             eefPageDescription.setIdentifier(pageDescription.getIdentifier());
-            eefPageDescription.setDomainClass(pageDescription.getDomainClass());
             eefPageDescription.setLabelExpression(pageDescription.getLabelExpression());
 
             // FIXME OMG THIS IS HORRIBLE!!!ELEVEN!!!

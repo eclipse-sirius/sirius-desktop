@@ -10,17 +10,16 @@ package org.eclipse.sirius.expression;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Sirius Parameter</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Sirius Parameter</b></em>'. <!-- end-user-doc
+ * -->
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
- *   <li>{@link org.eclipse.sirius.expression.SiriusParameter#isOptional <em>Optional</em>}</li>
- *   <li>{@link org.eclipse.sirius.expression.SiriusParameter#getVariable <em>Variable</em>}</li>
+ * <li>{@link org.eclipse.sirius.expression.SiriusParameter#isOptional <em>Optional</em>}</li>
+ * <li>{@link org.eclipse.sirius.expression.SiriusParameter#getVariable <em>Variable</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusParameter()
  * @model
@@ -31,8 +30,8 @@ public interface SiriusParameter extends EObject {
 	 * Returns the value of the '<em><b>Optional</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Optional</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Optional</em>' attribute isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Optional</em>' attribute.
@@ -45,8 +44,7 @@ public interface SiriusParameter extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusParameter#isOptional <em>Optional</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Optional</em>' attribute.
 	 * @see #isOptional()
 	 * @generated
@@ -57,8 +55,8 @@ public interface SiriusParameter extends EObject {
 	 * Returns the value of the '<em><b>Variable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variable</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Variable</em>' reference isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable</em>' reference.
@@ -71,8 +69,7 @@ public interface SiriusParameter extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusParameter#getVariable <em>Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Variable</em>' reference.
 	 * @see #getVariable()
 	 * @generated

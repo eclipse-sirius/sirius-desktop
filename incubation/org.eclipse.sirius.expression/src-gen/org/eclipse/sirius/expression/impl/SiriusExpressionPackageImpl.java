@@ -11,42 +11,35 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.sirius.expression.ExpressionPackage;
 import org.eclipse.sirius.expression.SiriusExpressionClass;
 import org.eclipse.sirius.expression.SiriusExpressionPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sirius Expression Package</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sirius Expression Package</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionPackageImpl#getExpressionClasses <em>Expression Classes</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionPackageImpl#getEPackage <em>EPackage</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container implements SiriusExpressionPackage {
 	/**
 	 * The cached value of the '{@link #getExpressionClasses() <em>Expression Classes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getExpressionClasses()
 	 * @generated
 	 * @ordered
@@ -55,8 +48,8 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 
 	/**
 	 * The cached value of the '{@link #getEPackage() <em>EPackage</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getEPackage()
 	 * @generated
 	 * @ordered
@@ -64,8 +57,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	protected EPackage ePackage;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected SiriusExpressionPackageImpl() {
@@ -73,8 +65,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -83,8 +74,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<SiriusExpressionClass> getExpressionClasses() {
@@ -95,8 +85,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EPackage getEPackage() {
@@ -112,8 +101,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EPackage basicGetEPackage() {
@@ -121,8 +109,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setEPackage(EPackage newEPackage) {
@@ -133,8 +120,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -147,8 +133,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -164,8 +149,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -184,8 +168,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -202,8 +185,7 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -217,4 +199,4 @@ public class SiriusExpressionPackageImpl extends MinimalEObjectImpl.Container im
 		return super.eIsSet(featureID);
 	}
 
-} //SiriusExpressionPackageImpl
+} // SiriusExpressionPackageImpl

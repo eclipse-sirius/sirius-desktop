@@ -32,12 +32,8 @@ import org.eclipse.sirius.properties.WidgetDescription;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getIdentifier
- * <em>Identifier</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getWidgets
- * <em>Widgets</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.impl.ContainerDescriptionImpl#getWidgets <em>Widgets</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,9 +41,8 @@ import org.eclipse.sirius.properties.WidgetDescription;
  */
 public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container implements ContainerDescription {
     /**
-     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -55,9 +50,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     protected static final String IDENTIFIER_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -65,9 +59,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     protected String identifier = IDENTIFIER_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getWidgets() <em>Widgets</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getWidgets()
      * @generated
      * @ordered
@@ -76,7 +69,6 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ContainerDescriptionImpl() {
@@ -85,7 +77,6 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -95,7 +86,6 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getIdentifier() {
@@ -104,7 +94,6 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void setIdentifier(String newIdentifier) {
@@ -116,7 +105,6 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EList<WidgetDescription> getWidgets() {
@@ -128,97 +116,90 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            return ((InternalEList<?>) getWidgets()).basicRemove(otherEnd, msgs);
+            case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
+                return ((InternalEList<?>)getWidgets()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            return getIdentifier();
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            return getWidgets();
+            case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
+                return getIdentifier();
+            case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
+                return getWidgets();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            setIdentifier((String) newValue);
-            return;
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            getWidgets().clear();
-            getWidgets().addAll((Collection<? extends WidgetDescription>) newValue);
-            return;
+            case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
+                setIdentifier((String)newValue);
+                return;
+            case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
+                getWidgets().clear();
+                getWidgets().addAll((Collection<? extends WidgetDescription>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            setIdentifier(IDENTIFIER_EDEFAULT);
-            return;
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            getWidgets().clear();
-            return;
+            case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
+                setIdentifier(IDENTIFIER_EDEFAULT);
+                return;
+            case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
+                getWidgets().clear();
+                return;
         }
         super.eUnset(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
-            return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-        case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
-            return widgets != null && !widgets.isEmpty();
+            case PropertiesPackage.CONTAINER_DESCRIPTION__IDENTIFIER:
+                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            case PropertiesPackage.CONTAINER_DESCRIPTION__WIDGETS:
+                return widgets != null && !widgets.isEmpty();
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String toString() {
-        if (eIsProxy())
-            return super.toString();
+        if (eIsProxy()) return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (identifier: ");

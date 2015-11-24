@@ -11,32 +11,25 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.sirius.expression.ExpressionPackage;
 import org.eclipse.sirius.expression.SiriusExpressionDescription;
 import org.eclipse.sirius.expression.SiriusParameter;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sirius Expression Description</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sirius Expression Description</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionDescriptionImpl#getLowerBound <em>Lower Bound</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionDescriptionImpl#getUpperBound <em>Upper Bound</em>}</li>
@@ -45,14 +38,15 @@ import org.eclipse.sirius.expression.SiriusParameter;
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionDescriptionImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.impl.SiriusExpressionDescriptionImpl#getVariableContainers <em>Variable Containers</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Container implements SiriusExpressionDescription {
 	/**
 	 * The default value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getLowerBound()
 	 * @generated
 	 * @ordered
@@ -61,8 +55,8 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 
 	/**
 	 * The cached value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getLowerBound()
 	 * @generated
 	 * @ordered
@@ -71,8 +65,8 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 
 	/**
 	 * The default value of the '{@link #getUpperBound() <em>Upper Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getUpperBound()
 	 * @generated
 	 * @ordered
@@ -81,8 +75,8 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 
 	/**
 	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getUpperBound()
 	 * @generated
 	 * @ordered
@@ -91,8 +85,8 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -100,9 +94,9 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	protected EStructuralFeature expression;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
@@ -111,8 +105,8 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 
 	/**
 	 * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getReturnType()
 	 * @generated
 	 * @ordered
@@ -120,9 +114,9 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	protected EClassifier returnType;
 
 	/**
-	 * The cached value of the '{@link #getVariableContainers() <em>Variable Containers</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getVariableContainers() <em>Variable Containers</em>}' reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getVariableContainers()
 	 * @generated
 	 * @ordered
@@ -130,8 +124,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	protected EList<EClass> variableContainers;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected SiriusExpressionDescriptionImpl() {
@@ -139,8 +132,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -149,8 +141,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getLowerBound() {
@@ -158,8 +149,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setLowerBound(int newLowerBound) {
@@ -170,8 +160,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getUpperBound() {
@@ -179,8 +168,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setUpperBound(int newUpperBound) {
@@ -191,8 +179,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EStructuralFeature getExpression() {
@@ -208,8 +195,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EStructuralFeature basicGetExpression() {
@@ -217,8 +203,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setExpression(EStructuralFeature newExpression) {
@@ -229,8 +214,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<SiriusParameter> getParameters() {
@@ -241,8 +225,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClassifier getReturnType() {
@@ -258,8 +241,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClassifier basicGetReturnType() {
@@ -267,8 +249,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setReturnType(EClassifier newReturnType) {
@@ -279,8 +260,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<EClass> getVariableContainers() {
@@ -291,8 +271,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -305,8 +284,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -331,8 +309,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -364,8 +341,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -394,8 +370,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -418,8 +393,7 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -435,4 +409,4 @@ public class SiriusExpressionDescriptionImpl extends MinimalEObjectImpl.Containe
 		return result.toString();
 	}
 
-} //SiriusExpressionDescriptionImpl
+} // SiriusExpressionDescriptionImpl

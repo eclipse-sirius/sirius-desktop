@@ -8,14 +8,12 @@
 package org.eclipse.sirius.expression;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Sirius Expression Package</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Sirius Expression Package</b></em>'. <!--
+ * end-user-doc -->
  *
  * <!-- begin-model-doc -->
  * An ExpressionPackage is the root concept of the expression metamodel. This metamodel is used to define the link between expressions and the variables that could be used by the expressions.An ExpressionPackage defines groups of ExpressionClasses.
@@ -23,11 +21,11 @@ import org.eclipse.emf.ecore.EPackage;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.sirius.expression.SiriusExpressionPackage#getExpressionClasses <em>Expression Classes</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.SiriusExpressionPackage#getEPackage <em>EPackage</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusExpressionPackage()
  * @model
@@ -35,13 +33,10 @@ import org.eclipse.emf.ecore.EPackage;
  */
 public interface SiriusExpressionPackage extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Expression Classes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.sirius.expression.SiriusExpressionClass}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * References expression classes.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Expression Classes</b></em>' containment reference list. The list contents are
+	 * of type {@link org.eclipse.sirius.expression.SiriusExpressionClass}. <!-- begin-user-doc --> <!-- end-user-doc
+	 * --> <!-- begin-model-doc --> References expression classes. <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Expression Classes</em>' containment reference list.
 	 * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusExpressionPackage_ExpressionClasses()
 	 * @model containment="true" resolveProxies="true"
@@ -50,12 +45,9 @@ public interface SiriusExpressionPackage extends EObject {
 	EList<SiriusExpressionClass> getExpressionClasses();
 
 	/**
-	 * Returns the value of the '<em><b>EPackage</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * References the ePackage of the EClasses defining expressions.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>EPackage</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+	 * begin-model-doc --> References the ePackage of the EClasses defining expressions. <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>EPackage</em>' reference.
 	 * @see #setEPackage(EPackage)
 	 * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusExpressionPackage_EPackage()
@@ -66,8 +58,7 @@ public interface SiriusExpressionPackage extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusExpressionPackage#getEPackage <em>EPackage</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>EPackage</em>' reference.
 	 * @see #getEPackage()
 	 * @generated

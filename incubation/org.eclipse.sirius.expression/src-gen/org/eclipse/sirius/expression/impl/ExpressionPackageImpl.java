@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.expression.ExpressionFactory;
@@ -25,92 +24,78 @@ import org.eclipse.sirius.expression.SiriusVariable;
 import org.eclipse.sirius.expression.UserDefinedVariable;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
  * @generated
  */
 public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPackage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass siriusExpressionPackageEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass siriusExpressionDescriptionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass siriusVariableEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass siriusExpressionClassEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass siriusParameterEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass userDefinedVariableEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EDataType voidEDataType = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EDataType objectEDataType = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EDataType predicateEDataType = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EDataType expressionEDataType = null;
 
 	/**
-	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
+	 * EPackage.Registry} by the package package URI value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
+	 * performs initialization of the package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.eclipse.sirius.expression.ExpressionPackage#eNS_URI
 	 * @see #init()
@@ -121,8 +106,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static boolean isInited = false;
@@ -132,8 +116,8 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	 * 
 	 * <p>This method is used to initialize {@link ExpressionPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -166,8 +150,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSiriusExpressionPackage() {
@@ -175,8 +158,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionPackage_ExpressionClasses() {
@@ -184,8 +166,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionPackage_EPackage() {
@@ -193,8 +174,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSiriusExpressionDescription() {
@@ -202,8 +182,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSiriusExpressionDescription_LowerBound() {
@@ -211,8 +190,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSiriusExpressionDescription_UpperBound() {
@@ -220,8 +198,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionDescription_Expression() {
@@ -229,8 +206,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionDescription_Parameters() {
@@ -238,8 +214,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionDescription_ReturnType() {
@@ -247,8 +222,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionDescription_VariableContainers() {
@@ -256,8 +230,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSiriusVariable() {
@@ -265,8 +238,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSiriusVariable_Name() {
@@ -274,8 +246,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSiriusVariable_Documentation() {
@@ -283,8 +254,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusVariable_EType() {
@@ -292,8 +262,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSiriusExpressionClass() {
@@ -301,8 +270,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionClass_Variables() {
@@ -310,8 +278,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionClass_ExpressionDescriptions() {
@@ -319,8 +286,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusExpressionClass_EClass() {
@@ -328,8 +294,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSiriusParameter() {
@@ -337,8 +302,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSiriusParameter_Optional() {
@@ -346,8 +310,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSiriusParameter_Variable() {
@@ -355,8 +318,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getUserDefinedVariable() {
@@ -364,8 +326,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getUserDefinedVariable_ValueExpression() {
@@ -373,8 +334,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EDataType getVoid() {
@@ -382,8 +342,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EDataType getObject() {
@@ -391,8 +350,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EDataType getPredicate() {
@@ -400,8 +358,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EDataType getExpression() {
@@ -409,8 +366,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ExpressionFactory getExpressionFactory() {
@@ -418,8 +374,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -427,8 +382,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	/**
 	 * Creates the meta-model objects for the package.  This method is
 	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void createPackageContents() {
@@ -473,8 +427,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isInitialized = false;
@@ -482,8 +435,7 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 	/**
 	 * Complete the initialization of the package and its meta-model.  This
 	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void initializePackageContents() {
@@ -545,4 +497,4 @@ public class ExpressionPackageImpl extends EPackageImpl implements ExpressionPac
 		createResource(eNS_URI);
 	}
 
-} //ExpressionPackageImpl
+} // ExpressionPackageImpl

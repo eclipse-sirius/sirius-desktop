@@ -21,17 +21,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.PageDescription#getIdentifier <em>
- * Identifier</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.PageDescription#getLabelExpression
- * <em>Label Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.PageDescription#getDomainClass <em>
- * Domain Class</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression
- * <em>Semantic Candidate Expression</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.PageDescription#getGroups <em>Groups
- * </em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.PageDescription#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.PageDescription#getLabelExpression <em>Label Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.PageDescription#getDomainClass <em>Domain Class</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression <em>Semantic Candidate Expression</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.PageDescription#getGroups <em>Groups</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,13 +52,10 @@ public interface PageDescription extends EObject {
     String getIdentifier();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.PageDescription#getIdentifier
-     * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.properties.PageDescription#getIdentifier <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Identifier</em>' attribute.
+     * @param value the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
      * @generated
      */
@@ -78,7 +69,6 @@ public interface PageDescription extends EObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPageDescription_LabelExpression()
@@ -88,13 +78,10 @@ public interface PageDescription extends EObject {
     String getLabelExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.PageDescription#getLabelExpression
-     * <em>Label Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.properties.PageDescription#getLabelExpression <em>Label Expression</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Label Expression</em>' attribute.
+     * @param value the new value of the '<em>Label Expression</em>' attribute.
      * @see #getLabelExpression()
      * @generated
      */
@@ -118,29 +105,24 @@ public interface PageDescription extends EObject {
     String getDomainClass();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.PageDescription#getDomainClass
-     * <em>Domain Class</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.properties.PageDescription#getDomainClass <em>Domain Class</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Domain Class</em>' attribute.
+     * @param value the new value of the '<em>Domain Class</em>' attribute.
      * @see #getDomainClass()
      * @generated
      */
     void setDomainClass(String value);
 
     /**
-     * Returns the value of the '<em><b>Semantic Candidate Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Semantic Candidate Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Semantic Candidate Expression</em>' attribute
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Semantic Candidate Expression</em>'
-     *         attribute.
+     * @return the value of the '<em>Semantic Candidate Expression</em>' attribute.
      * @see #setSemanticCandidateExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getPageDescription_SemanticCandidateExpression()
      * @model dataType="org.eclipse.sirius.expression.Expression"
@@ -149,14 +131,10 @@ public interface PageDescription extends EObject {
     String getSemanticCandidateExpression();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression
-     * <em>Semantic Candidate Expression</em>}' attribute. <!-- begin-user-doc
+     * Sets the value of the '{@link org.eclipse.sirius.properties.PageDescription#getSemanticCandidateExpression <em>Semantic Candidate Expression</em>}' attribute.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Semantic Candidate Expression</em>'
-     *            attribute.
+     * @param value the new value of the '<em>Semantic Candidate Expression</em>' attribute.
      * @see #getSemanticCandidateExpression()
      * @generated
      */

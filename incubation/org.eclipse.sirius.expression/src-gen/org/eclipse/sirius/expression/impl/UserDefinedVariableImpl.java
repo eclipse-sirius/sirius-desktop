@@ -8,32 +8,28 @@
 package org.eclipse.sirius.expression.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.sirius.expression.ExpressionPackage;
 import org.eclipse.sirius.expression.UserDefinedVariable;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>User Defined Variable</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>User Defined Variable</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.sirius.expression.impl.UserDefinedVariableImpl#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
 public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserDefinedVariable {
 	/**
 	 * The default value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getValueExpression()
 	 * @generated
 	 * @ordered
@@ -42,8 +38,8 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 
 	/**
 	 * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getValueExpression()
 	 * @generated
 	 * @ordered
@@ -51,8 +47,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	protected String valueExpression = VALUE_EXPRESSION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected UserDefinedVariableImpl() {
@@ -60,8 +55,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -70,8 +64,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getValueExpression() {
@@ -79,8 +72,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setValueExpression(String newValueExpression) {
@@ -91,8 +83,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -105,8 +96,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -120,8 +110,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -135,8 +124,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -149,8 +137,7 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -164,4 +151,4 @@ public class UserDefinedVariableImpl extends SiriusVariableImpl implements UserD
 		return result.toString();
 	}
 
-} //UserDefinedVariableImpl
+} // UserDefinedVariableImpl

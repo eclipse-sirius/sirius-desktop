@@ -11,9 +11,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Sirius Variable</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Sirius Variable</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
  * Represents a variable.
@@ -21,12 +19,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link org.eclipse.sirius.expression.SiriusVariable#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.SiriusVariable#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.eclipse.sirius.expression.SiriusVariable#getEType <em>EType</em>}</li>
  * </ul>
+ * </p>
  *
  * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusVariable()
  * @model
@@ -34,12 +32,9 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SiriusVariable extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Defines the name of the varriable.
-	 * <!-- end-model-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+	 * begin-model-doc --> Defines the name of the varriable. <!-- end-model-doc -->
+	 * 
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.sirius.expression.ExpressionPackage#getSiriusVariable_Name()
@@ -50,8 +45,7 @@ public interface SiriusVariable extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusVariable#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -60,8 +54,7 @@ public interface SiriusVariable extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines the documentation of the variables.
 	 * <!-- end-model-doc -->
@@ -75,8 +68,7 @@ public interface SiriusVariable extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusVariable#getDocumentation <em>Documentation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Documentation</em>' attribute.
 	 * @see #getDocumentation()
 	 * @generated
@@ -87,8 +79,8 @@ public interface SiriusVariable extends EObject {
 	 * Returns the value of the '<em><b>EType</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EType</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>EType</em>' reference isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>EType</em>' reference.
@@ -101,8 +93,7 @@ public interface SiriusVariable extends EObject {
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.sirius.expression.SiriusVariable#getEType <em>EType</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>EType</em>' reference.
 	 * @see #getEType()
 	 * @generated

@@ -21,10 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier
- * <em>Identifier</em>}</li>
- * <li>{@link org.eclipse.sirius.properties.ContainerDescription#getWidgets <em>
- * Widgets</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.eclipse.sirius.properties.ContainerDescription#getWidgets <em>Widgets</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,13 +49,10 @@ public interface ContainerDescription extends EObject {
     String getIdentifier();
 
     /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier
-     * <em>Identifier</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link org.eclipse.sirius.properties.ContainerDescription#getIdentifier <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Identifier</em>' attribute.
+     * @param value the new value of the '<em>Identifier</em>' attribute.
      * @see #getIdentifier()
      * @generated
      */
