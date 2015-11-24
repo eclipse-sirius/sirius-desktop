@@ -16,7 +16,7 @@ public class SiriusInterpreterProvider implements IInterpreterProvider {
     @Override
     public boolean canHandle(String expression) {
         org.eclipse.sirius.common.tools.api.interpreter.IInterpreter interpreter = this.session.getInterpreter();
-        return interpreter.provides(expression);
+        return interpreter != null && interpreter.provides(expression);
     }
 
     @Override
