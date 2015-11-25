@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_juno" sequenceNumber="1444653947">
+<target name="sirius_juno" sequenceNumber="1448455610">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.0.201505291308"/>
@@ -21,8 +21,8 @@
       <repository id="SWTBot-2_1" location="http://download.eclipse.org/technology/swtbot/releases/2.1.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.1.v201208210947"/>
-      <repository id="XText-2_3" location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.4.3.v201309030823"/>
+      <repository id="XText-2_4" location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
