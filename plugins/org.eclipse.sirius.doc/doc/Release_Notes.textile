@@ -10,6 +10,8 @@ h3. User-Visible Changes
 
 * <span class="label label-info">Modified</span> Now if an object is locked and cannot be modified according to @IPermissionAuthority@, the properties view will not be editable if this locked object is selected from the Model Explorer view.
 
+* <span class="label label-info">Modified</span> When trying to reconnect an edge end on another edge, the edge is now highlighted only if a reconnect tool is found (the precondition of the tool is not tested here).
+
 
 h3. Specifier-Visible Changes
 

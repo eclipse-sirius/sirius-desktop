@@ -58,6 +58,7 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
+import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
@@ -201,7 +202,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         if (source != null && target != null) {
             if (target != source) {
                 Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
-                final ReconnectEdgeDescription tool = edgeMapping.some() ? getBestTool(edgeMapping.get(), true, source, target, edge) : null;
+                final ReconnectEdgeDescription tool = edgeMapping.some() ? getBestTool(edgeMapping.get(), true, source, target, edge, true) : null;
                 if (tool != null) {
                     final CompoundCommand result = new CompoundCommand();
                     result.add(this.getToolCommand(tool, edge, source, target));
@@ -315,7 +316,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         if (source != null && target != null) {
             if (target != source) {
                 Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping();
-                final ReconnectEdgeDescription tool = edgeMapping.some() ? getBestTool(edgeMapping.get(), false, source, target, edge) : null;
+                final ReconnectEdgeDescription tool = edgeMapping.some() ? getBestTool(edgeMapping.get(), false, source, target, edge, true) : null;
                 if (tool != null) {
                     final CompoundCommand result = new CompoundCommand();
                     result.add(this.getToolCommand(tool, edge, source, target));
@@ -603,7 +604,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         return result;
     }
 
-    private ReconnectEdgeDescription getBestTool(final EdgeMapping mapping, final boolean source, final EdgeTarget oldTarget, final EdgeTarget newTarget, final DEdge edge) {
+    private ReconnectEdgeDescription getBestTool(final EdgeMapping mapping, final boolean source, final EdgeTarget oldTarget, final EdgeTarget newTarget, final DEdge edge,
+            boolean computePreCondition) {
         final List<ReconnectEdgeDescription> candidateTool = new ArrayList<ReconnectEdgeDescription>(mapping.getReconnections());
 
         ReconnectEdgeDescription bestTool = null;
@@ -628,7 +630,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             while (toolIterator.hasNext()) {
                 final ReconnectEdgeDescription myTool = toolIterator.next();
                 final String precondition = myTool.getPrecondition();
-                if (precondition != null && !StringUtil.isEmpty(precondition)) {
+                if (computePreCondition && precondition != null && !StringUtil.isEmpty(precondition)) {
 
                     final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement);
 
@@ -1219,21 +1221,21 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     @Override
     protected void showTargetConnectionFeedback(DropRequest request) {
         removeHighlight();
-        addHighlight();
+        addHighlight(request);
     }
 
     /**
      * Add a highlight feedback figure on element reconnect. Change too the edge
      * (highlight blue) if there is a reconnect on edge.
+     * 
+     * @param request
      */
-    private void addHighlight() {
+    private void addHighlight(DropRequest request) {
         Rectangle bounds = getHostFigure().getBounds().getCopy();
         getHostFigure().getParent().translateToAbsolute(bounds);
         getFeedbackLayer().translateToRelative(bounds);
-
         if (getHostFigure() instanceof ViewEdgeFigure) {
-
-            if (getHostFigure() != null && Display.getCurrent() != null) {
+            if (getHostFigure() != null && Display.getCurrent() != null && shouldBeHighlighted(request)) {
                 getHostFigure().setForegroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_LIST_SELECTION));
                 ((ViewEdgeFigure) getHostFigure()).setLineWidth(DiagramEdgeEditPartOperation.getLineWidth((IDiagramEdgeEditPart) getHost()) + WIDTH_FEEDBACK);
                 for (final Object child : getHostFigure().getChildren()) {
@@ -1256,6 +1258,68 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             highlightFigure.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_LIST_SELECTION));
             addFeedback(highlightFigure);
         }
+    }
+
+    private boolean shouldBeHighlighted(DropRequest request) {
+        if (request instanceof ReconnectRequest) {
+            boolean returnValue = false;
+            DEdge dEdge = getCurrentDEdge((ReconnectRequest) request);
+            if (dEdge != null) {
+                Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(dEdge.getActualMapping()).getEdgeMapping();
+                if (edgeMapping.some()) {
+                    returnValue = canCreateNewEdge(request, dEdge, edgeMapping.get());
+                }
+            }
+            return returnValue;
+        }
+        // If the request is not a Reconnect one, we do not change the highlight
+        // behavior.
+        return true;
+    }
+
+    private boolean canCreateNewEdge(DropRequest request, DEdge dEdge, EdgeMapping actualIEdgeMapping) {
+        ReconnectEdgeDescription bestTool = null;
+        EdgeTarget reconnectionTarget = getTargetElement((ReconnectRequest) request);
+        if (reconnectionTarget != null) {
+            // If we are reconnecting the source
+            if (RequestConstants.REQ_RECONNECT_SOURCE.equals(((ReconnectRequest) request).getType())) {
+                bestTool = getBestTool(actualIEdgeMapping, true, dEdge.getSourceNode(), reconnectionTarget, dEdge, false);
+            }
+            // Or the target
+            else if (RequestConstants.REQ_RECONNECT_TARGET.equals(((ReconnectRequest) request).getType())) {
+                bestTool = getBestTool(actualIEdgeMapping, false, dEdge.getTargetNode(), reconnectionTarget, dEdge, false);
+            }
+        }
+        return bestTool != null;
+    }
+
+    private EdgeTarget getTargetElement(ReconnectRequest request) {
+        EditPart target = request.getTarget();
+        if (target instanceof IGraphicalEditPart) {
+            EObject element = ((IGraphicalEditPart) target).resolveSemanticElement();
+            if (element instanceof EdgeTarget) {
+                return (EdgeTarget) element;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Provides the current reconnected DEdge.
+     * 
+     * @param request
+     *            the Reconnect Request.
+     * @return the reconnected DEdge or null if not found.
+     */
+    private DEdge getCurrentDEdge(ReconnectRequest request) {
+        ConnectionEditPart connectionEditPart = request.getConnectionEditPart();
+        if (connectionEditPart instanceof IGraphicalEditPart) {
+            EObject semanticElement = ((IGraphicalEditPart) connectionEditPart).resolveSemanticElement();
+            if (semanticElement instanceof DEdge) {
+                return (DEdge) semanticElement;
+            }
+        }
+        return null;
     }
 
     @Override
