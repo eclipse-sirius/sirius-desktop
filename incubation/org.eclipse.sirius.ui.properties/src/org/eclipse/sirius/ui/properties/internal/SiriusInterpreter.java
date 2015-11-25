@@ -4,10 +4,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.eclipse.eef.interpreter.api.IEvaluationResult;
-import org.eclipse.eef.interpreter.api.IInterpreter;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
+import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 
