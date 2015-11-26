@@ -25,6 +25,7 @@ import com.google.common.collect.Lists;
  * @author smonnier
  *
  */
+@SuppressWarnings({ "deprecation", "restriction" })
 public class BundledImageExtensionQuery {
 
     /**
@@ -33,6 +34,8 @@ public class BundledImageExtensionQuery {
     private static final String BUNDLED_IMAGE_SHAPE_EXTENSION_POINT = "org.eclipse.sirius.diagram.bundledImageShape"; //$NON-NLS-1$
 
     private static final String LABEL_ATTRIBUTE = "label"; //$NON-NLS-1$
+
+    private static final String IMAGE_PATH_ATTRIBUTE = "imagePath"; //$NON-NLS-1$
 
     private IConfigurationElement[] extensions;
 
@@ -66,6 +69,17 @@ public class BundledImageExtensionQuery {
      */
     public String getLabel(IConfigurationElement extension) {
         return extension.getAttribute(LABEL_ATTRIBUTE);
+    }
+
+    /**
+     * Find the image path attribute of an extension.
+     * 
+     * @param extension
+     *            to find its image path.
+     * @return the image path attribute of the given extension.
+     */
+    public String getImagePath(IConfigurationElement extension) {
+        return extension.getAttribute(IMAGE_PATH_ATTRIBUTE);
     }
 
     /**
@@ -116,5 +130,40 @@ public class BundledImageExtensionQuery {
 
     private String getExtendedLabelForVSM(IConfigurationElement configurationElement) {
         return configurationElement.getAttribute(LABEL_ATTRIBUTE) + " - " + configurationElement.getNamespaceIdentifier(); //$NON-NLS-1$
+    }
+
+    /**
+     * Find the extension that declares the shape with the given URI.
+     * 
+     * @param providedShapeURI
+     *            the shape URI to look for.
+     * @return the extension providing the shape with the given URI.
+     */
+    public IConfigurationElement getExtensionDefiningProvidedShapeURI(String providedShapeURI) {
+        for (IConfigurationElement configurationElement : extensions) {
+            String identifier = ((ExtensionHandle) configurationElement.getParent()).getSimpleIdentifier();
+            if (identifier != null && identifier.equals(providedShapeURI)) {
+                return configurationElement;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Look for an attribute with the given name in an extension.
+     * 
+     * @param configurationElement
+     *            the extension to investigate
+     * @param parameter
+     *            the attribute name
+     * @return the value of the
+     */
+    public String findParameterInExtension(IConfigurationElement configurationElement, String parameter) {
+        for (IConfigurationElement configurationElementChild : configurationElement.getChildren(parameter)) {
+            if (configurationElementChild.getAttribute(parameter) != null) {
+                return configurationElementChild.getAttribute(parameter);
+            }
+        }
+        return null;
     }
 }

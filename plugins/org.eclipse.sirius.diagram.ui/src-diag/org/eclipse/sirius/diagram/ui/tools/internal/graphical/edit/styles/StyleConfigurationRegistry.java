@@ -199,6 +199,8 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
             final BundledImage bundledImage = (BundledImage) style;
             if (bundledImage.getShape() == BundledImageShape.SQUARE_LITERAL) {
                 styleConfiguration = new SquareStyleConfiguration();
+            } else if (bundledImage.getShape() == BundledImageShape.PROVIDED_SHAPE_LITERAL) {
+                styleConfiguration = new ImageStyleConfiguration();
             }
         } else if (style instanceof WorkspaceImage) {
             styleConfiguration = new ImageStyleConfiguration();

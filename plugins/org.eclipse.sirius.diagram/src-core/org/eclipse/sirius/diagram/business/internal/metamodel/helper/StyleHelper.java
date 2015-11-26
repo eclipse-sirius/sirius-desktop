@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.BundledImage;
+import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.diagram.CenterLabelStyle;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.CustomStyle;
@@ -1043,6 +1044,10 @@ public final class StyleHelper {
         } else {
             if (image.getShape().getValue() != description.getShape().getValue() && !image.getCustomFeatures().contains(DiagramPackage.Literals.BUNDLED_IMAGE__SHAPE.getName())) {
                 image.setShape(description.getShape());
+            }
+            if (image.getShape() != null && image.getShape().equals(BundledImageShape.PROVIDED_SHAPE_LITERAL) && description.getProvidedShapeURI() != null
+                    && !description.getProvidedShapeURI().equals(image.getProvidedShapeURI())) {
+                image.setProvidedShapeURI(description.getProvidedShapeURI());
             }
         }
     }
