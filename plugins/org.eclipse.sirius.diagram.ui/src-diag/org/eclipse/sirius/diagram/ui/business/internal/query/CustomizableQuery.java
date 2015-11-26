@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public class CustomizableQuery {
         for (EStructuralFeature feature : customizable.eClass().getEAllStructuralFeatures()) {
             // CHECKSTYLE:OFF
             if (!ViewpointPackage.Literals.STYLE__DESCRIPTION.equals(feature) && !ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES.equals(feature) && !isUselessFeature(feature)
-                    && !isGaugeCompositeSectionsFeature(feature) && !isEdgeStyleBeginCenterEndFeature(feature)) {
+                    && !isGaugeCompositeSectionsFeature(feature) && !isEdgeStyleBeginCenterEndFeature(feature) && !isProvidedShapeIdFeature(feature)) {
                 // CHECKSTYLE:ON
                 // TODO : BORDERED_STYLE__BORDER_SIZE is updated according to
                 // borderSizeComputationExpression is this last is a copy of the
@@ -87,6 +87,10 @@ public class CustomizableQuery {
         // The labelPosition for DDiagramElementContainer isn't taken into
         // account
         // CHECKSTYLE:ON
+    }
+
+    private boolean isProvidedShapeIdFeature(EStructuralFeature feature) {
+        return DiagramPackage.Literals.BUNDLED_IMAGE__PROVIDED_SHAPE_URI.equals(feature);
     }
 
 }

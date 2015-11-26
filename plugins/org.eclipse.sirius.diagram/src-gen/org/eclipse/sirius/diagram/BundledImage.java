@@ -25,6 +25,8 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.BundledImage#getShape <em>Shape</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.BundledImage#getProvidedShapeURI <em>
+ * Provided Shape URI</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,7 +55,7 @@ public interface BundledImage extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.BundledImage#getShape <em>Shape</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
@@ -83,12 +85,42 @@ public interface BundledImage extends NodeStyle {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' attribute.
      * @see #getColor()
      * @generated
      */
     void setColor(RGBValues value);
+
+    /**
+     * Returns the value of the '<em><b>Provided Shape URI</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Provided Shape URI</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Provided Shape URI</em>' attribute.
+     * @see #setProvidedShapeURI(String)
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImage_ProvidedShapeURI()
+     * @model
+     * @generated
+     */
+    String getProvidedShapeURI();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.BundledImage#getProvidedShapeURI
+     * <em>Provided Shape URI</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Provided Shape URI</em>' attribute.
+     * @see #getProvidedShapeURI()
+     * @generated
+     */
+    void setProvidedShapeURI(String value);
 
 } // BundledImage

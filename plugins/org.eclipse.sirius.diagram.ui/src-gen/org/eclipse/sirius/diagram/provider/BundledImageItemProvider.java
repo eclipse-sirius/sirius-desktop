@@ -54,6 +54,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
 
             addShapePropertyDescriptor(object);
             addColorPropertyDescriptor(object);
+            addProvidedShapeURIPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -84,6 +85,19 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
                 getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_color_feature", "_UI_BundledImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 DiagramPackage.Literals.BUNDLED_IMAGE__COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), //$NON-NLS-1$
                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Provided Shape URI feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addProvidedShapeURIPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_BundledImage_providedShapeURI_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_providedShapeURI_feature", "_UI_BundledImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BUNDLED_IMAGE__PROVIDED_SHAPE_URI, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -124,6 +138,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
         switch (notification.getFeatureID(BundledImage.class)) {
         case DiagramPackage.BUNDLED_IMAGE__SHAPE:
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
+        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_URI:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

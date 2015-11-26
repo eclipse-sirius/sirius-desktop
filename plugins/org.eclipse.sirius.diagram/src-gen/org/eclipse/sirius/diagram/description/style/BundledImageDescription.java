@@ -30,6 +30,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor
  * <em>Color</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeURI
+ * <em>Provided Shape URI</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,7 +61,7 @@ public interface BundledImageDescription extends NodeStyleDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getShape
      * <em>Shape</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
@@ -84,12 +87,42 @@ public interface BundledImageDescription extends NodeStyleDescription {
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getColor
      * <em>Color</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @param value
      *            the new value of the '<em>Color</em>' reference.
      * @see #getColor()
      * @generated
      */
     void setColor(ColorDescription value);
+
+    /**
+     * Returns the value of the '<em><b>Provided Shape URI</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Provided Shape URI</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Provided Shape URI</em>' attribute.
+     * @see #setProvidedShapeURI(String)
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBundledImageDescription_ProvidedShapeURI()
+     * @model
+     * @generated
+     */
+    String getProvidedShapeURI();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeURI
+     * <em>Provided Shape URI</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Provided Shape URI</em>' attribute.
+     * @see #getProvidedShapeURI()
+     * @generated
+     */
+    void setProvidedShapeURI(String value);
 
 } // BundledImageDescription
