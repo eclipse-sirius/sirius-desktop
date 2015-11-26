@@ -10,29 +10,27 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="pages" upperBound="-1"
         eType="#//PageDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="defaultPage" eType="#//PageDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
         eType="#//GroupDescription" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PageDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidateExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
         eType="#//GroupDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidateExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//ContainerDescription"
         containment="true"/>
   </eClassifiers>
@@ -45,30 +43,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="WidgetDescription" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainCandidatesExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextDescription" eSuperTypes="#//WidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CheckboxDescription" eSuperTypes="#//WidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectDescription" eSuperTypes="#//WidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiple" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidatesExpression" eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidateDisplayExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius.expression/model/expression.ecore#//Expression"/>
   </eClassifiers>
 </ecore:EPackage>

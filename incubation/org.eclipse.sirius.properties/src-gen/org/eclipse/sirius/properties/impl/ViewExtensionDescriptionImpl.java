@@ -15,23 +15,29 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Extension Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>View Extension Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -39,7 +45,6 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
  *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPages <em>Pages</em>}</li>
  *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getDefaultPage <em>Default Page</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getPreconditionExpression <em>Precondition Expression</em>}</li>
  *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
  *   <li>{@link org.eclipse.sirius.properties.impl.ViewExtensionDescriptionImpl#getGroups <em>Groups</em>}</li>
  * </ul>
@@ -50,7 +55,8 @@ import org.eclipse.sirius.properties.ViewExtensionDescription;
 public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container implements ViewExtensionDescription {
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -59,7 +65,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -68,7 +75,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getMetamodels()
      * @generated
      * @ordered
@@ -77,7 +85,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * The cached value of the '{@link #getPages() <em>Pages</em>}' containment reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getPages()
      * @generated
      * @ordered
@@ -86,7 +95,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * The cached value of the '{@link #getDefaultPage() <em>Default Page</em>}' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDefaultPage()
      * @generated
      * @ordered
@@ -94,29 +104,9 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected PageDescription defaultPage;
 
     /**
-     * The default value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getPreconditionExpression()
-     * @generated
-     * @ordered
-     */
-    protected static final String PRECONDITION_EXPRESSION_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getPreconditionExpression() <em>Precondition Expression</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getPreconditionExpression()
-     * @generated
-     * @ordered
-     */
-    protected String preconditionExpression = PRECONDITION_EXPRESSION_EDEFAULT;
-
-    /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -125,8 +115,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -135,7 +125,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
 
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getGroups()
      * @generated
      * @ordered
@@ -143,7 +134,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     protected EList<GroupDescription> groups;
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     protected ViewExtensionDescriptionImpl() {
@@ -151,7 +143,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -160,7 +153,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getIdentifier() {
@@ -168,7 +162,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setIdentifier(String newIdentifier) {
@@ -179,7 +174,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public EList<EPackage> getMetamodels() {
@@ -190,7 +186,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public EList<PageDescription> getPages() {
@@ -201,7 +198,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public PageDescription getDefaultPage() {
@@ -217,7 +215,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public PageDescription basicGetDefaultPage() {
@@ -225,7 +224,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setDefaultPage(PageDescription newDefaultPage) {
@@ -236,26 +236,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
-    public String getPreconditionExpression() {
-        return preconditionExpression;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
-    public void setPreconditionExpression(String newPreconditionExpression) {
-        String oldPreconditionExpression = preconditionExpression;
-        preconditionExpression = newPreconditionExpression;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION, oldPreconditionExpression, preconditionExpression));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getLabelExpression() {
@@ -263,7 +245,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setLabelExpression(String newLabelExpression) {
@@ -274,7 +257,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public EList<GroupDescription> getGroups() {
@@ -285,7 +269,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -300,7 +285,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -315,8 +301,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
                 if (resolve) return getDefaultPage();
                 return basicGetDefaultPage();
-            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
-                return getPreconditionExpression();
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
                 return getLabelExpression();
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
@@ -326,7 +310,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -347,9 +332,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
                 setDefaultPage((PageDescription)newValue);
                 return;
-            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
-                setPreconditionExpression((String)newValue);
-                return;
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
                 setLabelExpression((String)newValue);
                 return;
@@ -362,7 +344,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -380,9 +363,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
                 setDefaultPage((PageDescription)null);
                 return;
-            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
-                setPreconditionExpression(PRECONDITION_EXPRESSION_EDEFAULT);
-                return;
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
                 setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
                 return;
@@ -394,7 +374,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -408,8 +389,6 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
                 return pages != null && !pages.isEmpty();
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__DEFAULT_PAGE:
                 return defaultPage != null;
-            case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
-                return PRECONDITION_EXPRESSION_EDEFAULT == null ? preconditionExpression != null : !PRECONDITION_EXPRESSION_EDEFAULT.equals(preconditionExpression);
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__LABEL_EXPRESSION:
                 return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
             case PropertiesPackage.VIEW_EXTENSION_DESCRIPTION__GROUPS:
@@ -419,7 +398,8 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -429,12 +409,10 @@ public class ViewExtensionDescriptionImpl extends MinimalEObjectImpl.Container i
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (identifier: ");
         result.append(identifier);
-        result.append(", preconditionExpression: ");
-        result.append(preconditionExpression);
         result.append(", labelExpression: ");
         result.append(labelExpression);
         result.append(')');
         return result.toString();
     }
 
-} // ViewExtensionDescriptionImpl
+} //ViewExtensionDescriptionImpl

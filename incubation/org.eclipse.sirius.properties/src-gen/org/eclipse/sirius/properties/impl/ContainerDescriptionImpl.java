@@ -15,20 +15,26 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Container Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Container Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -42,7 +48,8 @@ import org.eclipse.sirius.properties.WidgetDescription;
 public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container implements ContainerDescription {
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -51,7 +58,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -60,7 +68,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
 
     /**
      * The cached value of the '{@link #getWidgets() <em>Widgets</em>}' containment reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getWidgets()
      * @generated
      * @ordered
@@ -68,7 +77,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     protected EList<WidgetDescription> widgets;
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     protected ContainerDescriptionImpl() {
@@ -76,7 +86,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -85,7 +96,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getIdentifier() {
@@ -93,7 +105,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setIdentifier(String newIdentifier) {
@@ -104,7 +117,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public EList<WidgetDescription> getWidgets() {
@@ -115,7 +129,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -128,7 +143,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -143,7 +159,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -162,7 +179,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -179,7 +197,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -194,7 +213,8 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -208,4 +228,4 @@ public class ContainerDescriptionImpl extends MinimalEObjectImpl.Container imple
         return result.toString();
     }
 
-} // ContainerDescriptionImpl
+} //ContainerDescriptionImpl

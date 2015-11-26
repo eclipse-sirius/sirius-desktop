@@ -5,7 +5,7 @@
     editorDirectory="/org.eclipse.sirius.properties.editor/src-gen" modelPluginID="org.eclipse.sirius.properties"
     modelName="Properties" modelPluginClass="" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
-    runtimeVersion="2.3" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius.expression/model/expression.genmodel#//expression ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
+    runtimeVersion="2.3" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
     importOrganizing="true">
   <foreignModel>properties.ecore</foreignModel>
   <genPackages prefix="Properties" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
@@ -16,7 +16,6 @@
       <genFeatures property="None" children="true" createChild="true" propertyCategory=""
           ecoreFeature="ecore:EReference properties.ecore#//ViewExtensionDescription/pages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference properties.ecore#//ViewExtensionDescription/defaultPage"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ViewExtensionDescription/preconditionExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//ViewExtensionDescription/labelExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//ViewExtensionDescription/groups"/>
     </genClasses>
@@ -41,23 +40,10 @@
     <genClasses image="false" ecoreClass="properties.ecore#//WidgetDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/identifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/labelExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//WidgetDescription/domainCandidatesExpression"/>
     </genClasses>
     <genClasses ecoreClass="properties.ecore#//TextDescription">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//TextDescription/valueExpression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//TextDescription/initialOperation"/>
-    </genClasses>
-    <genClasses ecoreClass="properties.ecore#//CheckboxDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//CheckboxDescription/valueExpression"/>
-      <genFeatures property="None" notify="false" children="true" createChild="true"
-          ecoreFeature="ecore:EReference properties.ecore#//CheckboxDescription/initialOperation"/>
-    </genClasses>
-    <genClasses ecoreClass="properties.ecore#//SelectDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/valueExpression"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference properties.ecore#//SelectDescription/initialOperation"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/multiple"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/candidatesExpression"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute properties.ecore#//SelectDescription/candidateDisplayExpression"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

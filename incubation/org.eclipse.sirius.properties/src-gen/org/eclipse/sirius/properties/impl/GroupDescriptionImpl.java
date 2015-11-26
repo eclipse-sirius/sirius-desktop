@@ -13,17 +13,21 @@ package org.eclipse.sirius.properties.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.sirius.properties.ContainerDescription;
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Group Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Group Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -40,7 +44,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implements GroupDescription {
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -49,7 +54,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -58,8 +64,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -68,8 +74,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -78,7 +84,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -87,7 +94,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -96,8 +104,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * The default value of the '{@link #getSemanticCandidateExpression() <em>Semantic Candidate Expression</em>}' attribute.
-     * <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -106,8 +114,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * The cached value of the '{@link #getSemanticCandidateExpression() <em>Semantic Candidate Expression</em>}' attribute.
-     * <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -116,7 +124,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
 
     /**
      * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getContainer()
      * @generated
      * @ordered
@@ -124,7 +133,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     protected ContainerDescription container;
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     protected GroupDescriptionImpl() {
@@ -132,7 +142,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -141,7 +152,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getIdentifier() {
@@ -149,7 +161,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setIdentifier(String newIdentifier) {
@@ -160,7 +173,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getLabelExpression() {
@@ -168,7 +182,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setLabelExpression(String newLabelExpression) {
@@ -179,7 +194,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getDomainClass() {
@@ -187,7 +203,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setDomainClass(String newDomainClass) {
@@ -198,7 +215,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getSemanticCandidateExpression() {
@@ -206,7 +224,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setSemanticCandidateExpression(String newSemanticCandidateExpression) {
@@ -217,7 +236,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public ContainerDescription getContainer() {
@@ -225,7 +245,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public NotificationChain basicSetContainer(ContainerDescription newContainer, NotificationChain msgs) {
@@ -239,7 +260,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setContainer(ContainerDescription newContainer) {
@@ -257,7 +279,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -270,7 +293,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -291,10 +315,10 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -318,7 +342,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -344,7 +369,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -365,7 +391,8 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -385,4 +412,4 @@ public class GroupDescriptionImpl extends MinimalEObjectImpl.Container implement
         return result.toString();
     }
 
-} // GroupDescriptionImpl
+} //GroupDescriptionImpl

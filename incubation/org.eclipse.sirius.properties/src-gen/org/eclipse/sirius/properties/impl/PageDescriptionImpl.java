@@ -14,18 +14,24 @@ package org.eclipse.sirius.properties.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
 import org.eclipse.sirius.properties.GroupDescription;
 import org.eclipse.sirius.properties.PageDescription;
 import org.eclipse.sirius.properties.PropertiesPackage;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Page Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Page Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -42,7 +48,8 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements PageDescription {
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -51,7 +58,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -60,8 +68,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -70,8 +78,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -80,7 +88,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * The default value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -89,7 +98,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * The cached value of the '{@link #getDomainClass() <em>Domain Class</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getDomainClass()
      * @generated
      * @ordered
@@ -98,8 +108,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * The default value of the '{@link #getSemanticCandidateExpression() <em>Semantic Candidate Expression</em>}' attribute.
-     * <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -108,8 +118,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * The cached value of the '{@link #getSemanticCandidateExpression() <em>Semantic Candidate Expression</em>}' attribute.
-     * <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getSemanticCandidateExpression()
      * @generated
      * @ordered
@@ -118,7 +128,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
 
     /**
      * The cached value of the '{@link #getGroups() <em>Groups</em>}' reference list.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getGroups()
      * @generated
      * @ordered
@@ -126,7 +137,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     protected EList<GroupDescription> groups;
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     protected PageDescriptionImpl() {
@@ -134,7 +146,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -143,7 +156,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getIdentifier() {
@@ -151,7 +165,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setIdentifier(String newIdentifier) {
@@ -162,7 +177,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getLabelExpression() {
@@ -170,7 +186,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setLabelExpression(String newLabelExpression) {
@@ -181,7 +198,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getDomainClass() {
@@ -189,7 +207,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setDomainClass(String newDomainClass) {
@@ -200,7 +219,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getSemanticCandidateExpression() {
@@ -208,7 +228,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setSemanticCandidateExpression(String newSemanticCandidateExpression) {
@@ -219,7 +240,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public EList<GroupDescription> getGroups() {
@@ -230,7 +252,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -251,7 +274,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -279,7 +303,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -305,7 +330,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -326,7 +352,8 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -346,4 +373,4 @@ public class PageDescriptionImpl extends MinimalEObjectImpl.Container implements
         return result.toString();
     }
 
-} // PageDescriptionImpl
+} //PageDescriptionImpl

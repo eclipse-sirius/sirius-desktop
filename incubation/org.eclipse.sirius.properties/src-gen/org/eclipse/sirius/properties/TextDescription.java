@@ -14,8 +14,9 @@ package org.eclipse.sirius.properties;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Text Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Text Description</b></em>'.
+ * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -41,15 +42,15 @@ public interface TextDescription extends WidgetDescription {
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.properties.PropertiesPackage#getTextDescription_ValueExpression()
-     * @model dataType="org.eclipse.sirius.expression.Expression"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      * @generated
      */
     String getValueExpression();
 
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.TextDescription#getValueExpression <em>Value Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @param value the new value of the '<em>Value Expression</em>' attribute.
      * @see #getValueExpression()
      * @generated
@@ -60,7 +61,7 @@ public interface TextDescription extends WidgetDescription {
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Initial Operation</em>' reference isn't clear,
+     * If the meaning of the '<em>Initial Operation</em>' containment reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
@@ -74,8 +75,8 @@ public interface TextDescription extends WidgetDescription {
 
     /**
      * Sets the value of the '{@link org.eclipse.sirius.properties.TextDescription#getInitialOperation <em>Initial Operation</em>}' containment reference.
-     * <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @param value the new value of the '<em>Initial Operation</em>' containment reference.
      * @see #getInitialOperation()
      * @generated

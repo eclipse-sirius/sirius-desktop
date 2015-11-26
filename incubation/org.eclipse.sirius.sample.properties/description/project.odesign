@@ -9,7 +9,7 @@
     xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
     xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0"
     name="project"
-    version="10.1.0.201507271600">
+    version="11.0.0.201511131800">
   <ownedViewpoints
       name="Design">
     <ownedRepresentations
@@ -85,17 +85,17 @@
       xsi:type="properties:ViewExtensionDescription"
       identifier="Properties"
       defaultPage="//@extensions.0/@pages.0"
-      preconditionExpression=""
-      labelExpression="aql:viewSemanticCandidate.name">
+      labelExpression="aql:self.name"
+      preconditionExpression="">
     <pages identifier="PageOne"
-        labelExpression="feature:name"
+        labelExpression="aql:'General'"
         domainClass="ecore.EAttribute"
         semanticCandidateExpression=""/>
     <pages identifier="PageTwo"
-        labelExpression="feature:name"
+        labelExpression="aql:'Semantic'"
         domainClass="ecore.EReference"/>
     <pages identifier="PageThree"
-        labelExpression="feature:name"
+        labelExpression="aql:'Documentation'"
         domainClass="ecore.EClass"/>
     <groups
         identifier="GroupOne"
@@ -111,126 +111,7 @@
             <firstModelOperations
                 xsi:type="tool:SetValue"
                 featureName="name"
-                valueExpression="aql:newValue + 'toto'"/>
-          </initialOperation>
-        </widgets>
-      </container>
-    </groups>
-    <groups
-        identifier="GroupTwo"
-        labelExpression="EStructuralFeature"
-        domainClass="ecore.EStructuralFeature">
-      <container>
-        <widgets
-            xsi:type="properties:TextDescription"
-            labelExpression="UpperBound"
-            valueExpression="feature:upperBound">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:SetValue"
-                featureName="upperBound"
-                valueExpression="var:newValue"/>
-          </initialOperation>
-        </widgets>
-      </container>
-    </groups>
-    <groups
-        identifier="GroupThree"
-        labelExpression="EAttribute"
-        domainClass="ecore.EAttribute">
-      <container
-          identifier="">
-        <widgets
-            xsi:type="properties:SelectDescription"
-            labelExpression="Type"
-            domainCandidatesExpression=""
-            valueExpression="feature:eType"
-            candidatesExpression="aql:ecore.EDatatype.eAllInstances()"
-            candidateDisplayExpression="feature:name">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:SetValue"
-                featureName="eType"
-                valueExpression="var:newValue"/>
-          </initialOperation>
-        </widgets>
-      </container>
-    </groups>
-    <groups
-        identifier="GroupFour"
-        labelExpression="EReference"
-        domainClass="ecore.EReference">
-      <container>
-        <widgets
-            xsi:type="properties:SelectDescription"
-            labelExpression="Type"
-            domainCandidatesExpression=""
-            valueExpression="feature:eType"
-            candidatesExpression="aql:ecore.EClass.eAllInstances()"
-            candidateDisplayExpression="feature:name">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:SetValue"
-                featureName="eType"
-                valueExpression="var:newValue"/>
-          </initialOperation>
-        </widgets>
-      </container>
-    </groups>
-    <groups
-        identifier="GroupFive"
-        labelExpression="EClass"
-        domainClass="ecore.EClass">
-      <container>
-        <widgets
-            xsi:type="properties:CheckboxDescription"
-            labelExpression="Abstract"
-            domainCandidatesExpression=""
-            valueExpression="feature:abstract">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:SetValue"
-                featureName="abstract"
-                valueExpression="var:newValue"/>
-          </initialOperation>
-        </widgets>
-      </container>
-    </groups>
-    <groups
-        identifier="GroupSix"
-        labelExpression="Advanced"
-        domainClass="ecore.EObject">
-      <container>
-        <widgets
-            xsi:type="properties:TextDescription"
-            labelExpression="aql:domainCandidate.name"
-            domainCandidatesExpression="domainClass.eStructuralFeatures->select(f|f.eType.name='EString')"
-            valueExpression="aql:self.eGet(domainCandidate)">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="aql:self.eSet(domainCandidate,newValue)"/>
-          </initialOperation>
-        </widgets>
-      </container>
-    </groups>
-    <groups
-        identifier="GroupSeven"
-        labelExpression="Documentation"
-        domainClass="ecore.EObject"
-        preconditionExpression="">
-      <propertyContextVariables
-          name="diagram"
-          propertyContext="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']"/>
-      <container>
-        <widgets
-            xsi:type="properties:TextDescription"
-            labelExpression="Documentation"
-            valueExpression="aql:self.getDocumentation()">
-          <initialOperation>
-            <firstModelOperations
-                xsi:type="tool:ChangeContext"
-                browseExpression="aql:self.setDocumentation(newValue)"/>
+                valueExpression="aql:newValue"/>
           </initialOperation>
         </widgets>
       </container>

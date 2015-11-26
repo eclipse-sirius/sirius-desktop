@@ -12,21 +12,24 @@
 package org.eclipse.sirius.properties.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.WidgetDescription;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Widget Description</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Widget Description</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getLabelExpression <em>Label Expression</em>}</li>
- *   <li>{@link org.eclipse.sirius.properties.impl.WidgetDescriptionImpl#getDomainCandidatesExpression <em>Domain Candidates Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,7 +38,8 @@ import org.eclipse.sirius.properties.WidgetDescription;
 public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container implements WidgetDescription {
     /**
      * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -44,7 +48,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getIdentifier()
      * @generated
      * @ordered
@@ -53,8 +58,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * The default value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -63,8 +68,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
 
     /**
      * The cached value of the '{@link #getLabelExpression() <em>Label Expression</em>}' attribute.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see #getLabelExpression()
      * @generated
      * @ordered
@@ -72,27 +77,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     protected String labelExpression = LABEL_EXPRESSION_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getDomainCandidatesExpression() <em>Domain Candidates Expression</em>}' attribute.
-     * <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * @see #getDomainCandidatesExpression()
-     * @generated
-     * @ordered
-     */
-    protected static final String DOMAIN_CANDIDATES_EXPRESSION_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getDomainCandidatesExpression() <em>Domain Candidates Expression</em>}' attribute.
-     * <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * @see #getDomainCandidatesExpression()
-     * @generated
-     * @ordered
-     */
-    protected String domainCandidatesExpression = DOMAIN_CANDIDATES_EXPRESSION_EDEFAULT;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     protected WidgetDescriptionImpl() {
@@ -100,7 +86,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -109,7 +96,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getIdentifier() {
@@ -117,7 +105,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setIdentifier(String newIdentifier) {
@@ -128,7 +117,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public String getLabelExpression() {
@@ -136,7 +126,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public void setLabelExpression(String newLabelExpression) {
@@ -147,26 +138,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
-    public String getDomainCandidatesExpression() {
-        return domainCandidatesExpression;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
-    public void setDomainCandidatesExpression(String newDomainCandidatesExpression) {
-        String oldDomainCandidatesExpression = domainCandidatesExpression;
-        domainCandidatesExpression = newDomainCandidatesExpression;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, PropertiesPackage.WIDGET_DESCRIPTION__DOMAIN_CANDIDATES_EXPRESSION, oldDomainCandidatesExpression, domainCandidatesExpression));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -176,14 +149,13 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
                 return getIdentifier();
             case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
                 return getLabelExpression();
-            case PropertiesPackage.WIDGET_DESCRIPTION__DOMAIN_CANDIDATES_EXPRESSION:
-                return getDomainCandidatesExpression();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -195,15 +167,13 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
             case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
                 setLabelExpression((String)newValue);
                 return;
-            case PropertiesPackage.WIDGET_DESCRIPTION__DOMAIN_CANDIDATES_EXPRESSION:
-                setDomainCandidatesExpression((String)newValue);
-                return;
         }
         super.eSet(featureID, newValue);
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -215,15 +185,13 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
             case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
                 setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
                 return;
-            case PropertiesPackage.WIDGET_DESCRIPTION__DOMAIN_CANDIDATES_EXPRESSION:
-                setDomainCandidatesExpression(DOMAIN_CANDIDATES_EXPRESSION_EDEFAULT);
-                return;
         }
         super.eUnset(featureID);
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -233,14 +201,13 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
                 return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
             case PropertiesPackage.WIDGET_DESCRIPTION__LABEL_EXPRESSION:
                 return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
-            case PropertiesPackage.WIDGET_DESCRIPTION__DOMAIN_CANDIDATES_EXPRESSION:
-                return DOMAIN_CANDIDATES_EXPRESSION_EDEFAULT == null ? domainCandidatesExpression != null : !DOMAIN_CANDIDATES_EXPRESSION_EDEFAULT.equals(domainCandidatesExpression);
         }
         return super.eIsSet(featureID);
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -252,10 +219,8 @@ public abstract class WidgetDescriptionImpl extends MinimalEObjectImpl.Container
         result.append(identifier);
         result.append(", labelExpression: ");
         result.append(labelExpression);
-        result.append(", domainCandidatesExpression: ");
-        result.append(domainCandidatesExpression);
         result.append(')');
         return result.toString();
     }
 
-} // WidgetDescriptionImpl
+} //WidgetDescriptionImpl

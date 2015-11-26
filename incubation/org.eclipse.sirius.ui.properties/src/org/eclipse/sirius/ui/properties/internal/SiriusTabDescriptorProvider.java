@@ -19,7 +19,7 @@ import org.eclipse.eef.core.api.EEFVariableManagerFactory;
 import org.eclipse.eef.core.api.EEFView;
 import org.eclipse.eef.core.api.EEFViewFactory;
 import org.eclipse.eef.core.api.IVariableManager;
-import org.eclipse.eef.ide.ui.internal.data.EEFTabDescriptor;
+import org.eclipse.eef.ide.ui.internal.properties.EEFTabDescriptor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -111,12 +111,11 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
                 EEFViewDescription eefViewDescription = this.convert(viewExtensionDescription);
 
                 IVariableManager variableManager = new EEFVariableManagerFactory().createVariableManager();
-                variableManager.put(EEFExpressionUtils.EEFView.VIEW_SEMANTIC_CANDIDATE, eObject);
-                variableManager.put("self", eObject);
+                variableManager.put(EEFExpressionUtils.SELF, eObject);
 
                 List<IInterpreterProvider> interpreterProviders = new ArrayList<IInterpreterProvider>();
                 interpreterProviders.add(new SiriusInterpreterProvider(session));
-                EEFView eefView = new EEFViewFactory().createEEFView(eefViewDescription, variableManager, interpreterProviders, session.getTransactionalEditingDomain());
+                EEFView eefView = new EEFViewFactory().createEEFView(eefViewDescription, variableManager, interpreterProviders, session.getTransactionalEditingDomain(), eObject);
                 List<ITabDescriptor> descriptors = new ArrayList<ITabDescriptor>();
 
                 List<EEFPage> eefPages = eefView.getPages();
