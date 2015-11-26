@@ -66,7 +66,7 @@ export TARGET_DIR="$TARGET_ROOT/$FULL_VERSION/$PLATFORM"
 ######################################################################
 # Publish the build
 ######################################################################
-export WKS=$(echo "$WORKSPACE" | sed -e 's/%20/ /g')
+export WKS="."
 
 # Ensure the target folder exists
 mkdir -p "$TARGET_DIR"
