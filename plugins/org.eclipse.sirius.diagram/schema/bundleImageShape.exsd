@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius.diagram" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.sirius.diagram" id="bundleImageShape" name="Bundle Image Shape"/>
+      </appInfo>
+      <documentation>
+         This extension registers new shapes for Bundle Image styles that can be used in Viewpoint Specification Models.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="image"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a fully qualified identifier of the target extension point
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the required identifier of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  an optional name of the extension instance
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="image">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="1">
+            <element ref="colorIdentifier"/>
+            <element ref="colorAttribute"/>
+            <element ref="borderColorIdentifier"/>
+            <element ref="borderColorAttribute"/>
+            <element ref="borderSizeIdentifier"/>
+            <element ref="borderSizeAttribute"/>
+         </sequence>
+         <attribute name="label" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The label of the shape to be displayed in a bundle image style.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="imagePath" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Path of the image in this plug-in
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="colorIdentifier">
+      <complexType>
+         <attribute name="colorIdentifier" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Identifier of the shape color tag in the SVG file
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="colorAttribute">
+      <complexType>
+         <attribute name="colorAttribute" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Key of the color attribute of the shape color tag in the SVG file
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="borderColorIdentifier">
+      <complexType>
+         <attribute name="borderColorIdentifier" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Identifier of the shape border color tag in the SVG file
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="borderColorAttribute">
+      <complexType>
+         <attribute name="borderColorAttribute" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Key of the color attribute of the shape border color tag in the SVG file
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="borderSizeIdentifier">
+      <complexType>
+         <attribute name="borderSizeIdentifier" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Identifier of the shape border size tag in the SVG file
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="borderSizeAttribute">
+      <complexType>
+         <attribute name="borderSizeAttribute" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Key of the color attribute of the shape border size tag in the SVG file
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         4.4
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following is an example of a diagram type :
+&lt;p&gt;
+&lt;pre&gt;
+  
+  &lt;extension
+        id=&quot;org.eclipse.sirius.tests.swtbot.donut&quot;
+        point=&quot;org.eclipse.sirius.diagram.bundleImageShape&quot;&gt;
+     &lt;image
+           imagePath=&quot;/org.eclipse.sirius.tests.swtbot/images/donut.svg&quot;
+           label=&quot;Donut&quot;&gt;
+        &lt;colorIdentifier
+              colorIdentifier=&quot;stop8224-2&quot;&gt;
+        &lt;/colorIdentifier&gt;
+        &lt;colorAttribute
+              colorAttribute=&quot;style&quot;&gt;
+        &lt;/colorAttribute&gt;
+        &lt;borderColorIdentifier
+              borderColorIdentifier=&quot;path10796-2-6-2-7&quot;&gt;
+        &lt;/borderColorIdentifier&gt;
+        &lt;borderColorAttribute
+              borderColorAttribute=&quot;style&quot;&gt;
+        &lt;/borderColorAttribute&gt;
+        &lt;borderSizeIdentifier
+              borderSizeIdentifier=&quot;path10796-2-6-2-7&quot;&gt;
+        &lt;/borderSizeIdentifier&gt;
+        &lt;borderSizeAttribute
+              borderSizeAttribute=&quot;style&quot;&gt;
+        &lt;/borderSizeAttribute&gt;
+     &lt;/image&gt;
+  &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2015 Obeo&lt;br&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>
