@@ -642,7 +642,7 @@
         <input type="org.eclipse.sirius.diagram.description.style.BundledImageDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription.BundledImageDescriptionShapePropertySection"
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription.BundledImageDescriptionShapePropertySectionSpec"
                id="style.section.bundledImageDescription.Shape"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.bundledimagedescription.BundledImageDescriptionShapeFilter"
                 tab="viewpoint.tab.general">

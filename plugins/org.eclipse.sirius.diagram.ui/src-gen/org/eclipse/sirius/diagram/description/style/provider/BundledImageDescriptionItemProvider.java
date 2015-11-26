@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,10 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.ColorQuery;
+import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.diagram.description.style.BundledImageDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
+import org.eclipse.sirius.diagram.internal.queries.BundledImageExtensionQuery;
 
 /**
  * This is the item provider adapter for a
@@ -96,8 +98,8 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      */
     protected void addProvidedShapeURIPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImageDescription_providedShapeID_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_providedShapeID_feature", "_UI_BundledImageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                getString("_UI_BundledImageDescription_providedShapeURI_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_providedShapeURI_feature", "_UI_BundledImageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -120,10 +122,16 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      */
     @Override
     public String getText(Object object) {
-
         String color = new ColorQuery(((BundledImageDescription) object).getColor()).getLabel();
-        String shape = ((BundledImageDescription) object).getShape().getName();
         String label = getString("_UI_BundledImageDescription_type"); //$NON-NLS-1$
+        String shape = ((BundledImageDescription) object).getShape().getName();
+
+        if (shape.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName()) && object instanceof BundledImageDescription) {
+            BundledImageDescription bundledImageDescription = (BundledImageDescription) object;
+            String providedShapeURI = bundledImageDescription.getProvidedShapeURI();
+            BundledImageExtensionQuery bundledImageExtensionQuery = new BundledImageExtensionQuery();
+            shape = bundledImageExtensionQuery.getExtendedLabelForVSM(providedShapeURI);
+        }
 
         if (shape != null && color != null) {
             return label + " " + color + " " + shape; //$NON-NLS-1$ //$NON-NLS-2$
