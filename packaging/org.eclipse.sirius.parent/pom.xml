@@ -340,6 +340,9 @@
       <modules>
         <!-- plugins -->
         <module>../../incubation/org.eclipse.sirius.common.interpreter</module>
+        <module>../../incubation/org.eclipse.sirius.properties</module>
+        <module>../../incubation/org.eclipse.sirius.properties.edit</module>
+        <module>../../incubation/org.eclipse.sirius.editor.properties</module>
         <!-- features -->
         <module>../../incubation/org.eclipse.sirius.incubation</module>
         <!-- update sites -->
