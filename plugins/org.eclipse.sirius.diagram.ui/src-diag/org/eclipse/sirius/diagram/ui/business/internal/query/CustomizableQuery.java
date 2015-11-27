@@ -90,7 +90,7 @@ public class CustomizableQuery {
     }
 
     private boolean isProvidedShapeIdFeature(EStructuralFeature feature) {
-        return DiagramPackage.Literals.BUNDLED_IMAGE__PROVIDED_SHAPE_URI.equals(feature);
+        return DiagramPackage.Literals.BUNDLED_IMAGE__PROVIDED_SHAPE_ID.equals(feature);
     }
 
 }

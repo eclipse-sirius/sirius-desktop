@@ -179,8 +179,8 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
             String newShapeName = bundledImage.getShape().getName();
             if (!StringUtil.isEmpty(newShapeName) && !newShapeName.equals(getShapeName())) {
                 if (newShapeName.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName())) {
-                    String providedShapeURI = bundledImage.getProvidedShapeURI();
-                    IConfigurationElement extension = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeURI(providedShapeURI);
+                    String providedShapeID = bundledImage.getProvidedShapeID();
+                    IConfigurationElement extension = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(providedShapeID);
                     if (extension != null) {
                         final String path = bundledImageExtensionQuery.getImagePath(extension);
                         String imageFileURI = "platform:/plugin" + path; //$NON-NLS-1$
@@ -339,7 +339,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
     private Element findElementInDocument(BundledImage bundledImage, Document document, String elementId, String defaultId) {
         Element element = null;
         String findParameterInExtension = getBundledImageExtensionQuery().findParameterInExtension(
-                getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeURI(bundledImage.getProvidedShapeURI()), elementId);
+                getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()), elementId);
         if (findParameterInExtension != null) {
             element = document.getElementById(findParameterInExtension);
         } else {
@@ -351,7 +351,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
     private String getAttributeValue(Element documentElement, BundledImage bundledImage, String attributeId, String defaultId) {
         if (BundledImageShape.PROVIDED_SHAPE_LITERAL.equals(bundledImage.getShape())) {
             return documentElement.getAttribute(getBundledImageExtensionQuery().findParameterInExtension(
-                    getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeURI(bundledImage.getProvidedShapeURI()), attributeId));
+                    getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()), attributeId));
         }
         return documentElement.getAttribute(defaultId);
     }

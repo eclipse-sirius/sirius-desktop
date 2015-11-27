@@ -679,7 +679,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
         defaultValueLiteral="0,0,0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="providedShapeURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="providedShapeID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkspaceImage" eSuperTypes="#//NodeStyle #//ContainerStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1928,7 +1928,7 @@
             <details key="documentation" value="The color to use."/>
           </eAnnotations>
         </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="providedShapeURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="providedShapeID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="NoteDescription" eSuperTypes="#//description/style/NodeStyleDescription">
         <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"

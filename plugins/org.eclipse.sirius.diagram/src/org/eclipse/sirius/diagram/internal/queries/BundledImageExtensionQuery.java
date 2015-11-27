@@ -114,18 +114,18 @@ public class BundledImageExtensionQuery {
      * shape. This label is the image label, declared in the extension, with a
      * suffix concerning the plug-in name where this shape is provided.
      * 
-     * @param providedShapeURI
-     *            the shape URI to compute its label.
+     * @param providedShapeID
+     *            the shape ID to compute its label.
      * @return the label to display in the VSM.
      */
-    public String getExtendedLabelForVSM(String providedShapeURI) {
+    public String getExtendedLabelForVSM(String providedShapeID) {
         for (IConfigurationElement configurationElement : extensions) {
             String identifier = ((ExtensionHandle) configurationElement.getParent()).getSimpleIdentifier();
-            if (identifier != null && identifier.equals(providedShapeURI)) {
+            if (identifier != null && identifier.equals(providedShapeID)) {
                 return getExtendedLabelForVSM(configurationElement);
             }
         }
-        return "Unknown URI"; //$NON-NLS-1$
+        return "Unknown ID"; //$NON-NLS-1$
     }
 
     private String getExtendedLabelForVSM(IConfigurationElement configurationElement) {
@@ -133,16 +133,16 @@ public class BundledImageExtensionQuery {
     }
 
     /**
-     * Find the extension that declares the shape with the given URI.
+     * Find the extension that declares the shape with the given ID.
      * 
-     * @param providedShapeURI
-     *            the shape URI to look for.
-     * @return the extension providing the shape with the given URI.
+     * @param providedShapeID
+     *            the shape ID to look for.
+     * @return the extension providing the shape with the given ID.
      */
-    public IConfigurationElement getExtensionDefiningProvidedShapeURI(String providedShapeURI) {
+    public IConfigurationElement getExtensionDefiningProvidedShapeID(String providedShapeID) {
         for (IConfigurationElement configurationElement : extensions) {
             String identifier = ((ExtensionHandle) configurationElement.getParent()).getSimpleIdentifier();
-            if (identifier != null && identifier.equals(providedShapeURI)) {
+            if (identifier != null && identifier.equals(providedShapeID)) {
                 return configurationElement;
             }
         }

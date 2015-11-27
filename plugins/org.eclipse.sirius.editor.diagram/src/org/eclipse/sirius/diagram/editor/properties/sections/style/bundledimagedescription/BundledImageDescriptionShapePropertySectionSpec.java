@@ -70,7 +70,7 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
                     /* apply the property change to single selected object */
                     CompoundCommand cc = new CompoundCommand("Set provided shape to Bundle Image Description");
                     cc.append(SetCommand.create(editingDomain, eObject, getFeature(), BundledImageShape.PROVIDED_SHAPE_LITERAL));
-                    cc.append(SetCommand.create(editingDomain, eObject, StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeURI(), identifier));
+                    cc.append(SetCommand.create(editingDomain, eObject, StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeID(), identifier));
                     editingDomain.getCommandStack().execute(cc);
                 } else {
                     CompoundCommand compoundCommand = new CompoundCommand();
@@ -78,7 +78,7 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
                     for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
                         EObject nextObject = i.next();
                         compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), BundledImageShape.PROVIDED_SHAPE_LITERAL));
-                        compoundCommand.append(SetCommand.create(editingDomain, nextObject, StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeURI(), identifier));
+                        compoundCommand.append(SetCommand.create(editingDomain, nextObject, StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeID(), identifier));
                     }
                     editingDomain.getCommandStack().execute(compoundCommand);
                 }
@@ -96,10 +96,10 @@ public class BundledImageDescriptionShapePropertySectionSpec extends BundledImag
         final String label = getPropertyLabel(eObject.eGet(eFeature));
         if (label.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName()) && eObject instanceof BundledImageDescription) {
             BundledImageDescription bundledImageDescription = (BundledImageDescription) eObject;
-            String providedShapeURI = bundledImageDescription.getProvidedShapeURI();
+            String providedShapeID = bundledImageDescription.getProvidedShapeID();
 
             BundledImageExtensionQuery bundledImageExtensionQuery = new BundledImageExtensionQuery();
-            return bundledImageExtensionQuery.getExtendedLabelForVSM(providedShapeURI);
+            return bundledImageExtensionQuery.getExtendedLabelForVSM(providedShapeID);
         }
         return label != null ? label : getDefaultFeatureAsText();
     }

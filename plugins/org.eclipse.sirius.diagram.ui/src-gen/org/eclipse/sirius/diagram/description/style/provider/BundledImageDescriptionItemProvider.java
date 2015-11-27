@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.internal.queries.BundledImageExtensionQuery;
  * @generated
  */
 public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionItemProvider {
+
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -98,9 +99,9 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
      */
     protected void addProvidedShapeURIPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImageDescription_providedShapeURI_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_providedShapeURI_feature", "_UI_BundledImageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_BundledImageDescription_providedShapeID_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BundledImageDescription_providedShapeID_feature", "_UI_BundledImageDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                StylePackage.Literals.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -128,9 +129,9 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
 
         if (shape.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName()) && object instanceof BundledImageDescription) {
             BundledImageDescription bundledImageDescription = (BundledImageDescription) object;
-            String providedShapeURI = bundledImageDescription.getProvidedShapeURI();
+            String providedShapeID = bundledImageDescription.getProvidedShapeID();
             BundledImageExtensionQuery bundledImageExtensionQuery = new BundledImageExtensionQuery();
-            shape = bundledImageExtensionQuery.getExtendedLabelForVSM(providedShapeURI);
+            shape = bundledImageExtensionQuery.getExtendedLabelForVSM(providedShapeID);
         }
 
         if (shape != null && color != null) {
@@ -155,7 +156,7 @@ public class BundledImageDescriptionItemProvider extends NodeStyleDescriptionIte
         switch (notification.getFeatureID(BundledImageDescription.class)) {
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__SHAPE:
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR:
-        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI:
+        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

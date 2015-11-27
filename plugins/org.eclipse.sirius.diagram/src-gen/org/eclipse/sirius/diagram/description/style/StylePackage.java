@@ -1165,13 +1165,13 @@ public interface StylePackage extends EPackage {
     int BUNDLED_IMAGE_DESCRIPTION__COLOR = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Provided Shape URI</b></em>' attribute.
+     * The feature id for the '<em><b>Provided Shape ID</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID = StylePackage.NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -3477,16 +3477,16 @@ public interface StylePackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeURI
-     * <em>Provided Shape URI</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * {@link org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeID
+     * <em>Provided Shape ID</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
-     * @return the meta object for the attribute '<em>Provided Shape URI</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeURI()
+     * @return the meta object for the attribute '<em>Provided Shape ID</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.BundledImageDescription#getProvidedShapeID()
      * @see #getBundledImageDescription()
      * @generated
      */
-    EAttribute getBundledImageDescription_ProvidedShapeURI();
+    EAttribute getBundledImageDescription_ProvidedShapeID();
 
     /**
      * Returns the meta object for class '
@@ -4424,12 +4424,12 @@ public interface StylePackage extends EPackage {
         EReference BUNDLED_IMAGE_DESCRIPTION__COLOR = StylePackage.eINSTANCE.getBundledImageDescription_Color();
 
         /**
-         * The meta object literal for the '<em><b>Provided Shape URI</b></em>'
+         * The meta object literal for the '<em><b>Provided Shape ID</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated
          */
-        EAttribute BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI = StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeURI();
+        EAttribute BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID = StylePackage.eINSTANCE.getBundledImageDescription_ProvidedShapeID();
 
         /**
          * The meta object literal for the '

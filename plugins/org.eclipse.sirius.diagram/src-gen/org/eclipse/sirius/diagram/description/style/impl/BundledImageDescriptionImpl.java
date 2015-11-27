@@ -33,8 +33,8 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * {@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl#getColor
  * <em>Color</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl#getProvidedShapeURI
- * <em>Provided Shape URI</em>}</li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.BundledImageDescriptionImpl#getProvidedShapeID
+ * <em>Provided Shape ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,26 +72,26 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
     protected ColorDescription color;
 
     /**
-     * The default value of the '{@link #getProvidedShapeURI()
-     * <em>Provided Shape URI</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getProvidedShapeID()
+     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
-     * @see #getProvidedShapeURI()
+     * @see #getProvidedShapeID()
      * @generated
      * @ordered
      */
-    protected static final String PROVIDED_SHAPE_URI_EDEFAULT = null;
+    protected static final String PROVIDED_SHAPE_ID_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getProvidedShapeURI()
-     * <em>Provided Shape URI</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getProvidedShapeID()
+     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
-     * @see #getProvidedShapeURI()
+     * @see #getProvidedShapeID()
      * @generated
      * @ordered
      */
-    protected String providedShapeURI = BundledImageDescriptionImpl.PROVIDED_SHAPE_URI_EDEFAULT;
+    protected String providedShapeID = BundledImageDescriptionImpl.PROVIDED_SHAPE_ID_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -184,8 +184,8 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
      * @generated
      */
     @Override
-    public String getProvidedShapeURI() {
-        return providedShapeURI;
+    public String getProvidedShapeID() {
+        return providedShapeID;
     }
 
     /**
@@ -194,11 +194,11 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
      * @generated
      */
     @Override
-    public void setProvidedShapeURI(String newProvidedShapeURI) {
-        String oldProvidedShapeURI = providedShapeURI;
-        providedShapeURI = newProvidedShapeURI;
+    public void setProvidedShapeID(String newProvidedShapeID) {
+        String oldProvidedShapeID = providedShapeID;
+        providedShapeID = newProvidedShapeID;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI, oldProvidedShapeURI, providedShapeURI));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID, oldProvidedShapeID, providedShapeID));
         }
     }
 
@@ -217,8 +217,8 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
                 return getColor();
             }
             return basicGetColor();
-        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI:
-            return getProvidedShapeURI();
+        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID:
+            return getProvidedShapeID();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -237,8 +237,8 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR:
             setColor((ColorDescription) newValue);
             return;
-        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI:
-            setProvidedShapeURI((String) newValue);
+        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID:
+            setProvidedShapeID((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -258,8 +258,8 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR:
             setColor((ColorDescription) null);
             return;
-        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI:
-            setProvidedShapeURI(BundledImageDescriptionImpl.PROVIDED_SHAPE_URI_EDEFAULT);
+        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID:
+            setProvidedShapeID(BundledImageDescriptionImpl.PROVIDED_SHAPE_ID_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -277,8 +277,8 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
             return shape != BundledImageDescriptionImpl.SHAPE_EDEFAULT;
         case StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR:
             return color != null;
-        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI:
-            return BundledImageDescriptionImpl.PROVIDED_SHAPE_URI_EDEFAULT == null ? providedShapeURI != null : !BundledImageDescriptionImpl.PROVIDED_SHAPE_URI_EDEFAULT.equals(providedShapeURI);
+        case StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID:
+            return BundledImageDescriptionImpl.PROVIDED_SHAPE_ID_EDEFAULT == null ? providedShapeID != null : !BundledImageDescriptionImpl.PROVIDED_SHAPE_ID_EDEFAULT.equals(providedShapeID);
         }
         return super.eIsSet(featureID);
     }
@@ -297,8 +297,8 @@ public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implem
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (shape: "); //$NON-NLS-1$
         result.append(shape);
-        result.append(", providedShapeURI: "); //$NON-NLS-1$
-        result.append(providedShapeURI);
+        result.append(", providedShapeID: "); //$NON-NLS-1$
+        result.append(providedShapeID);
         result.append(')');
         return result.toString();
     }

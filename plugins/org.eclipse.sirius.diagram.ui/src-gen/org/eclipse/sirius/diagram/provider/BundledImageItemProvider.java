@@ -54,7 +54,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
 
             addShapePropertyDescriptor(object);
             addColorPropertyDescriptor(object);
-            addProvidedShapeURIPropertyDescriptor(object);
+            addProvidedShapeIDPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -93,11 +93,11 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
      *
      * @generated
      */
-    protected void addProvidedShapeURIPropertyDescriptor(Object object) {
+    protected void addProvidedShapeIDPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BundledImage_providedShapeURI_feature"), //$NON-NLS-1$
-                getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_providedShapeURI_feature", "_UI_BundledImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                DiagramPackage.Literals.BUNDLED_IMAGE__PROVIDED_SHAPE_URI, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_BundledImage_providedShapeID_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_providedShapeID_feature", "_UI_BundledImage_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                DiagramPackage.Literals.BUNDLED_IMAGE__PROVIDED_SHAPE_ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -138,7 +138,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
         switch (notification.getFeatureID(BundledImage.class)) {
         case DiagramPackage.BUNDLED_IMAGE__SHAPE:
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
-        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_URI:
+        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_ID:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

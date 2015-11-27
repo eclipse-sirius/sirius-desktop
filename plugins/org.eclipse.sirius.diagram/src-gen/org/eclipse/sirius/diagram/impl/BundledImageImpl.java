@@ -32,8 +32,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <li>{@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getColor <em>
  * Color</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getProvidedShapeURI
- * <em>Provided Shape URI</em>}</li>
+ * {@link org.eclipse.sirius.diagram.impl.BundledImageImpl#getProvidedShapeID
+ * <em>Provided Shape ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,26 +81,26 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     protected RGBValues color = BundledImageImpl.COLOR_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getProvidedShapeURI()
-     * <em>Provided Shape URI</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getProvidedShapeID()
+     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
-     * @see #getProvidedShapeURI()
+     * @see #getProvidedShapeID()
      * @generated
      * @ordered
      */
-    protected static final String PROVIDED_SHAPE_URI_EDEFAULT = null;
+    protected static final String PROVIDED_SHAPE_ID_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getProvidedShapeURI()
-     * <em>Provided Shape URI</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getProvidedShapeID()
+     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
-     * @see #getProvidedShapeURI()
+     * @see #getProvidedShapeID()
      * @generated
      * @ordered
      */
-    protected String providedShapeURI = BundledImageImpl.PROVIDED_SHAPE_URI_EDEFAULT;
+    protected String providedShapeID = BundledImageImpl.PROVIDED_SHAPE_ID_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -175,8 +175,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * @generated
      */
     @Override
-    public String getProvidedShapeURI() {
-        return providedShapeURI;
+    public String getProvidedShapeID() {
+        return providedShapeID;
     }
 
     /**
@@ -185,11 +185,11 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * @generated
      */
     @Override
-    public void setProvidedShapeURI(String newProvidedShapeURI) {
-        String oldProvidedShapeURI = providedShapeURI;
-        providedShapeURI = newProvidedShapeURI;
+    public void setProvidedShapeID(String newProvidedShapeID) {
+        String oldProvidedShapeID = providedShapeID;
+        providedShapeID = newProvidedShapeID;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_URI, oldProvidedShapeURI, providedShapeURI));
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_ID, oldProvidedShapeID, providedShapeID));
         }
     }
 
@@ -205,8 +205,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
             return getShape();
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
             return getColor();
-        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_URI:
-            return getProvidedShapeURI();
+        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_ID:
+            return getProvidedShapeID();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -225,8 +225,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
             setColor((RGBValues) newValue);
             return;
-        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_URI:
-            setProvidedShapeURI((String) newValue);
+        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_ID:
+            setProvidedShapeID((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -246,8 +246,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
             setColor(BundledImageImpl.COLOR_EDEFAULT);
             return;
-        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_URI:
-            setProvidedShapeURI(BundledImageImpl.PROVIDED_SHAPE_URI_EDEFAULT);
+        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_ID:
+            setProvidedShapeID(BundledImageImpl.PROVIDED_SHAPE_ID_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -265,8 +265,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
             return shape != BundledImageImpl.SHAPE_EDEFAULT;
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
             return BundledImageImpl.COLOR_EDEFAULT == null ? color != null : !BundledImageImpl.COLOR_EDEFAULT.equals(color);
-        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_URI:
-            return BundledImageImpl.PROVIDED_SHAPE_URI_EDEFAULT == null ? providedShapeURI != null : !BundledImageImpl.PROVIDED_SHAPE_URI_EDEFAULT.equals(providedShapeURI);
+        case DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_ID:
+            return BundledImageImpl.PROVIDED_SHAPE_ID_EDEFAULT == null ? providedShapeID != null : !BundledImageImpl.PROVIDED_SHAPE_ID_EDEFAULT.equals(providedShapeID);
         }
         return super.eIsSet(featureID);
     }
@@ -287,8 +287,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         result.append(shape);
         result.append(", color: "); //$NON-NLS-1$
         result.append(color);
-        result.append(", providedShapeURI: "); //$NON-NLS-1$
-        result.append(providedShapeURI);
+        result.append(", providedShapeID: "); //$NON-NLS-1$
+        result.append(providedShapeID);
         result.append(')');
         return result.toString();
     }

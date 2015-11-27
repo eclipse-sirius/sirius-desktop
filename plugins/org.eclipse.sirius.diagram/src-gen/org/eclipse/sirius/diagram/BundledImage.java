@@ -25,8 +25,8 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.BundledImage#getShape <em>Shape</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.BundledImage#getProvidedShapeURI <em>
- * Provided Shape URI</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.BundledImage#getProvidedShapeID <em>
+ * Provided Shape ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -94,7 +94,7 @@ public interface BundledImage extends NodeStyle {
     void setColor(RGBValues value);
 
     /**
-     * Returns the value of the '<em><b>Provided Shape URI</b></em>' attribute.
+     * Returns the value of the '<em><b>Provided Shape ID</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Provided Shape URI</em>' attribute isn't
@@ -102,25 +102,25 @@ public interface BundledImage extends NodeStyle {
      * </p>
      * <!-- end-user-doc -->
      *
-     * @return the value of the '<em>Provided Shape URI</em>' attribute.
-     * @see #setProvidedShapeURI(String)
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImage_ProvidedShapeURI()
+     * @return the value of the '<em>Provided Shape ID</em>' attribute.
+     * @see #setProvidedShapeID(String)
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImage_ProvidedShapeID()
      * @model
      * @generated
      */
-    String getProvidedShapeURI();
+    String getProvidedShapeID();
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.BundledImage#getProvidedShapeURI
-     * <em>Provided Shape URI</em>}' attribute. <!-- begin-user-doc --> <!--
+     * {@link org.eclipse.sirius.diagram.BundledImage#getProvidedShapeID
+     * <em>Provided Shape ID</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @param value
-     *            the new value of the '<em>Provided Shape URI</em>' attribute.
-     * @see #getProvidedShapeURI()
+     *            the new value of the '<em>Provided Shape ID</em>' attribute.
+     * @see #getProvidedShapeID()
      * @generated
      */
-    void setProvidedShapeURI(String value);
+    void setProvidedShapeID(String value);
 
 } // BundledImage

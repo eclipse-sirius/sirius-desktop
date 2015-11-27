@@ -569,7 +569,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * @generated
      */
     @Override
-    public EAttribute getBundledImageDescription_ProvidedShapeURI() {
+    public EAttribute getBundledImageDescription_ProvidedShapeID() {
         return (EAttribute) bundledImageDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
@@ -1165,7 +1165,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         bundledImageDescriptionEClass = createEClass(StylePackage.BUNDLED_IMAGE_DESCRIPTION);
         createEAttribute(bundledImageDescriptionEClass, StylePackage.BUNDLED_IMAGE_DESCRIPTION__SHAPE);
         createEReference(bundledImageDescriptionEClass, StylePackage.BUNDLED_IMAGE_DESCRIPTION__COLOR);
-        createEAttribute(bundledImageDescriptionEClass, StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_URI);
+        createEAttribute(bundledImageDescriptionEClass, StylePackage.BUNDLED_IMAGE_DESCRIPTION__PROVIDED_SHAPE_ID);
 
         noteDescriptionEClass = createEClass(StylePackage.NOTE_DESCRIPTION);
         createEReference(noteDescriptionEClass, StylePackage.NOTE_DESCRIPTION__COLOR);
@@ -1405,9 +1405,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 null,
                 "color", null, 1, 1, BundledImageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         initEAttribute(
-                getBundledImageDescription_ProvidedShapeURI(),
+                getBundledImageDescription_ProvidedShapeID(),
                 ecorePackage.getEString(),
-                "providedShapeURI", null, 0, 1, BundledImageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+                "providedShapeID", null, 0, 1, BundledImageDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(noteDescriptionEClass, NoteDescription.class, "NoteDescription", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(

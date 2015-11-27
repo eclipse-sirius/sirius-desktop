@@ -1786,7 +1786,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EAttribute getBundledImage_ProvidedShapeURI() {
+    public EAttribute getBundledImage_ProvidedShapeID() {
         return (EAttribute) bundledImageEClass.getEStructuralFeatures().get(2);
     }
 
@@ -2547,7 +2547,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         bundledImageEClass = createEClass(DiagramPackage.BUNDLED_IMAGE);
         createEAttribute(bundledImageEClass, DiagramPackage.BUNDLED_IMAGE__SHAPE);
         createEAttribute(bundledImageEClass, DiagramPackage.BUNDLED_IMAGE__COLOR);
-        createEAttribute(bundledImageEClass, DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_URI);
+        createEAttribute(bundledImageEClass, DiagramPackage.BUNDLED_IMAGE__PROVIDED_SHAPE_ID);
 
         workspaceImageEClass = createEClass(DiagramPackage.WORKSPACE_IMAGE);
         createEAttribute(workspaceImageEClass, DiagramPackage.WORKSPACE_IMAGE__WORKSPACE_PATH);
@@ -3220,9 +3220,9 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 theViewpointPackage.getRGBValues(),
                 "color", "0,0,0", 0, 1, BundledImage.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
         initEAttribute(
-                getBundledImage_ProvidedShapeURI(),
+                getBundledImage_ProvidedShapeID(),
                 ecorePackage.getEString(),
-                "providedShapeURI", null, 0, 1, BundledImage.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+                "providedShapeID", null, 0, 1, BundledImage.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(workspaceImageEClass, WorkspaceImage.class, "WorkspaceImage", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(

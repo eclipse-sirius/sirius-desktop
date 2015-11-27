@@ -1045,9 +1045,9 @@ public final class StyleHelper {
             if (image.getShape().getValue() != description.getShape().getValue() && !image.getCustomFeatures().contains(DiagramPackage.Literals.BUNDLED_IMAGE__SHAPE.getName())) {
                 image.setShape(description.getShape());
             }
-            if (image.getShape() != null && image.getShape().equals(BundledImageShape.PROVIDED_SHAPE_LITERAL) && description.getProvidedShapeURI() != null
-                    && !description.getProvidedShapeURI().equals(image.getProvidedShapeURI())) {
-                image.setProvidedShapeURI(description.getProvidedShapeURI());
+            if (image.getShape() != null && image.getShape().equals(BundledImageShape.PROVIDED_SHAPE_LITERAL) && description.getProvidedShapeID() != null
+                    && !description.getProvidedShapeID().equals(image.getProvidedShapeID())) {
+                image.setProvidedShapeID(description.getProvidedShapeID());
             }
         }
     }
