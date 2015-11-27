@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="ViewExtensionDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code ViewExtensionDescription description -->
+   
+   <!-- End of user code ViewExtensionDescription description -->
+   
+      </description>
+   </context>
+   <context id="PageDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code PageDescription description -->
+   
+   <!-- End of user code PageDescription description -->
+   
+      </description>
+   </context>
+   <context id="GroupDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code GroupDescription description -->
+   
+   <!-- End of user code GroupDescription description -->
+   
+      </description>
+   </context>
+   <context id="ContainerDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code ContainerDescription description -->
+   
+   <!-- End of user code ContainerDescription description -->
+   
+      </description>
+   </context>
+   <context id="WidgetDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code WidgetDescription description -->
+   
+   <!-- End of user code WidgetDescription description -->
+   
+      </description>
+   </context>
+   <context id="TextDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code TextDescription description -->
+   
+   <!-- End of user code TextDescription description -->
+   
+      </description>
+   </context>
+</contexts>
