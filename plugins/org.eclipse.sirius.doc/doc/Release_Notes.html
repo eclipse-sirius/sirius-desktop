@@ -107,6 +107,9 @@
 				<code>ITabbarContributor</code> through the 
 				<code>org.eclipse.sirius.diagram.ui.tabbarContributor</code> extension-point. See the developer documentation for more details.
 			</li>
+			<li><span class="label label-success">Added</span> It is now possible to provide new shapes for basic shape styles through the 
+				<code>org.eclipse.sirius.diagram.bundledImageShape</code> extension-point. See the developer documentation for more details.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
@@ -118,6 +121,14 @@
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor</code> is an abstract implementation of 
 				<code>ITabbarContributor</code> that allows reusing one or several of the default Sirius contribution items.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription.BundledImageDescriptionShapePropertySectionSpec</code> has been added to have a custom display in the VSM for provided basic shape.
+			</li>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.BundleImageFigure</code> now overrides the method 
+				<code>setBorder(Border border)</code>. It also provides the accessors for the new field 
+				<code>mainBorderSize</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.emf.ui">Changes in 

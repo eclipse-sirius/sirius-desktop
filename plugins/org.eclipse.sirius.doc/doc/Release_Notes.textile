@@ -21,12 +21,15 @@ h3. Specifier-Visible Changes
 h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> It is now possible to provide a full customized tab-bar by implementing the @ITabbarContributor@ through the @org.eclipse.sirius.diagram.ui.tabbarContributor@ extension-point. See the developer documentation for more details.
+* <span class="label label-success">Added</span> It is now possible to provide new shapes for basic shape styles through the @org.eclipse.sirius.diagram.bundledImageShape@ extension-point. See the developer documentation for more details.
 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor@ interface has been added to provide a customized tab-bar for a specific selection.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor@ is an abstract implementation of @ITabbarContributor@ that allows reusing one or several of the default Sirius contribution items.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription.BundledImageDescriptionShapePropertySectionSpec@ has been added to have a custom display in the VSM for provided basic shape.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.figure.BundleImageFigure@ now overrides the method @setBorder(Border border)@. It also provides the accessors for the new field @mainBorderSize@.
 
 h4. Changes in @org.eclipse.sirius.ext.emf.ui@
 
