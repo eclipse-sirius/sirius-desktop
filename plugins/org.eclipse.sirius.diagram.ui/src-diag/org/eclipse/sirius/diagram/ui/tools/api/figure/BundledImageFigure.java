@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -170,6 +171,15 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
         return fig;
     }
 
+    @Override
+    public void setBorder(Border border) {
+        if (BundledImageShape.getByName(shapeName) != null) {
+            super.setBorder(null);
+        } else {
+            super.setBorder(border);
+        }
+    }
+
     /**
      * @param bundle
      */
@@ -212,8 +222,8 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
     /**
      * @param bundledImage
      * @param force
-     *            If the border size must be force to refresh (in case of shape update
-     *            for sample)
+     *            If the border size must be force to refresh (in case of shape
+     *            update for sample)
      */
     private boolean updateBorderSize(BundledImage bundledImage, boolean force) {
         boolean updated = updateBorderSizeFields(bundledImage);
@@ -262,7 +272,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
 
     private boolean updateBorderSizeFields(BundledImage bundledImage) {
         // Compute border size
-        int borderSize = bundledImage.getBorderSize();        
+        int borderSize = bundledImage.getBorderSize();
         boolean updated = false;
 
         if (borderSize != this.getMainBorderSize()) {
@@ -514,6 +524,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * 
      * @return The key corresponding to this BundleImageFigure.
      */
+    @Override
     protected String getKey() {
         StringBuffer result = new StringBuffer();
         result.append(getDocumentKey());
@@ -531,6 +542,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * 
      * @return The key corresponding to this BundleImageFigure.
      */
+    @Override
     protected String getDocumentKey() {
         StringBuffer result = new StringBuffer();
         result.append(super.getDocumentKey());
