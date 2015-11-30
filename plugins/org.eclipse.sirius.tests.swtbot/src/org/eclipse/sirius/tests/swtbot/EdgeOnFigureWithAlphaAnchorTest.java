@@ -21,8 +21,10 @@ import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
@@ -82,6 +84,8 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
 
     private static final String ECLASS_A = "a";
 
+    private static final String ECLASS_PROVIDED = "Provided";
+
     private static final String EREFERENCE_TO_NOTE = "toNote";
 
     private static final String EREFERENCE_TO_NOTE2 = "toNote2";
@@ -95,6 +99,10 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     private static final String EREFERENCE_CIRCLES_USES = "circlesUses";
 
     private static final String EREFERENCE_TO_C2 = "toC2";
+
+    private static final String EREFERENCE_TO_PROVIDED = "toProvided";
+
+    private static final String EREFERENCE_PROVIDED_TO_C2 = "ProvidedToC2";
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -121,6 +129,8 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
         checkEdgeExtremitiesLocation(EREFERENCE_COW_USES, ECLASS_COW, ECLASS_USE_CASE, false, false);
         checkEdgeExtremitiesLocation(EREFERENCE_CIRCLES_USES, ECLASS_CIRCLES, ECLASS_USE_CASE, false, false);
         checkEdgeExtremitiesLocation(EREFERENCE_TO_NOTE2, ECLASS_CIRCLE_WITH_BLANK, ECLASS_NOTE, false, true);
+        checkEdgeExtremitiesLocation(EREFERENCE_TO_PROVIDED, ECLASS_SQUARE, ECLASS_PROVIDED, true, false);
+        checkEdgeExtremitiesLocation(EREFERENCE_PROVIDED_TO_C2, ECLASS_PROVIDED, ECLASS_ELLIPSE, false, true);
     }
 
     /**
@@ -141,10 +151,25 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
         editor.drag(originalPoint, targetPoint);
 
         // Check that the edge has been moved
-        referenceEditPartBot = editor.getEditPart(EREFERENCE_TO_NOTE, AbstractConnectionEditPart.class);
+        referenceEditPartBot = editor.getEditPart(EREFERENCE_TO_C2, AbstractConnectionEditPart.class);
         assertNotEquals("The first point of edge should be different", originalPoint, getPointList((AbstractConnectionEditPart) referenceEditPartBot.part()).getFirstPoint());
         // Check edge extremities
         checkEdgeExtremitiesLocation(EREFERENCE_TO_C2, ECLASS_ACTOR, ECLASS_ELLIPSE, false, true);
+    }
+
+    /**
+     * Test drag edge source to a figure provided shape with alpha.
+     */
+    public void testDragSourceProvidedShape() {
+        testDragProvidedShape(false, true);
+    }
+
+    /**
+     * Test drag edge source to a figure provided shape with alpha. This test is
+     * performed with a zoom and an scrollbar.
+     */
+    public void testDragSourceProvidedShapeWithZoomAndScroll() {
+        testDragProvidedShape(true, true);
     }
 
     /**
@@ -172,6 +197,83 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
+     * Test drag edge target to a figure provided shape with alpha.
+     */
+    public void testDragTargetProvidedShape() {
+        testDragProvidedShape(false, false);
+    }
+
+    /**
+     * Test drag edge target to a figure provided shape with alpha. This test is
+     * performed with a zoom and an scrollbar.
+     */
+    public void testDragTargetProvidedShapeWithZoomAndScroll() {
+        testDragProvidedShape(true, false);
+    }
+
+    private void testDragProvidedShape(boolean zoomAndScroll, boolean isSource) {
+        if (zoomAndScroll) {
+            editor.zoom(ZoomLevel.ZOOM_125);
+            editor.reveal(ECLASS_PROVIDED);
+            SWTBotUtils.waitAllUiEvents();
+        } else {
+            editor.maximize();
+            SWTBotUtils.waitAllUiEvents();
+        }
+        try {
+            SWTBotGefEditPart referenceEditPartBot = editor.getEditPart(EREFERENCE_TO_C2, AbstractConnectionEditPart.class);
+            PointList newEReference1PointList = getPointList((AbstractConnectionEditPart) referenceEditPartBot.part());
+
+            Point originalPoint = new Point();
+            // Point to move
+
+            if (isSource) {
+                originalPoint = newEReference1PointList.getFirstPoint();
+            } else {
+                originalPoint = newEReference1PointList.getLastPoint();
+            }
+            // reconnection bounds
+            Rectangle newBounds = editor.getBounds(editor.getEditPart(ECLASS_PROVIDED, AbstractDiagramNodeEditPart.class));
+
+            if (zoomAndScroll) {
+                if (isSource) {
+                    originalPoint = new Point(316, 306);
+                } else {
+                    originalPoint = new Point(565, 242);
+                }
+            }
+            Point targetPoint = newBounds.getCenter();
+
+            // Select the edge and move it
+            editor.select(referenceEditPartBot);
+            editor.drag(originalPoint, targetPoint);
+
+            // Check that the edge has been moved
+            referenceEditPartBot = editor.getEditPart(EREFERENCE_TO_C2, AbstractConnectionEditPart.class);
+            if (isSource) {
+                assertNotEquals("The first point of edge should be different", originalPoint, getPointList((AbstractConnectionEditPart) referenceEditPartBot.part()).getFirstPoint());
+            } else {
+                assertNotEquals("The last point of edge should be different", originalPoint, getPointList((AbstractConnectionEditPart) referenceEditPartBot.part()).getLastPoint());
+            }
+
+            if (zoomAndScroll) {
+                editor.maximize();
+                editor.zoom(ZoomLevel.ZOOM_100);
+                SWTBotUtils.waitAllUiEvents();
+            }
+            // Check edge extremities
+            if (isSource) {
+                checkEdgeExtremitiesLocation(EREFERENCE_TO_C2, ECLASS_PROVIDED, ECLASS_ELLIPSE, false, true);
+            } else {
+                checkEdgeExtremitiesLocation(EREFERENCE_TO_C2, ECLASS_SQUARE, ECLASS_PROVIDED, true, false);
+            }
+        } finally {
+            editor.restore();
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
+    }
+
+    /**
      * Test oblique edge creation.
      */
     public void testCreateObliqueEdge() {
@@ -189,6 +291,36 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
         createEdge(ECLASS_ACTOR, ECLASS_USE_CASE, "ReferenceRectilinear", newReferenceName);
         // Check edge extremities of this new edge
         checkEdgeExtremitiesLocation(newReferenceName, ECLASS_ACTOR, ECLASS_USE_CASE, false, false);
+    }
+
+    /**
+     * Test oblique edge creation on provided shape.
+     */
+    public void testCreateObliqueEdgeOnProvidedShape() {
+        editor.maximize();
+        try {
+            String newReferenceName = "newReference";
+            createEdge(ECLASS_SQUARE, ECLASS_PROVIDED, "Reference", newReferenceName);
+            // Check edge extremities of this new edge
+            checkEdgeExtremitiesLocation(newReferenceName, ECLASS_SQUARE, ECLASS_PROVIDED, true, false);
+        } finally {
+            editor.restore();
+        }
+    }
+
+    /**
+     * Test rectilinear edge creation on provided shape.
+     */
+    public void testCreateRectlinearEdgeOnProvidedShape() {
+        editor.maximize();
+        try {
+            String newReferenceName = "rectilinear";
+            createEdge(ECLASS_SQUARE, ECLASS_PROVIDED, "ReferenceRectilinear", newReferenceName);
+            // Check edge extremities of this new edge
+            checkEdgeExtremitiesLocation(newReferenceName, ECLASS_SQUARE, ECLASS_PROVIDED, true, false);
+        } finally {
+            editor.restore();
+        }
     }
 
     /**

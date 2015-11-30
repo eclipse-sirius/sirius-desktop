@@ -110,4 +110,30 @@
           type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
     </propertyTester>
  </extension>
+  <extension
+        id="sample.design.donut"
+        point="org.eclipse.sirius.diagram.bundledImageShape">
+     <image
+           imagePath="/org.eclipse.sirius.tests.swtbot/data/unit/edgeOnFigureWithAlphaAnchor/donut.svg"
+           label="Donut">
+        <colorIdentifier
+              colorIdentifier="stop8224-2">
+        </colorIdentifier>
+        <colorAttribute
+              colorAttribute="style">
+        </colorAttribute>
+        <borderColorIdentifier
+              borderColorIdentifier="path10796-2-6-2-7">
+        </borderColorIdentifier>
+        <borderColorAttribute
+              borderColorAttribute="style">
+        </borderColorAttribute>
+        <borderSizeIdentifier
+              borderSizeIdentifier="path10796-2-6-2-7">
+        </borderSizeIdentifier>
+        <borderSizeAttribute
+              borderSizeAttribute="style">
+        </borderSizeAttribute>
+     </image>
+  </extension>
 </plugin>

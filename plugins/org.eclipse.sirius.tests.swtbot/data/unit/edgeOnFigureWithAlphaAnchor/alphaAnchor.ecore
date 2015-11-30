@@ -3,6 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
   <eClassifiers xsi:type="ecore:EClass" name="square">
     <eStructuralFeatures xsi:type="ecore:EReference" name="toC2" eType="#//C2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toProvided" eType="#//Provided"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="C2"/>
   <eClassifiers xsi:type="ecore:EClass" name="triangle">
@@ -25,4 +26,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="toNote2" eType="#//note"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="withBorderNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Provided">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ProvidedToC2" eType="#//C2"/>
+  </eClassifiers>
 </ecore:EPackage>
