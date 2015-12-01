@@ -159,9 +159,11 @@ public class BundledImageExtensionQuery {
      * @return the value of the
      */
     public String findParameterInExtension(IConfigurationElement configurationElement, String parameter) {
-        for (IConfigurationElement configurationElementChild : configurationElement.getChildren(parameter)) {
-            if (configurationElementChild.getAttribute(parameter) != null) {
-                return configurationElementChild.getAttribute(parameter);
+        if (configurationElement != null) {
+            for (IConfigurationElement configurationElementChild : configurationElement.getChildren(parameter)) {
+                if (configurationElementChild.getAttribute(parameter) != null) {
+                    return configurationElementChild.getAttribute(parameter);
+                }
             }
         }
         return null;
