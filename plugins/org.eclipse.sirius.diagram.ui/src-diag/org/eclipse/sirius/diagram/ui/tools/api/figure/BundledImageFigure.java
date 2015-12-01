@@ -552,6 +552,8 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
         result.append(mainBorderColor);
         result.append(SEPARATOR);
         result.append(mainGradientColor);
+        result.append(SEPARATOR);
+        result.append(mainBorderSize);
         return result.toString();
     }
 }
