@@ -162,9 +162,9 @@ p. The a new button is added to the tab-bar only when the selection contains an 
 	
 h2. Contribute a full customized tab-bar
 
-Sirius lets the possibility to contribute an entire customized tabbar. To do so, the developer has to contribute an @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor@ to the @org.eclipse.sirius.diagram.ui.tabbarContributor@ extension-point. An abstract implementation of @ITabbarContributor@ exists: @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor@. This implementation contains protected methods that allows creating one or several contributions of the default Sirius tabbar.
+Sirius lets the possibility to contribute an entire customized tab-bar. To do so, the developer has to contribute an @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor@ to the @org.eclipse.sirius.diagram.ui.tabbarContributor@ extension-point. An abstract implementation of @ITabbarContributor@ exists: @org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor@. This implementation contains protected methods that allows creating one or several contributions of the default Sirius tab-bar. See the "Tab-bar":../user/diagrams/Diagrams.html#ref_tabbar section in user manual for more details about each items.
 
-here is an example of @ITabbarContributor@ implementation:
+here is an example of @ITabbarContributor@ implementation. This sample provides two different tab-bar whether the selection is done on a diagram element (a Node or a Container for instance) or on the diagram (no specific selection). If the selection is done on an Edge, the tab-bar will be empty since the sample doesn't return any contributionItem.
 
 bc.. 
 public class TestTabbarExt extends AbstractTabbarContributor {

@@ -187,14 +187,15 @@ public class SampleTestTabbarExtensionActivationPropertyTester extends PropertyT
 			<img border="0" src="images/tabbar_extension_result.png"/>
 		</p>
 		<h2 id="Contributeafullcustomizedtabbar">Contribute a full customized tab-bar</h2>
-		<p>Sirius lets the possibility to contribute an entire customized tabbar. To do so, the developer has to contribute an 
+		<p>Sirius lets the possibility to contribute an entire customized tab-bar. To do so, the developer has to contribute an 
 			<code>org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.ITabbarContributor</code> to the 
 			<code>org.eclipse.sirius.diagram.ui.tabbarContributor</code> extension-point. An abstract implementation of 
 			<code>ITabbarContributor</code> exists: 
-			<code>org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor</code>. This implementation contains protected methods that allows creating one or several contributions of the default Sirius tabbar.
+			<code>org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar.AbstractTabbarContributor</code>. This implementation contains protected methods that allows creating one or several contributions of the default Sirius tab-bar. See the 
+			<a href="../user/diagrams/Diagrams.html#ref_tabbar">Tab-bar</a> section in user manual for more details about each items.
 		</p>
 		<p>here is an example of 
-			<code>ITabbarContributor</code> implementation:
+			<code>ITabbarContributor</code> implementation. This sample provides two different tab-bar whether the selection is done on a diagram element (a Node or a Container for instance) or on the diagram (no specific selection). If the selection is done on an Edge, the tab-bar will be empty since the sample doesn&#8217;t return any contributionItem.
 		</p>
 		<pre><code>public class TestTabbarExt extends AbstractTabbarContributor {
 
