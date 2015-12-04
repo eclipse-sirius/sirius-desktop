@@ -35,7 +35,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
-import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -70,17 +69,7 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
 
             // FIXME We take the first one
             if (objects.length > 0) {
-                Object object = objects[0];
-
-                EObject semanticElement = null;
-                if (object instanceof GraphicalEditPart) {
-                    semanticElement = ((GraphicalEditPart) object).resolveSemanticElement();
-                } else if (object instanceof ConnectionEditPart) {
-                    semanticElement = ((Edge) ((ConnectionEditPart) object).getModel()).getElement();
-                } else if (object instanceof DSemanticDecorator) {
-                    semanticElement = ((DSemanticDecorator) object).getTarget();
-                }
-
+                EObject semanticElement = SemanticElementFinder.getAssociatedSemanticElement(objects[0]);
                 if (semanticElement != null) {
                     // Let's find out the description of the view
                     return this.getTabDescriptors(semanticElement);
@@ -92,10 +81,7 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
 
     private ITabDescriptor[] getTabDescriptors(EObject semanticElement) {
         Session session = new EObjectQuery(semanticElement).getSession();
-        if (session != null && semanticElement instanceof DSemanticDecorator) {
-            DSemanticDecorator dSemanticDecorator = (DSemanticDecorator) semanticElement;
-            EObject eObject = dSemanticDecorator.getTarget();
-
+        if (session != null) {
             Set<Resource> resources = new LinkedHashSet<Resource>();
             Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
             for (Viewpoint viewpoint : selectedViewpoints) {
@@ -121,11 +107,11 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
                 EEFViewDescription eefViewDescription = this.convert(viewExtensionDescription);
 
                 IVariableManager variableManager = new EEFVariableManagerFactory().createVariableManager();
-                variableManager.put(EEFExpressionUtils.SELF, eObject);
+                variableManager.put(EEFExpressionUtils.SELF, semanticElement);
 
                 List<IInterpreterProvider> interpreterProviders = new ArrayList<IInterpreterProvider>();
                 interpreterProviders.add(new SiriusInterpreterProvider(session));
-                EEFView eefView = new EEFViewFactory().createEEFView(eefViewDescription, variableManager, interpreterProviders, session.getTransactionalEditingDomain(), eObject);
+                EEFView eefView = new EEFViewFactory().createEEFView(eefViewDescription, variableManager, interpreterProviders, session.getTransactionalEditingDomain(), semanticElement);
                 List<ITabDescriptor> descriptors = new ArrayList<ITabDescriptor>();
 
                 List<EEFPage> eefPages = eefView.getPages();
