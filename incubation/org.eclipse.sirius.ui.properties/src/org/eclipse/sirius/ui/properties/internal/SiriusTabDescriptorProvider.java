@@ -11,8 +11,6 @@
 package org.eclipse.sirius.ui.properties.internal;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -34,14 +32,17 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.interpreter.api.IInterpreterProvider;
-import org.eclipse.sirius.ext.emf.AllContents;
-import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
 import org.eclipse.ui.views.properties.tabbed.ITabDescriptorProvider;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
 
@@ -54,7 +55,6 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
             Object[] objects = structuredSelection.toArray();
-
             // FIXME We take the first one
             if (objects.length > 0) {
                 EObject semanticElement = SemanticElementFinder.getAssociatedSemanticElement(objects[0]);
@@ -69,50 +69,51 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
 
     private ITabDescriptor[] getTabDescriptors(EObject semanticElement) {
         Session session = new EObjectQuery(semanticElement).getSession();
-        if (session != null) {
-            Set<Resource> resources = new LinkedHashSet<Resource>();
-            Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
-            for (Viewpoint viewpoint : selectedViewpoints) {
-                Resource eResource = viewpoint.eResource();
-                if (eResource != null) {
-                    resources.add(eResource);
-                }
-            }
-
-            List<ViewExtensionDescription> descriptions = new ArrayList<ViewExtensionDescription>();
-            for (Resource resource : resources) {
-                Iterable<EObject> iterable = AllContents.of(resource.getContents().get(0), PropertiesPackage.Literals.VIEW_EXTENSION_DESCRIPTION);
-                for (EObject object : iterable) {
-                    if (object instanceof ViewExtensionDescription) {
-                        descriptions.add((ViewExtensionDescription) object);
-                    }
-                }
-            }
-
-            // FIXME We take only the firts one
-            if (descriptions.size() > 0) {
-                ViewExtensionDescription viewExtensionDescription = descriptions.get(0);
-                EEFViewDescription eefViewDescription = new ViewDescriptionConverter(viewExtensionDescription).convert();
-
-                IVariableManager variableManager = new EEFVariableManagerFactory().createVariableManager();
-                variableManager.put(EEFExpressionUtils.SELF, semanticElement);
-
-                List<IInterpreterProvider> interpreterProviders = new ArrayList<IInterpreterProvider>();
-                interpreterProviders.add(new SiriusInterpreterProvider(session));
-                EEFView eefView = new EEFViewFactory().createEEFView(eefViewDescription, variableManager, interpreterProviders, session.getTransactionalEditingDomain(), semanticElement);
-                List<ITabDescriptor> descriptors = new ArrayList<ITabDescriptor>();
-
-                List<EEFPage> eefPages = eefView.getPages();
-                for (EEFPage eefPage : eefPages) {
-                    EEFTabDescriptor eefTabDescriptor = new EEFTabDescriptor(eefPage);
-                    descriptors.add(eefTabDescriptor);
-                }
-
-                return descriptors.toArray(new ITabDescriptor[descriptors.size()]);
-            }
-
+        List<ViewExtensionDescription> descriptions = findActiveDescriptions(session, semanticElement);
+        // FIXME We take only the firts one
+        if (descriptions.size() > 0) {
+            ViewExtensionDescription viewExtensionDescription = descriptions.get(0);
+            return getTabDescriptors(session, semanticElement, viewExtensionDescription);
         }
-
         return new ITabDescriptor[0];
+    }
+
+    private ITabDescriptor[] getTabDescriptors(Session session, EObject semanticElement, ViewExtensionDescription viewExtensionDescription) {
+        EEFViewDescription viewDescription = new ViewDescriptionConverter(viewExtensionDescription).convert();
+        EEFView eefView = createEEFView(session, semanticElement, viewDescription);
+        
+        List<ITabDescriptor> descriptors = new ArrayList<ITabDescriptor>();
+        List<EEFPage> eefPages = eefView.getPages();
+        for (EEFPage eefPage : eefPages) {
+            descriptors.add(new EEFTabDescriptor(eefPage));
+        }
+        return descriptors.toArray(new ITabDescriptor[descriptors.size()]);
+    }
+
+    private EEFView createEEFView(Session session, EObject semanticElement, EEFViewDescription viewDescription) {
+        IVariableManager variableManager = new EEFVariableManagerFactory().createVariableManager();
+        variableManager.put(EEFExpressionUtils.SELF, semanticElement);
+        List<IInterpreterProvider> interpreterProviders = Lists.<IInterpreterProvider> newArrayList(new SiriusInterpreterProvider(session));
+        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, interpreterProviders, session.getTransactionalEditingDomain(), semanticElement);
+        return eefView;
+    }
+
+    private List<ViewExtensionDescription> findActiveDescriptions(Session session, EObject semanticElement) {
+        List<ViewExtensionDescription> descriptions = new ArrayList<ViewExtensionDescription>();
+        if (session != null) {
+            Set<Resource> activeVSMs = Sets.newLinkedHashSet();
+            for (Viewpoint viewpoint : session.getSelectedViewpoints(true)) {
+                Resource vsm = viewpoint.eResource();
+                if (vsm != null) {
+                    activeVSMs.add(vsm);
+                }
+            }
+
+            for (Resource vsm : activeVSMs) {
+                Group group = (Group) vsm.getContents().get(0);
+                return Lists.newArrayList(Iterables.filter(group.getExtensions(), ViewExtensionDescription.class));
+            }
+        }
+        return descriptions;
     }
 }
