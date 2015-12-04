@@ -15,12 +15,24 @@ import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 
+import com.google.common.base.Preconditions;
+
+/**
+ * Provides an {@link IInterpreter} suitable to the EEF runtime backed by a
+ * specific Sirius session's interpreter. The resulting interpreter allows EEF
+ * to evaluate interpreted expressions in the context of a Sirius session.
+ */
 public class SiriusInterpreterProvider implements IInterpreterProvider {
 
-    private Session session;
+    private final Session session;
 
+    /**
+     * Creates a new interpreter provider.
+     * 
+     * @param session
+     */
     public SiriusInterpreterProvider(Session session) {
-        this.session = session;
+        this.session = Preconditions.checkNotNull(session);
     }
 
     @Override
@@ -38,5 +50,4 @@ public class SiriusInterpreterProvider implements IInterpreterProvider {
         }
         return null;
     }
-
 }
