@@ -498,8 +498,13 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
                 checkFigure(swtBotGefEditPart, feature);
                 String assertMessage = "Only one feature should be customized : " + customizableFeatureName;
-                assertEquals(assertMessage, 1, viewpointStyle.getCustomFeatures().size());
-                assertEquals(assertMessage, customizableFeatureName, viewpointStyle.getCustomFeatures().get(0));
+                if (viewpointStyle.getCustomFeatures().size() == 2) {
+                    assertEquals(assertMessage, "providedShapeID", viewpointStyle.getCustomFeatures().get(0));
+                    assertEquals(assertMessage, customizableFeatureName, viewpointStyle.getCustomFeatures().get(1));
+                } else {
+                    assertEquals(assertMessage, 1, viewpointStyle.getCustomFeatures().size());
+                    assertEquals(assertMessage, customizableFeatureName, viewpointStyle.getCustomFeatures().get(0));
+                }
 
                 // Check that a refresh doesn't change customizations
                 selectAndRefreshDiagram();
@@ -507,8 +512,13 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
                 assertEquals("A refresh shouldn't change the customized style feature", newValue, viewpointStyle.eGet(feature));
                 checkFigure(swtBotGefEditPart, feature);
-                assertEquals(assertMessage, 1, viewpointStyle.getCustomFeatures().size());
-                assertEquals(assertMessage, customizableFeatureName, viewpointStyle.getCustomFeatures().get(0));
+                if (viewpointStyle.getCustomFeatures().size() == 2) {
+                    assertEquals(assertMessage, "providedShapeID", viewpointStyle.getCustomFeatures().get(0));
+                    assertEquals(assertMessage, customizableFeatureName, viewpointStyle.getCustomFeatures().get(1));
+                } else {
+                    assertEquals(assertMessage, 1, viewpointStyle.getCustomFeatures().size());
+                    assertEquals(assertMessage, customizableFeatureName, viewpointStyle.getCustomFeatures().get(0));
+                }
 
                 // Reset style properties to default values
                 resetStylePropertiesToDefault(swtBotGefEditPart, launchResetFromTabbar);
