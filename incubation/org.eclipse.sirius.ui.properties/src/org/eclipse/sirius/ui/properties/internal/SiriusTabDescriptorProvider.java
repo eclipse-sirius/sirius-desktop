@@ -101,10 +101,12 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
                 }
             }
 
+            List<ViewExtensionDescription> result = Lists.newArrayList();
             for (Resource vsm : activeVSMs) {
                 Group group = (Group) vsm.getContents().get(0);
-                return Lists.newArrayList(Iterables.filter(group.getExtensions(), ViewExtensionDescription.class));
+                Iterables.addAll(result, Iterables.filter(group.getExtensions(), ViewExtensionDescription.class));
             }
+            return result;
         }
         return descriptions;
     }
