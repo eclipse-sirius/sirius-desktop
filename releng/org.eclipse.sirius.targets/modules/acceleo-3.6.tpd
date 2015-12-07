@@ -2,7 +2,7 @@ target "acceleo-3.6"
 
 with source, requirements
 
-location Acceleo-3.6 "http://download.eclipse.org/acceleo/updates/milestones/3.6/S201510121214" {
+location Acceleo-3.6 "http://download.eclipse.org/acceleo/updates/releases/3.6/R201510121214/" {
 	org.eclipse.acceleo.feature.group lazy
 	org.eclipse.acceleo.ide.ui lazy
 }
