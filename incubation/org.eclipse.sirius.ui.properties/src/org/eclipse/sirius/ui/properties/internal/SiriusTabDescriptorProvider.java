@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.eef.EEFViewDescription;
 import org.eclipse.eef.core.api.EEFExpressionUtils;
 import org.eclipse.eef.core.api.EEFPage;
@@ -25,15 +24,12 @@ import org.eclipse.eef.core.api.IVariableManager;
 import org.eclipse.eef.ide.ui.internal.properties.EEFTabDescriptor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.interpreter.api.IInterpreterProvider;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IWorkbenchPart;
@@ -48,10 +44,6 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
 
     @Override
     public ITabDescriptor[] getTabDescriptors(IWorkbenchPart part, ISelection selection) {
-        Platform.getAdapterManager().registerAdapters(new SiriusSemanticAdapter(), DSemanticDecorator.class);
-        Platform.getAdapterManager().registerAdapters(new SiriusSemanticAdapter(), GraphicalEditPart.class);
-        Platform.getAdapterManager().registerAdapters(new SiriusSemanticAdapter(), ConnectionEditPart.class);
-
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
             Object[] objects = structuredSelection.toArray();
