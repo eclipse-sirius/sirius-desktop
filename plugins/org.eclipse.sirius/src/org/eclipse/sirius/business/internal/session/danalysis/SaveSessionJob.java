@@ -41,6 +41,7 @@ public class SaveSessionJob extends Job {
      */
     public SaveSessionJob(Session session) {
         super(Messages.SaveSessionJob_sessionSavingMsg);
+        setSystem(true);
         this.session = session;
     }
 
