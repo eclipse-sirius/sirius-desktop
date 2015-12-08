@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <description url="http://www.eclipse.org/sirius">
-      Sirius Incubation
+      Sirius Incubation Features
    </description>
    <feature id="org.eclipse.sirius.incubation" version="0.0.0">
       <category name="Sirius Incubation"/>
    </feature>
    <feature id="org.eclipse.sirius.incubation.source" version="0.0.0">
+      <category name="Sirius Incubation"/>
+   </feature>
+   <feature id="org.eclipse.sirius.incubation.interpreter" version="0.0.0">
+      <category name="Sirius Incubation"/>
+   </feature>
+   <feature id="org.eclipse.sirius.incubation.interpreter.source" version="0.0.0">
+      <category name="Sirius Incubation"/>
+   </feature>
+   <feature id="org.eclipse.sirius.incubation.properties" version="0.0.0">
+      <category name="Sirius Incubation"/>
+   </feature>
+   <feature id="org.eclipse.sirius.incubation.properties.source" version="0.0.0">
       <category name="Sirius Incubation"/>
    </feature>
    <category-def name="Sirius Incubation" label="Sirius Incubation"/>

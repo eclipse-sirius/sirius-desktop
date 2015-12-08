@@ -6,6 +6,7 @@ include "modules/swtbot-2.1.tpd"
 include "modules/shared-license.tpd"
 include "modules/aql-3.6.tpd"
 include "modules/acceleo-3.6.tpd"
+include "modules/eef-ng.tpd"
 
 with source, requirements
 

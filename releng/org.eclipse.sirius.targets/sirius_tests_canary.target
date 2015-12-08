@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_tests_canary" sequenceNumber="1449506100">
+<target name="sirius_tests_canary" sequenceNumber="1449666673">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
       <repository id="Eclipse-Shared-License" location="http://download.eclipse.org/cbi/updates/license"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform.ide" version="4.6.0.I20151207-0800"/>
-      <unit id="org.eclipse.platform.sdk" version="4.6.0.I20151207-0800"/>
-      <unit id="org.eclipse.sdk.ide" version="4.6.0.I20151207-0800"/>
+      <unit id="org.eclipse.sirius.common.interpreter" version="4.0.0.201512091104"/>
+      <repository id="Sirius-Incubation-Nightly" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/incubation/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
+      <repository id="EEF-NG-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.platform.ide" version="4.6.0.I20151208-0800"/>
+      <unit id="org.eclipse.platform.sdk" version="4.6.0.I20151208-0800"/>
+      <unit id="org.eclipse.sdk.ide" version="4.6.0.I20151208-0800"/>
       <repository id="Eclipse-Neon-Integration" location="http://download.eclipse.org/eclipse/updates/4.6-I-builds"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">

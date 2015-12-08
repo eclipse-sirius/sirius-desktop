@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_neon" sequenceNumber="1449506076">
+<target name="sirius_neon" sequenceNumber="1449666664">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -29,6 +29,14 @@
       <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
       <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
       <repository id="Acceleo-3.6" location="http://download.eclipse.org/acceleo/updates/releases/3.6/R201510121214/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.sirius.common.interpreter" version="4.0.0.201512091104"/>
+      <repository id="Sirius-Incubation-Nightly" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/incubation/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
+      <repository id="EEF-NG-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>

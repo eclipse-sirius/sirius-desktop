@@ -10,7 +10,7 @@
        Obeo - Initial API and implementation
 -->
 <feature
-      id="org.eclipse.sirius.incubation"
+      id="org.eclipse.sirius.incubation.interpreter"
       label="%featureName"
       version="4.0.0.qualifier"
       provider-name="%providerName"
@@ -18,7 +18,7 @@
       license-feature-version="0.0.0">
 
    <description url="http://www.eclipse.org/sirius">
-      Sirius incubation (work in progress) features, not yet ready for production. APIs may break and behavior may change at any point without notice, use at your own risk.
+      Sirius generic interpreter API, not yet ready for production. APIs may break and behavior may change at any point without notice, use at your own risk.
    </description>
 
    <copyright>
@@ -29,12 +29,11 @@
       %license
    </license>
 
-   <includes
-         id="org.eclipse.sirius.incubation.properties"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.sirius.incubation.interpreter"
-         version="0.0.0"/>
+   <plugin
+         id="org.eclipse.sirius.common.interpreter"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

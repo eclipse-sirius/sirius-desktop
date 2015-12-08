@@ -5,32 +5,33 @@ include "modules/swtbot-2.1.tpd"
 include "modules/shared-license.tpd"
 include "modules/aql-3.6.tpd"
 include "modules/acceleo-3.6.tpd"
+include "modules/eef-ng.tpd"
 
 with source, requirements
 
 location Eclipse-Neon "http://download.eclipse.org/releases/neon" {
-        com.google.guava lazy
-        com.ibm.icu lazy
-        org.eclipse.draw2d.sdk.feature.group lazy
-        org.eclipse.emf.common.feature.group lazy
-        org.eclipse.emf.compare.feature.group lazy
-        org.eclipse.emf.ecore.feature.group lazy
-        org.eclipse.emf.edit.feature.group lazy
-        org.eclipse.emf.eef.runtime lazy
-        org.eclipse.emf.feature.group lazy
-        org.eclipse.emf.sdk.feature.group lazy
-        org.eclipse.emf.transaction.feature.group lazy
-        org.eclipse.emf.transaction.sdk.feature.group lazy
-        org.eclipse.emf.validation.sdk.feature.group lazy
-        org.eclipse.emf.workspace.feature.group lazy
-        org.eclipse.equinox.sdk.feature.group lazy
-        org.eclipse.gef.feature.group lazy
-        org.eclipse.gef.sdk.feature.group lazy
-        org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
-        org.eclipse.gmf.runtime.sdk.feature.group lazy
-        org.eclipse.ocl.all.feature.group lazy
-        org.eclipse.ocl.core.sdk.feature.group lazy
-        org.eclipse.platform.feature.group lazy
-        org.eclipse.sdk.feature.group lazy
-        org.eclipse.xtext.sdk.feature.group lazy
+	com.google.guava lazy
+	com.ibm.icu lazy
+	org.eclipse.draw2d.sdk.feature.group lazy
+	org.eclipse.emf.common.feature.group lazy
+	org.eclipse.emf.compare.feature.group lazy
+	org.eclipse.emf.ecore.feature.group lazy
+	org.eclipse.emf.edit.feature.group lazy
+	org.eclipse.emf.eef.runtime lazy
+	org.eclipse.emf.feature.group lazy
+	org.eclipse.emf.sdk.feature.group lazy
+	org.eclipse.emf.transaction.feature.group lazy
+	org.eclipse.emf.transaction.sdk.feature.group lazy
+	org.eclipse.emf.validation.sdk.feature.group lazy
+	org.eclipse.emf.workspace.feature.group lazy
+	org.eclipse.equinox.sdk.feature.group lazy
+	org.eclipse.gef.feature.group lazy
+	org.eclipse.gef.sdk.feature.group lazy
+	org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
+	org.eclipse.gmf.runtime.sdk.feature.group lazy
+	org.eclipse.ocl.all.feature.group lazy
+	org.eclipse.ocl.core.sdk.feature.group lazy
+	org.eclipse.platform.feature.group lazy
+	org.eclipse.sdk.feature.group lazy
+	org.eclipse.xtext.sdk.feature.group lazy
 }
