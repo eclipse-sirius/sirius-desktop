@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	</head>
+	<body>
+		<h1 id="SiriusEvolutionSpecificationTypedvariableforvariablefilter">Sirius Evolution Specification: Typed variable for variable filter</h1>
+		<h2 id="Preamble">Preamble</h2>
+		<p>
+			<em>Summary</em>: Add capability, when user applies a filter, to allow him to enter a value used in variable filter.
+		</p>
+		<table>
+			<tr>
+				<th>Version</th>
+				<th>Status</th>
+				<th>Date</th>
+				<th>Authors</th>
+				<th>Changes</th>
+			</tr>
+			<tr>
+				<td>v0.1</td>
+				<td>DRAFT</td>
+				<td>2015-12-03</td>
+				<td>lfasani</td>
+				<td>Initial version.</td>
+			</tr>
+		</table>
+		<p>
+			<em>Relevant tickets</em>:
+		</p>
+		<ul>
+			<li>
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=483574">Bug 483574 -  Add typed value variable capability on variable filter</a>
+			</li>
+		</ul>
+		<h2 id="Introduction">Introduction</h2>
+		<p>Currently, there is  the capability, when applying a variable filter in a diagram, to allow the user to select one or more objects through selection wizard.
+			<br/>This selection is then used according to the condition expression defined in the VSM by the specifier.
+		</p>
+		<p>This new feature allows to define a typed value variable in variable filter.</p>
+		<h2 id="DetailedSpecification">Detailed Specification</h2>
+		<p>The typed variable is a variable of type that is defined by the specifier and which value is filled by the user when applying the variable filter.
+			<br/>This value is then used when applying the variable filter according to the condition expression defined in the VSM by the specifier.
+		</p>
+		<p>As it is the case for existing object variable, the typed variable is persisted in the representation.
+			<br/>That allows a dynamic behavior which means that the typed value is reused each time the filter is re-applied (for example when using a creation tool).
+		</p>
+		<h3 id="VSMSideUI">VSM Side UI</h3>
+		<p>In odesign editor, specifier can add a new typed Variable with contextual menu when clicking on Variable filter.
+			<br/>
+			<img border="0" src="Vsm_TypedVariable.png"/>
+		</p>
+		<p>The property view allows to set</p>
+		<ul>
+			<li>the name of the variable</li>
+			<li>the type of the variable</li>
+			<li>an interpreted expression to define the default value</li>
+			<li>the documentation that will be displayed to the user </li>
+		</ul>
+		<h3 id="DiagramsideUI">Diagram side UI</h3>
+		<p>When user applies a variable filter, a dialog box is displayed to allow user to enter the value. 
+			<br/>This dialog box is prompted after all &#171;Select Model Element&#187; wizard have been prompted.
+			<br/>It contains as many line as number of typed variables under the variable filter.
+			<br/>The specifier documentation is displayed as tooltip on question mark.
+			<br/>The default value is the result of the interpreted expression defined on VSM.
+			<br/>
+			<img border="0" src="Dialog_TypedVariableValue.png"/>
+		</p>
+		<p>Note that whatever the type of variable is, the field is a text field. This string must follows the rules detailed in &#171;EDataType class instantiation&#187; paragraph.</p>
+		<h2 id="Technicaldetailedspecification">Technical detailed specification</h2>
+		<p>Here is the Sirius meta-model before changes
+			<br/>
+			<img border="0" src="SiriusMetaModel_before_change.png"/> 
+		</p>
+		<h3 id="VSMside">VSM side</h3>
+		<ul>
+			<li>diagram/description/FilterVariable is replaced by a new viewpoint/description/TypedVariable class inheriting from SubVariable and containing
+				<ul>
+					<li>a 
+						<strong>documentation</strong> of type EString
+					</li>
+					<li>a 
+						<strong>type</strong> of type EDataType. The specifier must select the DataType from the drop-down list. Note that the listed EDataType are those used or defined in the meta-models associated to the DiagramDescription.
+					</li>
+					<li>a 
+						<strong>defaultValueExpression</strong> of type InterpretedExpression. This expression should return a string from which a class corresponding to the 
+						<strong>type</strong> is instantiable (see &#171;EDataType class instantiation&#187; paragraph). The context of this expression is the semantic element of the diagram. The variable 
+						<em>diagram</em> is also available.
+					</li>
+				</ul>
+			</li>
+			<li>SelectModelElementVariable and TypedVariable implements a new viewpoint/description/InteractiveVariableDescription. InteractiveVariableDescription is used as marker interface to identify variable that requires user action to be valued.</li>
+			<li>diagram/description/VariableFilter.ownedVariables is now of type InteractiveVariableDescription and no more FilterVariable</li>
+		</ul>
+		<h3 id="Representationside">Representation side</h3>
+		<p>We need to store the variable value defined by the user.</p>
+		<ul>
+			<li>a new diagram/VariableValue is created and is sub-typed by diagram/TypedVariableValue and diagram/EObjectVariableValue </li>
+			<li>diagram/EObjectVariableValue replaces diagram/FilterVariableValue </li>
+			<li>FilterVariableHistory.ownedValues is, from now on, a multi-valued EReference of type VariableValue</li>
+		</ul>
+		<p>See the Sirius meta-model after changes
+			<br/>
+			<img border="0" src="SiriusMetaModel_after_change.png"/> 
+		</p>
+		<h3 id="EDataTypeclassinstantiation">EDataType class instantiation</h3>
+		<p>In order to be instantiable, the value given by the user depends on how it is triggered by EMF mechanism.
+			<br/>If the EFactory of the EDataType is not overloaded, the class corresponding to the EDataType must have a constructor with a String parameter. At instantiation, the string argument will be the string input by the user. This string argument is translated into the right data in the class constructor for example.
+			<br/>What is done is the constructor described above can also be done overloading the EDataType class EFactory.
+		</p>
+		<p>Example:
+			<br/>If your class represents a point coordinates with two fields x and y of type int, the string input by the user could be "<integer>,<integer>". This kind of information could be given to the user through the "User documentation"
+		</p>
+		<h2 id="BackwardCompatibilityandMigrationPaths">Backward Compatibility and Migration Paths</h2>
+		<p>Existing VSM or representation have to be migrated.</p>
+		<p>VSM Change:</p>
+		<ul>
+			<li>VariableFilter.ownedVariable type is changed to InteractiveVariableDescription.</li>
+			<li>FilterVariable instances are migrated to SelectModelElementVariable instances.</li>
+		</ul>
+		<p>Diagram Representation changes:</p>
+		<ul>
+			<li>FilterVariableHistory.ownedValues type has changed to VariableValue.</li>
+			<li>FilterVariableValue instances are migrated to EObjectVariableValues instances</li>
+		</ul>
+		<h3 id="UserInterfaceChanges">User Interface Changes</h3>
+		<p>From now on, with a Variable filter, specifier can use the new variable &#171;Typed Variable&#187; and the existing "Variable"</p>
+		<p>The old variable &#171;Variable&#187; is renamed &#171;Select Model Element Variable&#187;.</p>
+		<h3 id="DocumentationChanges">Documentation Changes</h3>
+		<p>This new behavior should be added in the New and Noteworthy documentation.
+			<br/>A note should also be added in the specifier manual to explain this new feature :
+		</p>
+		<ul>
+			<li>Complete chapter Diagrams/Filter/Variable filter</li>
+		</ul>
+		<h2 id="TestsandNonregressionstrategy">Tests and Non-regression strategy</h2>
+		<p>New tests will be added to check:
+			<br/> * the creation of a filter with typed variable whose type is EString or custom EDataType
+			<br/> * that the user can fill the value 
+			<br/> * that the default variable value is correctly interpreted at runtime
+			<br/> * that the variable value are correctly used in condition expression at runtime when user apply the filter
+			<br/> * that the value is correctly stored in representation and that the filter can be re-applied after tool execution for example.
+			<br/> * only InteractiveVariableDescription are available on VariableFilter when specifier builds its VSM 
+		</p>
+		<h2 id="Implementationchoicesandtradeoffs">Implementation choices and tradeoffs</h2>
+	</body>
+</html>
