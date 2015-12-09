@@ -90,9 +90,10 @@ public class BundledImageExtensionQuery {
      * @return the identifier of the given extension.
      */
     public String getIdentifier(IConfigurationElement extension) {
-        return ((ExtensionHandle) extension.getParent()).getSimpleIdentifier();
+        return ((ExtensionHandle) extension.getParent()).getUniqueIdentifier();
 
     }
+
     /**
      * Find the labels to display in the VSM concerning all provided bundled
      * image shapes. These label are the images label, declared in their
@@ -120,7 +121,7 @@ public class BundledImageExtensionQuery {
      */
     public String getExtendedLabelForVSM(String providedShapeID) {
         for (IConfigurationElement configurationElement : extensions) {
-            String identifier = ((ExtensionHandle) configurationElement.getParent()).getSimpleIdentifier();
+            String identifier = ((ExtensionHandle) configurationElement.getParent()).getUniqueIdentifier();
             if (identifier != null && identifier.equals(providedShapeID)) {
                 return getExtendedLabelForVSM(configurationElement);
             }
@@ -141,7 +142,7 @@ public class BundledImageExtensionQuery {
      */
     public IConfigurationElement getExtensionDefiningProvidedShapeID(String providedShapeID) {
         for (IConfigurationElement configurationElement : extensions) {
-            String identifier = ((ExtensionHandle) configurationElement.getParent()).getSimpleIdentifier();
+            String identifier = ((ExtensionHandle) configurationElement.getParent()).getUniqueIdentifier();
             if (identifier != null && identifier.equals(providedShapeID)) {
                 return configurationElement;
             }

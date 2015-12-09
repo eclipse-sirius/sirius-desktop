@@ -67,7 +67,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="[name.equalsIgnoreCase('provided')/]">
-            <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" shape="providedShape" providedShapeID="etas6.design.donut">
+            <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" shape="providedShape" providedShapeID="sample.design.donut">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>

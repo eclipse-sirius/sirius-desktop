@@ -411,7 +411,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_u1llsJRUEeWmGMHaNShJuA" name="Provided" outgoingEdges="_vJZ8wJRYEeWmGMHaNShJuA" incomingEdges="_yub0oJRWEeWmGMHaNShJuA" width="3" height="3" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="alphaAnchor.ecore#//Provided"/>
         <semanticElements xmi:type="ecore:EClass" href="alphaAnchor.ecore#//Provided"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_2cPOAJRUEeWmGMHaNShJuA" borderSize="5" borderSizeComputationExpression="5" labelPosition="node" shape="providedShape" color="138,226,52" providedShapeID="donut">
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_2cPOAJRUEeWmGMHaNShJuA" borderSize="5" borderSizeComputationExpression="5" labelPosition="node" shape="providedShape" color="138,226,52" providedShapeID="sample.design.donut">
           <description xmi:type="style:BundledImageDescription" href="alphaAnchor.odesign#//@ownedViewpoints[name='alphaAnchorViewpoint']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='Classes']/@conditionnalStyles.9/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="alphaAnchor.odesign#//@ownedViewpoints[name='alphaAnchorViewpoint']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='Classes']"/>
