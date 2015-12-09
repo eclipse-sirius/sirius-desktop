@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_staging" sequenceNumber="1449666670">
+<target name="sirius_staging" sequenceNumber="1449676695">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -24,7 +24,7 @@
       <repository id="Eclipse-Shared-License" location="http://download.eclipse.org/cbi/updates/license"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.common.interpreter" version="4.0.0.201512091104"/>
+      <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
       <repository id="Sirius-Incubation-Nightly" location="http://download.eclipse.org/sirius/updates/nightly/latest/neon/incubation/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
