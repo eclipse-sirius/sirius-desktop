@@ -503,7 +503,7 @@ For instance, we will consider having a semantic model with a root element that 
 
 	!images/synchronized_diagram3.png!
 
-Then, we will drag and drop the child element from __Model Content__ view. With __Synchronized__ mode, the edges related to this dropped element will be displayed.
+Then, we will drag and drop the child element from __Model Explorer__ view. With __Synchronized__ mode, the edges related to this dropped element will be displayed.
 
 	!images/synchronized_diagram4.png!
 
@@ -793,7 +793,7 @@ If an element is selected on the diagram, you will have on the __Properties__ vi
 
 If you do not select an element, you will have in the __Properties view__ the properties of the diagram itself :
 
-* Semantic : The diagram has a semantic element which is the element on which we have created the diagram in the __Model Content__ view. The content is the same as presented previously.
+* Semantic : The diagram has a semantic element which is the element on which we have created the diagram in the __Model Explorer__ view. The content is the same as presented previously.
 * Filters : You can apply filters on your diagram. Filters will be presented in a following part.
 * Documentation : This tab provides a text area for the current diagram documentation.
 * Rulers & Grid : Allow the user to display vertical and horizontal rulers and also a grid on the diagram. You can choose how is displayed the grid (Solid style, Dash style, Dot style...).
