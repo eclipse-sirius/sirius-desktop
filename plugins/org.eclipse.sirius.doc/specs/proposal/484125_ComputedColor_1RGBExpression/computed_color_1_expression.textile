@@ -1,0 +1,63 @@
+h1. Sirius Evolution Specification: Computed color could provide an expression returning an RGB color directly
+
+h2. Preamble
+
+_Summary_:  Computed color could provide an expression returning an RGB color directly
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1      | DRAFT    | 2015-12-10    | smonnier  | Initial version. |
+
+_Relevant tickets:_
+* "Bugzilla 484125, Computed color could provide an expression returning an RGB color directly":https://bugs.eclipse.org/bugs/show_bug.cgi?id=484125
+
+h2. Introduction
+
+A computed color is configured by a specifier using three different expression fields returning the integer value for colors red, green and blue. It is common that the expressions check the same condition but return a different value in order to create the proper RGB element. Then the same request is done thrice which can be a drawback in performances if the expression is a time-consuming computation. Instead, the computed color could have a single rgb expression that would return the three color values at once and thus improve performances.
+
+h2. Detailed Specification
+
+Currently, Computed colors are configured using three different expression field returning to the integer value for color red, green and blue.
+
+!current_computedColor.png!
+
+A new expression field "RGB" is needed to offer the possibility to return the color value using a single expression. This expression will be expected to return either an array of three integers (red, green and blue) or a @RGBValues@, a Sirius datatype.
+
+The specifier should be able to choose which mode will be used to define a computed color: three expressions or a single expression. Therefore, a boolean attribute will be needed to set this choice. Choosing one mode will disable the unused field, like on an edge style the "Ends Centering" selection enable or disable some fields. 
+
+In three expressions mode the red, green and blue expression fields will be enabled but not the RGB expression field. 
+!new_computedColor_mode3.png!
+
+In the one expression mode, it will be the opposite. 
+!new_computedColor_mode1.png!
+
+The three expression mode will be the default mode as it is the current behaviour. 
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+ComputedColor will have two new attributes:
+- a boolean attribute named useSingleExpression with a default value has false. This will be used to set which mode of computation has been chosen.
+- an interpreted expression attribute named rgb. This will be used to set the expression for the one expression mode of computation.
+
+As these modifications are additions to the metamodels, a migration will not be needed.
+  
+h3. API Changes
+
+API Changes will be completed during implementation, but this is an Sirius core evolution and should not modify APIs.
+
+h3. User Interface Changes
+
+On the specifier side, the computed color properties will be updated, as presented previously, with a computation mode selection.
+
+h3. Documentation Changes
+
+* N&N : the new computed color computation mode must be documented.
+* Specifier documentation : it will present that it is possible to specify a computed color with a single expression.
+
+h2. Tests and Non-regression strategy
+
+* JUnit test : a test will be written with a two computed color, one for each computation mode. The color returned should be the same one to validate that visually the result is the same.
+
+
+h2. Implementation choices and tradeoffs
