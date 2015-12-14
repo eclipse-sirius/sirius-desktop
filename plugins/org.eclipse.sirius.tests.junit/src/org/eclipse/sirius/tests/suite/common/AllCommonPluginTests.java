@@ -10,12 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.common;
 
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
@@ -24,6 +18,7 @@ import org.eclipse.sirius.tests.unit.api.componentization.DiagramExtensionDescri
 import org.eclipse.sirius.tests.unit.api.componentization.MetamodelSpecificationInRepresentationExtensionDescriptionTest;
 import org.eclipse.sirius.tests.unit.api.convert.ConvertProjectToModelingProjectTest;
 import org.eclipse.sirius.tests.unit.api.convert.ConvertViewpointModelingProjectToSiriusModelingProjectTest;
+import org.eclipse.sirius.tests.unit.api.dialect.DialectEditorCloserTest;
 import org.eclipse.sirius.tests.unit.api.dialect.DialectManagerTest;
 import org.eclipse.sirius.tests.unit.api.dialect.DialectUIManagerTest;
 import org.eclipse.sirius.tests.unit.api.editors.EditorNameAdapterTests;
@@ -141,6 +136,12 @@ import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
 import org.eclipse.sirius.tests.unit.perf.common.Session1MillionTests;
 
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 public class AllCommonPluginTests extends TestCase {
 
     /**
@@ -231,6 +232,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DiagramExtensionDescriptionTest.class);
         suite.addTestSuite(MetamodelSpecificationInRepresentationExtensionDescriptionTest.class);
         suite.addTestSuite(DialectManagerTest.class);
+        suite.addTestSuite(DialectEditorCloserTest.class);
         suite.addTestSuite(DialectUIManagerTest.class);
         suite.addTestSuite(FindTest.class);
         suite.addTestSuite(EdgeRoutingStyleTests.class);
