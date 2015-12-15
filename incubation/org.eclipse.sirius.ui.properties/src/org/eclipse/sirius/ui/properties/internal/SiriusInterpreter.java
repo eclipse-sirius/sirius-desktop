@@ -14,78 +14,83 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.interpreter.api.EvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 
+/**
+ * Provides an implementation of {@link IInterpreter} backed by an old-style
+ * {@link IInterpreterWithDiagnostic}.
+ */
 public class SiriusInterpreter implements IInterpreter {
 
     private IInterpreterWithDiagnostic interpreter;
 
+    public SiriusInterpreter(Session session) {
+        this((IInterpreterWithDiagnostic) session.getInterpreter());
+    }
+
     public SiriusInterpreter(IInterpreterWithDiagnostic interpreterWithDiagnostic) {
-        this.interpreter = interpreterWithDiagnostic;
+        this.interpreter = Preconditions.checkNotNull(interpreterWithDiagnostic);
     }
 
     @Override
-    public IEvaluationResult evaluateExpression(Map<String, Object> variables, String expressionBody) {
-        if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
-            org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;
-            i.setProperty(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter.FILES, Lists.newArrayList("org.eclipse.sirius.ui.properties"));
-            i.addImport(org.eclipse.sirius.ui.properties.internal.SiriusToolServices.class.getName());
-            Set<Entry<String, Object>> entries = variables.entrySet();
-            for (Entry<String, Object> entry : entries) {
-                i.setVariable(entry.getKey(), entry.getValue());
-            }
-        }
-
-        IEvaluationResult result = new IEvaluationResult() {
-            @Override
-            public Object getValue() {
-                return null;
-            }
-
-            @Override
-            public Diagnostic getDiagnostic() {
-                return Diagnostic.CANCEL_INSTANCE;
-            }
-        };
-
-        Object object = variables.get("self");
-        if (object instanceof EObject) {
+    public IEvaluationResult evaluateExpression(Map<String, Object> variables, String expr) {
+        IEvaluationResult result = EvaluationResult.noEvaluation();
+        Object self = variables.get("self");
+        if (self instanceof EObject) {
             try {
-                final org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic.IEvaluationResult evaluationResult = this.interpreter.evaluateExpression((EObject) object,
-                        expressionBody);
-                result = new IEvaluationResult() {
-
-                    @Override
-                    public Object getValue() {
-                        return evaluationResult.getValue();
-                    }
-
-                    @Override
-                    public Diagnostic getDiagnostic() {
-                        return evaluationResult.getDiagnostic();
-                    }
-                };
+                setupInterpreter(variables);
+                org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic.IEvaluationResult evaluationResult = this.interpreter.evaluateExpression((EObject) self, expr);
+                result = EvaluationResult.of(evaluationResult.getValue(), evaluationResult.getDiagnostic());
             } catch (EvaluationException e) {
-                e.printStackTrace();
+                result = EvaluationResult.withError(BasicDiagnostic.toDiagnostic(e));
             } finally {
-                if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
-                    org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;
-                    i.removeImport(org.eclipse.sirius.ui.properties.internal.SiriusToolServices.class.getName());
-                    Set<Entry<String, Object>> entries = variables.entrySet();
-                    for (Entry<String, Object> entry : entries) {
-                        i.unSetVariable(entry.getKey());
-                    }
-                }
+                tearDownInterpreter(variables);
             }
         }
-
         return result;
     }
+
+    private void setupInterpreter(Map<String, Object> variables) {
+        if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
+            org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;
+            // FIXME This breaks the rest of Sirius by wiping the session
+            // interpreter's "classpath" for services
+            i.setProperty(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter.FILES, Lists.newArrayList("org.eclipse.sirius.ui.properties"));
+            i.addImport(org.eclipse.sirius.ui.properties.internal.SiriusToolServices.class.getName());
+            declareLocals(variables, i);
+        }
+    }
+
+    private void declareLocals(Map<String, Object> variables, org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i) {
+        Set<Entry<String, Object>> entries = variables.entrySet();
+        for (Entry<String, Object> entry : entries) {
+            i.setVariable(entry.getKey(), entry.getValue());
+        }
+    }
+
+    private void tearDownInterpreter(Map<String, Object> variables) {
+        if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
+            org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;
+            i.removeImport(org.eclipse.sirius.ui.properties.internal.SiriusToolServices.class.getName());
+            unsetLocals(variables, i);
+        }
+    }
+
+    private void unsetLocals(Map<String, Object> variables, org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i) {
+        Set<Entry<String, Object>> entries = variables.entrySet();
+        for (Entry<String, Object> entry : entries) {
+            i.unSetVariable(entry.getKey());
+        }
+    }
+
 }
