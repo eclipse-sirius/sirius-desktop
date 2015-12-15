@@ -26,7 +26,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.interpreter.api.IInterpreterProvider;
+import org.eclipse.sirius.common.interpreter.api.VariableManagerFactory;
+import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -83,8 +84,7 @@ public class SiriusTabDescriptorProvider implements ITabDescriptorProvider {
     private EEFView createEEFView(Session session, EObject semanticElement, EEFViewDescription viewDescription) {
         IVariableManager variableManager = new VariableManagerFactory().createVariableManager();
         variableManager.put(EEFExpressionUtils.SELF, semanticElement);
-        List<IInterpreterProvider> interpreterProviders = Lists.<IInterpreterProvider> newArrayList(new SiriusInterpreterProvider(session));
-        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, interpreterProviders, session.getTransactionalEditingDomain(), semanticElement);
+        EEFView eefView = new EEFViewFactory().createEEFView(viewDescription, variableManager, new SiriusInterpreter(session), session.getTransactionalEditingDomain(), semanticElement);
         return eefView;
     }
 
