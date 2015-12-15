@@ -17,9 +17,11 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -236,11 +238,10 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
             Rectangle newBounds = editor.getBounds(editor.getEditPart(ECLASS_PROVIDED, AbstractDiagramNodeEditPart.class));
 
             if (zoomAndScroll) {
-                if (isSource) {
-                    originalPoint = new Point(316, 306);
-                } else {
-                    originalPoint = new Point(565, 242);
-                }
+                // The mouse position click is relative to the screen
+                Point scrollSize = GraphicalHelper.getScrollSize((IGraphicalEditPart) referenceEditPartBot.part());
+                double zoom = GraphicalHelper.getZoom((IGraphicalEditPart) referenceEditPartBot.part());
+                originalPoint = originalPoint.getScaled(zoom).getTranslated(-scrollSize.x, -scrollSize.y);
             }
             Point targetPoint = newBounds.getCenter();
 
