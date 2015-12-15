@@ -18,17 +18,18 @@ import org.eclipse.emf.common.util.Diagnostic;
  * @author sbegaudeau
  */
 public interface IEvaluationResult {
-	/**
-	 * The value returned by the expression.
-	 *
-	 * @return The value returned by the expression
-	 */
-	Object getValue();
+    /**
+     * The value returned by the expression.
+     *
+     * @return The value returned by the expression
+     */
+    Object getValue();
 
-	/**
-	 * The diagnostic of the evaluation.
-	 * 
-	 * @return The diagnostic
-	 */
-	Diagnostic getDiagnostic();
+    /**
+     * The diagnostic of the evaluation.
+     * 
+     * @return The diagnostic
+     */
+    Diagnostic getDiagnostic();
+
 }
