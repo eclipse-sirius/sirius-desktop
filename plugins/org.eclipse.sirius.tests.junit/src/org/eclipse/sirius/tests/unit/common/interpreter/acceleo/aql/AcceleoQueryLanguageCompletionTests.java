@@ -90,16 +90,17 @@ public class AcceleoQueryLanguageCompletionTests extends AbstractCompletionTestC
         EClass c = EcoreFactory.eINSTANCE.createEClass();
         c.setName("FirstEClass");
 
-        ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.na", 9);
+        ContentInstanceContext cic = new ContentInstanceContext(c, "aql:self.nana", "aql:self.na".length());
         List<ContentProposal> proposals = this.getProposals(cic);
 
         assertEquals(1, proposals.size());
 
         if (proposals.get(0) instanceof ContentProposalWithReplacement) {
+            // The proposal should be to insert "name" right after the dot and replacing the first "na".
             ContentProposalWithReplacement proposalWithReplacement = (ContentProposalWithReplacement) proposals.get(0);
             assertEquals("name", proposalWithReplacement.getProposal());
-            assertEquals(2, proposalWithReplacement.getReplacementLength());
-            assertEquals(9, proposalWithReplacement.getReplacementOffset());
+            assertEquals("name".length(), proposalWithReplacement.getReplacementLength());
+            assertEquals("aql:self.".length(), proposalWithReplacement.getReplacementOffset());
         }
     }
 
