@@ -107,6 +107,7 @@
           <sourceReferences>
             <generate>true</generate>
           </sourceReferences>
+          <format>'100'-yyyyMMddHHmm</format>
         </configuration>
         <dependencies>
           <dependency>
