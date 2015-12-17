@@ -9,11 +9,11 @@
  *    Obeo - initial API and implementation
  *
  */
-package org.eclipse.sirius.viewpoint.description.tool.impl;
+package org.eclipse.sirius.viewpoint.description.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.SubVariable;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -40,7 +40,7 @@ public abstract class SubVariableImpl extends AbstractVariableImpl implements Su
      */
     @Override
     protected EClass eStaticClass() {
-        return ToolPackage.Literals.SUB_VARIABLE;
+        return DescriptionPackage.Literals.SUB_VARIABLE;
     }
 
 } // SubVariableImpl

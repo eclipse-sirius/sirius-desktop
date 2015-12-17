@@ -79,14 +79,6 @@
         <input type="org.eclipse.sirius.diagram.description.concern.ConcernDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.filter.filtervariable.FilterVariableNamePropertySection"
-               id="filter.section.filterVariable.Name"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.filter.filtervariable.FilterVariableNameFilter"
-               afterSection="description.section.selectionDescription.Tree"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.filter.FilterVariable"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.filter.variablefilter.VariableFilterSemanticConditionExpressionPropertySection"
                id="filter.section.variableFilter.SemanticConditionExpression"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.filter.variablefilter.VariableFilterSemanticConditionExpressionFilter"

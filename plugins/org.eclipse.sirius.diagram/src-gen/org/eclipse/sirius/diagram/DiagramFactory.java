@@ -282,15 +282,6 @@ public interface DiagramFactory extends EFactory {
     FilterVariableHistory createFilterVariableHistory();
 
     /**
-     * Returns a new object of class '<em>Filter Variable Value</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return a new object of class '<em>Filter Variable Value</em>'.
-     * @generated
-     */
-    FilterVariableValue createFilterVariableValue();
-
-    /**
      * Returns a new object of class '<em>Collapse Filter</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -363,6 +354,24 @@ public interface DiagramFactory extends EFactory {
      * @generated
      */
     DragAndDropTarget createDragAndDropTarget();
+
+    /**
+     * Returns a new object of class '<em>Typed Variable Value</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Typed Variable Value</em>'.
+     * @generated
+     */
+    TypedVariableValue createTypedVariableValue();
+
+    /**
+     * Returns a new object of class '<em>EObject Variable Value</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>EObject Variable Value</em>'.
+     * @generated
+     */
+    EObjectVariableValue createEObjectVariableValue();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

@@ -77,7 +77,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
     /**
      * The default value of the '{@link #getMessage() <em>Message</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @see #getMessage()
      * @not-generated
      * @ordered

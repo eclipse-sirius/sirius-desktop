@@ -15,11 +15,13 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
+import org.eclipse.sirius.viewpoint.description.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
@@ -65,7 +67,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
-import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.SwitchChild;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -211,11 +212,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseAbstractVariable(AbstractVariable object) {
-            return createAbstractVariableAdapter();
-        }
-
-        @Override
         public Adapter caseVariableContainer(VariableContainer object) {
             return createVariableContainerAdapter();
         }
@@ -223,11 +219,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseAcceleoVariable(AcceleoVariable object) {
             return createAcceleoVariableAdapter();
-        }
-
-        @Override
-        public Adapter caseSubVariable(SubVariable object) {
-            return createSubVariableAdapter();
         }
 
         @Override
@@ -418,6 +409,21 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseSelectionDescription(SelectionDescription object) {
             return createSelectionDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseAbstractVariable(AbstractVariable object) {
+            return createAbstractVariableAdapter();
+        }
+
+        @Override
+        public Adapter caseSubVariable(SubVariable object) {
+            return createSubVariableAdapter();
+        }
+
+        @Override
+        public Adapter caseInteractiveVariableDescription(InteractiveVariableDescription object) {
+            return createInteractiveVariableDescriptionAdapter();
         }
 
         @Override
@@ -698,14 +704,14 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
+     * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable
      * <em>Abstract Variable</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
+     * @see org.eclipse.sirius.viewpoint.description.AbstractVariable
      * @generated
      */
     public Adapter createAbstractVariableAdapter() {
@@ -746,17 +752,33 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SubVariable
+     * {@link org.eclipse.sirius.viewpoint.description.SubVariable
      * <em>Sub Variable</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.SubVariable
+     * @see org.eclipse.sirius.viewpoint.description.SubVariable
      * @generated
      */
     public Adapter createSubVariableAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+     * <em>Interactive Variable Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+     * @generated
+     */
+    public Adapter createInteractiveVariableDescriptionAdapter() {
         return null;
     }
 

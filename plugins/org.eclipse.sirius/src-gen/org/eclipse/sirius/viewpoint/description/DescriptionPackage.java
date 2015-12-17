@@ -2121,6 +2121,154 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl
+     * <em>Abstract Variable</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl
+     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getAbstractVariable()
+     * @generated
+     */
+    int ABSTRACT_VARIABLE = 43;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_VARIABLE__NAME = 0;
+
+    /**
+     * The number of structural features of the '<em>Abstract Variable</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_VARIABLE_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.impl.SubVariableImpl
+     * <em>Sub Variable</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see org.eclipse.sirius.viewpoint.description.impl.SubVariableImpl
+     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSubVariable()
+     * @generated
+     */
+    int SUB_VARIABLE = 44;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SUB_VARIABLE__NAME = DescriptionPackage.ABSTRACT_VARIABLE__NAME;
+
+    /**
+     * The number of structural features of the '<em>Sub Variable</em>' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SUB_VARIABLE_FEATURE_COUNT = DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+     * <em>Interactive Variable Description</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getInteractiveVariableDescription()
+     * @generated
+     */
+    int INTERACTIVE_VARIABLE_DESCRIPTION = 45;
+
+    /**
+     * The feature id for the '<em><b>User Documentation</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int INTERACTIVE_VARIABLE_DESCRIPTION__USER_DOCUMENTATION = 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Interactive Variable Description</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int INTERACTIVE_VARIABLE_DESCRIPTION_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl
+     * <em>Typed Variable</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl
+     * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTypedVariable()
+     * @generated
+     */
+    int TYPED_VARIABLE = 46;
+
+    /**
+     * The feature id for the '<em><b>User Documentation</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE__USER_DOCUMENTATION = DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION__USER_DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE__NAME = DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Default Value Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE__DEFAULT_VALUE_EXPRESSION = DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Value Type</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE__VALUE_TYPE = DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The number of structural features of the '<em>Typed Variable</em>' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE_FEATURE_COUNT = DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.description.Position
      * <em>Position</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2128,7 +2276,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getPosition()
      * @generated
      */
-    int POSITION = 43;
+    int POSITION = 47;
 
     /**
      * The meta object id for the '
@@ -2140,7 +2288,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSystemColors()
      * @generated
      */
-    int SYSTEM_COLORS = 44;
+    int SYSTEM_COLORS = 48;
 
     /**
      * The meta object id for the '<em>Type Name</em>' data type. <!--
@@ -2150,7 +2298,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTypeName()
      * @generated
      */
-    int TYPE_NAME = 45;
+    int TYPE_NAME = 49;
 
     /**
      * The meta object id for the '<em>Interpreted Expression</em>' data type.
@@ -2160,7 +2308,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getInterpretedExpression()
      * @generated
      */
-    int INTERPRETED_EXPRESSION = 46;
+    int INTERPRETED_EXPRESSION = 50;
 
     /**
      * The meta object id for the '<em>Feature Name</em>' data type. <!--
@@ -2170,7 +2318,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getFeatureName()
      * @generated
      */
-    int FEATURE_NAME = 47;
+    int FEATURE_NAME = 51;
 
     /**
      * The meta object id for the '<em>Image Path</em>' data type. <!--
@@ -2180,7 +2328,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getImagePath()
      * @generated
      */
-    int IMAGE_PATH = 48;
+    int IMAGE_PATH = 52;
 
     /**
      * The meta object id for the '<em>URI</em>' data type. <!-- begin-user-doc
@@ -2190,7 +2338,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getURI()
      * @generated
      */
-    int URI = 49;
+    int URI = 53;
 
     /**
      * Returns the meta object for class '
@@ -3839,6 +3987,104 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getDAnnotationEntry_Details();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable
+     * <em>Abstract Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for class '<em>Abstract Variable</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.AbstractVariable
+     * @generated
+     */
+    EClass getAbstractVariable();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable#getName
+     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.AbstractVariable#getName()
+     * @see #getAbstractVariable()
+     * @generated
+     */
+    EAttribute getAbstractVariable_Name();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.viewpoint.description.SubVariable
+     * <em>Sub Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Sub Variable</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.SubVariable
+     * @generated
+     */
+    EClass getSubVariable();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+     * <em>Interactive Variable Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '
+     *         <em>Interactive Variable Description</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+     * @generated
+     */
+    EClass getInteractiveVariableDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription#getUserDocumentation
+     * <em>User Documentation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the attribute '<em>User Documentation</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription#getUserDocumentation()
+     * @see #getInteractiveVariableDescription()
+     * @generated
+     */
+    EAttribute getInteractiveVariableDescription_UserDocumentation();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.viewpoint.description.TypedVariable
+     * <em>Typed Variable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Typed Variable</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.TypedVariable
+     * @generated
+     */
+    EClass getTypedVariable();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.TypedVariable#getDefaultValueExpression
+     * <em>Default Value Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Default Value Expression</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.TypedVariable#getDefaultValueExpression()
+     * @see #getTypedVariable()
+     * @generated
+     */
+    EAttribute getTypedVariable_DefaultValueExpression();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.viewpoint.description.TypedVariable#getValueType
+     * <em>Value Type</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Value Type</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.TypedVariable#getValueType()
+     * @see #getTypedVariable()
+     * @generated
+     */
+    EReference getTypedVariable_ValueType();
+
+    /**
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.viewpoint.description.Position
      * <em>Position</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -5193,6 +5439,87 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EAttribute DANNOTATION_ENTRY__DETAILS = DescriptionPackage.eINSTANCE.getDAnnotationEntry_Details();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl
+         * <em>Abstract Variable</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl
+         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getAbstractVariable()
+         * @generated
+         */
+        EClass ABSTRACT_VARIABLE = DescriptionPackage.eINSTANCE.getAbstractVariable();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ABSTRACT_VARIABLE__NAME = DescriptionPackage.eINSTANCE.getAbstractVariable_Name();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.description.impl.SubVariableImpl
+         * <em>Sub Variable</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.impl.SubVariableImpl
+         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getSubVariable()
+         * @generated
+         */
+        EClass SUB_VARIABLE = DescriptionPackage.eINSTANCE.getSubVariable();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+         * <em>Interactive Variable Description</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription
+         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getInteractiveVariableDescription()
+         * @generated
+         */
+        EClass INTERACTIVE_VARIABLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getInteractiveVariableDescription();
+
+        /**
+         * The meta object literal for the '<em><b>User Documentation</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute INTERACTIVE_VARIABLE_DESCRIPTION__USER_DOCUMENTATION = DescriptionPackage.eINSTANCE.getInteractiveVariableDescription_UserDocumentation();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl
+         * <em>Typed Variable</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.impl.TypedVariableImpl
+         * @see org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl#getTypedVariable()
+         * @generated
+         */
+        EClass TYPED_VARIABLE = DescriptionPackage.eINSTANCE.getTypedVariable();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Default Value Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute TYPED_VARIABLE__DEFAULT_VALUE_EXPRESSION = DescriptionPackage.eINSTANCE.getTypedVariable_DefaultValueExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Value Type</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference TYPED_VARIABLE__VALUE_TYPE = DescriptionPackage.eINSTANCE.getTypedVariable_ValueType();
 
         /**
          * The meta object literal for the '

@@ -15,7 +15,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
+import org.eclipse.sirius.viewpoint.description.impl.SubVariableImpl;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -43,6 +45,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getMessage
  * <em>Message</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.tool.impl.SelectModelElementVariableImpl#getUserDocumentation
+ * <em>User Documentation</em>}</li>
  * </ul>
  * </p>
  *
@@ -174,6 +179,28 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
      * @ordered
      */
     protected String message = SelectModelElementVariableImpl.MESSAGE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getUserDocumentation()
+     * <em>User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getUserDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected static final String USER_DOCUMENTATION_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getUserDocumentation()
+     * <em>User Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getUserDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected String userDocumentation = SelectModelElementVariableImpl.USER_DOCUMENTATION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -344,6 +371,30 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
      * @generated
      */
     @Override
+    public String getUserDocumentation() {
+        return userDocumentation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void setUserDocumentation(String newUserDocumentation) {
+        String oldUserDocumentation = userDocumentation;
+        userDocumentation = newUserDocumentation;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION, oldUserDocumentation, userDocumentation));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__CANDIDATES_EXPRESSION:
@@ -358,6 +409,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
             return getChildrenExpression();
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE:
             return getMessage();
+        case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION:
+            return getUserDocumentation();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -387,6 +440,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
             return;
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE:
             setMessage((String) newValue);
+            return;
+        case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION:
+            setUserDocumentation((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -418,6 +474,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE:
             setMessage(SelectModelElementVariableImpl.MESSAGE_EDEFAULT);
             return;
+        case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION:
+            setUserDocumentation(SelectModelElementVariableImpl.USER_DOCUMENTATION_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -444,6 +503,9 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
                     .equals(childrenExpression);
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE:
             return SelectModelElementVariableImpl.MESSAGE_EDEFAULT == null ? message != null : !SelectModelElementVariableImpl.MESSAGE_EDEFAULT.equals(message);
+        case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION:
+            return SelectModelElementVariableImpl.USER_DOCUMENTATION_EDEFAULT == null ? userDocumentation != null : !SelectModelElementVariableImpl.USER_DOCUMENTATION_EDEFAULT
+                    .equals(userDocumentation);
         }
         return super.eIsSet(featureID);
     }
@@ -469,6 +531,14 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
                 return DescriptionPackage.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION;
             case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__MESSAGE:
                 return DescriptionPackage.SELECTION_DESCRIPTION__MESSAGE;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == InteractiveVariableDescription.class) {
+            switch (derivedFeatureID) {
+            case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION:
+                return DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION__USER_DOCUMENTATION;
             default:
                 return -1;
             }
@@ -501,6 +571,14 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
                 return -1;
             }
         }
+        if (baseClass == InteractiveVariableDescription.class) {
+            switch (baseFeatureID) {
+            case DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION__USER_DOCUMENTATION:
+                return ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__USER_DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
         return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
@@ -528,6 +606,8 @@ public class SelectModelElementVariableImpl extends SubVariableImpl implements S
         result.append(childrenExpression);
         result.append(", message: "); //$NON-NLS-1$
         result.append(message);
+        result.append(", userDocumentation: "); //$NON-NLS-1$
+        result.append(userDocumentation);
         result.append(')');
         return result.toString();
     }

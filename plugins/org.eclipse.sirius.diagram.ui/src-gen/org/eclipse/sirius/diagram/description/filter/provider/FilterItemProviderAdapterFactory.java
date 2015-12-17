@@ -157,31 +157,6 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
     }
 
     /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterVariable}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected FilterVariableItemProvider filterVariableItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterVariable}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createFilterVariableAdapter() {
-        if (filterVariableItemProvider == null) {
-            filterVariableItemProvider = new FilterVariableItemProvider(this);
-        }
-
-        return filterVariableItemProvider;
-    }
-
-    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -293,9 +268,6 @@ public class FilterItemProviderAdapterFactory extends FilterAdapterFactory imple
         }
         if (variableFilterItemProvider != null) {
             variableFilterItemProvider.dispose();
-        }
-        if (filterVariableItemProvider != null) {
-            filterVariableItemProvider.dispose();
         }
     }
 

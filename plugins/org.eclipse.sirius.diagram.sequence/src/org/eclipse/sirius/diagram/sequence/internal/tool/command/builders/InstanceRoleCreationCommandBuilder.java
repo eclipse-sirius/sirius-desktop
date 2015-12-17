@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreation
 import org.eclipse.sirius.diagram.tools.internal.command.builders.NodeCreationCommandBuilder;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
 /**
  * Specific NodeCreationCommandBuilder for InstanceRole.

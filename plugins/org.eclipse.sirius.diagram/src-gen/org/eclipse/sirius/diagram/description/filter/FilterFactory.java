@@ -57,15 +57,6 @@ public interface FilterFactory extends EFactory {
     VariableFilter createVariableFilter();
 
     /**
-     * Returns a new object of class '<em>Variable</em>'. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Variable</em>'.
-     * @generated
-     */
-    FilterVariable createFilterVariable();
-
-    /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 

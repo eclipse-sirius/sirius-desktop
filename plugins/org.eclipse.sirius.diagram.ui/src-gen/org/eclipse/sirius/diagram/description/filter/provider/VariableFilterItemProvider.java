@@ -21,10 +21,11 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.diagram.description.filter.FilterFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterKind;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
@@ -166,7 +167,9 @@ public class VariableFilterItemProvider extends FilterItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(FilterPackage.Literals.VARIABLE_FILTER__OWNED_VARIABLES, FilterFactory.eINSTANCE.createFilterVariable()));
+        newChildDescriptors.add(createChildParameter(FilterPackage.Literals.VARIABLE_FILTER__OWNED_VARIABLES, DescriptionFactory.eINSTANCE.createTypedVariable()));
+
+        newChildDescriptors.add(createChildParameter(FilterPackage.Literals.VARIABLE_FILTER__OWNED_VARIABLES, ToolFactory.eINSTANCE.createSelectModelElementVariable()));
     }
 
 }

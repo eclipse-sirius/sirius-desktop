@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.ColorStep;
@@ -47,6 +48,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
@@ -59,9 +61,11 @@ import org.eclipse.sirius.viewpoint.description.RepresentationImportDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.SubVariable;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.sirius.viewpoint.description.SytemColorsPalette;
+import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.UserColor;
 import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
@@ -385,6 +389,34 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass dAnnotationEntryEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass abstractVariableEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass subVariableEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass interactiveVariableDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass typedVariableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1852,6 +1884,86 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EClass getAbstractVariable() {
+        return abstractVariableEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getAbstractVariable_Name() {
+        return (EAttribute) abstractVariableEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EClass getSubVariable() {
+        return subVariableEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EClass getInteractiveVariableDescription() {
+        return interactiveVariableDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getInteractiveVariableDescription_UserDocumentation() {
+        return (EAttribute) interactiveVariableDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EClass getTypedVariable() {
+        return typedVariableEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getTypedVariable_DefaultValueExpression() {
+        return (EAttribute) typedVariableEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EReference getTypedVariable_ValueType() {
+        return (EReference) typedVariableEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EEnum getPosition() {
         return positionEEnum;
     }
@@ -2122,6 +2234,18 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEAttribute(dAnnotationEntryEClass, DescriptionPackage.DANNOTATION_ENTRY__SOURCE);
         createEAttribute(dAnnotationEntryEClass, DescriptionPackage.DANNOTATION_ENTRY__DETAILS);
 
+        abstractVariableEClass = createEClass(DescriptionPackage.ABSTRACT_VARIABLE);
+        createEAttribute(abstractVariableEClass, DescriptionPackage.ABSTRACT_VARIABLE__NAME);
+
+        subVariableEClass = createEClass(DescriptionPackage.SUB_VARIABLE);
+
+        interactiveVariableDescriptionEClass = createEClass(DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION);
+        createEAttribute(interactiveVariableDescriptionEClass, DescriptionPackage.INTERACTIVE_VARIABLE_DESCRIPTION__USER_DOCUMENTATION);
+
+        typedVariableEClass = createEClass(DescriptionPackage.TYPED_VARIABLE);
+        createEAttribute(typedVariableEClass, DescriptionPackage.TYPED_VARIABLE__DEFAULT_VALUE_EXPRESSION);
+        createEReference(typedVariableEClass, DescriptionPackage.TYPED_VARIABLE__VALUE_TYPE);
+
         // Create enums
         positionEEnum = createEEnum(DescriptionPackage.POSITION);
         systemColorsEEnum = createEEnum(DescriptionPackage.SYSTEM_COLORS);
@@ -2201,6 +2325,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         userFixedColorEClass.getESuperTypes().add(this.getUserColor());
         computedColorEClass.getESuperTypes().add(this.getUserColor());
         computedColorEClass.getESuperTypes().add(this.getColorDescription());
+        subVariableEClass.getESuperTypes().add(this.getAbstractVariable());
+        typedVariableEClass.getESuperTypes().add(this.getInteractiveVariableDescription());
+        typedVariableEClass.getESuperTypes().add(this.getSubVariable());
 
         // Initialize classes and features; add operations and parameters
         initEClass(groupEClass, Group.class, "Group", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2715,6 +2842,32 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 theEcorePackage.getEString(),
                 "details", null, 0, -1, DAnnotationEntry.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
+        initEClass(abstractVariableEClass, AbstractVariable.class, "AbstractVariable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getAbstractVariable_Name(),
+                theEcorePackage.getEString(),
+                "name", null, 0, 1, AbstractVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+
+        initEClass(subVariableEClass, SubVariable.class, "SubVariable", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+        initEClass(interactiveVariableDescriptionEClass, InteractiveVariableDescription.class,
+                "InteractiveVariableDescription", EPackageImpl.IS_ABSTRACT, EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getInteractiveVariableDescription_UserDocumentation(),
+                theEcorePackage.getEString(),
+                "userDocumentation", null, 0, 1, InteractiveVariableDescription.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+
+        initEClass(typedVariableEClass, TypedVariable.class, "TypedVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(
+                getTypedVariable_DefaultValueExpression(),
+                this.getInterpretedExpression(),
+                "defaultValueExpression", null, 0, 1, TypedVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(
+                getTypedVariable_ValueType(),
+                theEcorePackage.getEDataType(),
+                null,
+                "valueType", null, 1, 1, TypedVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+
         // Initialize enums and add enum literals
         initEEnum(positionEEnum, Position.class, "Position"); //$NON-NLS-1$
         addEEnumLiteral(positionEEnum, Position.NORTH_LITERAL);
@@ -2809,6 +2962,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         });
         addAnnotation(getComputedColor_Blue(), source, new String[] { "returnType", "an integer." //$NON-NLS-1$ //$NON-NLS-2$
         });
+        addAnnotation(getTypedVariable_DefaultValueExpression(), source, new String[] { "returnType", "Must return an instance of type valueType." //$NON-NLS-1$ //$NON-NLS-2$
+        });
     }
 
     /**
@@ -2855,6 +3010,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getComputedColor_Red(), source, new String[] {});
         addAnnotation(getComputedColor_Green(), source, new String[] {});
         addAnnotation(getComputedColor_Blue(), source, new String[] {});
+        addAnnotation(getTypedVariable_DefaultValueExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram." //$NON-NLS-1$ //$NON-NLS-2$
+        });
     }
 
 } // DescriptionPackageImpl

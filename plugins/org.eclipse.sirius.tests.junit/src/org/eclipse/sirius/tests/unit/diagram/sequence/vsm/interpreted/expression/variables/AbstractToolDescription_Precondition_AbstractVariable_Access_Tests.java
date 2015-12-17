@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,11 +69,11 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -145,6 +145,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
 
     private GraphicalEditPart lifelineCEditPart;
 
+    @Override
     @Before
     public void setUp() throws Exception {
         super.setUp();
@@ -272,7 +273,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
             for (AbstractVariable variable : variables) {
                 String name = variable.getName();
                 String newName = name + "Renamed";
-                Command changeVariableNameCmd = SetCommand.create(domain, variable, ToolPackage.Literals.ABSTRACT_VARIABLE__NAME, newName);
+                Command changeVariableNameCmd = SetCommand.create(domain, variable, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_VARIABLE__NAME, newName);
                 commandStack.execute(changeVariableNameCmd);
             }
         }
@@ -491,7 +492,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
         for (EStructuralFeature structuralFeature : abstractToolDescription.eClass().getEAllStructuralFeatures()) {
             if (structuralFeature.getEType() instanceof EClass) {
                 EClass eClass = (EClass) structuralFeature.getEType();
-                if (eClass.getEAllSuperTypes().contains(ToolPackage.Literals.ABSTRACT_VARIABLE)) {
+                if (eClass.getEAllSuperTypes().contains(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_VARIABLE)) {
                     AbstractVariable variable = (AbstractVariable) abstractToolDescription.eGet(structuralFeature);
                     if (variable != null) {
                         variableNames.add(variable);
@@ -502,6 +503,7 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
         return variableNames;
     }
 
+    @Override
     @After
     public void tearDown() throws Exception {
         TestsUtil.synchronizationWithUIThread();
@@ -539,10 +541,12 @@ public class AbstractToolDescription_Precondition_AbstractVariable_Access_Tests 
             this.abstractToolDescription = abstractToolDescription;
         }
 
+        @Override
         public Object getNewObject() {
             return abstractToolDescription;
         }
 
+        @Override
         public Object getObjectType() {
             return abstractToolDescription.getClass();
         }

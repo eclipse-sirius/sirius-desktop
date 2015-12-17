@@ -12,7 +12,7 @@ package org.eclipse.sirius.editor.tools.internal.menu.child;
 
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * The variables menu.
@@ -26,7 +26,7 @@ public class VariablesMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     public VariablesMenuBuilder() {
         super();
-        addValidType(ToolPackage.eINSTANCE.getAbstractVariable());
+        addValidType(DescriptionPackage.eINSTANCE.getAbstractVariable());
     }
 
     @Override

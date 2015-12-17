@@ -9,14 +9,14 @@
  *    Obeo - initial API and implementation
  *
  */
-package org.eclipse.sirius.viewpoint.description.tool.impl;
+package org.eclipse.sirius.viewpoint.description.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl#getName
+ * {@link org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl#getName
  * <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -69,7 +69,7 @@ public abstract class AbstractVariableImpl extends MinimalEObjectImpl.Container 
      */
     @Override
     protected EClass eStaticClass() {
-        return ToolPackage.Literals.ABSTRACT_VARIABLE;
+        return DescriptionPackage.Literals.ABSTRACT_VARIABLE;
     }
 
     /**
@@ -92,7 +92,7 @@ public abstract class AbstractVariableImpl extends MinimalEObjectImpl.Container 
         String oldName = name;
         name = newName;
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.ABSTRACT_VARIABLE__NAME, oldName, name));
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.ABSTRACT_VARIABLE__NAME, oldName, name));
         }
     }
 
@@ -104,7 +104,7 @@ public abstract class AbstractVariableImpl extends MinimalEObjectImpl.Container 
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case ToolPackage.ABSTRACT_VARIABLE__NAME:
+        case DescriptionPackage.ABSTRACT_VARIABLE__NAME:
             return getName();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -118,7 +118,7 @@ public abstract class AbstractVariableImpl extends MinimalEObjectImpl.Container 
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case ToolPackage.ABSTRACT_VARIABLE__NAME:
+        case DescriptionPackage.ABSTRACT_VARIABLE__NAME:
             setName((String) newValue);
             return;
         }
@@ -133,7 +133,7 @@ public abstract class AbstractVariableImpl extends MinimalEObjectImpl.Container 
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case ToolPackage.ABSTRACT_VARIABLE__NAME:
+        case DescriptionPackage.ABSTRACT_VARIABLE__NAME:
             setName(AbstractVariableImpl.NAME_EDEFAULT);
             return;
         }
@@ -148,7 +148,7 @@ public abstract class AbstractVariableImpl extends MinimalEObjectImpl.Container 
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case ToolPackage.ABSTRACT_VARIABLE__NAME:
+        case DescriptionPackage.ABSTRACT_VARIABLE__NAME:
             return AbstractVariableImpl.NAME_EDEFAULT == null ? name != null : !AbstractVariableImpl.NAME_EDEFAULT.equals(name);
         }
         return super.eIsSet(featureID);

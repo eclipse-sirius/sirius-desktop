@@ -50,6 +50,7 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EObjectVariableValue;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
@@ -57,7 +58,6 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Ellipse;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.FilterVariableHistory;
-import org.eclipse.sirius.diagram.FilterVariableValue;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.FoldingFilter;
 import org.eclipse.sirius.diagram.FoldingPointFilter;
@@ -76,6 +76,8 @@ import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
+import org.eclipse.sirius.diagram.TypedVariableValue;
+import org.eclipse.sirius.diagram.VariableValue;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
@@ -347,13 +349,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    private EClass filterVariableValueEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     private EClass collapseFilterEClass = null;
 
     /**
@@ -411,6 +406,27 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     private EClass hideLabelCapabilityStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass variableValueEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass typedVariableValueEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass eObjectVariableValueEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2096,36 +2112,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
-    public EClass getFilterVariableValue() {
-        return filterVariableValueEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EReference getFilterVariableValue_VariableDefinition() {
-        return (EReference) filterVariableValueEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EReference getFilterVariableValue_ModelElement() {
-        return (EReference) filterVariableValueEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EClass getCollapseFilter() {
         return collapseFilterEClass;
     }
@@ -2248,6 +2234,76 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
     @Override
     public EAttribute getHideLabelCapabilityStyle_HideLabelByDefault() {
         return (EAttribute) hideLabelCapabilityStyleEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EClass getVariableValue() {
+        return variableValueEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EClass getTypedVariableValue() {
+        return typedVariableValueEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EReference getTypedVariableValue_VariableDefinition() {
+        return (EReference) typedVariableValueEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getTypedVariableValue_Value() {
+        return (EAttribute) typedVariableValueEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EClass getEObjectVariableValue() {
+        return eObjectVariableValueEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EReference getEObjectVariableValue_VariableDefinition() {
+        return (EReference) eObjectVariableValueEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EReference getEObjectVariableValue_ModelElement() {
+        return (EReference) eObjectVariableValueEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -2577,10 +2633,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         filterVariableHistoryEClass = createEClass(DiagramPackage.FILTER_VARIABLE_HISTORY);
         createEReference(filterVariableHistoryEClass, DiagramPackage.FILTER_VARIABLE_HISTORY__OWNED_VALUES);
 
-        filterVariableValueEClass = createEClass(DiagramPackage.FILTER_VARIABLE_VALUE);
-        createEReference(filterVariableValueEClass, DiagramPackage.FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION);
-        createEReference(filterVariableValueEClass, DiagramPackage.FILTER_VARIABLE_VALUE__MODEL_ELEMENT);
-
         collapseFilterEClass = createEClass(DiagramPackage.COLLAPSE_FILTER);
         createEAttribute(collapseFilterEClass, DiagramPackage.COLLAPSE_FILTER__WIDTH);
         createEAttribute(collapseFilterEClass, DiagramPackage.COLLAPSE_FILTER__HEIGHT);
@@ -2602,6 +2654,16 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
         hideLabelCapabilityStyleEClass = createEClass(DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE);
         createEAttribute(hideLabelCapabilityStyleEClass, DiagramPackage.HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT);
+
+        variableValueEClass = createEClass(DiagramPackage.VARIABLE_VALUE);
+
+        typedVariableValueEClass = createEClass(DiagramPackage.TYPED_VARIABLE_VALUE);
+        createEReference(typedVariableValueEClass, DiagramPackage.TYPED_VARIABLE_VALUE__VARIABLE_DEFINITION);
+        createEAttribute(typedVariableValueEClass, DiagramPackage.TYPED_VARIABLE_VALUE__VALUE);
+
+        eObjectVariableValueEClass = createEClass(DiagramPackage.EOBJECT_VARIABLE_VALUE);
+        createEReference(eObjectVariableValueEClass, DiagramPackage.EOBJECT_VARIABLE_VALUE__VARIABLE_DEFINITION);
+        createEReference(eObjectVariableValueEClass, DiagramPackage.EOBJECT_VARIABLE_VALUE__MODEL_ELEMENT);
 
         // Create enums
         containerLayoutEEnum = createEEnum(DiagramPackage.CONTAINER_LAYOUT);
@@ -2654,6 +2716,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
         org.eclipse.sirius.viewpoint.description.style.StylePackage theStylePackage_1 = (org.eclipse.sirius.viewpoint.description.style.StylePackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.style.StylePackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.tool.ToolPackage theToolPackage_1 = (org.eclipse.sirius.viewpoint.description.tool.ToolPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theDescriptionPackage);
@@ -2716,6 +2780,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         centerLabelStyleEClass.getESuperTypes().add(theViewpointPackage.getBasicLabelStyle());
         endLabelStyleEClass.getESuperTypes().add(theViewpointPackage.getBasicLabelStyle());
         bracketEdgeStyleEClass.getESuperTypes().add(this.getEdgeStyle());
+        typedVariableValueEClass.getESuperTypes().add(this.getVariableValue());
+        eObjectVariableValueEClass.getESuperTypes().add(this.getVariableValue());
 
         // Initialize classes and features; add operations and parameters
         initEClass(dDiagramEClass, DDiagram.class, "DDiagram", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -3320,21 +3386,9 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEClass(filterVariableHistoryEClass, FilterVariableHistory.class, "FilterVariableHistory", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(
                 getFilterVariableHistory_OwnedValues(),
-                this.getFilterVariableValue(),
+                this.getVariableValue(),
                 null,
                 "ownedValues", null, 0, -1, FilterVariableHistory.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        initEClass(filterVariableValueEClass, FilterVariableValue.class, "FilterVariableValue", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEReference(
-                getFilterVariableValue_VariableDefinition(),
-                theFilterPackage.getFilterVariable(),
-                null,
-                "variableDefinition", null, 1, 1, FilterVariableValue.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-        initEReference(
-                getFilterVariableValue_ModelElement(),
-                theEcorePackage.getEObject(),
-                null,
-                "modelElement", null, 1, 1, FilterVariableValue.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         initEClass(collapseFilterEClass, CollapseFilter.class, "CollapseFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(
@@ -3390,6 +3444,31 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 getHideLabelCapabilityStyle_HideLabelByDefault(),
                 ecorePackage.getEBoolean(),
                 "hideLabelByDefault", "false", 0, 1, HideLabelCapabilityStyle.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+
+        initEClass(variableValueEClass, VariableValue.class, "VariableValue", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+        initEClass(typedVariableValueEClass, TypedVariableValue.class, "TypedVariableValue", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEReference(
+                getTypedVariableValue_VariableDefinition(),
+                theDescriptionPackage_1.getTypedVariable(),
+                null,
+                "variableDefinition", null, 1, 1, TypedVariableValue.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEAttribute(
+                getTypedVariableValue_Value(),
+                theEcorePackage.getEString(),
+                "value", null, 0, 1, TypedVariableValue.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+
+        initEClass(eObjectVariableValueEClass, EObjectVariableValue.class, "EObjectVariableValue", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEReference(
+                getEObjectVariableValue_VariableDefinition(),
+                theToolPackage_1.getSelectModelElementVariable(),
+                null,
+                "variableDefinition", null, 1, 1, EObjectVariableValue.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
+        initEReference(
+                getEObjectVariableValue_ModelElement(),
+                theEcorePackage.getEObject(),
+                null,
+                "modelElement", null, 1, 1, EObjectVariableValue.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         // Initialize enums and add enum literals
         initEEnum(containerLayoutEEnum, ContainerLayout.class, "ContainerLayout"); //$NON-NLS-1$

@@ -151,7 +151,9 @@ IItemPropertySource {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.FILTER_VARIABLE_HISTORY__OWNED_VALUES, DiagramFactory.eINSTANCE.createFilterVariableValue()));
+        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.FILTER_VARIABLE_HISTORY__OWNED_VALUES, DiagramFactory.eINSTANCE.createTypedVariableValue()));
+
+        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.FILTER_VARIABLE_HISTORY__OWNED_VALUES, DiagramFactory.eINSTANCE.createEObjectVariableValue()));
     }
 
     /**

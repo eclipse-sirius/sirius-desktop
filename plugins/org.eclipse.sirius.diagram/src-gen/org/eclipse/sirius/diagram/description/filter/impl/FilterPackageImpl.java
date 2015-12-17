@@ -30,7 +30,6 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterKind;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
-import org.eclipse.sirius.diagram.description.filter.FilterVariable;
 import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl;
@@ -82,13 +81,6 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * @generated
      */
     private EClass variableFilterEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass filterVariableEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -314,26 +306,6 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
      * @generated
      */
     @Override
-    public EClass getFilterVariable() {
-        return filterVariableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public EAttribute getFilterVariable_Name() {
-        return (EAttribute) filterVariableEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public EEnum getFilterKind() {
         return filterKindEEnum;
     }
@@ -386,9 +358,6 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
         createEReference(variableFilterEClass, FilterPackage.VARIABLE_FILTER__OWNED_VARIABLES);
         createEAttribute(variableFilterEClass, FilterPackage.VARIABLE_FILTER__SEMANTIC_CONDITION_EXPRESSION);
 
-        filterVariableEClass = createEClass(FilterPackage.FILTER_VARIABLE);
-        createEAttribute(filterVariableEClass, FilterPackage.FILTER_VARIABLE__NAME);
-
         // Create enums
         filterKindEEnum = createEEnum(FilterPackage.FILTER_KIND);
     }
@@ -435,7 +404,6 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
         mappingFilterEClass.getESuperTypes().add(this.getFilter());
         compositeFilterDescriptionEClass.getESuperTypes().add(this.getFilterDescription());
         variableFilterEClass.getESuperTypes().add(this.getFilter());
-        filterVariableEClass.getESuperTypes().add(theDescriptionPackage_1.getSelectionDescription());
 
         // Initialize classes and features; add operations and parameters
         initEClass(filterDescriptionEClass, FilterDescription.class, "FilterDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -478,7 +446,7 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
         initEClass(variableFilterEClass, VariableFilter.class, "VariableFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEReference(
                 getVariableFilter_OwnedVariables(),
-                this.getFilterVariable(),
+                theDescriptionPackage_1.getInteractiveVariableDescription(),
                 null,
                 "ownedVariables", null, 0, -1, VariableFilter.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
         initEAttribute(
@@ -493,12 +461,6 @@ public class FilterPackageImpl extends EPackageImpl implements FilterPackage {
         g2 = createEGenericType();
         g1.getETypeArguments().add(g2);
         addEParameter(op, g1, "variables", 0, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
-
-        initEClass(filterVariableEClass, FilterVariable.class, "FilterVariable", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-        initEAttribute(
-                getFilterVariable_Name(),
-                theEcorePackage.getEString(),
-                "name", null, 1, 1, FilterVariable.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
         // Initialize enums and add enum literals
         initEEnum(filterKindEEnum, FilterKind.class, "FilterKind"); //$NON-NLS-1$

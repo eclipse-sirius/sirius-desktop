@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -244,6 +244,15 @@ public interface DescriptionFactory extends EFactory {
      * @generated
      */
     DAnnotationEntry createDAnnotationEntry();
+
+    /**
+     * Returns a new object of class '<em>Typed Variable</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Typed Variable</em>'.
+     * @generated
+     */
+    TypedVariable createTypedVariable();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

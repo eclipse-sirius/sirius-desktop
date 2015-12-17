@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.sequence.description.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl;
+import org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

@@ -48,13 +48,13 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
     /**
      * Default image descriptor for the error overlay.
      */
-    public static final ImageDescriptor ERROR_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/error_co.png"); //$NON-NLS-1$;
+    public static final ImageDescriptor ERROR_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/error_co.png"); //$NON-NLS-1$ ;
 
     /**
      * Default image descriptor for the error overlay, if the current element
      * has no error, but at least one of its children has.
      */
-    public static final ImageDescriptor ERROR_OVERLAY_DESC_CHILDREN_ONLY = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/error_co_children_only.png"); //$NON-NLS-1$;
+    public static final ImageDescriptor ERROR_OVERLAY_DESC_CHILDREN_ONLY = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/error_co_children_only.png"); //$NON-NLS-1$ ;
 
     /**
      * Image descriptor for warning overlay.
@@ -65,7 +65,7 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
      * Default image descriptor for the warning overlay, if the current element
      * has no error, but at least one of its children has.
      */
-    public static final ImageDescriptor WARNING_OVERLAY_DESC_CHILDREN_ONLY = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/warning_co_children_only.png"); //$NON-NLS-1$;
+    public static final ImageDescriptor WARNING_OVERLAY_DESC_CHILDREN_ONLY = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/warning_co_children_only.png"); //$NON-NLS-1$ ;
 
     private List<ILabelProviderListener> listeners = new ArrayList<ILabelProviderListener>(1);
 
@@ -98,6 +98,7 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
     /**
      * {@inheritDoc}
      */
+    @Override
     public void addListener(ILabelProviderListener listener) {
         listeners.add(listener);
 
@@ -106,6 +107,7 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
     /**
      * {@inheritDoc}
      */
+    @Override
     public Image decorateImage(Image image, Object element) {
         return image;
     }
@@ -199,6 +201,7 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
     /**
      * {@inheritDoc}
      */
+    @Override
     public String decorateText(String text, Object element) {
         return text;
     }
@@ -214,6 +217,7 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
     /**
      * {@inheritDoc}
      */
+    @Override
     public void dispose() {
         listeners = new ArrayList<ILabelProviderListener>(1);
     }
@@ -221,6 +225,7 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isLabelProperty(Object element, String property) {
         return true;
     }
@@ -236,6 +241,7 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
     /**
      * {@inheritDoc}
      */
+    @Override
     public void removeListener(ILabelProviderListener listener) {
         listeners.remove(listener);
     }

@@ -50,6 +50,7 @@ import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.sirius.viewpoint.description.SytemColorsPalette;
+import org.eclipse.sirius.viewpoint.description.TypedVariable;
 import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
@@ -147,6 +148,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createComputedColor();
         case DescriptionPackage.DANNOTATION_ENTRY:
             return createDAnnotationEntry();
+        case DescriptionPackage.TYPED_VARIABLE:
+            return createTypedVariable();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -478,6 +481,17 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public DAnnotationEntry createDAnnotationEntry() {
         DAnnotationEntryImpl dAnnotationEntry = new DAnnotationEntryImpl();
         return dAnnotationEntry;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public TypedVariable createTypedVariable() {
+        TypedVariableImpl typedVariable = new TypedVariableImpl();
+        return typedVariable;
     }
 
     /**

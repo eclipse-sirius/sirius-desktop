@@ -7,15 +7,22 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.tool.abstractvariable;
+package org.eclipse.sirius.editor.properties.sections.description.typedvariable;
 
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextWithButtonPropertySection;
+import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
+import org.eclipse.sirius.editor.tools.internal.presentation.TextWithContentProposalDialog;
+import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
@@ -24,9 +31,9 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 // End of user code imports
 
 /**
- * A section for the name property of a AbstractVariable object.
+ * A section for the defaultValueExpression property of a TypedVariable object.
  */
-public class AbstractVariableNamePropertySection extends AbstractTextPropertySection {
+public class TypedVariableDefaultValueExpressionPropertySection extends AbstractTextWithButtonPropertySection implements ContentProposalClient {
 
     /** Help control of the section. */
     protected CLabel help;
@@ -44,14 +51,14 @@ public class AbstractVariableNamePropertySection extends AbstractTextPropertySec
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
-        return "Name"; //$NON-NLS-1$
+        return "DefaultValueExpression"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getLabelText()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -63,21 +70,21 @@ public class AbstractVariableNamePropertySection extends AbstractTextPropertySec
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeature()
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeature()
      */
     public EAttribute getFeature() {
-        return ToolPackage.eINSTANCE.getAbstractVariable_Name();
+        return DescriptionPackage.eINSTANCE.getTypedVariable_DefaultValueExpression();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#getFeatureValue(String)
      */
     protected Object getFeatureValue(String newText) {
         return newText;
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
+     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextWithButtonPropertySection#isEqual(String)
      */
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);
@@ -88,6 +95,10 @@ public class AbstractVariableNamePropertySection extends AbstractTextPropertySec
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
+        /*
+         * We set the color as it's a InterpretedExpression
+         */
+        text.setBackground(SiriusEditor.getColorRegistry().get("yellow"));
 
         text.setToolTipText(getToolTipText());
 
@@ -99,17 +110,31 @@ public class AbstractVariableNamePropertySection extends AbstractTextPropertySec
         help.setImage(getHelpIcon());
         help.setToolTipText(getToolTipText());
 
+        TypeContentProposalProvider.bindPluginsCompletionProcessors(this, text);
+
         // Start of user code create controls
 
         // End of user code create controls
 
     }
 
+    @Override
+    protected SelectionListener createButtonListener() {
+        return new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                TextWithContentProposalDialog dialog = new TextWithContentProposalDialog(composite.getShell(), TypedVariableDefaultValueExpressionPropertySection.this, text.getText());
+                dialog.open();
+                text.setText(dialog.getResult());
+                handleTextModified();
+            }
+        };
+    }
+
     /**
      * {@inheritDoc}
      */
     protected String getPropertyDescription() {
-        return "Name of the variable, you may access it in expressions using theNameOfTheVariable.";
+        return "An expression used to define the default variable value";
     }
 
     // Start of user code user operations

@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterKind;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
-import org.eclipse.sirius.diagram.description.filter.FilterVariable;
 import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 
@@ -77,8 +76,6 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
             return createCompositeFilterDescription();
         case FilterPackage.VARIABLE_FILTER:
             return createVariableFilter();
-        case FilterPackage.FILTER_VARIABLE:
-            return createFilterVariable();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -145,17 +142,6 @@ public class FilterFactoryImpl extends EFactoryImpl implements FilterFactory {
     public VariableFilter createVariableFilter() {
         VariableFilterImpl variableFilter = new VariableFilterSpec();
         return variableFilter;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public FilterVariable createFilterVariable() {
-        FilterVariableImpl filterVariable = new FilterVariableImpl();
-        return filterVariable;
     }
 
     /**

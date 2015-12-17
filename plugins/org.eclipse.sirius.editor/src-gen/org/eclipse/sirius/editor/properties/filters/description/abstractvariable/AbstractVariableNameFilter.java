@@ -7,13 +7,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.tool.abstractvariable;
+package org.eclipse.sirius.editor.properties.filters.description.abstractvariable;
 
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 // End of user code specific imports
 
@@ -26,14 +26,14 @@ public class AbstractVariableNameFilter extends ViewpointPropertyFilter {
      * {@inheritDoc}
      */
     protected EStructuralFeature getFeature() {
-        return ToolPackage.eINSTANCE.getAbstractVariable_Name();
+        return DescriptionPackage.eINSTANCE.getAbstractVariable_Name();
     }
 
     /**
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+        return arg0 instanceof org.eclipse.sirius.viewpoint.description.AbstractVariable;
     }
 
     // Start of user code user methods

@@ -17,7 +17,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**

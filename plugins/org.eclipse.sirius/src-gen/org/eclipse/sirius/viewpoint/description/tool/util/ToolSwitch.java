@@ -15,11 +15,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
+import org.eclipse.sirius.viewpoint.description.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
@@ -65,7 +67,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
-import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.SwitchChild;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -480,14 +481,6 @@ public class ToolSwitch<T> {
             }
             return result;
         }
-        case ToolPackage.ABSTRACT_VARIABLE: {
-            AbstractVariable abstractVariable = (AbstractVariable) theEObject;
-            T result = caseAbstractVariable(abstractVariable);
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
         case ToolPackage.VARIABLE_CONTAINER: {
             VariableContainer variableContainer = (VariableContainer) theEObject;
             T result = caseVariableContainer(variableContainer);
@@ -507,17 +500,6 @@ public class ToolSwitch<T> {
             }
             if (result == null) {
                 result = caseAbstractVariable(acceleoVariable);
-            }
-            if (result == null) {
-                result = defaultCase(theEObject);
-            }
-            return result;
-        }
-        case ToolPackage.SUB_VARIABLE: {
-            SubVariable subVariable = (SubVariable) theEObject;
-            T result = caseSubVariable(subVariable);
-            if (result == null) {
-                result = caseAbstractVariable(subVariable);
             }
             if (result == null) {
                 result = defaultCase(theEObject);
@@ -652,6 +634,9 @@ public class ToolSwitch<T> {
             }
             if (result == null) {
                 result = caseSelectionDescription(selectModelElementVariable);
+            }
+            if (result == null) {
+                result = caseInteractiveVariableDescription(selectModelElementVariable);
             }
             if (result == null) {
                 result = caseAbstractVariable(selectModelElementVariable);
@@ -1215,23 +1200,6 @@ public class ToolSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Abstract Variable</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Abstract Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseAbstractVariable(AbstractVariable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Variable Container</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -1261,23 +1229,6 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseAcceleoVariable(AcceleoVariable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Sub Variable</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Sub Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseSubVariable(SubVariable object) {
         return null;
     }
 
@@ -1924,6 +1875,57 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseSelectionDescription(SelectionDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Abstract Variable</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Abstract Variable</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseAbstractVariable(AbstractVariable object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Sub Variable</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Sub Variable</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSubVariable(SubVariable object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Interactive Variable Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Interactive Variable Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseInteractiveVariableDescription(InteractiveVariableDescription object) {
         return null;
     }
 

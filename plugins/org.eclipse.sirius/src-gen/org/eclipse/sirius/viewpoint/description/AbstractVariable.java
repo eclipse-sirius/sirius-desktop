@@ -9,44 +9,47 @@
  *    Obeo - initial API and implementation
  *
  */
-package org.eclipse.sirius.diagram.description.filter;
+package org.eclipse.sirius.viewpoint.description;
 
-import org.eclipse.sirius.viewpoint.description.SelectionDescription;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Variable</b></em>'. <!-- end-user-doc -->
+ * <em><b>Abstract Variable</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.filter.FilterVariable#getName
+ * <li>{@link org.eclipse.sirius.viewpoint.description.AbstractVariable#getName
  * <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getFilterVariable()
- * @model
+ * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractVariable()
+ * @model abstract="true"
  * @generated
  */
-public interface FilterVariable extends SelectionDescription {
+public interface AbstractVariable extends EObject {
     /**
      * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Name of
-     * the variable. <!-- end-model-doc -->
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
+     * should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
      *
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getFilterVariable_Name()
-     * @model required="true"
+     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractVariable_Name()
+     * @model
      * @generated
      */
     String getName();
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.filter.FilterVariable#getName
+     * {@link org.eclipse.sirius.viewpoint.description.AbstractVariable#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
@@ -56,4 +59,4 @@ public interface FilterVariable extends SelectionDescription {
      */
     void setName(String value);
 
-} // FilterVariable
+} // AbstractVariable

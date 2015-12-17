@@ -348,7 +348,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-
+       
 
          
    <!-- Start of user code RepresentationDescription description -->
@@ -373,7 +373,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - titleExpression: a string.
-
+       
 
          
    <!-- Start of user code RepresentationImportDescription description -->
@@ -479,7 +479,7 @@
           - predicateExpression: a boolean.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code ConditionalStyleDescription description -->
@@ -520,7 +520,7 @@
                 . container: the semantic element of the container view.
                 . viewpoint: (deprecated) the current diagram.
                 . diagram: the current diagram.
-
+       
 
          
    <!-- Start of user code DecorationDescription description -->
@@ -539,7 +539,7 @@
                 . container: the semantic element of the container view.
                 . viewpoint: (deprecated) the current diagram.
                 . diagram: the current diagram.
-
+       
 
          
    <!-- Start of user code SemanticBasedDecoration description -->
@@ -577,7 +577,7 @@
           - predicateExpression: a boolean result. True to enable the customization, false to disabled it. True by default.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code VSMElementCustomization description -->
@@ -615,7 +615,7 @@
           - value: A java Object to affect as new value of a EAttribute, for example a java primitive.
                 . view: the current view.
                 . container: the semantic container.
-
+       
 
          
    <!-- Start of user code EAttributeCustomization description -->
@@ -643,17 +643,17 @@
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
           - rootExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
           - childrenExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
 
          
    <!-- Start of user code SelectionDescription description -->
@@ -697,11 +697,11 @@
 
        Interpreted expressions, requested return type and available variables:
           - colorValueComputationExpression: an integer.
-
+       
           - minValueComputationExpression: an integer.
-
+       
           - maxValueComputationExpression: an integer.
-
+       
 
          
    <!-- Start of user code InterpolatedColor description -->
@@ -716,7 +716,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - associatedValue: an integer.
-
+       
 
          
    <!-- Start of user code ColorStep description -->
@@ -832,11 +832,11 @@
 
        Interpreted expressions, requested return type and available variables:
           - red: an integer.
-
+       
           - green: an integer.
-
+       
           - blue: an integer.
-
+       
 
          
    <!-- Start of user code ComputedColor description -->
@@ -853,6 +853,55 @@
    <!-- Start of user code DAnnotationEntry description -->
    
    <!-- End of user code DAnnotationEntry description -->
+   
+      </description>
+   </context>
+   <context id="AbstractVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code AbstractVariable description -->
+   
+   <!-- End of user code AbstractVariable description -->
+   
+      </description>
+   </context>
+   <context id="SubVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code SubVariable description -->
+   
+   <!-- End of user code SubVariable description -->
+   
+      </description>
+   </context>
+   <context id="InteractiveVariableDescription">
+     <description>
+       This interface represents a variable which value is given by the user.
+
+       
+         
+   <!-- Start of user code InteractiveVariableDescription description -->
+   
+   <!-- End of user code InteractiveVariableDescription description -->
+   
+      </description>
+   </context>
+   <context id="TypedVariable">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - defaultValueExpression: Must return an instance of type valueType.
+                . diagram: the current DDiagram.
+       
+
+         
+   <!-- Start of user code TypedVariable description -->
+   
+   <!-- End of user code TypedVariable description -->
    
       </description>
    </context>
@@ -875,7 +924,7 @@
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
 
          
    <!-- Start of user code BasicLabelStyleDescription description -->
@@ -892,7 +941,7 @@
           - labelExpression: a string.
                 . diagram: the current DSemanticDiagram.
                 . view: the current view for which the label is calculated.
-
+       
 
          
    <!-- Start of user code LabelStyleDescription description -->
@@ -931,7 +980,7 @@
        Interpreted expressions, requested return type and available variables:
           - tooltipExpression: a string.
                 . view: the current view.
-
+       
 
          
    <!-- Start of user code TooltipStyleDescription description -->
@@ -958,9 +1007,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
          
    <!-- Start of user code AbstractToolDescription description -->
@@ -976,9 +1025,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
          
    <!-- Start of user code MappingBasedToolDescription description -->
@@ -993,9 +1042,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - element: The variable container that represents the semantic element of the clicked view.
@@ -1014,9 +1063,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - newSemanticContainer: The semantic element of the new container view.
@@ -1036,24 +1085,24 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
           - candidatesExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
           - rootExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
           - childrenExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
 
        List of the available variables for tool operations:
             - element: 
@@ -1072,29 +1121,29 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
           - candidatesExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the selected view.
                 . container: the semantic element of containerView.
-
+       
           - rootExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the selected view.
                 . container: the semantic element of containerView.
-
+       
           - childrenExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the selected view.
                 . container: the semantic element of containerView.
-
+       
           - preSelectedCandidatesExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the selected view.
                 . container: the semantic element of containerView.
-
+       
 
        List of the available variables for tool operations:
             - element: 
@@ -1113,13 +1162,13 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
           - titleExpression: a string.
-
+       
           - browseExpression: an EObject.
-
+       
 
        List of the available variables for tool operations:
             - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
@@ -1137,14 +1186,14 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
           - browseExpression: an EObject.
-
+       
           - navigationNameExpression: a string.
                 . name: name of the targeted Representation.
-
+       
 
        List of the available variables for tool operations:
             - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
@@ -1174,9 +1223,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
          
    <!-- Start of user code MenuItemDescription description -->
@@ -1202,9 +1251,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
        List of the available variables for tool operations:
             - view: 
@@ -1221,9 +1270,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
          
    <!-- Start of user code ExternalJavaAction description -->
@@ -1239,9 +1288,9 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
          
    <!-- Start of user code ExternalJavaActionCall description -->
@@ -1256,25 +1305,14 @@
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
                 . container: the container.
-
+       
           - elementsToSelect: a Collection&lt;EObject>
-
+       
 
          
    <!-- Start of user code PopupMenu description -->
    
    <!-- End of user code PopupMenu description -->
-   
-      </description>
-   </context>
-   <context id="AbstractVariable">
-     <description>
-       
-       
-         
-   <!-- Start of user code AbstractVariable description -->
-   
-   <!-- End of user code AbstractVariable description -->
    
       </description>
    </context>
@@ -1294,23 +1332,12 @@
        
        Interpreted expressions, requested return type and available variables:
           - computationExpression: a Collection&lt;Object> or an Object.
-
+       
 
          
    <!-- Start of user code AcceleoVariable description -->
    
    <!-- End of user code AcceleoVariable description -->
-   
-      </description>
-   </context>
-   <context id="SubVariable">
-     <description>
-       
-       
-         
-   <!-- Start of user code SubVariable description -->
-   
-   <!-- End of user code SubVariable description -->
    
       </description>
    </context>
@@ -1421,17 +1448,17 @@
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
           - rootExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
           - childrenExpression: a Collection&lt;EObject> or an EObject.
                 . diagram: the current DDiagram.
                 . containerView: the view of the container.
                 . container: the semantic element of the container.
-
+       
 
          
    <!-- Start of user code SelectModelElementVariable description -->
@@ -1535,7 +1562,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - browseExpression: an EObject.
-
+       
 
          
    <!-- Start of user code ChangeContext description -->
@@ -1550,7 +1577,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - valueExpression: any type supported by the feature.
-
+       
 
          
    <!-- Start of user code SetValue description -->
@@ -1575,7 +1602,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - elementExpression: a Collection&lt;EObject> or an EObject.
-
+       
 
          
    <!-- Start of user code Unset description -->
@@ -1590,7 +1617,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - newContainerExpression: an EObject.
-
+       
 
          
    <!-- Start of user code MoveElement description -->
@@ -1617,7 +1644,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - expression: a Collection&lt;EObject> or an EObject.
-
+       
 
          
    <!-- Start of user code For description -->
@@ -1632,7 +1659,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - conditionExpression: a boolean.
-
+       
 
          
    <!-- Start of user code If description -->
@@ -1669,7 +1696,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - value: any type supported by the corresponding java parameter.
-
+       
 
          
    <!-- Start of user code ExternalJavaActionParameter description -->
@@ -1684,9 +1711,9 @@
 
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
-
+       
           - elementsToListen: a collection.
-
+       
 
          
    <!-- Start of user code ToolFilterDescription description -->
@@ -1712,7 +1739,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - conditionExpression: a boolean.
-
+       
 
          
    <!-- Start of user code Case description -->
@@ -1774,7 +1801,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - message: a string.
-
+       
 
          
    <!-- Start of user code ValidationRule description -->
@@ -1789,7 +1816,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - message: a string.
-
+       
 
          
    <!-- Start of user code SemanticValidationRule description -->
@@ -1804,7 +1831,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - message: a string.
-
+       
 
          
    <!-- Start of user code ViewValidationRule description -->
@@ -1819,7 +1846,7 @@
 
        Interpreted expressions, requested return type and available variables:
           - auditExpression: a boolean.
-
+       
 
          
    <!-- Start of user code RuleAudit description -->

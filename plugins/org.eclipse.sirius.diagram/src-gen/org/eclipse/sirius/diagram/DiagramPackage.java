@@ -4730,45 +4730,6 @@ public interface DiagramPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.impl.FilterVariableValueImpl
-     * <em>Filter Variable Value</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.impl.FilterVariableValueImpl
-     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFilterVariableValue()
-     * @generated
-     */
-    int FILTER_VARIABLE_VALUE = 35;
-
-    /**
-     * The feature id for the '<em><b>Variable Definition</b></em>' reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION = 0;
-
-    /**
-     * The feature id for the '<em><b>Model Element</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE_VALUE__MODEL_ELEMENT = 1;
-
-    /**
-     * The number of structural features of the '<em>Filter Variable Value</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int FILTER_VARIABLE_VALUE_FEATURE_COUNT = 2;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.impl.CollapseFilterImpl
      * <em>Collapse Filter</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -4777,7 +4738,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCollapseFilter()
      * @generated
      */
-    int COLLAPSE_FILTER = 36;
+    int COLLAPSE_FILTER = 35;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -4816,7 +4777,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getIndirectlyCollapseFilter()
      * @generated
      */
-    int INDIRECTLY_COLLAPSE_FILTER = 37;
+    int INDIRECTLY_COLLAPSE_FILTER = 36;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -4856,7 +4817,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBeginLabelStyle()
      * @generated
      */
-    int BEGIN_LABEL_STYLE = 38;
+    int BEGIN_LABEL_STYLE = 37;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -4931,7 +4892,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCenterLabelStyle()
      * @generated
      */
-    int CENTER_LABEL_STYLE = 39;
+    int CENTER_LABEL_STYLE = 38;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -5006,7 +4967,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEndLabelStyle()
      * @generated
      */
-    int END_LABEL_STYLE = 40;
+    int END_LABEL_STYLE = 39;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -5081,7 +5042,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBracketEdgeStyle()
      * @generated
      */
-    int BRACKET_EDGE_STYLE = 41;
+    int BRACKET_EDGE_STYLE = 40;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -5219,7 +5180,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getComputedStyleDescriptionRegistry()
      * @generated
      */
-    int COMPUTED_STYLE_DESCRIPTION_REGISTRY = 42;
+    int COMPUTED_STYLE_DESCRIPTION_REGISTRY = 41;
 
     /**
      * The feature id for the '<em><b>Computed Style Descriptions</b></em>'
@@ -5250,7 +5211,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDragAndDropTarget()
      * @generated
      */
-    int DRAG_AND_DROP_TARGET = 43;
+    int DRAG_AND_DROP_TARGET = 42;
 
     /**
      * The number of structural features of the '<em>Drag And Drop Target</em>'
@@ -5271,7 +5232,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getHideLabelCapabilityStyle()
      * @generated
      */
-    int HIDE_LABEL_CAPABILITY_STYLE = 44;
+    int HIDE_LABEL_CAPABILITY_STYLE = 43;
 
     /**
      * The feature id for the '<em><b>Hide Label By Default</b></em>' attribute.
@@ -5294,6 +5255,105 @@ public interface DiagramPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.impl.VariableValueImpl
+     * <em>Variable Value</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.impl.VariableValueImpl
+     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getVariableValue()
+     * @generated
+     */
+    int VARIABLE_VALUE = 44;
+
+    /**
+     * The number of structural features of the '<em>Variable Value</em>' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int VARIABLE_VALUE_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl
+     * <em>Typed Variable Value</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.impl.TypedVariableValueImpl
+     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getTypedVariableValue()
+     * @generated
+     */
+    int TYPED_VARIABLE_VALUE = 45;
+
+    /**
+     * The feature id for the '<em><b>Variable Definition</b></em>' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE_VALUE__VARIABLE_DEFINITION = DiagramPackage.VARIABLE_VALUE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Value</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE_VALUE__VALUE = DiagramPackage.VARIABLE_VALUE_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Typed Variable Value</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TYPED_VARIABLE_VALUE_FEATURE_COUNT = DiagramPackage.VARIABLE_VALUE_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.impl.EObjectVariableValueImpl
+     * <em>EObject Variable Value</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.impl.EObjectVariableValueImpl
+     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEObjectVariableValue()
+     * @generated
+     */
+    int EOBJECT_VARIABLE_VALUE = 46;
+
+    /**
+     * The feature id for the '<em><b>Variable Definition</b></em>' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EOBJECT_VARIABLE_VALUE__VARIABLE_DEFINITION = DiagramPackage.VARIABLE_VALUE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Model Element</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int EOBJECT_VARIABLE_VALUE__MODEL_ELEMENT = DiagramPackage.VARIABLE_VALUE_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>EObject Variable Value</em>
+     * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EOBJECT_VARIABLE_VALUE_FEATURE_COUNT = DiagramPackage.VARIABLE_VALUE_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.ContainerLayout
      * <em>Container Layout</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -5302,7 +5362,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerLayout()
      * @generated
      */
-    int CONTAINER_LAYOUT = 45;
+    int CONTAINER_LAYOUT = 47;
 
     /**
      * The meta object id for the '
@@ -5313,7 +5373,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLabelPosition()
      * @generated
      */
-    int LABEL_POSITION = 46;
+    int LABEL_POSITION = 48;
 
     /**
      * The meta object id for the '
@@ -5325,7 +5385,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerShape()
      * @generated
      */
-    int CONTAINER_SHAPE = 47;
+    int CONTAINER_SHAPE = 49;
 
     /**
      * The meta object id for the '
@@ -5337,7 +5397,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBackgroundStyle()
      * @generated
      */
-    int BACKGROUND_STYLE = 48;
+    int BACKGROUND_STYLE = 50;
 
     /**
      * The meta object id for the '
@@ -5349,7 +5409,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImageShape()
      * @generated
      */
-    int BUNDLED_IMAGE_SHAPE = 49;
+    int BUNDLED_IMAGE_SHAPE = 51;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.LineStyle
@@ -5359,7 +5419,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLineStyle()
      * @generated
      */
-    int LINE_STYLE = 50;
+    int LINE_STYLE = 52;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.EdgeArrows
@@ -5370,7 +5430,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeArrows()
      * @generated
      */
-    int EDGE_ARROWS = 51;
+    int EDGE_ARROWS = 53;
 
     /**
      * The meta object id for the '
@@ -5381,7 +5441,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeRouting()
      * @generated
      */
-    int EDGE_ROUTING = 52;
+    int EDGE_ROUTING = 54;
 
     /**
      * The meta object id for the '
@@ -5392,7 +5452,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAlignmentKind()
      * @generated
      */
-    int ALIGNMENT_KIND = 53;
+    int ALIGNMENT_KIND = 55;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.ResizeKind
@@ -5403,7 +5463,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getResizeKind()
      * @generated
      */
-    int RESIZE_KIND = 54;
+    int RESIZE_KIND = 56;
 
     /**
      * The meta object id for the '
@@ -5415,7 +5475,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getArrangeConstraint()
      * @generated
      */
-    int ARRANGE_CONSTRAINT = 55;
+    int ARRANGE_CONSTRAINT = 57;
 
     /**
      * Returns the meta object for class '
@@ -7281,43 +7341,6 @@ public interface DiagramPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.FilterVariableValue
-     * <em>Filter Variable Value</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '<em>Filter Variable Value</em>'.
-     * @see org.eclipse.sirius.diagram.FilterVariableValue
-     * @generated
-     */
-    EClass getFilterVariableValue();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.FilterVariableValue#getVariableDefinition
-     * <em>Variable Definition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @return the meta object for the reference '<em>Variable Definition</em>'.
-     * @see org.eclipse.sirius.diagram.FilterVariableValue#getVariableDefinition()
-     * @see #getFilterVariableValue()
-     * @generated
-     */
-    EReference getFilterVariableValue_VariableDefinition();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.FilterVariableValue#getModelElement
-     * <em>Model Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Model Element</em>'.
-     * @see org.eclipse.sirius.diagram.FilterVariableValue#getModelElement()
-     * @see #getFilterVariableValue()
-     * @generated
-     */
-    EReference getFilterVariableValue_ModelElement();
-
-    /**
-     * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.CollapseFilter
      * <em>Collapse Filter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -7474,6 +7497,91 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     EAttribute getHideLabelCapabilityStyle_HideLabelByDefault();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.VariableValue <em>Variable Value</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Variable Value</em>'.
+     * @see org.eclipse.sirius.diagram.VariableValue
+     * @generated
+     */
+    EClass getVariableValue();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.TypedVariableValue
+     * <em>Typed Variable Value</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Typed Variable Value</em>'.
+     * @see org.eclipse.sirius.diagram.TypedVariableValue
+     * @generated
+     */
+    EClass getTypedVariableValue();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition
+     * <em>Variable Definition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the reference '<em>Variable Definition</em>'.
+     * @see org.eclipse.sirius.diagram.TypedVariableValue#getVariableDefinition()
+     * @see #getTypedVariableValue()
+     * @generated
+     */
+    EReference getTypedVariableValue_VariableDefinition();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.TypedVariableValue#getValue
+     * <em>Value</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Value</em>'.
+     * @see org.eclipse.sirius.diagram.TypedVariableValue#getValue()
+     * @see #getTypedVariableValue()
+     * @generated
+     */
+    EAttribute getTypedVariableValue_Value();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.EObjectVariableValue
+     * <em>EObject Variable Value</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>EObject Variable Value</em>'.
+     * @see org.eclipse.sirius.diagram.EObjectVariableValue
+     * @generated
+     */
+    EClass getEObjectVariableValue();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition
+     * <em>Variable Definition</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @return the meta object for the reference '<em>Variable Definition</em>'.
+     * @see org.eclipse.sirius.diagram.EObjectVariableValue#getVariableDefinition()
+     * @see #getEObjectVariableValue()
+     * @generated
+     */
+    EReference getEObjectVariableValue_VariableDefinition();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement
+     * <em>Model Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Model Element</em>'.
+     * @see org.eclipse.sirius.diagram.EObjectVariableValue#getModelElement()
+     * @see #getEObjectVariableValue()
+     * @generated
+     */
+    EReference getEObjectVariableValue_ModelElement();
 
     /**
      * Returns the meta object for enum '
@@ -8987,34 +9095,6 @@ public interface DiagramPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.impl.FilterVariableValueImpl
-         * <em>Filter Variable Value</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.impl.FilterVariableValueImpl
-         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFilterVariableValue()
-         * @generated
-         */
-        EClass FILTER_VARIABLE_VALUE = DiagramPackage.eINSTANCE.getFilterVariableValue();
-
-        /**
-         * The meta object literal for the '<em><b>Variable Definition</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference FILTER_VARIABLE_VALUE__VARIABLE_DEFINITION = DiagramPackage.eINSTANCE.getFilterVariableValue_VariableDefinition();
-
-        /**
-         * The meta object literal for the '<em><b>Model Element</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference FILTER_VARIABLE_VALUE__MODEL_ELEMENT = DiagramPackage.eINSTANCE.getFilterVariableValue_ModelElement();
-
-        /**
-         * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.impl.CollapseFilterImpl
          * <em>Collapse Filter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -9154,6 +9234,74 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EAttribute HIDE_LABEL_CAPABILITY_STYLE__HIDE_LABEL_BY_DEFAULT = DiagramPackage.eINSTANCE.getHideLabelCapabilityStyle_HideLabelByDefault();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.impl.VariableValueImpl
+         * <em>Variable Value</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.impl.VariableValueImpl
+         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getVariableValue()
+         * @generated
+         */
+        EClass VARIABLE_VALUE = DiagramPackage.eINSTANCE.getVariableValue();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.impl.TypedVariableValueImpl
+         * <em>Typed Variable Value</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.impl.TypedVariableValueImpl
+         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getTypedVariableValue()
+         * @generated
+         */
+        EClass TYPED_VARIABLE_VALUE = DiagramPackage.eINSTANCE.getTypedVariableValue();
+
+        /**
+         * The meta object literal for the '<em><b>Variable Definition</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference TYPED_VARIABLE_VALUE__VARIABLE_DEFINITION = DiagramPackage.eINSTANCE.getTypedVariableValue_VariableDefinition();
+
+        /**
+         * The meta object literal for the '<em><b>Value</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute TYPED_VARIABLE_VALUE__VALUE = DiagramPackage.eINSTANCE.getTypedVariableValue_Value();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.impl.EObjectVariableValueImpl
+         * <em>EObject Variable Value</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.impl.EObjectVariableValueImpl
+         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEObjectVariableValue()
+         * @generated
+         */
+        EClass EOBJECT_VARIABLE_VALUE = DiagramPackage.eINSTANCE.getEObjectVariableValue();
+
+        /**
+         * The meta object literal for the '<em><b>Variable Definition</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference EOBJECT_VARIABLE_VALUE__VARIABLE_DEFINITION = DiagramPackage.eINSTANCE.getEObjectVariableValue_VariableDefinition();
+
+        /**
+         * The meta object literal for the '<em><b>Model Element</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference EOBJECT_VARIABLE_VALUE__MODEL_ELEMENT = DiagramPackage.eINSTANCE.getEObjectVariableValue_ModelElement();
 
         /**
          * The meta object literal for the '

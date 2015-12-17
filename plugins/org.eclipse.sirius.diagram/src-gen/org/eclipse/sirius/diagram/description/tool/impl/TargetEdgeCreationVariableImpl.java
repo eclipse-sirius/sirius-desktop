@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
+import org.eclipse.sirius.viewpoint.description.SubVariable;
+import org.eclipse.sirius.viewpoint.description.impl.AbstractVariableImpl;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
-import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

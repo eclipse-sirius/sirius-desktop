@@ -4,19 +4,19 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Obeo - initial API and implementation
- * 
+ *
  */
-package org.eclipse.sirius.viewpoint.description.tool;
+package org.eclipse.sirius.viewpoint.description;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Sub Variable</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSubVariable()
+ * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSubVariable()
  * @model abstract="true"
  * @generated
  */

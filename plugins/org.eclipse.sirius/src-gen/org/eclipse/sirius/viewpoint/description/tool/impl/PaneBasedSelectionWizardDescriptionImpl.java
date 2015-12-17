@@ -210,7 +210,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
      * The default value of the '{@link #getChoiceOfValuesMessage()
      * <em>Choice Of Values Message</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getChoiceOfValuesMessage()
      * @not-generated
      * @ordered
@@ -318,7 +318,7 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
      * The default value of the '{@link #getSelectedValuesMessage()
      * <em>Selected Values Message</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @see #getSelectedValuesMessage()
      * @not-generated
      * @ordered
@@ -468,8 +468,8 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
             containerView = (ContainerViewVariable) eResolveProxy(oldContainerView);
             if (containerView != oldContainerView) {
                 InternalEObject newContainerView = (InternalEObject) containerView;
-                NotificationChain msgs = oldContainerView.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null,
-                        null);
+                NotificationChain msgs = oldContainerView
+                        .eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, null);
                 if (newContainerView.eInternalContainer() == null) {
                     msgs = newContainerView.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CONTAINER_VIEW, null, msgs);
                 }
@@ -627,8 +627,8 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
             initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
             if (initialOperation != oldInitialOperation) {
                 InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null,
-                        null);
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION,
+                        null, null);
                 if (newInitialOperation.eInternalContainer() == null) {
                     msgs = newInitialOperation.eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
                 }
@@ -1172,8 +1172,8 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE:
             return PaneBasedSelectionWizardDescriptionImpl.WINDOW_TITLE_EDEFAULT == null ? windowTitle != null : !PaneBasedSelectionWizardDescriptionImpl.WINDOW_TITLE_EDEFAULT.equals(windowTitle);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH:
-            return PaneBasedSelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT == null ? windowImagePath != null
-                    : !PaneBasedSelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT.equals(windowImagePath);
+            return PaneBasedSelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT == null ? windowImagePath != null : !PaneBasedSelectionWizardDescriptionImpl.WINDOW_IMAGE_PATH_EDEFAULT
+                    .equals(windowImagePath);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__MESSAGE:
             return PaneBasedSelectionWizardDescriptionImpl.MESSAGE_EDEFAULT == null ? message != null : !PaneBasedSelectionWizardDescriptionImpl.MESSAGE_EDEFAULT.equals(message);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CHOICE_OF_VALUES_MESSAGE:
@@ -1185,11 +1185,11 @@ public class PaneBasedSelectionWizardDescriptionImpl extends AbstractToolDescrip
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__TREE:
             return tree != PaneBasedSelectionWizardDescriptionImpl.TREE_EDEFAULT;
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ROOT_EXPRESSION:
-            return PaneBasedSelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null
-                    : !PaneBasedSelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT.equals(rootExpression);
+            return PaneBasedSelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT == null ? rootExpression != null : !PaneBasedSelectionWizardDescriptionImpl.ROOT_EXPRESSION_EDEFAULT
+                    .equals(rootExpression);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__CHILDREN_EXPRESSION:
-            return PaneBasedSelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null
-                    : !PaneBasedSelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT.equals(childrenExpression);
+            return PaneBasedSelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT == null ? childrenExpression != null : !PaneBasedSelectionWizardDescriptionImpl.CHILDREN_EXPRESSION_EDEFAULT
+                    .equals(childrenExpression);
         case ToolPackage.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__SELECTED_VALUES_MESSAGE:
             return PaneBasedSelectionWizardDescriptionImpl.SELECTED_VALUES_MESSAGE_EDEFAULT == null ? selectedValuesMessage != null
                     : !PaneBasedSelectionWizardDescriptionImpl.SELECTED_VALUES_MESSAGE_EDEFAULT.equals(selectedValuesMessage);

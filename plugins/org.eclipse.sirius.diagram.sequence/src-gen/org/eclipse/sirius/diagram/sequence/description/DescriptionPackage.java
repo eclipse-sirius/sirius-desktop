@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.sequence.description;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -2721,7 +2720,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_END_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int MESSAGE_END_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The number of structural features of the '<em>Message End Variable</em>'
@@ -2730,7 +2729,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_END_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int MESSAGE_END_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -2751,7 +2750,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COVERED_LIFELINES_VARIABLE__NAME = ToolPackage.ABSTRACT_VARIABLE__NAME;
+    int COVERED_LIFELINES_VARIABLE__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE__NAME;
 
     /**
      * The number of structural features of the '
@@ -2761,7 +2760,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COVERED_LIFELINES_VARIABLE_FEATURE_COUNT = ToolPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
+    int COVERED_LIFELINES_VARIABLE_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_VARIABLE_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '

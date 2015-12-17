@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.metamodel.table.description;
 
-import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**
